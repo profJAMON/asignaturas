@@ -6,18 +6,21 @@
   "materiales": [],
   "actividades": [
     {
+      "id": "practica-hosts",
       "tipo": "generador",
       "titulo": "¿Cuántos equipos caben?",
       "generador": "hosts-por-mascara",
       "n": 7
     },
     {
+      "id": "practica-red-broadcast",
       "tipo": "generador",
       "titulo": "Red, broadcast y rango utilizable",
       "generador": "red-y-broadcast",
       "n": 10
     },
     {
+      "id": "practica-misma-red",
       "tipo": "generador",
       "titulo": "¿Están en la misma red?",
       "generador": "misma-red",
@@ -49,22 +52,42 @@
         },
         {
           "pregunta": "¿Cuántos equipos utilizables caben en una red /26?",
-          "opciones": ["30", "62", "64", "126"],
+          "opciones": [
+            "30",
+            "62",
+            "64",
+            "126"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "En una red /27, ¿cada cuánto empieza un bloque nuevo?",
-          "opciones": ["De 16 en 16", "De 32 en 32", "De 64 en 64", "De 128 en 128"],
+          "opciones": [
+            "De 16 en 16",
+            "De 32 en 32",
+            "De 64 en 64",
+            "De 128 en 128"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Cuál es la dirección de red de 192.168.1.100/26?",
-          "opciones": ["192.168.1.0", "192.168.1.64", "192.168.1.96", "192.168.1.128"],
+          "opciones": [
+            "192.168.1.0",
+            "192.168.1.64",
+            "192.168.1.96",
+            "192.168.1.128"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Y su dirección de broadcast?",
-          "opciones": ["192.168.1.63", "192.168.1.127", "192.168.1.128", "192.168.1.255"],
+          "opciones": [
+            "192.168.1.63",
+            "192.168.1.127",
+            "192.168.1.128",
+            "192.168.1.255"
+          ],
           "correcta": 1
         },
         {

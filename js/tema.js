@@ -1,9 +1,9 @@
 /* Pinta tema.html a partir del parámetro ?id=.
    1. Pinta la barra lateral (Temario), marcando esta sesión como activa.
-  2. Busca en el archivo de curso de la asignatura a qué unidad pertenece.
-  3. Carga los datos desde la carpeta base de la asignatura.
+   2. Busca en data/curso.json a qué unidad pertenece.
+   3. Carga los datos desde data/unidades/<unidad>/<id>.json.
    4. El contenido de la lección vive en un archivo .html hermano
-      (la carpeta base/<unidad>/<id>.html) — así se puede editar como HTML
+      (data/unidades/<unidad>/<id>.html) — así se puede editar como HTML
       normal, con saltos de línea reales. Si ese archivo no existe,
       se usa el campo "contenido" del json como respaldo (formato antiguo).
    5. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
@@ -64,8 +64,11 @@ async function cargarTema() {
 
     pintarLeccion(contenidoHtml);
     pintarMateriales(tema.materiales || []);
-    pintarActividades(tema.actividades || []);
+    /* El índice se arma ANTES de meter actividades dentro de la lección,
+       para que los títulos de los ejercicios no salgan en "En esta página". */
     pintarIndicePagina();
+    const yaColocadas = colocarActividadesEnLeccion(tema.actividades || []);
+    pintarActividades((tema.actividades || []).filter(a => !yaColocadas.has(a)));
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
        traductor: hay que avisarle de que hay texto nuevo en pantalla. */
@@ -86,6 +89,44 @@ function pintarLeccion(contenidoHtml) {
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
   document.getElementById('seccion-leccion').hidden = false;
+}
+
+/* Actividades dentro de la lección.
+
+   Por defecto todas las actividades del json se pintan juntas al final,
+   en la sección "Actividades". Pero muchas veces se aprende mejor si el
+   ejercicio viene justo después de la explicación a la que corresponde.
+
+   Para eso, en el .html de la sesión se deja un hueco:
+
+       <div data-actividad="practica-decimal-binario"></div>
+
+   y en el .json esa actividad lleva el mismo "id". La actividad se pinta
+   en el hueco y deja de aparecer al final, así que no se duplica. Las que
+   no tengan hueco siguen saliendo abajo, como siempre. */
+
+function colocarActividadesEnLeccion(actividades) {
+  const colocadas = new Set();
+  const huecos = document.querySelectorAll('#leccion-contenido [data-actividad]');
+
+  huecos.forEach(hueco => {
+    const id = hueco.getAttribute('data-actividad');
+    const actividad = actividades.find(a => a.id === id);
+    if (!actividad) {
+      console.warn(`No hay ninguna actividad con id "${id}" en el json de esta sesión.`);
+      hueco.remove();
+      return;
+    }
+    if (colocadas.has(actividad)) {
+      console.warn(`La actividad "${id}" está pedida más de una vez; solo se pinta la primera.`);
+      hueco.remove();
+      return;
+    }
+    renderActividad(hueco, actividad);
+    colocadas.add(actividad);
+  });
+
+  return colocadas;
 }
 
 function agruparSubsecciones(raiz) {
@@ -152,7 +193,7 @@ function pintarIndicePagina() {
   const aside = document.getElementById('indice-pagina');
   if (!aside) return;
 
-  const encabezados = document.querySelectorAll('#leccion-contenido h2, #leccion-contenido h3');
+  const encabezados = document.querySelectorAll('#leccion-contenido h2:not(.actividad__titulo), #leccion-contenido h3:not(.actividad__titulo)');
   if (encabezados.length === 0) {
     aside.hidden = true;
     return;

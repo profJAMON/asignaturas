@@ -55,6 +55,9 @@
 <p class="pie-figura">Cada bit que pasa de host a red duplica el número de subredes y parte por la mitad los equipos que caben.</p>
 </div>
 
+<h3>Practica — ¿cuántos equipos caben?</h3>
+<p>Cuenta los bits de host, eleva 2 a esa cantidad y resta 2.</p>
+<div data-actividad="practica-hosts"></div>
 <h2>El método del salto</h2>
 <p>Aquí está el truco que hace que esto se pueda resolver mentalmente. Mira la tercera columna de la tabla: 256, 128, 64, 32, 16, 8, 4. A ese número lo vamos a llamar <strong>el salto</strong>, y es el tamaño de cada bloque.</p>
 <p>Los bloques empiezan siempre en múltiplos del salto, contando desde 0. Con eso, tres pasos:</p>
@@ -97,6 +100,13 @@ Caben                62 equipos</code></pre>
 <p>Esa avería —«están en el mismo switch y no se ven»— la vas a encontrar de verdad, y no se arregla mirando cables.</p>
 </div>
 
+<h3>Practica — red, broadcast y rango</h3>
+<p>Calcula el salto, busca el múltiplo por debajo de la dirección y rellena el bloque.</p>
+<div data-actividad="practica-red-broadcast"></div>
+
+<h3>Practica — ¿se ven o no se ven?</h3>
+<p>Saca el bloque de cada una y compáralos. Si no coinciden, hace falta un router.</p>
+<div data-actividad="practica-misma-red"></div>
 <h3>Comprobarlo en binario</h3>
 <p>El método del salto es un atajo; lo que hay debajo es una operación entre la IP y la máscara. Merece la pena verlo una vez:</p>
 <pre><code>IP        192.168.1.100    11000000.10101000.00000001.01100100

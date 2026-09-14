@@ -64,6 +64,9 @@
 </table>
 <p>Así, <code>192.168.1.25/24</code> lo dice todo de un golpe: esta dirección, en una red cuyos 24 primeros bits son la red. Es como se escribe hoy en cualquier equipo profesional.</p>
 
+<h3>Practica la notación CIDR</h3>
+<p>De decimal a barra y de barra a decimal. Son cuatro máscaras las que salen siempre; el resto se deducen.</p>
+<div data-actividad="practica-cidr"></div>
 <h2>Las clases de direcciones</h2>
 <p>Antes de CIDR, las direcciones se repartían en <strong>clases</strong> según el valor del <strong>primer octeto</strong>. Hoy el reparto real ya no funciona así, pero las clases siguen estudiándose y se siguen preguntando, porque explican de dónde salen las máscaras «por defecto» y por qué los rangos privados son los que son.</p>
 <table>
@@ -94,6 +97,17 @@
 <p><strong>Para identificar la clase solo hay que mirar el primer número.</strong> 10.250.1.1 empieza por 10 → clase A. 150.10.15.0 empieza por 150 → clase B. 199.155.77.56 empieza por 199 → clase C.</p>
 <div class="nota">Dos direcciones especiales de cada red, que nunca se le dan a un equipo: la que tiene <strong>todos los bits de host a 0</strong> es la <strong>dirección de red</strong> (identifica a la red entera) y la que los tiene <strong>todos a 1</strong> es la de <strong>broadcast</strong> (sirve para hablar con todos los equipos de esa red a la vez). Volveremos a ellas en la sesión siguiente.</div>
 
+<h3>Practica — ¿de qué clase es?</h3>
+<p>Mira solo el primer octeto. Nada más.</p>
+<div data-actividad="practica-clase"></div>
+
+<h3>Practica — máscara por defecto</h3>
+<p>Primero la clase, y de la clase sale la máscara.</p>
+<div data-actividad="practica-mascara"></div>
+
+<h3>Practica — parte de red y parte de host</h3>
+<p>La clase te dice cuántos octetos ocupa la red; el resto es el equipo.</p>
+<div data-actividad="practica-red-host"></div>
 <h3>Direcciones públicas y privadas</h3>
 <p>No todas las direcciones salen a Internet. Hay tres rangos reservados para redes internas: los puedes usar en tu oficina sin pedir permiso a nadie, y los routers de Internet no los encaminan.</p>
 <table>
@@ -129,6 +143,9 @@
 <li><strong>169.254.x.x</strong> — la que se autoasigna Windows <strong>cuando no ha conseguido IP del DHCP</strong>. Si ves una de estas en <code>ipconfig</code>, el equipo no está hablando con el router: ahí tienes la avería.</li>
 </ul>
 
+<h3>Practica — pública o privada</h3>
+<p>Acuérdate de que en el 172 solo son privadas del 16 al 31.</p>
+<div data-actividad="practica-publica-privada"></div>
 <h2>Para contestar en el cuaderno</h2>
 <div class="papel">
 <p class="papel__titulo">Actividad 7 — a mano, en papel</p>

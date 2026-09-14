@@ -12,16 +12,25 @@
   ],
   "actividades": [
     {
+      "id": "practica-decimal-binario",
+      "tipo": "generador",
+      "titulo": "De decimal a binario",
+      "generador": "decimal-a-binario",
+      "n": 10
+    },
+    {
+      "id": "practica-binario-decimal",
       "tipo": "generador",
       "titulo": "De binario a decimal",
       "generador": "binario-a-decimal",
       "n": 10
     },
     {
+      "id": "practica-mezclada",
       "tipo": "generador",
-      "titulo": "De decimal a binario (8 bits)",
-      "generador": "decimal-a-binario",
-      "n": 10
+      "titulo": "En los dos sentidos, sin avisar",
+      "generador": "binario-mixto",
+      "n": 12
     },
     {
       "tipo": "quiz",
@@ -29,32 +38,62 @@
       "preguntas": [
         {
           "pregunta": "¿Cuál es la unidad mínima de información de un sistema informático?",
-          "opciones": ["El byte", "El bit", "El kilobyte", "El carácter"],
+          "opciones": [
+            "El byte",
+            "El bit",
+            "El kilobyte",
+            "El carácter"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Un byte son…",
-          "opciones": ["2 bits", "4 bits", "8 bits", "16 bits"],
+          "opciones": [
+            "2 bits",
+            "4 bits",
+            "8 bits",
+            "16 bits"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "En las abreviaturas, la letra b minúscula significa…",
-          "opciones": ["byte", "bit", "baudio", "bloque"],
+          "opciones": [
+            "byte",
+            "bit",
+            "baudio",
+            "bloque"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Cuál es el número decimal más grande que se puede representar con 8 bits?",
-          "opciones": ["128", "255", "256", "512"],
+          "opciones": [
+            "128",
+            "255",
+            "256",
+            "512"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Cuántos valores distintos se pueden representar con 8 bits?",
-          "opciones": ["8", "128", "255", "256"],
+          "opciones": [
+            "8",
+            "128",
+            "255",
+            "256"
+          ],
           "correcta": 3
         },
         {
           "pregunta": "El binario 1000 0000 vale en decimal…",
-          "opciones": ["8", "64", "128", "256"],
+          "opciones": [
+            "8",
+            "64",
+            "128",
+            "256"
+          ],
           "correcta": 2
         },
         {

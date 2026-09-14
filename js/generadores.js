@@ -133,6 +133,20 @@ function genDecimalABinario() {
   };
 }
 
+/* Mezcla los dos sentidos, para cuando ya se dominan por separado.
+   Se avisa en el propio enunciado de hacia dónde hay que convertir,
+   porque el alumno ya no lo sabe por el título del ejercicio. */
+function genBinarioMixto() {
+  if (Math.random() < 0.5) {
+    const p = genBinarioADecimal();
+    p.enunciado = 'a decimal:  ' + p.enunciado;
+    return p;
+  }
+  const p = genDecimalABinario();
+  p.enunciado = 'a binario:  ' + p.enunciado;
+  return p;
+}
+
 /* ---------- 1.3 Unidades de medida ---------- */
 
 const _UNIDADES = [
@@ -437,6 +451,7 @@ function genMacValida() {
 const GENERADORES = {
   'binario-a-decimal': genBinarioADecimal,
   'decimal-a-binario': genDecimalABinario,
+  'binario-mixto': genBinarioMixto,
   'unidades-informacion': genUnidades,
   'bits-y-bytes': genBitsYBytes,
   'cuantos-caben': genCuantosCaben,

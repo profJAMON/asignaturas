@@ -6,30 +6,35 @@
   "materiales": [],
   "actividades": [
     {
+      "id": "practica-clase",
       "tipo": "generador",
       "titulo": "Identifica la clase de red",
       "generador": "clase-de-ip",
       "n": 10
     },
     {
+      "id": "practica-red-host",
       "tipo": "generador",
       "titulo": "Parte de red y parte de host",
       "generador": "parte-de-red",
       "n": 8
     },
     {
+      "id": "practica-mascara",
       "tipo": "generador",
       "titulo": "Máscara por defecto",
       "generador": "mascara-por-defecto",
       "n": 10
     },
     {
+      "id": "practica-publica-privada",
       "tipo": "generador",
       "titulo": "¿Pública o privada?",
       "generador": "publica-o-privada",
       "n": 8
     },
     {
+      "id": "practica-cidr",
       "tipo": "generador",
       "titulo": "Máscara decimal y notación CIDR",
       "generador": "cidr-a-mascara",
@@ -41,37 +46,72 @@
       "preguntas": [
         {
           "pregunta": "¿Cuántos bits tiene una dirección IPv4?",
-          "opciones": ["16", "32", "48", "128"],
+          "opciones": [
+            "16",
+            "32",
+            "48",
+            "128"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Un octeto de una dirección IP son…",
-          "opciones": ["4 bits", "8 bits", "8 bytes", "16 bits"],
+          "opciones": [
+            "4 bits",
+            "8 bits",
+            "8 bytes",
+            "16 bits"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Cuántas direcciones IPv4 distintas existen?",
-          "opciones": ["2¹⁶", "2³²", "2³⁶", "2⁴⁸"],
+          "opciones": [
+            "2¹⁶",
+            "2³²",
+            "2³⁶",
+            "2⁴⁸"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "En una máscara de red, los bits a 1 marcan…",
-          "opciones": ["La parte de host", "La parte de red", "Las direcciones libres", "Los bits con error"],
+          "opciones": [
+            "La parte de host",
+            "La parte de red",
+            "Las direcciones libres",
+            "Los bits con error"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "255.255.255.0 se escribe en notación CIDR como…",
-          "opciones": ["/8", "/16", "/24", "/32"],
+          "opciones": [
+            "/8",
+            "/16",
+            "/24",
+            "/32"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "La dirección 150.10.15.0 es de clase…",
-          "opciones": ["A", "B", "C", "D"],
+          "opciones": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Cuál de estas direcciones es privada?",
-          "opciones": ["172.15.3.9", "172.20.3.9", "193.100.77.89", "8.8.8.8"],
+          "opciones": [
+            "172.15.3.9",
+            "172.20.3.9",
+            "193.100.77.89",
+            "8.8.8.8"
+          ],
           "correcta": 1
         },
         {

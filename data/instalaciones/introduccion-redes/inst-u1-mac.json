@@ -6,6 +6,7 @@
   "materiales": [],
   "actividades": [
     {
+      "id": "practica-mac",
       "tipo": "generador",
       "titulo": "¿Puede ser una dirección MAC?",
       "generador": "mac-valida",
@@ -15,13 +16,34 @@
       "tipo": "relacionar",
       "titulo": "MAC frente a IP",
       "pares": [
-        { "izquierda": "Quién pone la MAC", "derecha": "El fabricante, de fábrica" },
-        { "izquierda": "Quién pone la IP", "derecha": "El administrador o el DHCP del router" },
-        { "izquierda": "Tamaño de la MAC", "derecha": "48 bits en 12 dígitos hexadecimales" },
-        { "izquierda": "Tamaño de la IP", "derecha": "32 bits en cuatro octetos" },
-        { "izquierda": "Capa OSI de la MAC", "derecha": "Capa 2, la que usa el switch" },
-        { "izquierda": "Capa OSI de la IP", "derecha": "Capa 3, la que usa el router" },
-        { "izquierda": "Qué pasa al cambiar de red", "derecha": "La MAC sigue igual y la IP cambia" }
+        {
+          "izquierda": "Quién pone la MAC",
+          "derecha": "El fabricante, de fábrica"
+        },
+        {
+          "izquierda": "Quién pone la IP",
+          "derecha": "El administrador o el DHCP del router"
+        },
+        {
+          "izquierda": "Tamaño de la MAC",
+          "derecha": "48 bits en 12 dígitos hexadecimales"
+        },
+        {
+          "izquierda": "Tamaño de la IP",
+          "derecha": "32 bits en cuatro octetos"
+        },
+        {
+          "izquierda": "Capa OSI de la MAC",
+          "derecha": "Capa 2, la que usa el switch"
+        },
+        {
+          "izquierda": "Capa OSI de la IP",
+          "derecha": "Capa 3, la que usa el router"
+        },
+        {
+          "izquierda": "Qué pasa al cambiar de red",
+          "derecha": "La MAC sigue igual y la IP cambia"
+        }
       ]
     },
     {
@@ -30,17 +52,32 @@
       "preguntas": [
         {
           "pregunta": "¿Cuántos bits tiene una dirección MAC?",
-          "opciones": ["16", "32", "48", "128"],
+          "opciones": [
+            "16",
+            "32",
+            "48",
+            "128"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "¿Cuántos dígitos hexadecimales se escriben?",
-          "opciones": ["6", "8", "12", "16"],
+          "opciones": [
+            "6",
+            "8",
+            "12",
+            "16"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "Un dígito hexadecimal equivale a…",
-          "opciones": ["1 bit", "4 bits", "8 bits", "16 bits"],
+          "opciones": [
+            "1 bit",
+            "4 bits",
+            "8 bits",
+            "16 bits"
+          ],
           "correcta": 1
         },
         {
@@ -55,7 +92,12 @@
         },
         {
           "pregunta": "¿Qué comando de Windows muestra la dirección física?",
-          "opciones": ["ipconfig", "ipconfig /all", "ping", "netstat"],
+          "opciones": [
+            "ipconfig",
+            "ipconfig /all",
+            "ping",
+            "netstat"
+          ],
           "correcta": 1
         },
         {

@@ -64,13 +64,15 @@
 /* ============================================================
    Modo claro  (js/aspecto.js)
    ============================================================
-  El alumno elige claro u oscuro con el selector de la barra
+   El alumno elige claro, oscuro o automático con el selector de la barra
    lateral. js/aspecto.js escribe en <html> el tema YA RESUELTO:
 
      data-tema="oscuro" | data-tema="claro"          <- lo que pinta el CSS
-    data-tema-elegido="oscuro" | "claro"          <- lo que marca el botón
+     data-tema-elegido="oscuro" | "claro" | "auto"   <- lo que marca el botón
 
-  Por eso aquí abajo solo hay un bloque para la paleta clara.
+   Por eso aquí abajo solo hay un bloque y no tres: de resolver
+   "automático" (mirar prefers-color-scheme) se encarga el JS, y así la
+   paleta clara se escribe una sola vez.
 
    Todo lo que cambia son estas variables. Si al añadir un componente
    nuevo hace falta un color, se pone como variable aquí y arriba, nunca
@@ -576,6 +578,11 @@ footer.pie {
 }
 .leccion h3::before { content: counter(h2count) "." counter(h3count) " "; }
 
+/* Una actividad colocada dentro de la lección no es un apartado más:
+   lleva su propio recuadro, así que no se numera ni gasta contador. */
+.leccion .actividad__titulo { counter-increment: none; }
+.leccion .actividad__titulo::before { content: none; }
+
 .leccion p { margin: 0 0 1rem; color: var(--text); }
 .leccion ul, .leccion ol { margin: 0 0 1rem; padding-left: 1.3rem; color: var(--text); }
 .leccion li { margin-bottom: 0.3rem; }
@@ -854,7 +861,7 @@ footer.pie {
 
 /* ============================================================
    Selector de aspecto  (js/aspecto.js)
-  Mismo aire que el de idioma: dos botones de icono pequeños.
+   Mismo aire que el de idioma: tres botones pequeños en monoespaciada.
    ============================================================ */
 
 .selector-aspecto {
@@ -872,16 +879,14 @@ footer.pie {
 }
 
 .aspecto {
-  width: 2rem;
-  height: 2rem;
   font-family: var(--font-mono);
-  font-size: 16px;
+  font-size: 11px;
   line-height: 1;
   color: var(--text-dim);
   background: transparent;
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 0;
+  padding: 0.35rem 0.5rem;
   cursor: pointer;
 }
 
@@ -897,6 +902,14 @@ footer.pie {
 }
 
 .aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.aspecto-nota {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--text-faint);
+}
 
 /* --- Interfaz propia del widget de Google: fuera ---------------
    El widget inyecta una barra gris en la parte de arriba y su propio

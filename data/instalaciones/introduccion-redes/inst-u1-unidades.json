@@ -17,18 +17,21 @@
   ],
   "actividades": [
     {
+      "id": "practica-escalera",
       "tipo": "generador",
       "titulo": "Sube y baja la escalera de unidades",
       "generador": "unidades-informacion",
       "n": 10
     },
     {
+      "id": "practica-bits-bytes",
       "tipo": "generador",
       "titulo": "Bits, bytes y velocidad de la línea",
       "generador": "bits-y-bytes",
       "n": 8
     },
     {
+      "id": "practica-cuantos-caben",
       "tipo": "generador",
       "titulo": "¿Cuántos hacen falta?",
       "generador": "cuantos-caben",
@@ -38,12 +41,30 @@
       "tipo": "relacionar",
       "titulo": "¿Qué unidad le pega a cada cosa?",
       "pares": [
-        { "izquierda": "Un disco duro de un portátil", "derecha": "Terabytes (TB)" },
-        { "izquierda": "Una película descargada", "derecha": "Gigabytes (GB)" },
-        { "izquierda": "Una foto del móvil", "derecha": "Megabytes (MB)" },
-        { "izquierda": "Un documento de texto corto", "derecha": "Kilobytes (KB)" },
-        { "izquierda": "Un solo carácter de texto", "derecha": "Un byte (B)" },
-        { "izquierda": "La velocidad de tu fibra", "derecha": "Megabits por segundo (Mbps)" }
+        {
+          "izquierda": "Un disco duro de un portátil",
+          "derecha": "Terabytes (TB)"
+        },
+        {
+          "izquierda": "Una película descargada",
+          "derecha": "Gigabytes (GB)"
+        },
+        {
+          "izquierda": "Una foto del móvil",
+          "derecha": "Megabytes (MB)"
+        },
+        {
+          "izquierda": "Un documento de texto corto",
+          "derecha": "Kilobytes (KB)"
+        },
+        {
+          "izquierda": "Un solo carácter de texto",
+          "derecha": "Un byte (B)"
+        },
+        {
+          "izquierda": "La velocidad de tu fibra",
+          "derecha": "Megabits por segundo (Mbps)"
+        }
       ]
     }
   ]
