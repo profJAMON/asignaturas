@@ -64,15 +64,13 @@
 /* ============================================================
    Modo claro  (js/aspecto.js)
    ============================================================
-   El alumno elige claro, oscuro o automático con el selector de la barra
+  El alumno elige claro u oscuro con el selector de la barra
    lateral. js/aspecto.js escribe en <html> el tema YA RESUELTO:
 
      data-tema="oscuro" | data-tema="claro"          <- lo que pinta el CSS
-     data-tema-elegido="oscuro" | "claro" | "auto"   <- lo que marca el botón
+    data-tema-elegido="oscuro" | "claro"          <- lo que marca el botón
 
-   Por eso aquí abajo solo hay un bloque y no tres: de resolver
-   "automático" (mirar prefers-color-scheme) se encarga el JS, y así la
-   paleta clara se escribe una sola vez.
+  Por eso aquí abajo solo hay un bloque para la paleta clara.
 
    Todo lo que cambia son estas variables. Si al añadir un componente
    nuevo hace falta un color, se pone como variable aquí y arriba, nunca
@@ -856,7 +854,7 @@ footer.pie {
 
 /* ============================================================
    Selector de aspecto  (js/aspecto.js)
-   Mismo aire que el de idioma: tres botones pequeños en monoespaciada.
+  Mismo aire que el de idioma: dos botones de icono pequeños.
    ============================================================ */
 
 .selector-aspecto {
@@ -874,14 +872,16 @@ footer.pie {
 }
 
 .aspecto {
+  width: 2rem;
+  height: 2rem;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 16px;
   line-height: 1;
   color: var(--text-dim);
   background: transparent;
   border: 1px solid var(--border);
   border-radius: 4px;
-  padding: 0.35rem 0.5rem;
+  padding: 0;
   cursor: pointer;
 }
 
@@ -897,14 +897,6 @@ footer.pie {
 }
 
 .aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-.aspecto-nota {
-  margin: 8px 0 0;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 1.45;
-  color: var(--text-faint);
-}
 
 /* --- Interfaz propia del widget de Google: fuera ---------------
    El widget inyecta una barra gris en la parte de arriba y su propio
