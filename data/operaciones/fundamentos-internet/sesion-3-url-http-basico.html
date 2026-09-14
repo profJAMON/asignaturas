@@ -1,0 +1,253 @@
+<h2>Anatomía de una URL</h2>
+
+<p>Cada vez que escribes una dirección en el navegador, o haces clic en un enlace, en realidad estás usando una <code>URL</code> (Uniform Resource Locator, "localizador uniforme de recursos"). No es un texto suelto: tiene partes fijas, cada una con su función, igual que una dirección postal tiene calle, número y ciudad en un orden concreto.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="15" y="15" width="76" height="34" rx="5" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="53" y="36" text-anchor="middle" fill="var(--accent)" font-size="11">https://</text>
+  <text x="53" y="62" text-anchor="middle" fill="var(--text-dim)" font-size="9">protocolo</text>
+
+  <rect x="97" y="15" width="125" height="34" rx="5" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
+  <text x="159" y="36" text-anchor="middle" fill="var(--code-inline)" font-size="11">blog.iescfg.net</text>
+  <text x="159" y="62" text-anchor="middle" fill="var(--text-dim)" font-size="9">dominio</text>
+
+  <rect x="228" y="15" width="62" height="34" rx="5" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="259" y="36" text-anchor="middle" fill="var(--accent-warm)" font-size="11">/posts</text>
+  <text x="259" y="62" text-anchor="middle" fill="var(--text-dim)" font-size="9">ruta</text>
+
+  <rect x="296" y="15" width="83" height="34" rx="5" fill="var(--surface)" stroke="var(--text)" stroke-width="1.5"/>
+  <text x="337" y="36" text-anchor="middle" fill="var(--text)" font-size="11">?tema=web</text>
+  <text x="337" y="62" text-anchor="middle" fill="var(--text-dim)" font-size="9">parámetros</text>
+  <text x="337" y="74" text-anchor="middle" fill="var(--text-dim)" font-size="9">(query string)</text>
+
+  <rect x="385" y="15" width="62" height="34" rx="5" fill="var(--surface)" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <text x="416" y="36" text-anchor="middle" fill="var(--text-faint)" font-size="11">#final</text>
+  <text x="416" y="62" text-anchor="middle" fill="var(--text-dim)" font-size="9">fragmento</text>
+  <text x="416" y="74" text-anchor="middle" fill="var(--text-dim)" font-size="9">(ancla)</text>
+
+  <text x="240" y="95" text-anchor="middle" fill="var(--text-faint)" font-size="10">URL completa: https://blog.iescfg.net/posts?tema=web#final</text>
+
+  <rect x="15" y="110" width="450" height="80" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="27" y="128" fill="var(--text-dim)" font-size="10"><tspan fill="var(--accent)">protocolo</tspan> — cómo se transporta (http o https)</text>
+  <text x="27" y="144" fill="var(--text-dim)" font-size="10"><tspan fill="var(--code-inline)">dominio</tspan> — a qué servidor te diriges</text>
+  <text x="27" y="160" fill="var(--text-dim)" font-size="10"><tspan fill="var(--accent-warm)">ruta</tspan> — qué recurso concreto pides dentro de ese servidor</text>
+  <text x="27" y="176" fill="var(--text-dim)" font-size="10"><tspan fill="var(--text)">parámetros</tspan> y <tspan fill="var(--text-faint)">fragmento</tspan> — filtro extra y salto dentro de la misma página</text>
+</svg>
+</div>
+
+<p>Vas a ver cada parte por separado.</p>
+
+<h3>Protocolo</h3>
+
+<p><code>http://</code> o <code>https://</code> indican el "idioma" con el que el navegador y el servidor se van a hablar. La <code>s</code> de <code>https</code> significa "seguro": la información viaja cifrada, para que nadie que intercepte la conexión por el camino pueda leerla. Hoy en día casi todas las páginas usan <code>https</code>; los navegadores modernos avisan con un icono de advertencia cuando una web todavía usa <code>http</code> a secas.</p>
+
+<h3>Dominio</h3>
+
+<p>Ya lo viste en la sesión anterior: el nombre que el DNS traduce a una IP (<code>iesramonllull.net</code>). A veces va precedido de un subdominio como <code>www.</code> o <code>blog.</code>, que identifica una parte concreta dentro de ese mismo dominio — piensa en ello como distintos departamentos de un mismo edificio, todos con la misma dirección postal pero un despacho distinto.</p>
+
+<h3>Ruta (path)</h3>
+
+<p>Todo lo que viene después del dominio y antes de <code>?</code> o <code>#</code>. Indica qué recurso concreto pides dentro de ese servidor: puede ser un archivo real (<code>/imagenes/logo.png</code>) o, en webs más modernas, una sección organizada por carpetas aunque no exista un archivo físico con ese nombre exacto (<code>/blog/posts</code>).</p>
+
+<h3>Parámetros (query string)</h3>
+
+<p>Empiezan con <code>?</code> y son pares <code>clave=valor</code> separados por <code>&amp;</code>. Sirven para pedirle al servidor una variación concreta de la misma página, sin necesitar una ruta distinta para cada combinación posible.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <text x="15" y="25" font-size="14"><tspan fill="var(--text-faint)">?</tspan><tspan fill="var(--code-inline)">tema</tspan><tspan fill="var(--text)">=</tspan><tspan fill="var(--accent)">internet</tspan><tspan fill="var(--text-faint)">&amp;</tspan><tspan fill="var(--code-inline)">orden</tspan><tspan fill="var(--text)">=</tspan><tspan fill="var(--accent)">fecha</tspan></text>
+  <text x="15" y="50" fill="var(--text-dim)" font-size="10">clave "tema" con valor "internet", clave "orden" con valor "fecha"</text>
+  <text x="15" y="70" fill="var(--text-dim)" font-size="10">→ "dame la lista de posts, filtrada por el tema internet, ordenada por fecha"</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: si un buscador de tienda online tiene la URL <code>tienda.com/zapatillas?color=azul&amp;talla=42</code>, ¿qué está pidiendo el usuario, con sus propias palabras?</div>
+<details><summary>Ver respuesta</summary>Está pidiendo ver la página de "zapatillas", pero filtrada solo por las que son de color azul y de la talla 42.</details>
+
+<h3>Fragmento (ancla)</h3>
+
+<p>Empieza con <code>#</code> y va al final de todo. A diferencia de las demás partes, el fragmento <strong>no se envía al servidor</strong>: lo gestiona solo el navegador, para saltar directamente a un punto concreto dentro de la misma página (por ejemplo, un apartado con ese <code>id</code>). Es exactamente lo mismo que usa el índice "En esta página" de esta propia web.</p>
+
+<div class="nota">Recuerda: el <code>id</code> ya lo usaste antes como destino de un enlace de ancla y luego como selector CSS. Aquí es el mismo <code>id</code> otra vez, esta vez señalado desde una URL completa en vez de desde un <code>&lt;a href="#seccion"&gt;</code> dentro de la misma página.</div>
+
+<h2>Cómo se carga una página: petición y respuesta</h2>
+
+<p>En la sesión 1 viste el esquema básico: el cliente pide, el servidor responde. Ahora que sabes leer una URL completa, puedes ver ese intercambio con más detalle: es una conversación con un formato fijo, llamada <code>HTTP</code> (HyperText Transfer Protocol).</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="35" width="120" height="60" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="80" y="70" text-anchor="middle" fill="var(--text)" font-size="13">NAVEGADOR</text>
+
+  <rect x="340" y="35" width="120" height="60" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="400" y="70" text-anchor="middle" fill="var(--text)" font-size="13">SERVIDOR</text>
+
+  <line x1="140" y1="50" x2="335" y2="50" stroke="var(--accent)" stroke-width="2" marker-end="url(#u1)"/>
+  <text x="240" y="42" text-anchor="middle" fill="var(--accent)" font-size="10">GET /blog/posts?tema=internet</text>
+
+  <line x1="335" y1="85" x2="140" y2="85" stroke="var(--accent-warm)" stroke-width="2" marker-end="url(#u2)"/>
+  <text x="240" y="105" text-anchor="middle" fill="var(--accent-warm)" font-size="10">estado 200 + el HTML de esa página</text>
+
+  <text x="240" y="128" text-anchor="middle" fill="var(--text-dim)" font-size="10">Paso 1 — la URL se convierte en una petición con método y ruta</text>
+  <text x="240" y="142" text-anchor="middle" fill="var(--text-dim)" font-size="10">Paso 2 — el servidor responde con un estado y el contenido</text>
+  <defs>
+    <marker id="u1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent)"/></marker>
+    <marker id="u2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--accent-warm)"/></marker>
+  </defs>
+</svg>
+</div>
+
+<p>Cada petición lleva un <strong>método</strong>, que dice qué tipo de acción se está pidiendo. Los dos más conocidos:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92rem">
+<tr><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-faint);font-weight:400">Método</th><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-faint);font-weight:400">Para qué se usa</th></tr>
+<tr><td style="border-bottom:1px solid var(--border);padding:6px 10px"><code>GET</code></td><td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Pedir un recurso: cargar una página, hacer clic en un enlace, escribir una dirección. Es lo que has usado siempre hasta ahora.</td></tr>
+<tr><td style="padding:6px 10px"><code>POST</code></td><td style="padding:6px 10px;color:var(--text-dim)">Enviar datos al servidor (por ejemplo, un formulario). Este curso no vais a crear formularios, pero conviene saber que existe.</td></tr>
+</table>
+
+<p>Cuando navegas de página en página o abres imágenes, prácticamente siempre estás usando <code>GET</code>: nunca se lo tienes que indicar tú a mano, el navegador lo hace solo.</p>
+
+<h2>Códigos de estado</h2>
+
+<p>En la sesión anterior ya viste dos códigos en la pestaña Network: <code>200</code> (todo correcto) y <code>404</code> (no encontrado). Son parte de un sistema más amplio: la respuesta del servidor siempre incluye un número de tres cifras que resume qué ha pasado, antes incluso de mirar el contenido.</p>
+
+<div class="salida" style="background:var(--bg);padding:14px">
+<table style="border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:0.82rem">
+<tr>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Código</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Significado</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Ejemplo real</th>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline)">200</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">OK — todo ha ido bien</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">La página se carga con normalidad</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent)">301</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">Redirección permanente</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Escribes <code>http://</code> y el servidor te reenvía solo a <code>https://</code></td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent-warm)">404</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">No encontrado</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Escribes mal el nombre de un archivo o de una ruta</td>
+</tr>
+<tr>
+  <td style="padding:6px 10px;color:var(--error)">500</td>
+  <td style="padding:6px 10px;color:var(--text)">Error interno del servidor</td>
+  <td style="padding:6px 10px;color:var(--text-dim)">El servidor ha recibido la petición, pero algo se ha roto al intentar responder</td>
+</tr>
+</table>
+</div>
+
+<p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo "esto no existe aquí"; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
+
+<div class="nota">🤔 Antes de seguir: si publicas tu web y mueves sin querer una imagen a otra carpeta sin actualizar el <code>&lt;img src="..."&gt;</code>, ¿qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrito tu HTML?</div>
+<details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que el HTML apunta a una ruta que ya no es correcta.</details>
+
+<h2>Actividades en el ordenador</h2>
+
+<div class="nota">Como en la sesión anterior, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña Network. Puedes usar tu propia web personal o cualquier página real (por ejemplo, la del propio instituto).</div>
+
+<h3>Actividad 1 — Descompón una URL real</h3>
+<ol>
+<li>Abre cualquier página en el navegador y abre las DevTools en la pestaña Network (clic derecho → Inspeccionar → Network).</li>
+<li>Recarga la página con <code>F5</code>.</li>
+<li>Busca en la lista la primera fila, la del propio documento (tipo "document"), y haz clic en ella para ver su URL completa.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> se abre un panel de detalle con la URL completa de esa petición, y puedes ver su código de estado (normalmente <code>200</code>).</p>
+<p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene).</p>
+
+<h3>Actividad 2 — Encuentra una URL con parámetros</h3>
+<ol start="4">
+<li>Con la pestaña Network todavía abierta, ve a un buscador (por ejemplo, el buscador interno de una tienda online o de una web de noticias) y busca algo.</li>
+<li>Mira la barra de direcciones o la nueva fila que aparece en Network: busca el símbolo <code>?</code>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> aparece una URL con uno o varios pares <code>clave=valor</code> después de <code>?</code>, relacionados con lo que has buscado.</p>
+
+<div class="nota">🤔 Antes de seguir: ¿por qué crees que muchos buscadores usan parámetros en la URL en vez de, por ejemplo, tener una página distinta para cada búsqueda posible?</div>
+<details><summary>Ver respuesta</summary>Porque sería imposible crear de antemano una página para cada búsqueda que alguien pudiera escribir. Con parámetros, una sola página sabe leer lo que le llega en la URL y adaptar el contenido a partir de ahí.</details>
+
+<h3>Actividad 3 — Busca un código de estado distinto de 200</h3>
+<ol start="6">
+<li>Con Network abierto, escribe a propósito una dirección que no existe en un sitio real que conozcas (por ejemplo, añadiendo <code>/estoNoExiste</code> al final de un dominio).</li>
+<li>Mira la fila del documento en Network.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> el código de estado de esa fila ya no es <code>200</code> — normalmente <code>404</code>.</p>
+<p><strong>¿Dónde miro esto?</strong> Cada vez que algo "no carga" en una web (tuya o ajena), la columna de estado en Network es lo primero que hay que mirar: te dice si el problema es que no se encuentra el recurso (4xx) o que ha fallado el propio servidor (5xx).</p>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija, sube tú mismo las respuestas correctas a tu web personal.
+</div>
+
+<h3>Anatomía de una URL</h3>
+
+<ol>
+<li>Escribe una URL completa cualquiera (real o inventada) que tenga las cinco partes vistas en esta sesión: protocolo, dominio, ruta, parámetros y fragmento. Señala cada parte.</li>
+<li>(V/F) El fragmento (la parte que empieza por <code>#</code>) se envía al servidor igual que el resto de la URL.</li>
+<li>(ABC) En la URL <code>https://tienda.com/productos?categoria=libros</code>, la palabra "productos" es:
+  <ul>
+    <li>a) el dominio</li>
+    <li>b) la ruta</li>
+    <li>c) un parámetro</li>
+  </ul>
+</li>
+<li>¿Qué diferencia hay entre <code>http://</code> y <code>https://</code>?</li>
+<li>En la URL <code>https://blog.instituto.es/2026/proyectos?autor=ana&amp;orden=reciente</code>, indica cuántos parámetros hay y cuál es la clave y el valor de cada uno.</li>
+<li>(V/F) Una misma ruta siempre corresponde exactamente a un único archivo físico guardado en el servidor.</li>
+<li>Busca en tu propia web personal (o en la de un compañero) una URL con al menos una barra <code>/</code> después del dominio, y explica qué ruta está pidiendo.</li>
+</ol>
+
+<h3>Petición y respuesta HTTP</h3>
+
+<ol start="8">
+<li>Explica con tus propias palabras qué es una petición HTTP y qué es una respuesta HTTP, usando el ejemplo de cliente-servidor de la sesión 1.</li>
+<li>(ABC) El método que usa el navegador cuando simplemente cargas una página o haces clic en un enlace es:
+  <ul>
+    <li>a) GET</li>
+    <li>b) POST</li>
+    <li>c) LOAD</li>
+  </ul>
+</li>
+<li>(V/F) El método POST se usa normalmente para pedir una página, y el método GET para enviar datos a un formulario.</li>
+<li>¿Por qué este curso, aunque se explique que existe POST, no vais a usarlo en vuestra web personal?</li>
+<li>Describe, paso a paso, qué ocurre desde que escribes una URL completa hasta que ves la página en pantalla, usando los términos "petición", "método", "respuesta" y "código de estado".</li>
+<li>Abre la pestaña Network en una página cualquiera y anota el método que aparece en la fila del documento principal.</li>
+</ol>
+
+<h3>Códigos de estado</h3>
+
+<ol start="14">
+<li>(V/F) El código 500 significa que el navegador no ha encontrado el archivo pedido.</li>
+<li>Explica con tus palabras la diferencia entre un error 404 y un error 500.</li>
+<li>(ABC) Si escribes <code>http://</code> delante de un dominio y la web te lleva automáticamente a la versión <code>https://</code>, el código de estado que ha usado el servidor para eso es probablemente:
+  <ul>
+    <li>a) 200</li>
+    <li>b) 301</li>
+    <li>c) 404</li>
+  </ul>
+</li>
+<li>Si en tu web personal un enlace interno apunta a un archivo que borraste por error, ¿qué código de estado esperarías ver al hacer clic en ese enlace?</li>
+<li>Busca qué significa el código de estado 403 y en qué se diferencia de un 404.</li>
+<li>(V/F) Un código de estado que empieza por 2 (como 200) siempre indica que algo ha ido bien.</li>
+</ol>
+
+<h3>Repaso general</h3>
+
+<ol start="20">
+<li>Retomando la pregunta de la sesión 1 sobre la diferencia entre un dominio y una URL completa: ahora que conoces todas las partes, amplía tu respuesta incluyendo ruta, parámetros y fragmento.</li>
+<li>(ABC) Al hacer doble clic en un marcador o enlace guardado en el navegador, el método HTTP que se usa es:
+  <ul>
+    <li>a) GET</li>
+    <li>b) POST</li>
+    <li>c) Depende del navegador que uses</li>
+  </ul>
+</li>
+<li>Un compañero te dice: "mi web funciona en local, pero cuando la subo a internet una de las páginas me da 404". Explica, paso a paso, qué comprobarías primero y por qué.</li>
+<li>(V/F) Dos URLs que solo se diferencian en los parámetros después del <code>?</code> pueden mostrar contenido distinto, aunque el dominio y la ruta sean exactamente iguales.</li>
+<li>Con lo que has aprendido en esta sesión, escribe tú mismo una URL de ejemplo con parámetros para un caso inventado (una web de recetas, de música, de videojuegos...) y explica qué pediría cada parámetro.</li>
+</ol>

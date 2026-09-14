@@ -1,0 +1,77 @@
+{
+  "id": "inst-u1-comunicacion",
+  "titulo": "Sesión 1 — Comunicación, ruido y protocolos",
+  "fecha": "",
+  "descripcion": "Los cinco elementos de cualquier comunicación, el ruido que la estropea y el protocolo que la ordena. Es el esquema con el que vas a buscar averías todo el curso.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "¿Qué elemento de la comunicación es?",
+      "pares": [
+        { "izquierda": "El cable de par trenzado", "derecha": "Canal" },
+        { "izquierda": "El protocolo HTTP", "derecha": "Código" },
+        { "izquierda": "La página web que pides", "derecha": "Mensaje" },
+        { "izquierda": "El servidor que te la envía", "derecha": "Emisor" },
+        { "izquierda": "Tu navegador, que la muestra", "derecha": "Receptor" },
+        { "izquierda": "El motor del ascensor junto al cable", "derecha": "Ruido" }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "En un proceso de comunicación, la información que el emisor transmite al receptor es el…",
+          "opciones": ["Canal", "Código", "Mensaje", "Ruido"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Se considera ruido…",
+          "opciones": [
+            "Solo el sonido ambiental que impide oír",
+            "Cualquier interferencia que contamine el mensaje, el canal o el código",
+            "Un fallo del emisor al construir el mensaje",
+            "La pérdida total de la comunicación"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estas cosas NO la decide un protocolo de comunicación?",
+          "opciones": [
+            "Cómo se inicia y se termina la comunicación",
+            "Qué hacer si la comunicación se corta",
+            "Cuánto ruido se tolera",
+            "De qué color es el cable que se utiliza"
+          ],
+          "correcta": 3
+        },
+        {
+          "pregunta": "Dos ordenadores unidos por un cable perfecto no consiguen entenderse. ¿Qué elemento es el primer sospechoso?",
+          "opciones": ["El canal", "El código", "El receptor", "El ruido"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Los hilos del cable de red van trenzados sobre todo para…",
+          "opciones": [
+            "Que el cable sea más flexible",
+            "Que quepan más hilos en menos espacio",
+            "Reducir el efecto de las interferencias",
+            "Que sea más barato de fabricar"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Por qué se dice que ningún sistema de comunicación es fiable al 100 %?",
+          "opciones": [
+            "Porque los fabricantes ahorran en materiales",
+            "Porque siempre puede haber fallos, y los sistemas se diseñan para seguir funcionando con ellos",
+            "Porque Internet está saturado",
+            "Porque el usuario se equivoca al escribir"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

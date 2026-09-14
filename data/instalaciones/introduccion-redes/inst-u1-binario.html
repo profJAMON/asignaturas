@@ -1,0 +1,115 @@
+<h2>Por qué los ordenadores cuentan con dos dedos</h2>
+<p>Para transmitir un mensaje hay que <strong>representarlo</strong> de una forma que el receptor pueda interpretar. Las personas usamos idiomas, gestos, dibujos. Cuando emisor y receptor no comparten código, hace falta un intérprete que traduzca.</p>
+<p>Nosotros contamos con diez símbolos, del 0 al 9, porque tenemos diez dedos. Es el <strong>sistema decimal</strong>:</p>
+<pre><code>D = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}</code></pre>
+<p>Y la posición manda: 123, 321 y 231 se escriben con las mismas cifras y valen cosas distintas.</p>
+<p>Un ordenador no tiene dedos: tiene corriente. Y de la corriente solo sabe dos cosas con seguridad: <strong>pasa</strong> o <strong>no pasa</strong>. Así que su sistema tiene dos símbolos. Es el <strong>sistema binario</strong>:</p>
+<pre><code>B = {0, 1}      0 = no pasa corriente      1 = sí pasa</code></pre>
+<div class="salida">
+<svg viewBox="0 0 430 190" width="100%" role="img" aria-label="Dos circuitos: con el interruptor abierto no pasa corriente y vale 0; cerrado sí pasa y vale 1" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="15" y="20" width="190" height="110" rx="5" fill="#252526" stroke="#3c3c3c"/><path d="M 43 50 L 43 70 M 49 55 L 49 65" stroke="#9099a6" stroke-width="2"/><path d="M 43 50 L 43 36 L 105 36" stroke="#9099a6" stroke-width="1.5" fill="none"/><path d="M 49 65 L 49 84 L 165 84 L 165 36 L 155 36" stroke="#9099a6" stroke-width="1.5" fill="none"/><path d="M 105 36 L 129 24" stroke="#f14c4c" stroke-width="2"/><circle cx="105" cy="36" r="2.5" fill="#9099a6"/><circle cx="133" cy="36" r="2.5" fill="#9099a6"/><circle cx="145" cy="36" r="9" fill="none" stroke="#6a7280" stroke-width="1.5"/><text x="110" y="112" text-anchor="middle" class="s">no pasa corriente</text><text x="110" y="76" text-anchor="middle" font-family="monospace" font-size="30" font-weight="700" fill="#f14c4c">0</text><rect x="225" y="20" width="190" height="110" rx="5" fill="#252526" stroke="#3c3c3c"/><path d="M 253 50 L 253 70 M 259 55 L 259 65" stroke="#9099a6" stroke-width="2"/><path d="M 253 50 L 253 36 L 315 36" stroke="#9099a6" stroke-width="1.5" fill="none"/><path d="M 259 65 L 259 84 L 375 84 L 375 36 L 365 36" stroke="#9099a6" stroke-width="1.5" fill="none"/><path d="M 315 36 L 343 36" stroke="#89d185" stroke-width="2"/><circle cx="315" cy="36" r="2.5" fill="#9099a6"/><circle cx="343" cy="36" r="2.5" fill="#9099a6"/><circle cx="355" cy="36" r="9" fill="none" stroke="#89d185" stroke-width="1.5"/><path d="M 348.1 26.2 L 344.7 21.3" stroke="#89d185" stroke-width="1.5"/><path d="M 355.0 24.0 L 355.0 18.0" stroke="#89d185" stroke-width="1.5"/><path d="M 361.9 26.2 L 365.3 21.3" stroke="#89d185" stroke-width="1.5"/><text x="320" y="112" text-anchor="middle" class="s">sí pasa corriente</text><text x="320" y="76" text-anchor="middle" font-family="monospace" font-size="30" font-weight="700" fill="#89d185">1</text><text x="215" y="158" text-anchor="middle" class="s">El ordenador solo tiene que distinguir dos estados, y eso lo acierta</text><text x="215" y="174" text-anchor="middle" class="s">casi siempre. Diez niveles de voltaje distintos fallarían sin parar.</text>
+</svg>
+<p class="pie-figura">Un cero es que no pasa corriente y un uno es que sí pasa. No hay más.</p>
+</div>
+<div class="nota">Esto no es una manía de los informáticos. Es lo único robusto que se puede hacer con electricidad: distinguir «hay señal» de «no hay señal» se acierta casi siempre, incluso con ruido. Distinguir diez niveles de voltaje distintos fallaría constantemente. El binario existe <strong>por el ruido de la sesión anterior</strong>.</div>
+
+<h3>Bit y byte</h3>
+<p>Cada 0 o cada 1 de una cadena binaria se llama <strong>bit</strong> (de <em>binary digit</em>). El bit es la <strong>unidad mínima de información</strong> de cualquier sistema informático: no hay nada más pequeño.</p>
+<p>Los bits se agrupan de ocho en ocho, y a ese grupo se le llama <strong>byte</strong>.</p>
+<pre><code>1 byte = 8 bits        1011 0111  ←  esto es un byte</code></pre>
+<div class="nota">Cuidado con las abreviaturas, porque esto cae en el examen y en la vida real: <strong>b minúscula = bit</strong>, <strong>B mayúscula = byte</strong>. Una diferencia de ocho veces según la tecla que pulses.</div>
+
+<h2>De decimal a binario</h2>
+<p>El método es mecánico: <strong>divide entre 2 una y otra vez</strong>, apunta los restos, y cuando el cociente ya no se pueda dividir más, lee de abajo arriba.</p>
+<p>Vamos con el 183:</p>
+<div class="salida">
+<svg viewBox="0 0 500 240" width="100%" role="img" aria-label="Divisiones sucesivas de 183 entre 2; los restos leídos de abajo arriba dan 1011 0111" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="20" y="22" text-anchor="start" class="t">183 a binario: divide entre 2 y apunta los restos</text><text x="20" y="56" font-family="monospace" font-size="12" fill="#f3f3f3">183 : 2 = 91</text><text x="150" y="56" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="56" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><text x="20" y="78" font-family="monospace" font-size="12" fill="#f3f3f3"> 91 : 2 = 45</text><text x="150" y="78" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="78" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><text x="20" y="100" font-family="monospace" font-size="12" fill="#f3f3f3"> 45 : 2 = 22</text><text x="150" y="100" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="100" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><text x="20" y="122" font-family="monospace" font-size="12" fill="#f3f3f3"> 22 : 2 = 11</text><text x="150" y="122" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="122" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">0</text><text x="20" y="144" font-family="monospace" font-size="12" fill="#f3f3f3"> 11 : 2 =  5</text><text x="150" y="144" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="144" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><text x="20" y="166" font-family="monospace" font-size="12" fill="#f3f3f3">  5 : 2 =  2</text><text x="150" y="166" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="166" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><text x="20" y="188" font-family="monospace" font-size="12" fill="#f3f3f3">  2 : 2 =  1</text><text x="150" y="188" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="188" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">0</text><text x="20" y="210" font-family="monospace" font-size="12" fill="#f3f3f3">  1 : 2 =  0</text><text x="150" y="210" font-family="monospace" font-size="12" fill="#9099a6">resto</text><text x="205" y="210" font-family="monospace" font-size="13" font-weight="700" fill="#4fc1ff">1</text><path d="M 228 208 L 228.0 54.0" stroke="#ce9178" stroke-width="1.5" fill="none"/>
+<path d="M 228 46 L 231.5 54.3 L 224.5 54.3 z" fill="#ce9178"/><text x="242" y="133.0" font-family="monospace" font-size="10" fill="#ce9178">se lee</text><text x="242" y="147.0" font-family="monospace" font-size="10" fill="#ce9178">hacia</text><text x="242" y="161.0" font-family="monospace" font-size="10" fill="#ce9178">arriba</text><rect x="300" y="90" width="180" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="390" y="122" text-anchor="middle" font-family="monospace" font-size="19" font-weight="700" fill="#4fc1ff">1011 0111</text><text x="390" y="76" text-anchor="middle" class="s">el resultado</text><path d="M 268 116 L 288.0 116.0" stroke="#4fc1ff" stroke-width="1.5" fill="none"/>
+<path d="M 296 116 L 287.7 119.5 L 287.7 112.5 z" fill="#4fc1ff"/>
+</svg>
+<p class="pie-figura">Las divisiones de 183 entre 2. Los restos, leídos de abajo arriba, son el número en binario.</p>
+</div>
+<p>Se escribe en grupos de cuatro (1011 0111) solo para leerlo mejor, igual que escribimos 1.500.000 con puntos. El número es el mismo.</p>
+<div class="salida">
+<p><strong>Comprobación con la calculadora de Windows:</strong> ábrela, pulsa el botón de las tres rayas ☰ y elige <strong>Programador</strong>. Escribe un número en DEC y verás aparecer solo su valor en BIN. Úsala para corregirte, nunca para hacer el ejercicio: en el examen no la vas a tener.</p>
+</div>
+
+<h2>De binario a decimal</h2>
+<p>Aquí se va al revés: cada posición vale una potencia de 2, empezando por la derecha en 2⁰.</p>
+<pre><code>D = b₀·2⁰ + b₁·2¹ + b₂·2² + b₃·2³ + … + bₙ·2ⁿ</code></pre>
+<p>Con 1011 0111:</p>
+<div class="salida">
+<svg viewBox="0 0 500 232" width="100%" role="img" aria-label="Los ocho bits de 1011 0111 con su valor posicional; se suman los que valen uno y dan 183" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="30" y="24" text-anchor="start" class="t">1011 0111  →  ¿cuánto vale?</text><rect x="30" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="55.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="55.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">128</text><path d="M 55.0 82 L 55.0 90" stroke="#4fc1ff" stroke-width="1"/><rect x="86" y="40" width="50" height="38" rx="4" fill="#1e1e1e" stroke="#3c3c3c"/><text x="111.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#6a7280">0</text><text x="111.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#6a7280">64</text><rect x="142" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="167.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="167.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">32</text><path d="M 167.0 82 L 167.0 90" stroke="#4fc1ff" stroke-width="1"/><rect x="198" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="223.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="223.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">16</text><path d="M 223.0 82 L 223.0 90" stroke="#4fc1ff" stroke-width="1"/><rect x="254" y="40" width="50" height="38" rx="4" fill="#1e1e1e" stroke="#3c3c3c"/><text x="279.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#6a7280">0</text><text x="279.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#6a7280">8</text><rect x="310" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="335.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="335.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">4</text><path d="M 335.0 82 L 335.0 90" stroke="#4fc1ff" stroke-width="1"/><rect x="366" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="391.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="391.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">2</text><path d="M 391.0 82 L 391.0 90" stroke="#4fc1ff" stroke-width="1"/><rect x="422" y="40" width="50" height="38" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="447.0" y="66" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">1</text><text x="447.0" y="102" text-anchor="middle" font-family="monospace" font-size="12" fill="#f3f3f3">1</text><path d="M 447.0 82 L 447.0 90" stroke="#4fc1ff" stroke-width="1"/><path d="M 30 114 L 30 120 L 472 120 L 472 114" stroke="#3c3c3c" fill="none" stroke-width="1"/><text x="251.0" y="134" text-anchor="middle" class="f">suma solo los que tienen un 1 encima</text><text x="30" y="162" text-anchor="start" class="b">128 + 32 + 16 + 4 + 2 + 1 = 183</text><text x="30" y="190" text-anchor="start" class="s">Apréndete esta fila: 128 64 32 16 8 4 2 1.</text><text x="30" y="206" text-anchor="start" class="s">Con ella resuelves cualquier octeto de cabeza.</text>
+</svg>
+<p class="pie-figura">Cada posición vale una potencia de dos. Se suman solo las que llevan un uno encima.</p>
+</div>
+<p>El truco práctico: <strong>apréndete la fila de los valores</strong> —128, 64, 32, 16, 8, 4, 2, 1— y suma los que tengan un 1 encima. Con eso resuelves cualquier octeto en diez segundos, y lo vas a usar sin parar cuando lleguemos a las máscaras de red.</p>
+<table>
+<tr><th>Posición</th><th>2⁷</th><th>2⁶</th><th>2⁵</th><th>2⁴</th><th>2³</th><th>2²</th><th>2¹</th><th>2⁰</th></tr>
+<tr><td><strong>Vale</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+</table>
+
+<h3>Dos números que tienes que saber de memoria</h3>
+<ul>
+<li>Con <strong>8 bits</strong> el número más grande es <code>1111 1111</code> = <strong>255</strong>. Y como también existe el 0, salen <strong>256 valores distintos</strong> (del 0 al 255).</li>
+<li><code>1000 0000</code> = <strong>128</strong>, la mitad del octeto. Este aparecerá en cuanto partamos una red en dos.</li>
+</ul>
+<div class="nota">255 y 256 no son lo mismo y confundirlos es el error más repetido de toda la unidad. <strong>256 son cuántos hay; 255 es el más grande.</strong> Igual que en una clase de 30 alumnos numerados del 0 al 29: hay 30, pero el último es el 29.</div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 2 — a mano, en papel</p>
+<ol>
+<li>Define con tus palabras: <strong>bit</strong>, <strong>byte</strong>, <strong>sistema binario</strong>.</li>
+<li>Pasa a decimal, <strong>con el desarrollo escrito</strong>: <code>1100 0000</code> · <code>1111 1111</code> · <code>0010 1101</code>.</li>
+<li>Pasa a binario, <strong>con las divisiones escritas</strong>: 128 · 82 · 95 · 73.</li>
+<li>¿Cuál es el número decimal más grande que se puede formar con 8 bits? ¿Y cuántos valores distintos caben?</li>
+<li>¿Por qué crees que los ordenadores usan un sistema de dos símbolos y no uno de diez, como nosotros? Contesta con tus palabras, cuatro o cinco líneas.</li>
+</ol>
+</div>
+<p>Los ejercicios de aquí abajo son para practicar antes de escribir esos: se corrigen solos y cada vez salen números distintos. Hazlos hasta que te salgan de corrido.</p>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Cuántos bits hacen falta para escribir el número 255? ¿Y el 256?</summary>
+<p>El 255 son 8 bits justos (<code>1111 1111</code>). El 256 <strong>ya no cabe</strong> en 8 bits: necesita 9 (<code>1 0000 0000</code>). Esa frontera es exactamente la razón de que las direcciones IP lleguen hasta 255 y no más.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué es más grande, 1 KB o 1.000 bits?</summary>
+<p>1 KB, y con diferencia. 1 KB son 1.024 bytes, y cada byte son 8 bits: 8.192 bits. Ocho veces más. Esto lo vemos entero en la sesión siguiente, pero ve acostumbrándote a mirar si la b es grande o pequeña.</p>
+</details>

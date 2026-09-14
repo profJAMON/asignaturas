@@ -1,0 +1,137 @@
+{
+  "id": "sesion-6-tablas",
+  "titulo": "Sesión 6 — Tablas de datos",
+  "fecha": "2026-10-20",
+  "descripcion": "Tablas para datos reales: por qué no se usan para maquetar, cómo darles estilo con CSS y cómo fusionar celdas con colspan/rowspan. Tres ejercicios guiados y tres retos progresivos, todos obligatorios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: el elemento <table>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/table"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: colspan y rowspan (atributos de <td>)",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/td"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: <caption>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/caption"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "Quieres mostrar el horario de un campamento, con un día en cada columna. ¿Qué usas?",
+          "opciones": [
+            "<table>",
+            "Varios <div> con display: flex",
+            "Una lista <ul>"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué etiqueta crea una fila completa de una tabla?",
+          "opciones": [
+            "<td>",
+            "<tr>",
+            "<th>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la primera fila de tu tabla van los títulos de cada columna (Nombre, Género, Nota). ¿Qué etiqueta usas para esas celdas?",
+          "opciones": [
+            "<th>",
+            "<td>",
+            "<caption>"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Tu tabla se ve con un doble borde entre celdas. ¿Qué propiedad lo arregla?",
+          "opciones": [
+            "border: none;",
+            "border-collapse: collapse;",
+            "padding: 0;"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que la fila de la comida ocupe el ancho de las 5 columnas de los días de la semana en tu horario. ¿Qué haces?",
+          "opciones": [
+            "Añadir rowspan=\"5\" a la fila <tr>",
+            "Añadir colspan=\"5\" a la única celda <td> de esa fila",
+            "Poner width: 100% en el <table>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una actividad dura dos horas seguidas el mismo día, y no quieres repetir su nombre en dos filas. ¿Qué usas en esa celda?",
+          "opciones": [
+            "colspan=\"2\"",
+            "rowspan=\"2\"",
+            "Escribir el nombre dos veces, una en cada fila"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Después de añadir colspan=\"3\" a una celda de una fila, ¿qué tienes que recordar hacer en esa misma fila?",
+          "opciones": [
+            "Nada más, colspan ya lo resuelve todo solo",
+            "Quitar de esa fila las celdas <td> que esa celda fusionada ya ocupa, para que no sobren columnas",
+            "Añadir colspan=\"3\" también al resto de celdas de la fila"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una fila normal de tu tabla tiene 4 celdas. En otra fila fusionas dos con colspan=\"2\". ¿Cuántos <td> escribes en esa fila?",
+          "opciones": [
+            "4",
+            "3",
+            "2"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada etiqueta o propiedad con lo que hace",
+      "pares": [
+        {
+          "izquierda": "Tabla de datos en filas y columnas",
+          "derecha": "<table>"
+        },
+        {
+          "izquierda": "Una fila completa de la tabla",
+          "derecha": "<tr>"
+        },
+        {
+          "izquierda": "Celda de cabecera (en negrita por defecto)",
+          "derecha": "<th>"
+        },
+        {
+          "izquierda": "Celda normal de datos",
+          "derecha": "<td>"
+        },
+        {
+          "izquierda": "Fusionar varias columnas en una sola celda",
+          "derecha": "colspan"
+        },
+        {
+          "izquierda": "Fusionar varias filas en una sola celda",
+          "derecha": "rowspan"
+        },
+        {
+          "izquierda": "Quitar el doble borde entre celdas de una tabla",
+          "derecha": "border-collapse: collapse;"
+        }
+      ]
+    }
+  ]
+}

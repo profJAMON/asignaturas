@@ -1,0 +1,162 @@
+<h2>De las tablas a Flexbox</h2>
+<p>En la sesión anterior viste que <code>&lt;table&gt;</code> es para <strong>datos</strong> en filas y columnas, no para colocar los bloques de tu página. Hoy aprendes la herramienta que sí sirve para eso: <strong>Flexbox</strong>.</p>
+<div class="nota">🤔 Antes de seguir: quieres poner una imagen de tu afición a la izquierda y un texto sobre ella a la derecha, uno junto al otro. ¿Es trabajo para una tabla?</div>
+<details><summary>Ver la respuesta</summary>
+<p>No. La imagen y el texto no son "datos en filas y columnas" — son dos bloques de tu página que quieres colocar uno junto al otro. Eso es exactamente lo que resuelve Flexbox, no <code>&lt;table&gt;</code>. Reserva <code>&lt;table&gt;</code> para cuando el contenido en sí mismo sea tabular: un horario, una lista de precios, resultados de un experimento.</p>
+</details>
+
+<h2>Flexbox: organiza varias cajas a la vez</h2>
+<p>Hasta ahora, cada bloque de tu página (una tarjeta, una sección, un párrafo) se coloca solo, uno debajo de otro — así se comportan por defecto los elementos de bloque. <strong>Flexbox</strong> cambia esto: conviertes un contenedor en "flex" y sus hijos directos pasan a organizarse en fila automáticamente, y tú decides cómo se reparten y se alinean.</p>
+<p>Compara el mismo HTML con y sin <code>display: flex;</code> en el contenedor:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Uno<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Dos<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div&gt;</span>Tres<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin display: flex;</p>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;margin-bottom:6px;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;margin-bottom:6px;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Tres</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con .fila { display: flex; gap: 10px; }</p>
+<div style="display:flex; gap:10px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;">Tres</div>
+</div>
+</div>
+</div>
+<p>Con <code>.fila { display: flex; }</code>, "Uno", "Dos" y "Tres" dejan de apilarse y pasan a colocarse en fila, uno junto a otro. Nada más cambia en el HTML — solo el CSS del contenedor.</p>
+
+<h3>flex-direction — fila o columna</h3>
+<p>Por defecto, flex coloca los hijos en fila (<code>row</code>). Con <code>flex-direction: column;</code> vuelven a apilarse verticalmente, pero siguen siendo una caja flex (y podrás usar el resto de propiedades de esta sesión igual):</p>
+<pre><code><span class='et'>.fila</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-direction</span>: <span class='ca'>column</span>; <span class='co'>/* row es el valor por defecto */</span>
+    <span class='at'>gap</span>: <span class='ca'>10px</span>;
+}</code></pre>
+<div class="salida" style="display:flex; flex-direction:column; gap:10px; width:120px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Uno</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Dos</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:10px;border:2px solid #3c3c3c;text-align:center;">Tres</div>
+</div>
+
+<h3>justify-content — repartir el espacio en la fila</h3>
+<p><code>justify-content</code> decide cómo se reparten las cajas a lo largo de la fila, cuando sobra espacio:</p>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">flex-start (por defecto)</p>
+<div style="display:flex; justify-content:flex-start; gap:8px; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">center</p>
+<div style="display:flex; justify-content:center; gap:8px; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">space-between</p>
+<div style="display:flex; justify-content:space-between; width:220px; border:1px dashed #6a7280; padding:6px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:8px 12px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+</div>
+<p>Con <code>space-between</code>, la primera caja se pega al borde izquierdo, la última al derecho, y el espacio sobrante se reparte entre las de en medio — justo lo que necesitas para "logo a la izquierda, enlaces a la derecha" en una barra de navegación.</p>
+
+<h3>align-items — alineación en el eje cruzado</h3>
+<p>Si <code>flex-direction</code> es <code>row</code>, el eje cruzado es el <strong>vertical</strong>. <code>align-items</code> decide cómo se alinean las cajas en ese eje, dentro de un contenedor con altura de sobra:</p>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">flex-start</p>
+<div style="display:flex; align-items:flex-start; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">center</p>
+<div style="display:flex; align-items:center; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">stretch (por defecto)</p>
+<div style="display:flex; align-items:stretch; gap:8px; height:100px; border:1px dashed #6a7280; padding:6px; width:160px;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:6px 10px;border:2px solid #3c3c3c;">A</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px 10px;border:2px solid #3c3c3c;">B</div>
+</div>
+</div>
+</div>
+<div class="nota">🤔 Antes de seguir: si combinas <code>justify-content: center;</code> y <code>align-items: center;</code> en el mismo contenedor flex, ¿qué consigues?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Centras las cajas a la vez en horizontal y en vertical — algo que con <code>margin: 0 auto;</code> (sesión 5) no podías hacer, porque eso solo centra en horizontal. Es una de las combinaciones más usadas de Flexbox, por ejemplo para centrar un bloque de bienvenida en toda la pantalla.</p>
+</details>
+
+<h3>flex-wrap — cuando las cajas no caben</h3>
+<p>¿Te acuerdas de las dos tarjetas de la sesión anterior que no cabían en su fila? Por defecto (<code>flex-wrap: nowrap</code>), las cajas de una fila flex se encogen o se desbordan si no caben. Con <code>flex-wrap: wrap;</code>, las que no caben pasan directamente a una nueva línea:</p>
+<pre><code><span class='et'>.fila-tarjetas</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>gap</span>: <span class='ca'>16px</span>;
+}</code></pre>
+<div class="salida" style="overflow-x:auto;">
+<div style="display:flex; flex-wrap:wrap; gap:16px; width:280px; border:2px dashed red; padding:10px;">
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta A</div>
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta B</div>
+<div style="width:120px; padding:14px; border:2px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:border-box;">Tarjeta C</div>
+</div>
+</div>
+<p>El contenedor mide 280px y cada tarjeta ocupa 120px + gap: solo caben dos por línea. Con <code>flex-wrap: wrap;</code>, la tercera no se sale del recuadro rojo ni se encoge — baja a una segunda línea, sin que tengas que calcular nada a mano.</p>
+
+<h3>gap — separación entre cajas</h3>
+<p>Ya lo has usado en los ejemplos de arriba: <code>gap</code> pone un hueco fijo entre las cajas de un contenedor flex, en todas direcciones (también entre líneas, si hay <code>flex-wrap: wrap;</code>). Es más cómodo que poner <code>margin</code> a cada caja hija, porque no añade espacio de más en los bordes exteriores del contenedor.</p>
+
+<h2>Ejercicio guiado 1 — Tu menú en fila</h2>
+<ol>
+<li>Localiza en tu <code>estilos.css</code> la regla de tu <code>&lt;nav&gt;</code> (si no tienes ninguna todavía, créala apuntando a la etiqueta <code>nav</code> o a la clase que uses en tu menú).</li>
+<li>Añade <code>display: flex;</code> y <code>gap: 16px;</code> a esa regla.</li>
+<li>Prueba a añadir también <code>justify-content: space-between;</code> si quieres separar, por ejemplo, tu alias a la izquierda de los enlaces a la derecha (necesitarás que ambos sean hijos directos del <code>&lt;nav&gt;</code>).</li>
+</ol>
+<p>Si lo has hecho bien: los enlaces de tu menú, que antes aparecían uno debajo de otro, quedarán en una sola fila horizontal, separados por el <code>gap</code> que hayas puesto.</p>
+
+<h2>Ejercicio guiado 2 — Tus tarjetas, en fila y sin desbordarse</h2>
+<ol>
+<li>Busca en tu <code>estilos.css</code> el contenedor que envuelve tus bloques de "tarjeta" (de la sesión 5). Si tus tarjetas no tienen un contenedor común todavía, envuélvelas ahora en un <code>&lt;div class="fila-tarjetas"&gt;</code>.</li>
+<li>A esa regla del contenedor añade <code>display: flex;</code>, <code>flex-wrap: wrap;</code> y un <code>gap</code> a tu gusto.</li>
+<li>Reduce el ancho de la ventana del navegador poco a poco y observa qué pasa cuando ya no caben todas las tarjetas en una fila.</li>
+</ol>
+<p>Si lo has hecho bien: tus tarjetas se colocarán en fila mientras quepan, y la que no quepa saltará a una nueva línea en vez de desbordarse o encogerse — el mismo problema de la sesión 5B, resuelto sin tocar ningún <code>width</code> ni <code>box-sizing</code>.</p>
+<div class="nota">⚠️ <code>display: flex;</code> va en el <strong>contenedor</strong> (el padre), nunca en las tarjetas mismas. Es un error habitual ponerlo en la clase equivocada y no entender por qué "no hace nada".</div>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Centra un bloque, en las dos direcciones</h3>
+<p>Elige un bloque de tu web que tenga sentido centrar por completo (por ejemplo, un mensaje de bienvenida o una imagen de tu afición). Dale una altura con <code>height</code> y, usando <code>display: flex;</code>, <code>justify-content: center;</code> y <code>align-items: center;</code> en su contenedor, consigue que su contenido quede centrado tanto en horizontal como en vertical.</p>
+
+<h3>Reto 2 — Investiga: <code>align-self</code></h3>
+<p>Esta propiedad no la hemos explicado en clase. Entra en la <a href="https://developer.mozilla.org/es/docs/Web/CSS/align-self" target="_blank" rel="noopener">referencia de MDN sobre <code>align-self</code></a> y descubre para qué sirve y en qué elemento se aplica (pista: no va en el contenedor flex, va en uno de sus hijos). Úsala para que una sola caja de una de tus filas flex se alinee de forma distinta a sus hermanas.</p>
+<details><summary>Pista si te atascas</summary>
+<p><code>align-items</code> alinea <strong>todos</strong> los hijos a la vez, desde el contenedor. <code>align-self</code> hace lo mismo pero para <strong>un solo hijo</strong>, y se escribe en la regla de ese hijo, no en la del contenedor — piensa en ella como "la excepción a la regla de <code>align-items</code>".</p>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu web completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Tu <code>&lt;nav&gt;</code> usa <code>display: flex;</code> y sus enlaces están en fila, no uno debajo de otro.</li>
+<li>Tus tarjetas están en un contenedor con <code>display: flex; flex-wrap: wrap;</code> y no se desbordan aunque encojas la ventana.</li>
+<li>Al menos un bloque de tu página está centrado en las dos direcciones con Flexbox (Reto 1).</li>
+<li>Sigues aplicando <code>box-sizing: border-box</code> a tus tarjetas (sesión 5) — Flexbox no sustituye al modelo de caja, trabaja junto a él.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — tu web ya sabe organizarse sola en fila o columna. En la próxima sesión no hay contenido nuevo: una batería de ejercicios que repasa todo lo visto desde la primera sesión, HTML y CSS incluidos, antes de meterte de lleno en el proyecto de tu página personal.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>

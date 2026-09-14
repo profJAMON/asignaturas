@@ -1,0 +1,117 @@
+{
+  "id": "sesion-3-imagenes-estructura-semantica",
+  "titulo": "Sesión 3 — Imágenes y estructura semántica",
+  "fecha": "2026-09-22",
+  "descripcion": "Cómo insertar imágenes sin deformarlas y organizar tu página en bloques con significado (header, nav, main, section, article, footer). Cuatro ejercicios guiados y tres retos progresivos, todos obligatorios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: la etiqueta <img>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/img"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: elementos semánticos de HTML5",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Reference/Elements"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: <figure> y <figcaption>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/figure"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué atributo de <img> describe la imagen para quien no puede verla?",
+          "opciones": [
+            "title",
+            "alt",
+            "desc"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Se cierra la etiqueta <img> con </img>?",
+          "opciones": [
+            "Sí, siempre",
+            "No, es una etiqueta que no se cierra",
+            "Solo si tiene atributos"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si defines width y height con proporciones distintas a las de la imagen original, ¿qué pasa?",
+          "opciones": [
+            "La imagen se recorta",
+            "La imagen se deforma",
+            "No cambia nada, el navegador la ignora"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántas etiquetas <main> puede haber en una página?",
+          "opciones": [
+            "Una",
+            "Tantas como secciones",
+            "No hay límite"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué etiqueta usarías para el pie de página con el nombre del autor?",
+          "opciones": [
+            "<div>",
+            "<header>",
+            "<footer>"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Cuándo es correcto usar <div> en vez de una etiqueta semántica?",
+          "opciones": [
+            "Siempre que puedas, es más simple",
+            "Cuando ninguna etiqueta semántica describe ese contenido",
+            "Nunca, <div> está obsoleto"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tu index.html está en mi-web/ y tu imagen está en mi-web/imagenes/gato.jpg. ¿Qué src es correcto?",
+          "opciones": [
+            "src=\"gato.jpg\"",
+            "src=\"imagenes/gato.jpg\"",
+            "src=\"mi-web/gato.jpg\""
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Descargas una foto y el navegador la guarda en Descargas, pero tu HTML pone src=\"foto.jpg\" esperándola en mi-web. ¿Qué verás al abrir la página?",
+          "opciones": [
+            "La foto, el navegador la encuentra igualmente",
+            "El texto del atributo alt, porque la imagen no se encuentra en esa carpeta",
+            "Un error que bloquea toda la página"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada etiqueta con su función",
+      "pares": [
+        { "izquierda": "<header>", "derecha": "Cabecera de la página" },
+        { "izquierda": "<nav>", "derecha": "Menú de navegación" },
+        { "izquierda": "<main>", "derecha": "Contenido principal (solo uno por página)" },
+        { "izquierda": "<section>", "derecha": "Bloque temático dentro del contenido" },
+        { "izquierda": "<article>", "derecha": "Contenido independiente con sentido propio" },
+        { "izquierda": "<footer>", "derecha": "Pie de página" },
+        { "izquierda": "<div>", "derecha": "Contenedor genérico sin significado" },
+        { "izquierda": "<figure>", "derecha": "Agrupa una imagen con su pie de foto" }
+      ]
+    }
+  ]
+}

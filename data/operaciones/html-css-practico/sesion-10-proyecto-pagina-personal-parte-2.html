@@ -1,0 +1,112 @@
+<h2>Antes de empezar: qué es esta sesión</h2>
+<p>Segunda y última parte del proyecto de esta unidad. En la sesión 9 dejaste preparado el hueco de <code>resumenes.html</code>; ahora le das contenido de verdad: creas la página de tu primer resumen, la de esta misma unidad (HTML/CSS práctico), y la conectas desde el índice de resúmenes.</p>
+<p>Antes de eso, dos herramientas nuevas y cortas que te van a hacer falta para tareas más visuales de aquí en adelante: <strong>imágenes de fondo</strong> y un <code>:hover</code> más completo que el que investigaste tú solo en la sesión 4.</p>
+
+<h2>Bloque 1 — Imágenes de fondo (background-image)</h2>
+<p>Hasta ahora has insertado imágenes con <code>&lt;img&gt;</code>, como contenido. Una imagen de fondo es distinta: se aplica por CSS a cualquier elemento, como decoración detrás de su contenido.</p>
+<pre><code><span class='et'>.caja</span> {
+    <span class='at'>background-image</span>: <span class='ca'>url("fondo.jpg")</span>;
+}</code></pre>
+<p>Por defecto, si la imagen es más pequeña que la caja, <strong>se repite</strong> hasta rellenarla entera (mosaico). <code>background-repeat</code> controla esto:</p>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">repeat (por defecto)</p>
+<div style="width:180px;height:100px;background-image:url('https://picsum.photos/id/1074/40/40');background-repeat:repeat;border:1px dashed #6a7280;"></div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">repeat-y</p>
+<div style="width:180px;height:100px;background-image:url('https://picsum.photos/id/1074/40/40');background-repeat:repeat-y;border:1px dashed #6a7280;"></div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">no-repeat</p>
+<div style="width:180px;height:100px;background-image:url('https://picsum.photos/id/1074/40/40');background-repeat:no-repeat;border:1px dashed #6a7280;"></div>
+</div>
+</div>
+<p><code>repeat</code> rellena en las dos direcciones; <code>repeat-y</code> solo repite hacia abajo (útil para una franja lateral decorativa); <code>no-repeat</code> muestra la imagen una sola vez, en su tamaño real.</p>
+<p>Cuando la imagen es más grande que la caja (o quieres que la ocupe entera sin mosaico), <code>background-size</code> decide cómo encajarla:</p>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">cover</p>
+<div style="width:160px;height:100px;background-image:url('https://picsum.photos/id/1015/400/300');background-size:cover;background-repeat:no-repeat;border:1px dashed #6a7280;"></div>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">contain</p>
+<div style="width:160px;height:100px;background-image:url('https://picsum.photos/id/1015/400/300');background-size:contain;background-repeat:no-repeat;background-color:#3c3c3c;border:1px dashed #6a7280;"></div>
+</div>
+</div>
+<table>
+<tr><th>Valor</th><th>Qué hace</th></tr>
+<tr><td><code>cover</code></td><td>Agranda la imagen hasta cubrir toda la caja, recortando lo que sobre</td></tr>
+<tr><td><code>contain</code></td><td>Ajusta la imagen entera dentro de la caja, sin recortar (puede dejar hueco vacío)</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: quieres una franja lateral decorativa, estrecha y muy alta, con un icono pequeño repitiéndose de arriba abajo sin huecos. ¿Qué combinación de <code>background-repeat</code> y tamaño de imagen usarías?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>background-repeat: repeat-y;</code> con una imagen pequeña (un icono, no una foto grande): al ser estrecha la franja, solo hace falta repetir en vertical, y una imagen pequeña se mosaiquea limpiamente sin necesidad de <code>background-size</code>.</p>
+</details>
+
+<h2>Bloque 2 — :hover, más a fondo</h2>
+<p>En la sesión 4 investigaste tú solo cómo cambiar el color de un enlace al pasar el ratón por encima. <code>:hover</code> no se limita al color: puedes cambiar cualquier propiedad CSS del elemento mientras el ratón está encima, y vuelve sola a su estado normal en cuanto lo retiras.</p>
+<pre><code><span class='et'>.aviso-interactivo</span> {
+    <span class='at'>color</span>: <span class='ca'>#4fc1ff</span>;
+    <span class='at'>font-size</span>: <span class='ca'>1em</span>;
+    <span class='at'>cursor</span>: <span class='ca'>pointer</span>;
+}
+<span class='et'>.aviso-interactivo</span><span class='at'>:hover</span> {
+    <span class='at'>color</span>: <span class='ca'>#ce9178</span>;
+    <span class='at'>background-color</span>: <span class='ca'>#2d2d30</span>;
+    <span class='at'>font-size</span>: <span class='ca'>1.3em</span>;
+}</code></pre>
+<div class="salida">
+<style>
+.demo-hover-s9 { display:inline-block; padding:10px 16px; border:2px solid #3c3c3c; border-radius:4px; color:#1e1e1e; font-weight:bold; cursor:pointer; transition: all .15s ease; }
+.demo-hover-s9:hover { color:#fff; background-color:#3a9bd1; font-size:1.25em; }
+</style>
+<p style="margin:0 0 10px;"><strong>Pasa el ratón por aquí →</strong></p>
+<span class="demo-hover-s9">¡Pruébalo!</span>
+</div>
+<p>Fíjate en que <code>cursor: pointer;</code> también ayuda: aunque el elemento no sea un enlace, la flecha del ratón se convierte en una manita, dándole pistas visuales a quien lo usa de que ahí se puede interactuar.</p>
+<div class="nota">⚠️ Un <code>:hover</code> que cambia mucho el tamaño (como el <code>font-size</code> de arriba) puede desplazar el contenido de alrededor de golpe. En una web real conviene usar cambios más comedidos o añadir <code>transition</code> (investígalo si te interesa) para que el cambio sea suave en vez de brusco.</div>
+
+<h2>Bloque 3 — Crea la página de tu primer resumen</h2>
+<p>Vas a crear una página nueva, <code>resumen-unidad1.html</code>, en tu carpeta <code>mi-web</code> — la primera de las que irás añadiendo, una por cada unidad del curso, a medida que las termines.</p>
+<ol>
+<li>Crea <code>resumen-unidad1.html</code> con la estructura mínima de siempre, enlazando el mismo <code>estilos.css</code> de tu web (<code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>), para que comparta el mismo estilo que el resto de tu página.</li>
+<li>Repite el mismo <code>&lt;header&gt;</code> con tu alias, y un <code>&lt;nav&gt;</code> con <code>&lt;a href="index.html"&gt;Inicio&lt;/a&gt;</code> y <code>&lt;a href="resumenes.html"&gt;Resúmenes&lt;/a&gt;</code>, igual que hiciste en <code>resumenes.html</code> en la sesión 9.</li>
+<li>Ponle un <code>&lt;h1&gt;</code> con el nombre de la unidad (por ejemplo, "Unidad 1 — Introducción a HTML/CSS").</li>
+<li>Añade el mismo <code>&lt;footer&gt;</code> de siempre.</li>
+</ol>
+<p>Comprobación: al abrirla con Live Server, se ve con el mismo estilo (colores, tipografía) que tu <code>index.html</code> y tu <code>resumenes.html</code> — solo cambia el contenido del <code>&lt;main&gt;</code>.</p>
+
+<h2>Bloque 4 — Conecta tu resumen desde "Resúmenes"</h2>
+<p>Abre tu <code>resumenes.html</code> de la sesión 9. Ahora mismo tiene un párrafo que dice "Próximamente: aquí subiré el resumen de cada unidad antes de su examen." — sustitúyelo por un índice de verdad:</p>
+<pre><code><span class='et'>&lt;h1&gt;</span>Resúmenes<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;p&gt;</span>Aquí voy subiendo el resumen de cada unidad antes de su examen.<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"resumen-unidad1.html"</span><span class='et'>&gt;</span>Unidad 1 — Introducción a HTML/CSS<span class='et'>&lt;/a&gt;</span><span class='et'>&lt;/li&gt;</span>
+    <span class='co'>&lt;!-- aquí irán las siguientes unidades, según las vayas terminando --&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<p>Comprobación: desde tu home, "Resúmenes" te lleva a esta página con el enlace a tu primer resumen; al pulsarlo, entras en <code>resumen-unidad1.html</code>; y desde ahí, "Inicio" y "Resúmenes" te devuelven a las otras dos páginas.</p>
+
+<h2>¿Qué escribo en mi resumen?</h2>
+<p>El contenido de <code>resumen-unidad1.html</code> es completamente tuyo — no hay una plantilla ni una lista de apartados obligatorios. Piensa en él como tu propia chuleta para repasar antes del examen práctico de esta unidad: cuanto más te sirva a ti para repasar rápido, mejor cumple su función.</p>
+<p>Algunas ideas, totalmente opcionales, por si no sabes por dónde empezar:</p>
+<ul>
+<li>Un apartado por tema (estructura HTML, texto y enlaces, imágenes, CSS, modelo de caja, tablas, Flexbox...) con lo que más te cueste recordar de cada uno.</li>
+<li>Tablas tipo chuleta, como las que has visto en el glosario o en la sesión 8.</li>
+<li>Fragmentos de código de ejemplo, con su <code>salida</code> si quieres que se vea el resultado.</li>
+<li>Errores que ya has cometido tú y cómo los solucionaste — a veces se recuerda mejor un fallo propio que una regla general.</li>
+</ul>
+
+<h2>Reto — Revisión técnica final</h2>
+<p>Antes de dar por terminada esta sesión, comprueba la parte técnica (el contenido de tu resumen, al ser libre, no se revisa con checklist):</p>
+<ul class="checklist">
+<li><code>resumen-unidad1.html</code> existe, enlaza <code>estilos.css</code> y se ve con el mismo estilo que el resto de tu web.</li>
+<li><code>resumenes.html</code> ya no muestra "Próximamente": tiene el índice con el enlace a tu primer resumen.</li>
+<li>La navegación funciona en los dos sentidos entre las tres páginas: <code>index.html</code>, <code>resumenes.html</code> y <code>resumen-unidad1.html</code>.</li>
+</ul>
+
+<div class="nota">Con esto termina el proyecto de esta unidad. Te diré en clase el plazo de entrega y cómo se evalúa; si no lo tienes claro, <strong>pregúntamelo</strong>. A partir de la próxima unidad, repetirás el Bloque 3 y el Bloque 4 de esta sesión para añadir cada resumen nuevo — la mecánica ya la conoces.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
+
+<h2>Autoevaluación y relaciona conceptos</h2>
+<p>Antes de cerrar, comprueba con las actividades de abajo las dos herramientas nuevas de esta sesión.</p>

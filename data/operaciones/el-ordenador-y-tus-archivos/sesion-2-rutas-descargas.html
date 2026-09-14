@@ -1,0 +1,129 @@
+<h2>Carpetas dentro de carpetas: el árbol</h2>
+<p>Las carpetas se guardan unas dentro de otras, como las ramas de un árbol. Todo empieza en el disco (<code>C:</code>) y de ahí salen las demás:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;line-height:1.7;">
+C:\<br>
+└─ Users<br>
+&nbsp;&nbsp;&nbsp;└─ alumno<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ Downloads &nbsp;&nbsp;← la carpeta Descargas<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ Desktop &nbsp;&nbsp;← el Escritorio<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ practicas-u0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├─ imagenes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ textos<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└─ notas.txt
+</div>
+<div class="nota">💡 El explorador te enseña los nombres en español ("Escritorio", "Descargas"), pero por dentro Windows los llama en inglés (<code>Desktop</code>, <code>Downloads</code>). En tu ordenador el camino puede ser un poco distinto (por ejemplo, si incluye una carpeta <code>OneDrive</code>).</div>
+
+<h2>La ruta: el camino hasta un archivo</h2>
+<p>La <strong>ruta</strong> es el camino de carpetas que hay que recorrer para llegar a un archivo. Hay dos formas de escribirla:</p>
+<table>
+<tr><th>Tipo</th><th>Ejemplo</th><th>Se lee...</th></tr>
+<tr><td><strong>Ruta absoluta</strong></td><td><code>C:\Users\alumno\Desktop\practicas-u0\textos\notas.txt</code></td><td>Desde el principio del disco, carpeta a carpeta. Funciona estés donde estés.</td></tr>
+<tr><td><strong>Ruta relativa</strong></td><td><code>textos/notas.txt</code></td><td>"Desde aquí": desde la carpeta en la que ya estás (en este caso, <code>practicas-u0</code>).</td></tr>
+</table>
+<p>Es como dar una dirección: la absoluta es la dirección postal completa (calle, número, ciudad); la relativa es "sal por esta puerta y es la segunda a la izquierda" — solo funciona si sabes desde dónde empiezas.</p>
+<div class="nota">⚠️ Windows separa las carpetas con <code>\</code> (barra invertida). En las páginas web las rutas se escriben con <code>/</code> (barra normal). En la Unidad 1 usarás rutas relativas con <code>/</code> para que tu web encuentre sus imágenes.</div>
+<div class="nota">🤔 Antes de seguir: estás dentro de la carpeta <code>practicas-u0</code>. ¿Cuál sería la ruta relativa hasta una imagen <code>perro.jpg</code> que está dentro de la carpeta <code>imagenes</code>?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>imagenes/perro.jpg</code>. Primero el nombre de la subcarpeta, luego una barra y después el nombre exacto del archivo, con su extensión.</p>
+</details>
+
+<h3>Actividad 1 — Encuentra la ruta de un archivo</h3>
+<ol>
+<li>En el explorador, entra en <code>practicas-u0</code> y después en <code>textos</code>.</li>
+<li>Haz clic en un hueco vacío de la <strong>barra de direcciones</strong>: el camino se convierte en texto. Esa es la ruta absoluta de la carpeta.</li>
+<li>Cópiala (<code>Ctrl+C</code>), abre tu <code>notas.txt</code> y pégala dentro.</li>
+<li>Ahora, haz clic derecho sobre <code>notas.txt</code> y copia su ruta completa:
+  <ul>
+    <li><strong>Windows 11:</strong> elige <em>Copiar como ruta de acceso</em>.</li>
+    <li><strong>Windows 10:</strong> mantén pulsada la tecla Mayús mientras haces el clic derecho y elige <em>Copiar como ruta de acceso</em>.</li>
+  </ul>
+</li>
+<li>Pégala en la línea de abajo, dentro del mismo <code>notas.txt</code>, y guarda (<code>Ctrl+S</code>).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> en tu <code>notas.txt</code> hay dos líneas. La primera termina en <code>\textos</code>; la segunda es igual pero termina en <code>\textos\notas.txt</code> (con comillas al principio y al final).</p>
+
+<h2>La carpeta Descargas</h2>
+<p>Cuando descargas algo de Internet, Chrome lo guarda <strong>por defecto</strong> en la carpeta <strong>Descargas</strong>, sin preguntarte. Por eso, muchas veces descargas una imagen, la buscas donde la necesitas... y no está: se ha quedado en Descargas.</p>
+<p>La solución es pedirle a Chrome que te pregunte <strong>dónde</strong> quieres guardar cada archivo:</p>
+<ol start="6">
+<li>En Chrome, abre el menú de los tres puntos <strong>⋮</strong> (arriba a la derecha) → <em>Configuración</em>.</li>
+<li>En el menú de la izquierda, entra en <em>Descargas</em>. (También puedes escribir <code>chrome://settings/downloads</code> en la barra de direcciones.)</li>
+<li>Activa la opción <em>Preguntar dónde se guardará cada archivo antes de descargarlo</em>.</li>
+</ol>
+<p>A partir de ahora, cada vez que descargues algo, se abrirá una ventana para que elijas la carpeta y el nombre.</p>
+
+<h3>Formatos de imagen</h3>
+<p>Las imágenes que descargas de Internet pueden venir en varios formatos. Todos sirven para una web; lo importante es que sepas <strong>cuál tienes</strong>, porque tendrás que escribir su extensión exacta:</p>
+<table>
+<tr><th>Extensión</th><th>Cuándo la verás</th></tr>
+<tr><td><code>.jpg</code> (o <code>.jpeg</code>)</td><td>Fotos. Es el formato más común.</td></tr>
+<tr><td><code>.png</code></td><td>Dibujos, logotipos, capturas de pantalla. Puede tener fondo transparente.</td></tr>
+<tr><td><code>.webp</code></td><td>Formato moderno de muchas webs (Google Imágenes lo usa mucho). Ocupa menos.</td></tr>
+<tr><td><code>.gif</code></td><td>Imágenes pequeñas animadas.</td></tr>
+</table>
+<div class="nota">⚠️ Si guardas una imagen <code>.webp</code> y en tu código escribes <code>perro.jpg</code>, no la encontrará: el nombre tiene que coincidir <strong>exactamente</strong>, extensión incluida.</div>
+
+<h3>Actividad 2 — Descarga una imagen al sitio correcto</h3>
+<ol start="9">
+<li>Configura Chrome para que pregunte dónde guardar (pasos 6 a 8).</li>
+<li>Busca en Google Imágenes una imagen de algo que te guste (nunca una foto tuya ni de otras personas). Haz clic derecho sobre ella → <em>Guardar imagen como...</em></li>
+<li>En la ventana que se abre, ve a <code>Escritorio</code> → <code>practicas-u0</code> → <code>imagenes</code>.</li>
+<li>Antes de guardar, cambia el nombre para que cumpla la norma de clase (minúsculas, sin espacios, sin tildes) y <strong>no toques la extensión</strong>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> la imagen está dentro de <code>practicas-u0/imagenes</code> (no en Descargas), con un nombre en minúsculas y con su extensión visible (<code>.jpg</code>, <code>.png</code>, <code>.webp</code>...).</p>
+<div class="nota">🤔 Antes de seguir: un compañero descarga una imagen con Chrome sin cambiar la configuración y dice que "no está en ningún sitio". ¿Dónde la buscarías primero?</div>
+<details><summary>Ver la respuesta</summary>
+<p>En la carpeta <strong>Descargas</strong>, que es donde Chrome guarda todo por defecto. Desde ahí tendría que cortarla y pegarla en la carpeta donde la necesita. Para no volver a perderla, que active la opción de que Chrome pregunte dónde guardar.</p>
+</details>
+
+<h2>Crea tu carpeta <code>mi-web</code></h2>
+<p>A partir de la Unidad 1 vas a construir tu propia página web, y toda ella vivirá en una sola carpeta. Déjala ya preparada:</p>
+<ol start="13">
+<li>En tu <strong>Escritorio</strong>, crea una carpeta llamada exactamente <code>mi-web</code> (en minúsculas y con guion).</li>
+<li>Déjala vacía. No le cambies nunca el nombre ni la muevas de sitio.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> en tu Escritorio hay dos carpetas: <code>practicas-u0</code> y <code>mi-web</code> (esta última, vacía).</p>
+
+<h2>Preguntas</h2>
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. <strong>Cuentan para nota</strong> (mira <a href="tema.html?id=formas-de-evaluar">Formas de evaluar</a>).
+</div>
+
+<h3>El árbol y las rutas</h3>
+<ol>
+<li>Explica con tus palabras qué es la ruta de un archivo.</li>
+<li>¿Qué diferencia hay entre una ruta absoluta y una ruta relativa? Pon un ejemplo de cada una.</li>
+<li>(ABC) ¿Cuál de estas rutas es absoluta?
+  <ul>
+    <li>a) <code>imagenes/gato.png</code></li>
+    <li>b) <code>C:\Users\alumno\Desktop\gato.png</code></li>
+    <li>c) <code>gato.png</code></li>
+  </ul>
+</li>
+<li>(V/F) En Windows, las carpetas de una ruta se separan con <code>/</code>, igual que en las páginas web.</li>
+<li>Estás en la carpeta <code>mi-web</code>, que tiene dentro una carpeta <code>fotos</code> con el archivo <code>playa.webp</code>. Escribe la ruta relativa hasta la foto.</li>
+<li>Dibuja el árbol de carpetas de tu <code>practicas-u0</code>, con todas sus carpetas y archivos.</li>
+<li>¿Cómo puedes ver la ruta completa de la carpeta en la que estás, desde el explorador?</li>
+</ol>
+
+<h3>Las descargas</h3>
+<ol start="8">
+<li>¿En qué carpeta guarda Chrome los archivos que descargas si no cambias nada?</li>
+<li>Escribe los pasos para que Chrome te pregunte dónde guardar cada descarga.</li>
+<li>(V/F) Si descargas una imagen y se guarda en Descargas, tu página web la encontrará igualmente.</li>
+<li>(ABC) Descargas una imagen de Google y se llama <code>perro.webp</code>. En tu código escribes <code>perro.jpg</code>. ¿Qué pasa?
+  <ul>
+    <li>a) La imagen se ve bien, el navegador corrige la extensión</li>
+    <li>b) La imagen no aparece, porque el nombre no coincide exactamente</li>
+    <li>c) La imagen se convierte en .jpg automáticamente</li>
+  </ul>
+</li>
+<li>Nombra tres formatos de imagen y di para qué se usa cada uno.</li>
+<li>¿Por qué no debes descargar fotos tuyas o de otras personas para tu web?</li>
+</ol>
+
+<h3>Repaso</h3>
+<ol start="14">
+<li>Explica, paso a paso, cómo descargarías una imagen de Internet para que acabe en <code>practicas-u0/imagenes</code> con un nombre que cumpla la norma de clase.</li>
+<li>¿Dónde has creado tu carpeta <code>mi-web</code> y para qué servirá?</li>
+</ol>

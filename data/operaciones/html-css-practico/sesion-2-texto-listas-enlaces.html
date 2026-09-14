@@ -1,0 +1,165 @@
+<h2>Texto importante y texto enfatizado</h2>
+<pre><code><span class='et'>&lt;p&gt;</span>Esto es <span class='et'>&lt;strong&gt;</span>muy importante<span class='et'>&lt;/strong&gt;</span> y esto está <span class='et'>&lt;em&gt;</span>enfatizado<span class='et'>&lt;/em&gt;</span>.<span class='et'>&lt;/p&gt;</span></code></pre>
+<div class="salida"><p>Esto es <strong>muy importante</strong> y esto está <em>enfatizado</em>.</p></div>
+<ul>
+<li><code>&lt;strong&gt;</code> → el texto es importante (normalmente en <strong>negrita</strong>).</li>
+<li><code>&lt;em&gt;</code> → énfasis (normalmente en cursiva).</li>
+</ul>
+<p>Existen <code>&lt;b&gt;</code> y <code>&lt;i&gt;</code>, pero solo cambian el aspecto visual sin decir <em>por qué</em> ese texto es especial — importa, por ejemplo, para lectores de pantalla. Usamos <code>&lt;strong&gt;</code>/<code>&lt;em&gt;</code> como norma en esta asignatura.</p>
+<div class="nota">⚠️ La etiqueta <code>&lt;font&gt;</code> está eliminada de HTML moderno. El aspecto del texto lo controlaremos con CSS, no con etiquetas HTML.</div>
+
+<h2>Comentarios</h2>
+<p>Un comentario es texto que escribes en el código para dejar notas <strong>para ti mismo o para quien lea el código después</strong> — el navegador lo ignora por completo, nunca aparece en la página.</p>
+<p>Sirven para explicar por qué has hecho algo de una manera concreta, para dejar recordatorios ("falta añadir la imagen aquí"), o para desactivar temporalmente un trozo de código sin borrarlo mientras haces pruebas.</p>
+<pre><code><span class='co'>&lt;!-- Esto es un comentario, no se muestra en el navegador --&gt;</span>
+<span class='et'>&lt;p&gt;</span>Esto sí se ve.<span class='et'>&lt;/p&gt;</span>
+<span class='co'>&lt;!-- &lt;p&gt;Esto no se ve, está comentado&lt;/p&gt; --&gt;</span></code></pre>
+<p>Lo importante de un comentario es precisamente lo que <strong>no</strong> aparece en la página renderizada:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;">
+<p style="margin:0;color:#1e1e1e;">Esto sí se ve.</p>
+</div>
+<p>Ni el comentario ni el párrafo comentado dejan ningún rastro visible — solo existen en el código fuente (<code>Ctrl+U</code> en el navegador para verlo).</p>
+<div class="nota">💡 En VS Code no hace falta escribir <code>&lt;!--</code> y <code>--&gt;</code> a mano: selecciona una línea (o varias) y pulsa <code>Ctrl+/</code> (en Mac, <code>Cmd+/</code>). Vuelve a pulsarlo para descomentar.</div>
+
+<h2>Listas</h2>
+<h3>No ordenadas (con viñetas)</h3>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Elemento 1<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Elemento 2<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="salida"><p><strong>Así se ve:</strong></p><ul><li>Elemento 1</li><li>Elemento 2</li></ul></div>
+<p>El tipo de viñeta se controla con CSS (<code>list-style-type</code>), que veremos más adelante. Por ahora, así se ven las tres más comunes:</p>
+<div class="salida">
+<ul style="list-style-type: disc;"><li>disco (por defecto)</li></ul>
+<ul style="list-style-type: circle;"><li>círculo</li></ul>
+<ul style="list-style-type: square;"><li>cuadrado</li></ul>
+</div>
+
+<h3>Ordenadas (numeradas)</h3>
+<pre><code><span class='et'>&lt;ol&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Primer paso<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Segundo paso<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ol&gt;</span></code></pre>
+<div class="salida"><p><strong>Así se ve:</strong></p><ol><li>Primer paso</li><li>Segundo paso</li></ol></div>
+<p>Con el atributo <code>type</code> puedes cambiar la numeración:</p>
+<div class="salida">
+<ol type="1"><li>números (por defecto)</li></ol>
+<ol type="a"><li>letras minúsculas</li></ol>
+<ol type="I"><li>números romanos</li></ol>
+</div>
+<pre><code><span class='et'>&lt;ol</span> <span class='at'>type</span>=<span class='ca'>"a"</span><span class='et'>&gt;</span>...<span class='et'>&lt;/ol&gt;</span></code></pre>
+<p>Un <strong>atributo</strong> es información extra que le das a una etiqueta. Siempre va <strong>dentro de la etiqueta de apertura</strong>, con la forma <code>atributo="valor"</code>:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;">
+<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;font-size:1.05em;">
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;ol</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta</div></div>
+<div style="text-align:center;"><div style="background:#dcfce7;padding:4px 8px;border-radius:4px;white-space:pre;"> type</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">atributo<br>(qué ajustas)</div></div>
+<div style="text-align:center;"><div style="background:#f1f1f1;padding:4px 8px;border-radius:4px;white-space:pre;">=</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+<div style="text-align:center;"><div style="background:#fef3c7;padding:4px 8px;border-radius:4px;white-space:pre;">"a"</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">valor, entre<br>comillas</div></div>
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">&nbsp;</div></div>
+</div>
+</div>
+<p>Irás viendo más atributos (por ejemplo, <code>href</code> en los enlaces, más abajo). Todos se escriben igual: dentro de la etiqueta de apertura y con el valor entre comillas.</p>
+
+<h3>Listas anidadas</h3>
+<p>La lista anidada va <strong>dentro</strong> de la etiqueta <code>&lt;li&gt;</code>, no después. Compara estos dos ejemplos:</p>
+<p>✅ <strong>Correcto</strong></p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Frontend
+        <span class='et'>&lt;ul&gt;</span>
+            <span class='et'>&lt;li&gt;</span>HTML<span class='et'>&lt;/li&gt;</span>
+            <span class='et'>&lt;li&gt;</span>CSS<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;/ul&gt;</span>
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Backend<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="salida"><ul><li>Frontend<ul><li>HTML</li><li>CSS</li></ul></li><li>Backend</li></ul></div>
+<p>❌ <strong>Incorrecto</strong> — aquí la lista anidada está fuera del <code>&lt;li&gt;</code>, como si fuera un elemento independiente:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Frontend<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;ul&gt;</span>
+        <span class='et'>&lt;li&gt;</span>HTML<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;li&gt;</span>CSS<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;/ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Backend<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="nota">Visualmente puede llegar a parecer casi igual, pero para el navegador (y para un lector de pantalla) "HTML" y "CSS" ya no son parte de "Frontend": están sueltos al mismo nivel. Es un error de significado, no solo de estética.</div>
+
+<h3>Ejercicio guiado — Encuentra el fallo</h3>
+<p>Copia esto en tu <code>prueba.html</code> y ábrelo con Live Server:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Asignaturas
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;ol&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Ofimática<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Operaciones básicas<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;/ol&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Hobbies<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<p>Sin mirar el ejemplo de arriba: ¿dónde está el fallo? Corrígelo para que la lista <code>&lt;ol&gt;</code> quede correctamente anidada dentro de "Asignaturas".</p>
+<details><summary>Pista 1</summary>
+<p>El fallo está en dónde empieza la <code>&lt;ol&gt;</code>, no en cómo está escrita por dentro (sus dos <code>&lt;li&gt;</code> están bien). Fíjate en qué hay justo antes de que abra la <code>&lt;ol&gt;</code>.</p>
+</details>
+<details><summary>Pista 2</summary>
+<p>El <code>&lt;/li&gt;</code> de "Asignaturas" se cierra <strong>antes</strong> de que empiece la <code>&lt;ol&gt;</code>, así que la lista numerada queda fuera, al mismo nivel que los demás <code>&lt;li&gt;</code>, en vez de dentro de uno de ellos. Compara con el ejemplo de "Frontend" de arriba: ¿el cierre <code>&lt;/li&gt;</code> de "Asignaturas" va antes o después de la <code>&lt;ol&gt;</code>?</p>
+</details>
+<p>Si lo has corregido bien: al ver la lista en Live Server, "Ofimática" y "Operaciones básicas" aparecerán sangrados por debajo de "Asignaturas", como una sublista suya — no como dos elementos sueltos al mismo nivel que "Hobbies".</p>
+
+<h2>Enlaces</h2>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://www.google.com"</span><span class='et'>&gt;</span>Ir a Google<span class='et'>&lt;/a&gt;</span></code></pre>
+<div class="salida"><a href="https://www.google.com" target="_blank" rel="noopener">Ir a Google</a></div>
+<p>Para que el enlace se abra en una pestaña nueva, añade <code>target="_blank"</code>.</p>
+<p>Enlace local a otro archivo tuyo: <code>&lt;a href="sobre-mi.html"&gt;Sobre mí&lt;/a&gt;</code></p>
+<p>Ancla dentro de la misma página:</p>
+<pre><code><span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>"css"</span><span class='et'>&gt;</span>CSS<span class='et'>&lt;/h2&gt;</span>
+...
+<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#css"</span><span class='et'>&gt;</span>Ir a la sección CSS<span class='et'>&lt;/a&gt;</span></code></pre>
+<div class="nota">🤔 Antes de seguir: ¿qué diferencia hay entre <code>href="pagina.html"</code>, <code>href="https://..."</code> y <code>href="#seccion"</code>? ¿A dónde lleva cada uno?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>href="pagina.html"</code> es una <strong>ruta relativa</strong>: lleva a otro archivo HTML dentro de tu propia carpeta de proyecto. <code>href="https://..."</code> es una <strong>URL completa</strong>: lleva a otra web, fuera de tu proyecto. <code>href="#seccion"</code> es una <strong>ancla</strong>: no cambia de página, salta dentro de la misma página hasta el elemento que tenga <code>id="seccion"</code>.</p>
+</details>
+
+<h2>Práctica</h2>
+<p>Sin ver el código todavía, mira este resultado y piensa cómo lo escribirías:</p>
+<div class="salida">
+<ul>
+<li>Módulos de este curso
+<ol>
+<li>HTML/CSS práctico</li>
+<li>Sistemas operativos</li>
+</ol>
+</li>
+<li>Lo que más me gusta de programar</li>
+</ul>
+</div>
+<details><summary>Ver la solución</summary>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Módulos de este curso
+        <span class='et'>&lt;ol&gt;</span>
+            <span class='et'>&lt;li&gt;</span>HTML/CSS práctico<span class='et'>&lt;/li&gt;</span>
+            <span class='et'>&lt;li&gt;</span>Sistemas operativos<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;/ol&gt;</span>
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Lo que más me gusta de programar<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+</details>
+<p>Ahora, en tu <code>index.html</code>, añade:</p>
+<ul class="checklist">
+<li>Una lista <code>&lt;ul&gt;</code> con al menos 3 temas de la asignatura, y una <code>&lt;ol&gt;</code> anidada dentro de uno de ellos.</li>
+<li>Un párrafo con al menos una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>.</li>
+<li>Un comentario explicando qué sección estás a punto de crear (usa <code>Ctrl+/</code>).</li>
+<li>Un enlace externo a alguna web relacionada con lo que estás estudiando.</li>
+<li>Un enlace tipo ancla que salte a una sección de tu propia página.</li>
+</ul>
+<p>Si lo has hecho bien: al hacer clic en tu enlace ancla, la página saltará directamente a esa sección sin recargar ni abrir una pestaña nueva — solo se añade el <code>#seccion</code> al final de la dirección.</p>
+
+<h2>Retos</h2>
+<p>Los dos retos son obligatorios, en orden: el segundo se apoya en el primero.</p>
+
+<h3>Reto 1 — Lista de definiciones</h3>
+<p>Crea una lista de definiciones con <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> y <code>&lt;dd&gt;</code> (búscala en la referencia de MDN) con 3 términos relacionados con HTML y su definición.</p>
+
+<h3>Reto 2 — Un índice con anclas</h3>
+<p>Añade a tu página un pequeño índice al principio: una lista <code>&lt;ol&gt;</code> con un enlace ancla por cada <code>&lt;h2&gt;</code> que ya tengas, de modo que al hacer clic en cada uno salte a esa sección.</p>
+
+<div class="nota">Guarda esta versión de tu página. En la próxima sesión llegan las imágenes y la estructura semántica (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>...), así que tenla organizada por bloques claros.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>

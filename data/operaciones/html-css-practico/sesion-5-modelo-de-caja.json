@@ -1,0 +1,111 @@
+{
+  "id": "sesion-5-modelo-de-caja",
+  "titulo": "Sesión 5 — Modelo de caja",
+  "fecha": "2026-10-06",
+  "descripcion": "Cómo funciona la caja de todo elemento HTML: padding, border, margin, width/height y el problema del tamaño total. Cinco ejercicios guiados y tres retos progresivos, todos obligatorios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: el modelo de caja",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: box-sizing",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/box-sizing"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "De dentro hacia afuera, ¿cuál es el orden correcto de las capas de una caja?",
+          "opciones": [
+            "content, border, padding, margin",
+            "content, padding, border, margin",
+            "margin, border, padding, content"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad aleja el contenido del borde, por dentro?",
+          "opciones": [
+            "margin",
+            "padding",
+            "border"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad separa una caja de las cajas vecinas?",
+          "opciones": [
+            "padding",
+            "border-radius",
+            "margin"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Si defines width: 300px, padding: 20px y border: 5px solid black en una caja normal, ¿cuánto mide realmente de ancho?",
+          "opciones": [
+            "300px",
+            "320px",
+            "350px"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué valor de margin centra horizontalmente una caja con width fijo?",
+          "opciones": [
+            "margin: auto auto;",
+            "margin: 0 auto;",
+            "margin: center;"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace box-sizing: border-box?",
+          "opciones": [
+            "Añade un borde automático a todas las cajas",
+            "Hace que el padding y el border ya no se sumen al width definido",
+            "Elimina el margin de la caja"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Con padding: 10px 30px;, ¿cuánto padding tiene el lado izquierdo de la caja?",
+          "opciones": [
+            "10px",
+            "30px",
+            "20px"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una caja sin width definido, ¿se centra con margin: 0 auto;?",
+          "opciones": [
+            "Sí, siempre que tenga padding",
+            "No, porque ya ocupa todo el ancho disponible y no queda espacio que repartir",
+            "Solo si tiene border"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada propiedad con lo que hace",
+      "pares": [
+        { "izquierda": "padding", "derecha": "Espacio entre el contenido y el borde" },
+        { "izquierda": "border", "derecha": "La línea que rodea la caja" },
+        { "izquierda": "margin", "derecha": "Espacio fuera de la caja, hacia las vecinas" },
+        { "izquierda": "border-radius", "derecha": "Redondea las esquinas de la caja" },
+        { "izquierda": "width / height", "derecha": "Tamaño de la caja de contenido" },
+        { "izquierda": "margin: 0 auto;", "derecha": "Centra horizontalmente una caja con width fijo" },
+        { "izquierda": "box-sizing: border-box", "derecha": "El padding y el border dejan de sumarse al width" }
+      ]
+    }
+  ]
+}

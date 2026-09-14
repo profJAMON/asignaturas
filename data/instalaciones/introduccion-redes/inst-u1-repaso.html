@@ -1,0 +1,162 @@
+<h2>Lo que tienes que saber de esta unidad</h2>
+<p>Si te sabes esta página, tienes la unidad. Léela entera antes de ponerte con el banco de preguntas de abajo.</p>
+<div class="salida">
+<svg viewBox="0 0 600 418" width="100%" role="img" aria-label="Mapa de la unidad agrupando las diez sesiones en cuatro bloques" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">El mapa de la unidad</text><rect x="20" y="44" width="560" height="44" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="34" y="62" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Comunicación</text><text x="220" y="62" font-family="monospace" font-size="10.5" fill="#9099a6">1 · comunicación, ruido y protocolos</text><rect x="20" y="98" width="560" height="66" rx="5" fill="#252526" stroke="#89d185"/><text x="34" y="116" font-family="monospace" font-size="11" font-weight="700" fill="#89d185">Los números</text><text x="220" y="116" font-family="monospace" font-size="10.5" fill="#9099a6">2 · el sistema binario</text><text x="220" y="138" font-family="monospace" font-size="10.5" fill="#9099a6">3 · unidades de medida</text><rect x="20" y="174" width="560" height="66" rx="5" fill="#252526" stroke="#ce9178"/><text x="34" y="192" font-family="monospace" font-size="11" font-weight="700" fill="#ce9178">La red</text><text x="220" y="192" font-family="monospace" font-size="10.5" fill="#9099a6">4 · qué es una red</text><text x="220" y="214" font-family="monospace" font-size="10.5" fill="#9099a6">5 · protocolos y modelo OSI</text><rect x="20" y="250" width="560" height="110" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="34" y="268" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Las direcciones</text><text x="220" y="268" font-family="monospace" font-size="10.5" fill="#9099a6">6 · la dirección MAC</text><text x="220" y="290" font-family="monospace" font-size="10.5" fill="#9099a6">7 · IP, máscara y clases</text><text x="220" y="312" font-family="monospace" font-size="10.5" fill="#9099a6">8 · primer contacto con subredes</text><text x="220" y="334" font-family="monospace" font-size="10.5" fill="#9099a6">9 · IPv6, DHCP y comandos</text><text x="300" y="384" text-anchor="middle" class="s">Y la sesión 10 es esta: repasarlo todo y estudiar con el banco de preguntas.</text><text x="300" y="404" text-anchor="middle" class="s">Todo desemboca en lo mismo: montar la red de una oficina y saber por qué funciona.</text>
+</svg>
+<p class="pie-figura">Las diez sesiones agrupadas por lo que hacen.</p>
+</div>
+
+<h3>Comunicación</h3>
+<ul>
+<li>Cinco elementos: <strong>emisor, receptor, mensaje, canal y código</strong>. El sexto invitado es el <strong>ruido</strong>.</li>
+<li><strong>Canal</strong> = por dónde va. <strong>Código</strong> = en qué está escrito. No es lo mismo.</li>
+<li><strong>Protocolo</strong> = las normas de la conversación: cómo empieza, cómo acaba, qué lenguaje, cuánto fallo se tolera.</li>
+</ul>
+
+<h3>Binario y unidades</h3>
+<ul>
+<li><strong>Bit</strong> = unidad mínima. <strong>Byte</strong> = 8 bits.</li>
+<li>Valores del octeto: <strong>128 64 32 16 8 4 2 1</strong>. Con 8 bits: máximo <strong>255</strong>, <strong>256</strong> valores distintos.</li>
+<li>Escalera: B → KB → MB → GB → TB, <strong>de 1024 en 1024</strong>.</li>
+<li><strong>B mayúscula = byte</strong> (lo que ocupa). <strong>b minúscula = bit</strong> (lo que corre). Entre las dos, un factor 8.</li>
+</ul>
+
+<h3>Redes</h3>
+<ul>
+<li>Red = equipos conectados que comparten información y recursos.</li>
+<li>Por alcance: <strong>PAN → LAN → MAN → WAN</strong>. La WLAN es una LAN sin cables.</li>
+<li>Elementos: mensaje, equipo, tarjeta de red (NIC), medio, dispositivos de interconexión, protocolos.</li>
+<li>Medios: <strong>par trenzado</strong> (el más usado), coaxial, <strong>fibra</strong> (el más rápido) e inalámbrico.</li>
+<li>Internet es la red de redes; <strong>la web es solo uno de sus servicios</strong>.</li>
+</ul>
+
+<h3>Modelo OSI</h3>
+<ul>
+<li>Siete capas: <strong>1 Física · 2 Enlace de datos · 3 Red · 4 Transporte · 5 Sesión · 6 Presentación · 7 Aplicación</strong>.</li>
+<li>El <strong>switch</strong> trabaja en la 2 (MAC); el <strong>router</strong>, en la 3 (IP).</li>
+<li><strong>TCP</strong> garantiza entrega y orden; <strong>UDP</strong> es rápido y no garantiza nada.</li>
+<li>Bajar añadiendo etiquetas se llama <strong>encapsulación</strong>.</li>
+</ul>
+
+<h3>Direcciones</h3>
+<ul>
+<li><strong>MAC</strong>: 48 bits, 12 dígitos hexadecimales, la pone el fabricante, no cambia, capa 2.</li>
+<li><strong>IP</strong>: 32 bits, 4 octetos de 0 a 255, la pone el administrador o el DHCP, cambia de red en red, capa 3.</li>
+<li>Clases por el primer octeto: <strong>A</strong> 0–127 · <strong>B</strong> 128–191 · <strong>C</strong> 192–223 · <strong>D</strong> 224–239 · <strong>E</strong> 240–255.</li>
+<li>Máscaras por defecto: <strong>A</strong> 255.0.0.0 · <strong>B</strong> 255.255.0.0 · <strong>C</strong> 255.255.255.0.</li>
+<li>Privadas: <strong>10.x.x.x</strong> · <strong>172.16–172.31</strong> · <strong>192.168.x.x</strong>.</li>
+<li>Subredes: equipos = <strong>2<sup>bits de host</sup> − 2</strong>. Primera del bloque = red; última = broadcast.</li>
+<li><strong>IPv6</strong>: 128 bits, 8 hextetos en hexadecimal, y tres reglas para abreviar.</li>
+</ul>
+
+<h2>Banco de preguntas del examen</h2>
+<p>Estas son las preguntas con las que se hace el examen de la unidad. Las del examen serán <strong>estas mismas o muy parecidas</strong>, reformuladas. No hay truco: si las sabes contestar todas, apruebas.</p>
+<div class="nota">Aquí no hay soluciones, y es a propósito. Las respuestas están en las sesiones de la unidad y las buscas tú: eso es la mitad del estudio. Si después de buscarla no la encuentras o no la entiendes, <strong>pregúntamelo en clase</strong>, que para eso estoy.</div>
+
+<div class="papel">
+<p class="papel__titulo">Banco de preguntas · UD 1 — Introducción a las redes</p>
+
+<h3>Comunicación y protocolos</h3>
+<ol>
+<li>Define comunicación e indica los cinco elementos que intervienen en ella.</li>
+<li>Explica la diferencia entre canal y código con un ejemplo.</li>
+<li>¿Qué es el ruido? Pon un ejemplo de ruido en una conversación y otro en una red informática.</li>
+<li>¿Qué es un protocolo de comunicación? Cita cuatro cosas que determine.</li>
+<li>¿Por qué ningún sistema de comunicación es fiable al 100 %? ¿Qué se puede hacer cuando hay fallos?</li>
+</ol>
+
+<h3>Representación de la información</h3>
+<ol start="6">
+<li>¿Qué es el sistema binario y por qué lo usan los ordenadores?</li>
+<li>Define bit y byte. ¿Cuántos bits tiene un byte?</li>
+<li>Convierte a decimal: 1100 0000 · 1111 1111 · 0101 1010.</li>
+<li>Convierte a binario: 128 · 82 · 200 · 37.</li>
+<li>¿Cuál es el número decimal más grande que se puede formar con 8 bits? ¿Cuántos valores distintos hay?</li>
+<li>Explica el procedimiento para pasar de decimal a binario.</li>
+</ol>
+
+<h3>Unidades de medida</h3>
+<ol start="12">
+<li>Ordena de menor a mayor: MB, B, TB, KB, GB. ¿Cuánto vale cada escalón?</li>
+<li>Completa: 2 TB = ___ MB · 4096 MB = ___ GB · 3 GB = ___ KB.</li>
+<li>¿Qué diferencia hay entre MB y Mbps? ¿Por qué importa la mayúscula?</li>
+<li>Tienes una conexión de 600 Mbps. ¿Cuántos MB/s son? ¿Cuánto tardarías en bajar 3 GB?</li>
+<li>Quieres pasar 2,3 GB en CD de 700 MB. ¿Cuántos necesitas y por qué se redondea hacia arriba?</li>
+</ol>
+
+<h3>Redes de comunicaciones</h3>
+<ol start="17">
+<li>¿Qué es una red informática? ¿Qué se comparte en ella?</li>
+<li>Cita tres razones para montar una red en una oficina.</li>
+<li>¿Qué diferencia hay entre Internet y la web?</li>
+<li>Nombra los elementos de una red de comunicaciones y explica cada uno.</li>
+<li>¿Qué es un adaptador de red? ¿Qué significa que sea 10/100/1000?</li>
+<li>Clasifica las redes según su alcance y pon un ejemplo de cada tipo.</li>
+<li>Según su tamaño, ¿qué tipo de red hay en una oficina?</li>
+<li>¿Cuáles son las redes más económicas? ¿Qué medio de transmisión usan?</li>
+<li>¿Qué es más rápido, el coaxial o el par trenzado? ¿Y la fibra o el coaxial?</li>
+<li>Explica qué factores externos influyen en la calidad de las comunicaciones. ¿Y los internos?</li>
+</ol>
+
+<h3>Protocolos y modelo OSI</h3>
+<ol start="27">
+<li>¿Qué es el modelo OSI? ¿Cuántas capas tiene y cómo se llaman?</li>
+<li>Explica cómo viaja la información de un emisor a un receptor a través de las capas.</li>
+<li>¿Qué es la encapsulación?</li>
+<li>Indica en qué capa actúa cada uno: HTTP, IP, Ethernet, TCP, TLS, ARP, el cable UTP.</li>
+<li>¿Por qué TCP es uno de los protocolos más importantes de Internet?</li>
+<li>Diferencia entre TCP y UDP. ¿Cuándo interesa cada uno?</li>
+<li>¿Qué diferencia hay entre HTTP y HTTPS? ¿Cuál es más seguro?</li>
+<li>¿Qué protocolos tienen que ver con el correo electrónico? ¿Cuál envía y cuáles reciben?</li>
+<li>¿En qué capa trabaja un switch? ¿Y un router?</li>
+<li>¿Para qué sirve el protocolo ARP?</li>
+</ol>
+
+<h3>MAC e IP</h3>
+<ol start="37">
+<li>¿Qué es la dirección MAC? ¿Cuántos bits tiene y cómo se escribe?</li>
+<li>¿Quién asigna la dirección MAC? ¿En qué dos partes se divide?</li>
+<li>¿Con qué comando se ve la dirección física de un equipo?</li>
+<li>Explica cuatro diferencias entre dirección MAC y dirección IP.</li>
+<li>¿Cuántos bits tiene una dirección IPv4? ¿En cuántos octetos se divide? ¿Cuántas direcciones existen?</li>
+<li>¿Para qué sirve la máscara de red?</li>
+<li>Escribe en notación CIDR: 255.0.0.0 · 255.255.0.0 · 255.255.255.0.</li>
+<li>Identifica la clase y la máscara por defecto de: 10.250.1.1 · 150.10.15.0 · 199.155.77.56 · 249.240.80.78.</li>
+<li>Señala la parte de red y la parte de host de: 177.100.18.4 · 119.18.45.0 · 220.200.23.1.</li>
+<li>¿Cuáles son los tres rangos de direcciones privadas? ¿Por qué existen?</li>
+<li>¿Qué es la dirección 127.0.0.1? ¿Y una 169.254.x.x?</li>
+</ol>
+
+<h3>Subredes, IPv6, DHCP y comandos</h3>
+<ol start="48">
+<li>¿Qué son la dirección de red y la de broadcast? ¿Por qué no se asignan a un equipo?</li>
+<li>¿Cuántos equipos caben en una red /26? ¿Y en una /28? Explica la fórmula.</li>
+<li>Dada 192.168.1.100/26, indica dirección de red, primera y última utilizable y broadcast.</li>
+<li>¿Están en la misma red 192.168.4.60/27 y 192.168.4.70/27? Razónalo.</li>
+<li>¿Cuántos bits tiene una dirección IPv6? ¿Qué es un hexteto?</li>
+<li>Explica las tres reglas de abreviación de IPv6 con un ejemplo.</li>
+<li>Cita tres ventajas de IPv6 sobre IPv4.</li>
+<li>Explica con tus palabras el protocolo DHCP. ¿Qué datos entrega?</li>
+<li>¿Cuándo se pone una IP fija y cuándo se deja DHCP?</li>
+<li>Explica la función de IANA y la de los RIR.</li>
+<li>¿Para qué sirven ipconfig, ping, tracert, nslookup y netstat?</li>
+<li>Explica cómo funciona el comando ping.</li>
+<li>Un equipo no navega. Describe, por orden, los ping que harías y qué deducirías de cada resultado.</li>
+</ol>
+</div>
+<p>Puedes imprimir esta página con <strong>Ctrl + P</strong>: sale solo el temario y el banco, sin el menú ni los ejercicios de pantalla.</p>
+
+<h2>Ejercicios para entrenar</h2>
+<p>Aquí abajo tienes todos los generadores de la unidad juntos. Cada vez que pulses <strong>Otra tanda</strong> salen números distintos, así que úsalos hasta que te aburran. Si aciertas todas dos veces seguidas en cada bloque, la parte de cálculo del examen la tienes hecha.</p>

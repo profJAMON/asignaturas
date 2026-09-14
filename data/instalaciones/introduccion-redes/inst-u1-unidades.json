@@ -1,0 +1,50 @@
+{
+  "id": "inst-u1-unidades",
+  "titulo": "Sesión 3 — Unidades de medida de la información",
+  "fecha": "",
+  "descripcion": "De bytes a terabytes, y la diferencia entre lo que ocupa un archivo y lo que corre una conexión. La b minúscula y la B mayúscula no son lo mismo.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Bits (b) y bytes (B): por qué no es lo mismo",
+      "url": "https://todofibraoptica.com/regresando-a-lo-basico-hablando-de-bits-b-y-bytes-b/"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "¿Qué es un bit? Con tabla de equivalencias completa",
+      "url": "https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/que-es-un-bit/"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Sube y baja la escalera de unidades",
+      "generador": "unidades-informacion",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Bits, bytes y velocidad de la línea",
+      "generador": "bits-y-bytes",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Cuántos hacen falta?",
+      "generador": "cuantos-caben",
+      "n": 6
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "¿Qué unidad le pega a cada cosa?",
+      "pares": [
+        { "izquierda": "Un disco duro de un portátil", "derecha": "Terabytes (TB)" },
+        { "izquierda": "Una película descargada", "derecha": "Gigabytes (GB)" },
+        { "izquierda": "Una foto del móvil", "derecha": "Megabytes (MB)" },
+        { "izquierda": "Un documento de texto corto", "derecha": "Kilobytes (KB)" },
+        { "izquierda": "Un solo carácter de texto", "derecha": "Un byte (B)" },
+        { "izquierda": "La velocidad de tu fibra", "derecha": "Megabits por segundo (Mbps)" }
+      ]
+    }
+  ]
+}

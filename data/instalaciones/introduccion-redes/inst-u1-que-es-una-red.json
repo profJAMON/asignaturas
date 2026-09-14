@@ -1,0 +1,103 @@
+{
+  "id": "inst-u1-que-es-una-red",
+  "titulo": "Sesión 4 — Qué es una red y de qué está hecha",
+  "fecha": "",
+  "descripcion": "Para qué sirve una red, qué piezas tiene, cómo se clasifican por alcance (PAN, LAN, MAN, WAN) y qué hace que una red vaya bien o mal.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "Cada red con su alcance",
+      "pares": [
+        { "izquierda": "PAN", "derecha": "Los auriculares bluetooth de tu móvil" },
+        { "izquierda": "LAN", "derecha": "La red del aula de informática" },
+        { "izquierda": "WLAN", "derecha": "El wifi de la oficina" },
+        { "izquierda": "MAN", "derecha": "Las sedes de un ayuntamiento unidas en la ciudad" },
+        { "izquierda": "WAN", "derecha": "Internet" }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Elementos de una red",
+      "pares": [
+        { "izquierda": "Tarjeta de red (NIC)", "derecha": "Conecta el equipo con la red" },
+        { "izquierda": "Medio de transmisión", "derecha": "Por dónde viaja la información" },
+        { "izquierda": "Switch", "derecha": "Une entre sí los equipos de la misma red" },
+        { "izquierda": "Router", "derecha": "Comunica tu red con otras redes" },
+        { "izquierda": "Protocolo", "derecha": "Las normas para que los equipos se entiendan" },
+        { "izquierda": "Mensaje", "derecha": "La información que se transmite" }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Repaso de la sesión",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuál de estos motivos es bueno para montar una red?",
+          "opciones": [
+            "Compartir una carpeta",
+            "Compartir una impresora",
+            "Ahorrar dinero en equipos",
+            "Todas las anteriores"
+          ],
+          "correcta": 3
+        },
+        {
+          "pregunta": "¿Cuál es el medio de transmisión más usado en redes de área local?",
+          "opciones": ["La fibra óptica", "El cable coaxial", "El par trenzado (UTP)", "El infrarrojo"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué es más rápido?",
+          "opciones": ["El cable coaxial", "El par trenzado", "Los dos igual", "Depende del color del cable"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Y entre fibra óptica y cable coaxial?",
+          "opciones": ["El coaxial", "La fibra óptica", "Los dos igual", "Solo de noche la fibra"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué red es más grande?",
+          "opciones": ["LAN", "MAN", "WAN", "Todas miden lo mismo"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "La web (WWW) es…",
+          "opciones": [
+            "Otro nombre de Internet",
+            "Uno de los servicios que funcionan sobre Internet",
+            "La red de cables submarinos",
+            "El navegador que usas"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una tarjeta 10/100/1000 conectada a un switch de 100 Mbps funcionará a…",
+          "opciones": ["1000 Mbps", "100 Mbps", "10 Mbps", "La suma de las tres"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estos NO es un factor externo que afecte a la comunicación?",
+          "opciones": [
+            "La calidad de los cables del recorrido",
+            "El número de mensajes que circulan a la vez",
+            "La importancia del mensaje",
+            "Las veces que el mensaje debe ser redirigido"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Los infrarrojos casi no se usan en redes locales porque…",
+          "opciones": [
+            "Son peligrosos para la vista",
+            "No atraviesan los obstáculos que se interponen",
+            "Son carísimos",
+            "Solo funcionan de noche"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

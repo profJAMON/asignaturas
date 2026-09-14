@@ -1,0 +1,119 @@
+{
+  "id": "sesion-2-texto-listas-enlaces",
+  "titulo": "Sesión 2 — Texto, listas y enlaces",
+  "fecha": "2026-09-15",
+  "descripcion": "Cómo destacar texto con <strong> y <em>, comentar tu código, organizar información con listas ordenadas, no ordenadas y anidadas, y conectar páginas con enlaces y anclas.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: la etiqueta <a>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/a"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: listas de definiciones <dl>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/dl"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Por qué usamos <strong> en vez de <b>?",
+          "opciones": [
+            "<strong> es más corto de escribir",
+            "<strong> indica significado, no solo aspecto visual",
+            "<b> ya no funciona en navegadores modernos"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Dónde debe ir una lista <ul> anidada?",
+          "opciones": [
+            "Después del <li> padre",
+            "Dentro del <li> padre",
+            "Al principio de la lista principal"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que tu enlace a MDN se abra en una pestaña nueva del navegador. ¿Qué atributo añades a la etiqueta <a>?",
+          "opciones": [
+            "target=\"_blank\"",
+            "href=\"_blank\"",
+            "new=\"tab\""
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Cómo comentas rápidamente una línea seleccionada en VS Code?",
+          "opciones": [
+            "Ctrl+C",
+            "Ctrl+/",
+            "Ctrl+K"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Un comentario HTML se muestra en el navegador?",
+          "opciones": [
+            "Sí, en gris",
+            "No, nunca",
+            "Solo si tiene texto largo"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En <ul><li>Frontend<ul><li>HTML</li></ul></li><li>Backend</li></ul>, ¿de qué elemento es hijo el <li>HTML</li>?",
+          "opciones": [
+            "Del <li>Frontend</li>",
+            "Del <li>Backend</li>",
+            "Del <ul> principal, al mismo nivel que los otros dos"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Tienes <a href=\"apuntes.html\">, <a href=\"https://mdn.dev\"> y <a href=\"#final\">. ¿Cuál de los tres NO cambia de archivo ni sale de tu página?",
+          "opciones": [
+            "href=\"apuntes.html\"",
+            "href=\"https://mdn.dev\"",
+            "href=\"#final\""
+          ],
+          "correcta": 2
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada etiqueta con su función",
+      "pares": [
+        {
+          "izquierda": "<strong>",
+          "derecha": "Marca texto importante"
+        },
+        {
+          "izquierda": "<em>",
+          "derecha": "Marca texto con énfasis"
+        },
+        {
+          "izquierda": "<ul>",
+          "derecha": "Lista sin orden, con viñetas"
+        },
+        {
+          "izquierda": "<ol>",
+          "derecha": "Lista numerada"
+        },
+        {
+          "izquierda": "<a href=\"#id\">",
+          "derecha": "Enlace ancla dentro de la misma página"
+        },
+        {
+          "izquierda": "<!-- ... -->",
+          "derecha": "Comentario, no se muestra en el navegador"
+        }
+      ]
+    }
+  ]
+}

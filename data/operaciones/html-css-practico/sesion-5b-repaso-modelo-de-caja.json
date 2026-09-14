@@ -1,0 +1,111 @@
+{
+  "id": "sesion-5b-repaso-modelo-de-caja",
+  "titulo": "Sesión 5B — Repaso: modelo de caja",
+  "fecha": "2026-10-13",
+  "descripcion": "Sesión puente sin contenido nuevo: consolida padding, border, margin, width/height y box-sizing antes de entrar en Flexbox. Un ejercicio de detectar el fallo, una auditoría de tu propia web, autoevaluación y relaciona conceptos.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: el modelo de caja",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: box-sizing",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/box-sizing"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación — Repaso modelo de caja",
+      "preguntas": [
+        {
+          "pregunta": "Una caja tiene width: 150px, padding: 25px y border: 5px solid black (box-sizing por defecto). ¿Cuánto mide realmente de ancho?",
+          "opciones": [
+            "150px",
+            "190px",
+            "210px"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "A esa misma caja le añades box-sizing: border-box. ¿Cuánto mide ahora de ancho?",
+          "opciones": [
+            "150px",
+            "190px",
+            "210px"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Con margin: 8px 16px 24px 4px;, ¿cuánto margin tiene la caja en el lado de abajo?",
+          "opciones": [
+            "8px",
+            "4px",
+            "24px"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Tienes una caja con width: 400px y margin: 0 auto; dentro de un contenedor de 600px de ancho. ¿Cuánto espacio queda a cada lado?",
+          "opciones": [
+            "100px a cada lado",
+            "200px solo a la izquierda",
+            "0px, no se centra"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué valor de box-sizing hace que el padding y el border dejen de sumarse al width que defines?",
+          "opciones": [
+            "content-box",
+            "border-box",
+            "padding-box"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres separar dos tarjetas que están una debajo de la otra, sin tocar el aire que ya tienen por dentro. ¿Qué propiedad tocas?",
+          "opciones": [
+            "padding-bottom",
+            "margin-bottom",
+            "border-bottom"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un <div> normal, sin width definido, con margin: 0 auto; aplicado. ¿Se centra?",
+          "opciones": [
+            "Sí, siempre",
+            "No, porque ya ocupa todo el ancho disponible y no hay espacio que repartir",
+            "Solo si tiene border"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "padding: 10px 30px 10px 30px; se puede escribir de forma más corta como:",
+          "opciones": [
+            "padding: 10px 30px;",
+            "padding: 30px 10px;",
+            "padding: 10px;"
+          ],
+          "correcta": 0
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada situación con lo que necesitas",
+      "pares": [
+        { "izquierda": "Separar dos bloques que están uno debajo del otro", "derecha": "margin-bottom" },
+        { "izquierda": "Que el padding y el border no aumenten el width que has definido", "derecha": "box-sizing: border-box" },
+        { "izquierda": "Centrar horizontalmente una caja que tiene un width fijo", "derecha": "margin: 0 auto;" },
+        { "izquierda": "Redondear las esquinas de una tarjeta", "derecha": "border-radius" },
+        { "izquierda": "Alejar el texto del borde, por dentro de la caja", "derecha": "padding" },
+        { "izquierda": "Fijar el tamaño de la caja de contenido", "derecha": "width / height" },
+        { "izquierda": "El grosor, el estilo y el color de la línea que rodea la caja, en una sola línea", "derecha": "border" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "id": "inst-u1-dhcp-comandos",
+  "titulo": "Sesión 9 — IPv6, DHCP y los comandos de red",
+  "fecha": "",
+  "descripcion": "Por qué llegó IPv6 y sus tres reglas de abreviación, cómo reparte direcciones el DHCP, quién manda en el reparto mundial (IANA y RIR) y la escalera de ping para buscar averías.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "Cada comando, con su trabajo",
+      "pares": [
+        { "izquierda": "ipconfig", "derecha": "Ver tu IP, máscara y puerta de enlace" },
+        { "izquierda": "ipconfig /all", "derecha": "Ver además la dirección MAC y el DNS" },
+        { "izquierda": "ping", "derecha": "Comprobar si otro equipo responde" },
+        { "izquierda": "tracert", "derecha": "Ver los saltos hasta el destino" },
+        { "izquierda": "nslookup", "derecha": "Preguntar al DNS la IP de un nombre" },
+        { "izquierda": "netstat", "derecha": "Ver las conexiones abiertas del equipo" },
+        { "izquierda": "ipconfig /renew", "derecha": "Volver a pedir dirección al DHCP" }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántos bits tiene una dirección IPv6?",
+          "opciones": ["32", "48", "64", "128"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "Una dirección IPv6 se divide en…",
+          "opciones": [
+            "4 octetos de 8 bits",
+            "8 hextetos de 16 bits",
+            "6 grupos de 8 bits",
+            "16 bloques de 8 bits"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El «::» de IPv6 puede usarse…",
+          "opciones": [
+            "Tantas veces como haga falta",
+            "Solo una vez en toda la dirección",
+            "Solo al principio",
+            "Solo si la dirección es privada"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace el protocolo DHCP?",
+          "opciones": [
+            "Traduce nombres de dominio en direcciones IP",
+            "Asigna direcciones IP automáticamente a los equipos",
+            "Cifra el tráfico de la red",
+            "Reparte el ancho de banda entre los usuarios"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En una red doméstica pequeña, el servidor DHCP suele ser…",
+          "opciones": ["Un servidor dedicado", "El router", "El switch", "El propio ordenador"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estos datos NO te entrega normalmente el DHCP?",
+          "opciones": ["La dirección IP", "La máscara de red", "La puerta de enlace", "La dirección MAC"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "¿En qué caso pondrías una IP fija?",
+          "opciones": [
+            "En el portátil de un comercial",
+            "En el móvil de un visitante",
+            "En la impresora de red de la oficina",
+            "En todos los equipos, siempre"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "IANA se encarga de…",
+          "opciones": [
+            "Vender conexiones de fibra",
+            "Asignar y coordinar a escala mundial las direcciones y los números únicos de Internet",
+            "Fabricar los routers",
+            "Certificar a los técnicos de red"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Haces ping a 8.8.8.8 y responde, pero ping a www.google.es falla. ¿Qué pasa?",
+          "opciones": [
+            "No hay conexión a Internet",
+            "El cable de red está mal",
+            "Falla el DNS: no se traducen los nombres",
+            "El router está apagado"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El primer ping de la escalera de diagnóstico es a…",
+          "opciones": ["www.google.es", "8.8.8.8", "La puerta de enlace", "127.0.0.1"],
+          "correcta": 3
+        }
+      ]
+    }
+  ]
+}

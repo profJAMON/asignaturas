@@ -1,0 +1,21 @@
+{
+  "id": "inst-u0-de-que-va-el-modulo",
+  "titulo": "Sesión 1 — De qué va este módulo",
+  "fecha": "",
+  "descripcion": "Qué vas a aprender este curso, cómo vamos a trabajar entre la teoría y el taller, qué necesitas traer y las normas del taller.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "Actividad 2 — ¿Qué se hace en cada unidad?",
+      "pares": [
+        { "izquierda": "Medios de transmisión", "derecha": "Preparar cables y conectores RJ-45" },
+        { "izquierda": "Sistemas inalámbricos", "derecha": "Configurar el wifi y su seguridad" },
+        { "izquierda": "Dispositivos de interconexión", "derecha": "Saber si va un switch o un router" },
+        { "izquierda": "Direccionamiento y subredes", "derecha": "Repartir direcciones IP entre los equipos" },
+        { "izquierda": "Cableado estructurado", "derecha": "Decidir por dónde pasa el cable del edificio" },
+        { "izquierda": "Prevención de riesgos", "derecha": "Trabajar en el taller sin hacerte daño" }
+      ]
+    }
+  ]
+}

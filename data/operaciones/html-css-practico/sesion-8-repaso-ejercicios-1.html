@@ -1,0 +1,242 @@
+<h2>Antes de empezar</h2>
+<p>Esta sesión no trae contenido nuevo. Es la primera de las dos baterías de ejercicios del tema: una parada para comprobar, con la práctica, que dominas <strong>todo lo visto desde la sesión 1</strong> — estructura HTML, texto y enlaces, imágenes y semántica, CSS, modelo de caja, tablas y Flexbox — antes de meterte de lleno en el proyecto de tu página personal (sesiones 9 y 10).</p>
+<p>A diferencia de los "Antes de seguir", aquí <strong>los retos sí cuentan</strong>, como cualquier otro reto de las sesiones anteriores. Vas a practicar en archivos nuevos, sin tocar todavía tu <code>index.html</code> ni tu <code>estilos.css</code> — esos se quedan tal y como los dejaste al final de la sesión 7, listos para el proyecto.</p>
+<div class="nota">💡 Vas a necesitar tu <code>prueba-css.html</code> de las sesiones 4 y 5 (o créalo de nuevo si no lo conservas) para los repasos 1 a 6. Para el reto final crearás dos archivos nuevos: <code>reto-final.html</code> y <code>reto-final.css</code>.</div>
+
+<h2>Repaso 1 — Estructura básica de HTML (sesión 1)</h2>
+<table>
+<tr><th>Etiqueta</th><th>Qué hace</th></tr>
+<tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Le dice al navegador que esto es HTML moderno</td></tr>
+<tr><td><code>&lt;html&gt;</code></td><td>Envuelve toda la página</td></tr>
+<tr><td><code>&lt;head&gt;</code></td><td>Información sobre la página (no se ve). Aquí va <code>&lt;title&gt;</code></td></tr>
+<tr><td><code>&lt;body&gt;</code></td><td>Todo lo que sí se ve en pantalla</td></tr>
+<tr><td><code>&lt;h1&gt;</code>...<code>&lt;h6&gt;</code></td><td>Encabezados, de más a menos importante. Un solo <code>&lt;h1&gt;</code>, sin saltarse niveles</td></tr>
+<tr><td><code>&lt;p&gt;</code></td><td>Párrafo de texto</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: si tu página tiene un <code>&lt;h1&gt;</code> y luego un <code>&lt;h2&gt;</code>, y quieres añadir un apartado <em>dentro</em> de ese <code>&lt;h2&gt;</code>, ¿qué nivel de encabezado usas?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>&lt;h3&gt;</code>. Va un nivel por debajo del encabezado que lo contiene, nunca saltando directamente a <code>&lt;h4&gt;</code> o volviendo a <code>&lt;h1&gt;</code>.</p>
+</details>
+
+<h3>Reto 1 — Detecta y corrige</h3>
+<p>Copia esto en tu <code>prueba-css.html</code>, en una zona nueva del <code>&lt;body&gt;</code> (no borres lo que ya tenías):</p>
+<pre><code><span class='et'>&lt;h1&gt;</span>Mi rincón de series<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;h1&gt;</span>Mis series favoritas<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;p&gt;</span>Estas son las que más me gustan.
+<span class='et'>&lt;h4&gt;</span>Ciencia ficción<span class='et'>&lt;/h4&gt;</span>
+<span class='et'>&lt;p&gt;</span>Me enganchan las tramas con viajes en el tiempo.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Sin mirar la sesión 1: encuentra y corrige los dos fallos de jerarquía de encabezados (hay un <code>&lt;h1&gt;</code> de más y un salto de nivel) y la etiqueta de párrafo que no se cierra.</p>
+<p>Comprobación: al terminar, leyendo tus encabezados de arriba abajo no debe haber ningún salto mayor de un nivel, y debe quedar un único <code>&lt;h1&gt;</code>.</p>
+
+<h2>Repaso 2 — Texto, listas y enlaces (sesión 2)</h2>
+<table>
+<tr><th>Elemento</th><th>Para qué sirve</th></tr>
+<tr><td><code>&lt;strong&gt;</code> / <code>&lt;em&gt;</code></td><td>Texto importante / con énfasis</td></tr>
+<tr><td><code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code></td><td>Lista sin orden / numerada, con <code>&lt;li&gt;</code> dentro</td></tr>
+<tr><td>Lista anidada</td><td>La lista de dentro va <strong>dentro</strong> del <code>&lt;li&gt;</code>, antes de su <code>&lt;/li&gt;</code></td></tr>
+<tr><td><code>href="pagina.html"</code></td><td>Ruta relativa, a otro archivo tuyo</td></tr>
+<tr><td><code>href="https://..."</code></td><td>URL completa, a otra web</td></tr>
+<tr><td><code>href="#seccion"</code></td><td>Ancla: salta a un <code>id="seccion"</code> de la misma página</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: tienes un <code>&lt;li&gt;</code> con una <code>&lt;ul&gt;</code> anidada dentro. Si cierras el <code>&lt;/li&gt;</code> antes de abrir esa <code>&lt;ul&gt;</code>, ¿qué relación tiene la sublista con el elemento anterior, para el navegador?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Ninguna: quedaría suelta al mismo nivel que el resto de <code>&lt;li&gt;</code>, no como una sublista de ese elemento. Visualmente puede parecerse, pero de significado no es lo mismo.</p>
+</details>
+
+<h3>Reto 2 — Detecta, corrige y enlaza</h3>
+<p>Copia esto en tu <code>prueba-css.html</code>:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Géneros que me gustan
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;ul&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Ciencia ficción<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Comedia<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;/ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Documentales<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<ol>
+<li>Corrige la lista anidada, sin mirar la sesión 2.</li>
+<li>Añade encima un <code>&lt;h2 id="series"&gt;</code> con el texto "Series", y en algún otro punto de la página un enlace <code>&lt;a href="#series"&gt;</code> que salte hasta ahí.</li>
+</ol>
+<p>Comprobación: "Ciencia ficción" y "Comedia" deben verse sangrados por debajo de "Géneros que me gustan", como una sublista suya. Al pulsar tu enlace ancla, la página debe saltar directamente a "Series".</p>
+
+<h2>Repaso 3 — Imágenes y estructura semántica (sesión 3)</h2>
+<table>
+<tr><th>Elemento</th><th>Para qué sirve</th></tr>
+<tr><td><code>&lt;img src="..." alt="..."&gt;</code></td><td><code>src</code>: ruta al archivo. <code>alt</code>: texto alternativo real</td></tr>
+<tr><td>Solo <code>width</code> (o solo <code>height</code>)</td><td>Mantiene la proporción. Los dos a la vez deforman la imagen</td></tr>
+<tr><td><code>&lt;header&gt;</code> / <code>&lt;nav&gt;</code> / <code>&lt;main&gt;</code> / <code>&lt;footer&gt;</code></td><td>Cabecera / menú / contenido principal (uno solo) / pie</td></tr>
+<tr><td><code>&lt;section&gt;</code></td><td>Bloque temático dentro del contenido</td></tr>
+<tr><td>Ruta relativa</td><td>Se busca "desde donde está el HTML"; una imagen descargada va primero a Descargas y hay que moverla a <code>mi-web</code></td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: si tu <code>index.html</code> está en <code>mi-web/</code> y tu imagen está en <code>mi-web/imagenes/foto.jpg</code>, ¿qué escribes en <code>src</code>?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>src="imagenes/foto.jpg"</code>. Tiene que incluir la subcarpeta, porque la ruta se lee siempre desde donde está el archivo HTML que la usa.</p>
+</details>
+
+<h3>Reto 3 — Reordena y coloca bien tu ruta</h3>
+<p>Copia esto en tu <code>prueba-css.html</code>:</p>
+<pre><code><span class='et'>&lt;div&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Mi rincón<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;/div&gt;</span>
+
+<span class='et'>&lt;h2&gt;</span>Sobre mí<span class='et'>&lt;/h2&gt;</span>
+<span class='et'>&lt;p&gt;</span>Aquí escribo sobre mí.<span class='et'>&lt;/p&gt;</span>
+
+<span class='et'>&lt;p&gt;</span>Página creada por ti<span class='et'>&lt;/p&gt;</span></code></pre>
+<ol>
+<li>Sin mirar la sesión 3: convierte el <code>&lt;div&gt;</code> en la etiqueta semántica correcta, mete "Sobre mí" y su párrafo dentro de un <code>&lt;main&gt;</code>, y la última línea dentro de un <code>&lt;footer&gt;</code>.</li>
+<li>Busca (o reutiliza una que ya tengas) una imagen tuya, muévela a tu carpeta <code>mi-web</code> si no está ya ahí, e insértala dentro del <code>&lt;main&gt;</code> con un <code>alt</code> real y solo <code>width</code> (sin <code>height</code>).</li>
+</ol>
+<p>Comprobación: si abres el código con <code>Ctrl+U</code>, no debe quedar ningún <code>&lt;div&gt;</code> ni texto suelto directamente en <code>&lt;body&gt;</code>, y tu imagen debe verse sin deformar.</p>
+
+<h2>Repaso 4 — Introducción a CSS (sesión 4)</h2>
+<table>
+<tr><th>Selector</th><th>Se escribe</th><th>Afecta a</th></tr>
+<tr><td>Etiqueta</td><td><code>p { }</code></td><td>Todos los <code>&lt;p&gt;</code></td></tr>
+<tr><td>Clase</td><td><code>.destacado { }</code></td><td>Todo elemento con <code>class="destacado"</code></td></tr>
+<tr><td>Id</td><td><code>#cabecera { }</code></td><td>El único elemento con ese id</td></tr>
+</table>
+<table>
+<tr><th>Propiedad</th><th>Para qué sirve</th></tr>
+<tr><td><code>color</code> / <code>background-color</code></td><td>Color del texto / del fondo</td></tr>
+<tr><td><code>font-family</code> / <code>font-size</code> / <code>font-weight</code> / <code>text-align</code></td><td>Tipografía, tamaño, grosor, alineación — independientes entre sí</td></tr>
+<tr><td><code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code></td><td>Enlaza un archivo <code>.css</code> externo desde el <code>&lt;head&gt;</code></td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: un párrafo tiene <code>class="destacado"</code> e <code>id="especial"</code> a la vez. Si existen las reglas <code>.destacado { color: red; }</code> y <code>#especial { font-weight: bold; }</code>, ¿se aplican las dos sobre ese párrafo?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Sí. Clase e id son atributos distintos, así que un mismo elemento puede llevar los dos, y las reglas de ambos selectores se aplican juntas: ese párrafo saldría en rojo y en negrita a la vez.</p>
+</details>
+
+<h3>Reto 4 — Encuentra el selector que falla</h3>
+<p>Copia esto en tu <code>prueba-css.html</code> (dentro del <code>&lt;style&gt;</code> que ya tenías, y el HTML dentro del <code>&lt;body&gt;</code>):</p>
+<pre><code><span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"aviso"</span><span class='et'>&gt;</span>Ojo con esto<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>"resumen"</span><span class='et'>&gt;</span>Resumen<span class='et'>&lt;/h2&gt;</span></code></pre>
+<pre><code><span class='et'>.avisos</span> {
+    <span class='at'>color</span>: <span class='ca'>darkred</span>;
+    <span class='at'>font-weight</span>: <span class='ca'>bold</span>;
+}
+<span class='et'>.resumen</span> {
+    <span class='at'>text-align</span>: <span class='ca'>center</span>;
+}</code></pre>
+<p>Al abrirlo con Live Server, ninguna de las dos reglas hace nada. Sin mirar la sesión 4: encuentra por qué y corrígelo (hay más de una forma válida de arreglar cada regla — cambia el selector o cambia el HTML, pero no las dos cosas para el mismo fallo).</p>
+<p>Comprobación: "Ojo con esto" debe verse en rojo oscuro y en negrita, y "Resumen" debe quedar centrado.</p>
+
+<h2>Repaso 5 — Modelo de caja (sesiones 5 y 5B)</h2>
+<table>
+<tr><th>Propiedad</th><th>Qué hace</th></tr>
+<tr><td><code>padding</code></td><td>Aleja el contenido del borde, por dentro</td></tr>
+<tr><td><code>border</code></td><td>El borde de la caja (<code>grosor estilo color</code>)</td></tr>
+<tr><td><code>margin</code></td><td>Separa la caja de sus vecinas, por fuera. <code>margin: 0 auto;</code> centra si hay <code>width</code> fijo</td></tr>
+<tr><td><code>width</code> / <code>height</code></td><td>Tamaño de la caja de contenido</td></tr>
+<tr><td><code>box-sizing: border-box</code></td><td>El <code>padding</code> y el <code>border</code> dejan de sumarse al <code>width</code></td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: una caja tiene <code>width: 180px</code>, <code>padding: 20px</code> y <code>border: 4px solid black</code>, sin <code>box-sizing</code>. ¿Cuánto mide de ancho de verdad?</div>
+<details><summary>Ver la respuesta</summary>
+<p>248px: 180 (width) + 20+20 (padding a los dos lados) + 4+4 (border a los dos lados). Por defecto, <code>padding</code> y <code>border</code> se suman al <code>width</code> en vez de repartirse dentro de él.</p>
+</details>
+
+<h3>Reto 5 — Que quepan las dos</h3>
+<p>Copia esto en tu <code>prueba-css.html</code>:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila-r5"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-r5"</span><span class='et'>&gt;</span>Ficha A<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-r5"</span><span class='et'>&gt;</span>Ficha B<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<pre><code><span class='et'>.fila-r5</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>gap</span>: <span class='ca'>16px</span>;
+    <span class='at'>width</span>: <span class='ca'>456px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px dashed red</span>;
+}
+<span class='et'>.tarjeta-r5</span> {
+    <span class='at'>width</span>: <span class='ca'>220px</span>;
+    <span class='at'>padding</span>: <span class='ca'>16px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px solid #3c3c3c</span>;
+    <span class='at'>background</span>: <span class='ca'>#e8e8e8</span>;
+    <span class='at'>color</span>: <span class='ca'>#1e1e1e</span>;
+}</code></pre>
+<p>Sobre el papel, dos fichas de 220px con 16px de <code>gap</code> deberían caber justas en los 456px de <code>.fila-r5</code>. Ábrelo con Live Server: no caben. Calcula cuánto mide realmente cada ficha y arréglalo sin reducir ningún <code>width</code>, <code>padding</code> ni <code>border</code>, y sin borrar ninguna línea.</p>
+<p>Comprobación: al aplicar la propiedad correcta, cada ficha debe medir <code>220px</code> de verdad, y las dos deben caber en la misma fila dentro del recuadro rojo.</p>
+
+<h2>Repaso 6 — Tablas de datos y Flexbox (sesiones 6 y 7)</h2>
+<table>
+<tr><th>Elemento / propiedad</th><th>Para qué sirve</th></tr>
+<tr><td><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td><td>Datos reales en filas y columnas (nunca para maquetar)</td></tr>
+<tr><td><code>colspan</code> / <code>rowspan</code></td><td>Fusiona una celda con varias columnas / varias filas (atributos HTML)</td></tr>
+<tr><td><code>border-collapse: collapse;</code></td><td>Funde los bordes de celdas vecinas en uno solo</td></tr>
+<tr><td><code>display: flex;</code></td><td>Coloca los hijos del contenedor en fila</td></tr>
+<tr><td><code>flex-direction</code></td><td><code>row</code> (por defecto) o <code>column</code></td></tr>
+<tr><td><code>justify-content</code> / <code>align-items</code></td><td>Reparte el espacio en la fila / alinea en el eje cruzado</td></tr>
+<tr><td><code>flex-wrap: wrap;</code></td><td>Las cajas que no caben pasan a una nueva línea, en vez de desbordarse</td></tr>
+<tr><td><code>gap</code></td><td>Hueco fijo entre las cajas de un contenedor flex</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: quieres mostrar tus tres últimas notas de examen, con la asignatura y la nota en cada fila. ¿Tabla o Flexbox?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Tabla. Son datos reales organizados en filas y columnas, exactamente el caso para el que existe <code>&lt;table&gt;</code>. Flexbox es para organizar bloques de tu página entre sí, no para representar datos tabulares.</p>
+</details>
+
+<h3>Reto 6 — Dos fallos, dos arreglos</h3>
+<p>Copia esto en tu <code>prueba-css.html</code>:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila-r6"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-r6"</span><span class='et'>&gt;</span>Lunes<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-r6"</span><span class='et'>&gt;</span>Martes<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-r6"</span><span class='et'>&gt;</span>Miércoles<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span>
+
+<span class='et'>&lt;table&gt;</span>
+  <span class='et'>&lt;tr&gt;</span><span class='et'>&lt;th&gt;</span>Lunes<span class='et'>&lt;/th&gt;</span><span class='et'>&lt;th&gt;</span>Martes<span class='et'>&lt;/th&gt;</span><span class='et'>&lt;/tr&gt;</span>
+  <span class='et'>&lt;tr&gt;</span><span class='et'>&lt;td</span> <span class='at'>colspan</span>=<span class='ca'>"2"</span><span class='et'>&gt;</span>RECREO<span class='et'>&lt;/td&gt;</span><span class='et'>&lt;td&gt;</span>RECREO<span class='et'>&lt;/td&gt;</span><span class='et'>&lt;/tr&gt;</span>
+<span class='et'>&lt;/table&gt;</span></code></pre>
+<pre><code><span class='et'>.fila-r6</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>gap</span>: <span class='ca'>12px</span>;
+    <span class='at'>width</span>: <span class='ca'>240px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px dashed red</span>;
+}
+<span class='et'>.tarjeta-r6</span> {
+    <span class='at'>width</span>: <span class='ca'>100px</span>;
+    <span class='at'>flex-shrink</span>: <span class='ca'>0</span>; <span class='co'>/* impide que se encojan: no la quites */</span>
+    <span class='at'>padding</span>: <span class='ca'>10px</span>;
+    <span class='at'>box-sizing</span>: <span class='ca'>border-box</span>;
+    <span class='at'>background</span>: <span class='ca'>#e8e8e8</span>;
+    <span class='at'>color</span>: <span class='ca'>#1e1e1e</span>;
+}</code></pre>
+<p>Hay dos fallos distintos, uno en el Flexbox y otro en la tabla:</p>
+<ol>
+<li>Las tres tarjetas del día no caben en <code>.fila-r6</code> y se desbordan del recuadro rojo. Arréglalo sin tocar ningún <code>width</code> y sin borrar ninguna línea del CSS.</li>
+<li>La tabla queda descuadrada: la segunda fila tiene una celda de más. Cuenta cuántas columnas fusiona el <code>colspan="2"</code> y corrige la fila.</li>
+</ol>
+<p>Comprobación: las tres tarjetas deben acabar en dos líneas (dos arriba, una abajo) sin salirse del recuadro rojo; y la fila del recreo debe quedar con una única celda que ocupe las dos columnas, no tres celdas sueltas.</p>
+
+<h2>Reto final — Ficha temática (todo junto)</h2>
+<p>Los dos retos finales son obligatorios, en orden, y se apoyan en todo lo de arriba. Vas a crear una pequeña ficha sobre un tema libre — tu videojuego favorito, un grupo de música, una receta, un deporte, una serie... — en dos archivos nuevos dentro de tu carpeta <code>mi-web</code>: <code>reto-final.html</code> y <code>reto-final.css</code>. Tu <code>index.html</code> no se toca en esta sesión.</p>
+
+<h3>Reto final 1 — La estructura (HTML)</h3>
+<p>En <code>reto-final.html</code>, con la estructura mínima de siempre y enlazando ya <code>reto-final.css</code> desde el <code>&lt;head&gt;</code>, construye:</p>
+<ul class="checklist">
+<li>Un <code>&lt;header&gt;</code> con un <code>&lt;h1&gt;</code> con el título de tu ficha, y un <code>&lt;nav&gt;</code> con dos o tres enlaces ancla a las secciones de más abajo.</li>
+<li>Un <code>&lt;main&gt;</code> con al menos dos <code>&lt;section&gt;</code>, cada una con su <code>&lt;h2&gt;</code> (con <code>id</code> para el ancla del <code>&lt;nav&gt;</code>) y jerarquía de encabezados correcta.</li>
+<li>Dentro de alguna <code>&lt;section&gt;</code>: una lista (<code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>) y un párrafo con al menos una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>.</li>
+<li>Una imagen relacionada con tu tema (búscala y descárgala tú, muévela a <code>mi-web</code>), con <code>alt</code> real y sin deformar.</li>
+<li>Una tabla con datos reales sobre tu tema (por ejemplo: puntuaciones, ingredientes y cantidades, canciones y duración...), con al menos un <code>colspan</code> o <code>rowspan</code>.</li>
+<li>Un <code>&lt;footer&gt;</code> con tu alias.</li>
+</ul>
+<p>Comprobación: sin ningún estilo todavía, tu ficha debe verse como bloques de contenido bien ordenados uno debajo de otro, sin ningún <code>&lt;div&gt;</code> suelto directamente en <code>&lt;body&gt;</code>, y los enlaces del <code>&lt;nav&gt;</code> deben saltar a sus secciones.</p>
+
+<h3>Reto final 2 — El estilo (CSS)</h3>
+<p>En <code>reto-final.css</code>, dale estilo a tu ficha:</p>
+<ul class="checklist">
+<li>Al menos una regla de etiqueta, una de clase y una de id.</li>
+<li>Tu <code>&lt;nav&gt;</code> con <code>display: flex;</code> y <code>gap</code>, para que sus enlaces queden en fila.</li>
+<li>Al menos un bloque (por ejemplo, cada elemento de tu lista, o un recuadro de tu ficha) con <code>padding</code>, <code>border</code> y <code>box-sizing: border-box</code> aplicados.</li>
+<li>Tu tabla con <code>border-collapse: collapse;</code> y <code>border</code>/<code>padding</code> en <code>th</code>/<code>td</code>, igual que en la sesión 6 — sin tocarla con Flexbox.</li>
+<li>Colores y tipografía consistentes en toda la ficha (mismo criterio que en la sesión 4).</li>
+</ul>
+<p>Comprobación: tu <code>&lt;nav&gt;</code> se verá en fila horizontal; tu tabla, con bordes limpios sin dobles líneas; y si reduces el ancho de la ventana, ningún bloque debe desbordarse ni solaparse con otro.</p>
+
+<div class="nota">Guarda <code>reto-final.html</code> y <code>reto-final.css</code> — son solo de práctica, no forman parte de tu web personal. Tu <code>index.html</code> sigue exactamente como lo dejaste en la sesión 7: en la próxima sesión empiezas el proyecto de tu página personal, usando todo lo que acabas de repasar.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
+
+<h2>Autoevaluación y relaciona conceptos</h2>
+<p>Antes de cerrar, comprueba con las actividades de abajo si tienes algún hueco en el repaso general del tema.</p>

@@ -1,0 +1,162 @@
+<h2>Las propiedades de un archivo</h2>
+<p>Cada archivo guarda información sobre sí mismo: qué tipo de archivo es, dónde está, cuánto ocupa, cuándo se creó... Para verla, haz <strong>clic derecho</strong> sobre el archivo → <em>Propiedades</em> (o selecciónalo y pulsa <code>Alt+Intro</code>).</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:sans-serif;font-size:0.9em;max-width:420px;">
+<div style="font-weight:bold;margin-bottom:10px;">📄 Propiedades: notas.txt</div>
+<div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 10px;line-height:1.6;">
+<span style="color:#555;">Tipo de archivo:</span><span>Documento de texto (.txt)</span>
+<span style="color:#555;">Se abre con:</span><span>Bloc de notas</span>
+<span style="color:#555;">Ubicación:</span><span style="font-family:monospace;font-size:0.9em;word-break:break-all;">C:\Users\alumno\Desktop\practicas-u0\textos</span>
+<span style="color:#555;">Tamaño:</span><span>112 bytes</span>
+<span style="color:#555;">Creado:</span><span>15/10/2026, 9:12</span>
+<span style="color:#555;">Modificado:</span><span>15/10/2026, 9:30</span>
+<span style="color:#555;">Atributos:</span><span>☐ Solo lectura &nbsp; ☐ Oculto</span>
+</div>
+</div>
+<table>
+<tr><th>Dato</th><th>Qué te dice</th></tr>
+<tr><td><strong>Tipo de archivo</strong></td><td>Qué es, según su extensión (lo viste en la sesión 1).</td></tr>
+<tr><td><strong>Se abre con</strong></td><td>Qué programa lo abre al hacer doble clic.</td></tr>
+<tr><td><strong>Ubicación</strong></td><td>La ruta de la carpeta donde está (lo viste en la sesión 2).</td></tr>
+<tr><td><strong>Tamaño</strong></td><td>Cuánto espacio ocupa.</td></tr>
+<tr><td><strong>Creado / Modificado</strong></td><td>Cuándo se creó y cuándo se cambió por última vez.</td></tr>
+<tr><td><strong>Atributos</strong></td><td>Opciones especiales del archivo: <em>Solo lectura</em> y <em>Oculto</em> (las verás abajo).</td></tr>
+</table>
+
+<h3>¿Cuánto ocupa? Las unidades de tamaño</h3>
+<p>El tamaño de los archivos se mide en <strong>bytes</strong>. Como los números salen muy grandes, se usan unidades más grandes, cada una unas mil veces mayor que la anterior (exactamente 1024):</p>
+<table>
+<tr><th>Unidad</th><th>Equivale a</th><th>Ejemplo</th></tr>
+<tr><td><strong>Byte</strong> (B)</td><td>—</td><td>Una letra de un texto</td></tr>
+<tr><td><strong>Kilobyte</strong> (KB)</td><td>1024 bytes</td><td>Un archivo de texto corto, una página HTML</td></tr>
+<tr><td><strong>Megabyte</strong> (MB)</td><td>1024 KB</td><td>Una foto del móvil (2-5 MB), una canción (3-8 MB)</td></tr>
+<tr><td><strong>Gigabyte</strong> (GB)</td><td>1024 MB</td><td>Una película (1-4 GB), la memoria de un móvil (64-256 GB)</td></tr>
+<tr><td><strong>Terabyte</strong> (TB)</td><td>1024 GB</td><td>Un disco duro grande</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: tienes una memoria USB de 16 GB y quieres guardar fotos de 4 MB cada una. ¿Aproximadamente cuántas caben?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Unas 4000. 16 GB son unos 16 000 MB (16 × 1024 = 16 384 MB, para ser exactos), y 16 000 entre 4 da 4000 fotos. No hace falta el cálculo exacto: con saber que cada unidad es unas mil veces la anterior, puedes estimarlo.</p>
+</details>
+
+<h3>Los atributos: solo lectura y oculto</h3>
+<table>
+<tr><th>Atributo</th><th>Qué hace</th></tr>
+<tr><td><strong>Solo lectura</strong></td><td>El archivo se puede abrir y leer, pero no se pueden <strong>guardar cambios</strong> encima. Sirve para proteger un archivo de cambios sin querer.</td></tr>
+<tr><td><strong>Oculto</strong></td><td>El archivo <strong>no se ve</strong> en el explorador (salvo que actives ver los elementos ocultos). Sigue ahí y sigue ocupando espacio.</td></tr>
+</table>
+<p>Para ver los archivos ocultos:</p>
+<ul>
+<li><strong>Windows 11:</strong> en el explorador, botón <em>Ver</em> → <em>Mostrar</em> → marca <em>Elementos ocultos</em>.</li>
+<li><strong>Windows 10:</strong> en el explorador, pestaña <em>Vista</em> → marca la casilla <em>Elementos ocultos</em>.</li>
+</ul>
+<p>Los elementos ocultos aparecen con el icono más clarito, como transparente.</p>
+
+<h3>Actividad 1 — Mira las propiedades</h3>
+<ol>
+<li>Abre las propiedades de tu <code>notas.txt</code> (en <code>practicas-u0/textos</code>) y apunta en tu cuaderno: tipo, ubicación y tamaño.</li>
+<li>Haz lo mismo con la imagen que descargaste en <code>practicas-u0/imagenes</code>.</li>
+<li>Ahora abre las propiedades de la carpeta <code>practicas-u0</code> entera.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> la imagen ocupa mucho más que el texto (KB o MB frente a unos pocos bytes), y en las propiedades de la carpeta ves cuántos archivos y carpetas tiene dentro y cuánto ocupa todo junto.</p>
+
+<h3>Actividad 2 — Protege un archivo</h3>
+<ol start="4">
+<li>En las propiedades de <code>notas.txt</code>, marca <em>Solo lectura</em> y pulsa <em>Aceptar</em>.</li>
+<li>Abre <code>notas.txt</code>, escribe algo nuevo y pulsa <code>Ctrl+S</code>.</li>
+<li>Cierra sin guardar, vuelve a las propiedades y desmarca <em>Solo lectura</em>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> en el paso 5, el Bloc de notas no te deja guardar encima: te da un aviso o te pide guardarlo con otro nombre. Después del paso 6 ya puedes guardar con normalidad.</p>
+
+<h3>Actividad 3 — Esconde un archivo</h3>
+<ol start="7">
+<li>En <code>practicas-u0/textos</code>, crea un documento de texto llamado <code>secreto.txt</code>.</li>
+<li>En sus propiedades, marca <em>Oculto</em> y pulsa <em>Aceptar</em>.</li>
+<li>Activa ver los <em>Elementos ocultos</em> (Windows 11 o 10, según tu ordenador).</li>
+<li>Desmarca el atributo <em>Oculto</em> de <code>secreto.txt</code>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tras el paso 8, <code>secreto.txt</code> desaparece de la carpeta. Tras el paso 9 vuelve a aparecer, pero con el icono más clarito. Tras el paso 10 se ve normal.</p>
+<div class="nota">🤔 Antes de seguir: un archivo oculto, ¿está borrado? ¿Sigue ocupando espacio?</div>
+<details><summary>Ver la respuesta</summary>
+<p>No está borrado: sigue en su carpeta y sigue ocupando espacio. Solo es que el explorador no lo enseña. Por eso, si una carpeta "ocupa más de lo que parece", puede que tenga archivos ocultos dentro.</p>
+</details>
+
+<h2>Este equipo: dónde se guarda todo</h2>
+<p>En el panel izquierdo del explorador, <strong>Este equipo</strong> te enseña todos los sitios donde tu ordenador puede guardar archivos. Cada uno es una <strong>unidad</strong> y tiene una <strong>letra</strong>:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:sans-serif;font-size:0.9em;display:flex;flex-wrap:wrap;gap:24px;">
+<div style="flex:1 1 220px;">
+<div>💽 <strong>Disco local (C:)</strong></div>
+<div style="background:#e5e7eb;border-radius:3px;height:12px;margin:6px 0;overflow:hidden;"><div style="background:#2563eb;width:62%;height:100%;"></div></div>
+<div style="color:#555;">90 GB disponibles de 237 GB</div>
+</div>
+<div style="flex:1 1 220px;">
+<div>🔌 <strong>USB (E:)</strong></div>
+<div style="background:#e5e7eb;border-radius:3px;height:12px;margin:6px 0;overflow:hidden;"><div style="background:#2563eb;width:20%;height:100%;"></div></div>
+<div style="color:#555;">11,8 GB disponibles de 14,6 GB</div>
+</div>
+</div>
+<table>
+<tr><th>Unidad</th><th>Qué es</th></tr>
+<tr><td><strong>C:</strong></td><td>El disco principal del ordenador. Aquí está Windows, los programas y tus carpetas (Escritorio, Documentos...).</td></tr>
+<tr><td><strong>D:, E:...</strong></td><td>Otros discos, o memorias USB y discos externos cuando los conectas. La letra la pone Windows.</td></tr>
+<tr><td><strong>Unidades de red</strong></td><td>Carpetas que están en otro ordenador (por ejemplo, un servidor del instituto) y que ves como si fueran tuyas.</td></tr>
+</table>
+<p>La barra de cada unidad te dice de un vistazo cuánto espacio queda: cuanto más llena está la barra, menos espacio libre. Si haces clic derecho sobre una unidad → <em>Propiedades</em>, verás el espacio usado y libre con un gráfico circular.</p>
+
+<h3>Memorias USB: expúlsala antes de quitarla</h3>
+<p>Cuando conectas una memoria USB, aparece en <strong>Este equipo</strong> con su letra y puedes copiar archivos en ella como en cualquier carpeta. Antes de quitarla, <strong>expúlsala</strong>: clic derecho sobre la unidad → <em>Expulsar</em>, y espera al aviso de que ya se puede retirar.</p>
+<div class="nota">⚠️ Si la quitas mientras se está copiando algo, el archivo puede quedar roto y no volver a abrirse. Expulsarla primero es asegurarte de que ha terminado.</div>
+
+<h3>Actividad 4 — Explora tu equipo</h3>
+<ol start="11">
+<li>Abre <strong>Este equipo</strong> y apunta en tu cuaderno qué unidades tiene tu ordenador y la letra de cada una.</li>
+<li>Abre las propiedades del disco <code>C:</code> y apunta el espacio total y el espacio libre.</li>
+<li>Si tienes una memoria USB, conéctala, copia en ella la carpeta <code>practicas-u0</code> y expúlsala antes de quitarla.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tienes apuntadas las unidades, sus letras y el espacio libre de <code>C:</code>. Si usaste una USB, al volver a conectarla está dentro la carpeta <code>practicas-u0</code> con todo su contenido.</p>
+
+<h2>Preguntas</h2>
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. <strong>Cuentan para nota</strong> (mira <a href="tema.html?id=formas-de-evaluar">Formas de evaluar</a>).
+</div>
+
+<h3>Las propiedades de un archivo</h3>
+<ol>
+<li>¿Cómo se abren las propiedades de un archivo? Escribe las dos formas.</li>
+<li>Nombra cuatro datos que puedes ver en las propiedades de un archivo y explica qué significa cada uno.</li>
+<li>(ABC) En las propiedades, el dato <em>Ubicación</em> te dice:
+  <ul>
+    <li>a) qué programa abre el archivo</li>
+    <li>b) la ruta de la carpeta donde está el archivo</li>
+    <li>c) cuándo se creó el archivo</li>
+  </ul>
+</li>
+<li>Escribe los tamaños de tu <code>notas.txt</code> y de tu imagen (Actividad 1). ¿Cuál ocupa más y por qué crees que pasa?</li>
+</ol>
+
+<h3>Tamaños</h3>
+<ol start="5">
+<li>Ordena de menor a mayor: GB, byte, TB, KB, MB.</li>
+<li>(V/F) 1 MB son exactamente 1000 KB.</li>
+<li>Una canción ocupa unos 5 MB. ¿Aproximadamente cuántas caben en 1 GB?</li>
+</ol>
+
+<h3>Los atributos</h3>
+<ol start="8">
+<li>¿Qué pasa si intentas guardar cambios en un archivo de solo lectura?</li>
+<li>(V/F) Un archivo oculto está borrado y ya no ocupa espacio.</li>
+<li>Escribe los pasos para ver los elementos ocultos en tu ordenador (indica si es Windows 10 u 11).</li>
+<li>¿Para qué crees que puede servir marcar un archivo como solo lectura? Pon un ejemplo.</li>
+</ol>
+
+<h3>Este equipo</h3>
+<ol start="12">
+<li>¿Qué es la unidad <code>C:</code> y qué se guarda en ella?</li>
+<li>(ABC) Conectas una memoria USB. ¿Qué pasa en Este equipo?
+  <ul>
+    <li>a) No aparece nada, hay que instalar un programa</li>
+    <li>b) Aparece una unidad nueva con una letra (por ejemplo, E:)</li>
+    <li>c) Se copia automáticamente en C:</li>
+  </ul>
+</li>
+<li>¿Por qué hay que expulsar una memoria USB antes de quitarla?</li>
+<li>Escribe qué unidades tiene tu ordenador del aula y cuánto espacio libre tiene <code>C:</code> (Actividad 4).</li>
+</ol>

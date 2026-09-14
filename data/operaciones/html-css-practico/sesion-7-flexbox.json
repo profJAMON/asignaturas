@@ -1,0 +1,137 @@
+{
+  "id": "sesion-7-flexbox",
+  "titulo": "Sesión 7 — Flexbox",
+  "fecha": "2026-10-20",
+  "descripcion": "Flexbox para organizar varias cajas a la vez: display:flex, flex-direction, justify-content, align-items, flex-wrap y gap. Dos ejercicios guiados y tres retos progresivos, todos obligatorios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: conceptos básicos de Flexbox",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: align-self",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/align-self"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "Quieres mostrar las notas de tus juegos favoritos en filas y columnas. ¿Tabla o Flexbox?",
+          "opciones": [
+            "Tabla: son datos en filas y columnas",
+            "Flexbox: son bloques de la página",
+            "Da igual, las dos sirven para lo mismo"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Quieres poner tu logo a la izquierda y los enlaces del menú a la derecha, en la misma fila. ¿Qué usas?",
+          "opciones": [
+            "<table>",
+            "Flexbox (display: flex + justify-content)",
+            "Una lista anidada"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un contenedor tiene display: flex; y tres <div> hijos, sin ninguna otra propiedad flex. ¿Cómo se colocan esos tres <div> por defecto?",
+          "opciones": [
+            "En fila, uno junto a otro",
+            "En columna, uno debajo de otro",
+            "Sin cambios, igual que sin display: flex"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué propiedad cambia esa fila a columna?",
+          "opciones": [
+            "flex-wrap: column;",
+            "display: column;",
+            "flex-direction: column;"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Tienes 3 cajas en un contenedor flex y quieres el máximo espacio posible entre ellas (la primera pegada a la izquierda, la última pegada a la derecha). ¿Qué propiedad usas?",
+          "opciones": [
+            "align-items: center;",
+            "justify-content: space-between;",
+            "gap: space-between;"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad controla la alineación de los elementos flex en el eje cruzado (vertical, si la fila es horizontal)?",
+          "opciones": [
+            "justify-content",
+            "flex-wrap",
+            "align-items"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Por defecto (flex-wrap: nowrap, el valor inicial), si varias cajas en fila no caben en el ancho de su contenedor, ¿qué ocurre?",
+          "opciones": [
+            "Se encogen o se salen del contenedor",
+            "Saltan automáticamente a una nueva línea",
+            "Desaparecen las que no caben"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Si a ese mismo contenedor le añades flex-wrap: wrap;, ¿qué cambia?",
+          "opciones": [
+            "Nada, se comporta igual",
+            "Las cajas que no caben pasan a una nueva línea, sin encogerse",
+            "Las cajas se encogen automáticamente para caber siempre en una sola fila"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Pones display: flex; en la clase de tus tarjetas y no pasa nada. ¿Cuál es el fallo más probable?",
+          "opciones": [
+            "display: flex; va en el contenedor que envuelve las tarjetas, no en las tarjetas",
+            "Falta poner flex-direction: row;",
+            "Flexbox no funciona con <div>"
+          ],
+          "correcta": 0
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada necesidad con la propiedad correcta",
+      "pares": [
+        {
+          "izquierda": "Poner el menú de navegación en una fila horizontal",
+          "derecha": "display: flex;"
+        },
+        {
+          "izquierda": "Cambiar de fila a columna en un contenedor flex",
+          "derecha": "flex-direction: column;"
+        },
+        {
+          "izquierda": "Repartir el espacio sobrante entre varias cajas de una fila",
+          "derecha": "justify-content: space-between;"
+        },
+        {
+          "izquierda": "Alinear verticalmente los elementos dentro de una fila flex",
+          "derecha": "align-items"
+        },
+        {
+          "izquierda": "Que las cajas que no caben pasen a la siguiente línea en vez de desbordarse",
+          "derecha": "flex-wrap: wrap;"
+        },
+        {
+          "izquierda": "Separar los elementos de una fila flex con un hueco fijo",
+          "derecha": "gap"
+        }
+      ]
+    }
+  ]
+}

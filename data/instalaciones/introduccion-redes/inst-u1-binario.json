@@ -1,0 +1,83 @@
+{
+  "id": "inst-u1-binario",
+  "titulo": "Sesión 2 — El sistema binario",
+  "fecha": "",
+  "descripcion": "Bits, bytes y las dos conversiones que vas a usar todo el curso: de decimal a binario y de binario a decimal. Con ejercicios que cambian cada vez que los abres.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ejercicios de repaso de binario (recursostic, Ministerio de Educación)",
+      "url": "http://recursostic.educacion.es/secundaria/edad/4esotecnologia/quincena5/q5_ejercicios_b.php"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "De binario a decimal",
+      "generador": "binario-a-decimal",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "De decimal a binario (8 bits)",
+      "generador": "decimal-a-binario",
+      "n": 10
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Bits, bytes y la letra que importa",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuál es la unidad mínima de información de un sistema informático?",
+          "opciones": ["El byte", "El bit", "El kilobyte", "El carácter"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un byte son…",
+          "opciones": ["2 bits", "4 bits", "8 bits", "16 bits"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En las abreviaturas, la letra b minúscula significa…",
+          "opciones": ["byte", "bit", "baudio", "bloque"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál es el número decimal más grande que se puede representar con 8 bits?",
+          "opciones": ["128", "255", "256", "512"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántos valores distintos se pueden representar con 8 bits?",
+          "opciones": ["8", "128", "255", "256"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "El binario 1000 0000 vale en decimal…",
+          "opciones": ["8", "64", "128", "256"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Para pasar de decimal a binario, el método es…",
+          "opciones": [
+            "Multiplicar por 2 y sumar los resultados",
+            "Dividir entre 2 repetidamente y leer los restos de abajo arriba",
+            "Dividir entre 8 y quedarse con el cociente",
+            "Restar 255 hasta llegar a cero"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Por qué los ordenadores trabajan en binario?",
+          "opciones": [
+            "Porque ocupa menos memoria que el decimal",
+            "Porque es más fácil de leer para las personas",
+            "Porque distinguir «pasa corriente» de «no pasa» es fiable aunque haya ruido",
+            "Porque lo inventó IBM y se quedó así"
+          ],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

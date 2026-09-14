@@ -1,0 +1,8 @@
+{
+  "id": "sesion-3-url-http-basico",
+  "titulo": "Sesión 3. Anatomía de una URL y HTTP básico",
+  "fecha": "",
+  "descripcion": "Las partes de una URL (protocolo, dominio, ruta, parámetros y fragmento), qué es una petición y una respuesta HTTP, y los códigos de estado más comunes (200, 301, 404, 500). Incluye actividades prácticas con la pestaña Network.",
+  "materiales": [],
+  "actividades": []
+}

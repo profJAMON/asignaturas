@@ -1,0 +1,85 @@
+{
+  "id": "sesion-10-proyecto-pagina-personal-parte-2",
+  "titulo": "Sesión 10 — Proyecto: tu página personal (parte 2, resúmenes)",
+  "fecha": "2026-11-10",
+  "descripcion": "Segunda y última sesión del proyecto de la unidad: dos herramientas nuevas y cortas (background-image y un :hover más completo), y la creación de la página de tu primer resumen (resumen-unidad1.html), conectada desde el índice de resumenes.html creado en la sesión 9. El contenido del resumen es libre, sin plantilla ni mínimo exigido.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: background-image",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/background-image"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: background-size",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/background-size"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: :hover",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación — Proyecto, parte 2",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué diferencia hay entre insertar una imagen con <img> y con background-image?",
+          "opciones": ["Ninguna, son intercambiables siempre", "<img> es contenido de la página; background-image es decoración aplicada por CSS a un elemento", "background-image solo funciona dentro de <table>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres una franja lateral estrecha y muy alta con un icono pequeño repitiéndose de arriba abajo, sin repetirse también en horizontal. ¿Qué valor de background-repeat usas?",
+          "opciones": ["repeat", "repeat-y", "no-repeat"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tienes una foto grande de fondo en una caja pequeña y quieres que la cubra entera, aunque se recorte algo de la imagen. ¿Qué propiedad usas?",
+          "opciones": ["background-size: cover;", "background-size: contain;", "background-repeat: repeat;"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Con background-size: contain;, si la proporción de la imagen no coincide con la de la caja, ¿qué puede pasar?",
+          "opciones": ["La imagen se recorta para no dejar huecos", "Puede quedar hueco vacío dentro de la caja, porque la imagen se ve entera sin recortar", "La imagen se repite para rellenar el hueco"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Además de cambiar el color de un texto, ¿:hover puede cambiar otras propiedades como el tamaño de letra o el color de fondo?",
+          "opciones": ["No, :hover solo funciona con color", "Sí, cualquier propiedad CSS del elemento mientras el ratón está encima", "Solo si el elemento es un enlace <a>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué sirve cursor: pointer; en una regla :hover?",
+          "opciones": ["Para que el elemento cambie de color", "Para que el puntero del ratón se convierta en una manita, indicando que se puede interactuar", "Para que el elemento se vuelva más grande"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tu resumenes.html todavía muestra el párrafo \"Próximamente...\". ¿Qué tienes que hacer en la sesión 10?",
+          "opciones": ["Nada, se queda así hasta que termines todas las unidades del curso", "Sustituirlo por un índice con un <li><a> a tu primer resumen (resumen-unidad1.html)", "Borrar resumenes.html y empezar de cero"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué tiene que llevar resumen-unidad1.html para verse con el mismo estilo que el resto de tu web?",
+          "opciones": ["Su propio <style> con las reglas copiadas de nuevo", "El mismo <link rel=\"stylesheet\" href=\"estilos.css\"> que tus otras páginas", "No hace falta nada, el estilo se aplica solo a todos los .html de la carpeta"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada propiedad con lo que hace",
+      "pares": [
+        { "izquierda": "Aplica una imagen de fondo a un elemento, por CSS", "derecha": "background-image" },
+        { "izquierda": "Repite la imagen de fondo solo hacia abajo", "derecha": "background-repeat: repeat-y;" },
+        { "izquierda": "Muestra la imagen de fondo una sola vez, sin repetirla", "derecha": "background-repeat: no-repeat;" },
+        { "izquierda": "Agranda la imagen de fondo hasta cubrir toda la caja, recortando si hace falta", "derecha": "background-size: cover;" },
+        { "izquierda": "Ajusta la imagen de fondo entera dentro de la caja, sin recortar", "derecha": "background-size: contain;" },
+        { "izquierda": "Cambia el cursor a una manita al pasar por encima", "derecha": "cursor: pointer;" },
+        { "izquierda": "Página que lista los resúmenes de cada unidad, con enlaces", "derecha": "resumenes.html" },
+        { "izquierda": "Comparte el mismo estilo entre varias páginas de tu web", "derecha": "El mismo estilos.css enlazado en todas" }
+      ]
+    }
+  ]
+}

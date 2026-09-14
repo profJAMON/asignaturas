@@ -1,0 +1,119 @@
+<h2>Por qué hacer una copia</h2>
+<p>Tu web vive en una carpeta, <code>mi-web</code>, dentro de tu usuario del ordenador del aula. Si ese usuario se borra (por ejemplo, con una actualización) o el ordenador se estropea, <strong>la carpeta desaparece con él</strong>.</p>
+<p>La solución es sencilla: al acabar <strong>cada</strong> sesión, guardas una copia de la carpeta en tu Drive (el de tu cuenta del instituto, la misma que usas en Classroom). Así, pase lo que pase, en dos minutos la tienes de vuelta.</p>
+<div class="nota">📅 ¿Cuándo? A partir de la Unidad 1, al final de cada sesión en la que hayas cambiado algo de tu web. También cuando añadas los resúmenes de las otras unidades.</div>
+<div class="nota">🧪 <strong>Hoy practicas</strong> con tu carpeta <code>practicas-u0</code>: donde los pasos dicen <code>mi-web</code>, tú usa <code>practicas-u0</code> (y llama al archivo <code>practicas-u0-</code> con la fecha). Tu <code>mi-web</code> todavía está vacía; a partir de la Unidad 1 harás lo mismo con ella.</div>
+
+<h2>Comprime tu carpeta</h2>
+<p>Comprimir es meter toda la carpeta, con todo lo que tiene dentro, en <strong>un solo archivo</strong> <code>.zip</code>. Un solo archivo es mucho más fácil de subir y de guardar.</p>
+<ol>
+<li>Cierra VS Code (así te aseguras de que todo está guardado).</li>
+<li>Ve al Escritorio (o donde tengas tu carpeta <code>mi-web</code>).</li>
+<li>Haz clic derecho sobre la carpeta <code>mi-web</code>:
+<ul>
+<li><strong>Windows 11:</strong> elige <em>Comprimir en → Archivo ZIP</em> (en algunas versiones sale directamente <em>Comprimir en archivo ZIP</em>).</li>
+<li><strong>Windows 10:</strong> elige <em>Enviar a → Carpeta comprimida (en zip)</em>.</li>
+</ul>
+</li>
+<li>Aparecerá un archivo nuevo al lado de la carpeta: <code>mi-web.zip</code>.</li>
+<li>Cámbiale el nombre para añadir la fecha de hoy, en este orden: año-mes-día. Por ejemplo: <code>mi-web-2026-10-05.zip</code>.</li>
+</ol>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;line-height:1.7;">
+Escritorio/<br>
+├─ mi-web/ &nbsp;&nbsp;← tu carpeta, sigue igual<br>
+└─ mi-web-2026-10-05.zip &nbsp;&nbsp;← la copia, un solo archivo
+</div>
+<div class="nota">💡 ¿Por qué año-mes-día? Porque así las copias se ordenan solas por fecha: la más nueva siempre queda al final de la lista.</div>
+<div class="nota">🤔 Antes de seguir: si en vez de la carpeta <code>mi-web</code> comprimes solo el archivo <code>index.html</code>, ¿qué perderías si un día tienes que recuperar tu web?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Todo lo demás: tu <code>estilos.css</code>, tus imágenes y el resto de páginas (<code>resumenes.html</code>, los resúmenes...). Recuperarías una página sin estilos y con las imágenes rotas. Por eso siempre se comprime la <strong>carpeta entera</strong>.</p>
+</details>
+
+<h2>Súbela a tu Drive</h2>
+<p>La primera vez, prepara una carpeta en tu Drive para guardar todas las copias juntas:</p>
+<ol>
+<li>Abre <code>drive.google.com</code> e inicia sesión con tu cuenta del instituto (la de Classroom). Si no puedes entrar o no recuerdas la contraseña, <strong>dímelo</strong> y lo arreglamos antes de seguir.</li>
+<li>Pulsa <em>+ Nuevo → Nueva carpeta</em> y llámala <code>copias-mi-web</code>. Esto solo lo haces una vez.</li>
+</ol>
+<p>Cada vez que hagas una copia:</p>
+<ol>
+<li>Entra en tu carpeta <code>copias-mi-web</code> de Drive.</li>
+<li>Pulsa <em>+ Nuevo → Subir archivo</em> y elige el <code>.zip</code> de hoy (está en el Escritorio). También puedes arrastrarlo desde el Escritorio a la ventana de Drive.</li>
+<li>Espera a que termine la subida (sale un aviso abajo a la derecha).</li>
+<li>Cuando ya esté en Drive, puedes borrar el <code>.zip</code> del Escritorio. La carpeta <code>mi-web</code> <strong>no</strong> la borres: es con la que sigues trabajando.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> dentro de <code>copias-mi-web</code> ves el archivo con la fecha de hoy en el nombre, junto a las copias de otros días.</p>
+<div class="nota">🔒 Tu Drive es privado: nadie ve tus copias a menos que las compartas tú. No compartas la carpeta <code>copias-mi-web</code> con nadie.</div>
+
+<h2>Si pierdes tu web: recupera la copia</h2>
+<p>Si un día llegas y tu carpeta <code>mi-web</code> ya no está (o te toca usar otro ordenador), haz esto:</p>
+<ol>
+<li>Abre tu carpeta <code>copias-mi-web</code> en Drive.</li>
+<li>Busca el <code>.zip</code> más reciente (el de fecha más nueva), haz clic derecho sobre él y elige <em>Descargar</em>. Se guardará en tu carpeta <em>Descargas</em>.</li>
+<li>Abre <em>Descargas</em>, haz clic derecho sobre el <code>.zip</code> y elige <em>Extraer todo</em> → <em>Extraer</em>.</li>
+<li>Se crea una carpeta nueva con el nombre del <code>.zip</code>. Dentro está tu carpeta <code>mi-web</code>: <strong>esa</strong> es la que tienes que mover al Escritorio (córtala con <code>Ctrl+X</code> y pégala con <code>Ctrl+V</code>).</li>
+<li>Abre VS Code, ve a <em>Archivo → Abrir carpeta...</em> y elige <code>mi-web</code>. Ábrela con Live Server.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tu web se ve con Live Server igual que el último día que hiciste copia. Si falta algo que hiciste después de esa copia, eso es lo único que tendrás que rehacer.</p>
+<div class="nota">⚠️ Fíjate en el paso 4: al extraer, tu <code>mi-web</code> queda <strong>dentro</strong> de otra carpeta. Si trabajas desde la carpeta de fuera es fácil liarse con dos carpetas. Mueve siempre la <code>mi-web</code> de dentro al Escritorio.</div>
+
+<h2>Otra protección: el antivirus</h2>
+<p>Las copias te protegen de perder tus archivos. El <strong>antivirus</strong> te protege de otro peligro: programas dañinos (virus, malware) que pueden llegar en un archivo descargado o en una memoria USB. Windows ya trae uno: <strong>Microsoft Defender</strong> (en <em>Seguridad de Windows</em>).</p>
+<p>Puedes pedirle que revise una carpeta o una memoria USB concreta:</p>
+<ul>
+<li><strong>Windows 11:</strong> clic derecho sobre la carpeta → <em>Mostrar más opciones</em> → <em>Examinar con Microsoft Defender</em>.</li>
+<li><strong>Windows 10:</strong> clic derecho sobre la carpeta → <em>Examinar con Microsoft Defender</em>.</li>
+</ul>
+<div class="nota">⚠️ Si el antivirus avisa de una amenaza, <strong>no abras el archivo</strong> y avísame. Y la mejor protección es no descargar ni abrir archivos de sitios que no conoces.</div>
+
+<h3>Actividad — Analiza tu carpeta</h3>
+<ol>
+<li>Haz clic derecho sobre tu carpeta <code>practicas-u0</code> y examínala con Microsoft Defender.</li>
+<li>Espera a que termine el análisis.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> se abre la ventana de Seguridad de Windows y, al terminar, indica cuántos archivos ha analizado y que no hay amenazas (o cuáles ha encontrado).</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>He comprimido la carpeta entera (hoy <code>practicas-u0</code>; desde la Unidad 1, <code>mi-web</code>), no un archivo suelto.</li>
+<li>El <code>.zip</code> lleva la fecha de hoy en el nombre (año-mes-día).</li>
+<li>El <code>.zip</code> está subido a mi carpeta <code>copias-mi-web</code> de Drive.</li>
+<li>He analizado mi carpeta con Microsoft Defender.</li>
+</ul>
+
+<h2>Preguntas</h2>
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. <strong>Cuentan para nota</strong> (mira <a href="tema.html?id=formas-de-evaluar">Formas de evaluar</a>).
+</div>
+
+<h3>Copias de seguridad</h3>
+<ol>
+<li>¿Por qué hay que hacer copias de seguridad de tu carpeta de trabajo? Da dos motivos que puedan hacer que la pierdas.</li>
+<li>(ABC) ¿Qué tienes que comprimir para hacer la copia de tu web?
+  <ul>
+    <li>a) Solo el archivo <code>index.html</code></li>
+    <li>b) La carpeta <code>mi-web</code> entera</li>
+    <li>c) La carpeta Descargas</li>
+  </ul>
+</li>
+<li>¿Qué es un archivo <code>.zip</code> y por qué es más cómodo para una copia?</li>
+<li>Escribe el nombre que le pondrías a la copia de tu web hecha el 3 de noviembre de 2026, siguiendo la norma de la fecha. ¿Por qué se escribe en ese orden?</li>
+<li>(V/F) Cuando ya has subido el <code>.zip</code> a Drive, puedes borrar la carpeta <code>mi-web</code> del Escritorio.</li>
+<li>Escribe, paso a paso, cómo recuperarías tu web desde Drive si un día se borra tu usuario.</li>
+<li>Al extraer una copia, ¿qué carpeta tienes que mover al Escritorio y por qué?</li>
+<li>(V/F) Cualquier persona puede ver los archivos de tu Drive aunque no los compartas.</li>
+</ol>
+
+<h3>El antivirus</h3>
+<ol start="9">
+<li>¿Qué es un antivirus y de qué te protege?</li>
+<li>¿Cómo se llama el antivirus que trae Windows y cómo le pides que analice una carpeta?</li>
+<li>(ABC) El antivirus te avisa de una amenaza en un archivo que has descargado. ¿Qué haces?
+  <ul>
+    <li>a) Lo abro igualmente para ver qué es</li>
+    <li>b) No lo abro y aviso en ese momento</li>
+    <li>c) Se lo envío a un compañero para que lo pruebe</li>
+  </ul>
+</li>
+<li>¿Qué diferencia hay entre protegerte con una copia de seguridad y protegerte con un antivirus?</li>
+</ol>

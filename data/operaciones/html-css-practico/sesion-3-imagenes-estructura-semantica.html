@@ -1,0 +1,180 @@
+<h2>Insertar imágenes</h2>
+<p>Una imagen se inserta con una única etiqueta que no se cierra:</p>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"gato.jpg"</span> <span class='at'>alt</span>=<span class='ca'>"Un gato gris durmiendo en un sofá"</span><span class='et'>&gt;</span></code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start;">
+  <table>
+    <tr>
+      <td>
+        <div style="flex:0 0 auto;">
+          <p style="margin:0 0 6px;"><strong>✅ Esta imagen carga bien</strong></p>
+          <img src="https://picsum.photos/id/237/320/200" alt="Foto de ejemplo: un perro negro tumbado" width="260" height="163" style="width:260px;max-width:100%;border-radius:4px;display:block;">
+        </div>
+      </td>
+      <td>
+        <div style="flex:0 0 auto;">
+          <p style="margin:0 0 6px;"><strong>❌ Esta imagen no carga (ruta rota a propósito)</strong></p>
+          <img src="https://picsum.phot" alt="Foto de ejemplo: un perro negro tumbado" width="260" style="width:260px;max-width:100%;border-radius:4px;display:block;">
+        </div>
+      </td>
+    </tr>
+  </table>
+  <p>En esta imagen, el <code>"alt"</code> es <code>"un perro negro tumbado"</code>. Fíjate en que, cuando la imagen no carga, el navegador muestra ese texto en su lugar — por eso importa que describa de verdad lo que se ve.</p>
+</div>
+
+<ul>
+<li><code>src</code> → la ruta o dirección donde está la imagen.</li>
+<li><code>alt</code> → texto alternativo: lo lee un lector de pantalla y es lo que aparece si la imagen no llega a cargar.</li>
+</ul>
+<div class="nota">🤔 Antes de seguir: si escribes <code>alt="imagen1"</code> o dejas <code>alt=""</code> en una foto que sí aporta información, ¿para quién estás escribiendo realmente la página?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Estarías escribiendo solo para quien puede <em>ver</em> la imagen directamente, dejando fuera a quien usa un lector de pantalla (y también a cualquiera cuya conexión no cargue la imagen). Un <code>alt</code> como <code>"imagen1"</code> no aporta nada — es como si en un examen escrito describieras una foto diciendo solo "foto". El objetivo del <code>alt</code> es que la experiencia sea equivalente, no que sea "por rellenar".</p>
+</details>
+
+<h2>Rutas: dónde tiene que estar el archivo</h2>
+<p>Las rutas relativas ya las viste en la Unidad 0 (sesión 2). Ahora las vas a usar de verdad, para que tu web encuentre sus imágenes.</p>
+<p>Cuando escribes <code>src="gato.jpg"</code>, el navegador busca un archivo llamado <strong>exactamente así</strong>, en la <strong>misma carpeta</strong> que el HTML que lo llama. Eso es una <strong>ruta relativa</strong>: se lee "desde aquí".</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;line-height:1.7;">
+mi-web/<br>
+├─ index.html<br>
+├─ estilos.css<br>
+└─ gato.jpg &nbsp;&nbsp;✅ misma carpeta que <code style="background:none;border:none;padding:0;color:inherit;">index.html</code> → <code style="background:none;border:none;padding:0;color:inherit;">src="gato.jpg"</code> funciona
+</div>
+<p>Si la imagen estuviera dentro de una subcarpeta (por ejemplo <code>imagenes/</code>), la ruta tiene que incluir también esa subcarpeta:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;line-height:1.7;">
+mi-web/<br>
+├─ index.html<br>
+└─ imagenes/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└─ gato.jpg &nbsp;&nbsp;→ <code style="background:none;border:none;padding:0;color:inherit;">src="imagenes/gato.jpg"</code>
+</div>
+<p><strong>El problema número uno, casi siempre:</strong> cuando descargas una imagen de internet, el navegador la guarda por defecto en la carpeta <strong>Descargas</strong> de tu ordenador — no en <code>mi-web</code>. Si no la mueves, la ruta nunca va a coincidir por muy bien que la escribas.</p>
+<ol>
+<li>Abre el explorador de archivos <strong>de tu sistema operativo</strong> (no el de VS Code) y busca la carpeta <strong>Descargas</strong>.</li>
+<li>Localiza el archivo de imagen que acabas de descargar.</li>
+<li><strong>Córtalo</strong> (<code>Ctrl+X</code>) y <strong>pégalo</strong> (<code>Ctrl+V</code>) dentro de tu carpeta <code>mi-web</code> — la misma que tienes abierta en VS Code.</li>
+<li>Comprueba que el archivo aparece ahora en el explorador de archivos <strong>de VS Code</strong> (panel izquierdo), junto a tu <code>index.html</code>.</li>
+</ol>
+<div class="nota">⚠️ Este es el bloqueo número uno de esta sesión. Si tu imagen "no aparece", antes de tocar el código comprueba en el explorador de archivos de VS Code si el archivo está de verdad dentro de <code>mi-web</code>, y si su nombre (mayúsculas y extensión incluidas) coincide exactamente con lo que has escrito en <code>src</code>.</div>
+
+<h2>Ejercicio guiado 1 — Tu primera imagen</h2>
+<ol>
+<li>Busca en internet una imagen que quieras usar en tu página (algo relacionado con tus aficiones — nunca una foto tuya ni de otras personas, recuerda la tabla del alias de la sesión 1).</li>
+<li>Descárgala y muévela a tu carpeta <code>mi-web</code> siguiendo los pasos de arriba.</li>
+<li>Fíjate en el nombre exacto del archivo, con su extensión (<code>.jpg</code>, <code>.png</code>...).</li>
+<li>En tu <code>index.html</code>, inserta un <code>&lt;img&gt;</code> apuntando a ese archivo, con un <code>alt</code> que describa de verdad lo que se ve.</li>
+<li>Guarda y comprueba con Live Server que la imagen aparece.</li>
+</ol>
+<p>Si lo has hecho bien: la imagen aparecerá en tu página sin que tengas que recargar el navegador manualmente. Si en su lugar ves el texto del <code>alt</code>, el archivo no está donde <code>src</code> dice que está — revisa el apartado de rutas de arriba.</p>
+
+<h2>Ancho, alto y proporción</h2>
+<p>Puedes fijar el tamaño con <code>width</code> y <code>height</code>, en píxeles:</p>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"..."</span> <span class='at'>alt</span>=<span class='ca'>"..."</span> <span class='at'>width</span>=<span class='ca'>"220"</span><span class='et'>&gt;</span></code></pre>
+<p>Mira qué pasa si fuerzas los dos valores sin respetar la proporción original de la imagen:</p>
+<div class="salida">
+<p style="margin:0 0 6px;"><strong>✅ Solo <code>width</code></strong> — se mantiene la proporción</p>
+<img src="https://picsum.photos/id/1015/600/400" alt="Paisaje de ejemplo, sin deformar" width="220" style="border-radius:4px;display:block;margin-bottom:16px;">
+<p style="margin:0 0 6px;"><strong>❌ <code>width</code> y <code>height</code> a la vez</strong> — se deforma</p>
+<img src="https://picsum.photos/id/1015/600/400" alt="Paisaje de ejemplo, deformado a propósito" width="220" height="400" style="border-radius:4px;display:block;">
+</div>
+<div class="nota">Regla práctica: indica <strong>solo uno</strong> de los dos (<code>width</code> o <code>height</code>) y deja que el navegador calcule el otro solo.</div>
+
+<h2>Ejercicio guiado 2 — Sin deformar</h2>
+<ol>
+<li>A la imagen del ejercicio 1, añádele <code>width="150"</code> y comprueba que se ve bien proporcionada.</li>
+<li>Ahora añade también <code>height="500"</code> a propósito y observa qué le pasa.</li>
+<li>Quita el <code>height</code> y deja solo el <code>width</code>.</li>
+</ol>
+<p>Si lo has hecho bien: con los dos atributos a la vez verás la imagen claramente estirada o aplastada; al quitar <code>height</code>, vuelve a verse proporcionada como al principio.</p>
+
+<h2>Estructura semántica</h2>
+<p>Hasta ahora todo tu contenido está "suelto" dentro de <code>&lt;body&gt;</code>. HTML tiene etiquetas para dar significado a cada bloque de la página:</p>
+<table>
+<tr><th>Etiqueta</th><th>Para qué sirve</th></tr>
+<tr><td><code>&lt;header&gt;</code></td><td>Cabecera de la página (título, logo...)</td></tr>
+<tr><td><code>&lt;nav&gt;</code></td><td>Menú de navegación</td></tr>
+<tr><td><code>&lt;main&gt;</code></td><td>Contenido principal (solo uno por página)</td></tr>
+<tr><td><code>&lt;section&gt;</code></td><td>Un bloque temático dentro del contenido</td></tr>
+<tr><td><code>&lt;article&gt;</code></td><td>Contenido independiente, con sentido por sí solo</td></tr>
+<tr><td><code>&lt;footer&gt;</code></td><td>Pie de página</td></tr>
+<tr><td><code>&lt;div&gt;</code></td><td>Contenedor genérico, sin significado propio</td></tr>
+</table>
+<p>Así se organiza, en bloques, una página típica:</p>
+<div class="salida">
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:10px;margin-bottom:8px;"><code>&lt;header&gt;</code></div>
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:10px;margin-bottom:8px;"><code>&lt;nav&gt;</code></div>
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:10px;margin-bottom:8px;">
+<code>&lt;main&gt;</code>
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:8px;margin:8px 0 0;"><code>&lt;section&gt;</code></div>
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:8px;margin:8px 0 0;"><code>&lt;section&gt;</code></div>
+</div>
+<div style="border:1px dashed #6a7280;border-radius:4px;padding:10px;"><code>&lt;footer&gt;</code></div>
+</div>
+<div class="nota"><strong>Regla práctica:</strong> antes de usar <code>&lt;div&gt;</code>, pregúntate si alguna etiqueta semántica describe mejor ese contenido. <code>&lt;div&gt;</code> es el último recurso, no el primero.</div>
+
+<h2>Ejercicio guiado 3 — Detectar y corregir</h2>
+<p>Copia esto en tu <code>prueba.html</code> y ábrelo con Live Server:</p>
+<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>
+<span class='et'>&lt;html&gt;</span>
+<span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Mi rincón<span class='et'>&lt;/title&gt;</span>
+<span class='et'>&lt;/head&gt;</span>
+<span class='et'>&lt;body&gt;</span>
+
+<span class='et'>&lt;div&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Mi rincón<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;/div&gt;</span>
+
+<span class='et'>&lt;h2&gt;</span>Sobre mí<span class='et'>&lt;/h2&gt;</span>
+<span class='et'>&lt;p&gt;</span>Aquí escribo sobre mí.<span class='et'>&lt;/p&gt;</span>
+
+<span class='et'>&lt;p&gt;</span>Página creada por Ana<span class='et'>&lt;/p&gt;</span>
+
+<span class='et'>&lt;/body&gt;</span>
+<span class='et'>&lt;/html&gt;</span></code></pre>
+<p>Sin mirar los ejemplos de arriba, encuentra y corrige:</p>
+<ol>
+<li>Un <code>&lt;div&gt;</code> que debería ser un <code>&lt;header&gt;</code>.</li>
+<li>Un bloque de contenido que debería ir dentro de un <code>&lt;main&gt;</code>.</li>
+<li>Una línea final que debería ir dentro de un <code>&lt;footer&gt;</code>.</li>
+</ol>
+<details><summary>Pista 1</summary>
+<p>Repasa la tabla de etiquetas semánticas de arriba y pregúntate, bloque por bloque: ¿este contenido es la cabecera de la página, el contenido principal, o el pie? El primer bloque ya lleva una etiqueta, pero no la correcta.</p>
+</details>
+<details><summary>Pista 2</summary>
+<p>El <code>&lt;div&gt;</code> que envuelve el <code>&lt;h1&gt;</code> es justo el caso de "cabecera de la página" de la tabla. El <code>&lt;h2&gt;</code>Sobre mí y su párrafo son el contenido principal de la página, no hay nada más que compita por ese hueco. Y la última línea, "Página creada por Ana", suelta al final, es el caso típico de pie de página.</p>
+</details>
+<p>Si lo has corregido bien: la página se verá visualmente idéntica a como estaba (esto no cambia el aspecto), pero si miras el código con <code>Ctrl+U</code> ya no habrá ningún <code>&lt;div&gt;</code> ni texto suelto directamente dentro de <code>&lt;body&gt;</code>.</p>
+
+<h2>Ejercicio guiado 4 — Reestructura tu propia página</h2>
+<p>Ahora vas a ordenar el <code>index.html</code> que llevas construyendo desde la sesión 1, aplicando lo de hoy:</p>
+<ul class="checklist">
+<li>Mete tu <code>&lt;h1&gt;</code> con tu alias dentro de un <code>&lt;header&gt;</code>.</li>
+<li>Si tienes enlaces ancla de la sesión 2, mételos dentro de un <code>&lt;nav&gt;</code>.</li>
+<li>Todo el contenido principal (tus <code>&lt;h2&gt;</code>, párrafos, listas) va dentro de un único <code>&lt;main&gt;</code>.</li>
+<li>Cada bloque temático dentro de <code>&lt;main&gt;</code> (por ejemplo "Sobre mí", "Mis asignaturas") va en su propio <code>&lt;section&gt;</code>.</li>
+<li>Añade un <code>&lt;footer&gt;</code> con tu alias o el año.</li>
+</ul>
+<p>Si lo has hecho bien: al ver tu página con Live Server, el aspecto será el mismo de antes (añadir estructura semántica no cambia cómo se ve nada todavía), y los enlaces ancla del <code>&lt;nav&gt;</code> seguirán saltando a su sección correspondiente.</p>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Imágenes bien puestas</h3>
+<p>Añade al menos dos imágenes más a tu página (búscalas tú), cada una dentro de la <code>&lt;section&gt;</code> con la que tenga más sentido. Ninguna debe verse deformada, y todos los <code>alt</code> deben describir de verdad lo que se ve.</p>
+
+<h3>Reto 2 — Investiga: <code>&lt;figure&gt;</code></h3>
+<p>Esta etiqueta no la hemos explicado en clase. Entra en la <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/figure" target="_blank" rel="noopener">referencia de MDN sobre <code>&lt;figure&gt;</code></a> y busca, en la sección de ejemplos, qué otra etiqueta aparece siempre dentro de <code>&lt;figure&gt;</code> junto a la imagen para escribir su pie de foto. Úsala en una de tus imágenes.</p>
+<details><summary>Pista si te atascas</summary>
+<p>En la propia página de MDN de <code>&lt;figure&gt;</code>, busca la palabra "caption" (pie de foto, en inglés) — hay una etiqueta con un nombre parecido pensada exactamente para eso, y siempre va dentro de <code>&lt;figure&gt;</code>, nunca sola.</p>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu página completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Nada de contenido suelto directamente en <code>&lt;body&gt;</code>: todo está dentro de <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> o <code>&lt;footer&gt;</code>.</li>
+<li>Al menos tres imágenes, ninguna deformada, todas con <code>alt</code> real.</li>
+<li>Al menos un <code>&lt;figure&gt;</code> con su pie de foto.</li>
+<li>La jerarquía de encabezados sigue sin saltos (de la sesión 1): un solo <code>&lt;h1&gt;</code>, y <code>&lt;h2&gt;</code>/<code>&lt;h3&gt;</code> ordenados.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — ya tienes una página con imágenes y una estructura con sentido. En la próxima sesión llega el CSS, para que además de estar bien organizada, se vea como tú quieras.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>

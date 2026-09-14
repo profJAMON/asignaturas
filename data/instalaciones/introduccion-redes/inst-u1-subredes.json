@@ -1,0 +1,103 @@
+{
+  "id": "inst-u1-subredes",
+  "titulo": "Sesión 8 — Primer contacto con las subredes",
+  "fecha": "",
+  "descripcion": "Dirección de red, broadcast y rango de hosts. El método del salto para resolver una subred de cabeza, y cómo saber si dos equipos se ven o no. El método completo llega en la unidad 7.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "¿Cuántos equipos caben?",
+      "generador": "hosts-por-mascara",
+      "n": 7
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Red, broadcast y rango utilizable",
+      "generador": "red-y-broadcast",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Están en la misma red?",
+      "generador": "misma-red",
+      "n": 8
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "La dirección de red de un bloque es la que tiene…",
+          "opciones": [
+            "Todos los bits de host a 1",
+            "Todos los bits de host a 0",
+            "El último octeto a 255",
+            "El primer octeto a 0"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La dirección de broadcast sirve para…",
+          "opciones": [
+            "Identificar el router",
+            "Hablar a la vez con todos los equipos de esa red",
+            "Salir a Internet",
+            "Reservarla para el servidor"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántos equipos utilizables caben en una red /26?",
+          "opciones": ["30", "62", "64", "126"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En una red /27, ¿cada cuánto empieza un bloque nuevo?",
+          "opciones": ["De 16 en 16", "De 32 en 32", "De 64 en 64", "De 128 en 128"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál es la dirección de red de 192.168.1.100/26?",
+          "opciones": ["192.168.1.0", "192.168.1.64", "192.168.1.96", "192.168.1.128"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Y su dirección de broadcast?",
+          "opciones": ["192.168.1.63", "192.168.1.127", "192.168.1.128", "192.168.1.255"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Se restan 2 direcciones a cada red porque…",
+          "opciones": [
+            "Dos se reservan para el router y el servidor",
+            "Una es la de red y otra la de broadcast",
+            "El fabricante las bloquea",
+            "Hay que dejar sitio para el DHCP"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una máscara /30 se usa normalmente para…",
+          "opciones": [
+            "Una oficina pequeña",
+            "Unir dos routers entre sí",
+            "La red wifi de invitados",
+            "Un aula de informática"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cada bit que le quitamos a la parte de host…",
+          "opciones": [
+            "Duplica el número de equipos",
+            "Parte la red en dos subredes",
+            "No cambia nada",
+            "Aumenta la velocidad de la red"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "sesion-4-copia-seguridad-drive",
+  "titulo": "Sesión 4 — Copia de seguridad en Drive",
+  "fecha": "",
+  "descripcion": "Cómo comprimir tu carpeta de trabajo, subirla a tu Drive y recuperarla si se borra tu usuario o cambias de ordenador, y cómo analizar una carpeta con el antivirus de Windows.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Google Drive",
+      "url": "https://drive.google.com"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Google Drive: subir archivos y carpetas",
+      "url": "https://support.google.com/drive/answer/2424368?hl=es"
+    }
+  ],
+  "actividades": []
+}

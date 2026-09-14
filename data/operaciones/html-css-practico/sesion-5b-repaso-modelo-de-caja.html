@@ -1,0 +1,90 @@
+<h2>Antes de seguir: repasamos</h2>
+<p>Esta sesión no trae contenido nuevo. Es una parada corta para asegurarnos de que dominas el <strong>modelo de caja</strong> (padding, border, margin, width/height y box-sizing) antes de dar el siguiente paso. Lo que viene — <strong>Flexbox</strong>, para organizar varias cajas entre sí — se apoya todo el rato en estas ideas, así que merece la pena dejarlas bien afianzadas ahora que solo hay que pensar en <em>una</em> caja cada vez.</p>
+<p>Esta sesión no lleva nota. Es para ti, para llegar a la siguiente con seguridad.</p>
+
+<h2>Repaso exprés</h2>
+<div class="salida">
+<div style="border:1px dashed var(--accent-warm, #ce9178);border-radius:4px;padding:12px;">
+  <p style="margin:0 0 6px;font-family:monospace;font-size:0.75em;">margin</p>
+  <div style="border:1px dashed #6a7280;border-radius:4px;padding:12px;">
+    <p style="margin:0 0 6px;font-family:monospace;font-size:0.75em;">border</p>
+    <div style="border:1px dashed #4fc1ff;border-radius:4px;padding:12px;">
+      <p style="margin:0 0 6px;font-family:monospace;font-size:0.75em;">padding</p>
+      <div style="background:#e8e8e8;border-radius:4px;padding:8px;text-align:center;font-family:monospace;font-size:0.75em;color:#1e1e1e;">content</div>
+    </div>
+  </div>
+</div>
+</div>
+<table>
+<tr><th>Propiedad</th><th>Qué hace</th><th>El "truco" que ya viste</th></tr>
+<tr><td><code>padding</code></td><td>Aleja el contenido del borde, por dentro</td><td>1, 2 o 4 valores (arriba-derecha-abajo-izquierda)</td></tr>
+<tr><td><code>border</code></td><td>El borde de la caja</td><td><code>grosor estilo color</code> en una línea</td></tr>
+<tr><td><code>margin</code></td><td>Separa la caja de sus vecinas, por fuera</td><td><code>margin: 0 auto;</code> centra si hay <code>width</code> fijo</td></tr>
+<tr><td><code>width</code> / <code>height</code></td><td>Tamaño de la caja de contenido</td><td>Por defecto, <code>padding</code> y <code>border</code> se suman</td></tr>
+<tr><td><code>box-sizing: border-box</code></td><td>El <code>padding</code> y el <code>border</code> dejan de sumarse al <code>width</code></td><td>Se aplica a la regla, no cambia cómo se escribe el resto</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: con <code>margin: 10px 5px 20px 15px;</code>, ¿cuánto margin tiene la caja en el lado derecho?</div>
+<details><summary>Ver la respuesta</summary>
+<p>5px. El orden de los cuatro valores es siempre arriba, derecha, abajo, izquierda — como las agujas de un reloj empezando arriba. Aquí: arriba 10px, <strong>derecha 5px</strong>, abajo 20px, izquierda 15px.</p>
+</details>
+
+<h2>Ejercicio guiado 1 — Detecta el fallo</h2>
+<p>Copia esto en tu <code>prueba-css.html</code>, pero <strong>antes de abrirlo</strong> con Live Server, calcula a mano cuánto mide realmente de ancho cada <code>.tarjeta-repaso</code> (recuerda: <code>width</code> + <code>padding</code> de los dos lados + <code>border</code> de los dos lados):</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila-tarjetas"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-repaso"</span><span class='et'>&gt;</span>Tarjeta A<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta-repaso"</span><span class='et'>&gt;</span>Tarjeta B<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<pre><code><span class='et'>.fila-tarjetas</span> {
+    <span class='co'>/* display: flex las pone en la misma fila — todavía no hace falta que sepas cómo funciona, lo verás en la sesión 7 */</span>
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='co'>/* si una tarjeta no cabe, baja a la fila de abajo */</span>
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>gap</span>: <span class='ca'>20px</span>;
+    <span class='at'>width</span>: <span class='ca'>520px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px dashed red</span>; <span class='co'>/* solo para que veas el límite del contenedor */</span>
+}
+<span class='et'>.tarjeta-repaso</span> {
+    <span class='at'>width</span>: <span class='ca'>250px</span>;
+    <span class='at'>padding</span>: <span class='ca'>30px</span>;
+    <span class='at'>border</span>: <span class='ca'>4px solid #3c3c3c</span>;
+    <span class='at'>background</span>: <span class='ca'>#e8e8e8</span>;
+    <span class='at'>color</span>: <span class='ca'>#1e1e1e</span>;
+}</code></pre>
+<p>Sobre el papel, dos tarjetas de <code>250px</code> con <code>20px</code> de <code>gap</code> entre ellas ocupan <code>250 + 250 + 20 = 520px</code> — justo lo que mide <code>.fila-tarjetas</code>. Deberían caber exactas. Ahora ábrelo con Live Server: no caben, y la segunda tarjeta salta a una fila de abajo, fuera del recuadro rojo.</p>
+<div class="salida" style="overflow-x:auto;">
+<div style="display:flex; gap:20px; width:520px; border:2px dashed red; flex-wrap:wrap;">
+<div style="width:250px; padding:30px; border:4px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:content-box;">Tarjeta A</div>
+<div style="width:250px; padding:30px; border:4px solid #3c3c3c; background:#e8e8e8; color:#1e1e1e; box-sizing:content-box;">Tarjeta B</div>
+</div>
+</div>
+<p>¿Por qué? Corrige el cálculo de arriba y luego arregla el CSS para que las dos tarjetas quepan de verdad en la fila, sin reducir ningún valor de <code>width</code>, <code>padding</code> o <code>border</code> y sin borrar ninguna línea.</p>
+<details><summary>Pista 1</summary>
+<p>Suma <code>width + padding (los dos lados) + border (los dos lados)</code> de <strong>una sola</strong> tarjeta. ¿Te sigue dando 250px?</p>
+</details>
+<details><summary>Pista 2</summary>
+<p>Cada tarjeta mide en realidad <code>250 + 30+30 + 4+4 = 318px</code>, no 250px. Dos tarjetas más el <code>gap</code> son <code>318 + 318 + 20 = 656px</code>, muy por encima de los 520px del contenedor. Repasa el Reto 2 de la sesión anterior: hay una propiedad que hace que el <code>padding</code> y el <code>border</code> dejen de sumarse al <code>width</code>.</p>
+</details>
+<p>Si lo has corregido bien: al añadir esa propiedad a <code>.tarjeta-repaso</code>, cada tarjeta pasará a medir realmente <code>250px</code>, y las dos cabrán en la misma fila dentro del recuadro rojo, sin que ninguna salte de línea.</p>
+
+<div class="nota">🤔 Antes de seguir: si en vez de corregirlo así, hubieras cambiado <code>width: 250px;</code> por <code>width: 214px;</code> en cada tarjeta (sin tocar <code>box-sizing</code>), ¿también habrían cabido las dos?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Sí — reduciendo el <code>width</code> a mano hasta que <code>width + padding + border</code> vuelva a sumar 250px también lo arregla. Es una solución válida, pero peor: si algún día cambias el <code>padding</code>, tendrías que volver a recalcular el <code>width</code> a mano. Con <code>box-sizing: border-box</code> no hace falta recalcular nada.</p>
+</details>
+
+<h2>Ejercicio guiado 2 — Audita tu propia web</h2>
+<p>Repasa tu <code>estilos.css</code> y comprueba estos cuatro puntos sobre la clase que usas para tus tarjetas (del Reto 1 y el Reto 2 de la sesión anterior):</p>
+<ul class="checklist">
+<li>La regla tiene <code>box-sizing: border-box;</code> aplicado.</li>
+<li>Todos los bloques que quieres que parezcan tarjetas usan esa misma clase — no valores repetidos a mano en reglas distintas.</li>
+<li>Ningún bloque toca el borde de la ventana ni el bloque de al lado: hay <code>margin</code> donde corresponde.</li>
+<li>Si tienes alguna caja centrada con <code>margin: 0 auto;</code>, comprueba que tiene un <code>width</code> fijo — si no lo tiene, no se centrará (lo viste en la sesión anterior).</li>
+</ul>
+<p>Comprobación: con <code>box-sizing: border-box</code> ya aplicado, cambia el <code>padding</code> de una tarjeta a un valor distinto. Si todo está bien configurado, el ancho de la tarjeta en pantalla <strong>no cambiará</strong> — solo cambiará el aire que queda dentro, alrededor del texto.</p>
+
+<h2>Lo que viene</h2>
+<p>Ya controlas el espacio dentro de una caja: cuánto aire tiene por dentro (<code>padding</code>), cuánto borde la rodea (<code>border</code>) y cuánto espacio la separa de sus vecinas (<code>margin</code>). Lo que todavía no puedes hacer es decidir <strong>cómo se organizan varias cajas entre sí</strong> — ponerlas en fila en vez de una debajo de otra, repartir el espacio sobrante entre ellas, o centrarlas verticalmente. Eso es exactamente lo que resuelve <strong>Flexbox</strong>, en la sesión 7. Antes, en la sesión 6, verás las tablas de datos.</p>
+
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
+
+<h2>Autoevaluación y relaciona conceptos</h2>
+<p>Antes de cerrar, comprueba con las actividades de abajo si el modelo de caja te ha quedado claro del todo.</p>

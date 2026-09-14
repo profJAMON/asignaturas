@@ -1,0 +1,96 @@
+<p>Esta página no es una sesión: es material de <strong>consulta</strong>. No hace falta leerla entera ni estudiarla de un tirón. Sirve para cuando estés repasando y no recuerdes qué significa una palabra, o para repasar antes del examen.</p>
+<div class="nota">💡 Usa el índice de la derecha (<em>En esta página</em>) para saltar directo a lo que buscas.</div>
+
+<h2>Palabras que se confunden</h2>
+<p>Estas parejas son la causa de la mayoría de los malentendidos en esta unidad. Si te aclaras con ellas, entenderás mucho mejor las preguntas.</p>
+
+<h3>IP y dominio</h3>
+<table>
+<tr><th></th><th>Dirección IP</th><th>Dominio</th></tr>
+<tr><td>Qué es</td><td>Un número que identifica un dispositivo (<code>142.250.184.78</code>)</td><td>Un nombre fácil de recordar (<code>google.com</code>)</td></tr>
+<tr><td>¿Quién lo entiende?</td><td>Los ordenadores y routers, directamente</td><td>Las personas — el DNS lo traduce a IP por debajo</td></tr>
+<tr><td>¿Se puede comprar?</td><td>No se "compra" como tal</td><td>Sí, se registra por un tiempo (normalmente un año)</td></tr>
+</table>
+<div class="nota">El DNS es el puente entre las dos: tú escribes el dominio, el DNS busca la IP que le corresponde, y con esa IP el navegador ya puede conectar.</div>
+
+<h3>Dominio y hosting</h3>
+<p>Se confunden porque los vende a menudo la misma empresa, pero son dos contrataciones distintas: el <strong>dominio</strong> es solo el nombre; el <strong>hosting</strong> es el servidor real, encendido permanentemente, donde vive tu página. Un dominio sin hosting apunta a ningún sitio; un hosting sin dominio solo es accesible por su IP.</p>
+
+<h3><code>http://</code> y <code>https://</code></h3>
+<table>
+<tr><th></th><th><code>http://</code></th><th><code>https://</code></th></tr>
+<tr><td>Datos</td><td>Viajan sin cifrar</td><td>Viajan cifrados</td></tr>
+<tr><td>Necesita certificado</td><td>No</td><td>Sí</td></tr>
+<tr><td>Aviso del navegador</td><td>"No seguro"</td><td>Candado 🔒</td></tr>
+</table>
+
+<h3>Error 404 y error 500</h3>
+<table>
+<tr><th></th><th>404</th><th>500</th></tr>
+<tr><td>¿Quién falla?</td><td>Lo que pediste (la ruta) no existe en el servidor</td><td>El propio servidor, al intentar responder</td></tr>
+<tr><td>¿Dónde está el problema, normalmente?</td><td>En tu HTML: una ruta mal escrita o un archivo movido</td><td>En el servidor o en su configuración</td></tr>
+</table>
+
+<h3>Ruta de un archivo y ruta de una URL</h3>
+<p>El mismo nombre, "ruta", se usa en dos sitios distintos. La <strong>ruta de un archivo</strong> (Unidad 1) es dónde está guardado un archivo en tu carpeta, y la escribes en <code>src</code> o <code>href</code> (<code>imagenes/foto.jpg</code>). La <strong>ruta de una URL</strong> (esta unidad) es la parte de la dirección web que viene después del dominio (<code>/blog/posts</code>) y no tiene por qué corresponder a ninguna carpeta real en el servidor. Son conceptos distintos que comparten nombre porque los dos indican "dónde encontrar algo".</p>
+
+<h2>El navegador y sus herramientas (DevTools)</h2>
+<table>
+<tr><th>Panel</th><th>Para qué sirve</th></tr>
+<tr><td><strong>Elements</strong></td><td>Ver y tocar el HTML y el CSS tal como los está usando el navegador en ese momento.</td></tr>
+<tr><td><strong>Console</strong></td><td>Leer avisos y errores: qué archivo falla y en qué línea.</td></tr>
+<tr><td><strong>Network</strong></td><td>Ver todos los archivos que el navegador ha pedido, con su URL completa y su código de estado.</td></tr>
+</table>
+<div class="nota">Truco rápido: color/tamaño raro → Elements (panel Styles). Algo "no funciona" sin más pistas → Console. Una imagen o archivo no llega → Network.</div>
+
+<h2>Vocabulario de redes</h2>
+<table>
+<tr><th>Palabra</th><th>Qué significa</th></tr>
+<tr><td><strong>Cliente</strong></td><td>Quien pide: normalmente, tu navegador.</td></tr>
+<tr><td><strong>Servidor</strong></td><td>Quien responde: el ordenador que guarda la página y la envía cuando se la piden.</td></tr>
+<tr><td><strong>Dirección IP</strong></td><td>Número único que identifica un dispositivo conectado a internet.</td></tr>
+<tr><td><strong>DNS</strong></td><td>El sistema que traduce un dominio a su dirección IP, como una agenda de contactos.</td></tr>
+<tr><td><strong>Dominio</strong></td><td>El nombre de una web (<code>iesramonllull.net</code>), registrado y pagado por un tiempo.</td></tr>
+<tr><td><strong>Hosting</strong></td><td>El servicio que aloja tu web en un servidor siempre encendido y conectado.</td></tr>
+<tr><td><strong>Certificado HTTPS</strong></td><td>Documento digital que confirma la identidad del servidor y permite cifrar la conexión.</td></tr>
+<tr><td><strong>Protocolo</strong></td><td>El "idioma" con el que dos programas se comunican (por ejemplo, HTTP).</td></tr>
+<tr><td><strong>Petición</strong> (request)</td><td>Lo que el cliente envía al servidor para pedir algo.</td></tr>
+<tr><td><strong>Respuesta</strong> (response)</td><td>Lo que el servidor devuelve: un código de estado y, normalmente, contenido.</td></tr>
+</table>
+
+<h2>Anatomía de una URL</h2>
+<pre><code>https://blog.iescfg.net/posts?tema=web#final</code></pre>
+<table>
+<tr><th>Parte</th><th>En el ejemplo</th><th>Qué indica</th></tr>
+<tr><td>Protocolo</td><td><code>https://</code></td><td>Cómo se transporta (cifrado o no)</td></tr>
+<tr><td>Dominio</td><td><code>blog.iescfg.net</code></td><td>A qué servidor te diriges</td></tr>
+<tr><td>Ruta</td><td><code>/posts</code></td><td>Qué recurso concreto pides</td></tr>
+<tr><td>Parámetros (query string)</td><td><code>?tema=web</code></td><td>Pares <code>clave=valor</code>, una variación de la misma página</td></tr>
+<tr><td>Fragmento (ancla)</td><td><code>#final</code></td><td>Un punto dentro de la misma página — no se envía al servidor</td></tr>
+</table>
+
+<h2>Métodos y códigos de estado HTTP</h2>
+<table>
+<tr><th>Método</th><th>Para qué se usa</th></tr>
+<tr><td><code>GET</code></td><td>Pedir un recurso: cargar una página, hacer clic en un enlace.</td></tr>
+<tr><td><code>POST</code></td><td>Enviar datos al servidor (formularios). No se usa este curso.</td></tr>
+</table>
+<table>
+<tr><th>Código</th><th>Significado</th></tr>
+<tr><td><code>200</code></td><td>OK — todo ha ido bien</td></tr>
+<tr><td><code>301</code></td><td>Redirección permanente</td></tr>
+<tr><td><code>404</code></td><td>No encontrado — el servidor responde, pero no tiene lo que pides</td></tr>
+<tr><td><code>500</code></td><td>Error interno del servidor</td></tr>
+</table>
+
+<h2>Antes de examinarte, compruébate esto</h2>
+<p>No es un quiz: son preguntas rápidas para detectar qué te falta repasar. Si alguna te hace dudar, vuelve a la sesión correspondiente antes del examen.</p>
+<ul class="checklist">
+<li>¿Sabrías explicar la diferencia entre cliente y servidor con un ejemplo distinto al del navegador?</li>
+<li>¿Sabes qué hace el DNS y por qué existe, sin mirar apuntes?</li>
+<li>Dada una URL completa cualquiera, ¿sabrías señalar sus cinco partes?</li>
+<li>¿Sabrías decir, sin dudar, qué significan los códigos 200, 301, 404 y 500?</li>
+<li>¿Sabes en qué pestaña de las DevTools mirarías cada tipo de problema (Elements, Console, Network)?</li>
+<li>¿Podrías explicar, de un tirón, qué tres cosas hacen falta para publicar una web de verdad?</li>
+<li>¿Sabrías explicar con tus palabras qué significa que una web use HTTPS y por qué importa?</li>
+</ul>

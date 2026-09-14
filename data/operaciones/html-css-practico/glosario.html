@@ -1,0 +1,322 @@
+<p>Esta página no es una sesión: es material de <strong>consulta</strong>. No hace falta leerla entera ni estudiarla. Sirve para cuando estés trabajando y no recuerdes cómo se escribía algo, o cuando una palabra del enunciado no te suene.</p>
+<div class="nota">💡 Usa el índice de la derecha (<em>En esta página</em>) para saltar directo a lo que buscas. El glosario irá creciendo a medida que avance el curso.</div>
+
+<h2>Palabras que se confunden</h2>
+<p>Estas parejas son la causa de la mayoría de los malentendidos al empezar. Si te aclaras con ellas, entenderás mucho mejor los enunciados.</p>
+
+<h3>Etiqueta y elemento</h3>
+<p>La <strong>etiqueta</strong> es lo que escribes entre <code>&lt;</code> y <code>&gt;</code>. El <strong>elemento</strong> es el conjunto completo: etiqueta de apertura + contenido + etiqueta de cierre.</p>
+<pre><code><span class='et'>&lt;p&gt;</span>Hola<span class='et'>&lt;/p&gt;</span>
+<span class='co'>/* &lt;p&gt; y &lt;/p&gt; son etiquetas. Todo junto es un elemento. */</span></code></pre>
+<p>Por eso se dice "la etiqueta <code>&lt;img&gt;</code> no se cierra", pero también "el elemento <code>&lt;p&gt;</code> contiene texto".</p>
+
+<h3>Atributo, propiedad y valor</h3>
+<p>Es la confusión más habitual, porque las dos primeras palabras suenan parecidas pero viven en lenguajes distintos:</p>
+<table>
+<tr><th>Palabra</th><th>Dónde vive</th><th>Ejemplo</th></tr>
+<tr><td><strong>Atributo</strong></td><td>En HTML, dentro de una etiqueta</td><td><code>&lt;img src="foto.jpg"&gt;</code> → <code>src</code></td></tr>
+<tr><td><strong>Propiedad</strong></td><td>En CSS, dentro de una regla</td><td><code>color: red;</code> → <code>color</code></td></tr>
+<tr><td><strong>Valor</strong></td><td>En los dos: lo que va después del <code>=</code> o del <code>:</code></td><td><code>"foto.jpg"</code>, <code>red</code></td></tr>
+</table>
+<div class="nota">Regla rápida: si lo escribes <strong>dentro de una etiqueta</strong> y lleva <code>=</code> y comillas, es un <strong>atributo</strong>. Si lo escribes <strong>dentro de unas llaves</strong> y lleva <code>:</code> y punto y coma, es una <strong>propiedad</strong>.</div>
+
+<h3>Regla, selector y declaración</h3>
+<p>Una <strong>regla</strong> CSS completa tiene dos partes: el <strong>selector</strong> (a quién afecta) y las <strong>declaraciones</strong> entre llaves (qué le hace). Cada declaración es una pareja propiedad + valor.</p>
+<pre><code><span class='et'>h1</span> {                    <span class='co'>/* h1 = selector */</span>
+    <span class='at'>color</span>: <span class='ca'>darkblue</span>;      <span class='co'>/* esto es una declaración */</span>
+    <span class='at'>text-align</span>: <span class='ca'>center</span>;  <span class='co'>/* esto es otra declaración */</span>
+}                       <span class='co'>/* todo junto: una regla */</span></code></pre>
+
+<h3>Clase e id</h3>
+<table>
+<tr><th></th><th>Clase</th><th>Id</th></tr>
+<tr><td>En el HTML</td><td><code>class="destacado"</code></td><td><code>id="cabecera"</code></td></tr>
+<tr><td>En el CSS</td><td><code>.destacado { }</code> (punto)</td><td><code>#cabecera { }</code> (almohadilla)</td></tr>
+<tr><td>¿Se puede repetir?</td><td>Sí, en todos los elementos que quieras</td><td>No, solo un elemento por página</td></tr>
+<tr><td>Se usa para</td><td>Reutilizar el mismo estilo en varios sitios</td><td>Un elemento único, o como destino de un enlace ancla</td></tr>
+</table>
+<div class="nota">El <code>id</code> tiene doble vida: en la sesión 2 lo usaste como <strong>destino de un enlace ancla</strong> (<code>href="#css"</code> salta al elemento con <code>id="css"</code>), y en la sesión 4 como <strong>selector de CSS</strong>. Es el mismo atributo haciendo dos trabajos distintos.</div>
+
+<h3><code>padding</code> y <code>margin</code></h3>
+<p>Las dos crean espacio, pero en lados distintos del borde:</p>
+<table>
+<tr><th>Propiedad</th><th>Dónde crea el espacio</th><th>Efecto</th></tr>
+<tr><td><code>padding</code></td><td>Por <strong>dentro</strong> del borde</td><td>Aleja tu contenido del borde de su propia caja</td></tr>
+<tr><td><code>margin</code></td><td>Por <strong>fuera</strong> del borde</td><td>Aleja la caja entera de las cajas vecinas</td></tr>
+</table>
+<p>Truco: si el <strong>fondo de color</strong> del elemento crece, era <code>padding</code>. Si crece el hueco pero el fondo no, era <code>margin</code>.</p>
+
+<h3><code>width</code>: a veces atributo, a veces propiedad</h3>
+<p>La misma palabra aparece en los dos lenguajes y no son lo mismo:</p>
+<pre><code><span class='co'>&lt;!-- En HTML: atributo, solo para imágenes --&gt;</span>
+<span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"foto.jpg"</span> <span class='at'>alt</span>=<span class='ca'>"..."</span> <span class='at'>width</span>=<span class='ca'>"220"</span><span class='et'>&gt;</span>
+
+<span class='co'>/* En CSS: propiedad, para cualquier caja */</span>
+<span class='et'>.tarjeta</span> {
+    <span class='at'>width</span>: <span class='ca'>300px</span>;
+}</code></pre>
+<div class="nota">Fíjate en la diferencia de escritura: en HTML va <strong>sin unidad</strong> y entre comillas (<code>width="220"</code>); en CSS va <strong>con unidad</strong> y sin comillas (<code>width: 300px;</code>).</div>
+
+<h3>Estilo interno y estilo externo</h3>
+<table>
+<tr><th>Forma</th><th>Dónde se escribe</th><th>Cuándo se usa</th></tr>
+<tr><td>Interno</td><td>Dentro de <code>&lt;style&gt;</code>, en el <code>&lt;head&gt;</code></td><td>Solo para probar algo rápido</td></tr>
+<tr><td>Externo</td><td>En un archivo <code>.css</code> aparte, enlazado con <code>&lt;link&gt;</code></td><td><strong>Siempre</strong> en tu web personal</td></tr>
+<tr><td>En línea</td><td><code>style="..."</code> dentro de la propia etiqueta</td><td>No lo usamos en esta asignatura</td></tr>
+</table>
+
+<h3>Tabla de datos y tabla de maquetación</h3>
+<p>Una <strong>tabla de datos</strong> (<code>&lt;table&gt;</code>) es para información real organizada en filas y columnas: un horario, una clasificación. Una <strong>tabla de maquetación</strong> es usar esa misma etiqueta solo para colocar bloques de la página en columnas — algo que este curso <strong>no enseña</strong>, porque mezcla estructura de datos con diseño visual. Si ves una página (o un examen) cuyo código use <code>&lt;table&gt;</code> para organizar el layout general, la técnica correcta para replicarlo es <strong>Flexbox</strong>, no una tabla, aunque el original esté hecho de otra forma.</p>
+
+<h3><code>&lt;img&gt;</code> y <code>background-image</code></h3>
+<table>
+<tr><th></th><th><code>&lt;img&gt;</code></th><th><code>background-image</code></th></tr>
+<tr><td>Lenguaje</td><td>HTML</td><td>CSS</td></tr>
+<tr><td>Qué es</td><td><strong>Contenido</strong> de la página</td><td><strong>Decoración</strong> aplicada a un elemento</td></tr>
+<tr><td>¿Tiene <code>alt</code>?</td><td>Sí, obligatorio</td><td>No existe ese concepto</td></tr>
+<tr><td>Ejemplo de uso</td><td>La foto de un producto, un logo con significado</td><td>Una franja decorativa, una textura de fondo</td></tr>
+</table>
+
+<h3>Selector y pseudo-clase</h3>
+<p>Un <strong>selector</strong> normal (<code>p</code>, <code>.tarjeta</code>, <code>#cabecera</code>) afecta al elemento siempre. Una <strong>pseudo-clase</strong> como <code>:hover</code> se pega detrás de un selector y solo aplica el estilo <strong>bajo una condición</strong> — en este caso, mientras el ratón está encima.</p>
+<pre><code><span class='et'>.boton</span> {                  <span class='co'>/* selector: siempre */</span>
+    <span class='at'>background-color</span>: <span class='ca'>#3c3c3c</span>;
+}
+<span class='et'>.boton:hover</span> {            <span class='co'>/* selector + pseudo-clase: solo con el ratón encima */</span>
+    <span class='at'>background-color</span>: <span class='ca'>#3a9bd1</span>;
+}</code></pre>
+
+<h2>El entorno de trabajo</h2>
+<p>Vocabulario que no es HTML ni CSS, pero que aparece en todos los enunciados.</p>
+<table>
+<tr><th>Palabra</th><th>Qué significa</th></tr>
+<tr><td><strong>Carpeta de proyecto</strong></td><td>La carpeta que contiene todos los archivos de tu web (<code>mi-web</code>). En programación no se trabaja con archivos sueltos: se abre la carpeta entera en VS Code.</td></tr>
+<tr><td><strong>Extensión</strong></td><td>Lo que va después del punto en el nombre del archivo (<code>.html</code>, <code>.css</code>, <code>.jpg</code>). Le dice al ordenador qué tipo de archivo es. Si la extensión está mal, el archivo no funciona aunque el contenido sea correcto.</td></tr>
+<tr><td><strong><code>index.html</code></strong></td><td>El nombre que se le da por convención a la página principal de un sitio web.</td></tr>
+<tr><td><strong>Ruta</strong></td><td>La dirección que indica dónde está un archivo. Es lo que escribes en <code>src</code> y en <code>href</code>.</td></tr>
+<tr><td><strong>Ruta relativa</strong></td><td>Una ruta que se lee <em>desde el archivo que la escribe</em>. <code>src="foto.jpg"</code> significa "una foto que está en la misma carpeta que este HTML".</td></tr>
+<tr><td><strong>Live Server</strong></td><td>La extensión de VS Code que abre tu página en el navegador y la recarga sola cada vez que guardas.</td></tr>
+<tr><td><strong>Guardar</strong> (<code>Ctrl+S</code>)</td><td>Hasta que no guardas, el navegador sigue viendo la versión antigua. Si un cambio "no se ve", lo primero es comprobar si has guardado.</td></tr>
+<tr><td><strong>Código fuente</strong></td><td>El HTML y el CSS con los que está hecha una página. Se puede ver en cualquier web con <code>Ctrl+U</code>.</td></tr>
+<tr><td><strong>Renderizar</strong></td><td>Lo que hace el navegador: leer tu código y dibujar la página en pantalla.</td></tr>
+</table>
+<div class="nota">⚠️ El fallo número uno cuando "no aparece la imagen" o "no se aplica el CSS" es la <strong>ruta</strong>: el nombre escrito en <code>src</code> o <code>href</code> no coincide exactamente con el archivo real, o el archivo está en otra carpeta. Mayúsculas, espacios y extensión cuentan.</div>
+
+<h2>Etiquetas HTML vistas hasta ahora</h2>
+<table>
+<tr><th>Etiqueta</th><th>Para qué sirve</th><th>Sesión</th></tr>
+<tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Indica que el documento es HTML moderno. Va siempre la primera línea.</td><td>1</td></tr>
+<tr><td><code>&lt;html&gt;</code></td><td>Envuelve toda la página.</td><td>1</td></tr>
+<tr><td><code>&lt;head&gt;</code></td><td>Información sobre la página, que no se ve en pantalla.</td><td>1</td></tr>
+<tr><td><code>&lt;title&gt;</code></td><td>El texto que aparece en la pestaña del navegador.</td><td>1</td></tr>
+<tr><td><code>&lt;body&gt;</code></td><td>Todo el contenido que sí se ve.</td><td>1</td></tr>
+<tr><td><code>&lt;h1&gt;</code> … <code>&lt;h6&gt;</code></td><td>Encabezados, de más a menos importante. Un solo <code>&lt;h1&gt;</code> por página y sin saltarse niveles.</td><td>1</td></tr>
+<tr><td><code>&lt;p&gt;</code></td><td>Un párrafo de texto.</td><td>1</td></tr>
+<tr><td><code>&lt;!-- --&gt;</code></td><td>Comentario: notas para ti, el navegador las ignora.</td><td>2</td></tr>
+<tr><td><code>&lt;strong&gt;</code></td><td>Marca texto importante (se ve en negrita).</td><td>2</td></tr>
+<tr><td><code>&lt;em&gt;</code></td><td>Marca texto enfatizado (se ve en cursiva).</td><td>2</td></tr>
+<tr><td><code>&lt;ul&gt;</code></td><td>Lista sin orden, con viñetas.</td><td>2</td></tr>
+<tr><td><code>&lt;ol&gt;</code></td><td>Lista ordenada, numerada.</td><td>2</td></tr>
+<tr><td><code>&lt;li&gt;</code></td><td>Cada elemento dentro de una lista.</td><td>2</td></tr>
+<tr><td><code>&lt;a&gt;</code></td><td>Un enlace.</td><td>2</td></tr>
+<tr><td><code>&lt;img&gt;</code></td><td>Una imagen. No se cierra.</td><td>3</td></tr>
+<tr><td><code>&lt;header&gt;</code></td><td>Cabecera de la página.</td><td>3</td></tr>
+<tr><td><code>&lt;nav&gt;</code></td><td>Menú de navegación.</td><td>3</td></tr>
+<tr><td><code>&lt;main&gt;</code></td><td>Contenido principal. Solo uno por página.</td><td>3</td></tr>
+<tr><td><code>&lt;section&gt;</code></td><td>Un bloque temático dentro del contenido.</td><td>3</td></tr>
+<tr><td><code>&lt;article&gt;</code></td><td>Contenido con sentido por sí solo.</td><td>3</td></tr>
+<tr><td><code>&lt;footer&gt;</code></td><td>Pie de página.</td><td>3</td></tr>
+<tr><td><code>&lt;div&gt;</code></td><td>Contenedor genérico, sin significado. Último recurso.</td><td>3</td></tr>
+<tr><td><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></td><td>Agrupa una imagen con su pie de foto.</td><td>3</td></tr>
+<tr><td><code>&lt;style&gt;</code></td><td>Permite escribir CSS dentro del propio HTML. Va en el <code>&lt;head&gt;</code>.</td><td>4</td></tr>
+<tr><td><code>&lt;link&gt;</code></td><td>Enlaza un archivo CSS externo (o el favicon). Va en el <code>&lt;head&gt;</code> y no se cierra.</td><td>4</td></tr>
+<tr><td><code>&lt;table&gt;</code></td><td>Tabla para datos reales, organizados en filas y columnas.</td><td>6</td></tr>
+<tr><td><code>&lt;tr&gt;</code></td><td>Una fila de una tabla.</td><td>6</td></tr>
+<tr><td><code>&lt;th&gt;</code></td><td>Una celda de cabecera (título de columna o fila).</td><td>6</td></tr>
+<tr><td><code>&lt;td&gt;</code></td><td>Una celda de datos normal.</td><td>6</td></tr>
+<tr><td><code>&lt;meta&gt;</code></td><td>Metadato de la página en el <code>&lt;head&gt;</code>: no se ve, pero configura cosas como el viewport o la descripción. No se cierra.</td><td>8</td></tr>
+</table>
+
+<h2>Atributos HTML vistos hasta ahora</h2>
+<table>
+<tr><th>Atributo</th><th>En qué etiqueta</th><th>Para qué sirve</th></tr>
+<tr><td><code>src</code></td><td><code>&lt;img&gt;</code></td><td>La ruta del archivo de imagen.</td></tr>
+<tr><td><code>alt</code></td><td><code>&lt;img&gt;</code></td><td>Texto que describe la imagen: lo lee un lector de pantalla y aparece si la imagen no carga.</td></tr>
+<tr><td><code>width</code> / <code>height</code></td><td><code>&lt;img&gt;</code></td><td>Tamaño en píxeles. Pon solo uno de los dos para no deformarla.</td></tr>
+<tr><td><code>href</code></td><td><code>&lt;a&gt;</code>, <code>&lt;link&gt;</code></td><td>La dirección a la que apunta.</td></tr>
+<tr><td><code>target="_blank"</code></td><td><code>&lt;a&gt;</code></td><td>Abre el enlace en una pestaña nueva.</td></tr>
+<tr><td><code>rel="stylesheet"</code></td><td><code>&lt;link&gt;</code></td><td>Indica que el archivo enlazado es una hoja de estilos.</td></tr>
+<tr><td><code>type</code></td><td><code>&lt;ol&gt;</code></td><td>Cambia la numeración: <code>1</code>, <code>a</code>, <code>I</code>…</td></tr>
+<tr><td><code>class</code></td><td>Cualquiera</td><td>Etiqueta el elemento para poder darle estilo con <code>.nombre</code> en CSS. Se puede repetir.</td></tr>
+<tr><td><code>id</code></td><td>Cualquiera</td><td>Identificador único: sirve como selector <code>#nombre</code> y como destino de un enlace ancla.</td></tr>
+<tr><td><code>colspan</code></td><td><code>&lt;td&gt;</code>, <code>&lt;th&gt;</code></td><td>Fusiona esa celda con las siguientes columnas de la misma fila.</td></tr>
+<tr><td><code>rowspan</code></td><td><code>&lt;td&gt;</code>, <code>&lt;th&gt;</code></td><td>Fusiona esa celda con las siguientes filas de la misma columna.</td></tr>
+<tr><td><code>rel="icon"</code></td><td><code>&lt;link&gt;</code></td><td>Indica que el archivo enlazado es el favicon (el icono de la pestaña).</td></tr>
+<tr><td><code>name="viewport"</code></td><td><code>&lt;meta&gt;</code></td><td>Controla cómo se ajusta la página al ancho de pantallas pequeñas (móvil).</td></tr>
+<tr><td><code>name="description"</code></td><td><code>&lt;meta&gt;</code></td><td>Descripción corta de la página, usada por buscadores.</td></tr>
+<tr><td><code>content</code></td><td><code>&lt;meta&gt;</code></td><td>El valor de ese metadato (el texto del viewport o de la descripción).</td></tr>
+</table>
+
+<h2>Propiedades CSS vistas hasta ahora</h2>
+<table>
+<tr><th>Propiedad</th><th>Qué controla</th><th>Ejemplo de valor</th></tr>
+<tr><td><code>color</code></td><td>Color del texto</td><td><code>darkblue</code>, <code>#ff6347</code></td></tr>
+<tr><td><code>background-color</code></td><td>Color de fondo del elemento</td><td><code>tomato</code>, <code>#2d2d30</code></td></tr>
+<tr><td><code>font-family</code></td><td>La tipografía</td><td><code>Georgia, serif</code></td></tr>
+<tr><td><code>font-size</code></td><td>Tamaño del texto</td><td><code>2em</code>, <code>18px</code></td></tr>
+<tr><td><code>font-weight</code></td><td>Grosor del texto</td><td><code>normal</code>, <code>bold</code></td></tr>
+<tr><td><code>text-align</code></td><td>Alineación del texto</td><td><code>left</code>, <code>center</code>, <code>right</code></td></tr>
+<tr><td><code>padding</code></td><td>Espacio interior, entre contenido y borde</td><td><code>20px</code>, <code>10px 30px</code></td></tr>
+<tr><td><code>border</code></td><td>El borde: grosor, estilo y color</td><td><code>2px solid #3c3c3c</code></td></tr>
+<tr><td><code>border-radius</code></td><td>Redondea las esquinas</td><td><code>6px</code></td></tr>
+<tr><td><code>margin</code></td><td>Espacio exterior, hacia las cajas vecinas</td><td><code>16px</code>, <code>0 auto</code></td></tr>
+<tr><td><code>width</code> / <code>height</code></td><td>Tamaño de la caja de contenido</td><td><code>300px</code></td></tr>
+<tr><td><code>box-sizing</code></td><td>Si el padding y el borde se suman o no al <code>width</code></td><td><code>border-box</code></td></tr>
+<tr><td><code>list-style-type</code></td><td>El tipo de viñeta de una lista</td><td><code>disc</code>, <code>circle</code>, <code>square</code></td></tr>
+<tr><td><code>border-collapse</code></td><td>Une los bordes de las celdas de una tabla en uno solo, en vez de dejarlos dobles</td><td><code>collapse</code></td></tr>
+<tr><td><code>display: flex</code></td><td>Convierte un contenedor en flexible: sus hijos se organizan en fila o columna</td><td><code>flex</code></td></tr>
+<tr><td><code>flex-direction</code></td><td>Si los elementos de un contenedor flex van en fila o en columna</td><td><code>row</code>, <code>column</code></td></tr>
+<tr><td><code>justify-content</code></td><td>Cómo se reparten los elementos en el eje principal</td><td><code>center</code>, <code>space-between</code></td></tr>
+<tr><td><code>align-items</code></td><td>Cómo se alinean los elementos en el eje cruzado</td><td><code>center</code>, <code>stretch</code></td></tr>
+<tr><td><code>flex-wrap</code></td><td>Si los elementos que no caben pasan a una nueva línea o se desbordan</td><td><code>wrap</code></td></tr>
+<tr><td><code>gap</code></td><td>Espacio entre los elementos de un contenedor flex</td><td><code>16px</code></td></tr>
+<tr><td><code>background-image</code></td><td>Imagen de fondo de un elemento, aplicada por CSS</td><td><code>url("fondo.jpg")</code></td></tr>
+<tr><td><code>background-repeat</code></td><td>Si la imagen de fondo se repite, y en qué dirección</td><td><code>repeat-y</code>, <code>no-repeat</code></td></tr>
+<tr><td><code>background-size</code></td><td>Cómo encaja la imagen de fondo dentro de la caja</td><td><code>cover</code>, <code>contain</code></td></tr>
+<tr><td><code>cursor</code></td><td>La forma del puntero del ratón sobre el elemento</td><td><code>pointer</code></td></tr>
+</table>
+
+<h2>Chuleta de sintaxis</h2>
+<p>Cómo se escribe cada cosa, para copiar la forma (no el contenido) cuando no te acuerdes.</p>
+
+<h3>Estructura de una página</h3>
+<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>
+<span class='et'>&lt;html&gt;</span>
+<span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Título de la pestaña<span class='et'>&lt;/title&gt;</span>
+    <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"estilos.css"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/head&gt;</span>
+<span class='et'>&lt;body&gt;</span>
+    <span class='co'>&lt;!-- Aquí va todo lo que se ve --&gt;</span>
+<span class='et'>&lt;/body&gt;</span>
+<span class='et'>&lt;/html&gt;</span></code></pre>
+
+<h3>Texto y listas</h3>
+<pre><code><span class='et'>&lt;h2&gt;</span>Un subtítulo<span class='et'>&lt;/h2&gt;</span>
+<span class='et'>&lt;p&gt;</span>Esto es <span class='et'>&lt;strong&gt;</span>importante<span class='et'>&lt;/strong&gt;</span> y esto <span class='et'>&lt;em&gt;</span>enfatizado<span class='et'>&lt;/em&gt;</span>.<span class='et'>&lt;/p&gt;</span>
+
+<span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Elemento con lista dentro
+        <span class='et'>&lt;ol&gt;</span>
+            <span class='et'>&lt;li&gt;</span>Primero<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;/ol&gt;</span>
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Otro elemento<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="nota">La lista anidada va <strong>dentro</strong> del <code>&lt;li&gt;</code>, antes de su <code>&lt;/li&gt;</code>.</div>
+
+<h3>Enlaces</h3>
+<pre><code><span class='co'>&lt;!-- A otra web --&gt;</span>
+<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://developer.mozilla.org"</span> <span class='at'>target</span>=<span class='ca'>"_blank"</span><span class='et'>&gt;</span>MDN<span class='et'>&lt;/a&gt;</span>
+
+<span class='co'>&lt;!-- A otra página tuya --&gt;</span>
+<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"sobre-mi.html"</span><span class='et'>&gt;</span>Sobre mí<span class='et'>&lt;/a&gt;</span>
+
+<span class='co'>&lt;!-- A una sección de esta misma página --&gt;</span>
+<span class='et'>&lt;h2</span> <span class='at'>id</span>=<span class='ca'>"contacto"</span><span class='et'>&gt;</span>Contacto<span class='et'>&lt;/h2&gt;</span>
+<span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#contacto"</span><span class='et'>&gt;</span>Ir a contacto<span class='et'>&lt;/a&gt;</span></code></pre>
+
+<h3>Imágenes</h3>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"gato.jpg"</span> <span class='at'>alt</span>=<span class='ca'>"Un gato gris durmiendo en un sofá"</span> <span class='at'>width</span>=<span class='ca'>"220"</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;figure&gt;</span>
+    <span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"gato.jpg"</span> <span class='at'>alt</span>=<span class='ca'>"..."</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;figcaption&gt;</span>Mi gato, durmiendo como siempre<span class='et'>&lt;/figcaption&gt;</span>
+<span class='et'>&lt;/figure&gt;</span></code></pre>
+
+<h3>Estructura semántica</h3>
+<pre><code><span class='et'>&lt;body&gt;</span>
+    <span class='et'>&lt;header&gt;</span>...<span class='et'>&lt;/header&gt;</span>
+    <span class='et'>&lt;nav&gt;</span>...<span class='et'>&lt;/nav&gt;</span>
+    <span class='et'>&lt;main&gt;</span>
+        <span class='et'>&lt;section&gt;</span>...<span class='et'>&lt;/section&gt;</span>
+        <span class='et'>&lt;section&gt;</span>...<span class='et'>&lt;/section&gt;</span>
+    <span class='et'>&lt;/main&gt;</span>
+    <span class='et'>&lt;footer&gt;</span>...<span class='et'>&lt;/footer&gt;</span>
+<span class='et'>&lt;/body&gt;</span></code></pre>
+
+<h3>Reglas CSS</h3>
+<pre><code><span class='co'>/* Por etiqueta: todos los &lt;p&gt; de la página */</span>
+<span class='et'>p</span> {
+    <span class='at'>font-size</span>: <span class='ca'>1.1em</span>;
+}
+
+<span class='co'>/* Por clase: todo lo que tenga class="destacado" */</span>
+<span class='et'>.destacado</span> {
+    <span class='at'>color</span>: <span class='ca'>darkred</span>;
+}
+
+<span class='co'>/* Por id: el único elemento con id="cabecera" */</span>
+<span class='et'>#cabecera</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#2d2d30</span>;
+}
+
+<span class='co'>/* Una tarjeta con caja completa */</span>
+<span class='et'>.tarjeta</span> {
+    <span class='at'>padding</span>: <span class='ca'>20px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px solid #3c3c3c</span>;
+    <span class='at'>border-radius</span>: <span class='ca'>6px</span>;
+    <span class='at'>margin-bottom</span>: <span class='ca'>16px</span>;
+    <span class='at'>box-sizing</span>: <span class='ca'>border-box</span>;
+}</code></pre>
+<div class="nota">Los comentarios se escriben distinto en cada lenguaje: en HTML <code>&lt;!-- así --&gt;</code>, en CSS <code>/* así */</code>. No son intercambiables.</div>
+
+<h3>Tablas de datos</h3>
+<pre><code><span class='et'>&lt;table&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;th&gt;</span>Asignatura<span class='et'>&lt;/th&gt;</span><span class='et'>&lt;th&gt;</span>Horas<span class='et'>&lt;/th&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;td&gt;</span>Informática<span class='et'>&lt;/td&gt;</span><span class='et'>&lt;td&gt;</span>5<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;td</span> <span class='at'>colspan</span>=<span class='ca'>"2"</span><span class='et'>&gt;</span>Total<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+<span class='et'>&lt;/table&gt;</span></code></pre>
+<div class="nota">⚠️ Si fusionas una celda con <code>colspan</code>, esa fila tiene que tener <strong>menos celdas</strong> que las demás (las que fusiona ya no se escriben aparte) — si no, la tabla se descuadra.</div>
+
+<h3>Flexbox</h3>
+<pre><code><span class='et'>.contenedor</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>gap</span>: <span class='ca'>16px</span>;
+    <span class='at'>justify-content</span>: <span class='ca'>center</span>;
+}</code></pre>
+<div class="nota">Flexbox organiza <strong>bloques enteros entre sí</strong> (una fila de tarjetas, un menú). No confundir con el modelo de caja, que describe <strong>una caja por dentro</strong> (padding, border, margin).</div>
+
+<h3>Imagen de fondo y <code>:hover</code></h3>
+<pre><code><span class='et'>.franja</span> {
+    <span class='at'>background-image</span>: <span class='ca'>url("icono.png")</span>;
+    <span class='at'>background-repeat</span>: <span class='ca'>repeat-y</span>;
+}
+
+<span class='et'>.boton</span> {
+    <span class='at'>cursor</span>: <span class='ca'>pointer</span>;
+}
+<span class='et'>.boton:hover</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#3a9bd1</span>;
+}</code></pre>
+
+<h2>Si algo no te funciona</h2>
+<p>Antes de preguntar, comprueba esta lista. Resuelve la mayoría de los casos.</p>
+<ul class="checklist">
+<li>¿Has <strong>guardado</strong> el archivo? (<code>Ctrl+S</code>)</li>
+<li>¿El nombre del archivo en <code>src</code> o <code>href</code> coincide <strong>exactamente</strong> con el archivo real, incluida la extensión y las mayúsculas?</li>
+<li>¿El archivo está en la <strong>misma carpeta</strong> que el HTML que lo llama?</li>
+<li>¿Has cerrado todas las etiquetas que había que cerrar?</li>
+<li>En CSS: ¿falta algún <strong>punto y coma</strong>, o alguna <strong>llave</strong> de cierre? Una llave sin cerrar hace que se ignore todo lo que viene después.</li>
+<li>En CSS: ¿has escrito el <code>.</code> de la clase o la <code>#</code> del id en el selector?</li>
+<li>¿El texto se ve del mismo color que el fondo? (mira si has puesto <code>background-color</code> sin cambiar el <code>color</code>)</li>
+<li>Si usas <code>colspan</code>, ¿esa fila tiene el número correcto de celdas escritas (las que fusiona ya no van aparte)?</li>
+<li>¿Tu contenedor flex tiene <code>display: flex</code>? Sin esa línea, <code>flex-wrap</code>, <code>gap</code>, <code>justify-content</code> y <code>align-items</code> no hacen nada.</li>
+</ul>

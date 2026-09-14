@@ -1,0 +1,105 @@
+{
+  "id": "inst-u1-osi",
+  "titulo": "Sesión 5 — Protocolos y el modelo OSI",
+  "fecha": "",
+  "descripcion": "Las siete capas del modelo OSI, qué protocolo vive en cada una, la diferencia entre TCP y UDP, y cómo se traduce todo eso al modelo TCP/IP que usa Internet de verdad.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "Cada operación, en su capa",
+      "pares": [
+        { "izquierda": "Navegar por Internet", "derecha": "Capa 7 · Aplicación" },
+        { "izquierda": "Cifrar la conexión con TLS", "derecha": "Capa 5 · Sesión" },
+        { "izquierda": "Trocear y confirmar la entrega", "derecha": "Capa 4 · Transporte" },
+        { "izquierda": "Enrutar la información entre redes", "derecha": "Capa 3 · Red" },
+        { "izquierda": "Localizar la dirección MAC", "derecha": "Capa 2 · Enlace de datos" },
+        { "izquierda": "El cable UTP y el conector RJ-45", "derecha": "Capa 1 · Física" }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Cada protocolo, con su trabajo",
+      "pares": [
+        { "izquierda": "HTTP", "derecha": "Publicar e interpretar páginas web" },
+        { "izquierda": "SMTP", "derecha": "Enviar correo electrónico" },
+        { "izquierda": "IMAP", "derecha": "Recibir correo electrónico" },
+        { "izquierda": "FTP", "derecha": "Transferir archivos" },
+        { "izquierda": "TLS", "derecha": "Cifrar lo que se transmite" },
+        { "izquierda": "ARP", "derecha": "Averiguar la MAC a partir de la IP" },
+        { "izquierda": "IP", "derecha": "Llevar los datos hasta otra red" }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántas capas tiene el modelo OSI?",
+          "opciones": ["4", "5", "7", "8"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Cómo se llama la capa 3?",
+          "opciones": ["IP", "Red", "Transporte", "Enlace de datos"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El protocolo más característico de la capa de Red es…",
+          "opciones": ["TCP", "IP", "Ethernet", "HTTP"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué protocolo garantiza que los datos llegan completos y en orden?",
+          "opciones": ["UDP", "TCP", "ARP", "SMTP"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuándo interesa usar UDP en vez de TCP?",
+          "opciones": [
+            "Cuando la información es confidencial",
+            "Cuando importa más la velocidad que no perder nada, como en vídeo en directo",
+            "Cuando el archivo es muy grande",
+            "Cuando la red es inalámbrica"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "ARP sirve para…",
+          "opciones": [
+            "Cifrar el tráfico de la red",
+            "Averiguar la dirección MAC que corresponde a una dirección IP",
+            "Repartir direcciones IP automáticamente",
+            "Medir la velocidad de la conexión"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "HTTPS se diferencia de HTTP en que…",
+          "opciones": [
+            "Es más rápido",
+            "Va cifrado con SSL/TLS",
+            "Solo funciona con Chrome",
+            "No necesita dirección IP"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Gigabit Ethernet permite llegar hasta…",
+          "opciones": ["10 Mbps", "100 Mbps", "1.000 Mbps", "10.000 Mbps"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En el modelo TCP/IP, las capas 7, 6 y 5 de OSI se agrupan en…",
+          "opciones": ["Acceso a la red", "Internet", "Transporte", "Aplicación"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "A la información que cada capa añade al bajar se le llama…",
+          "opciones": ["Compresión", "Encapsulación", "Enrutamiento", "Multiplexación"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

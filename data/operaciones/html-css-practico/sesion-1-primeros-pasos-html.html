@@ -1,0 +1,233 @@
+<h2>Conociendo VS Code</h2>
+<p>Antes de escribir código, vamos a aprender a movernos por el programa que vas a usar todo el curso.</p>
+
+<h3>Abrir una carpeta de proyecto</h3>
+<p>A diferencia de un procesador de textos, en programación <strong>no trabajas con un archivo suelto, sino con una carpeta de proyecto</strong> que puede contener varios archivos relacionados (HTML, CSS, imágenes...).</p>
+<ol>
+<li>Busca en tu Escritorio la carpeta <code>mi-web</code> que creaste en la Unidad 0 (si no la tienes, créala ahora, con ese nombre exacto).</li>
+<li>Abre VS Code.</li>
+<li>Ve a <strong>Archivo → Abrir carpeta...</strong> y selecciona <code>mi-web</code>.</li>
+<li>Fíjate en el panel de la izquierda: es el <strong>explorador de archivos</strong>. Ahora mismo está vacío.</li>
+</ol>
+
+<h3>Crear tu primer archivo</h3>
+<ol>
+<li>En el explorador de archivos, pasa el ratón sobre el nombre de tu carpeta y pulsa el icono de "nuevo archivo".</li>
+<li>Escribe el nombre exacto: <code>index.html</code></li>
+<li><code>index</code> es el nombre que usan por convención los navegadores para la página principal de un sitio web. <code>.html</code> es la extensión que indica que es un archivo HTML.</li>
+</ol>
+<div class="nota">💡 Si escribes <code>!</code> y pulsas la tecla Tab nada más crear un archivo <code>.html</code> vacío, VS Code te genera automáticamente toda la estructura básica de una página. Lo usaremos más adelante — hoy la escribiremos a mano para entender qué hace cada parte.</div>
+
+<h3>La extensión Live Server</h3>
+<p>Para ver tu página en el navegador, en vez de abrir el archivo a mano cada vez, vamos a instalar una herramienta que la actualiza sola cada vez que guardas.</p>
+<ol>
+<li>En la barra lateral izquierda, busca el icono de piezas de puzle (Extensiones).</li>
+<li>Busca <strong>"Live Server"</strong> (de Ritwick Dey) e instálala.</li>
+<li>Con tu <code>index.html</code> abierto, haz clic derecho sobre el archivo y elige <strong>"Open with Live Server"</strong>.</li>
+<li>Se abrirá tu navegador en una dirección tipo <code>127.0.0.1:5500</code> mostrando tu página. Cada vez que guardes (<code>Ctrl+S</code>), la página se actualizará sola.</li>
+</ol>
+<div class="nota">✏️ Compruébalo ahora: abre Live Server con el archivo vacío, escribe cualquier palabra dentro, guarda, y observa qué pasa en el navegador sin tocar nada más.</div>
+
+<h2>¿Qué es HTML?</h2>
+<p>HTML es el lenguaje que usan todas las páginas web para definir <strong>qué contenido hay y cómo está organizado</strong> (no cómo se ve — eso lo veremos con CSS más adelante).</p>
+<p>Se basa en <strong>etiquetas</strong>, que casi siempre van en pareja: una de apertura y una de cierre.</p>
+<pre><code><span class='et'>&lt;p&gt;</span>Esto es un párrafo.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Así se llama cada parte:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;font-family:monospace;">
+<div style="display:flex;flex-wrap:wrap;gap:4px;align-items:flex-start;font-size:1.05em;">
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;p&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta de<br>apertura</div></div>
+<div style="text-align:center;"><div style="background:#dcfce7;padding:4px 8px;border-radius:4px;white-space:pre;">Esto es un párrafo.</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">contenido</div></div>
+<div style="text-align:center;"><div style="background:#dbeafe;padding:4px 8px;border-radius:4px;white-space:pre;">&lt;/p&gt;</div><div style="font-family:sans-serif;font-size:0.75em;margin-top:4px;line-height:1.3;">etiqueta de<br>cierre (con /)</div></div>
+</div>
+</div>
+<p>Las tres partes juntas forman un <strong>elemento</strong>: en este caso, un párrafo.</p>
+<div class="nota">🤔 Antes de seguir: ¿qué diferencia hay entre <code>&lt;p&gt;</code> y <code>&lt;/p&gt;</code>? ¿Qué crees que pasaría si te olvidas del <code>&lt;/p&gt;</code>?</div>
+<details><summary>Ver la respuesta</summary>
+<p><code>&lt;p&gt;</code> es la etiqueta de <strong>apertura</strong>: le dice al navegador "a partir de aquí empieza un párrafo". <code>&lt;/p&gt;</code> es la de <strong>cierre</strong> (con la barra <code>/</code>): le dice "aquí termina". Si olvidas el cierre, en muchos casos el navegador es "tolerante" y da el párrafo por terminado en cuanto empieza la siguiente etiqueta de bloque — pero no siempre acierta, y con etiquetas más complejas (como las listas de la sesión 2) un cierre olvidado sí puede desordenar visualmente toda la página.</p>
+</details>
+
+<h2>La estructura mínima de toda página HTML</h2>
+<p>Cualquier página HTML empieza siempre igual:</p>
+<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>
+<span class='et'>&lt;html&gt;</span>
+<span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Mi primera página<span class='et'>&lt;/title&gt;</span>
+<span class='et'>&lt;/head&gt;</span>
+<span class='et'>&lt;body&gt;</span>
+
+    <span class='co'>&lt;!-- Aquí va todo el contenido visible --&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>¡Hola!<span class='et'>&lt;/h1&gt;</span>
+
+<span class='et'>&lt;/body&gt;</span>
+<span class='et'>&lt;/html&gt;</span></code></pre>
+<p>El <code>&lt;head&gt;</code> y el <code>&lt;body&gt;</code> de este ejemplo producen dos cosas completamente distintas en el navegador:</p>
+<div class="salida">
+<p style="margin:0 0 6px;"><strong>Lo que sale del <code>&lt;head&gt;</code></strong> — no se ve en la página, se ve en la pestaña del navegador:</p>
+<div style="background:#e8e8e8;color:#1e1e1e;border-radius:6px 6px 0 0;padding:6px 12px;font-family:monospace;font-size:0.85em;display:inline-flex;align-items:center;gap:8px;border:1px solid #ccc;border-bottom:none;">📄 Mi primera página <span style="color:#888;">✕</span></div>
+<p style="margin:14px 0 6px;"><strong>Lo que sale del <code>&lt;body&gt;</code></strong> — esto sí se ve, dentro de la página:</p>
+<div style="background:#fff;color:#1e1e1e;border:1px solid #ccc;border-radius:6px;padding:14px;">
+<h1 style="margin:0;font-size:1.5em;">¡Hola!</h1>
+</div>
+</div>
+<ul>
+<li><code>&lt;!DOCTYPE html&gt;</code> → le dice al navegador que esto es HTML moderno.</li>
+<li><code>&lt;html&gt;</code> → envuelve toda la página.</li>
+<li><code>&lt;head&gt;</code> → información sobre la página (no se ve en pantalla). Aquí ponemos el <code>&lt;title&gt;</code>, que aparece en la pestaña del navegador.</li>
+<li><code>&lt;body&gt;</code> → todo lo que SÍ se ve en pantalla va aquí.</li>
+</ul>
+<div class="nota">🤔 Antes de seguir: si quisieras cambiar el texto de la pestaña del navegador, ¿qué etiqueta modificarías? ¿Por qué crees que <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code> están separados en vez de ir todo junto?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Cambiarías el texto dentro de <code>&lt;title&gt;</code>, que vive en el <code>&lt;head&gt;</code>. Están separados porque son dos tipos de información distintos: el <code>&lt;head&gt;</code> es información <em>sobre</em> la página (su título, y más adelante también su CSS), mientras que el <code>&lt;body&gt;</code> es la página en sí, lo que de verdad lee o mira quien la visita. El navegador necesita distinguir "datos sobre la página" de "contenido de la página" para saber qué mostrar y dónde.</p>
+</details>
+
+<h2>Tu alias: una web sin datos personales</h2>
+<p>Más adelante (Unidad 3) vas a publicar tu web en Internet, y cualquiera podrá verla. Por eso, desde hoy, en tu web <strong>no aparece nada que diga quién eres</strong>.</p>
+<p>En vez de tu nombre vas a usar un <strong>alias</strong>: un apodo inventado, el mismo durante todo el curso. Por ejemplo: <code>PixelRojo</code>, <code>LaNube23</code>, <code>ZetaGamer</code>.</p>
+<table>
+<tr><th>✅ Sí puedes poner</th><th>❌ No pongas nunca</th></tr>
+<tr><td>Tu alias</td><td>Tu nombre y apellidos</td></tr>
+<tr><td>Tus aficiones: música, videojuegos, deporte...</td><td>Fotos tuyas o de otras personas</td></tr>
+<tr><td>Qué te gusta y qué quieres aprender</td><td>Tu instituto, tu pueblo o tu dirección</td></tr>
+<tr><td>Imágenes de cosas: un juego, un paisaje, un dibujo</td><td>Tu horario, tu teléfono o tus redes sociales</td></tr>
+</table>
+<div class="nota">🤔 Antes de seguir: un compañero escribe en su web: "Soy Marc García, voy a 1º de FP Básica en el instituto de mi pueblo y los martes salgo a las 14:00". ¿Qué datos sobran y por qué?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Sobran el nombre y el apellido, el curso con el instituto y el horario. Por separado parecen poca cosa, pero juntos permiten saber quién es y dónde encontrarlo a una hora concreta. Con un alias y sus aficiones, la web sigue siendo suya, pero nadie sabe quién es.</p>
+</details>
+<ul class="checklist">
+<li>Elige tu alias y apúntalo en tu cuaderno: lo usarás durante todo el curso.</li>
+</ul>
+
+<h2>Ejercicio guiado 1 — Tu primera página</h2>
+<ol>
+<li>En tu <code>index.html</code>, escribe la estructura mínima de arriba.</li>
+<li>Dentro de <code>&lt;body&gt;</code>, añade:</li>
+</ol>
+<pre><code><span class='et'>&lt;h1&gt;</span>¡Hola, soy [tu alias]!<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;p&gt;</span>Esta es mi primera página web.<span class='et'>&lt;/p&gt;</span></code></pre>
+<ol start="3">
+<li>Guarda el archivo (<code>Ctrl+S</code>) y abre Live Server si no lo tienes ya abierto.</li>
+<li>Cambia el texto del <code>&lt;title&gt;</code> y guarda otra vez.</li>
+</ol>
+<p>Si lo has hecho bien: en el navegador verás tu <code>&lt;h1&gt;</code> y tu <code>&lt;p&gt;</code> uno debajo del otro, y la pestaña del navegador mostrará el texto nuevo del <code>&lt;title&gt;</code> sin que tengas que recargar tú manualmente.</p>
+
+<h2>Las etiquetas de encabezado</h2>
+<p>HTML tiene 6 niveles de encabezado, del más importante al menos importante:</p>
+<pre><code><span class='et'>&lt;h1&gt;</span>Título principal<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;h2&gt;</span>Subtítulo<span class='et'>&lt;/h2&gt;</span>
+<span class='et'>&lt;h3&gt;</span>Un subtítulo más pequeño<span class='et'>&lt;/h3&gt;</span>
+<span class='co'>&lt;!-- ... hasta h6 --&gt;</span></code></pre>
+<p>Así se ven los seis niveles, uno junto a otro:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;">
+<h1 style="margin:0.3em 0;">Encabezado h1</h1>
+<div style="margin:0.3em 0;font-size:1.5em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Encabezado h2</div>
+<div style="margin:0.3em 0;font-size:1.17em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Encabezado h3</div>
+<h4 style="margin:0.3em 0;">Encabezado h4</h4>
+<h5 style="margin:0.3em 0;">Encabezado h5</h5>
+<h6 style="margin:0.3em 0;">Encabezado h6</h6>
+</div>
+<p><strong>Regla de oro:</strong> en una página normalmente hay <strong>un solo <code>&lt;h1&gt;</code></strong>, y el resto de encabezados organizan secciones de mayor a menor importancia — como el índice de un libro, no como "letras más grandes o más pequeñas".</p>
+
+<h3>Un error típico</h3>
+<p>Esto <strong>funciona</strong> (el navegador no da error), pero está <strong>mal hecho</strong>:</p>
+<pre><code><span class='et'>&lt;h1&gt;</span>Mi web<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;h1&gt;</span>Sobre mí<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;h4&gt;</span>Mis hobbies<span class='et'>&lt;/h4&gt;</span>
+<span class='et'>&lt;h2&gt;</span>Contacto<span class='et'>&lt;/h2&gt;</span></code></pre>
+<p>Hay dos <code>&lt;h1&gt;</code>, y se salta del <code>&lt;h1&gt;</code> directo a un <code>&lt;h4&gt;</code> sin pasar por <code>&lt;h2&gt;</code> ni <code>&lt;h3&gt;</code>. Es como si el índice de un libro tuviera dos "Capítulo 1" y luego un subapartado sin decir de qué capítulo es.</p>
+<p>Lo importante: <strong>se ve prácticamente igual</strong> que si la jerarquía estuviera bien hecha — el navegador no avisa de nada. El fallo solo se nota mirando el código, no mirando la página:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;display:flex;gap:24px;flex-wrap:wrap;">
+<div style="flex:1 1 240px;">
+<p style="margin:0 0 6px;"><strong>❌ Jerarquía incorrecta</strong></p>
+<h1 style="margin:0.2em 0;font-size:1.5em;">Mi web</h1>
+<h1 style="margin:0.2em 0;font-size:1.5em;">Sobre mí</h1>
+<h4 style="margin:0.2em 0;font-size:1em;">Mis hobbies</h4>
+<div style="margin:0.2em 0;font-size:1.25em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Contacto</div>
+</div>
+<div style="flex:1 1 240px;">
+<p style="margin:0 0 6px;"><strong>✅ Jerarquía correcta</strong></p>
+<h1 style="margin:0.2em 0;font-size:1.5em;">Mi web</h1>
+<div style="margin:0.2em 0;font-size:1.25em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Sobre mí</div>
+<div style="margin:0.2em 0;font-size:1.1em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Mis hobbies</div>
+<div style="margin:0.2em 0;font-size:1.25em;font-weight:bold;text-transform:uppercase;letter-spacing:0.01em;">Contacto</div>
+</div>
+</div>
+<div class="nota">🤔 Antes de seguir: ¿por qué es un problema tener dos <code>&lt;h1&gt;</code>, si visualmente el navegador los muestra igual de grandes en los dos casos de arriba? Reordena el ejemplo incorrecto para que la jerarquía tenga sentido.</div>
+<details><summary>Ver la respuesta</summary>
+<p>El tamaño con el que se ve un encabezado es solo estética; la jerarquía es sobre <strong>significado</strong>. Un <code>&lt;h1&gt;</code> dice "esto es el tema principal de la página" — tener dos es como si un libro tuviera dos títulos de portada. Y saltarse niveles (de <code>&lt;h1&gt;</code> a <code>&lt;h4&gt;</code>) rompe el índice que usan, por ejemplo, los lectores de pantalla para navegar la página por secciones: para ellos, un salto así sugiere que faltan subapartados intermedios. La versión ordenada sería: <code>&lt;h1&gt;</code>Mi web, <code>&lt;h2&gt;</code>Sobre mí, <code>&lt;h3&gt;</code>Mis hobbies, <code>&lt;h2&gt;</code>Contacto.</p>
+</details>
+
+<h2>Práctica</h2>
+<ul class="checklist">
+<li>Un <code>&lt;h1&gt;</code> con tu alias.</li>
+<li>Un <code>&lt;h2&gt;</code> que diga "Sobre mí".</li>
+<li>Dos o tres <code>&lt;p&gt;</code> contando cosas sobre ti que no te identifiquen: qué te gusta, a qué juegas, qué música escuchas... (repasa la tabla del alias).</li>
+<li>Un <code>&lt;h2&gt;</code> que diga "Esta asignatura".</li>
+<li>Un <code>&lt;p&gt;</code> explicando qué esperas aprender este curso.</li>
+</ul>
+<p>Si lo has hecho bien: al abrir Live Server verás un único <code>&lt;h1&gt;</code> arriba del todo, y los dos <code>&lt;h2&gt;</code> se verán claramente más pequeños que él pero del mismo tamaño entre sí — sin ningún <code>&lt;h3&gt;</code> ni <code>&lt;h4&gt;</code> de por medio.</p>
+
+<h2>Ejercicio guiado 2 — Detectar y corregir</h2>
+<p>Copia este código en un archivo nuevo llamado <code>prueba.html</code>:</p>
+<pre><code><span class='et'>&lt;!DOCTYPE html&gt;</span>
+<span class='et'>&lt;html&gt;</span>
+<span class='et'>&lt;head&gt;</span>
+<span class='et'>&lt;/head&gt;</span>
+<span class='et'>&lt;body&gt;</span>
+
+<span class='et'>&lt;h1&gt;</span>Mi rincón de videojuegos<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;h1&gt;</span>Mis juegos favoritos<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;p&gt;</span>Aquí hablo de los juegos que más me gustan.
+<span class='et'>&lt;h3&gt;</span>Estrategia<span class='et'>&lt;/h3&gt;</span>
+<span class='et'>&lt;p&gt;</span>Me gustan los juegos de estrategia por turnos.<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;h4&gt;</span>Acción<span class='et'>&lt;/h4&gt;</span>
+
+<span class='et'>&lt;/body&gt;</span>
+<span class='et'>&lt;/html&gt;</span></code></pre>
+<p>Ábrelo con Live Server y, sin mirar la solución, encuentra y corrige:</p>
+<ol>
+<li>Un <code>&lt;title&gt;</code> que falta dentro del <code>&lt;head&gt;</code>.</li>
+<li>Un <code>&lt;p&gt;</code> al que le falta la etiqueta de cierre.</li>
+<li>El problema de jerarquía de encabezados de arriba.</li>
+</ol>
+<details><summary>Pista 1</summary>
+<p>Son tres fallos distintos, revísalos por separado: primero mira dentro del <code>&lt;head&gt;</code> (¿tiene todo lo que vimos que debía llevar?); después revisa cada <code>&lt;p&gt;</code> uno a uno (¿los dos se cierran igual?); y por último cuenta en voz alta los niveles de encabezado en el orden en que aparecen.</p>
+</details>
+<details><summary>Pista 2</summary>
+<p>En el <code>&lt;head&gt;</code> falta la etiqueta que da nombre a la pestaña del navegador. El primer <code>&lt;p&gt;</code> (el de "Aquí hablo de los juegos...") no tiene <code>&lt;/p&gt;</code> antes de que empiece el <code>&lt;h3&gt;</code>. Y en los encabezados: hay dos <code>&lt;h1&gt;</code> seguidos, y más abajo se pasa de <code>&lt;h3&gt;</code> a <code>&lt;h4&gt;</code> — mira cuál de los dos <code>&lt;h1&gt;</code> debería en realidad ser un <code>&lt;h2&gt;</code>.</p>
+</details>
+<p>Si lo has corregido bien: la pestaña del navegador mostrará un título con sentido, los dos párrafos se verán como bloques de texto separados y bien formados, y al leer los encabezados de arriba abajo la jerarquía bajará como mucho un nivel cada vez, sin saltos ni <code>&lt;h1&gt;</code> repetidos.</p>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Un comentario y una etiqueta nueva</h3>
+<ul>
+<li>Añade un comentario en tu <code>index.html</code> usando <code>&lt;!-- así --&gt;</code>, explicando brevemente qué es cada bloque de tu página.</li>
+<li>Busca en internet (o en la referencia de MDN) qué hace la etiqueta <code>&lt;br&gt;</code> y úsala en algún punto donde tenga sentido dentro de un párrafo.</li>
+</ul>
+
+<h3>Reto 2 — Un tercer bloque</h3>
+<p>Añade a tu <code>index.html</code> un tercer bloque con:</p>
+<ul>
+<li>Un <code>&lt;h2&gt;</code> que diga "Mis asignaturas favoritas".</li>
+<li>Un <code>&lt;p&gt;</code> por cada asignatura que te guste, con un <code>&lt;h3&gt;</code> con el nombre antes de cada <code>&lt;p&gt;</code>.</li>
+</ul>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu página completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Un único <code>&lt;h1&gt;</code>, sin saltos de nivel en el resto de encabezados.</li>
+<li>Al menos un comentario <code>&lt;!-- --&gt;</code> en el código.</li>
+<li>La etiqueta <code>&lt;br&gt;</code> usada en algún punto con sentido.</li>
+<li>Tres bloques de contenido: sobre ti (sin datos personales), esta asignatura, y tus asignaturas favoritas.</li>
+</ul>
+
+<div class="nota">Guarda este archivo — será la primera versión de tu página personal. En las próximas sesiones la iremos ampliando (enlaces, imágenes, estilos...). Y ya sabes usar Live Server: tenlo siempre abierto mientras trabajas.</div>
+
+<h2>Antes de irte: copia de seguridad</h2>
+<p>Tu usuario del ordenador se puede borrar (por ejemplo, con una actualización) o tu ordenador se puede estropear. Si pasa y no tienes copia, <strong>pierdes tu web entera</strong>.</p>
+<p>Por eso, al acabar <strong>cada</strong> sesión, guardarás una copia de tu carpeta <code>mi-web</code> en tu Drive. Los pasos están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a> (Copia de seguridad en Drive), que ya hiciste.</p>
+<ul class="checklist">
+<li>Hoy haces tu primera copia de <code>mi-web</code>: sigue los pasos de la sesión 4 de la Unidad 0.</li>
+</ul>

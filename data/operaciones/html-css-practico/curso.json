@@ -1,0 +1,67 @@
+{
+  "unidades": [
+    {
+      "id": "antes-de-empezar",
+      "titulo": "Antes de empezar",
+      "descripcion": "Cómo se evalúa esta asignatura: el peso de cada parte, las entregas, las faltas y la rúbrica de los resúmenes.",
+      "sesiones": [
+        "formas-de-evaluar"
+      ]
+    },
+    {
+      "id": "el-ordenador-y-tus-archivos",
+      "titulo": "Unidad 0. El ordenador y tus archivos",
+      "descripcion": "Lo básico antes de programar: el teclado, el explorador de archivos, las rutas, las descargas, las propiedades de un archivo, las unidades del equipo y las copias de seguridad.",
+      "sesiones": [
+        "sesion-1-teclado-explorador",
+        "sesion-2-rutas-descargas",
+        "sesion-3-propiedades-este-equipo",
+        "sesion-4-copia-seguridad-drive"
+      ]
+    },
+    {
+      "id": "html-css-practico",
+      "titulo": "UNIDAD 1. Introducción a HTML/CSS",
+      "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
+      "sesiones": [
+        "sesion-1-primeros-pasos-html",
+        "sesion-2-texto-listas-enlaces",
+        "sesion-3-imagenes-estructura-semantica",
+        "sesion-4-introduccion-css",
+        "sesion-5-modelo-de-caja",
+        "sesion-5b-repaso-modelo-de-caja",
+        "sesion-6-tablas",
+        "sesion-7-flexbox",
+        "sesion-8-repaso-ejercicios-1",
+        "sesion-9-proyecto-pagina-personal-parte-1",
+        "sesion-10-proyecto-pagina-personal-parte-2",
+        "sesion-11-repaso-ejercicios-2",
+        "glosario"
+      ]
+    },
+    {
+      "id": "fundamentos-internet",
+      "titulo": "Unidad 2. Fundamentos de Internet",
+      "descripcion": "Cómo funciona la web por dentro: navegador, direcciones y protocolos, antes de publicar tu propia página.",
+      "sesiones": [
+        "sesion-1-cliente-servidor-ip-dns",
+        "sesion-2-navegador-devtools",
+        "sesion-3-url-http-basico",
+        "sesion-4-que-hace-falta-publicar",
+        "glosario-fundamentos-internet"
+      ]
+    },
+    {
+      "id": "publicacion-web",
+      "titulo": "Unidad 3. Publicación en la web",
+      "descripcion": "Publicas tu web de verdad, y ves qué otros tipos de webs existen: blogs, wikis, redes sociales y computación en la nube.",
+      "sesiones": [
+        "sesion-1-publicar-de-verdad",
+        "sesion-2-blogs-wikis",
+        "sesion-3-redes-sociales-nube",
+        "sesion-4-gestores-contenidos-p2p",
+        "glosario-publicacion-web"
+      ]
+    }
+  ]
+}

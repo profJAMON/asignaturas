@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Material de clase</title>
+<meta name="description" content="Apuntes y actividades de las asignaturas de informática.">
+<link rel="stylesheet" href="css/estilos.css">
+<!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
+     elegido antes de que el navegador pinte, para que no haya fogonazo. -->
+<script src="js/aspecto.js"></script>
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="selector-aspecto" id="selector-aspecto"></div>
+  <div class="selector-idioma" id="selector-idioma" translate="no"></div>
+  <h2 class="sidebar__titulo">Temario</h2>
+  <div id="indice-temas"></div>
+</nav>
+
+<main class="main-content">
+  <a class="volver" href="index.html" id="portada-volver" hidden>&larr; Todas las asignaturas</a>
+
+  <header class="card">
+    <span class="badge" id="portada-badge">Material de clase</span>
+    <h1 id="portada-titulo">Apuntes y Actividades</h1>
+    <p id="portada-descripcion">Elige la asignatura con la que quieres trabajar.</p>
+  </header>
+
+  <div id="indice-portada"></div>
+
+  <footer class="pie">Material de clase</footer>
+</main>
+
+<script src="js/idioma.js"></script>
+<script src="js/asignaturas.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

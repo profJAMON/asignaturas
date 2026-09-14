@@ -1,0 +1,147 @@
+<h2>¿Para qué sirve una tabla?</h2>
+<p>Es una pregunta habitual: si HTML tiene una etiqueta pensada para filas y columnas, ¿por qué no usarla para colocar el menú a un lado y el contenido al otro? La respuesta corta: <code>&lt;table&gt;</code> existe para <strong>datos reales</strong> organizados en filas y columnas — un horario, una lista de precios, una tabla de resultados — no para decidir dónde va cada bloque de tu página.</p>
+<p>Así se escribe una tabla de datos de verdad:</p>
+<pre><code><span class='et'>&lt;table&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;th&gt;</span>Asignatura<span class='et'>&lt;/th&gt;</span>
+    <span class='et'>&lt;th&gt;</span>Horas/semana<span class='et'>&lt;/th&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;td&gt;</span>Operaciones básicas<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;td&gt;</span>5<span class='et'>&lt;/td&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+  <span class='et'>&lt;tr&gt;</span>
+    <span class='et'>&lt;td&gt;</span>Ofimática<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;td&gt;</span>3<span class='et'>&lt;/td&gt;</span>
+  <span class='et'>&lt;/tr&gt;</span>
+<span class='et'>&lt;/table&gt;</span></code></pre>
+<div class="salida">
+<table style="border-collapse:collapse;width:auto;">
+<tr><th style="border:1px solid #6a7280;padding:6px 14px;background:#e8e8e8;color:#1e1e1e;">Asignatura</th><th style="border:1px solid #6a7280;padding:6px 14px;background:#e8e8e8;color:#1e1e1e;">Horas/semana</th></tr>
+<tr><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">Operaciones básicas</td><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">5</td></tr>
+<tr><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">Ofimática</td><td style="border:1px solid #6a7280;padding:6px 14px;background:#fff;color:#1e1e1e;">3</td></tr>
+</table>
+</div>
+<p><code>&lt;th&gt;</code> es una celda de cabecera (el navegador la pone en negrita y centrada por defecto); <code>&lt;td&gt;</code> es una celda normal; cada <code>&lt;tr&gt;</code> es una fila completa. El navegador dibuja filas y columnas solo, alineando automáticamente todas las celdas de una misma columna.</p>
+<div class="nota">⚠️ Hace años era habitual maquetar páginas enteras con <code>&lt;table&gt;</code> (una fila para la cabecera, una fila con dos celdas para menú y contenido...). Hoy se considera mala práctica: mezcla la estructura de tus datos con el diseño visual, no se adapta bien a pantallas distintas, y complica la vida a quien navega con lector de pantalla, que espera que una tabla contenga datos, no el esqueleto de la página. La herramienta correcta para organizar bloques de una página es la que aprenderás en la próxima sesión: <strong>Flexbox</strong>.</div>
+
+<h2>Ejercicio guiado 1 — Una tabla con datos tuyos</h2>
+<ol>
+<li>En tu <code>index.html</code>, añade una nueva <code>&lt;section&gt;</code> (por ejemplo, "Mis videojuegos" o "Mis herramientas favoritas").</li>
+<li>Dentro, crea una <code>&lt;table&gt;</code> con al menos dos columnas y tres filas de datos tuyos que no te identifiquen (tus videojuegos, tus series, tus herramientas...), usando <code>&lt;th&gt;</code> para la fila de cabecera y <code>&lt;td&gt;</code> para el resto.</li>
+</ol>
+<p>Si lo has hecho bien: verás una cuadrícula con tu fila de cabecera resaltada y el resto de filas debajo, cada dato en su columna — aunque todavía sin ningún estilo de <code>estilos.css</code>, el navegador ya la muestra organizada en filas y columnas.</p>
+
+<h3>Dale estilo con CSS</h3>
+<p>Por defecto, una tabla no lleva bordes visibles entre celdas (o, en algunos navegadores, un doble borde con un pequeño espacio entre celdas). El estilo se aplica igual que a cualquier otro elemento — con selectores de etiqueta, sobre <code>table</code>, <code>th</code> y <code>td</code>:</p>
+<pre><code><span class='et'>table</span> {
+    <span class='at'>border-collapse</span>: <span class='ca'>collapse</span>; <span class='co'>/* funde los bordes de celdas vecinas en uno solo */</span>
+    <span class='at'>width</span>: <span class='ca'>100%</span>;
+}
+<span class='et'>th</span>, <span class='et'>td</span> {
+    <span class='at'>border</span>: <span class='ca'>1px solid #3c3c3c</span>;
+    <span class='at'>padding</span>: <span class='ca'>8px 12px</span>;
+    <span class='at'>text-align</span>: <span class='ca'>left</span>;
+}
+<span class='et'>th</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#e8e8e8</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin estilo</p>
+<table style="border-spacing:4px;">
+<tr><th style="padding:4px 10px;background:#fff;color:#1e1e1e;font-weight:bold;">Asignatura</th><th style="padding:4px 10px;background:#fff;color:#1e1e1e;font-weight:bold;">Horas</th></tr>
+<tr><td style="padding:4px 10px;background:#fff;color:#1e1e1e;">Op. básicas</td><td style="padding:4px 10px;background:#fff;color:#1e1e1e;">5</td></tr>
+</table>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con el CSS de arriba</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:8px 12px;background:#e8e8e8;color:#1e1e1e;text-align:left;">Asignatura</th><th style="border:1px solid #3c3c3c;padding:8px 12px;background:#e8e8e8;color:#1e1e1e;text-align:left;">Horas</th></tr>
+<tr><td style="border:1px solid #3c3c3c;padding:8px 12px;background:#fff;color:#1e1e1e;">Op. básicas</td><td style="border:1px solid #3c3c3c;padding:8px 12px;background:#fff;color:#1e1e1e;">5</td></tr>
+</table>
+</div>
+</div>
+<p>Sin <code>border-collapse: collapse;</code>, cada celda tiene su propio borde y queda un hueco entre ellas (a veces un doble borde). Con <code>collapse</code>, los bordes de celdas vecinas se funden en una sola línea, que es como se ve una tabla "normal".</p>
+
+<h3>colspan y rowspan — fusionar celdas</h3>
+<p>A veces una celda tiene que ocupar el espacio de varias columnas o varias filas — por ejemplo, el recreo en un horario ocupa todos los días a la vez, y una asignatura de dos horas seguidas ocupa dos filas del mismo día. Para eso están <code>colspan</code> y <code>rowspan</code>: son <strong>atributos HTML</strong> (van en la etiqueta, no en el CSS) que se escriben en la celda que quieres agrandar.</p>
+<pre><code><span class='co'>&lt;!-- colspan: esta celda ocupa 3 columnas --&gt;</span>
+<span class='et'>&lt;td</span> <span class='at'>colspan</span>=<span class='ca'>"3"</span><span class='et'>&gt;</span>RECREO<span class='et'>&lt;/td&gt;</span>
+
+<span class='co'>&lt;!-- rowspan: esta celda ocupa 2 filas --&gt;</span>
+<span class='et'>&lt;td</span> <span class='at'>rowspan</span>=<span class='ca'>"2"</span><span class='et'>&gt;</span>Matemáticas<span class='et'>&lt;/td&gt;</span></code></pre>
+<div class="salida" style="display:flex; gap:24px; flex-wrap:wrap;">
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Sin fusionar (repetido)</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Lunes</th><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Martes</th></tr>
+<tr><td style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;">RECREO</td><td style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;">RECREO</td></tr>
+</table>
+</div>
+<div>
+<p style="margin:0 0 6px;font-family:monospace;font-size:0.8em;color:var(--text-faint,#9099a6);">Con colspan="2"</p>
+<table style="border-collapse:collapse;">
+<tr><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Lunes</th><th style="border:1px solid #3c3c3c;padding:6px 10px;background:#e8e8e8;color:#1e1e1e;">Martes</th></tr>
+<tr><td colspan="2" style="border:1px solid #3c3c3c;padding:6px 10px;background:#fff;color:#1e1e1e;text-align:center;">RECREO</td></tr>
+</table>
+</div>
+</div>
+<div class="nota">⚠️ Al fusionar celdas, esa fila (o esas filas) tiene <strong>menos <code>&lt;td&gt;</code> de los que parece</strong>. Si una fila normal tiene 5 celdas (una por día) y fusionas dos con <code>colspan="2"</code>, esa fila solo lleva 4 <code>&lt;td&gt;</code> en el HTML, no 5 — la celda fusionada ya "vale por dos". Si te olvidas de quitar la celda de más, la tabla se descuadra y las columnas de las filas siguientes dejan de alinearse.</div>
+
+<h2>Ejercicio guiado 2 — Un horario inventado</h2>
+<p>Vas a hacer el horario de una semana <strong>inventada</strong>: un campamento de verano, un festival de música, un torneo de videojuegos... Tú eliges el tema.</p>
+<div class="nota">🔒 ¿Por qué no tu horario de clases real? Porque tu web se va a publicar en Internet (Unidad 3). Un horario real dice dónde estás a cada hora del día: es un dato personal, igual que tu dirección.</div>
+<ol>
+<li>Crea una tabla con una columna para la hora y una columna por cada día (por ejemplo, Lunes a Viernes).</li>
+<li>Rellena las filas con las actividades de tu semana inventada, hora a hora.</li>
+<li>Si alguna actividad dura dos horas seguidas el mismo día, usa <code>rowspan="2"</code> en esa celda en vez de escribir su nombre dos veces — y recuerda quitar la celda de esa actividad en la fila de abajo (ver el aviso de arriba).</li>
+<li>Añade una fila para la comida (o el descanso) que ocupe todas las columnas de los días con <code>colspan</code>.</li>
+<li>Aplica a esta tabla el CSS de <code>border-collapse</code>, <code>border</code>, <code>padding</code> y <code>text-align</code> que has visto en el apartado anterior.</li>
+</ol>
+<p>Si lo has hecho bien: tu horario se verá como una tabla real, con bordes limpios sin dobles líneas; la fila de la comida ocupará todo el ancho en una única celda; y ninguna actividad de dos horas aparecerá repetida en dos filas seguidas.</p>
+<details><summary>Pista si se te descuadra la tabla</summary>
+<p>Cuenta, fila por fila, cuántas celdas (<code>&lt;td&gt;</code> o <code>&lt;th&gt;</code>) tiene cada una contando también las fusionadas. Todas las filas tienen que "sumar" el mismo número de columnas — una celda con <code>colspan="2"</code> cuenta como 2, no como 1.</p>
+</details>
+
+<h2>Ejercicio guiado 3 — Presupuesto para montar tu PC ideal</h2>
+<p>Vas a crear una tabla de tres columnas: <strong>Categoría</strong>, <strong>Componente</strong> y <strong>Precio</strong>. Puedes cambiar el tema (el material para un escritorio gaming, la lista de la compra de una fiesta, el equipo de tus sueños...) pero mantén esta misma estructura de tres columnas.</p>
+<ol>
+<li>Elige entre 3 y 5 categorías, cada una con dos o tres elementos (por ejemplo, categoría "Núcleo" con "Procesador" y "Tarjeta gráfica"; categoría "Periféricos" con "Teclado" y "Ratón").</li>
+<li>Crea la tabla con las tres columnas y todas las filas de datos.</li>
+<li>En cada categoría con más de un elemento, fusiona su celda de categoría con <code>rowspan</code> en vez de repetir su nombre en cada fila.</li>
+<li>Añade una última fila "Total" que fusione las columnas de Categoría y Componente con <code>colspan="2"</code>, con la suma de todos los precios en la celda de Precio.</li>
+<li>Aplica el mismo CSS de tablas del ejercicio anterior.</li>
+</ol>
+<p>Si lo has hecho bien: cada categoría aparecerá una sola vez, ocupando visualmente todas las filas de sus elementos; y la fila "Total" tendrá una única celda ancha con la palabra "Total", seguida de una celda con la suma — no tres celdas sueltas.</p>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Una tabla sobre tu afición</h3>
+<p>En la sección de tu <code>index.html</code> que hable de tus aficiones (o en una <code>&lt;section&gt;</code> nueva), crea una tabla sobre algo que te guste: tus juegos favoritos, tus series, tus canciones, tu equipo... Tiene que tener:</p>
+<ul>
+<li>Al menos 3 columnas y 4 filas de datos, con una fila de cabecera en <code>&lt;th&gt;</code>. Por ejemplo: <em>Nombre</em>, <em>Género</em>, <em>Mi nota</em>.</li>
+<li>Al menos una celda fusionada con <code>colspan</code> o con <code>rowspan</code>.</li>
+<li>El mismo CSS de tablas que en los ejercicios guiados.</li>
+</ul>
+
+<h3>Reto 2 — Investiga: <code>&lt;caption&gt;</code></h3>
+<p>Esta etiqueta no la hemos explicado en clase. Entra en la <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/caption" target="_blank">referencia de MDN sobre <code>&lt;caption&gt;</code></a> y descubre para qué sirve y <strong>dónde</strong> tiene que ir dentro de la tabla. Úsala para ponerle un título a la tabla del Reto 1.</p>
+<details><summary>Pista si te atascas</summary>
+<p>En la página de MDN, busca en la descripción la palabra "primer" (o "first child" en inglés): te dice en qué posición exacta tiene que ir <code>&lt;caption&gt;</code> respecto al resto de etiquetas de la tabla.</p>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu web completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Tienes tres tablas de datos: el horario inventado, el presupuesto y la tabla de tu afición (Reto 1).</li>
+<li>El horario usa <code>rowspan</code> y <code>colspan</code>, y el presupuesto tiene su fila "Total" con <code>colspan="2"</code>.</li>
+<li>Ninguna tabla está descuadrada: cuenta las celdas de cada fila, contando las fusionadas.</li>
+<li>Las tres tablas tienen el mismo estilo (<code>border-collapse</code>, <code>border</code> y <code>padding</code>), escrito una sola vez en tu <code>estilos.css</code>.</li>
+<li>La tabla del Reto 1 tiene su título con <code>&lt;caption&gt;</code> (Reto 2).</li>
+<li>Ninguna tabla lleva datos personales (repasa la tabla del alias de la sesión 1).</li>
+</ul>
+
+<div class="nota">Guarda esta versión — ya sabes cuándo una tabla es la herramienta correcta: para datos en filas y columnas, nunca para colocar los bloques de tu página. En la próxima sesión llega Flexbox, que es justo la herramienta para colocar esos bloques.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>

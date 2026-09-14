@@ -1,0 +1,177 @@
+{
+  "id": "sesion-4-introduccion-css",
+  "titulo": "Sesión 4 — Introducción a CSS",
+  "fecha": "2026-09-29",
+  "descripcion": "Cómo separar contenido y estilo con CSS: selectores de etiqueta, clase e id, estilo interno y externo, colores y tipografía, y cómo comprobar tu CSS con Inspeccionar. Seis ejercicios guiados y tres retos progresivos, todos obligatorios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: primeros pasos con CSS",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/First_steps"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: selectores CSS",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/CSS_selectors"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: :hover",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué símbolo termina cada propiedad dentro de una regla CSS?",
+          "opciones": [
+            "Una coma ,",
+            "Un punto y coma ;",
+            "Un punto ."
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Dónde se coloca la etiqueta <style> para escribir CSS interno?",
+          "opciones": [
+            "Dentro del <body>, al principio",
+            "Dentro del <head>",
+            "Justo después de </html>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo se escribe un selector de clase?",
+          "opciones": [
+            "#destacado",
+            ".destacado",
+            "destacado"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántas veces puede repetirse el mismo id en una página?",
+          "opciones": [
+            "Ninguna limitación, tantas como quieras",
+            "Solo una vez",
+            "Hasta tres veces"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad cambia el color de fondo de un elemento?",
+          "opciones": [
+            "color",
+            "background-color",
+            "font-color"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál es la principal ventaja de un archivo estilos.css externo frente al estilo interno?",
+          "opciones": [
+            "Es obligatorio, el estilo interno no funciona en todos los navegadores",
+            "Permite reutilizar las mismas reglas en varias páginas sin repetirlas",
+            "Se carga más rápido siempre"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tienes <p>Uno</p> y <p class=\"aviso\">Dos</p>. Si escribes la regla .aviso { color: red; }, ¿qué párrafo se pone en rojo?",
+          "opciones": [
+            "Solo \"Uno\"",
+            "Solo \"Dos\"",
+            "Los dos"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tu <link rel=\"stylesheet\" href=\"estilo.css\"> no coincide con el nombre real del archivo (estilos.css). ¿Qué pasa con tu web?",
+          "opciones": [
+            "Se aplican igualmente las reglas, el navegador corrige el nombre",
+            "No se aplica ninguna regla del CSS, aunque el HTML esté bien",
+            "Solo fallan las reglas con selector de id"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la regla p { font-size: 2em; }, ¿qué es font-size?",
+          "opciones": [
+            "El selector",
+            "La propiedad",
+            "El valor"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si el texto normal mide 1em, ¿cómo se verá un título con font-size: 2em?",
+          "opciones": [
+            "El doble de grande que el texto normal",
+            "La mitad de grande",
+            "Igual, em no cambia nada"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Inspeccionas un elemento y en Styles ves una propiedad tachada. ¿Qué significa?",
+          "opciones": [
+            "Que se ha borrado de tu archivo estilos.css",
+            "Que no se está aplicando: otra regla la anula o está mal escrita",
+            "Que es la propiedad más importante del elemento"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cambias un color desde Inspeccionar y recargas la página con F5. ¿Qué pasa?",
+          "opciones": [
+            "El cambio se queda guardado en tu estilos.css",
+            "Vuelve el color original, porque Inspeccionar no toca tu archivo",
+            "La página da un error"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada selector o propiedad con su función",
+      "pares": [
+        {
+          "izquierda": "h1 { }",
+          "derecha": "Afecta a todas las etiquetas de ese tipo"
+        },
+        {
+          "izquierda": ".destacado { }",
+          "derecha": "Afecta a cualquier elemento con esa clase"
+        },
+        {
+          "izquierda": "#cabecera { }",
+          "derecha": "Afecta al único elemento con ese id"
+        },
+        {
+          "izquierda": "color",
+          "derecha": "Color del texto"
+        },
+        {
+          "izquierda": "background-color",
+          "derecha": "Color de fondo del elemento"
+        },
+        {
+          "izquierda": "font-family",
+          "derecha": "Tipografía usada"
+        },
+        {
+          "izquierda": "text-align",
+          "derecha": "Alineación del texto"
+        },
+        {
+          "izquierda": "<link rel=\"stylesheet\">",
+          "derecha": "Enlaza un archivo CSS externo"
+        }
+      ]
+    }
+  ]
+}

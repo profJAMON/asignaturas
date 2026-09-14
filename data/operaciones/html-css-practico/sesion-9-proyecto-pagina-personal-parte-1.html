@@ -1,0 +1,150 @@
+<h2>Antes de empezar: qué es esta sesión</h2>
+<p>Empieza el proyecto final de la unidad, en dos partes: en esta sesión construyes la versión <strong>definitiva</strong> de tu página de inicio (tu "home"), y en la sesión 10 añades la sección de resúmenes.</p>
+<p>No importa en qué estado hayan quedado tus archivos de <code>mi-web</code> tras las sesiones anteriores. Aquí vuelves a montar tu <code>index.html</code> y tu <code>estilos.css</code> <strong>de una vez y en condiciones</strong>, siguiendo la especificación de abajo como única referencia — igual que si un cliente te encargara la web y esto fuera lo que te ha pedido. Si tienes trozos de código de sesiones anteriores que te sirven, cópialos; si no, escríbelos de nuevo.</p>
+<div class="nota">💡 Puedes seguir usando tu <code>index.html</code> y tu <code>estilos.css</code> actuales, vaciándolos y empezando de nuevo, o crear los dos archivos desde cero (borrando antes los viejos o dándoles otro nombre). Lo único que importa es que, al terminar la sesión, tu <code>index.html</code> cumpla <strong>todo</strong> lo que pide la especificación — no lo que quedara de sesiones sueltas.</div>
+
+<h2>La especificación de tu home</h2>
+<p>Esto es lo que tiene que tener tu página de inicio al terminar la sesión. Guárdate esta lista — es la que vas a revisar al final:</p>
+<ul class="checklist">
+<li>Un <code>&lt;header&gt;</code> con tu alias y un <code>&lt;nav&gt;</code> con enlaces a las secciones de tu propia página (anclas) y, al final, un enlace a <code>resumenes.html</code> (todavía no existe del todo — lo dejas preparado en el Bloque 7).</li>
+<li>Un <code>&lt;main&gt;</code> con al menos tres <code>&lt;section&gt;</code>: <strong>Sobre mí</strong> (texto), <strong>Mis asignaturas</strong> (una tabla con datos reales) y <strong>Mis aficiones</strong> (varias tarjetas con imagen).</li>
+<li>Jerarquía de encabezados correcta, sin saltos ni <code>&lt;h1&gt;</code> repetidos.</li>
+<li>Al menos una lista, un párrafo con <code>&lt;strong&gt;</code>/<code>&lt;em&gt;</code>, y una imagen real con <code>alt</code>, sin deformar.</li>
+<li>Un <code>estilos.css</code> externo enlazado, con selectores de etiqueta, clase e id, y una paleta de colores y tipografía consistentes en toda la página.</li>
+<li>Tus tarjetas de "Mis aficiones" con <code>padding</code>, <code>border</code> y <code>box-sizing: border-box</code>.</li>
+<li>Tu tabla de "Mis asignaturas" con <code>border-collapse</code>, <code>border</code> y <code>padding</code> en <code>th</code>/<code>td</code>.</li>
+<li>Tu <code>&lt;nav&gt;</code> y tus tarjetas organizados con Flexbox (<code>display: flex</code>, <code>gap</code>, <code>flex-wrap</code> donde haga falta).</li>
+<li>Un <code>&lt;footer&gt;</code> con tu alias.</li>
+<li>Ningún dato personal: ni tu nombre real, ni fotos tuyas o de otras personas, ni tu instituto, ni tu horario (repasa la tabla del alias de la sesión 1).</li>
+<li>Favicon, <code>meta viewport</code> y <code>meta description</code> (Bloque 6 — son nuevos, se explican ahí).</li>
+</ul>
+
+<h2>Bloque 1 — Estructura y contenido (HTML)</h2>
+<p>Escribe (o revisa) la estructura mínima y, dentro del <code>&lt;body&gt;</code>, monta el esqueleto semántico completo:</p>
+<pre><code><span class='et'>&lt;header&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Tu alias<span class='et'>&lt;/h1&gt;</span>
+    <span class='et'>&lt;nav&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#sobre-mi"</span><span class='et'>&gt;</span>Sobre mí<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#asignaturas"</span><span class='et'>&gt;</span>Mis asignaturas<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#aficiones"</span><span class='et'>&gt;</span>Mis aficiones<span class='et'>&lt;/a&gt;</span>
+        <span class='co'>&lt;!-- el enlace a resumenes.html se añade en el Bloque 7 --&gt;</span>
+    <span class='et'>&lt;/nav&gt;</span>
+<span class='et'>&lt;/header&gt;</span>
+
+<span class='et'>&lt;main&gt;</span>
+    <span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>"sobre-mi"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Sobre mí<span class='et'>&lt;/h2&gt;</span>
+        <span class='co'>&lt;!-- tu párrafo de presentación --&gt;</span>
+    <span class='et'>&lt;/section&gt;</span>
+    <span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>"asignaturas"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Mis asignaturas<span class='et'>&lt;/h2&gt;</span>
+        <span class='co'>&lt;!-- tu tabla, Bloque 4 --&gt;</span>
+    <span class='et'>&lt;/section&gt;</span>
+    <span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>"aficiones"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Mis aficiones<span class='et'>&lt;/h2&gt;</span>
+        <span class='co'>&lt;!-- tus tarjetas, Bloque 3 --&gt;</span>
+    <span class='et'>&lt;/section&gt;</span>
+<span class='et'>&lt;/main&gt;</span>
+
+<span class='et'>&lt;footer&gt;</span>
+    <span class='et'>&lt;p&gt;</span>Tu alias<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;/footer&gt;</span></code></pre>
+<p>Dentro de "Sobre mí", escribe dos o tres párrafos sobre ti, sin ningún dato que te identifique (qué te gusta, qué quieres aprender...), con al menos una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>, y una lista (<code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>) con algo tuyo (tus asignaturas favoritas, tus objetivos del curso, lo que quieras).</p>
+<p>Comprobación: al abrir Live Server, los tres enlaces del <code>&lt;nav&gt;</code> saltan cada uno a su sección, y leyendo los encabezados de arriba abajo no hay ningún salto de nivel.</p>
+
+<h2>Bloque 2 — Estilo (CSS externo)</h2>
+<p>Enlaza tu <code>estilos.css</code> desde el <code>&lt;head&gt;</code> (<code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>) y aplica, como mínimo:</p>
+<ul>
+<li>Una regla de <strong>etiqueta</strong> (por ejemplo, tipografía general del <code>body</code>).</li>
+<li>Una regla de <strong>clase</strong> reutilizada en dos o más elementos (por ejemplo, tus tarjetas del Bloque 3).</li>
+<li>Una regla de <strong>id</strong> para algo único de tu página.</li>
+<li>Una paleta de dos colores consistente: mismo fondo en <code>&lt;header&gt;</code> y <code>&lt;footer&gt;</code>, mismo color de acento en tus títulos.</li>
+</ul>
+<p>Comprobación: si cambias un color en <code>estilos.css</code>, se actualiza en todos los sitios que lo usan sin tocar el HTML.</p>
+
+<h2>Bloque 3 — Modelo de caja: tus tarjetas</h2>
+<p>En la sección "Mis aficiones", crea una tarjeta por afición (dos o tres bastan), cada una con una imagen tuya (búscala y descárgala tú, muévela a <code>mi-web</code>) y un texto corto:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"..."</span> <span class='at'>alt</span>=<span class='ca'>"..."</span> <span class='at'>width</span>=<span class='ca'>"200"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p&gt;</span>Descripción corta<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<p>A la clase <code>.tarjeta</code>, añade <code>padding</code>, <code>border</code> y <code>box-sizing: border-box</code> — recuerda que sin <code>box-sizing</code>, el <code>padding</code> y el <code>border</code> se suman al <code>width</code> en vez de repartirse dentro de él.</p>
+<p>Comprobación: todas tus tarjetas miden lo mismo entre sí, aunque cambies el <code>padding</code> de una a modo de prueba y luego lo devuelvas al valor original.</p>
+
+<h2>Bloque 4 — Tabla de datos reales</h2>
+<p>En la sección "Mis asignaturas", crea una tabla con tus asignaturas reales de este curso y sus horas semanales (o cualquier otro dato tuyo que no te identifique — nunca tu horario real):</p>
+<pre><code><span class='et'>table</span> {
+    <span class='at'>border-collapse</span>: <span class='ca'>collapse</span>;
+    <span class='at'>width</span>: <span class='ca'>100%</span>;
+}
+<span class='et'>th</span>, <span class='et'>td</span> {
+    <span class='at'>border</span>: <span class='ca'>1px solid #3c3c3c</span>;
+    <span class='at'>padding</span>: <span class='ca'>8px 12px</span>;
+    <span class='at'>text-align</span>: <span class='ca'>left</span>;
+}</code></pre>
+<p>Si tienes alguna fila que fusione varias columnas o varias filas (por ejemplo, un total, o una asignatura de dos horas seguidas), usa <code>colspan</code>/<code>rowspan</code> como en la sesión 6 — recuerda quitar de esa fila las celdas que la fusión ya ocupa.</p>
+<p>Comprobación: tu tabla se ve con bordes limpios, sin dobles líneas.</p>
+
+<h2>Bloque 5 — Flexbox: organiza los bloques</h2>
+<p>Aplica Flexbox en dos sitios de tu página:</p>
+<ul>
+<li>En tu <code>&lt;nav&gt;</code>: <code>display: flex;</code> y <code>gap</code>, para que los enlaces queden en fila.</li>
+<li>En el contenedor de tus tarjetas de "Mis aficiones": <code>display: flex;</code>, <code>flex-wrap: wrap;</code> y <code>gap</code>, para que se organicen en fila sin desbordarse cuando encojas la ventana.</li>
+</ul>
+<p>Comprobación: al reducir el ancho de la ventana del navegador, tus tarjetas pasan a varias líneas en vez de salirse de la pantalla o encogerse.</p>
+
+<h2>Bloque 6 — Toques finales nuevos: favicon, viewport y descripción</h2>
+<p>Tres etiquetas nuevas, todas cortas, que van en el <code>&lt;head&gt;</code> junto al <code>&lt;title&gt;</code> y el <code>&lt;link&gt;</code> de tu CSS. Ninguna cambia cómo se ve tu página por dentro — son detalles de una web terminada de verdad.</p>
+<table>
+<tr><th>Etiqueta</th><th>Para qué sirve</th></tr>
+<tr><td><code>&lt;link rel="icon" href="..."&gt;</code></td><td>El favicon: el icono pequeño que aparece en la pestaña del navegador</td></tr>
+<tr><td><code>&lt;meta name="viewport" ...&gt;</code></td><td>Le dice al navegador cómo ajustar el ancho de la página en pantallas pequeñas (móvil)</td></tr>
+<tr><td><code>&lt;meta name="description" ...&gt;</code></td><td>El texto que se muestra bajo el título cuando tu página aparece en un buscador</td></tr>
+</table>
+<pre><code><span class='et'>&lt;head&gt;</span>
+    <span class='et'>&lt;title&gt;</span>Tu alias<span class='et'>&lt;/title&gt;</span>
+    <span class='et'>&lt;meta</span> <span class='at'>name</span>=<span class='ca'>"viewport"</span> <span class='at'>content</span>=<span class='ca'>"width=device-width, initial-scale=1.0"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;meta</span> <span class='at'>name</span>=<span class='ca'>"description"</span> <span class='at'>content</span>=<span class='ca'>"La web de [tu alias]: mis apuntes y mis aficiones"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"icon"</span> <span class='at'>href</span>=<span class='ca'>"favicon.png"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"estilos.css"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/head&gt;</span></code></pre>
+<ol>
+<li>Busca una imagen pequeña y cuadrada (la inicial de tu alias, un icono, lo que quieras — nunca una foto tuya), descárgala y muévela a <code>mi-web</code> — el mismo procedimiento de rutas de la sesión 3.</li>
+<li>Añade el <code>&lt;link rel="icon"&gt;</code> apuntando a esa imagen.</li>
+<li>Añade el <code>&lt;meta viewport&gt;</code> y el <code>&lt;meta description&gt;</code> tal cual, cambiando el texto de la descripción por el tuyo.</li>
+</ol>
+<div class="nota">🤔 Antes de seguir: si tu favicon "no aparece" en la pestaña, ¿qué es lo primero que revisarías, de todo lo que ya sabes de rutas (sesión 3)?</div>
+<details><summary>Ver la respuesta</summary>
+<p>Que el archivo esté de verdad dentro de <code>mi-web</code> (no en Descargas) y que el nombre del <code>href</code> coincida exactamente con el nombre del archivo, mayúsculas y extensión incluidas — es la misma comprobación que con cualquier <code>src</code> o <code>href</code> de ruta relativa. Algunos navegadores además guardan el favicon en caché: si todo lo demás está bien y sigue sin aparecer, prueba a recargar con <code>Ctrl+Shift+R</code>.</p>
+</details>
+
+<h2>Bloque 7 — Deja preparado el hueco de "Resúmenes"</h2>
+<p>En la sesión 10 vas a construir la sección donde subirás el resumen de cada unidad antes de su examen. Para no tener que volver a tocar el <code>&lt;nav&gt;</code> entonces, déjalo ya preparado:</p>
+<ol>
+<li>Crea un archivo nuevo <code>resumenes.html</code> en tu carpeta <code>mi-web</code>, con la estructura mínima de siempre y el mismo <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code> que tu <code>index.html</code> (para que comparta el mismo estilo).</li>
+<li>Dentro, repite el mismo <code>&lt;header&gt;</code> con tu alias y un <code>&lt;nav&gt;</code> con un enlace <code>&lt;a href="index.html"&gt;Inicio&lt;/a&gt;</code> de vuelta a tu home.</li>
+<li>En el <code>&lt;main&gt;</code>, de momento solo un <code>&lt;h1&gt;</code>"Resúmenes" y un párrafo: "Próximamente: aquí subiré el resumen de cada unidad antes de su examen."</li>
+<li>Añade un <code>&lt;footer&gt;</code> igual que el de tu home.</li>
+<li>Por último, en el <code>&lt;nav&gt;</code> de tu <code>index.html</code>, añade el enlace que faltaba: <code>&lt;a href="resumenes.html"&gt;Resúmenes&lt;/a&gt;</code>.</li>
+</ol>
+<div class="nota">⚠️ Fíjate en la diferencia con los enlaces del <code>&lt;nav&gt;</code> que ya tenías: <code>href="#sobre-mi"</code> es una ancla, salta dentro de la misma página. <code>href="resumenes.html"</code> es una ruta relativa a <strong>otro archivo</strong>: cambia de página de verdad. Los dos se ven igual, pero hacen cosas distintas.</div>
+<p>Comprobación: desde tu home, el enlace "Resúmenes" te lleva a una página nueva con el mismo estilo (misma cabecera, mismos colores); y desde ahí, "Inicio" te trae de vuelta.</p>
+
+<h2>Reto — Revisión final antes de entregar</h2>
+<p>Repasa tu <code>index.html</code> y tu <code>resumenes.html</code> completos y comprueba que cumples <strong>toda</strong> la especificación de arriba:</p>
+<ul class="checklist">
+<li><code>&lt;header&gt;</code> con tu alias y <code>&lt;nav&gt;</code> en fila (Flexbox), con sus cuatro enlaces (tres anclas + Resúmenes) funcionando.</li>
+<li><code>&lt;main&gt;</code> con las tres secciones (Sobre mí, Mis asignaturas, Mis aficiones) y jerarquía de encabezados sin saltos.</li>
+<li>Al menos una lista, un <code>&lt;strong&gt;</code>/<code>&lt;em&gt;</code>, y una imagen sin deformar con <code>alt</code> real.</li>
+<li>Paleta y tipografía consistentes, con selectores de etiqueta, clase e id en tu <code>estilos.css</code>.</li>
+<li>Tarjetas con <code>box-sizing: border-box</code>, en un contenedor <code>flex-wrap: wrap;</code> que no se desborda al encoger la ventana.</li>
+<li>Tabla de datos reales con <code>border-collapse</code> y sin descuadrarse.</li>
+<li>Favicon visible en la pestaña, y <code>meta viewport</code>/<code>meta description</code> en el <code>&lt;head&gt;</code>.</li>
+<li><code>resumenes.html</code> creado, con el mismo estilo que tu home, y navegación de ida y vuelta funcionando.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — es la que entregas por Google Classroom (el plazo te lo digo en clase). Si no te aparece la tarea en Classroom, <strong>recuérdame que la publique</strong>. En la sesión 10 vuelves a <code>resumenes.html</code> para escribir ahí tu primer resumen de verdad, el de esta misma unidad.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
+
+<h2>Autoevaluación y relaciona conceptos</h2>
+<p>Antes de cerrar, comprueba con las actividades de abajo los conceptos nuevos de esta sesión y algunas decisiones clave del proyecto.</p>

@@ -1,0 +1,103 @@
+<h2>Medir la información</h2>
+<p>Un bit es demasiado pequeño para hablar de archivos reales, igual que el milímetro es demasiado pequeño para hablar de la distancia a Valencia. Así que se agrupan. Y aquí hay una peculiaridad: en informática <strong>no se sube de mil en mil, se sube de 1024 en 1024</strong>, porque 1024 es 2¹⁰ y las máquinas van por potencias de dos.</p>
+<table>
+<tr><th>Unidad</th><th>Símbolo</th><th>Equivale a</th><th>En bytes</th></tr>
+<tr><td>Byte</td><td>B</td><td>8 bits</td><td>1</td></tr>
+<tr><td>Kilobyte</td><td>KB</td><td>1.024 B</td><td>2¹⁰ = 1.024</td></tr>
+<tr><td>Megabyte</td><td>MB</td><td>1.024 KB</td><td>2²⁰ = 1.048.576</td></tr>
+<tr><td>Gigabyte</td><td>GB</td><td>1.024 MB</td><td>2³⁰ = 1.073.741.824</td></tr>
+<tr><td>Terabyte</td><td>TB</td><td>1.024 GB</td><td>2⁴⁰ = 1.099.511.627.776</td></tr>
+</table>
+<div class="salida">
+<svg viewBox="0 0 520 252" width="100%" role="img" aria-label="Escalera de unidades de B a TB; subir un peldaño divide entre 1024 y bajarlo multiplica por 1024" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="26" y="196" width="82" height="34" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="67.0" y="218" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#f3f3f3">B</text><text x="67.0" y="245" text-anchor="middle" class="f">1 byte</text><path d="M 110 202 L 119.7 186.7" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 124 180 L 122.5 188.9 L 116.6 185.1 z" fill="#9099a6"/><rect x="120" y="162" width="82" height="34" rx="4" fill="#252526" stroke="#3c3c3c"/><text x="161.0" y="184" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#f3f3f3">KB</text><text x="161.0" y="211" text-anchor="middle" class="f">1.024 B</text><path d="M 204 168 L 213.7 152.7" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 218 146 L 216.5 154.9 L 210.6 151.1 z" fill="#9099a6"/><rect x="214" y="128" width="82" height="34" rx="4" fill="#252526" stroke="#3c3c3c"/><text x="255.0" y="150" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#f3f3f3">MB</text><text x="255.0" y="177" text-anchor="middle" class="f">1.024 KB</text><path d="M 298 134 L 307.7 118.7" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 312 112 L 310.5 120.9 L 304.6 117.1 z" fill="#9099a6"/><rect x="308" y="94" width="82" height="34" rx="4" fill="#252526" stroke="#3c3c3c"/><text x="349.0" y="116" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#f3f3f3">GB</text><text x="349.0" y="143" text-anchor="middle" class="f">1.024 MB</text><path d="M 392 100 L 401.7 84.7" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 406 78 L 404.5 86.9 L 398.6 83.1 z" fill="#9099a6"/><rect x="402" y="60" width="82" height="34" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="443.0" y="82" text-anchor="middle" font-family="monospace" font-size="15" font-weight="700" fill="#f3f3f3">TB</text><text x="443.0" y="109" text-anchor="middle" class="f">1.024 GB</text><rect x="24" y="20" width="250" height="74" rx="5" fill="#252526" stroke="#3c3c3c"/><text x="38" y="42" text-anchor="start" class="ok">subir un peldaño  →  ÷ 1024</text><text x="38" y="62" text-anchor="start" class="w">bajar un peldaño  →  × 1024</text><text x="38" y="82" text-anchor="start" class="f">2 TB a MB son dos peldaños hacia abajo</text>
+</svg>
+<p class="pie-figura">La escalera de unidades. Subir un peldaño es dividir entre 1024; bajarlo, multiplicar.</p>
+</div>
+<p>La regla práctica es corta: <strong>para bajar de unidad multiplicas por 1024; para subir, divides entre 1024</strong>. Un salto, un 1024. Dos saltos, dos veces.</p>
+<pre><code>2 TB → GB   es 1 salto hacia abajo:   2 × 1024 = 2.048 GB
+2 TB → MB   son 2 saltos:             2 × 1024 × 1024 = 2.097.152 MB
+4096 MB → GB  es 1 salto hacia arriba: 4096 ÷ 1024 = 4 GB</code></pre>
+<div class="nota">Antes de operar, <strong>escribe la escalera</strong> en el margen: B – KB – MB – GB – TB. Cuenta los peldaños que hay entre las dos unidades del enunciado y ya sabes cuántas veces multiplicar o dividir. La mitad de los fallos en este tema son de contar mal los peldaños, no de calcular.</div>
+
+<h2>Almacenar no es transmitir</h2>
+<p>Esto es lo más importante de la sesión, y lo que más se confunde fuera del aula.</p>
+<ul>
+<li>Lo que <strong>ocupa</strong> un archivo se mide en <strong>bytes</strong>: B, KB, MB, GB, TB.</li>
+<li>Lo que <strong>corre</strong> una conexión se mide en <strong>bits por segundo</strong>: bps, Kbps, <strong>Mbps</strong>, Gbps.</li>
+</ul>
+<p>Fíjate en la letra: <strong>MB</strong> es megabytes (capacidad), <strong>Mb</strong> o <strong>Mbps</strong> es megabits (velocidad). Entre una y otra hay un factor 8.</p>
+<div class="salida">
+<svg viewBox="0 0 496 256" width="100%" role="img" aria-label="Un byte son ocho bits; 600 megabits por segundo equivalen a 75 megabytes por segundo" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="20" y="22" text-anchor="start" class="t">1 byte (B) = 8 bits (b)</text><rect x="22" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="34" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="52" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="64" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="82" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="94" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="112" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="124" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="142" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="154" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="172" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="184" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="202" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="214" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><rect x="232" y="34" width="24" height="24" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="244" y="51" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">b</text><path d="M 22 62 L 22 68 L 262 68 L 262 62" stroke="#4fc1ff" fill="none" stroke-width="1"/><text x="142.0" y="82" text-anchor="middle" class="f">esto es UN byte</text><path d="M 20 104 L 470 104" stroke="#3c3c3c"/><text x="20" y="130" text-anchor="start" class="t">Y por eso la letra importa:</text><rect x="20" y="144" width="200" height="70" rx="5" fill="#252526" stroke="#ce9178"/><text x="120" y="166" text-anchor="middle" class="w">600 Mbps</text><text x="120" y="184" text-anchor="middle" class="f">lo que anuncia el operador</text><text x="120" y="204" text-anchor="middle" class="f">megaBITS por segundo</text><path d="M 228 180 L 260.0 180.0" stroke="#9099a6" stroke-width="1.4" fill="none"/>
+<path d="M 268 180 L 259.7 183.5 L 259.7 176.5 z" fill="#9099a6"/><text x="248" y="170" text-anchor="middle" class="s">÷ 8</text><rect x="276" y="144" width="200" height="70" rx="5" fill="#252526" stroke="#89d185"/><text x="376" y="166" text-anchor="middle" class="ok">75 MB/s</text><text x="376" y="184" text-anchor="middle" class="f">lo que ves al descargar</text><text x="376" y="204" text-anchor="middle" class="f">megaBYTES por segundo</text><text x="248" y="238" text-anchor="middle" class="s">No te han engañado: es la misma velocidad en dos unidades.</text>
+</svg>
+<p class="pie-figura">Ocho bits en un byte, y el mismo factor ocho entre la velocidad que se anuncia y la que ves al descargar.</p>
+</div>
+<div class="salida">
+<p><strong>El caso de la fibra de 600 megas.</strong> Contratas 600 Mbps. Te bajas un archivo y el navegador dice «75 MB/s». No te han engañado ni va lento:</p>
+<pre><code>600 Mbps ÷ 8 = 75 MB/s</code></pre>
+<p>Son la misma velocidad escrita en dos unidades. Los operadores anuncian en megabits porque el número sale ocho veces más grande.</p>
+</div>
+<p>Y de ahí sale la pregunta típica de examen: <em>¿cuánto tarda?</em> El método siempre es el mismo — <strong>pon los dos datos en la misma familia</strong> antes de dividir:</p>
+<pre><code>Archivo de 400 MB por una línea de 200 Mbps
+
+1) el archivo a megabits:   400 MB × 8 = 3.200 Mb
+2) divide por la velocidad: 3.200 Mb ÷ 200 Mbps = 16 segundos</code></pre>
+<p>En la vida real tarda más: nunca se aprovecha el 100 % de la línea. Ese cálculo da el <strong>mínimo teórico</strong>, y así hay que decirlo en el examen.</p>
+
+<h3>Un aviso sobre los discos duros</h3>
+<p>Compras un disco de 1 TB, lo conectas y Windows dice 931 GB. No falta nada: el fabricante ha contado 1 TB = 1.000.000.000.000 bytes (de mil en mil) y Windows los reparte de 1024 en 1024. Mismo disco, dos formas de contar.</p>
+<p>Para deshacer el lío existen los nombres <strong>KiB, MiB, GiB</strong> (kibibyte, mebibyte, gibibyte) para las potencias de 1024, dejando KB, MB y GB para las de 1000. Se usan poco. <strong>En esta asignatura y en el examen trabajamos siempre con 1024</strong>, que es lo que dice la tabla de arriba; pero conviene que sepas por qué tu disco «ha encogido».</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 3 — a mano, en papel</p>
+<ol>
+<li>Completa, <strong>con las operaciones escritas</strong>: <br>a) 2 TB = ______ MB &nbsp;·&nbsp; b) 4096 MB = ______ GB &nbsp;·&nbsp; c) 3 GB = ______ KB &nbsp;·&nbsp; d) 512 KB = ______ B</li>
+<li>Relaciona cada ejemplo con la unidad que le pega: <em>bytes, kilobytes, megabytes, gigabytes, terabytes</em> → un disco duro actual · un documento de texto · un vídeo · los dígitos de una dirección IP · una foto.</li>
+<li>Has descargado una película de 2,3 GB y quieres pasarla en CD de 700 MB. ¿Cuántos CD necesitas? Cuidado con el redondeo y explica por qué redondeas así.</li>
+<li>Tu conexión es de 1000 Mbps. ¿Cuántos MB por segundo son? ¿Cuánto tardarías, como mínimo, en bajar 5 GB?</li>
+<li>Explica con tus palabras por qué un disco de 1 TB aparece en el ordenador como 931 GB.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Una línea de 100 Mbps, ¿baja 100 MB cada segundo?</summary>
+<p>No: baja <strong>12,5 MB por segundo</strong> como mucho (100 ÷ 8). La «b» pequeña de Mbps son bits, no bytes. Es el error más repetido de esta unidad.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué 1 KB son 1.024 bytes y no 1.000?</summary>
+<p>Porque las máquinas cuentan en potencias de dos y 1.024 es 2¹⁰, la potencia de dos más cercana a mil. El prefijo «kilo» se tomó prestado del sistema métrico por comodidad, aunque no cuadre exactamente.</p>
+</details>
+<details>
+<summary>🤔 Si un archivo ocupa 1,44 MB, ¿cuántos bits son?</summary>
+<p>1,44 × 1024 = 1.474,56 KB → × 1024 = 1.509.949,44 B → × 8 ≈ <strong>12.079.596 bits</strong>. El detalle importante no es el número exacto, sino el orden de las conversiones: primero bajas la escalera hasta bytes, y solo al final multiplicas por 8.</p>
+</details>

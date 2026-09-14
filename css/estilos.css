@@ -1,0 +1,1066 @@
+@charset "UTF-8";
+/* ============================================================
+   Material de clase — hoja de estilos (compartida por las asignaturas)
+   Sigue la guía de estilo del proyecto (estilo-web-materiales_2.md):
+   modo oscuro tipo VS Code Dark+, minimalista, sin sombras.
+   Layout: menú (200px) | contenido elástico (hasta 1100px) | índice de página (180px).
+   Jerarquía de encabezados de sesión: numerada y con sangría por subsección.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+:root {
+  color-scheme: dark;
+
+  --bg: #1e1e1e;
+  --surface: #252526;
+  --surface-2: #2d2d30;
+  --border: #3c3c3c;
+  --text: #f3f3f3;
+  --text-dim: #9099a6;
+  --text-faint: #6a7280;
+  --accent: #4fc1ff;
+  --accent-dim: #3a9bd1;
+  --accent-warm: #ce9178;
+  --code-bg: #ffffff;
+  --code-text: #1e1e1e;
+  --code-tag: #800000;
+  --code-attr: #ff0000;
+  --code-string: #0451a5;
+  --code-comment: #008000;
+  --code-inline: #89d185;
+  --code-borde: transparent;
+  --ok: #89d185;
+  --error: #f14c4c;
+
+  /* Colores que antes estaban escritos a pelo en las reglas. Viven aquí
+     para que el modo claro pueda cambiarlos sin tocar nada más. */
+  --boton-texto: #0b1a22;
+  --ok-fondo: rgba(137, 209, 133, 0.12);
+  --error-fondo: rgba(241, 76, 76, 0.12);
+  --marca-bien: #4ec9b0;
+  --marca-mal: #f48771;
+
+  /* Las figuras (.salida con un SVG dentro). Los diagramas llevan sus
+     colores escritos dentro del propio SVG, con la paleta oscura, así que
+     en modo claro conservan este fondo de pizarra. Ver más abajo. */
+  --figura-bg: var(--surface);
+  --figura-borde: var(--border);
+  --figura-pie: var(--text-faint);
+  --figura-enlace: var(--accent);
+
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Ancho máximo de la columna de lectura. Cámbialo aquí y se mueve
+     toda la página a la vez: cabecera, lección y pie. */
+  --ancho-lectura: none;
+
+  /* Anchos de las columnas laterales. */
+  --ancho-menu: 200px;
+  --ancho-indice: 180px;
+}
+
+/* ============================================================
+   Modo claro  (js/aspecto.js)
+   ============================================================
+   El alumno elige claro, oscuro o automático con el selector de la barra
+   lateral. js/aspecto.js escribe en <html> el tema YA RESUELTO:
+
+     data-tema="oscuro" | data-tema="claro"          <- lo que pinta el CSS
+     data-tema-elegido="oscuro" | "claro" | "auto"   <- lo que marca el botón
+
+   Por eso aquí abajo solo hay un bloque y no tres: de resolver
+   "automático" (mirar prefers-color-scheme) se encarga el JS, y así la
+   paleta clara se escribe una sola vez.
+
+   Todo lo que cambia son estas variables. Si al añadir un componente
+   nuevo hace falta un color, se pone como variable aquí y arriba, nunca
+   escrito a pelo en la regla: es lo que mantiene los dos modos a la vez.
+   ============================================================ */
+
+:root[data-tema="claro"] {
+  color-scheme: light;
+
+  --bg: #ffffff;
+  --surface: #f7f8fa;
+  --surface-2: #eaedf1;
+  --border: #cfd5dc;
+  --text: #1c2024;
+  --text-dim: #4c555f;
+  --text-faint: #69707a;
+  --accent: #0a6bb5;
+  --accent-dim: #085694;
+  --accent-warm: #9a4820;
+
+  /* El bloque de código ya era claro en modo oscuro; sobre página blanca
+     necesita un gris muy suave y un borde para no perder la caja. */
+  --code-bg: #f8f9fb;
+  --code-text: #1e1e1e;
+  --code-borde: #d7dce2;
+  --code-inline: #116329;
+
+  --ok: #1a7f37;
+  --error: #c2262f;
+  --boton-texto: #ffffff;
+  --ok-fondo: rgba(26, 127, 55, 0.12);
+  --error-fondo: rgba(194, 38, 47, 0.10);
+  --marca-bien: #1a7f37;
+  --marca-mal: #b42318;
+
+  /* Las figuras se quedan en oscuro: los SVG llevan su paleta dentro. */
+  --figura-bg: #1e1e1e;
+  --figura-borde: #3c3c3c;
+  --figura-pie: #9099a6;
+  --figura-enlace: #4fc1ff;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  display: grid;
+  grid-template-columns: var(--ancho-menu) minmax(0, 1fr) var(--ancho-indice);
+  min-height: 100vh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.55;
+}
+
+/* Sin esto, un <pre> muy largo puede ensanchar su columna del grid
+   y desbordar la página en lugar de generar su propia barra de scroll. */
+body > * { min-width: 0; }
+
+a { color: inherit; }
+img, svg { max-width: 100%; }
+button, input { font-family: inherit; }
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Barra lateral (Temario) ---------- */
+
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 1.6rem 1rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.sidebar__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin: 0 0 1.3rem;
+}
+
+/* Unidades desplegables */
+
+.unidad { margin-bottom: 0.4rem; }
+
+.unidad summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.4rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  border-radius: 4px;
+}
+.unidad summary::-webkit-details-marker { display: none; }
+.unidad summary::before {
+  content: "▸";
+  color: var(--text-faint);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+.unidad[open] summary::before { transform: rotate(90deg); }
+.unidad summary:hover { background: var(--surface-2); }
+
+.sesion {
+  display: block;
+  padding: 0.45rem 0.6rem 0.45rem 1.4rem;
+  margin-left: 0.15rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  color: var(--text-faint);
+  text-decoration: none;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+.sesion:hover { background: var(--surface-2); color: var(--text); }
+.sesion.activa {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+/* ---------- Índice de la página (columna derecha) ---------- */
+
+.indice {
+  padding: 1.6rem 1rem;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+
+.indice__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin: 0 0 1rem;
+}
+
+.indice a {
+  display: block;
+  padding: 0.35rem 0 0.35rem 0.6rem;
+  margin-left: -0.6rem;
+  border-left: 2px solid transparent;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+.indice a:hover { color: var(--text); border-left-color: var(--border); }
+.indice a.indice__sub { padding-left: 1.4rem; font-size: 0.76rem; }
+
+/* ---------- Contenido principal ---------- */
+
+/* Aquí está el control del ancho de toda la página. Al vivir en
+   .main-content y no en sus hijos, la cabecera y la lección quedan
+   alineadas por la izquierda automáticamente. */
+.main-content {
+  width: 100%;
+  min-width: 0;
+  max-width: var(--ancho-lectura);
+  margin: 0 auto;
+  padding: 28px 34px;
+}
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 1.2rem;
+}
+.volver:hover { text-decoration: underline; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 2.2rem;
+}
+
+.card h1 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0.7rem 0 0.8rem;
+}
+
+.card p {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 1.02rem;
+  max-width: 62ch;
+}
+
+.badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-warm);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+}
+
+.vacio {
+  padding: 1rem 0;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.seccion { margin: 2.8rem 0; }
+
+.seccion__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  margin: 0 0 1.2rem;
+}
+
+.materiales { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+
+.material {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.12s ease;
+}
+.material:hover { border-color: var(--accent); }
+
+.material__icono {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2rem 0.45rem;
+  flex-shrink: 0;
+}
+
+.material__titulo { font-weight: 500; }
+
+/* ---------- Actividades ---------- */
+
+.actividad {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.actividad__titulo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 1.2rem;
+  color: var(--text);
+}
+
+.pregunta { margin-bottom: 1.6rem; }
+.pregunta:last-child { margin-bottom: 0.5rem; }
+
+.pregunta__enunciado { font-weight: 500; margin: 0 0 0.7rem; color: var(--text); }
+
+.opciones { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.opcion {
+  text-align: left;
+  padding: 0.65rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.12s ease;
+}
+.opcion:hover { border-color: var(--accent); }
+.opcion.correcta { border-color: var(--ok); background: var(--ok-fondo); }
+.opcion.incorrecta { border-color: var(--error); background: var(--error-fondo); }
+.opcion[disabled] { cursor: default; }
+
+.quiz__resultado { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-dim); }
+
+.boton {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--accent);
+  color: var(--boton-texto);
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.1rem;
+  cursor: pointer;
+  margin-top: 0.6rem;
+}
+.boton:hover { background: var(--accent-dim); }
+
+/* Relacionar (emparejar por clics) */
+
+.relacionar { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+
+.relacionar__columna { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.ficha {
+  padding: 0.65rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.96rem;
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+.ficha:hover { border-color: var(--accent); }
+.ficha.seleccionada { border-color: var(--accent); background: var(--surface-2); }
+.ficha.emparejada-correcta { border-color: var(--ok); background: var(--ok-fondo); cursor: default; }
+.ficha.emparejada-error { border-color: var(--error); background: var(--error-fondo); }
+
+.relacionar__estado { grid-column: 1 / -1; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-dim); margin-top: 0.3rem; }
+
+/* ---------- Ejercicios generados (js/generadores.js) ---------- */
+
+.generador__fila {
+  display: grid;
+  grid-template-columns: 2rem 1fr 9rem 1.5rem;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+}
+
+.generador__numero {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.generador__enunciado {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.generador__campo {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  width: 100%;
+}
+.generador__campo:focus { outline: none; border-color: var(--accent); }
+
+.generador__marca { font-family: var(--font-mono); font-size: 1rem; }
+.generador__marca--bien { color: var(--marca-bien); }
+.generador__marca--mal { color: var(--marca-mal); }
+
+.generador__pista {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0 0 0.6rem 2.6rem;
+  border-left: 2px solid var(--accent-warm);
+  padding-left: 0.7rem;
+}
+
+.generador__barra { display: flex; gap: 0.6rem; margin-top: 1rem; flex-wrap: wrap; }
+.generador__boton-otra { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+.generador__boton-otra:hover { background: var(--surface-2); }
+
+.generador__estado {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .generador__fila { grid-template-columns: 1.6rem 1fr 1.5rem; }
+  .generador__campo { grid-column: 2 / 4; }
+  .generador__pista { margin-left: 2.2rem; }
+}
+
+/* ---------- Preguntas para contestar a mano, en papel ---------- */
+
+.leccion .papel {
+  border: 1px solid var(--accent-warm);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion .papel > *:last-child { margin-bottom: 0; }
+.leccion .papel__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  margin: 0 0 0.7rem;
+}
+
+/* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
+   índice lateral y actividades de pantalla. */
+@media print {
+  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .pie { display: none !important; }
+  .main-content { margin: 0; padding: 0; max-width: 100%; }
+  .leccion .papel { break-inside: avoid; }
+}
+
+footer.pie {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+}
+
+/* ---------- Contenido de la sesión (prosa, código, tablas) ---------- */
+
+/* El contador de apartados se reinicia en cada lección, no en el
+   documento. Así la numeración vuelve a empezar en 1 si algún día
+   hay dos bloques .leccion en la misma página. */
+.leccion { counter-reset: h2count; }
+
+.leccion h2 {
+  counter-reset: h3count;
+  counter-increment: h2count;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 2.4rem 0 0.9rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+.leccion h2:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+.leccion h2::before { content: counter(h2count) ". "; }
+
+.leccion .subseccion {
+  border-left: 2px solid var(--border);
+  padding-left: 1.1rem;
+  margin: 1.6rem 0;
+}
+
+.leccion h3 {
+  counter-increment: h3count;
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin: 0 0 0.6rem;
+}
+.leccion h3::before { content: counter(h2count) "." counter(h3count) " "; }
+
+.leccion p { margin: 0 0 1rem; color: var(--text); }
+.leccion ul, .leccion ol { margin: 0 0 1rem; padding-left: 1.3rem; color: var(--text); }
+.leccion li { margin-bottom: 0.3rem; }
+.leccion strong { color: var(--accent); font-weight: 600; }
+.leccion em { color: var(--text-dim); }
+
+.leccion code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  color: var(--code-inline);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  /* Una etiqueta larga en móvil se parte en vez de desbordar. */
+  overflow-wrap: anywhere;
+}
+
+.leccion pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: var(--code-bg);
+  color: var(--code-text);
+  border: 1px solid var(--code-borde);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 0 0 1.2rem;
+}
+.leccion pre code { color: inherit; background: none; border: none; padding: 0; font-size: 1em; overflow-wrap: normal; }
+
+.leccion pre .et { color: var(--code-tag); }
+.leccion pre .at { color: var(--code-attr); }
+.leccion pre .ca { color: var(--code-string); }
+.leccion pre .co { color: var(--code-comment); font-style: italic; }
+
+.leccion .nota {
+  border-left: 2px solid var(--accent-warm);
+  background: var(--surface);
+  border-radius: 0 6px 6px 0;
+  padding: 0.8rem 1rem;
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.leccion .salida {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion .salida > *:last-child { margin-bottom: 0; }
+
+/* Los diagramas son SVG con los colores escritos dentro (paleta oscura),
+   así que en modo claro este recuadro sigue siendo oscuro: es la única
+   forma de que los 63 diagramas se sigan viendo sin reescribirlos uno a
+   uno. Las .salida que NO llevan SVG (resultados de ejemplos de HTML)
+   no entran aquí y sí cambian de color con el tema. */
+.leccion .salida:has(svg) {
+  background: var(--figura-bg);
+  border-color: var(--figura-borde);
+}
+.leccion .salida:has(svg) .pie-figura { color: var(--figura-pie); }
+.leccion .salida:has(svg) a { color: var(--figura-enlace); }
+.leccion .salida svg { display: block; margin: 0 auto 0.6rem; }
+.leccion .pie-figura {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  text-align: center;
+  margin: 0.4rem 0 0;
+  line-height: 1.5;
+}
+.leccion .salida a { color: var(--accent); }
+
+.leccion details {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin: 0 0 1.2rem;
+  background: var(--surface);
+}
+.leccion details[open] { padding-bottom: 1rem; }
+.leccion details summary {
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+.leccion details summary::-webkit-details-marker { display: none; }
+.leccion details summary::before { content: "▸ "; }
+.leccion details[open] summary::before { content: "▾ "; }
+.leccion details pre:last-child { margin-bottom: 0; margin-top: 0.8rem; }
+
+.leccion table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.2rem;
+  font-size: 0.95rem;
+  overflow-x: auto;
+  display: block;
+}
+.leccion th, .leccion td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+}
+.leccion th { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint); }
+
+.leccion .checklist { list-style: none; padding-left: 0; }
+.leccion .checklist li::before { content: "☐ "; color: var(--accent); }
+
+/* ---------- Índice de portada (index.html) ---------- */
+
+.unidad-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+}
+
+.unidad-card summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 1.1rem 1.4rem;
+}
+.unidad-card summary::-webkit-details-marker { display: none; }
+.unidad-card summary::before {
+  content: "▸";
+  color: var(--text-faint);
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+  margin-top: 0.3rem;
+}
+.unidad-card[open] summary::before { transform: rotate(90deg); }
+.unidad-card summary:hover { background: var(--surface-2); }
+
+.unidad-card__titulo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0 0 0.3rem;
+}
+
+.unidad-card__descripcion {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+.sesiones-portada { border-top: 1px solid var(--border); }
+
+.sesion-portada {
+  display: block;
+  padding: 1rem 1.4rem;
+  border-top: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--text);
+  transition: background-color 0.12s ease;
+}
+.sesiones-portada .sesion-portada:first-child { border-top: none; }
+.sesion-portada:hover { background: var(--surface-2); }
+.sesion-portada:hover .sesion-portada__titulo { color: var(--accent); }
+
+.sesion-portada__titulo { font-weight: 600; margin: 0 0 0.3rem; }
+.sesion-portada__descripcion { color: var(--text-dim); margin: 0 0 0.4rem; font-size: 0.92rem; }
+.sesion-portada__meta {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-warm);
+  margin: 0;
+}
+
+/* ============================================================
+   Responsive
+   Todo agrupado al final para que gane a las reglas base por
+   orden de aparición, sin necesidad de !important.
+   ============================================================ */
+
+/* Portátiles pequeños: el índice de página se queda sin sitio
+   antes que el menú, así que es lo primero que se retira. */
+
+/* ============================================================
+   Selector de idioma  (js/idioma.js)
+   ============================================================ */
+
+.selector-idioma {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.selector-idioma .sidebar__titulo { margin-bottom: 0.6rem; }
+
+.idiomas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.idioma {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.idioma:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+.idioma--activo {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.idioma-extra {
+  width: 100%;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.4rem;
+  cursor: pointer;
+}
+
+.idioma-original {
+  display: block;
+  margin-top: 8px;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-warm);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.idioma-original:hover { text-decoration: underline; }
+
+.idioma-aviso {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--accent-warm);
+}
+
+.idioma:focus-visible,
+.idioma-extra:focus-visible,
+.idioma-original:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+/* ============================================================
+   Selector de aspecto  (js/aspecto.js)
+   Mismo aire que el de idioma: tres botones pequeños en monoespaciada.
+   ============================================================ */
+
+.selector-aspecto {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.selector-aspecto .sidebar__titulo { margin-bottom: 0.6rem; }
+
+.aspectos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.aspecto {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.aspecto:hover {
+  color: var(--text);
+  border-color: var(--text-faint);
+}
+
+.aspecto--activo {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.aspecto-nota {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.45;
+  color: var(--text-faint);
+}
+
+/* --- Interfaz propia del widget de Google: fuera ---------------
+   El widget inyecta una barra gris en la parte de arriba y su propio
+   desplegable, que no pegan nada con el tema oscuro. La web usa el
+   selector de aquí arriba; del widget solo se aprovecha el motor. */
+
+#google_translate_element,
+.goog-te-gadget,
+.goog-te-banner-frame,
+.goog-logo-link,
+.goog-te-balloon-frame,
+#goog-gt-tt {
+  display: none !important;
+}
+
+/* IMPORTANTE: el widget cuelga su barra superior del <body> como un
+   <div class="skiptranslate"> — y el <body> de esta web es la rejilla de
+   3 columnas, así que ese div se comía la primera columna y desplazaba
+   el menú, el contenido y el índice una posición a la derecha. Fuera
+   cualquier cosa que Google cuelgue directamente del body. */
+body > .skiptranslate,
+body > iframe {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Segundo cinturón de seguridad: las tres columnas van donde van, pase
+   lo que pase con lo que inyecten scripts de terceros en el <body>. */
+.sidebar      { grid-column: 1; grid-row: 1; }
+.main-content { grid-column: 2; grid-row: 1; }
+.indice       { grid-column: 3; grid-row: 1; }
+
+/* El widget desplaza el <body> hacia abajo para hacer hueco a su barra. */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+/* Google envuelve cada fragmento traducido en un <font>: que no traiga
+   colores ni tamaños propios. */
+font {
+  color: inherit !important;
+  background: none !important;
+  font-size: inherit !important;
+  vertical-align: inherit !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* ---------- Asignaturas ---------- */
+
+/* Nivel de arriba de la barra lateral: una asignatura, con sus
+   unidades dentro. Se distingue de .unidad por el borde inferior y
+   por ir en mayúsculas. */
+
+.asignatura {
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--border);
+}
+.asignatura:last-child { border-bottom: none; }
+
+.asignatura > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0.4rem 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  border-radius: 4px;
+  line-height: 1.35;
+}
+.asignatura > summary::-webkit-details-marker { display: none; }
+.asignatura > summary::before {
+  content: "▸";
+  transition: transform 0.15s ease;
+  flex-shrink: 0;
+}
+.asignatura[open] > summary::before { transform: rotate(90deg); }
+.asignatura[open] > summary { color: var(--accent); }
+.asignatura > summary:hover { background: var(--surface-2); color: var(--text); }
+
+.asignatura__cuerpo { padding-left: 0.35rem; margin-top: 0.3rem; }
+
+/* Tarjetas de la portada cuando toca elegir asignatura */
+
+.asignatura-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  margin-bottom: 1.2rem;
+  padding: 1.4rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.asignatura-card:hover { background: var(--surface-2); border-color: var(--accent); }
+.asignatura-card:hover .asignatura-card__titulo { color: var(--accent); }
+
+.asignatura-card__titulo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin: 0 0 0.4rem;
+}
+
+.asignatura-card__descripcion {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0 0 0.7rem;
+}
+
+.asignatura-card__meta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
+  .indice { display: none; }
+}
+
+/* Tabletas y móviles: el menú pasa a ocupar el ancho completo
+   y deja de estar fijo. */
+@media (max-width: 760px) {
+  body { grid-template-columns: 1fr; }
+  /* En una sola columna hay que soltar la colocación fija de arriba,
+     o el contenido intentaría irse a una segunda columna inexistente. */
+  .sidebar,
+  .main-content,
+  .indice {
+    grid-column: 1;
+    grid-row: auto;
+  }
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .main-content { padding: 1.6rem 1.2rem; max-width: none; }
+  .card { padding: 1.3rem 1.2rem; }
+}
+
+@media (max-width: 560px) {
+  .relacionar { grid-template-columns: 1fr; gap: 1.2rem; }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "glosario-fundamentos-internet",
+  "titulo": "Glosario — Fundamentos de Internet",
+  "descripcion": "Material de consulta, no una sesión: vocabulario que se confunde, resumen de cliente-servidor/IP/DNS, DevTools, anatomía de una URL, métodos y códigos de estado HTTP, y qué hace falta para publicar.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: cómo funciona internet",
+      "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Getting_started/Web_standards/How_the_web_works"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: mensajes HTTP",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTTP/Guides/Messages"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: códigos de estado de respuesta HTTP",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Status"
+    }
+  ],
+  "actividades": []
+}

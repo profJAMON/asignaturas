@@ -1,0 +1,178 @@
+<h2>Qué hace falta para publicar una página</h2>
+
+<p>Hasta ahora has visto cómo un navegador encuentra y pide una página que <strong>ya existe en algún sitio</strong> de internet. Pero, ¿qué hace falta para que una página tuya llegue a existir ahí, visible para cualquiera? No es solo "tener el código terminado": hacen falta tres ingredientes más, y esta sesión es el puente hacia el bloque donde aprenderás a publicar de verdad.</p>
+
+<h3>Un dominio</h3>
+
+<p>Ya lo conoces de la sesión 1: el nombre que el DNS traduce a una IP (<code>tu-instituto.es</code>). Sin un dominio, la gente tendría que escribir tu dirección IP a pelo para visitarte — funciona, pero nadie se acuerda de un número.</p>
+
+<h3>Un hosting</h3>
+
+<p>Un dominio es solo un nombre: necesita apuntar a <strong>algún ordenador real</strong> que tenga tu página guardada y responda cuando alguien la pida. Ese ordenador se llama <code>servidor</code>, y contratar uno para que guarde y sirva tu web se llama <code>hosting</code> ("alojamiento").</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 135" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="30" width="130" height="60" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="85" y="55" text-anchor="middle" fill="var(--text)" font-size="11">tu ordenador</text>
+  <text x="85" y="72" text-anchor="middle" fill="var(--text-faint)" font-size="9">se apaga cada noche</text>
+
+  <rect x="330" y="20" width="130" height="80" rx="6" fill="var(--surface-2)" stroke="var(--code-inline)" stroke-width="2"/>
+  <text x="395" y="48" text-anchor="middle" fill="var(--text)" font-size="11">hosting</text>
+  <text x="395" y="65" text-anchor="middle" fill="var(--code-inline)" font-size="9">encendido</text>
+  <text x="395" y="78" text-anchor="middle" fill="var(--code-inline)" font-size="9">24 horas, 7 días</text>
+
+  <text x="240" y="108" text-anchor="middle" fill="var(--text-dim)" font-size="10">Un visitante puede llegar a cualquier hora:</text>
+  <text x="240" y="121" text-anchor="middle" fill="var(--text-dim)" font-size="10">el servidor de hosting nunca se apaga</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: ¿por qué crees que no bastaría con dejar tu propio ordenador de casa encendido y conectado para "publicar" tu web ahí?</div>
+<details><summary>Ver respuesta</summary>Porque tendría que estar encendido y conectado permanentemente (si lo apagas o se corta la conexión, la web deja de responder), y además la mayoría de conexiones domésticas no están pensadas para eso: no tienen una dirección fija y estable pensada para recibir muchas visitas. El hosting resuelve justo eso: es un servidor profesional, siempre encendido, preparado para responder peticiones constantemente.</details>
+
+<h3>Un certificado HTTPS</h3>
+
+<p>En la sesión anterior viste que <code>https://</code> significa que la conexión viaja cifrada. Ese cifrado no aparece solo: hace falta un <code>certificado</code>, un documento digital que confirma que el servidor es quien dice ser, emitido por una entidad de confianza. Sin él, el navegador avisa a todo el que visite tu web.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="15" width="200" height="30" rx="15" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
+  <text x="40" y="35" fill="var(--code-inline)" font-size="12">🔒</text>
+  <text x="60" y="35" fill="var(--text)" font-size="11">https://tu-web.com</text>
+  <text x="120" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">con certificado válido</text>
+
+  <rect x="260" y="15" width="200" height="30" rx="15" fill="var(--surface)" stroke="var(--error)" stroke-width="1.5"/>
+  <text x="278" y="35" fill="var(--error)" font-size="11">⚠</text>
+  <text x="296" y="35" fill="var(--text)" font-size="11">http://tu-web.com</text>
+  <text x="360" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">sin cifrar — "no seguro"</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: si entras en una web y el navegador avisa de que "no es segura", pero decides continuar igualmente, ¿qué es exactamente lo que esa web no te está garantizando?</div>
+<details><summary>Ver respuesta</summary>No te garantiza que la información que viaja entre tu navegador y ese servidor esté cifrada: alguien que intercepte la conexión por el camino (por ejemplo, en una red wifi pública) podría llegar a leerla.</details>
+
+<h2>Los tres ingredientes juntos</h2>
+
+<ul class="checklist">
+<li><strong>Dominio</strong> — el nombre por el que te van a encontrar.</li>
+<li><strong>Hosting</strong> — el servidor que guarda tu web y responde siempre, esté quien esté conectado y a la hora que sea.</li>
+<li><strong>HTTPS</strong> — el certificado que cifra la conexión entre el visitante y tu servidor.</li>
+</ul>
+
+<p>Con contenido terminado (lo que llevas construyendo desde la Unidad 1) más estos tres ingredientes, una página está lista para publicarse de verdad. Cómo se hace ese último paso —subir los archivos al servidor— es justo lo que veremos en el próximo bloque.</p>
+
+<h2>De la URL a la pantalla: el viaje completo</h2>
+
+<p>Ahora que conoces los cuatro bloques de esta unidad, puedes unir todas las piezas en un único recorrido.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="10" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="240" y="31" text-anchor="middle" fill="var(--accent)" font-size="11">1. Escribes o haces clic en una URL completa</text>
+
+  <line x1="240" y1="42" x2="240" y2="58" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
+
+  <rect x="20" y="60" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
+  <text x="240" y="81" text-anchor="middle" fill="var(--code-inline)" font-size="11">2. El DNS traduce el dominio a una dirección IP</text>
+
+  <line x1="240" y1="92" x2="240" y2="108" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
+
+  <rect x="20" y="110" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="240" y="131" text-anchor="middle" fill="var(--accent-warm)" font-size="11">3. Conecta con el hosting, cifrado con HTTPS</text>
+
+  <line x1="240" y1="142" x2="240" y2="158" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
+
+  <rect x="20" y="160" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--text)" stroke-width="1.5"/>
+  <text x="240" y="181" text-anchor="middle" fill="var(--text)" font-size="11">4. Petición HTTP: método GET y la ruta pedida</text>
+
+  <line x1="240" y1="192" x2="240" y2="208" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
+
+  <rect x="20" y="210" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <text x="240" y="231" text-anchor="middle" fill="var(--text-faint)" font-size="11">5. Respuesta: código de estado y el contenido</text>
+
+  <text x="240" y="270" text-anchor="middle" fill="var(--text-dim)" font-size="10">Cliente-servidor (bloque 1) + URL/HTTP (bloque 3) + hosting (bloque 4),</text>
+  <text x="240" y="285" text-anchor="middle" fill="var(--text-dim)" font-size="10">todo verificable con las DevTools (bloque 2)</text>
+
+  <defs><marker id="v1" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,8 Z" fill="var(--text-faint)"/></marker></defs>
+</svg>
+</div>
+
+<h2>Repaso general de la unidad</h2>
+
+<div class="salida" style="background:var(--bg);padding:14px">
+<table style="border-collapse:collapse;width:100%;font-size:0.88rem">
+<tr>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Bloque</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Qué aprendiste</th>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent)">1. Cliente-servidor, IP y DNS</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">El navegador (cliente) pide, el servidor responde. Cada dispositivo tiene una IP; el DNS traduce nombres a IPs.</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline)">2. El navegador y DevTools</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Elements (HTML/CSS en vivo), Console (errores) y Network (archivos pedidos y su estado).</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent-warm)">3. URL y HTTP básico</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Las cinco partes de una URL, la petición y la respuesta HTTP, y los códigos de estado (200, 301, 404, 500).</td>
+</tr>
+<tr>
+  <td style="padding:6px 10px;color:var(--text)">4. Qué hace falta para publicar</td>
+  <td style="padding:6px 10px;color:var(--text-dim)">Dominio, hosting y certificado HTTPS: los tres ingredientes, además del contenido, para publicar de verdad.</td>
+</tr>
+</table>
+</div>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija, sube tú mismo las respuestas correctas a tu web personal.
+</div>
+
+<h3>Dominio, hosting y HTTPS</h3>
+
+<ol>
+<li>Explica con tus palabras qué tres cosas necesitas, como mínimo, para que cualquier persona del mundo pueda visitar tu página web.</li>
+<li>(V/F) Basta con tener el dominio comprado para que la web ya esté visible en internet.</li>
+<li>(ABC) El hosting es:
+  <ul>
+    <li>a) el nombre de tu web</li>
+    <li>b) el servidor donde vive tu web, siempre encendido y conectado</li>
+    <li>c) el certificado de seguridad</li>
+  </ul>
+</li>
+<li>¿Por qué no basta con dejar tu propio ordenador encendido en casa para "publicar" una web? Da al menos dos razones.</li>
+<li>(V/F) El hosting y el dominio son la misma cosa, solo con nombres distintos.</li>
+<li>Busca la diferencia entre un hosting "compartido" y un servidor propio (VPS o dedicado), y explica con tus palabras en qué se diferencian.</li>
+<li>(ABC) El candado que aparece en la barra de direcciones indica:
+  <ul>
+    <li>a) que la web es oficial</li>
+    <li>b) que la conexión está cifrada (HTTPS)</li>
+    <li>c) que la web no tiene virus</li>
+  </ul>
+</li>
+<li>Explica qué significa que un certificado HTTPS esté "caducado" y qué crees que pasaría si intentas entrar en una web con el certificado caducado.</li>
+<li>(V/F) Un navegador moderno deja entrar sin avisar a cualquier web que use <code>http://</code> en vez de <code>https://</code>.</li>
+<li>Retomando la sesión 1: busca de nuevo cuánto cuesta aproximadamente un dominio <code>.com</code> o <code>.es</code> al año, y ahora busca también cuánto puede costar un hosting básico al mes.</li>
+<li>(V/F) Un mismo servidor de hosting puede alojar varias páginas web distintas a la vez.</li>
+<li>Tienes que publicar una web desde cero: comprar el dominio, tener el contenido terminado y contratar el hosting. Elige un orden para hacerlo y razona por qué lo harías así.</li>
+<li>¿Qué relación tiene el DNS (sesión 1) con el hosting? Explica cómo se conectan ambos conceptos.</li>
+<li>Busca un ejemplo real de una empresa de hosting y anota qué planes ofrece (gratuito, básico, avanzado...).</li>
+</ol>
+
+<h3>Repaso general de la unidad</h3>
+
+<ol start="15">
+<li>Con tus propias palabras, describe todo el recorrido desde que escribes una URL hasta que ves la página en pantalla, usando al menos un concepto de cada uno de los cuatro bloques de esta unidad.</li>
+<li>(ABC) Si una imagen de tu web da error 404, el problema está más probablemente en:
+  <ul>
+    <li>a) el DNS</li>
+    <li>b) la ruta escrita en el HTML</li>
+    <li>c) el certificado HTTPS</li>
+  </ul>
+</li>
+<li>(V/F) Sin DNS, seguirías pudiendo llegar a un servidor si conoces directamente su dirección IP.</li>
+<li>Relaciona cada bloque con su tema principal, en tu cuaderno: Bloque 1, Bloque 2, Bloque 3, Bloque 4, cada uno con un tema distinto de esta unidad.</li>
+<li>De los cuatro bloques de esta unidad, ¿cuál te ha costado más entender? Explica por qué, con tus propias palabras.</li>
+<li>Escribe tú mismo una pregunta de tipo "qué pasaría si..." que conecte al menos dos bloques distintos de esta unidad (por ejemplo, DNS y hosting), y respóndela.</li>
+</ol>

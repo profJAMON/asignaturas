@@ -1,0 +1,104 @@
+{
+  "id": "sesion-8-repaso-ejercicios-1",
+  "titulo": "Sesión 8 — Repaso general 1",
+  "fecha": "2026-10-27",
+  "descripcion": "Primera de las dos baterías de ejercicios obligatorias del tema: sin contenido nuevo, repasa todo lo visto de la sesión 1 a la 7 (estructura HTML, texto y enlaces, imágenes y semántica, CSS, modelo de caja, tablas y Flexbox) con un repaso corto y un reto por tema, más un reto final que lo combina todo en una ficha propia. Puente antes del proyecto de la página personal (sesiones 9 y 10).",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de etiquetas HTML",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de propiedades CSS",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/Reference"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación — Repaso general (sesiones 1-7)",
+      "preguntas": [
+        {
+          "pregunta": "Tu página tiene un <h1> y luego un <h2>. Quieres añadir un apartado dentro de ese <h2>. ¿Qué nivel de encabezado usas?",
+          "opciones": ["<h3>", "<h1>", "<h6>"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Dónde va el <title> de tu página?",
+          "opciones": ["Dentro de <body>", "Dentro de <head>", "Dentro del primer <h1>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que un enlace salte a una sección de tu misma página, sin salir de ella. ¿Qué escribes en el href?",
+          "opciones": ["href=\"seccion.html\"", "href=\"https://seccion\"", "href=\"#seccion\""],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Tienes una <ul> con tres <li> y quieres anidar una <ol> dentro del segundo. ¿Dónde va exactamente esa <ol>?",
+          "opciones": ["Dentro del <li>, antes de su </li>", "Justo después de cerrar ese </li>", "Al final de toda la <ul>, da igual el orden"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Tu imagen no carga y en su lugar el navegador muestra un texto. ¿De qué atributo viene ese texto?",
+          "opciones": ["title", "alt", "src"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que todo el contenido principal de tu página (todo menos cabecera y pie) esté en un único bloque semántico. ¿Cuál usas?",
+          "opciones": ["<section>", "<div>", "<main>"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Tienes tres <p> y solo quieres poner en rojo el que tiene class=\"aviso\". ¿Qué selector escribes?",
+          "opciones": [".aviso", "p", "#aviso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Quieres que un único encabezado, el que tiene id=\"titulo\", tenga un tamaño distinto al resto de encabezados iguales. ¿Qué selector usas?",
+          "opciones": [".titulo", "#titulo", "h2"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una caja tiene width: 150px, padding: 20px y border: 5px solid black (box-sizing por defecto). ¿Cuánto mide realmente de ancho?",
+          "opciones": ["150px", "190px", "200px"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Dos tarjetas están en fila dentro de un contenedor con display: flex y quieres separarlas sin tocar su padding interno. ¿Qué propiedad tocas, en el contenedor?",
+          "opciones": ["gap", "padding", "border"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Vas a mostrar tus tres últimas notas de examen, con la asignatura y la nota en cada fila. ¿Tabla o Flexbox?",
+          "opciones": ["Flexbox, para organizar los bloques", "Tabla, son datos reales en filas y columnas", "Una lista <ul>, es más simple"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tienes tres tarjetas en una fila flex que no caben en el ancho de la pantalla y se desbordan. ¿Qué propiedad añades al contenedor?",
+          "opciones": ["flex-wrap: wrap;", "gap: 0;", "justify-content: center;"],
+          "correcta": 0
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada concepto con lo que hace",
+      "pares": [
+        { "izquierda": "Etiqueta que envuelve el contenido principal de la página", "derecha": "<main>" },
+        { "izquierda": "Hace que un texto sea importante (normalmente en negrita)", "derecha": "<strong>" },
+        { "izquierda": "Enlaza a una sección dentro de la misma página", "derecha": "href=\"#seccion\"" },
+        { "izquierda": "Texto alternativo de una imagen, para lectores de pantalla", "derecha": "alt" },
+        { "izquierda": "Selector que afecta solo a los elementos con class=\"destacado\"", "derecha": ".destacado" },
+        { "izquierda": "Hace que el padding y el border no se sumen al width", "derecha": "box-sizing: border-box" },
+        { "izquierda": "Separa una caja de sus vecinas, por fuera", "derecha": "margin" },
+        { "izquierda": "Aleja el contenido del borde de la caja, por dentro", "derecha": "padding" },
+        { "izquierda": "Fusiona varias columnas de una tabla en una sola celda", "derecha": "colspan" },
+        { "izquierda": "Coloca los hijos de un contenedor en fila automáticamente", "derecha": "display: flex;" },
+        { "izquierda": "Hace que las cajas que no caben en una fila flex pasen a la siguiente línea", "derecha": "flex-wrap: wrap;" },
+        { "izquierda": "Etiqueta para datos tabulares reales, como un horario o una lista de precios", "derecha": "<table>" }
+      ]
+    }
+  ]
+}

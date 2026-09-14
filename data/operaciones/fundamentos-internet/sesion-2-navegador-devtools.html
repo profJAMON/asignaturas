@@ -1,0 +1,293 @@
+<h2>El navegador, por dentro</h2>
+
+<p>Ya sabes que el navegador le pide páginas a un servidor y las recibe de vuelta (lo viste en la sesión anterior). Pero el navegador hace mucho más que "mostrar" lo que llega: interpreta el HTML, aplica el CSS, ejecuta el código y decide, byte a byte, qué dibuja en tu pantalla. Todo ese trabajo normalmente es invisible — pero el propio navegador trae un conjunto de herramientas para verlo por dentro, en tiempo real: las <strong>DevTools</strong> ("herramientas de desarrollador").</p>
+
+<h2>Cómo abrir las DevTools</h2>
+
+<p>Las DevTools no son un programa aparte que haya que instalar: vienen ya dentro de cualquier navegador moderno (Chrome, Firefox, Edge...). Hay varias formas de abrirlas, todas llevan al mismo sitio:</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="10" width="440" height="105" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <rect x="20" y="10" width="440" height="22" rx="6" fill="var(--surface-2)"/>
+  <circle cx="34" cy="21" r="4" fill="var(--border)"/><circle cx="46" cy="21" r="4" fill="var(--border)"/><circle cx="58" cy="21" r="4" fill="var(--border)"/>
+  <rect x="100" y="14" width="220" height="14" rx="4" fill="var(--bg)"/>
+  <text x="110" y="24" fill="var(--text-faint)" font-size="9">tu-usuario.pages.dev</text>
+  <rect x="40" y="45" width="180" height="10" rx="2" fill="var(--surface-2)"/>
+  <rect x="40" y="62" width="260" height="8" rx="2" fill="var(--surface-2)"/>
+  <rect x="40" y="76" width="260" height="8" rx="2" fill="var(--surface-2)"/>
+
+  <rect x="230" y="42" width="180" height="98" rx="4" fill="var(--surface-2)" stroke="var(--border)"/>
+  <text x="242" y="58" fill="var(--text-dim)" font-size="9">Ver código fuente</text>
+  <text x="242" y="76" fill="var(--text-dim)" font-size="9">Guardar como…</text>
+  <text x="242" y="94" fill="var(--text-dim)" font-size="9">Imprimir…</text>
+  <rect x="234" y="104" width="172" height="18" rx="3" fill="var(--accent)"/>
+  <text x="242" y="117" fill="var(--bg)" font-size="9">Inspeccionar</text>
+
+  <text x="240" y="140" text-anchor="middle" fill="var(--text-dim)" font-size="12">Paso 1 — clic derecho sobre la página y elige "Inspeccionar" (o pulsa F12)</text>
+</svg>
+</div>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 155" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="10" width="440" height="35" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <rect x="20" y="10" width="440" height="18" rx="6" fill="var(--surface-2)"/>
+  <text x="110" y="22" fill="var(--text-faint)" font-size="9">tu-usuario.pages.dev</text>
+  <rect x="40" y="32" width="150" height="8" rx="2" fill="var(--surface-2)"/>
+
+  <rect x="20" y="45" width="440" height="98" rx="0" fill="var(--surface)" stroke="var(--border)"/>
+  <rect x="20" y="45" width="440" height="22" fill="var(--surface-2)"/>
+  <rect x="30" y="49" width="70" height="14" rx="3" fill="var(--accent)"/>
+  <text x="65" y="59" text-anchor="middle" fill="var(--bg)" font-size="9">Elements</text>
+  <text x="120" y="59" fill="var(--text-dim)" font-size="9">Console</text>
+  <text x="180" y="59" fill="var(--text-dim)" font-size="9">Network</text>
+
+  <text x="40" y="85" fill="var(--code-tag)" font-size="9">&lt;body&gt;</text>
+  <text x="52" y="98" fill="var(--code-tag)" font-size="9">&lt;h1&gt;</text>
+  <text x="52" y="111" fill="var(--code-tag)" font-size="9">&lt;p&gt;</text>
+  <text x="40" y="124" fill="var(--code-tag)" font-size="9">&lt;/body&gt;</text>
+
+  <text x="240" y="152" text-anchor="middle" fill="var(--text-dim)" font-size="12">Paso 2 — se abre un panel con pestañas: Elements, Console, Network…</text>
+</svg>
+</div>
+
+<div class="nota">Los nombres pueden variar un poco según el navegador (por ejemplo, Firefox llama "Inspector" a lo que Chrome llama "Elements"), pero las tres pestañas que vas a usar en esta sesión existen en todos con una función equivalente.</div>
+
+<h2>Los tres paneles que vas a usar</h2>
+
+<p>Las DevTools tienen muchas pestañas, pero para empezar solo necesitas conocer bien estas tres.</p>
+
+<h3>Elements — la estructura de la página</h3>
+
+<p>Muestra el HTML y el CSS tal y como los está usando el navegador en ese preciso momento. Al pasar el ratón por una línea de código, se resalta en la página qué trozo dibuja; y al revés, al hacer clic sobre algo de la página, el panel salta a la línea de código que lo genera.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 140" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="15" width="210" height="110" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="32" y="32" fill="var(--text-faint)" font-size="9">&lt;body&gt;</text>
+  <rect x="30" y="40" width="190" height="16" rx="3" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="40" y="52" fill="var(--accent)" font-size="9">&lt;h1&gt;Mi web&lt;/h1&gt;</text>
+  <text x="40" y="70" fill="var(--text-faint)" font-size="9">&lt;p&gt;Bienvenido…&lt;/p&gt;</text>
+  <text x="40" y="88" fill="var(--text-faint)" font-size="9">&lt;img src="foto.jpg"&gt;</text>
+  <text x="32" y="106" fill="var(--text-faint)" font-size="9">&lt;/body&gt;</text>
+
+  <rect x="260" y="15" width="200" height="110" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <rect x="272" y="28" width="176" height="22" rx="3" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="285" y="43" fill="var(--accent)" font-size="10">Mi web</text>
+  <rect x="272" y="58" width="176" height="10" rx="2" fill="var(--surface-2)"/>
+  <rect x="272" y="74" width="120" height="45" rx="3" fill="var(--surface-2)"/>
+
+  <line x1="220" y1="48" x2="270" y2="38" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3,3"/>
+
+  <text x="240" y="138" text-anchor="middle" fill="var(--text-dim)" font-size="12">El código seleccionado (izquierda) y lo que dibuja en pantalla (derecha) están conectados</text>
+</svg>
+</div>
+
+<h3>Console — mensajes y errores</h3>
+
+<p>Es donde el navegador "habla": avisa cuando algo ha ido mal (un archivo que no encuentra, código que falla) y también sirve para escribir instrucciones sueltas y ver el resultado al momento. Por ahora la usarás solo para leer, no para escribir código.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="10" width="440" height="80" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <text x="34" y="30" fill="var(--text-faint)" font-size="9">La página se ha cargado correctamente.</text>
+  <text x="34" y="46" fill="var(--text-faint)" font-size="9">Service worker registrado.</text>
+  <text x="34" y="64" fill="var(--accent-warm)" font-size="9">✕ GET foto-perfil.jpg 404 (Not Found)  —  index.html:12</text>
+  <text x="34" y="80" fill="var(--accent)" font-size="10">&gt;</text>
+
+  <text x="240" y="108" text-anchor="middle" fill="var(--text-dim)" font-size="12">Un mensaje en color suele ser un error: indica qué archivo y en qué línea ha fallado</text>
+</svg>
+</div>
+
+<h3>Network — lo que se ha descargado</h3>
+
+<p>Lista, uno por uno, todos los archivos que el navegador ha pedido para construir la página: el propio HTML, el CSS, las imágenes... Para cada uno indica si ha llegado bien (código de estado <code>200</code>) o si ha habido un problema (por ejemplo <code>404</code>, "no encontrado").</p>
+
+<div class="salida" style="background:var(--bg);padding:14px">
+<table style="border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:0.82rem;">
+<tr>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400;">Nombre</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400;">Tipo</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400;">Estado</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400;">Tiempo</th>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text);">index.html</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">documento</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline);">200</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">12 ms</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text);">estilos.css</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">hoja de estilos</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline);">200</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">8 ms</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text);">foto-perfil.jpg</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">imagen</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent-warm);">404</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim);">3 ms</td>
+</tr>
+<tr>
+  <td style="padding:6px 10px;color:var(--text);">favicon.ico</td>
+  <td style="padding:6px 10px;color:var(--text-dim);">imagen</td>
+  <td style="padding:6px 10px;color:var(--code-inline);">200</td>
+  <td style="padding:6px 10px;color:var(--text-dim);">4 ms</td>
+</tr>
+</table>
+</div>
+
+<p>Fíjate en la fila de <code>foto-perfil.jpg</code>: el navegador la ha pedido, pero no la ha encontrado con ese nombre exacto — por eso aparece en <code>404</code> en vez de <code>200</code>.</p>
+
+<h2>Actividades en el ordenador</h2>
+
+<div class="nota">Estas actividades sí se hacen en el ordenador, no en el cuaderno: la idea es que "toques" las DevTools tú mismo. Usa tu propia web personal (la que has ido construyendo) como página de pruebas — no vas a romper nada: lo que cambies aquí solo lo ves tú, en tu navegador, y desaparece en cuanto recargas.</div>
+
+<h3>Actividad 1 — Abre las DevTools</h3>
+<ol>
+<li>Abre tu web personal en el navegador.</li>
+<li>Haz clic derecho en cualquier parte de la página y elige "Inspeccionar" (en algunos navegadores, "Inspeccionar elemento"). También puedes pulsar <code>F12</code>, o <code>Ctrl+Shift+I</code> (<code>Cmd+Option+I</code> en Mac).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> se abre un panel nuevo, normalmente a un lado o abajo, con varias pestañas arriba: Elements, Console, Network…</p>
+
+<h3>Actividad 2 — Localiza un elemento</h3>
+<ol start="3">
+<li>Dentro de las DevTools, busca el icono con forma de flecha y recuadro (arriba a la izquierda del panel) y haz clic en él.</li>
+<li>Ahora haz clic sobre el título principal de tu página (tu <code>&lt;h1&gt;</code>).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> en el panel Elements se resalta automáticamente la línea de código que corresponde a ese <code>&lt;h1&gt;</code>.</p>
+
+<div class="nota">🤔 Antes de seguir: ¿por qué crees que esto es útil si tu página tuviera mucho código y no supieras dónde está escrita una parte concreta?</div>
+<details><summary>Ver respuesta</summary>Porque en vez de leer todo el HTML de arriba a abajo buscando dónde está ese texto, haces clic directamente sobre lo que ves en pantalla y las DevTools te llevan exactamente a esa línea de código.</details>
+
+<h3>Actividad 3 — Cambia algo temporalmente</h3>
+<ol start="5">
+<li>En el panel Elements, haz doble clic sobre el texto de tu <code>&lt;h1&gt;</code> (dentro del código, no en la página) y escribe otra cosa.</li>
+<li>Mira la página: el título ha cambiado de verdad en pantalla.</li>
+<li>Recarga la página con <code>F5</code>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> al recargar, el título vuelve a ser el original — el cambio no se guardó en ningún archivo, solo lo viste tú, un instante, en tu navegador.</p>
+
+<div class="nota">🤔 Antes de seguir: ¿qué tendrías que hacer para que ese cambio de título fuera permanente, y no solo algo que ves un momento en las DevTools?</div>
+<details><summary>Ver respuesta</summary>Editar el archivo .html real con tu editor de código (no con las DevTools) y guardar el archivo. Las DevTools solo cambian lo que ves en ese momento en tu navegador; nunca tocan el archivo original.</details>
+
+<h3>Actividad 4 — El panel Styles (dentro de Elements)</h3>
+<ol start="8">
+<li>Con un elemento seleccionado en Elements, busca un panel llamado "Styles" (suele aparecer al lado o debajo del árbol de etiquetas).</li>
+<li>Localiza alguna propiedad CSS (por ejemplo <code>color</code> o <code>font-size</code>) y haz clic sobre su valor para cambiarlo.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> el cambio se ve al instante en la página, igual que con el texto.</p>
+<p><strong>¿Dónde miro esto?</strong> Si algún día un elemento de tu página no tiene el color o el tamaño que esperabas, este es el panel donde comprobar qué reglas CSS se le están aplicando de verdad (y cuáles se están ignorando — suelen aparecer tachadas).</p>
+
+<h3>Actividad 5 — La pestaña Console</h3>
+<ol start="10">
+<li>Haz clic en la pestaña Console.</li>
+<li>Recarga la página (<code>F5</code>) con la consola abierta.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> si tu página tiene algún problema (por ejemplo, un archivo que no carga bien), aparece un mensaje destacado con el nombre del archivo y la línea donde ocurre. Si no ves ningún mensaje así, es buena señal.</p>
+<p>Puedes provocar uno a propósito: escribe mal, a mano, el nombre de tu archivo CSS en el <code>&lt;link&gt;</code> de tu HTML, guarda, recarga y mira qué aparece en la consola. Después deshaz el cambio.</p>
+<p><strong>¿Dónde miro esto?</strong> Cuando algo "no funciona" y no sabes por qué, la Console suele ser el primer sitio donde mirar: casi siempre te dice qué archivo y qué línea están fallando.</p>
+
+<h3>Actividad 6 — La pestaña Network</h3>
+<ol start="12">
+<li>Haz clic en la pestaña Network.</li>
+<li>Con esa pestaña abierta, recarga la página (<code>F5</code>).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> aparece una lista con todos los archivos que tu navegador ha pedido para construir la página, cada uno con su código de estado.</p>
+
+<div class="nota">🤔 Antes de seguir: si subieras una imagen a tu web pero escribieras mal su nombre en el <code>&lt;img src="..."&gt;</code>, ¿qué esperarías ver en la pestaña Network para esa imagen?</div>
+<details><summary>Ver respuesta</summary>Aparecería en la lista con el estado 404, porque el navegador la ha pedido pero no la ha encontrado con ese nombre exacto.</details>
+
+<h3>Actividad 7 — ¿Dónde lo miro? (integradora)</h3>
+<p>Para cada situación, decide en qué pestaña de las DevTools mirarías primero. Anótalo en el cuaderno, junto a las preguntas de esta sesión.</p>
+<ul class="checklist">
+<li>Un texto de tu página no tiene el color que esperabas.</li>
+<li>Una imagen no llega a aparecer en tu página.</li>
+<li>Has escrito algo en tu código y "no funciona", sin más pistas.</li>
+<li>Quieres ver exactamente cómo está anidada una etiqueta dentro de otra.</li>
+</ul>
+<details><summary>Ver respuesta</summary>1) Elements → panel Styles. 2) Network → busca su fila y mira el estado. 3) Console → suele señalar archivo y línea. 4) Elements → el árbol de etiquetas.</details>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando el profesor las corrija, sube tú mismo las respuestas correctas a tu web personal.
+</div>
+
+<h3>El navegador y las DevTools</h3>
+
+<ol>
+<li>(V/F) Las DevTools son un programa aparte que hay que instalar, distinto del navegador.</li>
+<li>Explica con tus palabras qué significa "inspeccionar" una página web.</li>
+<li>(ABC) La forma más rápida de abrir las DevTools sin usar el ratón es:
+  <ul>
+    <li>a) haciendo doble clic en la barra de direcciones</li>
+    <li>b) pulsando F12</li>
+    <li>c) cerrando y abriendo el navegador</li>
+  </ul>
+</li>
+<li>Busca qué combinación de teclas abre las DevTools en el navegador que tú usas normalmente (puede variar según el sistema operativo).</li>
+</ol>
+
+<h3>Panel Elements</h3>
+
+<ol start="5">
+<li>(V/F) Si cambias un texto en el panel Elements, ese cambio se guarda en el archivo .html real.</li>
+<li>¿Para qué sirve el icono con forma de flecha y recuadro dentro de las DevTools?</li>
+<li>(ABC) El panel "Styles", dentro de Elements, muestra:
+  <ul>
+    <li>a) los errores de la página</li>
+    <li>b) las reglas CSS que se aplican al elemento seleccionado</li>
+    <li>c) los archivos que se han descargado</li>
+  </ul>
+</li>
+<li>Si en el panel Styles ves una propiedad CSS tachada (con una línea encima), ¿qué crees que significa?</li>
+<li>Cuenta una situación real de tu propia web en la que te habría venido bien usar el panel Elements para encontrar dónde estaba escrito algo.</li>
+</ol>
+
+<h3>Panel Console</h3>
+
+<ol start="10">
+<li>(V/F) Un mensaje destacado en la Console siempre significa que la página no se ve en absoluto.</li>
+<li>¿Qué dos datos suele dar un mensaje de error en la Console, además del propio mensaje?</li>
+<li>(ABC) Si tu archivo CSS no se aplica y ves un error en la Console sobre ese archivo, lo primero que deberías revisar es:
+  <ul>
+    <li>a) el color de fondo de tu página</li>
+    <li>b) que la ruta del archivo en el <code>&lt;link&gt;</code> sea correcta</li>
+    <li>c) el tamaño de la fuente</li>
+  </ul>
+</li>
+<li>En la Actividad 5 provocaste (o imaginaste) un error a propósito. ¿Qué información te dio la Console para saber dónde estaba el fallo?</li>
+</ol>
+
+<h3>Panel Network</h3>
+
+<ol start="14">
+<li>(V/F) El código de estado 200 significa que el archivo no se ha encontrado.</li>
+<li>¿Qué código de estado esperarías ver si escribes mal el nombre de una imagen en tu <code>&lt;img src="..."&gt;</code>?</li>
+<li>(ABC) La pestaña Network muestra:
+  <ul>
+    <li>a) solo los errores de tu código CSS</li>
+    <li>b) todos los archivos que el navegador ha pedido para construir la página</li>
+    <li>c) el historial de páginas que has visitado antes</li>
+  </ul>
+</li>
+<li>Busca qué significa el código de estado 500 y en qué se diferencia de un 404.</li>
+<li>Abre la pestaña Network en una página con muchas imágenes (por ejemplo, una noticia) y anota cuántos archivos se han cargado en total.</li>
+</ol>
+
+<h3>Repaso general</h3>
+
+<ol start="19">
+<li>Completa: "un archivo con estado ___ significa que se ha encontrado y cargado sin problema, mientras que un estado ___ significa que el navegador lo ha pedido pero no lo ha encontrado."</li>
+<li>Tienes una página en la que un botón no cambia de color al pasar el ratón por encima, como debería. ¿En qué panel de las DevTools mirarías primero, y qué esperarías encontrar?</li>
+<li>(ABC) Si quieres ver el código HTML y CSS de una página sin arriesgarte a estropear nada, la forma más segura es:
+  <ul>
+    <li>a) editando directamente el archivo en el servidor</li>
+    <li>b) usando las DevTools para inspeccionar, sin guardar ningún archivo</li>
+    <li>c) descargando la página entera a tu ordenador</li>
+  </ul>
+</li>
+<li>Con lo que has aprendido en esta sesión, escribe tú mismo una pregunta de tipo "¿dónde lo miro?" sobre una situación que se te ocurra, y respóndela indicando el panel correcto.</li>
+</ol>

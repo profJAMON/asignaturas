@@ -1,0 +1,149 @@
+{
+  "id": "inst-u1-repaso",
+  "titulo": "Sesión 10 — Repaso y banco de preguntas del examen",
+  "fecha": "",
+  "descripcion": "Todo lo que entra en la unidad en una página, el banco completo de preguntas del examen y los ejercicios de cálculo juntos para entrenar antes de la prueba.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Binario a decimal",
+      "generador": "binario-a-decimal",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Decimal a binario",
+      "generador": "decimal-a-binario",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Unidades de medida",
+      "generador": "unidades-informacion",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Bits, bytes y velocidad",
+      "generador": "bits-y-bytes",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Clase de red",
+      "generador": "clase-de-ip",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Máscara por defecto",
+      "generador": "mascara-por-defecto",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Pública o privada",
+      "generador": "publica-o-privada",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Red, broadcast y rango",
+      "generador": "red-y-broadcast",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Equipos por máscara",
+      "generador": "hosts-por-mascara",
+      "n": 7
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Simulacro rápido de la unidad",
+      "preguntas": [
+        {
+          "pregunta": "La información que el emisor transmite al receptor es el…",
+          "opciones": ["Canal", "Código", "Mensaje", "Ruido"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Un byte son…",
+          "opciones": ["4 bits", "8 bits", "16 bits", "1024 bits"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "1 GB equivale a…",
+          "opciones": ["1000 MB", "1024 MB", "1024 KB", "1024 TB"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una conexión de 800 Mbps baja como máximo…",
+          "opciones": ["800 MB/s", "400 MB/s", "100 MB/s", "80 MB/s"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El medio de transmisión más usado en una LAN es…",
+          "opciones": ["La fibra óptica", "El par trenzado", "El coaxial", "El infrarrojo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El router trabaja en la capa…",
+          "opciones": ["1 · Física", "2 · Enlace de datos", "3 · Red", "4 · Transporte"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué protocolo NO garantiza que los datos lleguen?",
+          "opciones": ["TCP", "UDP", "HTTP", "FTP"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una dirección MAC tiene…",
+          "opciones": ["32 bits", "48 bits", "64 bits", "128 bits"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La máscara por defecto de 119.18.45.0 es…",
+          "opciones": ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Cuál de estas direcciones es privada?",
+          "opciones": ["172.33.1.1", "193.42.1.1", "10.15.123.50", "95.0.21.90"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En una red /27 caben…",
+          "opciones": ["14 equipos", "30 equipos", "32 equipos", "62 equipos"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una dirección IPv6 tiene…",
+          "opciones": ["32 bits", "48 bits", "64 bits", "128 bits"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "El DHCP sirve para…",
+          "opciones": [
+            "Traducir nombres en direcciones IP",
+            "Asignar direcciones IP automáticamente",
+            "Cifrar las comunicaciones",
+            "Conectar dos redes distintas"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para ver la dirección física de tu equipo se usa…",
+          "opciones": ["ping", "ipconfig /all", "tracert", "nslookup"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si ping 8.8.8.8 funciona pero ping a un nombre de web no, falla…",
+          "opciones": ["El cable", "El router", "El DNS", "La tarjeta de red"],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

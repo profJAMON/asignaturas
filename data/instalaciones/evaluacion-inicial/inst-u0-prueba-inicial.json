@@ -1,0 +1,147 @@
+{
+  "id": "inst-u0-prueba-inicial",
+  "titulo": "Sesión 2 — La prueba inicial",
+  "fecha": "",
+  "descripcion": "Una prueba sin nota para ver de dónde partes: quince preguntas de redes y una actividad de aparatos. Se corrige sola y puedes repetirla las veces que quieras.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Prueba inicial — quince preguntas",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué es una red informática?",
+          "opciones": [
+            "Un conjunto de equipos conectados entre sí que comparten información y recursos",
+            "Un programa que sirve para navegar por Internet",
+            "El cable que va desde el ordenador hasta el enchufe",
+            "La empresa que te vende la conexión a Internet"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "En una casa, ¿qué aparato reparte Internet entre el móvil, la tele y el ordenador?",
+          "opciones": ["La regleta", "El router", "El monitor", "La tarjeta gráfica"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El cable de red que se enchufa a un ordenador termina en un conector llamado…",
+          "opciones": ["USB", "HDMI", "RJ-45", "Jack de 3,5 mm"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué quiere decir que un dispositivo se conecta por wifi?",
+          "opciones": [
+            "Que se conecta sin cables, por ondas",
+            "Que se conecta con un cable más rápido de lo normal",
+            "Que tiene Internet gratis",
+            "Que está conectado por fibra óptica"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué es una dirección IP?",
+          "opciones": [
+            "La contraseña del wifi",
+            "El nombre de la red que sale en el móvil",
+            "Un número que identifica a un equipo dentro de una red",
+            "La marca de la tarjeta de red"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Cuántos bits tiene un byte?",
+          "opciones": ["2", "4", "8", "16"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué es más grande?",
+          "opciones": ["Un megabyte (MB)", "Un gigabyte (GB)", "Los dos ocupan lo mismo", "Depende del ordenador"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En el sistema binario, que es el que usan los ordenadores, solo se utilizan…",
+          "opciones": ["Del 0 al 9", "Los ceros y los unos", "Letras y números", "Del 1 al 8"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué sirve un switch?",
+          "opciones": [
+            "Para conectar entre sí varios equipos de la misma red",
+            "Para dar corriente a los ordenadores",
+            "Para convertir el wifi en cable de fibra",
+            "Para guardar copias de seguridad"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "El wifi llega bien al salón pero fatal a la habitación del fondo. ¿Cuál es la explicación más probable?",
+          "opciones": [
+            "El router está estropeado",
+            "La señal pierde fuerza con la distancia y con las paredes que atraviesa",
+            "La habitación del fondo no tiene toma de red",
+            "Hay demasiados cables en el pasillo"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué es la fibra óptica?",
+          "opciones": [
+            "Un cable de cobre más grueso de lo normal",
+            "Una antena que se pone en el tejado",
+            "Un hilo muy fino de vidrio por el que viaja luz",
+            "Otro nombre del cable de par trenzado"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En una empresa, ¿para qué sirve un armario rack?",
+          "opciones": [
+            "Para guardar el material de oficina",
+            "Para alojar y ordenar los equipos de red y el cableado",
+            "Para refrigerar la sala",
+            "Para almacenar las copias de seguridad en papel"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué comando de Windows te dice qué dirección IP tiene tu ordenador?",
+          "opciones": ["ipconfig", "format", "print", "shutdown"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Cuando un cable de red es de «categoría 6», eso indica…",
+          "opciones": [
+            "Su longitud en metros",
+            "El color de los hilos de dentro",
+            "La calidad del cable y la velocidad que admite",
+            "El número de ordenadores que puedes conectar"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Antes de empezar a trabajar con herramientas en el taller, lo primero es…",
+          "opciones": [
+            "Ponerse a montar cuanto antes para acabar el primero",
+            "Conocer los riesgos que tiene cada herramienta y cómo se usa con seguridad",
+            "Buscar un vídeo mientras se trabaja",
+            "Desenchufar todo lo que haya en el armario de red"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Los aparatos de una red — ¿para qué sirve cada uno?",
+      "pares": [
+        { "izquierda": "Router", "derecha": "Conecta tu red con Internet" },
+        { "izquierda": "Switch", "derecha": "Conecta entre sí los equipos de una misma red" },
+        { "izquierda": "Tarjeta de red", "derecha": "Es lo que permite a un ordenador conectarse a la red" },
+        { "izquierda": "Punto de acceso", "derecha": "Da cobertura wifi a una zona" },
+        { "izquierda": "Cable de par trenzado", "derecha": "El cable de red más habitual, con conector RJ-45" },
+        { "izquierda": "Rack", "derecha": "El armario donde se guardan los equipos de red" }
+      ]
+    }
+  ]
+}

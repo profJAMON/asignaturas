@@ -1,0 +1,136 @@
+<h2>Partir una red en trozos</h2>
+<p>Con lo de la sesión anterior ya sabes que la máscara separa la parte de red de la parte de host. Ahora vamos a usar esa idea para algo muy concreto: <strong>partir una red grande en varias más pequeñas</strong>. Eso es hacer subredes.</p>
+<p>¿Y para qué querría nadie partir su red? Por tres razones que se ven enseguida en una oficina:</p>
+<ul>
+<li><strong>Para no desperdiciar.</strong> Una red de clase C tiene 254 huecos. Si en la oficina hay 20 equipos, sobran 234 direcciones tiradas.</li>
+<li><strong>Para separar.</strong> Administración por un lado, taller por otro, cámaras de seguridad por otro. Lo que pasa en una subred no molesta ni ve lo que hay en la otra.</li>
+<li><strong>Para que no se sature.</strong> Cuantos más equipos en la misma red, más mensajes a todos (<em>broadcast</em>) circulando. Partirla los reduce.</li>
+</ul>
+<div class="nota">Esta sesión es <strong>la primera toma de contacto</strong>. El método completo, con las tablas, la escaleta y los ejercicios largos, es la unidad 7 entera. Aquí quiero que salgas sabiendo <em>leer</em> una subred: dada una IP y una máscara, decir dónde empieza, dónde acaba y cuántos equipos caben.</div>
+
+<h2>Las tres direcciones de cualquier red</h2>
+<p>En toda red, grande o pequeña, hay dos direcciones que <strong>no se le pueden dar a ningún equipo</strong>:</p>
+<table>
+<tr><th>Dirección</th><th>Bits de host</th><th>Para qué sirve</th></tr>
+<tr><td><strong>De red</strong></td><td>Todos a <strong>0</strong></td><td>Es el nombre de la red entera. La primera del bloque.</td></tr>
+<tr><td><strong>De broadcast</strong></td><td>Todos a <strong>1</strong></td><td>Hablar de golpe con todos los equipos de esa red. La última del bloque.</td></tr>
+</table>
+<p>Todo lo que queda entre esas dos son las <strong>direcciones utilizables</strong>, las que puedes repartir entre ordenadores, impresoras y routers.</p>
+<pre><code>Red 192.168.1.0/24
+
+192.168.1.0     ← dirección de RED          (no se usa)
+192.168.1.1     ← primera utilizable  ─┐
+     …                                 ├── 254 equipos
+192.168.1.254   ← última utilizable   ─┘
+192.168.1.255   ← BROADCAST                 (no se usa)</code></pre>
+<p>De ahí sale la fórmula, que sí quiero que te aprendas:</p>
+<pre><code>equipos que caben = 2 elevado a (bits de host) − 2</code></pre>
+<p>El «−2» son siempre esas dos: la de red y la de broadcast.</p>
+<table>
+<tr><th>Máscara</th><th>Bits de host</th><th>Direcciones del bloque</th><th>Equipos utilizables</th></tr>
+<tr><td>/24</td><td>8</td><td>256</td><td>254</td></tr>
+<tr><td>/25</td><td>7</td><td>128</td><td>126</td></tr>
+<tr><td>/26</td><td>6</td><td>64</td><td>62</td></tr>
+<tr><td>/27</td><td>5</td><td>32</td><td>30</td></tr>
+<tr><td>/28</td><td>4</td><td>16</td><td>14</td></tr>
+<tr><td>/29</td><td>3</td><td>8</td><td>6</td></tr>
+<tr><td>/30</td><td>2</td><td>4</td><td>2</td></tr>
+</table>
+<p>Fíjate en el patrón: cada bit que le quitas al host <strong>parte la red en dos</strong>. Y el /30, con solo 2 equipos, no es un error: se usa para unir dos routers entre sí, donde no hace falta nada más.</p>
+<div class="salida">
+<svg viewBox="0 0 660 246" width="100%" role="img" aria-label="Una red /24 partida en dos /25 y después en cuatro /26, con el número de equipos que caben en cada caso" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">Cada bit que le quitas al host parte la red en dos</text><rect x="30" y="44" width="514" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="287" y="67" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/24</text><text x="562" y="67" font-family="monospace" font-size="10" fill="#9099a6">254 equipos</text><rect x="30" y="104" width="254" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="157" y="127" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/25</text><rect x="290" y="104" width="254" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="417" y="127" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/25</text><text x="562" y="127" font-family="monospace" font-size="10" fill="#9099a6">126 equipos</text><rect x="30" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="92" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="160" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="222" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="290" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="352" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><rect x="420" y="164" width="124" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="482" y="187" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">/26</text><text x="562" y="187" font-family="monospace" font-size="10" fill="#9099a6">62 equipos</text><text x="300" y="216" text-anchor="middle" class="s">Una red de 254 huecos para una oficina de 20 equipos es tirar 234 direcciones.</text><text x="300" y="232" text-anchor="middle" class="s">Partirla también separa departamentos y reduce el tráfico a todos.</text>
+</svg>
+<p class="pie-figura">Cada bit que pasa de host a red duplica el número de subredes y parte por la mitad los equipos que caben.</p>
+</div>
+
+<h2>El método del salto</h2>
+<p>Aquí está el truco que hace que esto se pueda resolver mentalmente. Mira la tercera columna de la tabla: 256, 128, 64, 32, 16, 8, 4. A ese número lo vamos a llamar <strong>el salto</strong>, y es el tamaño de cada bloque.</p>
+<p>Los bloques empiezan siempre en múltiplos del salto, contando desde 0. Con eso, tres pasos:</p>
+<div class="salida">
+<p><strong>Ejemplo: ¿a qué red pertenece 192.168.1.100/26?</strong></p>
+<ol>
+<li><strong>Salto:</strong> /26 → quedan 6 bits de host → 2⁶ = <strong>64</strong>.</li>
+<li><strong>Los bloques van de 64 en 64:</strong> 0 – 64 – 128 – 192. El 100 cae entre 64 y 128, así que su bloque empieza en <strong>64</strong>.</li>
+<li><strong>Se rellena el bloque:</strong></li>
+</ol>
+<pre><code>Dirección de red     192.168.1.64
+Primera utilizable   192.168.1.65
+Última utilizable    192.168.1.126
+Broadcast            192.168.1.127
+Caben                62 equipos</code></pre>
+<p>La de broadcast es siempre <strong>la anterior al siguiente bloque</strong> (128 − 1 = 127), y la última utilizable, la anterior a esa.</p>
+</div>
+<div class="salida">
+<svg viewBox="0 0 560 244" width="100%" role="img" aria-label="El rango 0 a 255 partido en cuatro bloques de 64 por la máscara /26, con el bloque del 64 detallado" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="280" y="24" text-anchor="middle" class="t">El último octeto con máscara /26: el salto es 64</text><text x="280" y="42" text-anchor="middle" class="f">los bloques empiezan siempre en múltiplos del salto: 0, 64, 128, 192</text><rect x="26" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="88" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">0 – 63</text><rect x="151" y="56" width="122" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="214" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#4fc1ff">64 – 127</text><rect x="276" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="338" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">128 – 191</text><rect x="401" y="56" width="122" height="40" rx="3" fill="#1e1e1e" stroke="#3c3c3c"/><text x="464" y="80" text-anchor="middle" font-family="monospace" font-size="12" fill="#9099a6">192 – 255</text><path d="M 211.0 100 L 211.0 118.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
+<path d="M 211.0 126 L 207.5 117.7 L 214.5 117.7 z" fill="#4fc1ff"/><rect x="26" y="132" width="497" height="76" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="280" y="154" text-anchor="middle" class="a">192.168.1.100/26  cae en el bloque que empieza en 64</text><text x="42" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#f14c4c">.64</text><text x="42" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">dirección de RED</text><text x="162" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">.65</text><text x="162" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">primera utilizable</text><text x="282" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">.126</text><text x="282" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">última utilizable</text><text x="402" y="180" font-family="monospace" font-size="13" font-weight="700" fill="#f14c4c">.127</text><text x="402" y="196" font-family="monospace" font-size="8.5" fill="#6a7280">BROADCAST</text><text x="280" y="230" text-anchor="middle" class="s">Caben 2⁶ − 2 = 62 equipos. La primera y la última nunca se le dan a nadie.</text>
+</svg>
+<p class="pie-figura">Con /26 el último octeto queda partido en cuatro bloques de 64. La dirección cae en el que empieza en 64.</p>
+</div>
+<p>Con ese método se responde también a la pregunta más útil de todas: <strong>¿están estos dos equipos en la misma red?</strong> Se calcula el bloque de cada uno y se comparan.</p>
+<div class="salida">
+<p><strong>192.168.1.100/26 y 192.168.1.130/26 — ¿se ven?</strong></p>
+<p>Salto 64. El 100 está en el bloque que empieza en 64 (64–127). El 130 está en el que empieza en 128 (128–191). <strong>Bloques distintos → redes distintas → no se ven</strong> sin un router de por medio, aunque estén enchufados al mismo switch y tengan cables idénticos.</p>
+<p>Esa avería —«están en el mismo switch y no se ven»— la vas a encontrar de verdad, y no se arregla mirando cables.</p>
+</div>
+
+<h3>Comprobarlo en binario</h3>
+<p>El método del salto es un atajo; lo que hay debajo es una operación entre la IP y la máscara. Merece la pena verlo una vez:</p>
+<pre><code>IP        192.168.1.100    11000000.10101000.00000001.01100100
+Máscara   /26              11111111.11111111.11111111.11000000
+                           └─────── red ──────────────┘└host─┘
+
+Se quedan los bits de RED y se ponen a 0 los de host:
+Red       192.168.1.64     11000000.10101000.00000001.01000000
+                                                      └ 64 ┘</code></pre>
+<p>Si en el examen te bloqueas con el salto, siempre puedes bajar al binario. Es más lento, pero no falla.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 8 — a mano, en papel</p>
+<ol>
+<li>Explica qué son la <strong>dirección de red</strong> y la <strong>dirección de broadcast</strong>, y por qué no se le asignan a ningún equipo.</li>
+<li>Escribe la fórmula de los equipos que caben en una red y explica de dónde sale el «−2».</li>
+<li>Completa la tabla de /24 a /30 con el salto, las direcciones del bloque y los equipos utilizables. Sin mirar la de arriba.</li>
+<li>Para cada caso, da <strong>dirección de red, primera utilizable, última utilizable y broadcast</strong>, con el desarrollo escrito:<br>a) 192.168.1.50/26 &nbsp;·&nbsp; b) 192.168.1.200/27 &nbsp;·&nbsp; c) 10.0.0.77/28 &nbsp;·&nbsp; d) 172.16.5.9/29</li>
+<li>¿Están en la misma red 192.168.4.60/27 y 192.168.4.70/27? Demuéstralo.</li>
+<li>En la oficina hay 3 departamentos: 25 equipos, 12 equipos y 5 equipos. Tienes la red 192.168.10.0/24. ¿Qué máscara le darías a cada departamento y por qué? (Piensa primero cuántos equipos caben con cada máscara.)</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Por qué se restan 2 y no 1?</summary>
+<p>Porque se pierden <strong>dos</strong> direcciones en cada red: la primera, que nombra a la red, y la última, que es la de broadcast. Ninguna de las dos puede ponerse en la tarjeta de un equipo.</p>
+</details>
+<details>
+<summary>🤔 Con /30 solo caben 2 equipos. ¿Para qué sirve una red tan pequeña?</summary>
+<p>Para <strong>enlaces punto a punto</strong>: unir dos routers. Solo hay dos extremos, así que dar más direcciones sería tirarlas. Es el ejemplo perfecto de por qué se hacen subredes.</p>
+</details>
+<details>
+<summary>🤔 Dos equipos en el mismo switch, con cables perfectos, no se ven. ¿Qué miras?</summary>
+<p>La <strong>IP y la máscara</strong> de los dos. Lo más probable es que estén en subredes distintas: el switch trabaja en capa 2 y le da igual, pero si las partes de red no coinciden, los equipos no se hablan sin un router.</p>
+</details>

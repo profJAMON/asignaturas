@@ -1,0 +1,14 @@
+{
+  "id": "sesion-2-rutas-descargas",
+  "titulo": "Sesión 2 — Rutas y descargas",
+  "fecha": "",
+  "descripcion": "El árbol de carpetas, las rutas absolutas y relativas, cómo hacer que Chrome te pregunte dónde guardar cada descarga, los formatos de imagen y la carpeta mi-web donde vivirá tu página.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Chrome: descargar archivos",
+      "url": "https://support.google.com/chrome/answer/95759?hl=es"
+    }
+  ],
+  "actividades": []
+}

@@ -1,0 +1,30 @@
+{
+  "unidades": [
+    {
+      "id": "evaluacion-inicial",
+      "titulo": "Unidad 0. Evaluación inicial",
+      "descripcion": "De qué va el módulo, cómo vamos a trabajar y una prueba sin nota para ver de dónde partimos.",
+      "sesiones": [
+        "inst-u0-de-que-va-el-modulo",
+        "inst-u0-prueba-inicial"
+      ]
+    },
+    {
+      "id": "introduccion-redes",
+      "titulo": "Unidad 1. Introducción a las redes",
+      "descripcion": "Cómo se comunica una máquina con otra: el binario, las unidades de medida, los elementos de una red, el modelo OSI y las direcciones MAC e IP.",
+      "sesiones": [
+        "inst-u1-comunicacion",
+        "inst-u1-binario",
+        "inst-u1-unidades",
+        "inst-u1-que-es-una-red",
+        "inst-u1-osi",
+        "inst-u1-mac",
+        "inst-u1-ip",
+        "inst-u1-subredes",
+        "inst-u1-dhcp-comandos",
+        "inst-u1-repaso"
+      ]
+    }
+  ]
+}

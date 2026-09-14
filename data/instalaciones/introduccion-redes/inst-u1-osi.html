@@ -1,0 +1,186 @@
+<h2>Protocolos: quién pone las normas</h2>
+<p>Ya sabes qué es un protocolo: un conjunto de normas que permite a dos entidades intercambiar información. En una red no hay <em>un</em> protocolo, hay <strong>muchos trabajando a la vez</strong>, cada uno ocupándose de una parte del problema.</p>
+<p>Y eso es exactamente lo que se necesita, porque el problema es gordo. Piensa en todo lo que tiene que pasar para que veas una página web: hay que convertir la petición en señales eléctricas, meterlas en el cable correcto, encontrar al destinatario entre millones de equipos, asegurarse de que llega todo y en orden, descifrarlo y dibujarlo en la pantalla. Meter todo eso en un solo protocolo sería inmanejable.</p>
+<p>La solución fue <strong>partir el trabajo en capas</strong>, y que cada capa se ocupe solo de lo suyo y confíe en la de abajo. El modelo que describe ese reparto es el <strong>modelo OSI</strong>.</p>
+
+<h2>El modelo OSI</h2>
+<p>OSI es un modelo estándar que divide las funciones de la comunicación en <strong>siete capas</strong>. Cada capa habla con la de arriba y con la de abajo, y en cada una actúan sus protocolos.</p>
+
+<h3>Cómo funciona</h3>
+<p>Cuando el emisor quiere transmitir algo, empieza en la capa más alta (Aplicación) y <strong>va bajando</strong>. En cada capa se le añade a la información una etiqueta con los datos que esa capa necesita. Al llegar a la capa 1 se produce el enlace físico y todo eso sale por el cable.</p>
+<p>En el receptor ocurre lo contrario: la información entra por la capa 1 y <strong>va subiendo</strong>, y cada capa quita su propia etiqueta y hace su comprobación. Cuando llega arriba, el receptor tiene el mensaje original, limpio.</p>
+
+<div class="salida">
+<svg viewBox="0 0 560 380" width="100%" role="img" aria-label="Las siete capas del modelo OSI: el emisor baja de la capa 7 a la 1 y el receptor sube de la 1 a la 7" style="max-width:100%;height:auto;font-family:monospace;">
+  <text x="110" y="18" text-anchor="middle" fill="#4fc1ff" font-size="13">EMISOR</text>
+  <text x="450" y="18" text-anchor="middle" fill="#4fc1ff" font-size="13">RECEPTOR</text>
+  <g font-size="12">
+    <g>
+      <rect x="20" y="30" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="53" fill="#d4d4d4">7 · Aplicación</text>
+      <rect x="360" y="30" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="53" fill="#d4d4d4">7 · Aplicación</text>
+    </g>
+    <g>
+      <rect x="20" y="74" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="97" fill="#d4d4d4">6 · Presentación</text>
+      <rect x="360" y="74" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="97" fill="#d4d4d4">6 · Presentación</text>
+    </g>
+    <g>
+      <rect x="20" y="118" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="141" fill="#d4d4d4">5 · Sesión</text>
+      <rect x="360" y="118" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="141" fill="#d4d4d4">5 · Sesión</text>
+    </g>
+    <g>
+      <rect x="20" y="162" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="185" fill="#d4d4d4">4 · Transporte</text>
+      <rect x="360" y="162" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="185" fill="#d4d4d4">4 · Transporte</text>
+    </g>
+    <g>
+      <rect x="20" y="206" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="229" fill="#d4d4d4">3 · Red</text>
+      <rect x="360" y="206" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="229" fill="#d4d4d4">3 · Red</text>
+    </g>
+    <g>
+      <rect x="20" y="250" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="30" y="273" fill="#d4d4d4">2 · Enlace de datos</text>
+      <rect x="360" y="250" width="180" height="36" fill="#252526" stroke="#3c3c3c" rx="4"/>
+      <text x="370" y="273" fill="#d4d4d4">2 · Enlace de datos</text>
+    </g>
+    <g>
+      <rect x="20" y="294" width="180" height="36" fill="#2d2d2d" stroke="#4fc1ff" rx="4"/>
+      <text x="30" y="317" fill="#4fc1ff">1 · Física</text>
+      <rect x="360" y="294" width="180" height="36" fill="#2d2d2d" stroke="#4fc1ff" rx="4"/>
+      <text x="370" y="317" fill="#4fc1ff">1 · Física</text>
+    </g>
+  </g>
+  <path d="M 210 40 L 210 320" stroke="#ce9178" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <path d="M 204 312 L 216 312 L 210 322 z" fill="#ce9178"/>
+  <text x="218" y="180" fill="#ce9178" font-size="11" font-family="monospace">baja</text>
+  <path d="M 350 320 L 350 40" stroke="#ce9178" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
+  <path d="M 350 40 l -4 8 l 8 0 z" fill="#ce9178"/>
+  <text x="300" y="180" fill="#ce9178" font-size="11" font-family="monospace">sube</text>
+  <path d="M 200 312 L 360 312" stroke="#4fc1ff" stroke-width="2" fill="none"/>
+  <text x="280" y="350" text-anchor="middle" fill="#858585" font-size="11" font-family="monospace">el cable, la fibra o las ondas</text>
+</svg>
+</div>
+<div class="nota">Este ir bajando añadiendo etiquetas se llama <strong>encapsulación</strong>, y funciona como los sobres de una carta: metes la carta en un sobre, ese sobre en otro más grande con otra dirección, y así. El receptor va abriendo sobres en orden inverso hasta llegar a la carta. Ninguna capa necesita saber qué hay dentro del sobre de la capa de arriba.</div>
+<div class="salida">
+<svg viewBox="0 0 600 248" width="100%" role="img" aria-label="Cuatro cajas anidadas: los datos dentro del segmento TCP, dentro del paquete IP, dentro de la trama Ethernet" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="16" y="46" width="568" height="150" rx="5" fill="none" stroke="#4fc1ff" stroke-width="1.4"/><text x="26" y="63" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">TRAMA</text><text x="576" y="63" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 2 · Ethernet · MAC</text><rect x="92" y="68" width="476" height="106" rx="5" fill="none" stroke="#ce9178" stroke-width="1.4"/><text x="102" y="85" font-family="monospace" font-size="11" font-weight="700" fill="#ce9178">PAQUETE</text><text x="560" y="85" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 3 · IP</text><rect x="168" y="90" width="384" height="62" rx="5" fill="none" stroke="#89d185" stroke-width="1.4"/><text x="178" y="107" font-family="monospace" font-size="11" font-weight="700" fill="#89d185">SEGMENTO</text><text x="544" y="107" text-anchor="end" font-family="monospace" font-size="9.5" fill="#6a7280">capa 4 · TCP</text><rect x="244" y="112" width="232" height="28" rx="4" fill="#2d2d30" stroke="#f3f3f3"/><text x="360" y="131" text-anchor="middle" class="t">DATOS</text><text x="490" y="131" font-family="monospace" font-size="9.5" fill="#6a7280">capa 7</text><text x="300" y="28" text-anchor="middle" class="t">Cada capa mete lo de la de arriba en su propio sobre</text><path d="M 40 214 L 162.0 214.0" stroke="#ce9178" stroke-width="1.4" fill="none"/>
+<path d="M 170 214 L 161.7 217.5 L 161.7 210.5 z" fill="#ce9178"/><text x="105" y="234" text-anchor="middle" class="s">el emisor mete sobres</text><path d="M 560 214 L 438.0 214.0" stroke="#89d185" stroke-width="1.4" fill="none"/>
+<path d="M 430 214 L 438.3 210.5 L 438.3 217.5 z" fill="#89d185"/><text x="468" y="234" text-anchor="middle" class="s">el receptor los abre al revés</text>
+</svg>
+<p class="pie-figura">La encapsulación: los datos viajan dentro de un sobre, ese sobre dentro de otro, y así hasta el cable.</p>
+</div>
+
+<h3>Qué hace cada capa</h3>
+<table>
+<tr><th>Capa</th><th>De qué se ocupa</th><th>Protocolos y ejemplos</th></tr>
+<tr><td><strong>7 · Aplicación</strong></td><td>Es la que toca el usuario: el programa que pide o entrega la información.</td><td>HTTP / HTTPS (web), SMTP (enviar correo), POP3 e IMAP (recibir correo), FTP / FTPS (archivos)</td></tr>
+<tr><td><strong>6 · Presentación</strong></td><td>El formato de los datos: codificación, compresión. No tiene protocolos destacables.</td><td>—</td></tr>
+<tr><td><strong>5 · Sesión</strong></td><td>Abre, mantiene y cierra la conversación entre las dos partes.</td><td>SSL y su sucesor TLS, que cifran lo que se transmite</td></tr>
+<tr><td><strong>4 · Transporte</strong></td><td>Cómo se trocea y si se garantiza o no la entrega.</td><td>TCP (fiable, con confirmación) y UDP (rápido, sin confirmación)</td></tr>
+<tr><td><strong>3 · Red</strong></td><td>Llevar la información de origen a destino por la mejor ruta, aunque haya que cruzar varias redes. Da a cada equipo una dirección IP.</td><td>IP. Es la capa en la que trabaja el <strong>router</strong>.</td></tr>
+<tr><td><strong>2 · Enlace de datos</strong></td><td>Entregar dentro de la misma red, usando direcciones MAC.</td><td>Ethernet, Fast Ethernet, Gigabit Ethernet; ARP. Es la capa del <strong>switch</strong>.</td></tr>
+<tr><td><strong>1 · Física</strong></td><td>El medio en sí: cable, fibra u ondas, conectores, voltajes.</td><td>El UTP, el RJ-45, la señal eléctrica</td></tr>
+</table>
+<div class="nota">La capa 3 se llama <strong>Red</strong>, no «IP». IP es el protocolo <em>más importante</em> de esa capa, pero no es su nombre. Lo mismo con la 2: se llama <strong>Enlace de datos</strong>, y Ethernet es uno de sus protocolos. Confundir la capa con su protocolo estrella es un fallo típico y lo pregunto.</div>
+
+<h3>TCP y UDP: entregar bien o entregar rápido</h3>
+<table>
+<tr><th></th><th>TCP</th><th>UDP</th></tr>
+<tr><td><strong>Conexión previa</strong></td><td>Sí, se saludan antes</td><td>No, se envía y ya</td></tr>
+<tr><td><strong>Garantiza que llega</strong></td><td>Sí: si falta algo, se reenvía</td><td>No: lo que se pierde, perdido</td></tr>
+<tr><td><strong>Garantiza el orden</strong></td><td>Sí</td><td>No: un paquete puede adelantar a otro</td></tr>
+<tr><td><strong>Se usa en</strong></td><td>Web, correo, FTP… casi todo</td><td>Vídeo y audio en directo, juegos, DNS</td></tr>
+</table>
+<div class="salida">
+<svg viewBox="0 0 580 300" width="100%" role="img" aria-label="Dos paneles: con TCP el dato perdido se reclama y se reenvía; con UDP se pierde y la transmisión continúa" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="12" y="14" width="266" height="276" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="145" y="36" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#89d185">TCP · entrega segura</text><text x="46" y="56" text-anchor="middle" class="f">emisor</text><text x="244" y="56" text-anchor="middle" class="f">receptor</text><line x1="46" y1="64" x2="46" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="244" y1="64" x2="244" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 46 86 L 236.0 86.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 244 86 L 235.7 89.5 L 235.7 82.5 z" fill="#89d185"/><text x="145" y="79" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 1</text><path d="M 244 116 L 54.0 116.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 116 L 54.3 112.5 L 54.3 119.5 z" fill="#9099a6"/><text x="145" y="109" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">recibido</text><path d="M 46 146 L 136.0 150.6" stroke="#f14c4c" stroke-width="1.3" fill="none"/>
+<path d="M 144 151 L 135.5 154.1 L 135.9 147.1 z" fill="#f14c4c"/><path d="M 150 146 l 10 10 M 160 146 l -10 10" stroke="#f14c4c" stroke-width="2"/><text x="145" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#f14c4c">dato 2</text><path d="M 244 176 L 54.0 176.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 176 L 54.3 172.5 L 54.3 179.5 z" fill="#9099a6"/><text x="145" y="169" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">¿y el dato 2?</text><path d="M 46 206 L 236.0 206.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 244 206 L 235.7 209.5 L 235.7 202.5 z" fill="#89d185"/><text x="145" y="199" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 2 otra vez</text><path d="M 244 236 L 54.0 236.0" stroke="#9099a6" stroke-width="1.3" fill="none"/>
+<path d="M 46 236 L 54.3 232.5 L 54.3 239.5 z" fill="#9099a6"/><text x="145" y="229" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">recibido</text><text x="145" y="262" text-anchor="middle" class="s">Lo que se pierde se pide de nuevo.</text><text x="145" y="278" text-anchor="middle" class="s">Llega todo y en orden, aunque tarde más.</text><rect x="302" y="14" width="266" height="276" rx="6" fill="#252526" stroke="#3c3c3c"/><text x="435" y="36" text-anchor="middle" font-family="monospace" font-size="13" font-weight="700" fill="#ce9178">UDP · entrega rápida</text><text x="336" y="56" text-anchor="middle" class="f">emisor</text><text x="534" y="56" text-anchor="middle" class="f">receptor</text><line x1="336" y1="64" x2="336" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="534" y1="64" x2="534" y2="240" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 336 86 L 526.0 86.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 86 L 525.7 89.5 L 525.7 82.5 z" fill="#89d185"/><text x="435" y="79" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 1</text><path d="M 336 116 L 526.0 116.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 116 L 525.7 119.5 L 525.7 112.5 z" fill="#89d185"/><text x="435" y="109" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 2</text><path d="M 336 146 L 426.0 150.6" stroke="#f14c4c" stroke-width="1.3" fill="none"/>
+<path d="M 434 151 L 425.5 154.1 L 425.9 147.1 z" fill="#f14c4c"/><path d="M 440 146 l 10 10 M 450 146 l -10 10" stroke="#f14c4c" stroke-width="2"/><text x="435" y="139" text-anchor="middle" font-family="monospace" font-size="10" fill="#f14c4c">dato 3</text><path d="M 336 176 L 526.0 176.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 176 L 525.7 179.5 L 525.7 172.5 z" fill="#89d185"/><text x="435" y="169" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 4</text><path d="M 336 206 L 526.0 206.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 206 L 525.7 209.5 L 525.7 202.5 z" fill="#89d185"/><text x="435" y="199" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 5</text><path d="M 336 236 L 526.0 236.0" stroke="#89d185" stroke-width="1.3" fill="none"/>
+<path d="M 534 236 L 525.7 239.5 L 525.7 232.5 z" fill="#89d185"/><text x="435" y="229" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">dato 6</text><text x="435" y="262" text-anchor="middle" class="s">Nadie reclama lo que falta.</text><text x="435" y="278" text-anchor="middle" class="s">Se pierde el 3 y la transmisión sigue.</text>
+</svg>
+<p class="pie-figura">La misma pérdida con los dos protocolos: TCP reclama el dato que falta, UDP sigue adelante sin él.</p>
+</div>
+<p>¿Por qué existe UDP si es peor? Porque no siempre lo importante es que llegue todo. En una videollamada, repetir un trozo perdido llegaría tarde y solo serviría para cortar la imagen. Es mejor perderlo y seguir. <strong>UDP no es peor: es otro compromiso.</strong></p>
+
+<h3>ARP: la bisagra entre la capa 3 y la 2</h3>
+<p>Un protocolo pequeño que conviene conocer ya, porque explica por qué hacen falta dos direcciones. Cuando tu equipo quiere hablar con la IP 192.168.1.50 de su misma red, necesita saber <strong>a qué tarjeta física</strong> corresponde esa IP. ARP es quien lo pregunta: «¿quién tiene la 192.168.1.50?». El equipo que la tiene contesta con su dirección MAC, y ya se le puede enviar la trama.</p>
+<p>De las dos direcciones —MAC e IP— van las dos próximas sesiones.</p>
+
+<h2>Y en la realidad: el modelo TCP/IP</h2>
+<p>OSI es el modelo de referencia: sirve para estudiar, para ordenar las ideas y para localizar averías. Pero <strong>Internet no se construyó sobre OSI</strong>, se construyó sobre otro modelo de cuatro capas llamado <strong>TCP/IP</strong>, que hace lo mismo agrupando algunas capas.</p>
+<table>
+<tr><th>TCP/IP (el real)</th><th>Equivale a OSI</th><th>Protocolos</th></tr>
+<tr><td><strong>Aplicación</strong></td><td>7 + 6 + 5</td><td>HTTP, FTP, SMTP, DNS</td></tr>
+<tr><td><strong>Transporte</strong></td><td>4</td><td>TCP, UDP</td></tr>
+<tr><td><strong>Internet</strong></td><td>3</td><td>IP</td></tr>
+<tr><td><strong>Acceso a la red</strong></td><td>2 + 1</td><td>Ethernet, wifi</td></tr>
+</table>
+<p>Te lo cuento por dos motivos. Primero, para que no te choque cuando lo veas fuera de clase, porque en el mundo profesional se habla de las dos cosas. Y segundo, porque cuando alguien dice <em>«eso es un problema de capa 1»</em> o <em>«capa 8»</em> está usando la numeración de OSI, que es la que se ha quedado como jerga.</p>
+<div class="nota">El chiste que oirás en cualquier taller: <em>«es un problema de capa 8»</em>. La capa 8 no existe en el modelo: es el usuario. Ahora ya lo entiendes.</div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 5 — a mano, en papel</p>
+<ol>
+<li>Dibuja las <strong>siete capas del modelo OSI</strong> con su número y su nombre, de la 7 a la 1, y al lado un protocolo de cada una.</li>
+<li>Une cada operación con su capa: navegar por Internet · enviar un correo · enrutar la información · el cable UTP · localizar una dirección MAC · cifrar la conexión · descargar un fichero por FTP.</li>
+<li>¿Por qué TCP es uno de los protocolos más importantes de Internet?</li>
+<li>¿Qué diferencia hay entre HTTP y HTTPS? ¿Cuál es más seguro y por qué?</li>
+<li>¿Qué protocolo usarás si navegas con Chrome? ¿Y si usas otro navegador? Explica tu respuesta.</li>
+<li>¿Qué protocolos tienen que ver con el correo electrónico? Di cuál sirve para enviar y cuáles para recibir.</li>
+<li>Explica con tus palabras qué es la <strong>encapsulación</strong>, usando una comparación que se te ocurra a ti.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿En qué capa trabaja un switch? ¿Y un router?</summary>
+<p>El switch en la <strong>capa 2 (Enlace de datos)</strong>: reparte dentro de la misma red usando direcciones MAC. El router en la <strong>capa 3 (Red)</strong>: une redes distintas usando direcciones IP. Esa diferencia es la unidad 6 entera, así que vete quedándote con ella.</p>
+</details>
+<details>
+<summary>🤔 Estás viendo un directo y la imagen se pixela un momento, pero no se para. ¿TCP o UDP?</summary>
+<p><strong>UDP</strong>. Se ha perdido información y nadie la ha pedido de nuevo: se ha seguido adelante. Con TCP la imagen se habría congelado esperando el trozo que falta.</p>
+</details>
+<details>
+<summary>🤔 Un cable está pinzado por la pata de una mesa. ¿De qué capa es el problema?</summary>
+<p>De la <strong>capa 1, Física</strong>. Y empezar por ahí ahorra muchísimo tiempo: antes de revisar configuraciones, mira el cable, el conector y las luces.</p>
+</details>

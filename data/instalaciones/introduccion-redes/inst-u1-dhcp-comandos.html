@@ -1,0 +1,180 @@
+<h2>IPv6: por qué hizo falta otro protocolo</h2>
+<p>IPv4 tiene 32 bits, o sea unos <strong>4.300 millones</strong> de direcciones. Cuando se diseñó, en los años setenta, parecían infinitas. Hoy hay más móviles que personas, y además se desperdician muchísimas al partir redes en subredes. Se acabaron.</p>
+<p>La solución es <strong>IPv6</strong>, que usa <strong>128 bits</strong> en lugar de 32. La diferencia no es «cuatro veces más»: es una barbaridad más.</p>
+<table>
+<tr><th></th><th>IPv4</th><th>IPv6</th></tr>
+<tr><td><strong>Bits</strong></td><td>32</td><td>128</td></tr>
+<tr><td><strong>Se divide en</strong></td><td>4 octetos (8 bits cada uno)</td><td>8 hextetos (16 bits cada uno)</td></tr>
+<tr><td><strong>Se escribe</strong></td><td>En decimal, separado por puntos</td><td>En hexadecimal, separado por dos puntos</td></tr>
+<tr><td><strong>Direcciones</strong></td><td>4.300 millones</td><td>340 sextillones</td></tr>
+<tr><td><strong>Ejemplo</strong></td><td>192.168.1.25</td><td>2035:0001:2FC5:0000:0000:087C:0000:0001</td></tr>
+</table>
+<p>Además trae de serie autoconfiguración, cifrado de extremo a extremo y mejor seguridad, cosas que en IPv4 hubo que añadir después.</p>
+<div class="nota">Un <strong>octeto</strong> son 8 bits y se escribe en decimal (0–255). Un <strong>hexteto</strong> son 16 bits y se escribe con 4 dígitos hexadecimales. Y recuerda de la sesión de la MAC: cada dígito hexadecimal vale 4 bits. 4 dígitos × 4 bits = 16 bits. Cuadra.</div>
+
+<h3>Las tres reglas para acortar una IPv6</h3>
+<p>Escribir 32 dígitos hexadecimales es inviable, así que hay tres reglas de abreviación. Se aplican en este orden:</p>
+<pre><code>Original   2035:0001:2FC5:0000:0000:087C:0000:0001
+
+Regla 1 — quitar los ceros a la IZQUIERDA de cada bloque
+           2035:1:2FC5:0000:0000:87C:0000:1
+
+Regla 2 — un bloque de cuatro ceros se deja en un solo 0
+           2035:1:2FC5:0:0:87C:0:1
+
+Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
+           2035:1:2FC5::87C:0:1</code></pre>
+<div class="nota">La regla 3 solo se puede usar <strong>una vez</strong> en toda la dirección. Si se usara dos veces no habría forma de saber cuántos bloques ha comido cada «::». En el ejemplo se ha aplicado al grupo 0:0 y por eso el 0 suelto del final se queda escrito.</div>
+<div class="salida">
+<svg viewBox="0 0 600 258" width="100%" role="img" aria-label="Una dirección IPv6 acortada paso a paso aplicando las tres reglas de abreviación" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="20" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#9099a6">Original</text><text x="104" y="30" font-family="monospace" font-size="13" fill="#9099a6">2035:0001:2FC5:0000:0000:087C:0000:0001</text><path d="M 60 40 L 60.0 62.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
+<path d="M 60 70 L 56.5 61.7 L 63.5 61.7 z" fill="#3c3c3c"/><text x="20" y="86" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Regla 1</text><text x="104" y="86" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5:0000:0000:87C:0000:1</text><text x="104" y="102" font-family="monospace" font-size="9.5" fill="#6a7280">fuera los ceros de la izquierda de cada bloque</text><path d="M 60 96 L 60.0 118.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
+<path d="M 60 126 L 56.5 117.7 L 63.5 117.7 z" fill="#3c3c3c"/><text x="20" y="142" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Regla 2</text><text x="104" y="142" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5:0:0:87C:0:1</text><text x="104" y="158" font-family="monospace" font-size="9.5" fill="#6a7280">un bloque de cuatro ceros se queda en un solo 0</text><path d="M 60 152 L 60.0 174.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
+<path d="M 60 182 L 56.5 173.7 L 63.5 173.7 z" fill="#3c3c3c"/><text x="20" y="198" font-family="monospace" font-size="11" font-weight="700" fill="#89d185">Regla 3</text><text x="104" y="198" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5::87C:0:1</text><text x="104" y="214" font-family="monospace" font-size="9.5" fill="#6a7280">los bloques de ceros seguidos se sustituyen por :: (una sola vez)</text><text x="300" y="246" text-anchor="middle" class="s">Las tres se aplican en orden. El «::» solo puede aparecer una vez en toda la dirección.</text>
+</svg>
+<p class="pie-figura">Las tres reglas aplicadas una detrás de otra sobre la misma dirección.</p>
+</div>
+
+<h2>DHCP: quién reparte las direcciones</h2>
+<p>Las IP se pueden poner de dos maneras:</p>
+<ul>
+<li><strong>Estática:</strong> la escribes tú a mano en el equipo. Se usa en servidores, impresoras, cámaras y routers — todo lo que tiene que estar siempre en el mismo sitio.</li>
+<li><strong>Dinámica:</strong> se la pide a un servidor <strong>DHCP</strong> al arrancar. Es lo normal en ordenadores, portátiles y móviles.</li>
+</ul>
+<p>En una red pequeña, <strong>el servidor DHCP es el propio router</strong>. Cuando un equipo se enciende con la tarjeta configurada en «automático», suelta una petición a la red y el router le contesta con un paquete que lleva, como mínimo:</p>
+<table>
+<tr><th>Dato</th><th>Para qué</th></tr>
+<tr><td>Dirección IP</td><td>Quién eres en esta red</td></tr>
+<tr><td>Máscara de red</td><td>Hasta dónde llega tu red</td></tr>
+<tr><td>Puerta de enlace</td><td>Por dónde se sale a otras redes (el router)</td></tr>
+<tr><td>Servidores DNS</td><td>Quién traduce los nombres en direcciones IP</td></tr>
+</table>
+<div class="salida">
+<svg viewBox="0 0 568 276" width="100%" role="img" aria-label="Diálogo entre un equipo y el router para conseguir una dirección IP por DHCP" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<rect x="14" y="14" width="540" height="212" rx="6" fill="#252526" stroke="#3c3c3c"/><rect x="34" y="34" width="130" height="40" rx="5" fill="#1e1e1e" stroke="#9099a6"/>
+<text x="99.0" y="58.0" text-anchor="middle" class="t">TU EQUIPO</text><rect x="404" y="34" width="130" height="40" rx="5" fill="#1e1e1e" stroke="#4fc1ff"/>
+<text x="469.0" y="51.0" text-anchor="middle" class="t">ROUTER</text>
+<text x="469.0" y="68.0" text-anchor="middle" class="f">servidor DHCP</text><line x1="99" y1="78" x2="99" y2="196" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="469" y1="78" x2="469" y2="196" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 99 104 L 461.0 104.0" stroke="#ce9178" stroke-width="1.3" fill="none"/>
+<path d="M 469 104 L 460.7 107.5 L 460.7 100.5 z" fill="#ce9178"/><text x="284" y="97" text-anchor="middle" class="s">¿hay algún DHCP ahí?</text><path d="M 469 134 L 107.0 134.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
+<path d="M 99 134 L 107.3 130.5 L 107.3 137.5 z" fill="#4fc1ff"/><text x="284" y="127" text-anchor="middle" class="s">te ofrezco la 192.168.1.25</text><path d="M 99 164 L 461.0 164.0" stroke="#ce9178" stroke-width="1.3" fill="none"/>
+<path d="M 469 164 L 460.7 167.5 L 460.7 160.5 z" fill="#ce9178"/><text x="284" y="157" text-anchor="middle" class="s">me la quedo</text><path d="M 469 194 L 107.0 194.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
+<path d="M 99 194 L 107.3 190.5 L 107.3 197.5 z" fill="#4fc1ff"/><text x="284" y="187" text-anchor="middle" class="s">confirmada, es tuya un rato</text><text x="284" y="216" text-anchor="middle" class="f">y con la IP vienen la máscara, la puerta de enlace y los DNS</text><text x="284" y="248" text-anchor="middle" class="s">Si nadie contesta, Windows se autoasigna una 169.254.x.x. Esa dirección es el aviso</text><text x="284" y="264" text-anchor="middle" class="s">de que el equipo no está hablando con el router: mira el cable, el switch o el DHCP.</text>
+</svg>
+<p class="pie-figura">La conversación entera dura milisegundos y ocurre cada vez que enciendes el equipo.</p>
+</div>
+<p>La dirección se cede durante un tiempo (el <em>lease</em>); al caducar se renueva. Por eso a veces la IP de un portátil cambia de un día para otro.</p>
+<div class="salida">
+<p><strong>Por qué esto importa en el taller:</strong> si un equipo aparece con una IP <code>169.254.x.x</code>, es que pidió dirección y <strong>nadie le contestó</strong>. Eso apunta a tres sitios: el cable o el puerto, el switch, o el DHCP del router. Nunca al navegador.</p>
+</div>
+
+<h2>Quién reparte las direcciones en el mundo</h2>
+<p>Dentro de tu red te organizas tú. Pero las direcciones <strong>públicas</strong> no puede elegirlas cualquiera, o dos sitios distintos tendrían la misma y sería imposible encontrarlos.</p>
+<ul>
+<li><strong>IANA</strong> (<em>Internet Assigned Numbers Authority</em>) es el organismo que está arriba del todo: asigna los grandes bloques de direcciones y coordina los números que Internet necesita tener únicos. Es una de las instituciones más antiguas de la red.</li>
+<li>Los <strong>RIR</strong> (<em>Registros Regionales de Internet</em>) son organizaciones sin ánimo de lucro que reparten esos bloques dentro de una región del mundo. El de Europa es <strong>RIPE NCC</strong>.</li>
+<li>Los RIR se los entregan a los operadores, y el operador te da a ti una dirección pública para tu router.</li>
+</ul>
+<p>Internet no tiene un dueño ni una gestión central, pero hay unas pocas cosas —como las direcciones y los nombres de dominio— que <strong>obligatoriamente</strong> hay que coordinar en todo el planeta. De eso se ocupan IANA y los RIR.</p>
+
+<h2>Los comandos que vas a usar siempre</h2>
+<p>Estas herramientas vienen con el sistema operativo y se usan desde la línea de comandos. En Windows se abre con <strong>Inicio → escribir <code>cmd</code> → Enter</strong>.</p>
+<table>
+<tr><th>Comando</th><th>Para qué sirve</th></tr>
+<tr><td><code>ipconfig</code></td><td>Ver tu IP, tu máscara y tu puerta de enlace</td></tr>
+<tr><td><code>ipconfig /all</code></td><td>Lo anterior más la MAC, el DNS y si la IP viene de DHCP</td></tr>
+<tr><td><code>ipconfig /release</code></td><td>Soltar la dirección que te dio el DHCP</td></tr>
+<tr><td><code>ipconfig /renew</code></td><td>Volver a pedirla</td></tr>
+<tr><td><code>ping</code></td><td>Comprobar si otro equipo responde</td></tr>
+<tr><td><code>tracert</code></td><td>Ver por qué saltos pasa el tráfico hasta el destino</td></tr>
+<tr><td><code>nslookup</code></td><td>Preguntar al DNS qué IP tiene un nombre</td></tr>
+<tr><td><code>netstat</code></td><td>Ver las conexiones abiertas del equipo</td></tr>
+</table>
+<div class="nota">En Linux el equivalente de <code>ipconfig</code> es <code>ifconfig</code> (o el más moderno <code>ip a</code>), y el de <code>tracert</code> es <code>traceroute</code>. Mismo trabajo, otro nombre.</div>
+
+<h3>Cómo funciona ping</h3>
+<p><code>ping</code> envía a la dirección indicada un paquete llamado <strong>solicitud de eco</strong>. Si el destino lo recibe, contesta con una <strong>respuesta de eco</strong>. Si esa respuesta vuelve, hay conectividad. Y de propina te dice cuánto ha tardado.</p>
+<pre><code>C:\&gt; ping 192.168.1.1
+
+Respuesta desde 192.168.1.1: bytes=32 tiempo=2ms TTL=64
+Respuesta desde 192.168.1.1: bytes=32 tiempo=1ms TTL=64
+
+Estadísticas de ping para 192.168.1.1:
+    Paquetes: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos)</code></pre>
+<p>Y aquí está lo que de verdad quiero que te lleves de la sesión: <strong>el orden en que se hacen los ping</strong>. Es una escalera, y se sube peldaño a peldaño.</p>
+<table>
+<tr><th>Paso</th><th>Comando</th><th>Si falla, el problema está en…</th></tr>
+<tr><td>1</td><td><code>ping 127.0.0.1</code></td><td>Tu propia tarjeta o su configuración</td></tr>
+<tr><td>2</td><td><code>ping</code> a tu propia IP</td><td>La configuración de tu adaptador</td></tr>
+<tr><td>3</td><td><code>ping</code> a la puerta de enlace</td><td>El cable, el switch o el router</td></tr>
+<tr><td>4</td><td><code>ping 8.8.8.8</code></td><td>La salida a Internet</td></tr>
+<tr><td>5</td><td><code>ping www.google.es</code></td><td>El DNS: hay Internet, pero no traduce nombres</td></tr>
+</table>
+<div class="salida">
+<svg viewBox="0 0 600 192" width="100%" role="img" aria-label="Cinco peldaños de diagnóstico con ping, del propio equipo hasta la resolución de nombres" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">Si un equipo no navega, se sube peldaño a peldaño</text><rect x="14" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="70.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="70.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">127.0.0.1</text><text x="70.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="70.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tu propia</text><text x="70.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tarjeta</text><path d="M 131 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="131" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="187.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="187.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">tu IP</text><text x="187.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="187.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tu</text><text x="187.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">configuración</text><path d="M 248 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="248" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="304.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="304.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">puerta de enlace</text><text x="304.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="304.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">cable, switch</text><text x="304.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">o router</text><path d="M 365 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="365" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="421.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="421.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">8.8.8.8</text><text x="421.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="421.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">la salida</text><text x="421.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">a Internet</text><path d="M 482 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="482" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="538.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="538.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">un nombre web</text><text x="538.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="538.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">el DNS</text><text x="300" y="178" text-anchor="middle" class="s">Si los cuatro primeros van y el quinto no, tienes Internet y lo que falla es el DNS.</text>
+</svg>
+<p class="pie-figura">El orden importa: cada peldaño descarta un trozo del camino.</p>
+</div>
+<p>Si los cuatro primeros van y el quinto no, tienes Internet perfectamente y lo que falla es el DNS. Ese diagnóstico, hecho en veinte segundos, es lo que separa a un técnico de alguien reiniciando el router por si acaso.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 9 — a mano, en papel</p>
+<ol>
+<li>¿Cuántos bits tiene una dirección IPv6? Explica qué es un <strong>octeto</strong> y qué es un <strong>hexteto</strong>.</li>
+<li>Enumera los cambios que trae IPv6 respecto a IPv4 y explica <strong>sus tres reglas</strong> de abreviación con un ejemplo propio.</li>
+<li>Abrevia todo lo que puedas: <code>2001:0DB8:0000:0000:0000:FF00:0042:8329</code>. Escribe qué regla aplicas en cada paso.</li>
+<li>¿Existe algún mecanismo automático para asignar IP en una red local? Explica con tus palabras el protocolo <strong>DHCP</strong> y di qué cuatro datos entrega.</li>
+<li>¿Cuándo pondrías una IP fija y cuándo dejarías DHCP? Pon dos ejemplos de cada uno.</li>
+<li>Explica la función de <strong>IANA</strong> y la de los <strong>RIR</strong>.</li>
+<li>Usando <code>ipconfig</code> en tu equipo: ¿cuál es tu IP?, ¿cuántos adaptadores de red tienes?, ¿cuál es tu puerta de enlace?</li>
+<li>Haz la escalera de ping de la tabla y apunta el resultado de cada paso. Si alguno falla, di qué deducirías.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Entras en una web por su IP pero no por su nombre. ¿Qué falla?</summary>
+<p>El <strong>DNS</strong>. Hay conexión —la IP responde—, pero nadie está traduciendo el nombre a esa dirección. Se comprueba con <code>nslookup</code>.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué la impresora de la oficina lleva IP fija y tu portátil no?</summary>
+<p>Porque a la impresora hay que <strong>encontrarla siempre en el mismo sitio</strong>: si su dirección cambiara, los equipos configurados dejarían de imprimir. Tu portátil no necesita ser localizable, así que vale cualquier dirección libre.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué el «::» de IPv6 solo puede aparecer una vez?</summary>
+<p>Porque «::» significa «aquí hay tantos bloques de ceros como hagan falta para llegar a ocho». Con uno se puede calcular cuántos son; con dos, sería imposible saber cuántos ha comido cada uno.</p>
+</details>

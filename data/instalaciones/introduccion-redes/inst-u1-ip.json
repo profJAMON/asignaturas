@@ -1,0 +1,110 @@
+{
+  "id": "inst-u1-ip",
+  "titulo": "Sesión 7 — La dirección IP, la máscara y las clases",
+  "fecha": "",
+  "descripcion": "Los 32 bits de una IPv4, para qué sirve la máscara de red, la notación CIDR, las clases A–E y la diferencia entre direcciones públicas y privadas.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Identifica la clase de red",
+      "generador": "clase-de-ip",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Parte de red y parte de host",
+      "generador": "parte-de-red",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Máscara por defecto",
+      "generador": "mascara-por-defecto",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Pública o privada?",
+      "generador": "publica-o-privada",
+      "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Máscara decimal y notación CIDR",
+      "generador": "cidr-a-mascara",
+      "n": 8
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántos bits tiene una dirección IPv4?",
+          "opciones": ["16", "32", "48", "128"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un octeto de una dirección IP son…",
+          "opciones": ["4 bits", "8 bits", "8 bytes", "16 bits"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántas direcciones IPv4 distintas existen?",
+          "opciones": ["2¹⁶", "2³²", "2³⁶", "2⁴⁸"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En una máscara de red, los bits a 1 marcan…",
+          "opciones": ["La parte de host", "La parte de red", "Las direcciones libres", "Los bits con error"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "255.255.255.0 se escribe en notación CIDR como…",
+          "opciones": ["/8", "/16", "/24", "/32"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "La dirección 150.10.15.0 es de clase…",
+          "opciones": ["A", "B", "C", "D"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estas direcciones es privada?",
+          "opciones": ["172.15.3.9", "172.20.3.9", "193.100.77.89", "8.8.8.8"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La dirección 127.0.0.1 sirve para…",
+          "opciones": [
+            "Identificar al router",
+            "Referirse al propio equipo (localhost)",
+            "Hablar con todos los equipos de la red",
+            "Salir a Internet"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un equipo muestra la IP 169.254.20.3. Eso significa que…",
+          "opciones": [
+            "Está conectado por fibra",
+            "No ha conseguido dirección del servidor DHCP",
+            "Tiene una IP pública",
+            "Está en la misma red que el router"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Dos equipos con la misma parte de red…",
+          "opciones": [
+            "Necesitan siempre un router para hablarse",
+            "Pueden comunicarse directamente",
+            "Tienen que tener la misma MAC",
+            "No pueden estar en el mismo switch"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

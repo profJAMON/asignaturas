@@ -1,0 +1,163 @@
+<h2>El modelo de caja</h2>
+<p>Todo elemento HTML es, para CSS, una <strong>caja rectangular</strong> formada por cuatro capas, unas dentro de otras:</p>
+<div class="salida">
+<div style="border:1px dashed var(--accent-warm, #ce9178);border-radius:4px;padding:18px;">
+  <p style="margin:0 0 8px;font-family:monospace;font-size:0.8em;">margin (espacio exterior, fuera de la caja)</p>
+  <div style="border:1px dashed #6a7280;border-radius:4px;padding:18px;">
+    <p style="margin:0 0 8px;font-family:monospace;font-size:0.8em;">border (el borde de la caja)</p>
+    <div style="border:1px dashed #4fc1ff;border-radius:4px;padding:18px;">
+      <p style="margin:0 0 8px;font-family:monospace;font-size:0.8em;">padding (espacio interior, dentro del borde)</p>
+      <div style="background:#e8e8e8;border-radius:4px;padding:10px;text-align:center;font-family:monospace;font-size:0.8em;color:#1e1e1e;">content (tu texto, tu imagen...)</div>
+    </div>
+  </div>
+</div>
+</div>
+<p>Las cuatro capas, de dentro hacia afuera:</p>
+<table>
+<tr><th>Capa</th><th>Qué es</th></tr>
+<tr><td><code>content</code></td><td>El contenido real: el texto, la imagen...</td></tr>
+<tr><td><code>padding</code></td><td>Espacio entre el contenido y el borde, por dentro</td></tr>
+<tr><td><code>border</code></td><td>El borde de la caja, entre el padding y el margin</td></tr>
+<tr><td><code>margin</code></td><td>Espacio fuera de la caja, que la separa de las demás</td></tr>
+</table>
+<div class="nota">🤔 Truco para no confundirte: el <code>padding</code> empuja tu contenido "hacia dentro" (aleja el texto del borde); el <code>margin</code> empuja la caja entera "hacia fuera" (la aleja de sus vecinas).</div>
+
+<h2>Ejercicio guiado 1 — Ver las capas con tus propios ojos</h2>
+<ol>
+<li>En tu <code>prueba-css.html</code> de la sesión pasada, añade un <code>&lt;div&gt;</code> nuevo con <code>class="tarjeta"</code> y un poco de texto dentro.</li>
+<li>Créale una regla <code>.tarjeta</code> con <code>background-color</code> claro y <code>color</code> oscuro, para que se distinga del fondo.</li>
+<li>Añade <code>border: 3px solid red;</code> a esa misma regla, guarda y observa dónde aparece el borde: justo pegado al fondo de color, sin ningún espacio.</li>
+</ol>
+<p>Si lo has hecho bien: verás un borde rojo grueso tocando directamente el texto y el fondo de color, sin ningún hueco — porque todavía no has añadido <code>padding</code>.</p>
+
+<h2>Padding: espacio interior</h2>
+<p><code>padding</code> aleja el contenido del borde. Se puede escribir con un valor único (igual en los cuatro lados), con dos valores (arriba/abajo y izquierda/derecha) o con cuatro valores (uno por lado, en el orden arriba-derecha-abajo-izquierda):</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='at'>padding</span>: <span class='ca'>20px</span>; <span class='co'>/* los cuatro lados iguales */</span>
+}</code></pre>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:0;">Sin padding</div>
+<div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:20px;">Con padding: 20px</div>
+</div>
+<p>Con dos valores, el primero manda arriba/abajo y el segundo izquierda/derecha:</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='co'>/* arriba/abajo: 10px, izquierda/derecha: 30px */</span>
+    <span class='at'>padding</span>: <span class='ca'>10px 30px</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:10px 30px;">padding: 10px 30px;</div>
+</div>
+<p>Y con cuatro valores controlas cada lado por separado, sin necesidad de usar <code>padding-top</code>, <code>padding-right</code>, etc. uno a uno:</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='co'>/* arriba - derecha - abajo - izquierda */</span>
+    <span class='at'>padding</span>: <span class='ca'>6px 24px 30px 6px</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div style="background:#e8e8e8;color:#1e1e1e;border:3px solid #800000;padding:6px 24px 30px 6px;">padding: 6px 24px 30px 6px;</div>
+</div>
+<div class="nota">El orden de los cuatro valores es siempre el mismo (arriba, derecha, abajo, izquierda) — se recuerda pensando en las agujas de un reloj empezando arriba. También existen <code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code> y <code>padding-left</code> para tocar un único lado sin escribir los demás.</div>
+
+<h2>Ejercicio guiado 2 — Añade padding</h2>
+<ol>
+<li>A tu regla <code>.tarjeta</code>, añade <code>padding: 20px;</code>.</li>
+<li>Observa cómo ahora el texto ya no toca el borde rojo.</li>
+<li>Cambia el <code>padding</code> a <code>10px 30px;</code> (dos valores) y fíjate en la diferencia entre el espacio de arriba/abajo y el de los lados.</li>
+</ol>
+<p>Si lo has hecho bien: con <code>10px 30px</code> verás claramente más aire a los lados que arriba y abajo — si los cuatro lados se vieran iguales, algo no se ha guardado o el selector no coincide.</p>
+
+<h2>Border: el borde de la caja</h2>
+<p><code>border</code> se suele escribir en una sola línea, con tres valores seguidos: grosor, estilo y color.</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='at'>border</span>: <span class='ca'>2px solid #3c3c3c</span>;
+    <span class='at'>border-radius</span>: <span class='ca'>6px</span>;
+}</code></pre>
+<div class="salida" style="display:flex; gap:20px; flex-wrap:wrap;">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px;border:2px solid #3c3c3c;border-radius:0;">solid</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px;border:2px dashed #3c3c3c;border-radius:0;">dashed</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:16px;border:2px solid #3c3c3c;border-radius:10px;">solid + border-radius</div>
+</div>
+<div class="nota"><code>border-radius</code> no forma parte del borde en sí, pero se usa casi siempre junto a él para redondear las esquinas de la caja — así se ven las "tarjetas" que probablemente ya conoces de otras webs.</div>
+
+<h2>Ejercicio guiado 3 — Bordes con estilo</h2>
+<ol>
+<li>Cambia el <code>border</code> de tu <code>.tarjeta</code> a <code>2px solid #3c3c3c;</code> (en vez del rojo grueso de antes).</li>
+<li>Añade <code>border-radius: 6px;</code> a la misma regla.</li>
+<li>Prueba <code>border-style: dashed;</code> en vez de <code>solid</code> y observa el cambio.</li>
+</ol>
+<p>Si lo has hecho bien: el borde grueso rojo habrá desaparecido, sustituido por uno fino gris con las esquinas redondeadas; al cambiar a <code>dashed</code> se verá a rayas en vez de continuo.</p>
+
+<h2>Margin: espacio exterior</h2>
+<p><code>margin</code> funciona igual que <code>padding</code> en la forma de escribirlo (uno, dos o cuatro valores), pero separa la caja de las cajas vecinas, no de su propio contenido:</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='at'>margin</span>: <span class='ca'>16px</span>;
+}</code></pre>
+<div class="salida">
+<div style="background:#e8e8e8;color:#1e1e1e;padding:12px;border:2px solid #3c3c3c;margin-bottom:16px;">Tarjeta 1</div>
+<div style="background:#e8e8e8;color:#1e1e1e;padding:12px;border:2px solid #3c3c3c;">Tarjeta 2 (separada de la anterior por el margin)</div>
+</div>
+<p>Un caso especial muy útil: si una caja tiene un <code>width</code> fijo, <code>margin: 0 auto;</code> la centra horizontalmente en su contenedor (el <code>0</code> es el margin arriba/abajo, y <code>auto</code> reparte el espacio sobrante a izquierda y derecha por igual):</p>
+<pre><code><span class='et'>.tarjeta-centrada</span> {
+    <span class='at'>width</span>: <span class='ca'>220px</span>;
+    <span class='at'>margin</span>: <span class='ca'>0 auto</span>;
+}</code></pre>
+<div class="salida" style="background:#fff;">
+<div style="width:220px;margin:0 auto;background:#e8e8e8;color:#1e1e1e;padding:12px;border:2px solid #3c3c3c;text-align:center;">width: 220px; margin: 0 auto;</div>
+</div>
+<div class="nota">🤔 Antes de seguir: si a esa misma caja le quitas el <code>width: 220px;</code> y dejas solo <code>margin: 0 auto;</code>, ¿crees que se seguirá viendo centrada?</div>
+<details><summary>Ver la respuesta</summary>
+<p>No — sin un <code>width</code> fijo, una caja normal (como un <code>&lt;div&gt;</code>) ya ocupa todo el ancho disponible de su contenedor por defecto, así que no queda ningún "espacio sobrante" que repartir a los lados y <code>margin: 0 auto;</code> no tiene ningún efecto visible. <code>margin: 0 auto;</code> solo centra cajas que ya son más estrechas que su contenedor.</p>
+</details>
+
+<h2>Ejercicio guiado 4 — Separa tus tarjetas</h2>
+<ol>
+<li>Duplica tu <code>&lt;div class="tarjeta"&gt;</code> para tener dos tarjetas seguidas en <code>prueba-css.html</code>.</li>
+<li>Añade <code>margin-bottom: 16px;</code> a la regla <code>.tarjeta</code> y comprueba que ahora hay espacio entre ellas.</li>
+<li>Dale a una de las dos tarjetas un <code>width: 300px;</code> y un <code>margin: 0 auto;</code> propios (en una regla o clase aparte), y observa cómo se centra.</li>
+</ol>
+<p>Si lo has hecho bien: tus dos tarjetas ya no estarán pegadas entre sí, y la que tiene <code>width</code> y <code>margin: 0 auto;</code> quedará centrada horizontalmente con el mismo hueco a su izquierda que a su derecha.</p>
+
+<h2>Width, height... y una trampa importante</h2>
+<p><code>width</code> y <code>height</code> fijan el tamaño de la caja de <strong>contenido</strong>. El problema: por defecto, el <code>padding</code> y el <code>border</code> se <strong>suman</strong> a ese tamaño, así que la caja acaba siendo más grande de lo que esperabas.</p>
+<pre><code><span class='et'>.caja-300</span> {
+    <span class='at'>width</span>: <span class='ca'>300px</span>;
+    <span class='at'>padding</span>: <span class='ca'>20px</span>;
+    <span class='at'>border</span>: <span class='ca'>5px solid black</span>;
+}
+<span class='co'>/* ancho visible real: 300 + 20+20 + 5+5 = 350px, no 300px */</span></code></pre>
+<div class="salida">
+<div style="background:#e8e8e8;color:#1e1e1e;width:300px;padding:20px;border:5px solid #1e1e1e;box-sizing:content-box;">width: 300px + padding + border → esta caja mide en realidad 350px de ancho, aunque el CSS diga 300px</div>
+</div>
+<div class="nota">⚠️ Esta es la sorpresa más habitual al empezar con CSS: pones <code>width: 300px</code> y la caja no mide 300px en pantalla. De momento, calcula el ancho real sumando <code>width + padding (los dos lados) + border (los dos lados)</code>.</div>
+
+<h2>Ejercicio guiado 5 — Aplícalo a tu propia web</h2>
+<ol>
+<li>Abre tu <code>estilos.css</code> (el de tu web personal, no el de prueba).</li>
+<li>Elige dos o tres bloques de tu página (por ejemplo tus <code>&lt;section&gt;</code>) y dales una clase común, por ejemplo <code>class="bloque"</code>.</li>
+<li>Crea la regla <code>.bloque</code> con <code>padding</code>, <code>border</code>, <code>border-radius</code> y <code>margin-bottom</code>, para que cada bloque se vea como una tarjeta separada de las demás.</li>
+</ol>
+<p>Si lo has hecho bien: con Live Server verás cada bloque como una tarjeta independiente, sin tocarse entre sí ni pegarse al borde de la pantalla.</p>
+<div class="nota">⚠️ Recuerda: todo esto va en <code>estilos.css</code>, el archivo externo — nunca en un <code>&lt;style&gt;</code> suelto dentro de tu <code>index.html</code>.</div>
+
+<h2>Retos</h2>
+<p>Los tres retos son obligatorios, en orden: cada uno se apoya en el anterior. Si te atascas en alguno, dilo — es normal no encontrar la solución a la primera y para eso estoy yo.</p>
+
+<h3>Reto 1 — Tarjetas consistentes</h3>
+<p>Aplica el mismo <code>padding</code>, el mismo <code>border</code> (o el mismo <code>border-radius</code>) a <strong>todos</strong> los bloques de tu web que quieras que parezcan tarjetas — no vale que cada uno tenga un padding distinto "porque sí". La consistencia se consigue reutilizando la misma clase, no copiando valores parecidos en reglas distintas.</p>
+
+<h3>Reto 2 — Investiga: <code>box-sizing: border-box</code></h3>
+<p>Esta propiedad no la hemos explicado en clase, y resuelve justo la trampa de <code>width</code> que has visto antes. Entra en la <a href="https://developer.mozilla.org/es/docs/Web/CSS/box-sizing" target="_blank" rel="noopener">referencia de MDN sobre <code>box-sizing</code></a> y busca qué valor de esta propiedad hace que el <code>padding</code> y el <code>border</code> dejen de sumarse al <code>width</code> que defines. Añádela a tus reglas.</p>
+<details><summary>Pista si te atascas</summary>
+<p>En la página de MDN, mira la tabla de "Valores" de <code>box-sizing</code>: hay dos, y el que buscas no es el que trae el navegador por defecto (ese es el que produce la trampa que has visto antes). Su nombre en inglés menciona la palabra "border".</p>
+</details>
+
+<h3>Reto 3 — Todo junto</h3>
+<p>Revisa tu web completa y comprueba que cumple todo esto a la vez:</p>
+<ul class="checklist">
+<li>Tienes al menos dos bloques con aspecto de "tarjeta" (padding + border + border-radius), usando una clase reutilizada.</li>
+<li>Ningún bloque toca el borde de la pantalla ni el bloque de al lado — hay margin donde corresponde.</li>
+<li>Aplicas <code>box-sizing: border-box</code> del Reto 2 a esos bloques.</li>
+<li>Todo el CSS sigue en tu archivo <code>estilos.css</code> externo.</li>
+</ul>
+
+<div class="nota">Guarda esta versión — tu web ya tiene estructura, color, tipografía y ahora también espaciado con sentido. En la próxima sesión (5B) repasarás el modelo de caja; después llegan las tablas (sesión 6) y Flexbox (sesión 7), para organizar varios bloques en fila o en columna sin depender de dónde caiga cada uno "por casualidad".</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>

@@ -1,0 +1,89 @@
+{
+  "id": "sesion-1-primeros-pasos-html",
+  "titulo": "Sesión 1 — Primeros pasos en HTML",
+  "fecha": "2026-09-08",
+  "descripcion": "Primeros pasos con VS Code y Live Server, la estructura mínima de toda página HTML, las etiquetas de encabezado y tu primera página guardada y corregida.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Referencia de etiquetas HTML (MDN)",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Extensión Live Server (VS Code Marketplace)",
+      "url": "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué etiqueta contiene todo el contenido que SÍ se ve en pantalla?",
+          "opciones": [
+            "<head>",
+            "<body>",
+            "<html>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuántos <h1> debería tener normalmente una página?",
+          "opciones": [
+            "Uno",
+            "Tantos como secciones",
+            "Ninguno, es opcional"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué hace <!DOCTYPE html>?",
+          "opciones": [
+            "Añade un título a la pestaña",
+            "Le dice al navegador que es HTML moderno",
+            "Crea un comentario"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace Live Server cuando guardas un cambio?",
+          "opciones": [
+            "Nada, hay que recargar a mano",
+            "Actualiza el navegador automáticamente",
+            "Sube el archivo a internet"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué falla en este código: <h1>Título</h1><h1>Otro</h1><h4>Sub</h4>?",
+          "opciones": [
+            "Nada, es correcto",
+            "Hay dos <h1> y se salta del h1 al h4",
+            "Falta el <body>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Con <head><title>Mi taller</title></head><body><h1>Bienvenido</h1></body>, ¿qué texto verás en la pestaña del navegador?",
+          "opciones": [
+            "Bienvenido",
+            "Mi taller",
+            "Los dos textos seguidos"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estos tres órdenes de encabezados NO tiene ningún salto de nivel: A) h1, h3, h2 — B) h1, h2, h3 — C) h2, h1, h3?",
+          "opciones": [
+            "A",
+            "B",
+            "C"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

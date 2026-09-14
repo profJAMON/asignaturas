@@ -1,0 +1,98 @@
+<h2>Antes de empezar</h2>
+<p>Última sesión antes del examen práctico de la unidad. Es la segunda batería de ejercicios, más difícil que la de la sesión 8: integra todo lo visto de la sesión 1 a la 10 (estructura, texto/listas/enlaces, imágenes/semántica, CSS, modelo de caja, tablas, Flexbox, imágenes de fondo y <code>:hover</code>), con retos más abiertos y menos guiados — sin código de partida en la mayoría, y con una sola pista por reto en vez de las dos escalonadas de la sesión 8.</p>
+<p>Cierra con un <strong>simulacro de examen</strong>: una captura de una página (distinta a la del examen real) que tienes que replicar sin ver su código, exactamente en las condiciones del examen de verdad.</p>
+<div class="nota">💡 Los bloques A a D se practican en tu <code>prueba-css.html</code> de siempre. El simulacro final va en dos archivos nuevos, sin tocar tu <code>index.html</code>.</div>
+
+<h2>Bloque A — Estructura, texto y semántica (sesiones 1-3)</h2>
+<p>Recordatorio rápido: jerarquía de encabezados sin saltos ni <code>&lt;h1&gt;</code> repetidos · una lista anidada va <em>dentro</em> del <code>&lt;li&gt;</code> · <code>&lt;header&gt;</code>/<code>&lt;nav&gt;</code>/<code>&lt;main&gt;</code>/<code>&lt;section&gt;</code>/<code>&lt;footer&gt;</code> en vez de <code>&lt;div&gt;</code> · una imagen nunca lleva <code>width</code> y <code>height</code> a la vez.</p>
+<p>Copia esto en tu <code>prueba-css.html</code>. Esta vez no te decimos cuántos fallos hay ni de qué tipo — encuéntralos todos:</p>
+<pre><code><span class='et'>&lt;div&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Mi rincón de música<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;/div&gt;</span>
+
+<span class='et'>&lt;h1&gt;</span>Mis grupos favoritos<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Rock
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;ul&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Grupo A<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;li&gt;</span>Grupo B<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;/ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Electrónica<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span>
+
+<span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"https://picsum.photos/id/1025/500/350"</span> <span class='at'>alt</span>=<span class='ca'>"Foto de un concierto"</span> <span class='at'>width</span>=<span class='ca'>"300"</span> <span class='at'>height</span>=<span class='ca'>"120"</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;p&gt;</span>Página creada por ti<span class='et'>&lt;/p&gt;</span></code></pre>
+<details><summary>Pista</summary>
+<p>Repasa, en este orden: jerarquía de encabezados → dónde tiene que ir exactamente una lista anidada → qué etiqueta semántica le falta a cada bloque suelto (incluida la última línea) → los atributos de la imagen.</p>
+</details>
+<p>Comprobación: al terminar, tu código no tiene ningún <code>&lt;div&gt;</code> ni texto suelto directamente en <code>&lt;body&gt;</code>, la lista se ve correctamente anidada, hay un único <code>&lt;h1&gt;</code>, y la imagen se ve proporcionada.</p>
+
+<h2>Bloque B — CSS y modelo de caja (sesiones 4, 5 y 5B)</h2>
+<p>Recordatorio rápido: etiqueta/clase/id afectan a "todos" / "los de esa clase" / "uno solo" · <code>box-sizing: border-box</code> evita que <code>padding</code> y <code>border</code> se sumen al <code>width</code>.</p>
+<p>Sin copiar ningún código de partida, escribe en tu <code>prueba-css.html</code> tres <code>&lt;div class="tarjeta-b"&gt;</code> con un <code>&lt;h3&gt;</code> y un texto cada una, y el CSS necesario para que se cumpla todo esto a la vez:</p>
+<ul>
+<li>Las tres miden exactamente <code>200px</code> de ancho, midan lo que midan su <code>padding</code> y su <code>border</code>.</li>
+<li>Tienen <code>padding</code>, un borde de <code>3px</code>, fondo claro y texto oscuro.</li>
+<li>El <code>&lt;h3&gt;</code> de cada una tiene un color de acento distinto del texto normal, aplicado con una clase reutilizada en las tres.</li>
+<li>Están separadas <code>20px</code> entre sí.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Para que el ancho no varíe pase lo que pase con el <code>padding</code>, hay una propiedad de la sesión 5 que tiene que estar en la regla de <code>.tarjeta-b</code>, no en cada tarjeta suelta.</p>
+</details>
+<p>Comprobación: si cambias el <code>padding</code> de <code>.tarjeta-b</code> a otro valor, las tres tarjetas se ven distintas por dentro pero siguen midiendo <code>200px</code> de ancho exactamente.</p>
+
+<h2>Bloque C — Tablas y Flexbox (sesiones 6 y 7)</h2>
+<p>Recordatorio rápido: <code>&lt;table&gt;</code> para datos reales, con <code>colspan</code>/<code>rowspan</code> para fusionar celdas · Flexbox (<code>display: flex</code>, <code>flex-wrap: wrap</code>, <code>gap</code>) para organizar bloques entre sí, nunca al revés.</p>
+<p>Sin código de partida, en tu <code>prueba-css.html</code>:</p>
+<ol>
+<li>Crea una tabla con tus 4 o 5 canciones favoritas y tres columnas: <em>Canción</em>, <em>Artista</em> y <em>Minutos</em> (redondea la duración: 3, 4...). Añade una fila final "Total" que fusione las dos primeras columnas en una sola celda y muestre en la última la suma de minutos.</li>
+<li>Debajo, crea tres tarjetas en una fila que no se desborde ni se encoja al reducir el ancho de la ventana.</li>
+</ol>
+<details><summary>Pista</summary>
+<p>La fila "Total" fusiona columnas, no filas — repasa la diferencia entre <code>colspan</code> y <code>rowspan</code> si no lo tienes claro. Para que las tarjetas no se desborden, la propiedad que necesitas no es <code>gap</code>.</p>
+</details>
+<p>Comprobación: la tabla no se descuadra (cuenta las celdas de la fila "Total": tienen que sumar el mismo número de columnas que las demás filas) y las tarjetas pasan a una nueva línea en vez de salirse de la pantalla.</p>
+
+<h2>Bloque D — Imágenes de fondo y :hover (sesión 10)</h2>
+<p>Recordatorio rápido: <code>background-image</code> decora por CSS, no es contenido · <code>background-repeat</code>/<code>background-size</code> controlan cómo encaja · <code>:hover</code> puede cambiar cualquier propiedad, no solo el color.</p>
+<p>Replica exactamente este resultado en tu <code>prueba-css.html</code> (usa cualquier imagen pequeña que tengas a mano para el fondo):</p>
+<div class="salida">
+<style>
+.demo-repaso-d { width:220px; height:70px; background-repeat:repeat-y; background-size:30px 30px; border:1px dashed #6a7280; }
+.boton-repaso-d { display:inline-block; margin-top:10px; padding:8px 14px; border:2px solid #3c3c3c; border-radius:4px; color:#1e1e1e; font-weight:bold; cursor:pointer; }
+.boton-repaso-d:hover { background-color:#3a9bd1; color:#fff; }
+</style>
+<div class="demo-repaso-d" style="background-image:url('https://picsum.photos/id/1074/30/30');"></div>
+<p style="margin:10px 0 0;"><span class="boton-repaso-d">Pasa el ratón por aquí</span></p>
+</div>
+<details><summary>Pista</summary>
+<p>El recuadro de arriba repite una imagen pequeña solo hacia abajo — es el mismo valor de <code>background-repeat</code> que viste para una franja lateral en la sesión 10. El botón cambia dos propiedades a la vez al pasar el ratón, ninguna de las dos es <code>font-size</code>.</p>
+</details>
+<p>Comprobación: tu recuadro repite la imagen en mosaico vertical sin dejar huecos, y tu botón cambia de color de fondo y de texto al pasar el ratón por encima, volviendo a su estado normal al retirarlo.</p>
+
+<h2>Simulacro de examen</h2>
+<p>Esto es lo más parecido que vas a tener a las condiciones reales del examen antes del examen de verdad: una imagen de una página, sin su código, que tienes que replicar tú con HTML y CSS.</p>
+<img src="data/operaciones/html-css-practico/simulacro-examen-unidad1.png" alt="Captura de la página a replicar: Torneo de eSports del instituto, con cabecera y menú, franjas laterales decorativas, una sección de texto con lista, una tabla de clasificación con una fila fusionada, y tres tarjetas de equipo con imagen y botón" style="max-width:100%;border:1px solid var(--border,#3c3c3c);border-radius:6px;">
+<p>Además de lo que ves en la imagen, tiene que cumplir esto (no se puede saber solo mirando una foto fija):</p>
+<ul class="checklist">
+<li>Los tres enlaces del menú son anclas funcionales a sus tres secciones.</li>
+<li>Al pasar el ratón por encima de una tarjeta de equipo (o de su botón), tiene que notarse visualmente de alguna forma — tú decides cómo.</li>
+<li>La fila fusionada de la tabla ocupa las tres columnas en una sola celda, sin descuadrar el resto de filas.</li>
+<li>Al estrechar la ventana del navegador, las tarjetas de equipo pasan a nueva línea en vez de desbordarse.</li>
+</ul>
+<ol>
+<li>Crea dos archivos nuevos en tu carpeta <code>mi-web</code>: <code>simulacro-examen.html</code> y <code>simulacro-examen.css</code>. No copies código de ningún sitio — constrúyelo tú, mirando solo la imagen y la lista de arriba.</li>
+<li>No hace falta que el contenido sea idéntico al de la imagen (mismo equipo, mismos nombres): lo que se evalúa es la estructura y las técnicas usadas, no el texto exacto.</li>
+<li>Tómate el tiempo que necesites — no hay reloj todavía, esto es para que llegues entrenado al examen real.</li>
+</ol>
+<details><summary>Pista</summary>
+<p>Antes de escribir una sola línea, mira la imagen bloque por bloque y decide, para cada uno, qué técnica de las sesiones 1 a 10 le corresponde — así no se te olvida ninguna a mitad de construcción.</p>
+</details>
+
+<div class="nota">Con esto llegas al examen práctico de la unidad con todo repasado. Te doy en clase la fecha y el formato; si te queda alguna duda de la unidad, <strong>pregúntamela antes del examen</strong>.</div>
+<div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
+
+<h2>Autoevaluación y relaciona conceptos</h2>
+<p>Antes de cerrar, comprueba con las actividades de abajo si te queda algún hueco de toda la unidad.</p>

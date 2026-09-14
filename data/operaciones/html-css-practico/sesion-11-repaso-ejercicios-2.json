@@ -1,0 +1,116 @@
+{
+  "id": "sesion-11-repaso-ejercicios-2",
+  "titulo": "Sesión 11 — Repaso general 2",
+  "fecha": "2026-11-17",
+  "descripcion": "Segunda y última batería de ejercicios del tema, más difícil y abierta que la de la sesión 8: integra todo lo visto de la sesión 1 a la 10 con retos sin código de partida y una sola pista por reto. Cierra con un simulacro de examen (una captura para replicar sin ver su código, como en el examen práctico real). Repaso final antes del examen de la unidad.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de etiquetas HTML",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de propiedades CSS",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/Reference"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación — Repaso general (sesiones 1-10)",
+      "preguntas": [
+        {
+          "pregunta": "Tu página tiene un <h1> y dos <h2>. Quieres añadir un apartado dentro del segundo <h2>. ¿Qué nivel usas?",
+          "opciones": ["<h3>", "Otro <h2>", "<h1>"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Una lista anidada aparece al mismo nivel que sus hermanas en vez de sangrada por debajo de una de ellas. ¿Cuál es la causa más probable?",
+          "opciones": ["Le falta un atributo type", "La lista anidada está fuera del <li>, no dentro", "Le falta un id"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un bloque de tu página es el contenido principal, el único de ese tipo en toda la página. ¿Qué etiqueta usas?",
+          "opciones": ["<section>", "<main>", "<div>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Por qué una imagen con width y height a la vez puede verse deformada?",
+          "opciones": ["Porque el navegador ignora el height", "Porque fuerzas una proporción distinta a la real de la imagen", "Porque falta el atributo alt"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que un estilo afecte solo a los elementos con class=\"aviso\", sin tocar el resto. ¿Qué selector usas?",
+          "opciones": [".aviso", "aviso", "#aviso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Una caja mide 200px de width, con padding y border, pero por diseño tiene que seguir midiendo 200px de ancho real pase lo que pase con esos valores. ¿Qué propiedad no puede faltar?",
+          "opciones": ["margin: 0 auto;", "box-sizing: border-box;", "display: flex;"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Vas a mostrar el horario semanal de tus clases, con un día por columna. ¿Tabla o Flexbox?",
+          "opciones": ["Tabla, son datos reales en filas y columnas", "Flexbox, para organizar los bloques", "Una lista <ol> numerada"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Fusionas una celda de una fila con colspan=\"3\". ¿Qué tienes que recordar hacer en esa misma fila?",
+          "opciones": ["Nada más", "Quitar de esa fila las demás celdas que la fusión ya ocupa", "Añadir colspan=\"3\" también a las demás celdas"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tres tarjetas en un contenedor flex se desbordan al estrechar la ventana. ¿Qué añades?",
+          "opciones": ["flex-wrap: wrap;", "box-sizing: border-box;", "border-collapse: collapse;"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Quieres una franja lateral estrecha con un icono pequeño repitiéndose de arriba abajo, sin repetirse en horizontal. ¿Qué propiedad usas?",
+          "opciones": ["background-repeat: repeat-y;", "background-size: cover;", "background-position: center;"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué propiedades puede cambiar una regla :hover?",
+          "opciones": ["Solo el color del texto", "Cualquier propiedad CSS del elemento, mientras el ratón está encima", "Solo propiedades de <a>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En el simulacro de examen, ves una captura de una página pero no su código. ¿Qué técnica de maquetación deberías usar para el layout de columnas, aunque el código original (que no ves) usara otra?",
+          "opciones": ["La que tú quieras, da igual cuál", "Flexbox, la técnica enseñada en el curso para organizar bloques", "Una <table> de maquetación, para ir más rápido"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una imagen se ve rota y el navegador muestra un texto en su lugar. ¿De qué atributo viene ese texto?",
+          "opciones": ["alt", "title", "src"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué diferencia hay entre href=\"#seccion\" y href=\"otra-pagina.html\"?",
+          "opciones": ["Ninguna", "El primero salta dentro de la misma página; el segundo carga un archivo distinto", "El primero carga un archivo distinto; el segundo salta dentro de la misma página"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada concepto con lo que hace",
+      "pares": [
+        { "izquierda": "Etiqueta para el contenido principal de la página, una sola por página", "derecha": "<main>" },
+        { "izquierda": "La lista anidada debe ir aquí, no fuera de él", "derecha": "Dentro del <li>" },
+        { "izquierda": "Evita que padding y border se sumen al width de una caja", "derecha": "box-sizing: border-box;" },
+        { "izquierda": "Selector que afecta solo a un elemento con ese id", "derecha": "#identificador" },
+        { "izquierda": "Fusiona varias columnas de una tabla en una sola celda", "derecha": "colspan" },
+        { "izquierda": "Hace que las cajas que no caben en una fila flex pasen a la siguiente línea", "derecha": "flex-wrap: wrap;" },
+        { "izquierda": "Repite una imagen de fondo solo en vertical", "derecha": "background-repeat: repeat-y;" },
+        { "izquierda": "Cambia cualquier propiedad de un elemento mientras el ratón está encima", "derecha": ":hover" },
+        { "izquierda": "Técnica correcta para organizar columnas de una página (no una tabla)", "derecha": "Flexbox" },
+        { "izquierda": "Texto alternativo de una imagen, para lectores de pantalla", "derecha": "alt" },
+        { "izquierda": "Enlace que carga un archivo distinto, cambiando de página", "derecha": "href=\"otra-pagina.html\"" },
+        { "izquierda": "Etiqueta para datos tabulares reales, como un horario o una clasificación", "derecha": "<table>" },
+        { "izquierda": "Deforma una imagen si se usa junto a width con un valor distinto de proporción", "derecha": "height" },
+        { "izquierda": "Selector que afecta a todos los elementos con esa clase", "derecha": ".clase" }
+      ]
+    }
+  ]
+}

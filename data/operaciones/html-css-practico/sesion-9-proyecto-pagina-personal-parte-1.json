@@ -1,0 +1,85 @@
+{
+  "id": "sesion-9-proyecto-pagina-personal-parte-1",
+  "titulo": "Sesión 9 — Proyecto: tu página personal (parte 1, el home)",
+  "fecha": "2026-11-03",
+  "descripcion": "Primera de las dos sesiones del proyecto final de la unidad: construyes desde cero la versión definitiva de tu home (index.html), aplicando todo lo visto en las sesiones 1 a 8, más tres toques finales nuevos (favicon, meta viewport y meta description) y el hueco ya preparado para la sección de resúmenes de la sesión 10.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: favicon (rel=\"icon\")",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/link#definir_iconos_para_diferentes_contextos"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: la etiqueta meta viewport",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Viewport_meta_tag"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: meta description",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/meta/name"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación — Proyecto, parte 1",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué etiqueta controla el icono pequeño que aparece en la pestaña del navegador?",
+          "opciones": ["<meta name=\"icon\">", "<link rel=\"icon\">", "<title>"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué sirve la etiqueta meta viewport?",
+          "opciones": ["Para que el buscador muestre una descripción de tu página", "Para que el navegador ajuste el ancho de la página en pantallas pequeñas", "Para cambiar el favicon según el tamaño de pantalla"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tu favicon no aparece en la pestaña. ¿Qué revisas primero?",
+          "opciones": ["Que el archivo esté en mi-web y el nombre del href coincida exactamente, igual que con cualquier ruta relativa", "Que el archivo tenga extensión .ico obligatoriamente", "Que el archivo esté en la carpeta Descargas"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "En tu nav tienes href=\"#sobre-mi\" y href=\"resumenes.html\". ¿Qué diferencia hay entre los dos?",
+          "opciones": ["Ninguna, los dos abren una pestaña nueva", "El primero salta dentro de la misma página; el segundo carga un archivo distinto", "El primero carga un archivo distinto; el segundo salta dentro de la misma página"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la sección \"Mis asignaturas\" vas a mostrar tus asignaturas con sus horas semanales. ¿Qué usas?",
+          "opciones": ["Una tabla, son datos reales en filas y columnas", "Flexbox, para organizar los bloques", "Una lista <ul> con viñetas"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Tus tarjetas de \"Mis aficiones\" no caben en una fila y se desbordan al encoger la ventana. ¿Qué añades al contenedor?",
+          "opciones": ["box-sizing: border-box;", "flex-wrap: wrap;", "border-collapse: collapse;"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Quieres que tus tarjetas midan todas lo mismo aunque cambies su padding. ¿Qué propiedad no puede faltar en su clase?",
+          "opciones": ["box-sizing: border-box;", "flex-direction: column;", "text-align: center;"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Vas a crear resumenes.html para que comparta el mismo estilo que tu index.html. ¿Qué tienes que repetir en su <head>?",
+          "opciones": ["El mismo <link rel=\"stylesheet\" href=\"estilos.css\">", "Un <style> nuevo con las mismas reglas escritas otra vez", "Nada, el estilo se comparte solo entre archivos de la misma carpeta"],
+          "correcta": 0
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada elemento del proyecto con su función",
+      "pares": [
+        { "izquierda": "Icono que aparece en la pestaña del navegador", "derecha": "<link rel=\"icon\">" },
+        { "izquierda": "Ajusta el ancho de la página en pantallas pequeñas", "derecha": "<meta name=\"viewport\">" },
+        { "izquierda": "Texto que muestra un buscador bajo el título de tu página", "derecha": "<meta name=\"description\">" },
+        { "izquierda": "Enlace que carga un archivo distinto, cambiando de página", "derecha": "href=\"resumenes.html\"" },
+        { "izquierda": "Enlace que salta dentro de la misma página", "derecha": "href=\"#seccion\"" },
+        { "izquierda": "Mantiene el mismo estilo en dos páginas distintas", "derecha": "El mismo estilos.css enlazado en las dos" },
+        { "izquierda": "Evita que padding y border se sumen al width de una tarjeta", "derecha": "box-sizing: border-box;" },
+        { "izquierda": "Datos reales de asignaturas y horas, en filas y columnas", "derecha": "<table>" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "sesion-1-publicar-de-verdad",
+  "titulo": "Sesión 1. Publicar de verdad",
+  "fecha": "",
+  "descripcion": "Actividad práctica real: subes tu web personal a Internet con un servicio de \"arrastra y publica\" (Cloudflare Drop) y compruebas en persona el segundo ingrediente que viste en la unidad anterior — el hosting — funcionando de verdad, aunque sea de forma temporal.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Cloudflare Drop — sube tu carpeta aquí",
+      "url": "https://www.cloudflare.com/drop/"
+    }
+  ],
+  "actividades": []
+}

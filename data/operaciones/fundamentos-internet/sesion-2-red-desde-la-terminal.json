@@ -1,0 +1,8 @@
+{
+  "id": "sesion-2-red-desde-la-terminal",
+  "titulo": "Sesión 2. La red desde la terminal",
+  "fecha": "",
+  "descripcion": "Cuatro comandos para ver la red de verdad desde la terminal de Windows: ipconfig (tu IP privada y tu router), ping (si un servidor responde), nslookup (preguntar al DNS) y tracert (el camino hasta el servidor).",
+  "materiales": [],
+  "actividades": []
+}

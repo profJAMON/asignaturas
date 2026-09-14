@@ -1,0 +1,28 @@
+{
+  "id": "glosario",
+  "titulo": "Glosario y chuleta de sintaxis",
+  "descripcion": "Material de consulta, no una sesión: vocabulario que se confunde, etiquetas y propiedades vistas hasta ahora, cómo se escribe cada cosa y qué comprobar cuando algo no funciona.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de etiquetas HTML",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: referencia de propiedades CSS",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/Reference"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: guía básica de Flexbox",
+      "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/CSS_layout/Flexbox"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: <table>",
+      "url": "https://developer.mozilla.org/es/docs/Web/HTML/Element/table"
+    }
+  ],
+  "actividades": []
+}

@@ -1,0 +1,94 @@
+{
+  "id": "inst-u1-mac",
+  "titulo": "Sesión 6 — La dirección MAC",
+  "fecha": "",
+  "descripcion": "Qué es la dirección física, por qué se escribe en hexadecimal, cómo verla con ipconfig /all y en qué se diferencia de la dirección IP.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "¿Puede ser una dirección MAC?",
+      "generador": "mac-valida",
+      "n": 8
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "MAC frente a IP",
+      "pares": [
+        { "izquierda": "Quién pone la MAC", "derecha": "El fabricante, de fábrica" },
+        { "izquierda": "Quién pone la IP", "derecha": "El administrador o el DHCP del router" },
+        { "izquierda": "Tamaño de la MAC", "derecha": "48 bits en 12 dígitos hexadecimales" },
+        { "izquierda": "Tamaño de la IP", "derecha": "32 bits en cuatro octetos" },
+        { "izquierda": "Capa OSI de la MAC", "derecha": "Capa 2, la que usa el switch" },
+        { "izquierda": "Capa OSI de la IP", "derecha": "Capa 3, la que usa el router" },
+        { "izquierda": "Qué pasa al cambiar de red", "derecha": "La MAC sigue igual y la IP cambia" }
+      ]
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántos bits tiene una dirección MAC?",
+          "opciones": ["16", "32", "48", "128"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Cuántos dígitos hexadecimales se escriben?",
+          "opciones": ["6", "8", "12", "16"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Un dígito hexadecimal equivale a…",
+          "opciones": ["1 bit", "4 bits", "8 bits", "16 bits"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La dirección MAC identifica…",
+          "opciones": [
+            "Al ordenador entero",
+            "A la tarjeta de red",
+            "A la red local",
+            "Al usuario que ha iniciado sesión"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué comando de Windows muestra la dirección física?",
+          "opciones": ["ipconfig", "ipconfig /all", "ping", "netstat"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Los tres primeros bytes de una MAC identifican…",
+          "opciones": [
+            "El país donde se fabricó",
+            "El fabricante de la tarjeta",
+            "El número de serie del equipo",
+            "La velocidad que admite"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Te llevas el portátil a otra red. ¿Qué le pasa a su dirección MAC?",
+          "opciones": [
+            "Cambia al conectarse",
+            "No cambia: va grabada en la tarjeta",
+            "Se borra hasta que se reinicia",
+            "La asigna el nuevo router"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estas NO puede ser una dirección MAC?",
+          "opciones": [
+            "00:1A:2B:3C:4D:5E",
+            "AC-DE-48-00-11-22",
+            "1C:39:47:G2:0F:A8",
+            "FF:FF:FF:FF:FF:FF"
+          ],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

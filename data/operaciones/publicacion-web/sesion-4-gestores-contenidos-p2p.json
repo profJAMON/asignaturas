@@ -1,0 +1,19 @@
+{
+  "id": "sesion-4-gestores-contenidos-p2p",
+  "titulo": "Sesión 4. Gestores de contenidos y redes P2P",
+  "fecha": "",
+  "descripcion": "Cierra la unidad: qué es un gestor de contenidos (y por qué habéis aprendido HTML/CSS a mano), una página hecha con Google Sites y la wiki de clase, las redes P2P con un envío real entre ordenadores, el repaso de toda la Unidad 3 y la técnica obligatoria del resumen (formato blog).",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Google Sites",
+      "url": "https://sites.google.com"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "PairDrop (enviar archivos entre dispositivos)",
+      "url": "https://pairdrop.net"
+    }
+  ],
+  "actividades": []
+}
