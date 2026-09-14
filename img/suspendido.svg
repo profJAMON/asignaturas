@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Fondo circular rojo de aviso -->
+  <circle cx="32" cy="32" r="30" fill="#cc0000" />
+  
+  <!-- Borde doble de sello -->
+  <circle cx="32" cy="32" r="27" stroke="#ffffff" stroke-width="1.5" fill="none" />
+  <circle cx="32" cy="32" r="25" stroke="#ffffff" stroke-width="0.75" stroke-dasharray="2 1.5" fill="none" />
+  
+  <!-- Texto centrado y grueso para lectura mini -->
+  <text x="32" y="36.5" 
+        font-family="Impact, Arial Black, sans-serif" 
+        font-size="8.8" 
+        font-weight="900" 
+        fill="#ffffff" 
+        text-anchor="middle" 
+        letter-spacing="-0.2">SUSPENDIDO</text>
+</svg>

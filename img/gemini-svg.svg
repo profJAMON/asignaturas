@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100%" height="100%">
+  <!-- Ventana de terminal oscura -->
+  <rect width="32" height="32" rx="4" fill="#1b1d24"/>
+  <rect width="32" height="6" rx="4" fill="#32343a"/> <!-- Barra de título -->
+
+  <!-- Texto de "Error" (Rojo neón, muy contrastado) -->
+  <text x="16" y="22" font-family="monospace" font-size="7" font-weight="bold" fill="#ff4444" text-anchor="middle">ERROR</text>
+  <path d="M6 18 H26" stroke="#ff4444" stroke-width="1.5"/>
+</svg>
