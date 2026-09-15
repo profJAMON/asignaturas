@@ -4,7 +4,7 @@
 
 <h3>Conectar el CSS con las páginas</h3>
 <ol>
-<li>En VS Code, crea el archivo <code>estilos.css</code> en la carpeta del proyecto, al lado de <code>index.html</code>.</li>
+<li>En VS Code, crea el archivo <code>estilos.css</code> igual que creasteis <code>index.html</code> en la sesión 1: pasa el ratón sobre el nombre de la carpeta del proyecto → icono <strong>New File…</strong> → escribe <code>estilos.css</code> → <strong>Intro</strong>. Comprueba que queda <strong>al lado</strong> de <code>index.html</code>, no dentro de <code>img</code>.</li>
 <li>En <strong>cada página</strong>, añade esta línea dentro de <code>&lt;head&gt;</code>:</li>
 </ol>
 <pre><code><span class='et'>&lt;head</span><span class='et'>&gt;</span>
@@ -79,7 +79,20 @@
 </ul>
 
 <h2>Comprueba tu CSS con F12</h2>
-<p>Si algo no cambia, pulsa con el botón derecho sobre ese elemento en Chrome y elige <strong>Inspeccionar</strong>. A la derecha verás qué reglas CSS se le aplican. Si una declaración sale <strong>tachada</strong>, otra regla la está pisando. Si tiene un <strong>triángulo amarillo</strong>, está mal escrita.</p>
+<p>Chrome tiene una herramienta para ver qué CSS se le está aplicando a cada cosa de la página. Cuando algo no cambia como esperabas:</p>
+<ol>
+<li>En Chrome, pon el ratón encima de lo que no cambia (un título, por ejemplo) y pulsa el <strong>botón derecho</strong> → <strong>Inspeccionar</strong>.</li>
+<li>Se abre un panel (a la derecha o abajo) con dos partes. En una se ve el <strong>HTML</strong> de la página, con la etiqueta que has pulsado marcada en azul.</li>
+<li>En la otra parte, pestaña <strong>Styles</strong> (estilos), salen las <strong>reglas CSS</strong> que se aplican a esa etiqueta, con el nombre del archivo a la derecha (<code>estilos.css:12</code> quiere decir línea 12).</li>
+<li>Busca la propiedad que no funciona:
+<ul>
+<li>Si <strong>no aparece</strong>, la regla no llega a ese elemento: el selector está mal escrito, la clase no coincide o la página no tiene el <code>&lt;link&gt;</code>.</li>
+<li>Si aparece <strong>tachada</strong>, otra regla la está pisando.</li>
+<li>Si tiene un <strong>triángulo amarillo</strong> ⚠, está mal escrita (por ejemplo, <code>colr</code> en lugar de <code>color</code>).</li>
+</ul>
+</li>
+<li>Para cerrar el panel, pulsa <strong>F12</strong> o la <strong>X</strong> de arriba a la derecha del panel.</li>
+</ol>
 
 <h2>Antes de seguir</h2>
 <details><summary>¿Por qué el CSS va en un archivo aparte y no dentro de cada página?</summary>

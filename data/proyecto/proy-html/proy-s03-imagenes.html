@@ -37,7 +37,7 @@
 <tr><td><code>src="C:\Users\alumno\Documents\pixel-kart\img\turbo-rex.png"</code></td><td>Funciona en ese ordenador y en ningún otro. Nunca uses rutas que empiecen por <code>C:\</code>.</td></tr>
 </tbody>
 </table>
-<div class="nota">💡 Para ver la extensión real de un archivo en Windows: en el Explorador, menú <strong>Vista</strong> → activa <strong>Extensiones de nombre de archivo</strong>.</div>
+<div class="nota">💡 Para ver la extensión real de un archivo en Windows, activa las extensiones como se explica más abajo, en "Prepara la imagen antes de usarla".</div>
 
 <h2>De dónde saco las imágenes</h2>
 <p>No puedes coger cualquier imagen de Google: casi todas tienen <strong>dueño</strong>, y usarlas sin permiso en una web publicada no está permitido. Usa webs de imágenes <strong>de uso libre</strong>:</p>
@@ -49,11 +49,40 @@
 <p>Apunta de dónde sacas cada imagen (la dirección web): lo necesitaréis para la página "Sobre esta web".</p>
 
 <h3>Prepara la imagen antes de usarla</h3>
+<p>Paso a paso, con una imagen de Pixabay:</p>
+<h3>1. Busca y descarga la imagen</h3>
 <ol>
-<li>Descárgala y muévela a la carpeta <code>img</code> del proyecto.</li>
-<li>Cámbiale el nombre: <strong>minúsculas, sin espacios, sin tildes</strong>, y que diga qué es. <code>IMG_20251003_142233.jpg</code> → <code>circuito-volcan.jpg</code>.</li>
-<li>Elige el <strong>tamaño pequeño o mediano</strong> al descargar. Una foto enorme hace que la web tarde mucho en cargar.</li>
+<li>Entra en <code>pixabay.com/es</code> y escribe en el buscador qué quieres (por ejemplo, <code>kart</code>). Pulsa <strong>Intro</strong>.</li>
+<li>Pulsa sobre la imagen que te guste para abrirla en grande.</li>
+<li>Pulsa el botón <strong>Descargar</strong>. Sale una lista de tamaños: elige uno <strong>pequeño o mediano</strong> (de unos 640 o 1280 píxeles de ancho). Una foto enorme hace que la web tarde mucho en cargar.</li>
+<li>Pulsa otra vez <strong>Descargar</strong>. Si te pide que demuestres que no eres un robot, marca la casilla.</li>
+<li>Copia la <strong>dirección de la página</strong> de la imagen (la barra de arriba de Chrome) y pégala en tu <code>fuentes.txt</code>. Luego no te acordarás de dónde era.</li>
 </ol>
+<div class="nota">Si Pixabay te pide crear una cuenta para descargar, prueba en <code>unsplash.com</code>: pulsa sobre la foto y después la <strong>flecha hacia abajo</strong> o el botón <strong>Download</strong>.</div>
+
+<h3>2. Muévela a la carpeta img</h3>
+<ol>
+<li>Abre el Explorador de archivos (<strong>Windows + E</strong>) y pulsa <strong>Descargas</strong> en la columna de la izquierda. La imagen que acabas de bajar suele ser la primera de la lista.</li>
+<li>Pulsa con el <strong>botón derecho</strong> sobre la imagen → <strong>Cortar</strong> (en Windows 11, el icono de las <strong>tijeras</strong>).</li>
+<li>Ve a <strong>Documentos</strong> → carpeta del proyecto → carpeta <code>img</code>.</li>
+<li>Pulsa con el <strong>botón derecho</strong> en un espacio en blanco → <strong>Pegar</strong> (en Windows 11, el icono del <strong>portapapeles</strong>). También vale <strong>Ctrl + V</strong>.</li>
+</ol>
+
+<h3>3. Cámbiale el nombre</h3>
+<ol>
+<li>Primero, haz que Windows te enseñe las extensiones (<code>.jpg</code>, <code>.png</code>). Solo hay que hacerlo una vez:
+<ul>
+<li><strong>Windows 11</strong>: menú <strong>Ver</strong> (arriba) → <strong>Mostrar</strong> → marca <strong>Extensiones de nombre de archivo</strong>.</li>
+<li><strong>Windows 10</strong>: pestaña <strong>Vista</strong> (arriba) → marca la casilla <strong>Extensiones de nombre de archivo</strong>.</li>
+</ul>
+</li>
+<li>Pulsa con el botón derecho sobre la imagen → <strong>Cambiar nombre</strong>.</li>
+<li>Borra el nombre raro (<code>kart-4235_1280.jpg</code>) y escribe uno que diga qué es: <code>kart-rojo.jpg</code>. <strong>Minúsculas, sin espacios, sin tildes.</strong></li>
+<li><strong>No cambies la extensión</strong>: si era <code>.jpg</code>, se queda <code>.jpg</code>. Si Windows avisa de que el archivo puede quedar inutilizable, es que la has cambiado: pulsa <strong>No</strong> y vuelve a escribirla.</li>
+<li>Pulsa <strong>Intro</strong>.</li>
+</ol>
+<p>En VS Code, la imagen aparece sola dentro de la carpeta <code>img</code> del panel de la izquierda. Si pulsas sobre ella, la ves.</p>
+<div class="nota">💡 Truco para no equivocarte con la ruta: en el panel de la izquierda de VS Code, pulsa con el botón derecho sobre la imagen → <strong>Copy Relative Path</strong> (copiar ruta relativa) y pégala en el <code>src</code>. Si sale con barras al revés (<code>img\kart-rojo.jpg</code>), cámbialas por barras normales: <code>img/kart-rojo.jpg</code>.</div>
 
 <h2>Antes de seguir</h2>
 <details><summary>La imagen no sale y en su lugar aparece el texto del alt. ¿Qué significa?</summary>

@@ -26,7 +26,16 @@
 ├── personajes.html   ← Personajes
 ├── circuitos.html    ← Circuitos
 └── img/</code></pre>
-<p>La forma más rápida de crear una página nueva: <strong>copia <code>index.html</code></strong>, cámbiale el nombre y cambia su <code>&lt;title&gt;</code>, su <code>&lt;h1&gt;</code> y su contenido. Así ya tiene la estructura mínima bien hecha.</p>
+<h3>Crear una página nueva copiando index.html</h3>
+<p>Así la página nueva ya tiene la estructura mínima bien hecha y no hay que escribirla otra vez:</p>
+<ol>
+<li>En el panel de la izquierda de VS Code, pulsa con el <strong>botón derecho</strong> sobre <code>index.html</code> → <strong>Copy</strong> (copiar).</li>
+<li>Pulsa con el <strong>botón derecho</strong> en un espacio en blanco del panel, debajo de los archivos → <strong>Paste</strong> (pegar). Aparece <code>index copy.html</code>.</li>
+<li>Botón derecho sobre <code>index copy.html</code> → <strong>Rename…</strong> (cambiar nombre). Escribe el nombre de la página nueva, por ejemplo <code>personajes.html</code>, y pulsa <strong>Intro</strong>. Minúsculas, sin espacios ni tildes, y que acabe en <code>.html</code>.</li>
+<li>Pulsa sobre el archivo nuevo para abrirlo y cambia: el <code>&lt;title&gt;</code>, el <code>&lt;h1&gt;</code> y todo el contenido de la página. Deja igual la estructura (<code>&lt;!DOCTYPE&gt;</code>, <code>&lt;head&gt;</code>, <code>&lt;body&gt;</code>).</li>
+<li>Guarda con <strong>Ctrl + S</strong>.</li>
+<li>Para verla en Chrome, con Live Server encendido, cambia el final de la dirección: <code>127.0.0.1:5500/personajes.html</code>. Cuando tengáis el menú, ya podréis ir de una página a otra pulsando los enlaces.</li>
+</ol>
 
 <h2>El menú</h2>
 <p>El menú es una <strong>lista de enlaces</strong> a todas las páginas, dentro de la etiqueta <code>&lt;nav&gt;</code> (de <em>navigation</em>). Va al principio del <code>&lt;body&gt;</code>, dentro de un <code>&lt;header&gt;</code>:</p>

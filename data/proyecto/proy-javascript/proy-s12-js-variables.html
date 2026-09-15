@@ -23,7 +23,20 @@
 <p>Va al final a propósito: así, cuando el JavaScript empieza a funcionar, todo el HTML de la página ya existe y lo puede encontrar.</p>
 
 <h2>La consola</h2>
-<p>La <strong>consola</strong> es una ventana de Chrome donde JavaScript puede escribir mensajes. Es la herramienta más útil para saber qué está pasando. Se abre con <code>F12</code> → pestaña <strong>Console</strong>.</p>
+<p>La <strong>consola</strong> es una ventana de Chrome donde JavaScript puede escribir mensajes. Es la herramienta más útil para saber qué está pasando.</p>
+<h3>Cómo abrirla</h3>
+<ol>
+<li>Abre la página con Live Server, como siempre.</li>
+<li>Pulsa la tecla <strong>F12</strong> (arriba del teclado). Si no pasa nada, pulsa con el botón derecho en la página → <strong>Inspeccionar</strong>.</li>
+<li>Se abre un panel. Arriba tiene varias pestañas: <em>Elements</em>, <em>Console</em>, <em>Sources</em>... Pulsa <strong>Console</strong>.</li>
+<li>Si hay mensajes viejos, pulsa el icono del <strong>círculo tachado</strong> 🚫 de arriba a la izquierda del panel para borrarlos.</li>
+</ol>
+<div class="salida" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">
+<div style="border-bottom:1px solid #ddd;padding-bottom:4px;margin-bottom:6px;color:#555;font-family:Arial,sans-serif;font-size:12px">Elements &nbsp; <span style="color:#1a73e8;border-bottom:2px solid #1a73e8;padding-bottom:3px">Console</span> &nbsp; Sources &nbsp; Network</div>
+<div style="padding:3px 0;border-bottom:1px solid #eee;color:#1f1f1f">¡Hola desde Pixel Kart! <span style="float:right;color:#777">torneo.js:1</span></div>
+<div style="padding:3px 4px;background:#fdecea;color:#c5221f;border-bottom:1px solid #f5c2c0">✖ Uncaught ReferenceError: piloto is not defined <span style="float:right;color:#c5221f">torneo.js:3</span></div>
+</div>
+<p>Así se ve la consola: arriba, un mensaje escrito por el programa; abajo, en <strong>rojo</strong>, un error. A la derecha de cada línea sale <strong>el archivo y el número de línea</strong> de donde viene: <code>torneo.js:3</code> quiere decir "línea 3 de torneo.js".</p>
 <p>Escribe esto en <code>torneo.js</code>, guarda y mira la consola de <code>torneo.html</code>:</p>
 <pre><code>console.<span class='fn'>log</span>(<span class='ca'>"¡Hola desde Pixel Kart!"</span>);</code></pre>
 <pre><code>¡Hola desde Pixel Kart!</code></pre>

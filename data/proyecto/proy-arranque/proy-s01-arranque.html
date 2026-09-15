@@ -39,19 +39,40 @@
 <h2>Tu carpeta de proyecto</h2>
 <p>Todo el curso vais a trabajar dentro de <strong>una sola carpeta</strong>. Creadla ahora en el ordenador de la pareja:</p>
 <ol>
-<li>Abre el Explorador de archivos y ve a <strong>Documentos</strong>.</li>
-<li>Crea una carpeta con el nombre de vuestro tema, <strong>en minúsculas, sin espacios ni tildes</strong>. Por ejemplo: <code>pixel-kart</code>.</li>
-<li>Dentro, crea otra carpeta llamada <code>img</code>.</li>
+<li>Abre el <strong>Explorador de archivos</strong>: es el icono de la <strong>carpeta amarilla</strong> de la barra de abajo. También se abre pulsando a la vez <strong>Windows + E</strong>.</li>
+<li>En la columna de la izquierda, pulsa <strong>Documentos</strong>.</li>
+<li>Pulsa con el <strong>botón derecho</strong> en un espacio en blanco de la ventana → <strong>Nuevo</strong> → <strong>Carpeta</strong>. Aparece una carpeta llamada "Nueva carpeta" con el nombre en azul.</li>
+<li>Sin pulsar nada más, escribe el nombre de vuestro tema <strong>en minúsculas, sin espacios ni tildes</strong> (por ejemplo, <code>pixel-kart</code>) y pulsa <strong>Intro</strong>.</li>
+<li>Haz <strong>doble clic</strong> en la carpeta para entrar en ella. Arriba, en la barra de dirección, tiene que poner <em>Documentos › pixel-kart</em>.</li>
+<li>Dentro, repite el paso 3 y llama a la nueva carpeta <code>img</code>. Aquí guardaréis las imágenes.</li>
 </ol>
+<p>Así tiene que quedar:</p>
+<pre><code>Documentos/
+└── pixel-kart/
+    └── img/</code></pre>
+<div class="nota">¿Te has equivocado con el nombre? Botón derecho sobre la carpeta → <strong>Cambiar nombre</strong> (en Windows 11 es un icono de un cuadro con una barra, arriba del menú), escribe el nombre bueno e <strong>Intro</strong>.</div>
 <div class="nota">⚠️ Nombres de archivos y carpetas: <strong>minúsculas, sin espacios, sin tildes, sin ñ</strong>. Usa guiones si necesitas separar palabras. Un espacio o una tilde en un nombre es la causa número uno de "¡no me sale la imagen!".</div>
 
 <h2>VS Code y Live Server</h2>
 <p><strong>VS Code</strong> es el programa donde escribiremos el código. <strong>Live Server</strong> es una extensión de VS Code que abre tu web en Chrome y la recarga sola cada vez que guardas.</p>
+<h3>Abrir la carpeta en VS Code</h3>
 <ol>
-<li>Abre VS Code.</li>
-<li>Menú <strong>Archivo → Abrir carpeta</strong> y elige la carpeta de vuestro proyecto.</li>
-<li>En el panel de la izquierda, pulsa el icono de <strong>nuevo archivo</strong> y llámalo <code>index.html</code>.</li>
+<li>Pulsa la tecla <strong>Windows</strong>, escribe <code>code</code> y pulsa en <strong>Visual Studio Code</strong> (el icono es una especie de cinta azul).</li>
+<li>Si sale una pestaña de bienvenida (<em>Welcome</em>), ciérrala con la <strong>X</strong> de la pestaña.</li>
+<li>Arriba a la izquierda, pulsa el menú <strong>File</strong> (o <strong>Archivo</strong>) → <strong>Open Folder…</strong> (<strong>Abrir carpeta…</strong>).</li>
+<li>Se abre una ventana como la del Explorador. Ve a <strong>Documentos</strong>, pulsa <strong>una vez</strong> sobre la carpeta de vuestro proyecto y pulsa el botón <strong>Seleccionar carpeta</strong>.</li>
+<li>Si VS Code pregunta <em>"Do you trust the authors of the files in this folder?"</em> (¿confías en los autores de estos archivos?), pulsa <strong>Yes, I trust the authors</strong>. Los autores sois vosotros.</li>
+<li>A la izquierda aparece el panel <strong>Explorer</strong> con el nombre de vuestra carpeta en mayúsculas y, dentro, la carpeta <code>img</code>.</li>
 </ol>
+
+<h3>Crear el archivo index.html</h3>
+<ol>
+<li>Pasa el ratón por encima del nombre de la carpeta en el panel de la izquierda. Aparecen unos iconos pequeños.</li>
+<li>Pulsa el primero, <strong>New File…</strong> (una hoja con un +).</li>
+<li>Escribe <code>index.html</code> y pulsa <strong>Intro</strong>. Comprueba que <strong>no</strong> se ha creado dentro de <code>img</code>: tiene que estar al mismo nivel que la carpeta <code>img</code>.</li>
+<li>El archivo se abre en el centro, vacío, listo para escribir.</li>
+</ol>
+<div class="nota">💡 Si lo has creado dentro de <code>img</code> por error, arrástralo con el ratón en el panel de la izquierda hasta el nombre de la carpeta principal.</div>
 <p><code>index.html</code> es un nombre especial: es la <strong>página de inicio</strong>. Cuando alguien visite vuestra web, es la primera que verá.</p>
 
 <h3>La estructura mínima de una página</h3>
@@ -78,10 +99,14 @@
 
 <h3>Ábrela con Live Server</h3>
 <ol>
-<li>Guarda el archivo con <code>Ctrl+S</code>.</li>
-<li>Pulsa con el botón derecho dentro del código y elige <strong>Open with Live Server</strong> (o pulsa <strong>Go Live</strong> abajo a la derecha).</li>
-<li>Se abrirá Chrome con tu página. Cambia el texto del párrafo, guarda y mira cómo se actualiza sola.</li>
+<li><strong>Guarda</strong> el archivo: pulsa a la vez <strong>Ctrl + S</strong>.</li>
+<li>Mira abajo del todo a la derecha, en la barra azul de VS Code: hay un botón que dice <strong>Go Live</strong>. Púlsalo.</li>
+<li>Se abre Chrome con vuestra página. Arriba, la dirección empieza por <code>127.0.0.1:5500</code>: significa que la web se está viendo <strong>desde vuestro ordenador</strong>, todavía no está en Internet.</li>
+<li>Coloca Chrome y VS Code lado a lado: pulsa <strong>Windows + ←</strong> en uno y <strong>Windows + →</strong> en el otro.</li>
+<li>Cambia el texto del párrafo en VS Code y guarda con <strong>Ctrl + S</strong>. Mira Chrome: se actualiza solo.</li>
 </ol>
+<div class="nota">Si no ves el botón <strong>Go Live</strong>, pulsa con el <strong>botón derecho</strong> dentro del código y elige <strong>Open with Live Server</strong>. Si tampoco aparece, la extensión no está instalada en ese ordenador: avísame.</div>
+<div class="nota">Al acabar la clase, pulsa otra vez en la barra azul donde ahora pone <strong>Port: 5500</strong> para parar Live Server.</div>
 <div class="nota">💡 Si al guardar no cambia nada, casi siempre es porque <strong>no has guardado</strong>. En VS Code, un punto blanco en la pestaña del archivo significa "hay cambios sin guardar".</div>
 
 <h2>Antes de seguir</h2>
@@ -111,4 +136,13 @@
 </details>
 
 <h2>Antes de irte</h2>
-<p>Hoy todavía no tenemos GitHub (lo creamos la semana que viene), así que haz una copia de la carpeta del proyecto en tu <strong>Google Drive</strong> del instituto. Si el ordenador falla esta semana, no perderéis nada.</p>
+<p>Hoy todavía no tenemos GitHub (lo creamos la semana que viene), así que guardad una copia de la carpeta del proyecto en el <strong>Google Drive</strong> del instituto de uno de los dos. Si el ordenador falla esta semana, no perderéis nada.</p>
+<ol>
+<li>En VS Code, comprueba que está todo guardado: ninguna pestaña con un punto blanco.</li>
+<li>En Chrome, abre una pestaña nueva y entra en <code>drive.google.com</code>. Si te pide entrar, usa tu <strong>cuenta del instituto</strong>.</li>
+<li>Arriba a la izquierda, pulsa el botón <strong>+ Nuevo</strong> → <strong>Subir carpeta</strong>.</li>
+<li>Se abre una ventana: ve a <strong>Documentos</strong>, pulsa <strong>una vez</strong> sobre la carpeta del proyecto y pulsa <strong>Subir</strong>. Si Chrome pregunta si quieres subir los archivos, pulsa <strong>Subir</strong> otra vez.</li>
+<li>Abajo a la derecha sale un recuadro con la subida. Espera a que salga una marca verde ✓.</li>
+<li>Comprueba que en <strong>Mi unidad</strong> aparece la carpeta con el nombre de vuestro proyecto.</li>
+</ol>
+<div class="nota">Si la semana que viene el ordenador ha perdido la carpeta: entra en Drive, botón derecho sobre la carpeta → <strong>Descargar</strong>. Se descarga un zip en <strong>Descargas</strong>: botón derecho → <strong>Extraer todo…</strong> y mueve la carpeta a <strong>Documentos</strong>.</div>
