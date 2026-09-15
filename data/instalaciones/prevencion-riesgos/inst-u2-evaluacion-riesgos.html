@@ -1,0 +1,124 @@
+<h2>No todos los riesgos pesan lo mismo</h2>
+<p>En el taller hay decenas de riesgos. No se pueden atacar todos a la vez ni con la misma urgencia: un cable suelto en la zona de paso no es lo mismo que un cuadro eléctrico abierto. Para decidir <strong>por dónde empezar</strong>, las empresas hacen una <strong>evaluación de riesgos</strong>.</p>
+<p>Evaluar un riesgo es estimar cómo de grave es para decidir si hay que hacer algo y con qué prisa. Es una obligación del empresario según la Ley de Prevención, y el método que te voy a enseñar es el que usa el INSST y el que te vas a encontrar en casi cualquier empresa.</p>
+
+<h2>Las dos preguntas</h2>
+<p>Para cada riesgo te haces dos preguntas y le das una nota a cada una.</p>
+
+<h3>1. ¿Con qué probabilidad va a pasar?</h3>
+<table>
+<tr><th>Probabilidad</th><th>Cuándo</th><th>Ejemplo en el taller</th></tr>
+<tr><td><strong>Baja (B)</strong></td><td>Pasará raras veces</td><td>Que se caiga la tapa del rack mientras la abres</td></tr>
+<tr><td><strong>Media (M)</strong></td><td>Pasará en algunas ocasiones</td><td>Que te pilles un dedo con la crimpadora</td></tr>
+<tr><td><strong>Alta (A)</strong></td><td>Pasará siempre o casi siempre</td><td>Que alguien tropiece con un cable tirado en la zona de paso</td></tr>
+</table>
+
+<h3>2. ¿Cómo de grave sería el daño?</h3>
+<table>
+<tr><th>Consecuencia</th><th>Qué tipo de daño</th><th>Ejemplo en el taller</th></tr>
+<tr><td><strong>Ligeramente dañino (LD)</strong></td><td>Daños superficiales: cortes pequeños, magulladuras, molestias</td><td>Un rasguño con la punta del pelacables</td></tr>
+<tr><td><strong>Dañino (D)</strong></td><td>Cortes que necesitan puntos, quemaduras, torceduras, lesiones que te dan de baja unos días</td><td>Una quemadura con el soldador</td></tr>
+<tr><td><strong>Extremadamente dañino (ED)</strong></td><td>Fracturas graves, amputaciones, lesiones que duran toda la vida, muerte</td><td>Una caída desde la escalera, un contacto eléctrico en el cuadro</td></tr>
+</table>
+
+<h2>La matriz de valoración</h2>
+<p>Cruzando las dos notas en esta tabla obtienes la <strong>valoración del riesgo</strong>. Apréndetela: es la herramienta de toda la unidad.</p>
+
+<div class="salida">
+<svg viewBox="0 0 620 300" width="100%" role="img" aria-label="Matriz de valoración de riesgos. Probabilidad baja: trivial, tolerable, moderado. Media: tolerable, moderado, importante. Alta: moderado, importante, intolerable. Las columnas son ligeramente dañino, dañino y extremadamente dañino." style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+.c{font-family:monospace;font-size:13px;fill:#1e1e1e;font-weight:bold}
+</style>
+<text x="390" y="22" text-anchor="middle" class="t">CONSECUENCIA</text>
+<text x="240" y="52" text-anchor="middle" class="s">Ligeramente</text>
+<text x="240" y="66" text-anchor="middle" class="s">dañino (LD)</text>
+<text x="390" y="60" text-anchor="middle" class="s">Dañino (D)</text>
+<text x="540" y="52" text-anchor="middle" class="s">Extremadamente</text>
+<text x="540" y="66" text-anchor="middle" class="s">dañino (ED)</text>
+
+<text x="24" y="190" class="t" transform="rotate(-90 24 190)" text-anchor="middle">PROBABILIDAD</text>
+<text x="100" y="116" text-anchor="middle" class="s">Baja (B)</text>
+<text x="100" y="186" text-anchor="middle" class="s">Media (M)</text>
+<text x="100" y="256" text-anchor="middle" class="s">Alta (A)</text>
+
+<rect x="170" y="80" width="140" height="66" fill="#4ec9b0"/>
+<text x="240" y="118" text-anchor="middle" class="c">Trivial</text>
+<rect x="320" y="80" width="140" height="66" fill="#9cdcfe"/>
+<text x="390" y="118" text-anchor="middle" class="c">Tolerable</text>
+<rect x="470" y="80" width="140" height="66" fill="#dcdcaa"/>
+<text x="540" y="118" text-anchor="middle" class="c">Moderado</text>
+
+<rect x="170" y="152" width="140" height="66" fill="#9cdcfe"/>
+<text x="240" y="190" text-anchor="middle" class="c">Tolerable</text>
+<rect x="320" y="152" width="140" height="66" fill="#dcdcaa"/>
+<text x="390" y="190" text-anchor="middle" class="c">Moderado</text>
+<rect x="470" y="152" width="140" height="66" fill="#ce9178"/>
+<text x="540" y="190" text-anchor="middle" class="c">Importante</text>
+
+<rect x="170" y="224" width="140" height="66" fill="#dcdcaa"/>
+<text x="240" y="262" text-anchor="middle" class="c">Moderado</text>
+<rect x="320" y="224" width="140" height="66" fill="#ce9178"/>
+<text x="390" y="262" text-anchor="middle" class="c">Importante</text>
+<rect x="470" y="224" width="140" height="66" fill="#f48771"/>
+<text x="540" y="262" text-anchor="middle" class="c">Intolerable</text>
+</svg>
+<p class="pie-figura">Cuanto más abajo y más a la derecha, más urgente. Truco: la diagonal central es siempre «Moderado».</p>
+</div>
+
+<h3>Qué hay que hacer con cada valoración</h3>
+<table>
+<tr><th>Valoración</th><th>Qué significa</th></tr>
+<tr><td><strong>Trivial (T)</strong></td><td>No hace falta ninguna acción específica.</td></tr>
+<tr><td><strong>Tolerable (TO)</strong></td><td>No hacen falta medidas nuevas, pero hay que comprobar que las que ya hay se cumplen.</td></tr>
+<tr><td><strong>Moderado (M)</strong></td><td>Hay que reducir el riesgo, con un plazo fijado.</td></tr>
+<tr><td><strong>Importante (I)</strong></td><td>No se debe empezar el trabajo hasta haber reducido el riesgo. Si ya se está haciendo, hay que actuar cuanto antes.</td></tr>
+<tr><td><strong>Intolerable (IN)</strong></td><td>No se debe empezar ni seguir el trabajo hasta reducir el riesgo. Si no se puede reducir, se prohíbe.</td></tr>
+</table>
+
+<div data-actividad="u2s3-que-hacer"></div>
+
+<h2>Un ejemplo resuelto</h2>
+<p>Te pido que lleves una caja de conectores y latiguillos desde el almacén hasta el rack. En la zona de paso hay dos rollos de cable en el suelo y la caja te tapa la vista de los pies.</p>
+<table>
+<tr><th>Paso</th><th>Razonamiento</th></tr>
+<tr><td>Peligro</td><td>Rollos de cable en el suelo de la zona de paso</td></tr>
+<tr><td>Riesgo</td><td>Caída al mismo nivel por tropiezo</td></tr>
+<tr><td>Probabilidad</td><td><strong>Alta</strong>: la caja no te deja ver dónde pisas y la zona se usa continuamente</td></tr>
+<tr><td>Consecuencia</td><td><strong>Dañino</strong>: una caída de bruces con las manos ocupadas puede acabar en torcedura o golpe en la cara</td></tr>
+<tr><td>Valoración</td><td>Alta × Dañino = <strong>Importante</strong></td></tr>
+<tr><td>Medida</td><td>No se hace el traslado hasta recoger los rollos. Y a partir de ahora, el cable se guarda en su estantería, nunca en el suelo</td></tr>
+</table>
+<div class="nota">Mira lo que pasa si recogemos los rollos: la probabilidad baja a <strong>Baja</strong> y la valoración pasa a Baja × Dañino = <strong>Tolerable</strong>. Eso es prevenir: bajar una casilla hacia arriba o hacia la izquierda de la matriz.</div>
+
+<p>Ahora te toca a ti. En cada ejercicio ya te doy la probabilidad y la consecuencia (en la pista verás por qué se han estimado así); tú calculas la valoración. Puedes escribirla entera o con sus siglas: T, TO, M, I, IN.</p>
+
+<div data-actividad="u2s3-valoracion"></div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 3 — a mano, en papel</p>
+<p>Copia esta tabla en el cuaderno y rellénala para los cuatro peligros del taller. Justifica en una línea la probabilidad y la consecuencia que elijas: aquí no hay una única respuesta buena, pero sí respuestas mal razonadas.</p>
+<table>
+<tr><th>Peligro</th><th>Riesgo</th><th>Probabilidad</th><th>Consecuencia</th><th>Valoración</th><th>Medida preventiva</th></tr>
+<tr><td>Crimpadora eléctrica con el cable de corriente pelado</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Cuadro eléctrico del taller sin tapa</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Suelo del taller con recortes de cable y conectores RJ45 sueltos</td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Taladradora usada durante toda una mañana para hacer agujeros en la pared</td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Un riesgo con probabilidad baja pero extremadamente dañino, ¿se puede ignorar?</summary>
+<p>No. Baja × Extremadamente dañino = <strong>Moderado</strong>: hay que reducirlo con un plazo. Que algo pase poco no significa que dé igual si, cuando pasa, te mata.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué dos formas hay de bajar la valoración de un riesgo?</summary>
+<p>Reducir la <strong>probabilidad</strong> (recoger el cable del suelo, cerrar el cuadro con llave) o reducir la <strong>consecuencia</strong> (usar gafas, poner un diferencial). Lo ideal es atacar las dos.</p>
+</details>
+<details>
+<summary>🤔 Te encuentras un riesgo «Intolerable» a mitad de una instalación. ¿Qué haces?</summary>
+<p><strong>Paras.</strong> No se sigue trabajando hasta que se reduzca el riesgo, y se avisa al responsable. Si no se puede reducir, ese trabajo no se hace.</p>
+</details>

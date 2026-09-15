@@ -1,0 +1,83 @@
+{
+  "id": "inst-u2-raee",
+  "titulo": "Sesión 9 — Residuos de aparatos eléctricos y electrónicos (RAEE)",
+  "fecha": "",
+  "descripcion": "Qué hacer con el switch que ya no enciende, las pilas del tester y los conectores mal crimpados: por qué no van a la basura y dónde va cada cosa.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s9-raee",
+      "tipo": "relacionar",
+      "titulo": "¿Dónde va cada residuo?",
+      "pares": [
+        {
+          "izquierda": "Pilas gastadas del tester de cable",
+          "derecha": "Contenedor de pilas"
+        },
+        {
+          "izquierda": "Router viejo al comprar uno nuevo",
+          "derecha": "La tienda donde compras el nuevo"
+        },
+        {
+          "izquierda": "Switches dados de baja por una empresa",
+          "derecha": "Gestor autorizado de residuos"
+        },
+        {
+          "izquierda": "Recortes de cable UTP de la práctica",
+          "derecha": "Caja de reciclaje del taller"
+        },
+        {
+          "izquierda": "Disco duro con datos de clientes",
+          "derecha": "Borrado seguro antes de entregarlo"
+        }
+      ]
+    },
+    {
+      "id": "u2s9-quiz",
+      "tipo": "quiz",
+      "titulo": "Comprueba si lo has pillado",
+      "preguntas": [
+        {
+          "pregunta": "RAEE significa…",
+          "opciones": [
+            "Red de aparatos eléctricos y electrónicos",
+            "Residuos de aparatos eléctricos y electrónicos",
+            "Reciclaje automático de equipos electrónicos",
+            "Registro de aparatos en estado de espera"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El símbolo que indica que un aparato tiene recogida separada es…",
+          "opciones": [
+            "Tres flechas en triángulo",
+            "Un contenedor de basura con ruedas tachado",
+            "Un rayo dentro de un triángulo",
+            "Una hoja verde"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál de estos materiales valiosos se recupera de los RAEE?",
+          "opciones": [
+            "Cobre",
+            "Madera",
+            "Vidrio de botella",
+            "Papel"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Una batería de litio tirada a la basura normal puede…",
+          "opciones": [
+            "Cargarse sola",
+            "Provocar un incendio al aplastarse",
+            "Descomponerse sin dejar rastro",
+            "No pasa nada"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

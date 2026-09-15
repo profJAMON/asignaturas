@@ -1,0 +1,73 @@
+{
+  "id": "inst-u2-epi-y-senalizacion",
+  "titulo": "Sesión 8 — Equipos de protección y señalización",
+  "fecha": "",
+  "descripcion": "Qué EPI usar en el taller y cuándo (y cuándo no), y cómo leer una señal de seguridad por su color y su forma antes de fijarte en el dibujo.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s8-epi",
+      "tipo": "relacionar",
+      "titulo": "¿Qué EPI necesitas?",
+      "pares": [
+        { "izquierda": "Cortar canaleta de PVC con sierra", "derecha": "Gafas de protección" },
+        { "izquierda": "Mover bobinas y un rack pesado", "derecha": "Calzado de seguridad" },
+        { "izquierda": "Manipular bandeja metálica con rebabas", "derecha": "Guantes" },
+        { "izquierda": "Taladrar la pared durante mucho rato", "derecha": "Protectores auditivos" },
+        { "izquierda": "Trabajar debajo de alguien que está en el falso techo", "derecha": "Casco" }
+      ]
+    },
+    {
+      "id": "u2s8-senales",
+      "tipo": "quiz",
+      "titulo": "Lee la señal",
+      "preguntas": [
+        {
+          "pregunta": "Una señal redonda, azul y con un dibujo blanco indica…",
+          "opciones": ["Prohibición", "Obligación", "Advertencia", "Salvamento"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una señal triangular, amarilla y con borde negro indica…",
+          "opciones": ["Advertencia de un peligro", "Salida de emergencia", "Equipo contra incendios", "Obligación"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿De qué color es la señal que indica dónde está el botiquín?",
+          "opciones": ["Rojo", "Azul", "Amarillo", "Verde"],
+          "correcta": 3
+        },
+        {
+          "pregunta": "La señal que indica dónde está un extintor es…",
+          "opciones": [
+            "Un círculo rojo con banda diagonal",
+            "Un rectángulo rojo con dibujo blanco",
+            "Un triángulo amarillo",
+            "Un rectángulo verde"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la puerta del cuadro eléctrico pondrías una señal de…",
+          "opciones": [
+            "Advertencia de riesgo eléctrico",
+            "Salvamento",
+            "Obligación de usar casco",
+            "Salida de emergencia"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Los EPI se utilizan…",
+          "opciones": [
+            "Antes que cualquier otra medida, porque son más baratos",
+            "Cuando el riesgo no se puede evitar o limitar bastante con otras medidas",
+            "Solo en las obras de construcción",
+            "Solo si el trabajador los compra"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

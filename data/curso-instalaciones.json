@@ -25,6 +25,23 @@
         "inst-u1-dhcp-comandos",
         "inst-u1-repaso"
       ]
+    },
+    {
+      "id": "prevencion-riesgos",
+      "titulo": "Unidad 2. Prevención de riesgos laborales",
+      "descripcion": "Cómo trabajar en el taller sin hacerte daño: peligro y riesgo, evaluar riesgos, caídas, electricidad, fuego, cargas, pantallas, estrés, equipos de protección, señales y qué hacer con los residuos electrónicos.",
+      "sesiones": [
+        "inst-u2-trabajo-y-salud",
+        "inst-u2-siniestralidad",
+        "inst-u2-evaluacion-riesgos",
+        "inst-u2-lugar-de-trabajo",
+        "inst-u2-riesgo-electrico-incendios",
+        "inst-u2-carga-fisica-y-pvd",
+        "inst-u2-riesgos-psicosociales",
+        "inst-u2-epi-y-senalizacion",
+        "inst-u2-raee",
+        "inst-u2-repaso"
+      ]
     }
   ]
 }

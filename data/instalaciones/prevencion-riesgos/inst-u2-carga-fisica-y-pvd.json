@@ -1,0 +1,113 @@
+{
+  "id": "inst-u2-carga-fisica-y-pvd",
+  "titulo": "Sesión 6 — Carga física y puesto con ordenador",
+  "fecha": "",
+  "descripcion": "Cómo se levanta una bobina de cable sin destrozarte la espalda y cómo se coloca el puesto con ordenador: distancia, altura de la pantalla, silla y pausas.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s6-cargas",
+      "tipo": "quiz",
+      "titulo": "Manipulación de cargas",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuál es el peso máximo recomendado para manipular a mano en condiciones normales?",
+          "opciones": [
+            "10 kg",
+            "15 kg",
+            "25 kg",
+            "40 kg"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Al levantar una carga del suelo, la fuerza la tienen que hacer…",
+          "opciones": [
+            "Los brazos",
+            "La espalda",
+            "Las piernas",
+            "Los hombros"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Durante el transporte, la carga debe ir…",
+          "opciones": [
+            "Con los brazos estirados, lejos del cuerpo",
+            "Pegada al cuerpo",
+            "Encima de un hombro",
+            "Por encima de la cabeza"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si tienes que cambiar de dirección con la carga en brazos…",
+          "opciones": [
+            "Giras la cintura rápido",
+            "Giras moviendo los pies",
+            "Dejas caer la carga y la recoges al otro lado",
+            "Da igual cómo lo hagas"
+          ],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "u2s6-pvd",
+      "tipo": "quiz",
+      "titulo": "El puesto con ordenador",
+      "preguntas": [
+        {
+          "pregunta": "¿A qué distancia mínima de los ojos debe estar la pantalla?",
+          "opciones": [
+            "20 cm",
+            "40 cm",
+            "70 cm",
+            "1 m"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El borde superior de la pantalla debe quedar…",
+          "opciones": [
+            "Muy por encima de los ojos",
+            "A la altura de los ojos o un poco por debajo",
+            "A la altura del pecho",
+            "A la altura de la mesa"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Respecto a las ventanas, la pantalla se coloca…",
+          "opciones": [
+            "De cara a la ventana",
+            "De espaldas a la ventana",
+            "Perpendicular a la ventana",
+            "Da igual"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué son las PVD?",
+          "opciones": [
+            "Protecciones de voltaje directo",
+            "Pantallas de visualización de datos",
+            "Puestos de venta a distancia",
+            "Pausas visuales diarias"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para descansar trabajando con ordenador es mejor…",
+          "opciones": [
+            "Una pausa larga al final de la jornada",
+            "Pausas cortas y frecuentes",
+            "No hacer pausas para no perder la concentración",
+            "Bajar el brillo al mínimo"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "id": "inst-u2-trabajo-y-salud",
+  "titulo": "Sesión 1 — Trabajo, salud, peligro y riesgo",
+  "fecha": "",
+  "descripcion": "Qué entendemos por salud, cómo se pierde trabajando y la diferencia entre peligro y riesgo, que es la base de toda la unidad.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ley 31/1995, de Prevención de Riesgos Laborales (BOE, solo de consulta)",
+      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1995-24292"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "u2s1-peligro-riesgo",
+      "tipo": "quiz",
+      "titulo": "¿Peligro o riesgo?",
+      "preguntas": [
+        {
+          "pregunta": "Una regleta con el enchufe quemado encima de la mesa del taller es…",
+          "opciones": ["Un peligro", "Un riesgo"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La posibilidad de que un compañero se electrocute al enchufar el soldador en esa regleta es…",
+          "opciones": ["Un peligro", "Un riesgo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Según la OMS, la salud es…",
+          "opciones": [
+            "La ausencia de enfermedades",
+            "Un estado de completo bienestar físico, mental y social",
+            "Estar en forma y no tener lesiones",
+            "Poder ir a trabajar todos los días"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un daño que aparece poco a poco por estar expuesto durante años a algo del trabajo es…",
+          "opciones": ["Un accidente de trabajo", "Un accidente in itinere", "Una enfermedad profesional", "Un incidente"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué ley regula la prevención de riesgos laborales en España?",
+          "opciones": ["El Estatuto de los Trabajadores", "La Ley 31/1995", "El Código Penal", "La Ley de Protección de Datos"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cerrar con llave el cuadro eléctrico del taller…",
+          "opciones": [
+            "Elimina el peligro eléctrico",
+            "Reduce el riesgo, aunque el peligro siga ahí",
+            "No sirve para nada",
+            "Solo es obligatorio en empresas grandes"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

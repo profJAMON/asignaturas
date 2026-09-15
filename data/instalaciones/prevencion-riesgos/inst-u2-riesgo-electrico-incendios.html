@@ -1,0 +1,158 @@
+<h2>El riesgo que no se ve</h2>
+<p>Un cúter lo ves venir. La electricidad, no: un cable en tensión tiene exactamente el mismo aspecto que uno desconectado. Por eso en un taller donde todo se enchufa (crimpadoras, soldadores, taladros, ordenadores, switches) el riesgo eléctrico merece una sesión entera.</p>
+<p>El cable de red que vas a crimpar trabaja a tensiones muy bajas y no es peligroso. Lo peligroso es <strong>todo lo que hay alrededor</strong>: la corriente de 230 V que alimenta los equipos, las regletas, el cuadro eléctrico.</p>
+
+<h2>Riesgo eléctrico</h2>
+<p>Hay riesgo eléctrico cuando la corriente puede <strong>atravesar tu cuerpo</strong>. Eso pasa cuando tocas a la vez algo con tensión y algo que te da camino hacia tierra (el suelo, una tubería, la estructura metálica del rack). La corriente entra por un punto, recorre tu cuerpo y sale por otro.</p>
+
+<h3>Contacto directo y contacto indirecto</h3>
+<div class="salida">
+<svg viewBox="0 0 620 240" width="100%" role="img" aria-label="Contacto directo: la mano toca un cable pelado en tensión. Contacto indirecto: la mano toca la carcasa metálica de una herramienta que se ha puesto en tensión por un fallo interno" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="150" y="24" text-anchor="middle" class="t" fill="#f48771">CONTACTO DIRECTO</text>
+<text x="150" y="42" text-anchor="middle" class="s">tocas una parte que normalmente</text>
+<text x="150" y="56" text-anchor="middle" class="s">está en tensión</text>
+<path d="M 30 150 L 130 150" stroke="#ce9178" stroke-width="8" stroke-linecap="round"/>
+<path d="M 130 150 L 190 150" stroke="#dcdcaa" stroke-width="3"/>
+<path d="M 186 146 l 8 -8 M 188 152 l 10 4" stroke="#dcdcaa" stroke-width="2"/>
+<path d="M 280 110 L 212 146 L 198 150" stroke="#d4d4d4" stroke-width="7" stroke-linecap="round" fill="none"/><text x="258" y="100" class="s">mano</text>
+<path d="M 160 110 l 10 0 l -6 12 l 9 0 l -14 20 l 3 -13 l -8 0 z" fill="#dcdcaa"/>
+<text x="150" y="208" text-anchor="middle" class="s">cable pelado de una regleta</text>
+
+<line x1="310" y1="20" x2="310" y2="220" stroke="#3c3c3c" stroke-dasharray="4 4"/>
+
+<text x="465" y="24" text-anchor="middle" class="t" fill="#dcdcaa">CONTACTO INDIRECTO</text>
+<text x="465" y="42" text-anchor="middle" class="s">tocas una parte metálica que se ha</text>
+<text x="465" y="56" text-anchor="middle" class="s">puesto en tensión por un fallo</text>
+<rect x="360" y="110" width="140" height="70" rx="6" fill="#2d2d2d" stroke="#858585" stroke-width="2"/>
+<text x="430" y="140" text-anchor="middle" class="s">carcasa metálica</text>
+<path d="M 380 160 L 410 150 L 420 165 L 460 152" stroke="#f48771" stroke-width="2" fill="none"/>
+<text x="430" y="196" text-anchor="middle" class="s">fallo de aislamiento dentro</text>
+<path d="M 590 96 L 516 124 L 502 128" stroke="#d4d4d4" stroke-width="7" stroke-linecap="round" fill="none"/><text x="568" y="86" class="s">mano</text>
+<path d="M 520 94 l 10 0 l -6 12 l 9 0 l -14 20 l 3 -13 l -8 0 z" fill="#dcdcaa"/>
+<text x="465" y="224" text-anchor="middle" class="s">taladro con un cable interno suelto</text>
+</svg>
+<p class="pie-figura">En el indirecto el usuario no hace nada mal: toca la herramienta por donde se toca. Por eso hacen falta protecciones en la instalación.</p>
+</div>
+<table>
+<tr><th></th><th>Contacto directo</th><th>Contacto indirecto</th></tr>
+<tr><td><strong>Qué tocas</strong></td><td>Una parte activa: un cable pelado, un borne del cuadro, las patillas de un enchufe</td><td>Una masa: la carcasa metálica de un aparato que por una avería se ha quedado en tensión</td></tr>
+<tr><td><strong>Ejemplo en el taller</strong></td><td>Meter el destornillador en el cuadro eléctrico abierto; tocar el cable de corriente pelado de la crimpadora</td><td>Tocar la carcasa de un taladro o de la fuente de alimentación de un PC con un fallo interno</td></tr>
+<tr><td><strong>Cómo se previene</strong></td><td>Aislamiento en buen estado, cuadros cerrados, no manipular nada con tensión</td><td><strong>Toma de tierra</strong> y <strong>interruptor diferencial</strong></td></tr>
+</table>
+
+<h3>Qué te hace la corriente</h3>
+<p>El daño no depende tanto de los voltios como de la <strong>intensidad</strong> (los miliamperios que te atraviesan), del <strong>tiempo</strong> que dura el paso y del <strong>recorrido</strong>. Una corriente que va de una mano a la otra, o de la mano a los pies, cruza el pecho y puede afectar al corazón.</p>
+<ul>
+<li>Con unos pocos miliamperios ya notas un calambre.</li>
+<li>Algo más y los músculos se contraen y <strong>no puedes soltar</strong> lo que tienes agarrado.</li>
+<li>A partir de unos 30 mA mantenidos puede haber problemas para respirar y alteraciones del ritmo del corazón.</li>
+<li>Además, quemaduras donde entra y sale la corriente, y caídas por el susto (muy peligrosas si estás en una escalera).</li>
+</ul>
+
+<h3>Las protecciones del cuadro</h3>
+<table>
+<tr><th>Protección</th><th>Qué hace</th></tr>
+<tr><td><strong>Interruptor diferencial</strong></td><td>Detecta que se está escapando corriente (por ejemplo, a través de una persona) y corta en milisegundos. Los de uso doméstico saltan con 30 mA. <strong>Es el que te salva la vida.</strong> Tiene un botón de prueba «T» que conviene pulsar de vez en cuando.</td></tr>
+<tr><td><strong>Interruptor magnetotérmico</strong></td><td>Corta si hay un cortocircuito o si se pide más corriente de la que aguanta el cable (sobrecarga). Protege la <strong>instalación</strong>, no a las personas.</td></tr>
+<tr><td><strong>Toma de tierra</strong></td><td>Da a la corriente que se escapa un camino más fácil que tu cuerpo. Es la patilla metálica de los enchufes tipo schuko.</td></tr>
+</table>
+
+<h3>Normas del taller</h3>
+<ul>
+<li>Antes de enchufar una herramienta, <strong>mira el cable y la clavija</strong>. Si están pelados, rotos o chamuscados, no se usa y me avisas.</li>
+<li>Se desenchufa <strong>tirando de la clavija</strong>, nunca del cable.</li>
+<li>Nada de manos mojadas ni bebidas encima de la mesa de trabajo.</li>
+<li>El <strong>cuadro eléctrico no se abre</strong>. Si salta un diferencial, me avisas a mí.</li>
+<li>Antes de abrir un equipo (un PC, una fuente, un switch), <strong>se desconecta de la corriente</strong>. Apagarlo con el botón no basta.</li>
+<li>No se quita nunca la toma de tierra de una clavija ni se usan adaptadores que la anulen.</li>
+</ul>
+
+<div data-actividad="u2s5-electrico"></div>
+
+<h2>Riesgo de incendio</h2>
+<h3>El triángulo del fuego</h3>
+<p>Para que haya fuego hacen falta a la vez <strong>tres cosas</strong>. Si quitas cualquiera de ellas, el fuego no empieza o se apaga.</p>
+<div class="salida">
+<svg viewBox="0 0 600 260" width="100%" role="img" aria-label="Triángulo del fuego: combustible, comburente (oxígeno) y energía de activación (calor). En el centro, la reacción en cadena" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<polygon points="200,30 60,220 340,220" fill="#252526" stroke="#ce9178" stroke-width="3"/>
+<path d="M 200 120 c -20 20 -24 40 -8 60 c -2 -14 6 -20 10 -26 c 2 12 12 18 10 30 c 16 -18 12 -44 -12 -64 z" fill="#f48771"/>
+<text x="200" y="206" text-anchor="middle" class="s">reacción en cadena</text>
+<text x="200" y="20" text-anchor="middle" class="t" fill="#dcdcaa">ENERGÍA DE ACTIVACIÓN</text>
+<text x="40" y="244" text-anchor="start" class="t" fill="#4fc1ff">COMBUSTIBLE</text>
+<text x="360" y="244" text-anchor="end" class="t" fill="#4ec9b0">COMBURENTE</text>
+
+<text x="380" y="50" class="t" fill="#dcdcaa">Energía de activación</text>
+<text x="380" y="66" class="s">calor: regleta sobrecargada,</text>
+<text x="380" y="80" class="s">soldador, chispa, cortocircuito</text>
+<text x="380" y="118" class="t" fill="#4fc1ff">Combustible</text>
+<text x="380" y="134" class="s">cartón de las cajas, plástico</text>
+<text x="380" y="148" class="s">de canaletas y cubiertas de cable</text>
+<text x="380" y="186" class="t" fill="#4ec9b0">Comburente</text>
+<text x="380" y="202" class="s">el oxígeno del aire:</text>
+<text x="380" y="216" class="s">siempre está ahí</text>
+</svg>
+<p class="pie-figura">Algunos manuales le añaden un cuarto elemento, la reacción en cadena, y lo llaman tetraedro del fuego.</p>
+</div>
+
+<h3>Cómo se apaga un fuego</h3>
+<table>
+<tr><th>Método</th><th>Qué quita</th><th>Ejemplo</th></tr>
+<tr><td><strong>Eliminación</strong></td><td>El combustible</td><td>Apartar las cajas de cartón de la zona que arde</td></tr>
+<tr><td><strong>Sofocación</strong></td><td>El oxígeno</td><td>Tapar con una manta ignífuga; extintor de CO₂</td></tr>
+<tr><td><strong>Enfriamiento</strong></td><td>El calor</td><td>Agua (¡nunca en fuegos eléctricos!)</td></tr>
+<tr><td><strong>Inhibición</strong></td><td>La reacción en cadena</td><td>Extintor de polvo químico</td></tr>
+</table>
+<div class="nota"><strong>En un fuego de origen eléctrico no se echa agua</strong> mientras haya tensión: conduce la corriente y puedes electrocutarte. Primero se <strong>corta la corriente</strong> y después se usa el extintor adecuado (polvo o CO₂).</div>
+
+<h3>Prevención de incendios en el taller</h3>
+<ul>
+<li><strong>No sobrecargar las regletas</strong> ni conectar una regleta a otra regleta. Si una regleta o una clavija está caliente al tacto, algo va mal.</li>
+<li><strong>El soldador se desenchufa al acabar</strong> y se deja enfriar en su soporte, lejos del cartón y de los plásticos.</li>
+<li>Lo mismo con la pistola de aire caliente del termorretráctil: nunca boca abajo sobre la mesa.</li>
+<li>Las cajas de cartón vacías no se acumulan en el taller.</li>
+<li>Saber dónde está el <strong>extintor</strong> más cercano y cuál es la <strong>salida de emergencia</strong>. Las salidas nunca se tapan con material.</li>
+</ul>
+
+<h3>Si hay un incendio</h3>
+<ol>
+<li>Da la <strong>alarma</strong>: avisa en voz alta y avísame a mí.</li>
+<li>Si es un conato pequeño y sabes hacerlo, corta la corriente y usa el extintor. Si no, no te hagas el héroe.</li>
+<li>Sal por la ruta de evacuación, <strong>sin correr y sin volver a por tus cosas</strong>. Si hay humo, agáchate: el aire limpio está abajo.</li>
+<li>Ve al punto de reunión y no te muevas de allí hasta que se compruebe que estáis todos.</li>
+</ol>
+
+<div data-actividad="u2s5-fuego"></div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 5 — a mano, en papel</p>
+<ol>
+<li>Explica la diferencia entre <strong>contacto directo</strong> e <strong>indirecto</strong> y pon un ejemplo de cada uno en el taller.</li>
+<li>¿Qué diferencia hay entre un <strong>interruptor diferencial</strong> y un <strong>magnetotérmico</strong>? ¿Cuál protege a las personas?</li>
+<li>Dibuja el <strong>triángulo del fuego</strong> y pon, al lado de cada lado, un ejemplo sacado del taller de redes.</li>
+<li>¿Por qué no se echa agua en un fuego eléctrico? ¿Qué se hace primero?</li>
+<li>Escribe <strong>cinco normas</strong> del taller para prevenir el riesgo eléctrico y el de incendio.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Tocas la carcasa de un PC y te da calambre. ¿Qué tipo de contacto es y qué ha fallado?</summary>
+<p>Un <strong>contacto indirecto</strong>. Hay un fallo de aislamiento dentro del equipo y además algo falla en la protección: la toma de tierra no está bien o el diferencial no ha saltado. No se vuelve a tocar y se avisa.</p>
+</details>
+<details>
+<summary>🤔 ¿Apagar el PC con el botón es suficiente para abrirlo?</summary>
+<p>No. La fuente sigue recibiendo corriente mientras esté enchufada. Hay que <strong>desenchufarlo</strong>.</p>
+</details>
+<details>
+<summary>🤔 Tapar con una manta un fuego pequeño, ¿qué lado del triángulo elimina?</summary>
+<p>El <strong>comburente</strong> (el oxígeno). Es la extinción por sofocación.</p>
+</details>

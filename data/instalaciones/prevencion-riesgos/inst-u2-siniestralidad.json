@@ -1,0 +1,62 @@
+{
+  "id": "inst-u2-siniestralidad",
+  "titulo": "Sesión 2 — La siniestralidad laboral en España",
+  "fecha": "",
+  "descripcion": "Buscas en el informe oficial del INSST cuántos accidentes de trabajo hay, dónde y a quién le pasan. Spoiler: los jóvenes recién incorporados salen mal parados.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "INSST · Informes anuales de accidentes de trabajo",
+      "url": "https://www.insst.es/el-observatorio/estadisticas/informes-anuales-de-accidentes-de-trabajo"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "INSST · Últimos datos de siniestralidad",
+      "url": "https://www.insst.es/el-observatorio/estadisticas/ultimos-datos-de-siniestralidad"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "u2s2-verdadero-falso",
+      "tipo": "quiz",
+      "titulo": "Verdadero o falso: ¿quién se accidenta más?",
+      "preguntas": [
+        {
+          "pregunta": "Los trabajadores que llevan poco tiempo en su puesto se accidentan más que los que llevan años.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Los trabajadores temporales tienen menos accidentes que los indefinidos porque trabajan menos tiempo.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Los trabajadores mayores no se accidentan más a menudo, pero sus accidentes suelen ser más graves.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La población extranjera tiene una siniestralidad más baja porque suele trabajar en oficinas.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El índice de incidencia cuenta los accidentes por cada 100.000 trabajadores.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Un sector con más accidentes en total siempre es más peligroso que otro con menos.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El organismo público que publica los informes de siniestralidad laboral en España es el INSST.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

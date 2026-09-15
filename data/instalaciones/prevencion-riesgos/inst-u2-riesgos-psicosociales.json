@@ -1,0 +1,46 @@
+{
+  "id": "inst-u2-riesgos-psicosociales",
+  "titulo": "Sesión 7 — Riesgos psicosociales",
+  "fecha": "",
+  "descripcion": "Plazos imposibles, móvil de guardia y usuarios enfadados: el estrés, el burnout y la fatiga mental en el trabajo informático, y qué se puede hacer contra ellos.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s7-psicosociales",
+      "tipo": "quiz",
+      "titulo": "Verdadero o falso: riesgos psicosociales",
+      "preguntas": [
+        {
+          "pregunta": "Los riesgos psicosociales vienen sobre todo de cómo está organizado el trabajo.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Cualquier nivel de estrés, aunque sea puntual, es perjudicial para la salud.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El burnout aparece después de mucho tiempo de estrés laboral sin resolver.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La actualización tecnológica constante es un factor de riesgo psicosocial propio de la informática.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Fuera de tu horario estás obligado a contestar los mensajes del trabajo.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Estar muchas horas concentrado delante de la pantalla no produce cansancio porque no haces esfuerzo físico.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

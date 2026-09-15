@@ -1,0 +1,43 @@
+{
+  "id": "inst-u2-evaluacion-riesgos",
+  "titulo": "Sesión 3 — Evaluación de riesgos",
+  "fecha": "",
+  "descripcion": "Probabilidad por consecuencia: la matriz del INSST para decidir qué riesgo del taller hay que atacar primero. Con ejercicios que cambian cada tanda.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s3-valoracion",
+      "tipo": "generador",
+      "titulo": "Calcula la valoración del riesgo",
+      "generador": "valoracion-riesgo",
+      "n": 8
+    },
+    {
+      "id": "u2s3-que-hacer",
+      "tipo": "relacionar",
+      "titulo": "¿Qué hay que hacer con cada valoración?",
+      "pares": [
+        {
+          "izquierda": "Trivial",
+          "derecha": "Ninguna acción específica"
+        },
+        {
+          "izquierda": "Tolerable",
+          "derecha": "Comprobar que se cumplen las medidas que ya hay"
+        },
+        {
+          "izquierda": "Moderado",
+          "derecha": "Reducir el riesgo en un plazo fijado"
+        },
+        {
+          "izquierda": "Importante",
+          "derecha": "No empezar el trabajo hasta reducir el riesgo"
+        },
+        {
+          "izquierda": "Intolerable",
+          "derecha": "Prohibido trabajar si no se reduce el riesgo"
+        }
+      ]
+    }
+  ]
+}

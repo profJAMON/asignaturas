@@ -1,0 +1,56 @@
+{
+  "id": "inst-u2-lugar-de-trabajo",
+  "titulo": "Sesión 4 — Riesgos del lugar de trabajo",
+  "fecha": "",
+  "descripcion": "Caídas, golpes y objetos que se caen: los riesgos del propio taller, el orden como medida preventiva y cómo se usa bien una escalera para pasar cable por el falso techo.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s4-verdadero-falso",
+      "tipo": "quiz",
+      "titulo": "Verdadero o falso: el lugar de trabajo",
+      "preguntas": [
+        {
+          "pregunta": "Si tengo que pasar cable por el falso techo y la escalera está ocupada, puedo subirme a una mesa con cuidado.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tropezar con un latiguillo tirado en el pasillo es una caída al mismo nivel.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "En una estantería, las bobinas de cable van en las baldas de arriba para que no molesten.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una escalera de tijera se puede usar cerrada y apoyada contra la pared si solo es un momento.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la escalera hay que mantener siempre tres puntos de apoyo.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Los recortes de cable se pueden dejar en el suelo y barrerlos al final de la clase.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si no llego a un punto desde la escalera, lo correcto es bajar y moverla.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Golpearse la cabeza con la puerta abierta del rack es un riesgo de caída de objetos.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

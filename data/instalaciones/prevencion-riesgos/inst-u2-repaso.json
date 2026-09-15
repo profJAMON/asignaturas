@@ -1,0 +1,97 @@
+{
+  "id": "inst-u2-repaso",
+  "titulo": "Sesión 10 — Repaso y banco de preguntas del examen",
+  "fecha": "",
+  "descripcion": "Toda la unidad en una página, el banco completo de preguntas del examen y la matriz de riesgos para entrenar hasta que salga sola.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Valoración de riesgos",
+      "generador": "valoracion-riesgo",
+      "n": 10
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Repaso mezclado de toda la unidad",
+      "preguntas": [
+        {
+          "pregunta": "Un cable pelado tirado en el suelo del taller es…",
+          "opciones": ["Un peligro", "Un riesgo", "Un accidente", "Una enfermedad profesional"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Probabilidad alta y consecuencia dañino dan un riesgo…",
+          "opciones": ["Tolerable", "Moderado", "Importante", "Intolerable"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Una escalera de 4 m de altura se apoya con la base a…",
+          "opciones": ["0,5 m de la pared", "1 m de la pared", "2 m de la pared", "4 m de la pared"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tocar la carcasa de un aparato que se ha puesto en tensión por una avería es un contacto…",
+          "opciones": ["Directo", "Indirecto", "Seguro", "Estático"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El elemento del cuadro eléctrico que protege a las personas es…",
+          "opciones": ["El magnetotérmico", "El diferencial", "La regleta", "El enchufe"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué método de extinción usa el agua?",
+          "opciones": ["Eliminación", "Sofocación", "Enfriamiento", "Inhibición"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Peso máximo recomendado para manipular a mano en condiciones normales:",
+          "opciones": ["15 kg", "25 kg", "35 kg", "50 kg"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La pantalla del ordenador debe estar a una distancia mínima de…",
+          "opciones": ["20 cm", "30 cm", "40 cm", "80 cm"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El agotamiento emocional tras mucho tiempo de estrés laboral se llama…",
+          "opciones": ["Fatiga visual", "Burnout", "Lumbalgia", "Accidente in itinere"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una señal redonda y azul indica…",
+          "opciones": ["Prohibición", "Obligación", "Advertencia", "Salvamento"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Los EPI se usan…",
+          "opciones": [
+            "Como primera medida",
+            "Cuando el riesgo no se puede evitar o limitar bastante con otras medidas",
+            "Solo si el trabajador quiere",
+            "Solo fuera del taller"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Las pilas gastadas del tester van…",
+          "opciones": ["A la papelera del taller", "Al contenedor amarillo", "Al contenedor de pilas", "Al contenedor de papel"],
+          "correcta": 2
+        }
+      ]
+    },
+    {
+      "tipo": "relacionar",
+      "titulo": "Cada señal con su color",
+      "pares": [
+        { "izquierda": "Prohibición", "derecha": "Rojo, círculo con banda" },
+        { "izquierda": "Obligación", "derecha": "Azul, círculo" },
+        { "izquierda": "Advertencia", "derecha": "Amarillo, triángulo" },
+        { "izquierda": "Salvamento", "derecha": "Verde, rectángulo" },
+        { "izquierda": "Equipo contra incendios", "derecha": "Rojo, rectángulo" }
+      ]
+    }
+  ]
+}

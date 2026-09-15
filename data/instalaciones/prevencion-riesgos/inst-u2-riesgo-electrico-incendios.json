@@ -1,0 +1,103 @@
+{
+  "id": "inst-u2-riesgo-electrico-incendios",
+  "titulo": "Sesión 5 — Riesgo eléctrico e incendios",
+  "fecha": "",
+  "descripcion": "Contacto directo e indirecto, qué te hace la corriente, para qué sirven el diferencial y la toma de tierra, y el triángulo del fuego aplicado a regletas, soldadores y cajas de cartón.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u2s5-electrico",
+      "tipo": "relacionar",
+      "titulo": "Contacto directo, indirecto y protecciones",
+      "pares": [
+        {
+          "izquierda": "Tocar el cable de corriente pelado de la crimpadora",
+          "derecha": "Contacto directo"
+        },
+        {
+          "izquierda": "Tocar la carcasa de un taladro con un fallo interno",
+          "derecha": "Contacto indirecto"
+        },
+        {
+          "izquierda": "Corta si se escapa corriente a través de una persona",
+          "derecha": "Interruptor diferencial"
+        },
+        {
+          "izquierda": "Corta si hay un cortocircuito o una sobrecarga",
+          "derecha": "Interruptor magnetotérmico"
+        },
+        {
+          "izquierda": "Da a la corriente de fuga un camino más fácil que tu cuerpo",
+          "derecha": "Toma de tierra"
+        }
+      ]
+    },
+    {
+      "id": "u2s5-fuego",
+      "tipo": "quiz",
+      "titulo": "Fuego y electricidad en el taller",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuáles son los tres elementos del triángulo del fuego?",
+          "opciones": [
+            "Combustible, comburente y energía de activación",
+            "Madera, papel y plástico",
+            "Calor, humo y llama",
+            "Oxígeno, agua y electricidad"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "En el taller, el comburente es…",
+          "opciones": [
+            "El cartón de las cajas",
+            "El oxígeno del aire",
+            "El soldador",
+            "La regleta"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Empieza a salir humo de una regleta sobrecargada. Lo primero es…",
+          "opciones": [
+            "Echarle agua",
+            "Cortar la corriente y dar la alarma",
+            "Desenchufar los equipos uno a uno tirando del cable",
+            "Soplar"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Extinguir un fuego con una manta ignífuga es un ejemplo de…",
+          "opciones": [
+            "Eliminación",
+            "Enfriamiento",
+            "Sofocación",
+            "Inhibición"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué interruptor del cuadro protege a las personas de los contactos eléctricos?",
+          "opciones": [
+            "El magnetotérmico",
+            "El diferencial",
+            "El general",
+            "Ninguno: solo protegen la instalación"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Al acabar la sesión, el soldador de estaño…",
+          "opciones": [
+            "Se deja encendido para la clase siguiente",
+            "Se guarda en la caja de herramientas aún caliente",
+            "Se desenchufa y se deja enfriar en su soporte",
+            "Se enfría metiéndolo en agua"
+          ],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}
