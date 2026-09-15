@@ -1,8 +1,8 @@
 {
   "id": "proy-s02-github-textos",
-  "titulo": "Sesión 2 — GitHub, títulos y párrafos",
+  "titulo": "Sesión 2 — Títulos, párrafos y copia de seguridad en GitHub",
   "fecha": "",
-  "descripcion": "Crear la cuenta de GitHub, aceptar la invitación, subir y descargar los archivos del proyecto, y escribir la portada con títulos, párrafos, negrita y cursiva.",
+  "descripcion": "Escribir la portada con títulos, párrafos, negrita y cursiva, y guardarla en GitHub paso a paso: qué es GitHub, crear la cuenta, aceptar la invitación, subir los archivos y descargarlos.",
   "materiales": [
     {
       "tipo": "enlace",
