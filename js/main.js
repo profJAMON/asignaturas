@@ -43,7 +43,7 @@ function pintarCabecera(badge, titulo, descripcion, conVolver) {
   if (elDesc) elDesc.textContent = descripcion;
   if (elVolver) elVolver.hidden = !conVolver;
 
-  document.title = conVolver ? `${badge} · Material de clase` : 'Material de clase';
+  document.title = conVolver ? `${badge} · Material de Carles` : 'Material de Carles';
 }
 
 /* ---------- Estado 1: elegir asignatura ---------- */
