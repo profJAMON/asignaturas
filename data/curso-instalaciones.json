@@ -1,6 +1,14 @@
 {
   "unidades": [
     {
+      "id": "antes-de-empezar",
+      "titulo": "Antes de empezar",
+      "descripcion": "Cómo se evalúa este módulo: el peso del examen y de los trabajos, cómo se calcula la nota final, qué pasa si entregas tarde y las faltas de asistencia.",
+      "sesiones": [
+        "inst-formas-de-evaluar"
+      ]
+    },
+    {
       "id": "evaluacion-inicial",
       "titulo": "Unidad 0. Evaluación inicial",
       "descripcion": "De qué va el módulo, cómo vamos a trabajar y una prueba sin nota para ver de dónde partimos.",
