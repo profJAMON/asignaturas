@@ -1,0 +1,57 @@
+{
+  "id": "proy-s15-if-else",
+  "titulo": "Sesión 15 — Tomar decisiones con if",
+  "fecha": "",
+  "descripcion": "if, else y else if, comparar con ===, >, <, comprobar cajas vacías y contar aciertos en un mini test.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Condicionales",
+      "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Cómo se comprueba si edad es igual a 15?",
+          "opciones": [
+            "edad = 15",
+            "edad === 15",
+            "edad == \"quince\""
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuándo se ejecuta el else?",
+          "opciones": [
+            "Siempre",
+            "Cuando la condición del if es falsa",
+            "Cuando la condición es verdadera"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "puntos vale 6. if (puntos >= 9) ... else if (puntos >= 5) ... else ... ¿Qué camino se ejecuta?",
+          "opciones": [
+            "El primero",
+            "El else if",
+            "El else"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo compruebas que una caja está vacía?",
+          "opciones": [
+            "alias === \"\"",
+            "alias === 0",
+            "alias === null"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

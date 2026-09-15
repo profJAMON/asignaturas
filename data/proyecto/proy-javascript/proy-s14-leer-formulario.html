@@ -1,0 +1,111 @@
+<h2>Repaso: lo que ya sabías antes de Navidad</h2>
+<p>Después de las vacaciones, es normal no acordarse de nada. Dedicad la primera media hora a este repaso <strong>sin mirar las sesiones anteriores</strong>, y solo después comprobad las respuestas.</p>
+<details><summary>1. ¿Dónde se pone el &lt;script&gt; y por qué?</summary>
+<p>Justo antes de cerrar el <code>&lt;body&gt;</code>, para que el HTML ya exista cuando el JavaScript lo busque.</p>
+</details>
+<details><summary>2. ¿Qué diferencia hay entre let edad = 15; y let edad = "15";?</summary>
+<p>La primera guarda un número (se puede calcular con él). La segunda guarda un texto.</p>
+</details>
+<details><summary>3. ¿Cuáles son los tres pasos de la receta de un botón?</summary>
+<p>Buscar los elementos con <code>querySelector</code>, esperar al clic con <code>addEventListener</code> y hacer algo dentro de la función.</p>
+</details>
+<details><summary>4. Tienes &lt;p id="saludo"&gt;&lt;/p&gt;. Escribe cómo lo buscarías y cómo pondrías dentro el texto "Hola".</summary>
+<pre><code><span class='kw'>let</span> saludo = document.<span class='fn'>querySelector</span>(<span class='ca'>"#saludo"</span>);
+saludo.textContent = <span class='ca'>"Hola"</span>;</code></pre>
+</details>
+<details><summary>5. La consola dice "Cannot read properties of null". ¿Qué ha pasado?</summary>
+<p>Que <code>querySelector</code> no ha encontrado el elemento: el id no coincide, falta la <code>#</code> o el script no está al final.</p>
+</details>
+<p><strong>Comprobación práctica</strong>: abrid vuestra web publicada. ¿Funciona el botón del dato curioso? Si no, arregladlo antes de seguir: hoy lo vais a necesitar.</p>
+
+<h2>Leer lo que escribe el usuario: value</h2>
+<p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>:</p>
+<pre><code><span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+<span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>Piloto favorito:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+<span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/select</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-inscribir"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
+<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"mensaje"</span><span class='et'>&gt;</span><span class='et'>&lt;/p</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='co'>// 1. Buscar los elementos</span>
+<span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
+<span class='kw'>let</span> cajaPiloto = document.<span class='fn'>querySelector</span>(<span class='ca'>"#piloto"</span>);
+<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
+<span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
+
+<span class='co'>// 2. Esperar al clic</span>
+boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='co'>// 3. Leer lo que ha escrito y responder</span>
+    <span class='kw'>let</span> alias = cajaAlias.value;
+    <span class='kw'>let</span> piloto = cajaPiloto.value;
+    mensaje.textContent = <span class='ca'>"¡Hola, "</span> + alias + <span class='ca'>"! Te has inscrito con "</span> + piloto + <span class='ca'>"."</span>;
+});</code></pre>
+<div class="salida"><p style="margin:0;color:var(--text-dim)">Si el visitante escribe <em>RayoAzul</em>, elige <em>Chispa</em> y pulsa el botón, aparece: <strong>¡Hola, RayoAzul! Te has inscrito con Chispa.</strong></p></div>
+<ul>
+<li><code>cajaAlias.value</code> es <strong>lo que hay escrito</strong> en la caja en ese momento.</li>
+<li>En un <code>&lt;select&gt;</code>, <code>value</code> es <strong>la opción elegida</strong>.</li>
+<li>El <code>value</code> se lee <strong>dentro de la función</strong>. Si lo lees fuera, lo lees al cargar la página, cuando la caja todavía está vacía.</li>
+</ul>
+<div class="nota">⚠️ Fíjate en los nombres: <code>cajaAlias</code> es <strong>la caja</strong> (el elemento de la página) y <code>alias</code> es <strong>lo que hay escrito dentro</strong> (un texto). Poner nombres distintos evita muchos líos.</div>
+
+<h2>Números que vienen de una caja</h2>
+<p>Todo lo que se lee con <code>value</code> es <strong>texto</strong>, aunque la caja sea <code>type="number"</code>. Si quieres hacer cuentas, primero tienes que convertirlo con <code>Number()</code>:</p>
+<pre><code><span class='kw'>let</span> cajaVueltas = document.<span class='fn'>querySelector</span>(<span class='ca'>"#vueltas"</span>);
+<span class='kw'>let</span> botonCalcular = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-calcular"</span>);
+<span class='kw'>let</span> resultado = document.<span class='fn'>querySelector</span>(<span class='ca'>"#resultado"</span>);
+
+botonCalcular.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='kw'>let</span> vueltas = <span class='fn'>Number</span>(cajaVueltas.value);
+    <span class='kw'>let</span> segundos = vueltas * <span class='nu'>42</span>;
+    resultado.textContent = <span class='ca'>"Tardarás unos "</span> + segundos + <span class='ca'>" segundos."</span>;
+});</code></pre>
+<table>
+<thead><tr><th>Si el usuario escribe 3</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><code>cajaVueltas.value + 1</code></td><td><code>"31"</code> (junta textos)</td></tr>
+<tr><td><code>Number(cajaVueltas.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
+</tbody>
+</table>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué diferencia hay entre textContent y value?</summary>
+<p><code>textContent</code> es el texto de dentro de un elemento como un párrafo; lo usamos para escribir. <code>value</code> es lo escrito o elegido en una caja de formulario; lo usamos para leer.</p>
+</details>
+<details><summary>Lees cajaAlias.value fuera de la función y siempre sale vacío. ¿Por qué?</summary>
+<p>Porque se lee al cargar la página, antes de que el usuario escriba nada. Hay que leerlo dentro de la función del clic.</p>
+</details>
+<details><summary>El usuario escribe 10 y 5 en dos cajas, y tu suma da 105. ¿Qué falta?</summary>
+<p>Convertir los dos valores con <code>Number()</code> antes de sumar.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Haced que <strong>el formulario de la sesión 6 funcione</strong>:</p>
+<ul class="checklist">
+<li>Un párrafo vacío con <code>id</code> debajo del formulario, para la respuesta.</li>
+<li>Al pulsar el botón, se leen <strong>al menos 2 campos</strong> del formulario con <code>value</code>.</li>
+<li>Aparece en el párrafo un <strong>mensaje que usa lo que ha escrito</strong> el usuario, con los espacios bien puestos.</li>
+<li>Si algún campo es un número, se convierte con <code>Number()</code> y se usa en un cálculo.</li>
+<li>Comprobación: escribís cosas distintas, pulsáis otra vez y el mensaje cambia.</li>
+<li>La consola no muestra errores.</li>
+</ul>
+<details><summary>Pista 1: el mensaje sale, pero sin lo que he escrito</summary>
+<p>Estás leyendo el <code>value</code> fuera de la función. Mueve esas líneas dentro de las llaves del <code>addEventListener</code>.</p>
+</details>
+<details><summary>Pista 2: sale "undefined" en el mensaje</summary>
+<p>Has escrito <code>.Value</code> o <code>.valor</code>. Es <code>.value</code>, en minúsculas y en inglés.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Pensad qué haría más útil o divertida la respuesta del formulario: un cálculo, una recomendación, un mensaje más elaborado... En la próxima sesión aprenderéis a dar una respuesta distinta según lo que elija el usuario.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

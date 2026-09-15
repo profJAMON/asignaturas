@@ -1,0 +1,57 @@
+{
+  "id": "proy-s10-flexbox",
+  "titulo": "Sesión 10 — Flexbox",
+  "fecha": "",
+  "descripcion": "Poner cajas en fila con display: flex, gap, justify-content, align-items y flex-wrap, el menú en fila con :hover y las tarjetas en fila.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Flexbox",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "Quieres en fila los enlaces que hay dentro de <nav>. ¿Dónde pones display: flex?",
+          "opciones": [
+            "En cada <a>",
+            "En nav",
+            "En body"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad pone un hueco entre las cajas de una fila flex?",
+          "opciones": [
+            "gap",
+            "margin-flex",
+            "space"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Las tarjetas se aplastan en el móvil. ¿Qué añades al contenedor?",
+          "opciones": [
+            "flex-wrap: wrap;",
+            "display: block;",
+            "justify-content: center;"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué hace nav a:hover?",
+          "opciones": [
+            "Estilo de los enlaces del menú con el ratón encima",
+            "Esconde el menú",
+            "Pone el menú en fila"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

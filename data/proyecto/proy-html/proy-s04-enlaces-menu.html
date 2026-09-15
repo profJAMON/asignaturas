@@ -1,0 +1,91 @@
+<h2>La etiqueta &lt;a&gt;</h2>
+<p>Un enlace se crea con la etiqueta <code>&lt;a&gt;</code>. El atributo <code>href</code> dice <strong>adónde lleva</strong>, y el texto de dentro es <strong>lo que se ve</strong> y se pulsa:</p>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"personajes.html"</span><span class='et'>&gt;</span>Ver los personajes<span class='et'>&lt;/a</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><p><a href="#" onclick="return false">Ver los personajes</a></p></div>
+
+<h3>Tres tipos de enlace</h3>
+<table>
+<thead><tr><th>Tipo</th><th>Ejemplo</th><th>Adónde lleva</th></tr></thead>
+<tbody>
+<tr><td>A otra página tuya</td><td><code>href="circuitos.html"</code></td><td>A otro archivo de tu carpeta. Se escribe como las rutas de las imágenes.</td></tr>
+<tr><td>A otra web</td><td><code>href="https://es.wikipedia.org"</code></td><td>Fuera de tu web. Siempre empieza por <code>https://</code>.</td></tr>
+<tr><td>Dentro de la misma página</td><td><code>href="#modos"</code></td><td>Al elemento que tenga <code>id="modos"</code>, en la misma página.</td></tr>
+</tbody>
+</table>
+<p>Los enlaces a otras webs conviene abrirlos en una <strong>pestaña nueva</strong>, para que el visitante no salga de la tuya. Se hace con <code>target="_blank"</code>:</p>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://es.wikipedia.org/wiki/Kart"</span> <span class='at'>target</span>=<span class='ca'>"_blank"</span><span class='et'>&gt;</span>Qué es un kart (Wikipedia)<span class='et'>&lt;/a</span><span class='et'>&gt;</span></code></pre>
+
+<h3>Una imagen que es un enlace</h3>
+<p>Si metes una <code>&lt;img&gt;</code> dentro de un <code>&lt;a&gt;</code>, al pulsar la imagen se abre el enlace. Es típico en los logos, que llevan a la portada:</p>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"index.html"</span><span class='et'>&gt;</span><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/logo.png"</span> <span class='at'>alt</span>=<span class='ca'>"Logo de Pixel Kart: volver al inicio"</span><span class='et'>&gt;</span><span class='et'>&lt;/a</span><span class='et'>&gt;</span></code></pre>
+
+<h2>Una web de varias páginas</h2>
+<p>Hasta ahora teníais solo <code>index.html</code>. Una web de verdad tiene <strong>varias páginas</strong>, y cada una es un archivo <code>.html</code> distinto dentro de la misma carpeta:</p>
+<pre><code>pixel-kart/
+├── index.html        ← Inicio
+├── personajes.html   ← Personajes
+├── circuitos.html    ← Circuitos
+└── img/</code></pre>
+<p>La forma más rápida de crear una página nueva: <strong>copia <code>index.html</code></strong>, cámbiale el nombre y cambia su <code>&lt;title&gt;</code>, su <code>&lt;h1&gt;</code> y su contenido. Así ya tiene la estructura mínima bien hecha.</p>
+
+<h2>El menú</h2>
+<p>El menú es una <strong>lista de enlaces</strong> a todas las páginas, dentro de la etiqueta <code>&lt;nav&gt;</code> (de <em>navigation</em>). Va al principio del <code>&lt;body&gt;</code>, dentro de un <code>&lt;header&gt;</code>:</p>
+<pre><code><span class='et'>&lt;body</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;header</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;nav</span><span class='et'>&gt;</span>
+            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"index.html"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a</span><span class='et'>&gt;</span>
+            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"personajes.html"</span><span class='et'>&gt;</span>Personajes<span class='et'>&lt;/a</span><span class='et'>&gt;</span>
+            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;/nav</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/header</span><span class='et'>&gt;</span>
+
+    <span class='et'>&lt;main</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h1</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/h1</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;p</span><span class='et'>&gt;</span>El juego de karts más rápido del instituto.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/main</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/body</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><p><a href="#" onclick="return false">Inicio</a> <a href="#" onclick="return false">Personajes</a> <a href="#" onclick="return false">Circuitos</a></p><h1 style="margin:.4rem 0">Pixel Kart</h1><p>El juego de karts más rápido del instituto.</p></div>
+<ul>
+<li><code>&lt;header&gt;</code> es la <strong>cabecera</strong> de la página: lo que se repite arriba en todas.</li>
+<li><code>&lt;nav&gt;</code> agrupa los enlaces del menú.</li>
+<li><code>&lt;main&gt;</code> es el <strong>contenido principal</strong>, lo que cambia de una página a otra.</li>
+</ul>
+<p>Estas etiquetas no cambian nada visualmente, pero ordenan el código y ayudan a los lectores de pantalla. Además, con CSS pondremos el menú bonito y en fila.</p>
+<div class="nota">⚠️ El menú tiene que ser <strong>exactamente el mismo en todas las páginas</strong>. Cuando lo tengas bien en <code>index.html</code>, cópialo y pégalo en las demás. Si cambias algo del menú, tendrás que cambiarlo en todas.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué diferencia hay entre href="circuitos.html" y href="https://circuitos.com"?</summary>
+<p>El primero lleva a un archivo de tu propia web, dentro de tu carpeta. El segundo lleva a otra web de Internet.</p>
+</details>
+<details><summary>Pulsas el enlace a personajes.html y sale "Cannot GET /personajes.html". ¿Qué ha pasado?</summary>
+<p>El archivo no existe con ese nombre: no lo has creado, no lo has guardado o el nombre no coincide letra a letra con el <code>href</code>.</p>
+</details>
+<details><summary>¿Para qué sirve target="_blank"?</summary>
+<p>Para que el enlace se abra en una pestaña nueva y el visitante no pierda tu web.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Convertid vuestra portada en una web de verdad:</p>
+<ul class="checklist">
+<li>Las <strong>3 páginas</strong> de vuestra ficha creadas, cada una con su <code>&lt;title&gt;</code>, su <code>&lt;h1&gt;</code> y al menos un párrafo propio.</li>
+<li>En <strong>todas</strong> las páginas, el mismo menú dentro de <code>&lt;header&gt;</code> y <code>&lt;nav&gt;</code>, con enlaces a las 3.</li>
+<li>El contenido de cada página dentro de <code>&lt;main&gt;</code>.</li>
+<li>Al menos <strong>un enlace a otra web</strong> relacionada con vuestro tema, que se abra en una pestaña nueva.</li>
+<li>Comprobación: desde cualquier página puedes llegar a cualquier otra con el menú, sin que ningún enlace dé error.</li>
+</ul>
+<details><summary>Pista 1: el enlace da error</summary>
+<p>Compara letra a letra el <code>href</code> con el nombre del archivo en el panel de VS Code, incluida la extensión <code>.html</code>.</p>
+</details>
+<details><summary>Pista 2: en una página el menú está bien y en otra no</summary>
+<p>No copiaste el menú actualizado. Copia el <code>&lt;header&gt;</code> entero de la página que funciona y pégalo en las demás, sustituyendo el viejo.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Rellenad el contenido de las páginas nuevas: textos propios y las imágenes que correspondan a cada una. Si alguna imagen de la portada encaja mejor en otra página, movedla allí.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

@@ -1,0 +1,14 @@
+{
+  "id": "proy-s02-github-textos",
+  "titulo": "Sesión 2 — GitHub, títulos y párrafos",
+  "fecha": "",
+  "descripcion": "Crear la cuenta de GitHub, aceptar la invitación, subir y descargar los archivos del proyecto, y escribir la portada con títulos, párrafos, negrita y cursiva.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Encabezados y párrafos",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals"
+    }
+  ],
+  "actividades": []
+}

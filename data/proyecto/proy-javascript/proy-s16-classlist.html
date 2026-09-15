@@ -1,0 +1,113 @@
+<h2>Cambiar el aspecto desde JavaScript</h2>
+<p>Con <code>textContent</code> cambiábamos textos. Ahora vamos a cambiar <strong>cómo se ve</strong> algo: esconderlo, mostrarlo o cambiarle los colores.</p>
+<p>La idea es muy sencilla y aprovecha lo que ya sabéis:</p>
+<ol>
+<li>En el <strong>CSS</strong> preparas una <strong>clase</strong> con el aspecto nuevo.</li>
+<li>Desde <strong>JavaScript</strong>, al pulsar un botón, <strong>pones o quitas</strong> esa clase al elemento.</li>
+</ol>
+
+<h2>classList</h2>
+<p><code>classList</code> son las clases que tiene un elemento. Tiene tres órdenes:</p>
+<table>
+<thead><tr><th>Orden</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>elemento.classList.add("oculto")</code></td><td>Le <strong>pone</strong> la clase.</td></tr>
+<tr><td><code>elemento.classList.remove("oculto")</code></td><td>Le <strong>quita</strong> la clase.</td></tr>
+<tr><td><code>elemento.classList.toggle("oculto")</code></td><td>Si no la tiene, se la pone; si la tiene, se la quita. Como un <strong>interruptor</strong>.</td></tr>
+</tbody>
+</table>
+<div class="nota">⚠️ En <code>classList</code> el nombre de la clase va <strong>sin punto</strong>: <code>toggle("oculto")</code>. El punto solo se pone en el CSS.</div>
+
+<h2>Mostrar y ocultar</h2>
+<p>En Pixel Kart, los trucos del juego están escondidos hasta que pulsas un botón:</p>
+<pre><code><span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-trucos"</span><span class='et'>&gt;</span>Mostrar trucos<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;section</span> <span class='at'>id</span>=<span class='ca'>"trucos"</span> <span class='at'>class</span>=<span class='ca'>"oculto"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;h2</span><span class='et'>&gt;</span>Trucos<span class='et'>&lt;/h2</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p</span><span class='et'>&gt;</span>Derrapa justo antes de la curva para ganar un turbo.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/section</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='et'>.oculto</span> {
+    <span class='at'>display</span>: <span class='ca'>none</span>;
+}</code></pre>
+<pre><code><span class='kw'>let</span> botonTrucos = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-trucos"</span>);
+<span class='kw'>let</span> trucos = document.<span class='fn'>querySelector</span>(<span class='ca'>"#trucos"</span>);
+
+botonTrucos.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    trucos.classList.<span class='fn'>toggle</span>(<span class='ca'>"oculto"</span>);
+});</code></pre>
+<ul>
+<li><code>display: none</code> hace que el elemento <strong>no se vea ni ocupe sitio</strong>.</li>
+<li>La sección empieza con <code>class="oculto"</code>, así que al cargar la página está escondida.</li>
+<li>Cada clic en el botón quita o pone la clase: se muestra, se esconde, se muestra...</li>
+</ul>
+
+<h3>Que el botón diga lo que va a hacer</h3>
+<p>Queda mejor si el botón cambia su texto. Con <code>classList.contains("oculto")</code> preguntas si el elemento <strong>tiene</strong> esa clase, y lo usas en un <code>if</code>:</p>
+<pre><code>botonTrucos.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    trucos.classList.<span class='fn'>toggle</span>(<span class='ca'>"oculto"</span>);
+
+    <span class='kw'>if</span> (trucos.classList.<span class='fn'>contains</span>(<span class='ca'>"oculto"</span>)) {
+        botonTrucos.textContent = <span class='ca'>"Mostrar trucos"</span>;
+    } <span class='kw'>else</span> {
+        botonTrucos.textContent = <span class='ca'>"Ocultar trucos"</span>;
+    }
+});</code></pre>
+
+<h2>Modo oscuro</h2>
+<p>La misma idea sirve para cambiar los colores de toda la página: se pone una clase en el <code>&lt;body&gt;</code>.</p>
+<pre><code><span class='et'>body.modo-oscuro</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#111111</span>;
+    <span class='at'>color</span>: <span class='ca'>#eeeeee</span>;
+}
+
+<span class='et'>body.modo-oscuro .tarjeta</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#222222</span>;
+}</code></pre>
+<pre><code><span class='kw'>let</span> botonModo = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-modo"</span>);
+
+botonModo.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    document.body.classList.<span class='fn'>toggle</span>(<span class='ca'>"modo-oscuro"</span>);
+});</code></pre>
+<ul>
+<li><code>body.modo-oscuro</code> (sin espacio) significa "el <code>body</code> cuando tiene la clase <code>modo-oscuro</code>".</li>
+<li><code>body.modo-oscuro .tarjeta</code> (con espacio) significa "las tarjetas que están dentro de ese <code>body</code>".</li>
+<li><code>document.body</code> es el <code>&lt;body&gt;</code> de la página: no hace falta buscarlo con <code>querySelector</code>.</li>
+</ul>
+<div class="nota">El modo oscuro así solo dura <strong>mientras estás en esa página</strong>: al cambiar de página o recargar, vuelve al modo normal. Recordarlo entre páginas se puede hacer, pero es más complicado y no lo veremos este curso.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué diferencia hay entre classList.add y classList.toggle?</summary>
+<p><code>add</code> siempre pone la clase. <code>toggle</code> la pone si no la tiene y la quita si la tiene.</p>
+</details>
+<details><summary>Escribes trucos.classList.toggle(".oculto") y no funciona. ¿Por qué?</summary>
+<p>Sobra el punto. En <code>classList</code> el nombre de la clase va sin punto.</p>
+</details>
+<details><summary>Pulsas el botón y la clase se pone (lo ves con F12), pero no cambia nada en pantalla. ¿Dónde está el problema?</summary>
+<p>En el CSS: la regla de esa clase no existe, está mal escrita o tiene otro nombre.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Añadid a vuestra web una segunda cosa que funcione con JavaScript: <strong>mostrar y ocultar</strong> algo, <strong>modo oscuro</strong>, o cualquier otro cambio de aspecto al pulsar un botón.</p>
+<ul class="checklist">
+<li>Una clase nueva en <code>estilos.css</code> con el aspecto que se va a activar.</li>
+<li>Un botón que, al pulsarlo, pone y quita esa clase con <code>classList.toggle</code>.</li>
+<li>El texto del botón cambia según el estado, usando <code>classList.contains</code> en un <code>if</code>.</li>
+<li>Comprobación: pulsáis varias veces seguidas y funciona siempre, en los dos sentidos.</li>
+<li>La consola no muestra errores.</li>
+</ul>
+<details><summary>Pista 1: ¿cómo veo si la clase se pone o no?</summary>
+<p>Pulsa <code>F12</code> → pestaña <strong>Elements</strong> y busca el elemento. Al pulsar el botón, verás aparecer y desaparecer la clase en su etiqueta.</p>
+</details>
+<details><summary>Pista 2: el modo oscuro cambia el fondo, pero las tarjetas siguen igual</summary>
+<p>Tus tarjetas tienen su propio color de fondo. Añade una regla <code>body.modo-oscuro .tu-clase-de-tarjeta { ... }</code> para cambiarlas también.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Con esto ya tenéis las dos funcionalidades JavaScript que pide la web. Repasad que las dos funcionan también en la web publicada y en el móvil.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

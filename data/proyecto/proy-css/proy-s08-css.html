@@ -1,0 +1,118 @@
+<h2>Qué es CSS</h2>
+<p>HTML dice <strong>qué hay</strong> en la página: un título, una lista, una imagen. <strong>CSS</strong> dice <strong>cómo se ve</strong>: de qué color, de qué tamaño, dónde se coloca.</p>
+<p>El CSS se escribe en un archivo aparte, <code>estilos.css</code>, y <strong>todas las páginas lo usan</strong>. Así, si cambias un color en ese archivo, cambia en toda la web a la vez.</p>
+
+<h3>Conectar el CSS con las páginas</h3>
+<ol>
+<li>En VS Code, crea el archivo <code>estilos.css</code> en la carpeta del proyecto, al lado de <code>index.html</code>.</li>
+<li>En <strong>cada página</strong>, añade esta línea dentro de <code>&lt;head&gt;</code>:</li>
+</ol>
+<pre><code><span class='et'>&lt;head</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;meta</span> <span class='at'>charset</span>=<span class='ca'>"UTF-8"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;title</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/title</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"estilos.css"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/head</span><span class='et'>&gt;</span></code></pre>
+<p>Para comprobar que funciona, escribe esto en <code>estilos.css</code> y guarda. Si el fondo de <strong>todas</strong> las páginas se vuelve amarillo, está bien conectado. Después bórralo.</p>
+<pre><code><span class='et'>body</span> {
+    <span class='at'>background-color</span>: <span class='ca'>yellow</span>;
+}</code></pre>
+
+<h2>Cómo es una regla CSS</h2>
+<pre><code><span class='et'>h1</span> {
+    <span class='at'>color</span>: <span class='ca'>darkblue</span>;
+    <span class='at'>font-size</span>: <span class='ca'>40px</span>;
+}</code></pre>
+<ul>
+<li><code>h1</code> es el <strong>selector</strong>: a qué elementos se aplica.</li>
+<li>Entre llaves <code>{ }</code> van las <strong>declaraciones</strong>.</li>
+<li>Cada declaración es <code>propiedad: valor;</code>. Los dos puntos y el punto y coma son obligatorios.</li>
+</ul>
+<div class="nota">⚠️ Si te olvidas un <code>;</code> o una llave <code>}</code>, esa regla y a veces <strong>todas las que vienen detrás</strong> dejan de funcionar. Es el error más típico en CSS.</div>
+
+<h2>Colores y texto</h2>
+<table>
+<thead><tr><th>Propiedad</th><th>Qué cambia</th><th>Ejemplo</th></tr></thead>
+<tbody>
+<tr><td><code>color</code></td><td>Color del texto</td><td><code>color: white;</code></td></tr>
+<tr><td><code>background-color</code></td><td>Color de fondo</td><td><code>background-color: #1b1b3a;</code></td></tr>
+<tr><td><code>font-family</code></td><td>Tipo de letra</td><td><code>font-family: Arial, sans-serif;</code></td></tr>
+<tr><td><code>font-size</code></td><td>Tamaño de letra</td><td><code>font-size: 18px;</code></td></tr>
+<tr><td><code>text-align</code></td><td>Alineación del texto</td><td><code>text-align: center;</code></td></tr>
+</tbody>
+</table>
+<h3>Cómo se escriben los colores</h3>
+<ul>
+<li><strong>Por nombre</strong>, en inglés: <code>red</code>, <code>white</code>, <code>darkblue</code>, <code>orange</code>...</li>
+<li><strong>En hexadecimal</strong>: <code>#</code> y 6 caracteres, como <code>#ff6b35</code>. Hay millones. Para elegirlos, busca "color picker" en Google, o pulsa el cuadradito de color que VS Code muestra al lado de cada color en el CSS.</li>
+</ul>
+<div class="nota">💡 Elige <strong>2 o 3 colores</strong> para toda la web y no más. Y comprueba que el texto se lee bien sobre el fondo: texto claro sobre fondo oscuro, o al revés.</div>
+
+<h2>Selectores de etiqueta y de clase</h2>
+<h3>Selector de etiqueta</h3>
+<p>Se aplica a <strong>todos</strong> los elementos de ese tipo, en todas las páginas:</p>
+<pre><code><span class='et'>body</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#1b1b3a</span>;
+    <span class='at'>color</span>: <span class='ca'>white</span>;
+    <span class='at'>font-family</span>: <span class='ca'>Arial, sans-serif</span>;
+}
+
+<span class='et'>h1</span> {
+    <span class='at'>color</span>: <span class='ca'>#ffcc00</span>;
+    <span class='at'>text-align</span>: <span class='ca'>center</span>;
+}</code></pre>
+<div class="salida" style="background:#1b1b3a;color:#fff;font-family:Arial,sans-serif"><h1 style="color:#ffcc00;text-align:center;margin:0 0 .4rem">Pixel Kart</h1><p style="color:#fff;margin:0">El juego de karts más rápido del instituto.</p></div>
+
+<h3>Selector de clase</h3>
+<p>¿Y si solo quieres cambiar <strong>algunos</strong> párrafos? Les pones una <strong>clase</strong> en el HTML, y en el CSS la llamas con un <strong>punto</strong> delante:</p>
+<pre><code><span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"destacado"</span><span class='et'>&gt;</span>¡Nuevo circuito: Ciudad Neón!<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+<span class='et'>&lt;p</span><span class='et'>&gt;</span>El resto de párrafos se ven normales.<span class='et'>&lt;/p</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='et'>.destacado</span> {
+    <span class='at'>color</span>: <span class='ca'>#ff6b35</span>;
+    <span class='at'>font-size</span>: <span class='ca'>22px</span>;
+}</code></pre>
+<div class="salida" style="background:#1b1b3a;color:#fff;font-family:Arial,sans-serif"><p style="color:#ff6b35;font-size:22px;margin:0 0 .4rem">¡Nuevo circuito: Ciudad Neón!</p><p style="color:#fff;margin:0">El resto de párrafos se ven normales.</p></div>
+<ul>
+<li>En HTML: <code>class="destacado"</code>, <strong>sin</strong> punto.</li>
+<li>En CSS: <code>.destacado</code>, <strong>con</strong> punto.</li>
+<li>Una clase se puede usar en <strong>tantos elementos como quieras</strong>, de cualquier tipo.</li>
+<li>Nombres de clase: minúsculas, sin espacios ni tildes, y que digan <strong>para qué</strong> son: <code>destacado</code>, <code>aviso</code>, <code>tarjeta</code>.</li>
+</ul>
+
+<h2>Comprueba tu CSS con F12</h2>
+<p>Si algo no cambia, pulsa con el botón derecho sobre ese elemento en Chrome y elige <strong>Inspeccionar</strong>. A la derecha verás qué reglas CSS se le aplican. Si una declaración sale <strong>tachada</strong>, otra regla la está pisando. Si tiene un <strong>triángulo amarillo</strong>, está mal escrita.</p>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Por qué el CSS va en un archivo aparte y no dentro de cada página?</summary>
+<p>Para que todas las páginas compartan el mismo aspecto y, cambiando un solo archivo, cambie toda la web.</p>
+</details>
+<details><summary>Escribes .aviso { color: red; } y pones class=".aviso" en el HTML. No funciona. ¿Por qué?</summary>
+<p>En el HTML la clase va sin punto: <code>class="aviso"</code>. El punto solo se pone en el CSS.</p>
+</details>
+<details><summary>Cambias colores en estilos.css y una página no cambia. ¿Qué es lo más probable?</summary>
+<p>A esa página le falta la línea <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code> en el <code>&lt;head&gt;</code>.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<ul class="checklist">
+<li>Un único archivo <code>estilos.css</code>, conectado a <strong>todas</strong> las páginas.</li>
+<li>Una paleta de <strong>2 o 3 colores</strong> aplicada a <code>body</code> y a los títulos, con el texto fácil de leer.</li>
+<li>Un tipo de letra (<code>font-family</code>) para toda la web.</li>
+<li>Al menos <strong>una clase propia</strong>, con un nombre que diga para qué es, usada en 2 elementos o más.</li>
+<li>Comprobación: al pasar de una página a otra con el menú, todas tienen el mismo aspecto.</li>
+</ul>
+<details><summary>Pista 1: no cambia nada en ninguna página</summary>
+<p>Comprueba que el archivo se llama exactamente <code>estilos.css</code> y que está en la misma carpeta que <code>index.html</code>, no dentro de <code>img</code>.</p>
+</details>
+<details><summary>Pista 2: funcionan las primeras reglas y las de abajo no</summary>
+<p>Busca un <code>;</code> o una <code>}</code> que falte justo antes de la primera regla que no funciona.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Probad distintos colores hasta que la web tenga un aspecto que os guste y vaya con vuestro tema. Pedidle la opinión a otra pareja: ¿se lee bien?</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

@@ -1,0 +1,114 @@
+<h2>Qué es una web</h2>
+<p>Una página web es <strong>un archivo de texto</strong> con instrucciones que el navegador (Chrome, por ejemplo) sabe leer y convertir en lo que ves en pantalla. Una web completa es una <strong>carpeta</strong> con varios de esos archivos:</p>
+<ul>
+<li>Archivos <code>.html</code>: el contenido (textos, imágenes, enlaces).</li>
+<li>Un archivo <code>.css</code>: el aspecto (colores, tamaños, posición).</li>
+<li>Un archivo <code>.js</code>: lo que se mueve o reacciona (botones, cálculos).</li>
+<li>Una carpeta <code>img</code>: las imágenes.</li>
+</ul>
+<p>Durante el curso os enseñaré una web de ejemplo que iré construyendo en cada sesión: <strong>Pixel Kart</strong>, un videojuego de carreras inventado. Vosotros haréis lo mismo, pero con vuestro propio tema.</p>
+<div class="nota">🤔 Haz la prueba: en cualquier web, pulsa <code>Ctrl+U</code>. Lo que ves es su código HTML. Todas las webs del mundo están hechas de texto como ese.</div>
+
+<h2>Tu pareja y vuestro tema</h2>
+<p>Hoy formamos las parejas y cada una elige un tema. Os daré una <strong>ficha en papel</strong> para rellenar:</p>
+<ol>
+<li><strong>Tema de la web.</strong> Algo que os guste a los dos: un videojuego, un deporte, un grupo de música, recetas, mascotas, coches, una serie...</li>
+<li><strong>Alias</strong> de cada uno. Es el nombre que saldrá en la web en lugar de vuestro nombre real.</li>
+<li><strong>Las 3 páginas</strong> que tendrá la web como mínimo, y qué irá en cada una.</li>
+</ol>
+<p>Ejemplo de ficha de Pixel Kart:</p>
+<table>
+<thead><tr><th>Página</th><th>Qué contiene</th></tr></thead>
+<tbody>
+<tr><td>Inicio</td><td>Qué es el juego y por qué mola</td></tr>
+<tr><td>Personajes</td><td>Los pilotos, con foto y una descripción</td></tr>
+<tr><td>Circuitos</td><td>Una tabla con los circuitos, su longitud y su dificultad</td></tr>
+</tbody>
+</table>
+<p>Más adelante añadiréis las páginas "Sobre esta web" y "Cómo llega mi web a tu pantalla", que son obligatorias para todos.</p>
+
+<h3>Privacidad: nada de datos personales</h3>
+<p>La web va a estar <strong>publicada en Internet</strong>, así que cualquiera podrá verla. Por eso:</p>
+<ul>
+<li>Usa siempre tu <strong>alias</strong>, nunca tu nombre ni tus apellidos.</li>
+<li>Nada de fotos vuestras, de vuestra casa, del instituto ni de amigos.</li>
+<li>Nada de teléfonos, direcciones, correos personales ni la ciudad donde vives.</li>
+</ul>
+<div class="nota">Un buen alias no se parece a tu nombre real: <code>RayoAzul</code> sí, <code>MarcosG2009</code> no.</div>
+
+<h2>Tu carpeta de proyecto</h2>
+<p>Todo el curso vais a trabajar dentro de <strong>una sola carpeta</strong>. Creadla ahora en el ordenador de la pareja:</p>
+<ol>
+<li>Abre el Explorador de archivos y ve a <strong>Documentos</strong>.</li>
+<li>Crea una carpeta con el nombre de vuestro tema, <strong>en minúsculas, sin espacios ni tildes</strong>. Por ejemplo: <code>pixel-kart</code>.</li>
+<li>Dentro, crea otra carpeta llamada <code>img</code>.</li>
+</ol>
+<div class="nota">⚠️ Nombres de archivos y carpetas: <strong>minúsculas, sin espacios, sin tildes, sin ñ</strong>. Usa guiones si necesitas separar palabras. Un espacio o una tilde en un nombre es la causa número uno de "¡no me sale la imagen!".</div>
+
+<h2>VS Code y Live Server</h2>
+<p><strong>VS Code</strong> es el programa donde escribiremos el código. <strong>Live Server</strong> es una extensión de VS Code que abre tu web en Chrome y la recarga sola cada vez que guardas.</p>
+<ol>
+<li>Abre VS Code.</li>
+<li>Menú <strong>Archivo → Abrir carpeta</strong> y elige la carpeta de vuestro proyecto.</li>
+<li>En el panel de la izquierda, pulsa el icono de <strong>nuevo archivo</strong> y llámalo <code>index.html</code>.</li>
+</ol>
+<p><code>index.html</code> es un nombre especial: es la <strong>página de inicio</strong>. Cuando alguien visite vuestra web, es la primera que verá.</p>
+
+<h3>La estructura mínima de una página</h3>
+<p>Copia esto en <code>index.html</code>:</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+<span class='et'>&lt;html</span> <span class='at'>lang</span>=<span class='ca'>"es"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;head</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;meta</span> <span class='at'>charset</span>=<span class='ca'>"UTF-8"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;title</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/title</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/head</span><span class='et'>&gt;</span>
+<span class='et'>&lt;body</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;h1</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/h1</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p</span><span class='et'>&gt;</span>El juego de karts más rápido del instituto.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/body</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/html</span><span class='et'>&gt;</span></code></pre>
+<ul>
+<li>Todo lo que va entre <code>&lt;</code> y <code>&gt;</code> es una <strong>etiqueta</strong>. Casi todas se abren (<code>&lt;p&gt;</code>) y se cierran (<code>&lt;/p&gt;</code>).</li>
+<li><code>&lt;head&gt;</code> tiene información <strong>sobre</strong> la página que no se ve dentro de ella. Por ejemplo, <code>&lt;title&gt;</code> es el texto de la pestaña.</li>
+<li><code>&lt;body&gt;</code> es <strong>lo que se ve</strong> en la página.</li>
+<li><code>&lt;h1&gt;</code> es el título principal y <code>&lt;p&gt;</code> es un párrafo.</li>
+</ul>
+<p>Así se ve:</p>
+<div class="salida"><h1 style="margin:0 0 .5rem">Pixel Kart</h1><p>El juego de karts más rápido del instituto.</p></div>
+
+<h3>Ábrela con Live Server</h3>
+<ol>
+<li>Guarda el archivo con <code>Ctrl+S</code>.</li>
+<li>Pulsa con el botón derecho dentro del código y elige <strong>Open with Live Server</strong> (o pulsa <strong>Go Live</strong> abajo a la derecha).</li>
+<li>Se abrirá Chrome con tu página. Cambia el texto del párrafo, guarda y mira cómo se actualiza sola.</li>
+</ol>
+<div class="nota">💡 Si al guardar no cambia nada, casi siempre es porque <strong>no has guardado</strong>. En VS Code, un punto blanco en la pestaña del archivo significa "hay cambios sin guardar".</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué diferencia hay entre lo que va en &lt;head&gt; y lo que va en &lt;body&gt;?</summary>
+<p><code>&lt;head&gt;</code> tiene información sobre la página (como el título de la pestaña), que no se ve dentro de ella. <code>&lt;body&gt;</code> es el contenido que se ve.</p>
+</details>
+<details><summary>¿Por qué la página de inicio se tiene que llamar index.html?</summary>
+<p>Porque es el nombre que buscan los servidores web cuando alguien entra en la dirección de una web. Si no existe, el visitante no ve la portada.</p>
+</details>
+<details><summary>¿Por qué no puede haber espacios ni tildes en los nombres de archivo?</summary>
+<p>Porque en las direcciones web los espacios y las tildes se convierten en códigos raros, y es fácil que una ruta deje de funcionar, sobre todo al publicar la web.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Al acabar la sesión, cada pareja tiene que tener:</p>
+<ul class="checklist">
+<li>La <strong>ficha en papel</strong> rellenada y entregada: tema, alias y 3 páginas.</li>
+<li>La carpeta del proyecto, con la subcarpeta <code>img</code>, con nombres en minúsculas y sin espacios.</li>
+<li>Un <code>index.html</code> con la estructura mínima, un <code>&lt;title&gt;</code> con el nombre de vuestro tema, un <code>&lt;h1&gt;</code> y un párrafo que explique de qué va vuestra web.</li>
+<li>La página abierta con Live Server.</li>
+</ul>
+<details><summary>Pista: no me sale nada en el navegador</summary>
+<p>Comprueba que el texto está <strong>dentro</strong> de <code>&lt;body&gt;</code> y no dentro de <code>&lt;head&gt;</code>, y que has guardado.</p>
+</details>
+<details><summary>Pista: la pestaña pone "index.html" en lugar de mi título</summary>
+<p>Te falta el <code>&lt;title&gt;</code>, o no está dentro de <code>&lt;head&gt;</code>.</p>
+</details>
+
+<h2>Antes de irte</h2>
+<p>Hoy todavía no tenemos GitHub (lo creamos la semana que viene), así que haz una copia de la carpeta del proyecto en tu <strong>Google Drive</strong> del instituto. Si el ordenador falla esta semana, no perderéis nada.</p>

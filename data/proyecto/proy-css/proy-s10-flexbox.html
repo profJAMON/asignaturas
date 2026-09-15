@@ -1,0 +1,109 @@
+<h2>El problema: todo va uno debajo de otro</h2>
+<p>Por defecto, la mayoría de elementos ocupan <strong>todo el ancho</strong> y se colocan <strong>uno debajo de otro</strong>. Las tarjetas de la sesión anterior salen en columna, aunque haya sitio para ponerlas en fila.</p>
+<p><strong>Flexbox</strong> sirve para colocar varias cajas <strong>en fila</strong> (o en columna) y decidir cómo se reparte el espacio entre ellas.</p>
+
+<h2>display: flex</h2>
+<p>La idea más importante: <code>display: flex</code> se pone en la caja <strong>que contiene</strong> a las demás (el <strong>contenedor</strong>), no en las cajas que quieres mover.</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjetas"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/div</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='et'>.tarjetas</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>gap</span>: <span class='ca'>20px</span>;
+}</code></pre>
+<div class="salida"><div style="display:flex;gap:20px;flex-wrap:wrap"><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Turbo Rex</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Nube Veloz</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Chispa</div></div></div>
+<p>Con solo eso, las tres tarjetas se ponen en fila. <code>gap</code> es el <strong>hueco</strong> entre ellas.</p>
+
+<h2>Las propiedades que vas a usar</h2>
+<p>Todas van en el <strong>contenedor</strong>:</p>
+<table>
+<thead><tr><th>Propiedad</th><th>Valores útiles</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>display</code></td><td><code>flex</code></td><td>Activa Flexbox: los hijos se ponen en fila.</td></tr>
+<tr><td><code>gap</code></td><td><code>20px</code></td><td>Hueco entre los hijos.</td></tr>
+<tr><td><code>justify-content</code></td><td><code>center</code>, <code>space-between</code></td><td>Cómo se reparten en horizontal: juntos en el centro, o separados al máximo.</td></tr>
+<tr><td><code>align-items</code></td><td><code>center</code></td><td>Los centra en vertical dentro de la fila.</td></tr>
+<tr><td><code>flex-wrap</code></td><td><code>wrap</code></td><td>Si no caben, pasan a la línea de abajo en lugar de apretarse.</td></tr>
+</tbody>
+</table>
+<h3>justify-content, en dibujo</h3>
+<div class="salida">
+<p style="margin:0 0 .3rem"><code>justify-content: center</code></p>
+<div style="display:flex;justify-content:center;gap:8px;border:1px dashed var(--border);padding:6px;margin-bottom:.8rem"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
+<p style="margin:0 0 .3rem"><code>justify-content: space-between</code></p>
+<div style="display:flex;justify-content:space-between;gap:8px;border:1px dashed var(--border);padding:6px"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
+</div>
+
+<h2>El menú en fila</h2>
+<p>El menú de la sesión 4 ya está preparado: los enlaces están dentro de <code>&lt;nav&gt;</code>. Solo hay que convertir <code>nav</code> en contenedor flex y darle estilo a los enlaces:</p>
+<pre><code><span class='et'>nav</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>justify-content</span>: <span class='ca'>center</span>;
+    <span class='at'>gap</span>: <span class='ca'>10px</span>;
+    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
+    <span class='at'>padding</span>: <span class='ca'>12px</span>;
+}
+
+<span class='et'>nav a</span> {
+    <span class='at'>color</span>: <span class='ca'>white</span>;
+    <span class='at'>text-decoration</span>: <span class='ca'>none</span>;
+    <span class='at'>padding</span>: <span class='ca'>8px 14px</span>;
+    <span class='at'>border-radius</span>: <span class='ca'>6px</span>;
+}
+
+<span class='et'>nav a:hover</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#ffcc00</span>;
+    <span class='at'>color</span>: <span class='ca'>#1b1b3a</span>;
+}</code></pre>
+<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif"><div style="display:flex;justify-content:center;gap:10px;background:#2a2a55;padding:12px;flex-wrap:wrap"><span style="color:#fff;padding:8px 14px;border-radius:6px">Inicio</span><span style="color:#1b1b3a;background:#ffcc00;padding:8px 14px;border-radius:6px">Personajes</span><span style="color:#fff;padding:8px 14px;border-radius:6px">Circuitos</span></div></div>
+<ul>
+<li><code>text-decoration: none</code> quita el subrayado de los enlaces.</li>
+<li><code>:hover</code> es el estilo que tiene el elemento <strong>cuando pasas el ratón por encima</strong>. En el dibujo, el ratón está sobre "Personajes".</li>
+</ul>
+
+<h2>Las tarjetas en fila</h2>
+<pre><code><span class='et'>.tarjetas</span> {
+    <span class='at'>display</span>: <span class='ca'>flex</span>;
+    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
+    <span class='at'>justify-content</span>: <span class='ca'>center</span>;
+    <span class='at'>gap</span>: <span class='ca'>20px</span>;
+}</code></pre>
+<p>Con <code>flex-wrap: wrap</code>, en un ordenador salen varias por fila y en un móvil pasan solas a la línea de abajo. Recuerda que en la sesión anterior dimos a cada tarjeta un <code>width</code>: sin ancho, las tarjetas se estiran o se aplastan.</p>
+<div class="nota">⚠️ Si pones <code>display: flex</code> en <code>.tarjeta</code> en lugar de en <code>.tarjetas</code>, lo que se pone en fila es <strong>lo de dentro de cada tarjeta</strong> (imagen, título y texto), no las tarjetas. Pregúntate siempre: <strong>¿qué cajas quiero en fila? ¿Dentro de qué caja están?</strong> El <code>display: flex</code> va en esa.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>Quieres poner en fila los &lt;li&gt; de una lista &lt;ul&gt;. ¿Dónde pones display: flex?</summary>
+<p>En el <code>ul</code>, que es el contenedor de los <code>li</code>.</p>
+</details>
+<details><summary>Tus tarjetas en fila se aplastan en el móvil. ¿Qué propiedad falta?</summary>
+<p><code>flex-wrap: wrap;</code> en el contenedor, para que pasen a la línea de abajo.</p>
+</details>
+<details><summary>¿Qué hace nav a:hover?</summary>
+<p>Aplica un estilo a los enlaces del menú solo mientras el ratón está encima de ellos.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<ul class="checklist">
+<li>El <strong>menú en fila</strong> con Flexbox, sin subrayados, con fondo y con un efecto <code>:hover</code>.</li>
+<li>El menú se ve igual en todas las páginas (como el CSS es el mismo archivo, debería salir solo).</li>
+<li>Las <strong>tarjetas</strong> de la sesión 9 en fila dentro de un contenedor, con <code>gap</code> y <code>flex-wrap: wrap</code>.</li>
+<li>Comprobación: al hacer la ventana de Chrome estrecha, las tarjetas pasan a la línea de abajo y nada se sale de la pantalla.</li>
+</ul>
+<details><summary>Pista 1: las tarjetas siguen en columna</summary>
+<p>¿Existe en el HTML un <code>&lt;div&gt;</code> que contenga <strong>todas</strong> las tarjetas? Si no, créalo, ponle una clase y pon en esa clase el <code>display: flex</code>.</p>
+</details>
+<details><summary>Pista 2: el :hover no hace nada</summary>
+<p>Escríbelo sin espacios: <code>nav a:hover</code>. Con un espacio entre <code>a</code> y <code>:hover</code> ya no funciona.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Buscad otros sitios donde Flexbox mejore la web: el logo y el menú en la misma fila (<code>justify-content: space-between</code> en el <code>header</code>), una imagen al lado de un texto, los campos del formulario...</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

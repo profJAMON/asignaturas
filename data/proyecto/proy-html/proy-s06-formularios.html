@@ -1,0 +1,98 @@
+<h2>Para qué sirve un formulario</h2>
+<p>Un formulario es la parte de una web donde <strong>el visitante escribe o elige algo</strong>: buscar, apuntarse a un torneo, hacer un test, calcular un precio...</p>
+<p>Hoy haremos solo la parte de HTML: las cajas, las opciones y el botón. Por ahora, al pulsar el botón no pasará nada. En la parte de <strong>JavaScript</strong> haremos que el formulario funcione de verdad.</p>
+
+<h2>Las piezas de un formulario</h2>
+<p>Así es el formulario de inscripción al torneo de Pixel Kart:</p>
+<pre><code><span class='et'>&lt;form</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span> <span class='at'>placeholder</span>=<span class='ca'>"Por ejemplo: RayoAzul"</span><span class='et'>&gt;</span>
+
+    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"edad"</span><span class='et'>&gt;</span>Edad:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"number"</span> <span class='at'>id</span>=<span class='ca'>"edad"</span> <span class='at'>min</span>=<span class='ca'>"12"</span> <span class='at'>max</span>=<span class='ca'>"99"</span><span class='et'>&gt;</span>
+
+    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>Piloto favorito:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;option</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;option</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;option</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/select</span><span class='et'>&gt;</span>
+
+    <span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/form</span><span class='et'>&gt;</span></code></pre>
+<div class="salida">
+<p style="margin:0 0 .5rem"><label>Tu alias: <input type="text" placeholder="Por ejemplo: RayoAzul"></label></p>
+<p style="margin:0 0 .5rem"><label>Edad: <input type="number" min="12" max="99"></label></p>
+<p style="margin:0 0 .5rem"><label>Piloto favorito: <select><option>Turbo Rex</option><option>Nube Veloz</option><option>Chispa</option></select></label></p>
+<p style="margin:0"><button type="button">Inscribirme</button></p>
+</div>
+<table>
+<thead><tr><th>Etiqueta</th><th>Para qué sirve</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;form&gt;</code></td><td>Agrupa todo el formulario.</td></tr>
+<tr><td><code>&lt;label&gt;</code></td><td>El texto que explica qué hay que poner en cada caja.</td></tr>
+<tr><td><code>&lt;input&gt;</code></td><td>Una caja para escribir. No se cierra.</td></tr>
+<tr><td><code>&lt;select&gt;</code> y <code>&lt;option&gt;</code></td><td>Un desplegable con opciones para elegir.</td></tr>
+<tr><td><code>&lt;button&gt;</code></td><td>Un botón.</td></tr>
+</tbody>
+</table>
+
+<h3>Tipos de &lt;input&gt;</h3>
+<p>El atributo <code>type</code> cambia qué se puede escribir en la caja:</p>
+<table>
+<thead><tr><th>type</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>Texto normal.</td></tr>
+<tr><td><code>number</code></td><td>Solo números. Con <code>min</code> y <code>max</code> pones límites.</td></tr>
+<tr><td><code>email</code></td><td>Un correo electrónico.</td></tr>
+<tr><td><code>date</code></td><td>Una fecha, con calendario.</td></tr>
+<tr><td><code>checkbox</code></td><td>Una casilla para marcar.</td></tr>
+</tbody>
+</table>
+<p><code>placeholder</code> es el texto gris de ejemplo que se ve dentro de la caja vacía.</p>
+
+<h3>La pareja label + id</h3>
+<p>El <code>for</code> del <code>&lt;label&gt;</code> tiene que ser <strong>igual</strong> que el <code>id</code> de su caja. Así quedan unidos: si pulsas el texto, el cursor salta a la caja.</p>
+<p>El <code>id</code> es un nombre <strong>único</strong> para un elemento: no puede haber dos iguales en la misma página. Además, será la forma de encontrar cada caja desde JavaScript, así que ponle nombres claros: <code>id="alias"</code> sí, <code>id="caja1"</code> no.</p>
+
+<h3>¿Por qué type="button"?</h3>
+<p>Un botón dentro de un <code>&lt;form&gt;</code>, si no le dices nada, <strong>envía el formulario</strong> y la página se recarga (se borra lo escrito). Como nosotros no enviaremos datos a ningún sitio, ponemos siempre <code>type="button"</code>.</p>
+
+<h2>Privacidad en los formularios</h2>
+<div class="nota">⚠️ Vuestra web estará publicada. <strong>No pidáis datos personales</strong>: nada de nombre y apellidos, teléfono, dirección ni DNI. Pedid alias, opiniones, gustos, cantidades... Y recordad que el formulario no enviará nada a ningún sitio: lo que se escriba solo lo usará JavaScript en esa misma página.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>Pulsas el texto de un label y el cursor no va a la caja. ¿Qué falla?</summary>
+<p>El <code>for</code> del <code>&lt;label&gt;</code> no coincide con el <code>id</code> del <code>&lt;input&gt;</code>.</p>
+</details>
+<details><summary>Quieres que el visitante elija su nivel entre "Principiante", "Medio" y "Experto". ¿Qué usas?</summary>
+<p>Un <code>&lt;select&gt;</code> con tres <code>&lt;option&gt;</code>.</p>
+</details>
+<details><summary>Pulsas el botón y todo lo que habías escrito se borra. ¿Por qué?</summary>
+<p>Al botón le falta <code>type="button"</code>: está enviando el formulario y la página se recarga.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Pensad qué podría hacer vuestra web con un formulario (un test, una calculadora, una encuesta, elegir algo y ver una recomendación...) y cread la parte de HTML:</p>
+<ul class="checklist">
+<li>Un <code>&lt;form&gt;</code> en la página que tenga más sentido para vuestro tema.</li>
+<li>Al menos <strong>2 cajas <code>&lt;input&gt;</code></strong> de tipos distintos y <strong>un <code>&lt;select&gt;</code></strong> con 3 opciones o más.</li>
+<li>Cada caja con su <code>&lt;label&gt;</code>, y pulsando el texto el cursor salta a la caja.</li>
+<li>Todos los <code>id</code> distintos y con nombres que dicen qué son.</li>
+<li>Un <code>&lt;button type="button"&gt;</code>.</li>
+<li>Ningún campo pide datos personales.</li>
+<li>Un comentario HTML encima del formulario que explique qué queréis que haga cuando funcione. Por ejemplo: <code>&lt;!-- Cuando funcione: dirá qué piloto te va mejor --&gt;</code></li>
+</ul>
+<details><summary>Pista: no se me ocurre para qué usar el formulario</summary>
+<p>Ideas según el tema. Música: elige tu estado de ánimo y te recomiendo una canción. Recetas: escribe cuántas personas sois y te calculo los ingredientes. Deporte: escribe los goles de cada equipo y te digo quién gana. Videojuegos: responde 3 preguntas y te digo qué personaje eres.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Revisad que el menú sigue igual en todas las páginas y que la página del formulario también lo tiene. Si os sobra tiempo, añadid más contenido a la página que esté más vacía.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

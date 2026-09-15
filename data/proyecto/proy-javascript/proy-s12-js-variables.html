@@ -1,0 +1,115 @@
+<h2>Qué es JavaScript</h2>
+<p>Ya tenéis una web con contenido (HTML) y con aspecto (CSS). Pero todavía <strong>no hace nada</strong>: si pulsas el botón del formulario, no pasa nada.</p>
+<p><strong>JavaScript</strong> (JS) es un <strong>lenguaje de programación</strong>: le das órdenes al navegador y él las cumple una detrás de otra. Con JS la web puede calcular, reaccionar a un clic, cambiar textos o esconder cosas.</p>
+<table>
+<thead><tr><th>Lenguaje</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
+<tbody>
+<tr><td>HTML</td><td>Qué hay</td><td>Hay un botón</td></tr>
+<tr><td>CSS</td><td>Cómo se ve</td><td>El botón es naranja</td></tr>
+<tr><td>JavaScript</td><td>Qué hace</td><td>Al pulsar el botón, sale un mensaje</td></tr>
+</tbody>
+</table>
+
+<h2>Conectar un archivo JavaScript</h2>
+<p>Igual que el CSS, el JavaScript va en un archivo aparte. Nosotros haremos <strong>un archivo JS para cada página que lo necesite</strong>, con el mismo nombre que la página. Para la página del torneo de Pixel Kart, <code>torneo.html</code>, el archivo será <code>torneo.js</code>.</p>
+<p>Se conecta con la etiqueta <code>&lt;script&gt;</code>, justo <strong>antes de cerrar el <code>&lt;body&gt;</code></strong>:</p>
+<pre><code>    <span class='et'>&lt;main</span><span class='et'>&gt;</span>
+        ...
+    <span class='et'>&lt;/main</span><span class='et'>&gt;</span>
+
+    <span class='et'>&lt;script</span> <span class='at'>src</span>=<span class='ca'>"torneo.js"</span><span class='et'>&gt;</span><span class='et'>&lt;/script</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/body</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/html</span><span class='et'>&gt;</span></code></pre>
+<p>Va al final a propósito: así, cuando el JavaScript empieza a funcionar, todo el HTML de la página ya existe y lo puede encontrar.</p>
+
+<h2>La consola</h2>
+<p>La <strong>consola</strong> es una ventana de Chrome donde JavaScript puede escribir mensajes. Es la herramienta más útil para saber qué está pasando. Se abre con <code>F12</code> → pestaña <strong>Console</strong>.</p>
+<p>Escribe esto en <code>torneo.js</code>, guarda y mira la consola de <code>torneo.html</code>:</p>
+<pre><code>console.<span class='fn'>log</span>(<span class='ca'>"¡Hola desde Pixel Kart!"</span>);</code></pre>
+<pre><code>¡Hola desde Pixel Kart!</code></pre>
+<ul>
+<li><code>console.log(...)</code> escribe en la consola lo que le pongas entre los paréntesis.</li>
+<li>Los <strong>textos</strong> van siempre <strong>entre comillas</strong>.</li>
+<li>Cada orden termina con <strong>punto y coma</strong> <code>;</code>.</li>
+</ul>
+<div class="nota">⚠️ Si JavaScript encuentra un error, lo escribe <strong>en rojo en la consola</strong>, con el número de línea. Acostúmbrate a tener la consola abierta siempre que trabajes con JS: es la primera cosa que tienes que mirar cuando algo no funciona.</div>
+
+<h2>Variables</h2>
+<p>Una <strong>variable</strong> es una caja con nombre donde guardas un dato para usarlo después:</p>
+<pre><code><span class='kw'>let</span> piloto = <span class='ca'>"Turbo Rex"</span>;
+<span class='kw'>let</span> vueltas = <span class='nu'>3</span>;
+<span class='kw'>let</span> tiempoPorVuelta = <span class='nu'>42</span>;
+
+console.<span class='fn'>log</span>(piloto);
+console.<span class='fn'>log</span>(vueltas * tiempoPorVuelta);</code></pre>
+<pre><code>Turbo Rex
+126</code></pre>
+<ul>
+<li><code>let</code> crea la variable. Después va su <strong>nombre</strong>, un <code>=</code> y el <strong>valor</strong> que guarda.</li>
+<li>Nombres de variables: sin espacios, sin tildes y que digan qué guardan. Si son varias palabras, se juntan y cada una empieza en mayúscula: <code>tiempoPorVuelta</code>.</li>
+<li>Para usar el dato, escribe el nombre de la variable <strong>sin comillas</strong>.</li>
+</ul>
+
+<h3>Números y textos</h3>
+<p>No es lo mismo <code>5</code> que <code>"5"</code>. Sin comillas es un <strong>número</strong> y se puede calcular. Con comillas es un <strong>texto</strong>.</p>
+<table>
+<thead><tr><th>Operación</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><code>5 + 5</code></td><td><code>10</code></td></tr>
+<tr><td><code>"5" + "5"</code></td><td><code>"55"</code> (junta los textos)</td></tr>
+<tr><td><code>10 - 3</code>, <code>4 * 2</code>, <code>9 / 3</code></td><td><code>7</code>, <code>8</code>, <code>3</code></td></tr>
+</tbody>
+</table>
+<p>El <code>+</code> con textos sirve para <strong>juntar</strong> un mensaje con el valor de una variable:</p>
+<pre><code><span class='kw'>let</span> piloto = <span class='ca'>"Turbo Rex"</span>;
+<span class='kw'>let</span> vueltas = <span class='nu'>3</span>;
+<span class='kw'>let</span> tiempoPorVuelta = <span class='nu'>42</span>;
+<span class='kw'>let</span> tiempoTotal = vueltas * tiempoPorVuelta;
+
+console.<span class='fn'>log</span>(piloto + <span class='ca'>" tarda "</span> + tiempoTotal + <span class='ca'>" segundos en acabar la carrera."</span>);</code></pre>
+<pre><code>Turbo Rex tarda 126 segundos en acabar la carrera.</code></pre>
+<div class="nota">💡 Fíjate en los <strong>espacios dentro de las comillas</strong>: <code>" tarda "</code>. Si no los pones, sale <code>Turbo Rextarda126segundos</code>.</div>
+
+<h3>Comentarios</h3>
+<p>En JavaScript, un comentario empieza por <code>//</code>. El navegador lo ignora. Úsalos para explicar qué hace cada parte:</p>
+<pre><code><span class='co'>// Precio de la entrada al torneo, sin IVA</span>
+<span class='kw'>let</span> precio = <span class='nu'>10</span>;
+<span class='kw'>let</span> precioConIva = precio * <span class='nu'>1.21</span>; <span class='co'>// el IVA es el 21 %</span></code></pre>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Por qué el &lt;script&gt; va al final del &lt;body&gt; y no en el &lt;head&gt;?</summary>
+<p>Para que, cuando el JavaScript se ejecute, todo el HTML de la página ya exista y se pueda encontrar.</p>
+</details>
+<details><summary>¿Qué sale en la consola con console.log("3" + 4)?</summary>
+<p><code>34</code>: como uno de los dos es un texto, el <code>+</code> los junta en lugar de sumarlos.</p>
+</details>
+<details><summary>Escribes console.log(piloto) y sale en rojo "piloto is not defined". ¿Qué significa?</summary>
+<p>Que no existe ninguna variable con ese nombre: no la has creado con <code>let</code>, o está escrita distinta (por ejemplo, <code>Piloto</code> con mayúscula).</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Cread el archivo JavaScript de la página donde tenéis el formulario y haced un <strong>cálculo de vuestro tema</strong> que salga en la consola. Por ejemplo: el precio de unas entradas con IVA, cuántos minutos dura un disco entero, los puntos de un equipo después de varias jornadas...</p>
+<ul class="checklist">
+<li>Un archivo <code>.js</code> con el mismo nombre que la página del formulario, conectado al final de su <code>&lt;body&gt;</code>.</li>
+<li>Al menos <strong>3 variables</strong> con nombres que digan qué guardan, y al menos una con un texto.</li>
+<li>Una <strong>variable nueva</strong> que se calcula a partir de otras (con <code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>).</li>
+<li>Un <code>console.log</code> que muestra una frase completa, con espacios bien puestos, que junta texto y variables.</li>
+<li>Al menos 2 comentarios que expliquen el cálculo.</li>
+<li>La consola no muestra ningún error en rojo.</li>
+</ul>
+<details><summary>Pista 1: la consola está vacía</summary>
+<p>¿Estás mirando la consola de la página correcta? ¿El <code>src</code> del <code>&lt;script&gt;</code> coincide con el nombre del archivo? Si el archivo no se encuentra, la consola dice <code>404</code>.</p>
+</details>
+<details><summary>Pista 2: sale "Uncaught SyntaxError"</summary>
+<p>Hay algo mal escrito en la línea que indica: casi siempre unas comillas o un paréntesis sin cerrar.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Pensad qué dos cosas va a hacer vuestra web con JavaScript (el formulario y otra más) y apuntadlas como comentario al principio del archivo <code>.js</code>. En las próximas sesiones las iremos construyendo.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

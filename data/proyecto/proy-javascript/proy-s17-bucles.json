@@ -1,0 +1,57 @@
+{
+  "id": "proy-s17-bucles",
+  "titulo": "Sesión 17 — Repetir con bucles",
+  "fecha": "",
+  "descripcion": "El bucle for y sus tres partes, escribir HTML con innerHTML y +=, y generar una lista o una tabla con el número que elige el usuario.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Bucles",
+      "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Looping_code"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántas veces se repite for (let i = 1; i <= 4; i = i + 1)?",
+          "opciones": [
+            "3",
+            "4",
+            "5"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué diferencia hay entre innerHTML y textContent?",
+          "opciones": [
+            "innerHTML escribe etiquetas HTML; textContent solo texto",
+            "Ninguna",
+            "textContent es más rápido"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué hace lista.innerHTML += \"<li>Hola</li>\"?",
+          "opciones": [
+            "Sustituye todo lo que había",
+            "Añade un <li> al final",
+            "Borra la lista"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Pulsas el botón dos veces y la tabla sale repetida. ¿Qué falta?",
+          "opciones": [
+            "Vaciarla al principio con innerHTML = \"\"",
+            "Otro bucle",
+            "Un if"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

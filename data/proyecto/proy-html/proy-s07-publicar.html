@@ -1,0 +1,108 @@
+<h2>Vuestra web ya está en Internet</h2>
+<p>He conectado el repositorio de cada pareja con <strong>Cloudflare</strong>, una empresa con miles de servidores repartidos por el mundo. A partir de hoy funciona así:</p>
+<ol>
+<li>Subís los archivos a GitHub, como cada semana.</li>
+<li>Cloudflare se da cuenta de que hay cambios y <strong>copia los archivos</strong> a sus servidores.</li>
+<li>En uno o dos minutos, la web publicada ya tiene los cambios.</li>
+</ol>
+<p>No tenéis que hacer nada nuevo: <strong>subir a GitHub ya es publicar</strong>. Os daré la dirección de vuestra web, que acaba en <code>.pages.dev</code>. Apuntadla y guardadla en marcadores.</p>
+<div class="nota">⚠️ Como subir es publicar, <strong>lo que subáis lo puede ver cualquiera</strong>. Antes de subir, revisad que no hay datos personales, fotos vuestras ni textos de los que os podáis arrepentir.</div>
+<div class="nota">Esta web es para este curso. Al terminar, la retiraré de Cloudflare. El código seguirá en GitHub.</div>
+
+<h3>Si la web publicada no se ve igual que en Live Server</h3>
+<table>
+<thead><tr><th>Lo que pasa</th><th>Causa más probable</th></tr></thead>
+<tbody>
+<tr><td>Sale un error 404 en la portada</td><td>En GitHub, <code>index.html</code> está dentro de una carpeta y no en la raíz, o se llama <code>Index.html</code>.</td></tr>
+<tr><td>Una imagen se ve en Live Server pero no publicada</td><td>Mayúsculas: el nombre del archivo y el <code>src</code> no coinciden exactamente (<code>Logo.png</code> y <code>logo.png</code>).</td></tr>
+<tr><td>Los cambios no aparecen</td><td>No has subido, o no ha pasado un minuto. Recarga con <code>Ctrl+F5</code>.</td></tr>
+</tbody>
+</table>
+
+<h2>Cómo llega tu web a una pantalla</h2>
+<p>Cuando alguien escribe la dirección de vuestra web en su móvil, pasan muchas cosas en menos de un segundo. Esto está muy relacionado con lo que veis en <strong>Instalación y mantenimiento de redes</strong>:</p>
+<div class="salida">
+<svg viewBox="0 0 560 304" width="100%" role="img" aria-label="Arriba, publicar: vuestro ordenador sube a GitHub y Cloudflare copia los archivos a sus servidores. Abajo, visitar: el navegador pregunta al DNS la IP de la dirección, pide los archivos a esa IP y el servidor de Cloudflare se los envía" style="max-width:100%;height:auto;">
+<text x="20" y="24" font-family="monospace" font-size="12" font-weight="700" fill="#4fc1ff">PUBLICAR (lo hacéis vosotros)</text>
+<rect x="20" y="38" width="140" height="54" rx="6" fill="#252526" stroke="#4fc1ff"/>
+<text x="90" y="62" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Vuestro</text>
+<text x="90" y="78" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">ordenador</text>
+<rect x="210" y="38" width="140" height="54" rx="6" fill="#252526" stroke="#4fc1ff"/>
+<text x="280" y="70" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">GitHub</text>
+<rect x="400" y="38" width="140" height="54" rx="6" fill="#252526" stroke="#89d185"/>
+<text x="470" y="62" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Servidores</text>
+<text x="470" y="78" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Cloudflare</text>
+<path d="M 162 65 L 200 65" stroke="#4fc1ff" stroke-width="2"/><path d="M 208 65 L 199 60 L 199 70 z" fill="#4fc1ff"/>
+<path d="M 352 65 L 390 65" stroke="#4fc1ff" stroke-width="2"/><path d="M 398 65 L 389 60 L 389 70 z" fill="#4fc1ff"/>
+<text x="181" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">1. subís</text>
+<text x="371" y="108" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">2. copia</text>
+<path d="M 20 132 L 540 132" stroke="#3c3c3c"/>
+<text x="20" y="158" font-family="monospace" font-size="12" font-weight="700" fill="#ce9178">VISITAR (lo hace cualquiera)</text>
+<rect x="20" y="182" width="140" height="54" rx="6" fill="#252526" stroke="#ce9178"/>
+<text x="90" y="206" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Navegador</text>
+<text x="90" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">del visitante</text>
+<rect x="210" y="182" width="140" height="54" rx="6" fill="#252526" stroke="#ce9178"/>
+<text x="280" y="206" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">DNS</text>
+<text x="280" y="222" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">dirección → IP</text>
+<rect x="400" y="182" width="140" height="54" rx="6" fill="#252526" stroke="#89d185"/>
+<text x="470" y="206" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Servidores</text>
+<text x="470" y="222" text-anchor="middle" font-family="monospace" font-size="12" font-weight="700" fill="#f3f3f3">Cloudflare</text>
+<path d="M 162 200 L 200 200" stroke="#ce9178" stroke-width="2"/><path d="M 208 200 L 199 195 L 199 205 z" fill="#ce9178"/>
+<text x="185" y="174" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">3. ¿IP?</text>
+<path d="M 208 218 L 170 218" stroke="#ce9178" stroke-width="2"/><path d="M 162 218 L 171 213 L 171 223 z" fill="#ce9178"/>
+<path d="M 100 238 L 100 262 L 460 262 L 460 247" stroke="#ce9178" stroke-width="2" fill="none"/><path d="M 460 238 L 455 248 L 465 248 z" fill="#ce9178"/>
+<text x="280" y="256" text-anchor="middle" font-family="monospace" font-size="10" fill="#9099a6">4. pide los archivos a esa IP</text>
+<path d="M 480 238 L 480 284 L 80 284 L 80 247" stroke="#89d185" stroke-width="2" fill="none" stroke-dasharray="5 3"/><path d="M 80 238 L 75 248 L 85 248 z" fill="#89d185"/>
+<text x="280" y="297" text-anchor="middle" font-family="monospace" font-size="10" fill="#89d185">5. recibe HTML, CSS, JS e imágenes y dibuja la página</text>
+</svg>
+<p class="pie-figura">Publicar pasa una vez por cambio; visitar pasa cada vez que alguien abre la web.</p>
+</div>
+<ol>
+<li><strong>Subís</strong> los archivos a GitHub.</li>
+<li><strong>Cloudflare los copia</strong> a sus servidores. Un <strong>servidor</strong> es un ordenador encendido día y noche que entrega archivos a quien se los pide.</li>
+<li>El visitante escribe la dirección. Pero los ordenadores no se buscan por nombres, sino por <strong>direcciones IP</strong> (números como <code>104.21.35.12</code>). Por eso el navegador pregunta a un servidor <strong>DNS</strong>: "¿qué IP tiene esta dirección?". El DNS es como la agenda de contactos de Internet.</li>
+<li>Con la IP, el navegador <strong>pide los archivos</strong> al servidor de Cloudflare.</li>
+<li>El servidor se los envía y el navegador <strong>lee el HTML, el CSS y el JavaScript y dibuja la página</strong>.</li>
+</ol>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué tenéis que hacer para que un cambio salga en la web publicada?</summary>
+<p>Subir los archivos a GitHub y esperar uno o dos minutos. Cloudflare publica los cambios solo.</p>
+</details>
+<details><summary>¿Para qué sirve el DNS?</summary>
+<p>Para traducir la dirección web (un nombre) a la dirección IP del servidor (un número), que es lo que necesita el navegador para pedir los archivos.</p>
+</details>
+<details><summary>Si apagáis vuestro ordenador, ¿se sigue viendo la web publicada? ¿Por qué?</summary>
+<p>Sí, porque los archivos están copiados en los servidores de Cloudflare, que siempre están encendidos. Vuestro ordenador solo hace falta para hacer cambios.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<ul class="checklist">
+<li>Abrís vuestra web publicada en el ordenador <strong>y en el móvil</strong>, y todas las páginas e imágenes funcionan.</li>
+<li>Hacéis un cambio pequeño, lo subís y comprobáis que sale en la web publicada.</li>
+<li>Creáis la página <code>como-llega.html</code>, con el mismo menú que las demás, y la añadís al menú de <strong>todas</strong> las páginas.</li>
+<li>En esa página, un primer borrador: los pasos del recorrido <strong>con vuestras palabras</strong>, en una lista numerada. No copiéis el texto de esta sesión.</li>
+</ul>
+<p>El borrador lo terminaréis en la sesión 18. La página final tiene que llevar también un <strong>esquema</strong>: una tabla, un dibujo hecho por vosotros guardado en <code>img</code>, o lo que se os ocurra.</p>
+<details><summary>Pista: la web publicada da error 404</summary>
+<p>Entra en el repositorio de GitHub: nada más entrar tiene que verse <code>index.html</code>, escrito así, en minúsculas. Si está dentro de una carpeta, avísame.</p>
+</details>
+
+<h2>Repaso: revisa todo el HTML</h2>
+<p>Esta sesión también sirve para poneros al día. Antes de empezar con CSS, comprobad que vuestra web tiene todo esto:</p>
+<ul class="checklist">
+<li>Portada con <code>&lt;h1&gt;</code>, apartados <code>&lt;h2&gt;</code> y párrafos (sesión 2).</li>
+<li>Al menos 3 imágenes con <code>alt</code>, en la carpeta <code>img</code>, y el archivo <code>fuentes.txt</code> (sesión 3).</li>
+<li>3 páginas con el mismo menú en <code>&lt;header&gt;</code> y <code>&lt;nav&gt;</code>, y un enlace externo (sesión 4).</li>
+<li>Una lista y una tabla (sesión 5).</li>
+<li>Un formulario con labels, 2 inputs, un select y un botón (sesión 6).</li>
+<li>Todo subido a GitHub y visible en la web publicada.</li>
+</ul>
+<div class="nota">Recordad: en la <strong>sesión 11</strong> reviso todos los retos de HTML y CSS. Lo que falte ese día cuenta como un 0.</div>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

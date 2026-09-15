@@ -1,0 +1,35 @@
+{
+  "id": "proy-s07-publicar",
+  "titulo": "Sesión 7 — La web publicada y repaso de HTML",
+  "fecha": "",
+  "descripcion": "Cómo se publica la web desde GitHub con Cloudflare, el recorrido de una web hasta la pantalla (servidor, IP y DNS), el borrador de la página \"Cómo llega mi web a tu pantalla\" y repaso de todo el HTML.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "relacionar",
+      "titulo": "Relaciona cada pieza con lo que hace",
+      "pares": [
+        {
+          "izquierda": "GitHub",
+          "derecha": "Guarda los archivos de vuestra web"
+        },
+        {
+          "izquierda": "Servidor",
+          "derecha": "Ordenador siempre encendido que entrega los archivos"
+        },
+        {
+          "izquierda": "Dirección IP",
+          "derecha": "Número que identifica a un ordenador en la red"
+        },
+        {
+          "izquierda": "DNS",
+          "derecha": "Traduce el nombre de la web a una dirección IP"
+        },
+        {
+          "izquierda": "Navegador",
+          "derecha": "Lee HTML, CSS y JavaScript y dibuja la página"
+        }
+      ]
+    }
+  ]
+}

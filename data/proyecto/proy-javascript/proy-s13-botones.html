@@ -1,0 +1,97 @@
+<h2>La receta de un botón</h2>
+<p>Casi todo lo que haréis con JavaScript sigue la misma receta de <strong>tres pasos</strong>:</p>
+<ol>
+<li><strong>Buscar</strong> en la página los elementos que vas a usar.</li>
+<li><strong>Esperar</strong> a que alguien pulse el botón.</li>
+<li><strong>Hacer</strong> algo cuando lo pulse.</li>
+</ol>
+<p>Hoy lo aplicamos a Pixel Kart: un botón que muestra un dato curioso del juego.</p>
+<pre><code><span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-dato"</span><span class='et'>&gt;</span>Ver un dato curioso<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
+<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"dato"</span><span class='et'>&gt;</span><span class='et'>&lt;/p</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='co'>// 1. Buscar los elementos</span>
+<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-dato"</span>);
+<span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);
+
+<span class='co'>// 2. Esperar al clic</span>
+boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='co'>// 3. Hacer algo</span>
+    dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;
+});</code></pre>
+<div class="salida"><p style="margin:0 0 .4rem"><button type="button">Ver un dato curioso</button></p><p style="margin:0;color:var(--text-dim)">Al pulsar, en el párrafo vacío aparece: <em>Turbo Rex fue diseñado por un chaval de 14 años.</em></p></div>
+
+<h2>Paso 1: buscar con querySelector</h2>
+<pre><code><span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-dato"</span>);</code></pre>
+<ul>
+<li><code>document</code> es <strong>la página</strong>.</li>
+<li><code>querySelector</code> busca en ella <strong>el primer elemento</strong> que cumpla lo que le pides.</li>
+<li>Lo que va entre comillas es un <strong>selector, igual que en CSS</strong>: <code>"#boton-dato"</code> busca el elemento con <code>id="boton-dato"</code>. La almohadilla <code>#</code> significa id, igual que el punto significa clase.</li>
+<li>Lo que encuentra se guarda en una variable, para usarlo después.</li>
+</ul>
+<div class="nota">⚠️ En el HTML: <code>id="boton-dato"</code>, <strong>sin</strong> almohadilla. En JavaScript: <code>"#boton-dato"</code>, <strong>con</strong> almohadilla. Es el mismo lío que con el punto de las clases.</div>
+
+<h2>Paso 2: esperar con addEventListener</h2>
+<pre><code>boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='co'>// aquí dentro va lo que pasa al pulsar</span>
+});</code></pre>
+<ul>
+<li><code>addEventListener</code> significa "quédate escuchando". Le dices <strong>qué esperar</strong> (<code>"click"</code>) y <strong>qué hacer</strong>.</li>
+<li>Lo que va entre las llaves <code>{ }</code> de <code>function () { }</code> <strong>no se ejecuta al cargar la página</strong>: se ejecuta <strong>cada vez que se pulsa</strong> el botón.</li>
+<li>Fíjate en cómo se cierra: <code>});</code>. La llave cierra la función, el paréntesis cierra <code>addEventListener</code> y el punto y coma acaba la orden.</li>
+</ul>
+<div class="nota">💡 Copia esta estructura tal cual y cambia solo lo de dentro. Nadie la escribe de memoria las primeras veces.</div>
+
+<h2>Paso 3: cambiar un texto con textContent</h2>
+<pre><code>dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;</code></pre>
+<p><code>textContent</code> es <strong>el texto que hay dentro</strong> de un elemento. Si le das un valor con <code>=</code>, lo sustituye. Así puedes cambiar el texto de un párrafo, de un título o del propio botón:</p>
+<pre><code>boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;
+    boton.textContent = <span class='ca'>"¡Ya lo sabes!"</span>;
+});</code></pre>
+
+<h2>El error más común</h2>
+<p>Si en la consola sale esto:</p>
+<pre><code>Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')</code></pre>
+<p>significa que <code>querySelector</code> <strong>no encontró nada</strong> (<code>null</code> quiere decir "nada"). Las causas:</p>
+<ul>
+<li>El id del HTML y el del JavaScript no coinciden letra a letra.</li>
+<li>Falta la <code>#</code> en el JavaScript.</li>
+<li>El <code>&lt;script&gt;</code> está en el <code>&lt;head&gt;</code> y no al final del <code>&lt;body&gt;</code>.</li>
+<li>Ese archivo JS lo carga una página que no tiene ese botón. Por eso hacemos un archivo JS por página.</li>
+</ul>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué busca document.querySelector("#resultado")?</summary>
+<p>El elemento de la página que tenga <code>id="resultado"</code>.</p>
+</details>
+<details><summary>Pones un console.log dentro de la función del addEventListener. ¿Cuándo sale el mensaje en la consola?</summary>
+<p>Cada vez que se pulsa el botón. Al cargar la página no sale nada.</p>
+</details>
+<details><summary>¿Qué hace titulo.textContent = "Hola";?</summary>
+<p>Cambia el texto que hay dentro del elemento guardado en <code>titulo</code> por "Hola".</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Añadid a vuestra web un botón que muestre un <strong>dato curioso</strong> de vuestro tema:</p>
+<ul class="checklist">
+<li>Un <code>&lt;button type="button"&gt;</code> y un párrafo vacío, cada uno con un <code>id</code> que diga qué es.</li>
+<li>En el archivo JS de esa página, los tres pasos: buscar, esperar al clic y cambiar el texto.</li>
+<li>Al pulsar el botón, aparece el dato en el párrafo <strong>y</strong> cambia el texto del propio botón.</li>
+<li>Un comentario encima de cada paso (<code>// 1. Buscar...</code>).</li>
+<li>La consola no muestra errores, ni al cargar ni al pulsar.</li>
+</ul>
+<details><summary>Pista 1: al pulsar no pasa nada y la consola no dice nada</summary>
+<p>Pon <code>console.log("clic");</code> como primera línea dentro de la función. Si al pulsar no sale "clic", el problema está en el paso 1 o 2. Si sale, está en el paso 3.</p>
+</details>
+<details><summary>Pista 2: sale "Cannot read properties of null"</summary>
+<p>Lee el apartado "El error más común" de esta sesión y comprueba las cuatro causas una a una.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>¿Hay algo más en vuestra web que podría cambiar al pulsar un botón? Una respuesta que se muestra, un texto que cambia de idioma, un saludo... Probad a hacer un segundo botón con la misma receta.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

@@ -1,0 +1,123 @@
+<h2>Tomar decisiones</h2>
+<p>Hasta ahora, la web respondía <strong>siempre lo mismo</strong>. Con <code>if</code> (en inglés, "si") puede responder <strong>distinto según lo que pase</strong>: si la edad es menor de 12, no te puedes inscribir; si aciertas, sumas un punto...</p>
+<pre><code><span class='kw'>let</span> edad = <span class='nu'>10</span>;
+
+<span class='kw'>if</span> (edad &gt;= <span class='nu'>12</span>) {
+    console.<span class='fn'>log</span>(<span class='ca'>"Te puedes inscribir en el torneo."</span>);
+} <span class='kw'>else</span> {
+    console.<span class='fn'>log</span>(<span class='ca'>"Tienes que tener 12 años o más."</span>);
+}</code></pre>
+<pre><code>Tienes que tener 12 años o más.</code></pre>
+<ul>
+<li>Entre paréntesis va la <strong>condición</strong>: una pregunta que solo puede ser verdadera o falsa.</li>
+<li>Si es <strong>verdadera</strong>, se ejecuta lo que hay entre las primeras llaves.</li>
+<li>Si es <strong>falsa</strong>, se ejecuta lo que hay en el <code>else</code> ("si no"). El <code>else</code> es opcional.</li>
+</ul>
+
+<h3>Cómo se compara</h3>
+<table>
+<thead><tr><th>Escribes</th><th>Significa</th></tr></thead>
+<tbody>
+<tr><td><code>a === b</code></td><td>a es igual a b</td></tr>
+<tr><td><code>a !== b</code></td><td>a es distinto de b</td></tr>
+<tr><td><code>a &gt; b</code> / <code>a &lt; b</code></td><td>mayor que / menor que</td></tr>
+<tr><td><code>a &gt;= b</code> / <code>a &lt;= b</code></td><td>mayor o igual / menor o igual</td></tr>
+</tbody>
+</table>
+<div class="nota">⚠️ Un solo <code>=</code> <strong>guarda</strong> un valor (<code>let edad = 10</code>). Para <strong>comparar</strong> se usan tres: <code>===</code>. Confundirlos es el error más típico con <code>if</code>.</div>
+
+<h3>Más de dos caminos: else if</h3>
+<pre><code><span class='kw'>let</span> puntos = <span class='nu'>7</span>;
+
+<span class='kw'>if</span> (puntos &gt;= <span class='nu'>9</span>) {
+    console.<span class='fn'>log</span>(<span class='ca'>"¡Campeón!"</span>);
+} <span class='kw'>else</span> <span class='kw'>if</span> (puntos &gt;= <span class='nu'>5</span>) {
+    console.<span class='fn'>log</span>(<span class='ca'>"Buena carrera."</span>);
+} <span class='kw'>else</span> {
+    console.<span class='fn'>log</span>(<span class='ca'>"Sigue practicando."</span>);
+}</code></pre>
+<p>Se comprueban <strong>en orden, de arriba abajo</strong>, y solo se ejecuta el <strong>primer</strong> camino cuya condición sea verdadera. Con 7 puntos, la primera es falsa y la segunda verdadera: sale "Buena carrera.".</p>
+
+<h2>Un if dentro de un botón</h2>
+<p>Juntamos lo de las sesiones anteriores: leer el formulario y decidir. El torneo de Pixel Kart comprueba la edad antes de inscribir:</p>
+<pre><code><span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
+<span class='kw'>let</span> cajaEdad = document.<span class='fn'>querySelector</span>(<span class='ca'>"#edad"</span>);
+<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
+<span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
+
+boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='kw'>let</span> alias = cajaAlias.value;
+    <span class='kw'>let</span> edad = <span class='fn'>Number</span>(cajaEdad.value);
+
+    <span class='kw'>if</span> (alias === <span class='ca'>""</span>) {
+        mensaje.textContent = <span class='ca'>"Escribe tu alias."</span>;
+    } <span class='kw'>else</span> <span class='kw'>if</span> (edad &lt; <span class='nu'>12</span>) {
+        mensaje.textContent = <span class='ca'>"Lo siento, "</span> + alias + <span class='ca'>": hay que tener 12 años o más."</span>;
+    } <span class='kw'>else</span> {
+        mensaje.textContent = <span class='ca'>"¡Inscrito, "</span> + alias + <span class='ca'>"! Nos vemos en la pista."</span>;
+    }
+});</code></pre>
+<p><code>alias === ""</code> comprueba si la caja está <strong>vacía</strong>: dos comillas seguidas son un texto sin nada dentro.</p>
+
+<h2>Un mini test con puntos</h2>
+<p>Para un test, se usa una variable que <strong>cuenta los aciertos</strong>. Empieza en 0 y cada respuesta correcta le suma 1:</p>
+<pre><code><span class='kw'>let</span> pregunta1 = document.<span class='fn'>querySelector</span>(<span class='ca'>"#pregunta1"</span>);
+<span class='kw'>let</span> pregunta2 = document.<span class='fn'>querySelector</span>(<span class='ca'>"#pregunta2"</span>);
+<span class='kw'>let</span> botonTest = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-test"</span>);
+<span class='kw'>let</span> resultado = document.<span class='fn'>querySelector</span>(<span class='ca'>"#resultado"</span>);
+
+botonTest.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='kw'>let</span> aciertos = <span class='nu'>0</span>;
+
+    <span class='kw'>if</span> (pregunta1.value === <span class='ca'>"Turbo Rex"</span>) {
+        aciertos = aciertos + <span class='nu'>1</span>;
+    }
+    <span class='kw'>if</span> (pregunta2.value === <span class='ca'>"8"</span>) {
+        aciertos = aciertos + <span class='nu'>1</span>;
+    }
+
+    <span class='kw'>if</span> (aciertos === <span class='nu'>2</span>) {
+        resultado.textContent = <span class='ca'>"¡Perfecto! Eres un experto en Pixel Kart."</span>;
+    } <span class='kw'>else</span> {
+        resultado.textContent = <span class='ca'>"Has acertado "</span> + aciertos + <span class='ca'>" de 2. ¡Inténtalo otra vez!"</span>;
+    }
+});</code></pre>
+<p><code>aciertos = aciertos + 1</code> significa "coge lo que vale <code>aciertos</code>, súmale 1 y guárdalo otra vez en <code>aciertos</code>".</p>
+<div class="nota">💡 El <code>let aciertos = 0;</code> va <strong>dentro</strong> de la función. Así, cada vez que se pulsa el botón, la cuenta empieza desde 0 y no se acumulan los puntos de la vez anterior.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué sale si puntos vale 9 en el ejemplo del else if?</summary>
+<p>"¡Campeón!". Es la primera condición verdadera y ya no se miran las demás.</p>
+</details>
+<details><summary>Escribes if (edad = 12) y siempre entra en el if. ¿Por qué?</summary>
+<p>Con un solo <code>=</code> no comparas: guardas 12 en <code>edad</code>. Para comparar hay que escribir <code>===</code>.</p>
+</details>
+<details><summary>En el test, el select tiene la opción "turbo rex" en minúsculas y comparas con "Turbo Rex". ¿Cuenta como acierto?</summary>
+<p>No. Para <code>===</code> las mayúsculas cuentan: los dos textos tienen que ser exactamente iguales.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Haced que vuestra web <strong>responda distinto según lo que elija o escriba el usuario</strong>. Puede ser un mini test, una calculadora que da un consejo, una recomendación según lo elegido...</p>
+<ul class="checklist">
+<li>Al pulsar un botón, se leen datos del formulario con <code>value</code>.</li>
+<li>Al menos un <code>if</code> con <code>else if</code> y <code>else</code>: <strong>3 respuestas distintas</strong> como mínimo.</li>
+<li>Si una caja se queda vacía, la web avisa en lugar de dar un resultado raro.</li>
+<li>Comprobación: probáis a propósito las 3 respuestas y las 3 salen cuando toca.</li>
+<li>La consola no muestra errores.</li>
+</ul>
+<details><summary>Pista 1: siempre sale la misma respuesta</summary>
+<p>Pon <code>console.log(</code> la variable que compruebas <code>)</code> justo antes del <code>if</code> para ver qué vale de verdad. Quizá no es un número porque falta <code>Number()</code>, o tiene otra mayúscula.</p>
+</details>
+<details><summary>Pista 2: sale "Unexpected token else"</summary>
+<p>Te sobra o te falta una llave antes del <code>else</code>. Cada <code>{</code> tiene que tener su <code>}</code>. Usa <code>Mayús+Alt+F</code> para ordenar el código y verlo más claro.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Revisad la respuesta del formulario de la sesión 14: ¿qué pasa si el usuario no escribe nada? Añadidle también un <code>if</code> para avisarle.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

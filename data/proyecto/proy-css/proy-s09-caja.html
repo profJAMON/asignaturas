@@ -1,0 +1,116 @@
+<h2>Todo es una caja</h2>
+<p>Para el navegador, <strong>cada elemento es una caja rectangular</strong>: un título, un párrafo, una imagen, una lista. Aunque no lo veas, cada caja tiene cuatro capas, de dentro hacia fuera:</p>
+<div class="salida">
+<svg viewBox="0 0 480 230" width="100%" role="img" aria-label="Modelo de caja: contenido en el centro, rodeado de padding, después el borde y por fuera el margin" style="max-width:100%;height:auto;">
+<rect x="20" y="15" width="440" height="200" rx="4" fill="none" stroke="#6a7280" stroke-dasharray="5 4"/>
+<text x="32" y="36" font-family="monospace" font-size="12" fill="#9099a6">margin (espacio por fuera)</text>
+<rect x="70" y="50" width="340" height="140" rx="4" fill="#252526" stroke="#ce9178" stroke-width="4"/>
+<text x="84" y="72" font-family="monospace" font-size="12" fill="#ce9178">border (el borde)</text>
+<rect x="120" y="85" width="240" height="75" rx="3" fill="#2d2d30" stroke="#4fc1ff" stroke-dasharray="3 3"/>
+<text x="132" y="102" font-family="monospace" font-size="11" fill="#4fc1ff">padding (relleno)</text>
+<rect x="170" y="110" width="140" height="38" rx="3" fill="#1e1e1e" stroke="#89d185"/>
+<text x="240" y="134" text-anchor="middle" font-family="monospace" font-size="12" fill="#89d185">contenido</text>
+</svg>
+<p class="pie-figura">El padding está dentro del borde; el margin, fuera.</p>
+</div>
+<table>
+<thead><tr><th>Capa</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
+<tbody>
+<tr><td><strong>Contenido</strong></td><td>El texto o la imagen</td><td><code>width: 300px;</code></td></tr>
+<tr><td><strong>padding</strong></td><td>Espacio entre el contenido y el borde. Se pinta con el color de fondo.</td><td><code>padding: 20px;</code></td></tr>
+<tr><td><strong>border</strong></td><td>La línea que rodea la caja</td><td><code>border: 2px solid orange;</code></td></tr>
+<tr><td><strong>margin</strong></td><td>Espacio por fuera, que separa la caja de las demás. Siempre transparente.</td><td><code>margin: 20px;</code></td></tr>
+</tbody>
+</table>
+<div class="nota">💡 Pulsa <code>F12</code>, elige un elemento con <strong>Inspeccionar</strong> y baja hasta el final del panel de estilos: verás un dibujo de su caja con los números de su margin, border y padding.</div>
+
+<h2>Una tarjeta paso a paso</h2>
+<p>En Pixel Kart, cada piloto va en una <strong>tarjeta</strong>. El HTML agrupa todo lo de un piloto en un <code>&lt;div&gt;</code> con clase:</p>
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/turbo-rex.png"</span> <span class='at'>alt</span>=<span class='ca'>"Turbo Rex, un dinosaurio verde en un kart rojo"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;h3</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/h3</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p</span><span class='et'>&gt;</span>El más rápido en las rectas, pero derrapa en las curvas.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/div</span><span class='et'>&gt;</span></code></pre>
+<p><code>&lt;div&gt;</code> es una caja vacía que no significa nada: sirve para <strong>agrupar</strong> cosas y darles estilo juntas.</p>
+<pre><code><span class='et'>.tarjeta</span> {
+    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
+    <span class='at'>padding</span>: <span class='ca'>16px</span>;
+    <span class='at'>border</span>: <span class='ca'>2px solid #ffcc00</span>;
+    <span class='at'>border-radius</span>: <span class='ca'>10px</span>;
+    <span class='at'>margin-bottom</span>: <span class='ca'>20px</span>;
+    <span class='at'>width</span>: <span class='ca'>250px</span>;
+}
+
+<span class='et'>.tarjeta img</span> {
+    <span class='at'>width</span>: <span class='ca'>100%</span>;
+}</code></pre>
+<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif">
+<div style="background:#2a2a55;padding:16px;border:2px solid #ffcc00;border-radius:10px;width:250px;max-width:100%;color:#fff">
+<div style="height:90px;background:#3b3b70;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:2rem">🦖</div>
+<h3 style="color:#ffcc00;margin:.6rem 0 .3rem">Turbo Rex</h3>
+<p style="margin:0;color:#fff">El más rápido en las rectas, pero derrapa en las curvas.</p>
+</div>
+</div>
+<ul>
+<li><code>border</code> lleva tres valores: <strong>grosor</strong>, <strong>estilo</strong> (<code>solid</code>, <code>dashed</code>, <code>dotted</code>) y <strong>color</strong>.</li>
+<li><code>border-radius</code> redondea las esquinas.</li>
+<li><code>margin-bottom</code> pone margen <strong>solo por abajo</strong>. También existen <code>margin-top</code>, <code>margin-left</code> y <code>margin-right</code>, y lo mismo con <code>padding</code>.</li>
+<li><code>.tarjeta img</code> significa "las imágenes que estén <strong>dentro</strong> de una tarjeta". <code>width: 100%</code> hace que la imagen ocupe todo el ancho de la tarjeta, y así nunca se sale.</li>
+</ul>
+
+<h3>Centrar una caja</h3>
+<p>Para que el contenido de la página no quede pegado a la izquierda en pantallas grandes, se le da un ancho máximo y margen automático a los lados:</p>
+<pre><code><span class='et'>main</span> {
+    <span class='at'>max-width</span>: <span class='ca'>900px</span>;
+    <span class='at'>margin</span>: <span class='ca'>0 auto</span>;
+    <span class='at'>padding</span>: <span class='ca'>20px</span>;
+}</code></pre>
+<p><code>margin: 0 auto;</code> significa "0 arriba y abajo, y automático a los lados": el navegador reparte el espacio sobrante a partes iguales y la caja queda centrada.</p>
+
+<h3>Bordes para la tabla</h3>
+<p>Ahora ya podemos arreglar la tabla de la sesión 5:</p>
+<pre><code><span class='et'>table</span> {
+    <span class='at'>border-collapse</span>: <span class='ca'>collapse</span>;
+}
+
+<span class='et'>th, td</span> {
+    <span class='at'>border</span>: <span class='ca'>1px solid #ffcc00</span>;
+    <span class='at'>padding</span>: <span class='ca'>8px 12px</span>;
+}</code></pre>
+<p><code>th, td</code> con una coma aplica la regla a los dos a la vez. <code>border-collapse: collapse</code> junta los bordes de las celdas en una sola línea, en lugar de dos.</p>
+
+<h2>Antes de seguir</h2>
+<details><summary>Quieres más espacio entre el texto y el borde de la tarjeta. ¿padding o margin?</summary>
+<p><code>padding</code>: es el espacio de dentro, entre el contenido y el borde.</p>
+</details>
+<details><summary>Quieres separar dos tarjetas entre sí. ¿padding o margin?</summary>
+<p><code>margin</code>: es el espacio de fuera, entre una caja y las demás.</p>
+</details>
+<details><summary>Escribes border: 2px orange; y no sale ningún borde. ¿Qué falta?</summary>
+<p>El estilo de la línea: <code>border: 2px solid orange;</code>.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<ul class="checklist">
+<li>El <code>&lt;main&gt;</code> de todas las páginas centrado, con <code>max-width</code> y <code>margin: 0 auto</code>.</li>
+<li>Al menos <strong>3 tarjetas</strong> (un <code>&lt;div&gt;</code> con clase) en alguna página, cada una con imagen, título y texto de vuestro tema.</li>
+<li>Las tarjetas tienen fondo, <code>padding</code>, borde, esquinas redondeadas y separación entre ellas.</li>
+<li>Las imágenes de las tarjetas no se salen de la tarjeta.</li>
+<li>La tabla tiene bordes y espacio dentro de las celdas.</li>
+</ul>
+<details><summary>Pista 1: la imagen se sale de la tarjeta</summary>
+<p>Te falta la regla <code>.tarjeta img { width: 100%; }</code>, o la clase de tu tarjeta tiene otro nombre: el selector tiene que usar el mismo.</p>
+</details>
+<details><summary>Pista 2: margin: 0 auto no centra nada</summary>
+<p>Una caja solo se puede centrar si es más estrecha que la página. Comprueba que tiene <code>max-width</code> o <code>width</code>.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Usad lo que habéis aprendido en el resto de la web: separación entre apartados, un borde o un fondo para el formulario, espacio en el <code>&lt;header&gt;</code>... Las cajas bien separadas hacen que una web parezca mucho más cuidada.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

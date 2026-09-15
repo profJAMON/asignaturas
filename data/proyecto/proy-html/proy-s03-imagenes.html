@@ -1,0 +1,96 @@
+<h2>La etiqueta &lt;img&gt;</h2>
+<p>Para poner una imagen, primero la guardas en la carpeta <code>img</code> del proyecto y después la enlazas con la etiqueta <code>&lt;img&gt;</code>:</p>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/turbo-rex.png"</span> <span class='at'>alt</span>=<span class='ca'>"Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><div style="display:inline-block;padding:2.2rem 1.2rem;border:1px solid var(--border);border-radius:6px;background:var(--surface-2);color:var(--text-dim);font-size:.9rem">🦖🏎️ (aquí se vería la imagen de Turbo Rex)</div></div>
+<ul>
+<li><code>&lt;img&gt;</code> <strong>no se cierra</strong>: no existe <code>&lt;/img&gt;</code>.</li>
+<li><code>src</code> dice <strong>dónde está</strong> la imagen.</li>
+<li><code>alt</code> describe la imagen con palabras. Es <strong>obligatorio</strong> en vuestra web.</li>
+</ul>
+<p>Lo que va dentro de una etiqueta, con la forma <code>nombre="valor"</code>, se llama <strong>atributo</strong>. <code>src</code> y <code>alt</code> son atributos de <code>&lt;img&gt;</code>.</p>
+
+<h3>Para qué sirve el alt</h3>
+<ul>
+<li>Las personas ciegas usan programas que <strong>leen la página en voz alta</strong>. Lo que leen de una imagen es su <code>alt</code>.</li>
+<li>Si la imagen no carga (ruta mal escrita, conexión lenta), el navegador muestra el <code>alt</code> en su lugar.</li>
+<li>Google usa el <code>alt</code> para saber qué hay en la imagen.</li>
+</ul>
+<p>Un buen <code>alt</code> describe <strong>lo que se ve</strong>: <code>alt="Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</code> sí; <code>alt="imagen"</code> o <code>alt="foto1"</code> no sirven para nada.</p>
+
+<h2>Rutas: cómo encuentra el navegador la imagen</h2>
+<p>La <strong>ruta</strong> es el camino desde el archivo HTML hasta la imagen. Mira cómo está organizada la carpeta de Pixel Kart:</p>
+<pre><code>pixel-kart/
+├── index.html
+└── img/
+    ├── logo.png
+    └── turbo-rex.png</code></pre>
+<p>Desde <code>index.html</code>, la imagen está <strong>dentro de la carpeta img</strong>, así que la ruta es <code>img/turbo-rex.png</code>: primero la carpeta, luego una barra <code>/</code> y luego el nombre del archivo.</p>
+<div class="nota">⚠️ Las rutas distinguen <strong>mayúsculas y minúsculas</strong> y tienen que coincidir <strong>letra a letra</strong> con el nombre real. <code>img/Turbo-Rex.PNG</code> no es lo mismo que <code>img/turbo-rex.png</code>. En tu ordenador puede que funcione igualmente, pero cuando la web esté publicada, <strong>no</strong>.</div>
+
+<h3>Los errores más típicos</h3>
+<table>
+<thead><tr><th>Escribes</th><th>Qué pasa</th></tr></thead>
+<tbody>
+<tr><td><code>src="turbo-rex.png"</code></td><td>Falta la carpeta: busca la imagen al lado de <code>index.html</code> y no la encuentra.</td></tr>
+<tr><td><code>src="img/turbo rex.png"</code></td><td>El nombre tiene un espacio. Renombra la imagen.</td></tr>
+<tr><td><code>src="img/turbo-rex.jpg"</code></td><td>La imagen es <code>.png</code>, no <code>.jpg</code>. La extensión también cuenta.</td></tr>
+<tr><td><code>src="C:\Users\alumno\Documents\pixel-kart\img\turbo-rex.png"</code></td><td>Funciona en ese ordenador y en ningún otro. Nunca uses rutas que empiecen por <code>C:\</code>.</td></tr>
+</tbody>
+</table>
+<div class="nota">💡 Para ver la extensión real de un archivo en Windows: en el Explorador, menú <strong>Vista</strong> → activa <strong>Extensiones de nombre de archivo</strong>.</div>
+
+<h2>De dónde saco las imágenes</h2>
+<p>No puedes coger cualquier imagen de Google: casi todas tienen <strong>dueño</strong>, y usarlas sin permiso en una web publicada no está permitido. Usa webs de imágenes <strong>de uso libre</strong>:</p>
+<ul>
+<li><strong>Pixabay</strong> (<code>pixabay.com</code>) y <strong>Unsplash</strong> (<code>unsplash.com</code>): fotos que puedes usar gratis.</li>
+<li><strong>Wikimedia Commons</strong> (<code>commons.wikimedia.org</code>): muchas imágenes libres; mira la licencia de cada una.</li>
+<li>Dibujos o capturas <strong>hechos por vosotros</strong>.</li>
+</ul>
+<p>Apunta de dónde sacas cada imagen (la dirección web): lo necesitaréis para la página "Sobre esta web".</p>
+
+<h3>Prepara la imagen antes de usarla</h3>
+<ol>
+<li>Descárgala y muévela a la carpeta <code>img</code> del proyecto.</li>
+<li>Cámbiale el nombre: <strong>minúsculas, sin espacios, sin tildes</strong>, y que diga qué es. <code>IMG_20251003_142233.jpg</code> → <code>circuito-volcan.jpg</code>.</li>
+<li>Elige el <strong>tamaño pequeño o mediano</strong> al descargar. Una foto enorme hace que la web tarde mucho en cargar.</li>
+</ol>
+
+<h2>Antes de seguir</h2>
+<details><summary>La imagen no sale y en su lugar aparece el texto del alt. ¿Qué significa?</summary>
+<p>Que el navegador no encuentra la imagen: la ruta, el nombre o la extensión no coinciden con el archivo real.</p>
+</details>
+<details><summary>¿Por qué alt="foto" es un mal alt?</summary>
+<p>Porque no dice qué hay en la imagen. Una persona que no la ve no sabe nada más después de oírlo.</p>
+</details>
+<details><summary>La imagen gato.png está en la carpeta img. ¿Qué src pones en index.html?</summary>
+<p><code>src="img/gato.png"</code></p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Añadid imágenes a vuestra web:</p>
+<ul class="checklist">
+<li>Al menos <strong>3 imágenes</strong> relacionadas con vuestro tema, de webs de uso libre o hechas por vosotros.</li>
+<li>Todas guardadas en la carpeta <code>img</code>, con nombres en minúsculas, sin espacios y que digan qué son.</li>
+<li>Todas con un <code>alt</code> que describa lo que se ve.</li>
+<li>Las 3 se ven en la portada al abrirla con Live Server.</li>
+<li>Un archivo de texto <code>fuentes.txt</code> en la carpeta del proyecto con la dirección web de donde habéis sacado cada imagen.</li>
+</ul>
+<details><summary>Pista 1: una imagen no se ve</summary>
+<p>Abre la carpeta <code>img</code> en el Explorador, con las extensiones visibles, y compara <strong>letra a letra</strong> el nombre del archivo con lo que pusiste en <code>src</code>.</p>
+</details>
+<details><summary>Pista 2: sigue sin verse</summary>
+<p>Pulsa <code>F12</code> en Chrome y mira la pestaña <strong>Console</strong>. Si pone <code>404 (Not Found)</code>, te dirá la ruta que ha intentado abrir: compárala con la real.</p>
+</details>
+<details><summary>Pista 3: la imagen se ve gigante</summary>
+<p>Es normal: el tamaño lo arreglaremos con CSS. Si molesta mucho, descarga una versión más pequeña de la misma imagen.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Si os sobra tiempo, mejorad la portada: repasad los textos, buscad mejores imágenes o añadid un logo de vuestro tema. Recordad: <strong>nada de fotos personales</strong>.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

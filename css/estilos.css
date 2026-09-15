@@ -28,6 +28,9 @@
   --code-attr: #ff0000;
   --code-string: #0451a5;
   --code-comment: #008000;
+  --code-keyword: #0000ff;
+  --code-function: #795e26;
+  --code-number: #098658;
   --code-inline: #89d185;
   --code-borde: transparent;
   --ok: #89d185;
@@ -98,6 +101,9 @@
   --code-bg: #f8f9fb;
   --code-text: #1e1e1e;
   --code-borde: #d7dce2;
+  --code-keyword: #0000ff;
+  --code-function: #795e26;
+  --code-number: #098658;
   --code-inline: #116329;
 
   --ok: #1a7f37;
@@ -620,6 +626,10 @@ footer.pie {
 .leccion pre .at { color: var(--code-attr); }
 .leccion pre .ca { color: var(--code-string); }
 .leccion pre .co { color: var(--code-comment); font-style: italic; }
+/* JavaScript (Proyecto). En CSS se reutilizan .et (selector), .at (propiedad) y .ca (valor). */
+.leccion pre .kw { color: var(--code-keyword); }
+.leccion pre .fn { color: var(--code-function); }
+.leccion pre .nu { color: var(--code-number); }
 
 .leccion .nota {
   border-left: 2px solid var(--accent-warm);

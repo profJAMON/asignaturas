@@ -1,0 +1,57 @@
+{
+  "id": "proy-s04-enlaces-menu",
+  "titulo": "Sesión 4 — Enlaces, páginas y menú",
+  "fecha": "",
+  "descripcion": "La etiqueta a y sus tres tipos de enlace, crear varias páginas y un menú común con header, nav y main.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Crear hipervínculos",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué atributo dice adónde lleva un enlace?",
+          "opciones": [
+            "src",
+            "href",
+            "alt"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace target=\"_blank\"?",
+          "opciones": [
+            "Abre el enlace en una pestaña nueva",
+            "Pone el enlace en negrita",
+            "Deja el enlace en blanco"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Dentro de qué etiqueta va el menú?",
+          "opciones": [
+            "<menu>",
+            "<nav>",
+            "<main>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cambias el menú de index.html. ¿Qué tienes que hacer con las demás páginas?",
+          "opciones": [
+            "Nada, se cambia solo",
+            "Cambiarlo también en todas",
+            "Borrar su menú"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

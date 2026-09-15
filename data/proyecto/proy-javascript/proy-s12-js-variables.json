@@ -1,0 +1,62 @@
+{
+  "id": "proy-s12-js-variables",
+  "titulo": "Sesión 12 — JavaScript: consola y variables",
+  "fecha": "",
+  "descripcion": "Qué es JavaScript, conectar un archivo .js, la consola, variables, números y textos, juntar textos con + y comentarios.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: ¿Qué es JavaScript?",
+      "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/First_steps/What_is_JavaScript"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Variables",
+      "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/First_steps/Variables"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Dónde se conecta el archivo JavaScript?",
+          "opciones": [
+            "En el <head>",
+            "Justo antes de cerrar el <body>",
+            "Dentro del CSS"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué sale con console.log(2 + 3)?",
+          "opciones": [
+            "23",
+            "5",
+            "2 + 3"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué sale con console.log(\"2\" + \"3\")?",
+          "opciones": [
+            "23",
+            "5",
+            "Un error"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Dónde miras si JavaScript tiene un error?",
+          "opciones": [
+            "En la consola (F12)",
+            "En GitHub",
+            "En el CSS"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

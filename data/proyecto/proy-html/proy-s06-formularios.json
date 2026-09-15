@@ -1,0 +1,57 @@
+{
+  "id": "proy-s06-formularios",
+  "titulo": "Sesión 6 — Formularios",
+  "fecha": "",
+  "descripcion": "Las piezas de un formulario: form, label, input y sus tipos, select, button, la pareja label + id y por qué usar type=\"button\".",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Tu primer formulario",
+      "url": "https://developer.mozilla.org/es/docs/Learn/Forms/Your_first_form"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué tiene que coincidir para que un label quede unido a su caja?",
+          "opciones": [
+            "El for del label y el id de la caja",
+            "El texto del label y el placeholder",
+            "El class y el name"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué etiqueta crea un desplegable con opciones?",
+          "opciones": [
+            "<input>",
+            "<select>",
+            "<list>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Al pulsar el botón se borra todo lo escrito. ¿Qué le falta?",
+          "opciones": [
+            "type=\"button\"",
+            "type=\"text\"",
+            "Un label"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué campo NO debe tener el formulario de vuestra web?",
+          "opciones": [
+            "Tu alias",
+            "Tu número de teléfono",
+            "Tu piloto favorito"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

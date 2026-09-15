@@ -1,0 +1,62 @@
+{
+  "id": "proy-s05-listas-tablas",
+  "titulo": "Sesión 5 — Listas y tablas",
+  "fecha": "",
+  "descripcion": "Listas con viñetas y numeradas, tablas con filas, encabezados y celdas, y cuándo usar cada una.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Listas",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals#listas"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Tablas en HTML",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Tables/Basics"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "Quieres escribir los pasos de una receta, en orden. ¿Qué usas?",
+          "opciones": [
+            "<ul>",
+            "<ol>",
+            "<table>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué etiqueta es una fila de una tabla?",
+          "opciones": [
+            "<tr>",
+            "<td>",
+            "<th>"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué es un <th>?",
+          "opciones": [
+            "Una celda con un dato",
+            "Una celda de encabezado",
+            "El título de la página"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué puede ir directamente dentro de un <ul>?",
+          "opciones": [
+            "Solo <li>",
+            "Cualquier etiqueta",
+            "Solo <p>"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+<h2>Repetir sin copiar y pegar</h2>
+<p>Imagina que quieres escribir en la consola las vueltas de una carrera de 5 vueltas:</p>
+<pre><code>console.<span class='fn'>log</span>(<span class='ca'>"Vuelta 1"</span>);
+console.<span class='fn'>log</span>(<span class='ca'>"Vuelta 2"</span>);
+console.<span class='fn'>log</span>(<span class='ca'>"Vuelta 3"</span>);
+console.<span class='fn'>log</span>(<span class='ca'>"Vuelta 4"</span>);
+console.<span class='fn'>log</span>(<span class='ca'>"Vuelta 5"</span>);</code></pre>
+<p>Funciona, pero ¿y si la carrera tiene 50 vueltas? ¿Y si el número de vueltas lo escribe el usuario? Para eso existen los <strong>bucles</strong>: repiten un trozo de código las veces que haga falta.</p>
+
+<h2>El bucle for</h2>
+<pre><code><span class='kw'>for</span> (<span class='kw'>let</span> vuelta = <span class='nu'>1</span>; vuelta &lt;= <span class='nu'>5</span>; vuelta = vuelta + <span class='nu'>1</span>) {
+    console.<span class='fn'>log</span>(<span class='ca'>"Vuelta "</span> + vuelta);
+}</code></pre>
+<pre><code>Vuelta 1
+Vuelta 2
+Vuelta 3
+Vuelta 4
+Vuelta 5</code></pre>
+<p>Entre los paréntesis hay <strong>tres partes</strong>, separadas por punto y coma:</p>
+<table>
+<thead><tr><th>Parte</th><th>Significa</th></tr></thead>
+<tbody>
+<tr><td><code>let vuelta = 1</code></td><td><strong>Empieza</strong> con una variable que vale 1.</td></tr>
+<tr><td><code>vuelta &lt;= 5</code></td><td><strong>Repite mientras</strong> esto sea verdad.</td></tr>
+<tr><td><code>vuelta = vuelta + 1</code></td><td><strong>Después de cada vuelta</strong>, suma 1 a la variable.</td></tr>
+</tbody>
+</table>
+<p>Lo que va entre llaves se repite. En cada repetición la variable vale un número distinto (1, 2, 3, 4 y 5), y la puedes usar dentro.</p>
+<div class="nota">⚠️ Si la condición nunca deja de ser verdad (por ejemplo, te olvidas de sumar 1), el bucle <strong>no termina nunca</strong> y la pestaña se queda colgada. No pasa nada: cierra la pestaña, arregla el código y vuelve a abrirla.</div>
+
+<h2>Escribir HTML con un bucle: innerHTML</h2>
+<p>Para que el resultado salga <strong>en la página</strong> y no en la consola, necesitamos una orden nueva. <code>textContent</code> solo escribe texto; <code>innerHTML</code> escribe <strong>etiquetas HTML</strong>. Y con <code>+=</code> <strong>añades</strong> al final en lugar de sustituir:</p>
+<pre><code><span class='et'>&lt;ul</span> <span class='at'>id</span>=<span class='ca'>"lista-vueltas"</span><span class='et'>&gt;</span><span class='et'>&lt;/ul</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='kw'>let</span> listaVueltas = document.<span class='fn'>querySelector</span>(<span class='ca'>"#lista-vueltas"</span>);
+
+<span class='kw'>for</span> (<span class='kw'>let</span> vuelta = <span class='nu'>1</span>; vuelta &lt;= <span class='nu'>5</span>; vuelta = vuelta + <span class='nu'>1</span>) {
+    listaVueltas.innerHTML += <span class='ca'>"&lt;li&gt;Vuelta "</span> + vuelta + <span class='ca'>"&lt;/li&gt;"</span>;
+}</code></pre>
+<div class="salida"><ul style="margin:0"><li>Vuelta 1</li><li>Vuelta 2</li><li>Vuelta 3</li><li>Vuelta 4</li><li>Vuelta 5</li></ul></div>
+<p>En cada repetición se añade un <code>&lt;li&gt;</code> nuevo dentro de la lista vacía. El resultado es una lista de verdad, con el estilo de vuestro CSS.</p>
+
+<h2>El usuario decide cuántas veces</h2>
+<p>Juntamos todo lo del curso: un formulario, un botón, <code>value</code>, <code>Number()</code> y un bucle. En Pixel Kart, el usuario escribe cuántas vueltas quiere y la web le genera una tabla con el tiempo acumulado:</p>
+<pre><code><span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"vueltas"</span><span class='et'>&gt;</span>Número de vueltas:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
+<span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"number"</span> <span class='at'>id</span>=<span class='ca'>"vueltas"</span> <span class='at'>min</span>=<span class='ca'>"1"</span> <span class='at'>max</span>=<span class='ca'>"20"</span><span class='et'>&gt;</span>
+<span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-tabla"</span><span class='et'>&gt;</span>Generar tabla<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
+
+<span class='et'>&lt;table</span> <span class='at'>id</span>=<span class='ca'>"tabla-tiempos"</span><span class='et'>&gt;</span><span class='et'>&lt;/table</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='kw'>let</span> cajaVueltas = document.<span class='fn'>querySelector</span>(<span class='ca'>"#vueltas"</span>);
+<span class='kw'>let</span> botonTabla = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-tabla"</span>);
+<span class='kw'>let</span> tabla = document.<span class='fn'>querySelector</span>(<span class='ca'>"#tabla-tiempos"</span>);
+
+botonTabla.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='kw'>let</span> total = <span class='fn'>Number</span>(cajaVueltas.value);
+
+    <span class='co'>// Vaciar la tabla y poner la fila de encabezados</span>
+    tabla.innerHTML = <span class='ca'>"&lt;tr&gt;&lt;th&gt;Vuelta&lt;/th&gt;&lt;th&gt;Tiempo total&lt;/th&gt;&lt;/tr&gt;"</span>;
+
+    <span class='kw'>for</span> (<span class='kw'>let</span> vuelta = <span class='nu'>1</span>; vuelta &lt;= total; vuelta = vuelta + <span class='nu'>1</span>) {
+        <span class='kw'>let</span> segundos = vuelta * <span class='nu'>42</span>;
+        tabla.innerHTML += <span class='ca'>"&lt;tr&gt;&lt;td&gt;"</span> + vuelta + <span class='ca'>"&lt;/td&gt;&lt;td&gt;"</span> + segundos + <span class='ca'>" s&lt;/td&gt;&lt;/tr&gt;"</span>;
+    }
+});</code></pre>
+<div class="salida"><p style="margin:0 0 .4rem;color:var(--text-dim)">Si el usuario escribe 3 y pulsa el botón:</p><table style="display:table;width:auto"><tr><th>Vuelta</th><th>Tiempo total</th></tr><tr><td>1</td><td>42 s</td></tr><tr><td>2</td><td>84 s</td></tr><tr><td>3</td><td>126 s</td></tr></table></div>
+<ul>
+<li>La primera línea usa <code>=</code> y no <code>+=</code>: <strong>sustituye</strong> todo lo que había. Así, si el usuario pulsa dos veces, la tabla no sale repetida.</li>
+<li>Dentro del bucle se usa <code>+=</code> para <strong>añadir</strong> una fila en cada vuelta.</li>
+</ul>
+<div class="nota">💡 Cuidado con las comillas: el HTML va dentro de comillas dobles, así que dentro del HTML <strong>no</strong> puedes usar comillas dobles para atributos. Si necesitas una clase, usa comillas simples dentro: <code>"&lt;li class='destacado'&gt;"</code>.</div>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Cuántas veces se repite for (let i = 1; i &lt;= 10; i = i + 1)?</summary>
+<p>10 veces: con <code>i</code> valiendo 1, 2, 3... hasta 10.</p>
+</details>
+<details><summary>¿Qué diferencia hay entre lista.innerHTML = "..." y lista.innerHTML += "..."?</summary>
+<p>Con <code>=</code> se sustituye todo lo que había dentro. Con <code>+=</code> se añade al final de lo que ya había.</p>
+</details>
+<details><summary>Pulsas el botón dos veces y la lista sale repetida. ¿Qué falta?</summary>
+<p>Vaciar la lista al principio de la función, con <code>lista.innerHTML = "";</code>, antes del bucle.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<p>Usad un bucle para <strong>generar una lista o una tabla</strong> en vuestra web, relacionada con vuestro tema. Ideas: una cuenta atrás, las jornadas de una liga, la tabla de puntos de un campeonato, las raciones de una receta para 1, 2, 3... personas, una tabla de multiplicar de precios.</p>
+<ul class="checklist">
+<li>Una lista (<code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>) o una tabla vacía con <code>id</code>.</li>
+<li>Un bucle <code>for</code> que añade elementos con <code>innerHTML +=</code>.</li>
+<li>Dentro del bucle se usa la variable del bucle (el número cambia en cada elemento).</li>
+<li>El <strong>usuario decide</strong> cuántos elementos se generan, escribiendo un número en una caja y pulsando un botón.</li>
+<li>Comprobación: si pulsáis el botón dos veces, el resultado no sale repetido.</li>
+<li>La consola no muestra errores.</li>
+</ul>
+<details><summary>Pista 1: no sale nada</summary>
+<p>Pon <code>console.log(total);</code> antes del bucle. Si sale <code>0</code> o <code>NaN</code>, el problema es la lectura del número: revisa el id de la caja y el <code>Number()</code>.</p>
+</details>
+<details><summary>Pista 2: salen las etiquetas escritas como texto, con &lt; y &gt;</summary>
+<p>Estás usando <code>textContent</code>. Para escribir HTML hay que usar <code>innerHTML</code>.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Con esta sesión termina el contenido nuevo del curso. Desde ahora, todo el tiempo es para <strong>terminar y pulir</strong> vuestra web: la semana que viene es la revisión final de retos.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

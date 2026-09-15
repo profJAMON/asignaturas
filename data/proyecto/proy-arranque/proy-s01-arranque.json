@@ -1,0 +1,14 @@
+{
+  "id": "proy-s01-arranque",
+  "titulo": "Sesión 1 — Empezamos: tema, carpeta y primera página",
+  "fecha": "",
+  "descripcion": "Qué es una web, elegir pareja y tema, privacidad y alias, la carpeta del proyecto, VS Code, Live Server y la estructura mínima de una página.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Primeros pasos con HTML",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Getting_started"
+    }
+  ],
+  "actividades": []
+}

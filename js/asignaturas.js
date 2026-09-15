@@ -14,7 +14,7 @@
    Importante: los id de sesión tienen que ser únicos en TODO el
    sitio, no solo dentro de su asignatura, porque tema.html?id=
    los busca en todas. Por eso las sesiones de instalaciones
-   empiezan por "inst-".
+   empiezan por "inst-" y las de proyecto por "proy-".
    ============================================================ */
 
 const ASIGNATURAS = [
@@ -31,6 +31,13 @@ const ASIGNATURAS = [
     descripcion: 'Cómo se monta la red de una oficina: cables, dispositivos, direcciones y seguridad en el taller.',
     curso: 'data/curso-instalaciones.json',
     base: 'data/instalaciones'
+  },
+  {
+    id: 'proyecto',
+    nombre: 'Proyecto',
+    descripcion: 'Creáis en pareja vuestra propia web desde cero: HTML, CSS y JavaScript, guardada en GitHub y publicada en Internet.',
+    curso: 'data/curso-proyecto.json',
+    base: 'data/proyecto'
   }
 ];
 

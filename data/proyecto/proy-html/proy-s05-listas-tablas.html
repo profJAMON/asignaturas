@@ -1,0 +1,95 @@
+<h2>Listas</h2>
+<h3>Lista con viñetas</h3>
+<p>Para cosas que <strong>no tienen un orden</strong>. <code>&lt;ul&gt;</code> es la lista y cada <code>&lt;li&gt;</code> es un elemento:</p>
+<pre><code><span class='et'>&lt;h2</span><span class='et'>&gt;</span>Qué incluye Pixel Kart<span class='et'>&lt;/h2</span><span class='et'>&gt;</span>
+<span class='et'>&lt;ul</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>12 pilotos<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>8 circuitos<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>Modo para dos jugadores<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/ul</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><p><strong>Qué incluye Pixel Kart</strong></p><ul><li>12 pilotos</li><li>8 circuitos</li><li>Modo para dos jugadores</li></ul></div>
+
+<h3>Lista numerada</h3>
+<p>Para cosas que <strong>van en orden</strong>: pasos, rankings, instrucciones. Es igual, pero con <code>&lt;ol&gt;</code>:</p>
+<pre><code><span class='et'>&lt;h2</span><span class='et'>&gt;</span>Cómo desbloquear a Turbo Rex<span class='et'>&lt;/h2</span><span class='et'>&gt;</span>
+<span class='et'>&lt;ol</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>Gana el campeonato del volcán.<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>Consigue 50 monedas.<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;li</span><span class='et'>&gt;</span>Ve a la tienda y cómpralo.<span class='et'>&lt;/li</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/ol</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><p><strong>Cómo desbloquear a Turbo Rex</strong></p><ol><li>Gana el campeonato del volcán.</li><li>Consigue 50 monedas.</li><li>Ve a la tienda y cómpralo.</li></ol></div>
+<div class="nota">⚠️ Dentro de <code>&lt;ul&gt;</code> y <code>&lt;ol&gt;</code> solo puede haber <code>&lt;li&gt;</code>. Si quieres un título para la lista, ponlo <strong>antes</strong>, fuera de ella.</div>
+
+<h2>Tablas</h2>
+<p>Una tabla sirve para <strong>datos en filas y columnas</strong>, como un horario o una clasificación. Se construye <strong>fila a fila</strong>:</p>
+<pre><code><span class='et'>&lt;table</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;tr</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;th</span><span class='et'>&gt;</span>Circuito<span class='et'>&lt;/th</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;th</span><span class='et'>&gt;</span>Longitud<span class='et'>&lt;/th</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;th</span><span class='et'>&gt;</span>Dificultad<span class='et'>&lt;/th</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/tr</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;tr</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>Playa Pixel<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>1,2 km<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>Fácil<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/tr</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;tr</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>Volcán<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>2,5 km<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;td</span><span class='et'>&gt;</span>Difícil<span class='et'>&lt;/td</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;/tr</span><span class='et'>&gt;</span>
+<span class='et'>&lt;/table</span><span class='et'>&gt;</span></code></pre>
+<div class="salida"><table style="display:table;width:auto"><tr><th>Circuito</th><th>Longitud</th><th>Dificultad</th></tr><tr><td>Playa Pixel</td><td>1,2 km</td><td>Fácil</td></tr><tr><td>Volcán</td><td>2,5 km</td><td>Difícil</td></tr></table></div>
+<ul>
+<li><code>&lt;table&gt;</code> es la tabla entera.</li>
+<li><code>&lt;tr&gt;</code> (<em>table row</em>) es <strong>una fila</strong>.</li>
+<li><code>&lt;th&gt;</code> es una celda de <strong>encabezado</strong>: el nombre de la columna. Se ve en negrita.</li>
+<li><code>&lt;td&gt;</code> es una celda <strong>normal</strong>, con un dato.</li>
+</ul>
+<div class="nota">💡 Truco para no liarte: <strong>todas las filas tienen que tener el mismo número de celdas</strong>. Si la primera fila tiene 3 <code>&lt;th&gt;</code>, cada fila de datos tiene que tener 3 <code>&lt;td&gt;</code>. Si una fila tiene menos, la tabla se descuadra.</div>
+<p>Sin CSS, la tabla se ve sin bordes. Se los pondremos más adelante. Por ahora, lo importante es que los datos estén bien colocados.</p>
+
+<h3>Tabla o lista</h3>
+<table>
+<thead><tr><th>Si tienes...</th><th>Usa</th></tr></thead>
+<tbody>
+<tr><td>Varias cosas sueltas, cada una con un solo dato</td><td>Lista</td></tr>
+<tr><td>Pasos que van en orden</td><td>Lista numerada</td></tr>
+<tr><td>Varias cosas y de cada una varios datos (nombre, precio, fecha...)</td><td>Tabla</td></tr>
+</tbody>
+</table>
+
+<h2>Antes de seguir</h2>
+<details><summary>¿Qué diferencia hay entre &lt;ul&gt; y &lt;ol&gt;?</summary>
+<p><code>&lt;ul&gt;</code> es una lista con viñetas, para cosas sin orden. <code>&lt;ol&gt;</code> es una lista numerada, para cosas que van en orden.</p>
+</details>
+<details><summary>¿Qué diferencia hay entre &lt;th&gt; y &lt;td&gt;?</summary>
+<p><code>&lt;th&gt;</code> es una celda de encabezado (el nombre de la columna) y <code>&lt;td&gt;</code> es una celda con un dato.</p>
+</details>
+<details><summary>Tu tabla tiene 4 columnas. Añades una fila nueva con 3 &lt;td&gt;. ¿Qué pasa?</summary>
+<p>A esa fila le falta una celda: se ve descuadrada, con un hueco al final.</p>
+</details>
+
+<h2>Reto de hoy</h2>
+<ul class="checklist">
+<li>Al menos <strong>una lista</strong> (con viñetas o numerada) con 4 elementos o más, en la página que tenga más sentido.</li>
+<li>Al menos <strong>una tabla</strong> con una fila de encabezado (<code>&lt;th&gt;</code>) y <strong>4 filas de datos</strong> o más, con 3 columnas como mínimo.</li>
+<li>La información de la lista y de la tabla es de vuestro tema y la habéis escrito vosotros.</li>
+<li>Comprobación: ninguna fila de la tabla está descuadrada.</li>
+</ul>
+<details><summary>Pista 1: la tabla sale toda en una línea</summary>
+<p>Te falta abrir o cerrar algún <code>&lt;tr&gt;</code>. Cada fila empieza con <code>&lt;tr&gt;</code> y termina con <code>&lt;/tr&gt;</code>.</p>
+</details>
+<details><summary>Pista 2: no sé qué datos poner en la tabla</summary>
+<p>Piensa en cosas de tu tema que tengan varios datos cada una. Un grupo de música: canción, disco y año. Recetas: plato, tiempo y dificultad. Un equipo: jugador, posición y dorsal.</p>
+</details>
+
+<h2>Aplícalo en tu web</h2>
+<p>Revisad todas las páginas: ¿hay algún párrafo que en realidad es una enumeración? Convertidlo en lista. ¿Hay datos que se leerían mejor en una tabla? Cambiadlos.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
+<li>Comprobado en la web publicada que se ven los cambios.</li>
+</ul>

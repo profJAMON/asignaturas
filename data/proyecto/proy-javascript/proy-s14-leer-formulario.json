@@ -1,0 +1,57 @@
+{
+  "id": "proy-s14-leer-formulario",
+  "titulo": "Sesión 14 — Repaso y leer formularios",
+  "fecha": "",
+  "descripcion": "Repaso de JavaScript después de Navidad, leer lo que escribe el usuario con value y convertir números con Number().",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Controles de formulario",
+      "url": "https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Con qué se lee lo que hay escrito en una caja <input>?",
+          "opciones": [
+            "textContent",
+            "value",
+            "innerText"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El usuario escribe 4 en una caja. ¿Qué da caja.value + 1?",
+          "opciones": [
+            "5",
+            "41",
+            "Un error"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Dónde tienes que leer el value para que tenga lo que ha escrito el usuario?",
+          "opciones": [
+            "Fuera de la función, al principio",
+            "Dentro de la función del clic",
+            "En el CSS"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace Number(caja.value)?",
+          "opciones": [
+            "Convierte el texto en número",
+            "Cuenta las letras",
+            "Borra la caja"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

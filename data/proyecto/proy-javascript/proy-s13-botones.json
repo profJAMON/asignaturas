@@ -1,0 +1,57 @@
+{
+  "id": "proy-s13-botones",
+  "titulo": "Sesión 13 — Botones que hacen cosas",
+  "fecha": "",
+  "descripcion": "La receta de tres pasos: buscar con querySelector, esperar al clic con addEventListener y cambiar textos con textContent. El error más común.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Eventos",
+      "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Events"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué busca document.querySelector(\"#titulo\")?",
+          "opciones": [
+            "El elemento con id=\"titulo\"",
+            "Todas las etiquetas <title>",
+            "El elemento con class=\"titulo\""
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Cuándo se ejecuta lo que hay dentro de la función de addEventListener(\"click\", ...)?",
+          "opciones": [
+            "Al cargar la página",
+            "Cada vez que se pulsa el elemento",
+            "Nunca"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace mensaje.textContent = \"Hola\";?",
+          "opciones": [
+            "Cambia el texto de dentro de mensaje",
+            "Cambia el color",
+            "Borra el elemento"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La consola dice \"Cannot read properties of null\". ¿Qué ha pasado?",
+          "opciones": [
+            "querySelector no encontró el elemento",
+            "El botón es muy grande",
+            "Falta el CSS"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

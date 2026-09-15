@@ -1,0 +1,57 @@
+{
+  "id": "proy-s08-css",
+  "titulo": "Sesión 8 — Introducción a CSS",
+  "fecha": "",
+  "descripcion": "Conectar un archivo CSS a todas las páginas, cómo es una regla, colores y texto, selectores de etiqueta y de clase, y revisar el CSS con F12.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: ¿Qué es CSS?",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/First_steps/What_is_CSS"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Dónde se pone la línea <link rel=\"stylesheet\" href=\"estilos.css\">?",
+          "opciones": [
+            "En el <head> de cada página",
+            "Al final del <body>",
+            "Dentro de estilos.css"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué propiedad cambia el color del texto?",
+          "opciones": [
+            "background-color",
+            "color",
+            "font-color"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En el CSS, ¿cómo se selecciona la clase aviso?",
+          "opciones": [
+            "aviso",
+            "#aviso",
+            ".aviso"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Funcionan las primeras reglas del CSS y las de abajo no. ¿Qué es lo más probable?",
+          "opciones": [
+            "Falta un ; o una }",
+            "El archivo es muy largo",
+            "Hay demasiados colores"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

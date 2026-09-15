@@ -1,0 +1,57 @@
+{
+  "id": "proy-s16-classlist",
+  "titulo": "Sesión 16 — Cambiar el aspecto con classList",
+  "fecha": "",
+  "descripcion": "Poner y quitar clases con classList.add, remove y toggle, mostrar y ocultar con display: none, classList.contains y modo oscuro.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: classList",
+      "url": "https://developer.mozilla.org/es/docs/Web/API/Element/classList"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué hace classList.toggle(\"oculto\")?",
+          "opciones": [
+            "Pone la clase si no la tiene y la quita si la tiene",
+            "Siempre pone la clase",
+            "Borra el elemento"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Cómo se escribe la clase dentro de classList?",
+          "opciones": [
+            "Con punto: \".oculto\"",
+            "Sin punto: \"oculto\"",
+            "Con almohadilla: \"#oculto\""
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué propiedad CSS hace que algo no se vea ni ocupe sitio?",
+          "opciones": [
+            "display: none;",
+            "color: none;",
+            "opacity: 0;"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué pregunta classList.contains(\"oculto\")?",
+          "opciones": [
+            "Si el elemento tiene esa clase",
+            "Cuántas clases tiene",
+            "Si el elemento existe"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

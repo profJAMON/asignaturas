@@ -1,0 +1,62 @@
+{
+  "id": "proy-s03-imagenes",
+  "titulo": "Sesión 3 — Imágenes",
+  "fecha": "",
+  "descripcion": "La etiqueta img, para qué sirve el alt, rutas relativas, errores típicos y de dónde sacar imágenes que se pueden usar.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Imágenes en HTML",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Pixabay: imágenes de uso libre",
+      "url": "https://pixabay.com/es/"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "La imagen perro.jpg está en la carpeta img. ¿Qué src pones en index.html?",
+          "opciones": [
+            "perro.jpg",
+            "img/perro.jpg",
+            "C:\\img\\perro.jpg"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué sirve el atributo alt?",
+          "opciones": [
+            "Para cambiar el tamaño de la imagen",
+            "Para describir la imagen con palabras",
+            "Para poner un enlace"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál es un buen nombre de archivo para una imagen?",
+          "opciones": [
+            "Foto Playa 1.JPG",
+            "foto-playa.jpg",
+            "fotoplaya(1).jpg"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo se cierra la etiqueta <img>?",
+          "opciones": [
+            "Con </img>",
+            "Con </image>",
+            "No se cierra"
+          ],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

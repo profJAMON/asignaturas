@@ -1,0 +1,57 @@
+{
+  "id": "proy-s09-caja",
+  "titulo": "Sesión 9 — El modelo de caja",
+  "fecha": "",
+  "descripcion": "Contenido, padding, border y margin, tarjetas con div y clase, centrar el contenido con margin auto y bordes para las tablas.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: El modelo de caja",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué capa separa el contenido de su borde?",
+          "opciones": [
+            "margin",
+            "padding",
+            "border"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué capa separa una caja de las demás?",
+          "opciones": [
+            "margin",
+            "padding",
+            "width"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué falta en border: 2px red; para que se vea el borde?",
+          "opciones": [
+            "El estilo, como solid",
+            "Un color más",
+            "Nada, ya se ve"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué hace margin: 0 auto; en una caja con max-width?",
+          "opciones": [
+            "La centra en horizontal",
+            "Le quita el borde",
+            "La pone en fila"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}
