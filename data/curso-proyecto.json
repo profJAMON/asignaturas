@@ -1,68 +1,34 @@
 {
   "unidades": [
     {
-      "id": "proy-antes-de-empezar",
-      "titulo": "Antes de empezar",
-      "descripcion": "Qué vamos a hacer en el módulo, cómo se calcula la nota, los requisitos de la web y cómo trabajamos en pareja.",
-      "sesiones": [
-        "proy-como-se-evalua"
-      ]
+      "id": "antes-de-empezar",
+      "titulo": "Unidad 0. Antes de empezar",
+      "descripcion": "Qué vamos a construir, cómo se trabaja en pareja, cómo se evalúa y cómo se protege la privacidad.",
+      "sesiones": ["proy-s01", "proy-s02"]
     },
     {
-      "id": "proy-arranque",
-      "titulo": "Bloque 0. Arranque",
-      "descripcion": "Elegir tema y pareja, preparar la carpeta del proyecto, crear la cuenta de GitHub y escribir la portada.",
-      "sesiones": [
-        "proy-s01-arranque",
-        "proy-s02-github-textos"
-      ]
+      "id": "html",
+      "titulo": "Unidad 1. HTML y publicación",
+      "descripcion": "De la primera página a una web de tres páginas enlazadas, con imágenes, datos y formularios.",
+      "sesiones": ["proy-s03", "proy-s04", "proy-s05", "proy-s06", "proy-s07"]
     },
     {
-      "id": "proy-html",
-      "titulo": "Bloque 1. HTML",
-      "descripcion": "El contenido de la web: imágenes, enlaces y menú, listas, tablas y formularios. Y la web publicada en Internet.",
-      "sesiones": [
-        "proy-s03-imagenes",
-        "proy-s04-enlaces-menu",
-        "proy-s05-listas-tablas",
-        "proy-s06-formularios",
-        "proy-s07-publicar"
-      ]
+      "id": "css",
+      "titulo": "Unidad 2. CSS y diseño",
+      "descripcion": "Un único archivo de estilos para dar estructura, espacio y una navegación clara a la web.",
+      "sesiones": ["proy-s08", "proy-s09", "proy-s10", "proy-s11"]
     },
     {
-      "id": "proy-css",
-      "titulo": "Bloque 2. CSS",
-      "descripcion": "El aspecto de la web: colores, tipos de letra, cajas y Flexbox. Termina con la primera revisión de retos.",
-      "sesiones": [
-        "proy-s08-css",
-        "proy-s09-caja",
-        "proy-s10-flexbox",
-        "proy-s11-revision-1"
-      ]
+      "id": "javascript",
+      "titulo": "Unidad 3. JavaScript básico",
+      "descripcion": "Añades comportamiento a la web con variables, eventos, decisiones, clases y bucles sencillos.",
+      "sesiones": ["proy-s12", "proy-s13", "proy-s14", "proy-s15", "proy-s16", "proy-s17"]
     },
     {
-      "id": "proy-javascript",
-      "titulo": "Bloque 3. JavaScript",
-      "descripcion": "Que la web haga cosas: variables, botones, leer formularios, decisiones con if, cambiar el aspecto y bucles.",
-      "sesiones": [
-        "proy-s12-js-variables",
-        "proy-s13-botones",
-        "proy-s14-leer-formulario",
-        "proy-s15-if-else",
-        "proy-s16-classlist",
-        "proy-s17-bucles"
-      ]
-    },
-    {
-      "id": "proy-cierre",
-      "titulo": "Bloque 4. Cierre",
-      "descripcion": "Revisión final de retos, prueba individual, presentaciones y cierre del curso.",
-      "sesiones": [
-        "proy-s18-revision-final",
-        "proy-s19-prueba",
-        "proy-s20-presentaciones",
-        "proy-s21-cierre"
-      ]
+      "id": "cierre",
+      "titulo": "Unidad 4. Cierre y presentación",
+      "descripcion": "Revisión, prueba individual, presentación y recuperación del proyecto.",
+      "sesiones": ["proy-s18", "proy-s19", "proy-s20", "proy-s21"]
     }
   ]
 }

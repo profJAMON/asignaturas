@@ -1,0 +1,6 @@
+<h2>Leer <code>value</code></h2><p>Un campo de formulario guarda lo escrito en su propiedad <code>value</code>. Tras las vacaciones, empieza revisando el selector, el evento y los <code>id</code>.</p><pre><code>const nombre = document.querySelector('#nombre');
+const boton = document.querySelector('#enviar');
+const respuesta = document.querySelector('#respuesta');
+boton.addEventListener('click', function () {
+  respuesta.textContent = 'Has elegido: ' + nombre.value;
+});</code></pre><h2>Reto del día</h2><p>Haz que vuestro formulario muestre un mensaje usando lo que ha escrito o elegido el usuario.</p><p><strong>Comprobación:</strong> el mensaje cambia al probar dos respuestas diferentes.</p><h2>Aplícalo en tu web</h2><p>El formulario debe estar relacionado con el tema y funcionar en la página publicada.</p>

@@ -34,8 +34,8 @@ const ASIGNATURAS = [
   },
   {
     id: 'proyecto',
-    nombre: 'Proyecto',
-    descripcion: 'Creáis en pareja vuestra propia web desde cero: HTML, CSS y JavaScript, guardada en GitHub y publicada en Internet.',
+    nombre: 'Proyecto Intermodular',
+    descripcion: 'Construyes y publicas una web por parejas con HTML, CSS y JavaScript, conectando lo aprendido en las demás asignaturas.',
     curso: 'data/curso-proyecto.json',
     base: 'data/proyecto'
   }
