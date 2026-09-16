@@ -7,7 +7,9 @@
       normal, con saltos de línea reales. Si ese archivo no existe,
       se usa el campo "contenido" del json como respaldo (formato antiguo).
    5. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
-   6. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
+   6. Genera el índice "En esta página" a partir de los h2/h3 del contenido.
+   7. Al final, botones de sesión anterior / siguiente dentro de la misma
+      asignatura (cruzan de unidad si hace falta). */
 
 const ICONOS = { pdf: 'PDF', enlace: 'WEB', video: 'VID' };
 
@@ -64,11 +66,9 @@ async function cargarTema() {
 
     pintarLeccion(contenidoHtml);
     pintarMateriales(tema.materiales || []);
-    /* El índice se arma ANTES de meter actividades dentro de la lección,
-       para que los títulos de los ejercicios no salgan en "En esta página". */
+    pintarActividades(tema.actividades || []);
     pintarIndicePagina();
-    const yaColocadas = colocarActividadesEnLeccion(tema.actividades || []);
-    pintarActividades((tema.actividades || []).filter(a => !yaColocadas.has(a)));
+    pintarNavegacionSesiones(asignatura, id);
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
        traductor: hay que avisarle de que hay texto nuevo en pantalla. */
@@ -89,44 +89,6 @@ function pintarLeccion(contenidoHtml) {
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
   document.getElementById('seccion-leccion').hidden = false;
-}
-
-/* Actividades dentro de la lección.
-
-   Por defecto todas las actividades del json se pintan juntas al final,
-   en la sección "Actividades". Pero muchas veces se aprende mejor si el
-   ejercicio viene justo después de la explicación a la que corresponde.
-
-   Para eso, en el .html de la sesión se deja un hueco:
-
-       <div data-actividad="practica-decimal-binario"></div>
-
-   y en el .json esa actividad lleva el mismo "id". La actividad se pinta
-   en el hueco y deja de aparecer al final, así que no se duplica. Las que
-   no tengan hueco siguen saliendo abajo, como siempre. */
-
-function colocarActividadesEnLeccion(actividades) {
-  const colocadas = new Set();
-  const huecos = document.querySelectorAll('#leccion-contenido [data-actividad]');
-
-  huecos.forEach(hueco => {
-    const id = hueco.getAttribute('data-actividad');
-    const actividad = actividades.find(a => a.id === id);
-    if (!actividad) {
-      console.warn(`No hay ninguna actividad con id "${id}" en el json de esta sesión.`);
-      hueco.remove();
-      return;
-    }
-    if (colocadas.has(actividad)) {
-      console.warn(`La actividad "${id}" está pedida más de una vez; solo se pinta la primera.`);
-      hueco.remove();
-      return;
-    }
-    renderActividad(hueco, actividad);
-    colocadas.add(actividad);
-  });
-
-  return colocadas;
 }
 
 function agruparSubsecciones(raiz) {
@@ -193,7 +155,7 @@ function pintarIndicePagina() {
   const aside = document.getElementById('indice-pagina');
   if (!aside) return;
 
-  const encabezados = document.querySelectorAll('#leccion-contenido h2:not(.actividad__titulo), #leccion-contenido h3:not(.actividad__titulo)');
+  const encabezados = document.querySelectorAll('#leccion-contenido h2, #leccion-contenido h3');
   if (encabezados.length === 0) {
     aside.hidden = true;
     return;
@@ -212,6 +174,77 @@ function pintarIndicePagina() {
     if (h.tagName === 'H3') enlace.classList.add('indice__sub');
     aside.appendChild(enlace);
   });
+}
+
+/* Botones "anterior / siguiente" al final de la sesión.
+   Recorre todas las sesiones de la asignatura en orden (unidad a unidad),
+   así desde la última sesión de una unidad se pasa a la primera de la
+   siguiente. Si una sesión del curso no existe (404), se salta y se prueba
+   la de más allá, para no dejar al alumno en un enlace roto. */
+async function pintarNavegacionSesiones(asignatura, sesionId) {
+  const nav = document.getElementById('nav-sesiones');
+  if (!nav) return;
+
+  try {
+    const curso = await cargarCursoSeguro(asignatura);
+    const lista = [];
+    (curso.unidades || []).forEach(u =>
+      (u.sesiones || []).forEach(s => lista.push({ id: s, unidad: u }))
+    );
+
+    const pos = lista.findIndex(s => s.id === sesionId);
+    if (pos === -1) return;
+    const unidadActual = lista[pos].unidad;
+
+    async function buscar(paso) {
+      for (let i = pos + paso; i >= 0 && i < lista.length; i += paso) {
+        const s = lista[i];
+        try {
+          const r = await fetch(rutaSesionJson(asignatura, s.unidad.id, s.id));
+          if (r.ok) return { ...s, datos: await r.json() };
+        } catch (e) { /* se salta y se prueba la siguiente */ }
+      }
+      return null;
+    }
+
+    const [anterior, siguiente] = await Promise.all([buscar(-1), buscar(1)]);
+    if (!anterior && !siguiente) return;
+
+    function crearEnlace(s, tipo) {
+      if (!s) {
+        const hueco = document.createElement('span');
+        hueco.className = 'nav-sesiones__hueco';
+        hueco.setAttribute('aria-hidden', 'true');
+        return hueco;
+      }
+      const a = document.createElement('a');
+      a.className = `nav-sesiones__enlace nav-sesiones__enlace--${tipo}`;
+      a.href = urlSesion(s.id);
+      a.rel = tipo === 'anterior' ? 'prev' : 'next';
+
+      const etiqueta = document.createElement('span');
+      etiqueta.className = 'nav-sesiones__etiqueta';
+      let texto = tipo === 'anterior' ? '← Anterior' : 'Siguiente →';
+      /* Si se cambia de unidad, se avisa para que no pille por sorpresa. */
+      if (s.unidad !== unidadActual) texto += ` · ${s.unidad.titulo}`;
+      etiqueta.textContent = texto;
+
+      const titulo = document.createElement('span');
+      titulo.className = 'nav-sesiones__titulo';
+      titulo.textContent = (s.datos && s.datos.titulo) || s.id;
+
+      a.appendChild(etiqueta);
+      a.appendChild(titulo);
+      return a;
+    }
+
+    nav.appendChild(crearEnlace(anterior, 'anterior'));
+    nav.appendChild(crearEnlace(siguiente, 'siguiente'));
+    nav.hidden = false;
+    if (typeof retraducir === 'function') retraducir();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 cargarTema();

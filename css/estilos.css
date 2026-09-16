@@ -28,9 +28,6 @@
   --code-attr: #ff0000;
   --code-string: #0451a5;
   --code-comment: #008000;
-  --code-keyword: #0000ff;
-  --code-function: #795e26;
-  --code-number: #098658;
   --code-inline: #89d185;
   --code-borde: transparent;
   --ok: #89d185;
@@ -101,9 +98,6 @@
   --code-bg: #f8f9fb;
   --code-text: #1e1e1e;
   --code-borde: #d7dce2;
-  --code-keyword: #0000ff;
-  --code-function: #795e26;
-  --code-number: #098658;
   --code-inline: #116329;
 
   --ok: #1a7f37;
@@ -532,7 +526,7 @@ h1, h2, h3 {
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
 @media print {
-  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .pie { display: none !important; }
+  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .pie, .nav-sesiones { display: none !important; }
   .main-content { margin: 0; padding: 0; max-width: 100%; }
   .leccion .papel { break-inside: avoid; }
 }
@@ -584,11 +578,6 @@ footer.pie {
 }
 .leccion h3::before { content: counter(h2count) "." counter(h3count) " "; }
 
-/* Una actividad colocada dentro de la lección no es un apartado más:
-   lleva su propio recuadro, así que no se numera ni gasta contador. */
-.leccion .actividad__titulo { counter-increment: none; }
-.leccion .actividad__titulo::before { content: none; }
-
 .leccion p { margin: 0 0 1rem; color: var(--text); }
 .leccion ul, .leccion ol { margin: 0 0 1rem; padding-left: 1.3rem; color: var(--text); }
 .leccion li { margin-bottom: 0.3rem; }
@@ -626,10 +615,6 @@ footer.pie {
 .leccion pre .at { color: var(--code-attr); }
 .leccion pre .ca { color: var(--code-string); }
 .leccion pre .co { color: var(--code-comment); font-style: italic; }
-/* JavaScript (Proyecto). En CSS se reutilizan .et (selector), .at (propiedad) y .ca (valor). */
-.leccion pre .kw { color: var(--code-keyword); }
-.leccion pre .fn { color: var(--code-function); }
-.leccion pre .nu { color: var(--code-number); }
 
 .leccion .nota {
   border-left: 2px solid var(--accent-warm);
@@ -1049,6 +1034,41 @@ font {
   margin: 0;
 }
 
+/* Navegación anterior / siguiente al final de la sesión */
+.nav-sesiones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin: 2.8rem 0 0;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+.nav-sesiones[hidden] { display: none; }
+
+.nav-sesiones__enlace {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.9rem 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.12s ease;
+}
+.nav-sesiones__enlace:hover { border-color: var(--accent); }
+.nav-sesiones__enlace--siguiente { text-align: right; grid-column: 2; }
+
+.nav-sesiones__etiqueta {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+.nav-sesiones__titulo { font-weight: 500; overflow-wrap: anywhere; }
+
+
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
@@ -1074,6 +1094,9 @@ font {
   }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
   .card { padding: 1.3rem 1.2rem; }
+  .nav-sesiones { grid-template-columns: 1fr; }
+  .nav-sesiones__enlace--siguiente { grid-column: 1; }
+  .nav-sesiones__hueco { display: none; }
 }
 
 @media (max-width: 560px) {
