@@ -1,0 +1,122 @@
+<h2>Qué vas a hacer</h2>
+<p>Dos cosas en esta sesión de taller:</p>
+<ol>
+<li>Fabricar un <strong>cable cruzado</strong> (T568A en un extremo, T568B en el otro) y comprobarlo.</li>
+<li>Aprender a <strong>leer el comprobador</strong> cuando algo sale mal, para saber qué ha pasado sin cortar a ciegas. Terminarás diagnosticando cables estropeados a propósito.</li>
+</ol>
+
+<h2>Parte 1: el cable cruzado</h2>
+<p>Es el mismo procedimiento que el latiguillo de la sesión anterior, con una sola diferencia: <strong>un extremo en T568B y el otro en T568A</strong>.</p>
+<table>
+<tr><th>Pin</th><th>Extremo 1 (T568B)</th><th>Extremo 2 (T568A)</th></tr>
+<tr><td>1</td><td>Blanco-naranja</td><td>Blanco-verde</td></tr>
+<tr><td>2</td><td>Naranja</td><td>Verde</td></tr>
+<tr><td>3</td><td>Blanco-verde</td><td>Blanco-naranja</td></tr>
+<tr><td>4</td><td>Azul</td><td>Azul</td></tr>
+<tr><td>5</td><td>Blanco-azul</td><td>Blanco-azul</td></tr>
+<tr><td>6</td><td>Verde</td><td>Naranja</td></tr>
+<tr><td>7</td><td>Blanco-marrón</td><td>Blanco-marrón</td></tr>
+<tr><td>8</td><td>Marrón</td><td>Marrón</td></tr>
+</table>
+<ol>
+<li>Marca con cinta o rotulador el extremo que va a ser T568A <strong>antes de empezar</strong>. Así no los confundes.</li>
+<li>Haz el extremo T568B como en la sesión 12.</li>
+<li>Haz el extremo T568A. Recuerda: solo cambian de sitio el par naranja y el verde.</li>
+<li>Comprueba. Un cruzado correcto enciende: <strong>1-3, 2-6, 3-1, 4-4, 5-5, 6-2, 7-7, 8-8</strong>.</li>
+<li>Prueba: une dos PC del taller directamente con tu cable. Configúrales IP de la misma red (como en la Unidad 1) y haz <code>ping</code> de uno a otro.</li>
+</ol>
+<div class="nota">Si los dos PC tienen Auto-MDIX, también funcionarían con tu latiguillo directo. Pruébalo: así ves con tus ojos que el cruzado casi ya no hace falta. Lo que no cambia es que el comprobador <strong>sí</strong> distingue uno de otro.</div>
+
+<div data-actividad="u3s13-cruzado"></div>
+
+<h2>Parte 2: leer el comprobador</h2>
+<p>Cuando un cable falla, el comprobador te dice <strong>qué</strong> ha pasado. Cada avería tiene su dibujo de luces:</p>
+<table>
+<tr><th>Avería</th><th>Qué ves en el comprobador</th><th>Causa habitual</th></tr>
+<tr><td><strong>Circuito abierto</strong></td><td>Una luz (por ejemplo, la 7) <strong>no se enciende en ningún lado</strong></td><td>Ese hilo no llega al fondo del conector, está cortado o el contacto no ha bajado</td></tr>
+<tr><td><strong>Hilos cruzados</strong></td><td>Las luces se encienden, pero <strong>descolocadas</strong>: la 3 del principal con la 4 del remoto y la 4 con la 3</td><td>Dos hilos intercambiados al ordenar (el clásico: verde y azul)</td></tr>
+<tr><td><strong>Cortocircuito</strong></td><td>Se encienden <strong>dos luces a la vez</strong> en el remoto, o ninguna (según el modelo)</td><td>Dos contactos tocándose, un hilo pelado que toca a otro, cuña que ha cortado el aislante</td></tr>
+<tr><td><strong>Todas apagadas</strong></td><td>Nada en el remoto</td><td>Pila gastada, extremos mal enchufados en el téster o cable cortado entero</td></tr>
+<tr><td><strong>Par partido</strong> (<em>split pair</em>)</td><td>¡Todo bien! 1-1, 2-2… 8-8</td><td>Los dos extremos tienen el mismo orden, pero equivocado (por ejemplo, 1 y 2 de pares distintos). El téster básico <strong>no lo detecta</strong>; el cable falla o va lento</td></tr>
+</table>
+
+<div class="salida">
+<svg viewBox="0 0 600 190" width="100%" role="img" aria-label="Tres lecturas del comprobador. Circuito abierto: la luz 7 no se enciende en ningún módulo. Hilos cruzados: la luz 3 del principal se enciende con la 4 del remoto. Correcto: cada luz con la misma del otro lado" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g>
+<text x="100" y="18" text-anchor="middle" class="t" style="fill:#4ec9b0">Correcto</text>
+<text x="10" y="54" class="s">P</text><text x="10" y="94" class="s">R</text>
+<g fill="#4ec9b0"><circle cx="30" cy="50" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="70" cy="50" r="6"/><circle cx="90" cy="50" r="6"/><circle cx="110" cy="50" r="6"/><circle cx="130" cy="50" r="6"/><circle cx="150" cy="50" r="6"/><circle cx="170" cy="50" r="6"/>
+<circle cx="30" cy="90" r="6"/><circle cx="50" cy="90" r="6"/><circle cx="70" cy="90" r="6"/><circle cx="90" cy="90" r="6"/><circle cx="110" cy="90" r="6"/><circle cx="130" cy="90" r="6"/><circle cx="150" cy="90" r="6"/><circle cx="170" cy="90" r="6"/></g>
+<g stroke="#4ec9b0" stroke-width="1"><line x1="30" y1="56" x2="30" y2="84"/><line x1="50" y1="56" x2="50" y2="84"/><line x1="70" y1="56" x2="70" y2="84"/><line x1="90" y1="56" x2="90" y2="84"/><line x1="110" y1="56" x2="110" y2="84"/><line x1="130" y1="56" x2="130" y2="84"/><line x1="150" y1="56" x2="150" y2="84"/><line x1="170" y1="56" x2="170" y2="84"/></g>
+<text x="100" y="124" text-anchor="middle" class="s">1-1, 2-2 … 8-8</text>
+</g>
+<g transform="translate(200,0)">
+<text x="100" y="18" text-anchor="middle" class="t" style="fill:#f48771">Circuito abierto</text>
+<g fill="#4ec9b0"><circle cx="30" cy="50" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="70" cy="50" r="6"/><circle cx="90" cy="50" r="6"/><circle cx="110" cy="50" r="6"/><circle cx="130" cy="50" r="6"/><circle cx="170" cy="50" r="6"/>
+<circle cx="30" cy="90" r="6"/><circle cx="50" cy="90" r="6"/><circle cx="70" cy="90" r="6"/><circle cx="90" cy="90" r="6"/><circle cx="110" cy="90" r="6"/><circle cx="130" cy="90" r="6"/><circle cx="170" cy="90" r="6"/></g>
+<circle cx="150" cy="50" r="6" fill="#1e1e1e" stroke="#f48771"/><circle cx="150" cy="90" r="6" fill="#1e1e1e" stroke="#f48771"/>
+<text x="100" y="124" text-anchor="middle" class="s">la 7 no se enciende nunca</text>
+</g>
+<g transform="translate(400,0)">
+<text x="100" y="18" text-anchor="middle" class="t" style="fill:#f48771">Hilos cruzados</text>
+<g fill="#4ec9b0"><circle cx="30" cy="50" r="6"/><circle cx="50" cy="50" r="6"/><circle cx="70" cy="50" r="6"/><circle cx="90" cy="50" r="6"/><circle cx="110" cy="50" r="6"/><circle cx="130" cy="50" r="6"/><circle cx="150" cy="50" r="6"/><circle cx="170" cy="50" r="6"/>
+<circle cx="30" cy="90" r="6"/><circle cx="50" cy="90" r="6"/><circle cx="70" cy="90" r="6"/><circle cx="90" cy="90" r="6"/><circle cx="110" cy="90" r="6"/><circle cx="130" cy="90" r="6"/><circle cx="150" cy="90" r="6"/><circle cx="170" cy="90" r="6"/></g>
+<g stroke="#4ec9b0" stroke-width="1"><line x1="30" y1="56" x2="30" y2="84"/><line x1="50" y1="56" x2="50" y2="84"/><line x1="110" y1="56" x2="110" y2="84"/><line x1="130" y1="56" x2="130" y2="84"/><line x1="150" y1="56" x2="150" y2="84"/><line x1="170" y1="56" x2="170" y2="84"/></g>
+<g stroke="#f48771" stroke-width="2"><line x1="70" y1="56" x2="90" y2="84"/><line x1="90" y1="56" x2="70" y2="84"/></g>
+<text x="100" y="124" text-anchor="middle" class="s">3 con 4 y 4 con 3</text>
+</g>
+<text x="300" y="164" text-anchor="middle" class="s">P = módulo principal · R = módulo remoto · las líneas unen las luces que se encienden a la vez</text>
+</svg>
+<p class="pie-figura">Aprende a reconocer estos dibujos: te dicen qué extremo revisar y qué buscar.</p>
+</div>
+
+<h3>El par partido, explicado</h3>
+<p>Es la avería más traicionera. Imagina que en los dos extremos pones los colores en este orden: blanco-naranja, naranja, blanco-verde, verde, azul, blanco-azul, blanco-marrón, marrón. Cada pin llega a su pin, así que el comprobador dice «perfecto». Pero los pines 3 y 6, que tienen que ir por <strong>el mismo par</strong>, ahora van por hilos de pares distintos. Ya no hay trenzado que anule el ruido, y el cable da errores o no enlaza a gigabit.</p>
+<p>Moraleja: <strong>el orden de la norma no es un capricho</strong>. Y que el téster diga que sí no te exime de mirar los colores.</p>
+
+<div data-actividad="u3s13-averias"></div>
+
+<h2>Parte 3: el reto de las averías</h2>
+<p>Te daré cables estropeados a propósito, numerados. Para cada uno:</p>
+<ol>
+<li>Pásalo por el comprobador y <strong>dibuja las luces</strong> en tu hoja.</li>
+<li>Di <strong>qué avería</strong> es y <strong>en qué extremo</strong> crees que está (mira los conectores).</li>
+<li>Propón el arreglo y, si te lo digo, <strong>arréglalo</strong> y vuelve a comprobarlo.</li>
+</ol>
+
+<h3>Si falla la red de un puesto, en este orden</h3>
+<ol>
+<li><strong>Luces</strong>: ¿hay LINK en la tarjeta y en el puerto del switch?</li>
+<li><strong>Latiguillo</strong>: cámbialo por uno que sepas que funciona.</li>
+<li><strong>Puerto</strong>: prueba en otro puerto del switch.</li>
+<li><strong>Cable fijo</strong>: comprobador entre la roseta y el panel (y el generador de tonos si no sabes cuál es).</li>
+<li><strong>Tarjeta</strong>: Administrador de dispositivos, <code>Get-NetAdapter</code>, prueba con otro equipo.</li>
+</ol>
+<p>Siempre de lo más fácil y barato a lo más difícil. Y cambia <strong>una sola cosa cada vez</strong>, para saber cuál era la culpable.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Hoja de práctica 2 — rellénala a mano mientras trabajas</p>
+<ol>
+<li>Tabla de colores de tu cable cruzado, extremo por extremo.</li>
+<li>Dibuja las luces del comprobador con tu cable cruzado. ¿Coinciden con las que tocan?</li>
+<li>Resultado del <code>ping</code> entre los dos PC: ¿ha funcionado con el cruzado? ¿Y con el directo? ¿Por qué?</li>
+<li>Por cada cable del reto: número, dibujo de luces, avería, extremo sospechoso y arreglo.</li>
+<li>Explica qué es un <strong>par partido</strong> y por qué el comprobador básico no lo detecta.</li>
+<li>Un usuario dice que no tiene red. Escribe, en orden, los pasos que seguirías.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 En el comprobador, la luz 5 no se enciende en ningún módulo. ¿Qué es?</summary>
+<p>Un <strong>circuito abierto</strong> en el hilo 5 (blanco-azul): no llega al fondo o el contacto no ha bajado. Revisa los dos conectores.</p>
+</details>
+<details>
+<summary>🤔 Con tu cable directo sale 1-1, 2-2, 3-6, 4-4, 5-5, 6-3, 7-7, 8-8. ¿Qué has hecho?</summary>
+<p>Has intercambiado los hilos de los pines 3 y 6 en un extremo: el blanco-verde y el verde. Es un fallo de <strong>hilos cruzados</strong>.</p>
+</details>

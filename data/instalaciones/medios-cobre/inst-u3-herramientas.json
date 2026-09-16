@@ -1,0 +1,47 @@
+{
+  "id": "inst-u3-herramientas",
+  "titulo": "Sesión 11 — Herramientas del cable de cobre",
+  "fecha": "",
+  "descripcion": "Las herramientas para preparar, terminar y comprobar el cable: pelacables, alicates, crimpadoras, comprobador de cable, generador de tonos y certificador, con las normas de seguridad del taller.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s11-herramientas",
+      "tipo": "quiz",
+      "titulo": "¿Qué herramienta?",
+      "preguntas": [
+        {
+          "pregunta": "Para quitar la cubierta exterior del UTP sin dañar los hilos se usa…",
+          "opciones": ["Un cúter", "El pelacables", "La herramienta de impacto", "Los alicates de corte"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo debe ser el corte para igualar los ocho hilos antes de meterlos en el conector?",
+          "opciones": ["Oblicuo", "Recto", "En escalera", "Da igual"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuándo se suelta la crimpadora?",
+          "opciones": ["Al notar que el conector engancha", "Cuando la carraca suelta sola", "A los tres segundos", "Cuando se ve el cobre"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para meter los hilos en una roseta o en el panel de parcheo se usa…",
+          "opciones": ["La crimpadora", "La herramienta de impacto", "El pelacables", "El generador de tonos"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "u3s11-relacionar",
+      "tipo": "relacionar",
+      "titulo": "Cada aparato de comprobación con su uso",
+      "pares": [
+        { "izquierda": "Comprobador de cable", "derecha": "Ver si cada hilo llega a su pin" },
+        { "izquierda": "Generador de tonos y sonda", "derecha": "Encontrar un cable entre muchos" },
+        { "izquierda": "Certificador", "derecha": "Garantizar que el enlace cumple una categoría" },
+        { "izquierda": "Luces LINK del switch", "derecha": "Saber si hay enlace sin sacar ningún aparato" }
+      ]
+    }
+  ]
+}

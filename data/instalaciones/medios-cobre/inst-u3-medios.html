@@ -1,0 +1,104 @@
+<h2>El camino que siguen los datos</h2>
+<p>En la Unidad 1 viste los cinco elementos de toda comunicación: emisor, receptor, mensaje, código y <strong>canal</strong>. En una red, ese canal tiene nombre propio: el <strong>medio de transmisión</strong>, que es el camino físico por el que viaja la señal de un equipo a otro.</p>
+<p>Esta unidad va de ese camino. Durante unas semanas vas a tener cable en las manos: pelarlo, ordenarlo, crimparlo y comprobarlo. Pero antes conviene saber qué opciones hay y por qué en el taller (y en casi cualquier oficina) usamos la que usamos.</p>
+
+<h2>Guiados y no guiados</h2>
+<p>Todos los medios se reparten en dos familias:</p>
+<ul>
+<li><strong>Medios guiados</strong>: la señal va <em>encerrada</em> dentro de un material sólido que la conduce de un extremo a otro. Son los cables: <strong>par trenzado</strong>, <strong>coaxial</strong> y <strong>fibra óptica</strong>.</li>
+<li><strong>Medios no guiados</strong>: la señal viaja <em>por el aire</em> en forma de ondas electromagnéticas, sin nada que la conduzca. Es el wifi, el Bluetooth, el 4G/5G o los infrarrojos. Los emite y los recoge una <strong>antena</strong>.</li>
+</ul>
+
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Clasificación de los medios de transmisión: guiados (par trenzado, coaxial y fibra óptica) y no guiados (wifi, Bluetooth, telefonía móvil e infrarrojos), con la unidad en la que se estudia cada uno" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+.b{font-family:monospace;font-size:13px;font-weight:700;fill:#4fc1ff}
+</style>
+<rect x="220" y="10" width="160" height="34" rx="4" fill="#252526" stroke="#4fc1ff"/>
+<text x="300" y="32" text-anchor="middle" class="b">Medios</text>
+<path d="M 300 44 L 300 60 L 150 60 L 150 76 M 300 60 L 450 60 L 450 76" stroke="#858585" fill="none"/>
+<rect x="60" y="76" width="180" height="34" rx="4" fill="#252526" stroke="#4ec9b0"/>
+<text x="150" y="98" text-anchor="middle" class="t" style="fill:#4ec9b0">Guiados (cable)</text>
+<rect x="360" y="76" width="180" height="34" rx="4" fill="#252526" stroke="#dcdcaa"/>
+<text x="450" y="98" text-anchor="middle" class="t" style="fill:#dcdcaa">No guiados (aire)</text>
+<path d="M 150 110 L 150 126 M 60 126 L 240 126 M 60 126 L 60 138 M 150 126 L 150 138 M 240 126 L 240 138" stroke="#858585" fill="none"/>
+<text x="60" y="156" text-anchor="middle" class="t">par</text><text x="60" y="170" text-anchor="middle" class="t">trenzado</text>
+<text x="150" y="156" text-anchor="middle" class="t">coaxial</text>
+<text x="240" y="156" text-anchor="middle" class="t">fibra</text><text x="240" y="170" text-anchor="middle" class="t">óptica</text>
+<text x="60" y="192" text-anchor="middle" class="s" style="fill:#4ec9b0">UD3</text>
+<text x="150" y="192" text-anchor="middle" class="s" style="fill:#4ec9b0">UD3</text>
+<text x="240" y="192" text-anchor="middle" class="s">UD4</text>
+<path d="M 450 110 L 450 126 M 380 126 L 520 126 M 380 126 L 380 138 M 450 126 L 450 138 M 520 126 L 520 138" stroke="#858585" fill="none"/>
+<text x="380" y="156" text-anchor="middle" class="t">wifi</text>
+<text x="450" y="156" text-anchor="middle" class="t">Bluetooth</text>
+<text x="520" y="156" text-anchor="middle" class="t">móvil</text><text x="520" y="170" text-anchor="middle" class="t">IR</text>
+<text x="450" y="192" text-anchor="middle" class="s">UD5</text>
+<text x="300" y="222" text-anchor="middle" class="s">En verde, lo que se trabaja en esta unidad</text>
+</svg>
+<p class="pie-figura">Esta unidad es la del cobre: par trenzado y coaxial. La fibra y el inalámbrico tienen su propia unidad.</p>
+</div>
+
+<h2>Los medios, cara a cara</h2>
+<p>Esta tabla es la que tienes que saber leer. Los valores son los <strong>habituales</strong> en una red local; cada medio tiene variantes que llegan más lejos o más rápido.</p>
+<table>
+<tr><th>Medio</th><th>Qué viaja</th><th>Velocidad habitual</th><th>Distancia máxima por tramo</th><th>Dónde lo verás</th></tr>
+<tr><td><strong>Par trenzado</strong></td><td>Señal eléctrica</td><td>1 Gbps (hasta 10 Gbps)</td><td>100 m</td><td>Casi cualquier red local: el latiguillo de tu PC</td></tr>
+<tr><td><strong>Coaxial</strong></td><td>Señal eléctrica</td><td>10 Mbps en las redes locales antiguas</td><td>185 m (coaxial fino)</td><td>Antena de TV, cámaras de vigilancia antiguas, fibra-coaxial de algunos operadores</td></tr>
+<tr><td><strong>Fibra óptica</strong></td><td>Luz</td><td>De 1 Gbps a cientos de Gbps</td><td>De cientos de metros a decenas de km</td><td>Uniones entre edificios, la fibra de casa, cables submarinos</td></tr>
+<tr><td><strong>Wifi</strong></td><td>Ondas de radio</td><td>De cientos de Mbps a más de 1 Gbps (reales, menos)</td><td>Unas decenas de metros en interior</td><td>Portátiles y móviles</td></tr>
+<tr><td><strong>Bluetooth</strong></td><td>Ondas de radio</td><td>Unos pocos Mbps</td><td>Unos 10 m</td><td>Auriculares, ratones, relojes</td></tr>
+<tr><td><strong>Infrarrojos</strong></td><td>Luz invisible</td><td>Pocos Mbps</td><td>Menos de 1 m, en línea recta</td><td>Mandos a distancia</td></tr>
+</table>
+
+<div class="nota">Corrijo un dato que verás en muchas tablas antiguas, incluida la de mi presentación: el wifi <strong>ya no</strong> se queda en 100 Mbps. Los estándares actuales (wifi 5, 6 y 7) superan el gigabit en condiciones ideales. Lo que sí sigue siendo verdad es que la velocidad real baja mucho con la distancia, las paredes y el número de usuarios.</div>
+
+<div data-actividad="u3s1-que-medio"></div>
+
+<h2>¿Y por qué seguimos usando cable?</h2>
+<p>Si el wifi es tan cómodo, ¿por qué cada puesto de una oficina tiene su roseta? Porque el cable gana en casi todo lo que importa cuando el equipo no se mueve:</p>
+<table>
+<tr><th></th><th>Cable</th><th>Inalámbrico</th></tr>
+<tr><td>Velocidad</td><td>Estable, la que marca el enlace</td><td>Varía con la distancia y los obstáculos</td></tr>
+<tr><td>Interferencias</td><td>Pocas (y se pueden reducir con apantallamiento)</td><td>Muchas: vecinos, microondas, paredes</td></tr>
+<tr><td>Seguridad</td><td>Hay que enchufarse físicamente</td><td>La señal sale del edificio</td></tr>
+<tr><td>Movilidad</td><td>Ninguna</td><td>Total</td></tr>
+<tr><td>Instalación</td><td>Obra: canaletas, rosetas, rack</td><td>Un punto de acceso y listo</td></tr>
+</table>
+<p>La respuesta de un instalador suele ser <strong>las dos cosas</strong>: cable a los puestos fijos, a las impresoras y a los puntos de acceso, y wifi para lo que se mueve.</p>
+
+<h2>Lo que importa de un medio</h2>
+<p>Cuando comparamos cables, siempre hablamos de las mismas cuatro características. Te las vas a encontrar en cada sesión:</p>
+<ul>
+<li><strong>Ancho de banda</strong>: cuántas frecuencias puede transportar el cable. Se mide en <strong>MHz</strong> y es lo que distingue una categoría de cable de otra. A más ancho de banda, más velocidad posible.</li>
+<li><strong>Velocidad de transmisión</strong>: cuántos datos pasan por segundo. Se mide en <strong>Mbps o Gbps</strong>. Ojo: MHz y Mbps no son lo mismo, aunque vayan de la mano.</li>
+<li><strong>Atenuación</strong>: la señal se debilita a medida que avanza. Por eso cada medio tiene una <strong>distancia máxima</strong>; pasada esa distancia, al otro lado llega algo que ya no se entiende.</li>
+<li><strong>Interferencias</strong>: el ruido del que hablamos en la Unidad 1. Motores, fluorescentes, cables de corriente cercanos… Cada medio las aguanta de una forma.</li>
+</ul>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 1 — a mano, en papel</p>
+<ol>
+<li>Define <strong>medio de transmisión</strong> y explica la diferencia entre medio guiado y no guiado. Pon dos ejemplos de cada uno.</li>
+<li>Copia la tabla comparativa de los medios (solo par trenzado, coaxial, fibra y wifi) con sus cuatro columnas.</li>
+<li>Explica con tus palabras qué es la <strong>atenuación</strong> y qué tiene que ver con la distancia máxima de un cable.</li>
+<li>En tu casa, ¿qué aparatos van por cable y cuáles por wifi? ¿Cambiarías alguno? ¿Por qué?</li>
+<li>Una empresa quiere quitar todo el cableado y poner solo wifi. Dale <strong>tres argumentos</strong> para que no lo haga.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿El cable de la antena de la tele es un medio guiado?</summary>
+<p>Sí. Es un <strong>coaxial</strong>: la señal va dentro del cable. Otra cosa es cómo llega la señal hasta la antena del tejado, que es por el aire.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué un cable de red tiene una distancia máxima?</summary>
+<p>Por la <strong>atenuación</strong>: la señal eléctrica pierde fuerza por el camino. En par trenzado, pasados los 100 m lo que llega es demasiado débil y con demasiado ruido para distinguir los unos de los ceros.</p>
+</details>
+<details>
+<summary>🤔 ¿MHz y Mbps son lo mismo?</summary>
+<p>No. Los <strong>MHz</strong> miden el ancho de banda del cable (qué frecuencias soporta); los <strong>Mbps</strong>, los datos que pasan por segundo. Un cable con más MHz permite más Mbps, pero no se convierte uno en otro directamente.</p>
+</details>

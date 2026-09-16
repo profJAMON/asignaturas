@@ -1,0 +1,107 @@
+<h2>El orden de los colores no se improvisa</h2>
+<p>Técnicamente, un cable funciona con cualquier orden de colores, siempre que en los dos extremos sea el mismo. Pero si cada instalador pusiera el suyo, nadie podría reparar la red de otro, y además los pares no quedarían bien emparejados con los pines que trabajan juntos. Por eso el orden está fijado por una norma.</p>
+<p>La posición de cada hilo en el conector se llama <strong>terminación</strong>, y la norma <strong>TIA-568</strong> define dos: <strong>T568A</strong> y <strong>T568B</strong>.</p>
+
+<h2>Las dos terminaciones</h2>
+<div class="salida">
+<svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Terminaciones T568A y T568B. T568A: 1 blanco-verde, 2 verde, 3 blanco-naranja, 4 azul, 5 blanco-azul, 6 naranja, 7 blanco-marrón, 8 marrón. T568B: 1 blanco-naranja, 2 naranja, 3 blanco-verde, 4 azul, 5 blanco-azul, 6 verde, 7 blanco-marrón, 8 marrón" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#4fc1ff}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<defs>
+<pattern id="u3bv" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#f0f0f0"/><rect x="3" width="4" height="10" fill="#3aa757"/></pattern>
+<pattern id="u3bn" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#f0f0f0"/><rect x="3" width="4" height="10" fill="#e8892e"/></pattern>
+<pattern id="u3ba" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#f0f0f0"/><rect x="3" width="4" height="10" fill="#2f6fd6"/></pattern>
+<pattern id="u3bm" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#f0f0f0"/><rect x="3" width="4" height="10" fill="#8b5a2b"/></pattern>
+</defs>
+<text x="150" y="22" text-anchor="middle" class="b">T568A</text>
+<text x="450" y="22" text-anchor="middle" class="b">T568B</text>
+<g stroke="#1e1e1e">
+<rect x="60" y="36" width="20" height="150" fill="url(#u3bv)"/><rect x="82" y="36" width="20" height="150" fill="#3aa757"/>
+<rect x="104" y="36" width="20" height="150" fill="url(#u3bn)"/><rect x="126" y="36" width="20" height="150" fill="#2f6fd6"/>
+<rect x="148" y="36" width="20" height="150" fill="url(#u3ba)"/><rect x="170" y="36" width="20" height="150" fill="#e8892e"/>
+<rect x="192" y="36" width="20" height="150" fill="url(#u3bm)"/><rect x="214" y="36" width="20" height="150" fill="#8b5a2b"/>
+<rect x="360" y="36" width="20" height="150" fill="url(#u3bn)"/><rect x="382" y="36" width="20" height="150" fill="#e8892e"/>
+<rect x="404" y="36" width="20" height="150" fill="url(#u3bv)"/><rect x="426" y="36" width="20" height="150" fill="#2f6fd6"/>
+<rect x="448" y="36" width="20" height="150" fill="url(#u3ba)"/><rect x="470" y="36" width="20" height="150" fill="#3aa757"/>
+<rect x="492" y="36" width="20" height="150" fill="url(#u3bm)"/><rect x="514" y="36" width="20" height="150" fill="#8b5a2b"/>
+</g>
+<g class="t" text-anchor="middle">
+<text x="70" y="202">1</text><text x="92" y="202">2</text><text x="114" y="202">3</text><text x="136" y="202">4</text><text x="158" y="202">5</text><text x="180" y="202">6</text><text x="202" y="202">7</text><text x="224" y="202">8</text>
+<text x="370" y="202">1</text><text x="392" y="202">2</text><text x="414" y="202">3</text><text x="436" y="202">4</text><text x="458" y="202">5</text><text x="480" y="202">6</text><text x="502" y="202">7</text><text x="524" y="202">8</text>
+</g>
+<path d="M 104 214 L 104 222 L 190 222 L 190 214 M 60 214 L 60 230 L 102 230 L 102 214" stroke="#858585" fill="none"/>
+<path d="M 360 214 L 360 222 L 402 222 L 402 214 M 404 214 L 404 230 L 490 230 L 490 214" stroke="#858585" fill="none"/>
+<text x="300" y="252" text-anchor="middle" class="s">Solo cambian de sitio el par naranja y el verde. Azul (4-5) y marrón (7-8) no se mueven.</text>
+</svg>
+<p class="pie-figura">Pines contados en la posición de referencia: contactos hacia ti, pestaña detrás, cable hacia abajo.</p>
+</div>
+
+<table>
+<tr><th>Pin</th><th>T568A</th><th>T568B</th></tr>
+<tr><td>1</td><td>Blanco-verde</td><td>Blanco-naranja</td></tr>
+<tr><td>2</td><td>Verde</td><td>Naranja</td></tr>
+<tr><td>3</td><td>Blanco-naranja</td><td>Blanco-verde</td></tr>
+<tr><td>4</td><td>Azul</td><td>Azul</td></tr>
+<tr><td>5</td><td>Blanco-azul</td><td>Blanco-azul</td></tr>
+<tr><td>6</td><td>Naranja</td><td>Verde</td></tr>
+<tr><td>7</td><td>Blanco-marrón</td><td>Blanco-marrón</td></tr>
+<tr><td>8</td><td>Marrón</td><td>Marrón</td></tr>
+</table>
+
+<h3>Cómo acordarte sin chuleta</h3>
+<ol>
+<li><strong>Los blancos van en los impares</strong> (1, 3, 5, 7) y los de color liso en los pares… con una excepción: el pin 4 es azul liso y el 5 blanco-azul.</li>
+<li><strong>El azul va siempre en el centro</strong> (4 y 5) y <strong>el marrón siempre al final</strong> (7 y 8). En las dos normas.</li>
+<li>Solo tienes que decidir quién empieza: <strong>T568<u>B</u> empieza por blanco-naranja</strong>; T568A, por blanco-verde.</li>
+<li>El par que empieza (pines 1 y 2) se <strong>parte</strong>: su blanco va en el 3 y su color en el 6, rodeando al azul.</li>
+</ol>
+
+<div data-actividad="u3s8-generador"></div>
+
+<h2>¿Cuál se usa?</h2>
+<p>Las dos son igual de buenas: eléctricamente dan el mismo resultado. Lo único obligatorio es <strong>no mezclarlas dentro de una misma instalación</strong>: si las rosetas están en T568B, el panel también, y los latiguillos también.</p>
+<ul>
+<li>La norma admite ambas y señala <strong>T568A</strong> como la preferente (en EE. UU. es obligatoria en edificios públicos).</li>
+<li>En la práctica, <strong>T568B</strong> está muchísimo más extendida, sobre todo en los latiguillos que se venden hechos.</li>
+</ul>
+<p>En el taller trabajaremos con <strong>T568B</strong>, para que tus latiguillos sean iguales que los comprados.</p>
+<div class="nota">Mi presentación dice que la norma recomienda T568A «para la mayor parte del tendido». Es cierto, pero lo importante no es cuál eliges, sino que <strong>sea la misma en todo el edificio</strong> y quede apuntada en la documentación.</div>
+
+<h2>Qué pines trabajan</h2>
+<p>A 10 y 100 Mbps, un equipo como tu PC <strong>transmite por los pines 1 y 2</strong> y <strong>recibe por los pines 3 y 6</strong>. Por eso el par que va en 3-6 está partido alrededor del azul: tiene que trabajar como pareja aunque sus pines no sean vecinos.</p>
+<table>
+<tr><th>Pines</th><th>Función en el PC (10/100 Mbps)</th><th>En T568B</th></tr>
+<tr><td>1 y 2</td><td>Transmitir (TX)</td><td>Par naranja</td></tr>
+<tr><td>3 y 6</td><td>Recibir (RX)</td><td>Par verde</td></tr>
+<tr><td>4-5 y 7-8</td><td>Sin uso a 10/100; <strong>se usan a 1 Gbps</strong></td><td>Azul y marrón</td></tr>
+</table>
+<p>Esta idea (qué pines transmiten y cuáles reciben) es la que explica la próxima sesión: cuándo hace falta un cable <strong>cruzado</strong>.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 8 — a mano, en papel</p>
+<ol>
+<li>Copia la tabla de pines de T568A y T568B. Si tienes lápices de colores, píntala.</li>
+<li>¿Qué pares cambian de posición entre T568A y T568B? ¿Cuáles se quedan igual?</li>
+<li>Escribe de memoria, sin mirar, el orden de T568B. Luego compruébalo y corrige.</li>
+<li>¿Qué norma usarías en una instalación nueva? ¿Qué es lo único obligatorio?</li>
+<li>¿Por qué pines transmite y por cuáles recibe un PC a 100 Mbps? ¿Qué colores son en T568B?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 T568B, pin 3: ¿qué color?</summary>
+<p><strong>Blanco-verde</strong>.</p>
+</details>
+<details>
+<summary>🤔 ¿En qué pin va el azul liso en T568A?</summary>
+<p>En el <strong>4</strong>. Igual que en T568B: el azul no se mueve.</p>
+</details>
+<details>
+<summary>🤔 Pones T568A en un extremo y T568B en el otro. ¿Qué has fabricado?</summary>
+<p>Un cable <strong>cruzado</strong>. Lo vemos en la próxima sesión.</p>
+</details>

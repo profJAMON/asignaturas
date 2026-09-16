@@ -1,0 +1,133 @@
+<h2>El otro cable de cobre</h2>
+<p>El <strong>cable coaxial</strong> fue el cable de las primeras redes locales (en bus) y hoy lo ves sobre todo en la <strong>antena de la tele</strong>, la parabólica, cámaras de vigilancia antiguas y las antenas de algunos aparatos wifi. En redes de datos ya casi no se usa, pero un instalador de telecomunicaciones se lo encuentra constantemente, y en el taller tenemos para practicar.</p>
+
+<h2>Cómo es por dentro</h2>
+<p>Se llama <em>coaxial</em> porque todas sus capas comparten el mismo eje, una dentro de otra:</p>
+<div class="salida">
+<svg viewBox="0 0 600 190" width="100%" role="img" aria-label="Cable coaxial pelado en escalera, de dentro afuera: conductor central de cobre, dieléctrico blanco, lámina de aluminio y malla trenzada, y cubierta exterior" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="330" y="60" width="250" height="60" rx="6" fill="#3a3d41" stroke="#858585"/>
+<rect x="250" y="66" width="90" height="48" fill="#8a8a8a"/>
+<g stroke="#b0b0b0" stroke-width="1"><path d="M 252 66 L 272 114 M 272 66 L 292 114 M 292 66 L 312 114 M 312 66 L 332 114 M 262 114 L 282 66 M 282 114 L 302 66 M 302 114 L 322 66"/></g>
+<rect x="200" y="70" width="52" height="40" fill="#c8c8c8"/>
+<rect x="130" y="74" width="72" height="32" fill="#eeeeee"/>
+<rect x="40" y="85" width="92" height="10" fill="#d7ba7d"/>
+<g stroke="#858585"><line x1="80" y1="85" x2="80" y2="40"/><line x1="165" y1="74" x2="165" y2="150"/><line x1="226" y1="70" x2="226" y2="40"/><line x1="296" y1="114" x2="296" y2="150"/><line x1="460" y1="60" x2="460" y2="40"/></g>
+<text x="80" y="32" text-anchor="middle" class="t">conductor central</text>
+<text x="165" y="166" text-anchor="middle" class="t">dieléctrico</text>
+<text x="226" y="32" text-anchor="middle" class="t">lámina</text>
+<text x="296" y="166" text-anchor="middle" class="t">malla</text>
+<text x="460" y="32" text-anchor="middle" class="t">cubierta</text>
+<text x="300" y="186" text-anchor="middle" class="s">lámina + malla = conductor exterior o pantalla</text>
+</svg>
+<p class="pie-figura">De dentro afuera. La señal va por el conductor central; la malla hace de retorno y de escudo.</p>
+</div>
+<ol>
+<li><strong>Conductor central</strong>: un hilo de cobre (o de acero cobreado), rígido o de varios hilos. Por él va la señal.</li>
+<li><strong>Dieléctrico</strong>: el aislante que separa el centro de la malla y mantiene la distancia exacta entre ellos. Normalmente polietileno.</li>
+<li><strong>Conductor exterior</strong>: una <strong>malla</strong> trenzada de cobre o aluminio, a menudo con una <strong>lámina</strong> de aluminio debajo. Hace de retorno de la señal y de <strong>pantalla</strong> contra las interferencias.</li>
+<li><strong>Cubierta</strong>: PVC o, mejor, libre de halógenos. Negra si va por el exterior (aguanta el sol).</li>
+</ol>
+<p>Gracias a esa pantalla que lo envuelve todo, el coaxial <strong>aguanta muy bien las interferencias</strong> y pierde poca señal. Su pega: es grueso, rígido, más caro y lleva <strong>una sola señal</strong> por cable, mientras que un UTP lleva cuatro pares.</p>
+
+<h2>Impedancia: 50 o 75 ohmios</h2>
+<p>Cada coaxial tiene una <strong>impedancia</strong> característica, un valor que depende de las medidas del conductor y del dieléctrico. Los aparatos, los conectores y el cable tienen que tener <strong>la misma</strong>; si no, parte de la señal rebota y se pierde.</p>
+<table>
+<tr><th>Impedancia</th><th>Para qué</th><th>Cables típicos</th></tr>
+<tr><td><strong>75 Ω</strong></td><td>Televisión, satélite, cámaras de vigilancia</td><td><strong>RG-6</strong> (TV y satélite), RG-59 (cámaras)</td></tr>
+<tr><td><strong>50 Ω</strong></td><td>Radio, antenas wifi, las antiguas redes Ethernet</td><td>RG-58 (10BASE2, «coaxial fino»), RG-8 (10BASE5, «coaxial grueso»)</td></tr>
+</table>
+<div class="nota">Las siglas <strong>RG</strong> son el nombre del <strong>cable</strong>, no del conector. Mi presentación habla de «conectores RG»: lo correcto es cable RG-6 con conector F, o cable RG-58 con conector BNC.</div>
+
+<h3>El coaxial en las redes antiguas</h3>
+<table>
+<tr><th>Norma</th><th>Cable</th><th>Velocidad</th><th>Distancia por segmento</th></tr>
+<tr><td>10BASE5 (<em>thicknet</em>)</td><td>Coaxial grueso RG-8</td><td>10 Mbps</td><td>500 m</td></tr>
+<tr><td>10BASE2 (<em>thinnet</em>)</td><td>Coaxial fino RG-58</td><td>10 Mbps</td><td>185 m</td></tr>
+</table>
+<p>Las dos eran topología en <strong>bus</strong> con <strong>terminadores de 50 Ω</strong> en los extremos. Si alguna vez te encuentras un conector en T detrás de un ordenador, estás delante de una pieza de museo.</p>
+
+<h2>Conectores de coaxial</h2>
+<p>Se clasifican por cómo se enganchan: a <strong>bayoneta</strong> (se empuja y se gira un cuarto de vuelta), a <strong>rosca</strong> o a <strong>presión</strong>.</p>
+<table>
+<tr><th>Conector</th><th>Enganche</th><th>Dónde</th></tr>
+<tr><td><strong>F</strong></td><td>Rosca</td><td>Antena y parabólica, entrada del descodificador y del router de cable. <strong>El que montaremos</strong></td></tr>
+<tr><td><strong>IEC</strong> («de antena»)</td><td>Presión</td><td>La toma de antena de la pared y la entrada de la tele</td></tr>
+<tr><td><strong>BNC</strong></td><td>Bayoneta</td><td>Redes 10BASE2 antiguas, cámaras de vigilancia, aparatos de medida</td></tr>
+<tr><td><strong>N</strong></td><td>Rosca, grande y estanco</td><td>Antenas exteriores de wifi y radioenlaces</td></tr>
+<tr><td><strong>SMA</strong></td><td>Rosca, pequeño</td><td>Las antenas desmontables de routers y puntos de acceso</td></tr>
+</table>
+<p>Según cómo se fijan al cable, los conectores F pueden ser <strong>de rosca</strong> (se enroscan sobre la cubierta; baratos, pero se sueltan), <strong>de crimpar</strong> (anillo hexagonal) o <strong>de compresión</strong> (una herramienta empuja el cuerpo; los más fiables y estancos, los que usan los profesionales).</p>
+
+<div data-actividad="u3s14-coaxial"></div>
+
+<h2>Taller: montar un conector F en cable RG-6</h2>
+<h3>Material</h3>
+<ul>
+<li>Cable coaxial RG-6 de 75 Ω, conectores F (del tipo que haya en el taller) y, si son de compresión, su herramienta.</li>
+<li>Pelacables de coaxial de dos o tres niveles, alicates de corte.</li>
+<li>Gafas: los hilos de la malla <strong>se clavan</strong> en los dedos y saltan al cortar.</li>
+</ul>
+
+<h3>Pasos</h3>
+<ol>
+<li><strong>Corta recto</strong> el extremo del cable.</li>
+<li><strong>Pela en escalera</strong> con el pelacables de coaxial: tiene que quedar el conductor central desnudo (unos 6 mm) y, detrás, un tramo de dieléctrico con la malla encima (otros 6 mm). Sigue la medida que indique el fabricante del conector.</li>
+<li><strong>Dobla la malla hacia atrás</strong> sobre la cubierta, con cuidado. Si hay lámina, déjala pegada al dieléctrico.</li>
+<li><strong>Revisa el paso más importante</strong>: que <strong>ningún pelo de la malla toque el conductor central</strong>. Uno solo basta para hacer un cortocircuito y que no llegue señal.</li>
+<li><strong>Mete el conector</strong> girándolo (si es de rosca) o empujándolo hasta que el dieléctrico quede a ras de la base interior.</li>
+<li>Si es de <strong>compresión</strong> o de <strong>crimpar</strong>, usa la herramienta hasta el tope.</li>
+<li><strong>Comprueba</strong>: el conductor central sobresale <strong>1-2 mm</strong> por delante del conector; si sobra, córtalo. La malla no se ve por fuera y el conector no gira ni sale al tirar.</li>
+</ol>
+<h3>Comprobarlo</h3>
+<ul>
+<li>Con un <strong>polímetro</strong> en continuidad: entre conductor central y cuerpo del conector <strong>no</strong> debe haber continuidad (si pita, hay cortocircuito). Si pones un puente en el otro extremo, entonces sí debe pitar.</li>
+<li>Prueba real, si hay toma: conecta una tele o un descodificador y comprueba que llega señal.</li>
+</ul>
+
+<h2>Coaxial frente a par trenzado</h2>
+<table>
+<tr><th></th><th>Coaxial</th><th>Par trenzado</th></tr>
+<tr><td>Interferencias</td><td>Muy buena protección (pantalla)</td><td>Buena gracias al trenzado; mejor si es apantallado</td></tr>
+<tr><td>Señales por cable</td><td>Una</td><td>Cuatro pares</td></tr>
+<tr><td>Manejo</td><td>Grueso y rígido</td><td>Fino y flexible</td></tr>
+<tr><td>Uso hoy</td><td>TV, satélite, antenas, CCTV antiguo</td><td>Redes locales</td></tr>
+</table>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 14 — a mano, en papel</p>
+<ol>
+<li>Dibuja un cable coaxial pelado en escalera y nombra sus cuatro capas. ¿Para qué sirve cada una?</li>
+<li>¿Qué es la impedancia de un coaxial? ¿Cuál se usa para televisión y cuál para antenas wifi?</li>
+<li>Haz una tabla de conectores de coaxial (F, IEC, BNC, N, SMA) con su tipo de enganche y dónde se usan.</li>
+<li>¿Qué eran 10BASE2 y 10BASE5? ¿Qué topología usaban?</li>
+<li>Escribe los pasos para montar un conector F. ¿Cuál es el fallo más peligroso y cómo se evita?</li>
+<li>Da dos razones por las que el coaxial se dejó de usar en redes locales.</li>
+</ol>
+</div>
+<div class="papel">
+<p class="papel__titulo">Hoja de práctica 3 — conector F</p>
+<ol>
+<li>Tipo de conector usado (rosca, crimpar o compresión) y cable.</li>
+<li>Número de intentos hasta que quedó bien, y qué falló en cada uno.</li>
+<li>Resultado de la prueba con el polímetro.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Qué pasa si un pelo de la malla toca el conductor central?</summary>
+<p>Un <strong>cortocircuito</strong>: la señal va a masa y no llega nada (o llega muy mal). Es el fallo típico de un conector F mal montado.</p>
+</details>
+<details>
+<summary>🤔 ¿RG-6 es un conector?</summary>
+<p>No, es un <strong>cable</strong> coaxial de 75 Ω. Su conector habitual es el <strong>F</strong>.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué conector tiene la antena desmontable de un router wifi?</summary>
+<p>Normalmente <strong>SMA</strong> (o su variante RP-SMA): pequeño y de rosca.</p>
+</details>

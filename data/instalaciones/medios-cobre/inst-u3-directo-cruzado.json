@@ -1,0 +1,16 @@
+{
+  "id": "inst-u3-directo-cruzado",
+  "titulo": "Sesión 9 — Cable directo y cable cruzado",
+  "fecha": "",
+  "descripcion": "Qué es un cable directo y uno cruzado, por qué dos equipos iguales necesitan el cruce, los puertos MDI y MDI-X, la regla para saber qué cable toca y el Auto-MDIX.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s9-generador",
+      "tipo": "generador",
+      "titulo": "¿Directo o cruzado?",
+      "generador": "directo-o-cruzado",
+      "n": 10
+    }
+  ]
+}

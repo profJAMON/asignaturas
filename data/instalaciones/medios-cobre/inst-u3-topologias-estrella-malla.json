@@ -1,0 +1,54 @@
+{
+  "id": "inst-u3-topologias-estrella-malla",
+  "titulo": "Sesión 3 — Topologías (II): estrella, árbol y malla",
+  "fecha": "",
+  "descripcion": "La estrella (la de casi todas las redes locales), el árbol o estrella extendida de los edificios, la malla y su fórmula de enlaces, las redes híbridas y la tabla que compara las seis topologías.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s3-malla",
+      "tipo": "quiz",
+      "titulo": "Calcula los enlaces de la malla completa",
+      "preguntas": [
+        {
+          "pregunta": "Malla completa de 4 equipos: ¿cuántos enlaces?",
+          "opciones": ["4", "6", "8", "12"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Malla completa de 6 equipos: ¿cuántos enlaces?",
+          "opciones": ["12", "15", "30", "36"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Malla completa de 10 equipos: ¿cuántos enlaces?",
+          "opciones": ["20", "45", "90", "100"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En una malla completa de 7 equipos, ¿cuántos puertos necesita cada equipo?",
+          "opciones": ["2", "6", "7", "21"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una malla completa tiene 3 enlaces. ¿Cuántos equipos tiene?",
+          "opciones": ["2", "3", "4", "6"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "u3s3-relacionar",
+      "tipo": "relacionar",
+      "titulo": "Cada topología con su rasgo",
+      "pares": [
+        { "izquierda": "Punto a punto", "derecha": "Dos equipos y un cable" },
+        { "izquierda": "Bus", "derecha": "Un troncal con terminadores" },
+        { "izquierda": "Anillo", "derecha": "Los datos pasan por todos, en un sentido" },
+        { "izquierda": "Estrella", "derecha": "Cada equipo con su cable al switch" },
+        { "izquierda": "Árbol", "derecha": "Switches de planta colgando de un troncal" },
+        { "izquierda": "Malla", "derecha": "Varios caminos: si uno se corta, hay otro" }
+      ]
+    }
+  ]
+}

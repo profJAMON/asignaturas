@@ -1,0 +1,56 @@
+{
+  "id": "inst-u3-par-trenzado",
+  "titulo": "Sesión 5 — El cable de par trenzado",
+  "fecha": "",
+  "descripcion": "Cómo es por dentro un cable de red, los cuatro pares y sus colores, por qué se trenzan los hilos, los apantallamientos (UTP, FTP, STP y su nombre ISO), hilo rígido o flexible y la cubierta libre de halógenos.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s5-tipos",
+      "tipo": "quiz",
+      "titulo": "Pares, trenzado y pantallas",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuántos hilos lleva un cable de par trenzado de red?",
+          "opciones": ["4", "6", "8", "16"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El hilo que forma par con el naranja es…",
+          "opciones": ["Blanco-azul", "Blanco-naranja", "Marrón", "Verde"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué se trenzan los hilos de cada par?",
+          "opciones": ["Para que el cable sea más resistente a tirones", "Para aumentar la potencia", "Para anular el ruido y evitar la diafonía", "Para ahorrar cobre"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Cable con una lámina de aluminio alrededor de los cuatro pares juntos:",
+          "opciones": ["UTP", "FTP", "STP", "Coaxial"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En la nomenclatura ISO, U/UTP significa…",
+          "opciones": ["Sin pantalla global ni por par", "Pantalla global de malla", "Lámina en cada par", "Cable de fibra"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Un cable apantallado instalado sin conectar la pantalla a tierra…",
+          "opciones": ["Funciona igual de bien", "Puede captar ruido como una antena", "Va más rápido", "Es obligatorio en oficinas"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El cable que va por la pared desde la roseta hasta el rack debe ser de hilo…",
+          "opciones": ["Flexible", "Rígido", "Da igual", "Coaxial"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué ventaja tiene una cubierta LSZH?",
+          "opciones": ["Es más barata", "Si arde, suelta poco humo y no tóxico", "Es más flexible", "No necesita conectores"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

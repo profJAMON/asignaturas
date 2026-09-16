@@ -1,0 +1,155 @@
+<h2>Estrella: la de casi todas las redes</h2>
+<div class="salida">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Topología en estrella: un switch en el centro y seis equipos, cada uno unido al switch con su propio cable; uno de los cables está cortado y solo ese equipo se queda sin red" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g stroke="#4fc1ff" stroke-width="2">
+<line x1="300" y1="110" x2="170" y2="40"/><line x1="300" y1="110" x2="430" y2="40"/>
+<line x1="300" y1="110" x2="130" y2="130"/><line x1="300" y1="110" x2="470" y2="130"/>
+<line x1="300" y1="110" x2="220" y2="190"/>
+</g>
+<line x1="300" y1="110" x2="340" y2="150" stroke="#4fc1ff" stroke-width="2"/>
+<line x1="352" y1="162" x2="380" y2="190" stroke="#4fc1ff" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="346" y="160" class="t" style="fill:#f48771">✕</text>
+<rect x="262" y="94" width="76" height="32" rx="4" fill="#252526" stroke="#4ec9b0"/><text x="300" y="114" text-anchor="middle" class="t" style="fill:#4ec9b0">switch</text>
+<rect x="148" y="26" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="170" y="43" text-anchor="middle" class="t">PC1</text>
+<rect x="408" y="26" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="430" y="43" text-anchor="middle" class="t">PC2</text>
+<rect x="100" y="118" width="60" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="130" y="135" text-anchor="middle" class="t">IMPR</text>
+<rect x="448" y="118" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="470" y="135" text-anchor="middle" class="t">PC3</text>
+<rect x="198" y="178" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="220" y="195" text-anchor="middle" class="t">SRV</text>
+<rect x="358" y="178" width="44" height="26" rx="3" fill="#252526" stroke="#f48771"/><text x="380" y="195" text-anchor="middle" class="t" style="fill:#f48771">PC4</text>
+<text x="420" y="186" class="s">solo PC4 se queda</text><text x="420" y="200" class="s">sin red</text>
+</svg>
+<p class="pie-figura">Cada equipo con su cable hasta el centro. Un cable roto solo afecta a su equipo.</p>
+</div>
+<p>Todos los equipos se conectan, cada uno con <strong>su propio cable</strong>, a un aparato central. Hoy ese aparato es casi siempre un <strong>switch</strong>; antes era un hub. Es la topología de las redes Ethernet con par trenzado: la de tu casa, la del taller y la de cualquier oficina.</p>
+<table>
+<tr><th>Ventajas</th><th>Inconvenientes</th></tr>
+<tr><td>
+<ul>
+<li>Si falla un equipo o su cable, <strong>solo cae ese equipo</strong></li>
+<li>Las averías son fáciles de localizar: miras las luces del puerto</li>
+<li>Añadir o quitar un equipo es enchufar o desenchufar un cable</li>
+<li>Con switch, los datos solo van al destinatario</li>
+</ul>
+</td><td>
+<ul>
+<li>Si falla el <strong>aparato central</strong>, cae toda la red</li>
+<li>Necesita más cable que el bus: uno por equipo</li>
+<li>Todo el tráfico pasa por el centro: puede formarse un <strong>cuello de botella</strong></li>
+</ul>
+</td></tr>
+</table>
+<div class="nota">El punto débil del centro tiene arreglo barato: tener un switch de repuesto en el armario. Cambiarlo cuesta diez minutos. Por eso las ventajas de la estrella ganan de largo.</div>
+
+<h2>Árbol (o estrella extendida)</h2>
+<p>Cuando la red crece, no se lleva un cable desde cada puesto del edificio hasta un único switch: se ponen <strong>varias estrellas colgando de un nodo principal</strong>. Un switch troncal une los switches de cada planta, y de cada uno salen los cables a sus equipos. Por su forma de ramas se llama <strong>árbol</strong>, y también <strong>estrella extendida</strong> o jerárquica.</p>
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Topología en árbol: un switch troncal arriba, unido a tres switches de planta, y de cada uno de ellos cuelgan tres equipos" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g stroke="#4fc1ff" stroke-width="2" fill="none">
+<path d="M 300 44 L 110 96 M 300 44 L 300 96 M 300 44 L 490 96"/>
+<path d="M 110 122 L 60 160 M 110 122 L 110 160 M 110 122 L 160 160"/>
+<path d="M 300 122 L 250 160 M 300 122 L 300 160 M 300 122 L 350 160"/>
+<path d="M 490 122 L 440 160 M 490 122 L 490 160 M 490 122 L 540 160"/>
+</g>
+<rect x="240" y="14" width="120" height="30" rx="4" fill="#252526" stroke="#4ec9b0"/><text x="300" y="33" text-anchor="middle" class="t" style="fill:#4ec9b0">switch troncal</text>
+<rect x="60" y="96" width="100" height="26" rx="4" fill="#252526" stroke="#4ec9b0"/><text x="110" y="113" text-anchor="middle" class="t">planta 0</text>
+<rect x="250" y="96" width="100" height="26" rx="4" fill="#252526" stroke="#4ec9b0"/><text x="300" y="113" text-anchor="middle" class="t">planta 1</text>
+<rect x="440" y="96" width="100" height="26" rx="4" fill="#252526" stroke="#4ec9b0"/><text x="490" y="113" text-anchor="middle" class="t">planta 2</text>
+<g fill="#252526" stroke="#d4d4d4">
+<rect x="46" y="160" width="28" height="20" rx="2"/><rect x="96" y="160" width="28" height="20" rx="2"/><rect x="146" y="160" width="28" height="20" rx="2"/>
+<rect x="236" y="160" width="28" height="20" rx="2"/><rect x="286" y="160" width="28" height="20" rx="2"/><rect x="336" y="160" width="28" height="20" rx="2"/>
+<rect x="426" y="160" width="28" height="20" rx="2"/><rect x="476" y="160" width="28" height="20" rx="2"/><rect x="526" y="160" width="28" height="20" rx="2"/>
+</g>
+<text x="300" y="196" text-anchor="middle" class="s">cada planta es una estrella; juntas forman un árbol</text>
+</svg>
+<p class="pie-figura">Así se cablea un instituto o un edificio de oficinas. Lo verás a fondo en la unidad de cableado estructurado.</p>
+</div>
+<ul>
+<li><strong>Ventajas</strong>: permite conectar muchísimos equipos y separar la red por zonas; una avería en una rama no afecta a las demás.</li>
+<li><strong>Inconvenientes</strong>: si falla el nodo troncal o el cable que baja a una planta, se queda sin red todo lo que cuelga de él. Es más compleja de planificar.</li>
+</ul>
+
+<h2>Malla</h2>
+<p>En la malla los equipos se unen <strong>directamente entre sí</strong>, con enlaces dedicados. Si <strong>cada equipo está unido con todos los demás</strong>, se llama <strong>malla completa</strong> (o totalmente conexa).</p>
+<p>La gracia es la <strong>redundancia</strong>: si se corta un enlace, los datos van por otro camino. Por eso se usa donde la red <em>no se puede caer</em>: entre los routers de Internet, en los centros de datos o entre las sedes de un banco. El precio es mucho cable, muchos puertos y una configuración complicada.</p>
+
+<h3>¿Cuántos cables necesita una malla completa?</h3>
+<p>Cada uno de los <em>n</em> equipos se une con los otros <em>n − 1</em>. Eso daría <em>n · (n − 1)</em> cables, pero así contamos cada cable dos veces (el de A a B y el de B a A son el mismo). Por eso se divide entre dos:</p>
+<div class="nota" style="text-align:center;font-size:1.15em"><strong>enlaces = n · (n − 1) / 2</strong></div>
+<div class="salida">
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Tres mallas completas: con 3 equipos hacen falta 3 enlaces, con 4 equipos 6 enlaces y con 5 equipos 10 enlaces" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g stroke="#4fc1ff" stroke-width="1.5">
+<line x1="100" y1="30" x2="50" y2="115"/><line x1="100" y1="30" x2="150" y2="115"/><line x1="50" y1="115" x2="150" y2="115"/>
+<line x1="250" y1="30" x2="350" y2="30"/><line x1="250" y1="30" x2="250" y2="115"/><line x1="250" y1="30" x2="350" y2="115"/><line x1="350" y1="30" x2="250" y2="115"/><line x1="350" y1="30" x2="350" y2="115"/><line x1="250" y1="115" x2="350" y2="115"/>
+<line x1="500" y1="22" x2="452" y2="58"/><line x1="500" y1="22" x2="548" y2="58"/><line x1="500" y1="22" x2="470" y2="118"/><line x1="500" y1="22" x2="530" y2="118"/>
+<line x1="452" y1="58" x2="548" y2="58"/><line x1="452" y1="58" x2="470" y2="118"/><line x1="452" y1="58" x2="530" y2="118"/>
+<line x1="548" y1="58" x2="470" y2="118"/><line x1="548" y1="58" x2="530" y2="118"/><line x1="470" y1="118" x2="530" y2="118"/>
+</g>
+<g fill="#252526" stroke="#d4d4d4">
+<circle cx="100" cy="30" r="9"/><circle cx="50" cy="115" r="9"/><circle cx="150" cy="115" r="9"/>
+<circle cx="250" cy="30" r="9"/><circle cx="350" cy="30" r="9"/><circle cx="250" cy="115" r="9"/><circle cx="350" cy="115" r="9"/>
+<circle cx="500" cy="22" r="9"/><circle cx="452" cy="58" r="9"/><circle cx="548" cy="58" r="9"/><circle cx="470" cy="118" r="9"/><circle cx="530" cy="118" r="9"/>
+</g>
+<text x="100" y="150" text-anchor="middle" class="t">n = 3 → 3·2/2 = 3</text>
+<text x="300" y="150" text-anchor="middle" class="t">n = 4 → 4·3/2 = 6</text>
+<text x="500" y="150" text-anchor="middle" class="t">n = 5 → 5·4/2 = 10</text>
+</svg>
+<p class="pie-figura">Cuenta las líneas de cada dibujo y compáralas con la fórmula.</p>
+</div>
+<p>Fíjate en lo rápido que crece: con 10 equipos, 45 cables; con 20 equipos, 190. Y cada equipo necesita <em>n − 1</em> tarjetas o puertos. Por eso nadie cablea así una oficina.</p>
+
+<div data-actividad="u3s3-malla"></div>
+
+<h2>Redes híbridas</h2>
+<p>En la vida real rara vez encontrarás una topología pura. Una empresa puede tener <strong>estrellas</strong> en cada planta, un <strong>árbol</strong> que las une en el edificio y una <strong>malla parcial</strong> entre sus sedes para que no se corte nunca. A eso se le llama <strong>topología híbrida</strong> o mixta.</p>
+
+<h2>Las seis, de un vistazo</h2>
+<table>
+<tr><th>Topología</th><th>Cable necesario</th><th>Si falla un cable o un equipo…</th><th>Uso hoy</th></tr>
+<tr><td>Punto a punto</td><td>Uno</td><td>Se corta la comunicación</td><td>Enlaces entre dos aparatos</td></tr>
+<tr><td>Bus</td><td>Poco</td><td>Si es el troncal, cae todo</td><td>Obsoleta</td></tr>
+<tr><td>Anillo</td><td>Poco</td><td>Se rompe el anillo (salvo doble)</td><td>En desuso</td></tr>
+<tr><td>Estrella</td><td>Uno por equipo</td><td>Solo cae ese equipo (salvo el centro)</td><td><strong>La habitual en LAN</strong></td></tr>
+<tr><td>Árbol</td><td>Mucho</td><td>Cae la rama afectada</td><td>Edificios y campus</td></tr>
+<tr><td>Malla</td><td>Muchísimo</td><td>El tráfico busca otro camino</td><td>Internet, centros de datos</td></tr>
+</table>
+
+<div data-actividad="u3s3-relacionar"></div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 3 — a mano, en papel</p>
+<ol>
+<li>Dibuja una topología en <strong>estrella</strong> con cinco ordenadores de sobremesa, un portátil y un switch.</li>
+<li>Escribe tres ventajas y dos inconvenientes de la estrella.</li>
+<li>Dibuja una topología en <strong>árbol</strong> para un edificio de tres plantas con cuatro equipos por planta.</li>
+<li>Dibuja una <strong>malla completa</strong> de 6 equipos y calcula con la fórmula cuántos enlaces tiene. Cuenta las líneas de tu dibujo para comprobarlo.</li>
+<li>¿Qué topología necesita más cableado? ¿Y cuál es la más usada en redes locales? Explica por qué.</li>
+<li>Una empresa tiene cuatro sedes y quiere que, si se corta una conexión entre dos de ellas, sigan comunicadas. ¿Qué topología le propones para unir las sedes? ¿Cuántos enlaces le harán falta?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 En el taller se estropea el switch de la mesa del profesor. ¿Qué pasa?</summary>
+<p>Se quedan sin red <strong>todos</strong> los equipos conectados a él: es el punto débil de la estrella. Se arregla cambiando el switch.</p>
+</details>
+<details>
+<summary>🤔 ¿Cuántos enlaces tiene una malla completa de 8 equipos?</summary>
+<p>8 · 7 / 2 = <strong>28 enlaces</strong>.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué se divide entre 2 en la fórmula de la malla?</summary>
+<p>Porque al contar «cada equipo con los otros <em>n − 1</em>» cuentas cada cable dos veces: una desde cada extremo.</p>
+</details>

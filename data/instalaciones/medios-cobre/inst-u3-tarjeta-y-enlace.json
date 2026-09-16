@@ -1,0 +1,56 @@
+{
+  "id": "inst-u3-tarjeta-y-enlace",
+  "titulo": "Sesión 10 — La tarjeta de red y el enlace",
+  "fecha": "",
+  "descripcion": "Tipos de tarjeta de red, qué dicen las luces LINK y ACT, la autonegociación, los modos simplex, semidúplex y dúplex, y cómo ver la tarjeta y su velocidad en Windows.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s10-enlace",
+      "tipo": "quiz",
+      "titulo": "Luces, velocidad y dúplex",
+      "preguntas": [
+        {
+          "pregunta": "La luz LINK encendida fija indica que…",
+          "opciones": ["Están pasando datos", "Hay enlace con el otro extremo", "La tarjeta no tiene driver", "El cable es cruzado"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La luz ACT parpadeando indica que…",
+          "opciones": ["Hay un error de cable", "Pasan datos", "No hay enlace", "Va a 10 Mbps"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Tarjeta 10/100/1000 conectada a un switch 10/100. Negocian…",
+          "opciones": ["10 Mbps", "100 Mbps", "1000 Mbps", "No enlazan"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un walkie-talkie funciona en modo…",
+          "opciones": ["Simplex", "Semidúplex", "Dúplex", "Malla"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una llamada de teléfono, donde los dos hablan y se oyen a la vez, es…",
+          "opciones": ["Simplex", "Semidúplex", "Dúplex", "Difusión"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El enlace entre un PC y un switch moderno funciona normalmente en…",
+          "opciones": ["Simplex", "Semidúplex", "Dúplex completo", "Anillo"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Un lado del enlace en full-duplex fijo y el otro en automático que queda en half. Síntoma típico:",
+          "opciones": ["Ninguna luz", "Enlace, pero la red va muy lenta", "Va más rápido", "Cambia la MAC"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En el Administrador de dispositivos, un triángulo amarillo en la tarjeta de red indica…",
+          "opciones": ["Que está deshabilitada", "Problema con el controlador", "Que va a 1 Gbps", "Que el cable es cruzado"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

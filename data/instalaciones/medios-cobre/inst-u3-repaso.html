@@ -1,0 +1,203 @@
+<h2>Lo que tienes que saber de esta unidad</h2>
+<p>Si te sabes esta página, tienes la unidad. Léela entera antes de ponerte con el banco de preguntas de abajo.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 300" width="100%" role="img" aria-label="Mapa de la unidad en cuatro bloques: medios y topologías, el par trenzado, conectar y comprobar, y el taller" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10.5px;fill:#858585}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">El mapa de la unidad</text>
+<rect x="20" y="40" width="560" height="62" rx="5" fill="#252526" stroke="#4fc1ff"/>
+<text x="34" y="58" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Medios y formas</text>
+<text x="220" y="58" class="s">1 · medios de transmisión</text>
+<text x="220" y="74" class="s">2-3 · topologías</text>
+<text x="220" y="90" class="s">4 · el mapa de la red</text>
+<rect x="20" y="112" width="560" height="62" rx="5" fill="#252526" stroke="#dcdcaa"/>
+<text x="34" y="130" font-family="monospace" font-size="11" font-weight="700" fill="#dcdcaa">El par trenzado</text>
+<text x="220" y="130" class="s">5 · el cable · 6 · categorías y Ethernet</text>
+<text x="220" y="146" class="s">7 · conectores · 8 · T568A/B</text>
+<text x="220" y="162" class="s">9 · directo y cruzado</text>
+<rect x="20" y="184" width="560" height="44" rx="5" fill="#252526" stroke="#f48771"/>
+<text x="34" y="202" font-family="monospace" font-size="11" font-weight="700" fill="#f48771">Conectar y probar</text>
+<text x="220" y="202" class="s">10 · tarjeta y enlace</text>
+<text x="220" y="218" class="s">11 · herramientas</text>
+<rect x="20" y="238" width="560" height="44" rx="5" fill="#252526" stroke="#4ec9b0"/>
+<text x="34" y="256" font-family="monospace" font-size="11" font-weight="700" fill="#4ec9b0">Taller</text>
+<text x="220" y="256" class="s">12 · latiguillo · 13 · cruzado y averías</text>
+<text x="220" y="272" class="s">14 · coaxial y conector F</text>
+</svg>
+<p class="pie-figura">Las catorce sesiones agrupadas en cuatro bloques.</p>
+</div>
+
+<h3>Medios y formas</h3>
+<ul>
+<li><strong>Medio de transmisión</strong>: el camino físico de la señal. <strong>Guiados</strong> (par trenzado, coaxial, fibra) y <strong>no guiados</strong> (wifi, Bluetooth, móvil, infrarrojos).</li>
+<li>Características: <strong>ancho de banda</strong> (MHz), <strong>velocidad</strong> (Mbps), <strong>atenuación</strong> (limita la distancia) e <strong>interferencias</strong>.</li>
+<li>Par trenzado: señal eléctrica, <strong>100 m</strong>, 1-10 Gbps. Coaxial: 185 m en 10BASE2. Fibra: luz, kilómetros.</li>
+<li><strong>Topología física</strong> (cómo va el cable) y <strong>lógica</strong> (cómo van los datos). Un hub: estrella física, bus lógico.</li>
+<li><strong>Punto a punto</strong>: dos equipos. <strong>Bus</strong>: troncal con terminadores; si se corta, cae todo; colisiones. <strong>Anillo</strong>: datos en un sentido; Token Ring con testigo; si falla uno, cae (salvo doble anillo).</li>
+<li><strong>Estrella</strong>: cada equipo con su cable al switch; la habitual; si falla el centro, cae todo. <strong>Árbol</strong>: estrellas colgando de un troncal. <strong>Malla</strong>: redundancia; malla completa = <strong>n·(n−1)/2</strong> enlaces.</li>
+<li><strong>Mapa físico</strong>: aparatos con nombre, cables, puertos, tipo de cable, ubicación, leyenda y fecha. Si cambias un cable, cambias el mapa.</li>
+</ul>
+
+<h3>El par trenzado</h3>
+<ul>
+<li>8 hilos en 4 pares: <strong>azul, naranja, verde, marrón</strong>, cada uno con su blanco rayado.</li>
+<li>Se trenza para <strong>anular el ruido</strong> (la señal va invertida en los dos hilos y se resta) y evitar la <strong>diafonía</strong>. No se destrenza de más.</li>
+<li><strong>UTP</strong> sin pantalla · <strong>FTP</strong> lámina global · <strong>STP</strong> pantalla por par y global. ISO: U/UTP, F/UTP, U/FTP, S/FTP. Apantallado = conectores apantallados y tierra.</li>
+<li><strong>Rígido</strong> para la pared; <strong>flexible</strong> para latiguillos. Cubierta <strong>LSZH</strong>: poco humo y sin halógenos.</li>
+<li>Categorías: <strong>5e</strong> 100 MHz/1 Gbps (mínimo) · <strong>6</strong> 250 MHz · <strong>6A</strong> 500 MHz/10 Gbps · 7 600 MHz · 8 2000 MHz/40 Gbps a 30 m. Manda el elemento de menor categoría.</li>
+<li><strong>100 m</strong> = 90 m fijos + 10 m de latiguillos.</li>
+<li>Ethernet: <strong>1000BASE-T</strong> = 1000 Mbps, banda base, par trenzado. 10 y 100 Mbps usan 2 pares; <strong>1 Gbps usa los 4</strong>.</li>
+<li>Conectores: <strong>RJ-9</strong> 4P4C (auricular) · <strong>RJ-11</strong> 6P2C (teléfono) · <strong>RJ-45</strong> 8P8C (datos). Pin 1 a la izquierda con los contactos hacia ti y la pestaña detrás.</li>
+<li>Roseta (hembra en la pared) · latiguillo (macho-macho, flexible) · panel de parcheo (en el rack). <strong>1 U = 4,445 cm</strong>.</li>
+<li><strong>T568A</strong>: bv, v, bn, a, ba, n, bm, m. <strong>T568B</strong>: bn, n, bv, a, ba, v, bm, m. Solo cambian naranja y verde. Misma norma en toda la instalación.</li>
+<li><strong>Directo</strong>: igual en los dos extremos. <strong>Cruzado</strong>: A en uno y B en otro (1↔3, 2↔6).</li>
+<li><strong>MDI</strong> (PC, servidor, router) transmite por 1-2; <strong>MDI-X</strong> (switch, hub) por 3-6. Distintos → directo; iguales → cruzado. <strong>Auto-MDIX</strong> lo resuelve solo.</li>
+</ul>
+
+<h3>Conectar y probar</h3>
+<ul>
+<li>NIC integrada, PCI Express o USB. Luces: <strong>LINK</strong> fija = enlace; <strong>ACT</strong> parpadea = datos.</li>
+<li><strong>Autonegociación</strong>: la mejor velocidad y dúplex que admitan los dos. <strong>Simplex</strong> (un sentido), <strong>semidúplex</strong> (por turnos, hubs), <strong>dúplex</strong> (a la vez, switch).</li>
+<li>Windows: Administrador de dispositivos (triángulo amarillo = driver), <code>Get-NetAdapter</code> (LinkSpeed), <code>ipconfig /all</code>, <code>getmac</code>.</li>
+<li>Herramientas: pelacables, alicates (corte recto), crimpadora (hasta que suelte la carraca), herramienta de impacto, <strong>comprobador</strong> (¿cada hilo a su pin?), <strong>generador de tonos</strong> (encontrar un cable), <strong>certificador</strong> (garantiza la categoría).</li>
+</ul>
+
+<h3>Taller</h3>
+<ul>
+<li>Latiguillo: capuchones → pelar 2-3 cm → separar → ordenar → cortar recto a <strong>12-13 mm</strong> → meter hasta el fondo → revisar (orden, puntitos de cobre, cubierta bajo la cuña) → crimpar → comprobar.</li>
+<li>Averías: <strong>abierto</strong> (una luz no enciende), <strong>hilos cruzados</strong> (luces descolocadas), <strong>cortocircuito</strong> (dos a la vez), <strong>par partido</strong> (el téster dice bien pero el orden no es la norma).</li>
+<li>Diagnóstico: luces → latiguillo → puerto → cable fijo → tarjeta. Una cosa cada vez.</li>
+<li>Coaxial: conductor central, dieléctrico, malla, cubierta. <strong>75 Ω</strong> TV (RG-6, conector F) · <strong>50 Ω</strong> radio y redes antiguas (RG-58, BNC). Conector F: ningún pelo de la malla toca el centro; el conductor sobresale 1-2 mm.</li>
+</ul>
+
+<h2>Banco de preguntas del examen</h2>
+<p>Estas son las preguntas de las que saldrá el examen: algunas tal cual y otras parecidas. Aquí no hay soluciones: las respuestas están en las sesiones y en tu cuaderno. Contéstalas a mano.</p>
+
+<div class="papel">
+<p class="papel__titulo">Banco de preguntas · UD 3 — Medios de transmisión: cobre</p>
+
+<h3>Medios de transmisión</h3>
+<ol>
+<li>¿Qué es un medio de transmisión?</li>
+<li>Explica la diferencia entre medios guiados y no guiados. Pon tres ejemplos de cada uno.</li>
+<li>Completa una tabla con par trenzado, coaxial, fibra óptica y wifi: qué transmite, velocidad habitual y distancia máxima.</li>
+<li>¿Qué es la atenuación? ¿Qué relación tiene con la distancia máxima de un cable?</li>
+<li>¿Qué diferencia hay entre ancho de banda (MHz) y velocidad de transmisión (Mbps)?</li>
+<li>Da tres ventajas del cable frente al wifi y una del wifi frente al cable.</li>
+</ol>
+
+<h3>Topologías</h3>
+<ol start="7">
+<li>¿Qué es la topología de una red? Diferencia entre topología física y lógica.</li>
+<li>Dibuja una topología en bus y explica su principal inconveniente.</li>
+<li>¿Qué es un terminador y para qué sirve?</li>
+<li>Dibuja una topología en anillo. ¿Qué pasa si falla un equipo?</li>
+<li>¿Qué es el testigo en una red Token Ring?</li>
+<li>¿Qué ventaja tiene el doble anillo?</li>
+<li>Dibuja una topología en estrella con un switch, cuatro PC y una impresora.</li>
+<li>Escribe tres ventajas y dos inconvenientes de la topología en estrella.</li>
+<li>¿Qué es una topología en árbol? ¿Dónde se usa?</li>
+<li>¿Qué es una malla completa? ¿Cuándo compensa usarla?</li>
+<li>Calcula los enlaces de una malla completa de 5, 8 y 12 equipos.</li>
+<li>¿Qué topología necesita más cableado? ¿Cuál es la más usada en redes locales?</li>
+<li>Un hub forma una estrella física. ¿Qué topología lógica tiene? ¿Por qué?</li>
+<li>¿Qué es una topología híbrida? Pon un ejemplo.</li>
+</ol>
+
+<h3>El mapa de la red</h3>
+<ol start="21">
+<li>¿Para qué sirve el mapa físico de una red? ¿En qué se diferencia del lógico?</li>
+<li>Dibuja los símbolos de PC, servidor, switch, router, punto de acceso e Internet.</li>
+<li>Escribe cinco cosas que debe incluir un buen mapa físico.</li>
+<li>Dibuja el mapa físico de una oficina con un router, un switch, tres PC, una impresora y un punto de acceso. Indica los puertos.</li>
+</ol>
+
+<h3>El cable de par trenzado</h3>
+<ol start="25">
+<li>Dibuja el corte de un cable de par trenzado y nombra sus partes.</li>
+<li>Escribe los cuatro pares con sus colores.</li>
+<li>¿Por qué se trenzan los hilos? ¿Qué es la diafonía?</li>
+<li>Explica la diferencia entre UTP, FTP y STP.</li>
+<li>¿Qué significan U/UTP y S/FTP?</li>
+<li>¿Qué hay que tener en cuenta al instalar cable apantallado?</li>
+<li>¿Qué diferencia hay entre cable rígido y flexible? ¿Dónde se usa cada uno?</li>
+<li>¿Qué es un cable LSZH y por qué se usa en edificios con público?</li>
+</ol>
+
+<h3>Categorías y Ethernet</h3>
+<ol start="33">
+<li>¿Qué indica la categoría de un cable?</li>
+<li>Completa una tabla de las categorías 5e, 6 y 6A con ancho de banda, velocidad y distancia.</li>
+<li>¿Qué categoría mínima se admite hoy? ¿Cuál recomendarías en una instalación nueva? ¿Por qué?</li>
+<li>Explica la regla de los 100 metros y cómo se reparten.</li>
+<li>Instalas cable Cat 6A y rosetas Cat 5e. ¿De qué categoría es el enlace?</li>
+<li>¿Qué significa cada parte de 1000BASE-T?</li>
+<li>¿Cuántos pares usan 100BASE-TX y 1000BASE-T?</li>
+</ol>
+
+<h3>Conectores</h3>
+<ol start="40">
+<li>¿Qué significa 8P8C? Compara RJ-9, RJ-11 y RJ-45.</li>
+<li>Dibuja un RJ-45 de frente y numera sus pines.</li>
+<li>¿Para qué sirven los contactos y la cuña de un RJ-45?</li>
+<li>¿Cuándo se usa un RJ-45 apantallado?</li>
+<li>Define roseta, latiguillo y panel de parcheo.</li>
+<li>¿Por qué no se conecta el cable de la pared directamente al switch?</li>
+<li>¿Cuánto mide una unidad U de rack?</li>
+</ol>
+
+<h3>T568A, T568B, directo y cruzado</h3>
+<ol start="47">
+<li>Escribe el orden de colores de T568A y de T568B.</li>
+<li>¿Qué pares cambian de posición entre T568A y T568B?</li>
+<li>¿Qué norma se debe usar en una instalación? ¿Qué es lo único obligatorio?</li>
+<li>¿Por qué pines transmite y recibe un PC a 100 Mbps?</li>
+<li>¿Qué es un cable directo? ¿Y uno cruzado?</li>
+<li>¿Qué es un puerto MDI y uno MDI-X? Pon ejemplos.</li>
+<li>¿Qué cable hace falta en cada caso: PC–switch, switch–switch, PC–PC, router–switch, PC–router, hub–switch?</li>
+<li>Dibuja una red PC – switch – switch – PC e indica qué cable va en cada tramo.</li>
+<li>¿Qué es Auto-MDIX?</li>
+</ol>
+
+<h3>Tarjeta de red y enlace</h3>
+<ol start="56">
+<li>¿Qué indican las luces LINK y ACT?</li>
+<li>¿Qué es la autonegociación? Pon un ejemplo.</li>
+<li>Explica simplex, semidúplex y dúplex con un ejemplo de cada uno.</li>
+<li>¿Qué modo usa un hub y cuál un switch? ¿Qué consecuencia tiene?</li>
+<li>¿Cómo compruebas en Windows si la tarjeta de red funciona y a qué velocidad ha enlazado?</li>
+</ol>
+
+<h3>Herramientas y taller</h3>
+<ol start="61">
+<li>Nombra las herramientas para hacer un latiguillo y di para qué sirve cada una.</li>
+<li>Escribe los pasos para fabricar un latiguillo directo T568B.</li>
+<li>¿Qué tres cosas revisas en el conector antes de crimpar?</li>
+<li>¿Cómo funciona un comprobador de cable? ¿Cómo se ven las luces de un directo y de un cruzado correctos?</li>
+<li>Explica qué ves en el comprobador con un circuito abierto, con hilos cruzados y con un cortocircuito.</li>
+<li>¿Qué es un par partido? ¿Por qué no lo detecta un comprobador básico?</li>
+<li>¿Para qué sirve un generador de tonos y sonda?</li>
+<li>¿Qué diferencia hay entre un comprobador y un certificador?</li>
+<li>Un puesto no tiene red. Escribe en orden los pasos para encontrar la avería.</li>
+<li>Escribe tres normas de seguridad al trabajar con cable en el taller.</li>
+</ol>
+
+<h3>Cable coaxial</h3>
+<ol start="71">
+<li>Dibuja un cable coaxial y nombra sus capas.</li>
+<li>¿Por qué el coaxial aguanta bien las interferencias?</li>
+<li>¿Qué impedancia tiene el coaxial de televisión? ¿Y el de las antenas wifi?</li>
+<li>¿Qué significa RG-6? ¿Qué conector lleva normalmente?</li>
+<li>Nombra cuatro conectores de coaxial, su tipo de enganche y dónde se usan.</li>
+<li>¿Qué eran 10BASE2 y 10BASE5? ¿Qué topología y qué distancias tenían?</li>
+<li>Escribe los pasos para montar un conector F. ¿Qué fallo hay que evitar?</li>
+<li>Compara coaxial y par trenzado: dos diferencias.</li>
+</ol>
+</div>
+<p>Puedes imprimir esta página con <strong>Ctrl + P</strong>: sale solo el temario y el banco, sin el menú ni los ejercicios de pantalla.</p>
+
+<h2>Ejercicios para entrenar</h2>
+<p>Aquí abajo tienes los tres generadores de la unidad y un repaso mezclado. Pulsa <strong>Otra tanda</strong> hasta que aciertes todas dos veces seguidas. Si el orden de T568B te sale sin pensar, en el taller vas a ir el doble de rápido.</p>

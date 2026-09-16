@@ -1,0 +1,51 @@
+{
+  "id": "inst-u3-coaxial",
+  "titulo": "Sesión 14 — Cable coaxial y taller de conector F",
+  "fecha": "",
+  "descripcion": "Cómo es el cable coaxial, la impedancia de 50 y 75 ohmios, los cables RG, las redes antiguas en bus, los conectores (F, IEC, BNC, N, SMA) y la guía para montar y comprobar un conector F.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s14-coaxial",
+      "tipo": "quiz",
+      "titulo": "Coaxial",
+      "preguntas": [
+        {
+          "pregunta": "¿Por qué capa del coaxial viaja la señal?",
+          "opciones": ["Por la malla", "Por el conductor central", "Por el dieléctrico", "Por la cubierta"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La capa que separa el conductor central de la malla es…",
+          "opciones": ["La cubierta", "La lámina", "El dieléctrico", "El terminador"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Impedancia del coaxial de televisión y satélite:",
+          "opciones": ["50 Ω", "75 Ω", "100 Ω", "120 Ω"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "RG-6 es…",
+          "opciones": ["Un conector de rosca", "Un cable coaxial de 75 Ω", "Una norma de Ethernet", "Un cable de pares"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Conector de coaxial que se engancha a bayoneta (empujar y girar un cuarto de vuelta):",
+          "opciones": ["F", "IEC", "BNC", "SMA"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El conector de rosca de la parabólica y del descodificador es el…",
+          "opciones": ["F", "BNC", "RJ-11", "N"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Distancia máxima de un segmento 10BASE2 (coaxial fino):",
+          "opciones": ["100 m", "185 m", "500 m", "2 km"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

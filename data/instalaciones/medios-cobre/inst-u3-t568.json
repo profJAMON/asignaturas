@@ -1,0 +1,16 @@
+{
+  "id": "inst-u3-t568",
+  "titulo": "Sesión 8 — Las terminaciones T568A y T568B",
+  "fecha": "",
+  "descripcion": "El orden de los colores en el RJ-45 según la norma TIA-568, cómo recordarlo sin chuleta, cuál se usa y qué pines transmiten y reciben.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s8-generador",
+      "tipo": "generador",
+      "titulo": "Colores y pines de T568A y T568B",
+      "generador": "t568-colores",
+      "n": 10
+    }
+  ]
+}

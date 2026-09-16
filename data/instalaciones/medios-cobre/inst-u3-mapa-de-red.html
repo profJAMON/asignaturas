@@ -1,0 +1,122 @@
+<h2>Por qué se dibuja una red</h2>
+<p>Imagina que te llaman de una oficina porque «no va Internet en el despacho del fondo». Si hay un <strong>mapa de la red</strong> colgado en el armario, en dos minutos sabes de qué roseta sale ese puesto, a qué puerto del switch llega y por dónde pasa el cable. Si no lo hay, te toca ir siguiendo cables por el falso techo.</p>
+<p>El mapa (o <strong>esquema</strong>) de red es el plano del instalador. Sirve para montar la red, para mantenerla y para que el siguiente técnico no tenga que adivinar nada.</p>
+
+<h2>Mapa físico y mapa lógico</h2>
+<ul>
+<li>El <strong>mapa físico</strong> dibuja los aparatos y los cables tal como están: qué equipo va a qué roseta, qué roseta a qué puerto del panel, qué tipo de cable, en qué sala está cada cosa. Es el que interesa en esta unidad.</li>
+<li>El <strong>mapa lógico</strong> dibuja cómo se organizan los datos: direcciones IP, subredes, qué servicio da cada servidor. Lo usarás en la unidad de subredes.</li>
+</ul>
+
+<h2>Los símbolos</h2>
+<p>Para que cualquiera entienda un esquema, cada aparato se dibuja siempre con el mismo símbolo. No hay un único estándar obligatorio, pero los de Cisco son los más extendidos y los que traen casi todos los programas de dibujo.</p>
+<div class="salida">
+<svg viewBox="0 0 600 190" width="100%" role="img" aria-label="Símbolos habituales de un esquema de red: ordenador, portátil, servidor, impresora, switch, hub, router, punto de acceso inalámbrico, nube de Internet y cable" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:10px;fill:#d4d4d4}
+</style>
+<g fill="none" stroke="#4fc1ff" stroke-width="2">
+<rect x="30" y="20" width="44" height="30" rx="2"/><path d="M 44 50 L 40 60 L 64 60 L 60 50"/>
+<rect x="140" y="24" width="40" height="24" rx="2"/><path d="M 132 52 L 188 52 L 184 58 L 136 58 Z"/>
+<rect x="258" y="14" width="30" height="48" rx="2"/><path d="M 264 26 L 282 26 M 264 34 L 282 34 M 264 42 L 282 42"/>
+<rect x="372" y="30" width="48" height="24" rx="2"/><rect x="382" y="18" width="28" height="12"/><rect x="382" y="54" width="28" height="8"/>
+<rect x="484" y="28" width="70" height="24" rx="2"/><path d="M 498 36 L 540 36 M 534 32 L 540 36 L 534 40 M 540 44 L 498 44 M 504 40 L 498 44 L 504 48"/>
+</g>
+<g fill="none" stroke="#4ec9b0" stroke-width="2">
+<rect x="22" y="118" width="70" height="24" rx="2"/><path d="M 34 130 L 80 130" stroke-dasharray="3 3"/>
+<circle cx="160" cy="130" r="18"/><path d="M 148 124 L 172 124 M 166 120 L 172 124 L 166 128 M 172 136 L 148 136 M 154 132 L 148 136 L 154 140"/>
+<rect x="250" y="122" width="46" height="18" rx="2"/><path d="M 262 122 L 262 104 M 284 122 L 284 104 M 256 108 Q 262 100 268 108 M 278 108 Q 284 100 290 108"/>
+<path d="M 360 140 Q 350 140 352 128 Q 356 114 372 118 Q 382 104 400 112 Q 418 108 420 124 Q 432 128 426 140 Z"/>
+</g>
+<line x1="484" y1="130" x2="560" y2="130" stroke="#dcdcaa" stroke-width="3"/>
+<text x="52" y="80" text-anchor="middle" class="t">PC</text>
+<text x="160" y="80" text-anchor="middle" class="t">portátil</text>
+<text x="273" y="80" text-anchor="middle" class="t">servidor</text>
+<text x="396" y="80" text-anchor="middle" class="t">impresora</text>
+<text x="519" y="80" text-anchor="middle" class="t">switch</text>
+<text x="57" y="170" text-anchor="middle" class="t">hub</text>
+<text x="160" y="170" text-anchor="middle" class="t">router</text>
+<text x="273" y="170" text-anchor="middle" class="t">punto de acceso</text>
+<text x="390" y="170" text-anchor="middle" class="t">Internet</text>
+<text x="522" y="170" text-anchor="middle" class="t">cable</text>
+</svg>
+<p class="pie-figura">Símbolos simplificados. El switch lleva flechas en los dos sentidos; el router, dentro de un círculo.</p>
+</div>
+
+<h2>Qué tiene que llevar un buen mapa físico</h2>
+<ol>
+<li><strong>Todos los aparatos</strong> con su símbolo y un <strong>nombre único</strong>: PC-TALLER-03, SW-PLANTA1, IMPR-SECRETARÍA…</li>
+<li><strong>Todos los cables</strong>, sin cruzarse si se puede evitar.</li>
+<li>En cada extremo del cable, <strong>el puerto</strong>: «SW-TALLER puerto 7», «roseta R-12».</li>
+<li><strong>El tipo de cable</strong> cuando haya más de uno: UTP cat. 6, coaxial, fibra.</li>
+<li><strong>Dónde está</strong> cada cosa: sala, planta, armario.</li>
+<li>Una <strong>leyenda</strong> si usas símbolos o colores que no sean los habituales, y la <strong>fecha</strong> de la última actualización.</li>
+</ol>
+<div class="nota">Un mapa que no se actualiza es peor que no tener mapa, porque te hace buscar donde no es. La regla del instalador: <strong>si cambias un cable, cambias el mapa</strong>. Y la etiqueta del cable dice lo mismo que el mapa.</div>
+
+<h2>Leer un esquema</h2>
+<div class="salida">
+<svg viewBox="0 0 600 260" width="100%" role="img" aria-label="Esquema de la red de una pequeña oficina: la nube de Internet unida a un router; el router unido al puerto 1 de un switch; al switch se conectan PC-01 en el puerto 2, PC-02 en el puerto 3, la impresora en el puerto 4 y un punto de acceso en el puerto 8, al que se conecta un portátil sin cable" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g stroke="#dcdcaa" stroke-width="2.5">
+<line x1="90" y1="60" x2="170" y2="60"/><line x1="230" y1="60" x2="300" y2="120"/>
+<line x1="300" y1="140" x2="100" y2="210"/><line x1="300" y1="140" x2="240" y2="210"/>
+<line x1="300" y1="140" x2="380" y2="210"/><line x1="300" y1="140" x2="500" y2="140"/>
+</g>
+<path d="M 520 150 Q 540 190 545 205" stroke="#4ec9b0" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+<path d="M 40 74 Q 26 74 30 60 Q 34 44 52 48 Q 62 36 78 44 Q 96 42 96 58 Q 106 64 98 74 Z" fill="#252526" stroke="#4ec9b0" stroke-width="2"/>
+<text x="64" y="64" text-anchor="middle" class="s">Internet</text>
+<circle cx="200" cy="60" r="22" fill="#252526" stroke="#4ec9b0" stroke-width="2"/><text x="200" y="64" text-anchor="middle" class="s">R-01</text>
+<rect x="255" y="118" width="90" height="26" rx="3" fill="#252526" stroke="#4fc1ff" stroke-width="2"/><text x="300" y="135" text-anchor="middle" class="t">SW-OFICINA</text>
+<text x="262" y="112" class="s">p1</text><text x="230" y="160" class="s">p2</text><text x="276" y="166" class="s">p3</text><text x="330" y="166" class="s">p4</text><text x="352" y="134" class="s">p8</text>
+<rect x="72" y="210" width="56" height="26" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="100" y="227" text-anchor="middle" class="t">PC-01</text>
+<rect x="212" y="210" width="56" height="26" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="240" y="227" text-anchor="middle" class="t">PC-02</text>
+<rect x="344" y="210" width="72" height="26" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="380" y="227" text-anchor="middle" class="t">IMPR-01</text>
+<rect x="500" y="128" width="56" height="24" rx="3" fill="#252526" stroke="#4ec9b0"/><text x="528" y="144" text-anchor="middle" class="t">AP-01</text>
+<rect x="510" y="205" width="70" height="26" rx="3" fill="#252526" stroke="#4fc1ff"/><text x="545" y="222" text-anchor="middle" class="t">PORT-01</text>
+<text x="20" y="254" class="s">— UTP cat. 6    - - - inalámbrico</text>
+</svg>
+<p class="pie-figura">La red de una oficina pequeña. Las preguntas de abajo se contestan mirando este esquema.</p>
+</div>
+
+<div data-actividad="u3s4-leer-esquema"></div>
+
+<h2>Dibujarlo con el ordenador</h2>
+<p>A mano sirve para pensar; para entregar y colgar en el armario, se hace con un programa. Te propongo dos, gratuitos:</p>
+<ul>
+<li><strong>draw.io</strong> (app.diagrams.net): funciona en el navegador, sin instalar. En el panel de formas, busca «network» o activa la biblioteca <em>Networking</em> o <em>Cisco</em>.</li>
+<li><strong>LibreOffice Draw</strong>: el que tienes instalado en el taller. Usa formas básicas, conectores (que se quedan pegados a las cajas al moverlas) y cuadros de texto.</li>
+</ul>
+<p>Tres trucos para que quede limpio: usa <strong>conectores</strong>, no líneas sueltas; <strong>alinea</strong> las cajas con la rejilla; y pon los nombres <strong>siempre en el mismo sitio</strong> (debajo, por ejemplo).</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 4 — a mano, en papel</p>
+<ol>
+<li>¿Qué diferencia hay entre un <strong>mapa físico</strong> y un <strong>mapa lógico</strong> de una red?</li>
+<li>Dibuja los símbolos de: PC, portátil, servidor, impresora, switch, router, punto de acceso e Internet.</li>
+<li>Escribe la lista de lo que tiene que llevar un buen mapa físico.</li>
+<li>Recorre el taller y dibuja su <strong>mapa físico</strong>: todos los equipos, el switch, el router si lo ves, y el puerto al que llega cada cable. Pon nombre a cada aparato.</li>
+</ol>
+</div>
+<div class="papel">
+<p class="papel__titulo">Práctica — con el ordenador (se entrega el archivo)</p>
+<ol>
+<li>Pasa a draw.io o a LibreOffice Draw el mapa del taller que has dibujado en el cuaderno.</li>
+<li>Haz una página más por cada topología (punto a punto, bus, anillo, estrella, árbol y malla) con su diagrama y, debajo, sus ventajas e inconvenientes.</li>
+<li><strong>Las imágenes no se cogen de Internet</strong>: se dibujan con las formas, líneas y conectores del programa.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Por qué hay que apuntar el número de puerto en el mapa?</summary>
+<p>Porque cuando un puesto falla, lo primero es ir al switch y mirar <strong>su</strong> puerto: si tiene luz, si parpadea. Sin el número, tienes 24 o 48 puertos iguales para elegir.</p>
+</details>
+<details>
+<summary>🤔 Cambias un equipo de roseta y no tocas el mapa. ¿Qué problema causas?</summary>
+<p>El siguiente que busque ese equipo mirará la roseta equivocada. Un mapa desactualizado <strong>hace perder más tiempo</strong> que no tener ninguno.</p>
+</details>

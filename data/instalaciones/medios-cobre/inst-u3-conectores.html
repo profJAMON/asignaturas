@@ -1,0 +1,123 @@
+<h2>La familia RJ</h2>
+<p>Los cables de pares se terminan con conectores <strong>RJ</strong> (<em>Registered Jack</em>). Los hay de varios tamaños y se nombran con dos números: <strong>posiciones P</strong> (huecos que tiene) y <strong>contactos C</strong> (cuántos llevan realmente contacto metálico).</p>
+<table>
+<tr><th>Conector</th><th>Formato</th><th>Para qué</th></tr>
+<tr><td><strong>RJ-9</strong></td><td>4P4C</td><td>El cable rizado del auricular de los teléfonos fijos de sobremesa</td></tr>
+<tr><td><strong>RJ-11</strong></td><td>6P2C (a veces 6P4C)</td><td>La línea de teléfono: del teléfono o del router ADSL a la roseta telefónica</td></tr>
+<tr><td><strong>RJ-45</strong></td><td><strong>8P8C</strong></td><td><strong>Redes de datos</strong>: los cuatro pares, ocho contactos</td></tr>
+</table>
+<p>El RJ-11 cabe dentro de una boca RJ-45 (es más estrecho), pero al revés no. Si alguien te dice que ha «enchufado el cable de red y no va», comprueba que no sea un cable de teléfono.</p>
+<div class="nota">Por rigor: el nombre correcto del conector de red es <strong>8P8C</strong>; «RJ-45» era, en origen, un conector telefónico distinto. Pero todo el mundo, fabricantes incluidos, lo llama RJ-45, así que aquí también.</div>
+
+<h2>El RJ-45 por dentro</h2>
+<div class="salida">
+<svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Conector RJ-45 visto de frente con los contactos dorados hacia ti y la pestaña hacia atrás: el pin 1 queda a la izquierda y el pin 8 a la derecha. Al lado, vista lateral con la cuña que aprieta la cubierta y la pestaña de enganche" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<path d="M 60 30 L 260 30 L 260 150 L 220 150 L 210 200 L 110 200 L 100 150 L 60 150 Z" fill="#2d3a40" fill-opacity="0.6" stroke="#9cdcfe" stroke-width="2"/>
+<g fill="#d7ba7d">
+<rect x="78" y="36" width="12" height="36"/><rect x="100" y="36" width="12" height="36"/><rect x="122" y="36" width="12" height="36"/><rect x="144" y="36" width="12" height="36"/>
+<rect x="166" y="36" width="12" height="36"/><rect x="188" y="36" width="12" height="36"/><rect x="210" y="36" width="12" height="36"/><rect x="232" y="36" width="12" height="36"/>
+</g>
+<g class="t" text-anchor="middle">
+<text x="84" y="88">1</text><text x="106" y="88">2</text><text x="128" y="88">3</text><text x="150" y="88">4</text><text x="172" y="88">5</text><text x="194" y="88">6</text><text x="216" y="88">7</text><text x="238" y="88">8</text>
+</g>
+<path d="M 160 200 L 160 228" stroke="#858585" stroke-width="8"/>
+<text x="160" y="22" text-anchor="middle" class="s">contactos hacia ti · pestaña detrás · cable hacia abajo</text>
+<text x="160" y="120" text-anchor="middle" class="t" style="fill:#4ec9b0">pin 1 a la izquierda</text>
+
+<path d="M 360 60 L 540 60 L 540 130 L 380 130 L 360 120 Z" fill="#2d3a40" fill-opacity="0.6" stroke="#9cdcfe" stroke-width="2"/>
+<path d="M 540 70 L 420 50 L 410 58" stroke="#9cdcfe" stroke-width="3" fill="none"/>
+<rect x="360" y="62" width="40" height="8" fill="#d7ba7d"/>
+<rect x="470" y="122" width="40" height="10" fill="#f48771"/>
+<path d="M 540 94 L 590 94" stroke="#858585" stroke-width="16"/>
+<text x="380" y="44" class="s">pestaña de enganche</text>
+<text x="330" y="90" class="s">contactos</text>
+<text x="400" y="150" class="s">cuña: aprieta la cubierta</text>
+<text x="552" y="120" class="s">cable</text>
+<text x="450" y="200" text-anchor="middle" class="t">vista lateral</text>
+</svg>
+<p class="pie-figura">La posición de referencia para contar los pines. Si la coges al revés, el orden de los colores te sale al revés.</p>
+</div>
+<ul>
+<li><strong>Contactos</strong>: ocho láminas doradas. Al crimpar, bajan y <strong>atraviesan el aislante</strong> de cada hilo hasta tocar el cobre. Por eso los hilos no se pelan uno a uno.</li>
+<li><strong>Cuña o traba</strong>: una pieza de plástico que, al crimpar, se hunde y <strong>aprieta la cubierta</strong> del cable. Es lo que evita que un tirón arranque los hilos. Si la cuña aprieta hilos sueltos en lugar de cubierta, el conector está mal.</li>
+<li><strong>Pestaña</strong>: engancha el conector en la boca. Es lo primero que se rompe; un <strong>capuchón</strong> (bota) de goma la protege.</li>
+</ul>
+
+<h3>Tipos de RJ-45</h3>
+<table>
+<tr><th>Tipo</th><th>Cómo es</th><th>Cuándo</th></tr>
+<tr><td>Normal</td><td>Plástico transparente</td><td>Cable UTP</td></tr>
+<tr><td>Apantallado</td><td>Con una carcasa metálica que toca la pantalla del cable</td><td>Cable FTP o STP; sin él, la pantalla no sirve</td></tr>
+<tr><td>Pasante (<em>EZ</em>)</td><td>Los hilos salen por delante del conector y la crimpadora los corta</td><td>Facilita ver el orden de colores; necesita crimpadora compatible</td></tr>
+<tr><td>Para Cat 6 / 6A</td><td>Con una guía interior para colocar los hilos</td><td>Hilos más gruesos que no entran en el normal</td></tr>
+</table>
+<p>Y recuerda lo de la sesión 5: hay conectores para <strong>hilo rígido</strong> y para <strong>hilo flexible</strong>. En el taller haremos latiguillos, así que usaremos cable flexible con su conector.</p>
+
+<div data-actividad="u3s7-conectores"></div>
+
+<h2>Dónde acaba el cable: roseta, latiguillo y panel</h2>
+<p>En una instalación de verdad, el cable de la pared <strong>nunca</strong> llega directamente al PC ni al switch. Te lo cuento por encima porque lo verás a fondo en la unidad de cableado estructurado:</p>
+<div class="salida">
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Recorrido completo: el PC se une con un latiguillo a la roseta de la pared; de la roseta sale el cable fijo hasta el panel de parcheo del rack; del panel, otro latiguillo corto llega al switch" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="20" y="80" width="56" height="40" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="48" y="104" text-anchor="middle" class="t">PC</text>
+<path d="M 76 100 Q 100 100 110 70" stroke="#dcdcaa" stroke-width="4" fill="none"/>
+<rect x="100" y="40" width="36" height="36" rx="3" fill="#252526" stroke="#4ec9b0" stroke-width="2"/><rect x="108" y="50" width="20" height="16" fill="#1e1e1e" stroke="#4ec9b0"/>
+<line x1="136" y1="58" x2="380" y2="58" stroke="#4fc1ff" stroke-width="4"/>
+<rect x="380" y="20" width="190" height="130" rx="3" fill="#1e1e1e" stroke="#858585" stroke-width="2"/>
+<rect x="392" y="44" width="166" height="26" fill="#252526" stroke="#4ec9b0"/>
+<g fill="#1e1e1e" stroke="#4ec9b0"><rect x="400" y="50" width="14" height="12"/><rect x="420" y="50" width="14" height="12"/><rect x="440" y="50" width="14" height="12"/><rect x="460" y="50" width="14" height="12"/><rect x="480" y="50" width="14" height="12"/><rect x="500" y="50" width="14" height="12"/><rect x="520" y="50" width="14" height="12"/><rect x="540" y="50" width="14" height="12"/></g>
+<rect x="392" y="100" width="166" height="26" fill="#252526" stroke="#4fc1ff"/>
+<g fill="#1e1e1e" stroke="#4fc1ff"><rect x="400" y="106" width="14" height="12"/><rect x="420" y="106" width="14" height="12"/><rect x="440" y="106" width="14" height="12"/><rect x="460" y="106" width="14" height="12"/><rect x="480" y="106" width="14" height="12"/><rect x="500" y="106" width="14" height="12"/><rect x="520" y="106" width="14" height="12"/><rect x="540" y="106" width="14" height="12"/></g>
+<path d="M 447 62 Q 430 86 427 106" stroke="#dcdcaa" stroke-width="3" fill="none"/>
+<text x="118" y="30" text-anchor="middle" class="s">roseta</text>
+<text x="92" y="140" text-anchor="middle" class="s">latiguillo</text>
+<text x="258" y="48" text-anchor="middle" class="t" style="fill:#4fc1ff">cable fijo (rígido) por la pared</text>
+<text x="475" y="40" text-anchor="middle" class="s">panel de parcheo</text>
+<text x="475" y="96" text-anchor="middle" class="s">switch</text>
+<text x="475" y="164" text-anchor="middle" class="s">armario (rack)</text>
+<text x="330" y="96" text-anchor="middle" class="s">latiguillo corto</text>
+</svg>
+<p class="pie-figura">El cable fijo no se toca nunca. Lo que se enchufa y desenchufa son los latiguillos.</p>
+</div>
+<ul>
+<li><strong>Roseta</strong>: la toma de la pared, un RJ-45 <strong>hembra</strong>. El cable fijo se conecta por detrás, a presión, sin crimpar.</li>
+<li><strong>Latiguillo</strong> (<em>patch cord</em>): un cable corto y flexible, de 0,5 a 5 m, con un RJ-45 <strong>macho</strong> en cada extremo. Une el PC con la roseta o el panel con el switch. Se compra hecho o se fabrica, que es lo que harás en el taller.</li>
+<li><strong>Panel de parcheo</strong>: una fila de rosetas juntas (normalmente 24) montada en el rack. Ahí llegan todos los cables fijos del edificio.</li>
+</ul>
+<p><strong>¿Por qué tanta pieza?</strong> Porque el cable rígido de la pared se estropea si se mueve, y en una red se enchufa y desenchufa constantemente. Así el movimiento lo sufren los latiguillos, que son baratos y se cambian en un minuto. Y para mover un puesto a otro puerto del switch basta con cambiar un latiguillo en el armario.</p>
+<div class="nota">Un dato del rack que viene mal en mi presentación y que entra en el examen: la altura del armario se mide en <strong>unidades U</strong>, y <strong>1 U = 1,75 pulgadas = 4,445 cm</strong>, no 5 cm. Un panel de parcheo típico ocupa 1 U; un armario de 42 U mide unos 1,87 m de altura útil. El resto del rack, en la unidad de cableado estructurado.</div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 7 — a mano, en papel</p>
+<ol>
+<li>¿Qué significan las letras <strong>P</strong> y <strong>C</strong> en 8P8C? Haz una tabla con RJ-9, RJ-11 y RJ-45: formato y uso.</li>
+<li>Dibuja un RJ-45 de frente en la posición de referencia y numera los pines.</li>
+<li>¿Para qué sirve la <strong>cuña</strong> del conector? ¿Qué pasa si al crimpar aprieta hilos en vez de la cubierta?</li>
+<li>¿Cuándo hay que usar un RJ-45 <strong>apantallado</strong>?</li>
+<li>Define roseta, latiguillo y panel de parcheo. Dibuja el recorrido del PC al switch.</li>
+<li>Explica por qué no se conecta directamente el cable de la pared al switch.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Cómo sé cuál es el pin 1 de un RJ-45?</summary>
+<p>Contactos hacia ti, pestaña hacia atrás y cable hacia abajo: el pin 1 es el de la <strong>izquierda</strong>.</p>
+</details>
+<details>
+<summary>🤔 ¿Un latiguillo es macho-macho o macho-hembra?</summary>
+<p><strong>Macho-macho</strong>: un RJ-45 macho en cada extremo. Las hembras están en la roseta, el panel, el switch y la tarjeta de red.</p>
+</details>
+<details>
+<summary>🤔 ¿Cuánto mide 1 U de rack?</summary>
+<p><strong>4,445 cm</strong> (1,75 pulgadas).</p>
+</details>

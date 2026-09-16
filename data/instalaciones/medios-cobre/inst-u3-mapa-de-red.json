@@ -1,0 +1,48 @@
+{
+  "id": "inst-u3-mapa-de-red",
+  "titulo": "Sesión 4 — El mapa de la red",
+  "fecha": "",
+  "descripcion": "Para qué sirve el esquema de una red, mapa físico y lógico, los símbolos, qué tiene que llevar un buen mapa, cómo se lee y cómo se dibuja con draw.io o LibreOffice Draw.",
+  "materiales": [
+    { "tipo": "enlace", "titulo": "draw.io (en el navegador, sin instalar)", "url": "https://app.diagrams.net/" }
+  ],
+  "actividades": [
+    {
+      "id": "u3s4-leer-esquema",
+      "tipo": "quiz",
+      "titulo": "Lee el esquema de la oficina",
+      "preguntas": [
+        {
+          "pregunta": "¿A qué puerto del switch está conectada la impresora?",
+          "opciones": ["Puerto 1", "Puerto 2", "Puerto 4", "Puerto 8"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué aparato conecta la oficina con Internet?",
+          "opciones": ["SW-OFICINA", "R-01", "AP-01", "PC-01"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo se conecta PORT-01 a la red?",
+          "opciones": ["Con UTP al switch", "Sin cable, a través de AP-01", "Directamente al router", "No está conectado"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué topología física forman el switch y los equipos con cable?",
+          "opciones": ["Bus", "Anillo", "Estrella", "Malla"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Se estropea el cable del puerto 3. ¿Quién se queda sin red?",
+          "opciones": ["Toda la oficina", "Solo PC-02", "PC-01 y PC-02", "Solo el portátil"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Se estropea SW-OFICINA. ¿Quién sigue teniendo Internet?",
+          "opciones": ["Todos", "Solo el portátil", "Solo la impresora", "Nadie de la oficina"],
+          "correcta": 3
+        }
+      ]
+    }
+  ]
+}

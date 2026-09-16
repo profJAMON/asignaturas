@@ -1,0 +1,78 @@
+{
+  "id": "inst-u3-taller-cruzado-averias",
+  "titulo": "Sesión 13 — Taller: cable cruzado y diagnóstico de averías",
+  "fecha": "",
+  "descripcion": "Fabricar y probar un cable cruzado T568A–T568B, leer el comprobador cuando algo falla (circuito abierto, hilos cruzados, cortocircuito, par partido) y seguir un orden para encontrar la avería de un puesto.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s13-cruzado",
+      "tipo": "quiz",
+      "titulo": "El cable cruzado",
+      "preguntas": [
+        {
+          "pregunta": "Un extremo en T568B. Para que sea cruzado, el otro va en…",
+          "opciones": ["T568B", "T568A", "Cualquiera", "Invertido pin a pin"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En un cruzado, el pin 1 de un extremo llega al pin…",
+          "opciones": ["1", "2", "3", "6"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Y el pin 2 llega al pin…",
+          "opciones": ["2", "3", "6", "8"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué pines no cambian en un cruzado T568A–T568B?",
+          "opciones": ["1, 2, 3 y 6", "4, 5, 7 y 8", "Ninguno", "Solo el 8"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "u3s13-averias",
+      "tipo": "quiz",
+      "titulo": "¿Qué le pasa a este cable?",
+      "preguntas": [
+        {
+          "pregunta": "Luces: 1-1, 2-2, 3-3, 4-4, 5-5, 6-6, la 7 no se enciende en ningún lado, 8-8.",
+          "opciones": ["Circuito abierto", "Hilos cruzados", "Cortocircuito", "Correcto"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Luces: 1-1, 2-2, 3-5, 4-4, 5-3, 6-6, 7-7, 8-8 (cable que debería ser directo).",
+          "opciones": ["Circuito abierto", "Hilos cruzados", "Cable cruzado correcto", "Par partido"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Luces: 1-3, 2-6, 3-1, 4-4, 5-5, 6-2, 7-7, 8-8.",
+          "opciones": ["Directo correcto", "Cruzado correcto", "Hilos cruzados", "Cortocircuito"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Al llegar el impulso del pin 4, en el remoto se encienden la 4 y la 5 a la vez.",
+          "opciones": ["Circuito abierto", "Cortocircuito", "Par partido", "Pila gastada"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "No se enciende nada en el remoto con ningún cable, ni con uno nuevo.",
+          "opciones": ["Todos los cables están mal", "Cortocircuito", "Revisar la pila y cómo está enchufado el téster", "Par partido"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El téster da 1-1 … 8-8, pero el orden en los dos extremos es azul y verde intercambiados respecto a la norma. Es…",
+          "opciones": ["Un cable perfecto", "Un par partido", "Un cable cruzado", "Un circuito abierto"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un puesto no tiene red. ¿Qué haces primero?",
+          "opciones": ["Cambiar la tarjeta de red", "Mirar las luces de la tarjeta y del switch", "Reinstalar Windows", "Tirar un cable nuevo por la pared"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

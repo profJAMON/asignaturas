@@ -1,0 +1,134 @@
+<h2>El cable que vas a tocar todo el curso</h2>
+<p>El <strong>cable de par trenzado</strong> es el medio de las redes locales. Está en el latiguillo de tu PC, en las paredes del instituto y en el rack del taller. Si abres uno, dentro encuentras siempre lo mismo:</p>
+<ul>
+<li>Una <strong>cubierta</strong> exterior de plástico (PVC o, mejor, libre de halógenos, ahora vemos por qué).</li>
+<li><strong>Ocho hilos de cobre</strong>, cada uno con su aislante de color.</li>
+<li>Los ocho, agrupados en <strong>cuatro pares</strong>. Los dos hilos de cada par están <strong>enroscados</strong> uno sobre otro.</li>
+<li>A veces, un <strong>hilo de rasgado</strong> (para abrir la cubierta tirando de él) y, en categorías altas, una <strong>cruceta</strong> de plástico que separa los pares.</li>
+</ul>
+
+<div class="salida">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Corte de un cable UTP: cubierta exterior, cruceta central de plástico y cuatro pares de hilos, cada par con un hilo de color liso y otro blanco con raya del mismo color: azul, naranja, verde y marrón" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<circle cx="150" cy="110" r="92" fill="#3a3d41" stroke="#858585" stroke-width="2"/>
+<circle cx="150" cy="110" r="82" fill="#1e1e1e"/>
+<path d="M 150 40 L 150 180 M 80 110 L 220 110" stroke="#6a6a6a" stroke-width="7"/>
+<g stroke="#1e1e1e" stroke-width="1.5">
+<circle cx="112" cy="68" r="14" fill="#2f6fd6"/><circle cx="96" cy="88" r="14" fill="#f0f0f0"/><circle cx="96" cy="88" r="5" fill="#2f6fd6"/>
+<circle cx="188" cy="68" r="14" fill="#e8892e"/><circle cx="204" cy="88" r="14" fill="#f0f0f0"/><circle cx="204" cy="88" r="5" fill="#e8892e"/>
+<circle cx="112" cy="152" r="14" fill="#3aa757"/><circle cx="96" cy="132" r="14" fill="#f0f0f0"/><circle cx="96" cy="132" r="5" fill="#3aa757"/>
+<circle cx="188" cy="152" r="14" fill="#8b5a2b"/><circle cx="204" cy="132" r="14" fill="#f0f0f0"/><circle cx="204" cy="132" r="5" fill="#8b5a2b"/>
+</g>
+<g stroke="#858585">
+<line x1="240" y1="30" x2="290" y2="30"/><line x1="176" y1="112" x2="290" y2="62"/><line x1="112" y1="68" x2="290" y2="94"/><line x1="96" y1="88" x2="290" y2="126"/>
+</g>
+<text x="298" y="34" class="t">cubierta (PVC o LSZH)</text>
+<text x="298" y="66" class="t">cruceta: separa los pares</text>
+<text x="298" y="98" class="t">hilo de color liso</text>
+<text x="298" y="130" class="t">hilo blanco con raya del mismo color</text>
+<text x="298" y="168" class="s">par 1 azul · par 2 naranja</text>
+<text x="298" y="184" class="s">par 3 verde · par 4 marrón</text>
+</svg>
+<p class="pie-figura">Cuatro pares, cada uno con un hilo de color y su pareja blanca rayada. El orden de los colores lo verás en la sesión 8.</p>
+</div>
+
+<h2>Los cuatro pares y sus colores</h2>
+<table>
+<tr><th>Par</th><th>Hilo de color</th><th>Su pareja</th></tr>
+<tr><td>1</td><td>Azul</td><td>Blanco-azul</td></tr>
+<tr><td>2</td><td>Naranja</td><td>Blanco-naranja</td></tr>
+<tr><td>3</td><td>Verde</td><td>Blanco-verde</td></tr>
+<tr><td>4</td><td>Marrón</td><td>Blanco-marrón</td></tr>
+</table>
+<p>Los colores no son decoración: son la única forma de saber, en cada extremo, qué hilo es cuál. Por eso el orden en el conector está normalizado y no se improvisa.</p>
+
+<h2>¿Por qué trenzado?</h2>
+<p>Mi presentación dice que se trenza «para aumentar la potencia del cable». No es eso. El trenzado sirve para <strong>defenderse del ruido</strong>. Te lo explico en dos pasos:</p>
+<ol>
+<li>Cada par no lleva «un uno por un hilo y un cero por otro»: los dos hilos llevan <strong>la misma señal, pero invertida</strong>. El receptor no mira cada hilo por separado, sino <strong>la diferencia</strong> entre los dos.</li>
+<li>Cuando una interferencia (un motor, un fluorescente, el cable de corriente de al lado) alcanza el par, afecta <strong>casi por igual a los dos hilos</strong>, porque al estar enroscados ocupan prácticamente el mismo sitio. Al restar uno de otro, el ruido <strong>se anula</strong> y la señal queda.</li>
+</ol>
+<div class="salida">
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Un par trenzado con dos hilos que se enroscan; una interferencia llega por fuera y afecta igual a los dos hilos, de modo que al restar las dos señales el ruido desaparece" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<path d="M 30 80 C 60 50, 90 50, 120 80 S 180 110, 210 80 S 270 50, 300 80 S 360 110, 390 80 S 450 50, 480 80" stroke="#3aa757" stroke-width="5" fill="none"/>
+<path d="M 30 80 C 60 110, 90 110, 120 80 S 180 50, 210 80 S 270 110, 300 80 S 360 50, 390 80 S 450 110, 480 80" stroke="#f0f0f0" stroke-width="5" fill="none"/>
+<path d="M 250 10 L 240 28 L 256 30 L 244 48" stroke="#f48771" stroke-width="2.5" fill="none"/>
+<text x="264" y="24" class="t" style="fill:#f48771">interferencia</text>
+<text x="264" y="38" class="s">toca igual a los dos hilos</text>
+<text x="495" y="72" class="t">señal − (−señal)</text>
+<text x="495" y="88" class="t" style="fill:#4ec9b0">= 2 · señal</text>
+<text x="495" y="104" class="s">el ruido se resta</text>
+<text x="30" y="140" class="s">Cada par, con un paso de trenzado distinto: así no se contagia del vecino (diafonía).</text>
+</svg>
+<p class="pie-figura">El secreto está en la resta: lo que les pasa a los dos hilos por igual desaparece.</p>
+</div>
+<p>Además, <strong>cada par lleva un paso de trenzado distinto</strong> (unos más apretados que otros). Así se evita que la señal de un par se cuele en el de al lado, un problema que se llama <strong>diafonía</strong> (<em>crosstalk</em>). Cuanto mayor es la categoría del cable, más cuidado está el trenzado.</p>
+<div class="nota">Consecuencia práctica para el taller: cuando montes un conector, <strong>destrenza lo mínimo</strong>. Cada centímetro que desenroscas de más es un centímetro sin protección contra el ruido. Lo verás en la guía de crimpado.</div>
+
+<h2>Apantallado o sin apantallar</h2>
+<p>Donde hay mucho ruido eléctrico (una nave industrial, cerca de motores o de líneas de corriente) el trenzado no basta y se añade una <strong>pantalla</strong>: una lámina de aluminio o una malla metálica que hace de escudo.</p>
+<table>
+<tr><th>Nombre</th><th>Qué lleva</th><th>Cuándo</th></tr>
+<tr><td><strong>UTP</strong> (<em>Unshielded</em>)</td><td>Sin pantalla. Solo el trenzado.</td><td>Oficinas, casas, el taller. El más usado, barato y flexible.</td></tr>
+<tr><td><strong>FTP</strong> (<em>Foiled</em>)</td><td>Una lámina de aluminio que envuelve <strong>los cuatro pares juntos</strong>.</td><td>Entornos con algo de ruido.</td></tr>
+<tr><td><strong>STP</strong> (<em>Shielded</em>)</td><td>Pantalla en <strong>cada par</strong> y otra alrededor del conjunto.</td><td>Mucho ruido; categorías altas. El más caro y rígido.</td></tr>
+</table>
+<p>Los apantallados rinden mejor ante interferencias, pero son más caros, más gruesos, más difíciles de doblar y tienen una condición: <strong>la pantalla debe conectarse a tierra</strong> en el rack, con conectores apantallados. Una pantalla sin tierra puede comportarse como una antena y empeorar las cosas.</p>
+
+<h3>La nomenclatura moderna</h3>
+<p>Los nombres UTP, FTP y STP se usan de forma poco precisa (cada fabricante llama STP a una cosa). La norma ISO/IEC 11801 usa dos letras separadas por una barra: <strong>pantalla global / pantalla de cada par</strong>, donde U = nada, F = lámina y S = malla.</p>
+<table>
+<tr><th>Norma</th><th>Global</th><th>Por par</th><th>Nombre habitual</th></tr>
+<tr><td>U/UTP</td><td>Nada</td><td>Nada</td><td>UTP</td></tr>
+<tr><td>F/UTP</td><td>Lámina</td><td>Nada</td><td>FTP</td></tr>
+<tr><td>U/FTP</td><td>Nada</td><td>Lámina</td><td>STP (según fabricante)</td></tr>
+<tr><td>S/FTP</td><td>Malla</td><td>Lámina</td><td>STP (cat. 7 y superiores)</td></tr>
+</table>
+
+<div data-actividad="u3s5-tipos"></div>
+
+<h2>Rígido o flexible</h2>
+<p>Mi presentación los llama «subtipos». Por dentro, cada hilo puede ser:</p>
+<ul>
+<li><strong>Rígido</strong> (unifilar, <em>solid</em>): un único alambre de cobre. Transmite mejor y llega más lejos, pero se parte si lo doblas muchas veces. Es el que va <strong>por la pared</strong>, de la roseta al rack, y no se mueve nunca.</li>
+<li><strong>Flexible</strong> (multifilar, <em>stranded</em>): cada hilo son muchos filamentos finos. Aguanta el movimiento, pero atenúa más. Es el de los <strong>latiguillos</strong>, que se enchufan y desenchufan.</li>
+</ul>
+<div class="nota">Cada tipo lleva su conector: los RJ-45 para hilo rígido y para hilo flexible tienen las cuchillas distintas. Con el conector equivocado, el cable da fallos intermitentes, que son los peores de encontrar.</div>
+
+<h2>La cubierta: PVC o libre de halógenos</h2>
+<p>Enlaza con lo que viste de incendios en la Unidad 2. Si arde un cable con cubierta de <strong>PVC</strong>, suelta un humo negro, espeso y <strong>tóxico</strong>. Por eso en edificios con público (colegios, hospitales, oficinas) se instala cable <strong>LSZH</strong> (<em>Low Smoke Zero Halogen</em>): poco humo y sin halógenos. Suele reconocerse porque su cubierta no es gris, sino de otro color (verde, naranja, violeta), aunque lo seguro es leer lo que viene impreso en la cubierta.</p>
+<p>Y eso nos lleva a una costumbre que tienes que coger: <strong>lee la cubierta del cable</strong>. Ahí viene impreso casi todo: tipo, categoría, si es LSZH, la norma y hasta los metros.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 5 — a mano, en papel</p>
+<ol>
+<li>Dibuja el corte de un cable de par trenzado y señala: cubierta, pares, hilo de color, hilo blanco rayado y cruceta.</li>
+<li>Escribe los cuatro pares con sus dos colores.</li>
+<li>Explica con tus palabras <strong>por qué se trenzan</strong> los hilos. ¿Qué es la diafonía?</li>
+<li>Haz una tabla con UTP, FTP y STP: qué pantalla lleva cada uno, una ventaja y un inconveniente.</li>
+<li>¿Qué diferencia hay entre cable rígido y flexible? ¿Dónde se usa cada uno?</li>
+<li>Coge un trozo de cable del taller y copia lo que lleva impreso en la cubierta. Explica qué significa cada dato que reconozcas.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Por qué no se destrenzan los pares más de lo necesario al poner un conector?</summary>
+<p>Porque el trenzado es lo que anula el ruido y evita la diafonía. La parte destrenzada queda desprotegida y el cable puede no pasar las pruebas.</p>
+</details>
+<details>
+<summary>🤔 Tienes que cablear una oficina normal. ¿UTP o STP?</summary>
+<p><strong>UTP</strong>. Es suficiente, más barato, más fácil de instalar y no necesita tierra. El apantallado se deja para entornos con mucho ruido eléctrico.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué cable usas para la roseta de la pared y cuál para el latiguillo?</summary>
+<p>Para la pared, <strong>rígido</strong> (no se mueve y transmite mejor). Para el latiguillo, <strong>flexible</strong> (se dobla y se enchufa muchas veces).</p>
+</details>

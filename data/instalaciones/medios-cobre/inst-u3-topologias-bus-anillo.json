@@ -1,0 +1,51 @@
+{
+  "id": "inst-u3-topologias-bus-anillo",
+  "titulo": "Sesión 2 — Topologías (I): punto a punto, bus y anillo",
+  "fecha": "",
+  "descripcion": "Qué es una topología, la diferencia entre física y lógica, y las tres primeras formas de red: punto a punto, bus y anillo (con Token Ring y el doble anillo).",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s2-bus-o-anillo",
+      "tipo": "quiz",
+      "titulo": "¿Bus, anillo o punto a punto?",
+      "preguntas": [
+        {
+          "pregunta": "Todos los equipos cuelgan de un único cable con un terminador en cada extremo.",
+          "opciones": ["Punto a punto", "Bus", "Anillo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Solo puede transmitir el equipo que tiene el testigo.",
+          "opciones": ["Punto a punto", "Bus", "Anillo"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Unes dos portátiles con un cable para pasaros un vídeo.",
+          "opciones": ["Punto a punto", "Bus", "Anillo"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿En cuál es típico el problema de las colisiones?",
+          "opciones": ["Punto a punto", "Bus", "Anillo con testigo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La pieza que absorbe la señal al final del bus para que no rebote se llama…",
+          "opciones": ["Testigo", "Terminador", "Latiguillo", "Roseta"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un hub con cuatro PC forma una estrella física, pero los datos se comportan como…",
+          "opciones": ["Un anillo", "Un bus", "Una malla", "Un punto a punto"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué aporta el doble anillo frente al anillo simple?",
+          "opciones": ["Más velocidad sin más cable", "Un segundo camino si se corta un tramo", "Elimina el testigo", "Permite usar coaxial"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

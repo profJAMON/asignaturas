@@ -50,6 +50,28 @@
         "inst-u2-raee",
         "inst-u2-repaso"
       ]
+    },
+    {
+      "id": "medios-cobre",
+      "titulo": "Unidad 3. Medios de transmisión: cobre",
+      "descripcion": "Por dónde viajan los datos: los medios de transmisión, las topologías y el mapa de la red, el cable de par trenzado y sus categorías, los conectores RJ-45 y las normas T568A/B, cable directo y cruzado, la tarjeta de red, las herramientas, el taller de crimpado y el cable coaxial.",
+      "sesiones": [
+        "inst-u3-medios",
+        "inst-u3-topologias-bus-anillo",
+        "inst-u3-topologias-estrella-malla",
+        "inst-u3-mapa-de-red",
+        "inst-u3-par-trenzado",
+        "inst-u3-categorias-ethernet",
+        "inst-u3-conectores",
+        "inst-u3-t568",
+        "inst-u3-directo-cruzado",
+        "inst-u3-tarjeta-y-enlace",
+        "inst-u3-herramientas",
+        "inst-u3-taller-latiguillo",
+        "inst-u3-taller-cruzado-averias",
+        "inst-u3-coaxial",
+        "inst-u3-repaso"
+      ]
     }
   ]
 }

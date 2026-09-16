@@ -1,0 +1,111 @@
+<h2>El otro extremo del cable</h2>
+<p>Ya sabes cómo es el cable y cómo se termina. Ahora toca mirar dónde se enchufa: la <strong>tarjeta de red</strong> (NIC) del equipo y el puerto del switch. Juntos forman un <strong>enlace</strong>, y es ahí donde ves si el cable que has hecho funciona.</p>
+<p>De la Unidad 1 ya sabes que la NIC tiene una <strong>dirección MAC</strong> grabada de fábrica y que una tarjeta <strong>10/100/1000</strong> admite tres velocidades. Hoy vamos a lo práctico.</p>
+
+<h2>Cómo es una tarjeta de red</h2>
+<ul>
+<li><strong>Integrada</strong> en la placa base: lo normal en cualquier equipo actual.</li>
+<li><strong>De expansión</strong>: una tarjeta que se pincha en una ranura <strong>PCI Express</strong> de la placa. Se añade para tener más puertos (servidores), más velocidad (2,5 o 10 Gbps) o para sustituir una integrada que se ha estropeado.</li>
+<li><strong>USB</strong>: un adaptador pequeño, típico en portátiles finos que ya no traen puerto RJ-45.</li>
+</ul>
+<p>Un equipo puede tener varias. Y cada tarjeta está pensada para un medio: RJ-45 para par trenzado, SFP para fibra, antena para wifi.</p>
+<div class="nota">Mi presentación habla de ranuras PCI y de tarjetas PCMCIA. Las dos están <strong>obsoletas</strong>: hoy las ranuras son PCI Express, y en portátiles lo que queda son adaptadores USB o USB-C.</div>
+
+<h2>Las luces: lo primero que se mira</h2>
+<p>Junto al conector RJ-45, la tarjeta y cada puerto del switch llevan uno o dos <strong>LED testigo</strong>. Antes de tocar ningún menú, un técnico <strong>mira las luces</strong>.</p>
+<table>
+<tr><th>Luz</th><th>Qué indica</th><th>Si está apagada</th></tr>
+<tr><td><strong>LINK</strong> (fija)</td><td>Hay enlace eléctrico: el cable llega al otro extremo y los dos aparatos se han entendido</td><td>Cable roto o mal crimpado, desenchufado en el otro lado, puerto del switch apagado</td></tr>
+<tr><td><strong>ACT</strong> (parpadea)</td><td>Pasan datos</td><td>Hay enlace, pero no hay tráfico</td></tr>
+</table>
+<p>Muchos aparatos usan también el <strong>color</strong> para la velocidad (por ejemplo, verde a 1 Gbps y ámbar a 10/100), pero <strong>cada fabricante usa los suyos</strong>: mira el manual o la serigrafía junto al puerto.</p>
+<div class="nota">Truco del taller para probar un latiguillo que acabas de hacer: enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada. Si enciende, pero el switch lo marca en el color de 100 Mbps cuando debería ir a 1 Gbps, sospecha del par azul o del marrón.</div>
+
+<h2>Autonegociación</h2>
+<p>Al enchufar el cable, la tarjeta y el switch se «presentan» y acuerdan dos cosas: la <strong>velocidad</strong> y el <strong>modo dúplex</strong>. Es la <strong>autonegociación</strong>, y elige lo mejor que admitan <strong>los dos</strong> (y el cable).</p>
+<ul>
+<li>Tarjeta 10/100/1000 + switch 10/100 → <strong>100 Mbps</strong>.</li>
+<li>Tarjeta 10/100/1000 + switch gigabit + cable con un par mal → normalmente <strong>100 Mbps</strong>, porque a gigabit hacen falta los cuatro pares.</li>
+</ul>
+
+<h2>Flujo de datos: simplex, semidúplex y dúplex</h2>
+<p>El modo dúplex dice <strong>en qué sentido y cuándo</strong> pueden ir los datos por un enlace. Es un concepto general de cualquier comunicación, no solo de redes:</p>
+<div class="salida">
+<svg viewBox="0 0 600 210" width="100%" role="img" aria-label="Tres modos de flujo de datos: simplex, en un solo sentido, como una calle de dirección única; semidúplex, en los dos sentidos pero por turnos, como un walkie-talkie; y dúplex completo, en los dos sentidos a la vez, como una llamada de teléfono" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<defs><marker id="u3fd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4fc1ff"/></marker>
+<marker id="u3fd2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4ec9b0"/></marker></defs>
+<g>
+<rect x="20" y="16" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="38" text-anchor="middle" class="s">A</text>
+<rect x="300" y="16" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="38" text-anchor="middle" class="s">B</text>
+<line x1="84" y1="34" x2="294" y2="34" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
+<text x="380" y="30" class="t">Simplex</text><text x="380" y="46" class="s">un sentido. Ej.: la TDT</text>
+</g>
+<g>
+<rect x="20" y="84" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="106" text-anchor="middle" class="s">A</text>
+<rect x="300" y="84" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="106" text-anchor="middle" class="s">B</text>
+<line x1="84" y1="102" x2="294" y2="102" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
+<line x1="294" y1="102" x2="84" y2="102" stroke="#4ec9b0" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#u3fd2)"/>
+<text x="190" y="96" text-anchor="middle" class="s">por turnos</text>
+<text x="380" y="98" class="t">Semidúplex</text><text x="380" y="114" class="s">por turnos. Ej.: walkie</text>
+</g>
+<g>
+<rect x="20" y="152" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="174" text-anchor="middle" class="s">A</text>
+<rect x="300" y="152" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="174" text-anchor="middle" class="s">B</text>
+<line x1="84" y1="162" x2="294" y2="162" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
+<line x1="294" y1="180" x2="84" y2="180" stroke="#4ec9b0" stroke-width="3" marker-end="url(#u3fd2)"/>
+<text x="380" y="166" class="t">Dúplex (full-duplex)</text><text x="380" y="182" class="s">a la vez. Ej.: teléfono</text>
+</g>
+</svg>
+<p class="pie-figura">Una calle de sentido único, un puente de un carril con semáforo y una carretera de doble sentido.</p>
+</div>
+<table>
+<tr><th>Modo</th><th>Cómo funciona</th><th>En una red</th></tr>
+<tr><td><strong>Simplex</strong></td><td>Solo un sentido. Uno emite y el otro solo recibe.</td><td>No se usa en enlaces Ethernet; sí en la emisión de TV o radio</td></tr>
+<tr><td><strong>Semidúplex</strong> (<em>half-duplex</em>)</td><td>Los dos pueden emitir, pero por turnos. Si hablan a la vez, colisión.</td><td>Hubs y redes en bus: por eso había colisiones</td></tr>
+<tr><td><strong>Dúplex</strong> (<em>full-duplex</em>)</td><td>Los dos emiten y reciben al mismo tiempo.</td><td><strong>Enlace de un PC con un switch</strong>: sin colisiones</td></tr>
+</table>
+<p>Con switch y full-duplex, un enlace de 1 Gbps puede mover 1 Gbps <strong>en cada sentido</strong> a la vez.</p>
+<div class="nota">Avería clásica: si en un lado se fija la velocidad y el dúplex a mano y el otro se deja en automático, pueden quedar uno en full y otro en half (<em>duplex mismatch</em>). Hay enlace y hay luces, pero la red va <strong>lentísima</strong> y pierde datos. La regla: o los dos en automático, o los dos fijados igual.</div>
+
+<div data-actividad="u3s10-enlace"></div>
+
+<h2>Verlo en Windows</h2>
+<h3>Administrador de dispositivos</h3>
+<p>Botón derecho sobre Inicio → <strong>Administrador de dispositivos</strong> → <strong>Adaptadores de red</strong>. Ahí aparecen todas las tarjetas del equipo.</p>
+<ul>
+<li>Si una lleva un <strong>triángulo amarillo</strong>, le falta el <strong>controlador</strong> (<em>driver</em>) o no funciona bien. Se instala desde la web del fabricante de la tarjeta o de la placa.</li>
+<li>Si lleva una <strong>flecha hacia abajo</strong>, está deshabilitada.</li>
+<li>En sus <strong>Propiedades → Opciones avanzadas</strong> está «Velocidad y dúplex», normalmente en <em>Negociación automática</em>. Déjalo así salvo que haya un motivo.</li>
+</ul>
+
+<h3>Velocidad a la que ha enlazado</h3>
+<p>En <strong>Configuración → Red e Internet → Ethernet</strong> aparece la «velocidad de vínculo». O, más rápido, en PowerShell:</p>
+<pre><code>Get-NetAdapter</code></pre>
+<p>La columna <strong>LinkSpeed</strong> te dice si ha negociado 100 Mbps o 1 Gbps, y <strong>Status</strong> si hay enlace (<em>Up</em>) o no (<em>Disconnected</em>). Y para la MAC, ya los conoces: <code>ipconfig /all</code> o <code>getmac</code>.</p>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 10 — a mano, en papel</p>
+<ol>
+<li>¿Qué tipos de tarjeta de red hay según cómo se conectan al equipo?</li>
+<li>Mira las luces del puerto de red de tu PC y del switch. ¿Cuántas hay? ¿De qué color? ¿Parpadean? Explica qué significa lo que ves.</li>
+<li>Define simplex, semidúplex y dúplex, con un ejemplo de la vida diaria de cada uno.</li>
+<li>¿Qué es la autonegociación? Una tarjeta gigabit conectada a un switch 10/100: ¿a qué velocidad va? ¿Por qué?</li>
+<li>Abre el Administrador de dispositivos de tu equipo del taller y apunta el nombre de sus adaptadores de red. Ejecuta <code>Get-NetAdapter</code> y apunta la velocidad de enlace.</li>
+<li>¿Qué harías si en el Administrador de dispositivos la tarjeta de red tiene un triángulo amarillo?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Enchufas el cable y no se enciende ninguna luz. ¿Por dónde empiezas?</summary>
+<p>Por el <strong>cable</strong> y el otro extremo: ¿está enchufado en el switch? ¿El puerto está encendido? Prueba con un latiguillo que sepas que funciona. Si con ese hay luz, el problema era el cable.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué con un switch no hay colisiones?</summary>
+<p>Porque cada enlace PC–switch es solo de esos dos y funciona en <strong>full-duplex</strong>: cada uno transmite por su par sin esperar turno.</p>
+</details>

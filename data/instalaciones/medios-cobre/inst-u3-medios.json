@@ -1,0 +1,22 @@
+{
+  "id": "inst-u3-medios",
+  "titulo": "Sesión 1 — Los medios de transmisión",
+  "fecha": "",
+  "descripcion": "Qué es un medio de transmisión, la diferencia entre guiados y no guiados, cómo se comparan (velocidad, distancia, ancho de banda, atenuación, interferencias) y por qué seguimos usando cable.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s1-que-medio",
+      "tipo": "relacionar",
+      "titulo": "¿Qué medio es?",
+      "pares": [
+        { "izquierda": "Par trenzado", "derecha": "Señal eléctrica, hasta 100 m por tramo" },
+        { "izquierda": "Coaxial", "derecha": "Conductor central y malla: la toma de la antena" },
+        { "izquierda": "Fibra óptica", "derecha": "Luz, kilómetros sin repetir" },
+        { "izquierda": "Wifi", "derecha": "Ondas de radio, decenas de metros" },
+        { "izquierda": "Bluetooth", "derecha": "Ondas de radio, unos 10 m" },
+        { "izquierda": "Infrarrojos", "derecha": "Menos de 1 m y en línea recta" }
+      ]
+    }
+  ]
+}

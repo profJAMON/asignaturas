@@ -1,0 +1,46 @@
+{
+  "id": "inst-u3-taller-latiguillo",
+  "titulo": "Sesión 12 — Taller: fabrica un latiguillo directo",
+  "fecha": "",
+  "descripcion": "Guía paso a paso para crimpar un latiguillo directo T568B, comprobarlo con el téster y probarlo con el switch, con los errores de siempre y lo que se mira al corregirlo.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s12-orden",
+      "tipo": "quiz",
+      "titulo": "¿Lo tienes claro antes de crimpar?",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué es lo primero que se hace?",
+          "opciones": ["Pelar la cubierta", "Meter los capuchones en el cable", "Ordenar los colores", "Crimpar"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuánta longitud de hilos se deja fuera de la cubierta antes de meterlos en el conector?",
+          "opciones": ["Unos 5 mm", "Unos 12-13 mm", "Unos 3 cm", "Lo que salga al pelar"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En T568B, ¿qué color va en el pin 4?",
+          "opciones": ["Verde", "Blanco-azul", "Azul", "Blanco-verde"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Mirando el conector por la punta antes de crimpar, tienes que ver…",
+          "opciones": ["La cuña", "Ocho puntitos de cobre tocando el fondo", "El capuchón", "La pantalla"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un latiguillo directo bien hecho enciende en el comprobador…",
+          "opciones": ["1-3, 2-6, 3-1…", "1-1, 2-2, 3-3… 8-8", "Solo la 1 y la 2", "Todas a la vez"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El cable pasa el comprobador pero enlaza a 100 Mbps en un switch gigabit. Sospechas de…",
+          "opciones": ["El capuchón", "El par azul o el marrón", "La categoría del switch", "La MAC"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

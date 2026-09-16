@@ -1,0 +1,103 @@
+{
+  "id": "inst-u3-repaso",
+  "titulo": "Sesión 15 — Repaso y banco de preguntas del examen",
+  "fecha": "",
+  "descripcion": "Toda la unidad en una página, el banco completo de preguntas del examen y los tres generadores (colores T568, directo o cruzado, topología y cable) para entrenar.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Colores y pines de T568A y T568B",
+      "generador": "t568-colores",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Directo o cruzado?",
+      "generador": "directo-o-cruzado",
+      "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Qué topología? ¿Qué cable?",
+      "generador": "topologia-y-medio",
+      "n": 10
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Repaso mezclado de toda la unidad",
+      "preguntas": [
+        {
+          "pregunta": "El cable de par trenzado, el coaxial y la fibra son medios…",
+          "opciones": ["No guiados", "Guiados", "Lógicos", "Inalámbricos"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué topología se usa en casi todas las redes locales actuales?",
+          "opciones": ["Bus", "Anillo", "Estrella", "Malla completa"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Enlaces de una malla completa de 9 equipos:",
+          "opciones": ["18", "36", "72", "81"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué se trenzan los hilos?",
+          "opciones": ["Para que pesen menos", "Para anular el ruido y la diafonía", "Para que quepan en el conector", "Para distinguir colores"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Pantalla en cada par y otra global:",
+          "opciones": ["UTP", "FTP", "STP", "Coaxial"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Distancia máxima de un enlace de par trenzado:",
+          "opciones": ["55 m", "90 m", "100 m", "185 m"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Categoría para 10 Gbps a 100 m:",
+          "opciones": ["Cat 5e", "Cat 6", "Cat 6A", "Cat 8"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "T568B empieza (pin 1) por…",
+          "opciones": ["Blanco-verde", "Blanco-naranja", "Blanco-azul", "Naranja"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Switch con switch, sin Auto-MDIX:",
+          "opciones": ["Directo", "Cruzado", "Coaxial", "Da igual"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "PC con switch:",
+          "opciones": ["Directo", "Cruzado", "Coaxial", "Rollover"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Una luz del comprobador no se enciende en ningún módulo:",
+          "opciones": ["Cortocircuito", "Circuito abierto", "Cable cruzado", "Par partido"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "1 U de rack mide…",
+          "opciones": ["5 cm", "4,445 cm", "19 pulgadas", "1 pulgada"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Conector de rosca de la antena de TV y la parabólica:",
+          "opciones": ["BNC", "F", "RJ-11", "SMA"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Modo de un enlace PC–switch actual:",
+          "opciones": ["Simplex", "Semidúplex", "Dúplex completo", "Bus"],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

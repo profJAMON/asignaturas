@@ -1,0 +1,51 @@
+{
+  "id": "inst-u3-conectores",
+  "titulo": "Sesión 7 — Conectores RJ, rosetas y latiguillos",
+  "fecha": "",
+  "descripcion": "La familia de conectores RJ (RJ-9, RJ-11 y RJ-45), cómo es un RJ-45 por dentro y cómo se cuentan sus pines, sus tipos, y por dónde pasa el cable desde el PC hasta el switch: latiguillo, roseta y panel de parcheo.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u3s7-conectores",
+      "tipo": "quiz",
+      "titulo": "Conectores",
+      "preguntas": [
+        {
+          "pregunta": "El conector de las redes de datos con cable de pares es…",
+          "opciones": ["RJ-9 (4P4C)", "RJ-11 (6P2C)", "RJ-45 (8P8C)", "BNC"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El conector de la línea de teléfono es…",
+          "opciones": ["RJ-9", "RJ-11", "RJ-45", "F"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "En «8P8C», la C significa…",
+          "opciones": ["Cables", "Contactos", "Categoría", "Cobre"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Con los contactos hacia ti, la pestaña detrás y el cable hacia abajo, el pin 1 está…",
+          "opciones": ["A la izquierda", "A la derecha", "En el centro", "Depende del color"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué parte del RJ-45 atraviesa el aislante de cada hilo?",
+          "opciones": ["La cuña", "La pestaña", "Los contactos", "El capuchón"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué pieza debe apretar la cubierta del cable para que no se suelte de un tirón?",
+          "opciones": ["La cuña", "La pestaña", "Los contactos", "La roseta"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Con cable FTP hay que usar conector…",
+          "opciones": ["RJ-11", "Pasante", "Apantallado", "Cualquiera"],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

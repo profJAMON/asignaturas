@@ -1,0 +1,95 @@
+<h2>No todos los cables de red son iguales</h2>
+<p>Dos cables pueden parecer idénticos por fuera y uno aguantar 10 Gbps mientras el otro no pasa de 100 Mbps. Lo que los diferencia es la <strong>categoría</strong> (<em>Cat</em>): una clasificación que dice hasta qué <strong>frecuencia</strong> (ancho de banda, en MHz) funciona bien el cable. Y de esa frecuencia depende la velocidad que puede llevar.</p>
+<p>Para subir de categoría, el fabricante cuida más el cable: trenzado más apretado y distinto en cada par, hilos más gruesos, cruceta separadora, pantallas… Todo para que haya menos diafonía y menos pérdidas a frecuencias altas.</p>
+
+<h2>La tabla de categorías</h2>
+<table>
+<tr><th>Categoría</th><th>Ancho de banda</th><th>Velocidad</th><th>Distancia</th><th>Hoy</th></tr>
+<tr><td>Cat 5</td><td>100 MHz</td><td>100 Mbps</td><td>100 m</td><td>Obsoleta, ya no se fabrica para redes</td></tr>
+<tr><td><strong>Cat 5e</strong></td><td>100 MHz</td><td>1 Gbps</td><td>100 m</td><td>El <strong>mínimo</strong> admitido; casas y latiguillos baratos</td></tr>
+<tr><td><strong>Cat 6</strong></td><td>250 MHz</td><td>1 Gbps (10 Gbps hasta unos 55 m)</td><td>100 m</td><td>Lo habitual en instalaciones nuevas</td></tr>
+<tr><td><strong>Cat 6A</strong></td><td>500 MHz</td><td>10 Gbps</td><td>100 m</td><td>Lo recomendado si se piensa a futuro</td></tr>
+<tr><td>Cat 7 / 7A</td><td>600 / 1.000 MHz</td><td>10 Gbps</td><td>100 m</td><td>Siempre apantallado; norma europea (ISO), poco usado</td></tr>
+<tr><td>Cat 8</td><td>2.000 MHz</td><td>25 o 40 Gbps</td><td><strong>30 m</strong></td><td>Solo dentro de centros de datos, entre armarios</td></tr>
+</table>
+<div class="nota">Mi presentación dice que «no se puede poner cable de categoría inferior a 5e». Es verdad, pero se ha quedado corto: hoy en una instalación nueva lo normal es poner <strong>Cat 6 o 6A</strong>. La diferencia de precio es pequeña y el cable de la pared dura 15 o 20 años; los aparatos se cambian mucho antes.</div>
+
+<h3>La categoría la marca el eslabón más débil</h3>
+<p>Un enlace es <strong>todo el camino</strong>: latiguillo, roseta, cable de pared, panel de parcheo y otro latiguillo. Si pones cable Cat 6A con rosetas Cat 5e, tienes un enlace Cat 5e. Por eso, al comprar material, <strong>todo tiene que ser de la misma categoría</strong>.</p>
+
+<div data-actividad="u3s6-categorias"></div>
+
+<h2>La regla de los 100 metros</h2>
+<p>En par trenzado, un enlace no puede pasar de <strong>100 m</strong> entre el equipo y el switch. Esos 100 m se reparten así:</p>
+<div class="salida">
+<svg viewBox="0 0 600 150" width="100%" role="img" aria-label="Reparto de los 100 metros de un enlace: hasta 90 metros de cable fijo desde la roseta hasta el panel de parcheo, y hasta 10 metros en total entre los dos latiguillos, el del puesto y el del armario" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="20" y="50" width="50" height="34" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="45" y="71" text-anchor="middle" class="t">PC</text>
+<line x1="70" y1="67" x2="118" y2="67" stroke="#dcdcaa" stroke-width="4"/>
+<rect x="118" y="54" width="24" height="26" fill="#252526" stroke="#4ec9b0"/><text x="130" y="100" text-anchor="middle" class="s">roseta</text>
+<line x1="142" y1="67" x2="440" y2="67" stroke="#4fc1ff" stroke-width="4"/>
+<rect x="440" y="54" width="40" height="26" fill="#252526" stroke="#4ec9b0"/><text x="460" y="100" text-anchor="middle" class="s">panel</text>
+<path d="M 480 67 Q 500 67 500 40 Q 500 20 530 24" stroke="#dcdcaa" stroke-width="4" fill="none"/>
+<rect x="530" y="12" width="56" height="24" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="558" y="28" text-anchor="middle" class="t">switch</text>
+<text x="94" y="44" text-anchor="middle" class="s">latiguillo</text>
+<text x="291" y="58" text-anchor="middle" class="t" style="fill:#4fc1ff">cable fijo por la pared: máx. 90 m</text>
+<text x="520" y="60" class="s">latiguillo</text>
+<path d="M 20 124 L 586 124" stroke="#858585"/><path d="M 20 118 L 20 130 M 586 118 L 586 130" stroke="#858585"/>
+<text x="303" y="144" text-anchor="middle" class="t">enlace completo: máx. 100 m (90 fijos + 10 entre los dos latiguillos)</text>
+</svg>
+<p class="pie-figura">Si el puesto está más lejos, no se estira el cable: se pone otro switch más cerca, o fibra.</p>
+</div>
+
+<h2>Ethernet: el idioma del cable</h2>
+<p>El cable solo es el camino. Lo que viaja por él sigue las normas de <strong>Ethernet</strong> (IEEE 802.3), la familia de estándares de casi todas las redes locales con cable. Ethernet define la capa física y la de enlace del modelo OSI: qué señal va por los hilos y cómo son las tramas con sus direcciones MAC.</p>
+
+<h3>Cómo se leen los nombres</h3>
+<p>Cada variante de Ethernet tiene un nombre con tres partes. Por ejemplo, <strong>1000BASE-T</strong>:</p>
+<table>
+<tr><th>Parte</th><th>Significa</th></tr>
+<tr><td><strong>1000</strong></td><td>La velocidad en Mbps (1000 Mbps = 1 Gbps)</td></tr>
+<tr><td><strong>BASE</strong></td><td>Banda base: el cable lleva una sola señal digital</td></tr>
+<tr><td><strong>T</strong></td><td>El medio: <em>T</em> = par trenzado. Otras letras: <em>2</em> y <em>5</em> = coaxial (185 y 500 m), <em>F</em>, <em>SX</em>, <em>LX</em> = fibra</td></tr>
+</table>
+
+<h3>Las que te vas a encontrar</h3>
+<table>
+<tr><th>Nombre</th><th>Apodo</th><th>Velocidad</th><th>Cable mínimo</th><th>Pares que usa</th></tr>
+<tr><td>10BASE-T</td><td>Ethernet</td><td>10 Mbps</td><td>Cat 3</td><td>2 (naranja y verde)</td></tr>
+<tr><td>100BASE-TX</td><td>Fast Ethernet</td><td>100 Mbps</td><td>Cat 5</td><td>2 (naranja y verde)</td></tr>
+<tr><td>1000BASE-T</td><td>Gigabit Ethernet</td><td>1 Gbps</td><td>Cat 5e</td><td><strong>los 4</strong></td></tr>
+<tr><td>10GBASE-T</td><td>10 Gigabit</td><td>10 Gbps</td><td>Cat 6A</td><td>los 4</td></tr>
+</table>
+<div class="nota">Un error muy extendido, que también está en mis diapositivas: «solo se usan dos pares, el azul y el marrón sobran». Era verdad a 10 y 100 Mbps. <strong>A 1 Gbps se usan los cuatro pares</strong>, y en los dos sentidos a la vez. Si un cable tiene el par azul o el marrón mal crimpado, puede funcionar «a 100» y no «a 1000». Es una avería clásica: el equipo navega, pero lento.</div>
+
+<div data-actividad="u3s6-generador"></div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 6 — a mano, en papel</p>
+<ol>
+<li>¿Qué indica la <strong>categoría</strong> de un cable? ¿En qué unidad se mide?</li>
+<li>Copia la tabla de categorías de Cat 5e a Cat 6A con ancho de banda, velocidad y distancia.</li>
+<li>Explica la regla de los 100 m y cómo se reparten. Un puesto queda a 120 m del armario: ¿qué soluciones le das?</li>
+<li>Explica qué significa cada parte del nombre <strong>100BASE-TX</strong> y de <strong>10GBASE-T</strong>.</li>
+<li>Instalas cable Cat 6A, pero las rosetas y el panel son Cat 5e. ¿De qué categoría es el enlace? ¿Por qué?</li>
+<li>Un PC con tarjeta gigabit solo conecta a 100 Mbps con un cable concreto; con otro, va a 1 Gbps. Da una explicación posible.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 ¿Qué categoría pondrías en un instituto nuevo?</summary>
+<p><strong>Cat 6 o, mejor, Cat 6A</strong>. Cat 5e es el mínimo, pero el cable de la pared se queda muchos años y cambiarlo es obra.</p>
+</details>
+<details>
+<summary>🤔 ¿Cuántos pares usa Gigabit Ethernet?</summary>
+<p><strong>Los cuatro</strong>. Solo 10BASE-T y 100BASE-TX usaban dos.</p>
+</details>
+<details>
+<summary>🤔 ¿Un cable Cat 8 me sirve para llegar a 100 m a 40 Gbps?</summary>
+<p>No. Cat 8 está pensado para distancias cortas, <strong>30 m</strong> como mucho, dentro de un centro de datos.</p>
+</details>

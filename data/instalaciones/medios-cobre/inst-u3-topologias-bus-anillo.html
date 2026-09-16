@@ -1,0 +1,137 @@
+<h2>Qué es una topología</h2>
+<p>La <strong>topología</strong> de una red es su forma: cómo están unidos los equipos entre sí. Es lo primero que dibuja un instalador antes de tirar un solo metro de cable, porque de la forma dependen cuánto cable hace falta, cuánto cuesta y qué pasa cuando algo se rompe.</p>
+<p>Hay dos maneras de mirarla:</p>
+<ul>
+<li><strong>Topología física</strong>: cómo está tendido el cable de verdad. Es la que se ve si sigues los cables con el dedo.</li>
+<li><strong>Topología lógica</strong>: cómo circulan los datos por esa instalación. Puede no coincidir con la física.</li>
+</ul>
+<div class="nota">Un ejemplo que verás en la unidad de dispositivos: con un <strong>hub</strong>, los cables forman una estrella (física), pero el hub repite todo lo que recibe a todos los puertos, así que los datos se comportan como si estuvieran en un bus (lógica). Con un <strong>switch</strong>, en cambio, física y lógica son estrella.</div>
+
+<p>Las topologías físicas son seis: <strong>punto a punto, bus, anillo, estrella, árbol y malla</strong>. Hoy vemos las tres primeras; en la próxima sesión, las otras tres.</p>
+
+<h2>Punto a punto</h2>
+<p>La más sencilla: <strong>dos equipos y un cable</strong> entre ellos. No hay nadie más con quien compartir el medio, así que no hay que decidir quién habla.</p>
+<p>La usas cuando unes dos portátiles con un cable para pasar un archivo grande, o cuando dos switches se enlazan entre sí. De hecho, cada cable de una red en estrella es un enlace punto a punto.</p>
+<p>Todas las demás son <strong>multipunto</strong>: varios equipos comparten la red y hay que organizar quién usa el medio en cada momento.</p>
+
+<h2>Bus</h2>
+<div class="salida">
+<svg viewBox="0 0 600 150" width="100%" role="img" aria-label="Topología en bus: un cable troncal horizontal con un terminador en cada extremo y cinco equipos conectados a él" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<line x1="50" y1="90" x2="550" y2="90" stroke="#4fc1ff" stroke-width="4"/>
+<rect x="36" y="80" width="14" height="20" fill="#f48771"/><rect x="550" y="80" width="14" height="20" fill="#f48771"/>
+<text x="43" y="120" text-anchor="middle" class="s">terminador</text><text x="557" y="120" text-anchor="middle" class="s">terminador</text>
+<g>
+<line x1="130" y1="50" x2="130" y2="90" stroke="#858585" stroke-width="2"/><rect x="108" y="24" width="44" height="28" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="130" y="42" text-anchor="middle" class="t">PC1</text>
+<line x1="230" y1="90" x2="230" y2="118" stroke="#858585" stroke-width="2"/><rect x="208" y="116" width="44" height="28" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="230" y="134" text-anchor="middle" class="t">PC2</text>
+<line x1="330" y1="50" x2="330" y2="90" stroke="#858585" stroke-width="2"/><rect x="308" y="24" width="44" height="28" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="42" text-anchor="middle" class="t">PC3</text>
+<line x1="430" y1="90" x2="430" y2="118" stroke="#858585" stroke-width="2"/><rect x="408" y="116" width="44" height="28" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="430" y="134" text-anchor="middle" class="t">PC4</text>
+<line x1="500" y1="50" x2="500" y2="90" stroke="#858585" stroke-width="2"/><rect x="478" y="24" width="44" height="28" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="500" y="42" text-anchor="middle" class="t">SRV</text>
+</g>
+<text x="300" y="14" text-anchor="middle" class="s">bus troncal (cable coaxial)</text>
+</svg>
+<p class="pie-figura">Un solo cable para todos. Lo que envía un equipo llega a todos los demás.</p>
+</div>
+<p>Todos los equipos se conectan a un <strong>único cable troncal</strong>, llamado bus. En cada extremo lleva un <strong>terminador</strong>, una pieza que absorbe la señal para que no rebote y vuelva por el cable. El medio típico era el <strong>cable coaxial</strong>.</p>
+<p>Cuando un equipo transmite, la señal recorre el bus entero y la reciben todos; solo se la queda el destinatario. Si dos transmiten a la vez, las señales chocan: es una <strong>colisión</strong>, y cuantos más equipos y más tráfico, más colisiones.</p>
+<table>
+<tr><th>Ventajas</th><th>Inconvenientes</th></tr>
+<tr><td>
+<ul>
+<li>Muy sencilla de montar</li>
+<li>Poco cable: uno solo para todos</li>
+<li>Barata</li>
+</ul>
+</td><td>
+<ul>
+<li>Si se corta el bus o falla un terminador, <strong>se cae toda la red</strong></li>
+<li>Con mucho tráfico, colisiones y lentitud</li>
+<li>Límite de equipos y de longitud del bus</li>
+<li>Una avería es difícil de localizar: hay que recorrer el cable</li>
+</ul>
+</td></tr>
+</table>
+<p>Hoy está <strong>obsoleta</strong> en redes locales. La estudiamos porque explica muchas cosas de Ethernet (las colisiones, por ejemplo) y porque aún quedan instalaciones antiguas.</p>
+
+<h2>Anillo</h2>
+<div class="salida">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Topología en anillo: seis equipos unidos en círculo, con flechas que indican que la información circula en un solo sentido; a la derecha, la variante de doble anillo con dos círculos en sentidos contrarios" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<defs><marker id="u3fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4fc1ff"/></marker>
+<marker id="u3fl2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#dcdcaa"/></marker></defs>
+<circle cx="160" cy="110" r="80" fill="none" stroke="#4fc1ff" stroke-width="3"/>
+<path d="M 240 110 A 80 80 0 0 1 200 179" fill="none" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fl)"/>
+<path d="M 80 110 A 80 80 0 0 1 120 41" fill="none" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fl)"/>
+<g>
+<rect x="138" y="16" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="160" y="33" text-anchor="middle" class="t">PC1</text>
+<rect x="208" y="56" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="230" y="73" text-anchor="middle" class="t">PC2</text>
+<rect x="208" y="138" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="230" y="155" text-anchor="middle" class="t">PC3</text>
+<rect x="138" y="178" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="160" y="195" text-anchor="middle" class="t">PC4</text>
+<rect x="68" y="138" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="90" y="155" text-anchor="middle" class="t">PC5</text>
+<rect x="68" y="56" width="44" height="26" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="90" y="73" text-anchor="middle" class="t">PC6</text>
+</g>
+<text x="160" y="114" text-anchor="middle" class="s">un sentido</text>
+
+<circle cx="450" cy="110" r="72" fill="none" stroke="#4fc1ff" stroke-width="2"/>
+<circle cx="450" cy="110" r="58" fill="none" stroke="#dcdcaa" stroke-width="2"/>
+<path d="M 522 110 A 72 72 0 0 1 486 172" fill="none" stroke="#4fc1ff" stroke-width="2" marker-end="url(#u3fl)"/>
+<path d="M 479 160 A 58 58 0 0 0 508 110" fill="none" stroke="#dcdcaa" stroke-width="2" marker-end="url(#u3fl2)"/>
+<text x="450" y="106" text-anchor="middle" class="t">doble</text><text x="450" y="120" text-anchor="middle" class="t">anillo</text>
+<text x="450" y="212" text-anchor="middle" class="s">si uno se corta, queda el otro</text>
+</svg>
+<p class="pie-figura">En el anillo los datos pasan por todos los equipos. El doble anillo añade un segundo camino en sentido contrario.</p>
+</div>
+<p>Cada equipo está unido al siguiente y el último al primero, formando un <strong>círculo cerrado</strong>. La información circula siempre <strong>en un sentido</strong> y pasa por todos los equipos que hay entre el emisor y el destinatario; cada uno mira si el mensaje es para él y, si no, lo reenvía.</p>
+<p>La red más conocida con esta forma fue <strong>Token Ring</strong>, de IBM (años 80). Para evitar colisiones usaba un <strong>testigo</strong> (<em>token</em>): una trama pequeña que va dando vueltas, y solo puede transmitir el equipo que lo tiene en ese momento.</p>
+<p>Su variante es el <strong>doble anillo</strong>: dos círculos, uno en cada sentido. Si se corta un tramo, los datos dan la vuelta por el otro.</p>
+<table>
+<tr><th>Ventajas</th><th>Inconvenientes</th></tr>
+<tr><td>
+<ul>
+<li>No hay colisiones: habla quien tiene el testigo</li>
+<li>Todos los equipos tienen las mismas oportunidades de transmitir</li>
+</ul>
+</td><td>
+<ul>
+<li>Si falla <strong>un equipo</strong> o un tramo, se rompe el anillo (salvo en doble anillo)</li>
+<li>Añadir un equipo obliga a abrir el anillo</li>
+<li>Cuantos más equipos, más tarda el testigo en llegar</li>
+<li>Instalación y mantenimiento caros</li>
+</ul>
+</td></tr>
+</table>
+<div class="nota">Mi presentación dice que el anillo «usa fibra óptica». Lo matizo: Token Ring usaba par trenzado. Las que sí usaban fibra eran redes en doble anillo como <strong>FDDI</strong>, pensadas para unir edificios. En todo caso, en redes locales el anillo también está <strong>en desuso</strong>.</div>
+
+<div data-actividad="u3s2-bus-o-anillo"></div>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 2 — a mano, en papel</p>
+<ol>
+<li>Explica la diferencia entre topología <strong>física</strong> y <strong>lógica</strong>.</li>
+<li>Dibuja una red en <strong>bus</strong> con cuatro ordenadores y una impresora. Marca los terminadores. ¿Qué pasa si quitas uno?</li>
+<li>Dibuja una red en <strong>anillo</strong> con cinco ordenadores e indica con flechas el sentido de los datos.</li>
+<li>¿Qué es el <strong>testigo</strong> en una red Token Ring y para qué sirve?</li>
+<li>Escribe dos ventajas y dos inconvenientes del bus y del anillo. ¿Por qué crees que ya casi no se usan?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 En una red en bus, se estropea la tarjeta de red de un PC. ¿Se cae la red?</summary>
+<p>No: ese PC deja de comunicarse, pero el bus sigue entero y los demás funcionan. Lo que tumba la red es que se corte el <strong>cable troncal</strong> o falte un <strong>terminador</strong>.</p>
+</details>
+<details>
+<summary>🤔 ¿Y en un anillo simple, si se apaga un equipo?</summary>
+<p>Se interrumpe el círculo y los datos no pueden dar la vuelta: la comunicación queda comprometida para todos. Por eso existe el doble anillo.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué en el bus hay colisiones y en Token Ring no?</summary>
+<p>En el bus cualquiera puede empezar a transmitir cuando quiera, y si dos lo hacen a la vez, chocan. En Token Ring solo transmite quien tiene el testigo, así que nunca hablan dos a la vez.</p>
+</details>
