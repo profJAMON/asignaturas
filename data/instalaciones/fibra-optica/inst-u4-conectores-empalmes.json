@@ -1,0 +1,57 @@
+{
+  "id": "inst-u4-conectores-empalmes",
+  "titulo": "Sesión 3 — Conectores, empalmes y equipos",
+  "fecha": "",
+  "descripcion": "La férula, los conectores LC, SC, ST, FC y MPO, el pulido UPC y APC, TX y RX con la polaridad A-B, las partes de un enlace entre armarios, los empalmes por fusión y mecánicos, los transceptores SFP y la limpieza de conectores.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u4s3-conectores",
+      "tipo": "generador",
+      "titulo": "¿Qué conector es?",
+      "generador": "fibra-conector",
+      "n": 8
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Enlace, empalmes y limpieza",
+      "preguntas": [
+        {
+          "pregunta": "Trozo de fibra con conector en un solo extremo, que se empalma al cable troncal:",
+          "opciones": ["Latiguillo", "Pigtail", "Adaptador", "Transceptor"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Montas un enlace con latiguillo LC dúplex y el puerto no enciende. Una primera prueba sencilla es…",
+          "opciones": ["Cambiar el switch", "Intercambiar las dos fibras de la pareja en un extremo", "Doblar el latiguillo", "Mirar el puerto a ver si tiene luz"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué empalme pierde menos luz?",
+          "opciones": ["Mecánico", "Por fusión", "Pierden igual", "Un conector de campo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué herramienta deja la punta de la fibra a 90° y lisa antes de fusionar?",
+          "opciones": ["Crimpadora", "Pelacables de coaxial", "Cortadora de precisión (cleaver)", "Alicate de corte"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Módulo que se enchufa en el switch y convierte la señal eléctrica en luz:",
+          "opciones": ["ONT", "Transceptor SFP", "Bandeja de empalmes", "Adaptador LC"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La causa más frecuente de que falle un enlace de fibra es…",
+          "opciones": ["Que la fibra se oxide", "Un conector sucio", "Las interferencias de un motor", "Que el cable sea amarillo"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Con qué se limpia la punta de un conector?",
+          "opciones": ["Soplando fuerte", "Con la camiseta", "Con limpiador de un clic o toallita sin pelusa y alcohol isopropílico", "Con agua y jabón"],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

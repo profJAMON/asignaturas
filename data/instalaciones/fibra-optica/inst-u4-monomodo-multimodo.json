@@ -1,0 +1,48 @@
+{
+  "id": "inst-u4-monomodo-multimodo",
+  "titulo": "Sesión 2 — Monomodo y multimodo",
+  "fecha": "",
+  "descripcion": "Qué es un modo, la dispersión modal, salto de índice e índice gradual, las ventanas de 850, 1310 y 1550 nm, LED y láser, los tipos OM y OS con sus colores, y qué distancia da cada fibra en Ethernet.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u4s2-modos",
+      "tipo": "quiz",
+      "titulo": "Modos y dispersión",
+      "preguntas": [
+        {
+          "pregunta": "¿Cuánto mide el núcleo de una fibra monomodo?",
+          "opciones": ["9 µm", "50 µm", "62,5 µm", "125 µm"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La dispersión modal consiste en que…",
+          "opciones": ["La luz se escapa por una curva", "Los distintos caminos de la luz llegan en momentos distintos y el pulso se ensancha", "El conector está sucio", "La fibra conduce electricidad"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Si en una multimodo subes la velocidad de 1 a 10 Gbps, la distancia máxima…",
+          "opciones": ["Sube", "Se queda igual", "Baja", "Da igual, la multimodo no tiene límite"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Las multimodo de vidrio OM1 a OM5 son de…",
+          "opciones": ["Salto de índice", "Índice gradual", "Plástico", "Núcleo de 9 µm"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué emisor hace falta en monomodo?",
+          "opciones": ["LED", "Láser", "Una bombilla infrarroja", "Cualquiera"],
+          "correcta": 1
+        }
+      ]
+    },
+    {
+      "id": "u4s2-identifica",
+      "tipo": "generador",
+      "titulo": "¿Monomodo o multimodo?",
+      "generador": "fibra-tipo",
+      "n": 8
+    }
+  ]
+}

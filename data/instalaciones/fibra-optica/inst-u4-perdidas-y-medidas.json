@@ -1,0 +1,54 @@
+{
+  "id": "inst-u4-perdidas-y-medidas",
+  "titulo": "Sesión 4 — Pérdidas, margen y aparatos de medida",
+  "fecha": "",
+  "descripcion": "El decibelio sin fórmulas, cuánto pierden el cable, los conectores y los empalmes, el presupuesto de pérdidas de un enlace, el margen, los aparatos de medida (microscopio, localizador visual, medidor de potencia y OTDR) y el orden para buscar averías.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u4s4-perdidas",
+      "tipo": "generador",
+      "titulo": "Calcula la pérdida del enlace",
+      "generador": "perdidas-fibra",
+      "n": 6
+    },
+    {
+      "id": "u4s4-margen",
+      "tipo": "generador",
+      "titulo": "Calcula el margen",
+      "generador": "margen-fibra",
+      "n": 5
+    },
+    {
+      "tipo": "quiz",
+      "titulo": "Medir y diagnosticar",
+      "preguntas": [
+        {
+          "pregunta": "Una pérdida de 3 dB significa que llega…",
+          "opciones": ["Un tercio de la luz", "La mitad de la luz", "La décima parte", "Toda menos 3 unidades"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué aparato te dice a cuántos metros está una rotura, midiendo desde un solo extremo?",
+          "opciones": ["Microscopio", "Localizador visual", "OTDR", "Polímetro"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué aparato mete luz roja visible para ver por dónde se escapa?",
+          "opciones": ["Localizador visual de fallos (VFL)", "Medidor de potencia", "OTDR", "Comprobador de RJ-45"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Un enlace tiene un margen de −1 dB. ¿Qué pasa?",
+          "opciones": ["Funciona perfecto", "Funciona pero justo", "No llega luz suficiente: no funciona o da errores", "Hay que cambiar la polaridad"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Antes de enchufar un conector de fibra hay que…",
+          "opciones": ["Soplarlo", "Inspeccionarlo y, si hace falta, limpiarlo", "Mirar el puerto con el ojo", "Mojarlo con agua"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

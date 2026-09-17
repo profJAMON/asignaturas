@@ -1,0 +1,21 @@
+{
+  "id": "inst-u4-hoja-practica",
+  "titulo": "Sesión 5 — Práctica en papel: inventario y cálculo de enlaces",
+  "fecha": "",
+  "descripcion": "Práctica sin material de fibra: identificar latiguillos, conectores y módulos por su descripción, calcular la pérdida y el margen de dos enlaces de un instituto inventado, rellenar la ficha de un enlace real y, de forma voluntaria, observar la instalación de fibra de casa.",
+  "materiales": [],
+  "actividades": [
+    {
+      "tipo": "generador",
+      "titulo": "Calentamiento: pérdidas",
+      "generador": "perdidas-fibra",
+      "n": 4
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Calentamiento: margen",
+      "generador": "margen-fibra",
+      "n": 4
+    }
+  ]
+}

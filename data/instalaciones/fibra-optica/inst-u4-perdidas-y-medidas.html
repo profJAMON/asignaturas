@@ -1,0 +1,129 @@
+<h2>¿Va a funcionar este enlace?</h2>
+<p>Con el cobre, la pregunta era sencilla: si el cable mide menos de 100 m y el comprobador enciende las ocho luces, funciona. Con la fibra no hay una distancia mágica: cada metro de cable, cada conector y cada empalme <strong>se comen un poco de luz</strong>, y lo que hay que saber es si, después de todo el camino, llega la suficiente al otro lado.</p>
+<p>Eso se calcula <strong>antes</strong> de instalar (el <strong>presupuesto de pérdidas</strong>) y se comprueba <strong>después</strong> con aparatos de medida. Las dos cosas se hacen en esta sesión.</p>
+
+<h2>El decibelio sin fórmulas</h2>
+<p>Las pérdidas de luz se miden en <strong>decibelios (dB)</strong>. No vas a calcular logaritmos; te basta con tres ideas:</p>
+<table>
+<tr><th>Pérdida</th><th>Luz que queda</th></tr>
+<tr><td><strong>3 dB</strong></td><td>La <strong>mitad</strong></td></tr>
+<tr><td><strong>10 dB</strong></td><td>La <strong>décima parte</strong></td></tr>
+<tr><td><strong>20 dB</strong></td><td>La <strong>centésima parte</strong></td></tr>
+</table>
+<p>Y la más útil: <strong>las pérdidas en dB se suman</strong>. Si el cable pierde 1 dB, los conectores 1,5 dB y los empalmes 0,6 dB, el enlace pierde 3,1 dB. Así de fácil.</p>
+
+<h2>Cuánto pierde cada cosa</h2>
+<p>Para calcular se usan los valores <strong>máximos</strong> que permite la norma (el peor caso). Un enlace bien instalado pierde menos, pero si el cálculo sale bien con el peor caso, vas sobre seguro.</p>
+<table>
+<tr><th>Elemento</th><th>Pérdida para calcular</th><th>Valor real típico</th></tr>
+<tr><td>Fibra <strong>multimodo</strong> a 850 nm</td><td><strong>3,5 dB por km</strong></td><td>unos 3 dB/km</td></tr>
+<tr><td>Fibra <strong>monomodo</strong> a 1310 nm</td><td><strong>0,5 dB por km</strong></td><td>unos 0,35 dB/km</td></tr>
+<tr><td>Cada <strong>conexión</strong> (dos conectores enfrentados en un adaptador)</td><td><strong>0,75 dB</strong></td><td>0,2-0,5 dB si está limpio</td></tr>
+<tr><td>Cada <strong>empalme</strong></td><td><strong>0,3 dB</strong></td><td>0,05-0,1 dB por fusión</td></tr>
+</table>
+<div class="nota">Los metros hay que pasarlos a <strong>kilómetros</strong> antes de multiplicar: 400 m = 0,4 km. Es el error más habitual en este cálculo, y hace que salgan pérdidas mil veces más grandes.</div>
+
+<h2>El presupuesto de pérdidas</h2>
+<div class="salida">
+<svg viewBox="0 0 600 130" width="100%" role="img" aria-label="Fórmula del presupuesto de pérdidas: pérdida total igual a kilómetros por atenuación, más número de conexiones por 0,75, más número de empalmes por 0,3" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:13px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="10" y="20" width="580" height="60" rx="5" fill="#252526" stroke="#4fc1ff"/>
+<text x="300" y="56" text-anchor="middle" class="t"><tspan fill="#4fc1ff" font-weight="700">Pérdida</tspan> = <tspan fill="#dcdcaa">km × dB/km</tspan> + <tspan fill="#c586c0">conexiones × 0,75</tspan> + <tspan fill="#f48771">empalmes × 0,3</tspan></text>
+<text x="175" y="104" text-anchor="middle" class="s" style="fill:#dcdcaa">el cable</text>
+<text x="360" y="104" text-anchor="middle" class="s" style="fill:#c586c0">los adaptadores</text>
+<text x="510" y="104" text-anchor="middle" class="s" style="fill:#f48771">las soldaduras</text>
+<text x="300" y="124" text-anchor="middle" class="s">multimodo 3,5 dB/km · monomodo 0,5 dB/km</text>
+</svg>
+</div>
+
+<h3>Ejemplo 1: entre dos edificios, monomodo</h3>
+<p>El enlace de la sesión anterior: cable OS2 de <strong>2 km</strong>, <strong>2 conexiones</strong> (una en la bandeja de cada armario) y <strong>2 empalmes</strong> (pigtail con troncal en cada lado).</p>
+<ul>
+<li>Cable: 2 km × 0,5 = <strong>1 dB</strong></li>
+<li>Conexiones: 2 × 0,75 = <strong>1,5 dB</strong></li>
+<li>Empalmes: 2 × 0,3 = <strong>0,6 dB</strong></li>
+<li><strong>Total: 1 + 1,5 + 0,6 = 3,1 dB</strong></li>
+</ul>
+
+<h3>Ejemplo 2: dentro de un edificio, multimodo</h3>
+<p>Cable OM4 de <strong>400 m</strong> entre el armario principal y el de la tercera planta, <strong>2 conexiones</strong> y <strong>2 empalmes</strong>.</p>
+<ul>
+<li>Cable: 400 m = 0,4 km → 0,4 × 3,5 = <strong>1,4 dB</strong></li>
+<li>Conexiones: 2 × 0,75 = <strong>1,5 dB</strong></li>
+<li>Empalmes: 2 × 0,3 = <strong>0,6 dB</strong></li>
+<li><strong>Total: 1,4 + 1,5 + 0,6 = 3,5 dB</strong></li>
+</ul>
+<p>Fíjate: con diez veces menos cable, el multimodo pierde más. Y en los dos casos, <strong>los conectores pesan más que el cable</strong>. Cada conexión que te ahorres es luz que ganas.</p>
+
+<div data-actividad="u4s4-perdidas"></div>
+
+<h2>El margen: ¿llega la luz?</h2>
+<p>Cada transceptor aguanta una pérdida máxima entre lo que emite y lo mínimo que es capaz de recibir. El fabricante lo da en su hoja de características (a veces lo llama <strong>presupuesto de potencia</strong> o <em>power budget</em>). Entonces:</p>
+<div class="salida">
+<svg viewBox="0 0 600 70" width="100%" role="img" aria-label="Margen igual a lo que aguanta el módulo menos la pérdida del enlace" style="max-width:100%;height:auto;">
+<rect x="60" y="10" width="480" height="46" rx="5" fill="#252526" stroke="#4ec9b0"/>
+<text x="300" y="39" text-anchor="middle" font-family="monospace" font-size="13" fill="#d4d4d4"><tspan fill="#4ec9b0" font-weight="700">Margen</tspan> = lo que aguanta el módulo − pérdida del enlace</text>
+</svg>
+</div>
+<ul>
+<li>Margen <strong>negativo</strong>: no llega luz suficiente. <strong>No funciona</strong> (o da errores).</li>
+<li>Margen <strong>entre 0 y 3 dB</strong>: funciona hoy, pero va justo. Un conector que se ensucie, una reparación con un empalme más o el envejecimiento del cable lo pueden tirar.</li>
+<li>Margen de <strong>3 dB o más</strong>: enlace bien diseñado.</li>
+</ul>
+<p>Ejemplo: si el módulo del ejemplo 1 aguanta <strong>8 dB</strong>, el margen es 8 − 3,1 = <strong>4,9 dB</strong>. Enlace correcto.</p>
+<p>Si el margen no llega, las soluciones son siempre las mismas: <strong>quitar conexiones</strong> (empalmar directo en lugar de pasar por un panel intermedio), <strong>empalmes por fusión</strong> bien hechos, <strong>acortar</strong> el recorrido, cambiar a <strong>monomodo</strong>, o poner un <strong>módulo</strong> que aguante más.</p>
+
+<div data-actividad="u4s4-margen"></div>
+
+<h2>Los aparatos de medida</h2>
+<table>
+<tr><th>Aparato</th><th>Qué hace</th><th>Para qué lo usas</th></tr>
+<tr><td><strong>Microscopio de inspección</strong></td><td>Amplía la punta del conector (con pantalla o conectado al móvil)</td><td>Ver si está sucio o rayado <strong>antes de enchufar</strong></td></tr>
+<tr><td><strong>Localizador visual de fallos</strong> (VFL)</td><td>Un «puntero láser» rojo que se enchufa a la fibra. La luz roja <strong>se ve salir</strong> por las roturas y las curvas demasiado cerradas</td><td>Encontrar una rotura o una curva mala en los primeros metros, e identificar qué fibra es cuál</td></tr>
+<tr><td><strong>Fuente de luz + medidor de potencia</strong></td><td>La fuente mete luz por un extremo y el medidor mide cuánta llega al otro</td><td>Medir la <strong>pérdida total</strong> del enlace en dB y compararla con el presupuesto. Es la certificación básica</td></tr>
+<tr><td><strong>OTDR</strong> (reflectómetro)</td><td>Manda pulsos desde un solo extremo y analiza la luz que rebota. Dibuja una gráfica del enlace</td><td>Saber <strong>a qué distancia</strong> están cada conector, cada empalme y la avería</td></tr>
+</table>
+<div class="nota">La luz roja del localizador visual sí se ve, pero es un láser: tampoco se mira de frente. Se mira la fibra <strong>de lado</strong>, donde se escapa la luz.</div>
+
+<h3>Cuando un enlace no funciona: el orden</h3>
+<ol>
+<li><strong>¿Encaja todo?</strong> Módulos del mismo tipo en los dos extremos (SX con SX, LR con LR), fibra del tipo correcto, APC con APC.</li>
+<li><strong>Polaridad</strong>: intercambia la pareja TX/RX en un extremo.</li>
+<li><strong>Inspecciona y limpia</strong> todos los conectores del camino.</li>
+<li><strong>Localizador visual</strong>: busca curvas cerradas o roturas cerca de los armarios.</li>
+<li><strong>Medidor de potencia</strong>: si la pérdida medida es mucho mayor que la calculada, hay algo mal en el camino.</li>
+<li><strong>OTDR</strong>: te dice a cuántos metros está el problema, para no tener que abrir toda la canalización.</li>
+</ol>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 4 — a mano, en papel</p>
+<ol>
+<li>¿Cuánta luz queda después de perder 3 dB? ¿Y 10 dB? ¿Y 6 dB?</li>
+<li>Copia la fórmula del presupuesto de pérdidas y la tabla de valores para calcular.</li>
+<li>Calcula la pérdida de un enlace multimodo de 600 m con 2 conexiones y 2 empalmes.</li>
+<li>Calcula la pérdida de un enlace monomodo de 8 km con 4 conexiones y 6 empalmes.</li>
+<li>El módulo del ejercicio 4 aguanta 10 dB. ¿Cuál es el margen? ¿Está bien diseñado?</li>
+<li>¿Qué es el margen y por qué se pide que sea de al menos 3 dB?</li>
+<li>Da tres formas de mejorar un enlace que no tiene margen suficiente.</li>
+<li>Explica para qué sirven el localizador visual, el medidor de potencia y el OTDR.</li>
+<li>Ordena los pasos para buscar la avería de un enlace de fibra que no enciende.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Un enlace multimodo de 200 m, 2 conexiones, sin empalmes. ¿Pérdida?</summary>
+<p>0,2 × 3,5 = 0,7 dB de cable + 2 × 0,75 = 1,5 dB de conexiones. <strong>Total: 2,2 dB</strong>.</p>
+</details>
+<details>
+<summary>🤔 El medidor marca 9 dB en un enlace que calculaste en 3 dB. ¿Qué piensas?</summary>
+<p>Que algo va mal en el camino: lo primero, <strong>conectores sucios</strong>; después, una curva cerrada o un empalme malo. El OTDR te dirá dónde.</p>
+</details>
+<details>
+<summary>🤔 ¿Por qué quitar una conexión intermedia mejora tanto el enlace?</summary>
+<p>Porque cada conexión cuenta <strong>0,75 dB</strong> en el cálculo, más que cientos de metros de fibra monomodo.</p>
+</details>

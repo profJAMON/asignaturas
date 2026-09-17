@@ -1,0 +1,143 @@
+<h2>Luz en vez de electricidad</h2>
+<p>En la Unidad 3 los datos viajaban como <strong>señal eléctrica</strong> por hilos de cobre. En la fibra óptica viajan como <strong>pulsos de luz</strong> por un hilo de vidrio más fino que un pelo: luz encendida es un 1, luz apagada (o muy baja) es un 0. Es el mismo código binario de la Unidad 1, pero escrito con una linterna muy rápida.</p>
+<p>La fibra es lo que une continentes por el fondo del mar, lo que llega a tu casa si tienes «fibra» contratada y lo que une los armarios de un edificio con los de otro. Te lo tengo que avisar desde el principio: <strong>en el taller no tenemos fibra</strong>, así que en esta unidad no vas a empalmar ni a pulir. Vas a aprender a <strong>reconocerla</strong>, a no estropearla, a no hacerte daño con ella y a <strong>calcular si un enlace va a funcionar</strong>, que es lo que un técnico de redes necesita el día que se la encuentre.</p>
+
+<h2>Cómo se queda la luz dentro</h2>
+<p>La fibra tiene dos vidrios, uno dentro del otro: el <strong>núcleo</strong>, por donde va la luz, y el <strong>revestimiento</strong>, que lo envuelve. Los dos son transparentes, pero están fabricados para que la luz vaya un poco más lenta en el núcleo que en el revestimiento (se dice que el núcleo tiene <strong>mayor índice de refracción</strong>).</p>
+<p>Gracias a esa diferencia, cuando la luz llega al borde del núcleo con un ángulo rasante, <strong>no se escapa: rebota entera hacia dentro</strong>, como un espejo perfecto. A eso se le llama <strong>reflexión total interna</strong>. Rebote a rebote, la luz recorre kilómetros sin salir del núcleo, aunque el cable haga curvas suaves.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Corte longitudinal de una fibra: el rayo de luz entra por la izquierda y avanza por el núcleo rebotando en el límite con el revestimiento. Abajo, un rayo que entra demasiado inclinado se escapa al revestimiento" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="40" y="40" width="520" height="100" fill="#2d2d30" stroke="#858585"/>
+<rect x="40" y="70" width="520" height="40" fill="#1f3a4a" stroke="#4fc1ff"/>
+<polyline points="40,90 100,70 180,110 260,70 340,110 420,70 500,110 560,90" fill="none" stroke="#dcdcaa" stroke-width="2"/>
+<polygon points="552,86 562,90 552,94" fill="#dcdcaa"/>
+<text x="570" y="94" class="t">→</text>
+<text x="20" y="34" class="s">revestimiento</text>
+<text x="300" y="94" text-anchor="middle" class="t" style="fill:#4fc1ff">núcleo</text>
+<text x="20" y="156" class="s">revestimiento</text>
+<text x="100" y="62" text-anchor="middle" class="s">rebota</text>
+<text x="180" y="126" text-anchor="middle" class="s">rebota</text>
+<line x1="40" y1="176" x2="120" y2="176" stroke="#dcdcaa" stroke-width="2"/>
+<line x1="120" y1="176" x2="150" y2="192" stroke="#f48771" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="160" y="188" class="s" style="fill:#f48771">si entra muy inclinada o la curva es demasiado cerrada, se escapa y se pierde</text>
+</svg>
+<p class="pie-figura">Dibujo exagerado: el núcleo real es tan fino que los rebotes no se ven.</p>
+</div>
+
+<div class="nota">Mi presentación dice que la luz «va rebotando por sus paredes». Vale como idea, pero no rebota contra la cubierta de plástico: rebota en el <strong>límite entre núcleo y revestimiento</strong>, que son los dos de vidrio. Sin revestimiento no hay rebote.</div>
+
+<p>De aquí sale la regla de oro al manejar fibra: <strong>nada de curvas cerradas</strong>. Si doblas demasiado el cable, la luz deja de llegar al borde con el ángulo bueno, se escapa y la señal se pierde. Cada cable indica su <strong>radio mínimo de curvatura</strong>; como regla fácil, no hagas curvas más cerradas que una lata de refresco, y nunca ates el cable con bridas apretadas.</p>
+
+<h2>Las partes de una fibra</h2>
+<div class="salida">
+<svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Corte transversal de un cable de fibra en círculos concéntricos: núcleo, revestimiento de 125 micras, recubrimiento primario de 250 micras, fibras de aramida y cubierta exterior, con sus medidas" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<circle cx="160" cy="120" r="100" fill="#3a3d41" stroke="#dcdcaa"/>
+<circle cx="160" cy="120" r="84" fill="#5a4a2a" stroke="#858585"/>
+<g stroke="#8a7a50" stroke-width="1"><path d="M 100 90 L 110 96 M 214 96 L 224 90 M 106 160 L 116 152 M 206 152 L 216 160 M 150 50 L 156 60 M 166 190 L 170 180 M 90 124 L 102 122 M 220 118 L 232 120"/></g>
+<circle cx="160" cy="120" r="54" fill="#c586c0" fill-opacity="0.45" stroke="#c586c0"/>
+<circle cx="160" cy="120" r="32" fill="#2d4a5a" stroke="#858585"/>
+<circle cx="160" cy="120" r="8" fill="#4fc1ff"/>
+<g stroke="#858585"><line x1="168" y1="120" x2="330" y2="40"/><line x1="190" y1="120" x2="330" y2="80"/><line x1="206" y1="130" x2="330" y2="120"/><line x1="236" y1="150" x2="330" y2="160"/><line x1="252" y1="170" x2="330" y2="200"/></g>
+<text x="340" y="36" class="t" style="fill:#4fc1ff">1 · núcleo</text><text x="340" y="50" class="s">monomodo 9 µm · multimodo 50 o 62,5 µm</text>
+<text x="340" y="76" class="t">2 · revestimiento</text><text x="340" y="90" class="s">vidrio · 125 µm (siempre)</text>
+<text x="340" y="116" class="t" style="fill:#c586c0">3 · recubrimiento primario</text><text x="340" y="130" class="s">acrilato de color · 250 µm</text>
+<text x="340" y="156" class="t" style="fill:#dcdcaa">4 · refuerzo de aramida</text><text x="340" y="170" class="s">hilos tipo kevlar: aguantan el tirón</text>
+<text x="340" y="196" class="t">5 · cubierta exterior</text><text x="340" y="210" class="s">latiguillo ~2-3 mm · color según tipo</text>
+</svg>
+<p class="pie-figura">Tamaños no a escala. Núcleo y revestimiento son el vidrio; lo demás es protección.</p>
+</div>
+<ol>
+<li><strong>Núcleo</strong> (<em>core</em>): vidrio muy puro por donde viaja la luz. Su grosor decide si la fibra es monomodo o multimodo (lo vemos en la sesión siguiente).</li>
+<li><strong>Revestimiento</strong> (<em>cladding</em>): vidrio con un índice de refracción algo menor que mantiene la luz dentro. Mide <strong>125 µm</strong> en todas las fibras de telecomunicaciones.</li>
+<li><strong>Recubrimiento primario</strong> (<em>coating</em>): una capa de acrilato pegada al vidrio, de <strong>250 µm</strong>. No guía luz: protege el vidrio de arañazos y humedad. Viene de colores para distinguir unas fibras de otras dentro de un mismo cable.</li>
+<li><strong>Refuerzo</strong>: hilos de <strong>aramida</strong> (el material del kevlar). Son los que aguantan cuando se tira del cable; el vidrio no aguantaría.</li>
+<li><strong>Cubierta</strong> (<em>jacket</em>): el plástico exterior. En interiores, mejor <strong>LSZH</strong> (libre de halógenos), igual que el cobre.</li>
+</ol>
+<p>Para que te hagas una idea: 125 µm es <strong>0,125 mm</strong>, más o menos el grosor de un pelo.</p>
+
+<div class="nota">Dos correcciones a mi presentación. El núcleo multimodo mide <strong>50 o 62,5 µm</strong>, no «entre 50 y 125»: 125 µm es el revestimiento. Y la cubierta no mide «decenas de milímetros»: el recubrimiento primario tiene 0,25 mm, y un latiguillo entero ronda los 2-3 mm.</div>
+
+<div data-actividad="u4s1-partes"></div>
+
+<h2>Cómo se agrupan las fibras en un cable</h2>
+<p>Un cable puede llevar de 1 a cientos de fibras. Según cómo van protegidas por dentro hay dos diseños:</p>
+<table>
+<tr><th></th><th>Estructura <strong>holgada</strong> (<em>loose tube</em>)</th><th>Estructura <strong>ajustada</strong> (<em>tight buffer</em>)</th></tr>
+<tr><td>Cómo es</td><td>Las fibras de 250 µm van <strong>sueltas</strong> dentro de tubos rellenos de gel o con hilos que absorben el agua</td><td>Cada fibra lleva pegada otra capa de plástico hasta <strong>900 µm</strong>, así que se puede tocar y conectar directamente</td></tr>
+<tr><td>Ventaja</td><td>Aguanta cambios de temperatura, humedad y tirones: la fibra «flota» dentro del tubo</td><td>Flexible, fácil de pelar y de conectorizar</td></tr>
+<tr><td>Dónde</td><td><strong>Exteriores</strong> y entre edificios (canalizaciones, postes, enterrado)</td><td><strong>Interiores</strong>: latiguillos y cableado dentro del edificio</td></tr>
+</table>
+<p>Lo típico en una empresa: un cable de estructura holgada llega desde otro edificio hasta el armario, y allí se <strong>empalma</strong> con trocitos de fibra ajustada que ya llevan su conector (se llaman <em>pigtails</em>). Lo verás en la sesión 3.</p>
+
+<h2>Por qué se usa (y por qué no en todas partes)</h2>
+<table>
+<tr><th>Ventajas</th><th>Inconvenientes</th></tr>
+<tr><td>
+<ul>
+<li><strong>Distancia</strong>: pierde muy poca señal. Kilómetros sin repetidor, frente a los 100 m del par trenzado.</li>
+<li><strong>Ancho de banda</strong> enorme: 10, 100, 400 Gbps y más.</li>
+<li><strong>Inmune a interferencias</strong> electromagnéticas: puede ir junto a motores y cables de fuerza.</li>
+<li><strong>No conduce electricidad</strong>: une edificios sin llevar de uno a otro las diferencias de tierra ni la sobretensión de un rayo.</li>
+<li><strong>Segura</strong>: no radia nada y es muy difícil «pincharla» sin que se note.</li>
+<li>Ligera, fina y resistente a la corrosión.</li>
+</ul>
+</td><td>
+<ul>
+<li><strong>Frágil</strong> ante curvas cerradas, pisotones y tirones.</li>
+<li><strong>Instalar cuesta más</strong>: empalmar y conectorizar necesita herramientas caras (fusionadora, microscopio) y formación.</li>
+<li><strong>Electrónica más cara</strong>: switches con puertos de fibra y módulos transceptores.</li>
+<li>La <strong>suciedad</strong> en un conector basta para que no funcione.</li>
+<li><strong>No lleva corriente</strong>: no sirve para alimentar aparatos por el cable como el PoE del cobre.</li>
+</ul>
+</td></tr>
+</table>
+<p>Por eso en la mayoría de oficinas conviven las dos: <strong>fibra entre armarios y edificios</strong> (el <em>backbone</em>, que verás en cableado estructurado) y <strong>cobre hasta cada puesto</strong>.</p>
+
+<div class="nota">En la tabla de medios de la presentación pongo la fibra con «&lt;2 km». Eso es cierto para <strong>multimodo</strong> (y en la práctica menos: unos cientos de metros a 10 Gbps). La <strong>monomodo</strong> va de 10 a 40 km con transceptores normales, y mucho más con equipos especiales.</div>
+
+<div data-actividad="u4s1-ventajas"></div>
+
+<h2>Seguridad con la fibra</h2>
+<p>Esto entra en el examen y, sobre todo, te protege los ojos. Enlaza con lo que vimos en prevención de riesgos:</p>
+<ul>
+<li><strong>Nunca mires el extremo de una fibra ni el puerto de un aparato</strong>, aunque creas que está apagado. La luz de las redes es <strong>infrarroja</strong>: no se ve, no deslumbra, no te hace cerrar el ojo… y puede dañar la retina. Para inspeccionar un conector se usa un <strong>microscopio de fibra</strong> o un medidor, nunca el ojo ni la cámara del móvil pegada.</li>
+<li>Pon siempre los <strong>tapones</strong> a conectores y puertos que no se usan: protegen del polvo y de la luz.</li>
+<li>Al cortar fibra desnuda salen <strong>astillas de vidrio</strong> casi invisibles que se clavan en la piel y no salen en una radiografía. Se trabaja con gafas, sobre una alfombrilla oscura, los restos van a un <strong>recipiente para fibra</strong> con tapa, y no se come ni se bebe en la mesa.</li>
+</ul>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 1 — a mano, en papel</p>
+<ol>
+<li>¿Cómo se transmiten los datos por una fibra óptica? ¿En qué se diferencia del par trenzado?</li>
+<li>Explica con tus palabras qué es la reflexión total interna y qué papel tienen el núcleo y el revestimiento. Haz un dibujo.</li>
+<li>Dibuja el corte de una fibra y nombra sus cinco partes con su medida o su material.</li>
+<li>¿Por qué no se puede doblar mucho un cable de fibra?</li>
+<li>Diferencia entre cable de estructura holgada y ajustada, y dónde se usa cada uno.</li>
+<li>Da cuatro ventajas y tres inconvenientes de la fibra frente al cobre.</li>
+<li>¿Por qué es peligroso mirar el extremo de una fibra aunque no se vea luz?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Si el núcleo y el revestimiento son de vidrio, ¿por qué no se escapa la luz?</summary>
+<p>Porque tienen <strong>distinto índice de refracción</strong>: el núcleo, un poco más alto. La luz que llega al límite con un ángulo rasante se refleja entera hacia dentro.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué parte aguanta cuando se tira de un cable de fibra?</summary>
+<p>Los <strong>hilos de aramida</strong> del refuerzo. El vidrio es muy fino y se partiría.</p>
+</details>
+<details>
+<summary>🤔 Hay que unir dos edificios a 300 m. ¿Por qué fibra y no cobre?</summary>
+<p>Porque el par trenzado solo llega a <strong>100 m</strong>, y además la fibra <strong>no conduce electricidad</strong>, así que no pasa de un edificio a otro una descarga o una diferencia de tierra.</p>
+</details>

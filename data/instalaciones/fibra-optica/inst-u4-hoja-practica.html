@@ -1,0 +1,112 @@
+<h2>Una práctica sin fibra</h2>
+<p>Como en el taller no tenemos fibra, esta práctica es <strong>de papel</strong>: vas a hacer lo que hace un técnico antes de tocar nada, que es <strong>identificar lo que tiene delante</strong> y <strong>calcular si un enlace va a funcionar</strong>. Se hace en el cuaderno, a mano, y se entrega. Puedes tener abiertas las sesiones 2, 3 y 4 para consultar; lo que no vale es copiar la hoja de un compañero.</p>
+<p>Si en clase os traigo algún latiguillo o módulo de verdad para verlo, <strong>se mira de lado y con los tapones puestos</strong>, nunca por la punta.</p>
+
+<h2>Parte A · Inventario del armario</h2>
+<p>Estás haciendo inventario del armario de comunicaciones y te encuentras estas piezas. Para cada una, escribe en tu cuaderno: <strong>tipo de fibra</strong> (monomodo o multimodo, y OM/OS si se puede saber), <strong>conector</strong> y <strong>pulido</strong> (UPC o APC) cuando se pueda deducir.</p>
+<table>
+<tr><th>Pieza</th><th>Lo que ves</th></tr>
+<tr><td><strong>1</strong></td><td>Latiguillo con cubierta <strong>amarilla</strong> y el texto impreso <code>OS2 9/125</code>. En cada extremo, dos conectores <strong>pequeños con pestaña</strong>, unidos por un clip, de cuerpo <strong>azul</strong>.</td></tr>
+<tr><td><strong>2</strong></td><td>Latiguillo con cubierta <strong>aguamarina</strong>, texto <code>OM3 50/125</code>. Conectores <strong>cuadrados</strong> que se enchufan empujando.</td></tr>
+<tr><td><strong>3</strong></td><td>Un cable fino y blanco que entra en la caja de la operadora. Acaba en un conector <strong>cuadrado</strong> de cuerpo <strong>verde</strong>.</td></tr>
+<tr><td><strong>4</strong></td><td>Latiguillo <strong>naranja</strong> viejo, texto <code>62.5/125</code>. Conectores <strong>redondos y metálicos</strong> que se enganchan empujando y girando.</td></tr>
+<tr><td><strong>5</strong></td><td>Cable <strong>violeta</strong> con el texto <code>OM4</code>. Acaba en un conector <strong>rectangular</strong> y ancho; mirándolo de lado con el tapón quitado se ven <strong>doce puntitos</strong> en fila.</td></tr>
+<tr><td><strong>6</strong></td><td>Un módulo metálico enchufado en el switch con la etiqueta <code>1000BASE-LX 1310nm</code> y dos agujeritos en la parte delantera.</td></tr>
+</table>
+<div class="papel">
+<p class="papel__titulo">Preguntas de la parte A</p>
+<ol>
+<li>Completa la ficha de las seis piezas.</li>
+<li>¿Se podría conectar la pieza 1 en el módulo 6? Razónalo.</li>
+<li>Un compañero quiere unir la pieza 1 con la pieza 2 usando un adaptador. ¿Qué le dices?</li>
+<li>Para alargar el cable 3 alguien trae un latiguillo SC de cuerpo azul. ¿Funciona? ¿Por qué?</li>
+<li>La pieza 4 es la más antigua. ¿Por qué no conviene usarla con un switch de 10 Gbps?</li>
+<li>¿Qué pieza usarías en un centro de datos para enlaces de 40 Gbps o más?</li>
+</ol>
+</div>
+
+<h2>Parte B · El instituto de la calle Mayor</h2>
+<p>Un instituto (inventado) tiene tres edificios. El armario principal está en el <strong>edificio del taller</strong>, y hay que llevar la red a los otros dos.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 300" width="100%" role="img" aria-label="Plano de un instituto con tres edificios. Del edificio Taller, donde está el armario principal, sale un enlace de 260 metros de fibra OM4 hasta Secretaría que pasa por un panel intermedio en el gimnasio. Del Taller sale otro enlace de 1,6 kilómetros de fibra OS2 hasta el Pabellón deportivo, al otro lado de la calle" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+.b{font-family:monospace;font-size:12px;font-weight:700;fill:#d4d4d4}
+</style>
+<rect x="30" y="110" width="140" height="90" rx="4" fill="#252526" stroke="#4fc1ff"/>
+<text x="100" y="140" text-anchor="middle" class="b">Taller</text>
+<text x="100" y="158" text-anchor="middle" class="s">armario principal</text>
+<rect x="85" y="170" width="30" height="20" fill="#3a3d41" stroke="#4fc1ff"/>
+<rect x="250" y="20" width="110" height="60" rx="4" fill="#252526" stroke="#858585"/>
+<text x="305" y="46" text-anchor="middle" class="b">Gimnasio</text>
+<text x="305" y="64" text-anchor="middle" class="s">panel intermedio</text>
+<rect x="440" y="20" width="130" height="70" rx="4" fill="#252526" stroke="#4ec9b0"/>
+<text x="505" y="50" text-anchor="middle" class="b">Secretaría</text>
+<text x="505" y="68" text-anchor="middle" class="s">armario 2</text>
+<rect x="440" y="200" width="130" height="80" rx="4" fill="#252526" stroke="#dcdcaa"/>
+<text x="505" y="232" text-anchor="middle" class="b">Pabellón</text>
+<text x="505" y="250" text-anchor="middle" class="s">armario 3</text>
+<path d="M 170 130 L 250 60" stroke="#4ec9b0" stroke-width="3" fill="none"/>
+<path d="M 360 50 L 440 50" stroke="#4ec9b0" stroke-width="3" fill="none"/>
+<text x="30" y="60" class="t" style="fill:#4ec9b0">Enlace 1 · OM4</text>
+<text x="30" y="74" class="s">260 m en total</text>
+<line x1="380" y1="110" x2="380" y2="300" stroke="#858585" stroke-dasharray="6 4"/>
+<text x="388" y="296" class="s">calle</text>
+<path d="M 170 180 L 440 240" stroke="#dcdcaa" stroke-width="3" fill="none"/>
+<text x="210" y="238" class="t" style="fill:#dcdcaa">Enlace 2 · OS2</text>
+<text x="210" y="252" class="s">1,6 km por la canalización</text>
+</svg>
+<p class="pie-figura">Plano sin escala. Usa para calcular: multimodo 3,5 dB/km, monomodo 0,5 dB/km, conexión 0,75 dB, empalme 0,3 dB.</p>
+</div>
+
+<table>
+<tr><th></th><th>Enlace 1 · Taller → Secretaría</th><th>Enlace 2 · Taller → Pabellón</th></tr>
+<tr><td>Fibra</td><td>Multimodo OM4</td><td>Monomodo OS2</td></tr>
+<tr><td>Longitud total</td><td>260 m</td><td>1,6 km</td></tr>
+<tr><td>Conexiones</td><td>4 (bandeja del taller, las dos del panel del gimnasio y bandeja de secretaría)</td><td>2 (una en cada bandeja)</td></tr>
+<tr><td>Empalmes</td><td>2</td><td>2</td></tr>
+<tr><td>El módulo aguanta</td><td>7 dB</td><td>10 dB (módulo 1000BASE-LX)</td></tr>
+</table>
+
+<div class="papel">
+<p class="papel__titulo">Preguntas de la parte B</p>
+<ol>
+<li>Calcula la pérdida total del enlace 1. Escribe las tres sumas por separado.</li>
+<li>Calcula el margen del enlace 1. ¿Funciona? ¿Está bien diseñado?</li>
+<li>Propón quitar el panel intermedio del gimnasio y pasar la fibra de un tirón: quedarían 2 conexiones y 4 empalmes. Recalcula la pérdida y el margen. ¿Ha mejorado?</li>
+<li>Calcula la pérdida total y el margen del enlace 2.</li>
+<li>¿Por qué el enlace 2 es monomodo y no multimodo? Busca en la tabla de la sesión 2 hasta dónde llegaría 1000BASE-SX.</li>
+<li>¿Podría el enlace 1 ir a 10 Gbps (10GBASE-SR) con fibra OM4, según la distancia?</li>
+<li>El enlace 2 cruza la calle. ¿Qué estructura de cable (holgada o ajustada) pedirías y por qué?</li>
+<li>Dibuja el enlace 2 de punta a punta como el esquema de la sesión 3, con todos sus elementos.</li>
+</ol>
+</div>
+
+<h2>Parte C · Un enlace de verdad</h2>
+<p>En clase te daré los datos de un enlace de fibra real (de nuestro instituto o de una instalación que conozco). Cópialos en esta ficha y haz el mismo cálculo que en la parte B.</p>
+<div class="papel">
+<p class="papel__titulo">Ficha del enlace real</p>
+<ol>
+<li>Qué une (de dónde a dónde): ____________________</li>
+<li>Tipo de fibra (OM/OS) y color de la cubierta: ____________________</li>
+<li>Longitud: ________ m = ________ km</li>
+<li>Número de conexiones: ________ · Número de empalmes: ________</li>
+<li>Conectores (LC, SC…) y pulido (UPC/APC): ____________________</li>
+<li>Módulo o equipo en cada extremo y lo que aguanta: ____________________</li>
+<li>Pérdida calculada: ________ dB · Margen: ________ dB</li>
+<li>Conclusión: ¿está bien diseñado? ¿Qué cambiarías?</li>
+</ol>
+</div>
+
+<h2>Parte D · En casa (voluntaria)</h2>
+<p>Si en casa tienes fibra, busca la caja de la operadora (el router o la ONT). <strong>Sin desenchufar nada y sin quitar tapones</strong>, anota: de qué color es el conector de la fibra, qué forma tiene y qué pone en la pegatina de la caja (busca palabras como GPON, FTTH, SC/APC). Con lo que has aprendido, explica qué tipo de fibra y de conector es.</p>
+
+<h2>Cómo se evalúa esta hoja</h2>
+<ul>
+<li>Parte A: fichas completas y razonadas.</li>
+<li>Parte B: <strong>se valoran las operaciones</strong>, no solo el resultado. Un resultado sin cuentas no puntúa.</li>
+<li>Parte C: ficha completa y conclusión con sentido.</li>
+<li>Parte D: suma si está bien hecha, no resta si no se hace.</li>
+</ul>

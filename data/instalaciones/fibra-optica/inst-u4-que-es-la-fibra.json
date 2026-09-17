@@ -1,0 +1,58 @@
+{
+  "id": "inst-u4-que-es-la-fibra",
+  "titulo": "Sesión 1 — Qué es la fibra óptica",
+  "fecha": "",
+  "descripcion": "Datos con luz, la reflexión total interna, las partes de una fibra y sus medidas, cables de estructura holgada y ajustada, ventajas e inconvenientes frente al cobre, y la seguridad al manejarla.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u4s1-partes",
+      "tipo": "relacionar",
+      "titulo": "Cada parte con lo que hace",
+      "pares": [
+        { "izquierda": "Núcleo", "derecha": "Por él viaja la luz" },
+        { "izquierda": "Revestimiento", "derecha": "Vidrio de 125 µm que mantiene la luz dentro" },
+        { "izquierda": "Recubrimiento primario", "derecha": "Acrilato de color de 250 µm pegado al vidrio" },
+        { "izquierda": "Aramida", "derecha": "Hilos que aguantan los tirones" },
+        { "izquierda": "Cubierta", "derecha": "Plástico exterior, mejor LSZH en interiores" }
+      ]
+    },
+    {
+      "id": "u4s1-ventajas",
+      "tipo": "quiz",
+      "titulo": "¿Fibra o cobre?",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué fenómeno mantiene la luz dentro del núcleo?",
+          "opciones": ["La atenuación", "La reflexión total interna", "La diafonía", "La autonegociación"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuánto mide el revestimiento de una fibra de telecomunicaciones?",
+          "opciones": ["9 µm", "50 µm", "125 µm", "2 mm"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Hay que unir dos edificios con tomas de tierra distintas. La gran ventaja de la fibra aquí es que…",
+          "opciones": ["Es más barata", "No conduce electricidad", "Se crimpa igual que el UTP", "Lleva alimentación PoE"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué tipo de cable de fibra se usa en exteriores y entre edificios?",
+          "opciones": ["Estructura ajustada", "Estructura holgada", "UTP de exterior", "Latiguillo de 900 µm"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un inconveniente real de la fibra frente al cobre:",
+          "opciones": ["Le afectan los motores cercanos", "No llega a 100 m", "No puede llevar corriente para alimentar aparatos", "Radia la señal y se puede espiar"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Un compañero quiere mirar el extremo de un latiguillo para ver si tiene luz. ¿Qué le dices?",
+          "opciones": ["Que lo haga, si no ve nada está apagado", "Que no: la luz es infrarroja, no se ve y puede dañar el ojo", "Que lo mire con el flash del móvil", "Que solo es peligroso en multimodo"],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

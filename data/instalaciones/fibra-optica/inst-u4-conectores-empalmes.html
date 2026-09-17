@@ -1,0 +1,211 @@
+<h2>Unir dos hilos de 9 micras</h2>
+<p>Con el cobre bastaba con que cada hilo tocara su contacto. En la fibra hay que conseguir que dos núcleos de <strong>9 µm</strong> (o 50 µm) queden <strong>exactamente enfrentados</strong>, sin polvo en medio. Un desvío de unas pocas micras y la luz se sale. Hay dos formas de unir fibras:</p>
+<ul>
+<li><strong>Conector</strong>: unión que se puede soltar y volver a enchufar. Donde hace falta cambiar conexiones: en los aparatos y en los paneles.</li>
+<li><strong>Empalme</strong>: unión permanente de las dos fibras. Donde el cable no se va a tocar más: al llegar al armario o para reparar un corte.</li>
+</ul>
+
+<h2>Cómo es un conector de fibra</h2>
+<p>Todos tienen la misma pieza clave: la <strong>férula</strong> (<em>ferrule</em>), un cilindro de cerámica con un agujero central del grosor del revestimiento. La fibra se pega dentro y su punta se pule a ras. Cuando enchufas dos conectores en un <strong>adaptador</strong> (la pieza hembra-hembra de los paneles), un casquillo alinea las dos férulas y las aprieta punta contra punta.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Dibujo simplificado de cinco conectores de fibra vistos de lado con su férula: LC pequeño con pestaña, SC cuadrado, ST redondo de bayoneta, FC redondo de rosca y MPO rectangular con varias fibras. Debajo, la punta de la férula UPC plana y la APC inclinada 8 grados, con sus colores azul y verde" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;font-weight:700;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<!-- LC -->
+<rect x="30" y="50" width="50" height="26" rx="2" fill="#3a3d41" stroke="#4fc1ff"/>
+<path d="M 40 50 L 70 34 L 72 38 L 46 50" fill="#3a3d41" stroke="#4fc1ff"/>
+<rect x="80" y="59" width="16" height="8" fill="#eeeeee"/>
+<rect x="10" y="57" width="20" height="12" fill="#555"/>
+<text x="55" y="100" text-anchor="middle" class="t">LC</text>
+<text x="55" y="114" text-anchor="middle" class="s">pequeño</text>
+<text x="55" y="126" text-anchor="middle" class="s">pestaña</text>
+<!-- SC -->
+<rect x="140" y="44" width="56" height="38" rx="2" fill="#3a3d41" stroke="#4fc1ff"/>
+<rect x="196" y="58" width="20" height="10" fill="#eeeeee"/>
+<rect x="120" y="56" width="20" height="14" fill="#555"/>
+<text x="170" y="100" text-anchor="middle" class="t">SC</text>
+<text x="170" y="114" text-anchor="middle" class="s">cuadrado</text>
+<text x="170" y="126" text-anchor="middle" class="s">empujar</text>
+<!-- ST -->
+<rect x="260" y="48" width="44" height="30" rx="12" fill="#3a3d41" stroke="#dcdcaa"/>
+<circle cx="270" cy="48" r="3" fill="#dcdcaa"/>
+<rect x="304" y="58" width="22" height="10" fill="#eeeeee"/>
+<rect x="240" y="56" width="20" height="14" fill="#555"/>
+<text x="285" y="100" text-anchor="middle" class="t">ST</text>
+<text x="285" y="114" text-anchor="middle" class="s">bayoneta</text>
+<text x="285" y="126" text-anchor="middle" class="s">antiguo</text>
+<!-- FC -->
+<rect x="370" y="46" width="44" height="34" rx="6" fill="#3a3d41" stroke="#dcdcaa"/>
+<g stroke="#858585"><line x1="378" y1="46" x2="378" y2="80"/><line x1="386" y1="46" x2="386" y2="80"/><line x1="394" y1="46" x2="394" y2="80"/><line x1="402" y1="46" x2="402" y2="80"/></g>
+<rect x="414" y="58" width="20" height="10" fill="#eeeeee"/>
+<rect x="350" y="56" width="20" height="14" fill="#555"/>
+<text x="392" y="100" text-anchor="middle" class="t">FC</text>
+<text x="392" y="114" text-anchor="middle" class="s">rosca</text>
+<text x="392" y="126" text-anchor="middle" class="s">medida</text>
+<!-- MPO -->
+<rect x="480" y="46" width="60" height="34" rx="3" fill="#3a3d41" stroke="#c586c0"/>
+<rect x="540" y="52" width="12" height="22" fill="#eeeeee"/>
+<g fill="#4fc1ff"><circle cx="546" cy="55" r="1.4"/><circle cx="546" cy="59" r="1.4"/><circle cx="546" cy="63" r="1.4"/><circle cx="546" cy="67" r="1.4"/><circle cx="546" cy="71" r="1.4"/></g>
+<rect x="460" y="54" width="20" height="18" fill="#555"/>
+<text x="512" y="100" text-anchor="middle" class="t">MPO</text>
+<text x="512" y="114" text-anchor="middle" class="s">12-24 fibras</text>
+<text x="512" y="126" text-anchor="middle" class="s">centro datos</text>
+<line x1="20" y1="150" x2="580" y2="150" stroke="#3a3d41"/>
+<!-- UPC / APC -->
+<text x="150" y="176" text-anchor="middle" class="t" style="fill:#4fc1ff">UPC · punta plana</text>
+<rect x="80" y="192" width="110" height="30" fill="#eeeeee"/>
+<path d="M 190 192 Q 196 207 190 222" fill="#eeeeee" stroke="#eeeeee"/>
+<line x1="80" y1="207" x2="195" y2="207" stroke="#4fc1ff" stroke-width="2"/>
+<rect x="40" y="188" width="40" height="38" fill="#4fc1ff" fill-opacity="0.6"/>
+<text x="150" y="246" text-anchor="middle" class="s">cuerpo azul (monomodo)</text>
+<text x="150" y="260" text-anchor="middle" class="s">beige/negro o aqua (multimodo)</text>
+<text x="440" y="176" text-anchor="middle" class="t" style="fill:#4ec9b0">APC · punta a 8°</text>
+<polygon points="370,192 476,192 480,222 370,222" fill="#eeeeee"/>
+<line x1="370" y1="207" x2="478" y2="207" stroke="#4ec9b0" stroke-width="2"/>
+<rect x="330" y="188" width="40" height="38" fill="#4ec9b0" fill-opacity="0.6"/>
+<text x="500" y="200" class="s">8°</text>
+<text x="440" y="246" text-anchor="middle" class="s">cuerpo verde · solo monomodo</text>
+<text x="440" y="260" text-anchor="middle" class="s">FTTH, televisión por fibra</text>
+</svg>
+<p class="pie-figura">Dibujos esquemáticos. En blanco, la férula de cerámica con la fibra en el centro.</p>
+</div>
+
+<h3>Los conectores que te vas a encontrar</h3>
+<table>
+<tr><th>Conector</th><th>Cómo es</th><th>Dónde</th></tr>
+<tr><td><strong>LC</strong> (<em>Lucent Connector</em>)</td><td>Pequeño (férula de 1,25 mm), con pestaña como un RJ-45. Casi siempre en pareja (<strong>dúplex</strong>)</td><td>El más habitual hoy: <strong>módulos SFP</strong> de los switches, paneles, centros de datos</td></tr>
+<tr><td><strong>SC</strong> (<em>Subscriber Connector</em>)</td><td>Cuadrado, se empuja y se tira (<em>push-pull</em>). Férula de 2,5 mm</td><td><strong>Fibra de casa (FTTH)</strong>, paneles de operadores, instalaciones de hace unos años</td></tr>
+<tr><td><strong>ST</strong> (<em>Straight Tip</em>)</td><td>Redondo metálico, bayoneta (empujar y girar), como el BNC</td><td>Instalaciones multimodo antiguas</td></tr>
+<tr><td><strong>FC</strong> (<em>Ferrule Connector</em>)</td><td>Redondo metálico, <strong>rosca</strong>. No se suelta con vibraciones</td><td>Equipos de medida y de operadores</td></tr>
+<tr><td><strong>MPO / MTP</strong></td><td>Rectangular, lleva <strong>12 o 24 fibras</strong> en una sola férula</td><td>Centros de datos, enlaces de 40-400 Gbps</td></tr>
+</table>
+<p>Truco para no confundir LC y SC: <strong>L</strong>C = <strong>L</strong>ittle (pequeño); <strong>S</strong>C = <strong>S</strong>quare (cuadrado).</p>
+
+<h3>El pulido de la punta: UPC y APC</h3>
+<p>Aunque se pula muy bien, siempre se refleja un poquito de luz hacia atrás en cada conector. Hay dos acabados:</p>
+<ul>
+<li><strong>UPC</strong> (<em>Ultra Physical Contact</em>): punta ligeramente abombada. Cuerpo <strong>azul</strong> en monomodo; en multimodo, beige, negro o aguamarina. Lo normal en redes de datos.</li>
+<li><strong>APC</strong> (<em>Angled Physical Contact</em>): punta cortada a <strong>8 grados</strong>. La luz que rebota se va hacia el revestimiento y no vuelve al emisor. Cuerpo <strong>verde</strong>. Se usa en <strong>FTTH</strong> y en televisión por fibra, donde los reflejos molestan mucho.</li>
+</ul>
+<div class="nota"><strong>Nunca se enchufa un APC (verde) con un UPC (azul).</strong> Las puntas no encajan: quedan separadas por un hueco de aire, se pierde casi toda la luz y se pueden rayar las dos férulas. Regla fácil: <strong>verde con verde, azul con azul</strong>.</div>
+
+<div data-actividad="u4s3-conectores"></div>
+
+<h2>TX y RX: la fibra va en parejas</h2>
+<p>Una fibra normalmente lleva la luz <strong>en un solo sentido</strong>. Por eso un enlace de red usa <strong>dos fibras</strong>: una para transmitir (TX) y otra para recibir (RX). Es la misma idea del cable cruzado de la Unidad 3: <strong>el TX de un extremo tiene que llegar al RX del otro</strong>.</p>
+<p>Los latiguillos dúplex LC vienen marcados <strong>A</strong> y <strong>B</strong>, y están hechos para que la A de un extremo sea la B del otro (<strong>polaridad A-B</strong>). Si montas un enlace y el puerto no enciende, una de las primeras pruebas es <strong>dar la vuelta a la pareja</strong> en uno de los extremos: se abre el clip del dúplex y se intercambian las dos fibras.</p>
+<div class="nota">La presentación dice que la transmisión es «unidireccional (dos fibras, una para cada sentido)». Es lo habitual, pero no siempre: hay transceptores <strong>BiDi</strong> que usan <strong>una sola fibra</strong> con una longitud de onda para cada sentido. Así funciona la fibra que llega a tu casa (GPON): una única fibra para subir y bajar.</div>
+
+<h2>El enlace de punta a punta</h2>
+<p>Así es un enlace de fibra típico entre los armarios de dos edificios. Te va a hacer falta en la sesión siguiente para calcular pérdidas:</p>
+<div class="salida">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Esquema de un enlace de fibra entre dos edificios. En cada armario: switch con módulo SFP, latiguillo LC hasta el adaptador de la bandeja, pigtail y empalme por fusión con el cable troncal. En el centro, el cable troncal de estructura holgada. Se marcan dos conectores y dos empalmes en el enlace permanente" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="10" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
+<text x="95" y="22" text-anchor="middle" class="s">armario edificio A</text>
+<rect x="420" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
+<text x="505" y="22" text-anchor="middle" class="s">armario edificio B</text>
+<rect x="20" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
+<text x="40" y="94" text-anchor="middle" class="s">SFP</text>
+<rect x="540" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
+<text x="560" y="94" text-anchor="middle" class="s">SFP</text>
+<line x1="60" y1="90" x2="100" y2="90" stroke="#dcdcaa" stroke-width="3"/>
+<line x1="500" y1="90" x2="540" y2="90" stroke="#dcdcaa" stroke-width="3"/>
+<rect x="98" y="80" width="10" height="20" fill="#4fc1ff"/>
+<rect x="492" y="80" width="10" height="20" fill="#4fc1ff"/>
+<line x1="108" y1="90" x2="150" y2="90" stroke="#dcdcaa" stroke-width="2"/>
+<line x1="450" y1="90" x2="492" y2="90" stroke="#dcdcaa" stroke-width="2"/>
+<circle cx="150" cy="90" r="6" fill="#f48771"/>
+<circle cx="450" cy="90" r="6" fill="#f48771"/>
+<line x1="156" y1="90" x2="444" y2="90" stroke="#dcdcaa" stroke-width="5"/>
+<text x="300" y="80" text-anchor="middle" class="t">cable troncal · holgada · OS2</text>
+<text x="80" y="130" text-anchor="middle" class="s">latiguillo</text>
+<text x="520" y="130" text-anchor="middle" class="s">latiguillo</text>
+<text x="128" y="118" text-anchor="middle" class="s">pigtail</text>
+<text x="472" y="118" text-anchor="middle" class="s">pigtail</text>
+<rect x="103" y="160" width="10" height="10" fill="#4fc1ff"/><text x="120" y="169" class="s">conector en el adaptador de la bandeja</text>
+<circle cx="108" cy="190" r="5" fill="#f48771"/><text x="120" y="194" class="s">empalme por fusión en la bandeja</text>
+<line x1="98" y1="206" x2="502" y2="206" stroke="#4ec9b0"/>
+<text x="300" y="218" text-anchor="middle" class="s" style="fill:#4ec9b0">enlace permanente: de adaptador a adaptador</text>
+</svg>
+<p class="pie-figura">El cable troncal no se toca: se empalma a pigtails y todo lo que se enchufa y desenchufa son latiguillos.</p>
+</div>
+<ul>
+<li><strong>Cable troncal</strong>: el cable largo, de estructura holgada, que va por la canalización entre los dos armarios.</li>
+<li><strong>Bandeja o caja de empalmes</strong> (en armarios grandes, <strong>repartidor óptico</strong> u ODF): la caja de 1 U donde se guardan los empalmes enrollados y en cuyo frontal están los adaptadores.</li>
+<li><strong>Pigtail</strong>: un trozo de fibra ajustada con un conector en <strong>un</strong> extremo. El otro extremo se empalma al troncal.</li>
+<li><strong>Latiguillo</strong> de fibra: con conector en los dos extremos, de la bandeja al switch. Igual que en cobre.</li>
+</ul>
+
+<h2>Empalmes</h2>
+<table>
+<tr><th></th><th>Empalme por <strong>fusión</strong></th><th>Empalme <strong>mecánico</strong></th></tr>
+<tr><td>Cómo</td><td>Una <strong>fusionadora</strong> alinea las dos fibras con cámaras y las <strong>suelda con un arco eléctrico</strong></td><td>Una pieza pequeña con gel alinea y sujeta las dos puntas a presión</td></tr>
+<tr><td>Pérdida típica</td><td>Muy baja: <strong>0,05-0,1 dB</strong></td><td>Mayor: unos <strong>0,3 dB</strong></td></tr>
+<tr><td>Coste</td><td>Máquina cara; cada empalme, barato</td><td>Sin máquina; cada pieza, más cara</td></tr>
+<tr><td>Uso</td><td>Instalaciones profesionales y definitivas</td><td>Reparaciones rápidas y urgencias</td></tr>
+</table>
+<p>Pasos de un empalme por fusión, para que sepas lo que hace el técnico cuando lo veas:</p>
+<ol>
+<li><strong>Meter el manguito protector</strong> en una de las fibras (si se olvida, hay que cortar y empezar).</li>
+<li><strong>Pelar</strong> el recubrimiento hasta dejar el vidrio de 125 µm.</li>
+<li><strong>Limpiar</strong> el vidrio con toallita sin pelusa y <strong>alcohol isopropílico</strong>.</li>
+<li><strong>Cortar</strong> con la <strong>cortadora de precisión</strong> (<em>cleaver</em>): deja la punta a 90° y lisa como un espejo.</li>
+<li><strong>Fusionar</strong>: la máquina alinea, suelda y estima la pérdida del empalme.</li>
+<li><strong>Proteger</strong>: se desliza el manguito sobre la soldadura y se calienta para que encoja.</li>
+<li>Guardar el empalme en la <strong>bandeja</strong> con la fibra sobrante enrollada en curvas amplias.</li>
+</ol>
+<p>También existen <strong>conectores de campo</strong> (prepulidos), que se montan en la punta de una fibra sin fusionadora. Son cómodos pero pierden más que un pigtail empalmado.</p>
+
+<h2>La electrónica: transceptores y conversores</h2>
+<ul>
+<li><strong>Transceptor SFP</strong>: un módulo que se enchufa en un hueco del switch y convierte la señal eléctrica en luz y al revés. Se cambia <strong>en caliente</strong>, sin apagar. <strong>SFP</strong> = 1 Gbps, <strong>SFP+</strong> = 10 Gbps, QSFP = 40 Gbps o más. Cada módulo es para un tipo de fibra y una distancia (SX, LX, SR, LR…): lo pone la etiqueta y, a menudo, el color de la palanca.</li>
+<li><strong>Conversor de medios</strong> (<em>media converter</em>): una cajita con un puerto RJ-45 y otro de fibra. Sirve para llevar una red de cobre por fibra cuando el switch no tiene huecos SFP.</li>
+<li><strong>ONT</strong>: la caja que pone la operadora en casa en una instalación FTTH. Recibe la fibra (normalmente <strong>SC/APC, verde</strong>) y da puertos RJ-45 o wifi.</li>
+</ul>
+
+<h2>La limpieza: el fallo número uno</h2>
+<p>La mayoría de enlaces de fibra que fallan no tienen la fibra rota: tienen el <strong>conector sucio</strong>. Una mota de polvo de pocas micras tapa la mitad de un núcleo de 9 µm, y la grasa de un dedo es peor. Además, al enchufar un conector sucio, la suciedad raya la férula del otro.</p>
+<ul>
+<li><strong>Inspeccionar antes de conectar</strong>, con microscopio de fibra (nunca con el ojo).</li>
+<li>Limpiar con un <strong>limpiador de un clic</strong> (bolígrafo de limpieza) o con toallita sin pelusa y alcohol isopropílico, y volver a inspeccionar.</li>
+<li><strong>Nunca</strong> tocar la punta con los dedos, soplar ni limpiar con la camiseta.</li>
+<li>Tapones siempre puestos en lo que no se use.</li>
+</ul>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Actividad 3 — a mano, en papel</p>
+<ol>
+<li>Diferencia entre conector y empalme. ¿Dónde se usa cada uno?</li>
+<li>¿Qué es la férula y para qué sirve?</li>
+<li>Haz una tabla con los conectores LC, SC, ST, FC y MPO: forma, enganche y dónde se usan.</li>
+<li>¿Qué diferencia hay entre un conector UPC y uno APC? ¿Qué color tiene cada uno? ¿Qué pasa si se conectan entre sí?</li>
+<li>¿Por qué un enlace de fibra suele usar dos fibras? ¿Qué harías si el puerto no enciende al conectar un latiguillo dúplex?</li>
+<li>Dibuja el esquema de un enlace entre dos armarios y nombra: SFP, latiguillo, bandeja, pigtail, empalme y cable troncal.</li>
+<li>Compara el empalme por fusión y el mecánico.</li>
+<li>Escribe los pasos de un empalme por fusión.</li>
+<li>¿Qué es un transceptor SFP? ¿Y un conversor de medios?</li>
+<li>¿Cuál es la causa más frecuente de fallo en un enlace de fibra y cómo se evita?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Conector verde en la ONT de casa. ¿Qué es?</summary>
+<p>Un <strong>APC</strong>, casi seguro <strong>SC/APC</strong>: monomodo con la punta a 8°. Solo se conecta con otro verde.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué conector lleva un módulo SFP normal?</summary>
+<p><strong>LC dúplex</strong>: dos LC, uno para TX y otro para RX.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué pierde menos, un empalme por fusión o un conector?</summary>
+<p>El <strong>empalme por fusión</strong> (0,05-0,1 dB). Un par de conectores pierde bastante más, del orden de 0,3-0,75 dB.</p>
+</details>

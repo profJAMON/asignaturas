@@ -1,0 +1,140 @@
+<h2>Lo que tienes que saber de esta unidad</h2>
+<p>Si te sabes esta página, tienes la unidad. Léela entera antes de ponerte con el banco de preguntas de abajo.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Mapa de la unidad en tres bloques: la fibra por dentro, conectar la fibra y calcular y medir" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.s{font-family:monospace;font-size:10.5px;fill:#858585}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">El mapa de la unidad</text>
+<rect x="20" y="40" width="560" height="50" rx="5" fill="#252526" stroke="#4fc1ff"/>
+<text x="34" y="60" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">La fibra por dentro</text>
+<text x="240" y="60" class="s">1 · luz, partes, cables, seguridad</text>
+<text x="240" y="76" class="s">2 · monomodo, multimodo, OM y OS</text>
+<rect x="20" y="100" width="560" height="50" rx="5" fill="#252526" stroke="#dcdcaa"/>
+<text x="34" y="120" font-family="monospace" font-size="11" font-weight="700" fill="#dcdcaa">Conectar la fibra</text>
+<text x="240" y="120" class="s">3 · conectores, UPC/APC, TX/RX</text>
+<text x="240" y="136" class="s">3 · empalmes, SFP, limpieza</text>
+<rect x="20" y="160" width="560" height="50" rx="5" fill="#252526" stroke="#4ec9b0"/>
+<text x="34" y="180" font-family="monospace" font-size="11" font-weight="700" fill="#4ec9b0">Calcular y medir</text>
+<text x="240" y="180" class="s">4 · pérdidas, margen, aparatos</text>
+<text x="240" y="196" class="s">5 · práctica en papel</text>
+</svg>
+<p class="pie-figura">Las cinco sesiones agrupadas en tres bloques.</p>
+</div>
+
+<h3>La fibra por dentro</h3>
+<ul>
+<li>Transmite <strong>pulsos de luz</strong> infrarroja por un hilo de vidrio. La luz se queda dentro por <strong>reflexión total interna</strong>: el núcleo tiene mayor índice de refracción que el revestimiento.</li>
+<li>Partes: <strong>núcleo</strong> (9, 50 o 62,5 µm), <strong>revestimiento</strong> (125 µm), <strong>recubrimiento primario</strong> (250 µm), <strong>aramida</strong> (aguanta el tirón) y <strong>cubierta</strong>.</li>
+<li>Nada de <strong>curvas cerradas</strong>: la luz se escapa.</li>
+<li>Estructura <strong>holgada</strong>: exteriores y entre edificios. <strong>Ajustada</strong> (900 µm): interiores y latiguillos.</li>
+<li>Ventajas: distancia, ancho de banda, <strong>inmune a interferencias</strong>, <strong>no conduce electricidad</strong>, segura. Inconvenientes: frágil, instalación y electrónica caras, sensible a la suciedad, no alimenta aparatos.</li>
+<li>Seguridad: <strong>nunca mirar la punta</strong> (luz invisible), tapones puestos, astillas de vidrio al recipiente.</li>
+<li><strong>Monomodo</strong>: núcleo 9 µm, un camino, láser, 1310/1550 nm, ~0,35 dB/km, decenas de km, cubierta <strong>amarilla</strong> (OS2).</li>
+<li><strong>Multimodo</strong>: núcleo 50 o 62,5 µm, muchos caminos, <strong>dispersión modal</strong> (a más velocidad, menos distancia), 850 nm, ~3 dB/km, cientos de metros. OM1/OM2 <strong>naranja</strong>, OM3/OM4 <strong>aguamarina</strong> (OM4 también <strong>violeta</strong>), OM5 <strong>verde lima</strong>. Todas de <strong>índice gradual</strong>.</li>
+<li>Ethernet: <strong>S</strong> = corto, multimodo (1000BASE-SX, 10GBASE-SR hasta 300-400 m en OM3/OM4); <strong>L</strong> = largo, monomodo (1000BASE-LX 5-10 km, 10GBASE-LR 10 km).</li>
+</ul>
+
+<h3>Conectar la fibra</h3>
+<ul>
+<li><strong>Conector</strong> (se suelta) y <strong>empalme</strong> (permanente). La pieza clave del conector es la <strong>férula</strong> de cerámica.</li>
+<li><strong>LC</strong> pequeño con pestaña (SFP), <strong>SC</strong> cuadrado push-pull (FTTH), <strong>ST</strong> bayoneta (antiguo), <strong>FC</strong> rosca, <strong>MPO</strong> 12-24 fibras.</li>
+<li><strong>UPC</strong> punta plana, azul. <strong>APC</strong> punta a 8°, verde. <strong>Nunca</strong> se mezclan.</li>
+<li>Dos fibras: <strong>TX de un lado al RX del otro</strong> (polaridad A-B). Si no enciende, dar la vuelta a la pareja. Los BiDi usan una sola fibra.</li>
+<li>Enlace típico: SFP → latiguillo → adaptador de la bandeja → pigtail → empalme → cable troncal → … y lo mismo al otro lado.</li>
+<li>Empalme por <strong>fusión</strong> (arco eléctrico, 0,05-0,1 dB) o <strong>mecánico</strong> (gel, ~0,3 dB, reparaciones). Pasos: manguito, pelar, limpiar, cortar con cleaver, fusionar, proteger, bandeja.</li>
+<li><strong>SFP</strong> 1 Gbps, <strong>SFP+</strong> 10 Gbps, en caliente. <strong>Conversor de medios</strong>: RJ-45 ↔ fibra. <strong>ONT</strong>: la caja de la fibra de casa.</li>
+<li>Fallo número uno: <strong>conector sucio</strong>. Inspeccionar y limpiar antes de enchufar.</li>
+</ul>
+
+<h3>Calcular y medir</h3>
+<ul>
+<li>3 dB = la mitad; 10 dB = la décima parte. <strong>Las pérdidas en dB se suman.</strong></li>
+<li><strong>Pérdida = km × dB/km + conexiones × 0,75 + empalmes × 0,3</strong>, con multimodo 3,5 dB/km y monomodo 0,5 dB/km. Metros a km antes de multiplicar.</li>
+<li><strong>Margen = lo que aguanta el módulo − pérdida</strong>. Negativo: no funciona. Menos de 3 dB: justo. 3 dB o más: bien.</li>
+<li>Aparatos: <strong>microscopio</strong> (suciedad), <strong>localizador visual</strong> (luz roja, roturas y curvas), <strong>fuente + medidor de potencia</strong> (pérdida total), <strong>OTDR</strong> (a qué distancia está cada cosa).</li>
+<li>Avería: ¿encaja todo? → polaridad → limpiar → localizador → medidor → OTDR.</li>
+</ul>
+
+<h2>Banco de preguntas del examen</h2>
+<p>Estas son las preguntas de las que saldrá el examen: algunas tal cual y otras parecidas. Aquí no hay soluciones: las respuestas están en las sesiones y en tu cuaderno. Contéstalas a mano.</p>
+
+<div class="papel">
+<p class="papel__titulo">Banco de preguntas · UD 4 — Fibra óptica</p>
+
+<h3>Qué es la fibra</h3>
+<ol>
+<li>¿Cómo se transmite la información por una fibra óptica?</li>
+<li>¿Qué es la reflexión total interna? ¿Qué condición tienen que cumplir el núcleo y el revestimiento?</li>
+<li>Dibuja el corte de una fibra y nombra sus partes con su medida o material.</li>
+<li>¿Qué función tienen los hilos de aramida?</li>
+<li>¿Por qué no se debe hacer una curva cerrada con un cable de fibra?</li>
+<li>Diferencia entre cable de estructura holgada y ajustada. ¿Dónde usarías cada uno?</li>
+<li>Da cuatro ventajas de la fibra frente al par trenzado.</li>
+<li>Da tres inconvenientes de la fibra frente al par trenzado.</li>
+<li>¿Por qué se usa fibra para unir dos edificios aunque estén a menos de 100 m?</li>
+<li>¿Por qué es peligroso mirar el extremo de una fibra? ¿Con qué se inspecciona?</li>
+<li>¿Qué precauciones hay que tomar con los restos de fibra al cortarla?</li>
+<li>¿Por qué en una oficina suelen convivir la fibra y el cobre?</li>
+</ol>
+
+<h3>Monomodo y multimodo</h3>
+<ol start="13">
+<li>¿Qué es un modo de propagación?</li>
+<li>Compara la fibra monomodo y la multimodo: núcleo, emisor, longitud de onda, pérdida y distancia.</li>
+<li>¿Qué es la dispersión modal? ¿A qué tipo de fibra afecta y qué consecuencia tiene?</li>
+<li>Diferencia entre fibra de salto de índice y de índice gradual.</li>
+<li>¿Qué son las ventanas de 850, 1310 y 1550 nm?</li>
+<li>Compara el LED y el láser como fuentes de luz.</li>
+<li>Completa la tabla de tipos OM1, OM2, OM3, OM4, OM5 y OS2 con su núcleo y el color de su cubierta.</li>
+<li>¿Qué significa <code>50/125</code> impreso en un cable? ¿Y <code>9/125</code>?</li>
+<li>¿Por qué no se deben mezclar latiguillos multimodo y monomodo? ¿Y OM1 con OM3?</li>
+<li>¿Qué indican la S y la L en los nombres 1000BASE-SX y 1000BASE-LX?</li>
+<li>¿Hasta dónde llega 10GBASE-SR en OM3 y en OM4? ¿Y 10GBASE-LR?</li>
+<li>¿Por qué 10GBASE-SR llega mucho menos lejos en OM1 que 1000BASE-SX?</li>
+<li>¿Qué fibra elegirías para unir dos armarios a 150 m en el mismo edificio? ¿Y para dos edificios a 3 km? Razónalo.</li>
+</ol>
+
+<h3>Conectores, empalmes y equipos</h3>
+<ol start="26">
+<li>Diferencia entre conector y empalme.</li>
+<li>¿Qué es la férula de un conector?</li>
+<li>Describe los conectores LC, SC, ST, FC y MPO y di dónde se usa cada uno.</li>
+<li>¿Qué conector llevan normalmente los módulos SFP? ¿Y la ONT de la fibra de casa?</li>
+<li>Diferencia entre pulido UPC y APC. ¿Qué color identifica a cada uno?</li>
+<li>¿Qué ocurre si se conecta un conector APC con uno UPC?</li>
+<li>¿Por qué un enlace de fibra suele necesitar dos fibras? ¿Qué es la polaridad A-B?</li>
+<li>¿Qué es un transceptor BiDi?</li>
+<li>Dibuja un enlace de fibra entre dos armarios y nombra todos sus elementos.</li>
+<li>¿Qué es un pigtail? ¿Y una bandeja de empalmes?</li>
+<li>Compara el empalme por fusión y el mecánico: cómo se hace, pérdida y uso.</li>
+<li>Ordena los pasos de un empalme por fusión.</li>
+<li>¿Para qué sirve la cortadora de precisión (cleaver)?</li>
+<li>¿Qué es un módulo SFP? Diferencia entre SFP y SFP+.</li>
+<li>¿Qué es un conversor de medios y cuándo se usa?</li>
+<li>¿Cuál es la causa más frecuente de fallo en un enlace de fibra? ¿Cómo se limpia un conector correctamente?</li>
+</ol>
+
+<h3>Pérdidas y medidas</h3>
+<ol start="42">
+<li>¿Cuánta luz queda tras perder 3 dB? ¿Y 10 dB?</li>
+<li>Escribe la fórmula del presupuesto de pérdidas y los valores que se usan para calcular.</li>
+<li>Calcula la pérdida de un enlace multimodo de 300 m con 2 conexiones y 2 empalmes.</li>
+<li>Calcula la pérdida de un enlace monomodo de 5 km con 2 conexiones y 4 empalmes.</li>
+<li>Calcula la pérdida de un enlace multimodo de 150 m con 4 conexiones y sin empalmes.</li>
+<li>Un módulo aguanta 8 dB y el enlace pierde 5,6 dB. ¿Cuál es el margen? ¿Está bien diseñado?</li>
+<li>Un enlace tiene margen negativo. ¿Qué significa y qué tres cosas harías para arreglarlo?</li>
+<li>¿Por qué se diseña con un margen de al menos 3 dB?</li>
+<li>¿Para qué sirve el localizador visual de fallos?</li>
+<li>¿Qué mide el conjunto de fuente de luz y medidor de potencia?</li>
+<li>¿Qué es un OTDR y qué ventaja tiene frente al medidor de potencia?</li>
+<li>El medidor marca mucha más pérdida de la calculada. ¿Qué puede estar pasando?</li>
+<li>Ordena los pasos para diagnosticar un enlace de fibra que no enciende.</li>
+</ol>
+</div>
+<p>Puedes imprimir esta página con <strong>Ctrl + P</strong>: sale solo el temario y el banco, sin el menú ni los ejercicios de pantalla.</p>
+
+<h2>Ejercicios para entrenar</h2>
+<p>Aquí abajo tienes los cuatro generadores de la unidad y un repaso mezclado. Pulsa <strong>Otra tanda</strong> hasta que aciertes todas dos veces seguidas. Los cálculos de pérdidas y margen <strong>seguro</strong> que salen en el examen.</p>
