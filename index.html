@@ -3,15 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Material de Carles</title>
+<title>Material de clase</title>
 <meta name="description" content="Apuntes y actividades de las asignaturas de informática.">
-
-<link rel="icon" href="/img/wifi.svg" type="image/svg+xml">
-<link rel="icon" href="/img/wifi-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/img/wifi-apple-touch-icon.png">
-
 <link rel="stylesheet" href="css/estilos.css">
-
+<!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
+     elegido antes de que el navegador pinte, para que no haya fogonazo. -->
 <script src="js/aspecto.js"></script>
 </head>
 <body>
@@ -19,6 +15,7 @@
 <nav class="sidebar">
   <div class="selector-aspecto" id="selector-aspecto"></div>
   <div class="selector-idioma" id="selector-idioma" translate="no"></div>
+  <div class="selector-grupo" id="selector-grupo"></div>
   <h2 class="sidebar__titulo">Temario</h2>
   <div id="indice-temas"></div>
 </nav>
@@ -28,7 +25,9 @@
 
   <header class="card">
     <span class="badge" id="portada-badge">Material de clase</span>
-    <h1 id="portada-titulo">Elige la asignatura con la que quieres trabajar</h1>
+    <h1 id="portada-titulo">Apuntes y Actividades</h1>
+    <p id="portada-descripcion">Elige la asignatura con la que quieres trabajar.</p>
+    <a class="volver" href="calendario.html" id="portada-calendario" hidden style="margin: 0.8rem 0 0;">📅 Ver el calendario del curso</a>
   </header>
 
   <div id="indice-portada"></div>
@@ -38,6 +37,8 @@
 
 <script src="js/idioma.js"></script>
 <script src="js/asignaturas.js"></script>
+<script src="data/calendario-instalaciones.js"></script>
+<script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/main.js"></script>
 </body>

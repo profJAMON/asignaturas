@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tema · Material de clase</title>
+<title>Calendario · Instalación y mantenimiento de redes</title>
 <link rel="stylesheet" href="css/estilos.css">
 <!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
      elegido antes de que el navegador pinte, para que no haya fogonazo. -->
@@ -19,28 +19,18 @@
   <div id="indice-temas"></div>
 </nav>
 
-<main class="main-content" id="tema-raiz">
-  <a class="volver" href="index.html" id="tema-volver">&larr; Todas las unidades</a>
+<main class="main-content">
+  <a class="volver" href="index.html?a=instalaciones">&larr; Instalación y mantenimiento de redes</a>
 
   <header class="card">
-    <span class="badge" id="tema-unidad">Material de clase</span>
-    <h1 id="tema-titulo">Cargando…</h1>
-    <p id="tema-descripcion"></p>
-    <p class="badge badge--fecha" id="tema-fecha" hidden></p>
+    <span class="badge">Instalaciones</span>
+    <h1>Calendario del curso</h1>
+    <p id="calendario-descripcion">Planificación aproximada de cuándo toca cada unidad y cada sesión. Las fechas son previstas, no fijas: pueden desplazarse si el ritmo real se adelanta o se retrasa.</p>
   </header>
 
-  <section class="seccion" id="seccion-leccion" hidden>
-    <div class="leccion" id="leccion-contenido"></div>
-  </section>
-
-  <section class="seccion" id="seccion-materiales">
-    <h2 class="seccion__titulo">Materiales</h2>
-    <ul class="materiales" id="lista-materiales"></ul>
-  </section>
-
-  <section class="seccion" id="seccion-actividades">
-    <h2 class="seccion__titulo">Actividades</h2>
-    <div id="lista-actividades"></div>
+  <section class="seccion">
+    <div id="calendario-contenido"></div>
+    <p class="calendario-nota">Fechas calculadas a partir de las horas por unidad y el horario real de cada grupo, con el calendario escolar 2026-2027. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.</p>
   </section>
 
   <footer class="pie">Material de clase</footer>
@@ -53,8 +43,6 @@
 <script src="data/calendario-instalaciones.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
-<script src="js/generadores.js"></script>
-<script src="js/actividades.js"></script>
-<script src="js/tema.js"></script>
+<script src="js/calendario-pagina.js"></script>
 </body>
 </html>

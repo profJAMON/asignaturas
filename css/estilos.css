@@ -296,6 +296,7 @@ h1, h2, h3 {
   color: var(--text-dim);
   margin: 0;
   font-size: 1.02rem;
+  max-width: 62ch;
 }
 
 .badge {
@@ -525,7 +526,7 @@ h1, h2, h3 {
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
 @media print {
-  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .pie, .nav-sesiones { display: none !important; }
+  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
   .main-content { margin: 0; padding: 0; max-width: 100%; }
   .leccion .papel { break-inside: avoid; }
 }
@@ -897,6 +898,115 @@ footer.pie {
 
 .aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+/* ============================================================
+   Selector de grupo (js/calendario.js) — solo Instalaciones
+   Mismo aire que el de aspecto/idioma.
+   ============================================================ */
+
+.selector-grupo {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.selector-grupo .sidebar__titulo { margin-bottom: 0.6rem; }
+
+.grupos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.grupo {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.35rem 0.5rem;
+  cursor: pointer;
+}
+
+.grupo:hover { color: var(--text); border-color: var(--text-faint); }
+
+.grupo--activo {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--surface-2);
+}
+
+.grupo:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Nota bajo el selector de grupo/aspecto cuando hace falta explicar algo
+   (p.ej. "elige tu grupo para ver las fechas"). Reutiliza el mismo estilo
+   discreto que ya usa aspecto.js. */
+.aspecto-nota {
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
+/* Fecha prevista junto a cada sesión en la barra lateral */
+.sesion__fecha {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  margin-top: 0.1rem;
+}
+.sesion.pasada .sesion__fecha { color: var(--text-faint); }
+.sesion.activa .sesion__fecha { color: var(--accent); }
+
+/* Fecha prevista de la sesión que se está viendo (tema.html) */
+.badge--fecha {
+  display: block;
+  margin: 0.6rem 0 0;
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Página calendario.html */
+.calendario-tabla {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+.calendario-tabla th,
+.calendario-tabla td {
+  text-align: left;
+  padding: 0.55rem 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.calendario-tabla th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.calendario-tabla td.vacio { color: var(--text-faint); }
+.calendario-unidad-titulo td {
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  padding-top: 0.9rem;
+}
+.calendario-tabla tr.pasada td { color: var(--text-faint); }
+.calendario-tabla tr.hoy td {
+  background: var(--surface-2);
+  color: var(--accent);
+  font-weight: 600;
+}
+.calendario-nota {
+  color: var(--text-faint);
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+
 .aspecto-nota {
   margin: 8px 0 0;
   font-family: var(--font-mono);
@@ -1033,41 +1143,6 @@ font {
   margin: 0;
 }
 
-/* Navegación anterior / siguiente al final de la sesión */
-.nav-sesiones {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-  margin: 2.8rem 0 0;
-  padding-top: 1.6rem;
-  border-top: 1px solid var(--border);
-}
-.nav-sesiones[hidden] { display: none; }
-
-.nav-sesiones__enlace {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  min-width: 0;
-  padding: 0.9rem 1rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.12s ease;
-}
-.nav-sesiones__enlace:hover { border-color: var(--accent); }
-.nav-sesiones__enlace--siguiente { text-align: right; grid-column: 2; }
-
-.nav-sesiones__etiqueta {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--accent);
-}
-.nav-sesiones__titulo { font-weight: 500; overflow-wrap: anywhere; }
-
-
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
@@ -1093,9 +1168,6 @@ font {
   }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
   .card { padding: 1.3rem 1.2rem; }
-  .nav-sesiones { grid-template-columns: 1fr; }
-  .nav-sesiones__enlace--siguiente { grid-column: 1; }
-  .nav-sesiones__hueco { display: none; }
 }
 
 @media (max-width: 560px) {

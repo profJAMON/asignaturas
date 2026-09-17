@@ -7,9 +7,7 @@
       normal, con saltos de línea reales. Si ese archivo no existe,
       se usa el campo "contenido" del json como respaldo (formato antiguo).
    5. Agrupa cada h3 y su contenido en un contenedor "subseccion" (sangría visual).
-   6. Genera el índice "En esta página" a partir de los h2/h3 del contenido.
-   7. Al final, botones de sesión anterior / siguiente dentro de la misma
-      asignatura (cruzan de unidad si hace falta). */
+   6. Genera el índice "En esta página" a partir de los h2/h3 del contenido. */
 
 const ICONOS = { pdf: 'PDF', enlace: 'WEB', video: 'VID' };
 
@@ -68,7 +66,10 @@ async function cargarTema() {
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
     pintarIndicePagina();
-    pintarNavegacionSesiones(asignatura, id);
+
+    /* Fecha prevista de esta sesión (solo Instalaciones, ver js/calendario.js).
+       Si ese archivo no está cargado en esta página, no hace nada. */
+    if (typeof pintarFechaPrevista === 'function') pintarFechaPrevista(asignatura.id, id);
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
        traductor: hay que avisarle de que hay texto nuevo en pantalla. */
@@ -174,77 +175,6 @@ function pintarIndicePagina() {
     if (h.tagName === 'H3') enlace.classList.add('indice__sub');
     aside.appendChild(enlace);
   });
-}
-
-/* Botones "anterior / siguiente" al final de la sesión.
-   Recorre todas las sesiones de la asignatura en orden (unidad a unidad),
-   así desde la última sesión de una unidad se pasa a la primera de la
-   siguiente. Si una sesión del curso no existe (404), se salta y se prueba
-   la de más allá, para no dejar al alumno en un enlace roto. */
-async function pintarNavegacionSesiones(asignatura, sesionId) {
-  const nav = document.getElementById('nav-sesiones');
-  if (!nav) return;
-
-  try {
-    const curso = await cargarCursoSeguro(asignatura);
-    const lista = [];
-    (curso.unidades || []).forEach(u =>
-      (u.sesiones || []).forEach(s => lista.push({ id: s, unidad: u }))
-    );
-
-    const pos = lista.findIndex(s => s.id === sesionId);
-    if (pos === -1) return;
-    const unidadActual = lista[pos].unidad;
-
-    async function buscar(paso) {
-      for (let i = pos + paso; i >= 0 && i < lista.length; i += paso) {
-        const s = lista[i];
-        try {
-          const r = await fetch(rutaSesionJson(asignatura, s.unidad.id, s.id));
-          if (r.ok) return { ...s, datos: await r.json() };
-        } catch (e) { /* se salta y se prueba la siguiente */ }
-      }
-      return null;
-    }
-
-    const [anterior, siguiente] = await Promise.all([buscar(-1), buscar(1)]);
-    if (!anterior && !siguiente) return;
-
-    function crearEnlace(s, tipo) {
-      if (!s) {
-        const hueco = document.createElement('span');
-        hueco.className = 'nav-sesiones__hueco';
-        hueco.setAttribute('aria-hidden', 'true');
-        return hueco;
-      }
-      const a = document.createElement('a');
-      a.className = `nav-sesiones__enlace nav-sesiones__enlace--${tipo}`;
-      a.href = urlSesion(s.id);
-      a.rel = tipo === 'anterior' ? 'prev' : 'next';
-
-      const etiqueta = document.createElement('span');
-      etiqueta.className = 'nav-sesiones__etiqueta';
-      let texto = tipo === 'anterior' ? '← Anterior' : 'Siguiente →';
-      /* Si se cambia de unidad, se avisa para que no pille por sorpresa. */
-      if (s.unidad !== unidadActual) texto += ` · ${s.unidad.titulo}`;
-      etiqueta.textContent = texto;
-
-      const titulo = document.createElement('span');
-      titulo.className = 'nav-sesiones__titulo';
-      titulo.textContent = (s.datos && s.datos.titulo) || s.id;
-
-      a.appendChild(etiqueta);
-      a.appendChild(titulo);
-      return a;
-    }
-
-    nav.appendChild(crearEnlace(anterior, 'anterior'));
-    nav.appendChild(crearEnlace(siguiente, 'siguiente'));
-    nav.hidden = false;
-    if (typeof retraducir === 'function') retraducir();
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 cargarTema();

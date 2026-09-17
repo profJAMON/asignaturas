@@ -37,13 +37,16 @@ function pintarCabecera(badge, titulo, descripcion, conVolver) {
   const elTitulo = document.getElementById('portada-titulo');
   const elDesc = document.getElementById('portada-descripcion');
   const elVolver = document.getElementById('portada-volver');
+  const elCalendario = document.getElementById('portada-calendario');
 
   if (elBadge) elBadge.textContent = badge;
   if (elTitulo) elTitulo.textContent = titulo;
   if (elDesc) elDesc.textContent = descripcion;
   if (elVolver) elVolver.hidden = !conVolver;
+  /* El calendario de ritmo solo existe para Instalaciones (ver js/calendario.js). */
+  if (elCalendario) elCalendario.hidden = !(_asignaturaPortada && _asignaturaPortada.id === 'instalaciones');
 
-  document.title = conVolver ? `${badge} · Material de Carles` : 'Material de Carles';
+  document.title = conVolver ? `${badge} · Material de clase` : 'Material de clase';
 }
 
 /* ---------- Estado 1: elegir asignatura ---------- */
