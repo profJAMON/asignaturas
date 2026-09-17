@@ -7,68 +7,102 @@
 
 <h2>Cómo es un conector de fibra</h2>
 <p>Todos tienen la misma pieza clave: la <strong>férula</strong> (<em>ferrule</em>), un cilindro de cerámica con un agujero central del grosor del revestimiento. La fibra se pega dentro y su punta se pule a ras. Cuando enchufas dos conectores en un <strong>adaptador</strong> (la pieza hembra-hembra de los paneles), un casquillo alinea las dos férulas y las aprieta punta contra punta.</p>
+<div class="salida">
+<svg viewBox="0 0 600 210" width="100%" role="img" aria-label="Tres uniones de dos férulas vistas de lado. Bien: los dos núcleos quedan en línea y la luz pasa entera. Desalineadas: un núcleo más alto que el otro y la mayor parte de la luz se pierde. Sucias: una mota de polvo entre las dos puntas bloquea la luz" style="max-width:100%;height:auto;">
+<style>
+.fconect1-h{font-family:monospace;font-size:12px;font-weight:700}
+.fconect1-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g>
+<text x="100" y="22" text-anchor="middle" class="fconect1-h" fill="#4ec9b0">✓ Enfrentadas</text>
+<rect x="20" y="60" width="78" height="50" fill="#eeeeee"/><rect x="102" y="60" width="78" height="50" fill="#eeeeee"/>
+<line x1="20" y1="85" x2="180" y2="85" stroke="#dcdcaa" stroke-width="5"/>
+<polygon points="172,79 184,85 172,91" fill="#dcdcaa"/>
+<text x="100" y="140" text-anchor="middle" class="fconect1-s">la luz pasa entera</text>
+</g>
+<g>
+<text x="300" y="22" text-anchor="middle" class="fconect1-h" fill="#f48771">✗ Desalineadas</text>
+<rect x="220" y="60" width="78" height="50" fill="#eeeeee"/><rect x="302" y="72" width="78" height="50" fill="#eeeeee"/>
+<line x1="220" y1="85" x2="298" y2="85" stroke="#dcdcaa" stroke-width="5"/>
+<line x1="302" y1="97" x2="380" y2="97" stroke="#dcdcaa" stroke-width="1" stroke-dasharray="3 3"/>
+<g stroke="#f48771" stroke-width="2"><line x1="300" y1="84" x2="320" y2="50"/><line x1="300" y1="86" x2="326" y2="62"/></g>
+<text x="300" y="140" text-anchor="middle" class="fconect1-s">unas micras de desvío</text>
+<text x="300" y="153" text-anchor="middle" class="fconect1-s">y casi no pasa luz</text>
+</g>
+<g>
+<text x="500" y="22" text-anchor="middle" class="fconect1-h" fill="#f48771">✗ Con polvo</text>
+<rect x="420" y="60" width="74" height="50" fill="#eeeeee"/><rect x="506" y="60" width="74" height="50" fill="#eeeeee"/>
+<line x1="420" y1="85" x2="494" y2="85" stroke="#dcdcaa" stroke-width="5"/>
+<circle cx="500" cy="85" r="8" fill="#8a6a40"/>
+<line x1="506" y1="85" x2="580" y2="85" stroke="#dcdcaa" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="500" y="140" text-anchor="middle" class="fconect1-s">una mota tapa el núcleo</text>
+</g>
+<text x="300" y="190" text-anchor="middle" class="fconect1-s">En blanco, las férulas de cerámica vistas de lado. En amarillo, la luz por el núcleo.</text>
+</svg>
+<p class="pie-figura">Por eso un conector de fibra tiene que ser tan preciso y estar tan limpio.</p>
+</div>
 
 <div class="salida">
 <svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Dibujo simplificado de cinco conectores de fibra vistos de lado con su férula: LC pequeño con pestaña, SC cuadrado, ST redondo de bayoneta, FC redondo de rosca y MPO rectangular con varias fibras. Debajo, la punta de la férula UPC plana y la APC inclinada 8 grados, con sus colores azul y verde" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:12px;font-weight:700;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fconect2-t{font-family:monospace;font-size:12px;font-weight:700;fill:#d4d4d4}
+.fconect2-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
 <!-- LC -->
 <rect x="30" y="50" width="50" height="26" rx="2" fill="#3a3d41" stroke="#4fc1ff"/>
 <path d="M 40 50 L 70 34 L 72 38 L 46 50" fill="#3a3d41" stroke="#4fc1ff"/>
 <rect x="80" y="59" width="16" height="8" fill="#eeeeee"/>
 <rect x="10" y="57" width="20" height="12" fill="#555"/>
-<text x="55" y="100" text-anchor="middle" class="t">LC</text>
-<text x="55" y="114" text-anchor="middle" class="s">pequeño</text>
-<text x="55" y="126" text-anchor="middle" class="s">pestaña</text>
+<text x="55" y="100" text-anchor="middle" class="fconect2-t">LC</text>
+<text x="55" y="114" text-anchor="middle" class="fconect2-s">pequeño</text>
+<text x="55" y="126" text-anchor="middle" class="fconect2-s">pestaña</text>
 <!-- SC -->
 <rect x="140" y="44" width="56" height="38" rx="2" fill="#3a3d41" stroke="#4fc1ff"/>
 <rect x="196" y="58" width="20" height="10" fill="#eeeeee"/>
 <rect x="120" y="56" width="20" height="14" fill="#555"/>
-<text x="170" y="100" text-anchor="middle" class="t">SC</text>
-<text x="170" y="114" text-anchor="middle" class="s">cuadrado</text>
-<text x="170" y="126" text-anchor="middle" class="s">empujar</text>
+<text x="170" y="100" text-anchor="middle" class="fconect2-t">SC</text>
+<text x="170" y="114" text-anchor="middle" class="fconect2-s">cuadrado</text>
+<text x="170" y="126" text-anchor="middle" class="fconect2-s">empujar</text>
 <!-- ST -->
 <rect x="260" y="48" width="44" height="30" rx="12" fill="#3a3d41" stroke="#dcdcaa"/>
 <circle cx="270" cy="48" r="3" fill="#dcdcaa"/>
 <rect x="304" y="58" width="22" height="10" fill="#eeeeee"/>
 <rect x="240" y="56" width="20" height="14" fill="#555"/>
-<text x="285" y="100" text-anchor="middle" class="t">ST</text>
-<text x="285" y="114" text-anchor="middle" class="s">bayoneta</text>
-<text x="285" y="126" text-anchor="middle" class="s">antiguo</text>
+<text x="285" y="100" text-anchor="middle" class="fconect2-t">ST</text>
+<text x="285" y="114" text-anchor="middle" class="fconect2-s">bayoneta</text>
+<text x="285" y="126" text-anchor="middle" class="fconect2-s">antiguo</text>
 <!-- FC -->
 <rect x="370" y="46" width="44" height="34" rx="6" fill="#3a3d41" stroke="#dcdcaa"/>
 <g stroke="#858585"><line x1="378" y1="46" x2="378" y2="80"/><line x1="386" y1="46" x2="386" y2="80"/><line x1="394" y1="46" x2="394" y2="80"/><line x1="402" y1="46" x2="402" y2="80"/></g>
 <rect x="414" y="58" width="20" height="10" fill="#eeeeee"/>
 <rect x="350" y="56" width="20" height="14" fill="#555"/>
-<text x="392" y="100" text-anchor="middle" class="t">FC</text>
-<text x="392" y="114" text-anchor="middle" class="s">rosca</text>
-<text x="392" y="126" text-anchor="middle" class="s">medida</text>
+<text x="392" y="100" text-anchor="middle" class="fconect2-t">FC</text>
+<text x="392" y="114" text-anchor="middle" class="fconect2-s">rosca</text>
+<text x="392" y="126" text-anchor="middle" class="fconect2-s">medida</text>
 <!-- MPO -->
 <rect x="480" y="46" width="60" height="34" rx="3" fill="#3a3d41" stroke="#c586c0"/>
 <rect x="540" y="52" width="12" height="22" fill="#eeeeee"/>
 <g fill="#4fc1ff"><circle cx="546" cy="55" r="1.4"/><circle cx="546" cy="59" r="1.4"/><circle cx="546" cy="63" r="1.4"/><circle cx="546" cy="67" r="1.4"/><circle cx="546" cy="71" r="1.4"/></g>
 <rect x="460" y="54" width="20" height="18" fill="#555"/>
-<text x="512" y="100" text-anchor="middle" class="t">MPO</text>
-<text x="512" y="114" text-anchor="middle" class="s">12-24 fibras</text>
-<text x="512" y="126" text-anchor="middle" class="s">centro datos</text>
+<text x="512" y="100" text-anchor="middle" class="fconect2-t">MPO</text>
+<text x="512" y="114" text-anchor="middle" class="fconect2-s">12-24 fibras</text>
+<text x="512" y="126" text-anchor="middle" class="fconect2-s">centro datos</text>
 <line x1="20" y1="150" x2="580" y2="150" stroke="#3a3d41"/>
 <!-- UPC / APC -->
-<text x="150" y="176" text-anchor="middle" class="t" style="fill:#4fc1ff">UPC · punta plana</text>
+<text x="150" y="176" text-anchor="middle" class="fconect2-t" style="fill:#4fc1ff">UPC · punta plana</text>
 <rect x="80" y="192" width="110" height="30" fill="#eeeeee"/>
 <path d="M 190 192 Q 196 207 190 222" fill="#eeeeee" stroke="#eeeeee"/>
 <line x1="80" y1="207" x2="195" y2="207" stroke="#4fc1ff" stroke-width="2"/>
 <rect x="40" y="188" width="40" height="38" fill="#4fc1ff" fill-opacity="0.6"/>
-<text x="150" y="246" text-anchor="middle" class="s">cuerpo azul (monomodo)</text>
-<text x="150" y="260" text-anchor="middle" class="s">beige/negro o aqua (multimodo)</text>
-<text x="440" y="176" text-anchor="middle" class="t" style="fill:#4ec9b0">APC · punta a 8°</text>
+<text x="150" y="246" text-anchor="middle" class="fconect2-s">cuerpo azul (monomodo)</text>
+<text x="150" y="260" text-anchor="middle" class="fconect2-s">beige/negro o aqua (multimodo)</text>
+<text x="440" y="176" text-anchor="middle" class="fconect2-t" style="fill:#4ec9b0">APC · punta a 8°</text>
 <polygon points="370,192 476,192 480,222 370,222" fill="#eeeeee"/>
 <line x1="370" y1="207" x2="478" y2="207" stroke="#4ec9b0" stroke-width="2"/>
 <rect x="330" y="188" width="40" height="38" fill="#4ec9b0" fill-opacity="0.6"/>
-<text x="500" y="200" class="s">8°</text>
-<text x="440" y="246" text-anchor="middle" class="s">cuerpo verde · solo monomodo</text>
-<text x="440" y="260" text-anchor="middle" class="s">FTTH, televisión por fibra</text>
+<text x="500" y="200" class="fconect2-s">8°</text>
+<text x="440" y="246" text-anchor="middle" class="fconect2-s">cuerpo verde · solo monomodo</text>
+<text x="440" y="260" text-anchor="middle" class="fconect2-s">FTTH, televisión por fibra</text>
 </svg>
 <p class="pie-figura">Dibujos esquemáticos. En blanco, la férula de cerámica con la fibra en el centro.</p>
 </div>
@@ -97,6 +131,32 @@
 <h2>TX y RX: la fibra va en parejas</h2>
 <p>Una fibra normalmente lleva la luz <strong>en un solo sentido</strong>. Por eso un enlace de red usa <strong>dos fibras</strong>: una para transmitir (TX) y otra para recibir (RX). Es la misma idea del cable cruzado de la Unidad 3: <strong>el TX de un extremo tiene que llegar al RX del otro</strong>.</p>
 <p>Los latiguillos dúplex LC vienen marcados <strong>A</strong> y <strong>B</strong>, y están hechos para que la A de un extremo sea la B del otro (<strong>polaridad A-B</strong>). Si montas un enlace y el puerto no enciende, una de las primeras pruebas es <strong>dar la vuelta a la pareja</strong> en uno de los extremos: se abre el clip del dúplex y se intercambian las dos fibras.</p>
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Dos switches unidos por un latiguillo dúplex de dos fibras. La fibra que sale del TX del switch 1 llega al RX del switch 2, y la que sale del TX del switch 2 llega al RX del switch 1: las fibras se cruzan. Debajo, si las dos fibras van rectas, TX llega a TX y el puerto no enciende; solución: dar la vuelta a la pareja en un extremo" style="max-width:100%;height:auto;">
+<style>
+.fconect3-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fconect3-h{font-family:monospace;font-size:12px;font-weight:700}
+.fconect3-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="300" y="18" text-anchor="middle" class="fconect3-h" fill="#4ec9b0">✓ Funciona: TX con RX</text>
+<rect x="20" y="30" width="90" height="60" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="65" y="50" text-anchor="middle" class="fconect3-t">switch 1</text>
+<text x="100" y="68" text-anchor="end" class="fconect3-t" style="fill:#f48771">TX</text><text x="100" y="84" text-anchor="end" class="fconect3-t" style="fill:#4ec9b0">RX</text>
+<rect x="490" y="30" width="90" height="60" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="535" y="50" text-anchor="middle" class="fconect3-t">switch 2</text>
+<text x="500" y="68" class="fconect3-t" style="fill:#f48771">TX</text><text x="500" y="84" class="fconect3-t" style="fill:#4ec9b0">RX</text>
+<path d="M 110 64 C 300 64 300 80 490 80" stroke="#f48771" stroke-width="3" fill="none"/>
+<path d="M 490 64 C 300 64 300 80 110 80" stroke="#4ec9b0" stroke-width="3" fill="none"/>
+<polygon points="480,75 492,80 480,85" fill="#f48771"/><polygon points="120,75 108,80 120,85" fill="#4ec9b0"/>
+<text x="300" y="122" text-anchor="middle" class="fconect3-h" fill="#f48771">✗ No enciende: TX con TX</text>
+<rect x="20" y="132" width="90" height="46" rx="4" fill="#252526" stroke="#858585"/>
+<text x="100" y="150" text-anchor="end" class="fconect3-t" style="fill:#f48771">TX</text><text x="100" y="168" text-anchor="end" class="fconect3-t" style="fill:#4ec9b0">RX</text>
+<rect x="490" y="132" width="90" height="46" rx="4" fill="#252526" stroke="#858585"/>
+<text x="500" y="150" class="fconect3-t" style="fill:#f48771">TX</text><text x="500" y="168" class="fconect3-t" style="fill:#4ec9b0">RX</text>
+<line x1="110" y1="146" x2="490" y2="146" stroke="#f48771" stroke-width="3"/>
+<line x1="110" y1="164" x2="490" y2="164" stroke="#858585" stroke-width="3" stroke-dasharray="6 4"/>
+<text x="300" y="194" text-anchor="middle" class="fconect3-s">Solución: abre el clip y da la vuelta a las dos fibras en un extremo.</text>
+</svg>
+<p class="pie-figura">Lo que uno transmite tiene que entrar por donde el otro recibe.</p>
+</div>
 <div class="nota">La presentación dice que la transmisión es «unidireccional (dos fibras, una para cada sentido)». Es lo habitual, pero no siempre: hay transceptores <strong>BiDi</strong> que usan <strong>una sola fibra</strong> con una longitud de onda para cada sentido. Así funciona la fibra que llega a tu casa (GPON): una única fibra para subir y bajar.</div>
 
 <h2>El enlace de punta a punta</h2>
@@ -104,17 +164,17 @@
 <div class="salida">
 <svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Esquema de un enlace de fibra entre dos edificios. En cada armario: switch con módulo SFP, latiguillo LC hasta el adaptador de la bandeja, pigtail y empalme por fusión con el cable troncal. En el centro, el cable troncal de estructura holgada. Se marcan dos conectores y dos empalmes en el enlace permanente" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fconect4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fconect4-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
 <rect x="10" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
-<text x="95" y="22" text-anchor="middle" class="s">armario edificio A</text>
+<text x="95" y="22" text-anchor="middle" class="fconect4-s">armario edificio A</text>
 <rect x="420" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
-<text x="505" y="22" text-anchor="middle" class="s">armario edificio B</text>
+<text x="505" y="22" text-anchor="middle" class="fconect4-s">armario edificio B</text>
 <rect x="20" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
-<text x="40" y="94" text-anchor="middle" class="s">SFP</text>
+<text x="40" y="94" text-anchor="middle" class="fconect4-s">SFP</text>
 <rect x="540" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
-<text x="560" y="94" text-anchor="middle" class="s">SFP</text>
+<text x="560" y="94" text-anchor="middle" class="fconect4-s">SFP</text>
 <line x1="60" y1="90" x2="100" y2="90" stroke="#dcdcaa" stroke-width="3"/>
 <line x1="500" y1="90" x2="540" y2="90" stroke="#dcdcaa" stroke-width="3"/>
 <rect x="98" y="80" width="10" height="20" fill="#4fc1ff"/>
@@ -124,15 +184,15 @@
 <circle cx="150" cy="90" r="6" fill="#f48771"/>
 <circle cx="450" cy="90" r="6" fill="#f48771"/>
 <line x1="156" y1="90" x2="444" y2="90" stroke="#dcdcaa" stroke-width="5"/>
-<text x="300" y="80" text-anchor="middle" class="t">cable troncal · holgada · OS2</text>
-<text x="80" y="130" text-anchor="middle" class="s">latiguillo</text>
-<text x="520" y="130" text-anchor="middle" class="s">latiguillo</text>
-<text x="128" y="118" text-anchor="middle" class="s">pigtail</text>
-<text x="472" y="118" text-anchor="middle" class="s">pigtail</text>
-<rect x="103" y="160" width="10" height="10" fill="#4fc1ff"/><text x="120" y="169" class="s">conector en el adaptador de la bandeja</text>
-<circle cx="108" cy="190" r="5" fill="#f48771"/><text x="120" y="194" class="s">empalme por fusión en la bandeja</text>
+<text x="300" y="80" text-anchor="middle" class="fconect4-t">cable troncal · holgada · OS2</text>
+<text x="80" y="130" text-anchor="middle" class="fconect4-s">latiguillo</text>
+<text x="520" y="130" text-anchor="middle" class="fconect4-s">latiguillo</text>
+<text x="128" y="118" text-anchor="middle" class="fconect4-s">pigtail</text>
+<text x="472" y="118" text-anchor="middle" class="fconect4-s">pigtail</text>
+<rect x="103" y="160" width="10" height="10" fill="#4fc1ff"/><text x="120" y="169" class="fconect4-s">conector en el adaptador de la bandeja</text>
+<circle cx="108" cy="190" r="5" fill="#f48771"/><text x="120" y="194" class="fconect4-s">empalme por fusión en la bandeja</text>
 <line x1="98" y1="206" x2="502" y2="206" stroke="#4ec9b0"/>
-<text x="300" y="218" text-anchor="middle" class="s" style="fill:#4ec9b0">enlace permanente: de adaptador a adaptador</text>
+<text x="300" y="218" text-anchor="middle" class="fconect4-s" style="fill:#4ec9b0">enlace permanente: de adaptador a adaptador</text>
 </svg>
 <p class="pie-figura">El cable troncal no se toca: se empalma a pigtails y todo lo que se enchufa y desenchufa son latiguillos.</p>
 </div>
@@ -151,19 +211,76 @@
 <tr><td>Coste</td><td>Máquina cara; cada empalme, barato</td><td>Sin máquina; cada pieza, más cara</td></tr>
 <tr><td>Uso</td><td>Instalaciones profesionales y definitivas</td><td>Reparaciones rápidas y urgencias</td></tr>
 </table>
-<p>Pasos de un empalme por fusión, para que sepas lo que hace el técnico cuando lo veas:</p>
-<ol>
-<li><strong>Meter el manguito protector</strong> en una de las fibras (si se olvida, hay que cortar y empezar).</li>
-<li><strong>Pelar</strong> el recubrimiento hasta dejar el vidrio de 125 µm.</li>
-<li><strong>Limpiar</strong> el vidrio con toallita sin pelusa y <strong>alcohol isopropílico</strong>.</li>
-<li><strong>Cortar</strong> con la <strong>cortadora de precisión</strong> (<em>cleaver</em>): deja la punta a 90° y lisa como un espejo.</li>
-<li><strong>Fusionar</strong>: la máquina alinea, suelda y estima la pérdida del empalme.</li>
-<li><strong>Proteger</strong>: se desliza el manguito sobre la soldadura y se calienta para que encoja.</li>
-<li>Guardar el empalme en la <strong>bandeja</strong> con la fibra sobrante enrollada en curvas amplias.</li>
-</ol>
+<p>Así hace el técnico un empalme por fusión, paso a paso:</p>
+<div class="salida">
+<svg viewBox="0 0 600 300" width="100%" role="img" aria-label="Seis viñetas del empalme por fusión. 1: meter el manguito en una fibra. 2: pelar el recubrimiento hasta el vidrio. 3: limpiar con alcohol isopropílico. 4: cortar recto con la cortadora de precisión. 5: la fusionadora alinea las dos puntas y las suelda con una chispa. 6: el manguito se pone encima de la soldadura, se calienta y se guarda en la bandeja" style="max-width:100%;height:auto;">
+<style>
+.fconect5-n{font-family:monospace;font-size:14px;font-weight:700;fill:#4fc1ff}
+.fconect5-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fconect5-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g><rect x="10" y="10" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="22" y="30" class="fconect5-n">1</text>
+<line x1="30" y1="80" x2="180" y2="80" stroke="#c586c0" stroke-width="4"/><rect x="70" y="72" width="50" height="16" rx="3" fill="none" stroke="#dcdcaa" stroke-width="2"/>
+<text x="103" y="120" text-anchor="middle" class="fconect5-t">mete el manguito</text><text x="103" y="133" text-anchor="middle" class="fconect5-s">¡antes de nada!</text></g>
+<g><rect x="207" y="10" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="219" y="30" class="fconect5-n">2</text>
+<line x1="225" y1="80" x2="300" y2="80" stroke="#c586c0" stroke-width="4"/><line x1="300" y1="80" x2="375" y2="80" stroke="#eeeeee" stroke-width="1.5"/>
+<path d="M 290 60 L 310 70 M 290 100 L 310 90" stroke="#858585" stroke-width="3"/>
+<text x="300" y="120" text-anchor="middle" class="fconect5-t">pela hasta el vidrio</text></g>
+<g><rect x="404" y="10" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="416" y="30" class="fconect5-n">3</text>
+<line x1="420" y1="80" x2="575" y2="80" stroke="#eeeeee" stroke-width="1.5"/>
+<rect x="480" y="62" width="40" height="30" rx="4" fill="#eeeeee" fill-opacity="0.2" stroke="#d4d4d4"/>
+<text x="500" y="56" text-anchor="middle" class="fconect5-s">alcohol</text>
+<text x="497" y="120" text-anchor="middle" class="fconect5-t">limpia con alcohol</text><text x="497" y="133" text-anchor="middle" class="fconect5-s">isopropílico</text></g>
+<g><rect x="10" y="160" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="22" y="180" class="fconect5-n">4</text>
+<line x1="30" y1="230" x2="120" y2="230" stroke="#eeeeee" stroke-width="1.5"/><line x1="126" y1="230" x2="160" y2="230" stroke="#eeeeee" stroke-width="1.5" stroke-dasharray="2 2"/>
+<line x1="123" y1="200" x2="123" y2="255" stroke="#f48771" stroke-width="3"/>
+<text x="103" y="270" text-anchor="middle" class="fconect5-t">corta recto</text><text x="103" y="283" text-anchor="middle" class="fconect5-s">con la cortadora (cleaver)</text></g>
+<g><rect x="207" y="160" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="219" y="180" class="fconect5-n">5</text>
+<line x1="225" y1="230" x2="296" y2="230" stroke="#eeeeee" stroke-width="1.5"/><line x1="304" y1="230" x2="375" y2="230" stroke="#eeeeee" stroke-width="1.5"/>
+<polygon points="300,205 294,222 302,222 296,240 310,216 302,216 308,205" fill="#dcdcaa"/>
+<text x="300" y="270" text-anchor="middle" class="fconect5-t">la máquina las suelda</text><text x="300" y="283" text-anchor="middle" class="fconect5-s">con una chispa</text></g>
+<g><rect x="404" y="160" width="186" height="130" rx="5" fill="#252526" stroke="#3a3d41"/><text x="416" y="180" class="fconect5-n">6</text>
+<line x1="420" y1="230" x2="575" y2="230" stroke="#c586c0" stroke-width="4"/><rect x="472" y="220" width="50" height="20" rx="4" fill="#dcdcaa" fill-opacity="0.5" stroke="#dcdcaa" stroke-width="2"/>
+<text x="497" y="270" text-anchor="middle" class="fconect5-t">manguito encima</text><text x="497" y="283" text-anchor="middle" class="fconect5-s">se calienta y a la bandeja</text></g>
+</svg>
+<p class="pie-figura">Los seis pasos de un empalme por fusión.</p>
+</div>
 <p>También existen <strong>conectores de campo</strong> (prepulidos), que se montan en la punta de una fibra sin fusionadora. Son cómodos pero pierden más que un pigtail empalmado.</p>
 
 <h2>La electrónica: transceptores y conversores</h2>
+<div class="salida">
+<svg viewBox="0 0 600 190" width="100%" role="img" aria-label="Tres aparatos. Un switch con cuatro huecos a la derecha y un módulo SFP que se mete en uno de ellos, con el latiguillo LC dúplex enchufado detrás. Un conversor de medios: cajita con un puerto RJ-45 de cobre a un lado y un puerto de fibra al otro. La ONT de casa con la fibra verde entrando y cables de red saliendo" style="max-width:100%;height:auto;">
+<style>
+.fconect6-t{font-family:monospace;font-size:11px;font-weight:700;fill:#d4d4d4}
+.fconect6-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="10" y="40" width="230" height="46" rx="3" fill="#252526" stroke="#858585"/>
+<g fill="#1e1e1e" stroke="#858585"><rect x="20" y="52" width="16" height="12"/><rect x="40" y="52" width="16" height="12"/><rect x="60" y="52" width="16" height="12"/><rect x="80" y="52" width="16" height="12"/><rect x="20" y="68" width="16" height="12"/><rect x="40" y="68" width="16" height="12"/><rect x="60" y="68" width="16" height="12"/><rect x="80" y="68" width="16" height="12"/></g>
+<g fill="#1e1e1e" stroke="#4fc1ff"><rect x="150" y="54" width="20" height="22"/><rect x="175" y="54" width="20" height="22"/><rect x="200" y="54" width="20" height="22"/></g>
+<rect x="180" y="100" width="26" height="50" rx="2" fill="#8a8a8a" stroke="#d4d4d4"/>
+<rect x="185" y="140" width="6" height="8" fill="#1e1e1e"/><rect x="195" y="140" width="6" height="8" fill="#1e1e1e"/>
+<path d="M 193 96 L 193 80" stroke="#4fc1ff" stroke-width="2" stroke-dasharray="3 2"/><polygon points="188,84 193,76 198,84" fill="#4fc1ff"/>
+<line x1="188" y1="150" x2="188" y2="176" stroke="#3ac8c8" stroke-width="3"/><line x1="198" y1="150" x2="198" y2="176" stroke="#3ac8c8" stroke-width="3"/>
+<text x="125" y="26" text-anchor="middle" class="fconect6-t">Módulo SFP</text>
+<text x="58" y="100" text-anchor="middle" class="fconect6-s">cobre RJ-45</text>
+<text x="100" y="134" text-anchor="middle" class="fconect6-s">el módulo entra</text><text x="100" y="146" text-anchor="middle" class="fconect6-s">en el hueco</text>
+<text x="206" y="186" class="fconect6-s">latiguillo LC</text>
+<rect x="270" y="60" width="130" height="50" rx="6" fill="#252526" stroke="#858585"/>
+<rect x="280" y="74" width="22" height="18" fill="#1e1e1e" stroke="#d7ba7d"/><rect x="368" y="74" width="22" height="18" fill="#1e1e1e" stroke="#4fc1ff"/>
+<line x1="255" y1="83" x2="280" y2="83" stroke="#d7ba7d" stroke-width="4"/><line x1="390" y1="83" x2="415" y2="83" stroke="#f0d000" stroke-width="4"/>
+<text x="335" y="26" text-anchor="middle" class="fconect6-t">Conversor de medios</text>
+<text x="291" y="126" text-anchor="middle" class="fconect6-s">cobre</text><text x="379" y="126" text-anchor="middle" class="fconect6-s">fibra</text>
+<text x="335" y="150" text-anchor="middle" class="fconect6-s">cobre ↔ luz</text>
+<rect x="450" y="50" width="120" height="70" rx="8" fill="#252526" stroke="#858585"/>
+<circle cx="470" cy="66" r="3" fill="#4ec9b0"/><circle cx="482" cy="66" r="3" fill="#4ec9b0"/>
+<rect x="455" y="96" width="16" height="14" fill="#4ec9b0" stroke="#1e1e1e"/>
+<line x1="463" y1="110" x2="463" y2="170" stroke="#f0d000" stroke-width="3"/>
+<g fill="#1e1e1e" stroke="#858585"><rect x="500" y="96" width="14" height="12"/><rect x="518" y="96" width="14" height="12"/><rect x="536" y="96" width="14" height="12"/></g>
+<text x="510" y="26" text-anchor="middle" class="fconect6-t">ONT (casa)</text>
+<text x="520" y="160" text-anchor="middle" class="fconect6-s">fibra con</text><text x="520" y="172" text-anchor="middle" class="fconect6-s">SC/APC verde</text>
+</svg>
+<p class="pie-figura">Los aparatos que convierten la luz en señal para la red de cobre.</p>
+</div>
 <ul>
 <li><strong>Transceptor SFP</strong>: un módulo que se enchufa en un hueco del switch y convierte la señal eléctrica en luz y al revés. Se cambia <strong>en caliente</strong>, sin apagar. <strong>SFP</strong> = 1 Gbps, <strong>SFP+</strong> = 10 Gbps, QSFP = 40 Gbps o más. Cada módulo es para un tipo de fibra y una distancia (SX, LX, SR, LR…): lo pone la etiqueta y, a menudo, el color de la palanca.</li>
 <li><strong>Conversor de medios</strong> (<em>media converter</em>): una cajita con un puerto RJ-45 y otro de fibra. Sirve para llevar una red de cobre por fibra cuando el switch no tiene huecos SFP.</li>
@@ -172,6 +289,41 @@
 
 <h2>La limpieza: el fallo número uno</h2>
 <p>La mayoría de enlaces de fibra que fallan no tienen la fibra rota: tienen el <strong>conector sucio</strong>. Una mota de polvo de pocas micras tapa la mitad de un núcleo de 9 µm, y la grasa de un dedo es peor. Además, al enchufar un conector sucio, la suciedad raya la férula del otro.</p>
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Cómo se limpia un conector. Sí: mirar con microscopio, limpiar con el limpiador de un clic o una toallita con alcohol isopropílico, y volver a mirar. No: tocar con el dedo, soplar, frotar con la camiseta" style="max-width:100%;height:auto;">
+<style>
+.fconect7-h{font-family:monospace;font-size:12px;font-weight:700}
+.fconect7-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fconect7-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="150" y="20" text-anchor="middle" class="fconect7-h" fill="#4ec9b0">✓ ASÍ</text>
+<g>
+<circle cx="50" cy="70" r="30" fill="#1e3a30" stroke="#4ec9b0"/><circle cx="50" cy="70" r="14" fill="none" stroke="#d4d4d4" stroke-width="2"/><circle cx="50" cy="70" r="3" fill="#4fc1ff"/>
+<text x="50" y="120" text-anchor="middle" class="fconect7-t">1 · mira</text><text x="50" y="134" text-anchor="middle" class="fconect7-s">microscopio</text>
+<text x="100" y="74" text-anchor="middle" class="fconect7-t">→</text>
+<rect x="128" y="45" width="44" height="50" rx="6" fill="#1e3a30" stroke="#4ec9b0"/><rect x="143" y="36" width="14" height="10" fill="#4ec9b0"/>
+<text x="150" y="120" text-anchor="middle" class="fconect7-t">2 · limpia</text><text x="150" y="134" text-anchor="middle" class="fconect7-s">clic o</text><text x="150" y="146" text-anchor="middle" class="fconect7-s">alcohol</text>
+<text x="200" y="74" text-anchor="middle" class="fconect7-t">→</text>
+<circle cx="250" cy="70" r="30" fill="#1e3a30" stroke="#4ec9b0"/><circle cx="250" cy="70" r="14" fill="none" stroke="#d4d4d4" stroke-width="2"/><circle cx="250" cy="70" r="3" fill="#4fc1ff"/>
+<text x="258" y="120" text-anchor="middle" class="fconect7-t">3 · mira</text><text x="258" y="134" text-anchor="middle" class="fconect7-s">otra vez</text>
+</g>
+<line x1="310" y1="20" x2="310" y2="170" stroke="#3a3d41"/>
+<text x="455" y="20" text-anchor="middle" class="fconect7-h" fill="#f48771">✗ NUNCA</text>
+<g>
+<rect x="340" y="42" width="60" height="56" rx="6" fill="#3a2020" stroke="#f48771"/>
+<ellipse cx="370" cy="70" rx="12" ry="18" fill="none" stroke="#d4d4d4" stroke-width="2"/><path d="M 362 62 Q 370 58 378 62 M 362 70 Q 370 66 378 70 M 362 78 Q 370 74 378 78" stroke="#858585" fill="none"/>
+<text x="370" y="120" text-anchor="middle" class="fconect7-t">el dedo</text><text x="370" y="134" text-anchor="middle" class="fconect7-s">grasa</text>
+<rect x="425" y="42" width="60" height="56" rx="6" fill="#3a2020" stroke="#f48771"/>
+<path d="M 440 70 L 470 70 M 440 62 L 466 58 M 440 78 L 466 82" stroke="#d4d4d4" stroke-width="2"/>
+<text x="455" y="120" text-anchor="middle" class="fconect7-t">soplar</text><text x="455" y="134" text-anchor="middle" class="fconect7-s">saliva</text>
+<rect x="510" y="42" width="60" height="56" rx="6" fill="#3a2020" stroke="#f48771"/>
+<path d="M 522 55 L 535 50 L 545 56 L 555 50 L 568 55 L 562 66 L 556 64 L 556 90 L 534 90 L 534 64 L 528 66 Z" fill="none" stroke="#d4d4d4" stroke-width="2"/>
+<text x="540" y="120" text-anchor="middle" class="fconect7-t">la camiseta</text><text x="540" y="134" text-anchor="middle" class="fconect7-s">pelusa</text>
+</g>
+<text x="300" y="186" text-anchor="middle" class="fconect7-s">Y los tapones, siempre puestos.</text>
+</svg>
+<p class="pie-figura">Mirar, limpiar, volver a mirar. Así se evita el fallo número uno.</p>
+</div>
 <ul>
 <li><strong>Inspeccionar antes de conectar</strong>, con microscopio de fibra (nunca con el ojo).</li>
 <li>Limpiar con un <strong>limpiador de un clic</strong> (bolígrafo de limpieza) o con toallita sin pelusa y alcohol isopropílico, y volver a inspeccionar.</li>
@@ -190,7 +342,7 @@
 <li>¿Por qué un enlace de fibra suele usar dos fibras? ¿Qué harías si el puerto no enciende al conectar un latiguillo dúplex?</li>
 <li>Dibuja el esquema de un enlace entre dos armarios y nombra: SFP, latiguillo, bandeja, pigtail, empalme y cable troncal.</li>
 <li>Compara el empalme por fusión y el mecánico.</li>
-<li>Escribe los pasos de un empalme por fusión.</li>
+<li>Dibuja las seis viñetas del empalme por fusión con una frase cada una.</li>
 <li>¿Qué es un transceptor SFP? ¿Y un conversor de medios?</li>
 <li>¿Cuál es la causa más frecuente de fallo en un enlace de fibra y cómo se evita?</li>
 </ol>

@@ -2,7 +2,7 @@
   "id": "inst-u4-repaso",
   "titulo": "Sesión 6 — Repaso y banco de preguntas del examen",
   "fecha": "",
-  "descripcion": "Toda la unidad de fibra óptica en una página, el banco completo de preguntas del examen y los cuatro generadores (tipo de fibra, conectores, pérdidas y margen) para entrenar.",
+  "descripcion": "Toda la unidad de fibra óptica en una página con su chuleta visual, el banco completo de preguntas del examen y los generadores (tipo de fibra, conectores, metros a km, pérdidas y margen) para entrenar.",
   "materiales": [],
   "actividades": [
     {
@@ -16,6 +16,12 @@
       "titulo": "¿Qué conector es?",
       "generador": "fibra-conector",
       "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Metros a kilómetros",
+      "generador": "metros-a-km",
+      "n": 6
     },
     {
       "tipo": "generador",
@@ -35,62 +41,122 @@
       "preguntas": [
         {
           "pregunta": "La luz se mantiene dentro del núcleo porque…",
-          "opciones": ["La cubierta es un espejo", "El núcleo tiene mayor índice de refracción que el revestimiento", "La aramida la refleja", "Viaja en línea recta siempre"],
+          "opciones": [
+            "La cubierta es un espejo",
+            "El núcleo tiene mayor índice de refracción que el revestimiento",
+            "La aramida la refleja",
+            "Viaja en línea recta siempre"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Cubierta amarilla en un latiguillo de fibra:",
-          "opciones": ["Multimodo OM1", "Multimodo OM3", "Monomodo", "Fibra de plástico"],
+          "opciones": [
+            "Multimodo OM1",
+            "Multimodo OM3",
+            "Monomodo",
+            "Fibra de plástico"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "La dispersión modal limita sobre todo a…",
-          "opciones": ["La fibra monomodo", "La fibra multimodo", "El cable coaxial", "Los conectores APC"],
+          "opciones": [
+            "La fibra monomodo",
+            "La fibra multimodo",
+            "El cable coaxial",
+            "Los conectores APC"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "1000BASE-LX usa…",
-          "opciones": ["Multimodo a 850 nm", "Monomodo a 1310 nm", "Par trenzado Cat 6", "Wifi"],
+          "opciones": [
+            "Multimodo a 850 nm",
+            "Monomodo a 1310 nm",
+            "Par trenzado Cat 6",
+            "Wifi"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Conector cuadrado de cuerpo verde:",
-          "opciones": ["LC/UPC", "SC/APC", "ST", "SC/UPC multimodo"],
+          "opciones": [
+            "LC/UPC",
+            "SC/APC",
+            "ST",
+            "SC/UPC multimodo"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Qué conector es pequeño, con pestaña, y va en los módulos SFP?",
-          "opciones": ["SC", "ST", "LC", "FC"],
+          "opciones": [
+            "SC",
+            "ST",
+            "LC",
+            "FC"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "Pérdida de un enlace monomodo de 4 km, 2 conexiones y 2 empalmes:",
-          "opciones": ["2,1 dB", "4,1 dB", "3,5 dB", "15,1 dB"],
+          "opciones": [
+            "2,1 dB",
+            "4,1 dB",
+            "3,5 dB",
+            "15,1 dB"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Pérdida de un enlace multimodo de 200 m, 2 conexiones y sin empalmes:",
-          "opciones": ["2,2 dB", "701,5 dB", "8,5 dB", "1,5 dB"],
+          "opciones": [
+            "2,2 dB",
+            "701,5 dB",
+            "8,5 dB",
+            "1,5 dB"
+          ],
           "correcta": 0
         },
         {
           "pregunta": "El módulo aguanta 6 dB y el enlace pierde 4,5 dB. El enlace…",
-          "opciones": ["No funciona", "Funciona pero con poco margen (1,5 dB)", "Tiene un margen muy bueno", "Pierde 10,5 dB"],
+          "opciones": [
+            "No funciona",
+            "Funciona pero con poco margen (1,5 dB)",
+            "Tiene un margen muy bueno",
+            "Pierde 10,5 dB"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "Aparato que localiza a qué distancia está una rotura:",
-          "opciones": ["Microscopio", "OTDR", "Crimpadora", "Conversor de medios"],
+          "opciones": [
+            "Microscopio",
+            "OTDR",
+            "Crimpadora",
+            "Conversor de medios"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Qué empalme se hace con un arco eléctrico?",
-          "opciones": ["Mecánico", "Por fusión", "Con conector de campo", "Con adaptador"],
+          "opciones": [
+            "Mecánico",
+            "Por fusión",
+            "Con conector de campo",
+            "Con adaptador"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Qué NO se debe hacer nunca con un conector de fibra?",
-          "opciones": ["Ponerle el tapón", "Inspeccionarlo con microscopio", "Mirar la punta con el ojo", "Limpiarlo con limpiador de un clic"],
+          "opciones": [
+            "Ponerle el tapón",
+            "Inspeccionarlo con microscopio",
+            "Mirar la punta con el ojo",
+            "Limpiarlo con limpiador de un clic"
+          ],
           "correcta": 2
         }
       ]

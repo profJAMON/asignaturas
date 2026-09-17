@@ -1,129 +1,361 @@
 <h2>¿Va a funcionar este enlace?</h2>
-<p>Con el cobre, la pregunta era sencilla: si el cable mide menos de 100 m y el comprobador enciende las ocho luces, funciona. Con la fibra no hay una distancia mágica: cada metro de cable, cada conector y cada empalme <strong>se comen un poco de luz</strong>, y lo que hay que saber es si, después de todo el camino, llega la suficiente al otro lado.</p>
-<p>Eso se calcula <strong>antes</strong> de instalar (el <strong>presupuesto de pérdidas</strong>) y se comprueba <strong>después</strong> con aparatos de medida. Las dos cosas se hacen en esta sesión.</p>
+<p>Con el cobre la pregunta era fácil: si el cable mide menos de 100 m y el comprobador enciende las ocho luces, funciona. Con la fibra no hay una distancia mágica. Lo que hay que saber es si <strong>llega luz suficiente</strong> al otro lado, porque por el camino se va perdiendo un poco en cada sitio:</p>
 
-<h2>El decibelio sin fórmulas</h2>
-<p>Las pérdidas de luz se miden en <strong>decibelios (dB)</strong>. No vas a calcular logaritmos; te basta con tres ideas:</p>
-<table>
-<tr><th>Pérdida</th><th>Luz que queda</th></tr>
-<tr><td><strong>3 dB</strong></td><td>La <strong>mitad</strong></td></tr>
-<tr><td><strong>10 dB</strong></td><td>La <strong>décima parte</strong></td></tr>
-<tr><td><strong>20 dB</strong></td><td>La <strong>centésima parte</strong></td></tr>
-</table>
-<p>Y la más útil: <strong>las pérdidas en dB se suman</strong>. Si el cable pierde 1 dB, los conectores 1,5 dB y los empalmes 0,6 dB, el enlace pierde 3,1 dB. Así de fácil.</p>
-
-<h2>Cuánto pierde cada cosa</h2>
-<p>Para calcular se usan los valores <strong>máximos</strong> que permite la norma (el peor caso). Un enlace bien instalado pierde menos, pero si el cálculo sale bien con el peor caso, vas sobre seguro.</p>
-<table>
-<tr><th>Elemento</th><th>Pérdida para calcular</th><th>Valor real típico</th></tr>
-<tr><td>Fibra <strong>multimodo</strong> a 850 nm</td><td><strong>3,5 dB por km</strong></td><td>unos 3 dB/km</td></tr>
-<tr><td>Fibra <strong>monomodo</strong> a 1310 nm</td><td><strong>0,5 dB por km</strong></td><td>unos 0,35 dB/km</td></tr>
-<tr><td>Cada <strong>conexión</strong> (dos conectores enfrentados en un adaptador)</td><td><strong>0,75 dB</strong></td><td>0,2-0,5 dB si está limpio</td></tr>
-<tr><td>Cada <strong>empalme</strong></td><td><strong>0,3 dB</strong></td><td>0,05-0,1 dB por fusión</td></tr>
-</table>
-<div class="nota">Los metros hay que pasarlos a <strong>kilómetros</strong> antes de multiplicar: 400 m = 0,4 km. Es el error más habitual en este cálculo, y hace que salgan pérdidas mil veces más grandes.</div>
-
-<h2>El presupuesto de pérdidas</h2>
 <div class="salida">
-<svg viewBox="0 0 600 130" width="100%" role="img" aria-label="Fórmula del presupuesto de pérdidas: pérdida total igual a kilómetros por atenuación, más número de conexiones por 0,75, más número de empalmes por 0,3" style="max-width:100%;height:auto;">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Un enlace de fibra de izquierda a derecha: módulo que emite, conexión, cable, empalme, cable, empalme, conexión y módulo que recibe. Debajo, una barra de luz que empieza llena y baja un escalón en cada conexión, un poco a lo largo del cable y otro escalón pequeño en cada empalme, hasta llegar al final mucho más baja" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:13px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fperdid1-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fperdid1-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
-<rect x="10" y="20" width="580" height="60" rx="5" fill="#252526" stroke="#4fc1ff"/>
-<text x="300" y="56" text-anchor="middle" class="t"><tspan fill="#4fc1ff" font-weight="700">Pérdida</tspan> = <tspan fill="#dcdcaa">km × dB/km</tspan> + <tspan fill="#c586c0">conexiones × 0,75</tspan> + <tspan fill="#f48771">empalmes × 0,3</tspan></text>
-<text x="175" y="104" text-anchor="middle" class="s" style="fill:#dcdcaa">el cable</text>
-<text x="360" y="104" text-anchor="middle" class="s" style="fill:#c586c0">los adaptadores</text>
-<text x="510" y="104" text-anchor="middle" class="s" style="fill:#f48771">las soldaduras</text>
-<text x="300" y="124" text-anchor="middle" class="s">multimodo 3,5 dB/km · monomodo 0,5 dB/km</text>
+<rect x="10" y="30" width="44" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="32" y="52" text-anchor="middle" class="fperdid1-s">emite</text>
+<rect x="546" y="30" width="44" height="36" rx="4" fill="#252526" stroke="#4fc1ff"/><text x="568" y="52" text-anchor="middle" class="fperdid1-s">recibe</text>
+<line x1="54" y1="48" x2="546" y2="48" stroke="#dcdcaa" stroke-width="4"/>
+<rect x="100" y="38" width="10" height="20" fill="#4fc1ff"/>
+<circle cx="220" cy="48" r="6" fill="#f48771"/>
+<circle cx="380" cy="48" r="6" fill="#f48771"/>
+<rect x="490" y="38" width="10" height="20" fill="#4fc1ff"/>
+<text x="105" y="24" text-anchor="middle" class="fperdid1-s">conexión</text>
+<text x="165" y="24" text-anchor="middle" class="fperdid1-s">cable</text>
+<text x="220" y="24" text-anchor="middle" class="fperdid1-s">empalme</text>
+<text x="300" y="24" text-anchor="middle" class="fperdid1-s">cable</text>
+<text x="380" y="24" text-anchor="middle" class="fperdid1-s">empalme</text>
+<text x="440" y="24" text-anchor="middle" class="fperdid1-s">cable</text>
+<text x="495" y="24" text-anchor="middle" class="fperdid1-s">conexión</text>
+<text x="10" y="92" class="fperdid1-t">Luz que queda:</text>
+<rect x="54" y="100" width="492" height="90" fill="#1e1e1e" stroke="#3a3d41"/>
+<polygon points="54,190 54,104 105,104 105,122 220,130 220,136 380,144 380,150 495,158 495,176 546,176 546,190" fill="#dcdcaa" fill-opacity="0.35" stroke="#dcdcaa"/>
+<g font-family="monospace" font-size="10" font-weight="700" fill="#f48771" text-anchor="middle">
+<text x="105" y="80">−0,75</text><text x="220" y="80">−0,3</text><text x="380" y="80">−0,3</text><text x="495" y="80">−0,75</text>
+</g>
+<text x="58" y="208" class="fperdid1-t" style="fill:#dcdcaa">sale llena</text>
+<text x="300" y="208" text-anchor="middle" class="fperdid1-s">entre medias, el cable baja poco a poco</text>
+<text x="545" y="208" text-anchor="end" class="fperdid1-t" style="fill:#dcdcaa">llega esto</text>
+</svg>
+<p class="pie-figura">Cada conexión, cada empalme y cada metro de cable se comen un poco de luz.</p>
+</div>
+
+<p>Por eso se hace un cálculo <strong>antes</strong> de instalar (el <strong>presupuesto de pérdidas</strong>) y se comprueba <strong>después</strong> con aparatos. Las dos cosas se ven en esta sesión.</p>
+
+<h2>El decibelio, sin fórmulas</h2>
+<p>La luz que se pierde se mide en <strong>decibelios (dB)</strong>. No vas a hacer ninguna cuenta rara con ellos; te basta con este dibujo:</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 210" width="100%" role="img" aria-label="Cuatro vasos de luz. Sin pérdida: vaso lleno. Perder 3 dB: medio vaso. Perder 6 dB: un cuarto de vaso. Perder 10 dB: solo una décima parte del vaso" style="max-width:100%;height:auto;">
+<style>
+.fperdid2-v{font-family:monospace;font-size:14px;font-weight:700}
+.fperdid2-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fperdid2-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g>
+<path d="M 50 30 L 60 150 L 110 150 L 120 30" fill="none" stroke="#d4d4d4" stroke-width="2"/>
+<path d="M 51 42 L 60 150 L 110 150 L 119 42 Z" fill="#dcdcaa" fill-opacity="0.8"/>
+<text x="85" y="176" text-anchor="middle" class="fperdid2-v" fill="#d4d4d4">0 dB</text><text x="85" y="194" text-anchor="middle" class="fperdid2-s">toda la luz</text>
+</g>
+<g>
+<path d="M 200 30 L 210 150 L 260 150 L 270 30" fill="none" stroke="#d4d4d4" stroke-width="2"/>
+<path d="M 205 90 L 210 150 L 260 150 L 265 90 Z" fill="#dcdcaa" fill-opacity="0.8"/>
+<text x="235" y="176" text-anchor="middle" class="fperdid2-v" fill="#dcdcaa">−3 dB</text><text x="235" y="194" text-anchor="middle" class="fperdid2-s">la mitad</text>
+</g>
+<g>
+<path d="M 350 30 L 360 150 L 410 150 L 420 30" fill="none" stroke="#d4d4d4" stroke-width="2"/>
+<path d="M 357 120 L 360 150 L 410 150 L 413 120 Z" fill="#dcdcaa" fill-opacity="0.8"/>
+<text x="385" y="176" text-anchor="middle" class="fperdid2-v" fill="#f0a060">−6 dB</text><text x="385" y="194" text-anchor="middle" class="fperdid2-s">un cuarto</text>
+</g>
+<g>
+<path d="M 500 30 L 510 150 L 560 150 L 570 30" fill="none" stroke="#d4d4d4" stroke-width="2"/>
+<path d="M 509 138 L 510 150 L 560 150 L 561 138 Z" fill="#dcdcaa" fill-opacity="0.8"/>
+<text x="535" y="176" text-anchor="middle" class="fperdid2-v" fill="#f48771">−10 dB</text><text x="535" y="194" text-anchor="middle" class="fperdid2-s">una décima parte</text>
+</g>
+<text x="160" y="95" text-anchor="middle" class="fperdid2-t">→</text><text x="310" y="95" text-anchor="middle" class="fperdid2-t">→</text><text x="460" y="95" text-anchor="middle" class="fperdid2-t">→</text>
+</svg>
+<p class="pie-figura">Cada 3 dB que pierdes, te quedas con la mitad de la luz.</p>
+</div>
+
+<p>Y lo más importante: <strong>las pérdidas en dB se suman</strong>, como el dinero de una compra. Si el cable se come 1 dB, las conexiones 1,5 dB y los empalmes 0,6 dB, en total se pierden 1 + 1,5 + 0,6 = <strong>3,1 dB</strong>.</p>
+
+<h2>Lo que «cuesta» cada cosa</h2>
+<p>Piénsalo como una tienda: cada elemento del enlace tiene un precio en dB. Estos son los precios que usamos para calcular (son los máximos que permite la norma, así vamos sobre seguro):</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Cuatro etiquetas de precio. Cable multimodo: 3,5 dB por cada kilómetro. Cable monomodo: 0,5 dB por cada kilómetro. Cada conexión: 0,75 dB. Cada empalme: 0,3 dB" style="max-width:100%;height:auto;">
+<style>
+.fperdid3-p{font-family:monospace;font-size:22px;font-weight:700}
+.fperdid3-t{font-family:monospace;font-size:11px;font-weight:700;fill:#d4d4d4}
+.fperdid3-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g>
+<path d="M 10 40 L 130 40 L 145 100 L 130 160 L 10 160 Z" fill="#252526" stroke="#3ac8c8" stroke-width="2"/><circle cx="128" cy="100" r="5" fill="#1e1e1e" stroke="#3ac8c8"/>
+<rect x="22" y="54" width="90" height="8" rx="4" fill="#3ac8c8"/>
+<text x="68" y="84" text-anchor="middle" class="fperdid3-t">multimodo</text>
+<text x="66" y="118" text-anchor="middle" class="fperdid3-p" fill="#3ac8c8">3,5</text>
+<text x="66" y="136" text-anchor="middle" class="fperdid3-s">dB por cada</text><text x="66" y="148" text-anchor="middle" class="fperdid3-s">kilómetro</text>
+</g>
+<g>
+<path d="M 160 40 L 280 40 L 295 100 L 280 160 L 160 160 Z" fill="#252526" stroke="#f0d000" stroke-width="2"/><circle cx="278" cy="100" r="5" fill="#1e1e1e" stroke="#f0d000"/>
+<rect x="172" y="54" width="90" height="8" rx="4" fill="#f0d000"/>
+<text x="218" y="84" text-anchor="middle" class="fperdid3-t">monomodo</text>
+<text x="216" y="118" text-anchor="middle" class="fperdid3-p" fill="#f0d000">0,5</text>
+<text x="216" y="136" text-anchor="middle" class="fperdid3-s">dB por cada</text><text x="216" y="148" text-anchor="middle" class="fperdid3-s">kilómetro</text>
+</g>
+<g>
+<path d="M 310 40 L 430 40 L 445 100 L 430 160 L 310 160 Z" fill="#252526" stroke="#4fc1ff" stroke-width="2"/><circle cx="428" cy="100" r="5" fill="#1e1e1e" stroke="#4fc1ff"/>
+<rect x="358" y="50" width="14" height="16" fill="#4fc1ff"/>
+<text x="366" y="84" text-anchor="middle" class="fperdid3-t">conexión</text>
+<text x="366" y="118" text-anchor="middle" class="fperdid3-p" fill="#4fc1ff">0,75</text>
+<text x="366" y="136" text-anchor="middle" class="fperdid3-s">dB cada</text><text x="366" y="148" text-anchor="middle" class="fperdid3-s">una</text>
+</g>
+<g>
+<path d="M 460 40 L 580 40 L 595 100 L 580 160 L 460 160 Z" fill="#252526" stroke="#f48771" stroke-width="2"/><circle cx="578" cy="100" r="5" fill="#1e1e1e" stroke="#f48771"/>
+<circle cx="516" cy="58" r="7" fill="#f48771"/>
+<text x="516" y="84" text-anchor="middle" class="fperdid3-t">empalme</text>
+<text x="516" y="118" text-anchor="middle" class="fperdid3-p" fill="#f48771">0,3</text>
+<text x="516" y="136" text-anchor="middle" class="fperdid3-s">dB cada</text><text x="516" y="148" text-anchor="middle" class="fperdid3-s">uno</text>
+</g>
+<text x="300" y="188" text-anchor="middle" class="fperdid3-s">Fíjate: una sola conexión «cuesta» más que un kilómetro de monomodo.</text>
+</svg>
+<p class="pie-figura">Estos cuatro números son los únicos que necesitas. Los tienes también en la hoja de práctica.</p>
+</div>
+
+<details>
+<summary>Para saber más: ¿y lo que se pierde de verdad?</summary>
+<p>Un enlace bien hecho pierde menos que el cálculo: la monomodo real, unos 0,35 dB/km; la multimodo, unos 3 dB/km; una conexión limpia, 0,2-0,5 dB; un empalme por fusión, 0,05-0,1 dB. Calculamos con el peor caso para que, si sale bien en el papel, salga bien seguro en la realidad.</p>
+</details>
+
+<h3>Antes de multiplicar: los metros, a kilómetros</h3>
+<p>Los precios del cable son <strong>por kilómetro</strong>. Si te dan la longitud en metros, primero pásala a km: <strong>corre la coma tres sitios a la izquierda</strong>.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 150" width="100%" role="img" aria-label="Una regla de 0 a 1000 metros, que es lo mismo que de 0 a 1 kilómetro. Marcados: 250 metros es 0,25 kilómetros, 400 metros es 0,4 kilómetros y 600 metros es 0,6 kilómetros. Debajo, el truco: 400 metros, correr la coma tres sitios, 0,400 kilómetros" style="max-width:100%;height:auto;">
+<style>
+.fperdid4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fperdid4-b{font-family:monospace;font-size:12px;font-weight:700}
+.fperdid4-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="40" y="30" width="520" height="24" fill="#252526" stroke="#858585"/>
+<g stroke="#858585"><line x1="92" y1="30" x2="92" y2="42"/><line x1="144" y1="30" x2="144" y2="42"/><line x1="196" y1="30" x2="196" y2="42"/><line x1="248" y1="30" x2="248" y2="42"/><line x1="300" y1="30" x2="300" y2="50"/><line x1="352" y1="30" x2="352" y2="42"/><line x1="404" y1="30" x2="404" y2="42"/><line x1="456" y1="30" x2="456" y2="42"/><line x1="508" y1="30" x2="508" y2="42"/></g>
+<text x="40" y="22" text-anchor="middle" class="fperdid4-t">0 m</text><text x="560" y="22" text-anchor="middle" class="fperdid4-t">1000 m</text>
+<text x="40" y="72" text-anchor="middle" class="fperdid4-t">0 km</text><text x="560" y="72" text-anchor="middle" class="fperdid4-t">1 km</text>
+<g><line x1="170" y1="54" x2="170" y2="84" stroke="#4ec9b0" stroke-width="2"/><text x="170" y="96" text-anchor="middle" class="fperdid4-b" fill="#4ec9b0">250 m = 0,25 km</text></g>
+<g><line x1="248" y1="30" x2="248" y2="12" stroke="#dcdcaa" stroke-width="2"/><text x="248" y="10" text-anchor="middle" class="fperdid4-b" fill="#dcdcaa">400 m = 0,4 km</text></g>
+<g><line x1="352" y1="54" x2="352" y2="84" stroke="#c586c0" stroke-width="2"/><text x="370" y="96" text-anchor="middle" class="fperdid4-b" fill="#c586c0">600 m = 0,6 km</text></g>
+<text x="300" y="130" text-anchor="middle" class="fperdid4-b" fill="#d4d4d4">400 m → 0,400 km → 0,4 km</text>
+<text x="300" y="146" text-anchor="middle" class="fperdid4-s">la coma salta tres cifras hacia la izquierda</text>
+</svg>
+</div>
+<div class="nota">Es el error más habitual: multiplicar 400 × 3,5 en lugar de 0,4 × 3,5. Si te sale una pérdida de cientos o miles de dB, <strong>has olvidado pasar a km</strong>.</div>
+
+<div data-actividad="u4s4-km"></div>
+
+<h2>El presupuesto de pérdidas, paso a paso</h2>
+<p>Es como hacer el <strong>ticket de una compra</strong>: apuntas cuánto de cada cosa llevas, multiplicas por su precio y sumas.</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 120" width="100%" role="img" aria-label="Los cuatro pasos del cálculo: 1, cuenta metros y pásalos a kilómetros; 2, multiplica los kilómetros por el precio del cable; 3, cuenta conexiones y empalmes y multiplica por su precio; 4, suma todo" style="max-width:100%;height:auto;">
+<style>
+.fperdid5-n{font-family:monospace;font-size:20px;font-weight:700;fill:#1e1e1e}
+.fperdid5-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+</style>
+<g><circle cx="45" cy="40" r="20" fill="#4fc1ff"/><text x="45" y="47" text-anchor="middle" class="fperdid5-n">1</text><text x="45" y="82" text-anchor="middle" class="fperdid5-t">metros</text><text x="45" y="96" text-anchor="middle" class="fperdid5-t">→ km</text></g>
+<text x="120" y="46" class="fperdid5-t">→</text>
+<g><circle cx="200" cy="40" r="20" fill="#dcdcaa"/><text x="200" y="47" text-anchor="middle" class="fperdid5-n">2</text><text x="200" y="82" text-anchor="middle" class="fperdid5-t">km × precio</text><text x="200" y="96" text-anchor="middle" class="fperdid5-t">del cable</text></g>
+<text x="285" y="46" class="fperdid5-t">→</text>
+<g><circle cx="380" cy="40" r="20" fill="#c586c0"/><text x="380" y="47" text-anchor="middle" class="fperdid5-n">3</text><text x="380" y="82" text-anchor="middle" class="fperdid5-t">conexiones × 0,75</text><text x="380" y="96" text-anchor="middle" class="fperdid5-t">empalmes × 0,3</text></g>
+<text x="470" y="46" class="fperdid5-t">→</text>
+<g><circle cx="545" cy="40" r="20" fill="#4ec9b0"/><text x="545" y="47" text-anchor="middle" class="fperdid5-n">4</text><text x="545" y="82" text-anchor="middle" class="fperdid5-t">suma</text><text x="545" y="96" text-anchor="middle" class="fperdid5-t">todo</text></g>
 </svg>
 </div>
 
-<h3>Ejemplo 1: entre dos edificios, monomodo</h3>
-<p>El enlace de la sesión anterior: cable OS2 de <strong>2 km</strong>, <strong>2 conexiones</strong> (una en la bandeja de cada armario) y <strong>2 empalmes</strong> (pigtail con troncal en cada lado).</p>
-<ul>
-<li>Cable: 2 km × 0,5 = <strong>1 dB</strong></li>
-<li>Conexiones: 2 × 0,75 = <strong>1,5 dB</strong></li>
-<li>Empalmes: 2 × 0,3 = <strong>0,6 dB</strong></li>
-<li><strong>Total: 1 + 1,5 + 0,6 = 3,1 dB</strong></li>
-</ul>
+<p>Dos ejemplos resueltos. El de la izquierda es el enlace entre edificios de la sesión 3; el de la derecha, un enlace dentro de un edificio:</p>
 
-<h3>Ejemplo 2: dentro de un edificio, multimodo</h3>
-<p>Cable OM4 de <strong>400 m</strong> entre el armario principal y el de la tercera planta, <strong>2 conexiones</strong> y <strong>2 empalmes</strong>.</p>
-<ul>
-<li>Cable: 400 m = 0,4 km → 0,4 × 3,5 = <strong>1,4 dB</strong></li>
-<li>Conexiones: 2 × 0,75 = <strong>1,5 dB</strong></li>
-<li>Empalmes: 2 × 0,3 = <strong>0,6 dB</strong></li>
-<li><strong>Total: 1,4 + 1,5 + 0,6 = 3,5 dB</strong></li>
-</ul>
-<p>Fíjate: con diez veces menos cable, el multimodo pierde más. Y en los dos casos, <strong>los conectores pesan más que el cable</strong>. Cada conexión que te ahorres es luz que ganas.</p>
+<div class="salida">
+<svg viewBox="0 0 600 330" width="100%" role="img" aria-label="Dos tickets de pérdidas. Ticket 1, monomodo de 2 kilómetros entre dos edificios: cable 2 por 0,5 igual a 1 dB; 2 conexiones por 0,75 igual a 1,5 dB; 2 empalmes por 0,3 igual a 0,6 dB; total 3,1 dB. Ticket 2, multimodo de 400 metros dentro de un edificio: 400 metros son 0,4 kilómetros; cable 0,4 por 3,5 igual a 1,4 dB; 2 conexiones 1,5 dB; 2 empalmes 0,6 dB; total 3,5 dB" style="max-width:100%;height:auto;">
+<style>
+.fperdid6-h{font-family:monospace;font-size:12px;font-weight:700;fill:#1e1e1e}
+.fperdid6-l{font-family:monospace;font-size:11px;fill:#1e1e1e}
+.fperdid6-g{font-family:monospace;font-size:10px;fill:#666}
+.fperdid6-tot{font-family:monospace;font-size:15px;font-weight:700;fill:#1e1e1e}
+</style>
+<g>
+<path d="M 20 10 L 280 10 L 280 300 L 267 310 L 254 300 L 241 310 L 228 300 L 215 310 L 202 300 L 189 310 L 176 300 L 163 310 L 150 300 L 137 310 L 124 300 L 111 310 L 98 300 L 85 310 L 72 300 L 59 310 L 46 300 L 33 310 L 20 300 Z" fill="#f2efe6"/>
+<text x="150" y="34" text-anchor="middle" class="fperdid6-h">TICKET DE PÉRDIDAS · 1</text>
+<text x="150" y="52" text-anchor="middle" class="fperdid6-g">monomodo · 2 km · entre edificios</text>
+<line x1="34" y1="62" x2="266" y2="62" stroke="#999" stroke-dasharray="3 3"/>
+<text x="36" y="84" class="fperdid6-l">Cable</text><text x="36" y="98" class="fperdid6-g">2 km × 0,5</text><text x="264" y="92" text-anchor="end" class="fperdid6-l">1,00 dB</text>
+<text x="36" y="124" class="fperdid6-l">Conexiones</text><text x="36" y="138" class="fperdid6-g">2 × 0,75</text><text x="264" y="132" text-anchor="end" class="fperdid6-l">1,50 dB</text>
+<text x="36" y="164" class="fperdid6-l">Empalmes</text><text x="36" y="178" class="fperdid6-g">2 × 0,3</text><text x="264" y="172" text-anchor="end" class="fperdid6-l">0,60 dB</text>
+<line x1="34" y1="196" x2="266" y2="196" stroke="#1e1e1e" stroke-width="1.5"/>
+<text x="36" y="224" class="fperdid6-tot">TOTAL</text><text x="264" y="224" text-anchor="end" class="fperdid6-tot">3,10 dB</text>
+<line x1="34" y1="240" x2="266" y2="240" stroke="#999" stroke-dasharray="3 3"/>
+<text x="150" y="262" text-anchor="middle" class="fperdid6-g">1 + 1,5 + 0,6 = 3,1</text>
+</g>
+<g>
+<path d="M 320 10 L 580 10 L 580 300 L 567 310 L 554 300 L 541 310 L 528 300 L 515 310 L 502 300 L 489 310 L 476 300 L 463 310 L 450 300 L 437 310 L 424 300 L 411 310 L 398 300 L 385 310 L 372 300 L 359 310 L 346 300 L 333 310 L 320 300 Z" fill="#f2efe6"/>
+<text x="450" y="34" text-anchor="middle" class="fperdid6-h">TICKET DE PÉRDIDAS · 2</text>
+<text x="450" y="52" text-anchor="middle" class="fperdid6-g">multimodo · 400 m · mismo edificio</text>
+<line x1="334" y1="62" x2="566" y2="62" stroke="#999" stroke-dasharray="3 3"/>
+<text x="336" y="84" class="fperdid6-l">Cable</text><text x="336" y="98" class="fperdid6-g">400 m = 0,4 km</text><text x="336" y="110" class="fperdid6-g">0,4 × 3,5</text><text x="564" y="98" text-anchor="end" class="fperdid6-l">1,40 dB</text>
+<text x="336" y="134" class="fperdid6-l">Conexiones</text><text x="336" y="148" class="fperdid6-g">2 × 0,75</text><text x="564" y="142" text-anchor="end" class="fperdid6-l">1,50 dB</text>
+<text x="336" y="170" class="fperdid6-l">Empalmes</text><text x="336" y="184" class="fperdid6-g">2 × 0,3</text><text x="564" y="178" text-anchor="end" class="fperdid6-l">0,60 dB</text>
+<line x1="334" y1="196" x2="566" y2="196" stroke="#1e1e1e" stroke-width="1.5"/>
+<text x="336" y="224" class="fperdid6-tot">TOTAL</text><text x="564" y="224" text-anchor="end" class="fperdid6-tot">3,50 dB</text>
+<line x1="334" y1="240" x2="566" y2="240" stroke="#999" stroke-dasharray="3 3"/>
+<text x="450" y="262" text-anchor="middle" class="fperdid6-g">1,4 + 1,5 + 0,6 = 3,5</text>
+</g>
+</svg>
+<p class="pie-figura">Haz siempre el cálculo así, en forma de ticket: tres líneas y el total.</p>
+</div>
+
+<p>Mira los dos tickets: con cinco veces menos cable, el multimodo pierde más. Y en los dos, <strong>las conexiones «cuestan» más que el cable</strong>. Cada conexión que te ahorres es luz que ganas.</p>
 
 <div data-actividad="u4s4-perdidas"></div>
 
 <h2>El margen: ¿llega la luz?</h2>
-<p>Cada transceptor aguanta una pérdida máxima entre lo que emite y lo mínimo que es capaz de recibir. El fabricante lo da en su hoja de características (a veces lo llama <strong>presupuesto de potencia</strong> o <em>power budget</em>). Entonces:</p>
+<p>Cada módulo aguanta una pérdida máxima: si se pierde más, lo que llega es tan poco que ya no lo entiende. El fabricante lo pone en sus características. Para saber si el enlace funciona, compara lo que aguanta el módulo con lo que pierde el enlace. <strong>Lo que sobra es el margen.</strong></p>
+
 <div class="salida">
-<svg viewBox="0 0 600 70" width="100%" role="img" aria-label="Margen igual a lo que aguanta el módulo menos la pérdida del enlace" style="max-width:100%;height:auto;">
-<rect x="60" y="10" width="480" height="46" rx="5" fill="#252526" stroke="#4ec9b0"/>
-<text x="300" y="39" text-anchor="middle" font-family="monospace" font-size="13" fill="#d4d4d4"><tspan fill="#4ec9b0" font-weight="700">Margen</tspan> = lo que aguanta el módulo − pérdida del enlace</text>
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Una barra que representa lo que aguanta el módulo: 8 dB. Dentro, la parte gastada por las pérdidas del enlace, 3,1 dB, en naranja, y la parte que sobra, 4,9 dB, en verde: ese es el margen. Debajo, la cuenta 8 menos 3,1 igual a 4,9" style="max-width:100%;height:auto;">
+<style>
+.fperdid7-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fperdid7-b{font-family:monospace;font-size:13px;font-weight:700}
+.fperdid7-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="40" y="26" class="fperdid7-t">El módulo aguanta <tspan font-weight="700">8 dB</tspan></text>
+<rect x="40" y="36" width="520" height="50" rx="6" fill="#1e1e1e" stroke="#d4d4d4" stroke-width="2"/>
+<rect x="42" y="38" width="200" height="46" rx="4" fill="#f48771" fill-opacity="0.75"/>
+<rect x="242" y="38" width="316" height="46" rx="4" fill="#4ec9b0" fill-opacity="0.55"/>
+<text x="142" y="66" text-anchor="middle" class="fperdid7-b" fill="#1e1e1e">pérdida 3,1 dB</text>
+<text x="400" y="66" text-anchor="middle" class="fperdid7-b" fill="#1e1e1e">margen 4,9 dB</text>
+<line x1="42" y1="100" x2="242" y2="100" stroke="#f48771"/><text x="142" y="116" text-anchor="middle" class="fperdid7-s">lo que se come el enlace (el ticket)</text>
+<line x1="242" y1="100" x2="558" y2="100" stroke="#4ec9b0"/><text x="400" y="116" text-anchor="middle" class="fperdid7-s">lo que sobra</text>
+<text x="300" y="152" text-anchor="middle" class="fperdid7-b" fill="#d4d4d4">Margen = lo que aguanta − pérdida = 8 − 3,1 = 4,9 dB</text>
 </svg>
 </div>
-<ul>
-<li>Margen <strong>negativo</strong>: no llega luz suficiente. <strong>No funciona</strong> (o da errores).</li>
-<li>Margen <strong>entre 0 y 3 dB</strong>: funciona hoy, pero va justo. Un conector que se ensucie, una reparación con un empalme más o el envejecimiento del cable lo pueden tirar.</li>
-<li>Margen de <strong>3 dB o más</strong>: enlace bien diseñado.</li>
-</ul>
-<p>Ejemplo: si el módulo del ejemplo 1 aguanta <strong>8 dB</strong>, el margen es 8 − 3,1 = <strong>4,9 dB</strong>. Enlace correcto.</p>
-<p>Si el margen no llega, las soluciones son siempre las mismas: <strong>quitar conexiones</strong> (empalmar directo en lugar de pasar por un panel intermedio), <strong>empalmes por fusión</strong> bien hechos, <strong>acortar</strong> el recorrido, cambiar a <strong>monomodo</strong>, o poner un <strong>módulo</strong> que aguante más.</p>
+
+<p>¿Y cuánto margen es suficiente? Míralo como un <strong>semáforo</strong>:</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Semáforo del margen. Rojo: margen negativo, por debajo de 0, no funciona. Ámbar: margen entre 0 y 3 dB, funciona pero va justo. Verde: margen de 3 dB o más, enlace bien hecho" style="max-width:100%;height:auto;">
+<style>
+.fperdid8-b{font-family:monospace;font-size:13px;font-weight:700}
+.fperdid8-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fperdid8-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="30" y="10" width="70" height="150" rx="14" fill="#111" stroke="#555"/>
+<circle cx="65" cy="40" r="20" fill="#e05050"/><circle cx="65" cy="85" r="20" fill="#e8a030"/><circle cx="65" cy="130" r="20" fill="#4ec9b0"/>
+<text x="120" y="36" class="fperdid8-b" fill="#e05050">Menos de 0 dB</text><text x="290" y="36" class="fperdid8-t">No funciona (o da errores).</text><text x="120" y="52" class="fperdid8-s">ej.: aguanta 3 dB, pierde 4 dB → margen −1</text>
+<text x="120" y="81" class="fperdid8-b" fill="#e8a030">De 0 a 3 dB</text><text x="290" y="81" class="fperdid8-t">Funciona, pero va justo.</text><text x="120" y="97" class="fperdid8-s">un conector sucio o un empalme más y se cae</text>
+<text x="120" y="126" class="fperdid8-b" fill="#4ec9b0">3 dB o más</text><text x="290" y="126" class="fperdid8-t">Bien hecho.</text><text x="120" y="142" class="fperdid8-s">ej.: el ticket 1 con un módulo de 8 dB → 4,9</text>
+</svg>
+</div>
+
+<p>Si el margen sale en rojo o ámbar, se arregla siempre por uno de estos caminos: <strong>quitar conexiones</strong> (empalmar directo en vez de pasar por un panel intermedio), hacer <strong>empalmes por fusión</strong> bien hechos, <strong>acortar</strong> el recorrido, pasar a <strong>monomodo</strong> o poner un <strong>módulo que aguante más</strong>.</p>
 
 <div data-actividad="u4s4-margen"></div>
 
 <h2>Los aparatos de medida</h2>
-<table>
-<tr><th>Aparato</th><th>Qué hace</th><th>Para qué lo usas</th></tr>
-<tr><td><strong>Microscopio de inspección</strong></td><td>Amplía la punta del conector (con pantalla o conectado al móvil)</td><td>Ver si está sucio o rayado <strong>antes de enchufar</strong></td></tr>
-<tr><td><strong>Localizador visual de fallos</strong> (VFL)</td><td>Un «puntero láser» rojo que se enchufa a la fibra. La luz roja <strong>se ve salir</strong> por las roturas y las curvas demasiado cerradas</td><td>Encontrar una rotura o una curva mala en los primeros metros, e identificar qué fibra es cuál</td></tr>
-<tr><td><strong>Fuente de luz + medidor de potencia</strong></td><td>La fuente mete luz por un extremo y el medidor mide cuánta llega al otro</td><td>Medir la <strong>pérdida total</strong> del enlace en dB y compararla con el presupuesto. Es la certificación básica</td></tr>
-<tr><td><strong>OTDR</strong> (reflectómetro)</td><td>Manda pulsos desde un solo extremo y analiza la luz que rebota. Dibuja una gráfica del enlace</td><td>Saber <strong>a qué distancia</strong> están cada conector, cada empalme y la avería</td></tr>
-</table>
+<p>Después de instalar se comprueba con aparatos. Estos son los cuatro que tienes que reconocer:</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Cuatro aparatos dibujados. Microscopio de fibra: una pantalla con la punta del conector ampliada, para ver si está sucio. Localizador visual: un bolígrafo que mete luz roja y se ve salir por una curva rota. Fuente de luz y medidor de potencia: dos cajas, una en cada extremo del cable, que dicen cuántos dB se pierden en total. OTDR: una caja con pantalla y una gráfica que baja con escalones, para saber a qué distancia está cada cosa" style="max-width:100%;height:auto;">
+<style>
+.fperdid9-h{font-family:monospace;font-size:11.5px;font-weight:700;fill:#d4d4d4}
+.fperdid9-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<g>
+<rect x="10" y="10" width="136" height="210" rx="6" fill="#252526" stroke="#3a3d41"/>
+<rect x="30" y="30" width="96" height="70" rx="4" fill="#111" stroke="#858585"/>
+<circle cx="78" cy="65" r="26" fill="#2d4a5a"/><circle cx="78" cy="65" r="6" fill="#4fc1ff"/><circle cx="90" cy="56" r="4" fill="#8a6a40"/>
+<rect x="70" y="100" width="16" height="30" fill="#858585"/>
+<text x="78" y="158" text-anchor="middle" class="fperdid9-h">Microscopio</text>
+<text x="78" y="176" text-anchor="middle" class="fperdid9-s">¿está sucia</text><text x="78" y="189" text-anchor="middle" class="fperdid9-s">la punta?</text>
+</g>
+<g>
+<rect x="156" y="10" width="136" height="210" rx="6" fill="#252526" stroke="#3a3d41"/>
+<rect x="170" y="40" width="50" height="14" rx="6" fill="#c8c8c8"/><rect x="220" y="44" width="8" height="6" fill="#e05050"/>
+<path d="M 228 47 L 250 47 A 20 20 0 0 1 270 67 L 270 120" stroke="#dcdcaa" stroke-width="3" fill="none"/>
+<g stroke="#e05050" stroke-width="2"><line x1="264" y1="56" x2="282" y2="44"/><line x1="268" y1="60" x2="286" y2="56"/><line x1="262" y1="54" x2="270" y2="36"/></g>
+<text x="224" y="158" text-anchor="middle" class="fperdid9-h">Localizador</text><text x="224" y="172" text-anchor="middle" class="fperdid9-h">visual</text>
+<text x="224" y="189" text-anchor="middle" class="fperdid9-s">luz roja que sale</text><text x="224" y="202" text-anchor="middle" class="fperdid9-s">por roturas y curvas</text>
+</g>
+<g>
+<rect x="302" y="10" width="136" height="210" rx="6" fill="#252526" stroke="#3a3d41"/>
+<rect x="314" y="40" width="34" height="44" rx="4" fill="#3a3d41" stroke="#4fc1ff"/><text x="331" y="66" text-anchor="middle" class="fperdid9-s">luz</text>
+<rect x="392" y="40" width="34" height="44" rx="4" fill="#3a3d41" stroke="#4ec9b0"/><text x="409" y="60" text-anchor="middle" class="fperdid9-s" style="fill:#4ec9b0">3,2</text><text x="409" y="72" text-anchor="middle" class="fperdid9-s" style="fill:#4ec9b0">dB</text>
+<path d="M 348 62 Q 370 110 392 62" stroke="#dcdcaa" stroke-width="3" fill="none"/>
+<text x="370" y="130" text-anchor="middle" class="fperdid9-s">un aparato en</text><text x="370" y="142" text-anchor="middle" class="fperdid9-s">cada extremo</text>
+<text x="370" y="162" text-anchor="middle" class="fperdid9-h">Medidor de</text><text x="370" y="176" text-anchor="middle" class="fperdid9-h">potencia</text>
+<text x="370" y="193" text-anchor="middle" class="fperdid9-s">¿cuánto se pierde</text><text x="370" y="206" text-anchor="middle" class="fperdid9-s">en total?</text>
+</g>
+<g>
+<rect x="448" y="10" width="142" height="210" rx="6" fill="#252526" stroke="#3a3d41"/>
+<rect x="462" y="30" width="114" height="90" rx="4" fill="#111" stroke="#858585"/>
+<polyline points="468,50 490,58 492,70 520,78 522,82 548,90 550,112 570,112" fill="none" stroke="#4ec9b0" stroke-width="2"/>
+<text x="491" y="46" text-anchor="middle" class="fperdid9-s" style="fill:#4fc1ff">conex.</text><text x="521" y="72" text-anchor="middle" class="fperdid9-s" style="fill:#f48771">emp.</text><text x="552" y="84" text-anchor="middle" class="fperdid9-s" style="fill:#e05050">fin</text>
+<text x="519" y="158" text-anchor="middle" class="fperdid9-h">OTDR</text>
+<text x="519" y="176" text-anchor="middle" class="fperdid9-s">¿a cuántos metros</text><text x="519" y="189" text-anchor="middle" class="fperdid9-s">está la avería?</text>
+</g>
+</svg>
+<p class="pie-figura">Del más sencillo al más completo.</p>
+</div>
+
 <div class="nota">La luz roja del localizador visual sí se ve, pero es un láser: tampoco se mira de frente. Se mira la fibra <strong>de lado</strong>, donde se escapa la luz.</div>
 
 <h3>Cuando un enlace no funciona: el orden</h3>
-<ol>
-<li><strong>¿Encaja todo?</strong> Módulos del mismo tipo en los dos extremos (SX con SX, LR con LR), fibra del tipo correcto, APC con APC.</li>
-<li><strong>Polaridad</strong>: intercambia la pareja TX/RX en un extremo.</li>
-<li><strong>Inspecciona y limpia</strong> todos los conectores del camino.</li>
-<li><strong>Localizador visual</strong>: busca curvas cerradas o roturas cerca de los armarios.</li>
-<li><strong>Medidor de potencia</strong>: si la pérdida medida es mucho mayor que la calculada, hay algo mal en el camino.</li>
-<li><strong>OTDR</strong>: te dice a cuántos metros está el problema, para no tener que abrir toda la canalización.</li>
-</ol>
+<div class="salida">
+<svg viewBox="0 0 600 330" width="100%" role="img" aria-label="Diagrama de pasos para un enlace de fibra que no enciende. 1: ¿encaja todo? mismos módulos, mismo tipo de fibra, verde con verde. 2: dar la vuelta a la pareja TX RX. 3: mirar y limpiar los conectores. 4: localizador visual para buscar curvas o roturas. 5: medidor de potencia, si pierde mucho más de lo calculado hay algo mal. 6: OTDR, para saber a cuántos metros está el problema. Después de cada paso, si ya funciona, se acaba" style="max-width:100%;height:auto;">
+<style>
+.fperdid10-n{font-family:monospace;font-size:14px;font-weight:700;fill:#1e1e1e}
+.fperdid10-t{font-family:monospace;font-size:11.5px;font-weight:700;fill:#d4d4d4}
+.fperdid10-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="300" y="18" text-anchor="middle" class="fperdid10-t" style="fill:#f48771">El puerto no enciende</text>
+<g>
+<rect x="60" y="30" width="400" height="40" rx="5" fill="#252526" stroke="#4fc1ff"/><circle cx="84" cy="50" r="12" fill="#4fc1ff"/><text x="84" y="55" text-anchor="middle" class="fperdid10-n">1</text>
+<text x="104" y="47" class="fperdid10-t">¿Encaja todo?</text><text x="104" y="62" class="fperdid10-s">mismos módulos · misma fibra · verde con verde</text>
+<rect x="60" y="80" width="400" height="40" rx="5" fill="#252526" stroke="#4fc1ff"/><circle cx="84" cy="100" r="12" fill="#4fc1ff"/><text x="84" y="105" text-anchor="middle" class="fperdid10-n">2</text>
+<text x="104" y="97" class="fperdid10-t">Da la vuelta a la pareja</text><text x="104" y="112" class="fperdid10-s">intercambia TX y RX en un extremo</text>
+<rect x="60" y="130" width="400" height="40" rx="5" fill="#252526" stroke="#4fc1ff"/><circle cx="84" cy="150" r="12" fill="#4fc1ff"/><text x="84" y="155" text-anchor="middle" class="fperdid10-n">3</text>
+<text x="104" y="147" class="fperdid10-t">Mira y limpia los conectores</text><text x="104" y="162" class="fperdid10-s">el fallo número uno</text>
+<rect x="60" y="180" width="400" height="40" rx="5" fill="#252526" stroke="#dcdcaa"/><circle cx="84" cy="200" r="12" fill="#dcdcaa"/><text x="84" y="205" text-anchor="middle" class="fperdid10-n">4</text>
+<text x="104" y="197" class="fperdid10-t">Localizador visual</text><text x="104" y="212" class="fperdid10-s">busca curvas o roturas cerca de los armarios</text>
+<rect x="60" y="230" width="400" height="40" rx="5" fill="#252526" stroke="#dcdcaa"/><circle cx="84" cy="250" r="12" fill="#dcdcaa"/><text x="84" y="255" text-anchor="middle" class="fperdid10-n">5</text>
+<text x="104" y="247" class="fperdid10-t">Medidor de potencia</text><text x="104" y="262" class="fperdid10-s">¿pierde mucho más que el ticket?</text>
+<rect x="60" y="280" width="400" height="40" rx="5" fill="#252526" stroke="#c586c0"/><circle cx="84" cy="300" r="12" fill="#c586c0"/><text x="84" y="305" text-anchor="middle" class="fperdid10-n">6</text>
+<text x="104" y="297" class="fperdid10-t">OTDR</text><text x="104" y="312" class="fperdid10-s">¿a cuántos metros está el problema?</text>
+</g>
+<g stroke="#4ec9b0" stroke-width="2" fill="none"><path d="M 460 50 L 500 50"/><path d="M 460 100 L 500 100"/><path d="M 460 150 L 500 150"/><path d="M 460 200 L 500 200"/></g>
+<g font-family="monospace" font-size="10" fill="#4ec9b0"><text x="506" y="54">¿ya va? fin</text><text x="506" y="104">¿ya va? fin</text><text x="506" y="154">¿ya va? fin</text><text x="506" y="204">¿ya va? fin</text></g>
+<text x="530" y="250" text-anchor="middle" class="fperdid10-s">del más fácil</text><text x="530" y="263" text-anchor="middle" class="fperdid10-s">y barato</text><text x="530" y="276" text-anchor="middle" class="fperdid10-s">al más caro</text>
+</svg>
+<p class="pie-figura">Siempre de arriba abajo: lo fácil primero.</p>
+</div>
 
 <h2>Para contestar en el cuaderno</h2>
 <div class="papel">
 <p class="papel__titulo">Actividad 4 — a mano, en papel</p>
 <ol>
-<li>¿Cuánta luz queda después de perder 3 dB? ¿Y 10 dB? ¿Y 6 dB?</li>
-<li>Copia la fórmula del presupuesto de pérdidas y la tabla de valores para calcular.</li>
-<li>Calcula la pérdida de un enlace multimodo de 600 m con 2 conexiones y 2 empalmes.</li>
-<li>Calcula la pérdida de un enlace monomodo de 8 km con 4 conexiones y 6 empalmes.</li>
-<li>El módulo del ejercicio 4 aguanta 10 dB. ¿Cuál es el margen? ¿Está bien diseñado?</li>
-<li>¿Qué es el margen y por qué se pide que sea de al menos 3 dB?</li>
-<li>Da tres formas de mejorar un enlace que no tiene margen suficiente.</li>
-<li>Explica para qué sirven el localizador visual, el medidor de potencia y el OTDR.</li>
-<li>Ordena los pasos para buscar la avería de un enlace de fibra que no enciende.</li>
+<li>Dibuja los cuatro vasos de luz. ¿Cuánta luz queda tras perder 3 dB? ¿Y 10 dB?</li>
+<li>Copia las cuatro «etiquetas de precio» (multimodo, monomodo, conexión y empalme).</li>
+<li>Pasa a kilómetros: 300 m, 850 m, 1200 m y 60 m.</li>
+<li>Haz el ticket de pérdidas de un enlace multimodo de 600 m con 2 conexiones y 2 empalmes.</li>
+<li>Haz el ticket de pérdidas de un enlace monomodo de 8 km con 4 conexiones y 6 empalmes.</li>
+<li>El módulo del ejercicio 5 aguanta 10 dB. Dibuja la barra del margen. ¿De qué color sale en el semáforo?</li>
+<li>Da tres formas de arreglar un enlace que sale en rojo o en ámbar.</li>
+<li>Dibuja los cuatro aparatos de medida y escribe debajo para qué sirve cada uno.</li>
+<li>Copia en orden los seis pasos para buscar la avería de un enlace que no enciende.</li>
 </ol>
 </div>
 
 <h2>Antes de seguir</h2>
 <details>
-<summary>🤔 Un enlace multimodo de 200 m, 2 conexiones, sin empalmes. ¿Pérdida?</summary>
-<p>0,2 × 3,5 = 0,7 dB de cable + 2 × 0,75 = 1,5 dB de conexiones. <strong>Total: 2,2 dB</strong>.</p>
+<summary>🤔 Multimodo de 200 m, 2 conexiones, sin empalmes. ¿Cuánto pierde?</summary>
+<p>200 m = 0,2 km → 0,2 × 3,5 = <strong>0,7 dB</strong>. Conexiones: 2 × 0,75 = <strong>1,5 dB</strong>. Empalmes: 0. <strong>Total: 2,2 dB</strong>.</p>
+</details>
+<details>
+<summary>🤔 El módulo aguanta 5 dB y el ticket da 4 dB. ¿Qué color del semáforo?</summary>
+<p>Margen = 5 − 4 = <strong>1 dB</strong>: <strong>ámbar</strong>. Funciona, pero va justo.</p>
 </details>
 <details>
 <summary>🤔 El medidor marca 9 dB en un enlace que calculaste en 3 dB. ¿Qué piensas?</summary>
 <p>Que algo va mal en el camino: lo primero, <strong>conectores sucios</strong>; después, una curva cerrada o un empalme malo. El OTDR te dirá dónde.</p>
-</details>
-<details>
-<summary>🤔 ¿Por qué quitar una conexión intermedia mejora tanto el enlace?</summary>
-<p>Porque cada conexión cuenta <strong>0,75 dB</strong> en el cálculo, más que cientos de metros de fibra monomodo.</p>
 </details>

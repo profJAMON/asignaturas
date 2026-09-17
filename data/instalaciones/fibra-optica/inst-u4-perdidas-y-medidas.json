@@ -2,9 +2,16 @@
   "id": "inst-u4-perdidas-y-medidas",
   "titulo": "Sesión 4 — Pérdidas, margen y aparatos de medida",
   "fecha": "",
-  "descripcion": "El decibelio sin fórmulas, cuánto pierden el cable, los conectores y los empalmes, el presupuesto de pérdidas de un enlace, el margen, los aparatos de medida (microscopio, localizador visual, medidor de potencia y OTDR) y el orden para buscar averías.",
+  "descripcion": "Cómo se va gastando la luz en un enlace, el decibelio con vasos de luz, lo que «cuesta» cada elemento, pasar metros a kilómetros, el ticket de pérdidas, el margen como semáforo, los aparatos de medida y el orden para buscar averías.",
   "materiales": [],
   "actividades": [
+    {
+      "id": "u4s4-km",
+      "tipo": "generador",
+      "titulo": "Pasa los metros a kilómetros",
+      "generador": "metros-a-km",
+      "n": 6
+    },
     {
       "id": "u4s4-perdidas",
       "tipo": "generador",
@@ -25,27 +32,52 @@
       "preguntas": [
         {
           "pregunta": "Una pérdida de 3 dB significa que llega…",
-          "opciones": ["Un tercio de la luz", "La mitad de la luz", "La décima parte", "Toda menos 3 unidades"],
+          "opciones": [
+            "Un tercio de la luz",
+            "La mitad de la luz",
+            "La décima parte",
+            "Toda menos 3 unidades"
+          ],
           "correcta": 1
         },
         {
           "pregunta": "¿Qué aparato te dice a cuántos metros está una rotura, midiendo desde un solo extremo?",
-          "opciones": ["Microscopio", "Localizador visual", "OTDR", "Polímetro"],
+          "opciones": [
+            "Microscopio",
+            "Localizador visual",
+            "OTDR",
+            "Polímetro"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "¿Qué aparato mete luz roja visible para ver por dónde se escapa?",
-          "opciones": ["Localizador visual de fallos (VFL)", "Medidor de potencia", "OTDR", "Comprobador de RJ-45"],
+          "opciones": [
+            "Localizador visual de fallos (VFL)",
+            "Medidor de potencia",
+            "OTDR",
+            "Comprobador de RJ-45"
+          ],
           "correcta": 0
         },
         {
-          "pregunta": "Un enlace tiene un margen de −1 dB. ¿Qué pasa?",
-          "opciones": ["Funciona perfecto", "Funciona pero justo", "No llega luz suficiente: no funciona o da errores", "Hay que cambiar la polaridad"],
+          "pregunta": "Un enlace tiene un margen de −1 dB. En el semáforo es…",
+          "opciones": [
+            "Verde: funciona perfecto",
+            "Ámbar: funciona pero justo",
+            "Rojo: no llega luz suficiente",
+            "No se puede saber"
+          ],
           "correcta": 2
         },
         {
           "pregunta": "Antes de enchufar un conector de fibra hay que…",
-          "opciones": ["Soplarlo", "Inspeccionarlo y, si hace falta, limpiarlo", "Mirar el puerto con el ojo", "Mojarlo con agua"],
+          "opciones": [
+            "Soplarlo",
+            "Inspeccionarlo y, si hace falta, limpiarlo",
+            "Mirar el puerto con el ojo",
+            "Mojarlo con agua"
+          ],
           "correcta": 1
         }
       ]

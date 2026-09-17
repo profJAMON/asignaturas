@@ -8,116 +8,238 @@
 <div class="salida">
 <svg viewBox="0 0 600 315" width="100%" role="img" aria-label="Tres fibras dibujadas en corte longitudinal. Monomodo: núcleo muy estrecho y un rayo recto. Multimodo de salto de índice: núcleo ancho y varios rayos en zigzag de distinta longitud. Multimodo de índice gradual: rayos que se curvan suavemente y llegan casi a la vez. A la derecha, el pulso de salida: estrecho en monomodo, muy ensanchado en salto de índice y poco ensanchado en gradual" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fmonomo1-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo1-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
-<text x="20" y="22" class="t" style="fill:#dcdcaa">Monomodo · 9/125 µm</text>
+<text x="20" y="22" class="fmonomo1-t" style="fill:#dcdcaa">Monomodo · 9/125 µm</text>
 <rect x="20" y="30" width="400" height="50" fill="#2d2d30" stroke="#858585"/>
 <rect x="20" y="51" width="400" height="8" fill="#1f3a4a" stroke="#4fc1ff"/>
 <line x1="20" y1="55" x2="420" y2="55" stroke="#dcdcaa" stroke-width="2"/>
 <path d="M 460 70 L 490 70 L 497 38 L 503 38 L 510 70 L 560 70" stroke="#dcdcaa" fill="none" stroke-width="2"/>
-<text x="500" y="92" text-anchor="middle" class="s">pulso nítido</text>
+<text x="500" y="92" text-anchor="middle" class="fmonomo1-s">pulso nítido</text>
 
-<text x="20" y="122" class="t" style="fill:#4ec9b0">Multimodo · salto de índice</text>
+<text x="20" y="122" class="fmonomo1-t" style="fill:#4ec9b0">Multimodo · salto de índice</text>
 <rect x="20" y="130" width="400" height="60" fill="#2d2d30" stroke="#858585"/>
 <rect x="20" y="140" width="400" height="40" fill="#1f3a4a" stroke="#4fc1ff"/>
 <line x1="20" y1="160" x2="420" y2="160" stroke="#4ec9b0" stroke-width="1.5"/>
 <polyline points="20,160 60,140 140,180 220,140 300,180 380,140 420,160" fill="none" stroke="#c586c0" stroke-width="1.5"/>
 <polyline points="20,160 40,140 80,180 120,140 160,180 200,140 240,180 280,140 320,180 360,140 400,180 420,160" fill="none" stroke="#f48771" stroke-width="1.5"/>
 <path d="M 450 180 L 470 180 L 485 150 L 520 150 L 540 180 L 570 180" stroke="#4ec9b0" fill="none" stroke-width="2"/>
-<text x="510" y="200" text-anchor="middle" class="s">pulso ensanchado</text>
+<text x="510" y="200" text-anchor="middle" class="fmonomo1-s">pulso ensanchado</text>
 
-<text x="20" y="232" class="t" style="fill:#4ec9b0">Multimodo · índice gradual</text>
+<text x="20" y="232" class="fmonomo1-t" style="fill:#4ec9b0">Multimodo · índice gradual</text>
 <rect x="20" y="240" width="400" height="50" fill="#2d2d30" stroke="#858585"/>
 <rect x="20" y="248" width="400" height="34" fill="#1f3a4a" stroke="#4fc1ff"/>
 <line x1="20" y1="265" x2="420" y2="265" stroke="#4ec9b0" stroke-width="1.5"/>
 <path d="M 20 265 Q 70 245 120 265 T 220 265 T 320 265 T 420 265" fill="none" stroke="#c586c0" stroke-width="1.5"/>
 <path d="M 20 265 Q 45 252 70 265 T 120 265 T 170 265 T 220 265 T 270 265 T 320 265 T 370 265 T 420 265" fill="none" stroke="#f48771" stroke-width="1.5"/>
 <path d="M 455 285 L 480 285 L 492 250 L 510 250 L 522 285 L 565 285" stroke="#4ec9b0" fill="none" stroke-width="2"/>
-<text x="510" y="308" text-anchor="middle" class="s">poco ensanchado</text>
+<text x="510" y="308" text-anchor="middle" class="fmonomo1-s">poco ensanchado</text>
 </svg>
 <p class="pie-figura">Cada color es un modo. Cuanto más distintos son sus caminos, más se «emborrona» el pulso al llegar.</p>
 </div>
 
 <h2>El problema de los muchos caminos: la dispersión</h2>
-<p>En multimodo, el rayo que va recto por el centro recorre menos distancia que el que va rebotando en zigzag. Si todos salen a la vez, <strong>no llegan a la vez</strong>: el pulso de luz que entró estrecho sale <strong>ensanchado</strong>. A esto se le llama <strong>dispersión modal</strong>.</p>
-<p>Si los pulsos se ensanchan demasiado, uno se solapa con el siguiente y el receptor ya no distingue un 1 de un 0. Para que no pase, o se <strong>envían los pulsos más despacio</strong> o se <strong>acorta el cable</strong>. Por eso la multimodo tiene un límite de distancia que depende de la velocidad: <strong>a más velocidad, menos metros</strong>.</p>
-<p>La monomodo, con un solo camino, casi no tiene este problema. Por eso llega a decenas de kilómetros.</p>
+<p>Imagina una carrera en la que todos salen a la vez, pero cada corredor va por un camino distinto: unos van rectos por el centro y otros haciendo eses. <strong>No llegan a la vez.</strong> Eso le pasa a la luz en la multimodo:</p>
 
-<h3>Salto de índice e índice gradual</h3>
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Carrera de tres corredores de luz que salen a la vez de la línea de salida. El que va recto llega primero a la meta; el que hace eses suaves llega un poco después; el que hace eses muy cerradas llega el último. Abajo: un pulso de luz que entra estrecho y sale ancho, y dos pulsos seguidos que al ensancharse se pisan y el receptor ya no distingue un 1 de un 0" style="max-width:100%;height:auto;">
+<style>
+.fmonomo2-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo2-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<line x1="40" y1="20" x2="40" y2="120" stroke="#d4d4d4" stroke-width="2"/>
+<text x="40" y="14" text-anchor="middle" class="fmonomo2-s">salida</text>
+<line x1="520" y1="20" x2="520" y2="120" stroke="#d4d4d4" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="520" y="14" text-anchor="middle" class="fmonomo2-s">meta</text>
+<line x1="40" y1="70" x2="520" y2="70" stroke="#dcdcaa" stroke-width="2"/>
+<circle cx="520" cy="70" r="7" fill="#dcdcaa"/><text x="532" y="74" class="fmonomo2-t" style="fill:#dcdcaa">1.º</text>
+<polyline points="40,70 100,40 180,100 260,40 340,100 420,40 470,70" fill="none" stroke="#c586c0" stroke-width="2"/>
+<circle cx="470" cy="70" r="7" fill="#c586c0"/><text x="455" y="56" class="fmonomo2-t" style="fill:#c586c0">2.º</text>
+<polyline points="40,70 60,35 90,105 120,35 150,105 180,35 210,105 240,35 270,105 300,35 330,105 360,70" fill="none" stroke="#f48771" stroke-width="2"/>
+<circle cx="360" cy="70" r="7" fill="#f48771"/><text x="372" y="112" class="fmonomo2-t" style="fill:#f48771">3.º todavía por aquí</text>
+<line x1="20" y1="140" x2="580" y2="140" stroke="#3a3d41"/>
+<text x="20" y="162" class="fmonomo2-t">Lo que ve el receptor:</text>
+<path d="M 20 210 L 60 210 L 66 176 L 74 176 L 80 210 L 120 210" stroke="#4fc1ff" fill="none" stroke-width="2"/>
+<text x="70" y="226" text-anchor="middle" class="fmonomo2-s">sale estrecho</text>
+<text x="150" y="198" class="fmonomo2-t">→</text>
+<path d="M 180 210 L 200 210 L 220 186 L 250 186 L 270 210 L 290 210" stroke="#4ec9b0" fill="none" stroke-width="2"/>
+<text x="235" y="226" text-anchor="middle" class="fmonomo2-s">llega ancho</text>
+<text x="320" y="198" class="fmonomo2-t">→</text>
+<path d="M 350 210 L 370 210 L 390 186 L 420 186 L 440 204 L 460 186 L 490 186 L 510 210 L 540 210" stroke="#f48771" fill="none" stroke-width="2"/>
+<text x="445" y="176" text-anchor="middle" class="fmonomo2-s" style="fill:#f48771">¿un 1? ¿dos 1?</text>
+<text x="445" y="226" text-anchor="middle" class="fmonomo2-s">dos pulsos que se pisan</text>
+</svg>
+<p class="pie-figura">A más camino recorrido, más se ensancha el pulso. Si se pisan, se pierden datos.</p>
+</div>
+
+<p>A eso se le llama <strong>dispersión modal</strong>. Para que los pulsos no se pisen, o se envían <strong>más despacio</strong> o el cable tiene que ser <strong>más corto</strong>. Por eso en multimodo: <strong>a más velocidad, menos metros</strong>.</p>
+<p>La monomodo tiene un solo camino (un solo corredor), así que casi no le pasa. Por eso llega a <strong>decenas de kilómetros</strong>.</p>
+
+<details>
+<summary>Para saber más: salto de índice e índice gradual</summary>
 <ul>
-<li><strong>Salto de índice</strong>: el núcleo tiene el mismo índice de refracción en todo su grosor y cambia de golpe al llegar al revestimiento. La luz va en zigzag. Mucha dispersión: hoy solo se ve en fibras de <strong>plástico</strong> para distancias muy cortas (equipos de audio, coches, domótica).</li>
-<li><strong>Índice gradual</strong>: el índice va bajando poco a poco desde el centro hacia fuera. Los rayos que se alejan del centro van por una zona «más rápida» y se curvan de vuelta, así que llegan casi a la vez que el del centro. <strong>Todas las multimodo de vidrio que vas a encontrar en una red (OM1 a OM5) son de índice gradual.</strong></li>
+<li><strong>Salto de índice</strong>: el núcleo es igual en todo su grosor y la luz va en zigzag (la del medio en el primer dibujo). Mucha dispersión: hoy solo se ve en fibras de <strong>plástico</strong> para distancias muy cortas (equipos de audio, coches).</li>
+<li><strong>Índice gradual</strong>: el núcleo cambia poco a poco del centro hacia fuera y los rayos se curvan suavemente, así que llegan casi a la vez (la de abajo en el primer dibujo). <strong>Todas las multimodo de las redes (OM1 a OM5) son de índice gradual.</strong></li>
 </ul>
+</details>
 
 <div data-actividad="u4s2-modos"></div>
 
 <h2>La luz que se usa</h2>
-<p>La luz de las redes es <strong>infrarroja</strong>, invisible. Se usan tres «ventanas», longitudes de onda en las que el vidrio pierde poca señal:</p>
-<table>
-<tr><th>Ventana</th><th>Fibra</th><th>Emisor típico</th><th>Pérdida del cable</th></tr>
-<tr><td><strong>850 nm</strong></td><td>Multimodo</td><td>Láser VCSEL (barato) o LED en equipos antiguos</td><td>unos 3 dB/km</td></tr>
-<tr><td><strong>1310 nm</strong></td><td>Monomodo (y multimodo antigua)</td><td>Láser</td><td>unos 0,35 dB/km en monomodo</td></tr>
-<tr><td><strong>1550 nm</strong></td><td>Monomodo, grandes distancias</td><td>Láser</td><td>unos 0,25 dB/km</td></tr>
-</table>
-<p>El <strong>dB/km</strong> es la unidad de la atenuación: cuánta señal se pierde por kilómetro. En la sesión 4 aprenderás a sumar esas pérdidas. Por ahora quédate con que la monomodo pierde <strong>unas diez veces menos</strong> que la multimodo.</p>
+<p>La luz de las redes es <strong>infrarroja</strong>: está justo después del rojo y el ojo no la ve. Por eso es tan peligroso mirar la punta de una fibra.</p>
+<div class="salida">
+<svg viewBox="0 0 600 156" width="100%" role="img" aria-label="Barra de colores de la luz desde el violeta hasta el rojo, que es lo que ve el ojo, y a continuación una zona oscura de infrarrojo invisible donde están las tres luces de la fibra: 850 nanómetros para multimodo, y 1310 y 1550 nanómetros para monomodo" style="max-width:100%;height:auto;">
+<defs><linearGradient id="u4arcoiris" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0" stop-color="#7a3cc8"/><stop offset="0.2" stop-color="#3a6ae8"/><stop offset="0.4" stop-color="#3ac85a"/><stop offset="0.6" stop-color="#e8e03a"/><stop offset="0.8" stop-color="#e8903a"/><stop offset="1" stop-color="#e03a3a"/>
+</linearGradient></defs>
+<style>
+.fmonomo3-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo3-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="20" y="40" width="200" height="40" fill="url(#u4arcoiris)"/>
+<text x="120" y="30" text-anchor="middle" class="fmonomo3-t">lo que ve el ojo</text>
+<rect x="220" y="40" width="360" height="40" fill="#2a1a1a" stroke="#555" stroke-dasharray="4 3"/>
+<text x="400" y="30" text-anchor="middle" class="fmonomo3-t">infrarrojo · invisible</text>
+<g><line x1="280" y1="40" x2="280" y2="80" stroke="#4ec9b0" stroke-width="3"/><text x="280" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#4ec9b0">850 nm</text><text x="280" y="114" text-anchor="middle" class="fmonomo3-s">multimodo</text></g>
+<g><line x1="430" y1="40" x2="430" y2="80" stroke="#dcdcaa" stroke-width="3"/><text x="430" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#dcdcaa">1310 nm</text><text x="430" y="114" text-anchor="middle" class="fmonomo3-s">monomodo</text></g>
+<g><line x1="540" y1="40" x2="540" y2="80" stroke="#dcdcaa" stroke-width="3"/><text x="540" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#dcdcaa">1550 nm</text><text x="540" y="114" text-anchor="middle" class="fmonomo3-s">monomodo lejos</text></g>
+<text x="300" y="136" text-anchor="middle" class="fmonomo3-s">nm = nanómetros, el «color» de la luz.</text><text x="300" y="148" text-anchor="middle" class="fmonomo3-s">No hace falta aprenderse los números: basta con saber que es invisible.</text>
+</svg>
+</div>
 
-<h3>LED o láser</h3>
+<details>
+<summary>Para saber más: pérdidas por kilómetro, LED y láser</summary>
 <table>
-<tr><th>LED</th><th>Láser (LD, VCSEL)</th></tr>
-<tr><td>Barato, duradero, aguanta bien la temperatura</td><td>Más caro y más delicado</td></tr>
-<tr><td>Luz poco concentrada: solo entra bien en núcleos anchos</td><td>Haz muy estrecho: imprescindible en monomodo</td></tr>
-<tr><td>Poca velocidad (hasta ~100 Mbps) y poca distancia</td><td>Gigabit y más, y grandes distancias</td></tr>
-<tr><td>Hoy: casi solo en equipos antiguos</td><td>Hoy: lo normal en cualquier transceptor</td></tr>
+<tr><th>Luz</th><th>Fibra</th><th>Emisor</th><th>Pérdida del cable</th></tr>
+<tr><td>850 nm</td><td>Multimodo</td><td>Láser barato (VCSEL) o LED antiguo</td><td>unos 3 dB/km</td></tr>
+<tr><td>1310 nm</td><td>Monomodo</td><td>Láser</td><td>unos 0,35 dB/km</td></tr>
+<tr><td>1550 nm</td><td>Monomodo, muy lejos</td><td>Láser</td><td>unos 0,25 dB/km</td></tr>
 </table>
-
-<div class="nota">En la presentación pongo la monomodo con «atenuación inferior a 2 dB/km». No es falso, pero se queda muy corto: una monomodo real pierde <strong>0,25-0,4 dB/km</strong>. Donde se pierden unos 3 dB/km es en la multimodo a 850 nm.</div>
+<p>El <strong>LED</strong> es barato y duradero, pero su luz se abre mucho y solo entra bien en núcleos anchos, a poca velocidad: hoy casi solo está en equipos antiguos. El <strong>láser</strong> da un haz muy estrecho, imprescindible en monomodo, y es lo normal en cualquier módulo actual.</p>
+<div class="nota">En la presentación pongo la monomodo con «atenuación inferior a 2 dB/km». Se queda muy corto: una monomodo real pierde <strong>0,25-0,4 dB/km</strong>. Donde se pierden unos 3 dB/km es en la multimodo.</div>
+</details>
 
 <h2>Los tipos OM y OS: cómo reconocerlos</h2>
-<p>La norma internacional <strong>ISO/IEC 11801</strong> (y la americana TIA-568, que es la que cito en la presentación) clasifica las fibras en <strong>OM</strong> (<em>Optical Multimode</em>) y <strong>OS</strong> (<em>Optical Single-mode</em>). El <strong>color de la cubierta</strong> del latiguillo te dice cuál tienes delante:</p>
-<table>
-<tr><th>Tipo</th><th>Núcleo</th><th>Color de cubierta</th><th>Notas</th></tr>
-<tr><td><strong>OM1</strong></td><td>62,5 µm</td><td>Naranja</td><td>Antigua. Solo para gigabit a pocos cientos de metros</td></tr>
-<tr><td><strong>OM2</strong></td><td>50 µm</td><td>Naranja</td><td>Antigua</td></tr>
-<tr><td><strong>OM3</strong></td><td>50 µm</td><td>Aguamarina (<em>aqua</em>)</td><td>Preparada para láser: 10 Gbps a 300 m</td></tr>
-<tr><td><strong>OM4</strong></td><td>50 µm</td><td>Aguamarina o <strong>violeta</strong> (en Europa)</td><td>10 Gbps a 400 m. La habitual en instalaciones nuevas multimodo</td></tr>
-<tr><td><strong>OM5</strong></td><td>50 µm</td><td>Verde lima</td><td>Pensada para varias longitudes de onda por fibra</td></tr>
-<tr><td><strong>OS1 / OS2</strong></td><td>9 µm</td><td><strong>Amarillo</strong></td><td>Monomodo. OS2 es la actual, para exterior y larga distancia</td></tr>
-</table>
-<p>Truco: <strong>amarillo = monomodo</strong>. Cualquier otro color de los de la tabla es multimodo. Y el color de cubierta se mira siempre junto con lo que lleva <strong>impreso</strong> el cable (por ejemplo, <code>OS2 9/125</code> o <code>OM4 50/125</code>): es lo que manda.</p>
+<p>Las fibras se clasifican en <strong>OM</strong> (multimodo) y <strong>OS</strong> (monomodo). Lo bueno es que <strong>se reconocen por el color</strong> de la cubierta del latiguillo:</p>
 
-<div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal. Tampoco se mezcla OM1 (62,5 µm) con OM2-OM5 (50 µm): los núcleos no encajan y se pierde mucha luz en cada unión.</div>
+<div class="salida">
+<svg viewBox="0 0 600 260" width="100%" role="img" aria-label="Seis latiguillos dibujados con su color. Monomodo OS2: amarillo, núcleo 9 micras, el de larga distancia. Multimodo: OM1 y OM2 naranja, antiguos; OM3 aguamarina; OM4 aguamarina o violeta; OM5 verde lima" style="max-width:100%;height:auto;">
+<style>
+.fmonomo4-h{font-family:monospace;font-size:13px;font-weight:700}
+.fmonomo4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo4-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="10" y="10" width="580" height="70" rx="6" fill="#2d2a1a" stroke="#f0d000"/>
+<rect x="30" y="36" width="260" height="16" rx="8" fill="#f0d000"/>
+<rect x="290" y="32" width="34" height="24" rx="3" fill="#4fc1ff" stroke="#1e1e1e"/>
+<text x="350" y="40" class="fmonomo4-h" fill="#f0d000">AMARILLO = MONOMODO</text>
+<text x="350" y="58" class="fmonomo4-t">OS2 · núcleo 9 µm · kilómetros</text>
+<text x="160" y="48" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#1e1e1e">OS2 9/125</text>
 
-<h2>Qué velocidad y qué distancia</h2>
-<p>En Ethernet por fibra, el nombre te da la pista: la <strong>S</strong> es <em>short</em> (corto, multimodo a 850 nm) y la <strong>L</strong> es <em>long</em> (largo, monomodo a 1310 nm).</p>
+<text x="300" y="104" text-anchor="middle" class="fmonomo4-h" fill="#4ec9b0">CUALQUIER OTRO COLOR = MULTIMODO</text>
+<g>
+<rect x="30" y="122" width="200" height="14" rx="7" fill="#e8802a"/><text x="250" y="134" class="fmonomo4-t">OM1 · OM2</text><text x="360" y="134" class="fmonomo4-s">naranja · antiguas</text>
+<rect x="30" y="152" width="200" height="14" rx="7" fill="#3ac8c8"/><text x="250" y="164" class="fmonomo4-t">OM3</text><text x="360" y="164" class="fmonomo4-s">aguamarina (aqua)</text>
+<rect x="30" y="182" width="95" height="14" rx="7" fill="#3ac8c8"/><rect x="135" y="182" width="95" height="14" rx="7" fill="#a060d0"/><text x="250" y="194" class="fmonomo4-t">OM4</text><text x="360" y="194" class="fmonomo4-s">aqua o violeta · la más usada</text>
+<rect x="30" y="212" width="200" height="14" rx="7" fill="#9ae040"/><text x="250" y="224" class="fmonomo4-t">OM5</text><text x="360" y="224" class="fmonomo4-s">verde lima · la más nueva</text>
+</g>
+<text x="300" y="252" text-anchor="middle" class="fmonomo4-s">Mira siempre también lo que lleva impreso el cable: es lo que manda.</text>
+</svg>
+<p class="pie-figura">El color de la cubierta te dice el tipo de fibra de un vistazo.</p>
+</div>
+
+<details>
+<summary>Para saber más: la tabla completa</summary>
 <table>
-<tr><th>Norma</th><th>Velocidad</th><th>Fibra</th><th>Distancia máxima</th></tr>
-<tr><td>1000BASE-<strong>SX</strong></td><td>1 Gbps</td><td>OM1 / OM2 / OM3</td><td>275 m / 550 m / 550 m</td></tr>
-<tr><td>1000BASE-<strong>LX</strong></td><td>1 Gbps</td><td>OS2</td><td>5 km (10 km con muchos módulos)</td></tr>
-<tr><td>10GBASE-<strong>SR</strong></td><td>10 Gbps</td><td>OM1 / OM2 / OM3 / OM4</td><td>33 m / 82 m / 300 m / 400 m</td></tr>
-<tr><td>10GBASE-<strong>LR</strong></td><td>10 Gbps</td><td>OS2</td><td>10 km</td></tr>
-<tr><td>10GBASE-<strong>ER</strong></td><td>10 Gbps</td><td>OS2</td><td>40 km</td></tr>
+<tr><th>Tipo</th><th>Núcleo</th><th>Color</th><th>Notas</th></tr>
+<tr><td>OM1</td><td>62,5 µm</td><td>Naranja</td><td>Antigua</td></tr>
+<tr><td>OM2</td><td>50 µm</td><td>Naranja</td><td>Antigua</td></tr>
+<tr><td>OM3</td><td>50 µm</td><td>Aguamarina</td><td>Preparada para 10 Gbps</td></tr>
+<tr><td>OM4</td><td>50 µm</td><td>Aguamarina o violeta (en Europa)</td><td>La habitual en multimodo nueva</td></tr>
+<tr><td>OM5</td><td>50 µm</td><td>Verde lima</td><td>Varias luces por fibra</td></tr>
+<tr><td>OS1 / OS2</td><td>9 µm</td><td>Amarillo</td><td>Monomodo. OS2 es la actual</td></tr>
 </table>
-<p>Fíjate en la fila de 10GBASE-SR: la <strong>misma</strong> OM1 que da 275 m a 1 Gbps se queda en 33 m a 10 Gbps. Eso es la dispersión modal en acción.</p>
+<p>La clasificación viene de la norma internacional ISO/IEC 11801 (y de la americana TIA-568, que es la que cito en la presentación). En el cable verás impreso algo como <code>OM4 50/125</code>: núcleo de 50 µm y revestimiento de 125 µm.</p>
+</details>
+
+<div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal. Tampoco se mezcla el OM1 naranja con los demás: su núcleo es más gordo y se pierde luz en cada unión.</div>
+
+<h2>Hasta dónde llega cada una</h2>
+<p>Así se ve la diferencia de distancias. La barra del cobre está para comparar:</p>
+
+<div class="salida">
+<svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Gráfico de barras de distancia máxima a 1 y 10 gigabits. Par trenzado: 100 metros. Multimodo OM3 a 10 Gbps: 300 metros. Multimodo OM4 a 10 Gbps: 400 metros. Multimodo OM3 a 1 Gbps: 550 metros. Monomodo OS2: 10 kilómetros, con la barra cortada porque no cabe" style="max-width:100%;height:auto;">
+<style>
+.fmonomo5-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo5-s{font-family:monospace;font-size:10px;fill:#858585}
+.fmonomo5-v{font-family:monospace;font-size:11px;font-weight:700}
+</style>
+<g stroke="#3a3d41"><line x1="170" y1="20" x2="170" y2="220"/><line x1="245" y1="20" x2="245" y2="220" stroke-dasharray="2 4"/><line x1="320" y1="20" x2="320" y2="220" stroke-dasharray="2 4"/><line x1="395" y1="20" x2="395" y2="220" stroke-dasharray="2 4"/><line x1="470" y1="20" x2="470" y2="220" stroke-dasharray="2 4"/></g>
+<text x="170" y="236" text-anchor="middle" class="fmonomo5-s">0</text><text x="245" y="236" text-anchor="middle" class="fmonomo5-s">100 m</text><text x="320" y="236" text-anchor="middle" class="fmonomo5-s">200 m</text><text x="395" y="236" text-anchor="middle" class="fmonomo5-s">300 m</text><text x="470" y="236" text-anchor="middle" class="fmonomo5-s">400 m</text>
+<text x="160" y="42" text-anchor="end" class="fmonomo5-t">Cobre UTP</text><rect x="170" y="30" width="75" height="18" fill="#d7ba7d"/><text x="252" y="44" class="fmonomo5-v" fill="#d7ba7d">100 m</text>
+<text x="160" y="80" text-anchor="end" class="fmonomo5-t">OM3 · 10 Gbps</text><rect x="170" y="68" width="225" height="18" fill="#3ac8c8"/><text x="402" y="82" class="fmonomo5-v" fill="#3ac8c8">300 m</text>
+<text x="160" y="118" text-anchor="end" class="fmonomo5-t">OM4 · 10 Gbps</text><rect x="170" y="106" width="300" height="18" fill="#a060d0"/><text x="477" y="120" class="fmonomo5-v" fill="#a060d0">400 m</text>
+<text x="160" y="156" text-anchor="end" class="fmonomo5-t">OM3 · 1 Gbps</text><rect x="170" y="144" width="412" height="18" fill="#3ac8c8" fill-opacity="0.6"/><text x="520" y="138" class="fmonomo5-v" fill="#3ac8c8">550 m</text>
+<text x="160" y="194" text-anchor="end" class="fmonomo5-t">OS2 · 10 Gbps</text><rect x="170" y="182" width="380" height="18" fill="#f0d000"/>
+<path d="M 550 180 L 560 191 L 552 202" stroke="#1e1e1e" stroke-width="4" fill="none"/><rect x="562" y="182" width="20" height="18" fill="#f0d000"/>
+<text x="376" y="195" text-anchor="middle" class="fmonomo5-v" fill="#1e1e1e">10 km: 25 veces la OM4</text>
+<text x="300" y="258" text-anchor="middle" class="fmonomo5-s">Fíjate: la misma OM3 llega a 550 m a 1 Gbps pero solo a 300 m a 10 Gbps.</text>
+</svg>
+<p class="pie-figura">La multimodo se mide en metros. La monomodo, en kilómetros.</p>
+</div>
+
+<details>
+<summary>Para saber más: los nombres SX, LX, SR y LR</summary>
+<p>En Ethernet por fibra la <strong>S</strong> es <em>short</em> (corto, multimodo) y la <strong>L</strong> es <em>long</em> (largo, monomodo).</p>
+<table>
+<tr><th>Norma</th><th>Velocidad</th><th>Fibra</th><th>Distancia</th></tr>
+<tr><td>1000BASE-SX</td><td>1 Gbps</td><td>OM1 / OM2 / OM3</td><td>275 m / 550 m / 550 m</td></tr>
+<tr><td>1000BASE-LX</td><td>1 Gbps</td><td>OS2</td><td>5 km (10 km en muchos módulos)</td></tr>
+<tr><td>10GBASE-SR</td><td>10 Gbps</td><td>OM1 / OM2 / OM3 / OM4</td><td>33 m / 82 m / 300 m / 400 m</td></tr>
+<tr><td>10GBASE-LR</td><td>10 Gbps</td><td>OS2</td><td>10 km</td></tr>
+<tr><td>10GBASE-ER</td><td>10 Gbps</td><td>OS2</td><td>40 km</td></tr>
+</table>
+<div class="nota">En la tabla de medios de la presentación pongo la fibra con «&lt;2 km». Eso vale para multimodo. La monomodo llega a 10-40 km con módulos normales.</div>
+</details>
 
 <h3>Entonces, ¿cuál se pone?</h3>
-<ul>
-<li><strong>Multimodo (OM3/OM4)</strong>: dentro de un edificio o un centro de datos, enlaces de menos de 300-400 m. Los transceptores son algo más baratos.</li>
-<li><strong>Monomodo (OS2)</strong>: entre edificios, en campus, en la fibra que llega a tu casa (FTTH) y en todo lo de larga distancia. El cable ya es igual de barato o más que el multimodo, así que en instalaciones nuevas se usa cada vez más incluso para distancias cortas: <strong>no se queda pequeña</strong>.</li>
-</ul>
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Dibujo de un edificio de tres plantas unido por dentro con fibra aguamarina multimodo, y un cable amarillo monomodo que sale del edificio hacia otro edificio lejano y hacia una casa con fibra" style="max-width:100%;height:auto;">
+<style>
+.fmonomo6-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fmonomo6-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<rect x="40" y="30" width="140" height="150" fill="#252526" stroke="#858585"/>
+<line x1="40" y1="80" x2="180" y2="80" stroke="#3a3d41"/><line x1="40" y1="130" x2="180" y2="130" stroke="#3a3d41"/>
+<rect x="140" y="45" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/><rect x="140" y="95" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/><rect x="140" y="145" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/>
+<line x1="152" y1="65" x2="152" y2="145" stroke="#3ac8c8" stroke-width="4"/>
+<text x="90" y="110" text-anchor="middle" class="fmonomo6-t" style="fill:#3ac8c8">OM4</text>
+<text x="90" y="124" text-anchor="middle" class="fmonomo6-s">dentro</text>
+<text x="110" y="196" text-anchor="middle" class="fmonomo6-s">mismo edificio: multimodo</text>
+<path d="M 164 155 L 420 155 L 420 120" stroke="#f0d000" stroke-width="4" fill="none"/>
+<path d="M 300 155 L 300 60 L 470 60" stroke="#f0d000" stroke-width="4" fill="none"/>
+<rect x="390" y="120" width="70" height="60" fill="#252526" stroke="#858585"/>
+<text x="425" y="196" text-anchor="middle" class="fmonomo6-s">otro edificio</text>
+<polygon points="470,60 510,30 550,60" fill="#3a3d41" stroke="#858585"/><rect x="478" y="60" width="64" height="40" fill="#252526" stroke="#858585"/>
+<text x="510" y="116" text-anchor="middle" class="fmonomo6-s">tu casa (FTTH)</text>
+<text x="290" y="174" text-anchor="middle" class="fmonomo6-t" style="fill:#f0d000">OS2 · lejos</text>
+</svg>
+<p class="pie-figura">Dentro del edificio, multimodo. Para salir del edificio o llegar lejos, monomodo.</p>
+</div>
+<p>Hoy el cable monomodo cuesta lo mismo o menos que el multimodo, así que en instalaciones nuevas se pone cada vez más monomodo incluso dentro del edificio: <strong>no se queda pequeña</strong>.</p>
 
 <div data-actividad="u4s2-identifica"></div>
-
 <h2>Para contestar en el cuaderno</h2>
 <div class="papel">
 <p class="papel__titulo">Actividad 2 — a mano, en papel</p>
 <ol>
 <li>¿Qué es un modo? Dibuja cómo viaja la luz en una fibra monomodo y en una multimodo.</li>
-<li>¿Qué es la dispersión modal y por qué limita la distancia de la multimodo?</li>
-<li>Diferencia entre fibra de salto de índice e índice gradual.</li>
-<li>Copia la tabla de tipos OM y OS con su núcleo y su color.</li>
-<li>¿Qué significan la S y la L en 1000BASE-SX y 1000BASE-LX? ¿Qué fibra usa cada una y hasta dónde llega?</li>
-<li>Compara los emisores LED y láser: dos diferencias.</li>
+<li>Explica la dispersión modal con el ejemplo de la carrera. ¿Por qué hace que la multimodo llegue menos lejos?</li>
+<li>¿Por qué la luz de la fibra es peligrosa para los ojos?</li>
+<li>Pinta con colores (o escribe) de qué color es la cubierta de una fibra monomodo y de las multimodo OM1, OM3, OM4 y OM5.</li>
+<li>Copia el gráfico de distancias: ¿hasta dónde llega más o menos la multimodo? ¿Y la monomodo?</li>
+<li>¿Qué fibra pondrías dentro de un edificio y cuál para unir dos edificios lejanos?</li>
 <li>Te encuentras un latiguillo amarillo que pone <code>9/125</code>. ¿Qué tipo de fibra es? ¿Qué significan los dos números?</li>
 </ol>
 </div>

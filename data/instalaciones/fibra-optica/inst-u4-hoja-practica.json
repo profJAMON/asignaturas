@@ -7,6 +7,12 @@
   "actividades": [
     {
       "tipo": "generador",
+      "titulo": "Calentamiento: metros a kilómetros",
+      "generador": "metros-a-km",
+      "n": 4
+    },
+    {
+      "tipo": "generador",
       "titulo": "Calentamiento: pérdidas",
       "generador": "perdidas-fibra",
       "n": 4

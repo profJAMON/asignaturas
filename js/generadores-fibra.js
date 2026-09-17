@@ -9,6 +9,7 @@
    fibra-conector   descripción → LC, SC, ST, FC, MPO, UPC o APC
    perdidas-fibra   presupuesto de pérdidas de un enlace (dB)
    margen-fibra     margen = lo que aguanta el módulo − pérdidas
+   metros-a-km      pasar metros a kilómetros (paso previo al cálculo)
 
    Valores de cálculo (los mismos que en la sesión 4):
    multimodo 3,5 dB/km · monomodo 0,5 dB/km · conexión 0,75 dB ·
@@ -146,8 +147,8 @@
   }
 
   function cuentas(e) {
-    const km = e.tipo === 'multimodo' ? `${e.textoLong} = ${coma(e.km)} km → ` : '';
-    return `${km}${coma(e.km)} × ${coma(DB_KM[e.tipo])} = ${coma(e.cable)} · ${e.conexiones} × 0,75 = ${coma(e.con)} · ${e.empalmes} × 0,3 = ${coma(e.emp)} → total ${coma(e.total)} dB.`;
+    const km = e.tipo === 'multimodo' ? `(${e.textoLong} = ${coma(e.km)} km) ` : '';
+    return `Ticket → Cable: ${km}${coma(e.km)} × ${coma(DB_KM[e.tipo])} = ${coma(e.cable)} · Conexiones: ${e.conexiones} × 0,75 = ${coma(e.con)} · Empalmes: ${e.empalmes} × 0,3 = ${coma(e.emp)} · TOTAL ${coma(e.cable)} + ${coma(e.con)} + ${coma(e.emp)} = ${coma(e.total)} dB.`;
   }
 
   function genPerdidasFibra() {
@@ -167,17 +168,31 @@
     const aguanta = Math.max(2, Math.round(e.total + elige([-2, -1, 1, 2, 3, 4, 5, 6])));
     const margen = redondea(aguanta - e.total);
     let veredicto;
-    if (margen < 0) veredicto = 'negativo: no funciona.';
-    else if (margen < 3) veredicto = 'funciona, pero va justo (menos de 3 dB).';
-    else veredicto = 'bien diseñado (3 dB o más).';
+    if (margen < 0) veredicto = 'ROJO: no funciona.';
+    else if (margen < 3) veredicto = 'ÁMBAR: funciona, pero va justo.';
+    else veredicto = 'VERDE: bien hecho.';
     return {
       enunciado: `${descripcion(e)}. El módulo aguanta ${aguanta} dB → margen en dB`,
       respuesta: String(margen),
       formato: 'numero',
-      pista: `Pérdida: ${cuentas(e)} Margen = ${aguanta} − ${coma(e.total)} = ${coma(margen)} dB, ${veredicto}`
+      pista: `Pérdida: ${cuentas(e)} Margen = ${aguanta} − ${coma(e.total)} = ${coma(margen)} dB → ${veredicto}`
     };
   }
 
+  /* ---------- Metros a kilómetros ---------- */
+
+  function genMetrosAKm() {
+    const m = elige([entero(1, 99) * 10, entero(1, 50) * 20, entero(1, 9) * 100, entero(11, 40) * 100]);
+    const km = m / 1000;
+    return {
+      enunciado: `${m} m → ¿cuántos km?`,
+      respuesta: String(km),
+      formato: 'numero',
+      pista: `Corre la coma tres sitios a la izquierda: ${m} m = ${coma(km)} km.`
+    };
+  }
+
+  GENERADORES['metros-a-km'] = genMetrosAKm;
   GENERADORES['fibra-tipo'] = genFibraTipo;
   GENERADORES['fibra-conector'] = genFibraConector;
   GENERADORES['perdidas-fibra'] = genPerdidasFibra;

@@ -9,22 +9,22 @@
 <div class="salida">
 <svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Corte longitudinal de una fibra: el rayo de luz entra por la izquierda y avanza por el núcleo rebotando en el límite con el revestimiento. Abajo, un rayo que entra demasiado inclinado se escapa al revestimiento" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fque-es1-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fque-es1-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
 <rect x="40" y="40" width="520" height="100" fill="#2d2d30" stroke="#858585"/>
 <rect x="40" y="70" width="520" height="40" fill="#1f3a4a" stroke="#4fc1ff"/>
 <polyline points="40,90 100,70 180,110 260,70 340,110 420,70 500,110 560,90" fill="none" stroke="#dcdcaa" stroke-width="2"/>
 <polygon points="552,86 562,90 552,94" fill="#dcdcaa"/>
-<text x="570" y="94" class="t">→</text>
-<text x="20" y="34" class="s">revestimiento</text>
-<text x="300" y="94" text-anchor="middle" class="t" style="fill:#4fc1ff">núcleo</text>
-<text x="20" y="156" class="s">revestimiento</text>
-<text x="100" y="62" text-anchor="middle" class="s">rebota</text>
-<text x="180" y="126" text-anchor="middle" class="s">rebota</text>
+<text x="570" y="94" class="fque-es1-t">→</text>
+<text x="20" y="34" class="fque-es1-s">revestimiento</text>
+<text x="300" y="94" text-anchor="middle" class="fque-es1-t" style="fill:#4fc1ff">núcleo</text>
+<text x="20" y="156" class="fque-es1-s">revestimiento</text>
+<text x="100" y="62" text-anchor="middle" class="fque-es1-s">rebota</text>
+<text x="180" y="126" text-anchor="middle" class="fque-es1-s">rebota</text>
 <line x1="40" y1="176" x2="120" y2="176" stroke="#dcdcaa" stroke-width="2"/>
 <line x1="120" y1="176" x2="150" y2="192" stroke="#f48771" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="160" y="188" class="s" style="fill:#f48771">si entra muy inclinada o la curva es demasiado cerrada, se escapa y se pierde</text>
+<text x="160" y="188" class="fque-es1-s" style="fill:#f48771">si entra muy inclinada o la curva es demasiado cerrada, se escapa y se pierde</text>
 </svg>
 <p class="pie-figura">Dibujo exagerado: el núcleo real es tan fino que los rebotes no se ven.</p>
 </div>
@@ -33,12 +33,39 @@
 
 <p>De aquí sale la regla de oro al manejar fibra: <strong>nada de curvas cerradas</strong>. Si doblas demasiado el cable, la luz deja de llegar al borde con el ángulo bueno, se escapa y la señal se pierde. Cada cable indica su <strong>radio mínimo de curvatura</strong>; como regla fácil, no hagas curvas más cerradas que una lata de refresco, y nunca ates el cable con bridas apretadas.</p>
 
+<div class="salida">
+<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Dos dibujos. A la izquierda, bien: un cable de fibra que rodea una lata de refresco con una curva amplia y la luz llega al final. A la derecha, mal: el cable doblado en ángulo casi recto y apretado con una brida; la luz se escapa por el codo y no llega nada" style="max-width:100%;height:auto;">
+<style>
+.fque-es2-t{font-family:monospace;font-size:12px;font-weight:700}
+.fque-es2-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="150" y="22" text-anchor="middle" class="fque-es2-t" fill="#4ec9b0">✓ BIEN</text>
+<circle cx="150" cy="110" r="40" fill="#3a3d41" stroke="#858585"/>
+<circle cx="150" cy="110" r="30" fill="none" stroke="#555"/>
+<text x="150" y="114" text-anchor="middle" class="fque-es2-s">lata</text>
+<path d="M 20 156 L 150 156 A 46 46 0 0 0 196 110 L 196 36" fill="none" stroke="#dcdcaa" stroke-width="6"/>
+<circle cx="196" cy="36" r="7" fill="#dcdcaa" fill-opacity="0.6"/>
+<text x="210" y="40" class="fque-es2-s" style="fill:#dcdcaa">llega la luz</text>
+<text x="150" y="192" text-anchor="middle" class="fque-es2-s">curva suave: la luz sigue dentro</text>
+<line x1="300" y1="15" x2="300" y2="190" stroke="#3a3d41"/>
+<text x="450" y="22" text-anchor="middle" class="fque-es2-t" fill="#f48771">✗ MAL</text>
+<path d="M 330 150 L 450 150 L 452 40" fill="none" stroke="#dcdcaa" stroke-width="6" stroke-linejoin="miter"/>
+<rect x="436" y="138" width="34" height="24" rx="3" fill="none" stroke="#858585" stroke-width="3"/>
+<g stroke="#f48771" stroke-width="2"><line x1="460" y1="150" x2="500" y2="130"/><line x1="460" y1="156" x2="505" y2="160"/><line x1="456" y1="162" x2="485" y2="185"/></g>
+<text x="515" y="140" class="fque-es2-s" style="fill:#f48771">la luz</text>
+<text x="515" y="154" class="fque-es2-s" style="fill:#f48771">se escapa</text>
+<text x="400" y="176" text-anchor="middle" class="fque-es2-s">codo + brida apretada</text>
+<text x="452" y="34" text-anchor="middle" class="fque-es2-s">no llega nada</text>
+</svg>
+<p class="pie-figura">Regla fácil: nunca más cerrado que una lata de refresco.</p>
+</div>
+
 <h2>Las partes de una fibra</h2>
 <div class="salida">
 <svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Corte transversal de un cable de fibra en círculos concéntricos: núcleo, revestimiento de 125 micras, recubrimiento primario de 250 micras, fibras de aramida y cubierta exterior, con sus medidas" style="max-width:100%;height:auto;">
 <style>
-.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
+.fque-es3-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fque-es3-s{font-family:monospace;font-size:10px;fill:#858585}
 </style>
 <circle cx="160" cy="120" r="100" fill="#3a3d41" stroke="#dcdcaa"/>
 <circle cx="160" cy="120" r="84" fill="#5a4a2a" stroke="#858585"/>
@@ -47,11 +74,11 @@
 <circle cx="160" cy="120" r="32" fill="#2d4a5a" stroke="#858585"/>
 <circle cx="160" cy="120" r="8" fill="#4fc1ff"/>
 <g stroke="#858585"><line x1="168" y1="120" x2="330" y2="40"/><line x1="190" y1="120" x2="330" y2="80"/><line x1="206" y1="130" x2="330" y2="120"/><line x1="236" y1="150" x2="330" y2="160"/><line x1="252" y1="170" x2="330" y2="200"/></g>
-<text x="340" y="36" class="t" style="fill:#4fc1ff">1 · núcleo</text><text x="340" y="50" class="s">monomodo 9 µm · multimodo 50 o 62,5 µm</text>
-<text x="340" y="76" class="t">2 · revestimiento</text><text x="340" y="90" class="s">vidrio · 125 µm (siempre)</text>
-<text x="340" y="116" class="t" style="fill:#c586c0">3 · recubrimiento primario</text><text x="340" y="130" class="s">acrilato de color · 250 µm</text>
-<text x="340" y="156" class="t" style="fill:#dcdcaa">4 · refuerzo de aramida</text><text x="340" y="170" class="s">hilos tipo kevlar: aguantan el tirón</text>
-<text x="340" y="196" class="t">5 · cubierta exterior</text><text x="340" y="210" class="s">latiguillo ~2-3 mm · color según tipo</text>
+<text x="340" y="36" class="fque-es3-t" style="fill:#4fc1ff">1 · núcleo</text><text x="340" y="50" class="fque-es3-s">monomodo 9 µm · multimodo 50 o 62,5 µm</text>
+<text x="340" y="76" class="fque-es3-t">2 · revestimiento</text><text x="340" y="90" class="fque-es3-s">vidrio · 125 µm (siempre)</text>
+<text x="340" y="116" class="fque-es3-t" style="fill:#c586c0">3 · recubrimiento primario</text><text x="340" y="130" class="fque-es3-s">acrilato de color · 250 µm</text>
+<text x="340" y="156" class="fque-es3-t" style="fill:#dcdcaa">4 · refuerzo de aramida</text><text x="340" y="170" class="fque-es3-s">hilos tipo kevlar: aguantan el tirón</text>
+<text x="340" y="196" class="fque-es3-t">5 · cubierta exterior</text><text x="340" y="210" class="fque-es3-s">latiguillo ~2-3 mm · color según tipo</text>
 </svg>
 <p class="pie-figura">Tamaños no a escala. Núcleo y revestimiento son el vidrio; lo demás es protección.</p>
 </div>
@@ -62,7 +89,34 @@
 <li><strong>Refuerzo</strong>: hilos de <strong>aramida</strong> (el material del kevlar). Son los que aguantan cuando se tira del cable; el vidrio no aguantaría.</li>
 <li><strong>Cubierta</strong> (<em>jacket</em>): el plástico exterior. En interiores, mejor <strong>LSZH</strong> (libre de halógenos), igual que el cobre.</li>
 </ol>
-<p>Para que te hagas una idea: 125 µm es <strong>0,125 mm</strong>, más o menos el grosor de un pelo.</p>
+<p>Para que te hagas una idea de lo fino que es, compáralo con cosas que conoces. 1 µm (una micra) es la milésima parte de un milímetro:</p>
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Comparación de grosores dibujados a la misma escala: el núcleo monomodo de 9 micras es un punto diminuto, el núcleo multimodo de 50 micras algo mayor, un pelo de unas 70 micras, la fibra entera con revestimiento de 125 micras, y un hilo de cobre de un cable UTP de medio milímetro, mucho más grande" style="max-width:100%;height:auto;">
+<style>
+.fque-es4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
+.fque-es4-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="300" y="20" text-anchor="middle" class="fque-es4-t">Todo dibujado a la misma escala</text>
+<circle cx="60" cy="120" r="1.2" fill="#4fc1ff"/>
+<circle cx="60" cy="120" r="10" fill="none" stroke="#4fc1ff" stroke-dasharray="2 2"/>
+<text x="60" y="165" text-anchor="middle" class="fque-es4-t" style="fill:#4fc1ff">9 µm</text>
+<text x="60" y="180" text-anchor="middle" class="fque-es4-s">núcleo</text><text x="60" y="193" text-anchor="middle" class="fque-es4-s">monomodo</text>
+<circle cx="160" cy="120" r="6.25" fill="#4ec9b0"/>
+<text x="160" y="165" text-anchor="middle" class="fque-es4-t" style="fill:#4ec9b0">50 µm</text>
+<text x="160" y="180" text-anchor="middle" class="fque-es4-s">núcleo</text><text x="160" y="193" text-anchor="middle" class="fque-es4-s">multimodo</text>
+<circle cx="260" cy="120" r="8.75" fill="#b0a080"/>
+<text x="260" y="165" text-anchor="middle" class="fque-es4-t" style="fill:#b0a080">~70 µm</text>
+<text x="260" y="180" text-anchor="middle" class="fque-es4-s">un pelo</text>
+<circle cx="360" cy="120" r="15.6" fill="#2d4a5a" stroke="#d4d4d4"/>
+<circle cx="360" cy="120" r="1.2" fill="#4fc1ff"/>
+<text x="360" y="165" text-anchor="middle" class="fque-es4-t">125 µm</text>
+<text x="360" y="180" text-anchor="middle" class="fque-es4-s">fibra entera</text><text x="360" y="193" text-anchor="middle" class="fque-es4-s">(vidrio)</text>
+<circle cx="500" cy="120" r="62" fill="#d7ba7d"/>
+<text x="500" y="124" text-anchor="middle" class="fque-es4-t" style="fill:#1e1e1e">~500 µm</text>
+<text x="500" y="200" text-anchor="middle" class="fque-es4-s">un hilo de cobre</text><text x="500" y="213" text-anchor="middle" class="fque-es4-s">de un cable UTP</text>
+</svg>
+<p class="pie-figura">La fibra entera es un poco más gruesa que un pelo. Su núcleo monomodo casi no se ve ni dibujado.</p>
+</div>
 
 <div class="nota">Dos correcciones a mi presentación. El núcleo multimodo mide <strong>50 o 62,5 µm</strong>, no «entre 50 y 125»: 125 µm es el revestimiento. Y la cubierta no mide «decenas de milímetros»: el recubrimiento primario tiene 0,25 mm, y un latiguillo entero ronda los 2-3 mm.</div>
 
@@ -70,6 +124,36 @@
 
 <h2>Cómo se agrupan las fibras en un cable</h2>
 <p>Un cable puede llevar de 1 a cientos de fibras. Según cómo van protegidas por dentro hay dos diseños:</p>
+<div class="salida">
+<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Corte de dos cables. Estructura holgada: una cubierta negra gruesa con tubos dentro, y en cada tubo varias fibras de colores sueltas flotando en gel. Estructura ajustada: un cable fino con una sola fibra en el centro rodeada de una capa blanca de 900 micras pegada, aramida amarilla y cubierta" style="max-width:100%;height:auto;">
+<style>
+.fque-es5-t{font-family:monospace;font-size:12px;font-weight:700}
+.fque-es5-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<text x="150" y="20" text-anchor="middle" class="fque-es5-t" fill="#dcdcaa">Holgada · exterior</text>
+<circle cx="150" cy="110" r="78" fill="#111" stroke="#858585" stroke-width="2"/>
+<circle cx="150" cy="110" r="10" fill="#555"/>
+<g stroke="#858585" fill="#4a4a2a" fill-opacity="0.6">
+<circle cx="150" cy="62" r="24"/><circle cx="196" cy="96" r="24"/><circle cx="178" cy="152" r="24"/><circle cx="122" cy="152" r="24"/><circle cx="104" cy="96" r="24"/>
+</g>
+<g><circle cx="142" cy="56" r="4" fill="#4fc1ff"/><circle cx="156" cy="58" r="4" fill="#f48771"/><circle cx="150" cy="70" r="4" fill="#4ec9b0"/>
+<circle cx="190" cy="92" r="4" fill="#dcdcaa"/><circle cx="202" cy="100" r="4" fill="#c586c0"/><circle cx="194" cy="104" r="4" fill="#d4d4d4"/>
+<circle cx="172" cy="148" r="4" fill="#4fc1ff"/><circle cx="184" cy="156" r="4" fill="#f48771"/>
+<circle cx="116" cy="148" r="4" fill="#4ec9b0"/><circle cx="128" cy="158" r="4" fill="#dcdcaa"/>
+<circle cx="98" cy="92" r="4" fill="#c586c0"/><circle cx="110" cy="100" r="4" fill="#4fc1ff"/></g>
+<text x="150" y="204" text-anchor="middle" class="fque-es5-s">fibras sueltas en tubos con gel</text><text x="150" y="217" text-anchor="middle" class="fque-es5-s">aguanta frío, calor y agua</text>
+<text x="450" y="20" text-anchor="middle" class="fque-es5-t" fill="#4fc1ff">Ajustada · interior</text>
+<circle cx="450" cy="110" r="40" fill="#3a3d41" stroke="#858585" stroke-width="2"/>
+<circle cx="450" cy="110" r="32" fill="#5a4a2a"/>
+<g stroke="#b0a060"><line x1="428" y1="96" x2="436" y2="102"/><line x1="470" y1="94" x2="462" y2="100"/><line x1="432" y1="128" x2="440" y2="122"/><line x1="468" y1="128" x2="460" y2="122"/></g>
+<circle cx="450" cy="110" r="16" fill="#eeeeee"/>
+<circle cx="450" cy="110" r="5" fill="#4fc1ff"/>
+<line x1="466" y1="110" x2="540" y2="70" stroke="#858585"/><text x="545" y="66" class="fque-es5-s">900 µm</text><text x="545" y="78" class="fque-es5-s">pegado</text>
+<line x1="478" y1="124" x2="540" y2="140" stroke="#858585"/><text x="545" y="144" class="fque-es5-s">aramida</text>
+<text x="450" y="208" text-anchor="middle" class="fque-es5-s">una fibra bien protegida · flexible</text>
+</svg>
+<p class="pie-figura">Por fuera casi no se distinguen: lo que cambia es cómo van las fibras por dentro.</p>
+</div>
 <table>
 <tr><th></th><th>Estructura <strong>holgada</strong> (<em>loose tube</em>)</th><th>Estructura <strong>ajustada</strong> (<em>tight buffer</em>)</th></tr>
 <tr><td>Cómo es</td><td>Las fibras de 250 µm van <strong>sueltas</strong> dentro de tubos rellenos de gel o con hilos que absorben el agua</td><td>Cada fibra lleva pegada otra capa de plástico hasta <strong>900 µm</strong>, así que se puede tocar y conectar directamente</td></tr>
@@ -79,6 +163,32 @@
 <p>Lo típico en una empresa: un cable de estructura holgada llega desde otro edificio hasta el armario, y allí se <strong>empalma</strong> con trocitos de fibra ajustada que ya llevan su conector (se llaman <em>pigtails</em>). Lo verás en la sesión 3.</p>
 
 <h2>Por qué se usa (y por qué no en todas partes)</h2>
+<div class="salida">
+<svg viewBox="0 0 600 250" width="100%" role="img" aria-label="Tarjetas de ventajas en verde: llega a kilómetros, muchísima velocidad, no le afectan los motores, no conduce electricidad, no se puede espiar fácilmente. Tarjetas de inconvenientes en rojo: se rompe si se dobla, instalar es caro, los aparatos son caros, el polvo la estropea, no alimenta aparatos" style="max-width:100%;height:auto;">
+<style>
+.fque-es6-h{font-family:monospace;font-size:12px;font-weight:700}
+.fque-es6-c{font-family:monospace;font-size:10.5px;fill:#d4d4d4}
+.fque-es6-i{font-family:monospace;font-size:18px}
+</style>
+<text x="150" y="20" text-anchor="middle" class="fque-es6-h" fill="#4ec9b0">✓ Lo bueno</text>
+<text x="450" y="20" text-anchor="middle" class="fque-es6-h" fill="#f48771">✗ Lo malo</text>
+<g>
+<rect x="10" y="32" width="280" height="36" rx="5" fill="#1e3a30" stroke="#4ec9b0"/><text x="32" y="56" class="fque-es6-i" fill="#4ec9b0">+</text><text x="60" y="55" class="fque-es6-c">Llega a kilómetros (cobre: 100 m)</text>
+<rect x="10" y="74" width="280" height="36" rx="5" fill="#1e3a30" stroke="#4ec9b0"/><text x="32" y="98" class="fque-es6-i" fill="#4ec9b0">+</text><text x="60" y="97" class="fque-es6-c">Muchísima velocidad</text>
+<rect x="10" y="116" width="280" height="36" rx="5" fill="#1e3a30" stroke="#4ec9b0"/><text x="32" y="140" class="fque-es6-i" fill="#4ec9b0">+</text><text x="60" y="139" class="fque-es6-c">No le afectan motores ni cables</text>
+<rect x="10" y="158" width="280" height="36" rx="5" fill="#1e3a30" stroke="#4ec9b0"/><text x="32" y="182" class="fque-es6-i" fill="#4ec9b0">+</text><text x="60" y="181" class="fque-es6-c">No conduce electricidad</text>
+<rect x="10" y="200" width="280" height="36" rx="5" fill="#1e3a30" stroke="#4ec9b0"/><text x="32" y="224" class="fque-es6-i" fill="#4ec9b0">+</text><text x="60" y="223" class="fque-es6-c">Muy difícil de espiar</text>
+</g>
+<g>
+<rect x="310" y="32" width="280" height="36" rx="5" fill="#3a2020" stroke="#f48771"/><text x="332" y="56" class="fque-es6-i" fill="#f48771">−</text><text x="360" y="55" class="fque-es6-c">Se rompe si se dobla o se pisa</text>
+<rect x="310" y="74" width="280" height="36" rx="5" fill="#3a2020" stroke="#f48771"/><text x="332" y="98" class="fque-es6-i" fill="#f48771">−</text><text x="360" y="97" class="fque-es6-c">Instalarla necesita máquinas caras</text>
+<rect x="310" y="116" width="280" height="36" rx="5" fill="#3a2020" stroke="#f48771"/><text x="332" y="140" class="fque-es6-i" fill="#f48771">−</text><text x="360" y="139" class="fque-es6-c">Switches y módulos más caros</text>
+<rect x="310" y="158" width="280" height="36" rx="5" fill="#3a2020" stroke="#f48771"/><text x="332" y="182" class="fque-es6-i" fill="#f48771">−</text><text x="360" y="181" class="fque-es6-c">Una mota de polvo la estropea</text>
+<rect x="310" y="200" width="280" height="36" rx="5" fill="#3a2020" stroke="#f48771"/><text x="332" y="224" class="fque-es6-i" fill="#f48771">−</text><text x="360" y="223" class="fque-es6-c">No alimenta aparatos (no hay PoE)</text>
+</g>
+</svg>
+<p class="pie-figura">El resumen en una imagen. Abajo tienes cada punto explicado.</p>
+</div>
 <table>
 <tr><th>Ventajas</th><th>Inconvenientes</th></tr>
 <tr><td>
@@ -108,6 +218,39 @@
 
 <h2>Seguridad con la fibra</h2>
 <p>Esto entra en el examen y, sobre todo, te protege los ojos. Enlaza con lo que vimos en prevención de riesgos:</p>
+<div class="salida">
+<svg viewBox="0 0 600 190" width="100%" role="img" aria-label="Tres señales de seguridad. Una señal de prohibición roja con un ojo mirando la punta de un conector: nunca mires la punta. Una señal azul de obligación con un conector y su tapón: tapones siempre puestos. Una señal amarilla de advertencia con astillas de vidrio y un bote con tapa: los restos al recipiente" style="max-width:100%;height:auto;">
+<style>
+.fque-es7-h{font-family:monospace;font-size:11.5px;font-weight:700;fill:#d4d4d4}
+.fque-es7-s{font-family:monospace;font-size:10px;fill:#858585}
+</style>
+<!-- prohibido mirar -->
+<circle cx="100" cy="75" r="58" fill="#eeeeee" stroke="#e05050" stroke-width="10"/>
+<path d="M 62 75 Q 80 55 98 75 Q 80 95 62 75 Z" fill="#fff" stroke="#1e1e1e" stroke-width="3"/>
+<circle cx="80" cy="75" r="6" fill="#1e1e1e"/>
+<rect x="112" y="68" width="30" height="14" fill="#4fc1ff" stroke="#1e1e1e" stroke-width="2"/>
+<rect x="104" y="71" width="8" height="8" fill="#eeeeee" stroke="#1e1e1e" stroke-width="2"/>
+<line x1="59" y1="34" x2="141" y2="116" stroke="#e05050" stroke-width="10"/>
+<text x="100" y="158" text-anchor="middle" class="fque-es7-h">Nunca mires la punta</text>
+<text x="100" y="174" text-anchor="middle" class="fque-es7-s">la luz no se ve y quema</text>
+<!-- tapones -->
+<circle cx="300" cy="75" r="58" fill="#2a6ab0"/>
+<rect x="250" y="66" width="46" height="18" rx="2" fill="#eeeeee"/>
+<rect x="296" y="70" width="12" height="10" fill="#eeeeee"/>
+<rect x="314" y="64" width="30" height="22" rx="4" fill="#dcdcaa" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M 308 75 L 314 75" stroke="#eeeeee" stroke-width="3" stroke-dasharray="2 2"/>
+<text x="300" y="158" text-anchor="middle" class="fque-es7-h">Tapones siempre puestos</text>
+<text x="300" y="174" text-anchor="middle" class="fque-es7-s">contra el polvo y la luz</text>
+<!-- astillas -->
+<polygon points="500,15 560,125 440,125" fill="#e8c020" stroke="#1e1e1e" stroke-width="4" stroke-linejoin="round"/>
+<g stroke="#1e1e1e" stroke-width="2.5"><line x1="480" y1="100" x2="492" y2="88"/><line x1="498" y1="108" x2="506" y2="92"/><line x1="514" y1="100" x2="522" y2="94"/></g>
+<rect x="490" y="60" width="22" height="22" rx="2" fill="none" stroke="#1e1e1e" stroke-width="2.5"/>
+<rect x="487" y="55" width="28" height="6" fill="#1e1e1e"/>
+<text x="500" y="158" text-anchor="middle" class="fque-es7-h">Restos al recipiente</text>
+<text x="500" y="174" text-anchor="middle" class="fque-es7-s">gafas · nada de comer</text>
+</svg>
+<p class="pie-figura">Las tres normas de seguridad con fibra.</p>
+</div>
 <ul>
 <li><strong>Nunca mires el extremo de una fibra ni el puerto de un aparato</strong>, aunque creas que está apagado. La luz de las redes es <strong>infrarroja</strong>: no se ve, no deslumbra, no te hace cerrar el ojo… y puede dañar la retina. Para inspeccionar un conector se usa un <strong>microscopio de fibra</strong> o un medidor, nunca el ojo ni la cámara del móvil pegada.</li>
 <li>Pon siempre los <strong>tapones</strong> a conectores y puertos que no se usan: protegen del polvo y de la luz.</li>
