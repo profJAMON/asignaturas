@@ -296,7 +296,6 @@ h1, h2, h3 {
   color: var(--text-dim);
   margin: 0;
   font-size: 1.02rem;
-  max-width: none;
 }
 
 .badge {
