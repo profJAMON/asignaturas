@@ -19,6 +19,17 @@
      propia sesión ("fecha prevista de inicio"),
    - construir la página calendario.html con la planificación completa.
 
+   Sobre los exámenes (18/09/2026)
+   --------------------------------
+   Cada unidad tiene su propio examen (menos cableado estructurado) y
+   ESE examen ya está incluido dentro de las horas de la unidad (las
+   18h de UT1 ya cuentan con su examen: no se resta tiempo aparte).
+   Lo que SÍ es aparte es el "examen-final" (comprensivo, al final de
+   todo): se ha añadido como una unidad más de 2h, sin sesiones, al
+   final de la lista. Con esto, 1r pasa de +1h de margen a -1h (casi
+   exacto, un pequeño recorte lo absorbe sin problema) y 2n empeora de
+   -6/-10h a -8/-12h de déficit según la fecha de fin que se use.
+
    Los "titulo" de sesión de prevencion-riesgos y antes-de-empezar son
    provisionales (esas unidades aún no están publicadas en el sitio):
    revísalos contra el título real cuando se publiquen.
@@ -38,10 +49,10 @@
    Si el ritmo real se retrasa o adelanta respecto a esto: edita las
    fechas de la unidad afectada (y de las que vengan después, si el
    desfase se arrastra) o pide que se recalcule con las fechas reales.
-   "fin": null en la unidad "montaje-oficina" para 2n significa que,
-   con el calendario actual, esa unidad NO cabe en el curso de 2n —
-   ver la nota en claude/calendario-1r-2n.md sobre recortarla o
-   quitarla para ese grupo.
+   "fin": null en las últimas unidades para 2n significa que, con el
+   calendario actual, esas unidades NO caben en el curso de 2n — ver
+   la nota en claude/calendario-1r-2n.md sobre recortar UT9 para ese
+   grupo.
    ============================================================ */
 const CALENDARIO_INSTALACIONES = {
   "grupos": [
@@ -54,7 +65,7 @@ const CALENDARIO_INSTALACIONES = {
       "nombre": "2n"
     }
   ],
-  "actualizado": "2026-09-17",
+  "actualizado": "2026-09-18",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -255,6 +266,22 @@ const CALENDARIO_INSTALACIONES = {
         },
         "2n": {
           "inicio": "2027-02-24",
+          "fin": null
+        }
+      }
+    },
+    {
+      "id": "examen-final",
+      "titulo": "Examen final",
+      "horas": 2,
+      "sesiones": [],
+      "fechas": {
+        "1r": {
+          "inicio": "2027-06-18",
+          "fin": null
+        },
+        "2n": {
+          "inicio": null,
           "fin": null
         }
       }
