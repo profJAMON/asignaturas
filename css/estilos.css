@@ -119,6 +119,14 @@
 }
 
 * { box-sizing: border-box; }
+
+/* El atributo hidden lo apaga cualquier `display` que venga después en
+   la hoja, y varias reglas de aquí abajo lo hacían sin querer: el badge
+   de "fecha prevista" se quedaba como una barra vacía debajo del título,
+   y los enlaces de la portada seguían ocupando su línea. Esto lo zanja
+   para todo el sitio: si el JS pone hidden, no se ve. */
+[hidden] { display: none !important; }
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -931,8 +939,6 @@ footer.pie {
   gap: 0.5rem 0.7rem;
   margin: 0.9rem 0 0;
 }
-
-.selector-grupo[hidden] { display: none; }
 
 .selector-grupo__titulo {
   font-family: var(--font-mono);

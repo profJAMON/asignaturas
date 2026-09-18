@@ -72,19 +72,6 @@
         "inst-u3-coaxial",
         "inst-u3-repaso"
       ]
-    },
-    {
-      "id": "fibra-optica",
-      "titulo": "Unidad 4. Fibra óptica",
-      "descripcion": "Cómo viaja la luz por la fibra y sus partes, monomodo y multimodo con los tipos OM y OS, los conectores y empalmes, los transceptores, el cálculo de pérdidas y margen de un enlace, los aparatos de medida y una práctica en papel, porque en el taller no hay fibra.",
-      "sesiones": [
-        "inst-u4-que-es-la-fibra",
-        "inst-u4-monomodo-multimodo",
-        "inst-u4-conectores-empalmes",
-        "inst-u4-perdidas-y-medidas",
-        "inst-u4-hoja-practica",
-        "inst-u4-repaso"
-      ]
     }
   ]
 }

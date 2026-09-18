@@ -285,7 +285,9 @@
 
   let _badgeTema = null;
 
-  function pintarFechaPrevista(asignaturaId, sesionId) {
+  /* unidadId es opcional, pero conviene pasarlo: permite enseñar el
+     rango de la unidad cuando la sesión todavía no tiene fecha propia. */
+  function pintarFechaPrevista(asignaturaId, sesionId, unidadId) {
     const badge = document.getElementById('tema-fecha');
     if (!badge) return;
     if (!datos(asignaturaId)) {
@@ -293,38 +295,66 @@
       badge.hidden = true;
       return;
     }
-    _badgeTema = { asignaturaId, id: sesionId };
+    _badgeTema = { asignaturaId, id: sesionId, unidadId: unidadId || null };
     _actualizarBadgeTema();
   }
 
+  /* Tres cosas distintas, por orden de preferencia:
+       1. la fecha de esta sesión, si la tiene;
+       2. si no, el rango de su unidad — los glosarios no llevan fecha, y
+          una unidad recién publicada puede tener rango antes de que se
+          repartan sus sesiones; más vale "toca entre el 20 de nov y el
+          19 de ene" que no decir nada;
+       3. si tampoco, nada.
+     Con grupos y sin grupo elegido no hay ninguna fecha que dar, así que
+     lo que se pide es que elija. */
   function _actualizarBadgeTema() {
     const badge = document.getElementById('tema-fecha');
     if (!badge || !_badgeTema) return;
-    const { asignaturaId, id } = _badgeTema;
+    const { asignaturaId, id, unidadId } = _badgeTema;
     const d = datos(asignaturaId);
-
-    if (!d || !d.sesiones[id]) {
+    if (!d) {
       badge.hidden = true;
       return;
     }
 
-    if (tieneGrupos(asignaturaId)) {
-      const grupo = grupoElegido(asignaturaId);
-      if (!grupo) {
-        const nombres = d.grupos.map(g => g.nombre).join('/');
-        badge.textContent = `Elige tu grupo (${nombres}) aquí arriba para ver la fecha prevista`;
-        badge.hidden = false;
+    const entrada = d.sesiones[id];
+    const unidad = entrada ? entrada.unidad : unidadId;
+    const conGrupos = tieneGrupos(asignaturaId);
+    const grupo = conGrupos ? grupoElegido(asignaturaId) : null;
+
+    if (conGrupos && !grupo) {
+      /* Si de esta sesión no se puede datar nada ni por unidad, tampoco
+         tiene sentido pedirle al alumno que elija grupo. */
+      if (!entrada && !fechasUnidad(asignaturaId, unidad, d.grupos[0].id)) {
+        badge.hidden = true;
         return;
       }
-      const iso = fechaSesion(asignaturaId, id, grupo);
-      badge.textContent = iso ? `📅 Fecha prevista (${grupo}): ${formatearFecha(iso)}` : '';
-      badge.hidden = !iso;
+      const nombres = d.grupos.map(g => g.nombre).join('/');
+      badge.textContent = `Elige tu grupo (${nombres}) aquí arriba para ver la fecha prevista`;
+      badge.hidden = false;
       return;
     }
 
-    const iso = fechaSesion(asignaturaId, id);
-    badge.textContent = iso ? `📅 Fecha prevista: ${formatearFecha(iso)}` : '';
-    badge.hidden = !iso;
+    const sufijo = grupo ? ` (${grupo})` : '';
+
+    const iso = entrada ? fechaSesion(asignaturaId, id, grupo) : null;
+    if (iso) {
+      badge.textContent = `📅 Fecha prevista${sufijo}: ${formatearFecha(iso)}`;
+      badge.hidden = false;
+      return;
+    }
+
+    const f = fechasUnidad(asignaturaId, unidad, grupo);
+    if (f && f.inicio) {
+      badge.textContent = f.fin
+        ? `📅 Unidad prevista${sufijo}: ${formatearFecha(f.inicio)} – ${formatearFecha(f.fin)}`
+        : `📅 Unidad prevista${sufijo}: a partir del ${formatearFecha(f.inicio)}`;
+      badge.hidden = false;
+      return;
+    }
+
+    badge.hidden = true;
   }
 
   function refrescarDecoraciones() {

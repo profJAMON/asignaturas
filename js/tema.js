@@ -72,7 +72,9 @@ async function cargarTema() {
     /* El selector 1r/2n vive en la cabecera de la asignatura, no en la
        barra lateral: solo se pinta si ESTA asignatura tiene grupos. */
     if (typeof pintarSelectorGrupo === 'function') pintarSelectorGrupo(asignatura.id);
-    if (typeof pintarFechaPrevista === 'function') pintarFechaPrevista(asignatura.id, id);
+    if (typeof pintarFechaPrevista === 'function') {
+      pintarFechaPrevista(asignatura.id, id, unidadDeLaSesion.id);
+    }
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
        traductor: hay que avisarle de que hay texto nuevo en pantalla. */

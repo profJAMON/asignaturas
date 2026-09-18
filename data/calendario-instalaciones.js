@@ -162,7 +162,23 @@ const CALENDARIO_INSTALACIONES = {
       "id": "medios-cobre",
       "titulo": "Unidad 3. Medios de transmisión: cobre",
       "horas": 30,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u3-medios",
+        "inst-u3-topologias-bus-anillo",
+        "inst-u3-topologias-estrella-malla",
+        "inst-u3-mapa-de-red",
+        "inst-u3-par-trenzado",
+        "inst-u3-categorias-ethernet",
+        "inst-u3-conectores",
+        "inst-u3-t568",
+        "inst-u3-directo-cruzado",
+        "inst-u3-tarjeta-y-enlace",
+        "inst-u3-herramientas",
+        "inst-u3-taller-latiguillo",
+        "inst-u3-taller-cruzado-averias",
+        "inst-u3-coaxial",
+        "inst-u3-repaso"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2026-11-20",
@@ -178,7 +194,14 @@ const CALENDARIO_INSTALACIONES = {
       "id": "fibra-optica",
       "titulo": "Unidad 4. Fibra óptica",
       "horas": 10,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u4-que-es-la-fibra",
+        "inst-u4-monomodo-multimodo",
+        "inst-u4-conectores-empalmes",
+        "inst-u4-perdidas-y-medidas",
+        "inst-u4-hoja-practica",
+        "inst-u4-repaso"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2027-01-19",
@@ -425,6 +448,132 @@ const CALENDARIO_INSTALACIONES = {
       "unidad": "prevencion-riesgos",
       "1r": "2026-11-17",
       "2n": "2026-10-27"
+    },
+    "inst-u3-medios": {
+      "titulo": "Sesión 1 — Los medios de transmisión",
+      "unidad": "medios-cobre",
+      "1r": "2026-11-20",
+      "2n": "2026-10-28"
+    },
+    "inst-u3-topologias-bus-anillo": {
+      "titulo": "Sesión 2 — Topologías (I): punto a punto, bus y anillo",
+      "unidad": "medios-cobre",
+      "1r": "2026-11-24",
+      "2n": "2026-10-30"
+    },
+    "inst-u3-topologias-estrella-malla": {
+      "titulo": "Sesión 3 — Topologías (II): estrella, árbol y malla",
+      "unidad": "medios-cobre",
+      "1r": "2026-11-24",
+      "2n": "2026-11-02"
+    },
+    "inst-u3-mapa-de-red": {
+      "titulo": "Sesión 4 — El mapa de la red",
+      "unidad": "medios-cobre",
+      "1r": "2026-11-27",
+      "2n": "2026-11-03"
+    },
+    "inst-u3-par-trenzado": {
+      "titulo": "Sesión 5 — El cable de par trenzado",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-01",
+      "2n": "2026-11-04"
+    },
+    "inst-u3-categorias-ethernet": {
+      "titulo": "Sesión 6 — Categorías del cable y Ethernet",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-04",
+      "2n": "2026-11-06"
+    },
+    "inst-u3-conectores": {
+      "titulo": "Sesión 7 — Conectores RJ, rosetas y latiguillos",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-11",
+      "2n": "2026-11-09"
+    },
+    "inst-u3-t568": {
+      "titulo": "Sesión 8 — Las terminaciones T568A y T568B",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-15",
+      "2n": "2026-11-10"
+    },
+    "inst-u3-directo-cruzado": {
+      "titulo": "Sesión 9 — Cable directo y cable cruzado",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-15",
+      "2n": "2026-11-11"
+    },
+    "inst-u3-tarjeta-y-enlace": {
+      "titulo": "Sesión 10 — La tarjeta de red y el enlace",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-18",
+      "2n": "2026-11-13"
+    },
+    "inst-u3-herramientas": {
+      "titulo": "Sesión 11 — Herramientas del cable de cobre",
+      "unidad": "medios-cobre",
+      "1r": "2026-12-22",
+      "2n": "2026-11-16"
+    },
+    "inst-u3-taller-latiguillo": {
+      "titulo": "Sesión 12 — Taller: fabrica un latiguillo directo",
+      "unidad": "medios-cobre",
+      "1r": "2027-01-08",
+      "2n": "2026-11-17"
+    },
+    "inst-u3-taller-cruzado-averias": {
+      "titulo": "Sesión 13 — Taller: cable cruzado y diagnóstico de averías",
+      "unidad": "medios-cobre",
+      "1r": "2027-01-12",
+      "2n": "2026-11-18"
+    },
+    "inst-u3-coaxial": {
+      "titulo": "Sesión 14 — Cable coaxial y taller de conector F",
+      "unidad": "medios-cobre",
+      "1r": "2027-01-12",
+      "2n": "2026-11-20"
+    },
+    "inst-u3-repaso": {
+      "titulo": "Sesión 15 — Repaso y banco de preguntas del examen",
+      "unidad": "medios-cobre",
+      "1r": "2027-01-15",
+      "2n": "2026-11-23"
+    },
+    "inst-u4-que-es-la-fibra": {
+      "titulo": "Sesión 1 — Qué es la fibra óptica",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-19",
+      "2n": "2026-11-24"
+    },
+    "inst-u4-monomodo-multimodo": {
+      "titulo": "Sesión 2 — Monomodo y multimodo",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-19",
+      "2n": "2026-11-24"
+    },
+    "inst-u4-conectores-empalmes": {
+      "titulo": "Sesión 3 — Conectores, empalmes y equipos",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-22",
+      "2n": "2026-11-25"
+    },
+    "inst-u4-perdidas-y-medidas": {
+      "titulo": "Sesión 4 — Pérdidas, margen y aparatos de medida",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-26",
+      "2n": "2026-11-27"
+    },
+    "inst-u4-hoja-practica": {
+      "titulo": "Sesión 5 — Práctica en papel: inventario y cálculo de enlaces",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-26",
+      "2n": "2026-11-30"
+    },
+    "inst-u4-repaso": {
+      "titulo": "Sesión 6 — Repaso y banco de preguntas del examen",
+      "unidad": "fibra-optica",
+      "1r": "2027-01-29",
+      "2n": "2026-12-01"
     }
   }
 }
