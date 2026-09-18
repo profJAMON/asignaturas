@@ -20,6 +20,10 @@ function arrancarPortada() {
       `${_asignaturaPortada.descripcion} Elige una unidad para ver sus sesiones.`,
       true
     );
+    /* El selector 1r/2n vive aquí, en la cabecera de la asignatura, y no
+       en la barra lateral: solo afecta a Instalaciones. En las demás
+       asignaturas pintarSelectorGrupo esconde la caja y no pinta nada. */
+    if (typeof pintarSelectorGrupo === 'function') pintarSelectorGrupo(_asignaturaPortada.id);
     cargarUnidades(_asignaturaPortada);
   } else {
     pintarCabecera(

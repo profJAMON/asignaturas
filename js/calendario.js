@@ -167,58 +167,80 @@
   }
 
   /* ----------------------------------------------------------
-     Selector de grupo en la barra lateral
-     ---------------------------------------------------------- */
+     Selector de grupo — en la cabecera de la asignatura
+     ----------------------------------------------------------
 
-  function pintarSelectorGrupo() {
+     Antes vivía en la barra lateral, que se ve desde cualquier página.
+     Como el grupo solo afecta a Instalaciones, allí despistaba: un
+     alumno de Operaciones veía un "tu grupo" que no era suyo, y un
+     alumno de Instalaciones lo tenía lejos de las fechas que cambia.
+
+     Ahora lo pinta cada página pasando SU asignatura —la portada
+     (js/main.js), la sesión (js/tema.js) y el calendario
+     (js/calendario-pagina.js)—, y en las asignaturas sin grupos la caja
+     se queda escondida.
+
+     Se recuerda la última asignatura pedida para poder repintarse solo
+     al pulsar un botón, sin que cada página tenga que volver a decirlo. */
+
+  let _asignaturaSelector = null;
+
+  function pintarSelectorGrupo(asignaturaId) {
     const caja = document.getElementById('selector-grupo');
     if (!caja) return;
+
+    if (asignaturaId) _asignaturaSelector = asignaturaId;
+    const id = _asignaturaSelector;
+
     caja.textContent = '';
 
-    const conGrupos = asignaturasConCalendario().filter(tieneGrupos);
-    caja.hidden = conGrupos.length === 0;
+    if (!id || !tieneGrupos(id)) {
+      caja.hidden = true;
+      return;
+    }
+    caja.hidden = false;
 
-    conGrupos.forEach(asignaturaId => {
-      const d = datos(asignaturaId);
-      const actual = grupoElegido(asignaturaId);
-      const nombre = nombreCorto(asignaturaId);
+    const d = datos(id);
+    const actual = grupoElegido(id);
+    const nombre = nombreCorto(id);
 
-      const titulo = document.createElement('p');
-      titulo.className = 'sidebar__titulo';
-      titulo.textContent = `${nombre}: tu grupo`;
-      caja.appendChild(titulo);
+    const titulo = document.createElement('span');
+    titulo.className = 'selector-grupo__titulo';
+    titulo.textContent = 'Tu grupo:';
+    caja.appendChild(titulo);
 
-      const fila = document.createElement('div');
-      fila.className = 'grupos';
-      fila.setAttribute('role', 'group');
-      fila.setAttribute('aria-label', `Tu grupo de ${nombre}`);
+    const fila = document.createElement('div');
+    fila.className = 'grupos';
+    fila.setAttribute('role', 'group');
+    fila.setAttribute('aria-label', `Tu grupo de ${nombre}`);
 
-      d.grupos.forEach(grupo => {
-        const boton = document.createElement('button');
-        boton.type = 'button';
-        boton.className = 'grupo';
-        boton.textContent = grupo.nombre;
-        boton.title = `Ver las fechas previstas de ${grupo.nombre}`;
-        boton.setAttribute('aria-pressed', grupo.id === actual ? 'true' : 'false');
-        if (grupo.id === actual) boton.classList.add('grupo--activo');
-        boton.addEventListener('click', () => {
-          guardarGrupo(asignaturaId, grupo.id);
-          pintarSelectorGrupo();
-          refrescarDecoraciones();
-          if (typeof refrescarPaginaCalendario === 'function') refrescarPaginaCalendario();
-        });
-        fila.appendChild(boton);
+    d.grupos.forEach(grupo => {
+      const boton = document.createElement('button');
+      boton.type = 'button';
+      boton.className = 'grupo';
+      boton.textContent = grupo.nombre;
+      boton.title = `Ver las fechas previstas de ${grupo.nombre}`;
+      boton.setAttribute('aria-pressed', grupo.id === actual ? 'true' : 'false');
+      if (grupo.id === actual) boton.classList.add('grupo--activo');
+      boton.addEventListener('click', () => {
+        guardarGrupo(id, grupo.id);
+        pintarSelectorGrupo();
+        refrescarDecoraciones();
+        /* Las dos vistas del calendario, si estamos en esa página. */
+        if (typeof refrescarPaginaCalendario === 'function') refrescarPaginaCalendario();
+        if (typeof refrescarRejillaCalendario === 'function') refrescarRejillaCalendario();
       });
-
-      caja.appendChild(fila);
-
-      if (!actual) {
-        const nota = document.createElement('p');
-        nota.className = 'aspecto-nota';
-        nota.textContent = 'Elige tu grupo para ver cuándo toca cada sesión.';
-        caja.appendChild(nota);
-      }
+      fila.appendChild(boton);
     });
+
+    caja.appendChild(fila);
+
+    if (!actual) {
+      const nota = document.createElement('span');
+      nota.className = 'selector-grupo__nota';
+      nota.textContent = 'Elígelo para ver cuándo toca cada sesión.';
+      caja.appendChild(nota);
+    }
 
     if (window.retraducir) window.retraducir();
   }
@@ -290,7 +312,7 @@
       const grupo = grupoElegido(asignaturaId);
       if (!grupo) {
         const nombres = d.grupos.map(g => g.nombre).join('/');
-        badge.textContent = `Elige tu grupo (${nombres}) en la barra lateral para ver la fecha prevista`;
+        badge.textContent = `Elige tu grupo (${nombres}) aquí arriba para ver la fecha prevista`;
         badge.hidden = false;
         return;
       }
@@ -334,9 +356,6 @@
     refrescarDecoraciones
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', pintarSelectorGrupo);
-  } else {
-    pintarSelectorGrupo();
-  }
+  /* Ya no se pinta solo al cargar la página: ahora lo pide cada página
+     con SU asignatura (ver el comentario del selector, más arriba). */
 })();

@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Calendario del curso</title>
+<meta name="description" content="Calendario del curso: cuándo toca cada unidad, cada sesión y cada examen.">
 <link rel="stylesheet" href="css/estilos.css">
+<!-- Rutas relativas a propósito: el sitio se publica también en
+     GitHub Pages bajo /asignaturas/, donde una ruta absoluta (/img/...)
+     se saldría del subdirectorio y daría 404. -->
+<link rel="icon" href="img/wifi.svg" type="image/svg+xml">
+<link rel="icon" href="img/wifi-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="img/wifi-apple-touch-icon.png">
 <!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
      elegido antes de que el navegador pinte, para que no haya fogonazo. -->
 <script src="js/aspecto.js"></script>
@@ -14,7 +21,6 @@
 <nav class="sidebar">
   <div class="selector-aspecto" id="selector-aspecto"></div>
   <div class="selector-idioma" id="selector-idioma" translate="no"></div>
-  <div class="selector-grupo" id="selector-grupo"></div>
   <h2 class="sidebar__titulo">Temario</h2>
   <div id="indice-temas"></div>
 </nav>
@@ -26,9 +32,20 @@
     <span class="badge" id="calendario-badge">Calendario</span>
     <h1>Calendario del curso</h1>
     <p id="calendario-descripcion">Planificación aproximada de cuándo toca cada unidad y cada sesión. Las fechas son previstas, no fijas: pueden desplazarse si el ritmo real se adelanta o se retrasa.</p>
+    <!-- Selector de grupo (1r/2n). Solo aparece en Instalaciones;
+         ver el comentario de index.html. -->
+    <div class="selector-grupo" id="selector-grupo" hidden></div>
   </header>
 
+  <!-- Vista de mes. La tabla de abajo sigue siendo la vista completa:
+       esto es el vistazo rápido de "qué toca este mes". -->
+  <section class="seccion" id="seccion-rejilla">
+    <h2 class="seccion__titulo">Mes a mes</h2>
+    <div id="calendario-rejilla"></div>
+  </section>
+
   <section class="seccion">
+    <h2 class="seccion__titulo">Todo el curso</h2>
     <div id="calendario-contenido"></div>
     <p class="calendario-nota" id="calendario-nota">Fechas calculadas a partir de las horas por unidad y el horario real, con el calendario escolar 2026-2027. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.</p>
   </section>
@@ -44,6 +61,7 @@
 <script src="data/calendario-instalaciones.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
+<script src="js/calendario-rejilla.js"></script>
 <script src="js/calendario-pagina.js"></script>
 </body>
 </html>

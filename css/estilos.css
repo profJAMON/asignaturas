@@ -18,7 +18,10 @@
   --border: #3c3c3c;
   --text: #f3f3f3;
   --text-dim: #9099a6;
-  --text-faint: #6a7280;
+  /* Subido de #6a7280 (3,44:1, por debajo de AA) a 5,32:1 sobre el fondo
+     y 4,89:1 sobre las tarjetas. Sigue siendo claramente más apagado que
+     --text-dim, que es para lo que existe. */
+  --text-faint: #8a92a0;
   --accent: #4fc1ff;
   --accent-dim: #3a9bd1;
   --accent-warm: #ce9178;
@@ -360,6 +363,13 @@ h1, h2, h3 {
 
 /* ---------- Actividades ---------- */
 
+/* Hueco donde el .html de la sesión pide que vaya una actividad
+   concreta (<div data-actividad="...">, ver js/tema.js). Solo separa la
+   actividad del párrafo anterior: la caja la pone .actividad. */
+.actividad-incrustada {
+  margin: 1.8rem 0;
+}
+
 .actividad {
   border: 1px solid var(--border);
   background: var(--surface);
@@ -527,6 +537,13 @@ h1, h2, h3 {
    índice lateral y actividades de pantalla. */
 @media print {
   .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
+  /* Las actividades incrustadas en la lección se ocultan igual que las
+     del final: al imprimir interesa el texto, no los botones. Si algún
+     día quieres que salgan (para repartirlas en papel), quita esta
+     línea y revisa cómo cae el salto de página. */
+  .actividad-incrustada { display: none !important; }
+  /* En el calendario impreso sobran las flechas de cambiar de mes. */
+  .rejilla__nav { display: none !important; }
   .main-content { margin: 0; padding: 0; max-width: 100%; }
   .leccion .papel { break-inside: avoid; }
 }
@@ -900,16 +917,34 @@ footer.pie {
 
 /* ============================================================
    Selector de grupo (js/calendario.js) — asignaturas con varios grupos
-   Mismo aire que el de aspecto/idioma.
+   ============================================================
+   Vive en la cabecera de la asignatura, no en la barra lateral: el
+   grupo solo afecta a Instalaciones, así que se enseña donde está el
+   contenido al que afecta. Va en una sola línea ("Tu grupo: 1r 2n") y
+   se apila en pantalla estrecha.
    ============================================================ */
 
 .selector-grupo {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.1rem;
-  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.7rem;
+  margin: 0.9rem 0 0;
 }
 
-.selector-grupo .sidebar__titulo { margin-bottom: 0.6rem; }
+.selector-grupo[hidden] { display: none; }
+
+.selector-grupo__titulo {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.selector-grupo__nota {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
 
 .grupos {
   display: flex;
@@ -1007,6 +1042,190 @@ footer.pie {
   color: var(--text-faint);
   font-size: 0.85rem;
   margin-top: 1.5rem;
+}
+
+/* ============================================================
+   Vista de mes del calendario (js/calendario-rejilla.js)
+   ============================================================
+   Cuadrícula de 7 columnas iguales. Los colores salen todos de
+   variables: si se toca la paleta, esto va detrás solo.
+   ============================================================ */
+
+.rejilla__barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.rejilla__mes {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Solo la primera letra, no cada palabra: con capitalize salía
+   "Septiembre De 2026". */
+.rejilla__mes::first-letter { text-transform: uppercase; }
+
+.rejilla__nav { display: flex; gap: 4px; }
+
+.rejilla__boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rejilla__boton:hover:not(:disabled) { color: var(--text); border-color: var(--text-faint); }
+.rejilla__boton:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.rejilla__boton:disabled { opacity: 0.35; cursor: default; }
+
+.rejilla__tabla {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rejilla__tabla th {
+  padding: 0.4rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-faint);
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.rejilla__celda {
+  height: 44px;
+  padding: 2px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.rejilla__celda--fuera {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  opacity: 0.55;
+}
+
+/* El número del día. Es un <span> los días sin nada y un <button> los
+   días con sesión o examen; se ven igual salvo por el punto. */
+.rejilla__dia {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  width: 36px;
+  height: 36px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  padding: 0;
+}
+
+button.rejilla__dia { cursor: pointer; }
+
+.rejilla__dia--con-eventos { color: var(--text); }
+.rejilla__dia--con-eventos:hover { border-color: var(--accent); }
+.rejilla__dia:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Hoy: círculo relleno, como en cualquier calendario del sistema. */
+.rejilla__dia--hoy {
+  background: var(--accent);
+  color: var(--boton-texto);
+  font-weight: 600;
+}
+
+.rejilla__dia--abierto {
+  border-color: var(--accent);
+  background: var(--surface-2);
+  color: var(--accent);
+}
+
+.rejilla__dia--hoy.rejilla__dia--abierto {
+  background: var(--accent);
+  color: var(--boton-texto);
+}
+
+.rejilla__punto {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.rejilla__dia--hoy .rejilla__punto { background: var(--boton-texto); }
+.rejilla__dia--examen .rejilla__punto { background: var(--accent-warm); }
+
+/* Lo que hay el día pulsado */
+.rejilla__detalle {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+}
+
+.rejilla__pista,
+.rejilla__detalle-titulo {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.rejilla__pista { color: var(--text-faint); }
+
+.rejilla__detalle-titulo {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.rejilla__detalle-titulo::first-letter { text-transform: uppercase; }
+
+.rejilla__lista {
+  list-style: none;
+  margin: 0.6rem 0 0;
+  padding: 0;
+}
+
+.rejilla__lista li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  font-size: 0.9rem;
+}
+
+.rejilla__etiqueta {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.15rem 0.35rem;
+}
+
+.rejilla__etiqueta--examen { color: var(--accent-warm); border-color: var(--accent-warm); }
+
+@media (max-width: 560px) {
+  .rejilla__celda { height: 38px; }
+  .rejilla__dia { width: 30px; height: 30px; font-size: 0.78rem; }
 }
 
 .aspecto-nota {

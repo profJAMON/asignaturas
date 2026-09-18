@@ -69,6 +69,9 @@ async function cargarTema() {
 
     /* Fecha prevista de esta sesión (asignaturas con calendario, ver js/calendario.js).
        Si ese archivo no está cargado en esta página, no hace nada. */
+    /* El selector 1r/2n vive en la cabecera de la asignatura, no en la
+       barra lateral: solo se pinta si ESTA asignatura tiene grupos. */
+    if (typeof pintarSelectorGrupo === 'function') pintarSelectorGrupo(asignatura.id);
     if (typeof pintarFechaPrevista === 'function') pintarFechaPrevista(asignatura.id, id);
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
@@ -140,23 +143,68 @@ function pintarMateriales(materiales) {
   });
 }
 
+/* Coloca cada actividad en su sitio.
+
+   Una actividad puede ir PEGADA al punto de la lección al que
+   pertenece, en vez de amontonada al final. Para eso el .html de la
+   sesión deja un hueco donde la quiere:
+
+     <div data-actividad="practica-cidr"></div>
+
+   y el .json le pone ese mismo id a la actividad:
+
+     { "id": "practica-cidr", "tipo": "generador", ... }
+
+   Si el id casa, la actividad se pinta ahí dentro. Si la actividad no
+   lleva id, o su hueco no existe (por ejemplo porque se editó el json
+   y no el html), cae al bloque "Actividades" del final: nunca se pierde
+   una actividad por un id mal escrito.
+
+   Los huecos que se queden sin actividad se borran, para no dejar un
+   agujero en medio del texto. */
 function pintarActividades(actividades) {
   const seccion = document.getElementById('seccion-actividades');
   const contenedor = document.getElementById('lista-actividades');
+  const leccion = document.getElementById('leccion-contenido');
 
-  if (actividades.length === 0) {
-    seccion.hidden = true;
-    return;
+  let alFinal = 0;
+
+  actividades.forEach(actividad => {
+    const hueco = actividad.id && leccion
+      ? leccion.querySelector(`[data-actividad="${CSS.escape(actividad.id)}"]`)
+      : null;
+
+    if (hueco) {
+      hueco.classList.add('actividad-incrustada');
+      renderActividad(hueco, actividad);
+    } else {
+      renderActividad(contenedor, actividad);
+      alFinal++;
+    }
+  });
+
+  /* Huecos que han quedado vacíos: sobran. */
+  if (leccion) {
+    leccion.querySelectorAll('[data-actividad]').forEach(hueco => {
+      if (hueco.children.length === 0) hueco.remove();
+    });
   }
 
-  actividades.forEach(actividad => renderActividad(contenedor, actividad));
+  /* La sección del final solo se enseña si algo ha caído en ella. */
+  seccion.hidden = alFinal === 0;
 }
 
 function pintarIndicePagina() {
   const aside = document.getElementById('indice-pagina');
   if (!aside) return;
 
-  const encabezados = document.querySelectorAll('#leccion-contenido h2, #leccion-contenido h3');
+  /* Se excluye el h3 que renderActividad pone como título de cada
+     actividad incrustada: el índice es el mapa de la lección, y si
+     entraran las actividades una sesión como inst-u1-ip sumaría cinco
+     entradas que no son secciones. */
+  const encabezados = document.querySelectorAll(
+    '#leccion-contenido h2:not(.actividad__titulo), #leccion-contenido h3:not(.actividad__titulo)'
+  );
   if (encabezados.length === 0) {
     aside.hidden = true;
     return;

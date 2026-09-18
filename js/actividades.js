@@ -69,6 +69,10 @@ function renderQuiz(contenedor, datos) {
   });
 
   const resultado = crearElemento('p', 'quiz__resultado', '');
+  /* role="status" hace que el lector de pantalla lea el resultado en
+     cuanto aparece. Sin esto, quien no ve la pantalla contesta y no se
+     entera de si ha acertado. Igual en relacionar y en los generadores. */
+  resultado.setAttribute('role', 'status');
   wrapper.appendChild(resultado);
 
   function actualizarResultado() {
@@ -98,6 +102,7 @@ function renderRelacionar(contenedor, datos) {
   let aciertos = 0;
 
   const estado = crearElemento('p', 'relacionar__estado', `0 de ${pares.length} emparejados correctamente.`);
+  estado.setAttribute('role', 'status');
 
   function comprobar(fichaIzq, fichaDer) {
     const acierto = fichaIzq.dataset.grupo === fichaDer.dataset.grupo;
@@ -169,6 +174,7 @@ function renderGenerador(contenedor, datos) {
   const wrapper = crearElemento('div', 'generador');
   const lista = crearElemento('div', 'generador__lista');
   const estado = crearElemento('p', 'generador__estado', '');
+  estado.setAttribute('role', 'status');
 
   const barra = crearElemento('div', 'generador__barra');
   const btnComprobar = crearElemento('button', 'boton', 'Comprobar');

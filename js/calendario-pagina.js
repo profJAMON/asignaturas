@@ -21,7 +21,15 @@ const _asignaturaCalendario = (() => {
 
 cargarBarraLateral(null, _asignaturaCalendario);
 pintarCabeceraCalendario();
+/* El selector 1r/2n vive en la cabecera de la asignatura, no en la
+   barra lateral: solo se pinta si ESTA asignatura tiene grupos. */
+if (_asignaturaCalendario && typeof pintarSelectorGrupo === 'function') {
+  pintarSelectorGrupo(_asignaturaCalendario.id);
+}
 pintarPaginaCalendario();
+if (typeof pintarRejillaCalendario === 'function') {
+  pintarRejillaCalendario(_asignaturaCalendario);
+}
 
 function refrescarPaginaCalendario() {
   pintarPaginaCalendario();
