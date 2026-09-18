@@ -54,10 +54,11 @@
     <a class="volver" href="calendario.html" id="portada-calendario" hidden style="margin: 0.8rem 0 0;">📅 Ver el calendario del curso</a>
   </header>
 
-  <!-- Los dos bloques de aquí abajo solo se rellenan en la portada
-       general (sin ?a=); en la de una asignatura se quedan ocultos.
-       Ver js/main.js. -->
-  <section class="seccion seccion--continuar" id="portada-continuar" hidden></section>
+  <div class="portada-terminal" id="portada-terminal" hidden></div>
+
+  <!-- La terminal de la cabecera y el bloque de la semana solo se
+       rellenan en la portada general (sin ?a=); en la de una
+       asignatura se quedan ocultos. Ver js/main.js. -->
 
   <div id="indice-portada"></div>
 
@@ -68,8 +69,12 @@
 
 <script src="js/idioma.js"></script>
 <script src="js/asignaturas.js"></script>
+<script src="js/iconos.js"></script>
 <script src="data/calendario-operaciones.js"></script>
 <script src="data/calendario-instalaciones.js"></script>
+<!-- Los días sin clase del centro (festivos y vacaciones). Los usa el
+     bloque "Esta semana" de la portada. -->
+<script src="data/no-lectivo.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
 <!-- Después de calendario.js: la barra pregunta si esta asignatura

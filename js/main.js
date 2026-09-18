@@ -35,7 +35,7 @@ function arrancarPortada() {
     pintarAsignaturas();
     /* Los dos bloques de contexto de la portada general. Cada uno se
        esconde solo si no tiene nada que decir. */
-    pintarContinuar();
+    pintarTerminal();
     pintarSemana();
   }
 }
@@ -82,6 +82,16 @@ function pintarAsignaturas() {
     numero.setAttribute('aria-hidden', 'true');
     numero.textContent = String(indice + 1).padStart(2, '0');
     tarjeta.appendChild(numero);
+
+    /* El dibujo de la asignatura (js/iconos.js). Es lo que hace que las
+       tres tarjetas se distingan sin leerlas. innerHTML con una
+       constante del propio sitio, no con nada que venga de fuera. */
+    if (typeof iconoDeAsignatura === 'function') {
+      const icono = document.createElement('div');
+      icono.className = 'asignatura-card__icono';
+      icono.innerHTML = iconoDeAsignatura(asignatura.id);
+      tarjeta.appendChild(icono);
+    }
 
     const titulo = document.createElement('p');
     titulo.className = 'asignatura-card__titulo';
@@ -205,46 +215,167 @@ function crearFilaSesionPortada(sesion) {
 }
 
 /* ============================================================
-   Bloque "Sigue donde lo dejaste"
+   La terminal de la cabecera
    ============================================================
-   Solo en la portada general. Si el alumno no ha abierto nunca una
-   sesión en este navegador, no aparece nada: más vale un bloque menos
-   que un bloque vacío. */
+   Ocupa la derecha de la portada general y hace dos papeles según
+   quién llegue:
 
-function pintarContinuar() {
-  const caja = document.getElementById('portada-continuar');
+   - Si ya ha abierto alguna sesión en este navegador, enseña cuál y
+     cuándo, y debajo (fuera de la terminal, como botón de verdad) el
+     "Continuar".
+   - Si es la primera vez, enseña un ls de las asignaturas. Así la
+     cabecera nunca se queda coja por un lado.
+
+   La orden se teclea sola y la respuesta va apareciendo. Con
+   prefers-reduced-motion las animaciones duran nada y se ve todo
+   escrito de golpe, que es justo lo que se quiere. */
+
+function pintarTerminal() {
+  const caja = document.getElementById('portada-terminal');
   if (!caja) return;
 
   const ultima = leerUltimaSesion();
-  if (!ultima) return;
+  const asignatura = ultima ? asignaturaPorId(ultima.asignatura) : null;
 
-  const asignatura = asignaturaPorId(ultima.asignatura);
+  caja.appendChild(_marcoTerminal(ultima, asignatura));
+  if (ultima && asignatura) caja.appendChild(_accionesTerminal(ultima, asignatura));
+  caja.hidden = false;
+}
 
-  const enlace = document.createElement('a');
-  enlace.className = 'continuar';
+function _marcoTerminal(ultima, asignatura) {
+  const marco = document.createElement('div');
+  marco.className = 'terminal';
+
+  /* Barra de título de la ventana. */
+  const barra = document.createElement('div');
+  barra.className = 'terminal__barra';
+  ['uno', 'dos', 'tres'].forEach(() => {
+    const punto = document.createElement('span');
+    punto.className = 'terminal__punto';
+    barra.appendChild(punto);
+  });
+  const ruta = document.createElement('span');
+  ruta.className = 'terminal__ruta';
+  ruta.setAttribute('translate', 'no');
+  ruta.classList.add('notranslate');
+  ruta.textContent = asignatura
+    ? `alumno@profesorjamon: ~/${asignatura.id}`
+    : 'alumno@profesorjamon: ~';
+  barra.appendChild(ruta);
+  marco.appendChild(barra);
+
+  const cuerpo = document.createElement('div');
+  cuerpo.className = 'terminal__cuerpo';
+  cuerpo.appendChild(_lineaOrden(ultima ? 'ultima-sesion' : 'ls asignaturas/'));
+
+  if (ultima && asignatura) {
+    cuerpo.appendChild(_lineaSalida(_cuandoLoDejaste(ultima.fecha), 'sale'));
+
+    const sesion = document.createElement('p');
+    sesion.className = 'terminal__sesion sale2';
+    sesion.textContent = ultima.titulo;
+    cuerpo.appendChild(sesion);
+
+    cuerpo.appendChild(_lineaSalida(ultima.unidad || asignatura.nombre, 'sale3'));
+  } else {
+    const lista = _lineaSalida(ASIGNATURAS.map(a => a.id).join('   '), 'sale');
+    lista.setAttribute('translate', 'no');
+    lista.classList.add('notranslate', 'terminal__lista');
+    cuerpo.appendChild(lista);
+    cuerpo.appendChild(_lineaSalida('elige una abajo ↓', 'sale3'));
+  }
+
+  cuerpo.appendChild(_lineaPrompt());
+  marco.appendChild(cuerpo);
+  return marco;
+}
+
+function _lineaOrden(orden) {
+  const linea = document.createElement('p');
+  linea.className = 'terminal__linea';
+  const prompt = document.createElement('span');
+  prompt.className = 'terminal__prompt';
+  prompt.textContent = '$';
+  const texto = document.createElement('span');
+  texto.className = 'terminal__teclea';
+  texto.setAttribute('translate', 'no');
+  texto.classList.add('notranslate');
+  texto.textContent = orden;
+  /* El ancho final de la animación, en caracteres. Sin esto la
+     animación acaba en width:100%, que es el ancho de la línea entera
+     y empuja la orden al renglón de abajo, lejos del $. */
+  texto.style.setProperty('--largo', `${orden.length}ch`);
+  linea.appendChild(prompt);
+  linea.appendChild(document.createTextNode(' '));
+  linea.appendChild(texto);
+  return linea;
+}
+
+function _lineaSalida(texto, clase) {
+  const p = document.createElement('p');
+  p.className = `terminal__salida ${clase}`;
+  p.textContent = texto;
+  return p;
+}
+
+function _lineaPrompt() {
+  const linea = document.createElement('p');
+  linea.className = 'terminal__linea sale3';
+  const prompt = document.createElement('span');
+  prompt.className = 'terminal__prompt';
+  prompt.textContent = '$';
+  const cursor = document.createElement('span');
+  cursor.className = 'terminal__cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+  cursor.textContent = '▊';
+  linea.appendChild(prompt);
+  linea.appendChild(document.createTextNode(' '));
+  linea.appendChild(cursor);
+  return linea;
+}
+
+function _accionesTerminal(ultima, asignatura) {
+  const fila = document.createElement('div');
+  fila.className = 'terminal__acciones sale3';
+
+  const boton = document.createElement('a');
+  boton.className = 'boton-continuar';
   /* Con ?a= además de ?id=: así la sesión se localiza a la primera,
      sin recorrer las demás asignaturas. */
-  enlace.href = `${urlSesion(ultima.id)}&a=${encodeURIComponent(asignatura.id)}`;
+  boton.href = `${urlSesion(ultima.id)}&a=${encodeURIComponent(asignatura.id)}`;
+  boton.textContent = 'Continuar →';
 
-  const etiqueta = document.createElement('p');
-  etiqueta.className = 'continuar__etiqueta';
-  etiqueta.textContent = 'Sigue donde lo dejaste';
+  const otra = document.createElement('a');
+  otra.className = 'terminal__otra';
+  otra.href = '#indice-portada';
+  otra.textContent = 'o empieza otra cosa ↓';
 
-  const titulo = document.createElement('p');
-  titulo.className = 'continuar__titulo';
-  titulo.textContent = ultima.titulo;
+  fila.appendChild(boton);
+  fila.appendChild(otra);
+  return fila;
+}
 
-  const pie = document.createElement('p');
-  pie.className = 'continuar__pie';
-  pie.textContent = ultima.unidad
-    ? `${asignatura.nombre} · ${ultima.unidad}`
-    : asignatura.nombre;
+/* "el jueves", "ayer", "hoy" o la fecha, según lo lejos que quede.
+   Si lo guardado es de antes de que existiera este campo, no se
+   enseña ninguna línea de cuándo. */
+function _cuandoLoDejaste(iso) {
+  if (!iso) return 'lo dejaste aquí';
 
-  enlace.appendChild(etiqueta);
-  enlace.appendChild(titulo);
-  enlace.appendChild(pie);
-  caja.appendChild(enlace);
-  caja.hidden = false;
+  const hoy = window.calendarioRitmo ? window.calendarioRitmo.hoyIso() : null;
+  if (iso === hoy) return 'lo dejaste aquí hoy mismo';
+
+  const [a, m, d] = iso.split('-').map(Number);
+  const fecha = new Date(a, m - 1, d);
+  const ahora = new Date();
+  const dias = Math.round((new Date(ahora.getFullYear(), ahora.getMonth(), ahora.getDate()) - fecha) / 86400000);
+
+  if (dias === 1) return 'lo dejaste aquí ayer';
+  if (dias > 1 && dias < 7) {
+    const nombres = ['el domingo', 'el lunes', 'el martes', 'el miércoles', 'el jueves', 'el viernes', 'el sábado'];
+    return `lo dejaste aquí ${nombres[fecha.getDay()]}`;
+  }
+  const formateada = window.calendarioRitmo ? window.calendarioRitmo.formatearFecha(iso) : iso;
+  return `lo dejaste aquí el ${formateada}`;
 }
 
 /* ============================================================
@@ -265,49 +396,52 @@ function pintarSemana() {
   const dias = _diasDeEstaSemana();
   const entradas = _entradasDeLaSemana(dias[0], dias[dias.length - 1]);
   const avisos = _asignaturasSinGrupo();
+  const periodoEntero = window.sinClase ? window.sinClase.periodoDeTodos(dias) : null;
 
-  if (entradas.length === 0 && avisos.length === 0) {
-    _pintarSemanaVacia(caja);
-    return;
-  }
+  /* La pulla se elige una vez para toda la semana, no una por día: con
+     un puente de dos días, dos frases distintas seguidas parecen un
+     error. Sale del primer día sin clase que haya. */
+  const primerPeriodo = window.sinClase
+    ? dias.map(d => window.sinClase.periodoDe(d)).find(Boolean)
+    : null;
+  const frase = primerPeriodo ? window.sinClase.pulla(primerPeriodo) : '';
 
   const titulo = document.createElement('h2');
   titulo.className = 'seccion__titulo';
   titulo.textContent = 'Esta semana';
   caja.appendChild(titulo);
 
-  const lista = document.createElement('div');
-  lista.className = 'semana';
+  /* Semana entera sin clase: no hay rejilla que pintar, solo el cartel. */
+  if (periodoEntero) {
+    caja.appendChild(_bloqueSinClase(periodoEntero, true, frase));
+    caja.hidden = false;
+    if (typeof retraducir === 'function') retraducir();
+    return;
+  }
+
+  /* Con una sola asignatura en toda la semana, poner su nombre encima de
+     cada sesión es ruido: el color del filo ya la distingue. */
+  const variasAsignaturas = new Set(entradas.map(e => e.asignatura.id)).size > 1;
+
+  const rejilla = document.createElement('div');
+  rejilla.className = 'semana';
+
+  const linea = document.createElement('div');
+  linea.className = 'semana__linea';
+  rejilla.appendChild(linea);
 
   dias.forEach(iso => {
-    const delDia = entradas.filter(e => e.fecha === iso);
-    if (delDia.length === 0) return;
-
-    const bloque = document.createElement('div');
-    bloque.className = 'semana__dia';
-    if (iso === window.calendarioRitmo.hoyIso()) bloque.classList.add('semana__dia--hoy');
-
-    const fecha = document.createElement('p');
-    fecha.className = 'semana__fecha';
-    fecha.textContent = window.calendarioRitmo.formatearFecha(iso);
-    bloque.appendChild(fecha);
-
-    const items = document.createElement('div');
-    items.className = 'semana__items';
-    delDia.forEach(entrada => items.appendChild(_crearItemSemana(entrada)));
-
-    bloque.appendChild(items);
-    lista.appendChild(bloque);
+    rejilla.appendChild(_columnaDia(iso, entradas.filter(e => e.fecha === iso), variasAsignaturas, frase));
   });
+
+  caja.appendChild(rejilla);
 
   if (entradas.length === 0) {
     const vacio = document.createElement('p');
     vacio.className = 'vacio';
     vacio.textContent = 'Esta semana no hay sesiones previstas.';
-    lista.appendChild(vacio);
+    caja.appendChild(vacio);
   }
-
-  caja.appendChild(lista);
 
   avisos.forEach(asignatura => {
     const aviso = document.createElement('p');
@@ -324,35 +458,100 @@ function pintarSemana() {
   if (typeof retraducir === 'function') retraducir();
 }
 
-function _pintarSemanaVacia(caja) {
-  const titulo = document.createElement('h2');
-  titulo.className = 'seccion__titulo';
-  titulo.textContent = 'Esta semana';
-  const texto = document.createElement('p');
-  texto.className = 'vacio';
-  texto.textContent = 'Esta semana no hay clase prevista.';
-  caja.appendChild(titulo);
-  caja.appendChild(texto);
-  caja.hidden = false;
+/* Una columna de la semana: el punto de la línea, el día y lo que toca.
+   Un día puede estar sin clase él solo (un puente suelto) aunque el
+   resto de la semana sí la haya. */
+function _columnaDia(iso, entradas, conAsignatura, frase) {
+  const ritmo = window.calendarioRitmo;
+  const columna = document.createElement('div');
+  columna.className = 'semana__dia';
+
+  const esHoy = iso === ritmo.hoyIso();
+  if (esHoy) columna.classList.add('semana__dia--hoy');
+
+  const punto = document.createElement('span');
+  punto.className = 'semana__punto';
+  columna.appendChild(punto);
+
+  const fecha = document.createElement('p');
+  fecha.className = 'semana__fecha';
+  /* "lun 21 sep · hoy": el día de la semana y el número bastan cuando
+     están los cinco seguidos, pero el mes evita dudas a fin de mes. */
+  fecha.textContent = esHoy
+    ? `${ritmo.formatearFecha(iso)} · hoy`
+    : ritmo.formatearFecha(iso);
+  columna.appendChild(fecha);
+
+  const periodo = window.sinClase ? window.sinClase.periodoDe(iso) : null;
+  if (periodo) {
+    columna.classList.add('semana__dia--sin-clase');
+    columna.appendChild(_bloqueSinClase(periodo, false, frase));
+    return columna;
+  }
+
+  if (entradas.length === 0) {
+    const raya = document.createElement('p');
+    raya.className = 'semana__nada';
+    raya.textContent = '—';
+    columna.appendChild(raya);
+    return columna;
+  }
+
+  entradas.forEach(entrada => columna.appendChild(_crearItemSemana(entrada, conAsignatura)));
+  return columna;
 }
 
-function _crearItemSemana(entrada) {
+/* El cartel de los días sin clase.
+
+   Lo que se lee tachado ("Venir a clase") va con aria-hidden: para
+   quien usa lector de pantalla, un texto tachado y su desmentido
+   seguidos no se entienden. La pulla y el nombre del periodo sí se
+   leen, y con eso la broma y la información llegan igual. */
+function _bloqueSinClase(periodo, grande, frase) {
+  const ritmo = window.calendarioRitmo;
+  const caja = document.createElement('div');
+  caja.className = grande ? 'sin-clase sin-clase--grande' : 'sin-clase';
+
+  const tachado = document.createElement('p');
+  tachado.className = 'sin-clase__tachado';
+  tachado.setAttribute('aria-hidden', 'true');
+  tachado.textContent = 'Venir a clase';
+
+  const sello = document.createElement('p');
+  sello.className = 'sin-clase__sello';
+  sello.textContent = frase || window.sinClase.pulla(periodo);
+
+  const nombre = document.createElement('p');
+  nombre.className = 'sin-clase__nombre';
+  nombre.textContent = periodo.desde === periodo.hasta
+    ? `${periodo.titulo} · ${ritmo.formatearFecha(periodo.desde)}`
+    : `${periodo.titulo} · del ${ritmo.formatearFecha(periodo.desde)} al ${ritmo.formatearFecha(periodo.hasta)}`;
+
+  caja.appendChild(tachado);
+  caja.appendChild(sello);
+  caja.appendChild(nombre);
+  return caja;
+}
+
+function _crearItemSemana(entrada, conAsignatura) {
   const esExamen = entrada.tipo === 'examen';
   const item = document.createElement(esExamen ? 'div' : 'a');
   item.className = esExamen ? 'semana__item semana__item--examen' : 'semana__item';
   item.dataset.color = entrada.color;
   if (!esExamen) item.href = `${urlSesion(entrada.id)}&a=${encodeURIComponent(entrada.asignatura.id)}`;
 
-  const asig = document.createElement('span');
-  asig.className = 'semana__asignatura';
-  asig.textContent = window.calendarioRitmo.nombreCorto(entrada.asignatura.id) || entrada.asignatura.nombre;
+  if (conAsignatura) {
+    const asig = document.createElement('span');
+    asig.className = 'semana__asignatura';
+    asig.textContent = window.calendarioRitmo.nombreCorto(entrada.asignatura.id) || entrada.asignatura.nombre;
+    item.appendChild(asig);
+  }
 
   const titulo = document.createElement('span');
   titulo.className = 'semana__titulo';
   titulo.textContent = esExamen ? `Examen · ${entrada.titulo}` : entrada.titulo;
-
-  item.appendChild(asig);
   item.appendChild(titulo);
+
   return item;
 }
 

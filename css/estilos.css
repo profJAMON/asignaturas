@@ -61,6 +61,7 @@
   --glow: 0 0 22px rgba(34, 211, 238, 0.4);
   --glow-suave: 0 0 14px rgba(34, 211, 238, 0.25);
   --glow-sesion: inset 2px 0 14px -6px rgba(34, 211, 238, 0.9);
+  --barrido: rgba(34, 211, 238, 0.06);
   --barra-bg: rgba(10, 14, 20, 0.92);
 
   /* Fondos tenues de los bloques con acento propio. */
@@ -145,6 +146,7 @@
   --glow: none;
   --glow-suave: none;
   --glow-sesion: none;
+  --barrido: rgba(14, 116, 144, 0.035);
   --barra-bg: rgba(255, 255, 255, 0.94);
   --nota-fondo: rgba(164, 18, 106, 0.05);
   --pista-fondo: rgba(63, 98, 18, 0.06);
@@ -1857,6 +1859,40 @@ font {
 }
 :root[data-pagina="portada"] .card p { font-size: 1.08rem; max-width: 46rem; }
 
+:root[data-pagina="portada"] .main-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  column-gap: 40px;
+}
+/* El titular y la terminal comparten la primera fila; todo lo demás
+   cruza las dos columnas. */
+:root[data-pagina="portada"] .main-content > .card { grid-column: 1; }
+:root[data-pagina="portada"] .portada-terminal { grid-column: 2; grid-row: 1; }
+:root[data-pagina="portada"] #indice-portada,
+:root[data-pagina="portada"] #portada-semana,
+:root[data-pagina="portada"] .pie { grid-column: 1 / -1; }
+
+/* El barrido de luz. Solo en la portada: en una sesión, algo que se
+   mueve por detrás del texto mientras lees es justo lo que no
+   quieres. Va en position fixed para no mover nada de sitio, y
+   prefers-reduced-motion lo deja quieto. */
+:root[data-pagina="portada"] body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 170px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--barrido), transparent);
+  animation: barrer 10s linear infinite;
+}
+@keyframes barrer {
+  from { transform: translateY(-190px); }
+  to { transform: translateY(100vh); }
+}
+
 :root[data-pagina="portada"] #indice-portada {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1895,6 +1931,22 @@ font {
   color: transparent;
   -webkit-text-stroke: 1.5px var(--color-asig, var(--accent));
 }
+.asignatura-card__icono {
+  color: var(--color-asig, var(--accent));
+  margin-bottom: 1rem;
+}
+.asignatura-card__icono svg { width: 76px; height: 76px; display: block; }
+
+/* La tarjeta se tiñe del color de su asignatura. color-mix evita
+   tener que declarar tres rgba() a mano; si el navegador no lo
+   entiende, se queda con el fondo de tarjeta de siempre, que es el
+   que va declarado antes. */
+:root[data-pagina="portada"] .asignatura-card {
+  border-color: var(--color-asig, var(--border));
+  background: var(--surface);
+  background: color-mix(in srgb, var(--color-asig) 8%, var(--surface));
+}
+
 @supports not (-webkit-text-stroke: 1px red) {
   .asignatura-card__numero { color: var(--color-asig, var(--accent)); }
 }
@@ -1922,106 +1974,296 @@ font {
 :root[data-pagina="portada"] .asignatura-card:nth-child(3) { animation-delay: 0.14s; }
 :root[data-pagina="portada"] #portada-semana { animation-delay: 0.2s; }
 
-/* ---------- "Sigue donde lo dejaste" ---------- */
+/* ---------- La terminal de la cabecera ----------
+   Va a la derecha del titular y lleva dentro el "sigue donde lo
+   dejaste". El botón de Continuar queda FUERA, debajo: dentro de la
+   terminal parecería texto y nadie lo pulsaría. */
 
-.seccion--continuar { margin: 0 0 2rem; }
+.portada-terminal { align-self: start; }
 
-.continuar {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-  background: var(--surface);
+.terminal {
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  border-radius: 0 8px 8px 0;
-  padding: 1.1rem 1.3rem;
-  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+  border-radius: 6px;
+  background: var(--surface);
+  overflow: hidden;
 }
-.continuar:hover { background: var(--surface-2); transform: translateX(3px); }
 
-.continuar__etiqueta {
+.terminal__barra {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 0.8rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal__punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  background: var(--accent-warm);
+}
+.terminal__punto:nth-child(2) { background: var(--accent-lima); }
+.terminal__punto:nth-child(3) { background: var(--accent); }
+
+.terminal__ruta {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 0.45rem;
-}
-
-.continuar__titulo {
-  font-size: 1.12rem;
-  font-weight: 600;
-  margin: 0 0 0.3rem;
-  color: var(--text);
-}
-
-.continuar__pie {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-faint);
+  margin-left: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal__cuerpo {
+  padding: 1rem 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 2;
+}
+
+.terminal__linea, .terminal__salida { margin: 0; color: var(--text-dim); }
+.terminal__prompt { color: var(--accent-lima); }
+.terminal__salida { font-size: 0.75rem; color: var(--text-faint); padding-left: 1.1rem; }
+.terminal__lista { color: var(--accent); font-size: 0.82rem; }
+
+.terminal__sesion {
   margin: 0;
+  padding-left: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--accent);
 }
 
-/* ---------- "Esta semana" ---------- */
+/* La orden se teclea sola. steps() y no un fundido: una terminal
+   escribe letra a letra o no es una terminal. */
+.terminal__teclea {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 0;
+  animation: teclear 1.1s steps(22) 0.35s forwards;
+}
+@keyframes teclear { to { width: var(--largo, 14ch); } }
 
-.semana { display: flex; flex-direction: column; }
+/* La respuesta va saliendo detrás, ya escrita. */
+.sale, .sale2, .sale3 { opacity: 0; }
+.sale { animation: asomar 0.35s ease 1.6s forwards; }
+.sale2 { animation: asomar 0.35s ease 1.85s forwards; }
+.sale3 { animation: asomar 0.35s ease 2.1s forwards; }
+@keyframes asomar { to { opacity: 1; } }
 
-.semana__dia {
+.terminal__cursor {
+  color: var(--accent);
+  animation: barra-cursor 1.15s steps(1) infinite;
+}
+
+.terminal__acciones {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin-top: 0.9rem;
+}
+
+.boton-continuar {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--boton-texto);
+  background: var(--accent);
+  border-radius: 5px;
+  padding: 0.75rem 1.35rem;
+  text-decoration: none;
+  transition: transform 0.14s ease, background-color 0.14s ease;
+}
+.boton-continuar:hover { background: var(--accent-dim); transform: translateY(-1px); }
+
+.terminal__otra {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  text-decoration: none;
+}
+.terminal__otra:hover { color: var(--accent); }
+
+/* ---------- "Esta semana" ----------
+   En horizontal: los cinco días de lunes a viernes de un vistazo,
+   incluidos los que no tienen nada, porque un puente o una semana
+   vacía también es información. Cada columna se queda en unos 230 px,
+   así que un título largo se parte en varias líneas: es el precio de
+   ver la semana entera, y está asumido. */
+
+.semana {
+  position: relative;
   display: grid;
-  grid-template-columns: 8rem minmax(0, 1fr);
-  gap: 1rem;
-  padding: 0.7rem 0;
-  border-top: 1px solid var(--border);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
 }
-.semana__dia:first-child { border-top: none; }
+
+/* La línea que une los cinco puntos. Empieza y acaba dentro del
+   primer y el último punto, no en el borde de la caja. */
+.semana__linea {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  top: 5px;
+  height: 1px;
+  background: var(--border);
+}
+
+.semana__dia { position: relative; box-sizing: border-box; padding-right: 18px; }
+.semana__dia:last-child { padding-right: 0; }
+
+.semana__punto {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  display: block;
+}
+
+/* El día de hoy: punto macizo y latiendo. Es la única animación en
+   bucle de toda la web, y se gana el sitio porque es justo lo que
+   buscas al abrir la portada. La regla de prefers-reduced-motion la
+   apaga sola. */
+.semana__dia--hoy .semana__punto {
+  left: 0;
+  top: 0;
+  width: 11px;
+  height: 11px;
+  border: none;
+  background: var(--accent);
+  animation: latido 2.6s ease-in-out infinite;
+}
+@keyframes latido {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.55); opacity: 0.35; }
+}
 
 .semana__fecha {
+  margin: 22px 0 10px;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--text-faint);
-  margin: 0;
-  padding-top: 0.42rem;
 }
 .semana__dia--hoy .semana__fecha { color: var(--accent); font-weight: 600; }
 
-.semana__items { display: flex; flex-direction: column; gap: 0.3rem; }
+.semana__nada { margin: 0; font-size: 0.85rem; color: var(--border); }
 
 .semana__item {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  padding: 0.35rem 0.7rem;
+  display: block;
+  margin-bottom: 0.45rem;
+  padding: 0.1rem 0 0.1rem 0.6rem;
   border-left: 2px solid var(--color-asig, var(--border));
-  border-radius: 0 4px 4px 0;
   text-decoration: none;
   color: var(--text);
-  transition: background-color 0.14s ease, transform 0.14s ease;
+  transition: border-color 0.14s ease, transform 0.14s ease;
 }
-a.semana__item:hover { background: var(--surface-2); transform: translateX(3px); }
+.semana__item:last-child { margin-bottom: 0; }
+a.semana__item:hover { transform: translateX(2px); }
+a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); }
 
-/* Un examen no es otra asignatura: se distingue por el filo más
-   grueso y la negrita, no por otro color. */
 .semana__item--examen { border-left-width: 4px; font-weight: 600; }
 
 .semana__asignatura {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-asig, var(--text-faint));
-  flex-shrink: 0;
-  min-width: 5.5rem;
+  margin-bottom: 0.15rem;
 }
 
-.semana__titulo { font-size: 0.95rem; line-height: 1.4; }
+.semana__titulo { font-size: 0.85rem; line-height: 1.45; }
 
 .semana__aviso {
   font-family: var(--font-mono);
   font-size: 0.76rem;
   color: var(--text-faint);
-  margin: 0.8rem 0 0;
+  margin: 1.2rem 0 0;
 }
 .semana__aviso a { color: var(--accent); }
+
+/* ---------- Días sin clase ----------
+   El chiste: "Venir a clase" tachado y, encima, un sello con la
+   pulla. Las frases viven enteras en data/no-lectivo.js: si algún día
+   quieres bajarles el tono, se cambian ahí y no hay que tocar esto.
+
+   El sello va girado y superpuesto, así que su caja no ocupa sitio
+   (position: absolute) y el hueco lo reserva el texto tachado. */
+
+.sin-clase { position: relative; padding: 0.3rem 0 0.6rem; }
+
+.sin-clase__tachado {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--error);
+  text-decoration-thickness: 2px;
+  opacity: 0.75;
+}
+
+.sin-clase__sello {
+  position: absolute;
+  /* Cae sobre el ÚLTIMO tercio del texto tachado, no encima del todo:
+     si lo tapa entero no se lee qué se está desmintiendo y el chiste
+     se pierde. */
+  top: 0.95rem;
+  left: 0.7rem;
+  margin: 0;
+  transform: rotate(-5deg);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--accent-warm);
+  border: 2px solid var(--accent-warm);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg);
+}
+
+.sin-clase__nombre {
+  margin: 3.6rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-faint);
+}
+
+/* La versión de semana entera: el mismo cartel, en grande y centrado,
+   ocupando el sitio de la rejilla de los cinco días. */
+.sin-clase--grande {
+  box-sizing: border-box;
+  padding: 2.6rem 1.5rem 2.2rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  text-align: center;
+}
+.sin-clase--grande .sin-clase__tachado { font-size: 1.7rem; text-decoration-thickness: 3px; }
+.sin-clase--grande .sin-clase__sello {
+  position: static;
+  display: inline-block;
+  transform: rotate(-3deg);
+  font-size: 1.3rem;
+  margin-top: 1.2rem;
+  padding: 0.45rem 1rem;
+}
+.sin-clase--grande .sin-clase__nombre { margin-top: 1.3rem; font-size: 0.85rem; }
 
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
@@ -2072,14 +2314,36 @@ a.semana__item:hover { background: var(--surface-2); transform: translateX(3px);
    antes de que el menú estorbe. */
 @media (max-width: 900px) {
   :root[data-pagina="portada"] #indice-portada { grid-template-columns: 1fr; }
-  :root[data-pagina="portada"] .main-content { padding: 2.2rem 1.3rem 3rem; }
-  .semana__dia { grid-template-columns: 1fr; gap: 0.35rem; }
-  .semana__fecha { padding-top: 0; }
+  /* La cabecera deja de ir a dos columnas: la terminal pasa debajo del
+     titular, a lo ancho. */
+  :root[data-pagina="portada"] .main-content {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2.2rem 1.3rem 3rem;
+  }
+  :root[data-pagina="portada"] .portada-terminal {
+    grid-column: 1;
+    grid-row: auto;
+    margin-bottom: 2rem;
+  }
+  :root[data-pagina="portada"] .main-content > .card { margin-bottom: 1.6rem; }
+  /* La semana deja de ser una fila de cinco columnas y se apila: a
+     menos de 900 px cada día se quedaría en 150 px y los títulos no
+     caben. La línea que los une desaparece y el punto se pone al
+     lado de la fecha. */
+  .semana { grid-template-columns: 1fr; }
+  .semana__linea { display: none; }
+  .semana__dia {
+    padding: 0.7rem 0 0.7rem 22px;
+    border-top: 1px solid var(--border);
+  }
+  .semana__dia:first-child { border-top: none; }
+  .semana__punto { top: 1rem; }
+  .semana__dia--hoy .semana__punto { top: 0.95rem; }
+  .semana__fecha { margin: 0 0 0.5rem; }
 }
 
 @media (max-width: 560px) {
   .relacionar { grid-template-columns: 1fr; gap: 1.2rem; }
-  .semana__item { flex-direction: column; gap: 0.15rem; }
 
   /* El número grande pasa a ir encima del título, no al lado: en un
      móvil le robaba la mitad del ancho al titular. */

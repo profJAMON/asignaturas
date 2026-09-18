@@ -74,6 +74,12 @@ async function cargarTema() {
       titulo: tema.titulo,
       asignatura: asignatura.id,
       unidad: unidadDeLaSesion.titulo,
+      /* El día, para poder decir "lo dejaste aquí el jueves". Se guarda
+         en ISO local, no con toISOString(), que se va a UTC y de noche
+         cambia de día. */
+      fecha: typeof calendarioRitmo !== 'undefined' && calendarioRitmo
+        ? calendarioRitmo.hoyIso()
+        : null,
     });
 
     pintarLeccion(contenidoHtml);
