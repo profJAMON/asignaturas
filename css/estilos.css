@@ -12,29 +12,60 @@
 :root {
   color-scheme: dark;
 
-  --bg: #1e1e1e;
-  --surface: #252526;
-  --surface-2: #2d2d30;
-  --border: #3c3c3c;
-  --text: #f3f3f3;
-  --text-dim: #9099a6;
-  /* Subido de #6a7280 (3,44:1, por debajo de AA) a 5,32:1 sobre el fondo
-     y 4,89:1 sobre las tarjetas. Sigue siendo claramente más apagado que
-     --text-dim, que es para lo que existe. */
-  --text-faint: #8a92a0;
-  --accent: #4fc1ff;
-  --accent-dim: #3a9bd1;
-  --accent-warm: #ce9178;
+  /* ----------------------------------------------------------
+     Paleta oscura (2026-09: pasa de gris VS Code a azul profundo).
+     El fondo se va al azul casi negro y los acentos son los tres
+     del cartel: cian, magenta y lima. Todo lo demás de la hoja ya
+     estaba escrito con estas variables, así que el cambio de
+     aspecto vive entero aquí arriba.
+     Contrastes medidos sobre --bg: texto 16,8:1 · dim 9,0:1 ·
+     faint 6,1:1 · cian 10,7:1 · magenta 6,3:1 · lima 15,7:1 ·
+     error 6,0:1. Todos por encima de AA (4,5:1), incluido
+     --text-faint, que en la paleta anterior se quedaba en 3,44:1.
+     Sobre las tarjetas (--surface) el peor caso es 5,7:1.
+     ---------------------------------------------------------- */
+
+  --bg: #0a0e14;
+  --surface: #0f151e;
+  --surface-2: #16202c;
+  --border: #223244;
+  --text: #e6f0fa;
+  --text-dim: #9fb3c8;
+  --text-faint: #7c93ab;
+  --accent: #22d3ee;
+  --accent-dim: #0e9fb8;
+  /* El "cálido" de la paleta anterior (salmón) pasa a ser el magenta:
+     es el segundo acento del estilo y lo usan el badge, las notas y
+     los metadatos. El nombre de la variable se queda para no tocar
+     las treinta reglas que ya la usan. */
+  --accent-warm: #ff4d9d;
+  /* Tercer acento. Es el del código en línea y el de las pistas. */
+  --accent-lima: #a6ff4d;
   --code-bg: #ffffff;
   --code-text: #1e1e1e;
   --code-tag: #800000;
   --code-attr: #ff0000;
   --code-string: #0451a5;
   --code-comment: #008000;
-  --code-inline: #89d185;
+  --code-inline: #a6ff4d;
   --code-borde: transparent;
-  --ok: #89d185;
-  --error: #f14c4c;
+  --ok: #5bf29b;
+  --error: #ff4d6d;
+
+  /* ---- Estilo del tema (rejilla, brillos, barra superior) ----
+     Estas cuatro son las que dan el aire "terminal". Bajar --glow a
+     "none" y --rejilla a transparent deja la web sobria sin tocar
+     ninguna otra regla: es el interruptor del estilo. */
+  --rejilla: rgba(34, 211, 238, 0.05);
+  --rejilla-paso: 34px;
+  --glow: 0 0 22px rgba(34, 211, 238, 0.4);
+  --glow-suave: 0 0 14px rgba(34, 211, 238, 0.25);
+  --glow-sesion: inset 2px 0 14px -6px rgba(34, 211, 238, 0.9);
+  --barra-bg: rgba(10, 14, 20, 0.92);
+
+  /* Fondos tenues de los bloques con acento propio. */
+  --nota-fondo: rgba(255, 77, 157, 0.07);
+  --pista-fondo: rgba(166, 255, 77, 0.06);
 
   /* Colores que antes estaban escritos a pelo en las reglas. Viven aquí
      para que el modo claro pueda cambiarlos sin tocar nada más. */
@@ -54,6 +85,11 @@
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Alto de la barra superior. Lo usan también .sidebar y .indice para
+     quedarse pegadas justo por debajo, así que se cambia aquí y se
+     mueven las tres a la vez. */
+  --alto-barra: 56px;
 
   /* Ancho máximo de la columna de lectura. Cámbialo aquí y se mueve
      toda la página a la vez: cabecera, lección y pie. */
@@ -85,16 +121,31 @@
 :root[data-tema="claro"] {
   color-scheme: light;
 
+  /* El cian y el magenta de neón solo funcionan sobre fondo oscuro: en
+     claro bajan a su versión oscura (cian petróleo y magenta vino) para
+     no caer por debajo de AA. La rejilla y los brillos casi desaparecen:
+     sobre blanco ensucian en vez de decorar.
+     Contrastes medidos sobre blanco: cian 5,4:1 · magenta 7,3:1 ·
+     lima 7,1:1 · faint 5,9:1. Sobre tarjeta, el peor es 4,7:1. */
   --bg: #ffffff;
-  --surface: #f7f8fa;
-  --surface-2: #eaedf1;
-  --border: #cfd5dc;
-  --text: #1c2024;
-  --text-dim: #4c555f;
-  --text-faint: #69707a;
-  --accent: #0a6bb5;
-  --accent-dim: #085694;
-  --accent-warm: #9a4820;
+  --surface: #f4f7fa;
+  --surface-2: #e7edf3;
+  --border: #c9d4e0;
+  --text: #101720;
+  --text-dim: #3e4a57;
+  --text-faint: #5a6675;
+  --accent: #0e7490;
+  --accent-dim: #0b5b72;
+  --accent-warm: #a4126a;
+  --accent-lima: #3f6212;
+
+  --rejilla: rgba(14, 116, 144, 0.05);
+  --glow: none;
+  --glow-suave: none;
+  --glow-sesion: none;
+  --barra-bg: rgba(255, 255, 255, 0.94);
+  --nota-fondo: rgba(164, 18, 106, 0.05);
+  --pista-fondo: rgba(63, 98, 18, 0.06);
 
   /* El bloque de código ya era claro en modo oscuro; sobre página blanca
      necesita un gris muy suave y un borde para no perder la caja. */
@@ -103,7 +154,7 @@
   --code-borde: #d7dce2;
   --code-inline: #116329;
 
-  --ok: #1a7f37;
+  --ok: #157f3d;
   --error: #c2262f;
   --boton-texto: #ffffff;
   --ok-fondo: rgba(26, 127, 55, 0.12);
@@ -132,12 +183,31 @@ html { scroll-behavior: smooth; }
 body {
   display: grid;
   grid-template-columns: var(--ancho-menu) minmax(0, 1fr) var(--ancho-indice);
+  /* La barra superior ocupa una fila propia que cruza las tres columnas
+     (.barra usa grid-column: 1 / -1). El resto de filas las crea el grid
+     solo, así que no hace falta declarar grid-template-rows. */
   min-height: 100vh;
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.55;
+}
+
+/* La rejilla del fondo. Va en un pseudoelemento fijo y no en el
+   background de body porque así no se arrastra al hacer scroll ni se
+   repinta con cada desplazamiento. En modo claro --rejilla es casi
+   transparente, de modo que este mismo bloque sirve para los dos temas. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--rejilla) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rejilla) 1px, transparent 1px);
+  background-size: var(--rejilla-paso) var(--rejilla-paso);
 }
 
 /* Sin esto, un <pre> muy largo puede ensanchar su columna del grid
@@ -162,15 +232,153 @@ h1, h2, h3 {
   letter-spacing: 0.01em;
 }
 
+/* ============================================================
+   Barra superior  (js/barra.js)
+   ============================================================
+   Cruza las tres columnas y se queda fija arriba. Lleva cuatro cosas:
+   la marca (la ruta de la asignatura en la que estás), la navegación,
+   el selector de idioma y el de aspecto. Los dos selectores vivían
+   antes dentro de la barra lateral: siguen siendo el mismo HTML y el
+   mismo JS (los pintan idioma.js y aspecto.js en sus contenedores por
+   id), solo cambian de sitio y se aplanan con las reglas de abajo.
+   ============================================================ */
+
+.barra {
+  grid-column: 1 / -1;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  min-height: var(--alto-barra);
+  padding: 0 1.1rem;
+  background: var(--barra-bg);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+/* El filo de neón de debajo de la barra. Es el único sitio de la web
+   donde se cruzan los tres acentos, y es lo que marca el estilo en
+   cuanto abres la página. En modo claro los colores ya son oscuros,
+   así que queda como una línea fina de color. */
+.barra::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent-warm) 70%, transparent);
+  opacity: 0.7;
+}
+
+.barra__marca {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-lima);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.barra__marca:hover { color: var(--accent); }
+.barra__prompt { color: var(--text-faint); }
+
+.barra__cursor {
+  color: var(--accent);
+  animation: barra-cursor 1.15s steps(1) infinite;
+}
+@keyframes barra-cursor { 50% { opacity: 0; } }
+
+.barra__nav {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  min-width: 0;
+}
+
+.barra__enlace {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 0.5rem 0.1rem;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.barra__enlace:hover { color: var(--text); }
+.barra__enlace[aria-current="page"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  text-shadow: var(--glow-suave);
+}
+
+/* ---- Los dos selectores, aplanados dentro de la barra ---- */
+
+.barra .selector-idioma,
+.barra .selector-aspecto {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+  min-width: 0;
+}
+
+/* El de idioma empuja a la derecha todo el bloque de la derecha. */
+.barra .selector-idioma { margin-left: auto; }
+
+/* Los títulos ("Idioma · Language", "Aspecto") sobran a la vista en una
+   barra de iconos, pero NO se quitan: se dejan solo para el lector de
+   pantalla, que si no se encuentra cuatro botones sueltos sin contexto. */
+.barra .sidebar__titulo {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+.barra .idioma-extra {
+  width: auto;
+  max-width: 8.5rem;
+  min-width: 0;
+  margin-top: 0;
+}
+
+/* El aviso de "el traductor no ha cargado" solo aparece si falla el
+   widget de Google. En la barra no puede empujar nada, así que cuelga
+   por debajo como un cartelito. */
+.barra .idioma-aviso {
+  position: absolute;
+  top: 100%;
+  right: 0.8rem;
+  max-width: 22rem;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0 0 6px 6px;
+}
+
+.barra .idioma-original { margin-top: 0; white-space: nowrap; }
+
 /* ---------- Barra lateral (Temario) ---------- */
 
 .sidebar {
   background: var(--surface);
   border-right: 1px solid var(--border);
   padding: 1.6rem 1rem;
-  height: 100vh;
+  /* Se queda pegada justo debajo de la barra superior, no arriba del
+     todo: si no, su primera línea quedaría tapada por la barra. */
+  height: calc(100vh - var(--alto-barra));
   position: sticky;
-  top: 0;
+  top: var(--alto-barra);
   overflow-y: auto;
 }
 
@@ -226,15 +434,19 @@ h1, h2, h3 {
   border-left-color: var(--accent);
   background: var(--surface-2);
   font-weight: 600;
+  /* Única sombra de toda la hoja, y no separa nada del fondo: es el
+     resplandor del filo de la sesión en la que estás. En modo claro
+     --glow-sesion vale "none" y desaparece sola. */
+  box-shadow: var(--glow-sesion);
 }
 
 /* ---------- Índice de la página (columna derecha) ---------- */
 
 .indice {
   padding: 1.6rem 1rem;
-  height: 100vh;
+  height: calc(100vh - var(--alto-barra));
   position: sticky;
-  top: 0;
+  top: var(--alto-barra);
   overflow-y: auto;
 }
 
@@ -287,11 +499,80 @@ h1, h2, h3 {
 .volver:hover { text-decoration: underline; }
 
 .card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 1.8rem 2rem;
   margin-bottom: 2.2rem;
+}
+
+/* Escuadras de neón en dos esquinas de la cabecera. Es el sustituto
+   de la sombra (que la guía prohíbe): marca la tarjeta sin separarla
+   del fondo con un degradado. Puramente decorativo. */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+.card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--accent);
+  border-left: 2px solid var(--accent);
+  border-radius: 6px 0 0 0;
+}
+.card::after {
+  right: -1px;
+  bottom: -1px;
+  border-right: 2px solid var(--accent-warm);
+  border-bottom: 2px solid var(--accent-warm);
+  border-radius: 0 0 6px 0;
+}
+
+/* Cabecera de una sesión: el número grande a la izquierda y el resto
+   del texto a su derecha. */
+.card--sesion {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+.card--sesion > .card__cuerpo { min-width: 0; flex-grow: 1; }
+
+/* El selector lleva .card delante a propósito: si no, la regla
+   .card p (tamaño de párrafo) le gana por especificidad y el número
+   sale del tamaño del texto normal. */
+.card .numero-sesion {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 4.4rem;
+  font-weight: 700;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  margin-top: 0.1rem;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent);
+  text-shadow: var(--glow);
+}
+
+/* Si el navegador no sabe dibujar letra hueca, se pinta maciza: sin
+   esto el número sería invisible (el relleno es transparente). */
+@supports not (-webkit-text-stroke: 1px red) {
+  .card .numero-sesion { color: var(--accent); text-shadow: none; }
+}
+
+/* Texto que solo existe para el lector de pantalla (el "Sesión" que
+   acompaña al número). */
+.solo-lector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
 }
 
 .card h1 {
@@ -301,6 +582,8 @@ h1, h2, h3 {
   line-height: 1.15;
   color: var(--text);
   margin: 0.7rem 0 0.8rem;
+  /* En modo claro --glow vale "none" y esta línea no hace nada. */
+  text-shadow: var(--glow);
 }
 
 .card p {
@@ -380,10 +663,35 @@ h1, h2, h3 {
 
 .actividad {
   border: 1px solid var(--border);
+  /* El filo de color lo pone el tipo de actividad (ver --color-tipo
+     más abajo). Si algún día llega un tipo nuevo sin color asignado,
+     cae en el gris del borde y no se rompe nada. */
+  border-left: 3px solid var(--color-tipo, var(--border));
   background: var(--surface);
-  border-radius: 6px;
+  border-radius: 0 6px 6px 0;
   padding: 1.6rem;
   margin-bottom: 1.5rem;
+}
+
+/* Los tres tipos que existen hoy (js/actividades.js). */
+.actividad[data-tipo="quiz"] { --color-tipo: var(--accent); }
+.actividad[data-tipo="relacionar"] { --color-tipo: var(--accent-warm); }
+.actividad[data-tipo="generador"] { --color-tipo: var(--accent-lima); }
+
+/* La etiqueta de arriba ("QUIZ", "RELACIONAR"…). La escribe el JS
+   como texto de verdad, no como content de un pseudoelemento, para
+   que el lector de pantalla la lea y el traductor pueda con ella. */
+.actividad__tipo {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-tipo, var(--text-faint));
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0 0.9rem;
 }
 
 .actividad__titulo {
@@ -544,7 +852,12 @@ h1, h2, h3 {
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
 @media print {
-  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
+  .sidebar, .indice, .barra, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
+  /* En papel no hay rejilla de fondo ni escuadras de neón: gastan
+     tinta y no aportan nada. */
+  body::before { display: none !important; }
+  .card::before, .card::after { display: none !important; }
+  .numero-sesion { color: var(--text) !important; -webkit-text-stroke: 0 !important; text-shadow: none !important; }
   /* Las actividades incrustadas en la lección se ocultan igual que las
      del final: al imprimir interesa el texto, no los botones. Si algún
      día quieres que salgan (para repartirlas en papel), quita esta
@@ -641,9 +954,15 @@ footer.pie {
 .leccion pre .ca { color: var(--code-string); }
 .leccion pre .co { color: var(--code-comment); font-style: italic; }
 
+/* ---- Acento por tipo de bloque ----
+   Cada cosa que interrumpe la lectura lleva su propio color, siempre
+   el mismo en toda la web: magenta = aviso o nota, lima = pista o
+   respuesta desplegable, cian = actividad. Así el alumno sabe qué se
+   va a encontrar antes de leerlo. */
+
 .leccion .nota {
   border-left: 2px solid var(--accent-warm);
-  background: var(--surface);
+  background: var(--nota-fondo);
   border-radius: 0 6px 6px 0;
   padding: 0.8rem 1rem;
   margin: 0 0 1.2rem;
@@ -681,19 +1000,22 @@ footer.pie {
 }
 .leccion .salida a { color: var(--accent); }
 
+/* Los <details> de la lección son siempre pistas o respuestas
+   ("Antes de seguir"): van en lima, el color de "esto te ayuda". */
 .leccion details {
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-left: 2px solid var(--accent-lima);
+  border-radius: 0 6px 6px 0;
   padding: 0.7rem 1rem;
   margin: 0 0 1.2rem;
-  background: var(--surface);
+  background: var(--pista-fondo);
 }
 .leccion details[open] { padding-bottom: 1rem; }
 .leccion details summary {
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent);
+  color: var(--accent-lima);
 }
 .leccion details summary::-webkit-details-marker { display: none; }
 .leccion details summary::before { content: "▸ "; }
@@ -769,12 +1091,15 @@ footer.pie {
   display: block;
   padding: 1rem 1.4rem;
   border-top: 1px solid var(--border);
+  /* Transparente de serie para que al pasar por encima no se mueva el
+     texto: el filo ya está reservado, solo cambia de color. */
+  border-left: 3px solid transparent;
   text-decoration: none;
   color: var(--text);
-  transition: background-color 0.12s ease;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
 }
 .sesiones-portada .sesion-portada:first-child { border-top: none; }
-.sesion-portada:hover { background: var(--surface-2); }
+.sesion-portada:hover { background: var(--surface-2); border-left-color: var(--accent); }
 .sesion-portada:hover .sesion-portada__titulo { color: var(--accent); }
 
 .sesion-portada__titulo { font-weight: 600; margin: 0 0 0.3rem; }
@@ -1268,10 +1593,14 @@ body > iframe {
 }
 
 /* Segundo cinturón de seguridad: las tres columnas van donde van, pase
-   lo que pase con lo que inyecten scripts de terceros en el <body>. */
-.sidebar      { grid-column: 1; grid-row: 1; }
-.main-content { grid-column: 2; grid-row: 1; }
-.indice       { grid-column: 3; grid-row: 1; }
+   lo que pase con lo que inyecten scripts de terceros en el <body>.
+   Van en la fila 2 porque la 1 es la de la barra superior: si se les
+   deja la fila 1, la barra es la que acaba desplazada al final de la
+   página (pasó al montarla, y no da ningún error en consola). */
+.barra        { grid-row: 1; }
+.sidebar      { grid-column: 1; grid-row: 2; }
+.main-content { grid-column: 2; grid-row: 2; }
+.indice       { grid-column: 3; grid-row: 2; }
 
 /* El widget desplaza el <body> hacia abajo para hacer hueco a su barra. */
 body {
@@ -1373,6 +1702,12 @@ font {
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
+  /* La barra se aprieta un poco para que siga cabiendo en una línea:
+     mientras no se parta, el desplazamiento de .sidebar (que está
+     calculado con --alto-barra) sigue siendo correcto. */
+  .barra { gap: 0.9rem; padding: 0 0.8rem; }
+  .barra__nav { gap: 0.8rem; }
+  .barra .idioma-extra { max-width: 6.5rem; }
 }
 
 /* Tabletas y móviles: el menú pasa a ocupar el ancho completo
@@ -1395,8 +1730,24 @@ font {
   }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
   .card { padding: 1.3rem 1.2rem; }
+
+  /* Aquí la barra ya puede partirse en dos líneas: la lateral ha dejado
+     de estar fija, así que su altura exacta ya no le importa a nadie. */
+  .barra {
+    position: static;
+    flex-wrap: wrap;
+    gap: 0.6rem 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+  .barra .selector-idioma { margin-left: 0; }
+  .barra .idioma-aviso { position: static; max-width: none; border-radius: 6px; }
 }
 
 @media (max-width: 560px) {
   .relacionar { grid-template-columns: 1fr; gap: 1.2rem; }
+
+  /* El número grande pasa a ir encima del título, no al lado: en un
+     móvil le robaba la mitad del ancho al titular. */
+  .card--sesion { flex-direction: column; gap: 0.4rem; }
+  .card .numero-sesion { font-size: 3rem; }
 }

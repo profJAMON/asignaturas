@@ -285,9 +285,24 @@ const RENDERERS = {
   generador: renderGenerador,
 };
 
+/* Cómo se llama cada tipo a la vista del alumno. "generador" no dice
+   nada por sí solo: lo que ve es un ejercicio distinto en cada carga. */
+const ETIQUETAS_TIPO = {
+  quiz: 'Test',
+  relacionar: 'Relacionar',
+  generador: 'Ejercicio',
+};
+
 function renderActividad(contenedor, actividad) {
   const render = RENDERERS[actividad.tipo];
   const caja = crearElemento('div', 'actividad');
+  /* El tipo va como atributo porque de él cuelga el color del filo de
+     la tarjeta (ver .actividad[data-tipo] en css/estilos.css). */
+  if (actividad.tipo) caja.dataset.tipo = actividad.tipo;
+
+  const etiqueta = ETIQUETAS_TIPO[actividad.tipo];
+  if (etiqueta) caja.appendChild(crearElemento('p', 'actividad__tipo', etiqueta));
+
   caja.appendChild(crearElemento('h3', 'actividad__titulo', actividad.titulo || ''));
   if (render) {
     render(caja, actividad);

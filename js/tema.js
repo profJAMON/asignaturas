@@ -36,6 +36,11 @@ async function cargarTema() {
     const { asignatura, unidad: unidadDeLaSesion } = ubicacion;
     cargarBarraLateral(id, asignatura);
 
+    /* Ahora ya se sabe de qué asignatura es esta sesión, así que la
+       barra de arriba puede dejar de enseñar la versión neutra.
+       Ver js/barra.js. */
+    if (typeof pintarBarra === 'function') pintarBarra(asignatura);
+
     const enlaceVolver = document.getElementById('tema-volver');
     if (enlaceVolver) {
       enlaceVolver.href = urlPortadaAsignatura(asignatura);
@@ -59,7 +64,7 @@ async function cargarTema() {
 
     document.title = `${tema.titulo} · ${asignatura.nombre}`;
     document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
-    document.getElementById('tema-titulo').textContent = tema.titulo;
+    document.getElementById('tema-titulo').textContent = pintarCabeceraSesion(tema.titulo);
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 
     pintarLeccion(contenidoHtml);
@@ -84,6 +89,44 @@ async function cargarTema() {
     raiz.innerHTML = '<p class="vacio">No se ha podido cargar la sesión. Si estás probando el sitio en tu ordenador, recuerda abrirlo con un servidor local (ver README).</p>';
     console.error(error);
   }
+}
+
+/* La cabecera de la sesión: el número grande y el título ya sin él.
+
+   El número sale del TÍTULO, no del id. Es la única fuente que sirve
+   para las tres asignaturas: los id de instalaciones van por unidad
+   ("inst-u4-hoja-practica") y no llevan el número de sesión, pero el
+   título sí ("Sesión 5 — Práctica en papel"). Conviven dos maneras de
+   escribirlo ("Sesión 5 — ..." y "Sesión 1. ..."), así que el
+   separador puede ser raya, guion, punto o dos puntos.
+
+   Lo que no empieza así (glosarios, "Formas de evaluar", "Cómo se
+   evalúa") se queda sin número: se esconde el hueco y el título se
+   pinta entero, que es como estaba antes.
+
+   Devuelve el título que hay que enseñar. */
+function pintarCabeceraSesion(titulo) {
+  const caja = document.getElementById('tema-numero');
+  const cifra = document.getElementById('tema-numero-cifra');
+  const texto = titulo || '';
+  const encontrado = /^sesi[oó]n\s*(\d+[a-z]?)\s*[—–\-.:]\s*(.+)$/i.exec(texto.trim());
+
+  if (!caja || !cifra) return texto;
+
+  if (!encontrado) {
+    caja.hidden = true;
+    return texto;
+  }
+
+  /* Un solo dígito se escribe con cero delante ("05"), que en
+     monoespaciada queda mucho mejor que un "5" suelto. */
+  const numero = encontrado[1];
+  cifra.textContent = numero.length === 1 ? `0${numero}` : numero;
+  caja.hidden = false;
+
+  /* El título pierde su "Sesión 5 —" para no decir dos veces lo mismo
+     al lado del número. En la pestaña del navegador se queda entero. */
+  return encontrado[2];
 }
 
 function pintarLeccion(contenidoHtml) {

@@ -18,9 +18,17 @@
 </head>
 <body>
 
-<nav class="sidebar">
-  <div class="selector-aspecto" id="selector-aspecto"></div>
+<!-- Barra superior. Ver el comentario de index.html. -->
+<header class="barra">
+  <a class="barra__marca" id="barra-marca" href="index.html" translate="no">
+    <span class="barra__prompt">~/</span><span id="barra-marca-texto">asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>
+  </a>
+  <nav class="barra__nav" id="barra-nav" aria-label="Secciones del sitio"></nav>
   <div class="selector-idioma" id="selector-idioma" translate="no"></div>
+  <div class="selector-aspecto" id="selector-aspecto"></div>
+</header>
+
+<nav class="sidebar">
   <h2 class="sidebar__titulo">Temario</h2>
   <div id="indice-temas"></div>
 </nav>
@@ -61,6 +69,7 @@
 <script src="data/calendario-instalaciones.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
+<script src="js/barra.js"></script>
 <script src="js/calendario-rejilla.js"></script>
 <script src="js/calendario-pagina.js"></script>
 </body>

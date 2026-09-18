@@ -15,9 +15,17 @@
 </head>
 <body>
 
-<nav class="sidebar">
-  <div class="selector-aspecto" id="selector-aspecto"></div>
+<!-- Barra superior. Ver el comentario de index.html. -->
+<header class="barra">
+  <a class="barra__marca" id="barra-marca" href="index.html" translate="no">
+    <span class="barra__prompt">~/</span><span id="barra-marca-texto">asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>
+  </a>
+  <nav class="barra__nav" id="barra-nav" aria-label="Secciones del sitio"></nav>
   <div class="selector-idioma" id="selector-idioma" translate="no"></div>
+  <div class="selector-aspecto" id="selector-aspecto"></div>
+</header>
+
+<nav class="sidebar">
   <h2 class="sidebar__titulo">Temario</h2>
   <div id="indice-temas"></div>
 </nav>
@@ -25,14 +33,20 @@
 <main class="main-content" id="tema-raiz">
   <a class="volver" href="index.html" id="tema-volver">&larr; Todas las unidades</a>
 
-  <header class="card">
-    <span class="badge" id="tema-unidad">Material de clase</span>
-    <h1 id="tema-titulo">Cargando…</h1>
-    <p id="tema-descripcion"></p>
-    <!-- Selector de grupo (1r/2n). Solo aparece en las sesiones de
-         Instalaciones; ver el comentario de index.html. -->
-    <div class="selector-grupo" id="selector-grupo" hidden></div>
-    <p class="badge badge--fecha" id="tema-fecha" hidden></p>
+  <header class="card card--sesion">
+    <!-- El número de la sesión, sacado de su id por js/tema.js. Si la
+         sesión no lleva número (un glosario, "formas de evaluar"…),
+         el JS lo deja escondido y la cabecera queda como antes. -->
+    <p class="numero-sesion" id="tema-numero" hidden><span class="solo-lector">Sesión </span><span id="tema-numero-cifra"></span></p>
+    <div class="card__cuerpo">
+      <span class="badge" id="tema-unidad">Material de clase</span>
+      <h1 id="tema-titulo">Cargando…</h1>
+      <p id="tema-descripcion"></p>
+      <!-- Selector de grupo (1r/2n). Solo aparece en las sesiones de
+           Instalaciones; ver el comentario de index.html. -->
+      <div class="selector-grupo" id="selector-grupo" hidden></div>
+      <p class="badge badge--fecha" id="tema-fecha" hidden></p>
+    </div>
   </header>
 
   <section class="seccion" id="seccion-leccion" hidden>
@@ -68,6 +82,9 @@
 <script src="js/generadores-cobre.js"></script>
 <script src="js/generadores-fibra.js"></script>
 <script src="js/actividades.js"></script>
+<!-- Antes que tema.js: este solo define pintarBarra(), y tema.js la
+     llama en cuanto sabe de qué asignatura es la sesión. -->
+<script src="js/barra.js"></script>
 <script src="js/tema.js"></script>
 </body>
 </html>
