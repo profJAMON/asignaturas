@@ -71,7 +71,7 @@ async function cargarBarraLateral(idActivo, asigActiva) {
             enlace.textContent = sesion.titulo;
             enlace.className = 'sesion';
             if (sesion.id === idActivo) enlace.classList.add('activa');
-            /* Fecha prevista (solo Instalaciones, ver js/calendario.js).
+            /* Fecha prevista (asignaturas con calendario, ver js/calendario.js).
                Si ese archivo no está cargado en esta página, no hace nada. */
             if (typeof decorarEnlaceSesion === 'function') decorarEnlaceSesion(enlace, asignatura, sesion.id);
             detalles.appendChild(enlace);

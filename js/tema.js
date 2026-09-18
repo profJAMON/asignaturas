@@ -67,7 +67,7 @@ async function cargarTema() {
     pintarActividades(tema.actividades || []);
     pintarIndicePagina();
 
-    /* Fecha prevista de esta sesión (solo Instalaciones, ver js/calendario.js).
+    /* Fecha prevista de esta sesión (asignaturas con calendario, ver js/calendario.js).
        Si ese archivo no está cargado en esta página, no hace nada. */
     if (typeof pintarFechaPrevista === 'function') pintarFechaPrevista(asignatura.id, id);
 

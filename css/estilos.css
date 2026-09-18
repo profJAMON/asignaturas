@@ -899,7 +899,7 @@ footer.pie {
 .aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 /* ============================================================
-   Selector de grupo (js/calendario.js) — solo Instalaciones
+   Selector de grupo (js/calendario.js) — asignaturas con varios grupos
    Mismo aire que el de aspecto/idioma.
    ============================================================ */
 
@@ -995,6 +995,8 @@ footer.pie {
   background: var(--surface);
   padding-top: 0.9rem;
 }
+/* Fila del examen de una unidad */
+.calendario-tabla tr.calendario-examen td { font-weight: 600; }
 .calendario-tabla tr.pasada td { color: var(--text-faint); }
 .calendario-tabla tr.hoy td {
   background: var(--surface-2);

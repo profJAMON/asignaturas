@@ -43,8 +43,13 @@ function pintarCabecera(badge, titulo, descripcion, conVolver) {
   if (elTitulo) elTitulo.textContent = titulo;
   if (elDesc) elDesc.textContent = descripcion;
   if (elVolver) elVolver.hidden = !conVolver;
-  /* El calendario de ritmo solo existe para Instalaciones (ver js/calendario.js). */
-  if (elCalendario) elCalendario.hidden = !(_asignaturaPortada && _asignaturaPortada.id === 'instalaciones');
+  /* Enlace al calendario de ritmo, solo si esta asignatura tiene uno
+     cargado (ver js/calendario.js). */
+  if (elCalendario) {
+    const conCalendario = !!(_asignaturaPortada && window.calendarioRitmo && window.calendarioRitmo.datos(_asignaturaPortada.id));
+    elCalendario.hidden = !conCalendario;
+    if (conCalendario) elCalendario.href = `calendario.html?a=${encodeURIComponent(_asignaturaPortada.id)}`;
+  }
 
   document.title = conVolver ? `${badge} · Material de clase` : 'Material de clase';
 }

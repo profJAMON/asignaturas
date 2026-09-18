@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calendario · Instalación y mantenimiento de redes</title>
+<title>Calendario del curso</title>
 <link rel="stylesheet" href="css/estilos.css">
 <!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
      elegido antes de que el navegador pinte, para que no haya fogonazo. -->
@@ -20,17 +20,17 @@
 </nav>
 
 <main class="main-content">
-  <a class="volver" href="index.html?a=instalaciones">&larr; Instalación y mantenimiento de redes</a>
+  <a class="volver" href="index.html" id="calendario-volver">&larr; Material de clase</a>
 
   <header class="card">
-    <span class="badge">Instalaciones</span>
+    <span class="badge" id="calendario-badge">Calendario</span>
     <h1>Calendario del curso</h1>
     <p id="calendario-descripcion">Planificación aproximada de cuándo toca cada unidad y cada sesión. Las fechas son previstas, no fijas: pueden desplazarse si el ritmo real se adelanta o se retrasa.</p>
   </header>
 
   <section class="seccion">
     <div id="calendario-contenido"></div>
-    <p class="calendario-nota">Fechas calculadas a partir de las horas por unidad y el horario real de cada grupo, con el calendario escolar 2026-2027. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.</p>
+    <p class="calendario-nota" id="calendario-nota">Fechas calculadas a partir de las horas por unidad y el horario real, con el calendario escolar 2026-2027. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.</p>
   </section>
 
   <footer class="pie">Material de clase</footer>
@@ -40,6 +40,7 @@
 
 <script src="js/idioma.js"></script>
 <script src="js/asignaturas.js"></script>
+<script src="data/calendario-operaciones.js"></script>
 <script src="data/calendario-instalaciones.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
