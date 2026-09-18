@@ -25,8 +25,11 @@
   <div class="selector-aspecto" id="selector-aspecto"></div>
 </header>
 
-<nav class="sidebar">
-  <h2 class="sidebar__titulo">Temario</h2>
+<!-- El título "Temario" ya no se escribe: la propia barra dice ahora
+     en qué asignatura estás (lo pinta js/sidebar.js) y poner las dos
+     cosas seguidas sobraba. Para quien usa lector de pantalla, el
+     nombre de la sección va en aria-label. -->
+<nav class="sidebar" aria-label="Temario">
   <div id="indice-temas"></div>
 </nav>
 

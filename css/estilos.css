@@ -68,12 +68,14 @@
   --pista-fondo: rgba(166, 255, 77, 0.06);
 
   /* Colores que antes estaban escritos a pelo en las reglas. Viven aquí
-     para que el modo claro pueda cambiarlos sin tocar nada más. */
-  --boton-texto: #0b1a22;
-  --ok-fondo: rgba(137, 209, 133, 0.12);
-  --error-fondo: rgba(241, 76, 76, 0.12);
-  --marca-bien: #4ec9b0;
-  --marca-mal: #f48771;
+     para que el modo claro pueda cambiarlos sin tocar nada más.
+     Los fondos de acierto y error van con los --ok y --error nuevos:
+     se quedaron con los viejos al cambiar la paleta. */
+  --boton-texto: #04121a;
+  --ok-fondo: rgba(91, 242, 155, 0.12);
+  --error-fondo: rgba(255, 77, 109, 0.12);
+  --marca-bien: #5bf29b;
+  --marca-mal: #ff4d6d;
 
   /* Las figuras (.salida con un SVG dentro). Los diagramas llevan sus
      colores escritos dentro del propio SVG, con la paleta oscura, así que
@@ -169,6 +171,28 @@
   --figura-enlace: #4fc1ff;
 }
 
+/* ============================================================
+   Transición entre páginas
+   ============================================================
+   Una sola regla: al pasar de una sesión a otra el navegador funde la
+   página vieja con la nueva en vez de parpadear en blanco. Va en
+   Chrome, Edge y Safari; Firefox todavía no la tiene entre documentos
+   y allí sencillamente no pasa nada (se ve como antes).
+
+   La barra de arriba lleva nombre propio, así que el navegador la
+   trata como el MISMO elemento en las dos páginas y se queda quieta
+   mientras el contenido se funde por debajo. Es lo que hace que
+   parezca una aplicación y no una web recargando.
+
+   Ojo al apagado: la regla de prefers-reduced-motion de más abajo usa
+   el selector *, que NO alcanza a los pseudoelementos de la
+   transición, así que esos se apagan aparte allí mismo.
+   ============================================================ */
+
+@view-transition { navigation: auto; }
+
+.barra { view-transition-name: barra; }
+
 * { box-sizing: border-box; }
 
 /* El atributo hidden lo apaga cualquier `display` que venga después en
@@ -224,7 +248,18 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  /* animation-delay también: sin él, una entrada escalonada deja las
+     tarjetas invisibles durante su retardo aunque no se animen. */
+  * {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  /* Los pseudoelementos de la transición entre páginas no los alcanza
+     el selector de arriba: van uno a uno. */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
 }
 
 h1, h2, h3 {
@@ -389,6 +424,36 @@ h1, h2, h3 {
   margin: 0 0 1.3rem;
 }
 
+/* ---- En qué asignatura estás, y cómo salir ----
+   La barra solo enseña una asignatura (ver js/sidebar.js), así que
+   tiene que decir cuál, y dar la puerta de salida con palabras: la
+   marca de la barra de arriba hace lo mismo, pero no todo el mundo
+   adivina que "~/proyecto" se puede pulsar. */
+
+.sidebar__asignatura {
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.sidebar__asignatura-nombre {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text);
+  margin: 0 0 0.5rem;
+}
+
+.sidebar__cambiar {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  text-decoration: none;
+}
+.sidebar__cambiar:hover { color: var(--accent); }
+
 /* Unidades desplegables */
 
 .unidad { margin-bottom: 0.4rem; }
@@ -415,6 +480,27 @@ h1, h2, h3 {
 }
 .unidad[open] summary::before { transform: rotate(90deg); }
 .unidad summary:hover { background: var(--surface-2); }
+
+/* ---- El despliegue ----
+   Los <details> nativos abren de golpe. Animar también el cierre
+   obliga a retener el atributo open con JavaScript, y no compensa:
+   cerrar es descartar, y ahí el corte seco no molesta. Así que se
+   anima solo la apertura, que es la acción que el alumno mira.
+
+   Solo se mueven opacidad y transform, que son las dos propiedades
+   que el navegador puede animar sin recalcular la página (importa en
+   los portátiles del aula). La regla de prefers-reduced-motion de
+   arriba la apaga sola. */
+
+@keyframes desplegar {
+  from { opacity: 0; transform: translateY(-5px); }
+}
+
+.unidad[open] > .unidad__cuerpo,
+.unidad-card[open] > .sesiones-portada,
+.leccion details[open] > :not(summary) {
+  animation: desplegar 0.18s ease both;
+}
 
 .sesion {
   display: block;
@@ -725,6 +811,29 @@ h1, h2, h3 {
 .opcion.correcta { border-color: var(--ok); background: var(--ok-fondo); }
 .opcion.incorrecta { border-color: var(--error); background: var(--error-fondo); }
 .opcion[disabled] { cursor: default; }
+
+/* ---- La reacción al contestar ----
+   Es la transición que más rinde de toda la web: el alumno pulsa y la
+   opción responde, en vez de cambiar de color de un fotograma a otro.
+   El fallo da un empujón de 4 px, no un temblor largo: avisa sin
+   regañar. Ambas mueven solo transform. */
+
+@keyframes acierto {
+  0%, 100% { transform: none; }
+  40% { transform: scale(1.015); }
+}
+
+@keyframes fallo {
+  0%, 100% { transform: none; }
+  25% { transform: translateX(-4px); }
+  60% { transform: translateX(3px); }
+}
+
+.opcion.correcta,
+.ficha.emparejada-correcta { animation: acierto 0.32s ease; }
+
+.opcion.incorrecta,
+.ficha.emparejada-error { animation: fallo 0.3s ease; }
 
 .quiz__resultado { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-dim); }
 
@@ -1676,8 +1785,12 @@ font {
   color: var(--text);
   transition: background-color 0.12s ease, border-color 0.12s ease;
 }
-.asignatura-card:hover { background: var(--surface-2); border-color: var(--accent); }
-.asignatura-card:hover .asignatura-card__titulo { color: var(--accent); }
+.asignatura-card:hover {
+  background: var(--surface-2);
+  border-color: var(--color-asig, var(--accent));
+  transform: translateY(-3px);
+}
+.asignatura-card:hover .asignatura-card__titulo { color: var(--color-asig, var(--accent)); }
 
 .asignatura-card__titulo {
   font-family: var(--font-mono);
@@ -1698,6 +1811,217 @@ font {
   color: var(--text-faint);
   margin: 0;
 }
+
+/* ============================================================
+   Portada general  (index.html sin ?a=)
+   ============================================================
+   Es la única página del sitio que NO usa las tres columnas: ahí
+   todavía no hay asignatura elegida, así que la barra lateral no
+   tiene temario que enseñar y la columna del índice está vacía. El
+   resultado era una página con tres tarjetas flotando en el carril
+   del medio y hueco muerto a los lados.
+
+   Quien pone data-pagina="portada" en el <html> es js/pagina.js, en
+   el <head> y sin defer, para que esto se pinte ya bien a la primera.
+   ============================================================ */
+
+:root[data-pagina="portada"] body { grid-template-columns: minmax(0, 1fr); }
+:root[data-pagina="portada"] .sidebar { display: none; }
+
+:root[data-pagina="portada"] .main-content {
+  grid-column: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3.2rem 2rem 4rem;
+}
+
+/* La cabecera deja de ser una tarjeta y pasa a ser un titular: sin
+   caja, sin escuadras y con el cursor parpadeando detrás. */
+:root[data-pagina="portada"] .main-content > .card {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 2.4rem;
+}
+:root[data-pagina="portada"] .main-content > .card::before,
+:root[data-pagina="portada"] .main-content > .card::after { display: none; }
+
+:root[data-pagina="portada"] .card h1 {
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+  margin: 0.9rem 0 0.7rem;
+}
+:root[data-pagina="portada"] .card h1::after {
+  content: "_";
+  color: var(--accent);
+  animation: barra-cursor 1.15s steps(1) infinite;
+}
+:root[data-pagina="portada"] .card p { font-size: 1.08rem; max-width: 46rem; }
+
+:root[data-pagina="portada"] #indice-portada {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+/* En columna y con el pie empujado abajo: las descripciones no miden
+   lo mismo y, sin esto, el "5 unidades · 29 sesiones" de cada tarjeta
+   queda a una altura distinta y la fila se ve desordenada. */
+:root[data-pagina="portada"] .asignatura-card {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+:root[data-pagina="portada"] .asignatura-card__descripcion { margin-bottom: 1.1rem; }
+:root[data-pagina="portada"] .asignatura-card__meta { margin-top: auto; }
+
+/* ---- El color de cada asignatura ----
+   Sale de su posición en la lista (js/main.js escribe data-color con
+   el índice entre 3), no de su id. Así, el día que añadas una
+   asignatura nueva siguen bastando los tres pasos de siempre: no hay
+   que venir aquí a inventarle un color. */
+
+[data-color="0"] { --color-asig: var(--accent); }
+[data-color="1"] { --color-asig: var(--accent-warm); }
+[data-color="2"] { --color-asig: var(--accent-lima); }
+
+.asignatura-card { position: relative; transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease; }
+
+.asignatura-card__numero {
+  font-family: var(--font-mono);
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 0.8rem;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-asig, var(--accent));
+}
+@supports not (-webkit-text-stroke: 1px red) {
+  .asignatura-card__numero { color: var(--color-asig, var(--accent)); }
+}
+
+/* ============================================================
+   Entrada de la portada
+   ============================================================
+   Aquí sí hay animación de aparición, al contrario que en las
+   sesiones. La diferencia es qué hace el alumno en cada sitio: la
+   portada se atraviesa (entras, eliges y sales) y una entrada
+   escalonada la hace parecer viva sin costarle tiempo a nadie; una
+   sesión se lee y se relee, y allí lo que aparece tarde estorba.
+   ============================================================ */
+
+@keyframes entrar {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+:root[data-pagina="portada"] .seccion--continuar,
+:root[data-pagina="portada"] .asignatura-card,
+:root[data-pagina="portada"] #portada-semana {
+  animation: entrar 0.34s ease both;
+}
+:root[data-pagina="portada"] .asignatura-card:nth-child(2) { animation-delay: 0.07s; }
+:root[data-pagina="portada"] .asignatura-card:nth-child(3) { animation-delay: 0.14s; }
+:root[data-pagina="portada"] #portada-semana { animation-delay: 0.2s; }
+
+/* ---------- "Sigue donde lo dejaste" ---------- */
+
+.seccion--continuar { margin: 0 0 2rem; }
+
+.continuar {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1.1rem 1.3rem;
+  transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+}
+.continuar:hover { background: var(--surface-2); transform: translateX(3px); }
+
+.continuar__etiqueta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.45rem;
+}
+
+.continuar__titulo {
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem;
+  color: var(--text);
+}
+
+.continuar__pie {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+  margin: 0;
+}
+
+/* ---------- "Esta semana" ---------- */
+
+.semana { display: flex; flex-direction: column; }
+
+.semana__dia {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--border);
+}
+.semana__dia:first-child { border-top: none; }
+
+.semana__fecha {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin: 0;
+  padding-top: 0.42rem;
+}
+.semana__dia--hoy .semana__fecha { color: var(--accent); font-weight: 600; }
+
+.semana__items { display: flex; flex-direction: column; gap: 0.3rem; }
+
+.semana__item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.35rem 0.7rem;
+  border-left: 2px solid var(--color-asig, var(--border));
+  border-radius: 0 4px 4px 0;
+  text-decoration: none;
+  color: var(--text);
+  transition: background-color 0.14s ease, transform 0.14s ease;
+}
+a.semana__item:hover { background: var(--surface-2); transform: translateX(3px); }
+
+/* Un examen no es otra asignatura: se distingue por el filo más
+   grueso y la negrita, no por otro color. */
+.semana__item--examen { border-left-width: 4px; font-weight: 600; }
+
+.semana__asignatura {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-asig, var(--text-faint));
+  flex-shrink: 0;
+  min-width: 5.5rem;
+}
+
+.semana__titulo { font-size: 0.95rem; line-height: 1.4; }
+
+.semana__aviso {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-faint);
+  margin: 0.8rem 0 0;
+}
+.semana__aviso a { color: var(--accent); }
 
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
@@ -1743,8 +2067,19 @@ font {
   .barra .idioma-aviso { position: static; max-width: none; border-radius: 6px; }
 }
 
+/* La portada: de tres tarjetas en fila a una columna. El corte es a
+   900px y no a 760 porque tres tarjetas con título largo se estrechan
+   antes de que el menú estorbe. */
+@media (max-width: 900px) {
+  :root[data-pagina="portada"] #indice-portada { grid-template-columns: 1fr; }
+  :root[data-pagina="portada"] .main-content { padding: 2.2rem 1.3rem 3rem; }
+  .semana__dia { grid-template-columns: 1fr; gap: 0.35rem; }
+  .semana__fecha { padding-top: 0; }
+}
+
 @media (max-width: 560px) {
   .relacionar { grid-template-columns: 1fr; gap: 1.2rem; }
+  .semana__item { flex-direction: column; gap: 0.15rem; }
 
   /* El número grande pasa a ir encima del título, no al lado: en un
      móvil le robaba la mitad del ancho al titular. */

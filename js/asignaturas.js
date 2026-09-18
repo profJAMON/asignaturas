@@ -94,6 +94,44 @@ function urlSesion(sesionId) {
   return `tema.html?id=${encodeURIComponent(sesionId)}`;
 }
 
+/* ============================================================
+   La última sesión abierta
+   ============================================================
+   La guarda tema.js al abrir una sesión y la lee la portada general
+   para ofrecer "sigue donde lo dejaste". Vive aquí porque es el único
+   archivo que cargan las tres páginas.
+
+   Misma convención que el resto de lo que se recuerda del alumno
+   (ob-aspecto, ob-idioma, ob-grupo-*): clave con prefijo "ob-" y todo
+   envuelto en try/catch, porque en modo incógnito o con las cookies
+   bloqueadas localStorage lanza excepción y la web tiene que seguir
+   funcionando igual.
+   ============================================================ */
+
+const CLAVE_ULTIMA_SESION = 'ob-ultima-sesion';
+
+function guardarUltimaSesion(datos) {
+  try {
+    localStorage.setItem(CLAVE_ULTIMA_SESION, JSON.stringify(datos));
+  } catch (e) { /* sin memoria, pero funciona */ }
+}
+
+/* Devuelve { id, titulo, asignatura } o null. Comprueba que la
+   asignatura siga existiendo: si se borra del sitio, lo guardado
+   apunta a ninguna parte y es mejor no ofrecerlo. */
+function leerUltimaSesion() {
+  try {
+    const crudo = localStorage.getItem(CLAVE_ULTIMA_SESION);
+    if (!crudo) return null;
+    const datos = JSON.parse(crudo);
+    if (!datos || !datos.id || !datos.titulo) return null;
+    if (!asignaturaPorId(datos.asignatura)) return null;
+    return datos;
+  } catch (e) {
+    return null;
+  }
+}
+
 /* Busca en qué asignatura y en qué unidad vive una sesión.
    Se busca en todas las asignaturas para que los enlaces antiguos
    (tema.html?id=... sin ?a=) sigan funcionando. Si viene una pista

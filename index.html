@@ -13,6 +13,9 @@
 <link rel="icon" href="img/wifi-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/wifi-apple-touch-icon.png">
 <script src="js/aspecto.js"></script>
+<!-- En el <head> y sin defer, como el anterior: marca si esta página es
+     la portada general para que se pinte ya a ancho completo. -->
+<script src="js/pagina.js"></script>
 </head>
 <body>
 
@@ -29,8 +32,11 @@
   <div class="selector-aspecto" id="selector-aspecto"></div>
 </header>
 
-<nav class="sidebar">
-  <h2 class="sidebar__titulo">Temario</h2>
+<!-- El título "Temario" ya no se escribe: la propia barra dice ahora
+     en qué asignatura estás (lo pinta js/sidebar.js) y poner las dos
+     cosas seguidas sobraba. Para quien usa lector de pantalla, el
+     nombre de la sección va en aria-label. -->
+<nav class="sidebar" aria-label="Temario">
   <div id="indice-temas"></div>
 </nav>
 
@@ -48,7 +54,14 @@
     <a class="volver" href="calendario.html" id="portada-calendario" hidden style="margin: 0.8rem 0 0;">📅 Ver el calendario del curso</a>
   </header>
 
+  <!-- Los dos bloques de aquí abajo solo se rellenan en la portada
+       general (sin ?a=); en la de una asignatura se quedan ocultos.
+       Ver js/main.js. -->
+  <section class="seccion seccion--continuar" id="portada-continuar" hidden></section>
+
   <div id="indice-portada"></div>
+
+  <section class="seccion" id="portada-semana" hidden></section>
 
   <footer class="pie">Material de clase</footer>
 </main>
