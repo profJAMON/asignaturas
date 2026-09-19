@@ -43,9 +43,27 @@ const ASIGNATURAS = [
 
 const ASIGNATURA_POR_DEFECTO = 'operaciones';
 
-/* Cache de los archivos de curso ya descargados, para no pedir el mismo
-   archivo varias veces en la misma página. */
+/* ============================================================
+   Caché de la página
+   ============================================================
+   Se guarda la PROMESA, no el resultado. La diferencia importa: en
+   index.html?a=<id> el listado de unidades y la barra lateral
+   arrancan a la vez y piden lo mismo, y si se guardara solo el
+   resultado ninguna de las dos lo encontraría todavía puesto y las
+   dos lanzarían su petición. Guardando la promesa, la segunda se
+   engancha a la que ya está en marcha.
+
+   Medido antes de esto: esa página hacía 63 peticiones a /data/, de
+   las que 30 eran el mismo archivo pedido dos veces (las 29 sesiones
+   de la asignatura, una vez para el listado y otra para el menú, más
+   el propio curso.json). Ahora hace 33.
+
+   Dura lo que la página: al navegar se vacía sola. De la caché entre
+   visitas ya se ocupa el navegador.
+   ============================================================ */
+
 const _cursosCargados = {};
+const _sesionesCargadas = {};
 
 function asignaturaPorId(id) {
   return ASIGNATURAS.find(a => a.id === id) || null;
@@ -57,13 +75,22 @@ function asignaturaDeLaUrl() {
   return asignaturaPorId(params.get('a'));
 }
 
-async function cargarCurso(asignatura) {
-  if (_cursosCargados[asignatura.id]) return _cursosCargados[asignatura.id];
-  const resp = await fetch(asignatura.curso);
-  if (!resp.ok) throw new Error(`No se ha podido cargar ${asignatura.curso}`);
-  const curso = await resp.json();
-  _cursosCargados[asignatura.id] = curso;
-  return curso;
+function cargarCurso(asignatura) {
+  if (!_cursosCargados[asignatura.id]) {
+    _cursosCargados[asignatura.id] = fetch(asignatura.curso)
+      .then(resp => {
+        if (!resp.ok) throw new Error(`No se ha podido cargar ${asignatura.curso}`);
+        return resp.json();
+      })
+      .catch(error => {
+        /* Una petición fallida no se queda guardada: si el alumno
+           estaba sin cobertura un momento, el siguiente intento tiene
+           que volver a pedirla de verdad. */
+        delete _cursosCargados[asignatura.id];
+        throw error;
+      });
+  }
+  return _cursosCargados[asignatura.id];
 }
 
 /* Igual que cargarCurso pero sin lanzar error: si una asignatura
@@ -84,6 +111,33 @@ function rutaSesionJson(asignatura, unidadId, sesionId) {
 
 function rutaSesionHtml(asignatura, unidadId, sesionId) {
   return `${asignatura.base}/${unidadId}/${sesionId}.html`;
+}
+
+/* ============================================================
+   Adelantar el cuerpo de una sesión
+   ============================================================
+   Al pasar por encima de un enlace de sesión se va pidiendo su .html.
+   Es lo ÚNICO que le falta al navegador para pintarla: el .json ya se
+   descargó al montar el menú, y la hoja de estilos y los scripts
+   están en caché desde la primera página.
+
+   No se guarda nada aquí: al pulsar se cambia de documento y esta
+   memoria se pierde. Lo que queda es la caché HTTP del navegador, que
+   es justo lo que se está calentando.
+
+   Se hace en el hover, y no al cargar la página, para no pedir de
+   golpe las 29 lecciones de una asignatura: desde una conexión de
+   móvil eso es peor que la espera que se quería evitar. */
+
+const _cuerposPedidos = new Set();
+
+function adelantarCuerpoSesion(asignatura, unidadId, sesionId) {
+  const url = rutaSesionHtml(asignatura, unidadId, sesionId);
+  if (_cuerposPedidos.has(url)) return;
+  _cuerposPedidos.add(url);
+  /* Sin await y con el error tragado: esto es un lujo, no una
+     dependencia. Si falla, la sesión se abre como siempre. */
+  fetch(url).catch(() => {});
 }
 
 function urlPortadaAsignatura(asignatura) {
@@ -150,14 +204,43 @@ async function localizarSesion(sesionId, asignaturaPista) {
 }
 
 /* Descarga los .json de todas las sesiones de una unidad.
-   Devuelve un array del mismo tamaño, con null en las que fallen. */
+   Devuelve un array del mismo tamaño, con null en las que fallen.
+
+   Cacheado por unidad: en la portada de una asignatura lo llaman el
+   listado y la barra lateral, y antes cada uno se descargaba su
+   propia copia de las 29 sesiones. */
 function cargarSesionesDeUnidad(asignatura, unidad) {
-  const ids = unidad.sesiones || [];
-  return Promise.all(
-    ids.map(id =>
-      fetch(rutaSesionJson(asignatura, unidad.id, id))
-        .then(r => (r.ok ? r.json() : null))
-        .catch(() => null)
-    )
-  );
+  const clave = `${asignatura.id}/${unidad.id}`;
+  if (!_sesionesCargadas[clave]) {
+    const ids = unidad.sesiones || [];
+    _sesionesCargadas[clave] = Promise.all(
+      ids.map(id =>
+        fetch(rutaSesionJson(asignatura, unidad.id, id))
+          .then(r => (r.ok ? r.json() : null))
+          .catch(() => null)
+      )
+    );
+  }
+  return _sesionesCargadas[clave];
+}
+
+/* Todas las sesiones de una asignatura, en el orden del temario y ya
+   con su unidad al lado. Lo usan el buscador (js/buscador.js) y el
+   pie de "anterior / siguiente" (js/tema.js), que necesitan ver la
+   asignatura entera de corrido y no unidad a unidad.
+
+   No cuesta ninguna petición extra en las páginas donde la barra
+   lateral ya ha pedido lo mismo: lo coge de la caché de arriba. */
+async function cargarSesionesDeAsignatura(asignatura) {
+  const curso = await cargarCursoSeguro(asignatura);
+  const unidades = curso.unidades || [];
+  const porUnidad = await Promise.all(unidades.map(u => cargarSesionesDeUnidad(asignatura, u)));
+
+  const lista = [];
+  unidades.forEach((unidad, i) => {
+    porUnidad[i].forEach(sesion => {
+      if (sesion && sesion.id) lista.push({ sesion, unidad, asignatura });
+    });
+  });
+  return lista;
 }

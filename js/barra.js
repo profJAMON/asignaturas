@@ -129,6 +129,21 @@
   function pintarBarra(asignatura) {
     pintarMarca(asignatura || null);
     pintarNavegacion(asignatura || null);
+
+    /* En qué asignatura está el alumno, apuntado en el <html> para que
+       lo vea cualquiera sin volver a averiguarlo. Lo usa el buscador
+       (js/buscador.js), que empieza buscando por la asignatura abierta:
+       en tema.html la asignatura no se sabe hasta que se ha localizado
+       la sesión, y esta es la única llamada que lo sabe seguro. */
+    if (asignatura) {
+      document.documentElement.dataset.asignatura = asignatura.id;
+    } else {
+      delete document.documentElement.dataset.asignatura;
+    }
+
+    /* El buscador pinta su botón dentro de la barra; si la barra se
+       vuelve a pintar, hay que volver a ponerlo. */
+    if (typeof window.pintarBotonBuscar === 'function') window.pintarBotonBuscar();
   }
 
   /* Lo usa js/tema.js cuando ya sabe de qué asignatura es la sesión. */

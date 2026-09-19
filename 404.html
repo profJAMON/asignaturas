@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Señal perdida · Material de clase</title>
+<meta name="description" content="Esta dirección no existe en la web de clase.">
+<!-- ============================================================
+     Página 404
+     ============================================================
+     La sirven solos los dos alojamientos cuando una dirección no
+     existe: tanto Cloudflare Pages como GitHub Pages buscan un
+     404.html en la raíz del sitio. No hay que configurar nada.
+
+     Va SUELTA a propósito: ni hoja de estilos, ni scripts, ni
+     favicon. El motivo es que una dirección inventada puede ser
+     /lo/que/sea/mal/escrito, y desde ahí una ruta relativa
+     ("css/estilos.css") no lleva a ninguna parte; y una absoluta
+     tampoco sirve para los dos sitios a la vez, porque en GitHub
+     Pages todo cuelga de /asignaturas/ y en Cloudflare no. Una 404
+     que se ve rota es peor que no tenerla.
+
+     Por eso los pocos estilos que necesita van aquí dentro, copiados
+     de las variables del tema. Es la única página del sitio donde se
+     escriben colores a mano, y se hace sabiendo lo que se hace.
+     ============================================================ -->
+<style>
+  :root {
+    --bg: #0a0e14;
+    --superficie: #0f151e;
+    --borde: #223244;
+    --texto: #e6edf3;
+    --apagado: #9099a6;
+    --magenta: #ff4d9d;
+    --cian: #22d3ee;
+  }
+  /* Modo claro: aquí no se puede leer la elección guardada (no hay
+     scripts), así que se sigue al sistema, que es lo más parecido. */
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #ffffff;
+      --superficie: #f4f6f8;
+      --borde: #d3d9e0;
+      --texto: #1b2028;
+      --apagado: #5a6470;
+      --magenta: #a4126a;
+      --cian: #0e7490;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: var(--bg);
+    color: var(--texto);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.55;
+  }
+  /* La rejilla del sitio, para que la página no parezca de otra web. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgba(34, 211, 238, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.05) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  @media (prefers-color-scheme: light) { body::before { opacity: 0.35; } }
+
+  .caja { max-width: 32rem; text-align: center; }
+
+  .codigo {
+    font-family: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-size: clamp(4rem, 18vw, 7.5rem);
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--magenta);
+  }
+  /* Si el navegador no sabe dibujar solo el contorno, al menos que se
+     vea el número. Sin esto saldría en transparente, o sea, nada. */
+  @supports not (-webkit-text-stroke: 1px red) {
+    .codigo { color: var(--magenta); }
+  }
+
+  .lema {
+    font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    font-size: 1.05rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin: 0.7rem 0 1.4rem;
+  }
+  p { color: var(--apagado); margin: 0 0 1.6rem; }
+
+  .volver {
+    display: inline-block;
+    padding: 0.55rem 1.1rem;
+    border: 1px solid var(--cian);
+    border-radius: 4px;
+    background: var(--superficie);
+    color: var(--cian);
+    text-decoration: none;
+    font-family: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    font-size: 0.9rem;
+  }
+  .volver:hover { text-decoration: underline; }
+  .volver:focus-visible { outline: 2px solid var(--cian); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="caja">
+  <p class="codigo" aria-hidden="true">404</p>
+  <h1 class="lema">Señal perdida</h1>
+  <p>Esta dirección no existe. Lo más probable es que el enlace esté mal
+     copiado, o que la sesión se haya movido de sitio.</p>
+  <a class="volver" href="/" id="volver">&larr; Ir al material de clase</a>
+</div>
+
+<script>
+/* Lo único que necesita un script: saber dónde está la raíz del sitio.
+   En GitHub Pages es /asignaturas/ y en el dominio propio es /. Se
+   mira la dirección en vez de dejarlo escrito, porque el mismo archivo
+   se publica en los dos sitios. */
+(function () {
+  var enGitHubPages = window.location.pathname.indexOf('/asignaturas/') === 0;
+  document.getElementById('volver').href = enGitHubPages ? '/asignaturas/' : '/';
+})();
+</script>
+</body>
+</html>

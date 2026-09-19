@@ -37,6 +37,18 @@ function renderQuiz(contenedor, datos) {
   const wrapper = crearElemento('div');
   const preguntasEl = [];
 
+  /* Lo contestado se recuerda entre recargas (ver js/progreso.js).
+     Lo que se guarda es QUÉ pulsó, no si acertó: al volver se
+     comprueba otra vez contra el json, así que si se corrige una
+     respuesta del temario, lo guardado no se queda contradiciendo al
+     material. */
+  const elegidas = (window.progreso && window.progreso.leerRespuestas(window.SESION_ACTUAL, datos._clave)) || {};
+
+  function recordar() {
+    if (!window.progreso) return;
+    window.progreso.guardarRespuestas(window.SESION_ACTUAL, datos._clave, elegidas);
+  }
+
   (datos.preguntas || []).forEach((preg, i) => {
     const bloque = crearElemento('div', 'pregunta');
     bloque.appendChild(crearElementoConCodigo('p', 'pregunta__enunciado', `${i + 1}. ${preg.pregunta}`));
@@ -45,18 +57,27 @@ function renderQuiz(contenedor, datos) {
     const botones = [];
     const estadoPregunta = { acertada: null };
 
+    /* Pinta una pregunta ya contestada: bloquea las opciones y marca
+       la elegida y la buena. Es lo mismo que hace el clic, pero sin
+       guardar (si no, recuperar una respuesta la volvería a escribir). */
+    function fijar(idx) {
+      botones.forEach(b => b.disabled = true);
+      estadoPregunta.acertada = idx === preg.correcta;
+      if (idx === preg.correcta) {
+        botones[idx].classList.add('correcta');
+      } else {
+        botones[idx].classList.add('incorrecta');
+        botones[preg.correcta].classList.add('correcta');
+      }
+    }
+
     preg.opciones.forEach((texto, idx) => {
       const boton = crearElementoConCodigo('button', 'opcion', texto);
       boton.type = 'button';
       boton.addEventListener('click', () => {
-        botones.forEach(b => b.disabled = true);
-        estadoPregunta.acertada = idx === preg.correcta;
-        if (idx === preg.correcta) {
-          boton.classList.add('correcta');
-        } else {
-          boton.classList.add('incorrecta');
-          botones[preg.correcta].classList.add('correcta');
-        }
+        fijar(idx);
+        elegidas[i] = idx;
+        recordar();
         actualizarResultado();
       });
       botones.push(boton);
@@ -66,6 +87,12 @@ function renderQuiz(contenedor, datos) {
     bloque.appendChild(opcionesEl);
     wrapper.appendChild(bloque);
     preguntasEl.push(estadoPregunta);
+
+    /* Lo de la vez anterior. Se comprueba que el índice siga
+       existiendo: si se quitó una opción del json, lo guardado
+       apuntaría a un botón que ya no está. */
+    const antes = elegidas[i];
+    if (Number.isInteger(antes) && botones[antes]) fijar(antes);
   });
 
   const resultado = crearElemento('p', 'quiz__resultado', '');
@@ -75,12 +102,33 @@ function renderQuiz(contenedor, datos) {
   resultado.setAttribute('role', 'status');
   wrapper.appendChild(resultado);
 
+  /* Volver a intentarlo. Solo aparece cuando hay algo contestado: en
+     un test en blanco no hay nada que borrar. Sin este botón, un test
+     recordado se quedaba contestado para siempre y no se podía usar
+     para repasar, que es justo para lo que está. */
+  const reintentar = crearElemento('button', 'quiz__reintentar', 'Volver a intentarlo');
+  reintentar.type = 'button';
+  reintentar.hidden = true;
+  reintentar.addEventListener('click', () => {
+    if (window.progreso) window.progreso.olvidarRespuestas(window.SESION_ACTUAL, datos._clave);
+    /* Se vuelve a pintar de cero en el mismo sitio: más corto y más
+       seguro que deshacer a mano clase por clase. */
+    const padre = wrapper.parentNode;
+    wrapper.remove();
+    renderQuiz(padre, datos);
+  });
+  wrapper.appendChild(reintentar);
+
   function actualizarResultado() {
     const respondidas = preguntasEl.filter(p => p.acertada !== null);
+    reintentar.hidden = respondidas.length === 0;
     if (respondidas.length < preguntasEl.length) return;
     const aciertos = preguntasEl.filter(p => p.acertada).length;
     resultado.textContent = `Resultado: ${aciertos} de ${preguntasEl.length} correctas.`;
   }
+
+  /* Por si se ha recuperado algo: pone el marcador y enseña el botón. */
+  actualizarResultado();
 
   contenedor.appendChild(wrapper);
 }
@@ -116,6 +164,13 @@ function renderRelacionar(contenedor, datos) {
       estado.textContent = aciertos === pares.length
         ? `¡Completado! ${aciertos} de ${pares.length} emparejados correctamente.`
         : `${aciertos} de ${pares.length} emparejados correctamente.`;
+      /* Se apunta el grupo acertado para que siga emparejado si el
+         alumno recarga o vuelve más tarde. Ver js/progreso.js. */
+      if (window.progreso) {
+        const grupo = Number(fichaIzq.dataset.grupo);
+        if (!hechos.includes(grupo)) hechos.push(grupo);
+        window.progreso.guardarRespuestas(window.SESION_ACTUAL, datos._clave, hechos);
+      }
     } else {
       [fichaIzq, fichaDer].forEach(f => {
         f.classList.remove('seleccionada');
@@ -151,6 +206,27 @@ function renderRelacionar(contenedor, datos) {
     });
     colDer.appendChild(ficha);
   });
+
+  /* Lo ya emparejado en una visita anterior. Se guardan los grupos
+     acertados, no las posiciones: la columna de la derecha se baraja
+     en cada carga, así que una posición guardada no querría decir
+     nada la próxima vez. */
+  const hechos = (window.progreso && window.progreso.leerRespuestas(window.SESION_ACTUAL, datos._clave)) || [];
+  hechos.forEach(grupo => {
+    const izq = colIzq.querySelector(`.ficha[data-grupo="${CSS.escape(String(grupo))}"]`);
+    const der = colDer.querySelector(`.ficha[data-grupo="${CSS.escape(String(grupo))}"]`);
+    if (!izq || !der) return;
+    [izq, der].forEach(f => {
+      f.classList.add('emparejada-correcta');
+      f.disabled = true;
+    });
+    aciertos++;
+  });
+  if (aciertos) {
+    estado.textContent = aciertos === pares.length
+      ? `¡Completado! ${aciertos} de ${pares.length} emparejados correctamente.`
+      : `${aciertos} de ${pares.length} emparejados correctamente.`;
+  }
 
   wrapper.appendChild(colIzq);
   wrapper.appendChild(colDer);

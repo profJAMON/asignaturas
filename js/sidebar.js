@@ -70,9 +70,24 @@ async function cargarBarraLateral(idActivo, asigActiva) {
         enlace.textContent = sesion.titulo;
         enlace.className = 'sesion';
         if (sesion.id === idActivo) enlace.classList.add('activa');
+        /* Un punto si ya la ha abierto alguna vez. VISTA, no hecha:
+           la web no sabe si ha trabajado la sesión. Ver js/progreso.js. */
+        if (window.progreso && window.progreso.estaVisitada(sesion.id)) {
+          enlace.classList.add('sesion--vista');
+          /* El punto es decoración; para quien no lo ve, esto. */
+          enlace.title = 'Ya has abierto esta sesión';
+        }
         /* Fecha prevista (asignaturas con calendario, ver js/calendario.js).
            Si ese archivo no está cargado en esta página, no hace nada. */
         if (typeof decorarEnlaceSesion === 'function') decorarEnlaceSesion(enlace, asignatura, sesion.id);
+
+        /* Al pasar por encima se va pidiendo la lección, que es lo
+           único que le falta al navegador para pintarla. Cuando el
+           alumno llega a pulsar, suele estar ya. Ver js/asignaturas.js. */
+        const adelantar = () => adelantarCuerpoSesion(asignatura, unidad.id, sesion.id);
+        enlace.addEventListener('pointerenter', adelantar, { once: true });
+        enlace.addEventListener('focus', adelantar, { once: true });
+
         cuerpo.appendChild(enlace);
       });
 

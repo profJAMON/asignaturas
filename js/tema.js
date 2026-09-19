@@ -82,10 +82,25 @@ async function cargarTema() {
         : null,
     });
 
+    /* Qué sesión es esta, a la vista de todos. Lo usan las actividades
+       para recordar lo contestado (ver js/actividades.js) y el resto
+       de este archivo. */
+    window.SESION_ACTUAL = id;
+
     pintarLeccion(contenidoHtml);
     pintarMateriales(tema.materiales || []);
     pintarActividades(tema.actividades || []);
     pintarIndicePagina();
+
+    /* Por aquí ya pasó. Se marca al abrirla, no al terminarla: la web
+       no sabe cuándo se ha terminado una sesión. Ver js/progreso.js. */
+    if (window.progreso) window.progreso.marcarVisitada(id);
+
+    /* El pie con la anterior y la siguiente, y la oferta de volver
+       donde lo dejó. Los dos van al final a propósito: necesitan la
+       página ya montada para medirla. */
+    await pintarPasos(asignatura, id);
+    vigilarLectura(id);
 
     /* Fecha prevista de esta sesión (asignaturas con calendario, ver js/calendario.js).
        Si ese archivo no está cargado en esta página, no hace nada. */
@@ -229,7 +244,15 @@ function pintarActividades(actividades) {
 
   let alFinal = 0;
 
-  actividades.forEach(actividad => {
+  actividades.forEach((actividad, indice) => {
+    /* Con qué nombre se recuerda lo contestado en esta actividad.
+       No vale usar "id" a secas: muchas actividades no lo llevan (solo
+       lo necesitan las que van incrustadas en la lección), y entonces
+       dos tests de la misma sesión compartirían sitio y se pisarían
+       las respuestas. La posición dentro del json sirve de apaño y es
+       estable mientras no se reordene la sesión. */
+    actividad._clave = actividad.id || `act-${indice}`;
+
     const hueco = actividad.id && leccion
       ? leccion.querySelector(`[data-actividad="${CSS.escape(actividad.id)}"]`)
       : null;
@@ -252,6 +275,146 @@ function pintarActividades(actividades) {
 
   /* La sección del final solo se enseña si algo ha caído en ella. */
   seccion.hidden = alFinal === 0;
+}
+
+/* ============================================================
+   Anterior y siguiente
+   ============================================================
+   Al acabar una sesión el alumno se quedaba sin salida: volver al
+   menú y acordarse de cuál tocaba. Ahora el pie lleva las dos, con
+   su título de verdad ("Siguiente: Modelo de caja"), porque "→
+   Siguiente" a secas no dice a dónde se va.
+
+   La lista va de corrido por TODO el temario, no por unidad: la
+   siguiente sesión de la última de una unidad es la primera de la
+   siguiente, que es como se dan las clases.
+   ============================================================ */
+
+async function pintarPasos(asignatura, idActual) {
+  const raiz = document.getElementById('tema-raiz');
+  const pie = raiz ? raiz.querySelector('.pie') : null;
+  if (!raiz) return;
+
+  let todas;
+  try {
+    todas = await cargarSesionesDeAsignatura(asignatura);
+  } catch (e) {
+    return; // sin lista no hay pie; no es motivo para romper la sesión
+  }
+
+  const donde = todas.findIndex(e => e.sesion.id === idActual);
+  if (donde === -1) return;
+
+  const anterior = todas[donde - 1];
+  const siguiente = todas[donde + 1];
+
+  const caja = document.createElement('nav');
+  caja.className = 'pasos';
+  caja.setAttribute('aria-label', 'Sesión anterior y siguiente');
+
+  if (anterior) caja.appendChild(crearPaso('Anterior', anterior, 'anterior'));
+  if (siguiente) caja.appendChild(crearPaso('Siguiente', siguiente, 'siguiente'));
+
+  if (!anterior && !siguiente) return;
+
+  /* Última del temario: decirlo, en vez de dejar media fila vacía que
+     parece que falta algo. */
+  if (!siguiente) {
+    const fin = document.createElement('p');
+    fin.className = 'pasos__fin';
+    fin.textContent = 'Es la última sesión publicada de esta asignatura.';
+    caja.appendChild(fin);
+  }
+
+  if (pie) raiz.insertBefore(caja, pie);
+  else raiz.appendChild(caja);
+
+  if (typeof retraducir === 'function') retraducir();
+}
+
+function crearPaso(etiqueta, entrada, clase) {
+  const enlace = document.createElement('a');
+  enlace.className = `paso paso--${clase}`;
+  enlace.href = `${urlSesion(entrada.sesion.id)}&a=${encodeURIComponent(entrada.asignatura.id)}`;
+
+  const cual = document.createElement('span');
+  cual.className = 'paso__cual';
+  cual.textContent = etiqueta;
+
+  const titulo = document.createElement('span');
+  titulo.className = 'paso__titulo';
+  titulo.textContent = entrada.sesion.titulo || entrada.sesion.id;
+
+  const unidad = document.createElement('span');
+  unidad.className = 'paso__unidad';
+  unidad.textContent = entrada.unidad.titulo || '';
+
+  enlace.appendChild(cual);
+  enlace.appendChild(titulo);
+  enlace.appendChild(unidad);
+  return enlace;
+}
+
+/* ============================================================
+   Por dónde iba
+   ============================================================
+   Se guarda cuánto ha bajado y, al volver, se OFRECE seguir por ahí.
+   No se salta solo: una página que se mueve sola nada más cargar
+   parece rota, y además pelearía con los enlaces del índice "En esta
+   página" cuando se llega con un #ancla.
+   ============================================================ */
+
+function vigilarLectura(id) {
+  if (!window.progreso) return;
+
+  const guardado = window.progreso.leerLectura(id);
+  /* Con un #ancla en la URL el alumno ya ha dicho a dónde quiere ir. */
+  if (guardado && !window.location.hash) ofrecerRetomar(id, guardado);
+
+  /* El scroll dispara muchísimo; se apunta la posición y se guarda una
+     vez cada segundo y medio, no en cada píxel. */
+  let pendiente = null;
+  window.addEventListener('scroll', () => {
+    if (pendiente) return;
+    pendiente = setTimeout(() => {
+      pendiente = null;
+      window.progreso.guardarLectura(id, window.scrollY);
+    }, 1500);
+  }, { passive: true });
+
+  /* Al salir, la última posición buena. */
+  window.addEventListener('pagehide', () => {
+    window.progreso.guardarLectura(id, window.scrollY);
+  });
+}
+
+function ofrecerRetomar(id, y) {
+  const boton = document.createElement('button');
+  boton.type = 'button';
+  boton.className = 'retomar';
+  boton.textContent = '↓ Seguías por aquí';
+
+  let fuera = null;
+  function quitar() {
+    clearTimeout(fuera);
+    boton.remove();
+  }
+
+  boton.addEventListener('click', () => {
+    /* 'instant' y no 'smooth': con el scroll suave del sitio, bajar
+       3000 px tarda segundos y parece que se ha colgado. */
+    window.scrollTo({ top: y, behavior: 'instant' });
+    quitar();
+  });
+
+  /* Si el alumno ya se ha puesto a bajar por su cuenta, la oferta
+     sobra: sabe dónde está. */
+  window.addEventListener('scroll', () => {
+    if (Math.abs(window.scrollY - y) < 300 || window.scrollY > y) quitar();
+  }, { passive: true, once: false });
+
+  fuera = setTimeout(quitar, 12000);
+  document.body.appendChild(boton);
 }
 
 function pintarIndicePagina() {

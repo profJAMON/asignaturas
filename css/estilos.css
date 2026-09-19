@@ -61,6 +61,11 @@
   --glow: 0 0 22px rgba(34, 211, 238, 0.4);
   --glow-suave: 0 0 14px rgba(34, 211, 238, 0.25);
   --glow-sesion: inset 2px 0 14px -6px rgba(34, 211, 238, 0.9);
+  /* El brillo de la tarjeta de asignatura al pasar por encima. Lleva
+     dentro var(--color-asig) a propósito: las variables se resuelven
+     en el elemento que las USA, así que cada tarjeta brilla de su
+     propio color sin declarar aquí una variable por asignatura. */
+  --glow-tarjeta: 0 0 24px -8px var(--color-asig, var(--accent));
   --barrido: rgba(34, 211, 238, 0.06);
   --barra-bg: rgba(10, 14, 20, 0.92);
 
@@ -146,6 +151,7 @@
   --glow: none;
   --glow-suave: none;
   --glow-sesion: none;
+  --glow-tarjeta: none;
   --barrido: rgba(14, 116, 144, 0.035);
   --barra-bg: rgba(255, 255, 255, 0.94);
   --nota-fondo: rgba(164, 18, 106, 0.05);
@@ -194,6 +200,54 @@
 @view-transition { navigation: auto; }
 
 .barra { view-transition-name: barra; }
+
+/* ---- El zoom al entrar en una asignatura ----
+
+   Dos elementos que se llaman igual en las dos páginas son, para el
+   navegador, el MISMO elemento: anima él solo la diferencia de sitio,
+   tamaño y forma. Aquí eso significa que la tarjeta de la portada
+   crece hasta convertirse en la cabecera de la asignatura.
+
+   Quien lleva el nombre:
+     - la cabecera de una asignatura (index.html?a=) y la de una
+       sesión, desde aquí y siempre;
+     - la tarjeta pulsada, solo durante el salto, porque se lo pone y
+       se lo quita js/zoom.js.
+
+   La portada general (sin ?a=) se queda fuera a propósito: su titular
+   no puede llamarse igual que la tarjeta que va a crecer, porque dos
+   elementos con el mismo nombre cancelan la transición entera. Por eso
+   el selector pide data-pagina="asignatura" y no vale cualquier .card.
+
+   El nombre va en .card__cuerpo en las sesiones y no en la tarjeta
+   entera: así el número grande de la sesión no entra en la animación
+   y no se ve estirarse. */
+
+:root[data-pagina="asignatura"] .main-content > .card,
+.card--sesion .card__cuerpo { view-transition-name: cabecera; }
+
+/* 380 ms: por debajo de 300 no se lee como un movimiento y por encima
+   de 400 se convierte en un peaje. Una tarde de clase son ocho o diez
+   saltos de estos seguidos. La curva sale rápido y frena al final,
+   que es lo que hace que parezca que la tarjeta "llega" a su sitio en
+   vez de deslizarse. */
+::view-transition-group(cabecera) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+/* El resto de la página se va antes que la cabecera. Sin esto, todo
+   se funde a la vez y el zoom queda escondido debajo del cruce. */
+::view-transition-old(root) { animation-duration: 140ms; }
+::view-transition-new(root) { animation-duration: 260ms; }
+
+/* La barra superior se queda quieta (tiene nombre propio), pero su
+   CONTENIDO cambia de una página a otra: la marca dice otra asignatura
+   y la navegación tiene otros enlaces. Al fundirse las dos versiones
+   se leía un momento el texto duplicado, como una pantalla mal
+   sintonizada. Cruzándolas en 110 ms el cambio no da tiempo a leerse
+   y la caja sigue sin moverse, que es lo que se quería. */
+::view-transition-old(barra),
+::view-transition-new(barra) { animation-duration: 110ms; }
 
 * { box-sizing: border-box; }
 
@@ -1081,12 +1135,22 @@ footer.pie {
   color: var(--text);
 }
 
+/* El panel donde se enseña CÓMO SE VE un ejemplo.
+
+   Lleva scroll propio porque algunos ejemplos miden lo que miden a
+   propósito: la caja de la sesión del modelo de caja es de 300px más
+   20 de relleno y 5 de borde a cada lado, y tiene que salir midiendo
+   350px o el ejemplo no enseña nada. En un móvil de 360px eso empujaba
+   la PÁGINA ENTERA hacia la derecha y todo el temario se leía torcido.
+   Con esto, lo que se desplaza es el recuadro y la página se queda
+   quieta; el ejemplo sigue midiendo lo que tiene que medir. */
 .leccion .salida {
   border: 1px dashed var(--border);
   border-radius: 6px;
   padding: 0.9rem 1.1rem;
   margin: 0 0 1.2rem;
   background: var(--surface);
+  overflow-x: auto;
 }
 .leccion .salida > *:last-child { margin-bottom: 0; }
 
@@ -1787,10 +1851,22 @@ font {
   color: var(--text);
   transition: background-color 0.12s ease, border-color 0.12s ease;
 }
+/* El hover ANTICIPA el zoom: la tarjeta crece un poco y con la misma
+   curva con la que va a crecer del todo al pulsarla (ver
+   ::view-transition-group(cabecera) arriba). Antes subía 3px, que es
+   un gesto distinto: si el hover dice una cosa y la transición hace
+   otra, el salto se siente pegado encima; si dicen lo mismo, se
+   siente causado por el clic.
+
+   :focus-visible va aparte y no aquí: el recuadro de foco tiene que
+   verse igual de claro se mueva la tarjeta o no. */
 .asignatura-card:hover {
   background: var(--surface-2);
   border-color: var(--color-asig, var(--accent));
-  transform: translateY(-3px);
+  transform: scale(1.02);
+  /* En modo claro --glow-tarjeta vale "none" y esta línea no hace
+     nada, como el resto de brillos del sitio. */
+  box-shadow: var(--glow-tarjeta);
 }
 .asignatura-card:hover .asignatura-card__titulo { color: var(--color-asig, var(--accent)); }
 
@@ -1919,7 +1995,16 @@ font {
 [data-color="1"] { --color-asig: var(--accent-warm); }
 [data-color="2"] { --color-asig: var(--accent-lima); }
 
-.asignatura-card { position: relative; transition: transform 0.16s ease, border-color 0.16s ease, background-color 0.16s ease; }
+/* Misma curva que el zoom del salto de página, para que el hover y la
+   transición se lean como un solo gesto. */
+.asignatura-card {
+  position: relative;
+  transition:
+    transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.16s ease,
+    background-color 0.16s ease;
+}
 
 .asignatura-card__numero {
   font-family: var(--font-mono);
@@ -2265,6 +2350,287 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 }
 .sin-clase--grande .sin-clase__nombre { margin-top: 1.3rem; font-size: 0.85rem; }
 
+/* Volver a intentar un test (js/actividades.js). Aparece solo cuando
+   hay algo contestado, porque los tests ahora se recuerdan entre
+   visitas y si no no habria forma de repasarlos. */
+.quiz__reintentar {
+  margin-top: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.14s ease, color 0.14s ease;
+}
+.quiz__reintentar:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================
+   Sesiones ya vistas  (js/progreso.js)
+   ============================================================
+   Un punto pequeño al lado de la sesión. Dice "por aquí ya pasaste",
+   nada más: la web no sabe si la ha hecho ni si la ha entendido, así
+   que no hay barras de porcentaje ni "te quedan 3". Contar paginas
+   abiertas y llamarlo progreso seria mentirle al alumno.
+
+   El punto es decoracion: quien usa lector de pantalla lo oye en el
+   title del enlace, que lo pone el JS.
+   ============================================================ */
+
+.sesion--vista::before,
+.sesion-portada--vista .sesion-portada__titulo::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+  background: var(--text-faint);
+  vertical-align: middle;
+}
+/* En la sesion abierta el punto sobra: ya lo dice el filo de color. */
+.sesion.activa.sesion--vista::before { display: none; }
+
+/* ============================================================
+   Anterior / siguiente al pie de una sesion  (js/tema.js)
+   ============================================================
+   Al terminar una sesion el alumno se quedaba en un callejon: tocaba
+   volver al menu y acordarse de cual venia. Aqui van las dos con su
+   nombre de verdad, no "anterior" y "siguiente" a secas.
+   ============================================================ */
+
+.pasos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.paso {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.14s ease, background-color 0.14s ease;
+}
+.paso:hover { border-color: var(--accent); background: var(--surface-2); }
+.paso--siguiente { grid-column: 2; text-align: right; }
+/* Sin anterior (primera sesion del temario), la siguiente se queda en
+   su columna y no salta a la izquierda. */
+.paso--anterior { grid-column: 1; }
+
+.paso__cual {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.paso__titulo { font-weight: 600; line-height: 1.35; }
+.paso:hover .paso__titulo { color: var(--accent); }
+.paso__unidad { font-size: 0.82rem; color: var(--text-dim); }
+
+/* El final del temario no es un error: se dice y se ofrece la salida. */
+.pasos__fin {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  margin: 0;
+}
+
+/* ============================================================
+   "Seguias por aqui"  (js/tema.js)
+   ============================================================
+   No se salta solo: una pagina que se mueve sola al cargar parece
+   rota, y ademas pelearia con los enlaces de ancla del indice. Se
+   ofrece y decide el alumno. Se quita al pulsarlo, al llegar abajo o
+   a los 12 segundos, para no dejar un boton flotando toda la sesion.
+   ============================================================ */
+
+.retomar {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  box-shadow: var(--glow-suave);
+  animation: entrar 0.25s ease both;
+}
+.retomar:hover { background: var(--surface-2); }
+
+/* ============================================================
+   Buscador  (js/buscador.js)
+   ============================================================ */
+
+.barra__buscar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.14s ease, color 0.14s ease;
+}
+.barra__buscar:hover { border-color: var(--accent); color: var(--accent); }
+.barra__buscar svg { width: 14px; height: 14px; stroke-linecap: round; }
+
+.barra__atajo {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.05rem 0.3rem;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-faint);
+}
+
+.buscador {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  /* Sin esto el panel se estira hasta abajo (es lo que hace un flex
+     por defecto) y queda un palmo de vacío debajo del ultimo
+     resultado. Tiene que medir lo que midan sus resultados. */
+  align-items: flex-start;
+  /* Arriba y no centrado: al escribir crece la lista hacia abajo, y
+     un panel centrado se movia entero con cada tecla. */
+  padding: 12vh 1rem 1rem;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.buscador__panel {
+  width: min(620px, 100%);
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: var(--glow-suave);
+  animation: entrar 0.16s ease both;
+}
+
+.buscador__campo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.buscador__prompt { font-family: var(--font-mono); color: var(--accent); }
+
+.buscador__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  outline: none;
+}
+/* La cruz nativa de type=search desentona con el resto. */
+.buscador__input::-webkit-search-cancel-button { display: none; }
+
+.buscador__lista { overflow-y: auto; padding: 0.4rem; }
+
+.buscador__fila {
+  display: block;
+  padding: 0.6rem 0.7rem;
+  border-radius: 4px;
+  border-left: 2px solid transparent;
+  text-decoration: none;
+  color: var(--text);
+}
+.buscador__fila.marcada {
+  background: var(--surface-2);
+  border-left-color: var(--accent);
+}
+.buscador__titulo { display: block; font-weight: 600; line-height: 1.35; }
+.buscador__fila.marcada .buscador__titulo { color: var(--accent); }
+.buscador__donde {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: 0.15rem;
+}
+.buscador__visto {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.buscador__vacio, .buscador__pie {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+.buscador__pie {
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+/* ============================================================
+   Pagina 404  (404.html)
+   ============================================================ */
+
+.error404 {
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 4rem 0;
+  text-align: center;
+}
+.error404__codigo {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 18vw, 8rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--accent-warm);
+}
+.error404__lema {
+  font-family: var(--font-mono);
+  color: var(--accent-warm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0.6rem 0 1.4rem;
+}
+.error404 .volver { justify-content: center; }
+
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
@@ -2296,6 +2662,28 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
   .card { padding: 1.3rem 1.2rem; }
+
+  /* El temario, DEBAJO del contenido.
+
+     En una sola columna la barra lateral caía encima de todo, y como
+     lleva las 29 sesiones de la asignatura medía unos 1000px: al abrir
+     una sesión en el móvil, el título de la lección quedaba a 1305px
+     del principio. O sea, dos pantallas enteras de menú antes de leer
+     la primera palabra. Un alumno que entra por el enlace que se le da
+     en clase ve un índice y piensa que se ha equivocado de sitio.
+
+     Con order se cambia el orden en pantalla sin tocar el HTML, así
+     que el menú sigue yendo antes en el código (que es lo correcto
+     para un lector de pantalla y para el teclado) y se pinta al final,
+     que es donde estorba menos y donde se va a buscar de verdad:
+     cuando ya has terminado de leer. Arriba queda la barra, que tiene
+     "Unidades" para lo mismo. */
+  .main-content { order: 1; }
+  .sidebar {
+    order: 2;
+    border-bottom: none;
+    border-top: 1px solid var(--border);
+  }
 
   /* Aquí la barra ya puede partirse en dos líneas: la lateral ha dejado
      de estar fija, así que su altura exacta ya no le importa a nadie. */
@@ -2349,4 +2737,72 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
      móvil le robaba la mitad del ancho al titular. */
   .card--sesion { flex-direction: column; gap: 0.4rem; }
   .card .numero-sesion { font-size: 3rem; }
+}
+
+/* ---- La barra superior en un movil ----
+   A 360 px la barra se partia en TRES lineas (marca, idiomas,
+   aspecto) y se comia un tercio de la pantalla antes de empezar a
+   leer. Se aprieta: el buscador se queda en la lupa, los accesos
+   rapidos de idioma se reducen a los dos del centro (el resto sigue
+   en el desplegable) y todo baja de tamano. */
+@media (max-width: 560px) {
+  .barra { padding: 0.45rem 0.9rem; gap: 0.4rem 0.7rem; }
+
+  /* Dos líneas y no tres. La navegación se manda entera a la segunda
+     (order + ancho completo) y arriba quedan la marca y los dos
+     selectores, que juntos sí caben en 360px. Antes se repartían en
+     tres renglones y la barra se comía 118px de alto: en un móvil eso
+     es un sexto de la pantalla gastado antes de empezar a leer. */
+  .barra__nav {
+    order: 3;
+    flex-basis: 100%;
+    gap: 0.6rem;
+    /* Si un día hay más enlaces de los que caben, que se desplacen
+       ellos en vez de abrir un tercer renglón. */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .barra__nav::-webkit-scrollbar { display: none; }
+
+  /* La marca se corta con puntos suspensivos en vez de empujar. Lleva
+     dentro el nombre de la asignatura, así que su ancho depende de
+     cuál esté abierta: "~/operaciones_" cabía y "~/instalaciones_"
+     no, y entonces el selector de aspecto se caía a un renglón suyo.
+     Con un tope en vh esto deja de depender del temario. */
+  .barra__marca {
+    margin-right: auto;
+    max-width: 30vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .barra__buscar-texto,
+  .barra__atajo { display: none; }
+  .barra__buscar { padding: 0.25rem 0.4rem; flex: 0 0 auto; }
+  .barra__enlace { flex: 0 0 auto; }
+  /* Quedan ES y CA, que son los dos idiomas del centro; EN y el resto
+     siguen estando, dentro de "Otros idiomas". */
+  .barra .idioma:nth-of-type(n+3) { display: none; }
+  /* Justo lo que hace falta para que marca + idioma + aspecto quepan
+     en un renglón de 360px: con 5.5rem se pasaban por 4px y el
+     selector de aspecto caía a una línea para él solo. */
+  .barra .idioma-extra { max-width: 4.2rem; font-size: 0.75rem; padding-right: 1rem; }
+
+  /* Anterior y siguiente, uno debajo de otro: en 360 px, dos titulos
+     de sesion al lado salen a dos palabras por linea. */
+  .pasos { grid-template-columns: 1fr; }
+  .paso--anterior, .paso--siguiente { grid-column: 1; text-align: left; }
+
+  /* El buscador ocupa la pantalla: un panel flotante en un movil es
+     medio teclado y medio panel. */
+  .buscador { padding: 0; }
+  .buscador__panel {
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+  }
+  .retomar { right: 0.8rem; bottom: 0.8rem; }
 }

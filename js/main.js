@@ -76,6 +76,9 @@ function pintarAsignaturas() {
        asignatura nueva coge uno de los tres acentos sin tocar el CSS.
        Ver [data-color] en css/estilos.css. */
     tarjeta.dataset.color = String(indice % 3);
+    /* De qué asignatura es esta tarjeta. Lo usa js/zoom.js para saber
+       a cuál tiene que encogerse la página al volver de ella. */
+    tarjeta.dataset.asignatura = asignatura.id;
 
     const numero = document.createElement('p');
     numero.className = 'asignatura-card__numero';
@@ -175,7 +178,7 @@ async function cargarUnidades(asignatura) {
             console.error(`No se ha podido cargar la sesión "${unidad.sesiones[i]}"`);
             return;
           }
-          lista.appendChild(crearFilaSesionPortada(sesion));
+          lista.appendChild(crearFilaSesionPortada(sesion, asignatura, unidad));
         });
         /* Las sesiones llegan por fetch: hay que avisar al traductor
            de que hay texto nuevo. Ver js/idioma.js. */
@@ -188,10 +191,16 @@ async function cargarUnidades(asignatura) {
   }
 }
 
-function crearFilaSesionPortada(sesion) {
+function crearFilaSesionPortada(sesion, asignatura, unidad) {
   const fila = document.createElement('a');
   fila.className = 'sesion-portada';
   fila.href = urlSesion(sesion.id);
+
+  /* Ya la ha abierto: un punto delante del título. Ver js/progreso.js. */
+  if (window.progreso && window.progreso.estaVisitada(sesion.id)) {
+    fila.classList.add('sesion-portada--vista');
+    fila.title = 'Ya has abierto esta sesión';
+  }
 
   const cuerpo = document.createElement('div');
   const tituloSesion = document.createElement('p');
@@ -211,6 +220,14 @@ function crearFilaSesionPortada(sesion) {
   cuerpo.appendChild(descripcionSesion);
   cuerpo.appendChild(meta);
   fila.appendChild(cuerpo);
+
+  /* Se adelanta la lección al pasar por encima. Ver js/asignaturas.js. */
+  if (asignatura && unidad) {
+    const adelantar = () => adelantarCuerpoSesion(asignatura, unidad.id, sesion.id);
+    fila.addEventListener('pointerenter', adelantar, { once: true });
+    fila.addEventListener('focus', adelantar, { once: true });
+  }
+
   return fila;
 }
 

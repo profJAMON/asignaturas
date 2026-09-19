@@ -15,6 +15,18 @@
 <!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
      elegido antes de que el navegador pinte, para que no haya fogonazo. -->
 <script src="js/aspecto.js"></script>
+<!-- Precarga del documento al que probablemente va a ir. "moderate"
+     quiere decir: cuando el navegador ve intención (el puntero encima
+     un momento, el dedo apoyado), no en cuanto aparece el enlace.
+
+     Es PREFETCH y no PRERENDER a propósito. Prerender ejecutaría el
+     JS de la página de destino sin que el alumno haya entrado, y este
+     sitio apunta al cargar una sesión que la ha visitado y cuál fue
+     la última (ver js/progreso.js): con prerender, la portada diría
+     "sigue donde lo dejaste" en sesiones que nunca llegó a abrir. -->
+<script type="speculationrules">
+{"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+</script>
 </head>
 <body>
 
@@ -75,5 +87,8 @@
 <script src="js/barra.js"></script>
 <script src="js/calendario-rejilla.js"></script>
 <script src="js/calendario-pagina.js"></script>
+<script src="js/progreso.js"></script>
+<script src="js/zoom.js"></script>
+<script src="js/buscador.js"></script>
 </body>
 </html>
