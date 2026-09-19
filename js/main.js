@@ -406,10 +406,20 @@ function _cuandoLoDejaste(iso) {
    el bloque lo dice en una línea en vez de desaparecer, que en
    Navidad es justo la información que el alumno quiere. */
 
+/* En fin de semana lo que se pinta es la semana siguiente, así que el
+   rótulo tiene que decirlo: titular "Esta semana" encima de unas
+   fechas que son de la que viene confunde más que ayudar, sobre todo
+   porque debajo salen los días con su número. */
+function _esSemanaSiguiente() {
+  const dia = new Date().getDay();
+  return dia === 6 || dia === 0;
+}
+
 function pintarSemana() {
   const caja = document.getElementById('portada-semana');
   if (!caja || !window.calendarioRitmo) return;
 
+  const laQueViene = _esSemanaSiguiente();
   const dias = _diasDeEstaSemana();
   const entradas = _entradasDeLaSemana(dias[0], dias[dias.length - 1]);
   const avisos = _asignaturasSinGrupo();
@@ -425,7 +435,7 @@ function pintarSemana() {
 
   const titulo = document.createElement('h2');
   titulo.className = 'seccion__titulo';
-  titulo.textContent = 'Esta semana';
+  titulo.textContent = laQueViene ? 'La semana que viene' : 'Esta semana';
   caja.appendChild(titulo);
 
   /* Semana entera sin clase: no hay rejilla que pintar, solo el cartel. */
@@ -456,7 +466,9 @@ function pintarSemana() {
   if (entradas.length === 0) {
     const vacio = document.createElement('p');
     vacio.className = 'vacio';
-    vacio.textContent = 'Esta semana no hay sesiones previstas.';
+    vacio.textContent = laQueViene
+      ? 'La semana que viene no hay sesiones previstas.'
+      : 'Esta semana no hay sesiones previstas.';
     caja.appendChild(vacio);
   }
 
@@ -572,14 +584,26 @@ function _crearItemSemana(entrada, conAsignatura) {
   return item;
 }
 
-/* Los cinco días (lunes a viernes) de la semana en la que estamos, en
-   formato ISO. Si hoy es domingo se enseña la semana que empieza al
-   día siguiente, que es lo que le interesa a quien mira la web un
-   domingo por la tarde. */
+/* Los cinco días (lunes a viernes) de la semana que le interesa al
+   alumno ahora mismo, en formato ISO.
+
+   El fin de semana se salta a la semana siguiente. El viernes por la
+   tarde la semana en curso ya está dada: quien abre la web un sábado
+   no quiere que le recuerden lo que tuvo el lunes pasado, quiere saber
+   con qué se encuentra el lunes que viene. El domingo ya funcionaba
+   así; desde 2026-09 el sábado también.
+
+   Cuenta de días hasta ese lunes, contando que getDay() da 0 para el
+   domingo y 6 para el sábado:
+
+     sábado (6)   → +2   lunes que viene
+     domingo (0)  → +1   lunes que viene (mañana)
+     resto        → 1 - diaSemana, o sea el lunes de esta semana
+                    (lunes 0, martes -1, … viernes -4) */
 function _diasDeEstaSemana() {
   const hoy = new Date();
   const diaSemana = hoy.getDay(); // 0 domingo … 6 sábado
-  const haciaElLunes = diaSemana === 0 ? 1 : 1 - diaSemana;
+  const haciaElLunes = diaSemana === 6 ? 2 : diaSemana === 0 ? 1 : 1 - diaSemana;
 
   const lunes = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + haciaElLunes);
 
