@@ -422,7 +422,6 @@ function pintarSemana() {
   const laQueViene = _esSemanaSiguiente();
   const dias = _diasDeEstaSemana();
   const entradas = _entradasDeLaSemana(dias[0], dias[dias.length - 1]);
-  const avisos = _asignaturasSinGrupo();
   const periodoEntero = window.sinClase ? window.sinClase.periodoDeTodos(dias) : null;
 
   /* La pulla se elige una vez para toda la semana, no una por día: con
@@ -450,7 +449,8 @@ function pintarSemana() {
      cada sesión es ruido: el color del filo ya la distingue. Excepción:
      si esa asignatura va por grupos (Instalaciones), la etiqueta se
      mantiene igualmente, porque entonces lo que hace falta saber no es
-     la asignatura sino de qué grupo (1r/2n) son esas fechas. */
+     la asignatura sino de qué grupo (1r/2n) es cada sesión — aquí salen
+     las de los dos grupos a la vez, sin depender de ningún selector. */
   const variasAsignaturas = new Set(entradas.map(e => e.asignatura.id)).size > 1;
   const conGrupos = entradas.some(e => window.calendarioRitmo.tieneGrupos(e.asignatura.id));
   const conEtiqueta = variasAsignaturas || conGrupos;
@@ -476,17 +476,6 @@ function pintarSemana() {
       : 'Esta semana no hay sesiones previstas.';
     caja.appendChild(vacio);
   }
-
-  avisos.forEach(asignatura => {
-    const aviso = document.createElement('p');
-    aviso.className = 'semana__aviso';
-    const enlace = document.createElement('a');
-    enlace.href = urlPortadaAsignatura(asignatura);
-    enlace.textContent = asignatura.nombre;
-    aviso.appendChild(enlace);
-    aviso.appendChild(document.createTextNode(': elige tu grupo para ver sus fechas.'));
-    caja.appendChild(aviso);
-  });
 
   caja.hidden = false;
   if (typeof retraducir === 'function') retraducir();
@@ -579,11 +568,11 @@ function _crearItemSemana(entrada, conAsignatura) {
     const asig = document.createElement('span');
     asig.className = 'semana__asignatura';
     const nombre = ritmo.nombreCorto(entrada.asignatura.id) || entrada.asignatura.nombre;
-    /* Instalaciones tiene 1r y 2n con calendarios distintos: sin el
-       grupo, "INSTALACIONES" a secas no dice de qué grupo son esas
-       fechas (ver grupoElegido en js/calendario.js). */
-    const grupo = ritmo.tieneGrupos(entrada.asignatura.id) ? ritmo.grupoElegido(entrada.asignatura.id) : null;
-    asig.textContent = grupo ? `${nombre} · ${grupo}` : nombre;
+    /* Instalaciones tiene 1r y 2n con calendarios distintos, y aquí
+       salen las sesiones de los dos grupos a la vez (ver
+       _entradasDeLaSemana): sin el grupo de ESTA entrada en concreto,
+       "INSTALACIONES" a secas no diría a cuál de los dos pertenece. */
+    asig.textContent = entrada.grupo ? `${nombre} ${entrada.grupo}` : nombre;
     item.appendChild(asig);
   }
 
@@ -627,40 +616,50 @@ function _diasDeEstaSemana() {
 }
 
 /* Todas las sesiones y exámenes con fecha dentro del rango, de todas
-   las asignaturas que tengan calendario y (si van por grupos) grupo
-   elegido. */
+   las asignaturas que tengan calendario.
+
+   Con grupos (Instalaciones) NO se espera a que haya uno elegido: este
+   bloque es el primer vistazo de la semana y lo que hace falta ahí es
+   ver las sesiones de los dos grupos a la vez, cada una con su propio
+   grupo (campo `grupo` en la entrada) para no confundirlas — a
+   diferencia del resto de la web, donde cada alumno sí ve solo las de
+   su grupo elegido. */
 function _entradasDeLaSemana(desde, hasta) {
   const ritmo = window.calendarioRitmo;
   const entradas = [];
 
   ASIGNATURAS.forEach((asignatura, indice) => {
-    if (!ritmo.listo(asignatura.id)) return;
     const datos = ritmo.datos(asignatura.id);
     if (!datos) return;
     const color = String(indice % 3);
+    const grupos = ritmo.tieneGrupos(asignatura.id) ? datos.grupos.map(g => g.id) : [null];
 
-    Object.keys(datos.sesiones || {}).forEach(idSesion => {
-      const fecha = ritmo.fechaSesion(asignatura.id, idSesion);
-      if (!fecha || fecha < desde || fecha > hasta) return;
-      entradas.push({
-        tipo: 'sesion',
-        fecha,
-        id: idSesion,
-        titulo: datos.sesiones[idSesion].titulo || idSesion,
-        asignatura,
-        color,
+    grupos.forEach(grupoId => {
+      Object.keys(datos.sesiones || {}).forEach(idSesion => {
+        const fecha = ritmo.fechaSesion(asignatura.id, idSesion, grupoId);
+        if (!fecha || fecha < desde || fecha > hasta) return;
+        entradas.push({
+          tipo: 'sesion',
+          fecha,
+          id: idSesion,
+          titulo: datos.sesiones[idSesion].titulo || idSesion,
+          asignatura,
+          grupo: grupoId,
+          color,
+        });
       });
-    });
 
-    (datos.unidades || []).forEach(unidad => {
-      const fecha = ritmo.fechaExamen(asignatura.id, unidad.id);
-      if (!fecha || fecha < desde || fecha > hasta) return;
-      entradas.push({
-        tipo: 'examen',
-        fecha,
-        titulo: unidad.titulo,
-        asignatura,
-        color,
+      (datos.unidades || []).forEach(unidad => {
+        const fecha = ritmo.fechaExamen(asignatura.id, unidad.id, grupoId);
+        if (!fecha || fecha < desde || fecha > hasta) return;
+        entradas.push({
+          tipo: 'examen',
+          fecha,
+          titulo: unidad.titulo,
+          asignatura,
+          grupo: grupoId,
+          color,
+        });
       });
     });
   });
@@ -671,15 +670,5 @@ function _entradasDeLaSemana(desde, hasta) {
     a.fecha === b.fecha
       ? (a.tipo === b.tipo ? 0 : a.tipo === 'examen' ? 1 : -1)
       : (a.fecha < b.fecha ? -1 : 1)
-  );
-}
-
-/* Asignaturas con calendario y varios grupos en las que el alumno aún
-   no ha dicho cuál es el suyo: sin eso no hay fechas que enseñar, así
-   que el bloque lo avisa en vez de callarse. */
-function _asignaturasSinGrupo() {
-  const ritmo = window.calendarioRitmo;
-  return ASIGNATURAS.filter(a =>
-    ritmo.datos(a.id) && ritmo.tieneGrupos(a.id) && !ritmo.grupoElegido(a.id)
   );
 }
