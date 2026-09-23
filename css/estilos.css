@@ -1166,6 +1166,17 @@ footer.pie {
 .leccion .salida:has(svg) .pie-figura { color: var(--figura-pie); }
 .leccion .salida:has(svg) a { color: var(--figura-enlace); }
 .leccion .salida svg { display: block; margin: 0 auto 0.6rem; }
+/* Tamaño de los diagramas en rem, no en % de la columna. Con
+   width="100%" el diagrama llenaba la columna, y como la columna no
+   tiene ancho máximo (--ancho-lectura: none), al hacer zoom crecía el
+   texto pero el dibujo seguía ocupando lo mismo. En rem crece con el
+   zoom (y con el tamaño de letra del navegador) igual que el texto, y
+   el 100% solo actúa de tope para que no se salga de la columna.
+   52rem ≈ 830 px a zoom 100%: con eso el texto interior de los SVG
+   (9-13 unidades) sale a un tamaño parecido al del texto de la lección.
+   Los diagramas que traen el ancho en su style (los de 480 de
+   Operaciones) no se ven afectados: ya crecían con el zoom. */
+.leccion .salida svg { width: min(100%, 52rem); height: auto; }
 .leccion .pie-figura {
   font-size: 0.82rem;
   color: var(--text-faint);
