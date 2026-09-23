@@ -274,6 +274,65 @@ body {
   line-height: 1.55;
 }
 
+/* ---------- Colapsar menú e índice ----------
+   Cada columna lateral se puede ocultar por su cuenta para dejar más
+   sitio al contenido; js/columnas.js guarda la elección en localStorage
+   y pone estos atributos en <html> muy pronto (en el <head>, sin
+   defer), como ya hace js/aspecto.js con data-tema, para que no haya
+   parpadeo al cargar la página.
+
+   Ocultar aquí solo tiene sentido con las dos columnas fijas del
+   diseño de escritorio, así que estas reglas van dentro del mismo
+   min-width: 1000px que ya usa el resto de la hoja: por debajo de eso
+   el índice se esconde solo y el menú deja de ser una columna fija
+   (pasa a ir apilado a pantalla completa), y una preferencia guardada
+   en escritorio no debe dejar el menú escondido y sin botón para
+   recuperarlo al abrir la web en el móvil. Por eso .sidebar y .indice
+   NUNCA se ocultan aquí fuera de esta media query, solo cambia dónde
+   cae la columna dentro del grid de escritorio. */
+@media (min-width: 1000px) {
+  :root[data-menu="oculto"] .sidebar { display: none; }
+  :root[data-menu="oculto"] body { grid-template-columns: 0px minmax(0, 1fr) var(--ancho-indice); }
+  :root[data-indice="oculto"] .indice { display: none; }
+  :root[data-indice="oculto"] body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr) 0px; }
+  :root[data-menu="oculto"][data-indice="oculto"] body { grid-template-columns: 0px minmax(0, 1fr) 0px; }
+}
+
+.toggle-col {
+  position: fixed;
+  top: calc(var(--alto-barra) + 14px);
+  z-index: 20;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: left 0.15s ease, right 0.15s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.toggle-col:hover, .toggle-col:focus-visible { color: var(--accent); border-color: var(--accent); }
+
+.toggle-menu { left: calc(var(--ancho-menu) - 13px); }
+:root[data-menu="oculto"] .toggle-menu { left: 6px; }
+
+.toggle-indice { right: calc(var(--ancho-indice) - 13px); }
+:root[data-indice="oculto"] .toggle-indice { right: 6px; }
+
+/* Por debajo de 1000px el índice ya se oculta solo y a partir de 760px
+   el menú deja de estar fijo en su columna (ver los @media de abajo):
+   los botones flotantes ya no encajarían con ese diseño y sobran. */
+@media (max-width: 1000px) {
+  .toggle-col { display: none; }
+}
+
 /* La rejilla del fondo. Va en un pseudoelemento fijo y no en el
    background de body porque así no se arrastra al hacer scroll ni se
    repinta con cada desplazamiento. En modo claro --rejilla es casi
@@ -1017,7 +1076,7 @@ h1, h2, h3 {
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
 @media print {
-  .sidebar, .indice, .barra, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
+  .sidebar, .indice, .barra, .toggle-col, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
   /* En papel no hay rejilla de fondo ni escuadras de neón: gastan
      tinta y no aportan nada. */
   body::before { display: none !important; }
