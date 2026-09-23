@@ -5,30 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tema · Material de clase</title>
 <link rel="stylesheet" href="css/estilos.css">
-<!-- Rutas relativas a propósito: el sitio se publica también en
-     GitHub Pages bajo /asignaturas/, donde una ruta absoluta (/img/...)
-     se saldría del subdirectorio y daría 404. -->
 <link rel="icon" href="img/wifi.svg" type="image/svg+xml">
 <link rel="icon" href="img/wifi-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/wifi-apple-touch-icon.png">
 <script src="js/aspecto.js"></script>
 <script src="js/columnas.js"></script>
-<!-- Precarga del documento al que probablemente va a ir. "moderate"
-     quiere decir: cuando el navegador ve intención (el puntero encima
-     un momento, el dedo apoyado), no en cuanto aparece el enlace.
-
-     Es PREFETCH y no PRERENDER a propósito. Prerender ejecutaría el
-     JS de la página de destino sin que el alumno haya entrado, y este
-     sitio apunta al cargar una sesión que la ha visitado y cuál fue
-     la última (ver js/progreso.js): con prerender, la portada diría
-     "sigue donde lo dejaste" en sesiones que nunca llegó a abrir. -->
 <script type="speculationrules">
 {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
 </script>
 </head>
 <body>
 
-<!-- Barra superior. Ver el comentario de index.html. -->
 <header class="barra">
   <a class="barra__marca" id="barra-marca" href="index.html" translate="no">
     <span class="barra__prompt">~/</span><span id="barra-marca-texto">asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>
@@ -38,10 +25,6 @@
   <div class="selector-aspecto" id="selector-aspecto"></div>
 </header>
 
-<!-- El título "Temario" ya no se escribe: la propia barra dice ahora
-     en qué asignatura estás (lo pinta js/sidebar.js) y poner las dos
-     cosas seguidas sobraba. Para quien usa lector de pantalla, el
-     nombre de la sección va en aria-label. -->
 <nav class="sidebar" aria-label="Temario">
   <div id="indice-temas"></div>
 </nav>
@@ -50,16 +33,11 @@
   <a class="volver" href="index.html" id="tema-volver">&larr; Todas las unidades</a>
 
   <header class="card card--sesion">
-    <!-- El número de la sesión, sacado de su id por js/tema.js. Si la
-         sesión no lleva número (un glosario, "formas de evaluar"…),
-         el JS lo deja escondido y la cabecera queda como antes. -->
     <p class="numero-sesion" id="tema-numero" hidden><span class="solo-lector">Sesión </span><span id="tema-numero-cifra"></span></p>
     <div class="card__cuerpo">
       <span class="badge" id="tema-unidad">Material de clase</span>
       <h1 id="tema-titulo">Cargando…</h1>
       <p id="tema-descripcion"></p>
-      <!-- Selector de grupo (1r/2n). Solo aparece en las sesiones de
-           Instalaciones; ver el comentario de index.html. -->
       <div class="selector-grupo" id="selector-grupo" hidden></div>
       <p class="badge badge--fecha" id="tema-fecha" hidden></p>
     </div>
@@ -91,18 +69,11 @@
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/generadores.js"></script>
-<!-- Generadores por unidad. Van DESPUÉS de generadores.js porque se
-     limitan a añadir entradas a su objeto GENERADORES; si falta alguno,
-     las sesiones de esa unidad enseñan "No existe el generador". -->
 <script src="js/generadores-riesgos.js"></script>
 <script src="js/generadores-cobre.js"></script>
 <script src="js/generadores-fibra.js"></script>
 <script src="js/actividades.js"></script>
-<!-- Antes que tema.js: este solo define pintarBarra(), y tema.js la
-     llama en cuanto sabe de qué asignatura es la sesión. -->
 <script src="js/barra.js"></script>
-<!-- Antes que tema.js: tema.js marca la sesion como visitada y
-     recupera por donde iba el alumno. -->
 <script src="js/progreso.js"></script>
 <script src="js/tema.js"></script>
 <script src="js/zoom.js"></script>

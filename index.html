@@ -6,36 +6,18 @@
 <title>Material de clase</title>
 <meta name="description" content="Apuntes y actividades de las asignaturas de informática.">
 <link rel="stylesheet" href="css/estilos.css">
-<!-- Rutas relativas a propósito: el sitio se publica también en
-     GitHub Pages bajo /asignaturas/, donde una ruta absoluta (/img/...)
-     se saldría del subdirectorio y daría 404. -->
 <link rel="icon" href="img/wifi.svg" type="image/svg+xml">
 <link rel="icon" href="img/wifi-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/wifi-apple-touch-icon.png">
 <script src="js/aspecto.js"></script>
 <script src="js/columnas.js"></script>
-<!-- En el <head> y sin defer, como el anterior: marca si esta página es
-     la portada general para que se pinte ya a ancho completo. -->
 <script src="js/pagina.js"></script>
-<!-- Precarga del documento al que probablemente va a ir. "moderate"
-     quiere decir: cuando el navegador ve intención (el puntero encima
-     un momento, el dedo apoyado), no en cuanto aparece el enlace.
-
-     Es PREFETCH y no PRERENDER a propósito. Prerender ejecutaría el
-     JS de la página de destino sin que el alumno haya entrado, y este
-     sitio apunta al cargar una sesión que la ha visitado y cuál fue
-     la última (ver js/progreso.js): con prerender, la portada diría
-     "sigue donde lo dejaste" en sesiones que nunca llegó a abrir. -->
 <script type="speculationrules">
 {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
 </script>
 </head>
 <body>
 
-<!-- Barra superior. Los dos selectores (idioma y aspecto) viven aquí
-     desde 2026-09; antes estaban dentro de la barra lateral. Son los
-     mismos contenedores de siempre, así que idioma.js y aspecto.js
-     siguen funcionando sin cambios: los buscan por id. -->
 <header class="barra">
   <a class="barra__marca" id="barra-marca" href="index.html" translate="no">
     <span class="barra__prompt">~/</span><span id="barra-marca-texto">asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>
@@ -45,10 +27,6 @@
   <div class="selector-aspecto" id="selector-aspecto"></div>
 </header>
 
-<!-- El título "Temario" ya no se escribe: la propia barra dice ahora
-     en qué asignatura estás (lo pinta js/sidebar.js) y poner las dos
-     cosas seguidas sobraba. Para quien usa lector de pantalla, el
-     nombre de la sección va en aria-label. -->
 <nav class="sidebar" aria-label="Temario">
   <div id="indice-temas"></div>
 </nav>
@@ -60,18 +38,11 @@
     <span class="badge" id="portada-badge">Material de clase</span>
     <h1 id="portada-titulo">Apuntes y Actividades</h1>
     <p id="portada-descripcion">Elige la asignatura con la que quieres trabajar.</p>
-    <!-- Selector de grupo (1r/2n). Vive aquí, dentro de la asignatura,
-         y no en la barra lateral, porque solo afecta a Instalaciones.
-         js/calendario.js lo rellena y lo esconde en las demás. -->
     <div class="selector-grupo" id="selector-grupo" hidden></div>
     <a class="volver" href="calendario.html" id="portada-calendario" hidden style="margin: 0.8rem 0 0;">📅 Ver el calendario del curso</a>
   </header>
 
   <div class="portada-terminal" id="portada-terminal" hidden></div>
-
-  <!-- La terminal de la cabecera y el bloque de la semana solo se
-       rellenan en la portada general (sin ?a=); en la de una
-       asignatura se quedan ocultos. Ver js/main.js. -->
 
   <div id="indice-portada"></div>
 
@@ -85,17 +56,11 @@
 <script src="js/iconos.js"></script>
 <script src="data/calendario-operaciones.js"></script>
 <script src="data/calendario-instalaciones.js"></script>
-<!-- Los días sin clase del centro (festivos y vacaciones). Los usa el
-     bloque "Esta semana" de la portada. -->
 <script src="data/no-lectivo.js"></script>
 <script src="js/calendario.js"></script>
 <script src="js/sidebar.js"></script>
-<!-- Después de calendario.js: la barra pregunta si esta asignatura
-     tiene calendario para enseñar (o no) su enlace. -->
 <script src="js/barra.js"></script>
 <script src="js/main.js"></script>
-<!-- Lo que el navegador recuerda del alumno (sesiones visitadas, por
-     donde iba). Antes que zoom.js y buscador.js: los dos lo consultan. -->
 <script src="js/progreso.js"></script>
 <script src="js/zoom.js"></script>
 <script src="js/buscador.js"></script>

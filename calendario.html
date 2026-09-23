@@ -6,32 +6,17 @@
 <title>Calendario del curso</title>
 <meta name="description" content="Calendario del curso: cuándo toca cada unidad, cada sesión y cada examen.">
 <link rel="stylesheet" href="css/estilos.css">
-<!-- Rutas relativas a propósito: el sitio se publica también en
-     GitHub Pages bajo /asignaturas/, donde una ruta absoluta (/img/...)
-     se saldría del subdirectorio y daría 404. -->
 <link rel="icon" href="img/wifi.svg" type="image/svg+xml">
 <link rel="icon" href="img/wifi-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/wifi-apple-touch-icon.png">
-<!-- En el <head> y sin defer a propósito: fija el modo claro/oscuro
-     elegido antes de que el navegador pinte, para que no haya fogonazo. -->
 <script src="js/aspecto.js"></script>
 <script src="js/columnas.js"></script>
-<!-- Precarga del documento al que probablemente va a ir. "moderate"
-     quiere decir: cuando el navegador ve intención (el puntero encima
-     un momento, el dedo apoyado), no en cuanto aparece el enlace.
-
-     Es PREFETCH y no PRERENDER a propósito. Prerender ejecutaría el
-     JS de la página de destino sin que el alumno haya entrado, y este
-     sitio apunta al cargar una sesión que la ha visitado y cuál fue
-     la última (ver js/progreso.js): con prerender, la portada diría
-     "sigue donde lo dejaste" en sesiones que nunca llegó a abrir. -->
 <script type="speculationrules">
 {"prefetch":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
 </script>
 </head>
 <body>
 
-<!-- Barra superior. Ver el comentario de index.html. -->
 <header class="barra">
   <a class="barra__marca" id="barra-marca" href="index.html" translate="no">
     <span class="barra__prompt">~/</span><span id="barra-marca-texto">asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>
@@ -41,10 +26,6 @@
   <div class="selector-aspecto" id="selector-aspecto"></div>
 </header>
 
-<!-- El título "Temario" ya no se escribe: la propia barra dice ahora
-     en qué asignatura estás (lo pinta js/sidebar.js) y poner las dos
-     cosas seguidas sobraba. Para quien usa lector de pantalla, el
-     nombre de la sección va en aria-label. -->
 <nav class="sidebar" aria-label="Temario">
   <div id="indice-temas"></div>
 </nav>
@@ -56,13 +37,9 @@
     <span class="badge" id="calendario-badge">Calendario</span>
     <h1>Calendario del curso</h1>
     <p id="calendario-descripcion">Planificación aproximada de cuándo toca cada unidad y cada sesión. Las fechas son previstas, no fijas: pueden desplazarse si el ritmo real se adelanta o se retrasa.</p>
-    <!-- Selector de grupo (1r/2n). Solo aparece en Instalaciones;
-         ver el comentario de index.html. -->
     <div class="selector-grupo" id="selector-grupo" hidden></div>
   </header>
 
-  <!-- Vista de mes. La tabla de abajo sigue siendo la vista completa:
-       esto es el vistazo rápido de "qué toca este mes". -->
   <section class="seccion" id="seccion-rejilla">
     <h2 class="seccion__titulo">Mes a mes</h2>
     <div id="calendario-rejilla"></div>
