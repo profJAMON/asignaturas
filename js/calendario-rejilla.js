@@ -104,7 +104,7 @@
     (d.unidades || []).forEach(unidad => {
       anotar(cal.fechaExamen(asignaturaId, unidad.id), {
         tipo: 'examen',
-        titulo: `Examen · ${unidad.titulo}`
+        titulo: cal.tituloExamen(asignaturaId, unidad.id)
       });
     });
 

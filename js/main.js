@@ -578,7 +578,7 @@ function _crearItemSemana(entrada, conAsignatura) {
 
   const titulo = document.createElement('span');
   titulo.className = 'semana__titulo';
-  titulo.textContent = esExamen ? `Examen · ${entrada.titulo}` : entrada.titulo;
+  titulo.textContent = entrada.titulo;
   item.appendChild(titulo);
 
   return item;
@@ -655,7 +655,7 @@ function _entradasDeLaSemana(desde, hasta) {
         entradas.push({
           tipo: 'examen',
           fecha,
-          titulo: unidad.titulo,
+          titulo: ritmo.tituloExamen(asignatura.id, unidad.id),
           asignatura,
           grupo: grupoId,
           color,

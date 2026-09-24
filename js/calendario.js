@@ -43,13 +43,15 @@
      Se usa typeof porque los datos son `const` globales de otro <script>. */
   const CALENDARIOS = {
     operaciones: () => (typeof CALENDARIO_OPERACIONES !== 'undefined' ? CALENDARIO_OPERACIONES : null),
-    instalaciones: () => (typeof CALENDARIO_INSTALACIONES !== 'undefined' ? CALENDARIO_INSTALACIONES : null)
+    instalaciones: () => (typeof CALENDARIO_INSTALACIONES !== 'undefined' ? CALENDARIO_INSTALACIONES : null),
+    proyecto: () => (typeof CALENDARIO_PROYECTO !== 'undefined' ? CALENDARIO_PROYECTO : null)
   };
 
   /* Nombre corto para el selector de grupo y los textos. */
   const NOMBRE_CORTO = {
     operaciones: 'Operaciones',
-    instalaciones: 'Instalaciones'
+    instalaciones: 'Instalaciones',
+    proyecto: 'Proyecto'
   };
 
   function datos(asignaturaId) {
@@ -164,6 +166,18 @@
     if (!tieneGrupos(asignaturaId)) return unidad.examen;
     const g = grupo || grupoElegido(asignaturaId);
     return g ? unidad.examen[g] || null : null;
+  }
+
+  /* Cómo se llama el examen de una unidad en el calendario, la rejilla
+     y la portada. Por defecto "Examen · <unidad>"; una unidad puede
+     traer su propio rótulo en "examenTitulo" (Proyecto no tiene
+     exámenes de unidad sino una "Prueba individual" dentro del
+     Bloque 4, y "Examen · Bloque 4. Cierre" confundiría). */
+  function tituloExamen(asignaturaId, unidadId) {
+    const d = datos(asignaturaId);
+    const unidad = d ? d.unidades.find(u => u.id === unidadId) : null;
+    if (!unidad) return 'Examen';
+    return unidad.examenTitulo || `Examen · ${unidad.titulo}`;
   }
 
   /* ----------------------------------------------------------
@@ -383,6 +397,7 @@
     fechaSesion,
     fechasUnidad,
     fechaExamen,
+    tituloExamen,
     refrescarDecoraciones
   };
 

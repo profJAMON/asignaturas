@@ -115,7 +115,9 @@ function pintarPaginaCalendario() {
     const filaUnidad = document.createElement('tr');
     filaUnidad.className = 'calendario-unidad-titulo';
     const tdTitulo = document.createElement('td');
-    tdTitulo.textContent = `${unidad.titulo} (${unidad.horas} h)`;
+    /* "horas" es opcional: "Antes de empezar" de Proyecto va dentro
+       de la primera sesión y no tiene horas propias. */
+    tdTitulo.textContent = unidad.horas ? `${unidad.titulo} (${unidad.horas} h)` : unidad.titulo;
     filaUnidad.appendChild(tdTitulo);
 
     anadirCeldas(filaUnidad, columnas.map(c => {
@@ -127,10 +129,44 @@ function pintarPaginaCalendario() {
     }));
     cuerpo.appendChild(filaUnidad);
 
+    /* La fila del examen se construye antes y se mete en su sitio por
+       fecha: en Operaciones el examen es el último día de la unidad (y
+       sale al final, como siempre), pero la prueba de Proyecto cae
+       entre la sesión 19 y la 20 y tiene que verse ahí. */
+    const isoExamenActivo = columnaActiva ? _cal.fechaExamen(a.id, unidad.id, columnaActiva.grupo) : null;
+    let filaExamen = null;
+    if (columnas.some(c => _cal.fechaExamen(a.id, unidad.id, c.grupo))) {
+      filaExamen = document.createElement('tr');
+      filaExamen.className = 'calendario-examen';
+
+      if (isoExamenActivo) {
+        if (isoExamenActivo < hoy) filaExamen.classList.add('pasada');
+        if (isoExamenActivo === hoy) filaExamen.classList.add('hoy');
+      }
+
+      const tdExamen = document.createElement('td');
+      tdExamen.textContent = `　📝 ${unidad.examenTitulo || 'Examen de la unidad'}`;
+      filaExamen.appendChild(tdExamen);
+
+      anadirCeldas(filaExamen, columnas.map(c => {
+        const iso = _cal.fechaExamen(a.id, unidad.id, c.grupo);
+        return iso ? _cal.formatearFecha(iso) : null;
+      }));
+    }
+
     (unidad.sesiones || []).forEach(sesionId => {
       const sesion = datos.sesiones[sesionId];
       if (!sesion) return;
       const fila = document.createElement('tr');
+
+      /* Una sesión posterior al examen: el examen va antes que ella. */
+      if (filaExamen && isoExamenActivo) {
+        const isoSesion = _cal.fechaSesion(a.id, sesionId, columnaActiva.grupo);
+        if (isoSesion && isoSesion > isoExamenActivo) {
+          cuerpo.appendChild(filaExamen);
+          filaExamen = null;
+        }
+      }
 
       if (columnaActiva) {
         const iso = _cal.fechaSesion(a.id, sesionId, columnaActiva.grupo);
@@ -149,27 +185,8 @@ function pintarPaginaCalendario() {
       cuerpo.appendChild(fila);
     });
 
-    /* Fila del examen de la unidad, si la unidad tiene examen. */
-    if (columnas.some(c => _cal.fechaExamen(a.id, unidad.id, c.grupo))) {
-      const filaExamen = document.createElement('tr');
-      filaExamen.className = 'calendario-examen';
-
-      if (columnaActiva) {
-        const iso = _cal.fechaExamen(a.id, unidad.id, columnaActiva.grupo);
-        if (iso && iso < hoy) filaExamen.classList.add('pasada');
-        if (iso === hoy) filaExamen.classList.add('hoy');
-      }
-
-      const tdExamen = document.createElement('td');
-      tdExamen.textContent = '　📝 Examen de la unidad';
-      filaExamen.appendChild(tdExamen);
-
-      anadirCeldas(filaExamen, columnas.map(c => {
-        const iso = _cal.fechaExamen(a.id, unidad.id, c.grupo);
-        return iso ? _cal.formatearFecha(iso) : null;
-      }));
-      cuerpo.appendChild(filaExamen);
-    }
+    /* Si no se ha colocado entre las sesiones, va al final, como antes. */
+    if (filaExamen) cuerpo.appendChild(filaExamen);
   });
 
   tabla.appendChild(cuerpo);
