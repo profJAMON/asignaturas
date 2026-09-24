@@ -1974,6 +1974,17 @@ font {
    ============================================================ */
 
 :root[data-pagina="portada"] body { grid-template-columns: minmax(0, 1fr); }
+/* Si el alumno ocultó el menú y el índice en una sesión (js/columnas.js
+   lo guarda en localStorage), <html> lleva data-menu="oculto" y
+   data-indice="oculto", y la regla de las dos columnas ocultas
+   (":root[data-menu][data-indice] body", más específica que la de
+   arriba) volvía a meter en la portada la rejilla de tres columnas
+   "0 1fr 0": todo el contenido acababa estrujado en una columna de
+   0 px. Como la preferencia va por dominio, pasaba en un dominio sí y
+   en otro no. Con estos selectores, igual de específicos y escritos
+   después, la portada gana siempre. */
+:root[data-pagina="portada"][data-menu] body,
+:root[data-pagina="portada"][data-indice] body { grid-template-columns: minmax(0, 1fr); }
 :root[data-pagina="portada"] .sidebar { display: none; }
 
 :root[data-pagina="portada"] .main-content {
