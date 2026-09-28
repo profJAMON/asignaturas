@@ -62,23 +62,38 @@
   "pie": "Es la web de ejemplo de PixelRojo: la tuya lleva tu alias y tu contenido."
  },
  {
-  "solucion": "soluciones/s2/reto1-dl.html",
-  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/reto1-dl.webp",
+  "solucion": "soluciones/s2/reto1-webs.html",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/reto1-webs.webp",
   "url": "127.0.0.1:5500/index.html",
-  "ancho": 620,
+  "ancho": 640,
   "numeros": [
    {
-    "sel": "dt",
-    "n": 1,
+    "sel": "body > ol",
+    "n": 1
+   },
+   {
+    "sel": "ol > li:nth-child(1) > a",
+    "n": 2,
     "lado": "texto"
    },
    {
-    "sel": "dd",
-    "n": 2,
+    "sel": "ol > li:nth-child(2) li",
+    "n": 3,
+    "lado": "texto"
+   },
+   {
+    "sel": "ol > li:nth-child(3) li",
+    "n": 4,
     "lado": "texto"
    }
   ],
-  "pie": "Ejemplo con palabras de videojuegos: tus tres términos tienen que ser de HTML."
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Al hacer clic en cada enlace, la web se abre en una pestaña nueva."
+   }
+  ],
+  "pie": "Ejemplo de PixelRojo: tus webs y tus descripciones serán las tuyas."
  },
  {
   "solucion": "soluciones/s2/reto2-indice.html",
