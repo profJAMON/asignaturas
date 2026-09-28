@@ -174,8 +174,6 @@ const CALENDARIO_INSTALACIONES = {
         "inst-u3-directo-cruzado",
         "inst-u3-tarjeta-y-enlace",
         "inst-u3-herramientas",
-        "inst-u3-taller-latiguillo",
-        "inst-u3-taller-cruzado-averias",
         "inst-u3-coaxial",
         "inst-u3-repaso"
       ],
@@ -263,9 +261,13 @@ const CALENDARIO_INSTALACIONES = {
     },
     {
       "id": "cableado-estructurado",
-      "titulo": "Unidad 8. Cableado estructurado y canalizaciones",
+      "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
       "horas": 12,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u3-taller-latiguillo",
+        "inst-u3-taller-cruzado-averias",
+        "inst-taller-conector-f"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2027-05-18",
@@ -384,7 +386,7 @@ const CALENDARIO_INSTALACIONES = {
       "2n": "2026-10-06"
     },
     "inst-u1-repaso": {
-      "titulo": "Sesión 10 — Repaso y banco de preguntas del examen",
+      "titulo": "Sesión 10 — Repaso de la unidad",
       "unidad": "introduccion-redes",
       "1r": "2026-10-23",
       "2n": "2026-10-07"
@@ -515,26 +517,14 @@ const CALENDARIO_INSTALACIONES = {
       "1r": "2026-12-22",
       "2n": "2026-11-16"
     },
-    "inst-u3-taller-latiguillo": {
-      "titulo": "Sesión 12 — Taller: fabrica un latiguillo directo",
-      "unidad": "medios-cobre",
-      "1r": "2027-01-08",
-      "2n": "2026-11-17"
-    },
-    "inst-u3-taller-cruzado-averias": {
-      "titulo": "Sesión 13 — Taller: cable cruzado y diagnóstico de averías",
-      "unidad": "medios-cobre",
-      "1r": "2027-01-12",
-      "2n": "2026-11-18"
-    },
     "inst-u3-coaxial": {
-      "titulo": "Sesión 14 — Cable coaxial y taller de conector F",
+      "titulo": "Sesión 12 — El cable coaxial",
       "unidad": "medios-cobre",
       "1r": "2027-01-12",
       "2n": "2026-11-20"
     },
     "inst-u3-repaso": {
-      "titulo": "Sesión 15 — Repaso y banco de preguntas del examen",
+      "titulo": "Sesión 13 — Repaso de la unidad",
       "unidad": "medios-cobre",
       "1r": "2027-01-15",
       "2n": "2026-11-23"
@@ -570,10 +560,28 @@ const CALENDARIO_INSTALACIONES = {
       "2n": "2026-11-30"
     },
     "inst-u4-repaso": {
-      "titulo": "Sesión 6 — Repaso y banco de preguntas del examen",
+      "titulo": "Sesión 6 — Repaso de la unidad",
       "unidad": "fibra-optica",
       "1r": "2027-01-29",
       "2n": "2026-12-01"
+    },
+    "inst-u3-taller-latiguillo": {
+      "titulo": "Sesión 1 — Taller: fabrica un latiguillo directo",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-18",
+      "2n": "2027-02-15"
+    },
+    "inst-u3-taller-cruzado-averias": {
+      "titulo": "Sesión 2 — Taller: cable cruzado y diagnóstico de averías",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-21",
+      "2n": "2027-02-16"
+    },
+    "inst-taller-conector-f": {
+      "titulo": "Sesión 3 — Taller: conector F en cable coaxial",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-25",
+      "2n": "2027-02-17"
     }
   }
 }

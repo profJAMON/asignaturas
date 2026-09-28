@@ -54,7 +54,7 @@
     {
       "id": "medios-cobre",
       "titulo": "Unidad 3. Medios de transmisión: cobre",
-      "descripcion": "Por dónde viajan los datos: los medios de transmisión, las topologías y el mapa de la red, el cable de par trenzado y sus categorías, los conectores RJ-45 y las normas T568A/B, cable directo y cruzado, la tarjeta de red, las herramientas, el taller de crimpado y el cable coaxial.",
+      "descripcion": "Por dónde viajan los datos: los medios de transmisión, las topologías y el mapa de la red, el cable de par trenzado y sus categorías, los conectores RJ-45 y las normas T568A/B, cable directo y cruzado, la tarjeta de red, las herramientas y el cable coaxial.",
       "sesiones": [
         "inst-u3-medios",
         "inst-u3-topologias-bus-anillo",
@@ -67,8 +67,6 @@
         "inst-u3-directo-cruzado",
         "inst-u3-tarjeta-y-enlace",
         "inst-u3-herramientas",
-        "inst-u3-taller-latiguillo",
-        "inst-u3-taller-cruzado-averias",
         "inst-u3-coaxial",
         "inst-u3-repaso"
       ]
@@ -84,6 +82,16 @@
         "inst-u4-perdidas-y-medidas",
         "inst-u4-hoja-practica",
         "inst-u4-repaso"
+      ]
+    },
+    {
+      "id": "cableado-estructurado",
+      "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
+      "descripcion": "El final del curso, en el taller: fabricar y comprobar latiguillos directos y cruzados, diagnosticar averías con el comprobador y montar conectores de coaxial. Aquí irán también el cableado estructurado y el montaje de la red de la oficina.",
+      "sesiones": [
+        "inst-u3-taller-latiguillo",
+        "inst-u3-taller-cruzado-averias",
+        "inst-taller-conector-f"
       ]
     }
   ]

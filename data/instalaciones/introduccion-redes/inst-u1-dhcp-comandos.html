@@ -1,3 +1,14 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
+<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con estas preguntas</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>IPv6: por qué hizo falta otro protocolo</h2>
 <p>IPv4 tiene 32 bits, o sea unos <strong>4.300 millones</strong> de direcciones. Cuando se diseñó, en los años setenta, parecían infinitas. Hoy hay más móviles que personas, y además se desperdician muchísimas al partir redes en subredes. Se acabaron.</p>
 <p>La solución es <strong>IPv6</strong>, que usa <strong>128 bits</strong> en lugar de 32. La diferencia no es «cuatro veces más»: es una barbaridad más.</p>
@@ -150,18 +161,46 @@ Estadísticas de ping para 192.168.1.1:
 </div>
 <p>Si los cuatro primeros van y el quinto no, tienes Internet perfectamente y lo que falla es el DNS. Ese diagnóstico, hecho en veinte segundos, es lo que separa a un técnico de alguien reiniciando el router por si acaso.</p>
 
-<h2>Para contestar en el cuaderno</h2>
+<h2>Preguntas de la sesión</h2>
 <div class="papel">
-<p class="papel__titulo">Actividad 9 — a mano, en papel</p>
+<p class="papel__titulo">Sesión 9 · Preguntas — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>¿Cuántos bits tiene una dirección IPv6? Explica qué es un <strong>octeto</strong> y qué es un <strong>hexteto</strong>.</li>
-<li>Enumera los cambios que trae IPv6 respecto a IPv4 y explica <strong>sus tres reglas</strong> de abreviación con un ejemplo propio.</li>
-<li>Abrevia todo lo que puedas: <code>2001:0DB8:0000:0000:0000:FF00:0042:8329</code>. Escribe qué regla aplicas en cada paso.</li>
-<li>¿Existe algún mecanismo automático para asignar IP en una red local? Explica con tus palabras el protocolo <strong>DHCP</strong> y di qué cuatro datos entrega.</li>
+<li>¿Cuántos bits tiene una dirección IPv6? ¿Qué es un octeto y qué es un hexteto?</li>
+<li>(ABC) Una dirección IPv6 se escribe…
+  <ul>
+    <li>a) en decimal, separada por puntos</li>
+    <li>b) en hexadecimal, separada por dos puntos</li>
+    <li>c) en binario</li>
+  </ul>
+</li>
+<li>¿Por qué se han agotado las direcciones IPv4?</li>
+<li>Cita tres ventajas de IPv6 sobre IPv4.</li>
+<li>Explica las tres reglas de abreviación de IPv6 con un ejemplo.</li>
+<li>Abrevia todo lo que puedas 2001:0DB8:0000:0000:0000:FF00:0042:8329 y di qué regla aplicas en cada paso.</li>
+<li>(V/F) El «::» puede aparecer dos veces en la misma dirección IPv6.</li>
+<li>Explica con tus palabras el protocolo <strong>DHCP</strong>. ¿Qué cuatro datos entrega?</li>
+<li>(ABC) En una red pequeña, el servidor DHCP suele ser…
+  <ul>
+    <li>a) el switch</li>
+    <li>b) el router</li>
+    <li>c) la impresora</li>
+  </ul>
+</li>
 <li>¿Cuándo pondrías una IP fija y cuándo dejarías DHCP? Pon dos ejemplos de cada uno.</li>
-<li>Explica la función de <strong>IANA</strong> y la de los <strong>RIR</strong>.</li>
-<li>Usando <code>ipconfig</code> en tu equipo: ¿cuál es tu IP?, ¿cuántos adaptadores de red tienes?, ¿cuál es tu puerta de enlace?</li>
-<li>Haz la escalera de ping de la tabla y apunta el resultado de cada paso. Si alguno falla, di qué deducirías.</li>
+<li>Explica la función de <strong>IANA</strong> y la de los <strong>RIR</strong>. ¿Cuál es el de Europa?</li>
+<li>(V/F) Internet tiene un dueño que lo controla todo.</li>
+<li>¿Para qué sirven <code>ipconfig</code>, <code>ping</code>, <code>tracert</code>, <code>nslookup</code> y <code>netstat</code>?</li>
+<li>Explica cómo funciona el comando <code>ping</code>.</li>
+<li>Un equipo no navega. Describe, por orden, los ping que harías y qué deducirías si falla cada uno.</li>
+<li>(ABC) <code>ping 8.8.8.8</code> funciona pero <code>ping www.google.es</code> no. Falla…
+  <ul>
+    <li>a) el cable</li>
+    <li>b) el DNS</li>
+    <li>c) la tarjeta de red</li>
+  </ul>
+</li>
+<li>En tu equipo: ¿cuál es tu IP, cuántos adaptadores de red tienes y cuál es tu puerta de enlace? Haz la escalera de ping y apunta el resultado de cada paso.</li>
 </ol>
 </div>
 

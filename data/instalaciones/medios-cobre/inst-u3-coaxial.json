@@ -1,8 +1,8 @@
 {
   "id": "inst-u3-coaxial",
-  "titulo": "Sesión 14 — Cable coaxial y taller de conector F",
+  "titulo": "Sesión 12 — El cable coaxial",
   "fecha": "",
-  "descripcion": "Cómo es el cable coaxial, la impedancia de 50 y 75 ohmios, los cables RG, las redes antiguas en bus, los conectores (F, IEC, BNC, N, SMA) y la guía para montar y comprobar un conector F.",
+  "descripcion": "Cómo es el cable coaxial, la impedancia de 50 y 75 ohmios, los cables RG, las redes antiguas en bus y los conectores (F, IEC, BNC, N, SMA).",
   "materiales": [],
   "actividades": [
     {

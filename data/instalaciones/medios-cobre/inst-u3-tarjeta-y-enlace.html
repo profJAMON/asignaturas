@@ -1,3 +1,14 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
+<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con estas preguntas</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>El otro extremo del cable</h2>
 <p>Ya sabes cómo es el cable y cómo se termina. Ahora toca mirar dónde se enchufa: la <strong>tarjeta de red</strong> (NIC) del equipo y el puerto del switch. Juntos forman un <strong>enlace</strong>, y es ahí donde ves si el cable que has hecho funciona.</p>
 <p>De la Unidad 1 ya sabes que la NIC tiene una <strong>dirección MAC</strong> grabada de fábrica y que una tarjeta <strong>10/100/1000</strong> admite tres velocidades. Hoy vamos a lo práctico.</p>
@@ -19,7 +30,7 @@
 <tr><td><strong>ACT</strong> (parpadea)</td><td>Pasan datos</td><td>Hay enlace, pero no hay tráfico</td></tr>
 </table>
 <p>Muchos aparatos usan también el <strong>color</strong> para la velocidad (por ejemplo, verde a 1 Gbps y ámbar a 10/100), pero <strong>cada fabricante usa los suyos</strong>: mira el manual o la serigrafía junto al puerto.</p>
-<div class="nota">Truco del taller para probar un latiguillo que acabas de hacer: enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada. Si enciende, pero el switch lo marca en el color de 100 Mbps cuando debería ir a 1 Gbps, sospecha del par azul o del marrón.</div>
+<div class="nota">Truco para probar un latiguillo (te servirá en el taller): enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada. Si enciende, pero el switch lo marca en el color de 100 Mbps cuando debería ir a 1 Gbps, sospecha del par azul o del marrón.</div>
 
 <h2>Autonegociación</h2>
 <p>Al enchufar el cable, la tarjeta y el switch se «presentan» y acuerdan dos cosas: la <strong>velocidad</strong> y el <strong>modo dúplex</strong>. Es la <strong>autonegociación</strong>, y elige lo mejor que admitan <strong>los dos</strong> (y el cable).</p>
@@ -87,16 +98,35 @@
 <pre><code>Get-NetAdapter</code></pre>
 <p>La columna <strong>LinkSpeed</strong> te dice si ha negociado 100 Mbps o 1 Gbps, y <strong>Status</strong> si hay enlace (<em>Up</em>) o no (<em>Disconnected</em>). Y para la MAC, ya los conoces: <code>ipconfig /all</code> o <code>getmac</code>.</p>
 
-<h2>Para contestar en el cuaderno</h2>
+<h2>Preguntas de la sesión</h2>
 <div class="papel">
-<p class="papel__titulo">Actividad 10 — a mano, en papel</p>
+<p class="papel__titulo">Sesión 10 · Preguntas — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
 <li>¿Qué tipos de tarjeta de red hay según cómo se conectan al equipo?</li>
-<li>Mira las luces del puerto de red de tu PC y del switch. ¿Cuántas hay? ¿De qué color? ¿Parpadean? Explica qué significa lo que ves.</li>
-<li>Define simplex, semidúplex y dúplex, con un ejemplo de la vida diaria de cada uno.</li>
-<li>¿Qué es la autonegociación? Una tarjeta gigabit conectada a un switch 10/100: ¿a qué velocidad va? ¿Por qué?</li>
-<li>Abre el Administrador de dispositivos de tu equipo del taller y apunta el nombre de sus adaptadores de red. Ejecuta <code>Get-NetAdapter</code> y apunta la velocidad de enlace.</li>
-<li>¿Qué harías si en el Administrador de dispositivos la tarjeta de red tiene un triángulo amarillo?</li>
+<li>(V/F) Hoy las tarjetas de red de los portátiles son PCMCIA.</li>
+<li>¿Qué indican las luces <strong>LINK</strong> y <strong>ACT</strong>?</li>
+<li>(ABC) Enchufas el cable y no se enciende LINK en ninguno de los dos lados. Sospechas primero del…
+  <ul>
+    <li>a) navegador</li>
+    <li>b) cable</li>
+    <li>c) DNS</li>
+  </ul>
+</li>
+<li>¿Qué es la <strong>autonegociación</strong>? Una tarjeta gigabit conectada a un switch 10/100, ¿a qué velocidad va?</li>
+<li>Explica <strong>simplex</strong>, <strong>semidúplex</strong> y <strong>dúplex</strong> con un ejemplo de la vida diaria de cada uno.</li>
+<li>(ABC) Un enlace entre un PC y un switch funciona en…
+  <ul>
+    <li>a) simplex</li>
+    <li>b) semidúplex</li>
+    <li>c) dúplex</li>
+  </ul>
+</li>
+<li>¿Qué modo usa un hub y cuál un switch? ¿Qué consecuencia tiene?</li>
+<li>¿Qué es un <em>duplex mismatch</em>? ¿Cómo se evita?</li>
+<li>¿Cómo compruebas en Windows si la tarjeta de red funciona y a qué velocidad ha enlazado?</li>
+<li>(V/F) Un triángulo amarillo en el Administrador de dispositivos indica que la tarjeta está deshabilitada.</li>
+<li>Mira las luces del puerto de red de tu PC y del switch, abre el Administrador de dispositivos y ejecuta <code>Get-NetAdapter</code>. Apunta lo que ves y qué significa.</li>
 </ol>
 </div>
 

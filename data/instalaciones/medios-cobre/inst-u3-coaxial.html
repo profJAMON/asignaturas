@@ -1,5 +1,16 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
+<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con estas preguntas</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>El otro cable de cobre</h2>
-<p>El <strong>cable coaxial</strong> fue el cable de las primeras redes locales (en bus) y hoy lo ves sobre todo en la <strong>antena de la tele</strong>, la parabólica, cámaras de vigilancia antiguas y las antenas de algunos aparatos wifi. En redes de datos ya casi no se usa, pero un instalador de telecomunicaciones se lo encuentra constantemente, y en el taller tenemos para practicar.</p>
+<p>El <strong>cable coaxial</strong> fue el cable de las primeras redes locales (en bus) y hoy lo ves sobre todo en la <strong>antena de la tele</strong>, la parabólica, cámaras de vigilancia antiguas y las antenas de algunos aparatos wifi. En redes de datos ya casi no se usa, pero un instalador de telecomunicaciones se lo encuentra constantemente, y en el taller, al final del curso, montarás un conector.</p>
 
 <h2>Cómo es por dentro</h2>
 <p>Se llama <em>coaxial</em> porque todas sus capas comparten el mismo eje, una dentro de otra:</p>
@@ -54,7 +65,7 @@
 <p>Se clasifican por cómo se enganchan: a <strong>bayoneta</strong> (se empuja y se gira un cuarto de vuelta), a <strong>rosca</strong> o a <strong>presión</strong>.</p>
 <table>
 <tr><th>Conector</th><th>Enganche</th><th>Dónde</th></tr>
-<tr><td><strong>F</strong></td><td>Rosca</td><td>Antena y parabólica, entrada del descodificador y del router de cable. <strong>El que montaremos</strong></td></tr>
+<tr><td><strong>F</strong></td><td>Rosca</td><td>Antena y parabólica, entrada del descodificador y del router de cable. <strong>El que montarás en el taller, al final del curso</strong></td></tr>
 <tr><td><strong>IEC</strong> («de antena»)</td><td>Presión</td><td>La toma de antena de la pared y la entrada de la tele</td></tr>
 <tr><td><strong>BNC</strong></td><td>Bayoneta</td><td>Redes 10BASE2 antiguas, cámaras de vigilancia, aparatos de medida</td></tr>
 <tr><td><strong>N</strong></td><td>Rosca, grande y estanco</td><td>Antenas exteriores de wifi y radioenlaces</td></tr>
@@ -63,30 +74,6 @@
 <p>Según cómo se fijan al cable, los conectores F pueden ser <strong>de rosca</strong> (se enroscan sobre la cubierta; baratos, pero se sueltan), <strong>de crimpar</strong> (anillo hexagonal) o <strong>de compresión</strong> (una herramienta empuja el cuerpo; los más fiables y estancos, los que usan los profesionales).</p>
 
 <div data-actividad="u3s14-coaxial"></div>
-
-<h2>Taller: montar un conector F en cable RG-6</h2>
-<h3>Material</h3>
-<ul>
-<li>Cable coaxial RG-6 de 75 Ω, conectores F (del tipo que haya en el taller) y, si son de compresión, su herramienta.</li>
-<li>Pelacables de coaxial de dos o tres niveles, alicates de corte.</li>
-<li>Gafas: los hilos de la malla <strong>se clavan</strong> en los dedos y saltan al cortar.</li>
-</ul>
-
-<h3>Pasos</h3>
-<ol>
-<li><strong>Corta recto</strong> el extremo del cable.</li>
-<li><strong>Pela en escalera</strong> con el pelacables de coaxial: tiene que quedar el conductor central desnudo (unos 6 mm) y, detrás, un tramo de dieléctrico con la malla encima (otros 6 mm). Sigue la medida que indique el fabricante del conector.</li>
-<li><strong>Dobla la malla hacia atrás</strong> sobre la cubierta, con cuidado. Si hay lámina, déjala pegada al dieléctrico.</li>
-<li><strong>Revisa el paso más importante</strong>: que <strong>ningún pelo de la malla toque el conductor central</strong>. Uno solo basta para hacer un cortocircuito y que no llegue señal.</li>
-<li><strong>Mete el conector</strong> girándolo (si es de rosca) o empujándolo hasta que el dieléctrico quede a ras de la base interior.</li>
-<li>Si es de <strong>compresión</strong> o de <strong>crimpar</strong>, usa la herramienta hasta el tope.</li>
-<li><strong>Comprueba</strong>: el conductor central sobresale <strong>1-2 mm</strong> por delante del conector; si sobra, córtalo. La malla no se ve por fuera y el conector no gira ni sale al tirar.</li>
-</ol>
-<h3>Comprobarlo</h3>
-<ul>
-<li>Con un <strong>polímetro</strong> en continuidad: entre conductor central y cuerpo del conector <strong>no</strong> debe haber continuidad (si pita, hay cortocircuito). Si pones un puente en el otro extremo, entonces sí debe pitar.</li>
-<li>Prueba real, si hay toma: conecta una tele o un descodificador y comprueba que llega señal.</li>
-</ul>
 
 <h2>Coaxial frente a par trenzado</h2>
 <table>
@@ -97,32 +84,39 @@
 <tr><td>Uso hoy</td><td>TV, satélite, antenas, CCTV antiguo</td><td>Redes locales</td></tr>
 </table>
 
-<h2>Para contestar en el cuaderno</h2>
+<h2>Preguntas de la sesión</h2>
 <div class="papel">
-<p class="papel__titulo">Actividad 14 — a mano, en papel</p>
+<p class="papel__titulo">Sesión 12 · Preguntas — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>Dibuja un cable coaxial pelado en escalera y nombra sus cuatro capas. ¿Para qué sirve cada una?</li>
-<li>¿Qué es la impedancia de un coaxial? ¿Cuál se usa para televisión y cuál para antenas wifi?</li>
+<li>Dibuja un cable coaxial y nombra sus cuatro capas. ¿Para qué sirve cada una?</li>
+<li>¿Por qué el coaxial aguanta bien las interferencias?</li>
+<li>¿Qué es la <strong>impedancia</strong> de un coaxial? ¿Cuál se usa para televisión y cuál para antenas wifi?</li>
+<li>(ABC) RG-6 es…
+  <ul>
+    <li>a) un conector</li>
+    <li>b) un cable coaxial de 75 Ω</li>
+    <li>c) un cable de par trenzado</li>
+  </ul>
+</li>
+<li>¿Qué conector lleva normalmente un cable RG-6? ¿Y un RG-58?</li>
 <li>Haz una tabla de conectores de coaxial (F, IEC, BNC, N, SMA) con su tipo de enganche y dónde se usan.</li>
-<li>¿Qué eran 10BASE2 y 10BASE5? ¿Qué topología usaban?</li>
-<li>Escribe los pasos para montar un conector F. ¿Cuál es el fallo más peligroso y cómo se evita?</li>
+<li>(ABC) La antena desmontable de un router wifi suele llevar conector…
+  <ul>
+    <li>a) F</li>
+    <li>b) BNC</li>
+    <li>c) SMA</li>
+  </ul>
+</li>
+<li>¿Qué eran 10BASE2 y 10BASE5? ¿Qué topología, qué cable y qué distancias tenían?</li>
+<li>(V/F) Un conector en T detrás de un ordenador es propio de una red en estrella moderna.</li>
+<li>Compara coaxial y par trenzado: dos diferencias.</li>
 <li>Da dos razones por las que el coaxial se dejó de usar en redes locales.</li>
-</ol>
-</div>
-<div class="papel">
-<p class="papel__titulo">Hoja de práctica 3 — conector F</p>
-<ol>
-<li>Tipo de conector usado (rosca, crimpar o compresión) y cable.</li>
-<li>Número de intentos hasta que quedó bien, y qué falló en cada uno.</li>
-<li>Resultado de la prueba con el polímetro.</li>
+<li>(V/F) Un coaxial lleva cuatro señales por cable, igual que el UTP.</li>
 </ol>
 </div>
 
 <h2>Antes de seguir</h2>
-<details>
-<summary>🤔 ¿Qué pasa si un pelo de la malla toca el conductor central?</summary>
-<p>Un <strong>cortocircuito</strong>: la señal va a masa y no llega nada (o llega muy mal). Es el fallo típico de un conector F mal montado.</p>
-</details>
 <details>
 <summary>🤔 ¿RG-6 es un conector?</summary>
 <p>No, es un <strong>cable</strong> coaxial de 75 Ω. Su conector habitual es el <strong>F</strong>.</p>

@@ -1,3 +1,14 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
+<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con estas preguntas</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>Partir una red en trozos</h2>
 <p>Con lo de la sesión anterior ya sabes que la máscara separa la parte de red de la parte de host. Ahora vamos a usar esa idea para algo muy concreto: <strong>partir una red grande en varias más pequeñas</strong>. Eso es hacer subredes.</p>
 <p>¿Y para qué querría nadie partir su red? Por tres razones que se ven enseguida en una oficina:</p>
@@ -118,16 +129,38 @@ Red       192.168.1.64     11000000.10101000.00000001.01000000
                                                       └ 64 ┘</code></pre>
 <p>Si en el examen te bloqueas con el salto, siempre puedes bajar al binario. Es más lento, pero no falla.</p>
 
-<h2>Para contestar en el cuaderno</h2>
+<h2>Preguntas de la sesión</h2>
 <div class="papel">
-<p class="papel__titulo">Actividad 8 — a mano, en papel</p>
+<p class="papel__titulo">Sesión 8 · Preguntas — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>Explica qué son la <strong>dirección de red</strong> y la <strong>dirección de broadcast</strong>, y por qué no se le asignan a ningún equipo.</li>
+<li>¿Qué son la dirección de red y la de broadcast? ¿Por qué no se le asignan a ningún equipo?</li>
 <li>Escribe la fórmula de los equipos que caben en una red y explica de dónde sale el «−2».</li>
-<li>Completa la tabla de /24 a /30 con el salto, las direcciones del bloque y los equipos utilizables. Sin mirar la de arriba.</li>
-<li>Para cada caso, da <strong>dirección de red, primera utilizable, última utilizable y broadcast</strong>, con el desarrollo escrito:<br>a) 192.168.1.50/26 &nbsp;·&nbsp; b) 192.168.1.200/27 &nbsp;·&nbsp; c) 10.0.0.77/28 &nbsp;·&nbsp; d) 172.16.5.9/29</li>
+<li>¿Cuántos equipos caben en una red /26? ¿Y en una /28? Escribe el cálculo.</li>
+<li>(ABC) En una red /27 caben…
+  <ul>
+    <li>a) 30 equipos</li>
+    <li>b) 32 equipos</li>
+    <li>c) 62 equipos</li>
+  </ul>
+</li>
+<li>Completa sin mirar la tabla de /24 a /30: bits de host, direcciones del bloque y equipos utilizables.</li>
+<li>(ABC) El salto de una red /26 es…
+  <ul>
+    <li>a) 26</li>
+    <li>b) 64</li>
+    <li>c) 62</li>
+  </ul>
+</li>
+<li>Dada 192.168.1.100/26, indica dirección de red, primera y última utilizable y broadcast.</li>
+<li>Haz lo mismo, con el desarrollo escrito: a) 192.168.1.50/26 · b) 192.168.1.200/27 · c) 10.0.0.77/28 · d) 172.16.5.9/29.</li>
+<li>(V/F) La dirección de broadcast de un bloque es siempre la anterior a la dirección de red del bloque siguiente.</li>
 <li>¿Están en la misma red 192.168.4.60/27 y 192.168.4.70/27? Demuéstralo.</li>
-<li>En la oficina hay 3 departamentos: 25 equipos, 12 equipos y 5 equipos. Tienes la red 192.168.10.0/24. ¿Qué máscara le darías a cada departamento y por qué? (Piensa primero cuántos equipos caben con cada máscara.)</li>
+<li>(V/F) Dos equipos enchufados al mismo switch, con cables perfectos, siempre se ven.</li>
+<li>Cita tres razones para partir una red en subredes.</li>
+<li>(V/F) Una red /30 no sirve para nada, porque solo caben 2 equipos.</li>
+<li>En la oficina hay tres departamentos: 25, 12 y 5 equipos. Tienes la red 192.168.10.0/24. ¿Qué máscara le darías a cada uno y por qué?</li>
+<li>Explica cómo comprobarías en binario a qué red pertenece una dirección IP.</li>
 </ol>
 </div>
 
