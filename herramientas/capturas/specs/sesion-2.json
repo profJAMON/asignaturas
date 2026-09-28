@@ -1,0 +1,159 @@
+[
+ {
+  "solucion": "soluciones/s2/guiado2-listas.html",
+  "salida": "../../data/unidades/html-css-practico/img/sesion-2/guiado2-listas.webp",
+  "url": "127.0.0.1:5500/prueba.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "body > ul:nth-of-type(1)",
+    "n": 1
+   },
+   {
+    "sel": "body > ol:nth-of-type(1)",
+    "n": 2
+   },
+   {
+    "sel": "ol[type=a]",
+    "n": 3
+   },
+   {
+    "sel": "ol[type=I]",
+    "n": 4
+   },
+   {
+    "sel": "body > ul:nth-of-type(2)",
+    "n": 5
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/s2/practica-index.html",
+  "salida": "../../data/unidades/html-css-practico/img/sesion-2/practica-index.webp",
+  "url": "127.0.0.1:5500/index.html",
+  "numeros": [
+   {
+    "sel": "body > ul",
+    "n": 1
+   },
+   {
+    "sel": "body > p:nth-of-type(3)",
+    "n": 2
+   },
+   {
+    "sel": "body > p:last-of-type",
+    "n": 4
+   },
+   {
+    "sel": "body > p:nth-of-type(2)",
+    "n": 5
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Un comentario justo antes de una sección, explicando qué vas a poner en ella. Los comentarios nunca se ven en la página."
+   },
+   {
+    "n": 5,
+    "texto": "Al hacer clic en este enlace, la página salta a la sección de destino."
+   }
+  ],
+  "pie": "Es la web de ejemplo de PixelRojo: la tuya lleva tu alias y tu contenido."
+ },
+ {
+  "solucion": "soluciones/s2/reto1-dl.html",
+  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto1-dl.webp",
+  "url": "127.0.0.1:5500/index.html",
+  "ancho": 620,
+  "numeros": [
+   {
+    "sel": "dt",
+    "n": 1,
+    "lado": "texto"
+   },
+   {
+    "sel": "dd",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "pie": "Ejemplo con palabras de videojuegos: tus tres términos tienen que ser de HTML."
+ },
+ {
+  "solucion": "soluciones/s2/reto2-indice.html",
+  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto2-indice.webp",
+  "url": "127.0.0.1:5500/index.html",
+  "ancho": 620,
+  "numeros": [
+   {
+    "sel": "body > ol",
+    "n": 1
+   },
+   {
+    "sel": "#sobre-mi",
+    "n": 2
+   },
+   {
+    "sel": "#asignatura",
+    "n": 2
+   },
+   {
+    "sel": "#favoritas",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Cada enlace del índice salta a su <h2>. Tu índice tiene un enlace por cada <h2> de tu página."
+   }
+  ],
+  "pie": "Es la web de ejemplo de PixelRojo: la tuya lleva tus propios apartados."
+ },
+ {
+  "solucion": "soluciones/s2/reto3-receta.html",
+  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto3-receta.webp",
+  "url": "127.0.0.1:5500/receta.html",
+  "numeros": [
+   {
+    "sel": "body > p:nth-of-type(1)",
+    "n": 1
+   },
+   {
+    "sel": "body > p:nth-of-type(2)",
+    "n": 2
+   },
+   {
+    "sel": "body > ul",
+    "n": 3
+   },
+   {
+    "sel": "ul ul",
+    "n": 4
+   },
+   {
+    "sel": "body > ol:not([type])",
+    "n": 5
+   },
+   {
+    "sel": "ol[type=a]",
+    "n": 6
+   },
+   {
+    "sel": "body > p:last-of-type",
+    "n": 7
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Al hacer clic, la página salta al apartado «Pasos»."
+   },
+   {
+    "n": 8,
+    "texto": "Un comentario encima de cada <h2> diciendo qué sección empieza."
+   }
+  ]
+ }
+]

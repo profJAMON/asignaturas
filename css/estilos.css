@@ -12,76 +12,34 @@
 :root {
   color-scheme: dark;
 
-  /* ----------------------------------------------------------
-     Paleta oscura (2026-09: pasa de gris VS Code a azul profundo).
-     El fondo se va al azul casi negro y los acentos son los tres
-     del cartel: cian, magenta y lima. Todo lo demás de la hoja ya
-     estaba escrito con estas variables, así que el cambio de
-     aspecto vive entero aquí arriba.
-     Contrastes medidos sobre --bg: texto 16,8:1 · dim 9,0:1 ·
-     faint 6,1:1 · cian 10,7:1 · magenta 6,3:1 · lima 15,7:1 ·
-     error 6,0:1. Todos por encima de AA (4,5:1), incluido
-     --text-faint, que en la paleta anterior se quedaba en 3,44:1.
-     Sobre las tarjetas (--surface) el peor caso es 5,7:1.
-     ---------------------------------------------------------- */
-
-  --bg: #0a0e14;
-  --surface: #0f151e;
-  --surface-2: #16202c;
-  --border: #223244;
-  --text: #e6f0fa;
-  --text-dim: #9fb3c8;
-  --text-faint: #7c93ab;
-  --accent: #22d3ee;
-  --accent-dim: #0e9fb8;
-  /* El "cálido" de la paleta anterior (salmón) pasa a ser el magenta:
-     es el segundo acento del estilo y lo usan el badge, las notas y
-     los metadatos. El nombre de la variable se queda para no tocar
-     las treinta reglas que ya la usan. */
-  --accent-warm: #ff4d9d;
-  /* Tercer acento. Es el del código en línea y el de las pistas. */
-  --accent-lima: #a6ff4d;
+  --bg: #1e1e1e;
+  --surface: #252526;
+  --surface-2: #2d2d30;
+  --border: #3c3c3c;
+  --text: #f3f3f3;
+  --text-dim: #9099a6;
+  --text-faint: #6a7280;
+  --accent: #4fc1ff;
+  --accent-dim: #3a9bd1;
+  --accent-warm: #ce9178;
   --code-bg: #ffffff;
   --code-text: #1e1e1e;
   --code-tag: #800000;
   --code-attr: #ff0000;
   --code-string: #0451a5;
   --code-comment: #008000;
-  --code-inline: #a6ff4d;
+  --code-inline: #89d185;
   --code-borde: transparent;
-  --ok: #5bf29b;
-  --error: #ff4d6d;
-
-  /* ---- Estilo del tema (rejilla, brillos, barra superior) ----
-     Estas cuatro son las que dan el aire "terminal". Bajar --glow a
-     "none" y --rejilla a transparent deja la web sobria sin tocar
-     ninguna otra regla: es el interruptor del estilo. */
-  --rejilla: rgba(34, 211, 238, 0.05);
-  --rejilla-paso: 34px;
-  --glow: 0 0 22px rgba(34, 211, 238, 0.4);
-  --glow-suave: 0 0 14px rgba(34, 211, 238, 0.25);
-  --glow-sesion: inset 2px 0 14px -6px rgba(34, 211, 238, 0.9);
-  /* El brillo de la tarjeta de asignatura al pasar por encima. Lleva
-     dentro var(--color-asig) a propósito: las variables se resuelven
-     en el elemento que las USA, así que cada tarjeta brilla de su
-     propio color sin declarar aquí una variable por asignatura. */
-  --glow-tarjeta: 0 0 24px -8px var(--color-asig, var(--accent));
-  --barrido: rgba(34, 211, 238, 0.06);
-  --barra-bg: rgba(10, 14, 20, 0.92);
-
-  /* Fondos tenues de los bloques con acento propio. */
-  --nota-fondo: rgba(255, 77, 157, 0.07);
-  --pista-fondo: rgba(166, 255, 77, 0.06);
+  --ok: #89d185;
+  --error: #f14c4c;
 
   /* Colores que antes estaban escritos a pelo en las reglas. Viven aquí
-     para que el modo claro pueda cambiarlos sin tocar nada más.
-     Los fondos de acierto y error van con los --ok y --error nuevos:
-     se quedaron con los viejos al cambiar la paleta. */
-  --boton-texto: #04121a;
-  --ok-fondo: rgba(91, 242, 155, 0.12);
-  --error-fondo: rgba(255, 77, 109, 0.12);
-  --marca-bien: #5bf29b;
-  --marca-mal: #ff4d6d;
+     para que el modo claro pueda cambiarlos sin tocar nada más. */
+  --boton-texto: #0b1a22;
+  --ok-fondo: rgba(137, 209, 133, 0.12);
+  --error-fondo: rgba(241, 76, 76, 0.12);
+  --marca-bien: #4ec9b0;
+  --marca-mal: #f48771;
 
   /* Las figuras (.salida con un SVG dentro). Los diagramas llevan sus
      colores escritos dentro del propio SVG, con la paleta oscura, así que
@@ -93,11 +51,6 @@
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-
-  /* Alto de la barra superior. Lo usan también .sidebar y .indice para
-     quedarse pegadas justo por debajo, así que se cambia aquí y se
-     mueven las tres a la vez. */
-  --alto-barra: 56px;
 
   /* Ancho máximo de la columna de lectura. Cámbialo aquí y se mueve
      toda la página a la vez: cabecera, lección y pie. */
@@ -129,33 +82,16 @@
 :root[data-tema="claro"] {
   color-scheme: light;
 
-  /* El cian y el magenta de neón solo funcionan sobre fondo oscuro: en
-     claro bajan a su versión oscura (cian petróleo y magenta vino) para
-     no caer por debajo de AA. La rejilla y los brillos casi desaparecen:
-     sobre blanco ensucian en vez de decorar.
-     Contrastes medidos sobre blanco: cian 5,4:1 · magenta 7,3:1 ·
-     lima 7,1:1 · faint 5,9:1. Sobre tarjeta, el peor es 4,7:1. */
   --bg: #ffffff;
-  --surface: #f4f7fa;
-  --surface-2: #e7edf3;
-  --border: #c9d4e0;
-  --text: #101720;
-  --text-dim: #3e4a57;
-  --text-faint: #5a6675;
-  --accent: #0e7490;
-  --accent-dim: #0b5b72;
-  --accent-warm: #a4126a;
-  --accent-lima: #3f6212;
-
-  --rejilla: rgba(14, 116, 144, 0.05);
-  --glow: none;
-  --glow-suave: none;
-  --glow-sesion: none;
-  --glow-tarjeta: none;
-  --barrido: rgba(14, 116, 144, 0.035);
-  --barra-bg: rgba(255, 255, 255, 0.94);
-  --nota-fondo: rgba(164, 18, 106, 0.05);
-  --pista-fondo: rgba(63, 98, 18, 0.06);
+  --surface: #f7f8fa;
+  --surface-2: #eaedf1;
+  --border: #cfd5dc;
+  --text: #1c2024;
+  --text-dim: #4c555f;
+  --text-faint: #69707a;
+  --accent: #0a6bb5;
+  --accent-dim: #085694;
+  --accent-warm: #9a4820;
 
   /* El bloque de código ya era claro en modo oscuro; sobre página blanca
      necesita un gris muy suave y un borde para no perder la caja. */
@@ -164,7 +100,7 @@
   --code-borde: #d7dce2;
   --code-inline: #116329;
 
-  --ok: #157f3d;
+  --ok: #1a7f37;
   --error: #c2262f;
   --boton-texto: #ffffff;
   --ok-fondo: rgba(26, 127, 55, 0.12);
@@ -179,174 +115,18 @@
   --figura-enlace: #4fc1ff;
 }
 
-/* ============================================================
-   Transición entre páginas
-   ============================================================
-   Una sola regla: al pasar de una sesión a otra el navegador funde la
-   página vieja con la nueva en vez de parpadear en blanco. Va en
-   Chrome, Edge y Safari; Firefox todavía no la tiene entre documentos
-   y allí sencillamente no pasa nada (se ve como antes).
-
-   La barra de arriba lleva nombre propio, así que el navegador la
-   trata como el MISMO elemento en las dos páginas y se queda quieta
-   mientras el contenido se funde por debajo. Es lo que hace que
-   parezca una aplicación y no una web recargando.
-
-   Ojo al apagado: la regla de prefers-reduced-motion de más abajo usa
-   el selector *, que NO alcanza a los pseudoelementos de la
-   transición, así que esos se apagan aparte allí mismo.
-   ============================================================ */
-
-@view-transition { navigation: auto; }
-
-.barra { view-transition-name: barra; }
-
-/* ---- El zoom al entrar en una asignatura ----
-
-   Dos elementos que se llaman igual en las dos páginas son, para el
-   navegador, el MISMO elemento: anima él solo la diferencia de sitio,
-   tamaño y forma. Aquí eso significa que la tarjeta de la portada
-   crece hasta convertirse en la cabecera de la asignatura.
-
-   Quien lleva el nombre:
-     - la cabecera de una asignatura (index.html?a=) y la de una
-       sesión, desde aquí y siempre;
-     - la tarjeta pulsada, solo durante el salto, porque se lo pone y
-       se lo quita js/zoom.js.
-
-   La portada general (sin ?a=) se queda fuera a propósito: su titular
-   no puede llamarse igual que la tarjeta que va a crecer, porque dos
-   elementos con el mismo nombre cancelan la transición entera. Por eso
-   el selector pide data-pagina="asignatura" y no vale cualquier .card.
-
-   El nombre va en .card__cuerpo en las sesiones y no en la tarjeta
-   entera: así el número grande de la sesión no entra en la animación
-   y no se ve estirarse. */
-
-:root[data-pagina="asignatura"] .main-content > .card,
-.card--sesion .card__cuerpo { view-transition-name: cabecera; }
-
-/* 380 ms: por debajo de 300 no se lee como un movimiento y por encima
-   de 400 se convierte en un peaje. Una tarde de clase son ocho o diez
-   saltos de estos seguidos. La curva sale rápido y frena al final,
-   que es lo que hace que parezca que la tarjeta "llega" a su sitio en
-   vez de deslizarse. */
-::view-transition-group(cabecera) {
-  animation-duration: 380ms;
-  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-/* El resto de la página se va antes que la cabecera. Sin esto, todo
-   se funde a la vez y el zoom queda escondido debajo del cruce. */
-::view-transition-old(root) { animation-duration: 140ms; }
-::view-transition-new(root) { animation-duration: 260ms; }
-
-/* La barra superior se queda quieta (tiene nombre propio), pero su
-   CONTENIDO cambia de una página a otra: la marca dice otra asignatura
-   y la navegación tiene otros enlaces. Al fundirse las dos versiones
-   se leía un momento el texto duplicado, como una pantalla mal
-   sintonizada. Cruzándolas en 110 ms el cambio no da tiempo a leerse
-   y la caja sigue sin moverse, que es lo que se quería. */
-::view-transition-old(barra),
-::view-transition-new(barra) { animation-duration: 110ms; }
-
 * { box-sizing: border-box; }
-
-/* El atributo hidden lo apaga cualquier `display` que venga después en
-   la hoja, y varias reglas de aquí abajo lo hacían sin querer: el badge
-   de "fecha prevista" se quedaba como una barra vacía debajo del título,
-   y los enlaces de la portada seguían ocupando su línea. Esto lo zanja
-   para todo el sitio: si el JS pone hidden, no se ve. */
-[hidden] { display: none !important; }
-
 html { scroll-behavior: smooth; }
 
 body {
   display: grid;
   grid-template-columns: var(--ancho-menu) minmax(0, 1fr) var(--ancho-indice);
-  /* La barra superior ocupa una fila propia que cruza las tres columnas
-     (.barra usa grid-column: 1 / -1). El resto de filas las crea el grid
-     solo, así que no hace falta declarar grid-template-rows. */
   min-height: 100vh;
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.55;
-}
-
-/* ---------- Colapsar menú e índice ----------
-   Cada columna lateral se puede ocultar por su cuenta para dejar más
-   sitio al contenido; js/columnas.js guarda la elección en localStorage
-   y pone estos atributos en <html> muy pronto (en el <head>, sin
-   defer), como ya hace js/aspecto.js con data-tema, para que no haya
-   parpadeo al cargar la página.
-
-   Ocultar aquí solo tiene sentido con las dos columnas fijas del
-   diseño de escritorio, así que estas reglas van dentro del mismo
-   min-width: 1000px que ya usa el resto de la hoja: por debajo de eso
-   el índice se esconde solo y el menú deja de ser una columna fija
-   (pasa a ir apilado a pantalla completa), y una preferencia guardada
-   en escritorio no debe dejar el menú escondido y sin botón para
-   recuperarlo al abrir la web en el móvil. Por eso .sidebar y .indice
-   NUNCA se ocultan aquí fuera de esta media query, solo cambia dónde
-   cae la columna dentro del grid de escritorio. */
-@media (min-width: 1000px) {
-  :root[data-menu="oculto"] .sidebar { display: none; }
-  :root[data-menu="oculto"] body { grid-template-columns: 0px minmax(0, 1fr) var(--ancho-indice); }
-  :root[data-indice="oculto"] .indice { display: none; }
-  :root[data-indice="oculto"] body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr) 0px; }
-  :root[data-menu="oculto"][data-indice="oculto"] body { grid-template-columns: 0px minmax(0, 1fr) 0px; }
-}
-
-.toggle-col {
-  position: fixed;
-  top: calc(var(--alto-barra) + 14px);
-  z-index: 20;
-  width: 26px;
-  height: 26px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  color: var(--text-dim);
-  cursor: pointer;
-  padding: 0;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  line-height: 1;
-  transition: left 0.15s ease, right 0.15s ease, color 0.12s ease, border-color 0.12s ease;
-}
-.toggle-col:hover, .toggle-col:focus-visible { color: var(--accent); border-color: var(--accent); }
-
-.toggle-menu { left: calc(var(--ancho-menu) - 13px); }
-:root[data-menu="oculto"] .toggle-menu { left: 6px; }
-
-.toggle-indice { right: calc(var(--ancho-indice) - 13px); }
-:root[data-indice="oculto"] .toggle-indice { right: 6px; }
-
-/* Por debajo de 1000px el índice ya se oculta solo y a partir de 760px
-   el menú deja de estar fijo en su columna (ver los @media de abajo):
-   los botones flotantes ya no encajarían con ese diseño y sobran. */
-@media (max-width: 1000px) {
-  .toggle-col { display: none; }
-}
-
-/* La rejilla del fondo. Va en un pseudoelemento fijo y no en el
-   background de body porque así no se arrastra al hacer scroll ni se
-   repinta con cada desplazamiento. En modo claro --rejilla es casi
-   transparente, de modo que este mismo bloque sirve para los dos temas. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--rejilla) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rejilla) 1px, transparent 1px);
-  background-size: var(--rejilla-paso) var(--rejilla-paso);
 }
 
 /* Sin esto, un <pre> muy largo puede ensanchar su columna del grid
@@ -363,18 +143,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  /* animation-delay también: sin él, una entrada escalonada deja las
-     tarjetas invisibles durante su retardo aunque no se animen. */
-  * {
-    animation-duration: 0.001ms !important;
-    animation-delay: 0.001ms !important;
-    transition-duration: 0.001ms !important;
-  }
-  /* Los pseudoelementos de la transición entre páginas no los alcanza
-     el selector de arriba: van uno a uno. */
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none !important; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
 
 h1, h2, h3 {
@@ -382,153 +151,15 @@ h1, h2, h3 {
   letter-spacing: 0.01em;
 }
 
-/* ============================================================
-   Barra superior  (js/barra.js)
-   ============================================================
-   Cruza las tres columnas y se queda fija arriba. Lleva cuatro cosas:
-   la marca (la ruta de la asignatura en la que estás), la navegación,
-   el selector de idioma y el de aspecto. Los dos selectores vivían
-   antes dentro de la barra lateral: siguen siendo el mismo HTML y el
-   mismo JS (los pintan idioma.js y aspecto.js en sus contenedores por
-   id), solo cambian de sitio y se aplanan con las reglas de abajo.
-   ============================================================ */
-
-.barra {
-  grid-column: 1 / -1;
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  min-height: var(--alto-barra);
-  padding: 0 1.1rem;
-  background: var(--barra-bg);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-
-/* El filo de neón de debajo de la barra. Es el único sitio de la web
-   donde se cruzan los tres acentos, y es lo que marca el estilo en
-   cuanto abres la página. En modo claro los colores ya son oscuros,
-   así que queda como una línea fina de color. */
-.barra::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent-warm) 70%, transparent);
-  opacity: 0.7;
-}
-
-.barra__marca {
-  font-family: var(--font-mono);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--accent-lima);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.barra__marca:hover { color: var(--accent); }
-.barra__prompt { color: var(--text-faint); }
-
-.barra__cursor {
-  color: var(--accent);
-  animation: barra-cursor 1.15s steps(1) infinite;
-}
-@keyframes barra-cursor { 50% { opacity: 0; } }
-
-.barra__nav {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  min-width: 0;
-}
-
-.barra__enlace {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text-dim);
-  text-decoration: none;
-  padding: 0.5rem 0.1rem;
-  border-bottom: 2px solid transparent;
-  white-space: nowrap;
-}
-.barra__enlace:hover { color: var(--text); }
-.barra__enlace[aria-current="page"] {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-  text-shadow: var(--glow-suave);
-}
-
-/* ---- Los dos selectores, aplanados dentro de la barra ---- */
-
-.barra .selector-idioma,
-.barra .selector-aspecto {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-  border-bottom: none;
-  min-width: 0;
-}
-
-/* El de idioma empuja a la derecha todo el bloque de la derecha. */
-.barra .selector-idioma { margin-left: auto; }
-
-/* Los títulos ("Idioma · Language", "Aspecto") sobran a la vista en una
-   barra de iconos, pero NO se quitan: se dejan solo para el lector de
-   pantalla, que si no se encuentra cuatro botones sueltos sin contexto. */
-.barra .sidebar__titulo {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  clip-path: inset(50%);
-}
-
-.barra .idioma-extra {
-  width: auto;
-  max-width: 8.5rem;
-  min-width: 0;
-  margin-top: 0;
-}
-
-/* El aviso de "el traductor no ha cargado" solo aparece si falla el
-   widget de Google. En la barra no puede empujar nada, así que cuelga
-   por debajo como un cartelito. */
-.barra .idioma-aviso {
-  position: absolute;
-  top: 100%;
-  right: 0.8rem;
-  max-width: 22rem;
-  margin: 0;
-  padding: 0.6rem 0.8rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0 0 6px 6px;
-}
-
-.barra .idioma-original { margin-top: 0; white-space: nowrap; }
-
 /* ---------- Barra lateral (Temario) ---------- */
 
 .sidebar {
   background: var(--surface);
   border-right: 1px solid var(--border);
   padding: 1.6rem 1rem;
-  /* Se queda pegada justo debajo de la barra superior, no arriba del
-     todo: si no, su primera línea quedaría tapada por la barra. */
-  height: calc(100vh - var(--alto-barra));
+  height: 100vh;
   position: sticky;
-  top: var(--alto-barra);
+  top: 0;
   overflow-y: auto;
 }
 
@@ -538,36 +169,6 @@ h1, h2, h3 {
   color: var(--text-faint);
   margin: 0 0 1.3rem;
 }
-
-/* ---- En qué asignatura estás, y cómo salir ----
-   La barra solo enseña una asignatura (ver js/sidebar.js), así que
-   tiene que decir cuál, y dar la puerta de salida con palabras: la
-   marca de la barra de arriba hace lo mismo, pero no todo el mundo
-   adivina que "~/proyecto" se puede pulsar. */
-
-.sidebar__asignatura {
-  margin-bottom: 1.2rem;
-  padding-bottom: 0.9rem;
-  border-bottom: 1px solid var(--border);
-}
-
-.sidebar__asignatura-nombre {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  line-height: 1.35;
-  color: var(--text);
-  margin: 0 0 0.5rem;
-}
-
-.sidebar__cambiar {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  text-decoration: none;
-}
-.sidebar__cambiar:hover { color: var(--accent); }
 
 /* Unidades desplegables */
 
@@ -596,27 +197,6 @@ h1, h2, h3 {
 .unidad[open] summary::before { transform: rotate(90deg); }
 .unidad summary:hover { background: var(--surface-2); }
 
-/* ---- El despliegue ----
-   Los <details> nativos abren de golpe. Animar también el cierre
-   obliga a retener el atributo open con JavaScript, y no compensa:
-   cerrar es descartar, y ahí el corte seco no molesta. Así que se
-   anima solo la apertura, que es la acción que el alumno mira.
-
-   Solo se mueven opacidad y transform, que son las dos propiedades
-   que el navegador puede animar sin recalcular la página (importa en
-   los portátiles del aula). La regla de prefers-reduced-motion de
-   arriba la apaga sola. */
-
-@keyframes desplegar {
-  from { opacity: 0; transform: translateY(-5px); }
-}
-
-.unidad[open] > .unidad__cuerpo,
-.unidad-card[open] > .sesiones-portada,
-.leccion details[open] > :not(summary) {
-  animation: desplegar 0.18s ease both;
-}
-
 .sesion {
   display: block;
   padding: 0.45rem 0.6rem 0.45rem 1.4rem;
@@ -635,19 +215,15 @@ h1, h2, h3 {
   border-left-color: var(--accent);
   background: var(--surface-2);
   font-weight: 600;
-  /* Única sombra de toda la hoja, y no separa nada del fondo: es el
-     resplandor del filo de la sesión en la que estás. En modo claro
-     --glow-sesion vale "none" y desaparece sola. */
-  box-shadow: var(--glow-sesion);
 }
 
 /* ---------- Índice de la página (columna derecha) ---------- */
 
 .indice {
   padding: 1.6rem 1rem;
-  height: calc(100vh - var(--alto-barra));
+  height: 100vh;
   position: sticky;
-  top: var(--alto-barra);
+  top: 0;
   overflow-y: auto;
 }
 
@@ -700,80 +276,11 @@ h1, h2, h3 {
 .volver:hover { text-decoration: underline; }
 
 .card {
-  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 1.8rem 2rem;
   margin-bottom: 2.2rem;
-}
-
-/* Escuadras de neón en dos esquinas de la cabecera. Es el sustituto
-   de la sombra (que la guía prohíbe): marca la tarjeta sin separarla
-   del fondo con un degradado. Puramente decorativo. */
-.card::before,
-.card::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-}
-.card::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-  border-radius: 6px 0 0 0;
-}
-.card::after {
-  right: -1px;
-  bottom: -1px;
-  border-right: 2px solid var(--accent-warm);
-  border-bottom: 2px solid var(--accent-warm);
-  border-radius: 0 0 6px 0;
-}
-
-/* Cabecera de una sesión: el número grande a la izquierda y el resto
-   del texto a su derecha. */
-.card--sesion {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.6rem;
-}
-.card--sesion > .card__cuerpo { min-width: 0; flex-grow: 1; }
-
-/* El selector lleva .card delante a propósito: si no, la regla
-   .card p (tamaño de párrafo) le gana por especificidad y el número
-   sale del tamaño del texto normal. */
-.card .numero-sesion {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 4.4rem;
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: -0.05em;
-  margin-top: 0.1rem;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--accent);
-  text-shadow: var(--glow);
-}
-
-/* Si el navegador no sabe dibujar letra hueca, se pinta maciza: sin
-   esto el número sería invisible (el relleno es transparente). */
-@supports not (-webkit-text-stroke: 1px red) {
-  .card .numero-sesion { color: var(--accent); text-shadow: none; }
-}
-
-/* Texto que solo existe para el lector de pantalla (el "Sesión" que
-   acompaña al número). */
-.solo-lector {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  white-space: nowrap;
-  clip-path: inset(50%);
 }
 
 .card h1 {
@@ -783,15 +290,13 @@ h1, h2, h3 {
   line-height: 1.15;
   color: var(--text);
   margin: 0.7rem 0 0.8rem;
-  /* En modo claro --glow vale "none" y esta línea no hace nada. */
-  text-shadow: var(--glow);
 }
 
 .card p {
   color: var(--text-dim);
   margin: 0;
   font-size: 1.02rem;
-  max-width: none;
+  max-width: 62ch;
 }
 
 .badge {
@@ -855,44 +360,12 @@ h1, h2, h3 {
 
 /* ---------- Actividades ---------- */
 
-/* Hueco donde el .html de la sesión pide que vaya una actividad
-   concreta (<div data-actividad="...">, ver js/tema.js). Solo separa la
-   actividad del párrafo anterior: la caja la pone .actividad. */
-.actividad-incrustada {
-  margin: 1.8rem 0;
-}
-
 .actividad {
   border: 1px solid var(--border);
-  /* El filo de color lo pone el tipo de actividad (ver --color-tipo
-     más abajo). Si algún día llega un tipo nuevo sin color asignado,
-     cae en el gris del borde y no se rompe nada. */
-  border-left: 3px solid var(--color-tipo, var(--border));
   background: var(--surface);
-  border-radius: 0 6px 6px 0;
+  border-radius: 6px;
   padding: 1.6rem;
   margin-bottom: 1.5rem;
-}
-
-/* Los tres tipos que existen hoy (js/actividades.js). */
-.actividad[data-tipo="quiz"] { --color-tipo: var(--accent); }
-.actividad[data-tipo="relacionar"] { --color-tipo: var(--accent-warm); }
-.actividad[data-tipo="generador"] { --color-tipo: var(--accent-lima); }
-
-/* La etiqueta de arriba ("QUIZ", "RELACIONAR"…). La escribe el JS
-   como texto de verdad, no como content de un pseudoelemento, para
-   que el lector de pantalla la lea y el traductor pueda con ella. */
-.actividad__tipo {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-tipo, var(--text-faint));
-  border: 1px solid currentColor;
-  border-radius: 3px;
-  padding: 0.2rem 0.5rem;
-  margin: 0 0 0.9rem;
 }
 
 .actividad__titulo {
@@ -926,29 +399,6 @@ h1, h2, h3 {
 .opcion.correcta { border-color: var(--ok); background: var(--ok-fondo); }
 .opcion.incorrecta { border-color: var(--error); background: var(--error-fondo); }
 .opcion[disabled] { cursor: default; }
-
-/* ---- La reacción al contestar ----
-   Es la transición que más rinde de toda la web: el alumno pulsa y la
-   opción responde, en vez de cambiar de color de un fotograma a otro.
-   El fallo da un empujón de 4 px, no un temblor largo: avisa sin
-   regañar. Ambas mueven solo transform. */
-
-@keyframes acierto {
-  0%, 100% { transform: none; }
-  40% { transform: scale(1.015); }
-}
-
-@keyframes fallo {
-  0%, 100% { transform: none; }
-  25% { transform: translateX(-4px); }
-  60% { transform: translateX(3px); }
-}
-
-.opcion.correcta,
-.ficha.emparejada-correcta { animation: acierto 0.32s ease; }
-
-.opcion.incorrecta,
-.ficha.emparejada-error { animation: fallo 0.3s ease; }
 
 .quiz__resultado { margin-top: 1rem; font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-dim); }
 
@@ -1076,19 +526,7 @@ h1, h2, h3 {
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
 @media print {
-  .sidebar, .indice, .barra, .toggle-col, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .selector-grupo, .badge--fecha, .pie { display: none !important; }
-  /* En papel no hay rejilla de fondo ni escuadras de neón: gastan
-     tinta y no aportan nada. */
-  body::before { display: none !important; }
-  .card::before, .card::after { display: none !important; }
-  .numero-sesion { color: var(--text) !important; -webkit-text-stroke: 0 !important; text-shadow: none !important; }
-  /* Las actividades incrustadas en la lección se ocultan igual que las
-     del final: al imprimir interesa el texto, no los botones. Si algún
-     día quieres que salgan (para repartirlas en papel), quita esta
-     línea y revisa cómo cae el salto de página. */
-  .actividad-incrustada { display: none !important; }
-  /* En el calendario impreso sobran las flechas de cambiar de mes. */
-  .rejilla__nav { display: none !important; }
+  .sidebar, .indice, #seccion-actividades, .volver, .selector-idioma, .selector-aspecto, .pie { display: none !important; }
   .main-content { margin: 0; padding: 0; max-width: 100%; }
   .leccion .papel { break-inside: avoid; }
 }
@@ -1178,15 +616,9 @@ footer.pie {
 .leccion pre .ca { color: var(--code-string); }
 .leccion pre .co { color: var(--code-comment); font-style: italic; }
 
-/* ---- Acento por tipo de bloque ----
-   Cada cosa que interrumpe la lectura lleva su propio color, siempre
-   el mismo en toda la web: magenta = aviso o nota, lima = pista o
-   respuesta desplegable, cian = actividad. Así el alumno sabe qué se
-   va a encontrar antes de leerlo. */
-
 .leccion .nota {
   border-left: 2px solid var(--accent-warm);
-  background: var(--nota-fondo);
+  background: var(--surface);
   border-radius: 0 6px 6px 0;
   padding: 0.8rem 1rem;
   margin: 0 0 1.2rem;
@@ -1194,22 +626,12 @@ footer.pie {
   color: var(--text);
 }
 
-/* El panel donde se enseña CÓMO SE VE un ejemplo.
-
-   Lleva scroll propio porque algunos ejemplos miden lo que miden a
-   propósito: la caja de la sesión del modelo de caja es de 300px más
-   20 de relleno y 5 de borde a cada lado, y tiene que salir midiendo
-   350px o el ejemplo no enseña nada. En un móvil de 360px eso empujaba
-   la PÁGINA ENTERA hacia la derecha y todo el temario se leía torcido.
-   Con esto, lo que se desplaza es el recuadro y la página se queda
-   quieta; el ejemplo sigue midiendo lo que tiene que medir. */
 .leccion .salida {
   border: 1px dashed var(--border);
   border-radius: 6px;
   padding: 0.9rem 1.1rem;
   margin: 0 0 1.2rem;
   background: var(--surface);
-  overflow-x: auto;
 }
 .leccion .salida > *:last-child { margin-bottom: 0; }
 
@@ -1225,17 +647,6 @@ footer.pie {
 .leccion .salida:has(svg) .pie-figura { color: var(--figura-pie); }
 .leccion .salida:has(svg) a { color: var(--figura-enlace); }
 .leccion .salida svg { display: block; margin: 0 auto 0.6rem; }
-/* Tamaño de los diagramas en rem, no en % de la columna. Con
-   width="100%" el diagrama llenaba la columna, y como la columna no
-   tiene ancho máximo (--ancho-lectura: none), al hacer zoom crecía el
-   texto pero el dibujo seguía ocupando lo mismo. En rem crece con el
-   zoom (y con el tamaño de letra del navegador) igual que el texto, y
-   el 100% solo actúa de tope para que no se salga de la columna.
-   52rem ≈ 830 px a zoom 100%: con eso el texto interior de los SVG
-   (9-13 unidades) sale a un tamaño parecido al del texto de la lección.
-   Los diagramas que traen el ancho en su style (los de 480 de
-   Operaciones) no se ven afectados: ya crecían con el zoom. */
-.leccion .salida svg { width: min(100%, 52rem); height: auto; }
 .leccion .pie-figura {
   font-size: 0.82rem;
   color: var(--text-faint);
@@ -1245,22 +656,37 @@ footer.pie {
 }
 .leccion .salida a { color: var(--accent); }
 
-/* Los <details> de la lección son siempre pistas o respuestas
-   ("Antes de seguir"): van en lima, el color de "esto te ayuda". */
+/* Capturas de los ejercicios: imagen de cómo tiene que verse el resultado,
+   con números que coinciden con la lista de requisitos. Son imágenes (no
+   HTML) para que no se pueda copiar el código con "Inspeccionar". */
+.leccion figure.captura { margin: 0 0 1.2rem; }
+.leccion figure.captura img {
+  display: block;
+  max-width: min(100%, 760px);
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+.leccion figure.captura figcaption {
+  font-size: 0.82rem;
+  color: var(--text-faint);
+  margin-top: 0.35rem;
+}
+
 .leccion details {
   border: 1px solid var(--border);
-  border-left: 2px solid var(--accent-lima);
-  border-radius: 0 6px 6px 0;
+  border-radius: 6px;
   padding: 0.7rem 1rem;
   margin: 0 0 1.2rem;
-  background: var(--pista-fondo);
+  background: var(--surface);
 }
 .leccion details[open] { padding-bottom: 1rem; }
 .leccion details summary {
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--accent-lima);
+  color: var(--accent);
 }
 .leccion details summary::-webkit-details-marker { display: none; }
 .leccion details summary::before { content: "▸ "; }
@@ -1336,15 +762,12 @@ footer.pie {
   display: block;
   padding: 1rem 1.4rem;
   border-top: 1px solid var(--border);
-  /* Transparente de serie para que al pasar por encima no se mueva el
-     texto: el filo ya está reservado, solo cambia de color. */
-  border-left: 3px solid transparent;
   text-decoration: none;
   color: var(--text);
-  transition: background-color 0.12s ease, border-color 0.12s ease;
+  transition: background-color 0.12s ease;
 }
 .sesiones-portada .sesion-portada:first-child { border-top: none; }
-.sesion-portada:hover { background: var(--surface-2); border-left-color: var(--accent); }
+.sesion-portada:hover { background: var(--surface-2); }
 .sesion-portada:hover .sesion-portada__titulo { color: var(--accent); }
 
 .sesion-portada__titulo { font-weight: 600; margin: 0 0 0.3rem; }
@@ -1493,317 +916,6 @@ footer.pie {
 
 .aspecto:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
-/* ============================================================
-   Selector de grupo (js/calendario.js) — asignaturas con varios grupos
-   ============================================================
-   Vive en la cabecera de la asignatura, no en la barra lateral: el
-   grupo solo afecta a Instalaciones, así que se enseña donde está el
-   contenido al que afecta. Va en una sola línea ("Tu grupo: 1r 2n") y
-   se apila en pantalla estrecha.
-   ============================================================ */
-
-.selector-grupo {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem 0.7rem;
-  margin: 0.9rem 0 0;
-}
-
-.selector-grupo__titulo {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-dim);
-}
-
-.selector-grupo__nota {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--text-dim);
-}
-
-.grupos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
-
-.grupo {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  line-height: 1;
-  color: var(--text-dim);
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.35rem 0.5rem;
-  cursor: pointer;
-}
-
-.grupo:hover { color: var(--text); border-color: var(--text-faint); }
-
-.grupo--activo {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: var(--surface-2);
-}
-
-.grupo:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-/* Nota bajo el selector de grupo/aspecto cuando hace falta explicar algo
-   (p.ej. "elige tu grupo para ver las fechas"). Reutiliza el mismo estilo
-   discreto que ya usa aspecto.js. */
-.aspecto-nota {
-  font-size: 0.72rem;
-  color: var(--text-faint);
-  margin: 0.5rem 0 0;
-  line-height: 1.4;
-}
-
-/* Fecha prevista junto a cada sesión en la barra lateral */
-.sesion__fecha {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  margin-top: 0.1rem;
-}
-.sesion.pasada .sesion__fecha { color: var(--text-faint); }
-.sesion.activa .sesion__fecha { color: var(--accent); }
-
-/* Fecha prevista de la sesión que se está viendo (tema.html) */
-.badge--fecha {
-  display: block;
-  margin: 0.6rem 0 0;
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-/* Página calendario.html */
-.calendario-tabla {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  font-size: 0.92rem;
-}
-.calendario-tabla th,
-.calendario-tabla td {
-  text-align: left;
-  padding: 0.55rem 0.9rem;
-  border-bottom: 1px solid var(--border);
-}
-.calendario-tabla th {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.calendario-tabla td.vacio { color: var(--text-faint); }
-.calendario-unidad-titulo td {
-  font-weight: 600;
-  color: var(--text);
-  background: var(--surface);
-  padding-top: 0.9rem;
-}
-/* Fila del examen de una unidad */
-.calendario-tabla tr.calendario-examen td { font-weight: 600; }
-.calendario-tabla tr.pasada td { color: var(--text-faint); }
-.calendario-tabla tr.hoy td {
-  background: var(--surface-2);
-  color: var(--accent);
-  font-weight: 600;
-}
-.calendario-nota {
-  color: var(--text-faint);
-  font-size: 0.85rem;
-  margin-top: 1.5rem;
-}
-
-/* ============================================================
-   Vista de mes del calendario (js/calendario-rejilla.js)
-   ============================================================
-   Cuadrícula de 7 columnas iguales. Los colores salen todos de
-   variables: si se toca la paleta, esto va detrás solo.
-   ============================================================ */
-
-.rejilla__barra {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.8rem;
-}
-
-.rejilla__mes {
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
-  margin: 0;
-}
-
-/* Solo la primera letra, no cada palabra: con capitalize salía
-   "Septiembre De 2026". */
-.rejilla__mes::first-letter { text-transform: uppercase; }
-
-.rejilla__nav { display: flex; gap: 4px; }
-
-.rejilla__boton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  color: var(--text-dim);
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.rejilla__boton:hover:not(:disabled) { color: var(--text); border-color: var(--text-faint); }
-.rejilla__boton:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.rejilla__boton:disabled { opacity: 0.35; cursor: default; }
-
-.rejilla__tabla {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.rejilla__tabla th {
-  padding: 0.4rem 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-faint);
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-}
-
-.rejilla__celda {
-  height: 44px;
-  padding: 2px;
-  text-align: center;
-  vertical-align: middle;
-}
-
-.rejilla__celda--fuera {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-faint);
-  opacity: 0.55;
-}
-
-/* El número del día. Es un <span> los días sin nada y un <button> los
-   días con sesión o examen; se ven igual salvo por el punto. */
-.rejilla__dia {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  width: 36px;
-  height: 36px;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 50%;
-  padding: 0;
-}
-
-button.rejilla__dia { cursor: pointer; }
-
-.rejilla__dia--con-eventos { color: var(--text); }
-.rejilla__dia--con-eventos:hover { border-color: var(--accent); }
-.rejilla__dia:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-/* Hoy: círculo relleno, como en cualquier calendario del sistema. */
-.rejilla__dia--hoy {
-  background: var(--accent);
-  color: var(--boton-texto);
-  font-weight: 600;
-}
-
-.rejilla__dia--abierto {
-  border-color: var(--accent);
-  background: var(--surface-2);
-  color: var(--accent);
-}
-
-.rejilla__dia--hoy.rejilla__dia--abierto {
-  background: var(--accent);
-  color: var(--boton-texto);
-}
-
-.rejilla__punto {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.rejilla__dia--hoy .rejilla__punto { background: var(--boton-texto); }
-.rejilla__dia--examen .rejilla__punto { background: var(--accent-warm); }
-
-/* Lo que hay el día pulsado */
-.rejilla__detalle {
-  margin-top: 1rem;
-  padding-top: 0.9rem;
-  border-top: 1px solid var(--border);
-}
-
-.rejilla__pista,
-.rejilla__detalle-titulo {
-  margin: 0;
-  font-size: 0.85rem;
-}
-
-.rejilla__pista { color: var(--text-faint); }
-
-.rejilla__detalle-titulo {
-  font-family: var(--font-mono);
-  font-weight: 600;
-  color: var(--text);
-}
-
-.rejilla__detalle-titulo::first-letter { text-transform: uppercase; }
-
-.rejilla__lista {
-  list-style: none;
-  margin: 0.6rem 0 0;
-  padding: 0;
-}
-
-.rejilla__lista li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-  padding: 0.35rem 0;
-  font-size: 0.9rem;
-}
-
-.rejilla__etiqueta {
-  flex-shrink: 0;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 0.15rem 0.35rem;
-}
-
-.rejilla__etiqueta--examen { color: var(--accent-warm); border-color: var(--accent-warm); }
-
-@media (max-width: 560px) {
-  .rejilla__celda { height: 38px; }
-  .rejilla__dia { width: 30px; height: 30px; font-size: 0.78rem; }
-}
-
 .aspecto-nota {
   margin: 8px 0 0;
   font-family: var(--font-mono);
@@ -1838,14 +950,10 @@ body > iframe {
 }
 
 /* Segundo cinturón de seguridad: las tres columnas van donde van, pase
-   lo que pase con lo que inyecten scripts de terceros en el <body>.
-   Van en la fila 2 porque la 1 es la de la barra superior: si se les
-   deja la fila 1, la barra es la que acaba desplazada al final de la
-   página (pasó al montarla, y no da ningún error en consola). */
-.barra        { grid-row: 1; }
-.sidebar      { grid-column: 1; grid-row: 2; }
-.main-content { grid-column: 2; grid-row: 2; }
-.indice       { grid-column: 3; grid-row: 2; }
+   lo que pase con lo que inyecten scripts de terceros en el <body>. */
+.sidebar      { grid-column: 1; grid-row: 1; }
+.main-content { grid-column: 2; grid-row: 1; }
+.indice       { grid-column: 3; grid-row: 1; }
 
 /* El widget desplaza el <body> hacia abajo para hacer hueco a su barra. */
 body {
@@ -1921,24 +1029,8 @@ font {
   color: var(--text);
   transition: background-color 0.12s ease, border-color 0.12s ease;
 }
-/* El hover ANTICIPA el zoom: la tarjeta crece un poco y con la misma
-   curva con la que va a crecer del todo al pulsarla (ver
-   ::view-transition-group(cabecera) arriba). Antes subía 3px, que es
-   un gesto distinto: si el hover dice una cosa y la transición hace
-   otra, el salto se siente pegado encima; si dicen lo mismo, se
-   siente causado por el clic.
-
-   :focus-visible va aparte y no aquí: el recuadro de foco tiene que
-   verse igual de claro se mueva la tarjeta o no. */
-.asignatura-card:hover {
-  background: var(--surface-2);
-  border-color: var(--color-asig, var(--accent));
-  transform: scale(1.02);
-  /* En modo claro --glow-tarjeta vale "none" y esta línea no hace
-     nada, como el resto de brillos del sitio. */
-  box-shadow: var(--glow-tarjeta);
-}
-.asignatura-card:hover .asignatura-card__titulo { color: var(--color-asig, var(--accent)); }
+.asignatura-card:hover { background: var(--surface-2); border-color: var(--accent); }
+.asignatura-card:hover .asignatura-card__titulo { color: var(--accent); }
 
 .asignatura-card__titulo {
   font-family: var(--font-mono);
@@ -1960,855 +1052,9 @@ font {
   margin: 0;
 }
 
-/* ============================================================
-   Portada general  (index.html sin ?a=)
-   ============================================================
-   Es la única página del sitio que NO usa las tres columnas: ahí
-   todavía no hay asignatura elegida, así que la barra lateral no
-   tiene temario que enseñar y la columna del índice está vacía. El
-   resultado era una página con tres tarjetas flotando en el carril
-   del medio y hueco muerto a los lados.
-
-   Quien pone data-pagina="portada" en el <html> es js/pagina.js, en
-   el <head> y sin defer, para que esto se pinte ya bien a la primera.
-   ============================================================ */
-
-:root[data-pagina="portada"] body { grid-template-columns: minmax(0, 1fr); }
-/* Si el alumno ocultó el menú y el índice en una sesión (js/columnas.js
-   lo guarda en localStorage), <html> lleva data-menu="oculto" y
-   data-indice="oculto", y la regla de las dos columnas ocultas
-   (":root[data-menu][data-indice] body", más específica que la de
-   arriba) volvía a meter en la portada la rejilla de tres columnas
-   "0 1fr 0": todo el contenido acababa estrujado en una columna de
-   0 px. Como la preferencia va por dominio, pasaba en un dominio sí y
-   en otro no. Con estos selectores, igual de específicos y escritos
-   después, la portada gana siempre. */
-:root[data-pagina="portada"][data-menu] body,
-:root[data-pagina="portada"][data-indice] body { grid-template-columns: minmax(0, 1fr); }
-:root[data-pagina="portada"] .sidebar { display: none; }
-
-:root[data-pagina="portada"] .main-content {
-  grid-column: 1;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 3.2rem 2rem 4rem;
-}
-
-/* La cabecera deja de ser una tarjeta y pasa a ser un titular: sin
-   caja, sin escuadras y con el cursor parpadeando detrás. */
-:root[data-pagina="portada"] .main-content > .card {
-  background: transparent;
-  border: none;
-  padding: 0;
-  margin-bottom: 2.4rem;
-}
-:root[data-pagina="portada"] .main-content > .card::before,
-:root[data-pagina="portada"] .main-content > .card::after { display: none; }
-
-:root[data-pagina="portada"] .card h1 {
-  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
-  margin: 0.9rem 0 0.7rem;
-}
-:root[data-pagina="portada"] .card h1::after {
-  content: "_";
-  color: var(--accent);
-  animation: barra-cursor 1.15s steps(1) infinite;
-}
-:root[data-pagina="portada"] .card p { font-size: 1.08rem; max-width: 46rem; }
-
-:root[data-pagina="portada"] .main-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 440px;
-  column-gap: 40px;
-}
-/* El titular y la terminal comparten la primera fila; todo lo demás
-   cruza las dos columnas. */
-:root[data-pagina="portada"] .main-content > .card { grid-column: 1; }
-:root[data-pagina="portada"] .portada-terminal { grid-column: 2; grid-row: 1; }
-:root[data-pagina="portada"] #indice-portada,
-:root[data-pagina="portada"] #portada-semana,
-:root[data-pagina="portada"] .pie { grid-column: 1 / -1; }
-
-/* El barrido de luz. Solo en la portada: en una sesión, algo que se
-   mueve por detrás del texto mientras lees es justo lo que no
-   quieres. Va en position fixed para no mover nada de sitio, y
-   prefers-reduced-motion lo deja quieto. */
-:root[data-pagina="portada"] body::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 170px;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, var(--barrido), transparent);
-  animation: barrer 10s linear infinite;
-}
-@keyframes barrer {
-  from { transform: translateY(-190px); }
-  to { transform: translateY(100vh); }
-}
-
-:root[data-pagina="portada"] #indice-portada {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.2rem;
-}
-/* En columna y con el pie empujado abajo: las descripciones no miden
-   lo mismo y, sin esto, el "5 unidades · 29 sesiones" de cada tarjeta
-   queda a una altura distinta y la fila se ve desordenada. */
-:root[data-pagina="portada"] .asignatura-card {
-  margin-bottom: 0;
-  display: flex;
-  flex-direction: column;
-}
-:root[data-pagina="portada"] .asignatura-card__descripcion { margin-bottom: 1.1rem; }
-:root[data-pagina="portada"] .asignatura-card__meta { margin-top: auto; }
-
-/* ---- El color de cada asignatura ----
-   Sale de su posición en la lista (js/main.js escribe data-color con
-   el índice entre 3), no de su id. Así, el día que añadas una
-   asignatura nueva siguen bastando los tres pasos de siempre: no hay
-   que venir aquí a inventarle un color. */
-
-[data-color="0"] { --color-asig: var(--accent); }
-[data-color="1"] { --color-asig: var(--accent-warm); }
-[data-color="2"] { --color-asig: var(--accent-lima); }
-
-/* Misma curva que el zoom del salto de página, para que el hover y la
-   transición se lean como un solo gesto. */
-.asignatura-card {
-  position: relative;
-  transition:
-    transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.16s ease,
-    background-color 0.16s ease;
-}
-
-.asignatura-card__numero {
-  font-family: var(--font-mono);
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin: 0 0 0.8rem;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-asig, var(--accent));
-}
-.asignatura-card__icono {
-  color: var(--color-asig, var(--accent));
-  margin-bottom: 1rem;
-}
-.asignatura-card__icono svg { width: 76px; height: 76px; display: block; }
-
-/* La tarjeta se tiñe del color de su asignatura. color-mix evita
-   tener que declarar tres rgba() a mano; si el navegador no lo
-   entiende, se queda con el fondo de tarjeta de siempre, que es el
-   que va declarado antes. */
-:root[data-pagina="portada"] .asignatura-card {
-  border-color: var(--color-asig, var(--border));
-  background: var(--surface);
-  background: color-mix(in srgb, var(--color-asig) 8%, var(--surface));
-}
-
-@supports not (-webkit-text-stroke: 1px red) {
-  .asignatura-card__numero { color: var(--color-asig, var(--accent)); }
-}
-
-/* ============================================================
-   Entrada de la portada
-   ============================================================
-   Aquí sí hay animación de aparición, al contrario que en las
-   sesiones. La diferencia es qué hace el alumno en cada sitio: la
-   portada se atraviesa (entras, eliges y sales) y una entrada
-   escalonada la hace parecer viva sin costarle tiempo a nadie; una
-   sesión se lee y se relee, y allí lo que aparece tarde estorba.
-   ============================================================ */
-
-@keyframes entrar {
-  from { opacity: 0; transform: translateY(14px); }
-}
-
-:root[data-pagina="portada"] .seccion--continuar,
-:root[data-pagina="portada"] .asignatura-card,
-:root[data-pagina="portada"] #portada-semana {
-  animation: entrar 0.34s ease both;
-}
-:root[data-pagina="portada"] .asignatura-card:nth-child(2) { animation-delay: 0.07s; }
-:root[data-pagina="portada"] .asignatura-card:nth-child(3) { animation-delay: 0.14s; }
-:root[data-pagina="portada"] #portada-semana { animation-delay: 0.2s; }
-
-/* ---------- La terminal de la cabecera ----------
-   Va a la derecha del titular y lleva dentro el "sigue donde lo
-   dejaste". El botón de Continuar queda FUERA, debajo: dentro de la
-   terminal parecería texto y nadie lo pulsaría. */
-
-.portada-terminal { align-self: start; }
-
-.terminal {
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.terminal__barra {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 0.5rem 0.8rem;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--border);
-}
-
-.terminal__punto {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  display: inline-block;
-  background: var(--accent-warm);
-}
-.terminal__punto:nth-child(2) { background: var(--accent-lima); }
-.terminal__punto:nth-child(3) { background: var(--accent); }
-
-.terminal__ruta {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  margin-left: 0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.terminal__cuerpo {
-  padding: 1rem 1.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  line-height: 2;
-}
-
-.terminal__linea, .terminal__salida { margin: 0; color: var(--text-dim); }
-.terminal__prompt { color: var(--accent-lima); }
-.terminal__salida { font-size: 0.75rem; color: var(--text-faint); padding-left: 1.1rem; }
-.terminal__lista { color: var(--accent); font-size: 0.82rem; }
-
-.terminal__sesion {
-  margin: 0;
-  padding-left: 1.1rem;
-  font-family: var(--font-body);
-  font-size: 1.15rem;
-  font-weight: 700;
-  line-height: 1.45;
-  color: var(--accent);
-}
-
-/* La orden se teclea sola. steps() y no un fundido: una terminal
-   escribe letra a letra o no es una terminal. */
-.terminal__teclea {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  vertical-align: bottom;
-  width: 0;
-  animation: teclear 1.1s steps(22) 0.35s forwards;
-}
-@keyframes teclear { to { width: var(--largo, 14ch); } }
-
-/* La respuesta va saliendo detrás, ya escrita. */
-.sale, .sale2, .sale3 { opacity: 0; }
-.sale { animation: asomar 0.35s ease 1.6s forwards; }
-.sale2 { animation: asomar 0.35s ease 1.85s forwards; }
-.sale3 { animation: asomar 0.35s ease 2.1s forwards; }
-@keyframes asomar { to { opacity: 1; } }
-
-.terminal__cursor {
-  color: var(--accent);
-  animation: barra-cursor 1.15s steps(1) infinite;
-}
-
-.terminal__acciones {
-  display: flex;
-  align-items: center;
-  gap: 1.1rem;
-  flex-wrap: wrap;
-  margin-top: 0.9rem;
-}
-
-.boton-continuar {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--boton-texto);
-  background: var(--accent);
-  border-radius: 5px;
-  padding: 0.75rem 1.35rem;
-  text-decoration: none;
-  transition: transform 0.14s ease, background-color 0.14s ease;
-}
-.boton-continuar:hover { background: var(--accent-dim); transform: translateY(-1px); }
-
-.terminal__otra {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  color: var(--text-faint);
-  text-decoration: none;
-}
-.terminal__otra:hover { color: var(--accent); }
-
-/* ---------- "Esta semana" ----------
-   En horizontal: los cinco días de lunes a viernes de un vistazo,
-   incluidos los que no tienen nada, porque un puente o una semana
-   vacía también es información. Cada columna se queda en unos 230 px,
-   así que un título largo se parte en varias líneas: es el precio de
-   ver la semana entera, y está asumido. */
-
-.semana {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 0;
-}
-
-/* La línea que une los cinco puntos. Empieza y acaba dentro del
-   primer y el último punto, no en el borde de la caja. */
-.semana__linea {
-  position: absolute;
-  left: 5px;
-  right: 5px;
-  top: 5px;
-  height: 1px;
-  background: var(--border);
-}
-
-.semana__dia { position: relative; box-sizing: border-box; padding-right: 18px; }
-.semana__dia:last-child { padding-right: 0; }
-
-.semana__punto {
-  position: absolute;
-  left: 1px;
-  top: 1px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  display: block;
-}
-
-/* El día de hoy: punto macizo y latiendo. Es la única animación en
-   bucle de toda la web, y se gana el sitio porque es justo lo que
-   buscas al abrir la portada. La regla de prefers-reduced-motion la
-   apaga sola. */
-.semana__dia--hoy .semana__punto {
-  left: 0;
-  top: 0;
-  width: 11px;
-  height: 11px;
-  border: none;
-  background: var(--accent);
-  animation: latido 2.6s ease-in-out infinite;
-}
-@keyframes latido {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.55); opacity: 0.35; }
-}
-
-.semana__fecha {
-  margin: 22px 0 10px;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-faint);
-}
-.semana__dia--hoy .semana__fecha { color: var(--accent); font-weight: 600; }
-
-.semana__nada { margin: 0; font-size: 0.85rem; color: var(--border); }
-
-.semana__item {
-  display: block;
-  margin-bottom: 0.45rem;
-  padding: 0.1rem 0 0.1rem 0.6rem;
-  border-left: 2px solid var(--color-asig, var(--border));
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.14s ease, transform 0.14s ease;
-}
-.semana__item:last-child { margin-bottom: 0; }
-a.semana__item:hover { transform: translateX(2px); }
-a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); }
-
-.semana__item--examen { border-left-width: 4px; font-weight: 600; }
-
-.semana__asignatura {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-asig, var(--text-faint));
-  margin-bottom: 0.15rem;
-}
-
-.semana__titulo { font-size: 0.85rem; line-height: 1.45; }
-
-.semana__aviso {
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  color: var(--text-faint);
-  margin: 1.2rem 0 0;
-}
-.semana__aviso a { color: var(--accent); }
-
-/* ---------- Días sin clase ----------
-   El chiste: "Venir a clase" tachado y, encima, un sello con la
-   pulla. Las frases viven enteras en data/no-lectivo.js: si algún día
-   quieres bajarles el tono, se cambian ahí y no hay que tocar esto.
-
-   El sello va girado y superpuesto, así que su caja no ocupa sitio
-   (position: absolute) y el hueco lo reserva el texto tachado. */
-
-.sin-clase { position: relative; padding: 0.3rem 0 0.6rem; }
-
-.sin-clase__tachado {
-  margin: 0;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  color: var(--text-faint);
-  text-decoration: line-through;
-  text-decoration-color: var(--error);
-  text-decoration-thickness: 2px;
-  opacity: 0.75;
-}
-
-.sin-clase__sello {
-  position: absolute;
-  /* Cae sobre el ÚLTIMO tercio del texto tachado, no encima del todo:
-     si lo tapa entero no se lee qué se está desmintiendo y el chiste
-     se pierde. */
-  top: 0.95rem;
-  left: 0.7rem;
-  margin: 0;
-  transform: rotate(-5deg);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: var(--accent-warm);
-  border: 2px solid var(--accent-warm);
-  border-radius: 4px;
-  padding: 0.25rem 0.5rem;
-  background: var(--bg);
-}
-
-.sin-clase__nombre {
-  margin: 3.6rem 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  line-height: 1.45;
-  color: var(--text-faint);
-}
-
-/* La versión de semana entera: el mismo cartel, en grande y centrado,
-   ocupando el sitio de la rejilla de los cinco días. */
-.sin-clase--grande {
-  box-sizing: border-box;
-  padding: 2.6rem 1.5rem 2.2rem;
-  border: 1px dashed var(--border);
-  border-radius: 8px;
-  text-align: center;
-}
-.sin-clase--grande .sin-clase__tachado { font-size: 1.7rem; text-decoration-thickness: 3px; }
-.sin-clase--grande .sin-clase__sello {
-  position: static;
-  display: inline-block;
-  transform: rotate(-3deg);
-  font-size: 1.3rem;
-  margin-top: 1.2rem;
-  padding: 0.45rem 1rem;
-}
-.sin-clase--grande .sin-clase__nombre { margin-top: 1.3rem; font-size: 0.85rem; }
-
-/* Volver a intentar un test (js/actividades.js). Aparece solo cuando
-   hay algo contestado, porque los tests ahora se recuerdan entre
-   visitas y si no no habria forma de repasarlos. */
-.quiz__reintentar {
-  margin-top: 0.8rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: transparent;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: border-color 0.14s ease, color 0.14s ease;
-}
-.quiz__reintentar:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ============================================================
-   Sesiones ya vistas  (js/progreso.js)
-   ============================================================
-   Un punto pequeño al lado de la sesión. Dice "por aquí ya pasaste",
-   nada más: la web no sabe si la ha hecho ni si la ha entendido, así
-   que no hay barras de porcentaje ni "te quedan 3". Contar paginas
-   abiertas y llamarlo progreso seria mentirle al alumno.
-
-   El punto es decoracion: quien usa lector de pantalla lo oye en el
-   title del enlace, que lo pone el JS.
-   ============================================================ */
-
-.sesion--vista::before,
-.sesion-portada--vista .sesion-portada__titulo::before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  background: var(--text-faint);
-  vertical-align: middle;
-}
-/* En la sesion abierta el punto sobra: ya lo dice el filo de color. */
-.sesion.activa.sesion--vista::before { display: none; }
-
-/* ============================================================
-   Anterior / siguiente al pie de una sesion  (js/tema.js)
-   ============================================================
-   Al terminar una sesion el alumno se quedaba en un callejon: tocaba
-   volver al menu y acordarse de cual venia. Aqui van las dos con su
-   nombre de verdad, no "anterior" y "siguiente" a secas.
-   ============================================================ */
-
-.pasos {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: 2.5rem;
-  padding-top: 1.6rem;
-  border-top: 1px solid var(--border);
-}
-
-.paso {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  background: var(--surface);
-  text-decoration: none;
-  color: var(--text);
-  transition: border-color 0.14s ease, background-color 0.14s ease;
-}
-.paso:hover { border-color: var(--accent); background: var(--surface-2); }
-.paso--siguiente { grid-column: 2; text-align: right; }
-/* Sin anterior (primera sesion del temario), la siguiente se queda en
-   su columna y no salta a la izquierda. */
-.paso--anterior { grid-column: 1; }
-
-.paso__cual {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-.paso__titulo { font-weight: 600; line-height: 1.35; }
-.paso:hover .paso__titulo { color: var(--accent); }
-.paso__unidad { font-size: 0.82rem; color: var(--text-dim); }
-
-/* El final del temario no es un error: se dice y se ofrece la salida. */
-.pasos__fin {
-  grid-column: 1 / -1;
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 0.92rem;
-  margin: 0;
-}
-
-/* ============================================================
-   "Seguias por aqui"  (js/tema.js)
-   ============================================================
-   No se salta solo: una pagina que se mueve sola al cargar parece
-   rota, y ademas pelearia con los enlaces de ancla del indice. Se
-   ofrece y decide el alumno. Se quita al pulsarlo, al llegar abajo o
-   a los 12 segundos, para no dejar un boton flotando toda la sesion.
-   ============================================================ */
-
-.retomar {
-  position: fixed;
-  right: 1.2rem;
-  bottom: 1.2rem;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  background: var(--surface);
-  color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  cursor: pointer;
-  box-shadow: var(--glow-suave);
-  animation: entrar 0.25s ease both;
-}
-.retomar:hover { background: var(--surface-2); }
-
-/* ============================================================
-   Buscador  (js/buscador.js)
-   ============================================================ */
-
-.barra__buscar {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.25rem 0.55rem;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  background: transparent;
-  color: var(--text-dim);
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  cursor: pointer;
-  transition: border-color 0.14s ease, color 0.14s ease;
-}
-.barra__buscar:hover { border-color: var(--accent); color: var(--accent); }
-.barra__buscar svg { width: 14px; height: 14px; stroke-linecap: round; }
-
-.barra__atajo {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  padding: 0.05rem 0.3rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  color: var(--text-faint);
-}
-
-.buscador {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: center;
-  /* Sin esto el panel se estira hasta abajo (es lo que hace un flex
-     por defecto) y queda un palmo de vacío debajo del ultimo
-     resultado. Tiene que medir lo que midan sus resultados. */
-  align-items: flex-start;
-  /* Arriba y no centrado: al escribir crece la lista hacia abajo, y
-     un panel centrado se movia entero con cada tecla. */
-  padding: 12vh 1rem 1rem;
-  background: rgba(0, 0, 0, 0.55);
-}
-
-.buscador__panel {
-  width: min(620px, 100%);
-  max-height: 70vh;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  background: var(--surface);
-  overflow: hidden;
-  box-shadow: var(--glow-suave);
-  animation: entrar 0.16s ease both;
-}
-
-.buscador__campo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--border);
-}
-.buscador__prompt { font-family: var(--font-mono); color: var(--accent); }
-
-.buscador__input {
-  flex: 1;
-  min-width: 0;
-  border: none;
-  background: transparent;
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  outline: none;
-}
-/* La cruz nativa de type=search desentona con el resto. */
-.buscador__input::-webkit-search-cancel-button { display: none; }
-
-.buscador__lista { overflow-y: auto; padding: 0.4rem; }
-
-.buscador__fila {
-  display: block;
-  padding: 0.6rem 0.7rem;
-  border-radius: 4px;
-  border-left: 2px solid transparent;
-  text-decoration: none;
-  color: var(--text);
-}
-.buscador__fila.marcada {
-  background: var(--surface-2);
-  border-left-color: var(--accent);
-}
-.buscador__titulo { display: block; font-weight: 600; line-height: 1.35; }
-.buscador__fila.marcada .buscador__titulo { color: var(--accent); }
-.buscador__donde {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  margin-top: 0.15rem;
-}
-.buscador__visto {
-  display: inline-block;
-  margin-top: 0.3rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--text-faint);
-}
-.buscador__vacio, .buscador__pie {
-  margin: 0;
-  padding: 0.9rem 1rem;
-  color: var(--text-faint);
-  font-size: 0.85rem;
-}
-.buscador__pie {
-  border-top: 1px solid var(--border);
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-}
-
-/* ============================================================
-   Pagina 404  (404.html)
-   ============================================================ */
-
-.error404 {
-  max-width: 34rem;
-  margin: 0 auto;
-  padding: 4rem 0;
-  text-align: center;
-}
-.error404__codigo {
-  font-family: var(--font-mono);
-  font-size: clamp(4rem, 18vw, 8rem);
-  font-weight: 700;
-  line-height: 1;
-  margin: 0;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--accent-warm);
-}
-.error404__lema {
-  font-family: var(--font-mono);
-  color: var(--accent-warm);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin: 0.6rem 0 1.4rem;
-}
-.error404 .volver { justify-content: center; }
-
-/* ============================================================
-   Color de la asignatura abierta  (js/barra.js)
-   ============================================================
-   Los primeros días los alumnos no sabían si estaban en
-   Instalaciones, Operaciones o Proyecto: la ruta "~/proyecto" de la
-   esquina se leía poco. Ahora js/barra.js escribe en el <html>
-   data-color-asig con el MISMO índice que la tarjeta de la portada
-   (posición entre 3), y la página entera se tiñe de ese color en su
-   "marco": franja de arriba, marca, cabecera de la sesión y menú.
-
-   Solo en el marco, nunca dentro de la lección: dentro, cian,
-   magenta y lima ya significan actividad, aviso y pista.
-
-   Va en una variable propia (--color-activa) y no en --color-asig
-   porque esa la usan las tarjetas y la semana de la portada, cada una
-   con el suyo; si se declarara en el <html> se les colaría.
-   ============================================================ */
-
-:root[data-color-asig="0"] { --color-activa: var(--accent); }
-:root[data-color-asig="1"] { --color-activa: var(--accent-warm); }
-:root[data-color-asig="2"] { --color-activa: var(--accent-lima); }
-
-/* La franja: 4px de color macizo pegados arriba del todo. Es lo que
-   se ve con el rabillo del ojo sin leer nada. */
-:root[data-color-asig] .barra::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--color-activa);
-  pointer-events: none;
-}
-/* El filo de debajo deja de ser el degradado de tres colores y pasa a
-   ser el de la asignatura. */
-:root[data-color-asig] .barra::after {
-  background: var(--color-activa);
-  opacity: 1;
-}
-
-.barra__marca--asignatura {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  font-size: 1rem;
-  color: var(--color-activa, var(--accent-lima));
-  padding: 0.3rem 0.7rem 0.3rem 0.5rem;
-  border: 1px solid var(--color-activa, var(--border));
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--color-activa, transparent) 10%, transparent);
-}
-.barra__marca--asignatura:hover {
-  color: var(--color-activa, var(--accent));
-  background: color-mix(in srgb, var(--color-activa, transparent) 20%, transparent);
-}
-
-.barra__icono,
-.tema-asignatura__icono {
-  display: inline-flex;
-  flex-shrink: 0;
-}
-.barra__icono svg { width: 26px; height: 26px; stroke-width: 2; }
-.barra__nombre-corto { display: none; }
-
-/* La línea de asignatura encima del título de la sesión. */
-.card .tema-asignatura {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0 0 0.7rem;
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-activa, var(--accent));
-}
-.tema-asignatura[hidden] { display: none; }
-.tema-asignatura__icono svg { width: 22px; height: 22px; stroke-width: 2; }
-
-/* La cabecera del menú lateral, del mismo color, con filo a la izquierda. */
-:root[data-color-asig] .sidebar__asignatura-nombre {
-  color: var(--color-activa);
-  border-left: 3px solid var(--color-activa);
-  padding-left: 0.55rem;
-}
-
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
-  /* La barra se aprieta un poco para que siga cabiendo en una línea:
-     mientras no se parta, el desplazamiento de .sidebar (que está
-     calculado con --alto-barra) sigue siendo correcto. */
-  .barra { gap: 0.9rem; padding: 0 0.8rem; }
-  .barra__nav { gap: 0.8rem; }
-  .barra .idioma-extra { max-width: 6.5rem; }
 }
 
 /* Tabletas y móviles: el menú pasa a ocupar el ancho completo
@@ -2831,154 +1077,8 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   }
   .main-content { padding: 1.6rem 1.2rem; max-width: none; }
   .card { padding: 1.3rem 1.2rem; }
-
-  /* El temario, DEBAJO del contenido.
-
-     En una sola columna la barra lateral caía encima de todo, y como
-     lleva las 29 sesiones de la asignatura medía unos 1000px: al abrir
-     una sesión en el móvil, el título de la lección quedaba a 1305px
-     del principio. O sea, dos pantallas enteras de menú antes de leer
-     la primera palabra. Un alumno que entra por el enlace que se le da
-     en clase ve un índice y piensa que se ha equivocado de sitio.
-
-     Con order se cambia el orden en pantalla sin tocar el HTML, así
-     que el menú sigue yendo antes en el código (que es lo correcto
-     para un lector de pantalla y para el teclado) y se pinta al final,
-     que es donde estorba menos y donde se va a buscar de verdad:
-     cuando ya has terminado de leer. Arriba queda la barra, que tiene
-     "Unidades" para lo mismo. */
-  .main-content { order: 1; }
-  .sidebar {
-    order: 2;
-    border-bottom: none;
-    border-top: 1px solid var(--border);
-  }
-
-  /* Aquí la barra ya puede partirse en dos líneas: la lateral ha dejado
-     de estar fija, así que su altura exacta ya no le importa a nadie. */
-  .barra {
-    position: static;
-    flex-wrap: wrap;
-    gap: 0.6rem 1rem;
-    padding: 0.6rem 1.2rem;
-  }
-  .barra .selector-idioma { margin-left: 0; }
-  .barra .idioma-aviso { position: static; max-width: none; border-radius: 6px; }
-}
-
-/* La portada: de tres tarjetas en fila a una columna. El corte es a
-   900px y no a 760 porque tres tarjetas con título largo se estrechan
-   antes de que el menú estorbe. */
-@media (max-width: 900px) {
-  :root[data-pagina="portada"] #indice-portada { grid-template-columns: 1fr; }
-  /* La cabecera deja de ir a dos columnas: la terminal pasa debajo del
-     titular, a lo ancho. */
-  :root[data-pagina="portada"] .main-content {
-    grid-template-columns: minmax(0, 1fr);
-    padding: 2.2rem 1.3rem 3rem;
-  }
-  :root[data-pagina="portada"] .portada-terminal {
-    grid-column: 1;
-    grid-row: auto;
-    margin-bottom: 2rem;
-  }
-  :root[data-pagina="portada"] .main-content > .card { margin-bottom: 1.6rem; }
-  /* La semana deja de ser una fila de cinco columnas y se apila: a
-     menos de 900 px cada día se quedaría en 150 px y los títulos no
-     caben. La línea que los une desaparece y el punto se pone al
-     lado de la fecha. */
-  .semana { grid-template-columns: 1fr; }
-  .semana__linea { display: none; }
-  .semana__dia {
-    padding: 0.7rem 0 0.7rem 22px;
-    border-top: 1px solid var(--border);
-  }
-  .semana__dia:first-child { border-top: none; }
-  .semana__punto { top: 1rem; }
-  .semana__dia--hoy .semana__punto { top: 0.95rem; }
-  .semana__fecha { margin: 0 0 0.5rem; }
 }
 
 @media (max-width: 560px) {
   .relacionar { grid-template-columns: 1fr; gap: 1.2rem; }
-
-  /* El número grande pasa a ir encima del título, no al lado: en un
-     móvil le robaba la mitad del ancho al titular. */
-  .card--sesion { flex-direction: column; gap: 0.4rem; }
-  .card .numero-sesion { font-size: 3rem; }
-}
-
-/* ---- La barra superior en un movil ----
-   A 360 px la barra se partia en TRES lineas (marca, idiomas,
-   aspecto) y se comia un tercio de la pantalla antes de empezar a
-   leer. Se aprieta: el buscador se queda en la lupa, los accesos
-   rapidos de idioma se reducen a los dos del centro (el resto sigue
-   en el desplegable) y todo baja de tamano. */
-@media (max-width: 560px) {
-  .barra { padding: 0.45rem 0.9rem; gap: 0.4rem 0.7rem; }
-
-  /* Dos líneas y no tres. La navegación se manda entera a la segunda
-     (order + ancho completo) y arriba quedan la marca y los dos
-     selectores, que juntos sí caben en 360px. Antes se repartían en
-     tres renglones y la barra se comía 118px de alto: en un móvil eso
-     es un sexto de la pantalla gastado antes de empezar a leer. */
-  .barra__nav {
-    order: 3;
-    flex-basis: 100%;
-    gap: 0.6rem;
-    /* Si un día hay más enlaces de los que caben, que se desplacen
-       ellos en vez de abrir un tercer renglón. */
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .barra__nav::-webkit-scrollbar { display: none; }
-
-  /* La marca se corta con puntos suspensivos en vez de empujar. Lleva
-     dentro el nombre de la asignatura, así que su ancho depende de
-     cuál esté abierta: "~/operaciones_" cabía y "~/instalaciones_"
-     no, y entonces el selector de aspecto se caía a un renglón suyo.
-     Con un tope en vh esto deja de depender del temario. */
-  .barra__marca {
-    margin-right: auto;
-    max-width: 30vw;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .barra__buscar-texto,
-  .barra__atajo { display: none; }
-  .barra__buscar { padding: 0.25rem 0.4rem; flex: 0 0 auto; }
-  .barra__enlace { flex: 0 0 auto; }
-  /* Quedan ES y CA, que son los dos idiomas del centro; EN y el resto
-     siguen estando, dentro de "Otros idiomas". */
-  .barra .idioma:nth-of-type(n+3) { display: none; }
-  /* Justo lo que hace falta para que marca + idioma + aspecto quepan
-     en un renglón de 360px: con 5.5rem se pasaban por 4px y el
-     selector de aspecto caía a una línea para él solo. */
-  .barra .idioma-extra { max-width: 4.2rem; font-size: 0.75rem; padding-right: 1rem; }
-
-  /* Anterior y siguiente, uno debajo de otro: en 360 px, dos titulos
-     de sesion al lado salen a dos palabras por linea. */
-  .pasos { grid-template-columns: 1fr; }
-  .paso--anterior, .paso--siguiente { grid-column: 1; text-align: left; }
-
-  /* El buscador ocupa la pantalla: un panel flotante en un movil es
-     medio teclado y medio panel. */
-  .buscador { padding: 0; }
-  .buscador__panel {
-    width: 100%;
-    max-height: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 0;
-  }
-  .retomar { right: 0.8rem; bottom: 0.8rem; }
-
-  /* En el móvil no cabe "Instalación y mantenimiento de redes": se
-     enseña el id, pero con icono, color y recuadro sigue viéndose. */
-  .barra__marca--asignatura { font-size: 0.85rem; padding: 0.2rem 0.5rem 0.2rem 0.35rem; gap: 0.35rem; max-width: calc(100vw - 262px); }
-  .barra__marca--asignatura .barra__nombre { display: none; }
-  .barra__marca--asignatura .barra__nombre-corto { display: inline; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-  .barra__icono svg { width: 20px; height: 20px; }
 }
