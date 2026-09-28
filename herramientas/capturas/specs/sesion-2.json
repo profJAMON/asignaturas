@@ -1,7 +1,7 @@
 [
  {
   "solucion": "soluciones/s2/guiado2-listas.html",
-  "salida": "../../data/unidades/html-css-practico/img/sesion-2/guiado2-listas.webp",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/guiado2-listas.webp",
   "url": "127.0.0.1:5500/prueba.html",
   "ancho": 560,
   "numeros": [
@@ -29,7 +29,7 @@
  },
  {
   "solucion": "soluciones/s2/practica-index.html",
-  "salida": "../../data/unidades/html-css-practico/img/sesion-2/practica-index.webp",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/practica-index.webp",
   "url": "127.0.0.1:5500/index.html",
   "numeros": [
    {
@@ -63,7 +63,7 @@
  },
  {
   "solucion": "soluciones/s2/reto1-dl.html",
-  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto1-dl.webp",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/reto1-dl.webp",
   "url": "127.0.0.1:5500/index.html",
   "ancho": 620,
   "numeros": [
@@ -82,7 +82,7 @@
  },
  {
   "solucion": "soluciones/s2/reto2-indice.html",
-  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto2-indice.webp",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/reto2-indice.webp",
   "url": "127.0.0.1:5500/index.html",
   "ancho": 620,
   "numeros": [
@@ -113,7 +113,7 @@
  },
  {
   "solucion": "soluciones/s2/reto3-receta.html",
-  "salida": "../../data/unidades/html-css-practico/img/sesion-2/reto3-receta.webp",
+  "salida": "../../data/operaciones/html-css-practico/img/sesion-2/reto3-receta.webp",
   "url": "127.0.0.1:5500/receta.html",
   "numeros": [
    {

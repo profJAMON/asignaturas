@@ -84,7 +84,7 @@
 <span class='et'>&lt;/ul&gt;</span></code></pre>
 <div class="nota">Visualmente puede llegar a parecer casi igual, pero para el navegador (y para un lector de pantalla) "HTML" y "CSS" ya no son parte de "Frontend": están sueltos al mismo nivel. Es un error de significado, no solo de estética.</div>
 
-<h3>Ejercicio guiado — Encuentra el fallo</h3>
+<h3>Ejercicio guiado 1 — Encuentra el fallo</h3>
 <p>Copia esto en tu <code>prueba.html</code> y ábrelo con Live Server:</p>
 <pre><code><span class='et'>&lt;ul&gt;</span>
     <span class='et'>&lt;li&gt;</span>Asignaturas
@@ -104,6 +104,24 @@
 </details>
 <p>Si lo has corregido bien: al ver la lista en Live Server, "Ofimática" y "Operaciones básicas" aparecerán sangrados por debajo de "Asignaturas", como una sublista suya — no como dos elementos sueltos al mismo nivel que "Hobbies".</p>
 
+<h3>Ejercicio guiado 2 — Copia lo que ves</h3>
+<p>Borra lo que tengas dentro del <code>&lt;body&gt;</code> de tu <code>prueba.html</code>. Escribe el código para que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/operaciones/html-css-practico/img/sesion-2/guiado2-listas.webp" target="_blank"><img src="data/operaciones/html-css-practico/img/sesion-2/guiado2-listas.webp" alt="Cinco listas numeradas del 1 al 5: una lista con viñetas (Pan, Leche, Huevos); una lista numerada (Encender el ordenador, Abrir VS Code, Abrir la carpeta mi-web); una lista con letras a, b, c (Rojo, Verde, Azul); una lista con números romanos I, II, III (Introducción, Desarrollo, Final); y una lista con viñetas (Deportes, Música) con otra lista dentro de cada elemento (Fútbol, Baloncesto / Rock, Rap)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una lista con viñetas.</li>
+<li>② Una lista con números.</li>
+<li>③ Una lista con letras.</li>
+<li>④ Una lista con números romanos.</li>
+<li>⑤ Una lista con otra lista dentro de cada elemento.</li>
+</ul>
+<details><summary>Pista 1</summary>
+<p>Para cada número, pregúntate primero: ¿lleva viñetas (<code>&lt;ul&gt;</code>) o lleva números (<code>&lt;ol&gt;</code>)?</p>
+</details>
+<details><summary>Pista 2</summary>
+<p>③ y ④ son <code>&lt;ol&gt;</code> con el atributo <code>type</code>: busca más arriba qué valor da letras y cuál da números romanos. En ⑤, la lista pequeña va <strong>dentro</strong> del <code>&lt;li&gt;</code>, como en el ejemplo de "Frontend".</p>
+</details>
+<p>Si lo has hecho bien: en ⑤, las viñetas de "Fútbol", "Baloncesto", "Rock" y "Rap" son círculos vacíos. No lo escribes tú: el navegador las cambia solo cuando una lista va dentro de otra.</p>
+
 <h2>Enlaces</h2>
 <pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://www.google.com"</span><span class='et'>&gt;</span>Ir a Google<span class='et'>&lt;/a&gt;</span></code></pre>
 <div class="salida"><a href="https://www.google.com" target="_blank" rel="noopener">Ir a Google</a></div>
@@ -119,47 +137,54 @@
 </details>
 
 <h2>Práctica</h2>
-<p>Sin ver el código todavía, mira este resultado y piensa cómo lo escribirías:</p>
-<div class="salida">
-<ul>
-<li>Módulos de este curso
-<ol>
-<li>HTML/CSS práctico</li>
-<li>Sistemas operativos</li>
-</ol>
-</li>
-<li>Lo que más me gusta de programar</li>
-</ul>
-</div>
-<details><summary>Ver la solución</summary>
-<pre><code><span class='et'>&lt;ul&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Módulos de este curso
-        <span class='et'>&lt;ol&gt;</span>
-            <span class='et'>&lt;li&gt;</span>HTML/CSS práctico<span class='et'>&lt;/li&gt;</span>
-            <span class='et'>&lt;li&gt;</span>Sistemas operativos<span class='et'>&lt;/li&gt;</span>
-        <span class='et'>&lt;/ol&gt;</span>
-    <span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Lo que más me gusta de programar<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span></code></pre>
-</details>
-<p>Ahora, en tu <code>index.html</code>, añade:</p>
+<p>Ahora lo pones en tu <code>index.html</code>. En la imagen tienes la web de ejemplo de PixelRojo con todo lo que tienes que añadir. Cada número de la imagen es un punto de la lista de abajo.</p>
+<figure class="captura"><a href="data/operaciones/html-css-practico/img/sesion-2/practica-index.webp" target="_blank"><img src="data/operaciones/html-css-practico/img/sesion-2/practica-index.webp" alt="Web de ejemplo de PixelRojo con cinco partes numeradas: 1, una lista con viñetas (HTML, CSS, Publicar mi web) con una lista numerada dentro de HTML; 2, un párrafo con palabras en negrita y en cursiva; 3, un comentario (no se ve); 4, un párrafo con un enlace a MDN; 5, un enlace que salta a la sección Esta asignatura." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>Una lista <code>&lt;ul&gt;</code> con al menos 3 temas de la asignatura, y una <code>&lt;ol&gt;</code> anidada dentro de uno de ellos.</li>
-<li>Un párrafo con al menos una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>.</li>
-<li>Un comentario explicando qué sección estás a punto de crear (usa <code>Ctrl+/</code>).</li>
-<li>Un enlace externo a alguna web relacionada con lo que estás estudiando.</li>
-<li>Un enlace tipo ancla que salte a una sección de tu propia página.</li>
+<li>① Una lista <code>&lt;ul&gt;</code> con al menos 3 temas de la asignatura, y una <code>&lt;ol&gt;</code> dentro de uno de ellos.</li>
+<li>② Un párrafo con al menos una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>.</li>
+<li>③ Un comentario explicando qué sección estás a punto de crear (usa <code>Ctrl+/</code>).</li>
+<li>④ Un enlace externo a alguna web relacionada con lo que estás estudiando.</li>
+<li>⑤ Un enlace ancla que salte a una sección de tu propia página.</li>
 </ul>
-<p>Si lo has hecho bien: al hacer clic en tu enlace ancla, la página saltará directamente a esa sección sin recargar ni abrir una pestaña nueva — solo se añade el <code>#seccion</code> al final de la dirección.</p>
+<p>No hace falta que quede igual que la imagen: el texto es el tuyo y el orden lo eliges tú. Lo que cuenta es que estén las cinco cosas.</p>
+<p>Si lo has hecho bien: al hacer clic en tu enlace ancla, la página salta a esa sección sin abrir una pestaña nueva, y en la dirección se añade <code>#</code> y el nombre de la sección.</p>
 
 <h2>Retos</h2>
-<p>Los dos retos son obligatorios, en orden: el segundo se apoya en el primero.</p>
+<p>Los tres retos son obligatorios, en orden.</p>
 
 <h3>Reto 1 — Lista de definiciones</h3>
-<p>Crea una lista de definiciones con <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> y <code>&lt;dd&gt;</code> (búscala en la referencia de MDN) con 3 términos relacionados con HTML y su definición.</p>
+<p>En tu <code>index.html</code>, crea una lista de definiciones con 3 términos de HTML y su definición. Se hace con <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> y <code>&lt;dd&gt;</code>: búscalas en MDN (el enlace está en los materiales de esta sesión).</p>
+<figure class="captura"><a href="data/operaciones/html-css-practico/img/sesion-2/reto1-dl.webp" target="_blank"><img src="data/operaciones/html-css-practico/img/sesion-2/reto1-dl.webp" alt="Lista de definiciones de ejemplo titulada Diccionario gamer: tres términos (NPC, Respawn, Speedrun), cada uno con su definición debajo y con sangría. El número 1 señala un término y el número 2 su definición." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El término: una palabra de HTML (por ejemplo, "etiqueta").</li>
+<li>② Su definición, debajo del término.</li>
+</ul>
+<p>Si lo has hecho bien: cada definición sale debajo de su término y un poco hacia la derecha, sin viñetas ni números.</p>
 
 <h3>Reto 2 — Un índice con anclas</h3>
-<p>Añade a tu página un pequeño índice al principio: una lista <code>&lt;ol&gt;</code> con un enlace ancla por cada <code>&lt;h2&gt;</code> que ya tengas, de modo que al hacer clic en cada uno salte a esa sección.</p>
+<p>Añade un índice al principio de tu <code>index.html</code>: una lista <code>&lt;ol&gt;</code> con un enlace ancla por cada <code>&lt;h2&gt;</code> que tengas.</p>
+<figure class="captura"><a href="data/operaciones/html-css-practico/img/sesion-2/reto2-indice.webp" target="_blank"><img src="data/operaciones/html-css-practico/img/sesion-2/reto2-indice.webp" alt="Web de ejemplo de PixelRojo con un índice numerado de enlaces debajo del título (número 1). Cada enlace lleva a uno de los apartados h2 de la página, marcados con el número 2." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una lista <code>&lt;ol&gt;</code> de enlaces, justo debajo de tu <code>&lt;h1&gt;</code>.</li>
+<li>② Cada <code>&lt;h2&gt;</code> de tu página tiene su <code>id</code> y su enlace en el índice.</li>
+</ul>
+<p>Si lo has hecho bien: al hacer clic en cada enlace del índice, la página salta a su apartado.</p>
+
+<h3>Reto 3 — Una receta completa</h3>
+<p>Crea un archivo nuevo, <code>receta.html</code>, en tu carpeta <code>mi-web</code>, al lado de <code>index.html</code>. Escribe su estructura mínima (la de la sesión 1) y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/operaciones/html-css-practico/img/sesion-2/reto3-receta.webp" target="_blank"><img src="data/operaciones/html-css-practico/img/sesion-2/reto3-receta.webp" alt="Página de una receta de tortilla de patatas con siete partes numeradas: 1, un párrafo con una palabra en negrita y otra en cursiva; 2, un enlace que salta a los pasos; 3, una lista con viñetas de ingredientes; 4, una lista con círculos dentro del último ingrediente (Cebolla, Pimiento); 5, una lista numerada de pasos; 6, una lista con letras de trucos; 7, un párrafo con un enlace a YouTube. Abajo, dos notas: el enlace 2 salta al apartado Pasos, y el número 8 es un comentario encima de cada h2." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un párrafo con una palabra en <code>&lt;strong&gt;</code> y otra en <code>&lt;em&gt;</code>.</li>
+<li>② Un enlace ancla que salta al apartado "Pasos".</li>
+<li>③ Una lista <code>&lt;ul&gt;</code> con los ingredientes.</li>
+<li>④ Una lista <code>&lt;ul&gt;</code> dentro del último ingrediente.</li>
+<li>⑤ Una lista <code>&lt;ol&gt;</code> con los pasos.</li>
+<li>⑥ Una lista <code>&lt;ol&gt;</code> con letras.</li>
+<li>⑦ Un enlace externo.</li>
+<li>⑧ Un comentario encima de cada <code>&lt;h2&gt;</code>.</li>
+</ul>
+<p>Si prefieres otra receta, puedes cambiarla: lo que cuenta es que tenga las ocho partes.</p>
+<p>Si lo has hecho bien: la pestaña del navegador muestra el título de la receta, y al hacer clic en el enlace ② la página baja hasta "Pasos".</p>
 
 <div class="nota">Guarda esta versión de tu página. En la próxima sesión llegan las imágenes y la estructura semántica (<code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>...), así que tenla organizada por bloques claros.</div>
 <div class="nota">💾 Antes de irte: haz tu copia de seguridad de <code>mi-web</code> en Drive. Si no recuerdas los pasos, están en la <a href="tema.html?id=sesion-4-copia-seguridad-drive">sesión 4 de la Unidad 0</a>.</div>
