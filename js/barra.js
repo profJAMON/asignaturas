@@ -58,19 +58,41 @@
      La marca de la izquierda
      ---------------------------------------------------------- */
 
+  /* Con asignatura, la marca enseña su icono y su NOMBRE ENTERO
+     ("Proyecto Intermodular"), no el id ("~/proyecto"): los primeros
+     días los alumnos no sabían en cuál estaban, y el id en letra
+     pequeña no se lee de un vistazo. El id se queda en un span aparte
+     porque en el móvil no cabe el nombre y el CSS enseña ese.
+     Sin asignatura (portada general) sigue la ruta de terminal. */
   function pintarMarca(asignatura) {
     const enlace = document.getElementById('barra-marca');
-    const texto = document.getElementById('barra-marca-texto');
-    if (!enlace || !texto) return;
+    if (!enlace) return;
+    enlace.textContent = '';
 
     if (asignatura) {
-      texto.textContent = asignatura.id;
+      if (typeof iconoDeAsignatura === 'function') {
+        const icono = document.createElement('span');
+        icono.className = 'barra__icono';
+        icono.innerHTML = iconoDeAsignatura(asignatura.id);
+        enlace.appendChild(icono);
+      }
+      const largo = document.createElement('span');
+      largo.className = 'barra__nombre';
+      largo.textContent = asignatura.nombre;
+      const corto = document.createElement('span');
+      corto.className = 'barra__nombre-corto';
+      corto.setAttribute('aria-hidden', 'true');
+      corto.textContent = asignatura.id;
+      enlace.appendChild(largo);
+      enlace.appendChild(corto);
       enlace.href = urlPortadaAsignatura(asignatura);
-      enlace.title = asignatura.nombre;
+      enlace.title = `Estás en ${asignatura.nombre}`;
+      enlace.classList.add('barra__marca--asignatura');
     } else {
-      texto.textContent = 'asignaturas';
+      enlace.innerHTML = '<span class="barra__prompt">~/</span><span>asignaturas</span><span class="barra__cursor" aria-hidden="true">_</span>';
       enlace.href = 'index.html';
       enlace.title = 'Todas las asignaturas';
+      enlace.classList.remove('barra__marca--asignatura');
     }
   }
 
@@ -135,10 +157,15 @@
        (js/buscador.js), que empieza buscando por la asignatura abierta:
        en tema.html la asignatura no se sabe hasta que se ha localizado
        la sesión, y esta es la única llamada que lo sabe seguro. */
+    /* data-color-asig tiñe la página del color de la asignatura
+       (franja de arriba, marca, cabecera de sesión, menú). Ver
+       "Color de la asignatura abierta" en css/estilos.css. */
     if (asignatura) {
       document.documentElement.dataset.asignatura = asignatura.id;
+      document.documentElement.dataset.colorAsig = colorDeAsignatura(asignatura);
     } else {
       delete document.documentElement.dataset.asignatura;
+      delete document.documentElement.dataset.colorAsig;
     }
 
     /* El buscador pinta su botón dentro de la barra; si la barra se

@@ -69,6 +69,15 @@ function asignaturaPorId(id) {
   return ASIGNATURAS.find(a => a.id === id) || null;
 }
 
+/* El color de una asignatura: su posición en la lista entre 3, igual
+   que las tarjetas de la portada (js/main.js). Lo usa también la barra
+   superior para teñir toda la página del color de la asignatura
+   abierta, así que la tarjeta y la página que abre son del mismo color. */
+function colorDeAsignatura(asignatura) {
+  const indice = ASIGNATURAS.findIndex(a => a.id === asignatura.id);
+  return String(Math.max(indice, 0) % 3);
+}
+
 /* Lee ?a=... de la URL. Si no viene o no existe, devuelve null. */
 function asignaturaDeLaUrl() {
   const params = new URLSearchParams(window.location.search);

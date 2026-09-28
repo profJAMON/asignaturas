@@ -64,6 +64,7 @@ async function cargarTema() {
 
     document.title = `${tema.titulo} · ${asignatura.nombre}`;
     document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
+    pintarAsignaturaCabecera(asignatura);
     document.getElementById('tema-titulo').textContent = pintarCabeceraSesion(tema.titulo);
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 
@@ -449,3 +450,23 @@ function pintarIndicePagina() {
 }
 
 cargarTema();
+
+/* Encima del título de la sesión, de qué asignatura es: icono y
+   nombre en su color. La esquina de la barra ya lo dice, pero el
+   alumno está mirando aquí cuando llega a la página, no a la esquina. */
+function pintarAsignaturaCabecera(asignatura) {
+  const caja = document.getElementById('tema-asignatura');
+  if (!caja) return;
+  caja.textContent = '';
+  if (typeof iconoDeAsignatura === 'function') {
+    const icono = document.createElement('span');
+    icono.className = 'tema-asignatura__icono';
+    icono.innerHTML = iconoDeAsignatura(asignatura.id);
+    caja.appendChild(icono);
+  }
+  const nombre = document.createElement('span');
+  nombre.textContent = asignatura.nombre;
+  caja.appendChild(nombre);
+  caja.hidden = false;
+  if (typeof retraducir === 'function') retraducir();
+}

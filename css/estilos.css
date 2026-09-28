@@ -2712,6 +2712,94 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 }
 .error404 .volver { justify-content: center; }
 
+/* ============================================================
+   Color de la asignatura abierta  (js/barra.js)
+   ============================================================
+   Los primeros días los alumnos no sabían si estaban en
+   Instalaciones, Operaciones o Proyecto: la ruta "~/proyecto" de la
+   esquina se leía poco. Ahora js/barra.js escribe en el <html>
+   data-color-asig con el MISMO índice que la tarjeta de la portada
+   (posición entre 3), y la página entera se tiñe de ese color en su
+   "marco": franja de arriba, marca, cabecera de la sesión y menú.
+
+   Solo en el marco, nunca dentro de la lección: dentro, cian,
+   magenta y lima ya significan actividad, aviso y pista.
+
+   Va en una variable propia (--color-activa) y no en --color-asig
+   porque esa la usan las tarjetas y la semana de la portada, cada una
+   con el suyo; si se declarara en el <html> se les colaría.
+   ============================================================ */
+
+:root[data-color-asig="0"] { --color-activa: var(--accent); }
+:root[data-color-asig="1"] { --color-activa: var(--accent-warm); }
+:root[data-color-asig="2"] { --color-activa: var(--accent-lima); }
+
+/* La franja: 4px de color macizo pegados arriba del todo. Es lo que
+   se ve con el rabillo del ojo sin leer nada. */
+:root[data-color-asig] .barra::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--color-activa);
+  pointer-events: none;
+}
+/* El filo de debajo deja de ser el degradado de tres colores y pasa a
+   ser el de la asignatura. */
+:root[data-color-asig] .barra::after {
+  background: var(--color-activa);
+  opacity: 1;
+}
+
+.barra__marca--asignatura {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1rem;
+  color: var(--color-activa, var(--accent-lima));
+  padding: 0.3rem 0.7rem 0.3rem 0.5rem;
+  border: 1px solid var(--color-activa, var(--border));
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--color-activa, transparent) 10%, transparent);
+}
+.barra__marca--asignatura:hover {
+  color: var(--color-activa, var(--accent));
+  background: color-mix(in srgb, var(--color-activa, transparent) 20%, transparent);
+}
+
+.barra__icono,
+.tema-asignatura__icono {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.barra__icono svg { width: 26px; height: 26px; stroke-width: 2; }
+.barra__nombre-corto { display: none; }
+
+/* La línea de asignatura encima del título de la sesión. */
+.card .tema-asignatura {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-activa, var(--accent));
+}
+.tema-asignatura[hidden] { display: none; }
+.tema-asignatura__icono svg { width: 22px; height: 22px; stroke-width: 2; }
+
+/* La cabecera del menú lateral, del mismo color, con filo a la izquierda. */
+:root[data-color-asig] .sidebar__asignatura-nombre {
+  color: var(--color-activa);
+  border-left: 3px solid var(--color-activa);
+  padding-left: 0.55rem;
+}
+
 @media (max-width: 1000px) {
   body { grid-template-columns: var(--ancho-menu) minmax(0, 1fr); }
   .indice { display: none; }
@@ -2886,4 +2974,11 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
     border-radius: 0;
   }
   .retomar { right: 0.8rem; bottom: 0.8rem; }
+
+  /* En el móvil no cabe "Instalación y mantenimiento de redes": se
+     enseña el id, pero con icono, color y recuadro sigue viéndose. */
+  .barra__marca--asignatura { font-size: 0.85rem; padding: 0.2rem 0.5rem 0.2rem 0.35rem; gap: 0.35rem; max-width: calc(100vw - 262px); }
+  .barra__marca--asignatura .barra__nombre { display: none; }
+  .barra__marca--asignatura .barra__nombre-corto { display: inline; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .barra__icono svg { width: 20px; height: 20px; }
 }
