@@ -47,6 +47,9 @@
   --code-attr: #ff0000;
   --code-string: #0451a5;
   --code-comment: #008000;
+  --code-keyword: #0000ff;   /* JS: palabras clave (let, if, for…) */
+  --code-function: #795e26;  /* JS: funciones y métodos */
+  --code-number: #098658;    /* JS: números */
   --code-inline: #a6ff4d;
   --code-borde: transparent;
   --ok: #5bf29b;
@@ -162,6 +165,9 @@
   --code-bg: #f8f9fb;
   --code-text: #1e1e1e;
   --code-borde: #d7dce2;
+  --code-keyword: #0000ff;
+  --code-function: #795e26;
+  --code-number: #098658;
   --code-inline: #116329;
 
   --ok: #157f3d;
@@ -1177,6 +1183,10 @@ footer.pie {
 .leccion pre .at { color: var(--code-attr); }
 .leccion pre .ca { color: var(--code-string); }
 .leccion pre .co { color: var(--code-comment); font-style: italic; }
+/* Resaltado de JavaScript (Proyecto, sesiones 12-17). No borrar: se usa en data/proyecto. */
+.leccion pre .kw { color: var(--code-keyword); }
+.leccion pre .fn { color: var(--code-function); }
+.leccion pre .nu { color: var(--code-number); }
 
 /* ---- Acento por tipo de bloque ----
    Cada cosa que interrumpe la lectura lleva su propio color, siempre

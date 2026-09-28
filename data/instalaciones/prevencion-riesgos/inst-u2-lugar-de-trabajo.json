@@ -1,14 +1,14 @@
 {
   "id": "inst-u2-lugar-de-trabajo",
-  "titulo": "Sesión 4 — Riesgos del lugar de trabajo",
+  "titulo": "Sesión 4 — Riesgos del lugar de trabajo y ambiente físico",
   "fecha": "",
-  "descripcion": "Caídas, golpes y objetos que se caen: los riesgos del propio taller, el orden como medida preventiva y cómo se usa bien una escalera para pasar cable por el falso techo.",
+  "descripcion": "Caídas, golpes y objetos que se caen, el orden como medida preventiva, cómo se usa bien una escalera y el ambiente físico del taller: luz, ruido y temperatura.",
   "materiales": [],
   "actividades": [
     {
       "id": "u2s4-verdadero-falso",
       "tipo": "quiz",
-      "titulo": "Verdadero o falso: el lugar de trabajo",
+      "titulo": "Verdadero o falso: el lugar de trabajo y el ambiente físico",
       "preguntas": [
         {
           "pregunta": "Si tengo que pasar cable por el falso techo y la escalera está ocupada, puedo subirme a una mesa con cuidado.",
@@ -47,6 +47,31 @@
         },
         {
           "pregunta": "Golpearse la cabeza con la puerta abierta del rack es un riesgo de caída de objetos.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para crimpar hace falta más luz que para cruzar un pasillo.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "El ruido se mide en decibelios con un luxómetro.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Con el taladro percutor solo hacen falta tapones si vas a usarlo más de una hora.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Un puesto de oficina a 20 °C cumple la norma de temperatura.",
+          "opciones": ["Verdadero", "Falso"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Donde hay riesgo de electricidad estática, conviene que el aire esté muy seco, con un 20 % de humedad.",
           "opciones": ["Verdadero", "Falso"],
           "correcta": 1
         }
