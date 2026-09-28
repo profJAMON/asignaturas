@@ -18,33 +18,44 @@
    la fecha junto a cada sesión en la barra lateral, en la propia sesión
    y en calendario.html?a=operaciones.
 
+   Cambio de enfoque (28/09/2026)
+   ------------------------------
+   Todo el curso hasta Semana Santa es teórico; HTML/CSS pasa al final
+   (desde el lunes 5 de abril de 2027). JavaScript, Python y Git salen
+   de la asignatura. Las unidades se han renumerado; los id de unidad
+   y de sesión NO cambian (romperían enlaces):
+     - el-ordenador-y-tus-archivos  → Unidad 1 (antes U0)
+     - fundamentos-internet         → Unidad 2
+     - publicacion-web              → Unidad 3. Servicios de Internet
+                                      (sin "Publicar de verdad", que pasa
+                                      a la unidad de HTML)
+     - html-css-practico            → Unidad 9 (antes U1). Sus sesiones
+                                      están ocultas en curso-operaciones.json
+                                      hasta abril, por eso aquí va con
+                                      "sesiones": [].
+   Unidades 4-8: aún no existen en la web; id y títulos provisionales.
+   La Unidad 8 (Redes) está PENDIENTE DE DECIDIR: los alumnos son los
+   mismos que los de 1r de Instalaciones y se solaparía. Si se quita,
+   sus horas pasan a Windows y Linux o quedan de margen.
+
    Cómo se ha calculado
    ---------------------
    - Horario 2026-27: lunes 2 h (15:00-16:50) + jueves 3 h (18:15-20:55).
    - Del 21/09/2026 al 18/06/2027 (en 1º no hay prácticas en empresa).
    - Sin clase: 12 y 13 oct, 1 nov, 7 y 8 dic, Navidad (23/12-06/01),
-     26 feb, 1 y 2 mar, Pascua (25/03-04/04), 1 may. Salen 68 días de
-     clase = 171 h (166 h antes de la semana de la 3ª evaluación).
+     26 feb, 1 y 2 mar, Pascua (25/03-04/04), 1 may.
    - Los exámenes son siempre en jueves, de 19:10 a 21:00 (2 h), así que
-     cada unidad con examen termina en jueves y ese día quedan ~1 h de
+     cada unidad con examen termina en jueves y ese día queda ~1 h de
      clase antes del examen (repaso de la unidad).
-   - Horas por unidad: presupuesto de 165 h de la revisión crítica del
-     curso (claude/revision-critica-curso.md), ajustado al jueves de
-     examen más cercano — por eso el campo "horas" de alguna unidad no
-     coincide exactamente con el presupuesto (p. ej. U1 42 h en vez de
-     40 h). Las 2 h de examen van dentro de las horas de la unidad.
-     "Antes de empezar" usa 1 h de las 6 h de la U0; la U0 no tiene examen.
+   - Teoría: 107 h del 01/10 al 18/03, con margen en Windows y Linux
+     (las unidades más prácticas). Evaluaciones: 1ª = Unidades 1-5
+     (examen de la U5 el 17/12); 2ª = Unidades 6-8 (examen de la U8 el
+     18/03, en la semana de evaluación). El lunes 22/03 queda libre.
+   - HTML/CSS: 45 h del 05/04 al 03/06; la semana del 07/06 queda para
+     recuperaciones, antes de la semana de la 3ª evaluación (14/06).
    - Dentro de una unidad las sesiones se reparten a partes iguales sobre
      las horas de clase (mismo método que Instalaciones). La fecha de una
      sesión es el día en que empieza. Los glosarios no llevan fecha.
-   - Las unidades 4 a 10 aún no existen en la web: sus id y títulos son
-     provisionales (sesiones: []). Revísalos cuando se creen.
-
-   Si falta tiempo
-   ---------------
-   El encaje es exacto (166 h de 166 h antes de la semana de la 3ª
-   evaluación). Decisión de Carles: si el curso se retrasa o se pierden
-   horas, lo que se recorta es la Unidad 10 (Python).
 
    Cómo actualizar
    ---------------
@@ -54,7 +65,7 @@
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-09-18",
+  "actualizado": "2026-09-28",
   "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son los jueves de 19:10 a 21:00. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {
@@ -71,7 +82,7 @@ const CALENDARIO_OPERACIONES =
     },
     {
       "id": "el-ordenador-y-tus-archivos",
-      "titulo": "Unidad 0. El ordenador y tus archivos",
+      "titulo": "Unidad 1. El ordenador y tus archivos",
       "horas": 5,
       "sesiones": [
         "sesion-1-teclado-explorador",
@@ -85,33 +96,9 @@ const CALENDARIO_OPERACIONES =
       }
     },
     {
-      "id": "html-css-practico",
-      "titulo": "UNIDAD 1. Introducción a HTML/CSS",
-      "horas": 42,
-      "sesiones": [
-        "sesion-1-primeros-pasos-html",
-        "sesion-2-texto-listas-enlaces",
-        "sesion-3-imagenes-estructura-semantica",
-        "sesion-4-introduccion-css",
-        "sesion-5-modelo-de-caja",
-        "sesion-5b-repaso-modelo-de-caja",
-        "sesion-6-tablas",
-        "sesion-7-flexbox",
-        "sesion-8-repaso-ejercicios-1",
-        "sesion-9-proyecto-pagina-personal-parte-1",
-        "sesion-10-proyecto-pagina-personal-parte-2",
-        "sesion-11-repaso-ejercicios-2"
-      ],
-      "fechas": {
-        "inicio": "2026-09-28",
-        "fin": "2026-11-26"
-      },
-      "examen": "2026-11-26"
-    },
-    {
       "id": "fundamentos-internet",
       "titulo": "Unidad 2. Fundamentos de Internet",
-      "horas": 13,
+      "horas": 16,
       "sesiones": [
         "sesion-1-cliente-servidor-ip-dns",
         "sesion-2-red-desde-la-terminal",
@@ -120,103 +107,91 @@ const CALENDARIO_OPERACIONES =
         "sesion-5-que-hace-falta-publicar"
       ],
       "fechas": {
+        "inicio": "2026-10-01",
+        "fin": "2026-10-22"
+      },
+      "examen": "2026-10-22"
+    },
+    {
+      "id": "publicacion-web",
+      "titulo": "Unidad 3. Servicios de Internet",
+      "horas": 15,
+      "sesiones": [
+        "sesion-2-blogs-wikis",
+        "sesion-3-redes-sociales-nube",
+        "sesion-4-gestores-contenidos-p2p"
+      ],
+      "fechas": {
+        "inicio": "2026-10-26",
+        "fin": "2026-11-12"
+      },
+      "examen": "2026-11-12"
+    },
+    {
+      "id": "navegador-servicios-internet",
+      "titulo": "Unidad 4. El navegador, buscadores y correo",
+      "horas": 10,
+      "sesiones": [],
+      "fechas": {
+        "inicio": "2026-11-16",
+        "fin": "2026-11-26"
+      },
+      "examen": "2026-11-26"
+    },
+    {
+      "id": "sistemas-operativos",
+      "titulo": "Unidad 5. Sistemas operativos: virtualización e instalación",
+      "horas": 13,
+      "sesiones": [],
+      "fechas": {
         "inicio": "2026-11-30",
         "fin": "2026-12-17"
       },
       "examen": "2026-12-17"
     },
     {
-      "id": "publicacion-web",
-      "titulo": "Unidad 3. Publicación en la web",
-      "horas": 15,
-      "sesiones": [
-        "sesion-1-publicar-de-verdad",
-        "sesion-2-blogs-wikis",
-        "sesion-3-redes-sociales-nube",
-        "sesion-4-gestores-contenidos-p2p"
-      ],
+      "id": "windows",
+      "titulo": "Unidad 6. Windows",
+      "horas": 20,
+      "sesiones": [],
       "fechas": {
         "inicio": "2026-12-21",
-        "fin": "2027-01-21"
+        "fin": "2027-01-28"
       },
-      "examen": "2027-01-21"
+      "examen": "2027-01-28"
     },
     {
-      "id": "navegador-servicios-internet",
-      "titulo": "Unidad 4. El navegador como usuario, buscadores, correo y mensajería",
-      "horas": 10,
+      "id": "linux",
+      "titulo": "Unidad 7. Linux",
+      "horas": 20,
       "sesiones": [],
       "fechas": {
-        "inicio": "2027-01-25",
-        "fin": "2027-02-04"
-      },
-      "examen": "2027-02-04"
-    },
-    {
-      "id": "sistemas-operativos",
-      "titulo": "Unidad 5. Sistemas operativos: virtualización e instalación",
-      "horas": 15,
-      "sesiones": [],
-      "fechas": {
-        "inicio": "2027-02-08",
+        "inicio": "2027-02-01",
         "fin": "2027-02-25"
       },
       "examen": "2027-02-25"
     },
     {
-      "id": "windows-linux",
-      "titulo": "Unidad 6. Windows y Linux: archivos, usuarios, permisos y terminal",
-      "horas": 25,
+      "id": "redes-recursos-compartidos",
+      "titulo": "Unidad 8. Redes",
+      "horas": 13,
       "sesiones": [],
       "fechas": {
         "inicio": "2027-03-04",
-        "fin": "2027-04-15"
+        "fin": "2027-03-18"
       },
-      "examen": "2027-04-15"
+      "examen": "2027-03-18"
     },
     {
-      "id": "redes-recursos-compartidos",
-      "titulo": "Unidad 7. Redes: compartir recursos y permisos",
-      "horas": 15,
+      "id": "html-css-practico",
+      "titulo": "Unidad 9. Crea y publica tu web: HTML y CSS",
+      "horas": 45,
       "sesiones": [],
       "fechas": {
-        "inicio": "2027-04-19",
-        "fin": "2027-05-06"
-      },
-      "examen": "2027-05-06"
-    },
-    {
-      "id": "git-github",
-      "titulo": "Unidad 8. Git y GitHub Pages",
-      "horas": 10,
-      "sesiones": [],
-      "fechas": {
-        "inicio": "2027-05-10",
-        "fin": "2027-05-20"
-      },
-      "examen": "2027-05-20"
-    },
-    {
-      "id": "javascript",
-      "titulo": "Unidad 9. JavaScript",
-      "horas": 10,
-      "sesiones": [],
-      "fechas": {
-        "inicio": "2027-05-24",
+        "inicio": "2027-04-05",
         "fin": "2027-06-03"
       },
       "examen": "2027-06-03"
-    },
-    {
-      "id": "python",
-      "titulo": "Unidad 10. Python",
-      "horas": 5,
-      "sesiones": [],
-      "fechas": {
-        "inicio": "2027-06-07",
-        "fin": "2027-06-10"
-      },
-      "examen": "2027-06-10"
     }
   ],
   "sesiones": {
@@ -245,110 +220,45 @@ const CALENDARIO_OPERACIONES =
       "unidad": "el-ordenador-y-tus-archivos",
       "fecha": "2026-09-24"
     },
-    "sesion-1-primeros-pasos-html": {
-      "titulo": "Sesión 1 — Primeros pasos en HTML",
-      "unidad": "html-css-practico",
-      "fecha": "2026-09-28"
-    },
-    "sesion-2-texto-listas-enlaces": {
-      "titulo": "Sesión 2 — Texto, listas y enlaces",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-01"
-    },
-    "sesion-3-imagenes-estructura-semantica": {
-      "titulo": "Sesión 3 — Imágenes y estructura semántica",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-08"
-    },
-    "sesion-4-introduccion-css": {
-      "titulo": "Sesión 4 — Introducción a CSS",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-15"
-    },
-    "sesion-5-modelo-de-caja": {
-      "titulo": "Sesión 5 — Modelo de caja",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-19"
-    },
-    "sesion-5b-repaso-modelo-de-caja": {
-      "titulo": "Sesión 5B — Repaso: modelo de caja",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-22"
-    },
-    "sesion-6-tablas": {
-      "titulo": "Sesión 6 — Tablas de datos",
-      "unidad": "html-css-practico",
-      "fecha": "2026-10-29"
-    },
-    "sesion-7-flexbox": {
-      "titulo": "Sesión 7 — Flexbox",
-      "unidad": "html-css-practico",
-      "fecha": "2026-11-02"
-    },
-    "sesion-8-repaso-ejercicios-1": {
-      "titulo": "Sesión 8 — Repaso general 1",
-      "unidad": "html-css-practico",
-      "fecha": "2026-11-05"
-    },
-    "sesion-9-proyecto-pagina-personal-parte-1": {
-      "titulo": "Sesión 9 — Proyecto: tu página personal (parte 1, el home)",
-      "unidad": "html-css-practico",
-      "fecha": "2026-11-12"
-    },
-    "sesion-10-proyecto-pagina-personal-parte-2": {
-      "titulo": "Sesión 10 — Proyecto: tu página personal (parte 2, resúmenes)",
-      "unidad": "html-css-practico",
-      "fecha": "2026-11-16"
-    },
-    "sesion-11-repaso-ejercicios-2": {
-      "titulo": "Sesión 11 — Repaso general 2",
-      "unidad": "html-css-practico",
-      "fecha": "2026-11-19"
-    },
     "sesion-1-cliente-servidor-ip-dns": {
       "titulo": "Sesión 1. Cliente-servidor, IP y DNS",
       "unidad": "fundamentos-internet",
-      "fecha": "2026-11-30"
+      "fecha": "2026-10-01"
     },
     "sesion-2-red-desde-la-terminal": {
       "titulo": "Sesión 2. La red desde la terminal",
       "unidad": "fundamentos-internet",
-      "fecha": "2026-12-03"
+      "fecha": "2026-10-05"
     },
     "sesion-3-navegador-devtools": {
       "titulo": "Sesión 3. El navegador y sus herramientas (DevTools)",
       "unidad": "fundamentos-internet",
-      "fecha": "2026-12-03"
+      "fecha": "2026-10-08"
     },
     "sesion-4-url-http-basico": {
       "titulo": "Sesión 4. Anatomía de una URL y HTTP básico",
       "unidad": "fundamentos-internet",
-      "fecha": "2026-12-10"
+      "fecha": "2026-10-15"
     },
     "sesion-5-que-hace-falta-publicar": {
       "titulo": "Sesión 5. Qué hace falta para publicar",
       "unidad": "fundamentos-internet",
-      "fecha": "2026-12-14"
-    },
-    "sesion-1-publicar-de-verdad": {
-      "titulo": "Sesión 1. Publicar de verdad",
-      "unidad": "publicacion-web",
-      "fecha": "2026-12-21"
+      "fecha": "2026-10-19"
     },
     "sesion-2-blogs-wikis": {
-      "titulo": "Sesión 2. Blogs, foros y wikis",
+      "titulo": "Sesión 1. Blogs, foros y wikis",
       "unidad": "publicacion-web",
-      "fecha": "2027-01-07"
+      "fecha": "2026-10-26"
     },
     "sesion-3-redes-sociales-nube": {
-      "titulo": "Sesión 3. Redes sociales, sindicación y la nube",
+      "titulo": "Sesión 2. Redes sociales, sindicación y la nube",
       "unidad": "publicacion-web",
-      "fecha": "2027-01-11"
+      "fecha": "2026-11-02"
     },
     "sesion-4-gestores-contenidos-p2p": {
-      "titulo": "Sesión 4. Gestores de contenidos y redes P2P",
+      "titulo": "Sesión 3. Gestores de contenidos y redes P2P",
       "unidad": "publicacion-web",
-      "fecha": "2027-01-14"
+      "fecha": "2026-11-09"
     }
   }
 }

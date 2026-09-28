@@ -10,8 +10,8 @@
     },
     {
       "id": "el-ordenador-y-tus-archivos",
-      "titulo": "Unidad 0. El ordenador y tus archivos",
-      "descripcion": "Lo básico antes de programar: el teclado, el explorador de archivos, las rutas, las descargas, las propiedades de un archivo, las unidades del equipo y las copias de seguridad.",
+      "titulo": "Unidad 1. El ordenador y tus archivos",
+      "descripcion": "Lo básico para manejarte con el ordenador: el teclado, el explorador de archivos, las rutas, las descargas, las propiedades de un archivo, las unidades del equipo y las copias de seguridad.",
       "sesiones": [
         "sesion-1-teclado-explorador",
         "sesion-2-rutas-descargas",
@@ -20,29 +20,9 @@
       ]
     },
     {
-      "id": "html-css-practico",
-      "titulo": "UNIDAD 1. Introducción a HTML/CSS",
-      "descripcion": "Etiquetas, estructura y estilos: construyes tu propia web personal desde la primera sesión.",
-      "sesiones": [
-        "sesion-1-primeros-pasos-html",
-        "sesion-2-texto-listas-enlaces",
-        "sesion-3-imagenes-estructura-semantica",
-        "sesion-4-introduccion-css",
-        "sesion-5-modelo-de-caja",
-        "sesion-5b-repaso-modelo-de-caja",
-        "sesion-6-tablas",
-        "sesion-7-flexbox",
-        "sesion-8-repaso-ejercicios-1",
-        "sesion-9-proyecto-pagina-personal-parte-1",
-        "sesion-10-proyecto-pagina-personal-parte-2",
-        "sesion-11-repaso-ejercicios-2",
-        "glosario"
-      ]
-    },
-    {
       "id": "fundamentos-internet",
       "titulo": "Unidad 2. Fundamentos de Internet",
-      "descripcion": "Cómo funciona la web por dentro: el router y las direcciones, la red desde la terminal, el navegador y los protocolos, antes de publicar tu propia página.",
+      "descripcion": "Cómo funciona Internet por dentro: el router y las direcciones, la red desde la terminal, el navegador y sus herramientas, las URL y el HTTP, y qué hace falta para publicar una web.",
       "sesiones": [
         "sesion-1-cliente-servidor-ip-dns",
         "sesion-2-red-desde-la-terminal",
@@ -54,10 +34,9 @@
     },
     {
       "id": "publicacion-web",
-      "titulo": "Unidad 3. Publicación en la web",
-      "descripcion": "Publicas tu web de verdad, y ves qué otros tipos de webs existen: blogs, wikis, redes sociales y computación en la nube.",
+      "titulo": "Unidad 3. Servicios de Internet",
+      "descripcion": "Qué otros tipos de webs y servicios existen: foros, blogs y wikis, redes sociales, la nube, los gestores de contenidos y las redes P2P.",
       "sesiones": [
-        "sesion-1-publicar-de-verdad",
         "sesion-2-blogs-wikis",
         "sesion-3-redes-sociales-nube",
         "sesion-4-gestores-contenidos-p2p",

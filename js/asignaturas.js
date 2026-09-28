@@ -21,7 +21,7 @@ const ASIGNATURAS = [
   {
     id: 'operaciones',
     nombre: 'Operaciones Básicas',
-    descripcion: 'Construyes tu propia web con HTML y CSS, y aprendes cómo funciona Internet por dentro.',
+    descripcion: 'Aprendes a manejar el ordenador, cómo funciona Internet por dentro y los sistemas operativos, y al final creas tu propia web con HTML y CSS.',
     curso: 'data/curso-operaciones.json',
     base: 'data/operaciones'
   },

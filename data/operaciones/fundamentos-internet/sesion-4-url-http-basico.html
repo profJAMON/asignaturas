@@ -144,12 +144,12 @@
 
 <p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo "esto no existe aquí"; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
 
-<div class="nota">🤔 Antes de seguir: si publicas tu web y mueves sin querer una imagen a otra carpeta sin actualizar el <code>&lt;img src="..."&gt;</code>, ¿qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrito tu HTML?</div>
-<details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que el HTML apunta a una ruta que ya no es correcta.</details>
+<div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrita la página?</div>
+<details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
 
 <h2>Actividades en el ordenador</h2>
 
-<div class="nota">Como en la sesión 3, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña Network. Puedes usar tu propia web personal o cualquier página real (por ejemplo, la del propio instituto).</div>
+<div class="nota">Como en la sesión 3, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña Network. Puedes usar mi web de materiales (esta misma) o cualquier página real (por ejemplo, la del propio instituto).</div>
 
 <h3>Actividad 1 — Descompón una URL real</h3>
 <ol>
@@ -181,7 +181,7 @@
 <h2>Preguntas</h2>
 
 <div class="nota">
-Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, sube tú mismo las respuestas correctas a tu web personal.
+Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, corrige tú mismo en el cuaderno las que tengas mal: así te servirán para estudiar.
 </div>
 
 <h3>Anatomía de una URL</h3>
@@ -199,7 +199,7 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
 <li>¿Qué diferencia hay entre <code>http://</code> y <code>https://</code>?</li>
 <li>En la URL <code>https://blog.iesramonllull.net/2026/proyectos?autor=ana&amp;orden=reciente</code>, indica cuántos parámetros hay y cuál es la clave y el valor de cada uno.</li>
 <li>(V/F) Una misma ruta siempre corresponde exactamente a un único archivo físico guardado en el servidor.</li>
-<li>Busca en tu propia web personal (o en la de un compañero) una URL con al menos una barra <code>/</code> después del dominio, y explica qué ruta está pidiendo.</li>
+<li>Busca en mi web de materiales una URL con al menos una barra <code>/</code> después del dominio, y explica qué ruta está pidiendo.</li>
 </ol>
 
 <h3>Petición y respuesta HTTP</h3>
@@ -214,7 +214,7 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
   </ul>
 </li>
 <li>(V/F) El método POST se usa normalmente para pedir una página, y el método GET para enviar datos a un formulario.</li>
-<li>¿Por qué este curso, aunque se explique que existe POST, no vais a usarlo en vuestra web personal?</li>
+<li>Pon un ejemplo de algo que haces en Internet que usaría GET y otro que usaría POST, y explica por qué.</li>
 <li>Describe, paso a paso, qué ocurre desde que escribes una URL completa hasta que ves la página en pantalla, usando los términos "petición", "método", "respuesta" y "código de estado".</li>
 <li>Abre la pestaña Network en una página cualquiera y anota el método que aparece en la fila del documento principal.</li>
 </ol>
@@ -231,7 +231,7 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
     <li>c) 404</li>
   </ul>
 </li>
-<li>Si en tu web personal un enlace interno apunta a un archivo que borraste por error, ¿qué código de estado esperarías ver al hacer clic en ese enlace?</li>
+<li>Si en una web un enlace apunta a un archivo que se ha borrado por error, ¿qué código de estado esperarías ver al hacer clic en ese enlace?</li>
 <li>Busca qué significa el código de estado 403 y en qué se diferencia de un 404.</li>
 <li>(V/F) Un código de estado que empieza por 2 (como 200) siempre indica que algo ha ido bien.</li>
 </ol>
