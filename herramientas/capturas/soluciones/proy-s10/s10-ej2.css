@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #14213d;
+    padding: 5px 20px;
+}
+
+.logo {
+    color: #fca311;
+    font-size: 28px;
+}
+
+.boton {
+    background-color: #fca311;
+    color: #14213d;
+    padding: 10px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: white;
+}

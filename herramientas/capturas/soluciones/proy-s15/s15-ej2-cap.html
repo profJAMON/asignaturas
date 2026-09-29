@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h1>Adivina el número</h1>
+    <p>He pensado un número del 1 al 10.</p>
+    <form>
+        <label for="numero">Tu número:</label>
+        <input type="number" id="numero">
+        <button type="button" id="boton-probar">Probar</button>
+    </form>
+    <p id="pista"></p>
+
+    <script src="s15-ej2.js"></script>
+    <script>
+document.querySelector("#numero").value = "7";
+document.querySelector("#boton-probar").click();
+    </script>
+</body>
+</html>

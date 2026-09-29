@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Parque acuático</title>
+</head>
+<body>
+    <h1>Parque acuático Ola Loca</h1>
+    <p>Cada entrada cuesta 8 euros.</p>
+    <form>
+        <p>
+            <label for="alias">Tu alias:</label>
+            <input type="text" id="alias">
+        </p>
+        <p>
+            <label for="dia">Día:</label>
+            <select id="dia">
+                <option>sábado</option>
+                <option>domingo</option>
+            </select>
+        </p>
+        <p>
+            <label for="entradas">Entradas:</label>
+            <input type="number" id="entradas">
+        </p>
+        <button type="button" id="boton-calcular">Calcular</button>
+    </form>
+    <p id="resultado"></p>
+
+    <script src="s14-ej5.js"></script>
+    <script>
+document.querySelector("#alias").value = "PixelRojo";
+document.querySelector("#dia").value = "domingo";
+document.querySelector("#entradas").value = "3";
+document.querySelector("#boton-calcular").click();
+    </script>
+</body>
+</html>
