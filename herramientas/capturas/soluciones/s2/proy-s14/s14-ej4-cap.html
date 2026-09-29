@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+    <h1>Pizzería Píxel</h1>
+    <form>
+        <p>
+            <label for="pizza">Pizza:</label>
+            <select id="pizza">
+                <option>Margarita</option>
+                <option>Barbacoa</option>
+                <option>Cuatro quesos</option>
+            </select>
+        </p>
+        <p>
+            <label for="tamano">Tamaño:</label>
+            <select id="tamano">
+                <option>pequeña</option>
+                <option>mediana</option>
+                <option>grande</option>
+            </select>
+        </p>
+        <button type="button" id="boton-pedir">Pedir</button>
+    </form>
+    <p id="pedido"></p>
+
+    <script src="s14-ej4.js"></script>
+    <script>
+document.querySelector("#pizza").value = "Barbacoa";
+document.querySelector("#tamano").value = "grande";
+document.querySelector("#boton-pedir").click();
+    </script>
+</body>
+</html>
