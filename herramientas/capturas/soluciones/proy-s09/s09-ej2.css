@@ -1,0 +1,16 @@
+body {
+    font-family: Georgia, serif;
+}
+
+.tarjeta {
+    background-color: lightyellow;
+    width: 300px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 3px solid #4361ee;
+    border-radius: 15px;
+}
+
+h2 {
+    color: #4361ee;
+}
