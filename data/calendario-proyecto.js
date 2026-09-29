@@ -26,15 +26,19 @@
      caen Navidad (24 y 31 dic) y Pascua (25 mar y 1 abr); Pascua ya
      queda fuera porque el módulo termina antes.
    - Sesiones: las 21 de curso-proyecto.json (s01 a s21).
-   - Pruebas: una, la prueba individual. Dura 2 h y NO sale de ninguna
-     sesión: ocupa un jueves entero para ella sola, el siguiente a la
-     sesión 19, y desde ahí todo se corre una semana. Va como "examen"
-     del Bloque 4 con su propio rótulo ("examenTitulo").
+   - Pruebas: una, la prueba individual. Es la primera hora de la
+     sesión 19 (la segunda hora se prepara la presentación), así que
+     NO ocupa un jueves aparte. Va como "examen" del Bloque 4 con su
+     propio rótulo ("examenTitulo"). Corregido el 29/09/2026: antes
+     ocupaba un jueves entero y la sesión 21 caía el 04/03/2027,
+     después del final de 2º (prácticas).
    - Las presentaciones (sesión 20) son una sesión normal.
    - "horas" de cada bloque = 2 h por sesión (la prueba no se cuenta).
    - Resultado: s01-s13 antes de Navidad (encaja con la sesión 14,
-     "repaso después de Navidad"), prueba el 18/02 y última sesión
-     (s21, cierre) el 04/03/2027.
+     "repaso después de Navidad"), prueba el 11/02 y última sesión
+     (s21, cierre) el 25/02/2027.
+   - 29/09/2026: sesiones reorganizadas en ejercicios individuales +
+     talleres en pareja (s03-s06 y s17 con ids nuevos).
 
    Cómo actualizar
    ---------------
@@ -44,8 +48,8 @@
    ============================================================ */
 const CALENDARIO_PROYECTO = 
 {
-  "actualizado": "2026-09-24",
-  "nota": "Una sesión por semana, los jueves de 15:55 a 17:45, con el calendario escolar 2026-2027. La prueba individual ocupa un jueves entero y no cuenta como sesión. Las fechas son previstas: sirven para saber si vas bien de tiempo, no como fecha exacta.",
+  "actualizado": "2026-09-29",
+  "nota": "Una sesión por semana, los jueves de 15:55 a 17:45, con el calendario escolar 2026-2027. La prueba individual es la primera hora de la sesión 19. Las fechas son previstas: sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {
       "id": "proy-antes-de-empezar",
@@ -76,10 +80,10 @@ const CALENDARIO_PROYECTO =
       "titulo": "Bloque 1. HTML",
       "horas": 10,
       "sesiones": [
-        "proy-s03-imagenes",
-        "proy-s04-enlaces-menu",
-        "proy-s05-listas-tablas",
-        "proy-s06-formularios",
+        "proy-s03-listas-imagenes",
+        "proy-s04-enlaces-tablas",
+        "proy-s05-formularios",
+        "proy-s06-taller-html",
         "proy-s07-publicar"
       ],
       "fechas": {
@@ -112,7 +116,7 @@ const CALENDARIO_PROYECTO =
         "proy-s14-leer-formulario",
         "proy-s15-if-else",
         "proy-s16-classlist",
-        "proy-s17-bucles"
+        "proy-s17-taller-js"
       ],
       "fechas": {
         "inicio": "2026-12-10",
@@ -131,9 +135,9 @@ const CALENDARIO_PROYECTO =
       ],
       "fechas": {
         "inicio": "2027-02-04",
-        "fin": "2027-03-04"
+        "fin": "2027-02-25"
       },
-      "examen": "2027-02-18",
+      "examen": "2027-02-11",
       "examenTitulo": "Prueba individual"
     }
   ],
@@ -149,32 +153,32 @@ const CALENDARIO_PROYECTO =
       "fecha": "2026-09-24"
     },
     "proy-s02-github-textos": {
-      "titulo": "Sesión 2 — Títulos, párrafos y copia de seguridad en GitHub",
+      "titulo": "Sesión 2 — VS Code, textos y GitHub",
       "unidad": "proy-arranque",
       "fecha": "2026-10-01"
     },
-    "proy-s03-imagenes": {
-      "titulo": "Sesión 3 — Imágenes",
+    "proy-s03-listas-imagenes": {
+      "titulo": "Sesión 3 — Listas e imágenes",
       "unidad": "proy-html",
       "fecha": "2026-10-08"
     },
-    "proy-s04-enlaces-menu": {
-      "titulo": "Sesión 4 — Enlaces, páginas y menú",
+    "proy-s04-enlaces-tablas": {
+      "titulo": "Sesión 4 — Enlaces, menú y tablas",
       "unidad": "proy-html",
       "fecha": "2026-10-15"
     },
-    "proy-s05-listas-tablas": {
-      "titulo": "Sesión 5 — Listas y tablas",
+    "proy-s05-formularios": {
+      "titulo": "Sesión 5 — Formularios y repaso de HTML",
       "unidad": "proy-html",
       "fecha": "2026-10-22"
     },
-    "proy-s06-formularios": {
-      "titulo": "Sesión 6 — Formularios",
+    "proy-s06-taller-html": {
+      "titulo": "Sesión 6 — Taller: montamos la web",
       "unidad": "proy-html",
       "fecha": "2026-10-29"
     },
     "proy-s07-publicar": {
-      "titulo": "Sesión 7 — La web publicada y repaso de HTML",
+      "titulo": "Sesión 7 — Taller: la web publicada",
       "unidad": "proy-html",
       "fecha": "2026-11-05"
     },
@@ -184,7 +188,7 @@ const CALENDARIO_PROYECTO =
       "fecha": "2026-11-12"
     },
     "proy-s09-caja": {
-      "titulo": "Sesión 9 — El modelo de caja",
+      "titulo": "Sesión 9 — Cajas y hover",
       "unidad": "proy-css",
       "fecha": "2026-11-19"
     },
@@ -194,7 +198,7 @@ const CALENDARIO_PROYECTO =
       "fecha": "2026-11-26"
     },
     "proy-s11-revision-1": {
-      "titulo": "Sesión 11 — Primera revisión de retos",
+      "titulo": "Sesión 11 — Taller de CSS y primera revisión",
       "unidad": "proy-css",
       "fecha": "2026-12-03"
     },
@@ -223,13 +227,13 @@ const CALENDARIO_PROYECTO =
       "unidad": "proy-javascript",
       "fecha": "2027-01-21"
     },
-    "proy-s17-bucles": {
-      "titulo": "Sesión 17 — Repetir con bucles",
+    "proy-s17-taller-js": {
+      "titulo": "Sesión 17 — Taller de JavaScript",
       "unidad": "proy-javascript",
       "fecha": "2027-01-28"
     },
     "proy-s18-revision-final": {
-      "titulo": "Sesión 18 — Revisión final de retos",
+      "titulo": "Sesión 18 — Taller final y revisión de la web",
       "unidad": "proy-cierre",
       "fecha": "2027-02-04"
     },
@@ -241,12 +245,12 @@ const CALENDARIO_PROYECTO =
     "proy-s20-presentaciones": {
       "titulo": "Sesión 20 — Presentaciones",
       "unidad": "proy-cierre",
-      "fecha": "2027-02-25"
+      "fecha": "2027-02-18"
     },
     "proy-s21-cierre": {
       "titulo": "Sesión 21 — Cierre del curso",
       "unidad": "proy-cierre",
-      "fecha": "2027-03-04"
+      "fecha": "2027-02-25"
     }
   }
 }

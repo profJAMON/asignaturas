@@ -11,7 +11,7 @@
     {
       "id": "proy-arranque",
       "titulo": "Bloque 0. Arranque",
-      "descripcion": "Elegir tema y pareja, preparar la carpeta del proyecto, crear la cuenta de GitHub y escribir la portada.",
+      "descripcion": "Cómo son las sesiones de ejercicios y de taller, la carpeta del proyecto, GitHub de la pareja, VS Code y los primeros textos.",
       "sesiones": [
         "proy-s01-arranque",
         "proy-s02-github-textos"
@@ -20,19 +20,19 @@
     {
       "id": "proy-html",
       "titulo": "Bloque 1. HTML",
-      "descripcion": "El contenido de la web: imágenes, enlaces y menú, listas, tablas y formularios. Y la web publicada en Internet.",
+      "descripcion": "Ejercicios de listas, imágenes, enlaces, tablas y formularios. Después, taller: montáis vuestra web y la publicáis en Internet.",
       "sesiones": [
-        "proy-s03-imagenes",
-        "proy-s04-enlaces-menu",
-        "proy-s05-listas-tablas",
-        "proy-s06-formularios",
+        "proy-s03-listas-imagenes",
+        "proy-s04-enlaces-tablas",
+        "proy-s05-formularios",
+        "proy-s06-taller-html",
         "proy-s07-publicar"
       ]
     },
     {
       "id": "proy-css",
       "titulo": "Bloque 2. CSS",
-      "descripcion": "El aspecto de la web: colores, tipos de letra, cajas y Flexbox. Termina con la primera revisión de retos.",
+      "descripcion": "Ejercicios de colores, tipos de letra, cajas, hover y Flexbox. Después, taller: le dais estilo a vuestra web y primera revisión.",
       "sesiones": [
         "proy-s08-css",
         "proy-s09-caja",
@@ -43,20 +43,20 @@
     {
       "id": "proy-javascript",
       "titulo": "Bloque 3. JavaScript",
-      "descripcion": "Que la web haga cosas: variables, botones, leer formularios, decisiones con if, cambiar el aspecto y bucles.",
+      "descripcion": "Ejercicios de variables, botones, leer formularios, decisiones con if y cambiar el aspecto. Después, taller: vuestra web hace cosas.",
       "sesiones": [
         "proy-s12-js-variables",
         "proy-s13-botones",
         "proy-s14-leer-formulario",
         "proy-s15-if-else",
         "proy-s16-classlist",
-        "proy-s17-bucles"
+        "proy-s17-taller-js"
       ]
     },
     {
       "id": "proy-cierre",
       "titulo": "Bloque 4. Cierre",
-      "descripcion": "Revisión final de retos, prueba individual, presentaciones y cierre del curso.",
+      "descripcion": "Revisión final de la web, prueba individual, presentaciones y cierre del curso.",
       "sesiones": [
         "proy-s18-revision-final",
         "proy-s19-prueba",
