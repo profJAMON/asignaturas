@@ -2,7 +2,7 @@
   "id": "proy-s13-botones",
   "titulo": "Sesión 13 — Botones que hacen cosas",
   "fecha": "",
-  "descripcion": "La receta de tres pasos: buscar con querySelector, esperar al clic con addEventListener y cambiar textos con textContent. El error más común.",
+  "descripcion": "Ejercicios individuales: buscar elementos con querySelector, cambiar textos con textContent, esperar al clic con addEventListener (la receta de tres pasos) y el error más común. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

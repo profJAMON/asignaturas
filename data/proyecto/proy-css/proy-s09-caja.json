@@ -1,13 +1,18 @@
 {
   "id": "proy-s09-caja",
-  "titulo": "Sesión 9 — El modelo de caja",
+  "titulo": "Sesión 9 — Cajas y hover",
   "fecha": "",
-  "descripcion": "Contenido, padding, border y margin, tarjetas con div y clase, centrar el contenido con margin auto y bordes para las tablas.",
+  "descripcion": "Ejercicios individuales: padding, border, border-radius, margin y width, tarjetas con div y clase, centrar una caja con margin auto, :hover en botones y tarjetas, y bordes para las tablas. Truco de VS Code: .tarjeta + Tab. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",
       "titulo": "MDN: El modelo de caja",
       "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: :hover",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
     }
   ],
   "actividades": [
@@ -16,7 +21,7 @@
       "titulo": "Autoevaluación rápida",
       "preguntas": [
         {
-          "pregunta": "¿Qué capa separa el contenido de su borde?",
+          "pregunta": "¿Qué capa separa el texto de su borde?",
           "opciones": [
             "margin",
             "padding",
@@ -36,20 +41,20 @@
         {
           "pregunta": "¿Qué falta en border: 2px red; para que se vea el borde?",
           "opciones": [
-            "El estilo, como solid",
+            "El tipo de línea, como solid",
             "Un color más",
             "Nada, ya se ve"
           ],
           "correcta": 0
         },
         {
-          "pregunta": "¿Qué hace margin: 0 auto; en una caja con max-width?",
+          "pregunta": "¿Cuándo se aplica la regla .boton:hover?",
           "opciones": [
-            "La centra en horizontal",
-            "Le quita el borde",
-            "La pone en fila"
+            "Siempre",
+            "Mientras el ratón está encima del botón",
+            "Al hacer clic dos veces"
           ],
-          "correcta": 0
+          "correcta": 1
         }
       ]
     }

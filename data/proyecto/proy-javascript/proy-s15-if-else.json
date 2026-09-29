@@ -2,7 +2,7 @@
   "id": "proy-s15-if-else",
   "titulo": "Sesión 15 — Tomar decisiones con if",
   "fecha": "",
-  "descripcion": "if, else y else if, comparar con ===, >, <, comprobar cajas vacías y contar aciertos en un mini test.",
+  "descripcion": "Ejercicios individuales: tomar decisiones con if, else y else if, comparar con ===, >, <, >= y <=, una calculadora con resultado distinto y un mini test que cuenta aciertos. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",
@@ -43,11 +43,11 @@
           "correcta": 1
         },
         {
-          "pregunta": "¿Cómo compruebas que una caja está vacía?",
+          "pregunta": "¿Qué hace aciertos = aciertos + 1?",
           "opciones": [
-            "alias === \"\"",
-            "alias === 0",
-            "alias === null"
+            "Suma 1 a lo que valía aciertos y lo guarda",
+            "Compara aciertos con 1",
+            "Pone aciertos a 1"
           ],
           "correcta": 0
         }

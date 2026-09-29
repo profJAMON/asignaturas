@@ -1,0 +1,103 @@
+<div class="nota">Hoy es <strong>taller</strong>: montáis <strong>vuestra web, en pareja</strong>, con todo lo que habéis practicado en los ejercicios de las sesiones 2 a 5. Seguís el mismo plan la semana que viene, en la sesión 7.</div>
+
+<h2>Cómo se trabaja en el taller</h2>
+<ul>
+<li><strong>La web se toca en un solo ordenador</strong>: el que tiene la carpeta de la web. Si escribís los dos en ordenadores distintos, un trabajo pisa al otro.</li>
+<li>En ese ordenador, <strong>uno escribe</strong> y el otro dicta, revisa y busca errores. <strong>Os turnáis cada 20-30 minutos</strong>: yo aviso cuándo toca cambiar.</li>
+<li>El otro ordenador sirve para <strong>buscar imágenes e información</strong> y para <strong>mirar vuestros ejercicios</strong> cuando no os acordéis de algo. En él no se escribe código de la web.</li>
+<li>Al acabar, sube a GitHub <strong>solo quien le toca</strong> esta semana.</li>
+</ul>
+<div class="nota">💡 Si os atascáis con algo, abrid el ejercicio donde lo practicasteis: está en vuestra carpeta de ejercicios, y la sesión está enlazada en cada punto de la lista.</div>
+
+<h2>Antes de empezar: la carpeta buena</h2>
+<ol>
+<li>Abrid la carpeta de la web en VS Code (<strong>File</strong> → <strong>Open Folder…</strong> → <strong>Documentos</strong> → vuestra carpeta).</li>
+<li>Comprobad que está el <code>index.html</code> de la sesión 1 y la carpeta <code>img</code>.</li>
+<li>Si el ordenador ha perdido la carpeta, descargadla de GitHub (<strong>Code</strong> → <strong>Download ZIP</strong>), como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
+<li>Sacad la <strong>ficha en papel</strong> de la sesión 1: ahí tenéis el tema, los alias y las 3 páginas. Si no la tenéis, pedídmela.</li>
+</ol>
+
+<h2>Cómo será vuestra carpeta</h2>
+<p>Así queda la de Pixel Kart al acabar el taller. La vuestra, igual, con los nombres de vuestras páginas:</p>
+<pre><code>pixel-kart/
+├── index.html        ← Inicio (portada)
+├── personajes.html   ← página 2 de la ficha
+├── circuitos.html    ← página 3 de la ficha
+├── sobre.html        ← "Sobre esta web"
+└── img/
+    ├── logo.png
+    ├── turbo-rex.jpg
+    └── volcan.jpg</code></pre>
+<p>Y así, el menú de todas las páginas:</p>
+<pre><code><span class='et'>&lt;header&gt;</span>
+    <span class='et'>&lt;nav&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"index.html"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"personajes.html"</span><span class='et'>&gt;</span>Personajes<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"sobre.html"</span><span class='et'>&gt;</span>Sobre esta web<span class='et'>&lt;/a&gt;</span>
+    <span class='et'>&lt;/nav&gt;</span>
+<span class='et'>&lt;/header&gt;</span></code></pre>
+<div class="salida"><p><a href="#" onclick="return false">Inicio</a> <a href="#" onclick="return false">Personajes</a> <a href="#" onclick="return false">Circuitos</a> <a href="#" onclick="return false">Sobre esta web</a></p></div>
+
+<h2>El plan, paso a paso</h2>
+<p>Id en este orden. Cada paso dice dónde lo practicasteis.</p>
+<h3>1. El esqueleto: páginas y menú</h3>
+<ul class="checklist">
+<li>En <code>index.html</code>: el menú en <code>&lt;header&gt;</code> y <code>&lt;nav&gt;</code>, y el contenido en <code>&lt;main&gt;</code>. <a href="tema.html?id=proy-s04-enlaces-tablas">Sesión 4, ejercicio 2</a>.</li>
+<li>Duplicad <code>index.html</code> para crear las otras 2 páginas de la ficha y <code>sobre.html</code>. Cambiad en cada una el <code>&lt;title&gt;</code>, el <code>&lt;h1&gt;</code> y el <code>&lt;main&gt;</code>.</li>
+<li>Comprobad con Live Server que desde cada página se llega a todas las demás.</li>
+</ul>
+<h3>2. Los textos</h3>
+<ul class="checklist">
+<li>Cada página tiene su <code>&lt;h1&gt;</code>, apartados <code>&lt;h2&gt;</code> y párrafos escritos por vosotros. <a href="tema.html?id=proy-s02-github-textos">Sesión 2</a>.</li>
+<li>Alguna palabra en <code>&lt;strong&gt;</code> y alguna en <code>&lt;em&gt;</code>.</li>
+<li>Un comentario encima de cada <code>&lt;h2&gt;</code>.</li>
+</ul>
+<h3>3. Las imágenes</h3>
+<ul class="checklist">
+<li>Al menos <strong>3 imágenes</strong> de vuestro tema, de Pixabay, Unsplash o dibujadas por vosotros. <a href="tema.html?id=proy-s03-listas-imagenes">Sesión 3</a>.</li>
+<li>Guardadas en <code>img</code>, con nombres en minúsculas, sin espacios ni tildes.</li>
+<li>Todas con un <code>alt</code> que describe lo que se ve.</li>
+</ul>
+<h3>4. Lista, tabla y enlaces</h3>
+<ul class="checklist">
+<li>Al menos una <strong>lista</strong> (<code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>) con 4 elementos o más. <a href="tema.html?id=proy-s03-listas-imagenes">Sesión 3</a>.</li>
+<li>Al menos una <strong>tabla</strong> con encabezado y 4 filas de datos o más, de 3 columnas como mínimo. <a href="tema.html?id=proy-s04-enlaces-tablas">Sesión 4, ejercicio 3</a>.</li>
+<li>Al menos un enlace a otra web de vuestro tema, que se abre en una pestaña nueva. <a href="tema.html?id=proy-s04-enlaces-tablas">Sesión 4, ejercicio 1</a>.</li>
+</ul>
+<h3>5. El formulario</h3>
+<ul class="checklist">
+<li>Un <code>&lt;form&gt;</code> en la página que tenga más sentido, con al menos 2 cajas de tipos distintos y un <code>&lt;select&gt;</code>, cada uno con su <code>&lt;label&gt;</code>. <a href="tema.html?id=proy-s05-formularios">Sesión 5</a>.</li>
+<li>Todos los <code>id</code> distintos y con nombres que dicen qué son.</li>
+<li>Un <code>&lt;button type="button"&gt;</code>.</li>
+<li>Encima, un comentario que diga qué hará cuando funcione. Por ejemplo: <code>&lt;!-- Cuando funcione: dirá qué piloto te va mejor --&gt;</code>. Lo haréis funcionar con JavaScript.</li>
+</ul>
+<details><summary>Pista: no se nos ocurre para qué usar el formulario</summary>
+<p>Música: elige tu estado de ánimo y te recomiendo una canción. Recetas: escribe cuántas personas sois y te calculo los ingredientes. Deporte: escribe los goles de cada equipo y te digo quién gana. Videojuegos: responde 3 preguntas y te digo qué personaje eres.</p>
+</details>
+<h3>6. Sobre esta web</h3>
+<ul class="checklist">
+<li>En <code>sobre.html</code>: vuestros <strong>alias</strong> y una lista con la <strong>dirección</strong> de donde habéis sacado cada imagen.</li>
+<li>Lo que habéis aprendido lo añadiréis al final del curso.</li>
+</ul>
+<div class="nota">⚠️ La web se publicará en Internet: <strong>nada de datos personales</strong>. Ni nombres reales, ni fotos vuestras, ni del instituto, ni teléfonos, ni direcciones. En los formularios, tampoco se piden.</div>
+
+<h2>Si algo falla</h2>
+<table>
+<thead><tr><th>Lo que pasa</th><th>Qué mirar</th></tr></thead>
+<tbody>
+<tr><td>Un enlace del menú da "Cannot GET"</td><td>El <code>href</code> y el nombre del archivo no coinciden letra a letra, o el archivo no está guardado.</td></tr>
+<tr><td>El menú es distinto en una página</td><td>Copiad el <code>&lt;header&gt;</code> entero de la página buena y pegadlo encima del malo.</td></tr>
+<tr><td>Sale el texto del <code>alt</code> en lugar de la imagen</td><td>La ruta: <code>img/</code> + el nombre exacto, con su extensión.</td></tr>
+<tr><td>La tabla está descuadrada</td><td>Alguna fila tiene menos celdas que las demás.</td></tr>
+<tr><td>El código está desordenado</td><td><strong>Mayús + Alt + F</strong>.</td></tr>
+</tbody>
+</table>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Todo guardado en VS Code.</li>
+<li>Sube a GitHub <strong>quien le toca</strong> esta semana: <strong>todo</strong> lo que hay dentro de la carpeta de la web, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>. Mensaje: <code>Sesión 6: taller de HTML</code>.</li>
+<li>Comprobad en GitHub que están todas las páginas y la carpeta <code>img</code> con las imágenes.</li>
+<li>Apuntad en la ficha por qué paso del plan vais. La semana que viene seguís desde ahí.</li>
+</ul>

@@ -1,111 +1,163 @@
-<h2>Repaso: lo que ya sabías antes de Navidad</h2>
-<p>Después de las vacaciones, es normal no acordarse de nada. Dedicad la primera media hora a este repaso <strong>sin mirar las sesiones anteriores</strong>, y solo después comprobad las respuestas.</p>
-<details><summary>1. ¿Dónde se pone el &lt;script&gt; y por qué?</summary>
-<p>Justo antes de cerrar el <code>&lt;body&gt;</code>, para que el HTML ya exista cuando el JavaScript lo busque.</p>
+<div class="nota">Hoy: primero, <strong>20-30 minutos de repaso</strong> de lo que viste antes de Navidad (ejercicios 1 y 2). Después, aprendes a <strong>leer lo que escribe el usuario</strong> en un formulario. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
+
+<h2>Repaso: lo que ya sabías</h2>
+<p>Después de las vacaciones es normal no acordarse de casi nada. Aquí tienes lo más importante. Si algo no lo recuerdas, vuelve a la <a href="tema.html?id=proy-s12-js-variables">sesión 12</a> o a la <a href="tema.html?id=proy-s13-botones">sesión 13</a>.</p>
+<table>
+<thead><tr><th>Escribes</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;script src="s14-ej1.js"&gt;&lt;/script&gt;</code></td><td>Conecta el <code>.js</code>. Va justo antes de <code>&lt;/body&gt;</code>.</td></tr>
+<tr><td><code>console.log("Hola");</code></td><td>Escribe en la consola (<strong>F12</strong> → Console).</td></tr>
+<tr><td><code>let goles = 3;</code></td><td>Crea una variable. Número sin comillas; texto con comillas.</td></tr>
+<tr><td><code>document.querySelector("#saludo")</code></td><td>Busca el elemento con <code>id="saludo"</code>.</td></tr>
+<tr><td><code>saludo.textContent = "Hola";</code></td><td>Cambia el texto de dentro del elemento.</td></tr>
+<tr><td><code>boton.addEventListener("click", function () { … });</code></td><td>Lo de dentro de las llaves se ejecuta cada vez que se pulsa.</td></tr>
+</tbody>
+</table>
+
+<h3>Ejercicio 1 — Repaso: los goles de Los Rayos</h3>
+<p>Crea <code>s14-ej1.html</code> y <code>s14-ej1.js</code>. Los Rayos marcaron 2 goles en la ida y 3 en la vuelta. Calcula el total con variables y escríbelo en la consola.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" alt="Página Los Rayos. En la consola salen dos líneas: 5 en azul (1) y la frase Los Rayos han marcado 5 goles. (2). Notas: 3, en el js hay 4 variables, equipo, golesIda, golesVuelta y total, que se calcula con las otras; 4, hay 2 comentarios." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El total, que sale en azul porque es un número.</li>
+<li>② Una frase que junta textos y variables, con los espacios bien puestos.</li>
+<li>③ Cuatro variables; <code>total</code> se calcula con las dos de goles.</li>
+<li>④ Dos comentarios.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Si el total sale <code>23</code> en lugar de <code>5</code>, has puesto los goles entre comillas: son textos y el <code>+</code> los junta.</p>
 </details>
-<details><summary>2. ¿Qué diferencia hay entre let edad = 15; y let edad = "15";?</summary>
-<p>La primera guarda un número (se puede calcular con él). La segunda guarda un texto.</p>
+<p>Si lo has hecho bien: la consola no tiene errores en rojo y el 5 sale en azul.</p>
+
+<h3>Ejercicio 2 — Repaso: adivinanza</h3>
+<p>Crea <code>s14-ej2.html</code> y <code>s14-ej2.js</code>. Al pulsar el botón, aparece la solución y cambia el texto del botón.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2-antes.webp" alt="Antes de pulsar: página Adivinanza con el texto Tengo agujas y no sé coser. ¿Qué soy? y el botón Ver la solución (1). Nota 2: debajo del botón hay un párrafo con id solucion vacío." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2-despues.webp" alt="Después de pulsar: aparece Un reloj. (3) y el botón dice Ya lo sabes (4)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;button id="boton-solucion"&gt;</code>.</li>
+<li>② Un <code>&lt;p id="solucion"&gt;</code> vacío.</li>
+<li>③ Al pulsar, aparece la solución.</li>
+<li>④ Al pulsar, el botón dice "Ya lo sabes".</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Es la receta de tres pasos: buscar, esperar al clic y hacer. Si no te acuerdas, mírala en la <a href="tema.html?id=proy-s13-botones">sesión 13</a>, pero escríbela tú, sin copiar y pegar.</p>
 </details>
-<details><summary>3. ¿Cuáles son los tres pasos de la receta de un botón?</summary>
-<p>Buscar los elementos con <code>querySelector</code>, esperar al clic con <code>addEventListener</code> y hacer algo dentro de la función.</p>
-</details>
-<details><summary>4. Tienes &lt;p id="saludo"&gt;&lt;/p&gt;. Escribe cómo lo buscarías y cómo pondrías dentro el texto "Hola".</summary>
-<pre><code><span class='kw'>let</span> saludo = document.<span class='fn'>querySelector</span>(<span class='ca'>"#saludo"</span>);
-saludo.textContent = <span class='ca'>"Hola"</span>;</code></pre>
-</details>
-<details><summary>5. La consola dice "Cannot read properties of null". ¿Qué ha pasado?</summary>
-<p>Que <code>querySelector</code> no ha encontrado el elemento: el id no coincide, falta la <code>#</code> o el script no está al final.</p>
-</details>
-<p><strong>Comprobación práctica</strong>: abrid vuestra web publicada. ¿Funciona el botón del dato curioso? Si no, arregladlo antes de seguir: hoy lo vais a necesitar.</p>
+<p>Si lo has hecho bien: al cargar no se ve la solución; al pulsar, sí.</p>
 
 <h2>Leer lo que escribe el usuario: value</h2>
-<p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>:</p>
-<pre><code><span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
-<span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>
-
-<span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>Piloto favorito:<span class='et'>&lt;/label</span><span class='et'>&gt;</span>
-<span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;option</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/option</span><span class='et'>&gt;</span>
-<span class='et'>&lt;/select</span><span class='et'>&gt;</span>
-
-<span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-inscribir"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"mensaje"</span><span class='et'>&gt;</span><span class='et'>&lt;/p</span><span class='et'>&gt;</span></code></pre>
-<pre><code><span class='co'>// 1. Buscar los elementos</span>
+<p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del torneo de Pixel Kart:</p>
+<pre><code><span class='et'>&lt;form&gt;</span>
+    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label&gt;</span>
+    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-inscribir"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button&gt;</span>
+<span class='et'>&lt;/form&gt;</span>
+<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"mensaje"</span><span class='et'>&gt;&lt;/p&gt;</span></code></pre>
+<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
 <span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
-<span class='kw'>let</span> cajaPiloto = document.<span class='fn'>querySelector</span>(<span class='ca'>"#piloto"</span>);
 <span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
 <span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
 
 <span class='co'>// 2. Esperar al clic</span>
 boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='co'>// 3. Leer lo que ha escrito y responder</span>
+    <span class='co'>// 3. Leer la caja y responder</span>
     <span class='kw'>let</span> alias = cajaAlias.value;
-    <span class='kw'>let</span> piloto = cajaPiloto.value;
-    mensaje.textContent = <span class='ca'>"¡Hola, "</span> + alias + <span class='ca'>"! Te has inscrito con "</span> + piloto + <span class='ca'>"."</span>;
+    mensaje.textContent = <span class='ca'>"¡Hola, "</span> + alias + <span class='ca'>"! Ya estás inscrito."</span>;
 });</code></pre>
-<div class="salida"><p style="margin:0;color:var(--text-dim)">Si el visitante escribe <em>RayoAzul</em>, elige <em>Chispa</em> y pulsa el botón, aparece: <strong>¡Hola, RayoAzul! Te has inscrito con Chispa.</strong></p></div>
+<div class="salida">
+<p style="margin:0 0 .5rem"><label>Tu alias: <input type="text" value="RayoAzul" readonly></label> <button type="button">Inscribirme</button></p>
+<p style="margin:0">¡Hola, RayoAzul! Ya estás inscrito.</p>
+</div>
 <ul>
 <li><code>cajaAlias.value</code> es <strong>lo que hay escrito</strong> en la caja en ese momento.</li>
-<li>En un <code>&lt;select&gt;</code>, <code>value</code> es <strong>la opción elegida</strong>.</li>
-<li>El <code>value</code> se lee <strong>dentro de la función</strong>. Si lo lees fuera, lo lees al cargar la página, cuando la caja todavía está vacía.</li>
+<li>El <code>value</code> se lee <strong>dentro de las llaves</strong>. Si lo lees fuera, lo lees al cargar la página, cuando la caja todavía está vacía.</li>
+<li>El botón lleva <code>type="button"</code>, como viste en la sesión 6. Sin él, al pulsar se recarga la página y se borra todo.</li>
 </ul>
 <div class="nota">⚠️ Fíjate en los nombres: <code>cajaAlias</code> es <strong>la caja</strong> (el elemento de la página) y <code>alias</code> es <strong>lo que hay escrito dentro</strong> (un texto). Poner nombres distintos evita muchos líos.</div>
-
-<h2>Números que vienen de una caja</h2>
-<p>Todo lo que se lee con <code>value</code> es <strong>texto</strong>, aunque la caja sea <code>type="number"</code>. Si quieres hacer cuentas, primero tienes que convertirlo con <code>Number()</code>:</p>
-<pre><code><span class='kw'>let</span> cajaVueltas = document.<span class='fn'>querySelector</span>(<span class='ca'>"#vueltas"</span>);
-<span class='kw'>let</span> botonCalcular = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-calcular"</span>);
-<span class='kw'>let</span> resultado = document.<span class='fn'>querySelector</span>(<span class='ca'>"#resultado"</span>);
-
-botonCalcular.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='kw'>let</span> vueltas = <span class='fn'>Number</span>(cajaVueltas.value);
-    <span class='kw'>let</span> segundos = vueltas * <span class='nu'>42</span>;
-    resultado.textContent = <span class='ca'>"Tardarás unos "</span> + segundos + <span class='ca'>" segundos."</span>;
-});</code></pre>
-<table>
-<thead><tr><th>Si el usuario escribe 3</th><th>Resultado</th></tr></thead>
-<tbody>
-<tr><td><code>cajaVueltas.value + 1</code></td><td><code>"31"</code> (junta textos)</td></tr>
-<tr><td><code>Number(cajaVueltas.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
-</tbody>
-</table>
-
-<h2>Antes de seguir</h2>
-<details><summary>¿Qué diferencia hay entre textContent y value?</summary>
-<p><code>textContent</code> es el texto de dentro de un elemento como un párrafo; lo usamos para escribir. <code>value</code> es lo escrito o elegido en una caja de formulario; lo usamos para leer.</p>
-</details>
-<details><summary>Lees cajaAlias.value fuera de la función y siempre sale vacío. ¿Por qué?</summary>
-<p>Porque se lee al cargar la página, antes de que el usuario escriba nada. Hay que leerlo dentro de la función del clic.</p>
-</details>
-<details><summary>El usuario escribe 10 y 5 en dos cajas, y tu suma da 105. ¿Qué falta?</summary>
-<p>Convertir los dos valores con <code>Number()</code> antes de sumar.</p>
+<details><summary>🤔 Antes de seguir: ¿qué diferencia hay entre textContent y value?</summary>
+<p><code>textContent</code> es el texto de dentro de un elemento como un párrafo: lo usamos para <strong>escribir</strong>. <code>value</code> es lo escrito o elegido en una caja de formulario: lo usamos para <strong>leer</strong>.</p>
 </details>
 
-<h2>Reto de hoy</h2>
-<p>Haced que <strong>el formulario de la sesión 6 funcione</strong>:</p>
+<h3>Ejercicio 3 — Bienvenida</h3>
+<p>Crea <code>s14-ej3.html</code> y <code>s14-ej3.js</code>. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" alt="Página Bienvenida después de escribir PixelRojo y pulsar Saludar: el formulario con la etiqueta Tu alias, la caja y el botón Saludar (1), y debajo el párrafo ¡Hola, PixelRojo! Bienvenido a mi web. (2). Notas: 3, antes de pulsar el párrafo está vacío; 4, el botón tiene type button." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>Un párrafo vacío con <code>id</code> debajo del formulario, para la respuesta.</li>
-<li>Al pulsar el botón, se leen <strong>al menos 2 campos</strong> del formulario con <code>value</code>.</li>
-<li>Aparece en el párrafo un <strong>mensaje que usa lo que ha escrito</strong> el usuario, con los espacios bien puestos.</li>
-<li>Si algún campo es un número, se convierte con <code>Number()</code> y se usa en un cálculo.</li>
-<li>Comprobación: escribís cosas distintas, pulsáis otra vez y el mensaje cambia.</li>
-<li>La consola no muestra errores.</li>
+<li>① Un <code>&lt;form&gt;</code> con <code>&lt;label&gt;</code>, un <code>&lt;input id="alias"&gt;</code> y un botón.</li>
+<li>② Un <code>&lt;p id="saludo"&gt;</code> que muestra lo escrito en la caja.</li>
+<li>③ Antes de pulsar, el párrafo está vacío.</li>
+<li>④ El botón tiene <code>type="button"</code>.</li>
 </ul>
 <details><summary>Pista 1: el mensaje sale, pero sin lo que he escrito</summary>
-<p>Estás leyendo el <code>value</code> fuera de la función. Mueve esas líneas dentro de las llaves del <code>addEventListener</code>.</p>
+<p>Estás leyendo el <code>value</code> fuera de las llaves. Mueve esa línea dentro del <code>addEventListener</code>.</p>
 </details>
 <details><summary>Pista 2: sale "undefined" en el mensaje</summary>
 <p>Has escrito <code>.Value</code> o <code>.valor</code>. Es <code>.value</code>, en minúsculas y en inglés.</p>
 </details>
+<p>Si lo has hecho bien: escribes otro alias, pulsas otra vez y el saludo cambia.</p>
+<div class="nota">💡 <strong>Truco de VS Code</strong>: para mover una línea, pon el cursor en ella y pulsa <strong>Alt + ↑</strong> o <strong>Alt + ↓</strong>. Así metes rápido una línea dentro de las llaves, sin cortar y pegar.</div>
 
-<h2>Aplícalo en tu web</h2>
-<p>Pensad qué haría más útil o divertida la respuesta del formulario: un cálculo, una recomendación, un mensaje más elaborado... En la próxima sesión aprenderéis a dar una respuesta distinta según lo que elija el usuario.</p>
+<h2>Leer un desplegable</h2>
+<p>En un <code>&lt;select&gt;</code>, <code>value</code> es <strong>la opción elegida</strong>. Se lee igual que una caja:</p>
+<pre><code><span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;option&gt;</span>Turbo Rex<span class='et'>&lt;/option&gt;</span>
+    <span class='et'>&lt;option&gt;</span>Nube Veloz<span class='et'>&lt;/option&gt;</span>
+    <span class='et'>&lt;option&gt;</span>Chispa<span class='et'>&lt;/option&gt;</span>
+<span class='et'>&lt;/select&gt;</span></code></pre>
+<pre><code translate="no"><span class='kw'>let</span> piloto = cajaPiloto.value;
+mensaje.textContent = alias + <span class='ca'>" correrá con "</span> + piloto + <span class='ca'>"."</span>;</code></pre>
+<div class="salida"><p style="margin:0">RayoAzul correrá con Chispa.</p></div>
+
+<h3>Ejercicio 4 — Pizzería Píxel</h3>
+<p>Crea <code>s14-ej4.html</code> y <code>s14-ej4.js</code>. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej4.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej4.webp" alt="Página Pizzería Píxel después de elegir Barbacoa y grande y pulsar Pedir: el desplegable Pizza (1), el desplegable Tamaño (2), el botón Pedir (3) y el párrafo Tu pedido: pizza Barbacoa grande. (4). Nota 5: las pizzas son Margarita, Barbacoa y Cuatro quesos; los tamaños, pequeña, mediana y grande." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="pizza"&gt;</code>.</li>
+<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="tamano"&gt;</code>.</li>
+<li>③ Un botón con <code>type="button"</code>.</li>
+<li>④ Un <code>&lt;p id="pedido"&gt;</code> con las dos opciones elegidas.</li>
+<li>⑤ Las opciones de la nota, escritas igual.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Necesitas dos variables con <code>value</code>, una por desplegable, las dos dentro de las llaves.</p>
+</details>
+<p>Si lo has hecho bien: eliges Margarita y pequeña, pulsas, y sale "Tu pedido: pizza Margarita pequeña.".</p>
+
+<h2>Números que vienen de una caja</h2>
+<p>Todo lo que se lee con <code>value</code> es <strong>texto</strong>, aunque la caja sea <code>type="number"</code>. Para hacer cuentas, primero se convierte con <code>Number()</code>:</p>
+<pre><code translate="no"><span class='kw'>let</span> vueltas = <span class='fn'>Number</span>(cajaVueltas.value);
+<span class='kw'>let</span> segundos = vueltas * <span class='nu'>42</span>;
+resultado.textContent = <span class='ca'>"Tardarás unos "</span> + segundos + <span class='ca'>" segundos."</span>;</code></pre>
+<table>
+<thead><tr><th>Si el usuario escribe 3</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><code>cajaVueltas.value + 1</code></td><td><code>31</code> (junta textos)</td></tr>
+<tr><td><code>Number(cajaVueltas.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
+</tbody>
+</table>
+<details><summary>🤔 Antes de seguir: el usuario escribe 10 y 5 en dos cajas y tu suma da 105. ¿Qué falta?</summary>
+<p>Convertir los dos valores con <code>Number()</code> antes de sumar.</p>
+</details>
+
+<h3>Ejercicio 5 — Parque acuático</h3>
+<p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej5.html</code> y <code>s14-ej5.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej5.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej5.webp" alt="Página Parque acuático Ola Loca después de escribir PixelRojo, elegir domingo, escribir 3 y pulsar Calcular: la caja Tu alias (1), el desplegable Día con sábado y domingo (2), la caja numérica Entradas (3) y el párrafo PixelRojo: 3 entradas para el domingo cuestan 24 euros. (4). Notas: 5, el número de entradas se convierte con Number antes de multiplicar; 6, el título de la pestaña es Parque acuático." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="text" id="alias"&gt;</code>.</li>
+<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="dia"&gt;</code>: sábado y domingo.</li>
+<li>③ Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="number" id="entradas"&gt;</code>.</li>
+<li>④ Un <code>&lt;p id="resultado"&gt;</code> con la frase completa.</li>
+<li>⑤ Las entradas se convierten con <code>Number()</code>.</li>
+<li>⑥ El <code>&lt;title&gt;</code> es <code>Parque acuático</code>.</li>
+</ul>
+<details><summary>Pista 1</summary>
+<p>Dentro de las llaves: tres variables con <code>value</code> (una con <code>Number()</code>), una variable <code>total</code> y la frase.</p>
+</details>
+<details><summary>Pista 2: el total sale mal o sale NaN</summary>
+<p><code>NaN</code> significa "no es un número": la caja está vacía o has puesto <code>Number()</code> en la caja del alias. Comprueba cada variable con <code>console.log</code>.</p>
+</details>
+<p>Si lo has hecho bien: con 5 entradas, la frase dice "40 euros".</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
 <li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
-<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
-<li>Comprobado en la web publicada que se ven los cambios.</li>
+<li>Ninguno de tus ejercicios tiene errores en rojo en la consola.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
 </ul>

@@ -1,8 +1,8 @@
 {
   "id": "proy-s11-revision-1",
-  "titulo": "Sesión 11 — Primera revisión de retos",
+  "titulo": "Sesión 11 — Taller de CSS y primera revisión",
   "fecha": "",
-  "descripcion": "Revisión de los retos de HTML y CSS (sesiones 1 a 10) en la web publicada, con la checklist completa y los errores más habituales.",
+  "descripcion": "Taller en pareja: un único estilos.css para todas las páginas, colores y letra, tarjetas con hover, menú y tarjetas en fila con Flexbox. Al final de la sesión, revisión de la web (HTML + CSS) de cada pareja y subida a GitHub.",
   "materiales": [],
   "actividades": []
 }

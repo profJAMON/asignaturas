@@ -1,8 +1,8 @@
 {
   "id": "proy-s02-github-textos",
-  "titulo": "Sesión 2 — Títulos, párrafos y copia de seguridad en GitHub",
+  "titulo": "Sesión 2 — VS Code, textos y GitHub",
   "fecha": "",
-  "descripcion": "Escribir la portada con títulos, párrafos, negrita y cursiva, y guardarla en GitHub paso a paso: qué es GitHub, crear la cuenta, aceptar la invitación, subir los archivos y descargarlos.",
+  "descripcion": "Cómo son las sesiones de ejercicios y de taller. En pareja: subir la web a GitHub y descargarla. Solo: tu carpeta de ejercicios, atajos de VS Code (! + Tab), títulos, párrafos, negrita, cursiva, saltos, líneas y comentarios. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

@@ -1,0 +1,102 @@
+<div class="nota">Hoy: <strong>taller en pareja</strong>. Hacéis que el formulario de vuestra web funcione con JavaScript y añadís <strong>al menos 2 funcionalidades</strong> más. Usáis lo que habéis practicado en los ejercicios de las sesiones 12 a 16.</div>
+
+<h2>Cómo trabajáis hoy</h2>
+<ul>
+<li>Un solo ordenador, el de vuestra web. Cambiáis de turno cada <strong>20-30 minutos</strong>: uno escribe y el otro mira la imagen, la sesión o la consola y le dice qué falta.</li>
+<li>Antes de copiar algo de un ejercicio, pensad cómo se llama <strong>en vuestra web</strong>: los <code>id</code>, los textos y las clases cambian.</li>
+<li>Guardad y mirad la consola (<strong>F12</strong> → Console) cada vez que añadáis algo. Un error pequeño se arregla en un minuto; diez errores juntos, no.</li>
+</ul>
+
+<h2>Un archivo JS por página</h2>
+<p>Cada página que necesite JavaScript tiene <strong>su propio <code>.js</code>, con el mismo nombre</strong>. Así es la carpeta de Pixel Kart:</p>
+<pre><code translate="no">pixel-kart/
+├── index.html
+├── index.js        ← modo oscuro de la portada
+├── personajes.html
+├── personajes.js   ← mostrar y ocultar los trucos
+├── circuitos.html  (no tiene JS)
+├── torneo.html
+├── torneo.js       ← el formulario de inscripción
+├── estilos.css
+└── img/</code></pre>
+<p>Y cada página conecta <strong>solo el suyo</strong>, justo antes de <code>&lt;/body&gt;</code>: <code>torneo.html</code> lleva <code>&lt;script src="torneo.js"&gt;&lt;/script&gt;</code>.</p>
+<div class="nota">⚠️ ¿Por qué no un solo <code>.js</code> para todas? Porque si <code>index.html</code> carga el código del torneo, <code>querySelector("#boton-inscribir")</code> no encuentra nada en la portada y sale el error <em>Cannot read properties of null</em>. Con un archivo por página, cada código solo busca lo que su página tiene.</div>
+
+<h2>Lo que tiene que quedar hoy en vuestra web</h2>
+<h3>El formulario funciona</h3>
+<ul class="checklist">
+<li>El formulario de la sesión 6 tiene un <code>id</code> en cada caja y en el botón, y el botón lleva <code>type="button"</code>.</li>
+<li>Debajo del formulario hay un párrafo vacío con <code>id</code> para la respuesta.</li>
+<li>Al pulsar el botón se leen <strong>al menos 2 campos</strong> con <code>value</code> y sale un mensaje que usa lo escrito. Lo viste en el <a href="tema.html?id=proy-s14-leer-formulario">ejercicio 5 de la sesión 14</a>.</li>
+<li>Si algún campo es un número, se convierte con <code>Number()</code> antes de calcular.</li>
+<li>La respuesta cambia según lo que escribe o elige el usuario, con un <code>if</code>. Lo viste en los <a href="tema.html?id=proy-s15-if-else">ejercicios 2 y 3 de la sesión 15</a>.</li>
+</ul>
+<h3>Al menos 2 funcionalidades más</h3>
+<p>Elegid dos (o más) de esta lista, las que mejor vayan con vuestro tema. Pueden estar en la misma página o en páginas distintas:</p>
+<table>
+<thead><tr><th>Funcionalidad</th><th>Idea para vuestro tema</th><th>Dónde lo visteis</th></tr></thead>
+<tbody>
+<tr><td>Mini test</td><td>3 preguntas sobre vuestro tema y un mensaje según los aciertos.</td><td><a href="tema.html?id=proy-s15-if-else">Sesión 15, ejercicio 4</a></td></tr>
+<tr><td>Calculadora</td><td>Precio de unas entradas, puntos de un equipo, raciones de una receta…</td><td><a href="tema.html?id=proy-s15-if-else">Sesión 15, ejercicio 3</a></td></tr>
+<tr><td>Modo oscuro</td><td>Un botón que cambia los colores de la página.</td><td><a href="tema.html?id=proy-s16-classlist">Sesión 16, ejercicio 4</a></td></tr>
+<tr><td>Mostrar y ocultar</td><td>Trucos, respuestas, ingredientes, spoilers… que se ven al pulsar.</td><td><a href="tema.html?id=proy-s16-classlist">Sesión 16, ejercicios 2 y 3</a></td></tr>
+<tr><td>Dato curioso</td><td>Un botón que muestra un dato sorprendente de vuestro tema.</td><td><a href="tema.html?id=proy-s13-botones">Sesión 13, ejercicio 2</a></td></tr>
+</tbody>
+</table>
+<h3>Y en todas las páginas</h3>
+<ul class="checklist">
+<li>Cada página con JavaScript tiene su <code>.js</code> con el mismo nombre, conectado justo antes de <code>&lt;/body&gt;</code>.</li>
+<li>En cada <code>.js</code>, un comentario encima de cada paso (<code>// 1. Buscar…</code>).</li>
+<li>Abrís <strong>todas</strong> las páginas con la consola abierta y pulsáis todos los botones: ningún error en rojo.</li>
+</ul>
+
+<h2>Ejemplo: el torneo de Pixel Kart</h2>
+<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
+<span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
+<span class='kw'>let</span> cajaEdad = document.<span class='fn'>querySelector</span>(<span class='ca'>"#edad"</span>);
+<span class='kw'>let</span> cajaPiloto = document.<span class='fn'>querySelector</span>(<span class='ca'>"#piloto"</span>);
+<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
+<span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
+
+<span class='co'>// 2. Esperar al clic</span>
+boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
+    <span class='co'>// 3. Leer las cajas y responder según la edad</span>
+    <span class='kw'>let</span> alias = cajaAlias.value;
+    <span class='kw'>let</span> edad = <span class='fn'>Number</span>(cajaEdad.value);
+    <span class='kw'>let</span> piloto = cajaPiloto.value;
+
+    <span class='kw'>if</span> (edad &gt;= <span class='nu'>12</span>) {
+        mensaje.textContent = <span class='ca'>"¡Inscrito, "</span> + alias + <span class='ca'>"! Correrás con "</span> + piloto + <span class='ca'>"."</span>;
+    } <span class='kw'>else</span> {
+        mensaje.textContent = <span class='ca'>"Lo siento, "</span> + alias + <span class='ca'>": hay que tener 12 años o más."</span>;
+    }
+});</code></pre>
+<div class="salida">
+<p style="margin:0 0 .5rem"><label>Tu alias: <input type="text" value="RayoAzul" readonly></label></p>
+<p style="margin:0 0 .5rem"><label>Edad: <input type="number" value="14" readonly></label></p>
+<p style="margin:0 0 .5rem"><label>Piloto favorito: <select><option>Turbo Rex</option><option>Nube Veloz</option><option selected>Chispa</option></select></label></p>
+<p style="margin:0 0 .5rem"><button type="button">Inscribirme</button></p>
+<p style="margin:0">¡Inscrito, RayoAzul! Correrás con Chispa.</p>
+</div>
+
+<h2>Errores típicos</h2>
+<table>
+<thead><tr><th>Lo que pasa</th><th>Cómo se arregla</th></tr></thead>
+<tbody>
+<tr><td>Consola: <em>Cannot read properties of null</em></td><td>El id del HTML y el del JS no coinciden, falta la <code>#</code>, o el <code>.js</code> es de otra página.</td></tr>
+<tr><td>Al pulsar no pasa nada y la consola no dice nada</td><td>El <code>src</code> del <code>&lt;script&gt;</code> no coincide con el nombre del archivo. Pon <code>console.log("clic");</code> dentro de las llaves para comprobarlo.</td></tr>
+<tr><td>Al pulsar, lo escrito se borra y la página se recarga</td><td>Al botón del formulario le falta <code>type="button"</code>.</td></tr>
+<tr><td>El mensaje sale sin lo que ha escrito el usuario</td><td>El <code>value</code> se lee fuera de las llaves. Muévelo dentro (<strong>Alt + ↑/↓</strong>).</td></tr>
+<tr><td>Una suma da <code>31</code> en lugar de <code>4</code></td><td>Falta <code>Number()</code>.</td></tr>
+<tr><td>La clase se pone (F12 → Elements) pero no cambia nada</td><td>La regla del CSS tiene otro nombre, o en <code>classList</code> has puesto el punto.</td></tr>
+<tr><td>Consola: <em>Unexpected token</em> o <em>Unexpected end of input</em></td><td>Sobra o falta una llave o un paréntesis. <strong>Mayús + Alt + F</strong> para ordenar el código y verlo.</td></tr>
+</tbody>
+</table>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
+<li>Ninguna página tiene errores en rojo en la consola.</li>
+<li>Ha subido a GitHub <strong>quien le toca esta semana</strong> (los pasos, en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>), con un mensaje que diga qué habéis hecho. Por ejemplo: <code>Sesión 17: formulario con JS, test y modo oscuro</code>. Subid también los <code>.js</code>.</li>
+<li>En la web publicada, el formulario y las funcionalidades funcionan igual que en el ordenador.</li>
+</ul>

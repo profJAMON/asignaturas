@@ -1,0 +1,80 @@
+{
+  "id": "proy-s04-enlaces-tablas",
+  "titulo": "Sesión 4 — Enlaces, menú y tablas",
+  "fecha": "",
+  "descripcion": "Ejercicios individuales: enlaces a otras webs y entre páginas, el menú con header, nav y main, y tablas. Trucos de VS Code: duplicar una página, table>tr*3>td*2 y Ctrl+D.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Crear hipervínculos",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Tablas en HTML",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Tables/Basics"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué atributo dice adónde lleva un enlace?",
+          "opciones": [
+            "src",
+            "href",
+            "alt"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué hace target=\"_blank\"?",
+          "opciones": [
+            "Abre el enlace en una pestaña nueva",
+            "Pone el enlace en negrita",
+            "Deja el enlace en blanco"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Dentro de qué etiqueta va el menú?",
+          "opciones": [
+            "<menu>",
+            "<nav>",
+            "<main>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Cambias el menú de index.html. ¿Qué tienes que hacer con las demás páginas?",
+          "opciones": [
+            "Nada, se cambia solo",
+            "Cambiarlo también en todas",
+            "Borrar su menú"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué etiqueta es una fila de una tabla?",
+          "opciones": [
+            "<tr>",
+            "<td>",
+            "<th>"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué es un <th>?",
+          "opciones": [
+            "Una celda con un dato",
+            "Una celda de encabezado",
+            "El título de la página"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "proy-s03-listas-imagenes",
+  "titulo": "Sesión 3 — Listas e imágenes",
+  "fecha": "",
+  "descripcion": "Ejercicios individuales: listas con viñetas y numeradas, listas dentro de listas, imágenes con src y alt, rutas, y buscar imágenes de uso libre. Trucos de VS Code: ul>li*3 y Copy Relative Path.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Listas",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals#listas"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Imágenes en HTML",
+      "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML"
+    }
+  ],
+  "actividades": [
+    {
+      "tipo": "quiz",
+      "titulo": "Autoevaluación rápida",
+      "preguntas": [
+        {
+          "pregunta": "La imagen perro.jpg está en la carpeta img. ¿Qué src pones en index.html?",
+          "opciones": [
+            "perro.jpg",
+            "img/perro.jpg",
+            "C:\\img\\perro.jpg"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Para qué sirve el atributo alt?",
+          "opciones": [
+            "Para cambiar el tamaño de la imagen",
+            "Para describir la imagen con palabras",
+            "Para poner un enlace"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cuál es un buen nombre de archivo para una imagen?",
+          "opciones": [
+            "Foto Playa 1.JPG",
+            "foto-playa.jpg",
+            "fotoplaya(1).jpg"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Cómo se cierra la etiqueta <img>?",
+          "opciones": [
+            "Con </img>",
+            "Con </image>",
+            "No se cierra"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "Quieres escribir los pasos de una receta, en orden. ¿Qué usas?",
+          "opciones": [
+            "<ul>",
+            "<ol>",
+            "<table>"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué puede ir directamente dentro de un <ul>?",
+          "opciones": [
+            "Solo <li>",
+            "Cualquier etiqueta",
+            "Solo <p>"
+          ],
+          "correcta": 0
+        }
+      ]
+    }
+  ]
+}

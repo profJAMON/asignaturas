@@ -1,97 +1,148 @@
+<div class="nota">Hoy: haces que JavaScript <strong>cambie los textos</strong> de la página y que un <strong>botón haga algo</strong> al pulsarlo. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
+
 <h2>La receta de un botón</h2>
-<p>Casi todo lo que haréis con JavaScript sigue la misma receta de <strong>tres pasos</strong>:</p>
+<p>Casi todo lo que haremos con JavaScript sigue la misma receta de <strong>tres pasos</strong>:</p>
 <ol>
 <li><strong>Buscar</strong> en la página los elementos que vas a usar.</li>
 <li><strong>Esperar</strong> a que alguien pulse el botón.</li>
 <li><strong>Hacer</strong> algo cuando lo pulse.</li>
 </ol>
-<p>Hoy lo aplicamos a Pixel Kart: un botón que muestra un dato curioso del juego.</p>
-<pre><code><span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-dato"</span><span class='et'>&gt;</span>Ver un dato curioso<span class='et'>&lt;/button</span><span class='et'>&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"dato"</span><span class='et'>&gt;</span><span class='et'>&lt;/p</span><span class='et'>&gt;</span></code></pre>
-<pre><code><span class='co'>// 1. Buscar los elementos</span>
+<p>Hoy la aprendes por partes: primero buscar y cambiar un texto; después, esperar al clic.</p>
+
+<h2>Buscar un elemento: querySelector</h2>
+<p>Para que JavaScript encuentre un elemento, le pones un <code>id</code> en el HTML:</p>
+<pre><code><span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"dato"</span><span class='et'>&gt;</span>Pixel Kart tiene 8 pilotos.<span class='et'>&lt;/p&gt;</span></code></pre>
+<pre><code translate="no"><span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);</code></pre>
+<ul>
+<li><code>document</code> es <strong>la página</strong>.</li>
+<li><code>querySelector</code> busca en ella el elemento que le pides.</li>
+<li>Entre comillas va un <strong>selector, igual que en CSS</strong>: <code>"#dato"</code> busca el elemento con <code>id="dato"</code>.</li>
+<li>Lo que encuentra se guarda en una variable, para usarlo después.</li>
+</ul>
+<div class="nota">⚠️ En el HTML: <code>id="dato"</code>, <strong>sin</strong> almohadilla. En JavaScript: <code>"#dato"</code>, <strong>con</strong> almohadilla. Es el mismo lío que con el punto de las clases.</div>
+
+<h2>Cambiar un texto: textContent</h2>
+<p><code>textContent</code> es <strong>el texto que hay dentro</strong> de un elemento. Si le das un valor con <code>=</code>, lo sustituye:</p>
+<pre><code translate="no"><span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);
+dato.textContent = <span class='ca'>"Turbo Rex es el piloto más rápido."</span>;</code></pre>
+<div class="salida"><p style="margin:0">Turbo Rex es el piloto más rápido.</p></div>
+<p>En el HTML sigue poniendo "Pixel Kart tiene 8 pilotos.", pero en la página se ve el texto nuevo: JavaScript lo ha cambiado al cargar.</p>
+<div class="nota">💡 <strong>Truco de VS Code</strong>: en el HTML, escribe <code>p#dato</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;p id="dato"&gt;&lt;/p&gt;</code>. Funciona con cualquier etiqueta: <code>button#boton-dato</code> + Tab.</div>
+
+<h3>Ejercicio 1 — Cambia el título</h3>
+<p>Crea <code>s13-ej1.html</code> y <code>s13-ej1.js</code>. En el HTML escribe un <code>&lt;h1&gt;</code> que diga "Mi página" y un párrafo que diga "Esto lo he escrito en HTML.", cada uno con su <code>id</code>. Con JavaScript, cambia los dos textos para que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" alt="Página con el título Mi página con JavaScript (1) y el párrafo Esto lo ha cambiado JavaScript. (2). Nota 3: en el html, el h1 dice Mi página y el párrafo dice Esto lo he escrito en HTML; lo que se ve lo ha cambiado el js." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;h1 id="titulo"&gt;</code>, cambiado con <code>textContent</code>.</li>
+<li>② Un <code>&lt;p id="subtitulo"&gt;</code>, cambiado con <code>textContent</code>.</li>
+<li>③ En el <code>.html</code> están los textos originales.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Necesitas dos <code>querySelector</code> (uno por elemento, cada uno en su variable) y dos líneas con <code>textContent</code>.</p>
+</details>
+<p>Si lo has hecho bien: en VS Code el <code>&lt;h1&gt;</code> dice "Mi página", pero en Chrome dice "Mi página con JavaScript".</p>
+
+<h2>Esperar al clic: addEventListener</h2>
+<p>Ahora el cambio no se hace al cargar la página, sino <strong>al pulsar un botón</strong>. Esta es la receta completa:</p>
+<pre><code><span class='et'>&lt;button</span> <span class='at'>id</span>=<span class='ca'>"boton-dato"</span><span class='et'>&gt;</span>Ver un dato curioso<span class='et'>&lt;/button&gt;</span>
+<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"dato"</span><span class='et'>&gt;&lt;/p&gt;</span></code></pre>
+<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
 <span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-dato"</span>);
 <span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);
 
 <span class='co'>// 2. Esperar al clic</span>
 boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
     <span class='co'>// 3. Hacer algo</span>
-    dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;
+    dato.textContent = <span class='ca'>"Turbo Rex lo diseñó un chaval de 14 años."</span>;
 });</code></pre>
-<div class="salida"><p style="margin:0 0 .4rem"><button type="button">Ver un dato curioso</button></p><p style="margin:0;color:var(--text-dim)">Al pulsar, en el párrafo vacío aparece: <em>Turbo Rex fue diseñado por un chaval de 14 años.</em></p></div>
-
-<h2>Paso 1: buscar con querySelector</h2>
-<pre><code><span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-dato"</span>);</code></pre>
-<ul>
-<li><code>document</code> es <strong>la página</strong>.</li>
-<li><code>querySelector</code> busca en ella <strong>el primer elemento</strong> que cumpla lo que le pides.</li>
-<li>Lo que va entre comillas es un <strong>selector, igual que en CSS</strong>: <code>"#boton-dato"</code> busca el elemento con <code>id="boton-dato"</code>. La almohadilla <code>#</code> significa id, igual que el punto significa clase.</li>
-<li>Lo que encuentra se guarda en una variable, para usarlo después.</li>
-</ul>
-<div class="nota">⚠️ En el HTML: <code>id="boton-dato"</code>, <strong>sin</strong> almohadilla. En JavaScript: <code>"#boton-dato"</code>, <strong>con</strong> almohadilla. Es el mismo lío que con el punto de las clases.</div>
-
-<h2>Paso 2: esperar con addEventListener</h2>
-<pre><code>boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='co'>// aquí dentro va lo que pasa al pulsar</span>
-});</code></pre>
+<div class="salida">
+<p style="margin:0 0 .3rem;color:var(--text-dim)">Antes de pulsar:</p>
+<p style="margin:0 0 .8rem"><button type="button">Ver un dato curioso</button></p>
+<p style="margin:0 0 .3rem;color:var(--text-dim)">Después de pulsar:</p>
+<p style="margin:0 0 .4rem"><button type="button">Ver un dato curioso</button></p>
+<p style="margin:0">Turbo Rex lo diseñó un chaval de 14 años.</p>
+</div>
 <ul>
 <li><code>addEventListener</code> significa "quédate escuchando". Le dices <strong>qué esperar</strong> (<code>"click"</code>) y <strong>qué hacer</strong>.</li>
-<li>Lo que va entre las llaves <code>{ }</code> de <code>function () { }</code> <strong>no se ejecuta al cargar la página</strong>: se ejecuta <strong>cada vez que se pulsa</strong> el botón.</li>
-<li>Fíjate en cómo se cierra: <code>});</code>. La llave cierra la función, el paréntesis cierra <code>addEventListener</code> y el punto y coma acaba la orden.</li>
+<li>Lo que va entre las llaves <code>{ }</code> <strong>no se ejecuta al cargar la página</strong>: se ejecuta <strong>cada vez que se pulsa</strong> el botón.</li>
+<li>Se cierra con <code>});</code>: la llave cierra la función, el paréntesis cierra <code>addEventListener</code> y el punto y coma acaba la orden.</li>
 </ul>
 <div class="nota">💡 Copia esta estructura tal cual y cambia solo lo de dentro. Nadie la escribe de memoria las primeras veces.</div>
+<details><summary>🤔 Antes de seguir: pones un console.log dentro de las llaves del addEventListener. ¿Cuándo sale el mensaje en la consola?</summary>
+<p>Cada vez que se pulsa el botón. Al cargar la página no sale nada.</p>
+</details>
 
-<h2>Paso 3: cambiar un texto con textContent</h2>
-<pre><code>dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;</code></pre>
-<p><code>textContent</code> es <strong>el texto que hay dentro</strong> de un elemento. Si le das un valor con <code>=</code>, lo sustituye. Así puedes cambiar el texto de un párrafo, de un título o del propio botón:</p>
-<pre><code>boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    dato.textContent = <span class='ca'>"Turbo Rex fue diseñado por un chaval de 14 años."</span>;
-    boton.textContent = <span class='ca'>"¡Ya lo sabes!"</span>;
-});</code></pre>
+<h3>Ejercicio 2 — El chiste del día</h3>
+<p>Crea <code>s13-ej2.html</code> y <code>s13-ej2.js</code>. Al pulsar el botón, aparece un chiste en el párrafo vacío.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej2-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej2-antes.webp" alt="Antes de pulsar: página El chiste del día con el botón Ver el chiste (1). Nota 2: debajo del botón hay un párrafo con id chiste vacío, que todavía no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej2-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej2-despues.webp" alt="Después de pulsar: debajo del botón aparece el chiste ¿Qué hace una abeja en el gimnasio? ¡Zum-ba! (3)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;button id="boton-chiste"&gt;</code>.</li>
+<li>② Un <code>&lt;p id="chiste"&gt;</code> vacío.</li>
+<li>③ Al pulsar, el chiste aparece en el párrafo.</li>
+<li>Un comentario encima de cada paso de la receta.</li>
+</ul>
+<details><summary>Pista 1: al pulsar no pasa nada</summary>
+<p>Pon <code>console.log("clic");</code> como primera línea dentro de las llaves. Si al pulsar no sale "clic" en la consola, el fallo está en los pasos 1 o 2. Si sale, está en el paso 3.</p>
+</details>
+<details><summary>Pista 2: sale "Cannot read properties of null"</summary>
+<p>Lee el apartado "El error más común", un poco más abajo.</p>
+</details>
+<p>Si lo has hecho bien: al cargar no se ve el chiste; al pulsar, sí.</p>
+
+<h3>Ejercicio 3 — Tu regalo</h3>
+<p>Dentro de las llaves puedes poner <strong>varias órdenes</strong>. También puedes cambiar el texto del <strong>propio botón</strong>. Crea <code>s13-ej3.html</code> y <code>s13-ej3.js</code>: al pulsar "Abrir", cambian el párrafo y el botón.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej3-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej3-antes.webp" alt="Antes de pulsar: página Tu regalo con el párrafo La caja está cerrada. (1) y el botón Abrir (2)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej3-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej3-despues.webp" alt="Después de pulsar: el párrafo dice ¡Es un monopatín! (3) y el botón dice Abierto (4)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;p id="regalo"&gt;</code> con "La caja está cerrada.".</li>
+<li>② Un <code>&lt;button id="boton-abrir"&gt;</code>.</li>
+<li>③ Al pulsar, el párrafo cambia.</li>
+<li>④ Al pulsar, el texto del botón cambia a "Abierto".</li>
+</ul>
+<details><summary>Pista</summary>
+<p>El botón ya está guardado en una variable (la usaste para el <code>addEventListener</code>). Usa esa misma variable con <code>textContent</code>.</p>
+</details>
+<p>Si lo has hecho bien: después de pulsar, el botón dice "Abierto".</p>
 
 <h2>El error más común</h2>
 <p>Si en la consola sale esto:</p>
-<pre><code>Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')</code></pre>
+<pre><code translate="no">Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')</code></pre>
 <p>significa que <code>querySelector</code> <strong>no encontró nada</strong> (<code>null</code> quiere decir "nada"). Las causas:</p>
 <ul>
 <li>El id del HTML y el del JavaScript no coinciden letra a letra.</li>
 <li>Falta la <code>#</code> en el JavaScript.</li>
-<li>El <code>&lt;script&gt;</code> está en el <code>&lt;head&gt;</code> y no al final del <code>&lt;body&gt;</code>.</li>
-<li>Ese archivo JS lo carga una página que no tiene ese botón. Por eso hacemos un archivo JS por página.</li>
+<li>El <code>&lt;script&gt;</code> no está al final del <code>&lt;body&gt;</code>.</li>
+<li>El <code>.js</code> es de otra página, que no tiene ese elemento. Por eso cada página tiene su propio <code>.js</code>.</li>
 </ul>
+<details><summary>🤔 Antes de seguir: ¿qué busca document.querySelector("#resultado")?</summary>
+<p>El elemento de la página que tiene <code>id="resultado"</code>.</p>
+</details>
+<div class="nota">💡 <strong>Truco de VS Code</strong>: en el <code>.js</code>, escribe <code>boton.addE</code>. VS Code te sugiere <code>addEventListener</code>: pulsa <strong>Tab</strong> y lo escribe entero, sin faltas. Si la lista no sale, pulsa <strong>Ctrl + Espacio</strong>. Funciona igual con <code>textContent</code> y <code>querySelector</code>.</div>
 
-<h2>Antes de seguir</h2>
-<details><summary>¿Qué busca document.querySelector("#resultado")?</summary>
-<p>El elemento de la página que tenga <code>id="resultado"</code>.</p>
-</details>
-<details><summary>Pones un console.log dentro de la función del addEventListener. ¿Cuándo sale el mensaje en la consola?</summary>
-<p>Cada vez que se pulsa el botón. Al cargar la página no sale nada.</p>
-</details>
-<details><summary>¿Qué hace titulo.textContent = "Hola";?</summary>
-<p>Cambia el texto que hay dentro del elemento guardado en <code>titulo</code> por "Hola".</p>
-</details>
-
-<h2>Reto de hoy</h2>
-<p>Añadid a vuestra web un botón que muestre un <strong>dato curioso</strong> de vuestro tema:</p>
+<h3>Ejercicio 4 — El tiempo en Villapíxel</h3>
+<p>El ejercicio más largo de hoy: junta todo. Crea <code>s13-ej4.html</code> y <code>s13-ej4.js</code>. Hay <strong>dos botones</strong>, y cada uno tiene su propio <code>addEventListener</code>. Además, cada botón escribe en la consola cuál se ha pulsado.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej4-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej4-antes.webp" alt="Antes de pulsar: página El tiempo en Villapíxel con los botones Hoy y Mañana (1) y el párrafo Elige un día. (2). La consola está vacía." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej4-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej4-despues.webp" alt="Después de pulsar Mañana: el párrafo dice Mañana: lluvia y 18 grados. (3) y en la consola sale Has pulsado Mañana (4). Notas: 5, al pulsar Hoy sale Hoy: sol y 25 grados. y Has pulsado Hoy en la consola; 6, en el js hay un comentario encima de cada paso." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>Un <code>&lt;button type="button"&gt;</code> y un párrafo vacío, cada uno con un <code>id</code> que diga qué es.</li>
-<li>En el archivo JS de esa página, los tres pasos: buscar, esperar al clic y cambiar el texto.</li>
-<li>Al pulsar el botón, aparece el dato en el párrafo <strong>y</strong> cambia el texto del propio botón.</li>
-<li>Un comentario encima de cada paso (<code>// 1. Buscar...</code>).</li>
-<li>La consola no muestra errores, ni al cargar ni al pulsar.</li>
+<li>① Dos botones, <code>#boton-hoy</code> y <code>#boton-manana</code>, dentro de un párrafo.</li>
+<li>② Un <code>&lt;p id="tiempo"&gt;</code> con "Elige un día.".</li>
+<li>③ Al pulsar "Mañana", el párrafo cambia.</li>
+<li>④ Al pulsar "Mañana", sale un mensaje en la consola.</li>
+<li>⑤ Al pulsar "Hoy", pasa lo mismo con su texto.</li>
+<li>⑥ Un comentario encima de cada paso.</li>
 </ul>
-<details><summary>Pista 1: al pulsar no pasa nada y la consola no dice nada</summary>
-<p>Pon <code>console.log("clic");</code> como primera línea dentro de la función. Si al pulsar no sale "clic", el problema está en el paso 1 o 2. Si sale, está en el paso 3.</p>
+<details><summary>Pista 1</summary>
+<p>Tienes que buscar tres elementos (tres <code>querySelector</code>) y escribir dos <code>addEventListener</code>, uno debajo del otro.</p>
 </details>
-<details><summary>Pista 2: sale "Cannot read properties of null"</summary>
-<p>Lee el apartado "El error más común" de esta sesión y comprueba las cuatro causas una a una.</p>
+<details><summary>Pista 2: un botón funciona y el otro no</summary>
+<p>Mira en qué variable has puesto cada <code>addEventListener</code>. Si los dos están en <code>botonHoy</code>, el de mañana no escucha.</p>
 </details>
-
-<h2>Aplícalo en tu web</h2>
-<p>¿Hay algo más en vuestra web que podría cambiar al pulsar un botón? Una respuesta que se muestra, un texto que cambia de idioma, un saludo... Probad a hacer un segundo botón con la misma receta.</p>
+<p>Si lo has hecho bien: pulsas "Hoy", "Mañana", "Hoy"… y el texto cambia cada vez, sin errores en la consola.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
 <li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
-<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
-<li>Comprobado en la web publicada que se ven los cambios.</li>
+<li>Ninguno de tus ejercicios tiene errores en rojo en la consola, ni al cargar ni al pulsar.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
 </ul>

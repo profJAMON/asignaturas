@@ -1,0 +1,147 @@
+<div class="nota">Hoy, <strong>cada uno en su ordenador</strong>: enlaces, páginas con menú y tablas. Trabaja en tu carpeta de ejercicios y, al acabar, entrega el zip en Classroom.</div>
+
+<h2>Enlaces</h2>
+<p>Un enlace se crea con la etiqueta <code>&lt;a&gt;</code>. El atributo <code>href</code> dice <strong>adónde lleva</strong>, y el texto de dentro es <strong>lo que se ve</strong> y se pulsa:</p>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://es.wikipedia.org/wiki/Kart"</span> <span class='at'>target</span>=<span class='ca'>"_blank"</span><span class='et'>&gt;</span>Qué es un kart<span class='et'>&lt;/a&gt;</span></code></pre>
+<div class="salida"><p><a href="https://es.wikipedia.org/wiki/Kart" target="_blank" rel="noopener">Qué es un kart</a></p></div>
+<ul>
+<li>Un enlace a otra web empieza siempre por <code>https://</code>.</li>
+<li><code>target="_blank"</code> lo abre en una <strong>pestaña nueva</strong>, para que el visitante no salga de tu página.</li>
+<li>El enlace va <strong>dentro</strong> de un párrafo o de un <code>&lt;li&gt;</code>, como una palabra más.</li>
+</ul>
+<div class="nota">💡 Para copiar una dirección sin equivocarte: abre la web en Chrome, pulsa en la barra de direcciones, <strong>Ctrl + C</strong>, y pégala en el <code>href</code> con <strong>Ctrl + V</strong>.</div>
+
+<h3>Ejercicio 1 — Webs útiles</h3>
+<p>Crea <code>s04-ej1.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej1.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej1.webp" alt="Página Webs útiles para estudiar con una lista de tres elementos. Cada uno empieza por un enlace subrayado en azul (Wikipedia, RAE, Google Traductor) seguido de dos puntos y para qué sirve. El número 1 señala el primer elemento. Nota 2: cada enlace se abre en una pestaña nueva." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una lista <code>&lt;ul&gt;</code>. Cada <code>&lt;li&gt;</code> empieza con un enlace y sigue con texto normal.</li>
+<li>② Los tres enlaces llevan <code>target="_blank"</code>.</li>
+<li>Los enlaces llevan a <code>https://es.wikipedia.org</code>, <code>https://www.rae.es</code> y <code>https://translate.google.com</code>.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Solo la palabra azul va entre <code>&lt;a …&gt;</code> y <code>&lt;/a&gt;</code>. Los dos puntos y la frase van después, fuera del enlace.</p>
+</details>
+<p>Si lo has hecho bien: al pulsar cada enlace se abre la web en una pestaña nueva, y tu página sigue abierta en la otra.</p>
+
+<h2>Una web de varias páginas</h2>
+<p>Cada página es un archivo <code>.html</code> distinto, en la misma carpeta. Para ir de una a otra, el enlace lleva <strong>el nombre del archivo</strong>, sin <code>https://</code>:</p>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span></code></pre>
+<p>El <strong>menú</strong> es un grupo de enlaces a todas las páginas. Va al principio del <code>&lt;body&gt;</code>, dentro de <code>&lt;nav&gt;</code>, y este dentro de <code>&lt;header&gt;</code>. El contenido de cada página va en <code>&lt;main&gt;</code>:</p>
+<pre><code><span class='et'>&lt;body&gt;</span>
+    <span class='et'>&lt;header&gt;</span>
+        <span class='et'>&lt;nav&gt;</span>
+            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"index.html"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a&gt;</span>
+            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;/nav&gt;</span>
+    <span class='et'>&lt;/header&gt;</span>
+    <span class='et'>&lt;main&gt;</span>
+        <span class='et'>&lt;h1&gt;</span>Pixel Kart<span class='et'>&lt;/h1&gt;</span>
+        <span class='et'>&lt;p&gt;</span>El juego de karts más rápido del instituto.<span class='et'>&lt;/p&gt;</span>
+    <span class='et'>&lt;/main&gt;</span>
+<span class='et'>&lt;/body&gt;</span></code></pre>
+<div class="salida"><p><a href="#" onclick="return false">Inicio</a> <a href="#" onclick="return false">Circuitos</a></p><p style="font-size:2em;font-weight:bold;margin:.4rem 0">Pixel Kart</p><p>El juego de karts más rápido del instituto.</p></div>
+<table>
+<thead><tr><th>Etiqueta</th><th>Qué es</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;header&gt;</code></td><td>La cabecera: lo que se repite arriba en todas las páginas.</td></tr>
+<tr><td><code>&lt;nav&gt;</code></td><td>El menú: los enlaces a las páginas.</td></tr>
+<tr><td><code>&lt;main&gt;</code></td><td>El contenido principal: lo que cambia de una página a otra.</td></tr>
+</tbody>
+</table>
+<p>No cambian nada de lo que se ve, pero ordenan el código. Con CSS pondremos el menú en fila y con colores.</p>
+<div class="nota">⚠️ El menú tiene que ser <strong>exactamente el mismo en todas las páginas</strong>. Cuando esté bien en una, cópialo y pégalo en las demás.</div>
+
+<h3>Truco de VS Code: duplicar una página</h3>
+<ol>
+<li>En el panel de la izquierda, botón derecho sobre la página que ya tienes → <strong>Copy</strong>.</li>
+<li>Botón derecho en un espacio en blanco del panel → <strong>Paste</strong>. Aparece una copia que acaba en <code>copy.html</code>.</li>
+<li>Botón derecho sobre la copia → <strong>Rename…</strong>, escribe el nombre nuevo (acabado en <code>.html</code>) e <strong>Intro</strong>.</li>
+<li>Ábrela y cambia el <code>&lt;title&gt;</code> y lo que hay dentro de <code>&lt;main&gt;</code>. El menú se queda igual.</li>
+</ol>
+
+<h3>Ejercicio 2 — Dos páginas con menú</h3>
+<p>Crea <code>s04-ej2.html</code> como en la imagen. Después, duplícala con el truco y llama a la copia <code>s04-ej2-horario.html</code>. En la copia, cambia el <code>&lt;h1&gt;</code> por "Horario" y el párrafo por "Nos vemos los martes en la biblioteca."</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej2.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej2.webp" alt="Página Club de lectura con dos partes numeradas: 1, un menú con dos enlaces, Inicio y Horario; 2, el contenido principal con el título Club de lectura y un párrafo. Nota 3: hay una segunda página, s04-ej2-horario.html, con el mismo menú." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;header&gt;</code> con un <code>&lt;nav&gt;</code> y 2 enlaces: a <code>s04-ej2.html</code> y a <code>s04-ej2-horario.html</code>.</li>
+<li>② El <code>&lt;h1&gt;</code> y el párrafo, dentro de <code>&lt;main&gt;</code>.</li>
+<li>③ La página <code>s04-ej2-horario.html</code>, con el mismo menú.</li>
+</ul>
+<details><summary>Pista: al pulsar un enlace sale "Cannot GET"</summary>
+<p>El archivo no existe con ese nombre. Compara letra a letra el <code>href</code> con el nombre del archivo en el panel de VS Code, incluido el <code>.html</code>.</p>
+</details>
+<p>Si lo has hecho bien: con Live Server, puedes ir de una página a la otra y volver pulsando el menú, todas las veces que quieras.</p>
+<details><summary>🤔 Antes de seguir: ¿qué diferencia hay entre href="horario.html" y href="https://horario.com"?</summary>
+<p>El primero lleva a un archivo de tu carpeta. El segundo lleva a otra web de Internet.</p>
+</details>
+
+<h2>Tablas</h2>
+<p>Una tabla sirve para <strong>datos en filas y columnas</strong>, como un horario o una clasificación. Se construye <strong>fila a fila</strong>:</p>
+<pre><code><span class='et'>&lt;table</span> <span class='at'>border</span>=<span class='ca'>"1"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;th&gt;</span>Circuito<span class='et'>&lt;/th&gt;</span>
+        <span class='et'>&lt;th&gt;</span>Dificultad<span class='et'>&lt;/th&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;td&gt;</span>Playa Pixel<span class='et'>&lt;/td&gt;</span>
+        <span class='et'>&lt;td&gt;</span>Fácil<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+    <span class='et'>&lt;tr&gt;</span>
+        <span class='et'>&lt;td&gt;</span>Volcán<span class='et'>&lt;/td&gt;</span>
+        <span class='et'>&lt;td&gt;</span>Difícil<span class='et'>&lt;/td&gt;</span>
+    <span class='et'>&lt;/tr&gt;</span>
+<span class='et'>&lt;/table&gt;</span></code></pre>
+<div class="salida"><table border="1" style="display:table;width:auto;border-collapse:separate;border-spacing:2px"><tr><th style="border:1px solid currentColor;padding:2px 4px">Circuito</th><th style="border:1px solid currentColor;padding:2px 4px">Dificultad</th></tr><tr><td style="border:1px solid currentColor;padding:2px 4px">Playa Pixel</td><td style="border:1px solid currentColor;padding:2px 4px">Fácil</td></tr><tr><td style="border:1px solid currentColor;padding:2px 4px">Volcán</td><td style="border:1px solid currentColor;padding:2px 4px">Difícil</td></tr></table></div>
+<table>
+<thead><tr><th>Etiqueta</th><th>Qué es</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;table&gt;</code></td><td>La tabla entera.</td></tr>
+<tr><td><code>&lt;tr&gt;</code></td><td><strong>Una fila</strong> (<em>table row</em>).</td></tr>
+<tr><td><code>&lt;th&gt;</code></td><td>Una celda de <strong>encabezado</strong>: el nombre de la columna. Sale en negrita y centrada.</td></tr>
+<tr><td><code>&lt;td&gt;</code></td><td>Una celda <strong>normal</strong>, con un dato.</td></tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Todas las filas tienen el mismo número de celdas.</strong> Si una tiene menos, la tabla se descuadra.</li>
+<li><code>border="1"</code> dibuja los bordes. Es una forma antigua: de momento la usamos para ver bien la tabla, y en la parte de CSS la cambiarás por estilos.</li>
+</ul>
+
+<h3>Truco de VS Code: una tabla entera de golpe</h3>
+<p>Escribe <code>table&gt;tr*3&gt;td*2</code> y pulsa <strong>Tab</strong>: sale una tabla de 3 filas con 2 celdas cada una. Después cambia las celdas de la primera fila de <code>td</code> a <code>th</code>.</p>
+<p>Otro truco: haz doble clic sobre un <code>td</code> y pulsa <strong>Ctrl + D</strong> varias veces. Se seleccionan los siguientes <code>td</code> y puedes cambiarlos todos a la vez.</p>
+
+<h3>Ejercicio 3 — La liga</h3>
+<p>Crea <code>s04-ej3.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej3.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej3.webp" alt="Página Liga de fútbol sala con una tabla con bordes de 3 columnas: Posición, Equipo y Puntos. El número 1 señala la fila de encabezado y el 2 la primera fila de datos (1, Los Rayos, 21). Debajo hay tres filas más: Los Tiburones 18, Los Cometas 12, Los Pingüinos 5. Nota 3: la tabla lleva border igual a 1." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una fila de encabezado con 3 <code>&lt;th&gt;</code>.</li>
+<li>② 4 filas de datos, cada una con 3 <code>&lt;td&gt;</code>.</li>
+<li>③ La tabla lleva <code>border="1"</code>.</li>
+</ul>
+<details><summary>Pista: la tabla sale toda en una línea</summary>
+<p>Te falta abrir o cerrar algún <code>&lt;tr&gt;</code>. Cada fila empieza con <code>&lt;tr&gt;</code> y termina con <code>&lt;/tr&gt;</code>.</p>
+</details>
+<p>Si lo has hecho bien: todas las columnas están alineadas y ninguna fila tiene un hueco al final.</p>
+<details><summary>🤔 Antes de seguir: tu tabla tiene 4 columnas y añades una fila con 3 &lt;td&gt;. ¿Qué pasa?</summary>
+<p>A esa fila le falta una celda: se ve descuadrada, con un hueco al final.</p>
+</details>
+
+<h3>Ejercicio 4 — Cine de verano</h3>
+<p>El ejercicio largo de hoy: junta enlaces, menú, tabla y lista. Crea <code>s04-ej4.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej4.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej4.webp" alt="Página Cine de verano con cuatro partes numeradas: 1, un menú con los enlaces Cartelera y Club de lectura; 2, una tabla con bordes con tres películas y su día y hora; 3, una lista con viñetas de normas; 4, un párrafo con un enlace a Wikipedia. Nota 5: el enlace Club de lectura lleva a s04-ej2.html, y el de Wikipedia se abre en una pestaña nueva." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un menú en <code>&lt;header&gt;</code> y <code>&lt;nav&gt;</code>: "Cartelera" lleva a esta misma página y "Club de lectura", a <code>s04-ej2.html</code>.</li>
+<li>② Una tabla con encabezado y 3 películas.</li>
+<li>③ Una lista <code>&lt;ul&gt;</code> de normas.</li>
+<li>④ Un enlace a <code>https://es.wikipedia.org/wiki/Cine_de_verano</code> que se abre en una pestaña nueva.</li>
+<li>Todo lo que no es el menú va dentro de <code>&lt;main&gt;</code>.</li>
+<li>El <code>&lt;title&gt;</code> es <code>Cine de verano</code>.</li>
+</ul>
+<p>Si lo has hecho bien: desde "Club de lectura" llegas al ejercicio 2, y desde el ejercicio 2 puedes volver con el botón de atrás de Chrome.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Todo guardado: ninguna pestaña con el punto blanco.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
+</ul>

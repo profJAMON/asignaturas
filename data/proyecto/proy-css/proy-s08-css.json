@@ -2,12 +2,17 @@
   "id": "proy-s08-css",
   "titulo": "Sesión 8 — Introducción a CSS",
   "fecha": "",
-  "descripcion": "Conectar un archivo CSS a todas las páginas, cómo es una regla, colores y texto, selectores de etiqueta y de clase, y revisar el CSS con F12.",
+  "descripcion": "Ejercicios individuales: conectar un archivo CSS con <link>, cómo es una regla, color, background-color, font-family, font-size y text-align, selectores de etiqueta y de clase, y revisar el CSS con F12. Truco de VS Code: Ctrl + Espacio y el cuadradito de color. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",
       "titulo": "MDN: ¿Qué es CSS?",
       "url": "https://developer.mozilla.org/es/docs/Learn/CSS/First_steps/What_is_CSS"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Selectores de tipo, clase e ID",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors"
     }
   ],
   "actividades": [
@@ -16,11 +21,11 @@
       "titulo": "Autoevaluación rápida",
       "preguntas": [
         {
-          "pregunta": "¿Dónde se pone la línea <link rel=\"stylesheet\" href=\"estilos.css\">?",
+          "pregunta": "¿Dónde se pone la línea <link rel=\"stylesheet\" href=\"s08-ej1.css\">?",
           "opciones": [
-            "En el <head> de cada página",
+            "En el <head> de la página",
             "Al final del <body>",
-            "Dentro de estilos.css"
+            "Dentro del archivo .css"
           ],
           "correcta": 0
         },

@@ -1,8 +1,8 @@
 {
   "id": "proy-s07-publicar",
-  "titulo": "Sesión 7 — La web publicada y repaso de HTML",
+  "titulo": "Sesión 7 — Taller: la web publicada",
   "fecha": "",
-  "descripcion": "Cómo se publica la web desde GitHub con Cloudflare, el recorrido de una web hasta la pantalla (servidor, IP y DNS), el borrador de la página \"Cómo llega mi web a tu pantalla\" y repaso de todo el HTML.",
+  "descripcion": "Taller en pareja. Cómo se publica la web desde GitHub con Cloudflare, el recorrido de una web hasta la pantalla (servidor, IP y DNS), el borrador de la página \"Cómo llega mi web a tu pantalla\" y acabar el HTML de la web.",
   "materiales": [],
   "actividades": [
     {

@@ -1,0 +1,134 @@
+<div class="nota">Hoy, <strong>cada uno en su ordenador</strong>: formularios, y un último ejercicio que repasa todo el HTML. La semana que viene empezáis a montar vuestra web en pareja con todo lo que habéis practicado.</div>
+
+<h2>Para qué sirve un formulario</h2>
+<p>Un formulario es la parte de una web donde <strong>el visitante escribe o elige algo</strong>: buscar, apuntarse a un torneo, hacer un test, calcular un precio…</p>
+<p>Hoy haremos solo la parte de HTML: las cajas, las opciones y el botón. Al pulsar el botón todavía no pasará nada: lo haremos funcionar con <strong>JavaScript</strong>.</p>
+
+<h2>Las piezas de un formulario</h2>
+<pre><code><span class='et'>&lt;form&gt;</span>
+    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label&gt;</span>
+    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span> <span class='at'>placeholder</span>=<span class='ca'>"Por ejemplo: RayoAzul"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button&gt;</span>
+<span class='et'>&lt;/form&gt;</span></code></pre>
+<div class="salida"><p style="margin:0"><label>Tu alias: <input type="text" placeholder="Por ejemplo: RayoAzul"></label> <button type="button">Inscribirme</button></p></div>
+<table>
+<thead><tr><th>Etiqueta</th><th>Para qué sirve</th></tr></thead>
+<tbody>
+<tr><td><code>&lt;form&gt;</code></td><td>Agrupa todo el formulario.</td></tr>
+<tr><td><code>&lt;label&gt;</code></td><td>El texto que explica qué hay que poner en la caja.</td></tr>
+<tr><td><code>&lt;input&gt;</code></td><td>Una caja para escribir. <strong>No se cierra.</strong></td></tr>
+<tr><td><code>&lt;button&gt;</code></td><td>Un botón.</td></tr>
+</tbody>
+</table>
+<ul>
+<li><code>placeholder</code> es el texto gris de ejemplo que se ve dentro de la caja vacía.</li>
+<li>El <code>for</code> del <code>&lt;label&gt;</code> es <strong>igual</strong> que el <code>id</code> de su caja. Así quedan unidos: si pulsas el texto, el cursor salta a la caja.</li>
+<li>El <code>id</code> es un nombre <strong>único</strong>: no puede haber dos iguales en una página. Ponle nombres que digan qué es: <code>id="alias"</code> ✅, <code>id="caja1"</code> ❌. Con JavaScript encontrarás cada caja por su <code>id</code>.</li>
+<li>El botón lleva siempre <code>type="button"</code>. Sin eso, al pulsarlo la página se recarga y se borra lo escrito.</li>
+</ul>
+
+<h3>Ejercicio 1 — Un buscador</h3>
+<p>Crea <code>s05-ej1.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s05/ej1.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s05/ej1.webp" alt="Página Buscador de recetas con un formulario en una línea: 1, el texto ¿Qué quieres cocinar?; 2, una caja de texto con el ejemplo gris Por ejemplo: tortilla; 3, un botón Buscar. Nota 4: al pulsar el texto, el cursor salta a la caja." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;label&gt;</code> con <code>for="buscar"</code>.</li>
+<li>② Un <code>&lt;input type="text"&gt;</code> con <code>id="buscar"</code> y un <code>placeholder</code>.</li>
+<li>③ Un <code>&lt;button type="button"&gt;</code>.</li>
+<li>④ Todo dentro de un <code>&lt;form&gt;</code>.</li>
+</ul>
+<p>Si lo has hecho bien: al pulsar el texto "¿Qué quieres cocinar?", el cursor aparece dentro de la caja.</p>
+
+<h2>Más tipos de caja</h2>
+<p>El atributo <code>type</code> del <code>&lt;input&gt;</code> cambia qué se puede escribir:</p>
+<table>
+<thead><tr><th>type</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>text</code></td><td>Texto normal.</td></tr>
+<tr><td><code>number</code></td><td>Solo números. Con <code>min</code> y <code>max</code> pones límites.</td></tr>
+<tr><td><code>email</code></td><td>Un correo electrónico.</td></tr>
+<tr><td><code>date</code></td><td>Una fecha, con calendario.</td></tr>
+<tr><td><code>checkbox</code></td><td>Una casilla para marcar.</td></tr>
+</tbody>
+</table>
+<div class="salida">
+<p style="margin:0 0 .5rem">text: <input type="text" aria-label="Ejemplo de caja de texto" style="max-width:12rem"></p>
+<p style="margin:0 0 .5rem">number: <input type="number" min="1" max="10" aria-label="Ejemplo de caja de número" style="max-width:6rem"></p>
+<p style="margin:0 0 .5rem">email: <input type="email" aria-label="Ejemplo de caja de correo" style="max-width:12rem"></p>
+<p style="margin:0 0 .5rem">date: <input type="date" aria-label="Ejemplo de caja de fecha"></p>
+<p style="margin:0">checkbox: <input type="checkbox" aria-label="Ejemplo de casilla"></p>
+</div>
+<p>Y dos etiquetas más:</p>
+<pre><code><span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;option&gt;</span>Turbo Rex<span class='et'>&lt;/option&gt;</span>
+    <span class='et'>&lt;option&gt;</span>Chispa<span class='et'>&lt;/option&gt;</span>
+<span class='et'>&lt;/select&gt;</span>
+
+<span class='et'>&lt;textarea</span> <span class='at'>id</span>=<span class='ca'>"opinion"</span> <span class='at'>rows</span>=<span class='ca'>"3"</span> <span class='at'>cols</span>=<span class='ca'>"30"</span><span class='et'>&gt;&lt;/textarea&gt;</span></code></pre>
+<div class="salida"><p style="margin:0 0 .5rem"><select aria-label="Ejemplo de desplegable"><option>Turbo Rex</option><option>Chispa</option></select></p><textarea rows="3" cols="30" aria-label="Ejemplo de caja grande" style="max-width:100%"></textarea></div>
+<ul>
+<li><code>&lt;select&gt;</code> es un <strong>desplegable</strong>; cada <code>&lt;option&gt;</code> es una opción.</li>
+<li><code>&lt;textarea&gt;</code> es una caja <strong>grande</strong>, para escribir varias líneas. Esta sí se cierra. <code>rows</code> son las líneas de alto y <code>cols</code>, los caracteres de ancho.</li>
+</ul>
+<p>Para que cada pregunta salga en su propia línea, mete cada pareja de <code>&lt;label&gt;</code> y caja en un <code>&lt;p&gt;</code>.</p>
+<details><summary>🤔 Antes de seguir: quieres que el visitante elija su nivel entre "Principiante", "Medio" y "Experto". ¿Qué usas?</summary>
+<p>Un <code>&lt;select&gt;</code> con tres <code>&lt;option&gt;</code>.</p>
+</details>
+
+<h3>Ejercicio 2 — Reservar una pista</h3>
+<p>Crea <code>s05-ej2.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s05/ej2.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s05/ej2.webp" alt="Página Reservar pista de pádel con un formulario de cuatro preguntas, cada una en su línea: 1, Tu alias con una caja de texto; 2, Día con una caja de fecha; 3, Jugadores con una caja de número; 4, Pista con un desplegable. Debajo, el botón Reservar. Notas: 5, en Jugadores solo se puede poner de 2 a 4; 6, cada label tiene un for igual al id de su caja." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una caja <code>text</code> para el alias.</li>
+<li>② Una caja <code>date</code> para el día.</li>
+<li>③ Una caja <code>number</code> con <code>min="2"</code> y <code>max="4"</code>.</li>
+<li>④ Un <code>&lt;select&gt;</code> con 3 pistas.</li>
+<li>⑤ Cada pregunta en su <code>&lt;p&gt;</code>, y un botón al final.</li>
+<li>⑥ Cada <code>&lt;label&gt;</code> con su <code>for</code> igual al <code>id</code> de su caja.</li>
+</ul>
+<details><summary>Pista: todo sale en una sola línea</summary>
+<p>Te faltan los <code>&lt;p&gt;</code>: cada <code>&lt;label&gt;</code> con su caja va dentro de su propio <code>&lt;p&gt;</code>.</p>
+</details>
+<p>Si lo has hecho bien: en la caja de día, al pulsar, sale un calendario; y en la de jugadores, las flechitas no pasan de 4.</p>
+
+<h3>Ejercicio 3 — Encuesta del comedor</h3>
+<p>Crea <code>s05-ej3.html</code> y haz que se vea como en la imagen. En la casilla, la caja va <strong>antes</strong> que el texto.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s05/ej3.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s05/ej3.webp" alt="Página Encuesta del comedor con un formulario: 1, un desplegable Tu plato favorito; 2, una caja de número Nota del comedor del 1 al 10; 3, una casilla con el texto Quiero fruta de postre a su derecha; 4, una caja grande de varias líneas debajo del texto ¿Qué cambiarías?; al final, el botón Enviar opinión. Nota 5: al pulsar el texto de la casilla, la casilla se marca." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un <code>&lt;select&gt;</code> con 4 platos.</li>
+<li>② Una caja <code>number</code> del 1 al 10.</li>
+<li>③ Una casilla <code>checkbox</code> con su <code>&lt;label&gt;</code> detrás.</li>
+<li>④ Un <code>&lt;textarea&gt;</code> de 4 líneas, debajo de su texto (usa <code>&lt;br&gt;</code>).</li>
+<li>⑤ Al pulsar el texto de la casilla, se marca y se desmarca.</li>
+</ul>
+<details><summary>Pista: al pulsar el texto no se marca la casilla</summary>
+<p>El <code>for</code> del <code>&lt;label&gt;</code> no coincide con el <code>id</code> del <code>checkbox</code>.</p>
+</details>
+
+<h2>Privacidad en los formularios</h2>
+<div class="nota">⚠️ Las webs de las parejas estarán publicadas. En un formulario <strong>nunca se piden datos personales</strong>: nada de nombre y apellidos, teléfono, dirección ni DNI. Se piden alias, opiniones, gustos, cantidades…</div>
+
+<h2>Repaso de todo el HTML</h2>
+<h3>Ejercicio 4 — Club de ajedrez</h3>
+<p>El último ejercicio de HTML junta todo lo que has practicado. Busca una imagen de ajedrez en Pixabay o Unsplash, guárdala en tu carpeta <code>img</code>, crea <code>s05-ej4.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s05/ej4.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s05/ej4.webp" alt="Página Club de ajedrez con seis partes numeradas: 1, un menú con los enlaces Inicio y Cine de verano; 2, una imagen de un tablero; 3, una lista con viñetas Qué necesitas saber; 4, una tabla con bordes de horario con dos días; 5, un formulario de inscripción con una caja de alias, un desplegable de nivel y el botón Apuntarme; 6, un párrafo con un enlace a Wikipedia. Notas: 7, la imagen la has buscado tú y tiene alt; 8, un comentario encima de cada h2." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Un menú en <code>&lt;header&gt;</code> y <code>&lt;nav&gt;</code>: "Inicio" lleva a esta página y "Cine de verano", a <code>s04-ej4.html</code>.</li>
+<li>② Una imagen de ajedrez buscada por ti, en <code>img</code>, con su <code>alt</code>.</li>
+<li>③ Una lista <code>&lt;ul&gt;</code>.</li>
+<li>④ Una tabla con encabezado y 2 filas de datos.</li>
+<li>⑤ Un formulario con una caja de texto, un desplegable y un botón, cada uno con su <code>&lt;label&gt;</code>.</li>
+<li>⑥ Un enlace a Wikipedia que se abre en una pestaña nueva.</li>
+<li>⑦ Todo lo que no es el menú, dentro de <code>&lt;main&gt;</code>.</li>
+<li>⑧ Un comentario encima de cada <code>&lt;h2&gt;</code>.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>Cada parte ya la has hecho en otro ejercicio. Si te atascas, abre ese ejercicio en VS Code y mira cómo lo hiciste: menú (sesión 4, ejercicio 2), tabla (sesión 4, ejercicio 3), formulario (ejercicio 2 de hoy).</p>
+</details>
+<p>Si lo has hecho bien: al pulsar <strong>Mayús + Alt + F</strong> el código queda ordenado, y todas las partes salen en el mismo orden que en la imagen.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Todo guardado: ninguna pestaña con el punto blanco.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
+<li>Has pensado con tu compañero qué podría hacer el formulario de vuestra web (un test, una calculadora, una encuesta…). Lo montaréis la semana que viene.</li>
+</ul>

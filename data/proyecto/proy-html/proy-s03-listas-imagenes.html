@@ -1,0 +1,181 @@
+<div class="nota">Hoy, <strong>cada uno en su ordenador</strong>: listas e imágenes. Trabaja en tu carpeta de ejercicios y, al acabar, entrega el zip en Classroom.</div>
+
+<h2>Listas</h2>
+<h3>Lista con viñetas</h3>
+<p>Para cosas que <strong>no tienen un orden</strong>. <code>&lt;ul&gt;</code> es la lista y cada <code>&lt;li&gt;</code> es un elemento:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>12 pilotos<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>8 circuitos<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Modo para dos jugadores<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="salida"><ul><li>12 pilotos</li><li>8 circuitos</li><li>Modo para dos jugadores</li></ul></div>
+
+<h3>Lista numerada</h3>
+<p>Para cosas que <strong>van en orden</strong>: pasos, rankings, instrucciones. Es igual, pero con <code>&lt;ol&gt;</code>:</p>
+<pre><code><span class='et'>&lt;ol&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Gana el campeonato del volcán.<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Consigue 50 monedas.<span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Compra a Turbo Rex en la tienda.<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ol&gt;</span></code></pre>
+<div class="salida"><ol><li>Gana el campeonato del volcán.</li><li>Consigue 50 monedas.</li><li>Compra a Turbo Rex en la tienda.</li></ol></div>
+<div class="nota">⚠️ Dentro de <code>&lt;ul&gt;</code> y <code>&lt;ol&gt;</code> solo puede haber <code>&lt;li&gt;</code>. El título de la lista va <strong>antes</strong>, fuera de ella, en un <code>&lt;h2&gt;</code> o un <code>&lt;p&gt;</code>.</div>
+
+<h3>Truco de VS Code: una lista entera de golpe</h3>
+<p>Escribe <code>ul&gt;li*3</code> y pulsa <strong>Tab</strong>. VS Code escribe una lista con 3 elementos vacíos y deja el cursor en el primero:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<p><code>&gt;</code> significa "dentro de" y <code>*3</code> significa "3 veces". Escribe el texto del primero y pulsa <strong>Tab</strong> para saltar al siguiente. Con <code>ol&gt;li*4</code> sale una lista numerada de 4.</p>
+
+<h3>Ejercicio 1 — Un bocadillo</h3>
+<p>Crea <code>s03-ej1.html</code> (con <strong>! + Tab</strong>) y haz que se vea como en la imagen. Escribe las listas con el truco <code>ul&gt;li*4</code> y <code>ol&gt;li*4</code>.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s03/ej1.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s03/ej1.webp" alt="Página Preparar un bocadillo con dos partes numeradas: 1, una lista con viñetas de ingredientes (Pan, Tomate, Queso, Aceite) debajo del apartado Qué necesitas; 2, una lista numerada de 4 pasos debajo del apartado Pasos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una lista <code>&lt;ul&gt;</code> con 4 ingredientes.</li>
+<li>② Una lista <code>&lt;ol&gt;</code> con 4 pasos.</li>
+<li>Cada lista tiene su <code>&lt;h2&gt;</code> encima.</li>
+</ul>
+<details><summary>Pista</summary>
+<p>¿Lleva puntos o números? Puntos: <code>&lt;ul&gt;</code>. Números: <code>&lt;ol&gt;</code>. Los números <strong>no los escribes tú</strong>: los pone el navegador.</p>
+</details>
+<p>Si lo has hecho bien: si cambias de sitio dos pasos en el código, los números siguen saliendo 1, 2, 3, 4.</p>
+
+<h3>Una lista dentro de otra</h3>
+<p>Un <code>&lt;li&gt;</code> puede llevar dentro otra lista entera. La lista pequeña va <strong>dentro del <code>&lt;li&gt;</code></strong>, antes de su <code>&lt;/li&gt;</code>:</p>
+<pre><code><span class='et'>&lt;ul&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Pilotos rápidos
+        <span class='et'>&lt;ul&gt;</span>
+            <span class='et'>&lt;li&gt;</span>Turbo Rex<span class='et'>&lt;/li&gt;</span>
+            <span class='et'>&lt;li&gt;</span>Chispa<span class='et'>&lt;/li&gt;</span>
+        <span class='et'>&lt;/ul&gt;</span>
+    <span class='et'>&lt;/li&gt;</span>
+    <span class='et'>&lt;li&gt;</span>Pilotos fuertes<span class='et'>&lt;/li&gt;</span>
+<span class='et'>&lt;/ul&gt;</span></code></pre>
+<div class="salida"><ul><li>Pilotos rápidos<ul><li>Turbo Rex</li><li>Chispa</li></ul></li><li>Pilotos fuertes</li></ul></div>
+<p>El navegador mete la lista de dentro un poco más a la derecha y le cambia las viñetas por círculos vacíos. Eso no lo escribes tú.</p>
+<details><summary>🤔 Antes de seguir: ¿qué diferencia hay entre &lt;ul&gt; y &lt;ol&gt;?</summary>
+<p><code>&lt;ul&gt;</code> es una lista con viñetas, para cosas sin orden. <code>&lt;ol&gt;</code> es una lista numerada, para cosas que van en orden.</p>
+</details>
+
+<h3>Ejercicio 2 — Deportes del instituto</h3>
+<p>Crea <code>s03-ej2.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s03/ej2.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s03/ej2.webp" alt="Página Deportes del instituto con tres partes numeradas: 1, una lista con viñetas de dos elementos, Deportes de equipo y Deportes individuales; 2, dentro de cada uno, otra lista con círculos (Fútbol sala, Baloncesto, Voleibol / Atletismo, Tenis de mesa); 3, una lista numerada Ranking de la liga con tres equipos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una lista <code>&lt;ul&gt;</code> con 2 elementos.</li>
+<li>② Dentro de cada uno de esos 2 elementos, otra lista <code>&lt;ul&gt;</code>.</li>
+<li>③ Una lista <code>&lt;ol&gt;</code> con 3 equipos.</li>
+</ul>
+<details><summary>Pista 1</summary>
+<p>Escribe primero la lista grande con sus 2 elementos. Después, coloca el cursor justo antes del primer <code>&lt;/li&gt;</code>, pulsa <strong>Intro</strong> y escribe ahí <code>ul&gt;li*3</code> + Tab.</p>
+</details>
+<details><summary>Pista 2: la lista pequeña sale fuera, al mismo nivel que la grande</summary>
+<p>Has cerrado el <code>&lt;li&gt;</code> antes de la lista pequeña. El <code>&lt;/li&gt;</code> tiene que ir <strong>después</strong> del <code>&lt;/ul&gt;</code> de dentro.</p>
+</details>
+<p>Si lo has hecho bien: "Fútbol sala" y los demás deportes tienen círculos vacíos, no puntos negros.</p>
+
+<h2>Imágenes</h2>
+<p>Para poner una imagen, primero la guardas en una carpeta <code>img</code> y después la enlazas con la etiqueta <code>&lt;img&gt;</code>:</p>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/turbo-rex.png"</span> <span class='at'>alt</span>=<span class='ca'>"Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</span><span class='et'>&gt;</span></code></pre>
+<ul>
+<li><code>&lt;img&gt;</code> <strong>no se cierra</strong>: no existe <code>&lt;/img&gt;</code>.</li>
+<li><code>src</code> dice <strong>dónde está</strong> la imagen.</li>
+<li><code>alt</code> describe la imagen con palabras. Es <strong>obligatorio</strong>.</li>
+</ul>
+<p>Lo que va dentro de una etiqueta con la forma <code>nombre="valor"</code> se llama <strong>atributo</strong>. <code>src</code> y <code>alt</code> son atributos de <code>&lt;img&gt;</code>.</p>
+
+<h3>Para qué sirve el alt</h3>
+<ul>
+<li>Las personas ciegas usan programas que <strong>leen la página en voz alta</strong>. De una imagen leen su <code>alt</code>.</li>
+<li>Si la imagen no carga, el navegador muestra el <code>alt</code> en su lugar.</li>
+</ul>
+<p>Un buen <code>alt</code> describe <strong>lo que se ve</strong>: <code>alt="Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</code> ✅. <code>alt="imagen"</code> o <code>alt="foto1"</code> ❌ no dicen nada.</p>
+
+<h3>Rutas: cómo encuentra el navegador la imagen</h3>
+<p>La <strong>ruta</strong> es el camino desde el archivo HTML hasta la imagen:</p>
+<pre><code>ejercicios-pixelrojo/
+├── s03-ej3.html
+└── img/
+    ├── tierra.png
+    └── luna.png</code></pre>
+<p>Desde <code>s03-ej3.html</code>, la imagen está <strong>dentro de la carpeta img</strong>, así que la ruta es <code>img/tierra.png</code>: primero la carpeta, una barra <code>/</code> y el nombre del archivo.</p>
+<table>
+<thead><tr><th>Escribes</th><th>Qué pasa</th></tr></thead>
+<tbody>
+<tr><td><code>src="img/tierra.png"</code></td><td>✅ Se ve.</td></tr>
+<tr><td><code>src="tierra.png"</code></td><td>❌ Falta la carpeta: la busca al lado del HTML y no la encuentra.</td></tr>
+<tr><td><code>src="img/Tierra.png"</code></td><td>❌ Mayúscula de más. Las rutas tienen que coincidir <strong>letra a letra</strong>.</td></tr>
+<tr><td><code>src="img/tierra.jpg"</code></td><td>❌ La imagen es <code>.png</code>, no <code>.jpg</code>. La extensión también cuenta.</td></tr>
+<tr><td><code>src="C:\Users\...\tierra.png"</code></td><td>❌ Solo funciona en ese ordenador. Nunca rutas que empiecen por <code>C:\</code>.</td></tr>
+</tbody>
+</table>
+<div class="nota">💡 Truco para no equivocarte: en el panel de la izquierda de VS Code, botón derecho sobre la imagen → <strong>Copy Relative Path</strong> y pégala en el <code>src</code>. Si sale con la barra al revés (<code>img\tierra.png</code>), cámbiala por <code>/</code>.</div>
+
+<h3>Ejercicio 3 — La Tierra y la Luna</h3>
+<p>Te he preparado dos imágenes. Primero, guárdalas en tu carpeta:</p>
+<ol>
+<li>En VS Code, crea la carpeta <code>img</code> dentro de tu carpeta de ejercicios: pasa el ratón por encima del nombre de tu carpeta → icono <strong>New Folder…</strong> (carpeta con un +) → escribe <code>img</code> → <strong>Intro</strong>.</li>
+<li>Descarga las dos imágenes: <a href="data/proyecto/proy-html/img/proy-s03/descargas/tierra.png" download>tierra.png</a> y <a href="data/proyecto/proy-html/img/proy-s03/descargas/luna.png" download>luna.png</a>. Se guardan en <strong>Descargas</strong>.</li>
+<li>En el Explorador (<strong>Windows + E</strong>), ve a <strong>Descargas</strong>, selecciona las dos (<strong>Ctrl</strong> + clic en cada una) → botón derecho → <strong>Cortar</strong>.</li>
+<li>Ve a <strong>Documentos</strong> → tu carpeta de ejercicios → <code>img</code> → botón derecho → <strong>Pegar</strong>.</li>
+<li>En VS Code, abre la carpeta <code>img</code> del panel de la izquierda: tienen que estar las dos imágenes.</li>
+</ol>
+<p>Ahora crea <code>s03-ej3.html</code> y haz que se vea como en la imagen.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s03/ej3.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s03/ej3.webp" alt="Página La Tierra y la Luna con dos apartados. En cada uno, debajo del título, una imagen (1, la Tierra; 2, la Luna) y un párrafo. Notas: 3, cada imagen tiene un alt que describe lo que se ve; 4, las imágenes están en la carpeta img." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① La imagen de la Tierra, debajo de su <code>&lt;h2&gt;</code>.</li>
+<li>② La imagen de la Luna, debajo de su <code>&lt;h2&gt;</code>.</li>
+<li>③ Cada <code>&lt;img&gt;</code> tiene un <code>alt</code> que describe lo que se ve.</li>
+<li>④ Las dos rutas empiezan por <code>img/</code>.</li>
+</ul>
+<details><summary>Pista 1: sale el texto del alt en lugar de la imagen</summary>
+<p>El navegador no encuentra la imagen. Compara letra a letra el <code>src</code> con el nombre del archivo en el panel de VS Code.</p>
+</details>
+<details><summary>Pista 2: sigue sin verse</summary>
+<p>Comprueba que la carpeta <code>img</code> está <strong>dentro</strong> de tu carpeta de ejercicios, al lado de <code>s03-ej3.html</code>, y no en Descargas ni en Documentos.</p>
+</details>
+<p>Si lo has hecho bien: si borras una letra del <code>src</code> y guardas, en lugar de la imagen sale el texto de tu <code>alt</code>. Vuelve a ponerla.</p>
+
+<h2>Imágenes que puedes usar</h2>
+<p>No puedes coger cualquier imagen de Google: casi todas tienen <strong>dueño</strong>. Usa webs de imágenes <strong>de uso libre</strong>:</p>
+<ul>
+<li><strong>Pixabay</strong> (<code>pixabay.com/es</code>) y <strong>Unsplash</strong> (<code>unsplash.com</code>): fotos y dibujos gratis.</li>
+<li><strong>Wikimedia Commons</strong> (<code>commons.wikimedia.org</code>): mira la licencia de cada una.</li>
+</ul>
+<p>Apunta siempre <strong>de dónde</strong> sacas cada imagen: en la web de la pareja tendréis que ponerlo.</p>
+<h3>Buscar, descargar y renombrar</h3>
+<ol>
+<li>En <code>pixabay.com/es</code>, busca lo que quieras y pulsa sobre la imagen.</li>
+<li>Pulsa <strong>Descargar</strong> y elige un tamaño <strong>pequeño</strong> (unos 640 píxeles de ancho). Una imagen enorme hace que la web tarde en cargar.</li>
+<li>Copia la <strong>dirección</strong> de la página de la imagen (la barra de arriba de Chrome): la necesitarás.</li>
+<li>En el Explorador, mueve la imagen de <strong>Descargas</strong> a tu carpeta <code>img</code> (Cortar y Pegar, como antes).</li>
+<li>Cámbiale el nombre: botón derecho → <strong>Cambiar nombre</strong>. Un nombre que diga qué es, <strong>en minúsculas, sin espacios ni tildes</strong>: <code>pez-payaso.jpg</code>. <strong>No cambies la extensión</strong> (<code>.jpg</code>, <code>.png</code>…).</li>
+</ol>
+<div class="nota">Para ver las extensiones de los archivos en el Explorador: <strong>Windows 11</strong>, menú <strong>Ver</strong> → <strong>Mostrar</strong> → <strong>Extensiones de nombre de archivo</strong>. <strong>Windows 10</strong>, pestaña <strong>Vista</strong> → casilla <strong>Extensiones de nombre de archivo</strong>.</div>
+<div class="nota">Si Pixabay te pide una cuenta para descargar, prueba en <code>unsplash.com</code>: pulsa sobre la foto y después el botón <strong>Download</strong>.</div>
+
+<h3>Ejercicio 4 — Tu animal</h3>
+<p>El ejercicio largo de hoy. Elige un animal, busca su imagen en Pixabay o Unsplash y crea <code>s03-ej4.html</code> con las mismas partes que la imagen de ejemplo. Los textos sobre tu animal los escribes tú: basta con frases cortas.</p>
+<figure class="captura"><a href="data/proyecto/proy-html/img/proy-s03/ej4.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s03/ej4.webp" alt="Ficha El pez payaso con cinco partes numeradas: 1, una imagen del animal; 2, una lista con viñetas de datos; 3, dentro del último dato, otra lista con dos océanos; 4, una lista numerada de cuidados; 5, al final, después de una línea, un párrafo que dice de dónde se ha sacado la imagen. Notas: 6, la imagen tiene alt; 7, el título de la pestaña es el nombre del animal." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① Una imagen de tu animal, descargada por ti, en la carpeta <code>img</code>, con un nombre en minúsculas y sin espacios.</li>
+<li>② Una lista <code>&lt;ul&gt;</code> con al menos 3 datos.</li>
+<li>③ Una lista <code>&lt;ul&gt;</code> dentro de uno de los datos.</li>
+<li>④ Una lista <code>&lt;ol&gt;</code> con al menos 3 pasos.</li>
+<li>⑤ Un <code>&lt;hr&gt;</code> y un párrafo con la web de donde has sacado la imagen.</li>
+<li>⑥ La imagen tiene un <code>alt</code> que describe lo que se ve.</li>
+<li>⑦ El <code>&lt;title&gt;</code> es el nombre de tu animal.</li>
+</ul>
+<p>No tiene que quedar igual que el ejemplo: el animal y los textos son tuyos. Lo que cuenta es que estén las siete partes.</p>
+<details><summary>Pista: la imagen se ve gigante</summary>
+<p>Es normal: el tamaño lo cambiaremos con CSS. Si molesta, descarga la misma imagen en un tamaño más pequeño.</p>
+</details>
+<p>Si lo has hecho bien: la imagen se ve con Live Server, y si la mueves fuera de <code>img</code>, deja de verse.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Todo guardado: ninguna pestaña con el punto blanco.</li>
+<li>La carpeta <code>img</code> está dentro de tu carpeta de ejercicios, con sus imágenes.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>. El zip ya lleva dentro la carpeta <code>img</code>.</li>
+</ul>

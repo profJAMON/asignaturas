@@ -2,7 +2,7 @@
   "id": "proy-s12-js-variables",
   "titulo": "Sesión 12 — JavaScript: consola y variables",
   "fecha": "",
-  "descripcion": "Qué es JavaScript, conectar un archivo .js, la consola, variables, números y textos, juntar textos con + y comentarios.",
+  "descripcion": "Ejercicios individuales: qué es JavaScript, conectar un archivo .js al final del body, la consola y console.log, variables con let, números y textos, juntar textos con + y comentarios. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

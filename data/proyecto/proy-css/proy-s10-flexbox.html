@@ -1,43 +1,97 @@
+<div class="nota">Hoy: pones cajas <strong>en fila</strong> con <strong>Flexbox</strong>. Con eso haces un menú y una fila de tarjetas, y al final una mini web entera. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
+
 <h2>El problema: todo va uno debajo de otro</h2>
-<p>Por defecto, la mayoría de elementos ocupan <strong>todo el ancho</strong> y se colocan <strong>uno debajo de otro</strong>. Las tarjetas de la sesión anterior salen en columna, aunque haya sitio para ponerlas en fila.</p>
-<p><strong>Flexbox</strong> sirve para colocar varias cajas <strong>en fila</strong> (o en columna) y decidir cómo se reparte el espacio entre ellas.</p>
+<p>Los títulos, los párrafos y los <code>&lt;div&gt;</code> ocupan <strong>todo el ancho</strong> y se colocan <strong>uno debajo de otro</strong>. En la sesión 9, las dos tarjetas del club salían en columna aunque cabían en fila.</p>
+<p><strong>Flexbox</strong> sirve para poner varias cajas <strong>en fila</strong> y decidir cómo se reparte el espacio.</p>
 
 <h2>display: flex</h2>
 <p>La idea más importante: <code>display: flex</code> se pone en la caja <strong>que contiene</strong> a las demás (el <strong>contenedor</strong>), no en las cajas que quieres mover.</p>
-<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjetas"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/div</span><span class='et'>&gt;</span>
-<span class='et'>&lt;/div</span><span class='et'>&gt;</span></code></pre>
-<pre><code><span class='et'>.tarjetas</span> {
+<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<pre><code><span class='et'>.fila</span> {
     <span class='at'>display</span>: <span class='ca'>flex</span>;
     <span class='at'>gap</span>: <span class='ca'>20px</span>;
 }</code></pre>
-<div class="salida"><div style="display:flex;gap:20px;flex-wrap:wrap"><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Turbo Rex</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Nube Veloz</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Chispa</div></div></div>
-<p>Con solo eso, las tres tarjetas se ponen en fila. <code>gap</code> es el <strong>hueco</strong> entre ellas.</p>
+<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif;color:#fff">
+<div style="display:flex;gap:20px;flex-wrap:wrap"><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Turbo Rex</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Nube Veloz</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Chispa</div></div>
+</div>
+<ul>
+<li>Con solo <code>display: flex;</code>, las tres cajas se ponen en fila.</li>
+<li><code>gap</code> es el <strong>hueco</strong> entre ellas.</li>
+<li><code>flex-wrap: wrap;</code> hace que, si no caben (en un móvil, por ejemplo), pasen a la <strong>línea de abajo</strong> en lugar de aplastarse.</li>
+</ul>
+<details><summary>🤔 Antes de seguir: quieres en fila los <code>&lt;li&gt;</code> de una lista <code>&lt;ul&gt;</code>. ¿Dónde pones <code>display: flex</code>?</summary>
+<p>En el <code>ul</code>: es el contenedor de los <code>li</code>.</p>
+</details>
 
-<h2>Las propiedades que vas a usar</h2>
-<p>Todas van en el <strong>contenedor</strong>:</p>
+<h3>Ejercicio 1 — Frutas en fila</h3>
+<p>Crea <code>s10-ej1.html</code> y <code>s10-ej1.css</code>, y conecta el CSS. Dentro del <code>&lt;body&gt;</code>:</p>
+<pre><code><span class='et'>&lt;h1&gt;</span>Frutas de verano<span class='et'>&lt;/h1&gt;</span>
+<span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Fresa<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Melón<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Sandía<span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Cereza<span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej1.webp" alt="Página Frutas de verano en letra Arial. 1, el contenedor fila con cuatro cajas en fila, separadas por un hueco. 2, cada caja es rosa, con las esquinas redondeadas y el nombre de la fruta centrado: Fresa, Melón, Sandía y Cereza. Nota 3: si estrechas la ventana de Chrome, las cajas que no caben pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El contenedor <code>.fila</code>: en fila, con un hueco de <code>15px</code>.</li>
+<li>② Cada <code>.caja</code>: fondo <code>#ffafcc</code>, ancho <code>80px</code>, relleno <code>20px</code>, esquinas de <code>10px</code> y texto centrado.</li>
+<li>③ Si no caben, pasan a la línea de abajo.</li>
+<li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
+</ul>
+<details><summary>Pista: las cajas siguen en columna</summary>
+<p>¿Dónde has puesto el <code>display: flex</code>? Tiene que ir en la regla de la caja que <strong>contiene</strong> a las frutas.</p>
+</details>
+<p>Si lo has hecho bien: haces la ventana de Chrome muy estrecha y las frutas bajan a otra línea sin salirse de la pantalla.</p>
+
+<h2>Repartir el espacio</h2>
+<p>Estas dos propiedades también van en el <strong>contenedor</strong>:</p>
 <table>
-<thead><tr><th>Propiedad</th><th>Valores útiles</th><th>Qué hace</th></tr></thead>
+<thead><tr><th>Propiedad</th><th>Valor</th><th>Qué hace</th></tr></thead>
 <tbody>
-<tr><td><code>display</code></td><td><code>flex</code></td><td>Activa Flexbox: los hijos se ponen en fila.</td></tr>
-<tr><td><code>gap</code></td><td><code>20px</code></td><td>Hueco entre los hijos.</td></tr>
-<tr><td><code>justify-content</code></td><td><code>center</code>, <code>space-between</code></td><td>Cómo se reparten en horizontal: juntos en el centro, o separados al máximo.</td></tr>
-<tr><td><code>align-items</code></td><td><code>center</code></td><td>Los centra en vertical dentro de la fila.</td></tr>
-<tr><td><code>flex-wrap</code></td><td><code>wrap</code></td><td>Si no caben, pasan a la línea de abajo en lugar de apretarse.</td></tr>
+<tr><td><code>justify-content</code></td><td><code>center</code></td><td>Junta las cajas en el <strong>centro</strong> de la fila.</td></tr>
+<tr><td><code>justify-content</code></td><td><code>space-between</code></td><td>Una caja en cada <strong>punta</strong>, y el espacio en medio.</td></tr>
+<tr><td><code>align-items</code></td><td><code>center</code></td><td>Centra las cajas <strong>en vertical</strong>, aunque tengan distinta altura.</td></tr>
 </tbody>
 </table>
-<h3>justify-content, en dibujo</h3>
 <div class="salida">
 <p style="margin:0 0 .3rem"><code>justify-content: center</code></p>
 <div style="display:flex;justify-content:center;gap:8px;border:1px dashed var(--border);padding:6px;margin-bottom:.8rem"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
 <p style="margin:0 0 .3rem"><code>justify-content: space-between</code></p>
-<div style="display:flex;justify-content:space-between;gap:8px;border:1px dashed var(--border);padding:6px"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
+<div style="display:flex;justify-content:space-between;gap:8px;border:1px dashed var(--border);padding:6px;margin-bottom:.8rem"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
+<p style="margin:0 0 .3rem"><code>justify-content: space-between</code> + <code>align-items: center</code></p>
+<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px dashed var(--border);padding:6px"><span style="padding:18px 12px;background:var(--surface-2)">Logo</span><span style="padding:6px 12px;background:var(--surface-2)">Botón</span></div>
 </div>
 
+<h3>Ejercicio 2 — La cabecera de un cine</h3>
+<p>Crea <code>s10-ej2.html</code> y <code>s10-ej2.css</code>, y conecta el CSS. Dentro del <code>&lt;body&gt;</code>:</p>
+<pre><code><span class='et'>&lt;header</span> <span class='at'>class</span>=<span class='ca'>"cabecera"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"logo"</span><span class='et'>&gt;</span>Cine Estrella<span class='et'>&lt;/p&gt;</span>
+    <span class='et'>&lt;a</span> <span class='at'>class</span>=<span class='ca'>"boton"</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Comprar entradas<span class='et'>&lt;/a&gt;</span>
+<span class='et'>&lt;/header&gt;</span>
+<span class='et'>&lt;p&gt;</span>Hoy hay tres películas de estreno.<span class='et'>&lt;/p&gt;</span></code></pre>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej2.webp" alt="Página en letra Arial. 1, una cabecera azul muy oscuro con el logo a la izquierda y el botón a la derecha, los dos centrados en vertical. 2, el logo Cine Estrella en naranja y grande. 3, el enlace Comprar entradas con forma de botón naranja, texto azul oscuro y sin subrayado. Debajo de la cabecera, el párrafo Hoy hay tres películas de estreno. Nota 4: al pasar el ratón por encima del botón, su fondo se vuelve blanco." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① La <code>.cabecera</code>: en fila, con el espacio en medio, centrada en vertical, fondo <code>#14213d</code> y relleno <code>5px 20px</code>.</li>
+<li>② El <code>.logo</code>: color <code>#fca311</code> y tamaño <code>28px</code>.</li>
+<li>③ El <code>.boton</code>: fondo <code>#fca311</code>, texto <code>#14213d</code>, relleno <code>10px 15px</code>, esquinas de <code>8px</code> y sin subrayado.</li>
+<li>④ Con el ratón encima, el fondo del botón pasa a ser <code>white</code>.</li>
+<li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
+</ul>
+<details><summary>Pista 1: el logo y el botón salen juntos a la izquierda</summary>
+<p>Te falta el <code>justify-content</code>. Mira en la tabla cuál pone una caja en cada punta.</p>
+</details>
+<details><summary>Pista 2: el botón queda más arriba que el logo</summary>
+<p>Te falta la propiedad que centra en vertical. Va en <code>.cabecera</code>, no en el botón.</p>
+</details>
+<p>Si lo has hecho bien: haces la ventana más ancha y el botón sigue pegado a la derecha.</p>
+
 <h2>El menú en fila</h2>
-<p>El menú de la sesión 4 ya está preparado: los enlaces están dentro de <code>&lt;nav&gt;</code>. Solo hay que convertir <code>nav</code> en contenedor flex y darle estilo a los enlaces:</p>
+<p>Un menú es un <code>&lt;nav&gt;</code> con enlaces dentro. El <code>nav</code> es el contenedor:</p>
 <pre><code><span class='et'>nav</span> {
     <span class='at'>display</span>: <span class='ca'>flex</span>;
     <span class='at'>justify-content</span>: <span class='ca'>center</span>;
@@ -48,62 +102,126 @@
 
 <span class='et'>nav a</span> {
     <span class='at'>color</span>: <span class='ca'>white</span>;
-    <span class='at'>text-decoration</span>: <span class='ca'>none</span>;
     <span class='at'>padding</span>: <span class='ca'>8px 14px</span>;
     <span class='at'>border-radius</span>: <span class='ca'>6px</span>;
+    <span class='at'>text-decoration</span>: <span class='ca'>none</span>;
 }
 
 <span class='et'>nav a:hover</span> {
     <span class='at'>background-color</span>: <span class='ca'>#ffcc00</span>;
     <span class='at'>color</span>: <span class='ca'>#1b1b3a</span>;
 }</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif"><div style="display:flex;justify-content:center;gap:10px;background:#2a2a55;padding:12px;flex-wrap:wrap"><span style="color:#fff;padding:8px 14px;border-radius:6px">Inicio</span><span style="color:#1b1b3a;background:#ffcc00;padding:8px 14px;border-radius:6px">Personajes</span><span style="color:#fff;padding:8px 14px;border-radius:6px">Circuitos</span></div></div>
+<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif">
+<div style="display:flex;justify-content:center;gap:10px;background:#2a2a55;padding:12px;flex-wrap:wrap"><span style="color:#fff;padding:8px 14px;border-radius:6px">Inicio</span><span style="color:#1b1b3a;background:#ffcc00;padding:8px 14px;border-radius:6px">Personajes</span><span style="color:#fff;padding:8px 14px;border-radius:6px">Circuitos</span></div>
+<p style="margin:.5rem 0 0;font-size:.9em;color:#fff">Aquí, el ratón está encima de "Personajes".</p>
+</div>
 <ul>
-<li><code>text-decoration: none</code> quita el subrayado de los enlaces.</li>
-<li><code>:hover</code> es el estilo que tiene el elemento <strong>cuando pasas el ratón por encima</strong>. En el dibujo, el ratón está sobre "Personajes".</li>
+<li><code>nav a</code>, con un <strong>espacio</strong>, quiere decir: "los enlaces que están <strong>dentro</strong> de <code>nav</code>". Los demás enlaces de la página no cambian.</li>
+<li><code>nav a:hover</code>: esos mismos enlaces, cuando el ratón está encima.</li>
 </ul>
 
-<h2>Las tarjetas en fila</h2>
+<h3>Truco de VS Code: el menú en un segundo</h3>
+<p>En el HTML, escribe <code>nav&gt;a*4</code> y pulsa <strong>Tab</strong>. VS Code escribe un <code>&lt;nav&gt;</code> con 4 enlaces dentro:</p>
+<ul>
+<li><code>&gt;</code> quiere decir "dentro de".</li>
+<li><code>*4</code> quiere decir "4 veces".</li>
+</ul>
+<p>Después, pulsa <strong>Tab</strong> para saltar de un hueco al siguiente y escribir cada <code>href</code> y cada texto.</p>
+
+<h3>Ejercicio 3 — El menú de un zoo</h3>
+<p>Crea <code>s10-ej3.html</code> y <code>s10-ej3.css</code>, y conecta el CSS. Escribe el menú con <strong>nav&gt;a*4 + Tab</strong>. El HTML tiene que quedar así:</p>
+<pre><code><span class='et'>&lt;header&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Zoo Verde<span class='et'>&lt;/h1&gt;</span>
+    <span class='et'>&lt;nav&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Animales<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Horarios<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Entradas<span class='et'>&lt;/a&gt;</span>
+    <span class='et'>&lt;/nav&gt;</span>
+<span class='et'>&lt;/header&gt;</span>
+<span class='et'>&lt;p&gt;</span>Más de 200 animales te esperan.<span class='et'>&lt;/p&gt;</span></code></pre>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3.webp" alt="Página del Zoo Verde en letra Verdana. 1, el título Zoo Verde en verde oscuro y centrado. 2, el menú: una franja verde oscuro con los cuatro enlaces en fila y centrados, en blanco y sin subrayado. Debajo, el párrafo Más de 200 animales te esperan. Nota 3: al pasar el ratón por un enlace del menú, su fondo se vuelve verde claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" alt="La misma página con el ratón encima del enlace Animales, marcado con el número 3: tiene un fondo verde claro con las esquinas redondeadas y el texto verde oscuro. Los otros enlaces siguen blancos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El <code>h1</code>: color <code>#386641</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado, hueco de <code>10px</code>, fondo <code>#386641</code> y relleno <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
+<li>③ Con el ratón encima de un enlace: fondo <code>#a7c957</code> y texto <code>#386641</code>.</li>
+<li>Toda la página, con la letra <code>Verdana, sans-serif</code>.</li>
+</ul>
+<details><summary>Pista 1: los enlaces salen en fila pero pegados a la izquierda</summary>
+<p>Para juntarlos en el centro, mira la tabla de <code>justify-content</code>.</p>
+</details>
+<details><summary>Pista 2: con el ratón, cambia todo el menú y no solo un enlace</summary>
+<p>Has escrito <code>nav:hover</code>. Tiene que ser el enlace el que cambie: <code>nav</code>, un espacio, y el enlace con <code>:hover</code>.</p>
+</details>
+<p>Si lo has hecho bien: pasas el ratón por los cuatro enlaces y solo se ilumina el que está debajo del ratón.</p>
+
+<h2>Tarjetas en fila</h2>
+<p>Las tarjetas se ponen en fila igual: se meten todas en un <code>&lt;div&gt;</code> contenedor y a ese contenedor se le pone <code>display: flex</code>.</p>
 <pre><code><span class='et'>.tarjetas</span> {
     <span class='at'>display</span>: <span class='ca'>flex</span>;
     <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
     <span class='at'>justify-content</span>: <span class='ca'>center</span>;
     <span class='at'>gap</span>: <span class='ca'>20px</span>;
+}
+
+<span class='et'>.tarjeta h2</span> {
+    <span class='at'>color</span>: <span class='ca'>#ffcc00</span>;
 }</code></pre>
-<p>Con <code>flex-wrap: wrap</code>, en un ordenador salen varias por fila y en un móvil pasan solas a la línea de abajo. Recuerda que en la sesión anterior dimos a cada tarjeta un <code>width</code>: sin ancho, las tarjetas se estiran o se aplastan.</p>
-<div class="nota">⚠️ Si pones <code>display: flex</code> en <code>.tarjeta</code> en lugar de en <code>.tarjetas</code>, lo que se pone en fila es <strong>lo de dentro de cada tarjeta</strong> (imagen, título y texto), no las tarjetas. Pregúntate siempre: <strong>¿qué cajas quiero en fila? ¿Dentro de qué caja están?</strong> El <code>display: flex</code> va en esa.</div>
-
-<h2>Antes de seguir</h2>
-<details><summary>Quieres poner en fila los &lt;li&gt; de una lista &lt;ul&gt;. ¿Dónde pones display: flex?</summary>
-<p>En el <code>ul</code>, que es el contenedor de los <code>li</code>.</p>
-</details>
-<details><summary>Tus tarjetas en fila se aplastan en el móvil. ¿Qué propiedad falta?</summary>
-<p><code>flex-wrap: wrap;</code> en el contenedor, para que pasen a la línea de abajo.</p>
-</details>
-<details><summary>¿Qué hace nav a:hover?</summary>
-<p>Aplica un estilo a los enlaces del menú solo mientras el ratón está encima de ellos.</p>
-</details>
-
-<h2>Reto de hoy</h2>
-<ul class="checklist">
-<li>El <strong>menú en fila</strong> con Flexbox, sin subrayados, con fondo y con un efecto <code>:hover</code>.</li>
-<li>El menú se ve igual en todas las páginas (como el CSS es el mismo archivo, debería salir solo).</li>
-<li>Las <strong>tarjetas</strong> de la sesión 9 en fila dentro de un contenedor, con <code>gap</code> y <code>flex-wrap: wrap</code>.</li>
-<li>Comprobación: al hacer la ventana de Chrome estrecha, las tarjetas pasan a la línea de abajo y nada se sale de la pantalla.</li>
+<ul>
+<li><code>.tarjetas</code> (con <strong>s</strong>) es el contenedor. <code>.tarjeta</code> (sin s) es cada tarjeta.</li>
+<li>Cada tarjeta necesita un <code>width</code>. Sin ancho, se estiran o se aplastan.</li>
+<li><code>.tarjeta h2</code>: solo los <code>h2</code> que están <strong>dentro</strong> de una tarjeta.</li>
 </ul>
-<details><summary>Pista 1: las tarjetas siguen en columna</summary>
-<p>¿Existe en el HTML un <code>&lt;div&gt;</code> que contenga <strong>todas</strong> las tarjetas? Si no, créalo, ponle una clase y pon en esa clase el <code>display: flex</code>.</p>
-</details>
-<details><summary>Pista 2: el :hover no hace nada</summary>
-<p>Escríbelo sin espacios: <code>nav a:hover</code>. Con un espacio entre <code>a</code> y <code>:hover</code> ya no funciona.</p>
-</details>
+<div class="nota">⚠️ Si pones <code>display: flex</code> en <code>.tarjeta</code> en lugar de en <code>.tarjetas</code>, lo que se pone en fila es <strong>lo de dentro de cada tarjeta</strong> (el título y el texto), no las tarjetas. Pregúntate siempre: <strong>¿qué cajas quiero en fila? ¿Dentro de qué caja están?</strong> El <code>display: flex</code> va en esa.</div>
 
-<h2>Aplícalo en tu web</h2>
-<p>Buscad otros sitios donde Flexbox mejore la web: el logo y el menú en la misma fila (<code>justify-content: space-between</code> en el <code>header</code>), una imagen al lado de un texto, los campos del formulario...</p>
+<h3>Ejercicio 4 — La mini web de un acuario</h3>
+<p>El ejercicio más largo de hoy: una web de una página con cabecera, menú y tarjetas. Junta todo lo de las sesiones 8, 9 y 10. Crea <code>s10-ej4.html</code> y <code>s10-ej4.css</code>, y conecta el CSS. Copia este HTML:</p>
+<pre><code><span class='et'>&lt;header&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Acuario Azul<span class='et'>&lt;/h1&gt;</span>
+    <span class='et'>&lt;nav&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Peces<span class='et'>&lt;/a&gt;</span>
+        <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Visitas<span class='et'>&lt;/a&gt;</span>
+    <span class='et'>&lt;/nav&gt;</span>
+<span class='et'>&lt;/header&gt;</span>
+<span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"intro"</span><span class='et'>&gt;</span>Descubre los animales del mar.<span class='et'>&lt;/p&gt;</span>
+<span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjetas"</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Tiburón<span class='et'>&lt;/h2&gt;</span>
+        <span class='et'>&lt;p&gt;</span>Tiene varias filas de dientes.<span class='et'>&lt;/p&gt;</span>
+    <span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Pulpo<span class='et'>&lt;/h2&gt;</span>
+        <span class='et'>&lt;p&gt;</span>Tiene ocho brazos y tres corazones.<span class='et'>&lt;/p&gt;</span>
+    <span class='et'>&lt;/div&gt;</span>
+    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
+        <span class='et'>&lt;h2&gt;</span>Medusa<span class='et'>&lt;/h2&gt;</span>
+        <span class='et'>&lt;p&gt;</span>No tiene cerebro ni huesos.<span class='et'>&lt;/p&gt;</span>
+    <span class='et'>&lt;/div&gt;</span>
+<span class='et'>&lt;/div&gt;</span></code></pre>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej4.webp" alt="Mini web del Acuario Azul en letra Arial. 1, la cabecera: una franja azul muy oscuro con el título Acuario Azul en blanco y centrado. 2, dentro de la cabecera, el menú con Inicio, Peces y Visitas en fila, centrados, en blanco y sin subrayado. Debajo, el párrafo centrado Descubre los animales del mar. 3, las tres tarjetas en fila y centradas: Tiburón, Pulpo y Medusa, con fondo azul muy claro, borde azul, esquinas redondeadas y el título en azul. Notas: 4, al pasar el ratón por un enlace del menú, su fondo se vuelve azul claro; 5, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 6, si estrechas la ventana, las tarjetas pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El <code>header</code>: fondo <code>#03045e</code> y relleno <code>15px</code>. El <code>h1</code>, en <code>white</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado y con hueco de <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
+<li>③ El contenedor <code>.tarjetas</code>: en fila, centrado, con hueco de <code>20px</code>.</li>
+<li>Cada <code>.tarjeta</code>: fondo <code>#caf0f8</code>, ancho <code>150px</code>, relleno <code>15px</code>, borde de <code>3px</code> sólido <code>#0077b6</code> y esquinas de <code>12px</code>. Sus <code>h2</code>, de color <code>#0077b6</code>.</li>
+<li>④ Con el ratón encima de un enlace del menú: fondo <code>#00b4d8</code>.</li>
+<li>⑤ Con el ratón encima de una tarjeta: borde <code>#f77f00</code>.</li>
+<li>⑥ Si las tarjetas no caben, pasan a la línea de abajo.</li>
+<li>El párrafo <code>.intro</code>, centrado, y toda la página con la letra <code>Arial, sans-serif</code>.</li>
+</ul>
+<details><summary>Pista 1</summary>
+<p>No lo escribas todo de golpe. Primero la cabecera y el menú, y guarda. Después las tarjetas, una propiedad cada vez. Al final, los <code>:hover</code>.</p>
+</details>
+<details><summary>Pista 2: el título de las tarjetas no sale azul</summary>
+<p>El selector tiene dos partes separadas por un espacio: la clase de la tarjeta y la etiqueta del título.</p>
+</details>
+<p>Si lo has hecho bien: en Chrome, pulsa <strong>F12</strong> y después el icono del <strong>móvil</strong> (arriba a la izquierda del panel). La página se ve como en un móvil: las tarjetas bajan una debajo de otra y nada se sale por la derecha.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
-<li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
-<li>Subido a GitHub por <strong>quien le toca esta semana</strong>, con un mensaje que diga qué habéis hecho.</li>
-<li>Comprobado en la web publicada que se ven los cambios.</li>
+<li>Ninguna pestaña de VS Code con el punto blanco de "sin guardar".</li>
+<li>Cada ejercicio tiene su <code>.html</code> y su <code>.css</code> en tu carpeta de ejercicios.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
 </ul>
