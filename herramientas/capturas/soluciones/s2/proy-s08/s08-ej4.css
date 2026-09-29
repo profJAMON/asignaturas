@@ -1,0 +1,30 @@
+body {
+    background-color: #22223b;
+    color: white;
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+h1 {
+    color: gold;
+    font-size: 48px;
+    text-align: center;
+}
+
+.lema {
+    font-size: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #7dd3fc;
+}
+
+.poder {
+    color: gold;
+}
+
+.firma {
+    color: #bbbbbb;
+    font-size: 14px;
+    text-align: right;
+}

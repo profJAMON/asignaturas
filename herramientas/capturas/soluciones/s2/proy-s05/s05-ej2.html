@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <h1>Reservar pista de pádel</h1>
+    <form>
+        <p>
+            <label for="alias">Tu alias:</label>
+            <input type="text" id="alias">
+        </p>
+        <p>
+            <label for="dia">Día:</label>
+            <input type="date" id="dia">
+        </p>
+        <p>
+            <label for="jugadores">Jugadores:</label>
+            <input type="number" id="jugadores" min="2" max="4">
+        </p>
+        <p>
+            <label for="pista">Pista:</label>
+            <select id="pista">
+                <option>Pista 1 (cubierta)</option>
+                <option>Pista 2</option>
+                <option>Pista 3</option>
+            </select>
+        </p>
+        <button type="button">Reservar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #7209b7;
+}
+
+.boton {
+    background-color: #7209b7;
+    color: white;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: #f72585;
+}
+
+/* Solo para la captura: simula el ratón encima */
+.raton {
+    background-color: #f72585;
+}
