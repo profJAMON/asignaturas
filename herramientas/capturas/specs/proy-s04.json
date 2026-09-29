@@ -1,0 +1,94 @@
+[
+ {
+  "solucion": "soluciones/proy-s04/s04-ej1.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s04/ej1.webp",
+  "url": "127.0.0.1:5500/s04-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "li:nth-of-type(1)",
+    "n": 1
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Cada enlace se abre en una pestaña nueva."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s04/s04-ej2.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s04/ej2.webp",
+  "url": "127.0.0.1:5500/s04-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "nav",
+    "n": 1
+   },
+   {
+    "sel": "main",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Hay una segunda página, s04-ej2-horario.html, con el mismo menú. Desde cada página se llega a la otra con el menú."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s04/s04-ej3.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s04/ej3.webp",
+  "url": "127.0.0.1:5500/s04-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "tr:first-child",
+    "n": 1
+   },
+   {
+    "sel": "tr:nth-child(2)",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "El atributo border=\"1\" en la etiqueta <table>, para que se vean los bordes."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s04/s04-ej4.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s04/ej4.webp",
+  "url": "127.0.0.1:5500/s04-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "nav",
+    "n": 1
+   },
+   {
+    "sel": "table",
+    "n": 2
+   },
+   {
+    "sel": "ul",
+    "n": 3
+   },
+   {
+    "sel": "main > p:last-of-type",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "El enlace «Club de lectura» del menú lleva a s04-ej2.html, y el de Wikipedia se abre en una pestaña nueva."
+   }
+  ]
+ }
+]

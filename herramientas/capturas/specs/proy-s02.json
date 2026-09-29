@@ -1,0 +1,122 @@
+[
+ {
+  "solucion": "soluciones/proy-s02/s02-ej1.html",
+  "salida": "../../data/proyecto/proy-arranque/img/proy-s02/ej1.webp",
+  "url": "127.0.0.1:5500/s02-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "p",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "El título de la pestaña del navegador es «Ejercicio 1»."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s02/s02-ej2.html",
+  "salida": "../../data/proyecto/proy-arranque/img/proy-s02/ej2.webp",
+  "url": "127.0.0.1:5500/s02-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "h2:nth-of-type(1)",
+    "n": 2
+   },
+   {
+    "sel": "h3:nth-of-type(1)",
+    "n": 3
+   },
+   {
+    "sel": "body > p:nth-of-type(1)",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "El título de la pestaña del navegador es «Ejercicio 2»."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s02/s02-ej3.html",
+  "salida": "../../data/proyecto/proy-arranque/img/proy-s02/ej3.webp",
+  "url": "127.0.0.1:5500/s02-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "body > p:nth-of-type(1)",
+    "n": 1
+   },
+   {
+    "sel": "body > p:nth-of-type(2)",
+    "n": 2
+   },
+   {
+    "sel": "hr",
+    "n": 3
+   },
+   {
+    "sel": "body > p:nth-of-type(3)",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "Un comentario justo encima del <h2> que diga «Dónde y cuándo»."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s02/s02-ej4.html",
+  "salida": "../../data/proyecto/proy-arranque/img/proy-s02/ej4.webp",
+  "url": "127.0.0.1:5500/s02-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "body > p:nth-of-type(1)",
+    "n": 2
+   },
+   {
+    "sel": "body > p:nth-of-type(2)",
+    "n": 3
+   },
+   {
+    "sel": "h3:nth-of-type(1)",
+    "n": 4
+   },
+   {
+    "sel": "hr:last-of-type",
+    "n": 5
+   }
+  ],
+  "notas": [
+   {
+    "n": 6,
+    "texto": "Un comentario encima de cada <h2>."
+   },
+   {
+    "n": 7,
+    "texto": "El título de la pestaña del navegador es «Robo Fútbol»."
+   }
+  ]
+ }
+]

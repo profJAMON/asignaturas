@@ -1,0 +1,115 @@
+[
+ {
+  "solucion": "soluciones/proy-s08/s08-ej1.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s08/ej1.webp",
+  "url": "127.0.0.1:5500/s08-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "En el <head> hay un <link> a s08-ej1.css."
+   },
+   {
+    "n": 3,
+    "texto": "El título de la pestaña del navegador es «Ejercicio 1»."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s08/s08-ej2.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s08/ej2.webp",
+  "url": "127.0.0.1:5500/s08-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "body > p:nth-of-type(1)",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "En el <head> hay un <link> a s08-ej2.css."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s08/s08-ej3.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s08/ej3.webp",
+  "url": "127.0.0.1:5500/s08-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "li.oferta",
+    "n": 2
+   },
+   {
+    "sel": ".aviso",
+    "n": 3
+   }
+  ],
+  "notas": [
+   {
+    "n": 4,
+    "texto": "Las dos pizzas en oferta tienen class=\"oferta\" en el HTML."
+   },
+   {
+    "n": 5,
+    "texto": "En el <head> hay un <link> a s08-ej3.css."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s08/s08-ej4.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s08/ej4.webp",
+  "url": "127.0.0.1:5500/s08-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": ".lema",
+    "n": 2
+   },
+   {
+    "sel": "h2",
+    "n": 3
+   },
+   {
+    "sel": "li.poder",
+    "n": 4,
+    "lado": "texto"
+   },
+   {
+    "sel": ".firma",
+    "n": 5
+   }
+  ],
+  "notas": [
+   {
+    "n": 6,
+    "texto": "Las dos líneas amarillas de la lista tienen la misma clase: poder."
+   },
+   {
+    "n": 7,
+    "texto": "En el <head> hay un <link> a s08-ej4.css."
+   }
+  ]
+ }
+]

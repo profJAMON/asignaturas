@@ -1,0 +1,134 @@
+[
+ {
+  "solucion": "soluciones/proy-s05/s05-ej1.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s05/ej1.webp",
+  "url": "127.0.0.1:5500/s05-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "label",
+    "n": 1
+   },
+   {
+    "sel": "input",
+    "n": 2
+   },
+   {
+    "sel": "button",
+    "n": 3
+   }
+  ],
+  "notas": [
+   {
+    "n": 4,
+    "texto": "Al pulsar el texto «¿Qué quieres cocinar?», el cursor salta a la caja."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s05/s05-ej2.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s05/ej2.webp",
+  "url": "127.0.0.1:5500/s05-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "p:nth-of-type(1)",
+    "n": 1
+   },
+   {
+    "sel": "p:nth-of-type(2)",
+    "n": 2
+   },
+   {
+    "sel": "p:nth-of-type(3)",
+    "n": 3
+   },
+   {
+    "sel": "p:nth-of-type(4)",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "En «Jugadores» solo se puede poner de 2 a 4."
+   },
+   {
+    "n": 6,
+    "texto": "Cada label tiene un for igual al id de su caja."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s05/s05-ej3.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s05/ej3.webp",
+  "url": "127.0.0.1:5500/s05-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "p:nth-of-type(1)",
+    "n": 1
+   },
+   {
+    "sel": "p:nth-of-type(2)",
+    "n": 2
+   },
+   {
+    "sel": "p:nth-of-type(3)",
+    "n": 3
+   },
+   {
+    "sel": "textarea",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "Al pulsar el texto «Quiero fruta de postre», la casilla se marca y se desmarca."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s05/s05-ej4.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s05/ej4.webp",
+  "url": "127.0.0.1:5500/s05-ej4.html",
+  "ancho": 640,
+  "numeros": [
+   {
+    "sel": "nav",
+    "n": 1
+   },
+   {
+    "sel": "img",
+    "n": 2
+   },
+   {
+    "sel": "ul",
+    "n": 3
+   },
+   {
+    "sel": "table",
+    "n": 4
+   },
+   {
+    "sel": "form",
+    "n": 5
+   },
+   {
+    "sel": "main > p:last-of-type",
+    "n": 6
+   }
+  ],
+  "notas": [
+   {
+    "n": 7,
+    "texto": "La imagen es una que has buscado tú en Pixabay, y tiene su alt."
+   },
+   {
+    "n": 8,
+    "texto": "Un comentario encima de cada <h2>."
+   }
+  ]
+ }
+]

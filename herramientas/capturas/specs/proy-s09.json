@@ -1,0 +1,104 @@
+[
+ {
+  "solucion": "soluciones/proy-s09/s09-ej1.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej1.webp",
+  "url": "127.0.0.1:5500/s09-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": ".aviso",
+    "n": 1
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Los dos avisos tienen class=\"aviso\" y una sola regla en el CSS."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s09/s09-ej2.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej2.webp",
+  "url": "127.0.0.1:5500/s09-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": ".tarjeta",
+    "n": 1
+   },
+   {
+    "sel": "h2",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "La tarjeta mide 300px de ancho y está centrada con margin: 30px auto."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s09/s09-ej3.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej3.webp",
+  "url": "127.0.0.1:5500/s09-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": ".boton",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por encima de un botón, su fondo se vuelve rosa (mira la imagen siguiente)."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s09/s09-ej3-raton.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej3-raton.webp",
+  "url": "127.0.0.1:5500/s09-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": ".raton",
+    "n": 3
+   }
+  ],
+  "notas": [],
+  "pie": "Así se ve con el ratón encima de «Opciones»."
+ },
+ {
+  "solucion": "soluciones/proy-s09/s09-ej4.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej4.webp",
+  "url": "127.0.0.1:5500/s09-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": ".tarjeta",
+    "n": 1
+   },
+   {
+    "sel": "table",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por una tarjeta, su borde se vuelve naranja."
+   },
+   {
+    "n": 4,
+    "texto": "Al pasar el ratón por una fila de la tabla, su fondo se vuelve naranja claro."
+   }
+  ]
+ }
+]

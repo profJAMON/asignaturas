@@ -1,0 +1,104 @@
+[
+ {
+  "solucion": "soluciones/proy-s03/s03-ej1.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s03/ej1.webp",
+  "url": "127.0.0.1:5500/s03-ej1.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "ul",
+    "n": 1
+   },
+   {
+    "sel": "ol",
+    "n": 2
+   }
+  ],
+  "notas": []
+ },
+ {
+  "solucion": "soluciones/proy-s03/s03-ej2.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s03/ej2.webp",
+  "url": "127.0.0.1:5500/s03-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "body > ul",
+    "n": 1
+   },
+   {
+    "sel": "ul ul",
+    "n": 2
+   },
+   {
+    "sel": "ol",
+    "n": 3
+   }
+  ],
+  "notas": []
+ },
+ {
+  "solucion": "soluciones/proy-s03/s03-ej3.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s03/ej3.webp",
+  "url": "127.0.0.1:5500/s03-ej3.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "img",
+    "n": 1
+   },
+   {
+    "sel": "img:nth-of-type(2)",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Cada imagen tiene un alt que describe lo que se ve."
+   },
+   {
+    "n": 4,
+    "texto": "Las imágenes están en la carpeta img de tu carpeta de ejercicios."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s03/s03-ej4.html",
+  "salida": "../../data/proyecto/proy-html/img/proy-s03/ej4.webp",
+  "url": "127.0.0.1:5500/s03-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "img",
+    "n": 1
+   },
+   {
+    "sel": "body > ul",
+    "n": 2
+   },
+   {
+    "sel": "ul ul",
+    "n": 3
+   },
+   {
+    "sel": "ol",
+    "n": 4
+   },
+   {
+    "sel": "body > p:last-of-type",
+    "n": 5
+   }
+  ],
+  "notas": [
+   {
+    "n": 6,
+    "texto": "La imagen tiene un alt que describe lo que se ve."
+   },
+   {
+    "n": 7,
+    "texto": "El título de la pestaña es el nombre del animal."
+   }
+  ]
+ }
+]

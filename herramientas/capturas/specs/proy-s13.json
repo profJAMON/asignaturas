@@ -1,0 +1,134 @@
+[
+ {
+  "solucion": "soluciones/proy-s13/s13-ej1.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej1.webp",
+  "url": "127.0.0.1:5500/s13-ej1.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#titulo",
+    "n": 1
+   },
+   {
+    "sel": "#subtitulo",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "En el .html, el <h1> dice «Mi página» y el <p> dice «Esto lo he escrito en HTML.». Lo que ves lo ha cambiado el .js."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej2.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej2-antes.webp",
+  "url": "127.0.0.1:5500/s13-ej2.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#boton-chiste",
+    "n": 1
+   }
+  ],
+  "notas": [
+   {
+    "n": 2,
+    "texto": "Debajo del botón hay un <p id=\"chiste\"> vacío: todavía no se ve."
+   }
+  ],
+  "pie": "Antes de pulsar el botón."
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej2-cap.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej2-despues.webp",
+  "url": "127.0.0.1:5500/s13-ej2.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#chiste",
+    "n": 3
+   }
+  ],
+  "pie": "Después de pulsar el botón."
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej3.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej3-antes.webp",
+  "url": "127.0.0.1:5500/s13-ej3.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#regalo",
+    "n": 1
+   },
+   {
+    "sel": "#boton-abrir",
+    "n": 2
+   }
+  ],
+  "pie": "Antes de pulsar el botón."
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej3-cap.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej3-despues.webp",
+  "url": "127.0.0.1:5500/s13-ej3.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#regalo",
+    "n": 3
+   },
+   {
+    "sel": "#boton-abrir",
+    "n": 4
+   }
+  ],
+  "pie": "Después de pulsar el botón."
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej4-antes.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej4-antes.webp",
+  "url": "127.0.0.1:5500/s13-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "p:has(#boton-hoy)",
+    "n": 1
+   },
+   {
+    "sel": "#tiempo",
+    "n": 2
+   }
+  ],
+  "pie": "Antes de pulsar ningún botón. La consola está vacía."
+ },
+ {
+  "solucion": "soluciones/proy-s13/s13-ej4-cap.html",
+  "salida": "../../data/proyecto/proy-javascript/img/proy-s13/ej4-despues.webp",
+  "url": "127.0.0.1:5500/s13-ej4.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "#tiempo",
+    "n": 3
+   },
+   {
+    "sel": "#cap-consola .msg:nth-child(1)",
+    "n": 4
+   }
+  ],
+  "notas": [
+   {
+    "n": 5,
+    "texto": "Al pulsar «Hoy» pasa lo mismo, con su texto: «Hoy: sol y 25 grados.» y «Has pulsado Hoy» en la consola."
+   },
+   {
+    "n": 6,
+    "texto": "En el .js hay un comentario encima de cada paso."
+   }
+  ],
+  "pie": "Después de pulsar «Mañana»."
+ }
+]

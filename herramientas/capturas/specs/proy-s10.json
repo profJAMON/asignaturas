@@ -1,0 +1,123 @@
+[
+ {
+  "solucion": "soluciones/proy-s10/s10-ej1.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej1.webp",
+  "url": "127.0.0.1:5500/s10-ej1.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": ".fila",
+    "n": 1
+   },
+   {
+    "sel": ".caja",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Si estrechas la ventana de Chrome, las cajas que no caben pasan a la línea de abajo."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej2.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej2.webp",
+  "url": "127.0.0.1:5500/s10-ej2.html",
+  "ancho": 640,
+  "numeros": [
+   {
+    "sel": ".cabecera",
+    "n": 1
+   },
+   {
+    "sel": ".logo",
+    "n": 2,
+    "lado": "texto"
+   },
+   {
+    "sel": ".boton",
+    "n": 3,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 4,
+    "texto": "Al pasar el ratón por encima del botón, su fondo se vuelve blanco."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej3.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej3.webp",
+  "url": "127.0.0.1:5500/s10-ej3.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": "h1",
+    "n": 1
+   },
+   {
+    "sel": "nav",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por un enlace del menú, su fondo se vuelve verde claro (mira la imagen siguiente)."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej3-raton.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej3-raton.webp",
+  "url": "127.0.0.1:5500/s10-ej3.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": ".raton",
+    "n": 3
+   }
+  ],
+  "notas": [],
+  "pie": "Así se ve con el ratón encima de «Animales»."
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej4.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej4.webp",
+  "url": "127.0.0.1:5500/s10-ej4.html",
+  "ancho": 720,
+  "numeros": [
+   {
+    "sel": "header",
+    "n": 1
+   },
+   {
+    "sel": "nav",
+    "n": 2
+   },
+   {
+    "sel": ".tarjetas",
+    "n": 3
+   }
+  ],
+  "notas": [
+   {
+    "n": 4,
+    "texto": "Al pasar el ratón por un enlace del menú, su fondo se vuelve azul claro."
+   },
+   {
+    "n": 5,
+    "texto": "Al pasar el ratón por una tarjeta, su borde se vuelve naranja."
+   },
+   {
+    "n": 6,
+    "texto": "Si estrechas la ventana, las tarjetas pasan a la línea de abajo."
+   }
+  ]
+ }
+]
