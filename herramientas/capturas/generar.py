@@ -21,7 +21,7 @@ from PIL import Image
 NARANJA = "#e8590c"
 
 CSS = """
-html { font-family: "Times New Roman", serif; padding: 46px 0 0 46px !important; background:#fff; }
+html { font-family: "Times New Roman", serif; padding: 46px 0 0 46px !important; }
 #cap-barra { position:absolute; top:0; left:0; right:0; height:34px; background:#e8eaed;
   border-bottom:1px solid #c4c7c5; display:flex; align-items:center; gap:10px; padding:0 12px;
   font:13px Arial, sans-serif; color:#3c4043; box-sizing:border-box; }
