@@ -93,6 +93,14 @@
   --figura-borde: var(--border);
   --figura-pie: var(--text-faint);
   --figura-enlace: var(--accent);
+  /* Diapositivas (js/diapos.js): colores de los dibujos de dentro. */
+  --diapo-texto: var(--text);
+  --diapo-tenue: var(--text-faint);
+  --diapo-acento: var(--accent);
+  --diapo-calido: var(--accent-warm);
+  --diapo-caja: var(--surface-2);
+  --diapo-caja-borde: var(--border);
+  --diapo-resalte: rgba(255, 77, 157, 0.14);
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -183,6 +191,14 @@
   --figura-borde: #3c3c3c;
   --figura-pie: #9099a6;
   --figura-enlace: #4fc1ff;
+  /* Las diapositivas, igual que las figuras: fondo oscuro tipo pizarra. */
+  --diapo-texto: #f3f3f3;
+  --diapo-tenue: #9099a6;
+  --diapo-acento: #4fc1ff;
+  --diapo-calido: #ff7ab8;
+  --diapo-caja: #252526;
+  --diapo-caja-borde: #3c3c3c;
+  --diapo-resalte: rgba(255, 122, 184, 0.16);
 }
 
 /* ============================================================
@@ -3009,4 +3025,175 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   .barra__marca--asignatura .barra__nombre { display: none; }
   .barra__marca--asignatura .barra__nombre-corto { display: inline; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .barra__icono svg { width: 20px; height: 20px; }
+}
+
+
+/* ============================================================
+   Diapositivas (carrusel paso a paso) — js/diapos.js
+   ============================================================
+   Un concepto explicado en varios pasos que el alumno pasa a su
+   ritmo. Fondo de pizarra como las figuras (--figura-bg), así que el
+   texto de dentro usa --figura-pie / --diapo-*.
+   Todas las diapositivas ocupan la misma celda de la rejilla: el
+   recuadro mide lo que la más alta y no salta al pasar de una a otra. */
+.leccion .diapos {
+  background: var(--figura-bg);
+  border: 1px solid var(--figura-borde);
+  border-radius: 6px;
+  padding: 0.9rem 1rem 0.8rem;
+  margin: 0 0 1.2rem;
+}
+.leccion .diapos:focus { outline: none; }
+.leccion .diapos:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.diapos__pista { display: grid; touch-action: pan-y; }
+.diapos__pista > .diapo {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  min-width: 0;
+}
+.diapos__pista > .diapo.es-actual { visibility: visible; opacity: 1; }
+.diapo svg { display: block; width: min(100%, 34rem); height: auto; margin: 0 auto 0.5rem; }
+.leccion .diapo__texto {
+  color: var(--diapo-texto);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  max-width: 40rem;
+  margin: 0 auto;
+  text-align: center;
+}
+.leccion .diapo__texto strong { color: var(--diapo-acento); }
+
+/* Clases para los SVG de dentro (escritos a mano o generados). Con
+   prefijo d- y colgando de .diapo para no pisarse con los <style> de
+   los SVG antiguos, que son globales a la página. */
+.diapo svg text { font-family: var(--font-mono); font-size: 13px; }
+.diapo svg .d-t { fill: var(--diapo-texto); }
+.diapo svg .d-d { fill: var(--diapo-tenue); }
+.diapo svg .d-a { fill: var(--diapo-acento); font-weight: 700; }
+.diapo svg .d-c { fill: var(--diapo-calido); font-weight: 700; }
+.diapo svg .d-grande { font-size: 17px; font-weight: 700; }
+.diapo svg .d-enorme { font-size: 34px; font-weight: 700; }
+.diapo svg .d-caja { fill: var(--diapo-caja); stroke: var(--diapo-caja-borde); }
+.diapo svg .d-caja-on { fill: var(--diapo-caja); stroke: var(--diapo-acento); }
+.diapo svg .d-caja-act { fill: var(--diapo-resalte); stroke: var(--diapo-calido); stroke-width: 1.5; }
+.diapo svg .d-linea-a { stroke: var(--diapo-acento); stroke-width: 1.5; fill: none; }
+.diapo svg .d-linea-c { stroke: var(--diapo-calido); stroke-width: 1.5; fill: none; }
+.diapo svg .d-linea-d { stroke: var(--diapo-tenue); stroke-width: 1.5; fill: none; }
+.diapo svg .d-relleno-c { fill: var(--diapo-calido); }
+
+.diapos__mandos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-top: 0.9rem;
+}
+.diapos__boton,
+.diapos__todas {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: transparent;
+  color: var(--figura-enlace);
+  border: 1px solid var(--figura-borde);
+  border-radius: 6px;
+  padding: 0.55rem 0.9rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.diapos__boton--sig { border-color: var(--figura-enlace); }
+.diapos__boton:hover:not(:disabled),
+.diapos__todas:hover { background: var(--diapo-caja); }
+.diapos__boton:disabled { opacity: 0.35; cursor: default; }
+.leccion .diapos__contador {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--figura-pie);
+  text-align: center;
+}
+.diapos__puntos { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.15rem; margin-top: 0.5rem; }
+.diapos__puntos[hidden] { display: none; }
+/* Botón de 24 px para el dedo; el punto que se ve es más pequeño. */
+.diapos__punto {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.diapos__punto::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--figura-borde);
+}
+.diapos__punto.es-actual::before { background: var(--figura-enlace); width: 10px; height: 10px; }
+.diapos__todas { display: block; margin: 0.4rem auto 0; font-size: 0.78rem; min-height: 36px; padding: 0.35rem 0.8rem; }
+
+/* "Ver todas": una debajo de otra, numeradas, sin flechas. */
+.diapos--todas .diapos__pista { display: block; }
+.diapos--todas .diapos__pista > .diapo {
+  visibility: visible;
+  opacity: 1;
+  padding: 0.9rem 0;
+  border-top: 1px dashed var(--figura-borde);
+}
+.diapos--todas .diapos__pista > .diapo:first-child { border-top: none; padding-top: 0; }
+.diapos--todas .diapos__pista > .diapo::before {
+  content: "Paso " attr(data-numero);
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--figura-pie);
+  margin-bottom: 0.3rem;
+}
+.diapos--todas .diapos__mandos,
+.diapos--todas .diapos__puntos { display: none; }
+
+/* "Prueba con otro número" (solo en las generadas). */
+.diapos__prueba {
+  margin-top: 0.9rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--figura-borde);
+}
+.leccion .diapos__etiqueta { display: block; color: var(--figura-pie); font-size: 0.9rem; margin-bottom: 0.4rem; }
+.diapos__fila { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.diapos__campo {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  width: 11rem;
+  max-width: 100%;
+  padding: 0.5rem 0.7rem;
+  min-height: 44px;
+  background: var(--diapo-caja);
+  color: var(--diapo-texto);
+  border: 1px solid var(--figura-borde);
+  border-radius: 6px;
+}
+.diapos__campo:focus { outline: none; border-color: var(--figura-enlace); }
+.diapos__ver { margin-top: 0; min-height: 44px; }
+.leccion .diapos__error { color: var(--diapo-calido); font-size: 0.88rem; margin: 0.4rem 0 0; min-height: 0; }
+.diapos__error:empty { display: none; }
+
+@media (max-width: 480px) {
+  .leccion .diapos { padding: 0.7rem 0.6rem 0.6rem; }
+  .diapos__boton { padding: 0.5rem 0.6rem; font-size: 0.8rem; }
+  .leccion .diapo__texto { font-size: 0.98rem; }
+}
+
+/* En papel: sin botones. Las escritas a mano salen todas; las
+   generadas, solo la última (que ya es el resumen completo). */
+@media print {
+  .diapos__mandos, .diapos__puntos, .diapos__todas, .diapos__prueba { display: none !important; }
+  .leccion .diapos { break-inside: avoid; }
+  .diapos__pista { display: block !important; }
+  .diapos__pista > .diapo { visibility: visible !important; opacity: 1 !important; margin-bottom: 0.8rem; }
+  .diapos--imprime-ultima .diapos__pista > .diapo { display: none; }
+  .diapos--imprime-ultima .diapos__pista > .diapo:last-child { display: block; }
 }

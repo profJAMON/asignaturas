@@ -165,6 +165,8 @@ function pintarLeccion(contenidoHtml) {
   const contenedor = document.getElementById('leccion-contenido');
   contenedor.innerHTML = contenidoHtml;
   agruparSubsecciones(contenedor);
+  /* Carruseles de diapositivas paso a paso. Ver js/diapos.js. */
+  if (typeof iniciarDiapos === 'function') iniciarDiapos(contenedor);
   /* Marca código y salidas como no traducibles ANTES de que el traductor
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
