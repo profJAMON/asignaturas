@@ -1,0 +1,465 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Los ejercicios de pantalla se corrigen solos y puedes repetirlos las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores, salvo las que empiezan por «Busca».</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con estas preguntas</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>La dirección de correo</h2>
+
+<p>Toda dirección de correo tiene tres piezas. La de en medio, la <strong>arroba</strong>, separa <strong>quién</strong> eres de <strong>dónde</strong> está tu buzón:</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;font-family:var(--font-mono)" role="img" aria-label="La dirección ana.serra arroba iesramonllull.net dividida en tres partes: usuario, quién eres; arroba; dominio, dónde está el buzón.">
+  <text x="180" y="40" text-anchor="middle" font-size="17"><tspan fill="var(--accent)">ana.serra</tspan><tspan fill="var(--accent-lima)">@</tspan><tspan fill="var(--accent-warm)">iesramonllull.net</tspan></text>
+  <line x1="28" y1="50" x2="110" y2="50" stroke="var(--accent)" stroke-width="2"/>
+  <line x1="114" y1="50" x2="130" y2="50" stroke="var(--accent-lima)" stroke-width="2"/>
+  <line x1="134" y1="50" x2="332" y2="50" stroke="var(--accent-warm)" stroke-width="2"/>
+  <text x="69" y="72" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="bold">usuario</text>
+  <text x="69" y="88" text-anchor="middle" fill="var(--text-dim)" font-size="9">quién eres</text>
+  <text x="122" y="72" text-anchor="middle" fill="var(--accent-lima)" font-size="11" font-weight="bold">@</text>
+  <text x="122" y="88" text-anchor="middle" fill="var(--text-dim)" font-size="9">«en»</text>
+  <text x="233" y="72" text-anchor="middle" fill="var(--accent-warm)" font-size="11" font-weight="bold">dominio</text>
+  <text x="233" y="88" text-anchor="middle" fill="var(--text-dim)" font-size="9">dónde está tu buzón</text>
+</svg>
+<p class="pie-figura">Una dirección inventada, con el dominio del instituto.</p>
+</div>
+
+<ul>
+<li>El <strong>dominio</strong> es el mismo concepto que en la Unidad 2: el nombre que el DNS traduce a la IP del servidor de correo.</li>
+<li>Dentro de un mismo dominio, <strong>no puede haber dos usuarios iguales</strong>. Por eso cada dirección es única en todo el mundo.</li>
+<li>La <code>@</code> se escribe con <code>Alt Gr + 2</code>.</li>
+</ul>
+
+<h3>Cómo viaja un correo</h3>
+
+<p>Es cliente-servidor otra vez. Tu correo no va directo al ordenador de la otra persona: va de servidor en servidor y espera en su <strong>buzón</strong> hasta que ella lo abra.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 360 142" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;font-family:var(--font-mono)" role="img" aria-label="Tú envías el correo a tu servidor de correo, que lo pasa al servidor de correo del destinatario. Allí espera en su buzón hasta que el destinatario lo abre, aunque ahora tenga el ordenador apagado.">
+  <rect x="6" y="10" width="76" height="40" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="44" y="35" text-anchor="middle" fill="var(--accent)" font-size="11">Tú</text>
+  <rect x="100" y="10" width="76" height="40" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="138" y="27" text-anchor="middle" fill="var(--text)" font-size="9">Tu servidor</text>
+  <text x="138" y="40" text-anchor="middle" fill="var(--text)" font-size="9">de correo</text>
+  <rect x="194" y="10" width="76" height="40" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="232" y="27" text-anchor="middle" fill="var(--text)" font-size="9">Su servidor</text>
+  <text x="232" y="40" text-anchor="middle" fill="var(--text)" font-size="9">de correo</text>
+  <rect x="288" y="10" width="66" height="40" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="321" y="35" text-anchor="middle" fill="var(--accent-warm)" font-size="11">Él/ella</text>
+
+  <line x1="82" y1="30" x2="96" y2="30" stroke="var(--text-faint)" stroke-width="1.8"/><path d="M92 26 L98 30 L92 34" fill="none" stroke="var(--text-faint)" stroke-width="1.8"/>
+  <line x1="176" y1="30" x2="190" y2="30" stroke="var(--text-faint)" stroke-width="1.8"/><path d="M186 26 L192 30 L186 34" fill="none" stroke="var(--text-faint)" stroke-width="1.8"/>
+
+  <rect x="194" y="74" width="76" height="34" rx="4" fill="var(--bg)" stroke="var(--accent-lima)" stroke-dasharray="3 2"/>
+  <text x="232" y="95" text-anchor="middle" fill="var(--accent-lima)" font-size="10">su buzón</text>
+  <line x1="232" y1="50" x2="232" y2="70" stroke="var(--accent-lima)" stroke-width="1.5"/>
+  <line x1="270" y1="91" x2="321" y2="91" stroke="var(--text-faint)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="321" y1="91" x2="321" y2="54" stroke="var(--text-faint)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="180" y="132" text-anchor="middle" fill="var(--text-dim)" font-size="9">Espera en el buzón hasta que él/ella abra su correo</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: ¿puedes mandarle un correo a alguien que tiene el ordenador y el móvil apagados?</div>
+<details><summary>Ver respuesta</summary>Sí. El correo no va a su ordenador: se queda guardado en su buzón, en el servidor de correo, que siempre está encendido. Lo leerá cuando vuelva a abrir su correo.</details>
+
+<h2>Las partes de un correo</h2>
+
+<p>Abre Gmail con tu cuenta del instituto (la misma de Drive y Classroom) y pulsa <strong>Redactar</strong>. Verás algo así:</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;font-family:var(--font-mono)" role="img" aria-label="Ventana de mensaje nuevo con siete partes numeradas: 1 Para, 2 CC, 3 CCO, 4 Asunto, 5 cuerpo del mensaje, 6 botón de adjuntar con un clip, 7 botón Enviar.">
+  <rect x="6" y="6" width="348" height="218" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+  <rect x="7" y="7" width="346" height="22" rx="5" fill="var(--bg)"/>
+  <text x="18" y="22" fill="var(--text)" font-size="10">Mensaje nuevo</text>
+
+  <text x="34" y="46" fill="var(--text-dim)" font-size="10">Para</text>
+  <text x="80" y="46" fill="var(--text)" font-size="10">profe@iesramonllull.net</text>
+  <line x1="18" y1="53" x2="342" y2="53" stroke="var(--border)"/>
+  <text x="34" y="68" fill="var(--text-dim)" font-size="10">CC</text>
+  <line x1="18" y1="75" x2="342" y2="75" stroke="var(--border)"/>
+  <text x="34" y="90" fill="var(--text-dim)" font-size="10">CCO</text>
+  <line x1="18" y1="97" x2="342" y2="97" stroke="var(--border)"/>
+  <text x="34" y="112" fill="var(--text)" font-size="10">Trabajo de redes - Ana Serra</text>
+  <line x1="18" y1="119" x2="342" y2="119" stroke="var(--border)"/>
+
+  <text x="34" y="138" fill="var(--text)" font-size="9">Hola, Carles:</text>
+  <text x="34" y="152" fill="var(--text)" font-size="9">Te envío el trabajo de redes.</text>
+  <text x="34" y="166" fill="var(--text)" font-size="9">Un saludo, Ana</text>
+
+  <rect x="34" y="188" width="62" height="24" rx="12" fill="var(--accent)"/>
+  <text x="65" y="204" text-anchor="middle" fill="var(--bg)" font-size="10" font-weight="bold">Enviar</text>
+  <path d="M126 206 l9 -9 a3.5 3.5 0 0 0 -5 -5 l-11 11 a5.5 5.5 0 0 0 8 8 l9 -9" fill="none" stroke="var(--text-dim)" stroke-width="1.6"/>
+
+  <circle cx="20" cy="42" r="7" fill="var(--accent-warm)"/><text x="20" y="45.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">1</text>
+  <circle cx="20" cy="64" r="7" fill="var(--accent-warm)"/><text x="20" y="67.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">2</text>
+  <circle cx="20" cy="86" r="7" fill="var(--accent-warm)"/><text x="20" y="89.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">3</text>
+  <circle cx="20" cy="108" r="7" fill="var(--accent-warm)"/><text x="20" y="111.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">4</text>
+  <circle cx="20" cy="134" r="7" fill="var(--accent-warm)"/><text x="20" y="137.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">5</text>
+  <circle cx="146" cy="196" r="7" fill="var(--accent-warm)"/><text x="146" y="199.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">6</text>
+  <circle cx="20" cy="200" r="7" fill="var(--accent-warm)"/><text x="20" y="203.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">7</text>
+</svg>
+<p class="pie-figura">CC y CCO no salen hasta que pulsas «Cc» o «Cco» a la derecha de «Para».</p>
+</div>
+
+<table>
+<tr><th>Nº</th><th>Parte</th><th>Para qué</th></tr>
+<tr><td>1</td><td><strong>Para</strong></td><td>La persona a la que va dirigido: la que tiene que leerlo y hacer algo.</td></tr>
+<tr><td>2</td><td><strong>CC</strong> (con copia)</td><td>Gente que tiene que <strong>estar enterada</strong>, pero no tiene que hacer nada. Todos ven que la has puesto.</td></tr>
+<tr><td>3</td><td><strong>CCO</strong> (con copia oculta)</td><td>Gente que lo recibe <strong>sin que los demás lo sepan</strong>. Nadie ve su dirección.</td></tr>
+<tr><td>4</td><td><strong>Asunto</strong></td><td>De qué va el correo, en pocas palabras. Es lo primero que se lee en la bandeja.</td></tr>
+<tr><td>5</td><td><strong>Cuerpo</strong></td><td>El mensaje.</td></tr>
+<tr><td>6</td><td><strong>Adjuntar</strong> (el clip)</td><td>Añadir archivos.</td></tr>
+<tr><td>7</td><td><strong>Enviar</strong></td><td>Lo manda. Gmail te deja unos segundos para <em>Deshacer</em> justo después.</td></tr>
+</table>
+
+<h3>¿Quién ve a quién?</h3>
+
+<p>Mandas un correo con <strong>Para: Marta</strong>, <strong>CC: Joan</strong> y <strong>CCO: Pau</strong>. Esto es lo que ve cada uno:</p>
+
+<table>
+<tr><th>Quién lo recibe</th><th>¿Ve a Marta?</th><th>¿Ve a Joan?</th><th>¿Ve a Pau?</th></tr>
+<tr><td>Marta (Para)</td><td>✅</td><td>✅</td><td>❌</td></tr>
+<tr><td>Joan (CC)</td><td>✅</td><td>✅</td><td>❌</td></tr>
+<tr><td>Pau (CCO)</td><td>✅</td><td>✅</td><td>✅ solo a sí mismo</td></tr>
+</table>
+
+<div class="nota">💡 Si mandas un correo a mucha gente que no se conoce (las familias de una clase, los clientes de una tienda), ponlos en <strong>CCO</strong>. Si los pones en Para, estás enseñando a todos las direcciones de todos.</div>
+
+<p>Practica: lee cada caso y escribe <code>Para</code>, <code>CC</code> o <code>CCO</code>.</p>
+
+<div data-actividad="s3-para-cc-cco"></div>
+
+<h2>Cómo se escribe un correo</h2>
+
+<p>Un correo de clase o de trabajo no es un WhatsApp. Aquí se hace así: <strong>asunto claro</strong>, <strong>saludo</strong>, <strong>cuerpo corto</strong>, <strong>despedida</strong> y <strong>firma</strong>. Y antes de enviar, mira si el adjunto está.</p>
+
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;">
+<div style="margin:0 0 6px;font-weight:bold;color:#b42318">❌ Así no</div>
+<div style="margin:0;color:#666;font-size:0.9em">Asunto: <em>(sin asunto)</em></div>
+<div style="margin:6px 0 0">ola te paso eso</div>
+<div style="margin:6px 0 0;color:#666;font-size:0.9em">(sin firma y sin adjunto: se le ha olvidado)</div>
+</div>
+
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;">
+<div style="margin:0 0 6px;font-weight:bold;color:#1a7f37">✅ Así sí</div>
+<div style="margin:0;color:#666;font-size:0.9em">Asunto: Trabajo de redes - Ana Serra</div>
+<div style="margin:6px 0 0">Hola, Carles:</div>
+<div style="margin:6px 0 0">Te envío adjunto el trabajo de redes.</div>
+<div style="margin:6px 0 0">Un saludo,<br>Ana Serra<br>1º FP Básica</div>
+<div style="margin:6px 0 0;color:#666;font-size:0.9em">📎 trabajo-redes.pdf</div>
+</div>
+
+<h3>Los adjuntos</h3>
+<ul>
+<li>Se añaden con el <strong>clip</strong>, o arrastrando el archivo encima del mensaje.</li>
+<li>En Gmail, los adjuntos pueden pesar como mucho <strong>25 MB</strong> en total. Si pesan más, Gmail no lo adjunta: lo <strong>sube a tu Drive y pone un enlace</strong> en el correo (la nube de la Unidad 3).</li>
+<li>Mira la extensión de lo que te llega (Unidad 1): un adjunto que acaba en <code>.exe</code> es un <strong>programa</strong>, no un documento.</li>
+</ul>
+
+<h3>Responder, responder a todos, reenviar</h3>
+
+<table>
+<tr><th>Botón</th><th>A quién le llega</th><th>Cuándo</th></tr>
+<tr><td><strong>Responder</strong></td><td>Solo a quien te lo mandó.</td><td>Casi siempre.</td></tr>
+<tr><td><strong>Responder a todos</strong></td><td>A quien te lo mandó y a todos los que iban en Para y CC.</td><td>Cuando tu respuesta les importa a todos.</td></tr>
+<tr><td><strong>Reenviar</strong></td><td>A una persona nueva que tú eliges.</td><td>Para pasarle a otro un correo que te ha llegado.</td></tr>
+</table>
+
+<div class="nota">⚠️ El error típico: alguien manda un aviso a 200 personas, uno pulsa <em>Responder a todos</em> para decir «vale, gracias» y les llega a las 200.</div>
+
+<div data-actividad="s3-botones"></div>
+
+<h3>Ordenar tu correo</h3>
+
+<table>
+<tr><th>Carpeta</th><th>Qué hay</th></tr>
+<tr><td><strong>Recibidos</strong></td><td>Lo que te llega.</td></tr>
+<tr><td><strong>Enviados</strong></td><td>Lo que has mandado tú.</td></tr>
+<tr><td><strong>Borradores</strong></td><td>Correos empezados y no enviados. Se guardan solos.</td></tr>
+<tr><td><strong>Spam</strong></td><td>Correo basura que Gmail aparta él solo. A veces se cuela uno bueno: mírala de vez en cuando.</td></tr>
+<tr><td><strong>Papelera</strong></td><td>Lo que borras. Se queda ahí <strong>30 días</strong> y luego se borra para siempre.</td></tr>
+</table>
+
+<ul>
+<li><strong>Etiquetas:</strong> Gmail no usa carpetas para ordenar, usa etiquetas. La diferencia: un mismo correo puede tener <strong>varias</strong> etiquetas a la vez (por ejemplo <em>Clase</em> y <em>Redes</em>).</li>
+<li><strong>Archivar:</strong> quita el correo de Recibidos <strong>sin borrarlo</strong>. Lo encuentras luego con el buscador o en <em>Todos</em>.</li>
+<li><strong>Estrella:</strong> marca los importantes. Salen juntos en <em>Destacados</em>.</li>
+</ul>
+
+<h3>Actividad 1 — Un correo bien hecho</h3>
+<ol>
+<li>En Gmail, pulsa <strong>Redactar</strong>.</li>
+<li>En <strong>Para</strong>, escribe <strong>tu propia dirección</strong> del instituto.</li>
+<li>Asunto: <code>Prueba Unidad 4 - </code> y tu nombre.</li>
+<li>Escribe un correo con saludo, una frase, despedida y firma, como el ejemplo de «Así sí».</li>
+<li>Con el clip, adjunta un archivo de tu carpeta de prácticas de la Unidad 1.</li>
+<li>Pulsa <strong>Enviar</strong>.</li>
+</ol>
+<p><strong>Comprobación:</strong> el correo aparece en <strong>Recibidos</strong> y en <strong>Enviados</strong>, con el clip al lado del asunto.</p>
+
+<h3>Actividad 2 — CC y CCO de verdad</h3>
+<p>Se hace en grupos de tres: A, B y C. Cada uno, con su cuenta del instituto.</p>
+<ol>
+<li>A manda un correo con <strong>Para: B</strong> y <strong>CCO: C</strong>. Asunto: <code>Prueba CCO</code>.</li>
+<li>B abre el correo y pulsa la flechita que hay debajo del remitente (al lado de «para mí»). Mira quién aparece.</li>
+<li>C hace lo mismo con su correo.</li>
+<li>Ahora repetid, pero con <strong>CC: C</strong> en vez de CCO.</li>
+</ol>
+<p><strong>Comprobación:</strong> con CCO, B <strong>no</strong> ve a C por ninguna parte, y C ve «cco: yo». Con CC, B <strong>sí</strong> ve a C. Si os falta uno, A se pone a sí mismo en CCO.</p>
+
+<h3>Actividad 3 — Etiqueta y spam</h3>
+<ol>
+<li>Abre el correo de la Actividad 1.</li>
+<li>Arriba, pulsa el icono de la etiqueta y crea una nueva: <code>Unidad 4</code>.</li>
+<li>Pulsa <strong>Archivar</strong>. El correo desaparece de Recibidos.</li>
+<li>En la columna de la izquierda, pulsa la etiqueta <code>Unidad 4</code> (si no la ves, pulsa <em>Más</em>).</li>
+<li>Abre también la carpeta <strong>Spam</strong> y mira qué hay.</li>
+</ol>
+<p><strong>Comprobación:</strong> el correo archivado <strong>sigue existiendo</strong>: lo ves dentro de la etiqueta <code>Unidad 4</code>.</p>
+
+<h2>Correos trampa: el phishing</h2>
+
+<p>El <strong>spam</strong> es publicidad que no has pedido: molesta, pero ya está. El <strong>phishing</strong> es otra cosa: un correo <strong>falso</strong> que se hace pasar por alguien de confianza (tu banco, una tienda, una plataforma de series…) para <strong>robarte</strong> la contraseña o el dinero.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;font-family:var(--font-mono)" role="img" aria-label="Correo falso con tres señales numeradas: 1 el remitente es de un dominio raro, bancomas-seguridad24.com; 2 mete prisa y amenaza: su cuenta será bloqueada hoy; 3 el botón Entrar ahora lleva, si pasas el ratón por encima, a bancomas-login.xyz.">
+  <rect x="6" y="6" width="348" height="188" rx="6" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+  <text x="34" y="28" fill="var(--text-dim)" font-size="9">De: BancoMás &lt;avisos@bancomas-seguridad24.com&gt;</text>
+  <line x1="18" y1="38" x2="342" y2="38" stroke="var(--border)"/>
+  <text x="34" y="60" fill="var(--text)" font-size="11" font-weight="bold">URGENTE: su cuenta será bloqueada hoy</text>
+  <text x="34" y="80" fill="var(--text)" font-size="9">Verifique sus datos en las próximas</text>
+  <text x="34" y="93" fill="var(--text)" font-size="9">2 horas o perderá el acceso.</text>
+  <rect x="34" y="106" width="112" height="26" rx="4" fill="var(--accent)"/>
+  <text x="90" y="123" text-anchor="middle" fill="var(--bg)" font-size="10" font-weight="bold">Entrar ahora</text>
+  <path d="M120 128 l0 14 l4 -4 l3 6 l2 -1 l-3 -6 l5 0 z" fill="var(--text)" stroke="var(--bg)" stroke-width="0.8"/>
+  <rect x="7" y="168" width="200" height="25" fill="var(--bg)"/>
+  <text x="14" y="184" fill="var(--text-dim)" font-size="9">https://bancomas-login.xyz/...</text>
+
+  <circle cx="20" cy="25" r="7" fill="var(--accent-warm)"/><text x="20" y="28.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">1</text>
+  <circle cx="20" cy="57" r="7" fill="var(--accent-warm)"/><text x="20" y="60.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">2</text>
+  <circle cx="222" cy="180" r="7" fill="var(--accent-warm)"/><text x="222" y="183.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">3</text>
+</svg>
+<p class="pie-figura">BancoMás no existe: es un ejemplo inventado.</p>
+</div>
+
+<table>
+<tr><th>Nº</th><th>Señal</th></tr>
+<tr><td>1</td><td>El <strong>remitente</strong> tiene un dominio raro, que no es el de la empresa de verdad.</td></tr>
+<tr><td>2</td><td>Mete <strong>prisa</strong> o te <strong>amenaza</strong> («hoy», «urgente», «perderá el acceso») para que no pienses.</td></tr>
+<tr><td>3</td><td>El <strong>enlace no va a donde dice</strong>. Pasa el ratón por encima <strong>sin hacer clic</strong>: abajo a la izquierda sale la dirección de verdad (recuerda cómo se lee una URL, Unidad 2).</td></tr>
+</table>
+
+<p>Otras señales: te piden la <strong>contraseña</strong> o los datos de la <strong>tarjeta</strong>; te ha tocado un <strong>premio</strong> en un sorteo en el que no participaste; trae un <strong>adjunto raro</strong> (<code>.exe</code>); tiene <strong>faltas de ortografía</strong>.</p>
+
+<div class="nota">🛑 La regla de oro: <strong>nadie de verdad te pide la contraseña por correo</strong>. Ni tu banco, ni Google, ni yo. Si te llega uno así: no pulses nada, no contestes, márcalo como spam (o «Denunciar phishing», en el menú ⋮ del correo) y, si tienes dudas, enséñamelo.</div>
+
+<p>Practica: ¿es sospechoso? Escribe <code>sí</code> o <code>no</code>. Cuando falles, lee por qué.</p>
+
+<div data-actividad="s3-sospechoso"></div>
+
+<h2>Mensajería instantánea</h2>
+
+<p>WhatsApp, Telegram, Discord o Google Chat son <strong>mensajería instantánea</strong>: mensajes cortos que llegan al momento, como una conversación. No sustituyen al correo: sirven para otra cosa.</p>
+
+<table>
+<tr><th></th><th>Correo</th><th>Mensajería instantánea</th></tr>
+<tr><td>Ritmo</td><td>Se contesta cuando se puede</td><td>Se espera respuesta al momento</td></tr>
+<tr><td>Forma</td><td>Asunto, saludo, firma: más formal</td><td>Frases cortas, emojis, audios</td></tr>
+<tr><td>Archivos</td><td>Adjuntos grandes y ordenados por asunto</td><td>Fotos y archivos rápidos</td></tr>
+<tr><td>Lo usas para</td><td>Clase, trabajo, empresas, trámites</td><td>Amigos, familia, grupos, avisos rápidos</td></tr>
+</table>
+
+<ul>
+<li>En un <strong>grupo</strong>, todo lo que escribes lo ven todos los miembros, y normalmente también tu número de teléfono.</li>
+<li><strong>Cifrado de extremo a extremo</strong> quiere decir que el mensaje viaja cifrado y <strong>solo lo pueden leer quien lo envía y quien lo recibe</strong>. Ni la empresa de la app puede leerlo por el camino. WhatsApp lo usa en todos los chats.</li>
+</ul>
+
+<h3>Actividad 4 — Busca el cifrado en tu móvil</h3>
+<ol>
+<li>Abre WhatsApp en tu móvil (si no lo tienes, hazlo con un compañero).</li>
+<li>Entra en cualquier chat y pulsa el nombre de arriba para ver la información del chat.</li>
+<li>Busca el apartado que habla de <strong>cifrado</strong> y púlsalo.</li>
+</ol>
+<p><strong>Comprobación:</strong> sale un texto que dice que los mensajes y las llamadas están cifrados de extremo a extremo.</p>
+
+<h2>Videollamadas: Google Meet</h2>
+
+<p>Una <strong>videollamada</strong> es una conversación con vídeo y audio por Internet, entre dos o muchas personas. Con tu cuenta del instituto tienes <strong>Google Meet</strong>. Los botones de abajo son estos:</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 360 96" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;font-family:var(--font-mono)" role="img" aria-label="Barra de botones de Google Meet numerada: 1 micrófono, 2 cámara, 3 levantar la mano, 4 compartir pantalla, 5 colgar, en rojo; y a la derecha 6 personas y 7 chat.">
+  <rect x="6" y="20" width="348" height="52" rx="26" fill="var(--surface)" stroke="var(--border)" stroke-width="1.5"/>
+  <circle cx="44" cy="46" r="15" fill="var(--bg)" stroke="var(--text-dim)"/>
+  <rect x="40" y="37" width="8" height="12" rx="4" fill="var(--text-dim)"/>
+  <path d="M37 47 a7 7 0 0 0 14 0" fill="none" stroke="var(--text-dim)" stroke-width="1.4"/>
+  <circle cx="84" cy="46" r="15" fill="var(--bg)" stroke="var(--text-dim)"/>
+  <rect x="75" y="40" width="13" height="12" rx="2" fill="var(--text-dim)"/>
+  <path d="M88 44 l6 -3 v10 l-6 -3 z" fill="var(--text-dim)"/>
+  <circle cx="124" cy="46" r="15" fill="var(--bg)" stroke="var(--text-dim)"/>
+  <path d="M119 54 v-11 a1.6 1.6 0 0 1 3.2 0 v-3 a1.6 1.6 0 0 1 3.2 0 v3 a1.6 1.6 0 0 1 3.2 0 v8 a5 5 0 0 1 -5 5 h-1 a4 4 0 0 1 -3.6 -2 z" fill="var(--text-dim)"/>
+  <circle cx="164" cy="46" r="15" fill="var(--bg)" stroke="var(--text-dim)"/>
+  <rect x="155" y="39" width="18" height="13" rx="2" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/>
+  <path d="M164 49 v-6 M161 45.5 l3 -3 l3 3" fill="none" stroke="var(--text-dim)" stroke-width="1.5"/>
+  <rect x="190" y="34" width="40" height="24" rx="12" fill="var(--error)"/>
+  <path d="M200 49 a12 8 0 0 1 20 0 l-3 3 l-4 -3 v-3 a10 4 0 0 0 -6 0 v3 l-4 3 z" fill="#fff"/>
+  <circle cx="282" cy="46" r="13" fill="none" stroke="var(--text-dim)"/>
+  <circle cx="282" cy="42" r="3.5" fill="var(--text-dim)"/>
+  <path d="M275 53 a7 6 0 0 1 14 0 z" fill="var(--text-dim)"/>
+  <circle cx="320" cy="46" r="13" fill="none" stroke="var(--text-dim)"/>
+  <path d="M313 40 h14 v9 h-9 l-4 4 v-4 h-1 z" fill="var(--text-dim)"/>
+
+  <circle cx="44" cy="12" r="7" fill="var(--accent-warm)"/><text x="44" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">1</text>
+  <circle cx="84" cy="12" r="7" fill="var(--accent-warm)"/><text x="84" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">2</text>
+  <circle cx="124" cy="12" r="7" fill="var(--accent-warm)"/><text x="124" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">3</text>
+  <circle cx="164" cy="12" r="7" fill="var(--accent-warm)"/><text x="164" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">4</text>
+  <circle cx="210" cy="12" r="7" fill="var(--accent-warm)"/><text x="210" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">5</text>
+  <circle cx="282" cy="12" r="7" fill="var(--accent-warm)"/><text x="282" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">6</text>
+  <circle cx="320" cy="12" r="7" fill="var(--accent-warm)"/><text x="320" y="15.5" text-anchor="middle" fill="var(--bg)" font-size="9" font-weight="bold">7</text>
+  <text x="180" y="90" text-anchor="middle" fill="var(--text-faint)" font-size="9">Dibujo simplificado: los iconos de tu pantalla pueden cambiar</text>
+</svg>
+</div>
+
+<table>
+<tr><th>Nº</th><th>Botón</th><th>Para qué</th></tr>
+<tr><td>1</td><td><strong>Micrófono</strong></td><td>Activar o silenciar tu voz. Si sale tachado, no te oyen.</td></tr>
+<tr><td>2</td><td><strong>Cámara</strong></td><td>Activar o apagar tu vídeo.</td></tr>
+<tr><td>3</td><td><strong>Levantar la mano</strong></td><td>Pedir la palabra sin interrumpir.</td></tr>
+<tr><td>4</td><td><strong>Compartir pantalla</strong></td><td>Que los demás vean lo que tienes en tu pantalla.</td></tr>
+<tr><td>5</td><td><strong>Colgar</strong> (rojo)</td><td>Salir de la llamada.</td></tr>
+<tr><td>6</td><td><strong>Personas</strong></td><td>La lista de quién está conectado.</td></tr>
+<tr><td>7</td><td><strong>Chat</strong></td><td>Escribir mensajes a todos los de la llamada.</td></tr>
+</table>
+
+<p>Las normas de una videollamada de clase o de trabajo:</p>
+<ul class="checklist">
+<li><strong>Micro silenciado</strong> mientras no hablas: así no se oyen ruidos de tu casa.</li>
+<li><strong>Levanta la mano</strong> para hablar, como en clase.</li>
+<li>Entra con tu <strong>nombre real</strong>, no con un mote.</li>
+<li><strong>No grabes ni hagas capturas</strong> de los demás sin su permiso.</li>
+</ul>
+
+<h3>Actividad 5 — Tu primera reunión en Meet</h3>
+<p>He creado una reunión para la clase. El enlace está en Classroom; si no lo encuentras, pídemelo.</p>
+<ol>
+<li>Abre el enlace con tu cuenta del instituto.</li>
+<li><strong>Antes</strong> de pulsar <em>Unirse ahora</em>, apaga el <strong>micrófono</strong> y la <strong>cámara</strong> (salen tachados).</li>
+<li>Pulsa <em>Unirse ahora</em>.</li>
+<li>Abre el <strong>chat</strong> (7) y escribe <code>Hola, ya estoy</code>.</li>
+<li>Pulsa <strong>levantar la mano</strong> (3). Espera a que la veas en tu recuadro y vuelve a pulsar para bajarla.</li>
+<li>Abre <strong>Personas</strong> (6) y busca tu nombre.</li>
+<li>Sal con el botón <strong>rojo</strong> (5).</li>
+</ol>
+<p><strong>Comprobación:</strong> tu nombre ha salido en la lista de Personas y tu mensaje, en el chat.</p>
+<div class="nota">⚠️ Estamos todos en la misma aula. Si alguien enciende el micro con el altavoz puesto, sale un pitido muy fuerte (el <em>acople</em>). Micro apagado todo el rato.</div>
+
+<h2>Repaso general de la Unidad 4</h2>
+
+<table>
+<tr><th>Sesión</th><th>Qué aprendiste</th></tr>
+<tr><td>1. El navegador</td><td>Sus partes, las pestañas, los favoritos en carpetas, el historial, las descargas, el zoom y los atajos.</td></tr>
+<tr><td>2. Buscadores y privacidad</td><td>Navegador ≠ buscador; rastrear, indexar y ordenar; anuncios e IA en los resultados; los cinco operadores; fiarse o no; cookies, incógnito y contraseñas.</td></tr>
+<tr><td>3. Correo y mensajería</td><td>La dirección, Para/CC/CCO, cómo se escribe un correo, adjuntos, responder y reenviar, ordenar, el phishing, la mensajería y Meet.</td></tr>
+</table>
+
+<h2>Tu resumen de la Unidad 4</h2>
+<p>Como en las unidades anteriores, antes del examen haces el resumen de esta unidad <strong>en tu cuaderno, a mano</strong>. Se corrige con la rúbrica de <a href="tema.html?id=formas-de-evaluar">Formas de evaluar</a>.</p>
+<p><strong>Lo obligatorio de este resumen</strong> es escribirlo <strong>como correos</strong>, que es justo lo que acabas de aprender: un correo por sesión, cada uno con <strong>Para</strong>, <strong>Asunto</strong>, <strong>saludo</strong>, el resumen en el <strong>cuerpo</strong>, <strong>despedida</strong> y <strong>firma</strong>. Así:</p>
+<div class="salida" style="background:#fff;color:#1e1e1e;border-radius:6px;padding:14px 18px;">
+<div style="margin:0;color:#666;font-size:0.9em">Para: yo mismo</div>
+<div style="margin:2px 0 0;color:#666;font-size:0.9em">Asunto: Sesión 2 - Buscadores y privacidad</div>
+<div style="margin:10px 0 0">Hola:</div>
+<div style="margin:6px 0 0">Un buscador no busca en todo Internet, busca en su índice. Lo que pone «Patrocinado» es un anuncio…</div>
+<div style="margin:6px 0 0">Un saludo,<br>Ana</div>
+</div>
+<div class="nota">Mínimo para este resumen: <strong>tres correos</strong>, uno por sesión, cada uno con sus seis partes. Escribe el asunto como lo escribirías de verdad: corto y que diga de qué va.</div>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, corrige tú mismo en el cuaderno las que tengas mal: así te servirán para estudiar.
+</div>
+
+<h3>La dirección y el viaje de un correo</h3>
+
+<ol>
+<li>Inventa una dirección de correo y señala sus tres partes: usuario, arroba y dominio.</li>
+<li>(V/F) Dos personas pueden tener exactamente la misma dirección de correo si viven en países distintos.</li>
+<li>(ABC) En <code>ana.serra@iesramonllull.net</code>, el dominio es:
+  <ul>
+    <li>a) <code>ana.serra</code></li>
+    <li>b) <code>iesramonllull.net</code></li>
+    <li>c) <code>@</code></li>
+  </ul>
+</li>
+<li>Explica por qué puedes mandarle un correo a alguien que tiene el ordenador apagado.</li>
+</ol>
+
+<h3>Escribir, enviar y ordenar</h3>
+
+<ol start="5">
+<li>Explica la diferencia entre CC y CCO.</li>
+<li>(ABC) Mandas un aviso a 40 familias que no se conocen entre ellas. Sus direcciones van en:
+  <ul>
+    <li>a) Para</li>
+    <li>b) CC</li>
+    <li>c) CCO</li>
+  </ul>
+</li>
+<li>Escribe las partes que tiene que tener un correo bien escrito, en orden.</li>
+<li>(V/F) Si un archivo pesa más de 25 MB, Gmail no te deja enviarlo de ninguna forma.</li>
+<li>¿Qué diferencia hay entre «Responder» y «Responder a todos»? Pon un caso en el que «Responder a todos» sería un error.</li>
+<li>(ABC) Te ha llegado un aviso de Classroom y quieres pasárselo a tu tutora. Pulsas:
+  <ul>
+    <li>a) Responder</li>
+    <li>b) Reenviar</li>
+    <li>c) Responder a todos</li>
+  </ul>
+</li>
+<li>(V/F) Cuando borras un correo, desaparece para siempre en ese mismo momento.</li>
+<li>¿Qué diferencia hay entre archivar un correo y borrarlo?</li>
+<li>¿En qué se diferencia una etiqueta de Gmail de una carpeta?</li>
+</ol>
+
+<h3>Phishing</h3>
+
+<ol start="14">
+<li>Explica la diferencia entre spam y phishing.</li>
+<li>Escribe cuatro señales de que un correo puede ser una trampa.</li>
+<li>(V/F) Si un correo lleva el logo de tu banco, seguro que es de tu banco.</li>
+<li>¿Cómo puedes saber a dónde lleva un enlace sin pulsarlo?</li>
+<li>(ABC) Te llega un adjunto llamado <code>notas.pdf.exe</code>. Es:
+  <ul>
+    <li>a) un documento PDF</li>
+    <li>b) un programa</li>
+    <li>c) una imagen</li>
+  </ul>
+</li>
+</ol>
+
+<h3>Mensajería y videollamadas</h3>
+
+<ol start="19">
+<li>Escribe dos diferencias entre el correo y la mensajería instantánea. Di para qué usarías cada uno.</li>
+<li>(V/F) «Cifrado de extremo a extremo» quiere decir que solo el que envía y el que recibe pueden leer el mensaje.</li>
+<li>Escribe tres normas para comportarte bien en una videollamada de clase.</li>
+<li>(ABC) En Meet, para pedir la palabra sin interrumpir:
+  <ul>
+    <li>a) enciendes el micro y hablas</li>
+    <li>b) levantas la mano</li>
+    <li>c) sales y vuelves a entrar</li>
+  </ul>
+</li>
+</ol>
+
+<h3>Repaso general de la Unidad 4</h3>
+
+<ol start="23">
+<li>De las tres sesiones de la unidad, resume en una frase cada una.</li>
+<li>Busca cuántas personas pueden estar a la vez en un grupo de WhatsApp.</li>
+</ol>

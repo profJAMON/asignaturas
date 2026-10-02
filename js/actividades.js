@@ -280,7 +280,9 @@ function renderGenerador(contenedor, datos) {
       fila.appendChild(crearElemento('span', 'generador__numero', `${i + 1}.`));
 
       const enunciado = crearElemento('span', 'generador__enunciado', preg.enunciado);
-      enunciado.setAttribute('translate', 'no');
+      /* Los enunciados de números y códigos no se traducen. Los que son
+         frases (preg.traducible, p. ej. js/generadores-internet.js) sí. */
+      if (!preg.traducible) enunciado.setAttribute('translate', 'no');
       fila.appendChild(enunciado);
 
       const campo = crearElemento('input', 'generador__campo');

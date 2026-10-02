@@ -1,0 +1,35 @@
+{
+  "id": "sesion-1-el-navegador",
+  "titulo": "Sesión 1. El navegador: pestañas, favoritos e historial",
+  "fecha": "",
+  "descripcion": "Usar bien el navegador: sus partes, las pestañas, los favoritos en carpetas, el historial, la lista de descargas, el zoom y la página de inicio, y los atajos de teclado que más se usan.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Chrome: combinaciones de teclas",
+      "url": "https://support.google.com/chrome/answer/157179?hl=es"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "s1-partes",
+      "tipo": "relacionar",
+      "titulo": "¿Para qué sirve cada parte?",
+      "pares": [
+        { "izquierda": "Pestaña", "derecha": "Una página abierta dentro de la ventana" },
+        { "izquierda": "Barra de direcciones", "derecha": "Donde se ve y se escribe la URL" },
+        { "izquierda": "Estrella", "derecha": "Guardar la página en favoritos" },
+        { "izquierda": "Menú de tres puntos", "derecha": "Configuración, historial y descargas" },
+        { "izquierda": "Flecha en círculo", "derecha": "Volver a cargar la página" },
+        { "izquierda": "Barra de favoritos", "derecha": "Tus páginas guardadas a un clic" }
+      ]
+    },
+    {
+      "id": "s1-atajos",
+      "tipo": "generador",
+      "titulo": "¿Qué atajo es?",
+      "generador": "atajo-navegador",
+      "n": 8
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "sesion-2-buscadores-privacidad",
+  "titulo": "Sesión 2. Buscadores y privacidad al navegar",
+  "fecha": "",
+  "descripcion": "Navegador y buscador no son lo mismo. Cómo funciona un buscador, qué hay en una página de resultados (anuncios, resúmenes con IA), los operadores para buscar con precisión y cómo saber si te puedes fiar. Y tu privacidad: las cookies, el modo incógnito y las contraseñas en un ordenador compartido.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Google: cómo afinar tus búsquedas",
+      "url": "https://support.google.com/websearch/answer/2466433?hl=es"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Chrome: cómo navegar de incógnito",
+      "url": "https://support.google.com/chrome/answer/95464?hl=es"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "s2-operadores",
+      "tipo": "generador",
+      "titulo": "¿Qué operador usas?",
+      "generador": "operador-busqueda",
+      "n": 8
+    }
+  ]
+}

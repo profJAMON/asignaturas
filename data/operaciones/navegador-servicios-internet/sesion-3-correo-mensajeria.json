@@ -1,0 +1,42 @@
+{
+  "id": "sesion-3-correo-mensajeria",
+  "titulo": "Sesión 3. Correo electrónico, mensajería y videollamadas",
+  "fecha": "",
+  "descripcion": "El correo electrónico de verdad: la dirección, cómo viaja, Para/CC/CCO, cómo se escribe, los adjuntos, responder y reenviar, ordenar con etiquetas y reconocer el phishing. Y la mensajería instantánea y las videollamadas con Google Meet. Incluye el repaso y el resumen de la unidad.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Ayuda de Gmail: cómo evitar y denunciar el phishing",
+      "url": "https://support.google.com/mail/answer/8253?hl=es"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "s3-para-cc-cco",
+      "tipo": "generador",
+      "titulo": "¿Para, CC o CCO?",
+      "generador": "para-cc-cco",
+      "n": 6
+    },
+    {
+      "id": "s3-botones",
+      "tipo": "relacionar",
+      "titulo": "¿Qué botón o qué campo?",
+      "pares": [
+        { "izquierda": "Responder", "derecha": "Solo a quien te lo mandó" },
+        { "izquierda": "Responder a todos", "derecha": "A quien te lo mandó y a todos los de Para y CC" },
+        { "izquierda": "Reenviar", "derecha": "A una persona nueva que eliges tú" },
+        { "izquierda": "CC", "derecha": "Copia que todos ven" },
+        { "izquierda": "CCO", "derecha": "Copia que nadie más ve" },
+        { "izquierda": "Archivar", "derecha": "Quitar de Recibidos sin borrar" }
+      ]
+    },
+    {
+      "id": "s3-sospechoso",
+      "tipo": "generador",
+      "titulo": "¿Es sospechoso?",
+      "generador": "correo-sospechoso",
+      "n": 6
+    }
+  ]
+}

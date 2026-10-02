@@ -1,0 +1,16 @@
+{
+  "id": "glosario-navegador-servicios-internet",
+  "titulo": "Glosario de la Unidad 4",
+  "fecha": "",
+  "descripcion": "Material de consulta, no una sesión: las palabras de la unidad explicadas en corto, las que se confunden (navegador y buscador, CC y CCO, spam y phishing…), todos los atajos y qué mirar antes de pulsar un enlace de un correo.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "glosario-u4-atajos",
+      "tipo": "generador",
+      "titulo": "¿Qué atajo es?",
+      "generador": "atajo-navegador-todos",
+      "n": 8
+    }
+  ]
+}

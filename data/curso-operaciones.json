@@ -42,6 +42,17 @@
         "sesion-4-gestores-contenidos-p2p",
         "glosario-publicacion-web"
       ]
+    },
+    {
+      "id": "navegador-servicios-internet",
+      "titulo": "Unidad 4. El navegador, buscadores y correo",
+      "descripcion": "Usar bien las herramientas de Internet de cada día: el navegador (pestañas, favoritos, historial), los buscadores y cómo afinar una búsqueda, tu privacidad (cookies e incógnito), el correo electrónico, el phishing, la mensajería y las videollamadas.",
+      "sesiones": [
+        "sesion-1-el-navegador",
+        "sesion-2-buscadores-privacidad",
+        "sesion-3-correo-mensajeria",
+        "glosario-navegador-servicios-internet"
+      ]
     }
   ]
 }

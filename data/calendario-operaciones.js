@@ -33,7 +33,9 @@
                                       están ocultas en curso-operaciones.json
                                       hasta abril, por eso aquí va con
                                       "sesiones": [].
-   Unidades 4-8: aún no existen en la web; id y títulos provisionales.
+   Unidad 4 (navegador-servicios-internet): creada el 01/10/2026, con
+   3 sesiones (16/11, 19/11 y 23/11) + glosario; examen el jue 26/11.
+   Unidades 5-8: aún no existen en la web; id y títulos provisionales.
    La Unidad 8 (Redes) está PENDIENTE DE DECIDIR: los alumnos son los
    mismos que los de 1r de Instalaciones y se solaparía. Si se quita,
    sus horas pasan a Windows y Linux o quedan de margen.
@@ -65,7 +67,7 @@
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-09-28",
+  "actualizado": "2026-10-01",
   "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son los jueves de 19:10 a 21:00. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {
@@ -131,7 +133,11 @@ const CALENDARIO_OPERACIONES =
       "id": "navegador-servicios-internet",
       "titulo": "Unidad 4. El navegador, buscadores y correo",
       "horas": 10,
-      "sesiones": [],
+      "sesiones": [
+        "sesion-1-el-navegador",
+        "sesion-2-buscadores-privacidad",
+        "sesion-3-correo-mensajeria"
+      ],
       "fechas": {
         "inicio": "2026-11-16",
         "fin": "2026-11-26"
@@ -259,6 +265,21 @@ const CALENDARIO_OPERACIONES =
       "titulo": "Sesión 3. Gestores de contenidos y redes P2P",
       "unidad": "publicacion-web",
       "fecha": "2026-11-09"
+    },
+    "sesion-1-el-navegador": {
+      "titulo": "Sesión 1. El navegador: pestañas, favoritos e historial",
+      "unidad": "navegador-servicios-internet",
+      "fecha": "2026-11-16"
+    },
+    "sesion-2-buscadores-privacidad": {
+      "titulo": "Sesión 2. Buscadores y privacidad al navegar",
+      "unidad": "navegador-servicios-internet",
+      "fecha": "2026-11-19"
+    },
+    "sesion-3-correo-mensajeria": {
+      "titulo": "Sesión 3. Correo electrónico, mensajería y videollamadas",
+      "unidad": "navegador-servicios-internet",
+      "fecha": "2026-11-23"
     }
   }
 }
