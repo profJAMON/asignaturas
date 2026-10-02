@@ -1,14 +1,48 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>La terminal: hablar con el ordenador escribiendo</h2>
-<p>Además de con ventanas y ratón, a un ordenador se le puede dar órdenes <strong>escribiéndolas</strong>. El programa donde se escriben se llama <strong>terminal</strong>; en Windows, <em>Símbolo del sistema</em> (su nombre corto es <code>cmd</code>).</p>
-<p>Para abrirla: pulsa la tecla <strong>Windows</strong>, escribe <code>cmd</code> y pulsa Intro.</p>
-<div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.9em;line-height:1.7;">
+<p>Además de con ventanas y ratón, a un ordenador se le pueden dar órdenes <strong>escribiéndolas</strong>. El programa donde se escriben se llama <strong>terminal</strong>. En Windows se llama <em>Símbolo del sistema</em>, y su nombre corto es <code>cmd</code>.</p>
+<p>Para abrirla, tres pasos:</p>
+<div class="diapos" aria-label="Abrir la terminal en tres pasos">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Teclado con la tecla Windows resaltada"><rect x="20" y="60" width="40" height="36" rx="4" class="d-caja"/><text x="40.0" y="83" text-anchor="middle" class="d-d">Ctrl</text><rect x="68" y="60" width="60" height="36" rx="4" class="d-caja-act"/><text x="98.0" y="83" text-anchor="middle" class="d-c">⊞ Win</text><rect x="136" y="60" width="40" height="36" rx="4" class="d-caja"/><text x="156.0" y="83" text-anchor="middle" class="d-d">Alt</text><rect x="184" y="60" width="150" height="36" rx="4" class="d-caja"/><text x="259.0" y="83" text-anchor="middle" class="d-d">espacio</text><text x="180" y="30" text-anchor="middle" class="d-c d-grande">1. tecla Windows</text></svg>
+<p class="diapo__texto">1. Pulsa la tecla <strong>Windows</strong>: la del logotipo, abajo a la izquierda, entre <kbd>Ctrl</kbd> y <kbd>Alt</kbd>. Se abre el menú Inicio.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Buscador del menú Inicio con cmd escrito y el resultado Símbolo del sistema"><rect x="40" y="10" width="280" height="34" rx="4" class="d-caja-on"/><text x="56" y="32" text-anchor="start" class="d-c">Buscar: cmd</text><rect x="40" y="56" width="280" height="50" rx="4" class="d-caja-act"/><text x="180" y="78" text-anchor="middle" class="d-c">Símbolo del sistema</text><text x="180" y="96" text-anchor="middle" class="d-d">Aplicación</text><text x="180" y="130" text-anchor="middle" class="d-t">2. escribe cmd → Intro</text></svg>
+<p class="diapo__texto">2. Escribe <code>cmd</code> (sin hacer clic en ningún sitio). Arriba sale <strong>Símbolo del sistema</strong>. Pulsa Intro.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Ventana de la terminal con el prompt esperando una orden"><rect x="20" y="10" width="320" height="100" rx="4" class="d-caja-on"/><text x="32" y="34" text-anchor="start" class="d-d d-peq">Microsoft Windows [Versión 10…]</text><text x="32" y="66" text-anchor="start" class="d-c">C:\Users\alumno&gt;_</text><text x="180" y="130" text-anchor="middle" class="d-t">3. ventana negra con el prompt</text></svg>
+<p class="diapo__texto">3. Se abre una ventana negra que termina en <code>C:\Users\alumno&gt;</code>. <strong>Si la ves, lo has hecho bien</strong>: ya puedes escribir comandos.</p>
+</div>
+</div>
+
+<div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 Microsoft Windows [Versión 10.0.22631.4317]<br>
 <br>
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">ipconfig</span><br>
 <span style="color:#9099a6;">(aquí sale el resultado del comando)</span>
 </div>
 <p>Ese <code>C:\Users\alumno&gt;</code> es el <strong>prompt</strong>: la terminal te dice en qué carpeta estás y espera tu orden. Escribes el comando, pulsas Intro y te responde con texto.</p>
-<div class="nota">💡 En la terminal no se usa el ratón para escribir. Si te equivocas, borra con la tecla de retroceso. Con la flecha ↑ recuperas el último comando que escribiste.</div>
+<table>
+<tr><th>Tecla</th><th>Para qué sirve en la terminal</th></tr>
+<tr><td><kbd>Intro</kbd></td><td>Ejecutar el comando que has escrito.</td></tr>
+<tr><td><kbd>Retroceso</kbd></td><td>Borrar si te has equivocado (el ratón no sirve para escribir).</td></tr>
+<tr><td><kbd>↑</kbd></td><td>Recuperar el último comando que escribiste.</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd></td><td><strong>Parar</strong> un comando que no termina (por ejemplo, un <code>ping</code> o un <code>tracert</code> que tarda demasiado).</td></tr>
+</table>
 <div class="nota">⚠️ Algunos comandos de esta sesión (<code>ping</code>, <code>tracert</code>) pueden no responder en la red del instituto: hay redes que los bloquean por seguridad. No es culpa tuya: apunta lo que salga.</div>
 
 <h2>ipconfig — ¿qué IP tengo?</h2>
@@ -27,11 +61,12 @@ Adaptador de Ethernet:<br>
 <tr><td><strong>Puerta de enlace predeterminada</strong></td><td>La IP del <strong>router</strong>: la puerta por la que sales a Internet.</td></tr>
 <tr><td><strong>Máscara de subred</strong></td><td>Le dice al ordenador qué IPs están en su misma red y cuáles están fuera.</td></tr>
 </table>
+<div class="nota">👀 En tu pantalla, <code>ipconfig</code> sacará <strong>mucho más texto</strong> que en el dibujo: varios adaptadores, líneas de IPv6, números largos… No te asustes. Busca solo <strong>dos líneas</strong>: <em>Dirección IPv4</em> y <em>Puerta de enlace predeterminada</em>, en el adaptador que tenga números en las dos.</div>
 
 <h3>Actividad 1 — Tu IP privada y la de tu router</h3>
 <ol>
 <li>Abre la terminal y escribe <code>ipconfig</code>.</li>
-<li>Apunta en tu cuaderno tu <em>Dirección IPv4</em> y tu <em>Puerta de enlace predeterminada</em>.</li>
+<li>Apunta en tu cuaderno tu <em>Dirección IPv4</em> y tu <em>Puerta de enlace predeterminada</em> (pregunta 5).</li>
 <li>Compara las dos con las de un compañero.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> vuestras direcciones IPv4 son distintas (cada ordenador la suya), pero la puerta de enlace es <strong>la misma</strong>: los dos salís por el mismo router.</p>
@@ -39,7 +74,7 @@ Adaptador de Ethernet:<br>
 <h3>Actividad 2 — Y ahora, la IP pública</h3>
 <ol start="4">
 <li>Abre Chrome y busca <code>cuál es mi ip</code>. Entra en cualquiera de las webs que te salgan.</li>
-<li>Apunta la IP que te enseña y compárala con la de tu compañero.</li>
+<li>Apunta la IP que te enseña y compárala con la de tu compañero (pregunta 7).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> esa IP no se parece a la que te dio <code>ipconfig</code>, y a tu compañero le sale <strong>la misma</strong> que a ti: es la IP pública del router del instituto.</p>
 <div class="nota">🤔 Antes de seguir: entonces, ¿cuántas IP tiene tu ordenador ahora mismo?</div>
@@ -57,19 +92,19 @@ Respuesta desde 142.250.184.78: bytes=32 tiempo=13ms TTL=115<br>
 Estadísticas de ping para 142.250.184.78:<br>
 &nbsp;&nbsp;&nbsp;Paquetes: enviados = 4, recibidos = 4, perdidos = 0
 </div>
-<p>Fíjate en que, para poder mandar el mensaje, lo primero que ha hecho tu ordenador es preguntar al DNS por <code>google.com</code> y obtener su IP. Por eso el <code>ping</code> te enseña la IP del dominio aunque tú solo hayas escrito el nombre.</p>
-<p>El <strong>tiempo</strong> se mide en milisegundos (ms): 14 ms es lo que tarda el mensaje en ir y volver. Cuanto más lejos esté el servidor, más tarda.</p>
+<p>Fíjate: para poder mandar el mensaje, lo primero que ha hecho tu ordenador es preguntar al DNS por <code>google.com</code> y obtener su IP. Por eso el <code>ping</code> te enseña la IP del dominio aunque tú solo hayas escrito el nombre.</p>
+<p>El <strong>tiempo</strong> se mide en milisegundos (ms): 14 ms es lo que tarda el mensaje en ir y volver. Cuanto más lejos está el servidor, más tarda.</p>
 
 <h3>Actividad 3 — Haz ping a dos sitios</h3>
 <ol start="6">
 <li>Escribe <code>ping iesramonllull.net</code> y apunta la IP y el tiempo.</li>
 <li>Escribe <code>ping google.com</code> y apunta la IP y el tiempo.</li>
-<li>Compara los dos tiempos.</li>
+<li>Compara los dos tiempos (pregunta 9).</li>
 </ol>
-<p><strong>Comprobación observable:</strong> los dos dominios tienen IP distintas. Si alguno no contesta ("Tiempo de espera agotado"), no significa que la web no exista: puede que ese servidor o la red del instituto no respondan a los ping.</p>
+<p><strong>Comprobación observable:</strong> los dos dominios tienen IP distintas. Si alguno no contesta («Tiempo de espera agotado»), no significa que la web no exista: puede que ese servidor o la red del instituto no respondan a los ping. Si se queda colgado, páralo con <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
 
 <h2>nslookup — preguntarle al DNS</h2>
-<p>Con <code>nslookup</code> le preguntas directamente al DNS: "¿qué IP tiene este dominio?". Es justo lo que hace tu navegador por dentro cada vez que escribes una dirección (sesión 1).</p>
+<p>Con <code>nslookup</code> le preguntas directamente al DNS: «¿qué IP tiene este dominio?». Es justo lo que hace tu navegador por dentro cada vez que escribes una dirección (sesión 1).</p>
 <div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">nslookup wikipedia.org</span><br>
 <br>
@@ -84,25 +119,49 @@ Address: &nbsp;<span style="color:#ce9178;">185.15.59.224</span>
 <li><strong>Servidor / Address</strong> (arriba): <em>a quién</em> le has preguntado, es decir, qué servidor DNS estás usando. Muchas veces es tu propio router.</li>
 <li><strong>Nombre / Address</strong> (abajo): la respuesta, la IP de ese dominio.</li>
 </ul>
+<div class="nota">👀 Si arriba te sale <code>Servidor: UnKnown</code>, <strong>no es un error</strong>: solo quiere decir que el servidor DNS no tiene nombre. Lo que importa es la respuesta de abajo.</div>
 
 <h3>Actividad 4 — Pregunta por tres dominios</h3>
 <ol start="9">
 <li>Ejecuta <code>nslookup iesramonllull.net</code>, <code>nslookup wikipedia.org</code> y <code>nslookup google.com</code>.</li>
-<li>Apunta la IP de cada uno y qué servidor DNS te está respondiendo.</li>
+<li>Apunta la IP de cada uno y qué servidor DNS te está respondiendo (pregunta 12).</li>
 </ol>
-<p><strong>Comprobación observable:</strong> cada dominio tiene su propia IP, y en los tres casos el servidor que responde es el mismo (el DNS que usa tu ordenador). En alguno pueden salir varias IP: recuerda que un dominio puede tener más de una.</p>
+<p><strong>Comprobación observable:</strong> cada dominio tiene su propia IP, y en los tres casos el servidor que responde es el mismo (el DNS que usa tu ordenador). En alguno pueden salir varias IP: un dominio puede tener más de una.</p>
 
 <h2>tracert — por dónde pasa la información</h2>
-<p>Entre tu ordenador y el servidor no hay un cable directo: la información va saltando de router en router. <code>tracert</code> ("trace route", seguir la ruta) te enseña esos saltos uno a uno.</p>
+<p>Entre tu ordenador y el servidor no hay un cable directo: la información va saltando de router en router. <code>tracert</code> («trace route», seguir la ruta) te enseña esos saltos uno a uno.</p>
+<div class="diapos" aria-label="tracert: el camino salto a salto">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Tu PC a la izquierda y cuatro saltos sin recorrer hasta google"><rect x="6" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="32" y="55" text-anchor="middle" class="d-a">PC</text><text x="32" y="88" text-anchor="middle" class="d-peq d-t">tu PC</text><rect x="78" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="104" y="55" text-anchor="middle" class="d-d">1</text><text x="104" y="88" text-anchor="middle" class="d-peq d-d">router</text><rect x="150" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="176" y="55" text-anchor="middle" class="d-d">2</text><text x="176" y="88" text-anchor="middle" class="d-peq d-d">operadora</text><rect x="222" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="248" y="55" text-anchor="middle" class="d-d">3</text><text x="248" y="88" text-anchor="middle" class="d-peq d-d">Internet</text><rect x="294" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="320" y="55" text-anchor="middle" class="d-d">4</text><text x="320" y="88" text-anchor="middle" class="d-peq d-d">google</text><text x="180" y="132" text-anchor="middle" class="d-c">tracert google.com</text></svg>
+<p class="diapo__texto">Escribes <code>tracert google.com</code>. Tu ordenador manda un mensaje hacia Google y va apuntando <strong>cada router</strong> por el que pasa.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Salto 1, el router, con la IP 192.168.1.1"><rect x="6" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="32" y="55" text-anchor="middle" class="d-a">PC</text><text x="32" y="88" text-anchor="middle" class="d-peq d-t">tu PC</text><rect x="78" y="30" width="52" height="40" rx="4" class="d-caja-act"/><text x="104" y="55" text-anchor="middle" class="d-c">1</text><text x="104" y="88" text-anchor="middle" class="d-peq d-t">router</text><text x="104" y="106" text-anchor="middle" class="d-peq d-c">192.168.1.1</text><rect x="150" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="176" y="55" text-anchor="middle" class="d-d">2</text><text x="176" y="88" text-anchor="middle" class="d-peq d-d">operadora</text><rect x="222" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="248" y="55" text-anchor="middle" class="d-d">3</text><text x="248" y="88" text-anchor="middle" class="d-peq d-d">Internet</text><rect x="294" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="320" y="55" text-anchor="middle" class="d-d">4</text><text x="320" y="88" text-anchor="middle" class="d-peq d-d">google</text><path d="M 59 50 L 76 50" class="d-linea-c"/><path d="M 76 50 L 68.0 46.0 L 68.0 54.0 z" class="d-relleno-c"/><text x="180" y="132" text-anchor="middle" class="d-c">salto 1: tu router</text></svg>
+<p class="diapo__texto"><strong>Salto 1</strong>: siempre es tu router. Es la misma IP que tu <strong>puerta de enlace</strong> de <code>ipconfig</code>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Salto 2, la operadora"><rect x="6" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="32" y="55" text-anchor="middle" class="d-a">PC</text><text x="32" y="88" text-anchor="middle" class="d-peq d-t">tu PC</text><rect x="78" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="104" y="55" text-anchor="middle" class="d-a">1</text><text x="104" y="88" text-anchor="middle" class="d-peq d-t">router</text><text x="104" y="106" text-anchor="middle" class="d-peq d-d">192.168.1.1</text><rect x="150" y="30" width="52" height="40" rx="4" class="d-caja-act"/><text x="176" y="55" text-anchor="middle" class="d-c">2</text><text x="176" y="88" text-anchor="middle" class="d-peq d-t">operadora</text><text x="176" y="106" text-anchor="middle" class="d-peq d-c">10.15.0.1</text><rect x="222" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="248" y="55" text-anchor="middle" class="d-d">3</text><text x="248" y="88" text-anchor="middle" class="d-peq d-d">Internet</text><rect x="294" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="320" y="55" text-anchor="middle" class="d-d">4</text><text x="320" y="88" text-anchor="middle" class="d-peq d-d">google</text><path d="M 59 50 L 76 50" class="d-linea-a"/><path d="M 76 50 L 68.0 46.0 L 68.0 54.0 z" class="d-a"/><path d="M 131 50 L 148 50" class="d-linea-c"/><path d="M 148 50 L 140.0 46.0 L 140.0 54.0 z" class="d-relleno-c"/><text x="180" y="132" text-anchor="middle" class="d-c">salto 2: tu operadora</text></svg>
+<p class="diapo__texto"><strong>Salto 2</strong>: un router de tu <strong>operadora</strong> (Movistar, Vodafone…). Desde aquí ya estás fuera de tu casa o del instituto.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Salto 3, un router que no contesta y sale con asteriscos"><rect x="6" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="32" y="55" text-anchor="middle" class="d-a">PC</text><text x="32" y="88" text-anchor="middle" class="d-peq d-t">tu PC</text><rect x="78" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="104" y="55" text-anchor="middle" class="d-a">1</text><text x="104" y="88" text-anchor="middle" class="d-peq d-t">router</text><text x="104" y="106" text-anchor="middle" class="d-peq d-d">192.168.1.1</text><rect x="150" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="176" y="55" text-anchor="middle" class="d-a">2</text><text x="176" y="88" text-anchor="middle" class="d-peq d-t">operadora</text><text x="176" y="106" text-anchor="middle" class="d-peq d-d">10.15.0.1</text><rect x="222" y="30" width="52" height="40" rx="4" class="d-caja-act"/><text x="248" y="55" text-anchor="middle" class="d-c">3</text><text x="248" y="88" text-anchor="middle" class="d-peq d-t">Internet</text><text x="248" y="106" text-anchor="middle" class="d-peq d-c">* * *</text><rect x="294" y="30" width="52" height="40" rx="4" class="d-caja"/><text x="320" y="55" text-anchor="middle" class="d-d">4</text><text x="320" y="88" text-anchor="middle" class="d-peq d-d">google</text><path d="M 59 50 L 76 50" class="d-linea-a"/><path d="M 76 50 L 68.0 46.0 L 68.0 54.0 z" class="d-a"/><path d="M 131 50 L 148 50" class="d-linea-a"/><path d="M 148 50 L 140.0 46.0 L 140.0 54.0 z" class="d-a"/><path d="M 203 50 L 220 50" class="d-linea-c"/><path d="M 220 50 L 212.0 46.0 L 212.0 54.0 z" class="d-relleno-c"/><text x="180" y="132" text-anchor="middle" class="d-c">salto 3: * * * no contesta</text></svg>
+<p class="diapo__texto"><strong>Salto 3</strong>: un router de Internet que no quiere contestar. Sale <code>* * *</code>. Es normal: el mensaje sigue su camino.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Salto 4, el mensaje llega a google"><rect x="6" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="32" y="55" text-anchor="middle" class="d-a">PC</text><text x="32" y="88" text-anchor="middle" class="d-peq d-t">tu PC</text><rect x="78" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="104" y="55" text-anchor="middle" class="d-a">1</text><text x="104" y="88" text-anchor="middle" class="d-peq d-t">router</text><text x="104" y="106" text-anchor="middle" class="d-peq d-d">192.168.1.1</text><rect x="150" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="176" y="55" text-anchor="middle" class="d-a">2</text><text x="176" y="88" text-anchor="middle" class="d-peq d-t">operadora</text><text x="176" y="106" text-anchor="middle" class="d-peq d-d">10.15.0.1</text><rect x="222" y="30" width="52" height="40" rx="4" class="d-caja-on"/><text x="248" y="55" text-anchor="middle" class="d-a">3</text><text x="248" y="88" text-anchor="middle" class="d-peq d-t">Internet</text><text x="248" y="106" text-anchor="middle" class="d-peq d-d">* * *</text><rect x="294" y="30" width="52" height="40" rx="4" class="d-caja-act"/><text x="320" y="55" text-anchor="middle" class="d-c">4</text><text x="320" y="88" text-anchor="middle" class="d-peq d-t">google</text><text x="320" y="106" text-anchor="middle" class="d-peq d-c">142.250…</text><path d="M 59 50 L 76 50" class="d-linea-a"/><path d="M 76 50 L 68.0 46.0 L 68.0 54.0 z" class="d-a"/><path d="M 131 50 L 148 50" class="d-linea-a"/><path d="M 148 50 L 140.0 46.0 L 140.0 54.0 z" class="d-a"/><path d="M 203 50 L 220 50" class="d-linea-a"/><path d="M 220 50 L 212.0 46.0 L 212.0 54.0 z" class="d-a"/><path d="M 275 50 L 292 50" class="d-linea-c"/><path d="M 292 50 L 284.0 46.0 L 284.0 54.0 z" class="d-relleno-c"/><text x="180" y="132" text-anchor="middle" class="d-c">salto 4: ¡llega! = 4 saltos</text></svg>
+<p class="diapo__texto"><strong>Salto 4</strong>: llega al servidor de Google y sale «Traza completa». Cuenta las líneas: aquí, <strong>4 saltos</strong>.</p>
+</div>
+</div>
+
+<p>Así se ve en la terminal:</p>
 <div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">tracert google.com</span><br>
 <br>
 Traza a google.com [142.250.184.78] sobre un máximo de 30 saltos:<br>
 &nbsp;&nbsp;1 &nbsp;&nbsp;1 ms &nbsp;&nbsp;1 ms &nbsp;&nbsp;1 ms &nbsp;<span style="color:#ce9178;">192.168.1.1</span> &nbsp;<span style="color:#9099a6;">← tu router</span><br>
 &nbsp;&nbsp;2 &nbsp;&nbsp;9 ms &nbsp;&nbsp;8 ms &nbsp;&nbsp;9 ms &nbsp;10.15.0.1 &nbsp;<span style="color:#9099a6;">← tu operadora</span><br>
-&nbsp;&nbsp;3 &nbsp;12 ms &nbsp;11 ms &nbsp;12 ms &nbsp;81.46.2.33<br>
-&nbsp;&nbsp;4 &nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;Tiempo de espera agotado<br>
-&nbsp;&nbsp;5 &nbsp;14 ms &nbsp;14 ms &nbsp;13 ms &nbsp;142.250.184.78<br>
+&nbsp;&nbsp;3 &nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;&nbsp;* &nbsp;&nbsp;&nbsp;Tiempo de espera agotado<br>
+&nbsp;&nbsp;4 &nbsp;14 ms &nbsp;14 ms &nbsp;13 ms &nbsp;142.250.184.78 &nbsp;<span style="color:#9099a6;">← google</span><br>
 <br>
 Traza completa.
 </div>
@@ -112,7 +171,7 @@ Traza completa.
 <ol start="11">
 <li>Ejecuta <code>tracert google.com</code> (puede tardar un minuto).</li>
 <li>Apunta la IP del primer salto y cuántos saltos ha hecho en total.</li>
-<li>Compara el primer salto con la <em>puerta de enlace</em> que apuntaste en la Actividad 1.</li>
+<li>Compara el primer salto con la <em>puerta de enlace</em> que apuntaste en la Actividad 1 (pregunta 14).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> el primer salto es exactamente la misma IP que tu puerta de enlace: tu router. A partir de ahí, las IP ya no son privadas.</p>
 
@@ -127,49 +186,58 @@ Traza completa.
 <div class="nota">🤔 Antes de seguir: quieres saber la IP de <code>wikipedia.org</code> sin abrir el navegador. ¿Qué dos comandos de esta sesión te sirven?</div>
 <details><summary>Ver respuesta</summary><code>nslookup wikipedia.org</code>, que se la pregunta al DNS directamente, y <code>ping wikipedia.org</code>, que también la enseña porque necesita la IP para poder mandar el mensaje. La diferencia es que el <code>ping</code>, además, comprueba si el servidor responde.</details>
 
-<h2>Preguntas</h2>
-
-<div class="nota">
-Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, corrige tú mismo en el cuaderno las que tengas mal: así te servirán para estudiar.
+<h2>¿No hay Internet? Busca el problema en este orden</h2>
+<p>Con estos comandos puedes encontrar <strong>dónde</strong> está el problema sin probar a ciegas. Se va de lo más cercano (tu ordenador) a lo más lejano (Internet):</p>
+<div class="diapos" aria-label="Si no hay Internet, busca el problema en este orden">
+<div class="diapo">
+<svg viewBox="0 0 360 130" role="img" aria-label="Paso 1 de la búsqueda de averías: ¿tengo IPv4 y puerta de enlace?"><rect x="11.0" y="20" width="70" height="40" rx="4" class="d-caja-act"/><text x="46" y="45" text-anchor="middle" class="d-c">tu PC</text><rect x="103.0" y="20" width="70" height="40" rx="4" class="d-caja"/><text x="138" y="45" text-anchor="middle" class="d-d">router</text><rect x="195.0" y="20" width="70" height="40" rx="4" class="d-caja"/><text x="230" y="45" text-anchor="middle" class="d-d">Internet</text><rect x="280.0" y="20" width="76" height="40" rx="4" class="d-caja"/><text x="318" y="45" text-anchor="middle" class="d-peq d-d">google.com</text><path d="M 82 40 L 101 40" class="d-linea-d"/><path d="M 101 40 L 93.0 36.0 L 93.0 44.0 z" class="d-d"/><path d="M 174 40 L 193 40" class="d-linea-d"/><path d="M 193 40 L 185.0 36.0 L 185.0 44.0 z" class="d-d"/><path d="M 266 40 L 281 40" class="d-linea-d"/><path d="M 281 40 L 273.0 36.0 L 273.0 44.0 z" class="d-d"/><text x="180" y="92" text-anchor="middle" class="d-c">1. ipconfig</text><text x="180" y="116" text-anchor="middle" class="d-t">¿tengo IPv4 y puerta de enlace?</text></svg>
+<p class="diapo__texto">1. <code>ipconfig</code>: ¿tienes <strong>Dirección IPv4</strong> y <strong>puerta de enlace</strong>? Si no salen, el problema está en <strong>tu ordenador</strong> o en su cable o wifi.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 130" role="img" aria-label="Paso 2 de la búsqueda de averías: ¿me contesta mi router?"><rect x="11.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="46" y="45" text-anchor="middle" class="d-a">tu PC</text><rect x="103.0" y="20" width="70" height="40" rx="4" class="d-caja-act"/><text x="138" y="45" text-anchor="middle" class="d-c">router</text><rect x="195.0" y="20" width="70" height="40" rx="4" class="d-caja"/><text x="230" y="45" text-anchor="middle" class="d-d">Internet</text><rect x="280.0" y="20" width="76" height="40" rx="4" class="d-caja"/><text x="318" y="45" text-anchor="middle" class="d-peq d-d">google.com</text><path d="M 82 40 L 101 40" class="d-linea-c"/><path d="M 101 40 L 93.0 36.0 L 93.0 44.0 z" class="d-relleno-c"/><path d="M 174 40 L 193 40" class="d-linea-d"/><path d="M 193 40 L 185.0 36.0 L 185.0 44.0 z" class="d-d"/><path d="M 266 40 L 281 40" class="d-linea-d"/><path d="M 281 40 L 273.0 36.0 L 273.0 44.0 z" class="d-d"/><text x="180" y="92" text-anchor="middle" class="d-c">2. ping 192.168.1.1</text><text x="180" y="116" text-anchor="middle" class="d-t">¿me contesta mi router?</text></svg>
+<p class="diapo__texto">2. <code>ping</code> a tu puerta de enlace: ¿te contesta el <strong>router</strong>? Si no, el problema está entre tu ordenador y el router.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 130" role="img" aria-label="Paso 3 de la búsqueda de averías: ¿salgo a Internet?"><rect x="11.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="46" y="45" text-anchor="middle" class="d-a">tu PC</text><rect x="103.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="138" y="45" text-anchor="middle" class="d-a">router</text><rect x="195.0" y="20" width="70" height="40" rx="4" class="d-caja-act"/><text x="230" y="45" text-anchor="middle" class="d-c">Internet</text><rect x="280.0" y="20" width="76" height="40" rx="4" class="d-caja"/><text x="318" y="45" text-anchor="middle" class="d-peq d-d">google.com</text><path d="M 82 40 L 101 40" class="d-linea-a"/><path d="M 101 40 L 93.0 36.0 L 93.0 44.0 z" class="d-a"/><path d="M 174 40 L 193 40" class="d-linea-c"/><path d="M 193 40 L 185.0 36.0 L 185.0 44.0 z" class="d-relleno-c"/><path d="M 266 40 L 281 40" class="d-linea-d"/><path d="M 281 40 L 273.0 36.0 L 273.0 44.0 z" class="d-d"/><text x="180" y="92" text-anchor="middle" class="d-c">3. ping 8.8.8.8</text><text x="180" y="116" text-anchor="middle" class="d-t">¿salgo a Internet?</text></svg>
+<p class="diapo__texto">3. <code>ping 8.8.8.8</code> (una IP de Google que siempre está): ¿sales a <strong>Internet</strong>? Si no, el problema está en el router o en la operadora.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 130" role="img" aria-label="Paso 4 de la búsqueda de averías: ¿funciona el DNS?"><rect x="11.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="46" y="45" text-anchor="middle" class="d-a">tu PC</text><rect x="103.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="138" y="45" text-anchor="middle" class="d-a">router</text><rect x="195.0" y="20" width="70" height="40" rx="4" class="d-caja-on"/><text x="230" y="45" text-anchor="middle" class="d-a">Internet</text><rect x="280.0" y="20" width="76" height="40" rx="4" class="d-caja-act"/><text x="318" y="45" text-anchor="middle" class="d-peq d-c">google.com</text><path d="M 82 40 L 101 40" class="d-linea-a"/><path d="M 101 40 L 93.0 36.0 L 93.0 44.0 z" class="d-a"/><path d="M 174 40 L 193 40" class="d-linea-a"/><path d="M 193 40 L 185.0 36.0 L 185.0 44.0 z" class="d-a"/><path d="M 266 40 L 281 40" class="d-linea-c"/><path d="M 281 40 L 273.0 36.0 L 273.0 44.0 z" class="d-relleno-c"/><text x="180" y="92" text-anchor="middle" class="d-c">4. nslookup google.com</text><text x="180" y="116" text-anchor="middle" class="d-t">¿funciona el DNS?</text></svg>
+<p class="diapo__texto">4. <code>nslookup google.com</code>: ¿el <strong>DNS</strong> te da la IP? Si el paso 3 funcionaba y este no, lo que falla es el DNS: los números van, los nombres no.</p>
+</div>
 </div>
 
-<h3>La terminal</h3>
+<table>
+<tr><th>Paso</th><th>Comando</th><th>Si falla, el problema está en…</th></tr>
+<tr><td>1</td><td><code>ipconfig</code></td><td>Tu ordenador, su cable o su wifi</td></tr>
+<tr><td>2</td><td><code>ping</code> a la puerta de enlace</td><td>Entre tu ordenador y el router</td></tr>
+<tr><td>3</td><td><code>ping 8.8.8.8</code></td><td>El router o la operadora</td></tr>
+<tr><td>4</td><td><code>nslookup google.com</code></td><td>El DNS</td></tr>
+</table>
 
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 2 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>¿Qué es la terminal y cómo se abre en Windows?</li>
+<li>¿Qué es la terminal y cómo se abre en Windows? Escribe los tres pasos.</li>
 <li>(V/F) En la terminal, las órdenes se dan haciendo clic con el ratón.</li>
-<li>¿Para qué sirve la flecha ↑ cuando estás escribiendo comandos?</li>
-</ol>
-
-<h3>ipconfig</h3>
-
-<ol start="4">
-<li>¿Qué información te da el comando <code>ipconfig</code>?</li>
-<li>Escribe tu dirección IPv4 y tu puerta de enlace predeterminada (Actividad 1).</li>
-<li>(ABC) La "puerta de enlace predeterminada" es:
+<li>¿Para qué sirve la flecha ↑ en la terminal? ¿Y <code>Ctrl + C</code>?</li>
+<li>¿Qué información te da el comando <code>ipconfig</code>? ¿Qué dos líneas tienes que buscar?</li>
+<li><strong>(Actividad 1)</strong> Escribe tu dirección IPv4 y tu puerta de enlace. Tu compañero y tú, ¿tenéis la misma IPv4? ¿Y la misma puerta de enlace? Explica por qué.</li>
+<li>(ABC) La «puerta de enlace predeterminada» es:
   <ul>
     <li>a) la IP de tu router</li>
     <li>b) la IP pública de tu instituto</li>
     <li>c) la IP del servidor de Google</li>
   </ul>
 </li>
-<li>Tu compañero y tú tenéis distinta IPv4 pero la misma puerta de enlace. Explica por qué.</li>
-</ol>
-
-<h3>ping</h3>
-
-<ol start="8">
+<li><strong>(Actividad 2)</strong> Escribe la IP pública que te dio la web. ¿Por qué no se parece a la de <code>ipconfig</code>, y por qué a tu compañero le sale la misma?</li>
 <li>Explica con tus palabras qué hace el comando <code>ping</code>.</li>
-<li>Apunta la IP y el tiempo que te dieron <code>ping iesramonllull.net</code> y <code>ping google.com</code> (Actividad 3). ¿Cuál tardó más?</li>
+<li><strong>(Actividad 3)</strong> Escribe la IP y el tiempo que te dieron <code>ping iesramonllull.net</code> y <code>ping google.com</code>. ¿Cuál tardó más?</li>
 <li>(V/F) Si un servidor no contesta al <code>ping</code>, seguro que la web está caída.</li>
-<li>¿En qué unidad se mide el tiempo que devuelve el <code>ping</code> y qué significa ese número?</li>
-</ol>
-
-<h3>nslookup y tracert</h3>
-
-<ol start="12">
 <li>¿Qué le preguntas al DNS cuando ejecutas <code>nslookup</code>?</li>
-<li>Apunta las IP que obtuviste para los tres dominios de la Actividad 4. ¿Son parecidas o completamente distintas? ¿A qué crees que se debe?</li>
+<li><strong>(Actividad 4)</strong> Escribe la IP de los tres dominios y el servidor DNS que te respondió.</li>
 <li>(ABC) En un <code>tracert</code>, la primera línea corresponde a:
   <ul>
     <li>a) el servidor de destino</li>
@@ -177,13 +245,20 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
     <li>c) el DNS</li>
   </ul>
 </li>
-<li>¿Qué significan los asteriscos <code>*</code> que aparecen en algunas líneas de un <code>tracert</code>?</li>
+<li><strong>(Actividad 5)</strong> Escribe la IP del primer salto de tu <code>tracert</code> y cuántos saltos hizo en total. ¿Coincide el primer salto con tu puerta de enlace? ¿Por qué?</li>
 <li>Relaciona cada comando (<code>ipconfig</code>, <code>ping</code>, <code>nslookup</code>, <code>tracert</code>) con lo que hace.</li>
 </ol>
+</div>
 
-<h3>Repaso general</h3>
-
-<ol start="17">
-<li>Un compañero dice que su ordenador "no tiene Internet". Explica en qué orden usarías los comandos de esta sesión para averiguar dónde está el problema.</li>
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 2 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>¿En qué unidad se mide el tiempo que devuelve el <code>ping</code> y qué significa ese número?</li>
+<li>¿Qué significan los asteriscos <code>*</code> que aparecen en algunas líneas de un <code>tracert</code>? ¿Quiere decir que algo está roto?</li>
+<li>Un compañero dice que su ordenador «no tiene Internet». Explica en qué orden usarías los comandos de esta sesión para averiguar dónde está el problema, y qué te diría cada uno si fallara.</li>
+<li>Buscando una avería, el paso 3 funciona (<code>ping 8.8.8.8</code> contesta) pero <code>nslookup google.com</code> no. ¿Qué es lo que falla y por qué puedes estar seguro?</li>
 <li>Con lo que has aprendido, escribe tú mismo una pregunta sobre uno de los cuatro comandos y respóndela.</li>
 </ol>
+</div>

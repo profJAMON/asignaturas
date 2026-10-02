@@ -1,3 +1,16 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>Qué hace falta para publicar una página</h2>
 
 <p>Hasta ahora has visto cómo un navegador encuentra y pide una página que <strong>ya existe en algún sitio</strong> de internet. Pero, ¿qué hace falta para que una página tuya llegue a existir ahí, visible para cualquiera? No es solo "tener el código terminado": hacen falta tres ingredientes más, y esta sesión es el puente hacia el bloque donde aprenderás a publicar de verdad.</p>
@@ -9,6 +22,7 @@
 <h3>Un hosting</h3>
 
 <p>Un dominio es solo un nombre: necesita apuntar a <strong>algún ordenador real</strong> que tenga tu página guardada y responda cuando alguien la pida. Ese ordenador se llama <code>servidor</code>, y contratar uno para que guarde y sirva tu web se llama <code>hosting</code> ("alojamiento").</p>
+<p>Un mismo servidor de hosting suele guardar <strong>muchas webs a la vez</strong>, de clientes distintos, como un edificio con muchos pisos. Cada dominio apunta a su piso.</p>
 
 <div class="salida" style="background:var(--bg);padding:16px">
 <svg viewBox="0 0 480 135" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
@@ -32,6 +46,7 @@
 <h3>Un certificado HTTPS</h3>
 
 <p>En la sesión 4 viste que <code>https://</code> significa que la conexión viaja cifrada. Ese cifrado no aparece solo: hace falta un <code>certificado</code>, un documento digital que confirma que el servidor es quien dice ser, emitido por una entidad de confianza. Sin él, el navegador avisa a todo el que visite tu web.</p>
+<p>Los certificados <strong>caducan</strong>, como el DNI: duran unos meses y hay que renovarlos. Si nadie lo renueva, el navegador muestra una pantalla de aviso («La conexión no es privada») antes de dejarte entrar.</p>
 
 <div class="salida" style="background:var(--bg);padding:16px">
 <svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
@@ -64,36 +79,27 @@
 
 <p>Ahora que conoces todas las sesiones de esta unidad, puedes unir todas las piezas en un único recorrido.</p>
 
-<div class="salida" style="background:var(--bg);padding:16px">
-<svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
-  <rect x="20" y="10" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="240" y="31" text-anchor="middle" fill="var(--accent)" font-size="11">1. Escribes o haces clic en una URL completa</text>
-
-  <line x1="240" y1="42" x2="240" y2="58" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
-
-  <rect x="20" y="60" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
-  <text x="240" y="81" text-anchor="middle" fill="var(--code-inline)" font-size="11">2. El DNS traduce el dominio a una dirección IP</text>
-
-  <line x1="240" y1="92" x2="240" y2="108" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
-
-  <rect x="20" y="110" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
-  <text x="240" y="131" text-anchor="middle" fill="var(--accent-warm)" font-size="11">3. Conecta con el hosting, cifrado con HTTPS</text>
-
-  <line x1="240" y1="142" x2="240" y2="158" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
-
-  <rect x="20" y="160" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--text)" stroke-width="1.5"/>
-  <text x="240" y="181" text-anchor="middle" fill="var(--text)" font-size="11">4. Petición HTTP: método GET y la ruta pedida</text>
-
-  <line x1="240" y1="192" x2="240" y2="208" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v1)"/>
-
-  <rect x="20" y="210" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--text-faint)" stroke-width="1.5"/>
-  <text x="240" y="231" text-anchor="middle" fill="var(--text-faint)" font-size="11">5. Respuesta: código de estado y el contenido</text>
-
-  <text x="240" y="270" text-anchor="middle" fill="var(--text-dim)" font-size="10">Cliente-servidor (sesión 1) + URL/HTTP (sesión 4) + hosting (sesión 5),</text>
-  <text x="240" y="285" text-anchor="middle" fill="var(--text-dim)" font-size="10">todo comprobable con la terminal (sesión 2) y las DevTools (sesión 3)</text>
-
-  <defs><marker id="v1" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,8 Z" fill="var(--text-faint)"/></marker></defs>
-</svg>
+<div class="diapos" aria-label="De la URL a la pantalla: el viaje completo">
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Paso 1 del viaje de una página"><rect x="6" y="44" width="96" height="50" rx="4" class="d-caja-act"/><text x="54" y="74" text-anchor="middle" class="d-c">navegador</text><rect x="256" y="6" width="98" height="36" rx="4" class="d-caja"/><text x="305" y="29" text-anchor="middle" class="d-d">DNS</text><rect x="256" y="96" width="98" height="40" rx="4" class="d-caja"/><text x="305" y="121" text-anchor="middle" class="d-d">hosting</text><text x="8" y="32" text-anchor="start" class="d-c d-peq">iesramonllull.net</text><text x="180" y="160" text-anchor="middle" class="d-c">1. escribes la URL</text></svg>
+<p class="diapo__texto">1. Escribes la URL o pulsas un enlace (sesión 4). El navegador es el <strong>cliente</strong> (sesión 1).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Paso 2 del viaje de una página"><rect x="6" y="44" width="96" height="50" rx="4" class="d-caja-on"/><text x="54" y="74" text-anchor="middle" class="d-a">navegador</text><rect x="256" y="6" width="98" height="36" rx="4" class="d-caja-act"/><text x="305" y="29" text-anchor="middle" class="d-c">DNS</text><rect x="256" y="96" width="98" height="40" rx="4" class="d-caja"/><text x="305" y="121" text-anchor="middle" class="d-d">hosting</text><path d="M 104 54 L 252 22" class="d-linea-c"/><path d="M 252 22 L 243.3 19.8 L 245.0 27.6 z" class="d-relleno-c"/><text x="160" y="26" text-anchor="middle" class="d-c">¿IP?</text><path d="M 252 36 L 104 68" class="d-linea-a"/><path d="M 104 68 L 112.7 70.2 L 111.0 62.4 z" class="d-a"/><text x="200" y="64" text-anchor="middle" class="d-a">la IP</text><text x="180" y="160" text-anchor="middle" class="d-c">2. el DNS da la IP</text></svg>
+<p class="diapo__texto">2. El navegador pregunta al <strong>DNS</strong> qué IP tiene ese dominio (sesión 1). Es lo que ves con <code>nslookup</code> (sesión 2).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Paso 3 del viaje de una página"><rect x="6" y="44" width="96" height="50" rx="4" class="d-caja-on"/><text x="54" y="74" text-anchor="middle" class="d-a">navegador</text><rect x="256" y="6" width="98" height="36" rx="4" class="d-caja-on"/><text x="305" y="29" text-anchor="middle" class="d-a">DNS</text><rect x="256" y="96" width="98" height="40" rx="4" class="d-caja-act"/><text x="305" y="121" text-anchor="middle" class="d-c">hosting</text><path d="M 104 84 L 252 112" class="d-linea-c" stroke-dasharray="5 3"/><text x="170" y="118" text-anchor="middle" class="d-c">HTTPS</text><text x="180" y="160" text-anchor="middle" class="d-c">3. conexión cifrada</text></svg>
+<p class="diapo__texto">3. Con la IP, se conecta con el servidor del <strong>hosting</strong>. Si hay certificado, la conexión va cifrada con <strong>HTTPS</strong>: el candado.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Paso 4 del viaje de una página"><rect x="6" y="44" width="96" height="50" rx="4" class="d-caja-on"/><text x="54" y="74" text-anchor="middle" class="d-a">navegador</text><rect x="256" y="6" width="98" height="36" rx="4" class="d-caja-on"/><text x="305" y="29" text-anchor="middle" class="d-a">DNS</text><rect x="256" y="96" width="98" height="40" rx="4" class="d-caja-act"/><text x="305" y="121" text-anchor="middle" class="d-c">hosting</text><path d="M 104 82 L 252 108" class="d-linea-c"/><path d="M 252 108 L 244.8 102.7 L 243.4 110.6 z" class="d-relleno-c"/><text x="150" y="118" text-anchor="middle" class="d-c">GET /</text><text x="180" y="160" text-anchor="middle" class="d-c">4. petición: GET y la ruta</text></svg>
+<p class="diapo__texto">4. Le manda la <strong>petición</strong>: el método <code>GET</code> y la ruta que quiere (sesión 4).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Paso 5 del viaje de una página"><rect x="6" y="44" width="96" height="50" rx="4" class="d-caja-act"/><text x="54" y="74" text-anchor="middle" class="d-c">navegador</text><rect x="256" y="6" width="98" height="36" rx="4" class="d-caja-on"/><text x="305" y="29" text-anchor="middle" class="d-a">DNS</text><rect x="256" y="96" width="98" height="40" rx="4" class="d-caja-on"/><text x="305" y="121" text-anchor="middle" class="d-a">hosting</text><path d="M 252 124 L 104 92" class="d-linea-c"/><path d="M 104 92 L 111.0 97.6 L 112.7 89.8 z" class="d-relleno-c"/><text x="180" y="132" text-anchor="middle" class="d-c">200 + HTML</text><text x="180" y="160" text-anchor="middle" class="d-c">5. respuesta: ¡se ve la web!</text></svg>
+<p class="diapo__texto">5. El servidor manda la <strong>respuesta</strong>: el código de estado (<code>200</code>) y el contenido. El navegador dibuja la página. Lo puedes ver en la pestaña Network o Red (sesión 3).</p>
+</div>
 </div>
 
 <h2>Repaso general de la unidad</h2>
@@ -136,17 +142,13 @@
 </div>
 <div class="nota">📌 Guárdalo bien. Al final del curso, cuando aprendas HTML, pasarás algunos resúmenes a tu propia web, y estas preguntas se convertirán en preguntas que se abren y se cierran con un clic, como los "Ver la respuesta" de estos apuntes.</div>
 
-<h2>Preguntas</h2>
-
-<div class="nota">
-Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, corrige tú mismo en el cuaderno las que tengas mal: así te servirán para estudiar.
-</div>
-
-<h3>Dominio, hosting y HTTPS</h3>
-
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 5 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
 <li>Explica con tus palabras qué tres cosas necesitas, como mínimo, para que cualquier persona del mundo pueda visitar tu página web.</li>
-<li>(V/F) Basta con tener el dominio comprado para que la web ya esté visible en internet.</li>
+<li>(V/F) Basta con tener el dominio comprado para que la web ya esté visible en Internet.</li>
 <li>(ABC) El hosting es:
   <ul>
     <li>a) el nombre de tu web</li>
@@ -154,9 +156,9 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
     <li>c) el certificado de seguridad</li>
   </ul>
 </li>
-<li>¿Por qué no basta con dejar tu propio ordenador encendido en casa para "publicar" una web? Da al menos dos razones.</li>
+<li>¿Por qué no basta con dejar tu propio ordenador encendido en casa para «publicar» una web? Da al menos dos razones.</li>
 <li>(V/F) El hosting y el dominio son la misma cosa, solo con nombres distintos.</li>
-<li>Busca la diferencia entre un hosting "compartido" y un servidor propio (VPS o dedicado), y explica con tus palabras en qué se diferencian.</li>
+<li>(V/F) Un mismo servidor de hosting puede alojar varias páginas web distintas a la vez.</li>
 <li>(ABC) El candado que aparece en la barra de direcciones indica:
   <ul>
     <li>a) que la web es oficial</li>
@@ -164,19 +166,11 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
     <li>c) que la web no tiene virus</li>
   </ul>
 </li>
-<li>Explica qué significa que un certificado HTTPS esté "caducado" y qué crees que pasaría si intentas entrar en una web con el certificado caducado.</li>
+<li>¿Qué significa que un certificado HTTPS esté «caducado»? ¿Qué pasa si intentas entrar en una web con el certificado caducado?</li>
 <li>(V/F) Un navegador moderno deja entrar sin avisar a cualquier web que use <code>http://</code> en vez de <code>https://</code>.</li>
-<li>Busca cuánto cuesta aproximadamente un dominio <code>.com</code> o <code>.es</code> al año, y cuánto puede costar un hosting básico al mes.</li>
-<li>(V/F) Un mismo servidor de hosting puede alojar varias páginas web distintas a la vez.</li>
-<li>Tienes que publicar una web desde cero: comprar el dominio, tener el contenido terminado y contratar el hosting. Elige un orden para hacerlo y razona por qué lo harías así.</li>
-<li>¿Qué relación tiene el DNS (sesión 1) con el hosting? Explica cómo se conectan ambos conceptos.</li>
-<li>Busca un ejemplo real de una empresa de hosting y anota qué planes ofrece (gratuito, básico, avanzado...).</li>
-</ol>
-
-<h3>Repaso general de la unidad</h3>
-
-<ol start="15">
-<li>Con tus propias palabras, describe todo el recorrido desde que escribes una URL hasta que ves la página en pantalla, usando al menos un concepto de cada sesión de esta unidad.</li>
+<li>¿Qué relación tiene el DNS (sesión 1) con el hosting? Explica cómo se conectan.</li>
+<li>Tienes que publicar una web desde cero: comprar el dominio, tener el contenido terminado y contratar el hosting. Elige un orden y explica por qué.</li>
+<li>Describe los cinco pasos del viaje de una página, desde que escribes la URL hasta que la ves en pantalla.</li>
 <li>(ABC) Si una imagen de tu web da error 404, el problema está más probablemente en:
   <ul>
     <li>a) el DNS</li>
@@ -185,7 +179,19 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
   </ul>
 </li>
 <li>(V/F) Sin DNS, seguirías pudiendo llegar a un servidor si conoces directamente su dirección IP.</li>
-<li>Relaciona cada sesión de esta unidad con su tema principal, en tu cuaderno: sesiones 1 a 5, cada una con un tema distinto.</li>
-<li>De las cinco sesiones de esta unidad, ¿cuál te ha costado más entender? Explica por qué, con tus propias palabras.</li>
-<li>Escribe tú mismo una pregunta de tipo "qué pasaría si..." que conecte al menos dos sesiones distintas de esta unidad (por ejemplo, DNS y hosting), y respóndela.</li>
+<li>Relaciona cada sesión de esta unidad (1 a 5) con su tema principal.</li>
 </ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 5 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Busca la diferencia entre un hosting «compartido» y un servidor propio (VPS o dedicado), y explica con tus palabras en qué se diferencian.</li>
+<li>Busca cuánto cuesta aproximadamente un dominio <code>.com</code> o <code>.es</code> al año, y cuánto puede costar un hosting básico al mes.</li>
+<li>Busca una empresa de hosting real y anota qué planes ofrece (gratuito, básico, avanzado…).</li>
+<li>De las cinco sesiones de esta unidad, ¿cuál te ha costado más entender? Explica por qué.</li>
+<li>Escribe tú mismo una pregunta de tipo «¿qué pasaría si…?» que conecte al menos dos sesiones distintas de esta unidad (por ejemplo, DNS y hosting), y respóndela.</li>
+</ol>
+</div>

@@ -1094,6 +1094,10 @@ h1, h2, h3 {
   color: var(--accent-warm);
   margin: 0 0 0.7rem;
 }
+/* «⭐ Sube nota» (desde 02/10/2026): preguntas voluntarias, después de
+   las 15 obligatorias. Mismo color, borde discontinuo para que se vea
+   que no son lo mismo. No entran en el examen. */
+.leccion .papel--extra { border-style: dashed; background: transparent; }
 
 /* Al imprimir (Ctrl+P) solo interesa la lección: fuera barra lateral,
    índice lateral y actividades de pantalla. */
