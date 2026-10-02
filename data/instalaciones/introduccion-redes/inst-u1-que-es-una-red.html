@@ -38,7 +38,46 @@
 <tr><td><strong>Dispositivos de interconexión</strong></td><td>Los aparatos que unen unos con otros: switch, router, punto de acceso.</td></tr>
 <tr><td><strong>Protocolos</strong></td><td>Las normas que hacen que se entiendan. No se ven, pero sin ellos nada funciona.</td></tr>
 </table>
-<p>Vamos a montarla pieza a pieza:</p>
+<p>Así son de verdad las piezas:</p>
+<div class="diapos" aria-label="Las piezas de una red, en foto">
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/nic.webp" width="900" height="510" alt="Tarjeta de red PCI con su puerto Ethernet" loading="lazy">
+<p class="diapo__texto">La <strong>tarjeta de red</strong> (NIC). Esta se pincha en la placa base y tiene el puerto Ethernet donde va el cable. Hoy casi siempre viene ya integrada en la placa.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/latiguillo-utp.webp" width="500" height="500" alt="Latiguillo de cable UTP gris con dos conectores RJ-45" loading="lazy">
+<p class="diapo__texto">Un <strong>latiguillo</strong> de par trenzado con sus conectores <strong>RJ-45</strong>. Es el medio de transmisión más usado en una red local.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/switch.webp" width="900" height="450" alt="Switch de 8 puertos" loading="lazy">
+<p class="diapo__texto">Un <strong>switch</strong> de 8 puertos. En cada puerto se enchufa el cable de un equipo.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/switch-conectado.webp" width="480" height="360" alt="Switch pequeño con varios cables de red conectados" loading="lazy">
+<p class="diapo__texto">El mismo tipo de aparato ya en uso: cada cable viene de un equipo de la red.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/router-wifi.webp" width="447" height="447" alt="Router con cuatro antenas" loading="lazy">
+<p class="diapo__texto">Un <strong>router</strong>. Las antenas son porque además hace de punto de acceso wifi: en casa, un solo aparato hace las dos cosas.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/router-operador-delante.webp" width="649" height="392" alt="Router de un operador visto por delante" loading="lazy">
+<p class="diapo__texto">El router que deja el operador en casa. Por delante solo se ven las luces…</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/router-operador-detras.webp" width="500" height="295" alt="El mismo router visto por detrás, con sus puertos" loading="lazy">
+<p class="diapo__texto">…y por detrás están los puertos. Los amarillos son para los cables de red de tu casa: dentro lleva un pequeño switch.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/punto-acceso-pared.webp" width="672" height="378" alt="Punto de acceso wifi colgado en la pared de un pasillo" loading="lazy">
+<p class="diapo__texto">Un <strong>punto de acceso</strong> wifi en la pared de un pasillo. Da cobertura a los portátiles y móviles de esa zona.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/punto-acceso-techo.webp" width="900" height="599" alt="Punto de acceso wifi redondo en el techo" loading="lazy">
+<p class="diapo__texto">Otro punto de acceso, en el techo. Es lo que verás en oficinas e institutos.</p>
+</div>
+</div>
+<p>Y ahora vamos a montar una red con ellas, pieza a pieza:</p>
 <div class="diapos" aria-label="Montamos la red de una oficina, pieza a pieza">
 <div class="diapo">
 <svg viewBox="0 0 360 200" role="img" aria-label="Red de oficina: equipos"><rect x="2" y="140" width="82" height="34" rx="4" class="d-caja-act"/><text x="43" y="162" text-anchor="middle" class="d-c">PC</text><rect x="89" y="140" width="82" height="34" rx="4" class="d-caja-act"/><text x="130" y="162" text-anchor="middle" class="d-c">PC</text><rect x="176" y="140" width="82" height="34" rx="4" class="d-caja-act"/><text x="217" y="162" text-anchor="middle" class="d-c">PC</text><rect x="263" y="140" width="82" height="34" rx="4" class="d-caja-act"/><text x="304" y="162" text-anchor="middle" class="d-c">impresora</text></svg>
@@ -99,6 +138,28 @@
 <li><strong>Fibra óptica:</strong> luz por un hilo de vidrio finísimo. Es el medio más rápido y el que llega más lejos; es lo que entra hoy en las casas.</li>
 <li><strong>Inalámbrico (radiofrecuencia):</strong> ondas electromagnéticas por el aire. Necesita antenas sintonizadas, tiene un alcance limitado y fuera de él no hay cobertura. Para llegar más lejos: más potencia o repetidores.</li>
 </ul>
+<div class="diapos" aria-label="Los medios de transmisión, en foto">
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/latiguillo-utp.webp" width="500" height="500" alt="Latiguillo UTP con conectores RJ-45" loading="lazy">
+<p class="diapo__texto"><strong>Par trenzado (UTP)</strong>: el cable de red de siempre, con su RJ-45.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/coaxial.webp" width="530" height="530" alt="Cable coaxial blanco con conectores de antena" loading="lazy">
+<p class="diapo__texto"><strong>Cable coaxial</strong>: el de la antena de la tele.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/coaxial-partes.webp" width="705" height="493" alt="Cable coaxial pelado con sus capas marcadas con las letras A, B, C y D" loading="lazy">
+<p class="diapo__texto">Un coaxial por dentro: <strong>A</strong> la funda de fuera, <strong>B</strong> la malla de cobre, <strong>C</strong> el aislante blanco y <strong>D</strong> el hilo de cobre del centro. Lo verás en la unidad de cobre.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/fibra-latiguillo.webp" width="450" height="366" alt="Latiguillo de fibra óptica amarillo con conectores azules" loading="lazy">
+<p class="diapo__texto"><strong>Fibra óptica</strong>: un latiguillo de fibra. Parece un cable más, pero por dentro va un hilo de vidrio por el que viaja luz.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/fibra-cable.webp" width="900" height="900" alt="Cable de fibra abierto: muchos hilos de colores y fibras amarillas de refuerzo" loading="lazy">
+<p class="diapo__texto">Una manguera de fibra abierta: cada hilo de color es una fibra, y las hebras amarillas son de refuerzo para que no se rompa al tirar.</p>
+</div>
+</div>
 <div class="nota">El infrarrojo y el láser también son inalámbricos, pero apenas se usan en redes locales: no atraviesan obstáculos. Si alguien se pone delante, se corta la comunicación.</div>
 
 <h2>Clasificación por alcance</h2>

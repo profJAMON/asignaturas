@@ -57,6 +57,21 @@
 <p>Los <strong>tres primeros bytes</strong> identifican al fabricante: es el <strong>OUI</strong> (<em>Organizationally Unique Identifier</em>), y lo reparte un organismo internacional para que no se repita. Los <strong>tres últimos</strong> los pone el fabricante para numerar sus propias tarjetas.</p>
 <p>Eso tiene una consecuencia práctica muy útil: mirando el principio de una MAC se puede saber de qué marca es el aparato. Si en la tabla del switch aparecen quince MAC que empiezan igual, lo más probable es que sean quince equipos del mismo pedido.</p>
 
+<div class="diapos" aria-label="Dónde se ve la MAC, en foto">
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/mac-nic.webp" width="612" height="501" alt="Esquema de una MAC con los tres grupos del fabricante y los tres de la tarjeta, y una tarjeta wifi con su MAC en la pegatina" loading="lazy">
+<p class="diapo__texto">Una MAC de ejemplo: <strong>00:1A:3F</strong> es el fabricante y <strong>F1:4C:C6</strong>, la tarjeta. Abajo, una tarjeta wifi con su MAC impresa en la pegatina.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/mac-etiqueta-tplink.webp" width="553" height="226" alt="Etiqueta de un router con la MAC marcada en rojo" loading="lazy">
+<p class="diapo__texto">Mira debajo de cualquier router: la MAC viene en la <strong>etiqueta</strong>. Aquí está escrita sin separadores: 0014785301D8.</p>
+</div>
+<div class="diapo">
+<img src="data/instalaciones/introduccion-redes/img/u1/mac-etiqueta-linksys.webp" width="341" height="348" alt="Etiqueta de otro router con «MAC Address» marcada en rojo" loading="lazy">
+<p class="diapo__texto">En otra marca, la línea se llama <strong>MAC Address</strong>. Siempre está, porque la pone el fabricante.</p>
+</div>
+</div>
+
 <h3>Practica — ¿es una MAC de verdad?</h3>
 <p>Cuenta los grupos y mira que no haya ninguna letra más allá de la F.</p>
 <div data-actividad="practica-mac"></div>
@@ -64,6 +79,20 @@
 <p>En Windows, desde la línea de comandos:</p>
 <pre><code>ipconfig /all</code></pre>
 <p>Busca la línea <strong>Dirección física</strong> dentro de cada adaptador. Fíjate en que aparece una por adaptador: Ethernet, wifi, bluetooth, adaptadores virtuales…</p>
+<figure class="captura">
+<img src="data/instalaciones/introduccion-redes/img/u1/ipconfig-all.webp" width="900" height="793" alt="Resultado de ipconfig /all en un Windows en inglés, con el adaptador Ethernet recuadrado" loading="lazy">
+<figcaption>Un <code>ipconfig /all</code> de un Windows en inglés. En los ordenadores del aula sale en castellano: la tabla de abajo te dice cómo se llama cada línea.</figcaption>
+</figure>
+<table>
+<tr><th>En inglés</th><th>En castellano</th><th>Qué es</th></tr>
+<tr><td class="no-traducir">Physical Address</td><td>Dirección física</td><td>La <strong>MAC</strong></td></tr>
+<tr><td class="no-traducir">DHCP Enabled</td><td>DHCP habilitado</td><td>Si la IP la da el router</td></tr>
+<tr><td class="no-traducir">IPv4 Address</td><td>Dirección IPv4</td><td>La <strong>IP</strong></td></tr>
+<tr><td class="no-traducir">Subnet Mask</td><td>Máscara de subred</td><td>La máscara</td></tr>
+<tr><td class="no-traducir">Default Gateway</td><td>Puerta de enlace predeterminada</td><td>El router</td></tr>
+<tr><td class="no-traducir">DNS Servers</td><td>Servidores DNS</td><td>Quién traduce los nombres</td></tr>
+</table>
+<p>Fíjate en que hay un bloque por adaptador, y cada uno tiene su propia dirección física.</p>
 <p>En Linux sería <code>ip link</code> o <code>ifconfig</code>. Y en un móvil está en Ajustes → Información del teléfono → Estado.</p>
 <div class="salida">
 <p><strong>Práctica en clase.</strong> Abre <code>ipconfig /all</code> en tu equipo y apunta en el cuaderno:</p>

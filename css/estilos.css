@@ -3068,6 +3068,17 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 /* Clases para los SVG de dentro (escritos a mano o generados). Con
    prefijo d- y colgando de .diapo para no pisarse con los <style> de
    los SVG antiguos, que son globales a la página. */
+/* Fotos dentro de una diapositiva (el objeto real antes del esquema).
+   Alto máximo para que una foto vertical no estire el recuadro. */
+.diapo img {
+  display: block;
+  max-width: min(100%, 30rem);
+  max-height: 17rem;
+  width: auto;
+  height: auto;
+  margin: 0 auto 0.6rem;
+  border-radius: 4px;
+}
 .diapo svg text { font-family: var(--font-mono); font-size: 13px; }
 .diapo svg .d-t { fill: var(--diapo-texto); }
 .diapo svg .d-d { fill: var(--diapo-tenue); }
