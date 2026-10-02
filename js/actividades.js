@@ -308,7 +308,25 @@ function renderGenerador(contenedor, datos) {
     });
   }
 
+  /* Con TODOS los huecos vacíos, Comprobar enseña las soluciones de la
+     tanda: Carles los usa para explicar en clase. Si hay algo escrito,
+     corrige solo lo contestado (no destapa las que faltan). */
+  function mostrarSoluciones() {
+    preguntas.forEach((preg, i) => {
+      const { marca, explicacion } = campos[i];
+      marca.textContent = '';
+      marca.classList.remove('generador__marca--bien', 'generador__marca--mal');
+      explicacion.textContent = `Es ${preg.respuesta}. ${preg.pista || ''}`.trim();
+      explicacion.hidden = false;
+    });
+    estado.textContent = 'Soluciones de esta tanda. Pulsa «Otra tanda» para practicar con números nuevos.';
+  }
+
   function comprobar() {
+    if (campos.length && campos.every(c => c.campo.value.trim() === '')) {
+      mostrarSoluciones();
+      return;
+    }
     let aciertos = 0;
     let contestadas = 0;
 
@@ -337,10 +355,6 @@ function renderGenerador(contenedor, datos) {
       }
     });
 
-    if (contestadas === 0) {
-      estado.textContent = 'Escribe alguna respuesta y vuelve a pulsar Comprobar.';
-      return;
-    }
     estado.textContent = contestadas < preguntas.length
       ? `${aciertos} de ${contestadas} contestadas están bien (te faltan ${preguntas.length - contestadas}).`
       : `${aciertos} de ${preguntas.length} correctas.`;
