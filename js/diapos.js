@@ -29,7 +29,9 @@
 
       Se crean con el número de data-valor y debajo sale un recuadro
       "Prueba con otro número" para verlo con el que quiera el alumno.
-      Generadores disponibles: los de GENERADORES_DIAPOS, más abajo.
+      Generadores disponibles: los de GENERADORES_DIAPOS, más abajo, y
+      los que añaden otros archivos (js/diapos-redes.js…) con
+      registrarDiapos(). Con data-sin-prueba no sale el recuadro.
 
    Al imprimir, las escritas a mano salen todas una debajo de otra; las
    generadas, solo la última (que es el resumen completo).
@@ -274,6 +276,7 @@
       etiqueta: 'Escribe un número del 1 al 255',
       error: 'Tiene que ser un número entero del 1 al 255.',
       modo: 'numeric',
+      ejemplo: '200',
       titulo: v => `${v} a binario, paso a paso`
     },
     'binario-a-decimal': {
@@ -286,6 +289,7 @@
       etiqueta: 'Escribe un número binario de hasta 8 cifras',
       error: 'Solo ceros y unos, como mucho 8 cifras.',
       modo: 'text',
+      ejemplo: '1100 0000',
       titulo: v => `${grupos4(v)} a decimal, paso a paso`
     }
   };
@@ -364,7 +368,8 @@
         if (k === actual) p.setAttribute('aria-current', 'step');
         else p.removeAttribute('aria-current');
       });
-      contador.textContent = `Paso ${actual + 1} de ${diapos.length}`;
+      contador.textContent = `${actual + 1} / ${diapos.length}`;
+      contador.setAttribute('aria-label', `Diapositiva ${actual + 1} de ${diapos.length}`);
       btnAnt.disabled = actual === 0;
       btnSig.disabled = actual === diapos.length - 1;
     }
@@ -382,7 +387,7 @@
       diapos.forEach((_, k) => {
         const p = el('button', 'diapos__punto');
         p.type = 'button';
-        p.setAttribute('aria-label', `Ir al paso ${k + 1}`);
+        p.setAttribute('aria-label', `Ir a la diapositiva ${k + 1}`);
         p.addEventListener('click', () => mostrar(k));
         puntos.appendChild(p);
       });
@@ -428,8 +433,14 @@
     });
     pista.addEventListener('pointercancel', () => { x0 = null; });
 
-    if (gen) {
-      const inicial = gen.leer(raiz.dataset.valor || '') || gen.leer('183') || gen.leer('10110111');
+    if (gen && 'sinPrueba' in raiz.dataset) {
+      cargarGenerado(gen.leer(raiz.dataset.valor || ''));
+    } else if (gen) {
+      const inicial = gen.leer(raiz.dataset.valor || '');
+      if (inicial === null) {
+        console.warn('[diapos] data-valor no válido:', raiz.dataset.valor);
+        return;
+      }
       cargarGenerado(inicial);
 
       const prueba = el('form', 'diapos__prueba');
@@ -437,7 +448,7 @@
       prueba.innerHTML =
         `<label class="diapos__etiqueta" for="${idCampo}">Prueba con otro número. ${esc(gen.etiqueta)}:</label>` +
         `<div class="diapos__fila">` +
-        `<input class="diapos__campo" id="${idCampo}" type="text" inputmode="${gen.modo}" autocomplete="off" spellcheck="false" translate="no">` +
+        `<input class="diapos__campo" id="${idCampo}" type="text" inputmode="${gen.modo || 'text'}" autocomplete="off" spellcheck="false" translate="no"${gen.ejemplo ? ` placeholder="${esc(gen.ejemplo)}"` : ''}>` +
         `<button class="boton diapos__ver" type="submit">Ver paso a paso</button>` +
         `</div>` +
         `<p class="diapos__error" role="alert"></p>`;
@@ -467,6 +478,14 @@
     (zona || document).querySelectorAll('.diapos').forEach(montar);
   }
 
+  /* Para que otros archivos añadan generadores sin tocar este. */
+  function registrarDiapos(nombre, def) {
+    GENERADORES_DIAPOS[nombre] = def;
+  }
+
   window.iniciarDiapos = iniciarDiapos;
+  window.registrarDiapos = registrarDiapos;
   window.GENERADORES_DIAPOS = GENERADORES_DIAPOS;
+  /* Ayudas de dibujo, para los generadores de otros archivos. */
+  window.DIAPOS = { tx, caja, svg, esc, grupos4 };
 })();

@@ -3075,6 +3075,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .diapo svg .d-c { fill: var(--diapo-calido); font-weight: 700; }
 .diapo svg .d-grande { font-size: 17px; font-weight: 700; }
 .diapo svg .d-enorme { font-size: 34px; font-weight: 700; }
+.diapo svg .d-peq { font-size: 11px; }
 .diapo svg .d-caja { fill: var(--diapo-caja); stroke: var(--diapo-caja-borde); }
 .diapo svg .d-caja-on { fill: var(--diapo-caja); stroke: var(--diapo-acento); }
 .diapo svg .d-caja-act { fill: var(--diapo-resalte); stroke: var(--diapo-calido); stroke-width: 1.5; }
@@ -3146,7 +3147,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 }
 .diapos--todas .diapos__pista > .diapo:first-child { border-top: none; padding-top: 0; }
 .diapos--todas .diapos__pista > .diapo::before {
-  content: "Paso " attr(data-numero);
+  content: attr(data-numero);
   display: block;
   font-family: var(--font-mono);
   font-size: 0.78rem;
@@ -3167,7 +3168,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .diapos__campo {
   font-family: var(--font-mono);
   font-size: 1rem;
-  width: 11rem;
+  width: 15rem;
   max-width: 100%;
   padding: 0.5rem 0.7rem;
   min-height: 44px;

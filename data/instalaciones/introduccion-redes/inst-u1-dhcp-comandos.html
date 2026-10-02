@@ -36,26 +36,8 @@ Regla 2 — un bloque de cuatro ceros se deja en un solo 0
 Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
            2035:1:2FC5::87C:0:1</code></pre>
 <div class="nota">La regla 3 solo se puede usar <strong>una vez</strong> en toda la dirección. Si se usara dos veces no habría forma de saber cuántos bloques ha comido cada «::». En el ejemplo se ha aplicado al grupo 0:0 y por eso el 0 suelto del final se queda escrito.</div>
-<div class="salida">
-<svg viewBox="0 0 600 258" width="100%" role="img" aria-label="Una dirección IPv6 acortada paso a paso aplicando las tres reglas de abreviación" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
-.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
-.s{font-family:monospace;font-size:10px;fill:#9099a6}
-.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
-.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
-.w{font-family:monospace;font-size:11px;fill:#ce9178}
-.ok{font-family:monospace;font-size:11px;fill:#89d185}
-.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
-.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
-</style>
-<text x="20" y="30" font-family="monospace" font-size="11" font-weight="700" fill="#9099a6">Original</text><text x="104" y="30" font-family="monospace" font-size="13" fill="#9099a6">2035:0001:2FC5:0000:0000:087C:0000:0001</text><path d="M 60 40 L 60.0 62.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
-<path d="M 60 70 L 56.5 61.7 L 63.5 61.7 z" fill="#3c3c3c"/><text x="20" y="86" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Regla 1</text><text x="104" y="86" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5:0000:0000:87C:0000:1</text><text x="104" y="102" font-family="monospace" font-size="9.5" fill="#6a7280">fuera los ceros de la izquierda de cada bloque</text><path d="M 60 96 L 60.0 118.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
-<path d="M 60 126 L 56.5 117.7 L 63.5 117.7 z" fill="#3c3c3c"/><text x="20" y="142" font-family="monospace" font-size="11" font-weight="700" fill="#4fc1ff">Regla 2</text><text x="104" y="142" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5:0:0:87C:0:1</text><text x="104" y="158" font-family="monospace" font-size="9.5" fill="#6a7280">un bloque de cuatro ceros se queda en un solo 0</text><path d="M 60 152 L 60.0 174.0" stroke="#3c3c3c" stroke-width="1.2" fill="none"/>
-<path d="M 60 182 L 56.5 173.7 L 63.5 173.7 z" fill="#3c3c3c"/><text x="20" y="198" font-family="monospace" font-size="11" font-weight="700" fill="#89d185">Regla 3</text><text x="104" y="198" font-family="monospace" font-size="13" fill="#f3f3f3">2035:1:2FC5::87C:0:1</text><text x="104" y="214" font-family="monospace" font-size="9.5" fill="#6a7280">los bloques de ceros seguidos se sustituyen por :: (una sola vez)</text><text x="300" y="246" text-anchor="middle" class="s">Las tres se aplican en orden. El «::» solo puede aparecer una vez en toda la dirección.</text>
-</svg>
-<p class="pie-figura">Las tres reglas aplicadas una detrás de otra sobre la misma dirección.</p>
-</div>
+<p>Las tres reglas, una detrás de otra. Al final puedes probar con otra dirección:</p>
+<div class="diapos" data-diapos="ipv6-abreviar" data-valor="2035:0001:2FC5:0000:0000:087C:0000:0001" aria-label="Una IPv6 abreviada, paso a paso"></div>
 
 <h2>DHCP: quién reparte las direcciones</h2>
 <p>Las IP se pueden poner de dos maneras:</p>
@@ -71,29 +53,23 @@ Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
 <tr><td>Puerta de enlace</td><td>Por dónde se sale a otras redes (el router)</td></tr>
 <tr><td>Servidores DNS</td><td>Quién traduce los nombres en direcciones IP</td></tr>
 </table>
-<div class="salida">
-<svg viewBox="0 0 568 276" width="100%" role="img" aria-label="Diálogo entre un equipo y el router para conseguir una dirección IP por DHCP" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
-.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
-.s{font-family:monospace;font-size:10px;fill:#9099a6}
-.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
-.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
-.w{font-family:monospace;font-size:11px;fill:#ce9178}
-.ok{font-family:monospace;font-size:11px;fill:#89d185}
-.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
-.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
-</style>
-<rect x="14" y="14" width="540" height="212" rx="6" fill="#252526" stroke="#3c3c3c"/><rect x="34" y="34" width="130" height="40" rx="5" fill="#1e1e1e" stroke="#9099a6"/>
-<text x="99.0" y="58.0" text-anchor="middle" class="t">TU EQUIPO</text><rect x="404" y="34" width="130" height="40" rx="5" fill="#1e1e1e" stroke="#4fc1ff"/>
-<text x="469.0" y="51.0" text-anchor="middle" class="t">ROUTER</text>
-<text x="469.0" y="68.0" text-anchor="middle" class="f">servidor DHCP</text><line x1="99" y1="78" x2="99" y2="196" stroke="#3c3c3c" stroke-dasharray="3 3"/><line x1="469" y1="78" x2="469" y2="196" stroke="#3c3c3c" stroke-dasharray="3 3"/><path d="M 99 104 L 461.0 104.0" stroke="#ce9178" stroke-width="1.3" fill="none"/>
-<path d="M 469 104 L 460.7 107.5 L 460.7 100.5 z" fill="#ce9178"/><text x="284" y="97" text-anchor="middle" class="s">¿hay algún DHCP ahí?</text><path d="M 469 134 L 107.0 134.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
-<path d="M 99 134 L 107.3 130.5 L 107.3 137.5 z" fill="#4fc1ff"/><text x="284" y="127" text-anchor="middle" class="s">te ofrezco la 192.168.1.25</text><path d="M 99 164 L 461.0 164.0" stroke="#ce9178" stroke-width="1.3" fill="none"/>
-<path d="M 469 164 L 460.7 167.5 L 460.7 160.5 z" fill="#ce9178"/><text x="284" y="157" text-anchor="middle" class="s">me la quedo</text><path d="M 469 194 L 107.0 194.0" stroke="#4fc1ff" stroke-width="1.3" fill="none"/>
-<path d="M 99 194 L 107.3 190.5 L 107.3 197.5 z" fill="#4fc1ff"/><text x="284" y="187" text-anchor="middle" class="s">confirmada, es tuya un rato</text><text x="284" y="216" text-anchor="middle" class="f">y con la IP vienen la máscara, la puerta de enlace y los DNS</text><text x="284" y="248" text-anchor="middle" class="s">Si nadie contesta, Windows se autoasigna una 169.254.x.x. Esa dirección es el aviso</text><text x="284" y="264" text-anchor="middle" class="s">de que el equipo no está hablando con el router: mira el cable, el switch o el DHCP.</text>
-</svg>
-<p class="pie-figura">La conversación entera dura milisegundos y ocurre cada vez que enciendes el equipo.</p>
+<div class="diapos" aria-label="Cómo consigue un equipo su IP por DHCP">
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="El portátil se enciende sin IP"><rect x="6" y="44" width="110" height="44" rx="4" class="d-caja-act"/><text x="61" y="62" text-anchor="middle" class="d-t">portátil</text><text x="61" y="80" text-anchor="middle" class="d-d">sin IP</text><rect x="244" y="44" width="110" height="44" rx="4" class="d-caja-on"/><text x="299" y="62" text-anchor="middle" class="d-t">router</text><text x="299" y="80" text-anchor="middle" class="d-d">DHCP</text></svg>
+<p class="diapo__texto">Enciendes el portátil con la tarjeta en «automático». Todavía <strong>no tiene IP</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Pregunta a toda la red si hay un DHCP"><rect x="6" y="44" width="110" height="44" rx="4" class="d-caja-act"/><text x="61" y="62" text-anchor="middle" class="d-t">portátil</text><text x="61" y="80" text-anchor="middle" class="d-d">sin IP</text><rect x="244" y="44" width="110" height="44" rx="4" class="d-caja-on"/><text x="299" y="62" text-anchor="middle" class="d-t">router</text><text x="299" y="80" text-anchor="middle" class="d-d">DHCP</text><path d="M 118 66 L 242 66" class="d-linea-c"/><path d="M 242 66 L 235 62 L 235 70 z" class="d-relleno-c"/><text x="180" y="24" text-anchor="middle" class="d-c">¿hay algún DHCP?</text><text x="180" y="40" text-anchor="middle" class="d-d">pregunta a toda la red</text></svg>
+<p class="diapo__texto">Como no sabe a quién preguntar, pregunta <strong>a toda la red</strong>: «¿hay algún servidor DHCP?».</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="El router le contesta con sus datos"><rect x="6" y="44" width="110" height="44" rx="4" class="d-caja-on"/><text x="61" y="62" text-anchor="middle" class="d-t">portátil</text><text x="61" y="80" text-anchor="middle" class="d-d">sin IP</text><rect x="244" y="44" width="110" height="44" rx="4" class="d-caja-act"/><text x="299" y="62" text-anchor="middle" class="d-t">router</text><text x="299" y="80" text-anchor="middle" class="d-d">DHCP</text><path d="M 242 66 L 118 66" class="d-linea-c"/><path d="M 118 66 L 125 62 L 125 70 z" class="d-relleno-c"/><text x="100" y="108" text-anchor="start" class="d-d">IP</text><text x="180" y="108" text-anchor="start" class="d-c">192.168.1.34</text><text x="100" y="124" text-anchor="start" class="d-d">máscara</text><text x="180" y="124" text-anchor="start" class="d-c">255.255.255.0</text><text x="100" y="140" text-anchor="start" class="d-d">puerta</text><text x="180" y="140" text-anchor="start" class="d-c">192.168.1.1</text><text x="100" y="156" text-anchor="start" class="d-d">DNS</text><text x="180" y="156" text-anchor="start" class="d-c">8.8.8.8</text></svg>
+<p class="diapo__texto">El <strong>router</strong>, que hace de DHCP, contesta con todo lo necesario: <strong>IP, máscara, puerta de enlace y DNS</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="El portátil ya tiene IP"><rect x="6" y="44" width="110" height="44" rx="4" class="d-caja-act"/><text x="61" y="62" text-anchor="middle" class="d-t">portátil</text><text x="61" y="80" text-anchor="middle" class="d-c">192.168.1.34</text><rect x="244" y="44" width="110" height="44" rx="4" class="d-caja-on"/><text x="299" y="62" text-anchor="middle" class="d-t">router</text><text x="299" y="80" text-anchor="middle" class="d-d">DHCP</text><text x="180" y="120" text-anchor="middle" class="d-d">prestada un tiempo (lease)</text></svg>
+<p class="diapo__texto">El portátil la acepta y ya puede trabajar. La IP se le <strong>presta</strong> un tiempo (el lease) y luego se renueva. Si nadie contesta, se pone una 169.254.x.x.</p>
+</div>
 </div>
 <p>La dirección se cede durante un tiempo (el <em>lease</em>); al caducar se renueva. Por eso a veces la IP de un portátil cambia de un día para otro.</p>
 <div class="salida">
@@ -142,22 +118,27 @@ Estadísticas de ping para 192.168.1.1:
 <tr><td>4</td><td><code>ping 8.8.8.8</code></td><td>La salida a Internet</td></tr>
 <tr><td>5</td><td><code>ping www.google.es</code></td><td>El DNS: hay Internet, pero no traduce nombres</td></tr>
 </table>
-<div class="salida">
-<svg viewBox="0 0 600 192" width="100%" role="img" aria-label="Cinco peldaños de diagnóstico con ping, del propio equipo hasta la resolución de nombres" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
-.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
-.s{font-family:monospace;font-size:10px;fill:#9099a6}
-.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
-.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
-.w{font-family:monospace;font-size:11px;fill:#ce9178}
-.ok{font-family:monospace;font-size:11px;fill:#89d185}
-.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
-.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
-</style>
-<text x="300" y="24" text-anchor="middle" class="t">Si un equipo no navega, se sube peldaño a peldaño</text><rect x="14" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="70.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="70.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">127.0.0.1</text><text x="70.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="70.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tu propia</text><text x="70.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tarjeta</text><path d="M 131 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="131" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="187.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="187.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">tu IP</text><text x="187.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="187.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">tu</text><text x="187.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">configuración</text><path d="M 248 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="248" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="304.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="304.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">puerta de enlace</text><text x="304.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="304.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">cable, switch</text><text x="304.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">o router</text><path d="M 365 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="365" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="421.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="421.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">8.8.8.8</text><text x="421.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="421.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">la salida</text><text x="421.0" y="148" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">a Internet</text><path d="M 482 70 l -6 -4 l 0 8 z" fill="#9099a6"/><rect x="482" y="44" width="112" height="52" rx="5" fill="#252526" stroke="#4fc1ff"/><text x="538.0" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#6a7280">ping</text><text x="538.0" y="84" text-anchor="middle" font-family="monospace" font-size="11" fill="#4fc1ff">un nombre web</text><text x="538.0" y="118" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">si falla, es</text><text x="538.0" y="134" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#ce9178">el DNS</text><text x="300" y="178" text-anchor="middle" class="s">Si los cuatro primeros van y el quinto no, tienes Internet y lo que falla es el DNS.</text>
-</svg>
-<p class="pie-figura">El orden importa: cada peldaño descarta un trozo del camino.</p>
+<div class="diapos" aria-label="La escalera de ping, peldaño a peldaño">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Peldaño 1: ping a 127.0.0.1"><rect x="2" y="96" width="68" height="40" rx="4" class="d-caja-act"/><text x="36" y="113" text-anchor="middle" class="d-c d-peq">127.0.0.1</text><text x="36" y="128" text-anchor="middle" class="d-d d-peq">tarjeta</text><rect x="74" y="76" width="68" height="40" rx="4" class="d-caja"/><text x="108" y="93" text-anchor="middle" class="d-d d-peq">tu IP</text><text x="108" y="108" text-anchor="middle" class="d-d d-peq">adaptador</text><rect x="146" y="56" width="68" height="40" rx="4" class="d-caja"/><text x="180" y="73" text-anchor="middle" class="d-d d-peq">puerta</text><text x="180" y="88" text-anchor="middle" class="d-d d-peq">router</text><rect x="218" y="36" width="68" height="40" rx="4" class="d-caja"/><text x="252" y="53" text-anchor="middle" class="d-d d-peq">8.8.8.8</text><text x="252" y="68" text-anchor="middle" class="d-d d-peq">Internet</text><rect x="290" y="16" width="68" height="40" rx="4" class="d-caja"/><text x="324" y="33" text-anchor="middle" class="d-d d-peq">google.es</text><text x="324" y="48" text-anchor="middle" class="d-d d-peq">DNS</text><text x="8" y="18" text-anchor="start" class="d-t">peldaño 1: ping 127.0.0.1</text></svg>
+<p class="diapo__texto">1. <code>ping 127.0.0.1</code>: ¿funciona tu propia tarjeta? No sale de tu equipo. Si falla, el problema está en tu tarjeta o su configuración.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Peldaño 2: ping a tu IP"><rect x="2" y="96" width="68" height="40" rx="4" class="d-caja-on"/><text x="36" y="113" text-anchor="middle" class="d-a d-peq">127.0.0.1</text><text x="36" y="128" text-anchor="middle" class="d-d d-peq">tarjeta</text><text x="36" y="90" text-anchor="middle" class="d-a">✓</text><rect x="74" y="76" width="68" height="40" rx="4" class="d-caja-act"/><text x="108" y="93" text-anchor="middle" class="d-c d-peq">tu IP</text><text x="108" y="108" text-anchor="middle" class="d-d d-peq">adaptador</text><rect x="146" y="56" width="68" height="40" rx="4" class="d-caja"/><text x="180" y="73" text-anchor="middle" class="d-d d-peq">puerta</text><text x="180" y="88" text-anchor="middle" class="d-d d-peq">router</text><rect x="218" y="36" width="68" height="40" rx="4" class="d-caja"/><text x="252" y="53" text-anchor="middle" class="d-d d-peq">8.8.8.8</text><text x="252" y="68" text-anchor="middle" class="d-d d-peq">Internet</text><rect x="290" y="16" width="68" height="40" rx="4" class="d-caja"/><text x="324" y="33" text-anchor="middle" class="d-d d-peq">google.es</text><text x="324" y="48" text-anchor="middle" class="d-d d-peq">DNS</text><text x="8" y="18" text-anchor="start" class="d-t">peldaño 2: ping tu IP</text></svg>
+<p class="diapo__texto">2. <code>ping</code> a tu propia IP: ¿está bien configurado tu adaptador?</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Peldaño 3: ping a puerta"><rect x="2" y="96" width="68" height="40" rx="4" class="d-caja-on"/><text x="36" y="113" text-anchor="middle" class="d-a d-peq">127.0.0.1</text><text x="36" y="128" text-anchor="middle" class="d-d d-peq">tarjeta</text><text x="36" y="90" text-anchor="middle" class="d-a">✓</text><rect x="74" y="76" width="68" height="40" rx="4" class="d-caja-on"/><text x="108" y="93" text-anchor="middle" class="d-a d-peq">tu IP</text><text x="108" y="108" text-anchor="middle" class="d-d d-peq">adaptador</text><text x="108" y="70" text-anchor="middle" class="d-a">✓</text><rect x="146" y="56" width="68" height="40" rx="4" class="d-caja-act"/><text x="180" y="73" text-anchor="middle" class="d-c d-peq">puerta</text><text x="180" y="88" text-anchor="middle" class="d-d d-peq">router</text><rect x="218" y="36" width="68" height="40" rx="4" class="d-caja"/><text x="252" y="53" text-anchor="middle" class="d-d d-peq">8.8.8.8</text><text x="252" y="68" text-anchor="middle" class="d-d d-peq">Internet</text><rect x="290" y="16" width="68" height="40" rx="4" class="d-caja"/><text x="324" y="33" text-anchor="middle" class="d-d d-peq">google.es</text><text x="324" y="48" text-anchor="middle" class="d-d d-peq">DNS</text><text x="8" y="18" text-anchor="start" class="d-t">peldaño 3: ping puerta</text></svg>
+<p class="diapo__texto">3. <code>ping</code> a la puerta de enlace (el router): ¿llegas por el cable y el switch hasta él?</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Peldaño 4: ping a 8.8.8.8"><rect x="2" y="96" width="68" height="40" rx="4" class="d-caja-on"/><text x="36" y="113" text-anchor="middle" class="d-a d-peq">127.0.0.1</text><text x="36" y="128" text-anchor="middle" class="d-d d-peq">tarjeta</text><text x="36" y="90" text-anchor="middle" class="d-a">✓</text><rect x="74" y="76" width="68" height="40" rx="4" class="d-caja-on"/><text x="108" y="93" text-anchor="middle" class="d-a d-peq">tu IP</text><text x="108" y="108" text-anchor="middle" class="d-d d-peq">adaptador</text><text x="108" y="70" text-anchor="middle" class="d-a">✓</text><rect x="146" y="56" width="68" height="40" rx="4" class="d-caja-on"/><text x="180" y="73" text-anchor="middle" class="d-a d-peq">puerta</text><text x="180" y="88" text-anchor="middle" class="d-d d-peq">router</text><text x="180" y="50" text-anchor="middle" class="d-a">✓</text><rect x="218" y="36" width="68" height="40" rx="4" class="d-caja-act"/><text x="252" y="53" text-anchor="middle" class="d-c d-peq">8.8.8.8</text><text x="252" y="68" text-anchor="middle" class="d-d d-peq">Internet</text><rect x="290" y="16" width="68" height="40" rx="4" class="d-caja"/><text x="324" y="33" text-anchor="middle" class="d-d d-peq">google.es</text><text x="324" y="48" text-anchor="middle" class="d-d d-peq">DNS</text><text x="8" y="18" text-anchor="start" class="d-t">peldaño 4: ping 8.8.8.8</text></svg>
+<p class="diapo__texto">4. <code>ping 8.8.8.8</code>: ¿sales a Internet? Es una IP, así que no hace falta el DNS.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Peldaño 5: ping a google.es"><rect x="2" y="96" width="68" height="40" rx="4" class="d-caja-on"/><text x="36" y="113" text-anchor="middle" class="d-a d-peq">127.0.0.1</text><text x="36" y="128" text-anchor="middle" class="d-d d-peq">tarjeta</text><text x="36" y="90" text-anchor="middle" class="d-a">✓</text><rect x="74" y="76" width="68" height="40" rx="4" class="d-caja-on"/><text x="108" y="93" text-anchor="middle" class="d-a d-peq">tu IP</text><text x="108" y="108" text-anchor="middle" class="d-d d-peq">adaptador</text><text x="108" y="70" text-anchor="middle" class="d-a">✓</text><rect x="146" y="56" width="68" height="40" rx="4" class="d-caja-on"/><text x="180" y="73" text-anchor="middle" class="d-a d-peq">puerta</text><text x="180" y="88" text-anchor="middle" class="d-d d-peq">router</text><text x="180" y="50" text-anchor="middle" class="d-a">✓</text><rect x="218" y="36" width="68" height="40" rx="4" class="d-caja-on"/><text x="252" y="53" text-anchor="middle" class="d-a d-peq">8.8.8.8</text><text x="252" y="68" text-anchor="middle" class="d-d d-peq">Internet</text><text x="252" y="30" text-anchor="middle" class="d-a">✓</text><rect x="290" y="16" width="68" height="40" rx="4" class="d-caja-act"/><text x="324" y="33" text-anchor="middle" class="d-c d-peq">google.es</text><text x="324" y="48" text-anchor="middle" class="d-d d-peq">DNS</text><text x="8" y="18" text-anchor="start" class="d-t">peldaño 5: ping google.es</text></svg>
+<p class="diapo__texto">5. <code>ping www.google.es</code>: ¿se traducen los nombres? Si el 4 va y este no, tienes Internet y lo que falla es el <strong>DNS</strong>.</p>
+</div>
 </div>
 <p>Si los cuatro primeros van y el quinto no, tienes Internet perfectamente y lo que falla es el DNS. Ese diagnóstico, hecho en veinte segundos, es lo que separa a un técnico de alguien reiniciando el router por si acaso.</p>
 

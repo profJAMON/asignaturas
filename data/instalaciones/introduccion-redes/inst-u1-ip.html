@@ -35,6 +35,8 @@
 <tr><td><strong>Binario</strong></td><td>00000000.00000000.00000000.00000000</td><td>11111111.11111111.11111111.11111111</td></tr>
 <tr><td><strong>Decimal</strong></td><td>0.0.0.0</td><td>255.255.255.255</td></tr>
 </table>
+<p>Una IP entera en binario, octeto a octeto. Al final puedes probar con otra:</p>
+<div class="diapos" data-diapos="ip-a-binario" data-valor="192.168.1.25" aria-label="192.168.1.25 en binario, paso a paso"></div>
 <div class="nota">Cuidado con dos números que se copian mal muy a menudo. Un octeto son <strong>8 bits, no 4</strong> (los bloques de 4 bits son cosa del hexadecimal y de IPv6). Y con 32 bits hay <strong>2³² direcciones posibles = 4.294.967.296</strong>, unos 4.300 millones. No 2³⁶.</div>
 <p>La forma de contar es la de un cuentakilómetros: el bloque de la derecha sube hasta 255; al sumar uno más vuelve a 0 y sube en uno el bloque de su izquierda. Igual con el resto.</p>
 
@@ -75,6 +77,8 @@
 </table>
 <p>Así, <code>192.168.1.25/24</code> lo dice todo de un golpe: esta dirección, en una red cuyos 24 primeros bits son la red. Es como se escribe hoy en cualquier equipo profesional.</p>
 
+<p>Cómo se pasa una máscara de la barra a decimal, con una que no acaba en un octeto entero, la /26. Al final puedes probar con otras:</p>
+<div class="diapos" data-diapos="mascara" data-valor="/26" aria-label="La máscara /26, paso a paso"></div>
 <h3>Practica la notación CIDR</h3>
 <p>De decimal a barra y de barra a decimal. Son cuatro máscaras las que salen siempre; el resto se deducen.</p>
 <div data-actividad="practica-cidr"></div>
@@ -108,6 +112,8 @@
 <p><strong>Para identificar la clase solo hay que mirar el primer número.</strong> 10.250.1.1 empieza por 10 → clase A. 150.10.15.0 empieza por 150 → clase B. 199.155.77.56 empieza por 199 → clase C.</p>
 <div class="nota">Dos direcciones especiales de cada red, que nunca se le dan a un equipo: la que tiene <strong>todos los bits de host a 0</strong> es la <strong>dirección de red</strong> (identifica a la red entera) y la que los tiene <strong>todos a 1</strong> es la de <strong>broadcast</strong> (sirve para hablar con todos los equipos de esa red a la vez). Volveremos a ellas en la sesión siguiente.</div>
 
+<p>Todo junto con un ejemplo: clase, máscara por defecto, red y host. Al final puedes probar con otra IP:</p>
+<div class="diapos" data-diapos="clase-ip" data-valor="150.10.15.0" aria-label="La IP 150.10.15.0, paso a paso"></div>
 <h3>Practica — ¿de qué clase es?</h3>
 <p>Mira solo el primer octeto. Nada más.</p>
 <div data-actividad="practica-clase"></div>
