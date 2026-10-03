@@ -102,6 +102,12 @@
   --diapo-caja-borde: var(--border);
   --diapo-resalte: rgba(255, 77, 157, 0.14);
 
+  /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
+     de las preguntas a mano (.papel). */
+  --fila-alterna: rgba(159, 179, 200, 0.05);
+  --papel-linea: rgba(159, 179, 200, 0.13);
+  --papel-margen: rgba(255, 77, 157, 0.5);
+
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
@@ -199,6 +205,10 @@
   --diapo-caja: #252526;
   --diapo-caja-borde: #3c3c3c;
   --diapo-resalte: rgba(255, 122, 184, 0.16);
+
+  --fila-alterna: rgba(14, 116, 144, 0.05);
+  --papel-linea: rgba(14, 116, 144, 0.16);
+  --papel-margen: rgba(164, 18, 106, 0.4);
 }
 
 /* ============================================================
@@ -897,9 +907,13 @@ h1, h2, h3 {
 }
 
 /* Los tres tipos que existen hoy (js/actividades.js). */
-.actividad[data-tipo="quiz"] { --color-tipo: var(--accent); }
-.actividad[data-tipo="relacionar"] { --color-tipo: var(--accent-warm); }
-.actividad[data-tipo="generador"] { --color-tipo: var(--accent-lima); }
+/* Desde el 03/10/2026 los tres en cian: la regla de la web es
+   cian = actividad, y el magenta (aviso) y el lima (pista) ya
+   significan otra cosa dentro de la lección. La etiqueta de tipo
+   (TEST, RELACIONAR, EJERCICIO) es la que los distingue. */
+.actividad[data-tipo="quiz"],
+.actividad[data-tipo="relacionar"],
+.actividad[data-tipo="generador"] { --color-tipo: var(--accent); }
 
 /* La etiqueta de arriba ("QUIZ", "RELACIONAR"…). La escribe el JS
    como texto de verdad, no como content de un pseudoelemento, para
@@ -3212,4 +3226,319 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   .diapos__pista > .diapo { visibility: visible !important; opacity: 1 !important; margin-bottom: 0.8rem; }
   .diapos--imprime-ultima .diapos__pista > .diapo { display: none; }
   .diapos--imprime-ultima .diapos__pista > .diapo:last-child { display: block; }
+}
+
+/* ============================================================
+   Mejoras visuales (03/10/2026)
+   ============================================================
+   Todo lo de este bloque es nuevo de ese día. Va al final para ganar
+   por orden a las reglas de arriba sin !important.
+   ============================================================ */
+
+/* ---- Fecha prevista de la sesión ----
+   .card p le daba el tamaño de párrafo (16 px en mono) y salía como
+   un cuadro de texto enorme. Vuelve a ser una etiqueta. */
+.card .badge--fecha {
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0.7rem 0 0;
+}
+
+/* ---- Generadores: la casilla pegada a la pregunta ----
+   En escritorio la casilla se iba al borde derecho y el alumno perdía
+   la fila. La fila tiene ahora un ancho máximo y va a rayas. */
+.generador__fila {
+  max-width: 34rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 4px;
+}
+.generador__fila:nth-child(even) { background: var(--fila-alterna); }
+.generador__campo { min-height: 2.2rem; }
+
+.boton { transition: background-color 0.12s ease, transform 0.08s ease; }
+.boton:active { transform: translateY(1px); }
+
+/* ---- Apartados de la lección: número en una etiqueta ----
+   Una sesión larga se "escanea" por estos números. */
+.leccion h2::before {
+  content: counter(h2count);
+  display: inline-block;
+  min-width: 1.9em;
+  padding: 0.18em 0.45em;
+  margin-right: 0.6em;
+  border-radius: 5px;
+  background: var(--accent);
+  color: var(--boton-texto);
+  font-size: 0.85em;
+  line-height: 1.3;
+  text-align: center;
+  vertical-align: 0.08em;
+}
+.leccion h3::before { color: var(--accent); }
+
+/* ---- Preguntas a mano: hoja de cuaderno ----
+   Líneas horizontales y margen rojo: se entiende "esto va en el
+   cuaderno" sin leer nada. El interlineado (1.75rem) es el paso de
+   las rayas para que el texto caiga encima de ellas. */
+.leccion .papel {
+  --paso-linea: 1.75rem;
+  position: relative;
+  padding: 0.9rem 1.2rem 1rem 3.3rem;
+  line-height: var(--paso-linea);
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(to right, transparent 2.4rem, var(--papel-margen) 2.4rem, var(--papel-margen) calc(2.4rem + 2px), transparent calc(2.4rem + 2px)),
+    repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--paso-linea) - 1px), var(--papel-linea) calc(var(--paso-linea) - 1px), var(--papel-linea) var(--paso-linea));
+  background-position: 0 0, 0 0.9rem;
+  background-attachment: local;
+}
+.leccion .papel p,
+.leccion .papel li { line-height: var(--paso-linea); }
+.leccion .papel p { margin: 0 0 var(--paso-linea); }
+.leccion .papel > ol { padding-left: 1.9rem; }
+.leccion .papel li { margin-bottom: 0; }
+.leccion .papel ol,
+.leccion .papel ul { margin-bottom: var(--paso-linea); }
+.leccion .papel li ul { margin-bottom: 0; }
+.leccion .papel__titulo {
+  margin: 0 0 var(--paso-linea);
+  line-height: var(--paso-linea);
+}
+/* Los agujeros de la hoja, en el margen. Decoración pura. */
+.leccion .papel::before {
+  content: "";
+  position: absolute;
+  left: 0.85rem;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  width: 0.6rem;
+  background: radial-gradient(circle, var(--bg) 0.22rem, transparent 0.25rem) 0 0 / 0.6rem 3.5rem repeat-y;
+  pointer-events: none;
+}
+.leccion .papel--extra { background-color: transparent; }
+.leccion .papel li { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .leccion .papel {
+    padding-left: 2.1rem;
+    background-image:
+      linear-gradient(to right, transparent 1.4rem, var(--papel-margen) 1.4rem, var(--papel-margen) calc(1.4rem + 2px), transparent calc(1.4rem + 2px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--paso-linea) - 1px), var(--papel-linea) calc(var(--paso-linea) - 1px), var(--papel-linea) var(--paso-linea));
+  }
+  .leccion .papel::before { left: 0.4rem; }
+  .leccion .papel > ol { padding-left: 1.5rem; }
+}
+@media print {
+  .leccion .papel { background-image: none; padding-left: 1.2rem; }
+  .leccion .papel::before { display: none; }
+}
+
+/* ---- «📋 Cómo trabajar esta sesión» en pasos (js/tema.js) ---- */
+.leccion .pasos {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0 0.7rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.4rem, 1fr));
+  gap: 0.6rem;
+  counter-reset: paso;
+}
+.leccion .paso {
+  counter-increment: paso;
+  position: relative;
+  margin: 0;
+  padding: 0.75rem 0.75rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+.leccion .paso::before {
+  content: counter(paso);
+  position: absolute;
+  top: 0.5rem;
+  right: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+.paso__icono { color: var(--accent-warm); display: inline-flex; }
+.paso__icono svg { width: 1.9rem; height: 1.9rem; }
+.leccion .pasos__mas { margin: 0; background: transparent; }
+.leccion .pasos__mas summary { list-style: none; }
+.leccion .pasos__mas ol { margin: 0.7rem 0 0; }
+@media print {
+  .leccion .pasos { display: none; }
+  .leccion .pasos__mas > ol { display: block !important; }
+}
+
+/* ---- Menú lateral: etiqueta de unidad y número de sesión ---- */
+.unidad summary {
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+}
+.unidad summary::before { margin-top: 0.15rem; }
+.unidad__chip {
+  flex-shrink: 0;
+  min-width: 2.4rem;
+  height: 1.45rem;
+  padding: 0 0.3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-activa, var(--accent));
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--color-activa, var(--accent)) 10%, transparent);
+}
+.unidad__chip--icono svg { width: 1.05rem; height: 1.05rem; stroke-width: 2.4; }
+.unidad__nombre {
+  font-size: 0.86rem;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-top: 0.12rem;
+}
+
+.sesion--con-numero {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(0, 1fr);
+  column-gap: 0.55rem;
+  align-items: start;
+  padding-left: 0.6rem;
+}
+.sesion--con-numero .sesion__fecha { grid-column: 2; }
+.sesion__num {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+/* Ya abierta: el círculo se rellena (sustituye al punto de antes). */
+.sesion--con-numero.sesion--vista::before { display: none; }
+.sesion--vista .sesion__num {
+  background: var(--text-faint);
+  border-color: var(--text-faint);
+  color: var(--bg);
+}
+.sesion.activa .sesion__num {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--boton-texto);
+}
+
+/* ---- Portada de una asignatura: cabecera con su dibujo ---- */
+.card--asignatura {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 1.6rem;
+  align-items: start;
+  border-color: color-mix(in srgb, var(--color-activa, var(--accent)) 45%, var(--border));
+  background: color-mix(in srgb, var(--color-activa, var(--accent)) 7%, var(--surface));
+}
+.card--asignatura > * { grid-column: 2; justify-self: start; }
+.card--asignatura > .card__icono-asig {
+  grid-column: 1;
+  grid-row: 1 / span 8;
+  color: var(--color-activa, var(--accent));
+}
+.card__icono-asig svg { width: 5.5rem; height: 5.5rem; display: block; }
+
+/* ---- Tarjetas de unidad: dibujo, número y puntos de sesión ---- */
+.unidad-card summary { align-items: center; gap: 1.1rem; }
+.unidad-card__marca {
+  position: relative;
+  flex-shrink: 0;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: var(--color-activa, var(--accent));
+  border: 1px solid color-mix(in srgb, var(--color-activa, var(--accent)) 45%, var(--border));
+  background: color-mix(in srgb, var(--color-activa, var(--accent)) 10%, var(--surface));
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.unidad-card summary:hover .unidad-card__marca { transform: rotate(-4deg) scale(1.05); }
+.unidad-card__icono svg { width: 2.6rem; height: 2.6rem; display: block; }
+.unidad-card__numero {
+  position: absolute;
+  right: -0.55rem;
+  bottom: -0.55rem;
+  padding: 0.05rem 0.3rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--boton-texto);
+  background: var(--color-activa, var(--accent));
+}
+.unidad-card__texto { min-width: 0; flex: 1; }
+.unidad-card__etiqueta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.15rem;
+}
+.unidad-card__puntos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0.65rem 0 0;
+}
+.unidad-card__punto {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--text-faint);
+}
+.unidad-card__punto--vista {
+  background: var(--color-activa, var(--accent));
+  border-color: var(--color-activa, var(--accent));
+}
+.unidad-card__nses {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin-left: 0.4rem;
+}
+.unidad-card[open] { border-color: color-mix(in srgb, var(--color-activa, var(--accent)) 50%, var(--border)); }
+
+@media (max-width: 640px) {
+  .card--asignatura { column-gap: 1rem; }
+  .card__icono-asig svg { width: 3.2rem; height: 3.2rem; }
+  .unidad-card summary { gap: 0.9rem; padding: 1rem; }
+  .unidad-card__marca { width: 3.3rem; height: 3.3rem; }
+  .unidad-card__icono svg { width: 2rem; height: 2rem; }
+}
+
+/* ---- Portada general en móvil: las asignaturas antes que la terminal ----
+   La terminal ocupaba media pantalla casi vacía y empujaba las
+   tarjetas hacia abajo. */
+@media (max-width: 900px) {
+  :root[data-pagina="portada"] #indice-portada { order: 2; }
+  :root[data-pagina="portada"] .portada-terminal { order: 3; margin: 2rem 0 0; }
+  :root[data-pagina="portada"] #portada-semana { order: 4; }
+  :root[data-pagina="portada"] .main-content > .pie { order: 5; }
 }

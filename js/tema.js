@@ -165,12 +165,71 @@ function pintarLeccion(contenidoHtml) {
   const contenedor = document.getElementById('leccion-contenido');
   contenedor.innerHTML = contenidoHtml;
   agruparSubsecciones(contenedor);
+  /* «📋 Cómo trabajar esta sesión» en pasos con dibujo. */
+  pintarComoTrabajar(contenedor);
   /* Carruseles de diapositivas paso a paso. Ver js/diapos.js. */
   if (typeof iniciarDiapos === 'function') iniciarDiapos(contenedor);
   /* Marca código y salidas como no traducibles ANTES de que el traductor
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
   document.getElementById('seccion-leccion').hidden = false;
+}
+
+/* ============================================================
+   «📋 Cómo trabajar esta sesión» en pasos con dibujo (03/10/2026)
+   ============================================================
+   El recuadro eran 5-7 párrafos y los alumnos no lo leían. Ahora se
+   ve como una tira de pasos: número, dibujo y la PRIMERA frase de
+   cada punto. El texto entero sigue ahí, en un desplegable debajo.
+   No hay que tocar el HTML de ninguna sesión: se monta solo a partir
+   del <ol> que ya tiene el recuadro. El dibujo se elige por palabras
+   del texto; si ninguna casa, sale un punto. */
+const _PASO_SVG = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+const _ICONOS_PASO = [
+  [/sube nota/i, _PASO_SVG('<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>')],
+  [/levanta la mano|pregúnta|atascas|no sabes por dónde/i, _PASO_SVG('<path d="M8 13V5.5a1.5 1.5 0 0 1 3 0V11M11 10V4a1.5 1.5 0 0 1 3 0v6M14 10V5a1.5 1.5 0 0 1 3 0v7M8 12a1.5 1.5 0 0 0-3 0v2a8 8 0 0 0 8 8h1a6 6 0 0 0 6-6v-6a1.5 1.5 0 0 0-3 0"/>')],
+  [/corrij|arregla/i, _PASO_SVG('<path d="M4 12l5 5L20 6"/>')],
+  [/antes de seguir/i, _PASO_SVG('<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/>')],
+  [/pantalla|ordenador|actividades se hacen|entrena/i, _PASO_SVG('<rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/>')],
+  [/pregunta|cuaderno|papel|a mano/i, _PASO_SVG('<path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/>')],
+  [/lee|resumen|dibujo/i, _PASO_SVG('<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>')],
+];
+const _ICONO_PASO_DEFECTO = _PASO_SVG('<circle cx="12" cy="12" r="3"/>');
+
+function pintarComoTrabajar(raiz) {
+  const caja = raiz.querySelector('#como-trabajar');
+  const lista = caja && caja.querySelector(':scope > ol');
+  if (!lista || caja.dataset.pasos) return;
+  const items = Array.from(lista.children).filter(li => li.tagName === 'LI');
+  if (items.length < 2) return;
+  caja.dataset.pasos = 'si';
+
+  const tira = document.createElement('ol');
+  tira.className = 'pasos';
+  items.forEach(li => {
+    const texto = li.textContent.replace(/\s+/g, ' ').trim();
+    /* Primera frase: hasta el primer punto o dos puntos seguido de
+       espacio. Si acaba en dos puntos, se cierra con punto. */
+    let corto = (texto.match(/^.*?[.:](?=\s|$)/) || [texto])[0].replace(/:$/, '.');
+    const icono = (_ICONOS_PASO.find(([re]) => re.test(texto)) || [null, _ICONO_PASO_DEFECTO])[1];
+    const paso = document.createElement('li');
+    paso.className = 'paso';
+    paso.innerHTML = `<span class="paso__icono">${icono}</span>`;
+    const p = document.createElement('span');
+    p.className = 'paso__texto';
+    p.textContent = corto;
+    paso.appendChild(p);
+    tira.appendChild(paso);
+  });
+
+  const mas = document.createElement('details');
+  mas.className = 'pasos__mas';
+  const resumen = document.createElement('summary');
+  resumen.textContent = 'Leer las instrucciones completas';
+  mas.appendChild(resumen);
+  lista.replaceWith(tira);
+  mas.appendChild(lista);
+  tira.after(mas);
 }
 
 function agruparSubsecciones(raiz) {

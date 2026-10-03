@@ -15,48 +15,5 @@
       "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
     }
   ],
-  "actividades": [
-    {
-      "tipo": "quiz",
-      "titulo": "Autoevaluación rápida",
-      "preguntas": [
-        {
-          "pregunta": "¿Qué capa separa el texto de su borde?",
-          "opciones": [
-            "margin",
-            "padding",
-            "border"
-          ],
-          "correcta": 1
-        },
-        {
-          "pregunta": "¿Qué capa separa una caja de las demás?",
-          "opciones": [
-            "margin",
-            "padding",
-            "width"
-          ],
-          "correcta": 0
-        },
-        {
-          "pregunta": "¿Qué falta en border: 2px red; para que se vea el borde?",
-          "opciones": [
-            "El tipo de línea, como solid",
-            "Un color más",
-            "Nada, ya se ve"
-          ],
-          "correcta": 0
-        },
-        {
-          "pregunta": "¿Cuándo se aplica la regla .boton:hover?",
-          "opciones": [
-            "Siempre",
-            "Mientras el ratón está encima del botón",
-            "Al hacer clic dos veces"
-          ],
-          "correcta": 1
-        }
-      ]
-    }
-  ]
+  "actividades": []
 }

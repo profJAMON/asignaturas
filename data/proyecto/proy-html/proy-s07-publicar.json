@@ -4,32 +4,5 @@
   "fecha": "",
   "descripcion": "Taller en pareja. Cómo se publica la web desde GitHub con Cloudflare, el recorrido de una web hasta la pantalla (servidor, IP y DNS) y las empresas que lo hacen posible, el borrador de la página \"Cómo llega mi web a tu pantalla\", trabajar seguros con el ordenador y acabar el HTML de la web.",
   "materiales": [],
-  "actividades": [
-    {
-      "tipo": "relacionar",
-      "titulo": "Relaciona cada pieza con lo que hace",
-      "pares": [
-        {
-          "izquierda": "GitHub",
-          "derecha": "Guarda los archivos de vuestra web"
-        },
-        {
-          "izquierda": "Servidor",
-          "derecha": "Ordenador siempre encendido que entrega los archivos"
-        },
-        {
-          "izquierda": "Dirección IP",
-          "derecha": "Número que identifica a un ordenador en la red"
-        },
-        {
-          "izquierda": "DNS",
-          "derecha": "Traduce el nombre de la web a una dirección IP"
-        },
-        {
-          "izquierda": "Navegador",
-          "derecha": "Lee HTML, CSS y JavaScript y dibuja la página"
-        }
-      ]
-    }
-  ]
+  "actividades": []
 }

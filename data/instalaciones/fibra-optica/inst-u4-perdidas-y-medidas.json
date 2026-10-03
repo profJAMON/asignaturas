@@ -25,62 +25,6 @@
       "titulo": "Calcula el margen",
       "generador": "margen-fibra",
       "n": 5
-    },
-    {
-      "tipo": "quiz",
-      "titulo": "Medir y diagnosticar",
-      "preguntas": [
-        {
-          "pregunta": "Una pérdida de 3 dB significa que llega…",
-          "opciones": [
-            "Un tercio de la luz",
-            "La mitad de la luz",
-            "La décima parte",
-            "Toda menos 3 unidades"
-          ],
-          "correcta": 1
-        },
-        {
-          "pregunta": "¿Qué aparato te dice a cuántos metros está una rotura, midiendo desde un solo extremo?",
-          "opciones": [
-            "Microscopio",
-            "Localizador visual",
-            "OTDR",
-            "Polímetro"
-          ],
-          "correcta": 2
-        },
-        {
-          "pregunta": "¿Qué aparato mete luz roja visible para ver por dónde se escapa?",
-          "opciones": [
-            "Localizador visual de fallos (VFL)",
-            "Medidor de potencia",
-            "OTDR",
-            "Comprobador de RJ-45"
-          ],
-          "correcta": 0
-        },
-        {
-          "pregunta": "Un enlace tiene un margen de −1 dB. En el semáforo es…",
-          "opciones": [
-            "Verde: funciona perfecto",
-            "Ámbar: funciona pero justo",
-            "Rojo: no llega luz suficiente",
-            "No se puede saber"
-          ],
-          "correcta": 2
-        },
-        {
-          "pregunta": "Antes de enchufar un conector de fibra hay que…",
-          "opciones": [
-            "Soplarlo",
-            "Inspeccionarlo y, si hace falta, limpiarlo",
-            "Mirar el puerto con el ojo",
-            "Mojarlo con agua"
-          ],
-          "correcta": 1
-        }
-      ]
     }
   ]
 }

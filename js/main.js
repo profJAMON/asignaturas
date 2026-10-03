@@ -14,12 +14,16 @@ arrancarPortada();
 
 function arrancarPortada() {
   if (_asignaturaPortada) {
+    /* Desde el 03/10/2026 el titular es el NOMBRE de la asignatura,
+       con su dibujo grande al lado, y no "Apuntes y actividades", que
+       era igual en las tres y no decía dónde estabas. */
     pintarCabecera(
+      'Apuntes y actividades',
       _asignaturaPortada.nombre,
-      'Apuntes y Actividades',
       `${_asignaturaPortada.descripcion} Elige una unidad para ver sus sesiones.`,
       true
     );
+    pintarIconoCabecera(_asignaturaPortada.id);
     /* El selector 1r/2n vive aquí, en la cabecera de la asignatura, y no
        en la barra lateral: solo afecta a Instalaciones. En las demás
        asignaturas pintarSelectorGrupo esconde la caja y no pinta nada. */
@@ -38,6 +42,18 @@ function arrancarPortada() {
     pintarTerminal();
     pintarSemana();
   }
+}
+
+/* El dibujo de la asignatura, grande, a la izquierda de la cabecera. */
+function pintarIconoCabecera(idAsignatura) {
+  const cabecera = document.querySelector('.main-content > .card');
+  if (!cabecera || typeof iconoDeAsignatura !== 'function') return;
+  cabecera.classList.add('card--asignatura');
+  const icono = document.createElement('span');
+  icono.className = 'card__icono-asig';
+  icono.setAttribute('aria-hidden', 'true');
+  icono.innerHTML = iconoDeAsignatura(idAsignatura);
+  cabecera.prepend(icono);
 }
 
 function pintarCabecera(badge, titulo, descripcion, conVolver) {
@@ -145,16 +161,66 @@ async function cargarUnidades(asignatura) {
 
       const resumen = document.createElement('summary');
 
+      /* Dibujo de la unidad con su número grande en letra hueca
+         (03/10/2026): la portada de la asignatura era solo texto. */
+      const partes = typeof partirTituloUnidad === 'function'
+        ? partirTituloUnidad(unidad.titulo)
+        : { prefijo: '', numero: '', nombre: unidad.titulo };
+      const marca = document.createElement('div');
+      marca.className = 'unidad-card__marca';
+      marca.setAttribute('aria-hidden', 'true');
+      if (typeof iconoDeUnidad === 'function') {
+        const icono = document.createElement('span');
+        icono.className = 'unidad-card__icono';
+        icono.innerHTML = iconoDeUnidad(unidad.id, asignatura.id);
+        marca.appendChild(icono);
+      }
+      if (partes.numero) {
+        const numero = document.createElement('span');
+        numero.className = 'unidad-card__numero';
+        numero.setAttribute('translate', 'no');
+        numero.textContent = partes.numero;
+        marca.appendChild(numero);
+      }
+      resumen.appendChild(marca);
+
       const cabecera = document.createElement('div');
+      cabecera.className = 'unidad-card__texto';
       const tituloUnidad = document.createElement('p');
       tituloUnidad.className = 'unidad-card__titulo';
-      tituloUnidad.textContent = unidad.titulo;
+      if (partes.prefijo) {
+        const etiqueta = document.createElement('span');
+        etiqueta.className = 'unidad-card__etiqueta';
+        etiqueta.textContent = partes.prefijo.replace(/\.\s*$/, '');
+        tituloUnidad.appendChild(etiqueta);
+      }
+      tituloUnidad.appendChild(document.createTextNode(partes.nombre));
       cabecera.appendChild(tituloUnidad);
       if (unidad.descripcion) {
         const descUnidad = document.createElement('p');
         descUnidad.className = 'unidad-card__descripcion';
         descUnidad.textContent = unidad.descripcion;
         cabecera.appendChild(descUnidad);
+      }
+      /* Un punto por sesión; relleno si ya la has abierto. Dice "por
+         aquí ya pasaste", no "la has hecho" (ver js/progreso.js). */
+      const nSes = (unidad.sesiones || []).length;
+      if (nSes > 0) {
+        const puntos = document.createElement('p');
+        puntos.className = 'unidad-card__puntos';
+        const vistas = (unidad.sesiones || []).filter(id => window.progreso && window.progreso.estaVisitada(id)).length;
+        puntos.title = `${nSes} sesiones · ${vistas} abiertas`;
+        (unidad.sesiones || []).forEach(id => {
+          const p = document.createElement('span');
+          p.className = 'unidad-card__punto';
+          if (window.progreso && window.progreso.estaVisitada(id)) p.classList.add('unidad-card__punto--vista');
+          puntos.appendChild(p);
+        });
+        const txt = document.createElement('span');
+        txt.className = 'unidad-card__nses';
+        txt.textContent = nSes === 1 ? '1 sesión' : `${nSes} sesiones`;
+        puntos.appendChild(txt);
+        cabecera.appendChild(puntos);
       }
       resumen.appendChild(cabecera);
       detalles.appendChild(resumen);

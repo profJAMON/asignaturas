@@ -54,7 +54,7 @@ async function cargarBarraLateral(idActivo, asigActiva) {
       if (contieneActiva) detalles.open = true;
 
       const resumenUnidad = document.createElement('summary');
-      resumenUnidad.textContent = unidad.titulo;
+      _pintarResumenUnidad(resumenUnidad, unidad, asignatura);
       detalles.appendChild(resumenUnidad);
 
       /* Las sesiones van dentro de un div y no sueltas dentro del
@@ -67,8 +67,8 @@ async function cargarBarraLateral(idActivo, asigActiva) {
         if (!sesion) return;
         const enlace = document.createElement('a');
         enlace.href = urlSesion(sesion.id);
-        enlace.textContent = sesion.titulo;
         enlace.className = 'sesion';
+        _pintarTituloSesion(enlace, sesion.titulo);
         if (sesion.id === idActivo) enlace.classList.add('activa');
         /* Un punto si ya la ha abierto alguna vez. VISTA, no hecha:
            la web no sabe si ha trabajado la sesión. Ver js/progreso.js. */
@@ -101,6 +101,62 @@ async function cargarBarraLateral(idActivo, asigActiva) {
     contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el temario.</p>';
     console.error(error);
   }
+}
+
+/* El título de la unidad en el menú (03/10/2026): una etiqueta corta
+   con el número ("U3") y el nombre en letra normal. Antes era
+   "Unidad 3. Medios de transmisión: cobre" en negrita y ocupaba tres
+   líneas. Lo que se quita de la vista ("Unidad 3. ") se queda para el
+   lector de pantalla. Las unidades sin número llevan su dibujo. */
+function _pintarResumenUnidad(resumen, unidad, asignatura) {
+  const partes = typeof partirTituloUnidad === 'function'
+    ? partirTituloUnidad(unidad.titulo)
+    : { prefijo: '', corto: '', nombre: unidad.titulo };
+  const chip = document.createElement('span');
+  chip.className = 'unidad__chip';
+  chip.setAttribute('aria-hidden', 'true');
+  if (partes.corto) {
+    chip.textContent = partes.corto;
+    chip.setAttribute('translate', 'no');
+  } else if (typeof iconoDeUnidad === 'function') {
+    chip.innerHTML = iconoDeUnidad(unidad.id, asignatura.id);
+    chip.classList.add('unidad__chip--icono');
+  }
+  const nombre = document.createElement('span');
+  nombre.className = 'unidad__nombre';
+  if (partes.prefijo) {
+    const oculto = document.createElement('span');
+    oculto.className = 'solo-lector';
+    oculto.textContent = partes.prefijo;
+    nombre.appendChild(oculto);
+  }
+  nombre.appendChild(document.createTextNode(partes.nombre));
+  resumen.appendChild(chip);
+  resumen.appendChild(nombre);
+}
+
+/* La sesión, con su número en un círculo y el nombre al lado. El
+   círculo se rellena cuando ya la has abierto (ver .sesion--vista). */
+function _pintarTituloSesion(enlace, titulo) {
+  const partes = typeof partirTituloSesion === 'function'
+    ? partirTituloSesion(titulo)
+    : { prefijo: '', numero: '', nombre: titulo };
+  const num = document.createElement('span');
+  num.className = 'sesion__num';
+  num.setAttribute('aria-hidden', 'true');
+  num.setAttribute('translate', 'no');
+  /* Sin número (un glosario, por ejemplo): un punto, para que el
+     nombre quede alineado con el de las demás. */
+  num.textContent = partes.numero || '·';
+  const oculto = document.createElement('span');
+  oculto.className = 'solo-lector';
+  oculto.textContent = partes.prefijo;
+  if (!partes.prefijo) oculto.hidden = true;
+  const nombre = document.createElement('span');
+  nombre.className = 'sesion__nombre';
+  nombre.textContent = partes.nombre;
+  enlace.classList.add('sesion--con-numero');
+  enlace.append(num, oculto, nombre);
 }
 
 /* La cabecera de la barra: en qué asignatura estás y cómo salir de

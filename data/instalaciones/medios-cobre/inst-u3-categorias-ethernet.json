@@ -24,42 +24,6 @@
       "titulo": "¿Qué topología? ¿Qué cable?",
       "generador": "topologia-y-medio",
       "n": 8
-    },
-    {
-      "tipo": "quiz",
-      "titulo": "Ethernet y la regla de los 100 m",
-      "preguntas": [
-        {
-          "pregunta": "En 100BASE-TX, «100» significa…",
-          "opciones": ["100 metros", "100 Mbps", "100 MHz", "100 equipos"],
-          "correcta": 1
-        },
-        {
-          "pregunta": "En 1000BASE-T, la «T» indica que el medio es…",
-          "opciones": ["Coaxial", "Fibra", "Par trenzado", "Inalámbrico"],
-          "correcta": 2
-        },
-        {
-          "pregunta": "¿Cuántos metros de cable fijo admite como mucho un enlace de par trenzado?",
-          "opciones": ["10 m", "90 m", "100 m", "185 m"],
-          "correcta": 1
-        },
-        {
-          "pregunta": "¿Cuántos pares usa Gigabit Ethernet (1000BASE-T)?",
-          "opciones": ["1", "2", "3", "4"],
-          "correcta": 3
-        },
-        {
-          "pregunta": "Cable Cat 6A con rosetas Cat 5e: el enlace completo es…",
-          "opciones": ["Cat 6A", "Cat 6", "Cat 5e", "No funciona"],
-          "correcta": 2
-        },
-        {
-          "pregunta": "¿Qué categoría mínima pide 10GBASE-T para llegar a 100 m?",
-          "opciones": ["Cat 5e", "Cat 6", "Cat 6A", "Cat 8"],
-          "correcta": 2
-        }
-      ]
     }
   ]
 }
