@@ -2357,7 +2357,7 @@ font {
 .terminal__acciones {
   display: flex;
   align-items: center;
-  gap: 1.1rem;
+  gap: 0.6rem 1.1rem;
   flex-wrap: wrap;
   margin-top: 0.9rem;
 }
@@ -2383,6 +2383,47 @@ font {
   text-decoration: none;
 }
 .terminal__otra:hover { color: var(--accent); }
+
+/* Varias asignaturas en la terminal: una entrada por cada una. */
+.terminal__entrada + .terminal__entrada {
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px dashed var(--border);
+}
+.terminal__entrada .terminal__salida { padding-left: 1.1rem; }
+
+/* ---------- "Continuar" dentro de cada asignatura ----------
+   Entre la cabecera y las unidades. Mismo botón que el de la portada
+   general; el recuadro lleva el acento cian (es una acción, no un
+   aviso ni una pista). */
+.continuar-asig {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 6px;
+}
+.continuar-asig__texto { min-width: 0; flex: 1 1 16rem; }
+.continuar-asig__texto p { margin: 0; }
+.continuar-asig__cuando {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+.continuar-asig__titulo {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+}
+.continuar-asig__unidad { font-size: 0.85rem; color: var(--text-dim); }
 
 /* ---------- "Esta semana" ----------
    En horizontal: los cinco días de lunes a viernes de un vistazo,

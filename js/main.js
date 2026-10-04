@@ -28,6 +28,7 @@ function arrancarPortada() {
        en la barra lateral: solo afecta a Instalaciones. En las demás
        asignaturas pintarSelectorGrupo esconde la caja y no pinta nada. */
     if (typeof pintarSelectorGrupo === 'function') pintarSelectorGrupo(_asignaturaPortada.id);
+    pintarContinuarAsignatura(_asignaturaPortada);
     cargarUnidades(_asignaturaPortada);
   } else {
     pintarCabecera(
@@ -299,14 +300,62 @@ function crearFilaSesionPortada(sesion, asignatura, unidad) {
 }
 
 /* ============================================================
+   "Continuar" dentro de cada asignatura
+   ============================================================
+   Desde el 04/10/2026 cada asignatura recuerda su propia última
+   sesión (ver js/asignaturas.js): los grupos llevan dos asignaturas a
+   la vez y un día toca una y al siguiente la otra. Va entre la
+   cabecera y las unidades; si nunca ha abierto ninguna sesión de esta
+   asignatura, no sale nada. */
+
+function pintarContinuarAsignatura(asignatura) {
+  const ultima = leerUltimaSesion(asignatura.id);
+  const indice = document.getElementById('indice-portada');
+  if (!ultima || !indice) return;
+
+  const caja = document.createElement('section');
+  caja.className = 'continuar-asig';
+  caja.setAttribute('aria-label', 'Sigue donde lo dejaste');
+
+  const texto = document.createElement('div');
+  texto.className = 'continuar-asig__texto';
+
+  const cuando = document.createElement('p');
+  cuando.className = 'continuar-asig__cuando';
+  cuando.textContent = _cuandoLoDejaste(ultima.fecha);
+
+  const titulo = document.createElement('p');
+  titulo.className = 'continuar-asig__titulo';
+  titulo.textContent = ultima.titulo;
+
+  texto.appendChild(cuando);
+  texto.appendChild(titulo);
+  if (ultima.unidad) {
+    const unidad = document.createElement('p');
+    unidad.className = 'continuar-asig__unidad';
+    unidad.textContent = ultima.unidad;
+    texto.appendChild(unidad);
+  }
+
+  const boton = document.createElement('a');
+  boton.className = 'boton-continuar';
+  boton.href = urlUltimaSesion(ultima);
+  boton.textContent = 'Continuar →';
+
+  caja.appendChild(texto);
+  caja.appendChild(boton);
+  indice.before(caja);
+}
+
+/* ============================================================
    La terminal de la cabecera
    ============================================================
    Ocupa la derecha de la portada general y hace dos papeles según
    quién llegue:
 
-   - Si ya ha abierto alguna sesión en este navegador, enseña cuál y
-     cuándo, y debajo (fuera de la terminal, como botón de verdad) el
-     "Continuar".
+   - Si ya ha abierto alguna sesión en este navegador, enseña la última
+     de CADA asignatura (la más reciente arriba), y debajo (fuera de la
+     terminal, como botones de verdad) un "Continuar" por asignatura.
    - Si es la primera vez, enseña un ls de las asignaturas. Así la
      cabecera nunca se queda coja por un lado.
 
@@ -318,15 +367,14 @@ function pintarTerminal() {
   const caja = document.getElementById('portada-terminal');
   if (!caja) return;
 
-  const ultima = leerUltimaSesion();
-  const asignatura = ultima ? asignaturaPorId(ultima.asignatura) : null;
+  const ultimas = leerUltimasSesiones();
 
-  caja.appendChild(_marcoTerminal(ultima, asignatura));
-  if (ultima && asignatura) caja.appendChild(_accionesTerminal(ultima, asignatura));
+  caja.appendChild(_marcoTerminal(ultimas));
+  if (ultimas.length) caja.appendChild(_accionesTerminal(ultimas));
   caja.hidden = false;
 }
 
-function _marcoTerminal(ultima, asignatura) {
+function _marcoTerminal(ultimas) {
   const marco = document.createElement('div');
   marco.className = 'terminal';
 
@@ -342,25 +390,33 @@ function _marcoTerminal(ultima, asignatura) {
   ruta.className = 'terminal__ruta';
   ruta.setAttribute('translate', 'no');
   ruta.classList.add('notranslate');
-  ruta.textContent = asignatura
-    ? `alumno@profesorjamon: ~/${asignatura.id}`
+  ruta.textContent = ultimas.length === 1
+    ? `alumno@profesorjamon: ~/${ultimas[0].asignatura}`
     : 'alumno@profesorjamon: ~';
   barra.appendChild(ruta);
   marco.appendChild(barra);
 
   const cuerpo = document.createElement('div');
   cuerpo.className = 'terminal__cuerpo';
-  cuerpo.appendChild(_lineaOrden(ultima ? 'ultima-sesion' : 'ls asignaturas/'));
+  cuerpo.appendChild(_lineaOrden(ultimas.length ? 'ultima-sesion' : 'ls asignaturas/'));
 
-  if (ultima && asignatura) {
-    cuerpo.appendChild(_lineaSalida(_cuandoLoDejaste(ultima.fecha), 'sale'));
+  if (ultimas.length) {
+    ultimas.forEach(ultima => {
+      const asignatura = asignaturaPorId(ultima.asignatura);
+      const bloque = document.createElement('div');
+      bloque.className = 'terminal__entrada sale2';
 
-    const sesion = document.createElement('p');
-    sesion.className = 'terminal__sesion sale2';
-    sesion.textContent = ultima.titulo;
-    cuerpo.appendChild(sesion);
+      const cabeza = _lineaSalida(`${_nombreCorto(asignatura.id)} · ${_cuandoLoDejaste(ultima.fecha)}`, '');
+      bloque.appendChild(cabeza);
 
-    cuerpo.appendChild(_lineaSalida(ultima.unidad || asignatura.nombre, 'sale3'));
+      const sesion = document.createElement('p');
+      sesion.className = 'terminal__sesion';
+      sesion.textContent = ultima.titulo;
+      bloque.appendChild(sesion);
+
+      if (ultima.unidad) bloque.appendChild(_lineaSalida(ultima.unidad, 'terminal__unidad'));
+      cuerpo.appendChild(bloque);
+    });
   } else {
     const lista = _lineaSalida(ASIGNATURAS.map(a => a.id).join('   '), 'sale');
     lista.setAttribute('translate', 'no');
@@ -418,23 +474,31 @@ function _lineaPrompt() {
   return linea;
 }
 
-function _accionesTerminal(ultima, asignatura) {
+function _nombreCorto(id) {
+  const a = asignaturaPorId(id);
+  return a ? (a.corto || a.nombre) : id;
+}
+
+function _accionesTerminal(ultimas) {
   const fila = document.createElement('div');
   fila.className = 'terminal__acciones sale3';
 
-  const boton = document.createElement('a');
-  boton.className = 'boton-continuar';
-  /* Con ?a= además de ?id=: así la sesión se localiza a la primera,
-     sin recorrer las demás asignaturas. */
-  boton.href = `${urlSesion(ultima.id)}&a=${encodeURIComponent(asignatura.id)}`;
-  boton.textContent = 'Continuar →';
+  /* Con una sola asignatura, "Continuar →" a secas, como siempre. Con
+     varias, cada botón dice cuál: si no, no se sabe cuál es cuál. */
+  ultimas.forEach(ultima => {
+    const boton = document.createElement('a');
+    boton.className = 'boton-continuar';
+    boton.href = urlUltimaSesion(ultima);
+    boton.textContent = ultimas.length === 1
+      ? 'Continuar →'
+      : `Continuar ${_nombreCorto(ultima.asignatura)} →`;
+    fila.appendChild(boton);
+  });
 
   const otra = document.createElement('a');
   otra.className = 'terminal__otra';
   otra.href = '#indice-portada';
   otra.textContent = 'o empieza otra cosa ↓';
-
-  fila.appendChild(boton);
   fila.appendChild(otra);
   return fila;
 }

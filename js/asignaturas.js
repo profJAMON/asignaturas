@@ -21,6 +21,8 @@ const ASIGNATURAS = [
   {
     id: 'operaciones',
     nombre: 'Operaciones Básicas',
+    /* Nombre corto, para donde no cabe el largo (botones Continuar). */
+    corto: 'Operaciones',
     descripcion: 'Aprendes a manejar el ordenador, cómo funciona Internet por dentro y los sistemas operativos, y al final creas tu propia web con HTML y CSS.',
     curso: 'data/curso-operaciones.json',
     base: 'data/operaciones'
@@ -28,6 +30,7 @@ const ASIGNATURAS = [
   {
     id: 'instalaciones',
     nombre: 'Instalación y mantenimiento de redes',
+    corto: 'Instalaciones',
     descripcion: 'Cómo se monta la red de una oficina: cables, dispositivos, direcciones y seguridad en el taller.',
     curso: 'data/curso-instalaciones.json',
     base: 'data/instalaciones'
@@ -35,6 +38,7 @@ const ASIGNATURAS = [
   {
     id: 'proyecto',
     nombre: 'Proyecto Intermodular',
+    corto: 'Proyecto',
     descripcion: 'Construyes y publicas una web por parejas con HTML, CSS y JavaScript, conectando lo aprendido en las demás asignaturas.',
     curso: 'data/curso-proyecto.json',
     base: 'data/proyecto'
@@ -158,41 +162,85 @@ function urlSesion(sesionId) {
 }
 
 /* ============================================================
-   La última sesión abierta
+   La última sesión abierta, UNA POR ASIGNATURA
    ============================================================
-   La guarda tema.js al abrir una sesión y la lee la portada general
-   para ofrecer "sigue donde lo dejaste". Vive aquí porque es el único
+   La guarda tema.js al abrir una sesión. La leen la portada general
+   (una línea por asignatura en la terminal) y la portada de cada
+   asignatura (su propio "Continuar"). Vive aquí porque es el único
    archivo que cargan las tres páginas.
 
-   Misma convención que el resto de lo que se recuerda del alumno
-   (ob-aspecto, ob-idioma, ob-grupo-*): clave con prefijo "ob-" y todo
-   envuelto en try/catch, porque en modo incógnito o con las cookies
-   bloqueadas localStorage lanza excepción y la web tiene que seguir
-   funcionando igual.
+   Desde el 04/10/2026 se guarda una por asignatura: los grupos llevan
+   dos asignaturas a la vez (un día una, al siguiente la otra) y con
+   una sola se pisaban.
+
+   Formato de ob-ultimas-sesiones:
+     { "<id asignatura>": { id, titulo, unidad, fecha, t }, ... }
+   t = Date.now(), solo para ordenar las de un mismo día.
+
+   La clave antigua ob-ultima-sesion (una sola sesión) se lee una vez
+   para no perder lo que ya tenía el alumno, y se borra.
+
+   Misma convención que el resto de lo que se recuerda del alumno:
+   prefijo "ob-" y todo envuelto en try/catch, porque en modo incógnito
+   o con las cookies bloqueadas localStorage lanza excepción y la web
+   tiene que seguir funcionando igual.
    ============================================================ */
 
-const CLAVE_ULTIMA_SESION = 'ob-ultima-sesion';
+const CLAVE_ULTIMAS_SESIONES = 'ob-ultimas-sesiones';
+const CLAVE_ULTIMA_SESION_ANTIGUA = 'ob-ultima-sesion';
 
-function guardarUltimaSesion(datos) {
+function _leerMapaUltimas() {
+  let mapa = {};
   try {
-    localStorage.setItem(CLAVE_ULTIMA_SESION, JSON.stringify(datos));
+    const crudo = localStorage.getItem(CLAVE_ULTIMAS_SESIONES);
+    if (crudo) mapa = JSON.parse(crudo) || {};
+    const antiguo = localStorage.getItem(CLAVE_ULTIMA_SESION_ANTIGUA);
+    if (antiguo) {
+      const viejo = JSON.parse(antiguo);
+      if (viejo && viejo.asignatura && viejo.id && !mapa[viejo.asignatura]) {
+        const { asignatura, ...resto } = viejo;
+        mapa[asignatura] = { ...resto, t: 0 };
+      }
+      localStorage.removeItem(CLAVE_ULTIMA_SESION_ANTIGUA);
+      localStorage.setItem(CLAVE_ULTIMAS_SESIONES, JSON.stringify(mapa));
+    }
+  } catch (e) { /* sin memoria, pero funciona */ }
+  return (mapa && typeof mapa === 'object') ? mapa : {};
+}
+
+/* datos = { id, titulo, asignatura, unidad, fecha } */
+function guardarUltimaSesion(datos) {
+  if (!datos || !datos.asignatura) return;
+  try {
+    const mapa = _leerMapaUltimas();
+    const { asignatura, ...resto } = datos;
+    mapa[asignatura] = { ...resto, t: Date.now() };
+    localStorage.setItem(CLAVE_ULTIMAS_SESIONES, JSON.stringify(mapa));
   } catch (e) { /* sin memoria, pero funciona */ }
 }
 
-/* Devuelve { id, titulo, asignatura } o null. Comprueba que la
-   asignatura siga existiendo: si se borra del sitio, lo guardado
-   apunta a ninguna parte y es mejor no ofrecerlo. */
-function leerUltimaSesion() {
-  try {
-    const crudo = localStorage.getItem(CLAVE_ULTIMA_SESION);
-    if (!crudo) return null;
-    const datos = JSON.parse(crudo);
-    if (!datos || !datos.id || !datos.titulo) return null;
-    if (!asignaturaPorId(datos.asignatura)) return null;
-    return datos;
-  } catch (e) {
-    return null;
-  }
+/* La última sesión de UNA asignatura: { id, titulo, asignatura,
+   unidad, fecha } o null. */
+function leerUltimaSesion(idAsignatura) {
+  const datos = _leerMapaUltimas()[idAsignatura];
+  if (!datos || !datos.id || !datos.titulo) return null;
+  if (!asignaturaPorId(idAsignatura)) return null;
+  return { ...datos, asignatura: idAsignatura };
+}
+
+/* Todas, la más reciente primero. Se saltan las de asignaturas que ya
+   no existen: apuntan a ninguna parte y es mejor no ofrecerlas. */
+function leerUltimasSesiones() {
+  return Object.keys(_leerMapaUltimas())
+    .map(leerUltimaSesion)
+    .filter(Boolean)
+    .sort((a, b) => (b.fecha || '').localeCompare(a.fecha || '') || (b.t || 0) - (a.t || 0));
+}
+
+/* El enlace a la sesión guardada. Con ?a= además de ?id=: así la
+   sesión se localiza a la primera, sin recorrer las demás asignaturas. */
+function urlUltimaSesion(ultima) {
+  return `${urlSesion(ultima.id)}&a=${encodeURIComponent(ultima.asignatura)}`;
 }
 
 /* Busca en qué asignatura y en qué unidad vive una sesión.

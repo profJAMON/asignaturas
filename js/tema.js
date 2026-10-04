@@ -71,7 +71,8 @@ async function cargarTema() {
     document.getElementById('tema-titulo').textContent = pintarCabeceraSesion(tema.titulo);
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 
-    /* Para el "sigue donde lo dejaste" de la portada general.
+    /* Para el "sigue donde lo dejaste": uno por asignatura, en la
+       portada general y en la de cada asignatura.
        Ver js/asignaturas.js y js/main.js. */
     guardarUltimaSesion({
       id,
