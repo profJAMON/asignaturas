@@ -110,3 +110,20 @@ function partirTituloSesion(titulo) {
   if (!m) return { prefijo: '', numero: '', nombre: titulo || '' };
   return { prefijo: `Sesión ${m[1]} — `, numero: m[1], nombre: m[2] };
 }
+
+/* Escena de la cabecera (03/10/2026): pistas de circuito al fondo y
+   el dibujo de la unidad (o de la asignatura) enorme y tenue en la
+   esquina. Decoración pura: aria-hidden. Los colores van en el CSS
+   (.card__escena), aquí solo se monta el HTML. */
+function pintarEscenaCabecera(cabecera, iconoSvg) {
+  if (!cabecera) return;
+  let escena = cabecera.querySelector(':scope > .card__escena');
+  if (!escena) {
+    escena = document.createElement('span');
+    escena.className = 'card__escena';
+    escena.setAttribute('aria-hidden', 'true');
+    escena.innerHTML = '<span class="card__circuito"></span><span class="card__marca-agua"></span>';
+    cabecera.prepend(escena);
+  }
+  escena.querySelector('.card__marca-agua').innerHTML = iconoSvg || '';
+}

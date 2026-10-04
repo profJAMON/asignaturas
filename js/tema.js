@@ -65,6 +65,9 @@ async function cargarTema() {
     document.title = `${tema.titulo} · ${asignatura.nombre}`;
     document.getElementById('tema-unidad').textContent = unidadDeLaSesion.titulo;
     pintarAsignaturaCabecera(asignatura);
+    if (typeof pintarEscenaCabecera === 'function') {
+      pintarEscenaCabecera(document.querySelector('.card--sesion'), iconoDeUnidad(unidadDeLaSesion.id, asignatura.id));
+    }
     document.getElementById('tema-titulo').textContent = pintarCabeceraSesion(tema.titulo);
     document.getElementById('tema-descripcion').textContent = tema.descripcion || '';
 

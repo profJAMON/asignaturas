@@ -54,6 +54,7 @@ function pintarIconoCabecera(idAsignatura) {
   icono.setAttribute('aria-hidden', 'true');
   icono.innerHTML = iconoDeAsignatura(idAsignatura);
   cabecera.prepend(icono);
+  if (typeof pintarEscenaCabecera === 'function') pintarEscenaCabecera(cabecera, iconoDeAsignatura(idAsignatura));
 }
 
 function pintarCabecera(badge, titulo, descripcion, conVolver) {

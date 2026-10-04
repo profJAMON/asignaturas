@@ -7,7 +7,7 @@
    Jerarquía de encabezados de sesión: numerada y con sangría por subsección.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&family=Patrick+Hand&family=Anton&display=swap');
 
 :root {
   color-scheme: dark;
@@ -107,6 +107,42 @@
   --fila-alterna: rgba(159, 179, 200, 0.05);
   --papel-linea: rgba(159, 179, 200, 0.13);
   --papel-margen: rgba(255, 77, 157, 0.5);
+
+  /* 03/10/2026 (2): escena de las cabeceras y franjas de los apartados. */
+  --circuito: rgba(34, 211, 238, 0.45);
+  --glow-cabecera: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 0 26px -10px var(--color-activa, var(--accent));
+  --neblina: 16%;
+  --banda: rgba(34, 211, 238, 0.14);
+
+  /* Hojas de cuaderno: ejercicios de pantalla (cuadrícula) y preguntas
+     a mano (rayas). Son papel en los dos temas, igual que las figuras
+     son pizarra en los dos: mismos valores en claro y en oscuro. */
+  --hoja-bg: #fbf7ec;
+  --hoja-bg-2: #efe7d3;
+  --hoja-borde: #d6cbb2;
+  --hoja-texto: #23201a;
+  --hoja-dim: #4a4438;
+  --hoja-faint: #6b6353;
+  --hoja-tinta: #1d4fb0;
+  --hoja-tinta-2: #163d8a;
+  --hoja-rojo: #b0185a;
+  --hoja-verde: #2f6b12;
+  --hoja-cuadro: rgba(29, 79, 176, 0.10);
+  --hoja-linea: rgba(29, 79, 176, 0.20);
+  --hoja-margen: rgba(200, 30, 80, 0.45);
+  --hoja-fila: rgba(29, 79, 176, 0.05);
+  --cinta-actividad: rgba(34, 211, 238, 0.55);
+  --cinta-papel: rgba(255, 77, 157, 0.45);
+
+  --font-titulo: 'Chakra Petch', 'JetBrains Mono', ui-monospace, monospace;
+  --font-mano: 'Patrick Hand', 'Comic Sans MS', cursive;
+  --font-cartel: 'Anton', Impact, 'Arial Narrow', sans-serif;
+
+  /* Tarjetas de asignatura de la portada como bloque macizo (03/10/2026). */
+  --tile-mezcla: 88%;
+  --tile-fondo: #0a0e14;
+  --tile-texto: #0a0e14;
+  --tile-texto-suave: rgba(10, 14, 20, 0.72);
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -209,6 +245,33 @@
   --fila-alterna: rgba(14, 116, 144, 0.05);
   --papel-linea: rgba(14, 116, 144, 0.16);
   --papel-margen: rgba(164, 18, 106, 0.4);
+
+  --circuito: rgba(14, 116, 144, 0.30);
+  --glow-cabecera: 0 8px 22px -14px var(--color-activa, var(--accent));
+  --neblina: 9%;
+  --banda: rgba(14, 116, 144, 0.10);
+
+  --hoja-bg: #fbf7ec;
+  --hoja-bg-2: #efe7d3;
+  --hoja-borde: #d6cbb2;
+  --hoja-texto: #23201a;
+  --hoja-dim: #4a4438;
+  --hoja-faint: #6b6353;
+  --hoja-tinta: #1d4fb0;
+  --hoja-tinta-2: #163d8a;
+  --hoja-rojo: #b0185a;
+  --hoja-verde: #2f6b12;
+  --hoja-cuadro: rgba(29, 79, 176, 0.10);
+  --hoja-linea: rgba(29, 79, 176, 0.20);
+  --hoja-margen: rgba(200, 30, 80, 0.45);
+  --hoja-fila: rgba(29, 79, 176, 0.05);
+  --cinta-actividad: rgba(14, 116, 144, 0.35);
+  --cinta-papel: rgba(164, 18, 106, 0.28);
+
+  --tile-mezcla: 100%;
+  --tile-fondo: #ffffff;
+  --tile-texto: #ffffff;
+  --tile-texto-suave: rgba(255, 255, 255, 0.85);
 }
 
 /* ============================================================
@@ -3541,4 +3604,264 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   :root[data-pagina="portada"] .portada-terminal { order: 3; margin: 2rem 0 0; }
   :root[data-pagina="portada"] #portada-semana { order: 4; }
   :root[data-pagina="portada"] .main-content > .pie { order: 5; }
+}
+
+/* ============================================================
+   Versión elegida por Carles (03/10/2026, tarde)
+   ============================================================
+   Sobre lo de arriba: cabeceras con escena y apartados con franja de
+   luz (prototipo C) y ejercicios y preguntas como hojas de cuaderno
+   (prototipo B). Letra de titular: Chakra Petch.
+   ============================================================ */
+
+/* ---- Letra de titular ---- */
+.card h1, .leccion h2, .unidad-card__titulo, .asignatura-card__titulo,
+.barra__marca, .card .tema-asignatura {
+  font-family: var(--font-titulo);
+}
+.card h1 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); }
+.leccion h2 { font-size: 1.3rem; }
+
+/* ---- Ambiente: neblina del color de la asignatura arriba ---- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(60rem 26rem at 70% -6rem, color-mix(in srgb, var(--color-activa, var(--accent)) var(--neblina), transparent), transparent 70%);
+}
+
+/* ---- Cabeceras de sesión y de asignatura: escena ---- */
+.card--sesion,
+.card--asignatura {
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--color-activa, var(--accent)) 55%, var(--border));
+  background: linear-gradient(120deg, color-mix(in srgb, var(--color-activa, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 60%);
+  /* Luz, no separación (como --glow-sesion). */
+  box-shadow: var(--glow-cabecera);
+}
+.card--sesion::before, .card--asignatura::before { top: 0; left: 0; }
+.card--sesion::after, .card--asignatura::after { right: 0; bottom: 0; }
+.card__escena {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* En la cabecera de asignatura (grid), un hijo absoluto con columna
+   asignada se coloca dentro de esa columna: aquí tiene que ocupar la
+   tarjeta entera. */
+.card--asignatura > .card__escena { grid-column: auto; grid-row: auto; justify-self: stretch; }
+.card--sesion > :not(.card__escena),
+.card--asignatura > :not(.card__escena) { position: relative; z-index: 1; }
+.card__circuito {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 440px;
+  height: 100%;
+  background-color: var(--circuito);
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M0 30h60l20 20h60l20-20h60M40 120V80l20-20h40M150 0v30M180 120V90l20-20h20'/%3E%3Ccircle cx='60' cy='30' r='3'/%3E%3Ccircle cx='160' cy='50' r='3'/%3E%3Ccircle cx='100' cy='60' r='3'/%3E%3Ccircle cx='150' cy='30' r='3'/%3E%3C/svg%3E"), linear-gradient(90deg, transparent, #000 60%);
+  -webkit-mask-size: 440px auto, 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: right top, 0 0;
+  -webkit-mask-composite: source-in;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M0 30h60l20 20h60l20-20h60M40 120V80l20-20h40M150 0v30M180 120V90l20-20h20'/%3E%3Ccircle cx='60' cy='30' r='3'/%3E%3Ccircle cx='160' cy='50' r='3'/%3E%3Ccircle cx='100' cy='60' r='3'/%3E%3Ccircle cx='150' cy='30' r='3'/%3E%3C/svg%3E"), linear-gradient(90deg, transparent, #000 60%);
+  mask-size: 440px auto, 100% 100%;
+  mask-repeat: no-repeat;
+  mask-position: right top, 0 0;
+  mask-composite: intersect;
+}
+.card__marca-agua {
+  position: absolute;
+  right: -1.5rem;
+  bottom: -2.5rem;
+  color: var(--color-activa, var(--accent));
+  opacity: 0.16;
+  transform: rotate(-12deg);
+}
+.card__marca-agua svg { width: 15rem; height: 15rem; display: block; }
+.card--sesion .numero-sesion { -webkit-text-stroke-color: var(--color-activa, var(--accent)); }
+.card--sesion h1, .card--asignatura h1 {
+  text-shadow: 0 0 24px color-mix(in srgb, var(--color-activa, var(--accent)) 45%, transparent);
+}
+:root[data-tema="claro"] .card--sesion h1,
+:root[data-tema="claro"] .card--asignatura h1 { text-shadow: none; }
+
+@media (max-width: 640px) {
+  .card__circuito { width: 280px; -webkit-mask-size: 280px auto, 100% 100%; mask-size: 280px auto, 100% 100%; }
+  .card__marca-agua { opacity: 0.09; right: -2rem; bottom: -2rem; }
+  .card__marca-agua svg { width: 9rem; height: 9rem; }
+}
+
+/* ---- Apartados: franja de luz que separa el título del texto ---- */
+.leccion h2 {
+  border-top: none;
+  margin-top: 2.6rem;
+  padding: 0.55rem 0.9rem;
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  background: linear-gradient(90deg, var(--banda), transparent 75%);
+  text-shadow: var(--glow-suave);
+}
+.leccion h2:first-child { padding-top: 0.55rem; }
+
+/* ---- Hojas de cuaderno ----
+   Dentro de la hoja se redefinen los colores de siempre (--text,
+   --accent…) con los de papel, así que tests, relacionar y
+   generadores se pintan solos con tinta sobre papel. */
+.actividad,
+.leccion .papel {
+  --bg: #ffffff;
+  --surface: var(--hoja-bg);
+  --surface-2: var(--hoja-bg-2);
+  --border: var(--hoja-borde);
+  --text: var(--hoja-texto);
+  --text-dim: var(--hoja-dim);
+  --text-faint: var(--hoja-faint);
+  --accent: var(--hoja-tinta);
+  --accent-dim: var(--hoja-tinta-2);
+  --accent-warm: var(--hoja-rojo);
+  --accent-lima: var(--hoja-verde);
+  --code-inline: var(--hoja-verde);
+  --boton-texto: #ffffff;
+  --fila-alterna: var(--hoja-fila);
+  --glow-suave: none;
+  color: var(--text);
+}
+
+/* Ejercicio de pantalla: hoja cuadriculada con una cinta de color
+   (cian = actividad) que lleva la etiqueta de tipo. */
+.actividad {
+  position: relative;
+  border: 1px solid var(--hoja-borde);
+  border-radius: 4px;
+  padding-top: 2rem;
+  background-color: var(--hoja-bg);
+  background-image:
+    linear-gradient(var(--hoja-cuadro) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hoja-cuadro) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.actividad__tipo {
+  position: absolute;
+  top: -0.55rem;
+  left: 1.2rem;
+  margin: 0;
+  padding: 0.3rem 0.9rem;
+  border: none;
+  border-radius: 2px;
+  background: var(--cinta-actividad);
+  color: var(--hoja-texto);
+  font-weight: 700;
+  transform: rotate(-2deg);
+}
+.actividad__titulo,
+.leccion .actividad__titulo {
+  font-family: var(--font-mano);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--hoja-tinta);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* Preguntas a mano: hoja de rayas con margen rojo y agujeros. */
+.leccion .papel {
+  --papel-linea: var(--hoja-linea);
+  --papel-margen: var(--hoja-margen);
+}
+.leccion .papel,
+.leccion .papel--extra {
+  background-color: var(--hoja-bg);
+  border-color: var(--hoja-rojo);
+  border-radius: 4px;
+}
+.leccion .papel--extra { border-style: dashed; }
+/* Los agujeros parecían viñetas de lista sobre el papel claro: fuera. */
+.leccion .papel::before { display: none; }
+.leccion .papel__titulo {
+  font-family: var(--font-mano);
+  font-size: 1.3rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--hoja-rojo);
+}
+
+@media print {
+  body::after, .card__escena { display: none !important; }
+  .card--sesion, .card--asignatura { box-shadow: none; background: none; }
+  .actividad { background-image: none; }
+}
+
+/* ============================================================
+   Cuatro cosas del prototipo D, en suave (03/10/2026, 17:16)
+   ============================================================
+   Tarjetas de asignatura de la portada en bloque macizo, titular de
+   la portada en letra de cartel (Anton, solo ahí), etiquetas y
+   botones en píldora, y menú de arriba en mayúsculas espaciadas.
+   ============================================================ */
+
+/* 1. Tarjetas de asignatura de la portada: bloque macizo de su color. */
+:root[data-pagina="portada"] .asignatura-card {
+  background: color-mix(in srgb, var(--color-asig) var(--tile-mezcla), var(--tile-fondo));
+  border-color: transparent;
+  border-radius: 14px;
+  color: var(--tile-texto);
+}
+:root[data-pagina="portada"] .asignatura-card:hover {
+  background: color-mix(in srgb, var(--color-asig) 100%, var(--tile-fondo));
+}
+:root[data-pagina="portada"] .asignatura-card .asignatura-card__titulo,
+:root[data-pagina="portada"] .asignatura-card:hover .asignatura-card__titulo {
+  color: var(--tile-texto);
+  font-family: var(--font-cartel);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 7vw, 1.9rem);
+  line-height: 1.02;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+:root[data-pagina="portada"] .asignatura-card__descripcion { color: var(--tile-texto-suave); font-weight: 500; }
+:root[data-pagina="portada"] .asignatura-card__meta { color: var(--tile-texto-suave); }
+:root[data-pagina="portada"] .asignatura-card__icono { color: var(--tile-texto); }
+:root[data-pagina="portada"] .asignatura-card__numero {
+  color: var(--tile-texto);
+  -webkit-text-stroke: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+}
+
+/* 2. Titular enorme de la portada general, en letra de cartel. */
+:root[data-pagina="portada"] .main-content > .card h1 {
+  font-family: var(--font-cartel);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 10vw, 6.4rem);
+  line-height: 0.95;
+  overflow-wrap: break-word;
+  letter-spacing: 0.01em;
+}
+
+/* 3. Etiquetas y botones en píldora. */
+.badge, .grupo, .boton, .generador__boton-otra, .diapos__boton, .diapos__ver,
+.barra__marca--asignatura, .boton-continuar, .unidad__chip {
+  border-radius: 999px;
+}
+.card .badge--fecha { padding: 0.3rem 0.85rem; }
+.grupo { padding: 0.35rem 0.75rem; }
+.boton { padding: 0.65rem 1.4rem; }
+
+/* 4. Menú de arriba en mayúsculas mono, más espaciado. */
+.barra__enlace {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+/* Móviles muy estrechos: si Anton no llega a cargar, la letra de
+   reserva es más ancha y «ACTIVIDADES_» se salía unos píxeles. */
+@media (max-width: 360px) {
+  :root[data-pagina="portada"] .main-content > .card h1 { font-size: 2.1rem; }
 }
