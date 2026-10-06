@@ -169,6 +169,8 @@ function pintarLeccion(contenidoHtml) {
   const contenedor = document.getElementById('leccion-contenido');
   contenedor.innerHTML = contenidoHtml;
   agruparSubsecciones(contenedor);
+  /* Actividades, retos y ejercicios resaltados + enlace desde la pregunta. */
+  marcarTareas(contenedor);
   /* «📋 Cómo trabajar esta sesión» en pasos con dibujo. */
   pintarComoTrabajar(contenedor);
   /* Carruseles de diapositivas paso a paso. Ver js/diapos.js. */
@@ -234,6 +236,41 @@ function pintarComoTrabajar(raiz) {
   lista.replaceWith(tira);
   mas.appendChild(lista);
   tira.after(mas);
+}
+
+/* ============================================================
+   Actividades que se encuentran (06/10/2026)
+   ============================================================
+   Los alumnos no encontraban la «Actividad 2» de la explicación: era
+   un h3 gris como cualquier otro, y muchos esconden el índice de la
+   derecha. Ahora todo h3 que empieza por Actividad, Reto o Ejercicio
+   (con número) se pinta como bloque de actividad (cian), y en las
+   preguntas a mano «(Actividad 2)» lleva a él. Sin tocar el HTML de
+   ninguna sesión. */
+const _TAREA = /^(Actividad|Reto|Ejercicio)\s+(\d+)\b/i;
+
+function marcarTareas(raiz) {
+  const destinos = {};
+  raiz.querySelectorAll('h3').forEach(h => {
+    const m = h.textContent.trim().match(_TAREA);
+    if (!m) return;
+    const clave = `${m[1].toLowerCase()}-${m[2]}`;
+    h.classList.add('h3--tarea');
+    if (h.parentElement.classList.contains('subseccion')) h.parentElement.classList.add('subseccion--tarea');
+    if (!h.id) h.id = clave;
+    if (!destinos[clave]) destinos[clave] = h.id;
+  });
+  raiz.querySelectorAll('.papel strong').forEach(s => {
+    const m = s.textContent.trim().match(/^\((Actividad|Reto|Ejercicio)\s+(\d+)\)$/i);
+    const id = m && destinos[`${m[1].toLowerCase()}-${m[2]}`];
+    if (!id || s.closest('a')) return;
+    const a = document.createElement('a');
+    a.href = `#${id}`;
+    a.className = 'papel__tarea';
+    a.title = 'Ir a la actividad en la explicación';
+    s.replaceWith(a);
+    a.appendChild(s);
+  });
 }
 
 function agruparSubsecciones(raiz) {

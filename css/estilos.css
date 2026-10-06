@@ -101,6 +101,17 @@
   --diapo-caja: var(--surface-2);
   --diapo-caja-borde: var(--border);
   --diapo-resalte: rgba(255, 77, 157, 0.14);
+  /* 06/10/2026: cristal de los mandos de las diapositivas y la luz de
+     neón que tienen detrás (para que el cristal se note). */
+  --cristal-fondo: rgba(255, 255, 255, 0.07);
+  --cristal-fondo-hover: rgba(255, 255, 255, 0.15);
+  --cristal-borde: rgba(255, 255, 255, 0.2);
+  --cristal-brillo: rgba(255, 255, 255, 0.3);
+  --cristal-opaco: #1b2430;
+  --cristal-texto: #f3f3f3;
+  --cristal-luz-1: rgba(34, 211, 238, 0.42);
+  --cristal-luz-2: rgba(255, 77, 157, 0.38);
+  --cristal-trama: rgba(255, 255, 255, 0.07);
 
   /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
      de las preguntas a mano (.papel). */
@@ -132,6 +143,16 @@
   --hoja-margen: rgba(200, 30, 80, 0.45);
   --hoja-fila: rgba(29, 79, 176, 0.05);
   --cinta-actividad: rgba(34, 211, 238, 0.55);
+  /* 06/10/2026: fondo del bloque de una actividad de la explicación. */
+  --tarea-fondo: rgba(34, 211, 238, 0.06);
+  --tarea-texto: #ffffff;
+  /* 06/10/2026: «Ver respuesta» / pistas en píldora de cristal con
+     luz lima detrás. */
+  --cristal-pista-fondo: rgba(255, 255, 255, 0.06);
+  --cristal-pista-borde: rgba(166, 255, 77, 0.38);
+  --cristal-pista-brillo: rgba(255, 255, 255, 0.22);
+  --cristal-pista-luz: rgba(166, 255, 77, 0.30);
+  --cristal-pista-trama: rgba(166, 255, 77, 0.10);
   --cinta-papel: rgba(255, 77, 157, 0.45);
 
   --font-titulo: 'Chakra Petch', 'JetBrains Mono', ui-monospace, monospace;
@@ -241,6 +262,17 @@
   --diapo-caja: #252526;
   --diapo-caja-borde: #3c3c3c;
   --diapo-resalte: rgba(255, 122, 184, 0.16);
+  /* Cristal: las diapositivas siguen siendo pizarra en claro, así que
+     el cristal es casi el mismo; la luz, con los acentos de la pizarra. */
+  --cristal-fondo: rgba(255, 255, 255, 0.08);
+  --cristal-fondo-hover: rgba(255, 255, 255, 0.16);
+  --cristal-borde: rgba(255, 255, 255, 0.22);
+  --cristal-brillo: rgba(255, 255, 255, 0.3);
+  --cristal-opaco: #2d2d30;
+  --cristal-texto: #f3f3f3;
+  --cristal-luz-1: rgba(79, 193, 255, 0.4);
+  --cristal-luz-2: rgba(255, 122, 184, 0.36);
+  --cristal-trama: rgba(255, 255, 255, 0.07);
 
   --fila-alterna: rgba(14, 116, 144, 0.05);
   --papel-linea: rgba(14, 116, 144, 0.16);
@@ -266,6 +298,13 @@
   --hoja-margen: rgba(200, 30, 80, 0.45);
   --hoja-fila: rgba(29, 79, 176, 0.05);
   --cinta-actividad: rgba(14, 116, 144, 0.35);
+  --tarea-fondo: rgba(14, 116, 144, 0.06);
+  --tarea-texto: #0b1220;
+  --cristal-pista-fondo: rgba(255, 255, 255, 0.55);
+  --cristal-pista-borde: rgba(63, 98, 18, 0.35);
+  --cristal-pista-brillo: rgba(255, 255, 255, 0.9);
+  --cristal-pista-luz: rgba(101, 163, 13, 0.28);
+  --cristal-pista-trama: rgba(63, 98, 18, 0.12);
   --cinta-papel: rgba(164, 18, 106, 0.28);
 
   --tile-mezcla: 100%;
@@ -1387,6 +1426,10 @@ footer.pie {
   font-size: 0.85rem;
   color: var(--accent-lima);
 }
+/* list-style: none quita el triángulo nativo (::marker) de Chrome y
+   Firefox; sin él salían dos flechas, la nativa y la del ::before
+   (06/10/2026). El -webkit- es para Safari. */
+.leccion details summary { list-style: none; }
 .leccion details summary::-webkit-details-marker { display: none; }
 .leccion details summary::before { content: "▸ "; }
 .leccion details[open] summary::before { content: "▾ "; }
@@ -3905,4 +3948,186 @@ body::after {
    reserva es más ancha y «ACTIVIDADES_» se salía unos píxeles. */
 @media (max-width: 360px) {
   :root[data-pagina="portada"] .main-content > .card h1 { font-size: 2.1rem; }
+}
+
+/* ============================================================
+   Diapositivas: mandos de cristal y transición de lente (06/10/2026)
+   ============================================================
+   Solo en mandos (‹ N/M ›, puntos, «Ver todas»), nunca en zonas de
+   texto. El cristal solo se nota si detrás hay color y forma: por eso
+   los mandos llevan detrás una luz de neón (cian a la izquierda,
+   magenta a la derecha) con una trama fina que el cristal desenfoca.
+   La luz es el ::before de .diapos__mandos; .diapos aísla su capa para
+   que ese z-index -1 quede encima de la pizarra y debajo de los mandos.
+   Sin backdrop-filter, o con «reducir transparencia», los botones son
+   opacos como antes. */
+.leccion .diapos { isolation: isolate; }
+.diapos__mandos { position: relative; }
+.diapos__mandos::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -0.6rem -0.4rem -2.6rem;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse 34% 75% at 14% 45%, var(--cristal-luz-1), transparent 72%),
+    radial-gradient(ellipse 34% 75% at 86% 45%, var(--cristal-luz-2), transparent 72%),
+    repeating-linear-gradient(90deg, var(--cristal-trama) 0 1px, transparent 1px 14px);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
+  pointer-events: none;
+}
+.diapos__puntos, .diapos__todas { position: relative; }
+
+.diapos__boton,
+.diapos__todas,
+.leccion .diapos__contador,
+.diapos__puntos {
+  background: var(--cristal-opaco);
+  border: 1px solid var(--cristal-borde);
+  border-radius: 999px;
+}
+.diapos__boton, .diapos__todas { color: var(--cristal-texto); }
+.diapos__boton--sig { border-color: var(--figura-enlace); }
+.leccion .diapos__contador { color: var(--cristal-texto); padding: 0.35rem 0.8rem; }
+.diapos__puntos { width: fit-content; max-width: 100%; margin: 0.5rem auto 0; padding: 0 0.3rem; }
+.diapos__puntos[hidden] { display: none; }
+
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .diapos__boton,
+  .diapos__todas,
+  .leccion .diapos__contador,
+  .diapos__puntos {
+    background: var(--cristal-fondo);
+    -webkit-backdrop-filter: blur(12px) saturate(170%);
+    backdrop-filter: blur(12px) saturate(170%);
+    /* Brillo del filo de arriba: es luz, no sombra de separación. */
+    box-shadow: inset 0 1px 0 var(--cristal-brillo);
+  }
+  .diapos__boton:hover:not(:disabled),
+  .diapos__todas:hover { background: var(--cristal-fondo-hover); }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .diapos__boton,
+  .diapos__todas,
+  .leccion .diapos__contador,
+  .diapos__puntos {
+    background: var(--cristal-opaco);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .diapos__mandos::before { display: none; }
+}
+
+/* Transición de lente: la que sale se desenfoca y se aleja; la que
+   entra se enfoca. La visibilidad se quita al ACABAR (si no, la que
+   sale desaparece de golpe). */
+.diapos__pista > .diapo {
+  filter: blur(6px);
+  transform: scale(0.97);
+  transition: opacity 0.32s ease, filter 0.32s ease, transform 0.32s ease, visibility 0s linear 0.32s;
+}
+.diapos__pista > .diapo.es-actual {
+  filter: none;
+  transform: none;
+  transition: opacity 0.32s ease, filter 0.32s ease, transform 0.32s ease, visibility 0s;
+}
+.diapos--todas .diapos__pista > .diapo { filter: none; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .diapos__pista > .diapo { filter: none; transform: none; }
+}
+@media print {
+  .diapos__pista > .diapo { filter: none !important; transform: none !important; }
+  .diapos__mandos::before { display: none; }
+}
+
+/* ============================================================
+   Actividades de la explicación que se encuentran (06/10/2026)
+   ============================================================
+   js/tema.js (marcarTareas) marca los h3 que empiezan por «Actividad
+   N», «Reto N» o «Ejercicio N». El bloque entero lleva el filo cian
+   de actividad y un fondo tenue; el título va en cinta cian, como la
+   etiqueta de las actividades de pantalla. Al llegar desde la
+   pregunta «(Actividad N)», la cinta destella una vez. */
+.leccion h2, .leccion h3 { scroll-margin-top: calc(var(--alto-barra) + 1rem); }
+.leccion .subseccion--tarea {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(90deg, var(--tarea-fondo), transparent 85%);
+  border-radius: 0 6px 6px 0;
+  padding: 0.9rem 1rem 0.4rem 1.1rem;
+}
+.leccion h3.h3--tarea {
+  display: inline-block;
+  font-family: var(--font-titulo);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--tarea-texto);
+  background: var(--cinta-actividad);
+  padding: 0.35rem 0.9rem;
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  margin: 0 0 0.9rem;
+}
+.leccion h3.h3--tarea::before { color: inherit; opacity: 0.75; }
+@keyframes destello-tarea {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  30% { box-shadow: 0 0 0 6px var(--cinta-actividad); }
+}
+.leccion h3.h3--tarea:target { animation: destello-tarea 1.2s ease 2; }
+/* «(Actividad N)» en las preguntas a mano: enlace a la actividad. */
+.leccion .papel a.papel__tarea { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+.leccion .papel a.papel__tarea:hover { text-decoration-style: solid; }
+@media print {
+  .leccion .subseccion--tarea { background: none; }
+  .leccion h3.h3--tarea { transform: none; background: none; color: inherit; padding: 0; }
+  .leccion .papel a.papel__tarea { text-decoration: none; }
+}
+
+/* ============================================================
+   Pistas y «Ver respuesta» en píldora de cristal (06/10/2026)
+   ============================================================
+   Mismo cristal que los mandos de las diapositivas, en lima (el color
+   de «esto te ayuda»). La luz va solo arriba a la izquierda, detrás
+   de la píldora (capas con tamaño fijo y sin repetir), así que nunca
+   queda detrás del texto de la respuesta. Las hojas de cuaderno
+   (.papel, .actividad) y el desplegable de «Cómo trabajar» se quedan
+   como estaban. */
+.leccion details:not(.pasos__mas) {
+  background:
+    radial-gradient(ellipse 9rem 1.8rem at 5.5rem 1.55rem, var(--cristal-pista-luz), transparent 75%) no-repeat,
+    repeating-linear-gradient(90deg, var(--cristal-pista-trama) 0 1px, transparent 1px 10px) 0.4rem 0.35rem / 12rem 2.4rem no-repeat,
+    var(--pista-fondo);
+}
+.leccion details:not(.pasos__mas) > summary {
+  display: inline-block;
+  padding: 0.35rem 0.95rem;
+  border: 1px solid var(--cristal-pista-borde);
+  border-radius: 999px;
+  background: var(--pista-fondo);
+}
+.leccion details:not(.pasos__mas)[open] > summary { margin-bottom: 0.6rem; }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .leccion details:not(.pasos__mas) > summary {
+    background: var(--cristal-pista-fondo);
+    -webkit-backdrop-filter: blur(8px) saturate(170%);
+    backdrop-filter: blur(8px) saturate(170%);
+    box-shadow: inset 0 1px 0 var(--cristal-pista-brillo);
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .leccion details:not(.pasos__mas) { background: var(--pista-fondo); }
+  .leccion details:not(.pasos__mas) > summary {
+    background: var(--pista-fondo);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+.leccion .papel details, .leccion .actividad details { background: var(--pista-fondo); }
+.leccion .papel details > summary, .leccion .actividad details > summary {
+  display: list-item; padding: 0; border: none; border-radius: 0;
+  background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+@media print {
+  .leccion details:not(.pasos__mas) { background: none; }
+  .leccion details:not(.pasos__mas) > summary { border: none; padding: 0; box-shadow: none; }
 }

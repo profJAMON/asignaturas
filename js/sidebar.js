@@ -93,6 +93,12 @@ async function cargarBarraLateral(idActivo, asigActiva) {
 
       detalles.appendChild(cuerpo);
       contenedor.appendChild(detalles);
+      /* Al desplegarla el alumno, la unidad sube arriba del menú para que
+         vea sus sesiones (06/10/2026). Solo con clic o teclado, no con la
+         apertura automática de la unidad de la sesión activa. */
+      resumenUnidad.addEventListener('click', () => {
+        requestAnimationFrame(() => { if (detalles.open) _subirUnidad(resumenUnidad); });
+      });
     }
 
     /* El temario se ha construido por fetch: avisar al traductor. */
@@ -100,6 +106,21 @@ async function cargarBarraLateral(idActivo, asigActiva) {
   } catch (error) {
     contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el temario.</p>';
     console.error(error);
+  }
+}
+
+/* Sube la unidad recién desplegada al principio de lo que se ve.
+   En escritorio el menú tiene su propio desplazamiento (.sidebar con
+   overflow-y: auto): se mueve solo el menú, no la página. En móvil el
+   menú va en la página, así que se mueve la página. */
+function _subirUnidad(resumen) {
+  const menu = resumen.closest('.sidebar');
+  const suave = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  if (menu && menu.scrollHeight > menu.clientHeight && getComputedStyle(menu).overflowY !== 'visible') {
+    const arriba = resumen.getBoundingClientRect().top - menu.getBoundingClientRect().top + menu.scrollTop - 12;
+    menu.scrollTo({ top: arriba, behavior: suave });
+  } else {
+    resumen.scrollIntoView({ block: 'start', behavior: suave });
   }
 }
 
