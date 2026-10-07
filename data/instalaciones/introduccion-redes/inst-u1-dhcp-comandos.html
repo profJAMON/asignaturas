@@ -72,6 +72,11 @@ Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
 </div>
 </div>
 <p>La dirección se cede durante un tiempo (el <em>lease</em>); al caducar se renueva. Por eso a veces la IP de un portátil cambia de un día para otro.</p>
+<p>Funciona como la <strong>recepción de un hotel</strong>. Llegas y el recepcionista te da la llave de una habitación libre; la usas mientras dura tu estancia; al irte, la llave vuelve al tablero para el siguiente. El recepcionista es el <strong>servidor DHCP</strong>, la llave es la <strong>IP</strong> y la estancia es el <strong>lease</strong>.</p>
+<figure class="captura">
+<img src="data/instalaciones/introduccion-redes/img/u1/dhcp-hotel.webp" width="900" height="506" alt="La recepción de un hotel: una recepcionista entrega una llave luminosa a un cliente con maleta; detrás de ella, un tablero con llaves colgadas y algunos ganchos vacíos; tres personas más esperan en la cola" loading="lazy">
+<figcaption>Cada equipo que llega a la red pide su llave (su IP) al DHCP.</figcaption>
+</figure>
 <div class="salida">
 <p><strong>Por qué esto importa en el taller:</strong> si un equipo aparece con una IP <code>169.254.x.x</code>, es que pidió dirección y <strong>nadie le contestó</strong>. Eso apunta a tres sitios: el cable o el puerto, el switch, o el DHCP del router. Nunca al navegador.</p>
 </div>
