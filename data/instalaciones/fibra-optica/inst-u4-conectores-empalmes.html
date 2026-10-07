@@ -171,41 +171,24 @@
 <div class="nota">La presentación dice que la transmisión es «unidireccional (dos fibras, una para cada sentido)». Es lo habitual, pero no siempre: hay transceptores <strong>BiDi</strong> que usan <strong>una sola fibra</strong> con una longitud de onda para cada sentido. Así funciona la fibra que llega a tu casa (GPON): una única fibra para subir y bajar.</div>
 
 <h2>El enlace de punta a punta</h2>
-<p>Así es un enlace de fibra típico entre los armarios de dos edificios. Te va a hacer falta en la sesión siguiente para calcular pérdidas:</p>
-<div class="salida">
-<svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Esquema de un enlace de fibra entre dos edificios. En cada armario: switch con módulo SFP, latiguillo LC hasta el adaptador de la bandeja, pigtail y empalme por fusión con el cable troncal. En el centro, el cable troncal de estructura holgada. Se marcan dos conectores y dos empalmes en el enlace permanente" style="max-width:100%;height:auto;">
-<style>
-.fconect4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fconect4-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<rect x="10" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
-<text x="95" y="22" text-anchor="middle" class="fconect4-s">armario edificio A</text>
-<rect x="420" y="30" width="170" height="120" rx="4" fill="none" stroke="#858585" stroke-dasharray="4 3"/>
-<text x="505" y="22" text-anchor="middle" class="fconect4-s">armario edificio B</text>
-<rect x="20" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
-<text x="40" y="94" text-anchor="middle" class="fconect4-s">SFP</text>
-<rect x="540" y="70" width="40" height="40" rx="3" fill="#252526" stroke="#4fc1ff"/>
-<text x="560" y="94" text-anchor="middle" class="fconect4-s">SFP</text>
-<line x1="60" y1="90" x2="100" y2="90" stroke="#dcdcaa" stroke-width="3"/>
-<line x1="500" y1="90" x2="540" y2="90" stroke="#dcdcaa" stroke-width="3"/>
-<rect x="98" y="80" width="10" height="20" fill="#4fc1ff"/>
-<rect x="492" y="80" width="10" height="20" fill="#4fc1ff"/>
-<line x1="108" y1="90" x2="150" y2="90" stroke="#dcdcaa" stroke-width="2"/>
-<line x1="450" y1="90" x2="492" y2="90" stroke="#dcdcaa" stroke-width="2"/>
-<circle cx="150" cy="90" r="6" fill="#f48771"/>
-<circle cx="450" cy="90" r="6" fill="#f48771"/>
-<line x1="156" y1="90" x2="444" y2="90" stroke="#dcdcaa" stroke-width="5"/>
-<text x="300" y="80" text-anchor="middle" class="fconect4-t">cable troncal · holgada · OS2</text>
-<text x="80" y="130" text-anchor="middle" class="fconect4-s">latiguillo</text>
-<text x="520" y="130" text-anchor="middle" class="fconect4-s">latiguillo</text>
-<text x="128" y="118" text-anchor="middle" class="fconect4-s">pigtail</text>
-<text x="472" y="118" text-anchor="middle" class="fconect4-s">pigtail</text>
-<rect x="103" y="160" width="10" height="10" fill="#4fc1ff"/><text x="120" y="169" class="fconect4-s">conector en el adaptador de la bandeja</text>
-<circle cx="108" cy="190" r="5" fill="#f48771"/><text x="120" y="194" class="fconect4-s">empalme por fusión en la bandeja</text>
-<line x1="98" y1="206" x2="502" y2="206" stroke="#4ec9b0"/>
-<text x="300" y="218" text-anchor="middle" class="fconect4-s" style="fill:#4ec9b0">enlace permanente: de adaptador a adaptador</text>
-</svg>
-<p class="pie-figura">El cable troncal no se toca: se empalma a pigtails y todo lo que se enchufa y desenchufa son latiguillos.</p>
+<p>Así es un enlace de fibra típico entre los armarios de dos edificios. Pásalo paso a paso. Te va a hacer falta en la sesión siguiente para calcular pérdidas:</p>
+<div class="diapos" aria-label="Enlace de fibra entre dos edificios, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Dos armarios en dos edificios, cada uno con un switch con módulo SFP. Entre ellos, cientos de metros sin unir"><rect x="6" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="66" y="15" text-anchor="middle" class="d-d d-peq">armario edificio A</text><rect x="234" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="294" y="15" text-anchor="middle" class="d-d d-peq">armario edificio B</text><rect x="14" y="54" width="30" height="32" rx="3" class="d-caja-act"/><text x="29" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="316" y="54" width="30" height="32" rx="3" class="d-caja-act"/><text x="331" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><text x="180" y="66" text-anchor="middle" class="d-d">? ? ?</text><text x="180" y="134" text-anchor="middle" class="d-d d-peq">cientos de metros</text></svg>
+<p class="diapo__texto">Dos armarios en dos edificios, a <strong>cientos de metros</strong>. En cada uno, un switch con un módulo <strong>SFP</strong>: el «enchufe» de fibra del switch. ¿Cómo los unimos?</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Entre los dos armarios va el cable troncal, de estructura holgada"><rect x="6" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="66" y="15" text-anchor="middle" class="d-d d-peq">armario edificio A</text><rect x="234" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="294" y="15" text-anchor="middle" class="d-d d-peq">armario edificio B</text><rect x="14" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="29" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="316" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="331" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="110" y="67.5" width="140" height="5" class="d-relleno-c"/><text x="180" y="58" text-anchor="middle" class="d-c d-peq">troncal holgado</text><text x="180" y="134" text-anchor="middle" class="d-d d-peq">por la canalización</text></svg>
+<p class="diapo__texto">Por la canalización va el <strong>cable troncal</strong>, de estructura <strong>holgada</strong> (aguanta fuera). Se instala una vez y <strong>no se toca</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="En la bandeja de cada armario, el troncal se empalma por fusión a un pigtail, que acaba en un conector en el frontal de la bandeja"><rect x="6" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="66" y="15" text-anchor="middle" class="d-d d-peq">armario edificio A</text><rect x="234" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="294" y="15" text-anchor="middle" class="d-d d-peq">armario edificio B</text><rect x="14" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="29" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="316" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="331" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="110" y="67.5" width="140" height="5" class="d-a"/><text x="180" y="58" text-anchor="middle" class="d-t d-peq">troncal holgado</text><rect x="72" y="50" width="48" height="40" rx="3" class="d-caja"/><rect x="86" y="68.5" width="19" height="3" class="d-relleno-c"/><rect x="78" y="61" width="8" height="18" class="d-relleno-c"/><circle cx="110" cy="70" r="5" class="d-relleno-c"/><text x="96" y="104" text-anchor="middle" class="d-c d-peq">bandeja</text><rect x="240" y="50" width="48" height="40" rx="3" class="d-caja"/><rect x="255" y="68.5" width="19" height="3" class="d-relleno-c"/><rect x="274" y="61" width="8" height="18" class="d-relleno-c"/><circle cx="250" cy="70" r="5" class="d-relleno-c"/><text x="264" y="104" text-anchor="middle" class="d-c d-peq">bandeja</text><text x="180" y="90" text-anchor="middle" class="d-c d-peq">● = empalme</text></svg>
+<p class="diapo__texto">En la <strong>bandeja</strong> de cada armario, el troncal se <strong>empalma por fusión</strong> (el círculo) a un <strong>pigtail</strong>: un trozo de fibra con conector en un solo extremo. Ese conector se queda en el <strong>frontal</strong> de la bandeja.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Del frontal de la bandeja al SFP va un latiguillo. De adaptador a adaptador está el enlace permanente, con dos conectores y dos empalmes"><rect x="6" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="66" y="15" text-anchor="middle" class="d-d d-peq">armario edificio A</text><rect x="234" y="22" width="120" height="92" rx="4" class="d-linea-d" stroke-dasharray="4 3"/><text x="294" y="15" text-anchor="middle" class="d-d d-peq">armario edificio B</text><rect x="14" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="29" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="316" y="54" width="30" height="32" rx="3" class="d-caja-on"/><text x="331" y="74" text-anchor="middle" class="d-t d-peq">SFP</text><rect x="110" y="67.5" width="140" height="5" class="d-a"/><text x="180" y="58" text-anchor="middle" class="d-t d-peq">troncal holgado</text><rect x="72" y="50" width="48" height="40" rx="3" class="d-caja"/><rect x="86" y="68.5" width="19" height="3" class="d-a"/><rect x="78" y="61" width="8" height="18" class="d-a"/><circle cx="110" cy="70" r="5" class="d-a"/><text x="96" y="104" text-anchor="middle" class="d-t d-peq">bandeja</text><rect x="240" y="50" width="48" height="40" rx="3" class="d-caja"/><rect x="255" y="68.5" width="19" height="3" class="d-a"/><rect x="274" y="61" width="8" height="18" class="d-a"/><circle cx="250" cy="70" r="5" class="d-a"/><text x="264" y="104" text-anchor="middle" class="d-t d-peq">bandeja</text><rect x="44" y="68.5" width="34" height="3" class="d-relleno-c"/><rect x="282" y="68.5" width="34" height="3" class="d-relleno-c"/><text x="61" y="44" text-anchor="middle" class="d-c d-peq">latiguillo</text><text x="299" y="44" text-anchor="middle" class="d-c d-peq">latiguillo</text><path d="M82 124 V130 H278 V124" class="d-linea-a"/><text x="180" y="145" text-anchor="middle" class="d-a d-peq">enlace permanente</text></svg>
+<p class="diapo__texto">Del frontal al SFP, un <strong>latiguillo</strong>: lo único que se enchufa y desenchufa. De adaptador a adaptador está el <strong>enlace permanente</strong>: <strong>2 conectores y 2 empalmes</strong>. Te hará falta en la sesión siguiente para calcular pérdidas.</p>
+</div>
 </div>
 <ul>
 <li><strong>Cable troncal</strong>: el cable largo, de estructura holgada, que va por la canalización entre los dos armarios.</li>
