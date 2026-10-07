@@ -17,27 +17,19 @@
 <p>La fibra tiene dos vidrios, uno dentro del otro: el <strong>núcleo</strong>, por donde va la luz, y el <strong>revestimiento</strong>, que lo envuelve. Los dos son transparentes, pero están fabricados para que la luz vaya un poco más lenta en el núcleo que en el revestimiento (se dice que el núcleo tiene <strong>mayor índice de refracción</strong>).</p>
 <p>Gracias a esa diferencia, cuando la luz llega al borde del núcleo con un ángulo rasante, <strong>no se escapa: rebota entera hacia dentro</strong>, como un espejo perfecto. A eso se le llama <strong>reflexión total interna</strong>. Rebote a rebote, la luz recorre kilómetros sin salir del núcleo, aunque el cable haga curvas suaves.</p>
 
-<div class="salida">
-<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Corte longitudinal de una fibra: el rayo de luz entra por la izquierda y avanza por el núcleo rebotando en el límite con el revestimiento. Abajo, un rayo que entra demasiado inclinado se escapa al revestimiento" style="max-width:100%;height:auto;">
-<style>
-.fque-es1-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fque-es1-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<rect x="40" y="40" width="520" height="100" fill="#2d2d30" stroke="#858585"/>
-<rect x="40" y="70" width="520" height="40" fill="#1f3a4a" stroke="#4fc1ff"/>
-<polyline points="40,90 100,70 180,110 260,70 340,110 420,70 500,110 560,90" fill="none" stroke="#dcdcaa" stroke-width="2"/>
-<polygon points="552,86 562,90 552,94" fill="#dcdcaa"/>
-<text x="570" y="94" class="fque-es1-t">→</text>
-<text x="20" y="34" class="fque-es1-s">revestimiento</text>
-<text x="300" y="94" text-anchor="middle" class="fque-es1-t" style="fill:#4fc1ff">núcleo</text>
-<text x="20" y="156" class="fque-es1-s">revestimiento</text>
-<text x="100" y="62" text-anchor="middle" class="fque-es1-s">rebota</text>
-<text x="180" y="126" text-anchor="middle" class="fque-es1-s">rebota</text>
-<line x1="40" y1="176" x2="120" y2="176" stroke="#dcdcaa" stroke-width="2"/>
-<line x1="120" y1="176" x2="150" y2="192" stroke="#f48771" stroke-width="2" stroke-dasharray="4 3"/>
-<text x="160" y="188" class="fque-es1-s" style="fill:#f48771">si entra muy inclinada o la curva es demasiado cerrada, se escapa y se pierde</text>
-</svg>
-<p class="pie-figura">Dibujo exagerado: el núcleo real es tan fino que los rebotes no se ven.</p>
+<div class="diapos" aria-label="Cómo se queda la luz dentro de la fibra, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Corte de una fibra: un núcleo de vidrio en el centro y el revestimiento, también de vidrio, alrededor"><rect x="10" y="25" width="340" height="90" rx="3" class="d-caja"/><rect x="10" y="52" width="340" height="36" class="d-caja-act"/><text x="14" y="18" class="d-d d-peq">revestimiento (vidrio)</text><text x="14" y="132" class="d-d d-peq">revestimiento (vidrio)</text><text x="180" y="74" text-anchor="middle" class="d-c">núcleo (vidrio)</text></svg>
+<p class="diapo__texto">La fibra tiene <strong>dos vidrios</strong>, uno dentro del otro: el <strong>núcleo</strong>, por donde va la luz, y el <strong>revestimiento</strong>, que lo envuelve. En el núcleo, la luz va un poco más lenta.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Un rayo de luz avanza por el núcleo rebotando en el límite con el revestimiento"><rect x="10" y="25" width="340" height="90" rx="3" class="d-caja"/><rect x="10" y="52" width="340" height="36" class="d-caja-on"/><text x="14" y="18" class="d-d d-peq">revestimiento (vidrio)</text><text x="14" y="132" class="d-d d-peq">revestimiento (vidrio)</text><polyline points="10,70 50,54 110,86 170,54 230,86 290,54 340,70" class="d-linea-c"/><polygon points="340,64 352,70 340,76" class="d-relleno-c"/><text x="50" y="46" text-anchor="middle" class="d-c d-peq">rebota</text><text x="110" y="104" text-anchor="middle" class="d-c d-peq">rebota</text></svg>
+<p class="diapo__texto">Cuando la luz llega al borde del núcleo con un ángulo rasante, <strong>rebota entera hacia dentro</strong>, como en un espejo: es la <strong>reflexión total interna</strong>. Rebote a rebote, recorre kilómetros. (Dibujo exagerado: el núcleo real es tan fino que no se ven los rebotes.)</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Un rayo que llega al borde del núcleo demasiado inclinado no rebota: atraviesa el revestimiento y se pierde"><rect x="10" y="25" width="340" height="90" rx="3" class="d-caja"/><rect x="10" y="52" width="340" height="36" class="d-caja-on"/><text x="14" y="18" class="d-d d-peq">revestimiento (vidrio)</text><text x="14" y="132" class="d-d d-peq">revestimiento (vidrio)</text><polyline points="10,70 50,54 110,86 170,54 230,86 290,54 340,70" class="d-linea-d"/><polyline points="10,70 160,70 190,52" class="d-linea-c"/><polyline points="190,52 220,8" class="d-linea-c" stroke-dasharray="4 3"/><text x="228" y="14" class="d-c d-peq">se escapa</text></svg>
+<p class="diapo__texto">Si la luz llega al borde <strong>demasiado inclinada</strong> (por ejemplo, porque el cable hace una <strong>curva muy cerrada</strong>), ya no rebota: <strong>se escapa</strong> y la señal se pierde.</p>
+</div>
 </div>
 
 <div class="nota">Mi presentación dice que la luz «va rebotando por sus paredes». Vale como idea, pero no rebota contra la cubierta de plástico: rebota en el <strong>límite entre núcleo y revestimiento</strong>, que son los dos de vidrio. Sin revestimiento no hay rebote.</div>
@@ -72,26 +64,27 @@
 </div>
 
 <h2>Las partes de una fibra</h2>
-<div class="salida">
-<svg viewBox="0 0 600 240" width="100%" role="img" aria-label="Corte transversal de un cable de fibra en círculos concéntricos: núcleo, revestimiento de 125 micras, recubrimiento primario de 250 micras, fibras de aramida y cubierta exterior, con sus medidas" style="max-width:100%;height:auto;">
-<style>
-.fque-es3-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fque-es3-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<circle cx="160" cy="120" r="100" fill="#3a3d41" stroke="#dcdcaa"/>
-<circle cx="160" cy="120" r="84" fill="#5a4a2a" stroke="#858585"/>
-<g stroke="#8a7a50" stroke-width="1"><path d="M 100 90 L 110 96 M 214 96 L 224 90 M 106 160 L 116 152 M 206 152 L 216 160 M 150 50 L 156 60 M 166 190 L 170 180 M 90 124 L 102 122 M 220 118 L 232 120"/></g>
-<circle cx="160" cy="120" r="54" fill="#c586c0" fill-opacity="0.45" stroke="#c586c0"/>
-<circle cx="160" cy="120" r="32" fill="#2d4a5a" stroke="#858585"/>
-<circle cx="160" cy="120" r="8" fill="#4fc1ff"/>
-<g stroke="#858585"><line x1="168" y1="120" x2="330" y2="40"/><line x1="190" y1="120" x2="330" y2="80"/><line x1="206" y1="130" x2="330" y2="120"/><line x1="236" y1="150" x2="330" y2="160"/><line x1="252" y1="170" x2="330" y2="200"/></g>
-<text x="340" y="36" class="fque-es3-t" style="fill:#4fc1ff">1 · núcleo</text><text x="340" y="50" class="fque-es3-s">monomodo 9 µm · multimodo 50 o 62,5 µm</text>
-<text x="340" y="76" class="fque-es3-t">2 · revestimiento</text><text x="340" y="90" class="fque-es3-s">vidrio · 125 µm (siempre)</text>
-<text x="340" y="116" class="fque-es3-t" style="fill:#c586c0">3 · recubrimiento primario</text><text x="340" y="130" class="fque-es3-s">acrilato de color · 250 µm</text>
-<text x="340" y="156" class="fque-es3-t" style="fill:#dcdcaa">4 · refuerzo de aramida</text><text x="340" y="170" class="fque-es3-s">hilos tipo kevlar: aguantan el tirón</text>
-<text x="340" y="196" class="fque-es3-t">5 · cubierta exterior</text><text x="340" y="210" class="fque-es3-s">latiguillo ~2-3 mm · color según tipo</text>
-</svg>
-<p class="pie-figura">Tamaños no a escala. Núcleo y revestimiento son el vidrio; lo demás es protección.</p>
+<div class="diapos" aria-label="Las partes de una fibra, de dentro afuera">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Corte de un cable de fibra con 1 capa; la nueva, por fuera, es: núcleo, por aquí viaja la luz, monomodo: 9 µm, multimodo: 50 o 62,5 µm"><circle cx="75" cy="75" r="12" class="d-caja-act"/><line x1="87" y1="75" x2="156" y2="75" class="d-linea-c"/><text x="162" y="56" class="d-c">1 · núcleo</text><text x="162" y="80" class="d-t d-peq">por aquí viaja la luz</text><text x="162" y="97" class="d-t d-peq">monomodo: 9 µm</text><text x="162" y="114" class="d-t d-peq">multimodo: 50 o 62,5 µm</text></svg>
+<p class="diapo__texto">El <strong>núcleo</strong>: vidrio muy puro por donde viaja la luz. Su grosor decide si la fibra es monomodo o multimodo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Corte de un cable de fibra con 2 capas; la nueva, por fuera, es: revestimiento, vidrio que deja, la luz dentro, 125 µm (siempre)"><circle cx="75" cy="75" r="26" class="d-caja-act"/><circle cx="75" cy="75" r="12" class="d-caja-on"/><line x1="101" y1="75" x2="156" y2="75" class="d-linea-c"/><text x="162" y="56" class="d-c">2 · revestimiento</text><text x="162" y="80" class="d-t d-peq">vidrio que deja</text><text x="162" y="97" class="d-t d-peq">la luz dentro</text><text x="162" y="114" class="d-t d-peq">125 µm (siempre)</text></svg>
+<p class="diapo__texto">El <strong>revestimiento</strong>: otro vidrio alrededor que hace rebotar la luz. Mide <strong>125 µm</strong> en todas las fibras.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Corte de un cable de fibra con 3 capas; la nueva, por fuera, es: recubrimiento, primario, de acrilato, de color, 250 µm"><circle cx="75" cy="75" r="40" class="d-caja-act"/><circle cx="75" cy="75" r="26" class="d-caja"/><circle cx="75" cy="75" r="12" class="d-caja-on"/><line x1="115" y1="75" x2="156" y2="75" class="d-linea-c"/><text x="162" y="56" class="d-c">3 · recubrimiento</text><text x="162" y="80" class="d-t d-peq">primario, de acrilato</text><text x="162" y="97" class="d-t d-peq">de color</text><text x="162" y="114" class="d-t d-peq">250 µm</text></svg>
+<p class="diapo__texto">El <strong>recubrimiento primario</strong>: plástico pegado al vidrio. No lleva luz: lo protege. Es <strong>de color</strong> para distinguir unas fibras de otras.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Corte de un cable de fibra con 4 capas; la nueva, por fuera, es: refuerzo, hilos de aramida, (como el kevlar), aguantan el tirón"><circle cx="75" cy="75" r="54" class="d-caja-act" stroke-dasharray="3 2"/><circle cx="75" cy="75" r="40" class="d-caja"/><circle cx="75" cy="75" r="26" class="d-caja"/><circle cx="75" cy="75" r="12" class="d-caja-on"/><line x1="129" y1="75" x2="156" y2="75" class="d-linea-c"/><text x="162" y="56" class="d-c">4 · refuerzo</text><text x="162" y="80" class="d-t d-peq">hilos de aramida</text><text x="162" y="97" class="d-t d-peq">(como el kevlar)</text><text x="162" y="114" class="d-t d-peq">aguantan el tirón</text></svg>
+<p class="diapo__texto">El <strong>refuerzo de aramida</strong>: hilos que aguantan cuando se tira del cable. El vidrio no aguantaría.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Corte de un cable de fibra con 5 capas; la nueva, por fuera, es: cubierta, el plástico de fuera, latiguillo: 2-3 mm, en interiores, LSZH"><circle cx="75" cy="75" r="68" class="d-caja-act"/><circle cx="75" cy="75" r="54" class="d-caja" stroke-dasharray="3 2"/><circle cx="75" cy="75" r="40" class="d-caja"/><circle cx="75" cy="75" r="26" class="d-caja"/><circle cx="75" cy="75" r="12" class="d-caja-on"/><line x1="143" y1="75" x2="156" y2="75" class="d-linea-c"/><text x="162" y="56" class="d-c">5 · cubierta</text><text x="162" y="80" class="d-t d-peq">el plástico de fuera</text><text x="162" y="97" class="d-t d-peq">latiguillo: 2-3 mm</text><text x="162" y="114" class="d-t d-peq">en interiores, LSZH</text></svg>
+<p class="diapo__texto">La <strong>cubierta</strong>: el plástico exterior. Núcleo y revestimiento son el vidrio; <strong>todo lo demás es protección</strong>. (Tamaños no a escala.)</p>
+</div>
 </div>
 <ol>
 <li><strong>Núcleo</strong> (<em>core</em>): vidrio muy puro por donde viaja la luz. Su grosor decide si la fibra es monomodo o multimodo (lo vemos en la sesión siguiente).</li>

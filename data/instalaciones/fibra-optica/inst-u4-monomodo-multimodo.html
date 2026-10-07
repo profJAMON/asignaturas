@@ -53,35 +53,27 @@
 <h2>El problema de los muchos caminos: la dispersión</h2>
 <p>Imagina una carrera en la que todos salen a la vez, pero cada corredor va por un camino distinto: unos van rectos por el centro y otros haciendo eses. <strong>No llegan a la vez.</strong> Eso le pasa a la luz en la multimodo:</p>
 
-<div class="salida">
-<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Carrera de tres corredores de luz que salen a la vez de la línea de salida. El que va recto llega primero a la meta; el que hace eses suaves llega un poco después; el que hace eses muy cerradas llega el último. Abajo: un pulso de luz que entra estrecho y sale ancho, y dos pulsos seguidos que al ensancharse se pisan y el receptor ya no distingue un 1 de un 0" style="max-width:100%;height:auto;">
-<style>
-.fmonomo2-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo2-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<line x1="40" y1="20" x2="40" y2="120" stroke="#d4d4d4" stroke-width="2"/>
-<text x="40" y="14" text-anchor="middle" class="fmonomo2-s">salida</text>
-<line x1="520" y1="20" x2="520" y2="120" stroke="#d4d4d4" stroke-width="2" stroke-dasharray="6 4"/>
-<text x="520" y="14" text-anchor="middle" class="fmonomo2-s">meta</text>
-<line x1="40" y1="70" x2="520" y2="70" stroke="#dcdcaa" stroke-width="2"/>
-<circle cx="520" cy="70" r="7" fill="#dcdcaa"/><text x="532" y="74" class="fmonomo2-t" style="fill:#dcdcaa">1.º</text>
-<polyline points="40,70 100,40 180,100 260,40 340,100 420,40 470,70" fill="none" stroke="#c586c0" stroke-width="2"/>
-<circle cx="470" cy="70" r="7" fill="#c586c0"/><text x="455" y="56" class="fmonomo2-t" style="fill:#c586c0">2.º</text>
-<polyline points="40,70 60,35 90,105 120,35 150,105 180,35 210,105 240,35 270,105 300,35 330,105 360,70" fill="none" stroke="#f48771" stroke-width="2"/>
-<circle cx="360" cy="70" r="7" fill="#f48771"/><text x="372" y="112" class="fmonomo2-t" style="fill:#f48771">3.º todavía por aquí</text>
-<line x1="20" y1="140" x2="580" y2="140" stroke="#3a3d41"/>
-<text x="20" y="162" class="fmonomo2-t">Lo que ve el receptor:</text>
-<path d="M 20 210 L 60 210 L 66 176 L 74 176 L 80 210 L 120 210" stroke="#4fc1ff" fill="none" stroke-width="2"/>
-<text x="70" y="226" text-anchor="middle" class="fmonomo2-s">sale estrecho</text>
-<text x="150" y="198" class="fmonomo2-t">→</text>
-<path d="M 180 210 L 200 210 L 220 186 L 250 186 L 270 210 L 290 210" stroke="#4ec9b0" fill="none" stroke-width="2"/>
-<text x="235" y="226" text-anchor="middle" class="fmonomo2-s">llega ancho</text>
-<text x="320" y="198" class="fmonomo2-t">→</text>
-<path d="M 350 210 L 370 210 L 390 186 L 420 186 L 440 204 L 460 186 L 490 186 L 510 210 L 540 210" stroke="#f48771" fill="none" stroke-width="2"/>
-<text x="445" y="176" text-anchor="middle" class="fmonomo2-s" style="fill:#f48771">¿un 1? ¿dos 1?</text>
-<text x="445" y="226" text-anchor="middle" class="fmonomo2-s">dos pulsos que se pisan</text>
-</svg>
-<p class="pie-figura">A más camino recorrido, más se ensancha el pulso. Si se pisan, se pierden datos.</p>
+<div class="diapos" aria-label="La dispersión en la fibra multimodo, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Tres rayos de luz en la línea de salida: uno irá recto, otro haciendo eses suaves y otro eses cerradas"><line x1="20" y1="20" x2="20" y2="136" class="d-linea-d"/><line x1="330" y1="20" x2="330" y2="136" class="d-linea-d" stroke-dasharray="5 4"/><text x="20" y="13" text-anchor="middle" class="d-d d-peq">salida</text><text x="330" y="13" text-anchor="middle" class="d-d d-peq">meta</text><polyline points="20.0,35.0 20.0,35.0" class="d-linea-a"/><circle cx="20.0" cy="35.0" r="6" class="d-a"/><polyline points="20.0,78.0 20.0,78.0" class="d-linea-d"/><circle cx="20.0" cy="78.0" r="6" class="d-d"/><polyline points="20.0,121.0 20.0,121.0" class="d-linea-c"/><circle cx="20.0" cy="121.0" r="6" class="d-relleno-c"/></svg>
+<p class="diapo__texto">Tres rayos de luz salen <strong>a la vez</strong> por la misma fibra multimodo. Uno va <strong>recto</strong>; otro hace <strong>eses suaves</strong>; otro, <strong>eses cerradas</strong>. Los tres van igual de rápido.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="A mitad de carrera, el rayo recto va por delante y el de eses cerradas va el último"><line x1="20" y1="20" x2="20" y2="136" class="d-linea-d"/><line x1="330" y1="20" x2="330" y2="136" class="d-linea-d" stroke-dasharray="5 4"/><text x="20" y="13" text-anchor="middle" class="d-d d-peq">salida</text><text x="330" y="13" text-anchor="middle" class="d-d d-peq">meta</text><polyline points="20.0,35.0 175.0,35.0" class="d-linea-a"/><circle cx="175.0" cy="35.0" r="6" class="d-a"/><polyline points="20.0,78.0 50.0,90.0 80.0,66.0 110.0,90.0 140.0,66.0 145.8,70.6" class="d-linea-d"/><circle cx="145.8" cy="70.6" r="6" class="d-d"/><polyline points="20.0,121.0 32.0,133.0 44.0,109.0 56.0,133.0 68.0,109.0 80.0,133.0 92.0,109.0 93.7,112.5" class="d-linea-c"/><circle cx="93.7" cy="112.5" r="6" class="d-relleno-c"/></svg>
+<p class="diapo__texto">A mitad de carrera, el que va recto ya va <strong>por delante</strong>: hace menos camino. El de eses cerradas se queda atrás.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="El rayo recto llega primero a la meta; el de eses suaves llega después y el de eses cerradas todavía va por la mitad"><line x1="20" y1="20" x2="20" y2="136" class="d-linea-d"/><line x1="330" y1="20" x2="330" y2="136" class="d-linea-d" stroke-dasharray="5 4"/><text x="20" y="13" text-anchor="middle" class="d-d d-peq">salida</text><text x="330" y="13" text-anchor="middle" class="d-d d-peq">meta</text><polyline points="20.0,35.0 330.0,35.0" class="d-linea-a"/><circle cx="330.0" cy="35.0" r="6" class="d-a"/><text x="340.0" y="27.0" class="d-a d-peq">1.º</text><polyline points="20.0,78.0 50.0,90.0 80.0,66.0 110.0,90.0 140.0,66.0 170.0,90.0 200.0,66.0 230.0,90.0 260.0,66.0 266.8,71.5" class="d-linea-d"/><circle cx="266.8" cy="71.5" r="6" class="d-d"/><text x="276.8" y="63.5" class="d-t d-peq">2.º</text><polyline points="20.0,121.0 32.0,133.0 44.0,109.0 56.0,133.0 68.0,109.0 80.0,133.0 92.0,109.0 104.0,133.0 116.0,109.0 128.0,133.0 140.0,109.0 152.0,133.0 163.0,110.9" class="d-linea-c"/><circle cx="163.0" cy="110.9" r="6" class="d-relleno-c"/><text x="173.0" y="102.9" class="d-c d-peq">3.º</text></svg>
+<p class="diapo__texto">El recto llega el primero y los otros, tarde: <strong>no llegan a la vez</strong>. A eso se le llama <strong>dispersión modal</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Un destello de luz sale estrecho y llega ancho al receptor"><polyline points="10,112 40,112 46,60 74,60 80,112 110,112" class="d-linea-a"/><text x="60" y="132" text-anchor="middle" class="d-d d-peq">sale estrecho</text><text x="140" y="90" text-anchor="middle" class="d-t">→</text><polyline points="170,112 190,112 224,60 276,60 310,112 350,112" class="d-linea-c"/><text x="250" y="132" text-anchor="middle" class="d-c d-peq">llega ancho</text></svg>
+<p class="diapo__texto">Para el receptor, un destello que salió <strong>estrecho</strong> llega <strong>ancho</strong>: su luz llega repartida en el tiempo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Dos destellos que salen separados llegan tan anchos que se pisan y el receptor no sabe si es un 1 o dos"><polyline points="10,112 24,112 28,60 46,60 50,112 66,112 70,60 88,60 92,112 110,112" class="d-linea-a"/><text x="60" y="132" text-anchor="middle" class="d-d d-peq">dos destellos</text><text x="140" y="90" text-anchor="middle" class="d-t">→</text><polyline points="170,112 180,112 205,60 240,60 255,80 270,60 305,60 330,112 350,112" class="d-linea-c"/><text x="255" y="44" text-anchor="middle" class="d-c d-peq">¿un 1? ¿dos 1?</text><text x="255" y="132" text-anchor="middle" class="d-c d-peq">se pisan</text></svg>
+<p class="diapo__texto">Si se envían dos destellos seguidos y se ensanchan, <strong>se pisan</strong>: el receptor ya no distingue un 1 de un 0. Por eso, en multimodo, <strong>a más velocidad, menos metros</strong>.</p>
+</div>
 </div>
 
 <p>A eso se le llama <strong>dispersión modal</strong>. Para que los pulsos no se pisen, o se envían <strong>más despacio</strong> o el cable tiene que ser <strong>más corto</strong>. Por eso en multimodo: <strong>a más velocidad, menos metros</strong>.</p>
