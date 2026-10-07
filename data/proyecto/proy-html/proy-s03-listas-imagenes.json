@@ -15,5 +15,18 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-listas",
+      "tipo": "reto-web",
+      "titulo": "¿Puntos, números o lista dentro?",
+      "banco": "listas"
+    },
+    {
+      "id": "reto-imagenes",
+      "tipo": "reto-web",
+      "titulo": "¿Por qué no sale la imagen?",
+      "banco": "imagenes"
+    }
+  ]
 }

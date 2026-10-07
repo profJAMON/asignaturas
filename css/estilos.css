@@ -146,6 +146,18 @@
   /* 06/10/2026: fondo del bloque de una actividad de la explicación. */
   --tarea-fondo: rgba(34, 211, 238, 0.06);
   --tarea-texto: #ffffff;
+  /* 07/10/2026: «Toca y mira» (js/probador.js) y retos rápidos. */
+  --probador-borde: rgba(34, 211, 238, 0.45);
+  --probador-fondo: rgba(34, 211, 238, 0.04);
+  --probador-nav: #e6e9ee;
+  --probador-nav-punto: #c2c8d1;
+  --probador-nav-texto: #4b5563;
+  --probador-consola-bg: #161b22;
+  --probador-consola-texto: #d6deeb;
+  --probador-consola-error: #ff9b9b;
+  --probador-viva: rgba(34, 211, 238, 0.30);
+  --probador-resultado: #ffffff;
+  --reto-bien-fondo: #eef7e6;
   /* 06/10/2026: «Ver respuesta» / pistas en píldora de cristal con
      luz lima detrás. */
   --cristal-pista-fondo: rgba(255, 255, 255, 0.06);
@@ -300,6 +312,18 @@
   --cinta-actividad: rgba(14, 116, 144, 0.35);
   --tarea-fondo: rgba(14, 116, 144, 0.06);
   --tarea-texto: #0b1220;
+  /* 07/10/2026: «Toca y mira» (js/probador.js) y retos rápidos. */
+  --probador-borde: rgba(14, 116, 144, 0.50);
+  --probador-fondo: rgba(14, 116, 144, 0.04);
+  --probador-nav: #e6e9ee;
+  --probador-nav-punto: #c2c8d1;
+  --probador-nav-texto: #4b5563;
+  --probador-consola-bg: #161b22;
+  --probador-consola-texto: #d6deeb;
+  --probador-consola-error: #ff9b9b;
+  --probador-viva: rgba(14, 116, 144, 0.22);
+  --probador-resultado: #ffffff;
+  --reto-bien-fondo: #eef7e6;
   --cristal-pista-fondo: rgba(255, 255, 255, 0.55);
   --cristal-pista-borde: rgba(63, 98, 18, 0.35);
   --cristal-pista-brillo: rgba(255, 255, 255, 0.9);
@@ -4130,4 +4154,352 @@ body::after {
 @media print {
   .leccion details:not(.pasos__mas) { background: none; }
   .leccion details:not(.pasos__mas) > summary { border: none; padding: 0; box-shadow: none; }
+}
+
+/* ============================================================
+   «Toca y mira» y retos rápidos (07/10/2026)
+   ============================================================
+   js/probador.js: código que el alumno puede cambiar con el
+   resultado al lado (y mandos que cambian una línea del CSS).
+   js/retos-web.js: actividad «Reto rápido» (elige, encuentra el
+   error, ordena). Es interactivo → acento cian, como las
+   actividades. El editor es el panel claro del código de siempre
+   y el resultado, una ventana de navegador blanca (como las
+   capturas de los ejercicios) en los dos temas.
+   ============================================================ */
+
+.leccion .probador {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  background: var(--probador-fondo);
+  padding: 0.8rem 0.9rem 0.9rem;
+  margin: 0 0 1.2rem;
+}
+.probador__cabecera {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.probador__etiqueta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tarea-texto);
+  background: var(--cinta-actividad);
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+}
+.probador__titulo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  flex: 1 1 10rem;
+}
+.probador__deshacer {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.35rem 0.8rem;
+  min-height: 32px;
+  cursor: pointer;
+}
+.probador__deshacer:hover { background: var(--surface-2); }
+
+/* Código a la izquierda, resultado a la derecha; en estrecho, uno
+   debajo del otro. */
+.probador__cuerpo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: 0.8rem;
+  align-items: start;
+}
+.probador__codigo { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.probador__panel { min-width: 0; }
+.probador__lengua {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 0 0 0.25rem;
+}
+
+/* El editor: un <textarea> con el texto transparente encima de un
+   <pre> con el resaltado. Los dos con la misma letra, tamaño, alto
+   de línea y relleno, o el cursor no cae donde se ve la letra. */
+.probador__editor {
+  position: relative;
+  background: var(--code-bg);
+  border: 1px solid var(--code-borde);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.probador__editor:focus-within { outline: 2px solid var(--accent); outline-offset: 1px; }
+.leccion .probador__resaltado,
+.probador__area {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  padding: 0.7rem 0.9rem;
+  margin: 0;
+  border: 0;
+  white-space: pre;
+  tab-size: 4;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+.leccion .probador__resaltado {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--code-text);
+  pointer-events: none;
+  border-radius: 0;
+}
+.probador__area {
+  position: relative;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: transparent;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  caret-color: var(--code-text);
+  outline: none;
+}
+.probador__area::selection { background: var(--probador-viva); }
+/* La línea que acaba de cambiar un mando se ilumina un momento. */
+.probador__linea-viva {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0;
+  background: var(--probador-viva);
+  opacity: 0;
+  pointer-events: none;
+}
+.probador__linea-viva--on { animation: probador-viva 1.4s ease-out; }
+@keyframes probador-viva { 0%, 40% { opacity: 1; } 100% { opacity: 0; } }
+
+.probador .et, .reto-web .et { color: var(--code-tag); }
+.probador .at, .reto-web .at { color: var(--code-attr); }
+.probador .ca, .reto-web .ca { color: var(--code-string); }
+.probador .co, .reto-web .co { color: var(--code-comment); font-style: italic; }
+.probador .kw, .reto-web .kw { color: var(--code-keyword); }
+.probador .fn, .reto-web .fn { color: var(--code-function); }
+.probador .nu, .reto-web .nu { color: var(--code-number); }
+
+/* El resultado: ventana de navegador. */
+.probador__vista {
+  min-width: 0;
+  border: 1px solid var(--code-borde, var(--border));
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--probador-resultado);
+}
+.probador__navegador {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  background: var(--probador-nav);
+}
+.probador__navegador span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--probador-nav-punto);
+}
+.probador__navegador b {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--probador-nav-texto);
+}
+.probador__marco {
+  display: block;
+  width: 100%;
+  border: 0;
+  background: var(--probador-resultado);
+}
+.leccion .probador__aviso {
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background: var(--probador-nav);
+  color: var(--code-text);
+  border-top: 1px solid var(--probador-nav-punto);
+  overflow-wrap: anywhere;
+}
+.probador__consola {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--probador-consola-bg);
+  color: var(--probador-consola-texto);
+  padding: 0.5rem 0.7rem;
+  min-height: 2.4rem;
+  max-height: 10rem;
+  overflow-y: auto;
+}
+.probador__consola::before {
+  content: "Consola";
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 0.2rem;
+}
+.probador__log { white-space: pre-wrap; overflow-wrap: anywhere; }
+.probador__log::before { content: "› "; opacity: 0.6; }
+.probador__log--error { color: var(--probador-consola-error); }
+.probador__log--error::before { content: ""; }
+
+/* Mandos */
+.probador__mandos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: 0.5rem 1.2rem;
+  margin: 0 0 0.8rem;
+}
+.probador__mando {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+}
+.probador__mando input[type="range"] { width: 100%; min-height: 32px; accent-color: var(--accent); }
+.probador__mando select {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  min-height: 32px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 0.4rem;
+}
+.probador__mando-valor {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent);
+  min-width: 5ch;
+  text-align: right;
+}
+
+.probador__pruebas { margin-top: 0.8rem; }
+.leccion .probador__pruebas-titulo {
+  margin: 0 0 0.3rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.leccion .probador__prueba { margin: 0; padding-left: 1.3rem; font-size: 0.92rem; }
+.leccion .probador__prueba li { margin-bottom: 0.2rem; }
+
+/* ---- Retos rápidos (dentro de la hoja cuadriculada) ---- */
+.actividad[data-tipo="reto-web"] { --color-tipo: var(--accent); }
+.reto__zona { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; }
+.reto__zona > * { min-width: 0; max-width: 100%; }
+.leccion .reto__pregunta { margin: 0; font-weight: 500; }
+.leccion .reto__rotulo { margin: 0; font-size: 0.85rem; color: var(--text-dim); }
+.reto-web .probador__vista { max-width: 34rem; }
+.reto__opciones { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+.reto__opcion,
+.reto__linea {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  width: 100%;
+  text-align: left;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  color: var(--code-text);
+  font: inherit;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.reto__opcion:hover:not(:disabled),
+.reto__linea:hover:not(:disabled) { border-color: var(--accent); }
+.reto__opcion:disabled, .reto__linea:disabled { cursor: default; }
+.reto__opcion--bien, .reto__linea--bien { border: 2px solid var(--hoja-verde); background: var(--reto-bien-fondo); }
+.reto__opcion--mal { border: 2px dashed var(--hoja-rojo); opacity: 0.7; }
+.reto__linea--mal { animation: reto-sacude 0.35s; border-color: var(--hoja-rojo); }
+@keyframes reto-sacude { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+.reto__letra {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+  padding-top: 0.15rem;
+}
+.leccion .reto__codigo {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  flex: 1;
+  min-width: 0;
+}
+.reto__lineas { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.reto__linea { padding: 0.3rem 0.6rem; font-family: var(--font-mono); font-size: 0.82rem; white-space: pre; overflow-x: auto; }
+.reto__linea code, .reto__fila code { background: none; border: 0; padding: 0; color: var(--code-text); font-size: 1em; white-space: pre; }
+.reto__num { color: var(--probador-nav-texto); min-width: 1.5ch; text-align: right; user-select: none; }
+.reto__ordenar { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.reto__fila {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem 0.2rem 0.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  overflow-x: auto;
+}
+.reto__ordenar--bien .reto__fila { border-color: var(--hoja-verde); background: var(--reto-bien-fondo); }
+.reto__mover {
+  min-width: 32px;
+  min-height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 0.75rem;
+}
+.reto__mover:disabled { opacity: 0.3; cursor: default; }
+.leccion .reto__estado { margin: 0.7rem 0 0; font-weight: 500; min-height: 1.4em; }
+.reto__estado--bien { color: var(--hoja-verde); }
+.reto__estado--mal { color: var(--hoja-rojo); }
+
+@media (prefers-reduced-motion: reduce) {
+  .probador__linea-viva--on { animation: none; opacity: 1; }
+  .reto__linea--mal { animation: none; }
+}
+@media print {
+  .probador__deshacer, .reto-web .generador__barra { display: none; }
 }

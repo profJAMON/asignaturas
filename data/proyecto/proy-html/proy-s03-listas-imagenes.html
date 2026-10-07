@@ -3,21 +3,35 @@
 <h2>Listas</h2>
 <h3>Lista con viñetas</h3>
 <p>Para cosas que <strong>no tienen un orden</strong>. <code>&lt;ul&gt;</code> es la lista y cada <code>&lt;li&gt;</code> es un elemento:</p>
-<pre><code><span class='et'>&lt;ul&gt;</span>
-    <span class='et'>&lt;li&gt;</span>12 pilotos<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>8 circuitos<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Modo para dos jugadores<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span></code></pre>
-<div class="salida"><ul><li>12 pilotos</li><li>8 circuitos</li><li>Modo para dos jugadores</li></ul></div>
+<div class="probador" aria-label="Lista con viñetas">
+<textarea data-lengua="html">
+<ul>
+    <li>12 pilotos</li>
+    <li>8 circuitos</li>
+    <li>Modo para dos jugadores</li>
+</ul>
+</textarea>
+<ul class="probador__prueba">
+<li>Añade un cuarto <code>&lt;li&gt;</code> con otra cosa del juego.</li>
+<li>Cambia <code>ul</code> por <code>ol</code>, arriba y abajo. ¿Qué pasa con los puntos?</li>
+</ul>
+</div>
 
 <h3>Lista numerada</h3>
 <p>Para cosas que <strong>van en orden</strong>: pasos, rankings, instrucciones. Es igual, pero con <code>&lt;ol&gt;</code>:</p>
-<pre><code><span class='et'>&lt;ol&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Gana el campeonato del volcán.<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Consigue 50 monedas.<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Compra a Turbo Rex en la tienda.<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ol&gt;</span></code></pre>
-<div class="salida"><ol><li>Gana el campeonato del volcán.</li><li>Consigue 50 monedas.</li><li>Compra a Turbo Rex en la tienda.</li></ol></div>
+<div class="probador" aria-label="Lista numerada">
+<textarea data-lengua="html">
+<ol>
+    <li>Gana el campeonato del volcán.</li>
+    <li>Consigue 50 monedas.</li>
+    <li>Compra a Turbo Rex en la tienda.</li>
+</ol>
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia de sitio dos <code>&lt;li&gt;</code>. ¿Los números se mueven con ellos?</li>
+<li>Escribe tú un número delante de un paso: <code>&lt;li&gt;1. Gana…</code>. ¿Qué sale?</li>
+</ul>
+</div>
 <div class="nota">⚠️ Dentro de <code>&lt;ul&gt;</code> y <code>&lt;ol&gt;</code> solo puede haber <code>&lt;li&gt;</code>. El título de la lista va <strong>antes</strong>, fuera de ella, en un <code>&lt;h2&gt;</code> o un <code>&lt;p&gt;</code>.</div>
 
 <h3>Truco de VS Code: una lista entera de golpe</h3>
@@ -44,20 +58,31 @@
 
 <h3>Una lista dentro de otra</h3>
 <p>Un <code>&lt;li&gt;</code> puede llevar dentro otra lista entera. La lista pequeña va <strong>dentro del <code>&lt;li&gt;</code></strong>, antes de su <code>&lt;/li&gt;</code>:</p>
-<pre><code><span class='et'>&lt;ul&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Pilotos rápidos
-        <span class='et'>&lt;ul&gt;</span>
-            <span class='et'>&lt;li&gt;</span>Turbo Rex<span class='et'>&lt;/li&gt;</span>
-            <span class='et'>&lt;li&gt;</span>Chispa<span class='et'>&lt;/li&gt;</span>
-        <span class='et'>&lt;/ul&gt;</span>
-    <span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Pilotos fuertes<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span></code></pre>
-<div class="salida"><ul><li>Pilotos rápidos<ul><li>Turbo Rex</li><li>Chispa</li></ul></li><li>Pilotos fuertes</li></ul></div>
+<div class="probador" aria-label="Una lista dentro de otra">
+<textarea data-lengua="html">
+<ul>
+    <li>Pilotos rápidos
+        <ul>
+            <li>Turbo Rex</li>
+            <li>Chispa</li>
+        </ul>
+    </li>
+    <li>Pilotos fuertes</li>
+</ul>
+</textarea>
+<ul class="probador__prueba">
+<li>Añade un tercer piloto rápido a la lista de dentro.</li>
+<li>Cambia la <code>ul</code> de <strong>dentro</strong> por <code>ol</code>.</li>
+<li>Pon otra lista dentro de «Pilotos fuertes» con dos pilotos.</li>
+</ul>
+</div>
 <p>El navegador mete la lista de dentro un poco más a la derecha y le cambia las viñetas por círculos vacíos. Eso no lo escribes tú.</p>
 <details><summary>🤔 Antes de seguir: ¿qué diferencia hay entre &lt;ul&gt; y &lt;ol&gt;?</summary>
 <p><code>&lt;ul&gt;</code> es una lista con viñetas, para cosas sin orden. <code>&lt;ol&gt;</code> es una lista numerada, para cosas que van en orden.</p>
 </details>
+
+<p>Antes del ejercicio, un reto rápido. Si lo aciertas, pulsa «Otro reto» y prueba otro.</p>
+<div data-actividad="reto-listas"></div>
 
 <h3>Ejercicio 2 — Deportes del instituto</h3>
 <p>Crea <code>s03-ej2.html</code> y haz que se vea como en la imagen.</p>
@@ -110,7 +135,22 @@
 <tr><td><code>src="C:\Users\...\tierra.png"</code></td><td>❌ Solo funciona en ese ordenador. Nunca rutas que empiecen por <code>C:\</code>.</td></tr>
 </tbody>
 </table>
+<p>Ahora rómpelo tú. Esta página está al lado de una carpeta <code>img</code> con <code>tierra.png</code> y <code>luna.png</code>, como en el dibujo de arriba:</p>
+<div class="probador" aria-label="Rutas de imágenes" data-base="data/proyecto/proy-html/img/proy-s03/probador/" data-alto="120">
+<textarea data-lengua="html">
+<h2>La Tierra</h2>
+<img src="img/tierra.png" alt="La Tierra vista desde el espacio">
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia <code>tierra</code> por <code>luna</code>.</li>
+<li>Borra <code>img/</code>. ¿Qué sale en lugar de la imagen?</li>
+<li>Vuelve a ponerlo y escribe <code>Tierra</code> con mayúscula. Después, <code>.jpg</code> en lugar de <code>.png</code>.</li>
+<li>Rompe la ruta y cambia el <code>alt</code>: ¿dónde aparece tu texto?</li>
+</ul>
+</div>
 <div class="nota">💡 Truco para no equivocarte: en el panel de la izquierda de VS Code, botón derecho sobre la imagen → <strong>Copy Relative Path</strong> y pégala en el <code>src</code>. Si sale con la barra al revés (<code>img\tierra.png</code>), cámbiala por <code>/</code>.</div>
+<p>Reto rápido: ¿encuentras el fallo?</p>
+<div data-actividad="reto-imagenes"></div>
 
 <h3>Ejercicio 3 — La Tierra y la Luna</h3>
 <p>Te he preparado dos imágenes. Primero, guárdalas en tu carpeta:</p>

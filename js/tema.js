@@ -175,6 +175,8 @@ function pintarLeccion(contenidoHtml) {
   pintarComoTrabajar(contenedor);
   /* Carruseles de diapositivas paso a paso. Ver js/diapos.js. */
   if (typeof iniciarDiapos === 'function') iniciarDiapos(contenedor);
+  /* «Toca y mira»: código que se puede cambiar con su resultado. Ver js/probador.js. */
+  if (typeof iniciarProbadores === 'function') iniciarProbadores(contenedor);
   /* Marca código y salidas como no traducibles ANTES de que el traductor
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
