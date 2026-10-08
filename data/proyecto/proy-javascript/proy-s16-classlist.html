@@ -19,18 +19,31 @@
 
 <h2>Poner una clase: add</h2>
 <p>En Pixel Kart, al pulsar un botón se resalta el piloto ganador:</p>
-<pre><code><span class='et'>.ganador</span> {
-    <span class='at'>background-color</span>: <span class='ca'>gold</span>;
-    <span class='at'>font-weight</span>: <span class='ca'>bold</span>;
-}</code></pre>
-<pre><code translate="no">botonGanador.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    turboRex.classList.<span class='fn'>add</span>(<span class='ca'>"ganador"</span>);
-});</code></pre>
-<div class="salida">
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Antes de pulsar:</p>
-<p style="margin:0 0 .8rem">Turbo Rex</p>
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Después de pulsar:</p>
-<p style="margin:0"><span style="background-color:gold;color:#000;font-weight:bold">Turbo Rex</span></p>
+<div class="probador" aria-label="classList.add" data-alto="90">
+<textarea data-lengua="html">
+<p id="turbo-rex">Turbo Rex</p>
+<p>Chispa</p>
+<button id="boton-ganador">¿Quién ha ganado?</button>
+</textarea>
+<textarea data-lengua="css">
+.ganador {
+    background-color: gold;
+    font-weight: bold;
+}
+</textarea>
+<textarea data-lengua="js">
+let turboRex = document.querySelector("#turbo-rex");
+let botonGanador = document.querySelector("#boton-ganador");
+
+botonGanador.addEventListener("click", function () {
+    turboRex.classList.add("ganador");
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el botón.</li>
+<li>Cambia el CSS de <code>.ganador</code>: otro color, letra más grande…</li>
+<li>Escribe <code>add(".ganador")</code>, con punto. ¿Funciona?</li>
+</ul>
 </div>
 <p>Para usar clases, cada ejercicio de hoy tiene también su CSS: <code>s16-ej1.css</code>, conectado con <code>&lt;link&gt;</code> en el <code>&lt;head&gt;</code>, como en la sesión 8.</p>
 
@@ -54,19 +67,37 @@
 
 <h2>Mostrar y ocultar: add y remove</h2>
 <p>Con <code>display: none</code>, un elemento <strong>no se ve ni ocupa sitio</strong>. Si el elemento empieza con esa clase, al cargar está escondido:</p>
-<pre><code><span class='et'>&lt;ul</span> <span class='at'>id</span>=<span class='ca'>"trucos"</span> <span class='at'>class</span>=<span class='ca'>"oculto"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Derrapa antes de la curva para ganar un turbo.<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span></code></pre>
-<pre><code><span class='et'>.oculto</span> {
-    <span class='at'>display</span>: <span class='ca'>none</span>;
-}</code></pre>
-<pre><code translate="no">botonMostrar.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    trucos.classList.<span class='fn'>remove</span>(<span class='ca'>"oculto"</span>);
+<div class="probador" aria-label="Mostrar y ocultar" data-alto="110">
+<textarea data-lengua="html">
+<button id="boton-mostrar">Ver trucos</button>
+<button id="boton-ocultar">Ocultar trucos</button>
+<ul id="trucos" class="oculto">
+    <li>Derrapa antes de la curva para ganar un turbo.</li>
+</ul>
+</textarea>
+<textarea data-lengua="css">
+.oculto {
+    display: none;
+}
+</textarea>
+<textarea data-lengua="js">
+let trucos = document.querySelector("#trucos");
+let botonMostrar = document.querySelector("#boton-mostrar");
+let botonOcultar = document.querySelector("#boton-ocultar");
+
+botonMostrar.addEventListener("click", function () {
+    trucos.classList.remove("oculto");
 });
 
-botonOcultar.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    trucos.classList.<span class='fn'>add</span>(<span class='ca'>"oculto"</span>);
-});</code></pre>
+botonOcultar.addEventListener("click", function () {
+    trucos.classList.add("oculto");
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa los dos botones.</li>
+<li>Borra <code>class="oculto"</code> del HTML: ¿cómo empieza ahora la página?</li>
+</ul>
+</div>
 <p>Para <strong>mostrar</strong>, se <strong>quita</strong> la clase <code>oculto</code>. Para <strong>ocultar</strong>, se <strong>pone</strong>.</p>
 <details><summary>🤔 Antes de seguir: escribes trucos.classList.remove(".oculto") y no funciona. ¿Por qué?</summary>
 <p>Sobra el punto. En <code>classList</code> el nombre de la clase va sin punto.</p>
@@ -89,10 +120,36 @@ botonOcultar.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</
 
 <h2>Un interruptor: toggle</h2>
 <p>Con <code>toggle</code> basta <strong>un solo botón</strong>: cada clic pone la clase si no está y la quita si está.</p>
-<pre><code translate="no">botonTrucos.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    trucos.classList.<span class='fn'>toggle</span>(<span class='ca'>"oculto"</span>);
-});</code></pre>
+<div class="probador" aria-label="toggle" data-alto="100">
+<textarea data-lengua="html">
+<button id="boton-trucos">Trucos</button>
+<ul id="trucos" class="oculto">
+    <li>Derrapa antes de la curva para ganar un turbo.</li>
+    <li>Las monedas azules valen el doble.</li>
+</ul>
+</textarea>
+<textarea data-lengua="css">
+.oculto {
+    display: none;
+}
+</textarea>
+<textarea data-lengua="js">
+let trucos = document.querySelector("#trucos");
+let botonTrucos = document.querySelector("#boton-trucos");
+
+botonTrucos.addEventListener("click", function () {
+    trucos.classList.toggle("oculto");
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el botón varias veces.</li>
+<li>Haz que el botón también se cambie a sí mismo: añade <code>botonTrucos.classList.toggle("activo");</code> dentro de las llaves y una regla <code>.activo { background-color: orange; }</code> en el CSS.</li>
+</ul>
+</div>
 <p>Un elemento también se puede cambiar <strong>a sí mismo</strong>: el botón puede ponerse o quitarse una clase.</p>
+
+<p>Reto rápido de classList:</p>
+<div data-actividad="reto-js-classlist"></div>
 
 <h3>Ejercicio 3 — Me gusta</h3>
 <p>Crea <code>s16-ej3.html</code>, <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Al pulsar "Me gusta", el botón se pone rojo; al volver a pulsar, vuelve a ser normal.</p>
@@ -110,17 +167,44 @@ botonOcultar.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</
 
 <h2>Modo oscuro</h2>
 <p>La misma idea sirve para cambiar los colores de <strong>toda la página</strong>: se pone una clase en el <code>&lt;body&gt;</code>.</p>
-<pre><code><span class='et'>body.modo-oscuro</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#111111</span>;
-    <span class='at'>color</span>: <span class='ca'>#eeeeee</span>;
+<div class="probador" aria-label="Modo oscuro" data-alto="150">
+<textarea data-lengua="html">
+<button id="boton-modo">Modo oscuro</button>
+<h1>Pixel Kart</h1>
+<div class="tarjeta">Turbo Rex: el más rápido.</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    font-family: Arial, sans-serif;
 }
 
-<span class='et'>body.modo-oscuro .tarjeta</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#333333</span>;
-}</code></pre>
-<pre><code translate="no">botonModo.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    document.body.classList.<span class='fn'>toggle</span>(<span class='ca'>"modo-oscuro"</span>);
-});</code></pre>
+.tarjeta {
+    background-color: #eeeeee;
+    padding: 10px;
+}
+
+body.modo-oscuro {
+    background-color: #111111;
+    color: #eeeeee;
+}
+
+body.modo-oscuro .tarjeta {
+    background-color: #333333;
+}
+</textarea>
+<textarea data-lengua="js">
+let botonModo = document.querySelector("#boton-modo");
+
+botonModo.addEventListener("click", function () {
+    document.body.classList.toggle("modo-oscuro");
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el botón varias veces.</li>
+<li>Cambia los colores del modo oscuro.</li>
+<li>Pon un espacio: <code>body .modo-oscuro</code>. ¿Sigue funcionando?</li>
+</ul>
+</div>
 <ul>
 <li><code>body.modo-oscuro</code> (sin espacio) es "el <code>body</code> cuando tiene la clase <code>modo-oscuro</code>".</li>
 <li><code>body.modo-oscuro .tarjeta</code> (con espacio) es "las tarjetas que están dentro de ese <code>body</code>".</li>

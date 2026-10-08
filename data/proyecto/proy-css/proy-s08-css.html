@@ -33,6 +33,27 @@
 <li>Cada orden es <code>propiedad: valor;</code>. Los <strong>dos puntos</strong> y el <strong>punto y coma</strong> son obligatorios.</li>
 </ul>
 <div class="nota">⚠️ Si te olvidas un <code>;</code> o una llave <code>}</code>, esa regla y a veces <strong>todas las de debajo</strong> dejan de funcionar. Es el error más típico en CSS.</div>
+<p>Míralo en directo. Aquí el CSS va al lado del HTML, como si estuviera en su archivo <code>.css</code>:</p>
+<div class="probador" aria-label="Una regla CSS">
+<textarea data-lengua="html">
+<h1>Pixel Kart</h1>
+<p>El juego de karts más rápido del instituto.</p>
+</textarea>
+<textarea data-lengua="css">
+h1 {
+    color: darkgreen;
+}
+
+p {
+    color: purple;
+}
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia <code>darkgreen</code> por <code>red</code>, <code>orange</code> o <code>blue</code>.</li>
+<li>Borra la <code>}</code> de la regla del <code>h1</code>. ¿Qué le pasa al párrafo? Después, vuelve a ponerla.</li>
+<li>Escribe mal la propiedad: <code>colr</code>. ¿Da error o simplemente no hace nada?</li>
+</ul>
+</div>
 
 <h3>Ejercicio 1 — Conecta tu primer CSS</h3>
 <p>Crea <code>s08-ej1.html</code> (con <strong>! + Tab</strong>) y <code>s08-ej1.css</code>. Dentro del <code>&lt;body&gt;</code>, escribe este HTML:</p>
@@ -65,20 +86,33 @@
 <tr><td><code>text-align</code></td><td>Alineación del texto</td><td><code>text-align: center;</code></td></tr>
 </tbody>
 </table>
-<pre><code><span class='et'>body</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#1b1b3a</span>;
-    <span class='at'>color</span>: <span class='ca'>white</span>;
-    <span class='at'>font-family</span>: <span class='ca'>Arial, sans-serif</span>;
+<div class="probador" aria-label="Colores y letra">
+<textarea data-lengua="html">
+<h1>Pixel Kart</h1>
+<p>El juego de karts más rápido del instituto.</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-<span class='et'>h1</span> {
-    <span class='at'>color</span>: <span class='ca'>#ffcc00</span>;
-    <span class='at'>font-size</span>: <span class='ca'>40px</span>;
-    <span class='at'>text-align</span>: <span class='ca'>center</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;color:#fff;font-family:Arial,sans-serif">
-<p style="color:#ffcc00;font-size:40px;font-weight:bold;text-align:center;margin:0 0 .4rem">Pixel Kart</p>
-<p style="color:#fff;margin:0">El juego de karts más rápido del instituto.</p>
+h1 {
+    color: #ffcc00;
+    font-size: 40px;
+    text-align: center;
+}
+</textarea>
+<input type="color" data-sel="body" data-prop="background-color">
+<input type="color" data-sel="h1" data-prop="color">
+<input type="range" data-sel="h1" data-prop="font-size" data-unidad="px" min="10" max="80">
+<select data-sel="h1" data-prop="text-align"><option>left</option><option>center</option><option>right</option></select>
+<ul class="probador__prueba">
+<li>Mueve los mandos de arriba y mira qué línea del CSS cambia.</li>
+<li>Cambia <code>Arial, sans-serif</code> por <code>Georgia, serif</code>.</li>
+<li>Escribe <code>40 px</code> (con espacio) en el tamaño. ¿Funciona?</li>
+</ul>
 </div>
 <ul>
 <li>Lo que pones en <code>body</code> vale para <strong>toda la página</strong>: el párrafo sale blanco y en Arial sin decir nada más.</li>
@@ -86,6 +120,9 @@
 <li>El tamaño se escribe con <code>px</code> pegado al número: <code>40px</code>, no <code>40 px</code>.</li>
 <li>En <code>font-family</code> se ponen dos letras: la que quieres y otra de reserva (<code>sans-serif</code>) por si el ordenador no tiene la primera.</li>
 </ul>
+
+<p>Reto rápido: ¿qué CSS es?</p>
+<div data-actividad="reto-css-colores"></div>
 
 <h3>Truco de VS Code: que escriba él</h3>
 <ul>
@@ -120,15 +157,29 @@
 <li>En el HTML, les pones una <strong>clase</strong>: <code>class="destacado"</code>.</li>
 <li>En el CSS, escribes el nombre de la clase con un <strong>punto</strong> delante: <code>.destacado</code>.</li>
 </ol>
-<pre><code><span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"destacado"</span><span class='et'>&gt;</span>¡Nuevo circuito: Ciudad Neón!<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;p&gt;</span>El resto de párrafos se ven normales.<span class='et'>&lt;/p&gt;</span></code></pre>
-<pre><code><span class='et'>.destacado</span> {
-    <span class='at'>color</span>: <span class='ca'>#ff6b35</span>;
-    <span class='at'>font-size</span>: <span class='ca'>22px</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;color:#fff;font-family:Arial,sans-serif">
-<p style="color:#ff6b35;font-size:22px;margin:0 0 .4rem">¡Nuevo circuito: Ciudad Neón!</p>
-<p style="color:#fff;margin:0">El resto de párrafos se ven normales.</p>
+<div class="probador" aria-label="Selector de clase">
+<textarea data-lengua="html">
+<p class="destacado">¡Nuevo circuito: Ciudad Neón!</p>
+<p>El resto de párrafos se ven normales.</p>
+<p>Este también es normal.</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.destacado {
+    color: #ff6b35;
+    font-size: 22px;
+}
+</textarea>
+<ul class="probador__prueba">
+<li>Pon <code>class="destacado"</code> también al último párrafo.</li>
+<li>Escribe la clase con punto en el HTML: <code>class=".destacado"</code>. ¿Funciona?</li>
+<li>Quita el punto en el CSS: <code>destacado {</code>. ¿Funciona?</li>
+</ul>
 </div>
 <ul>
 <li>En HTML: <code>class="destacado"</code>, <strong>sin</strong> punto. En CSS: <code>.destacado</code>, <strong>con</strong> punto.</li>
@@ -165,6 +216,18 @@
 <p>Compara letra a letra el nombre de la clase en el HTML y en el CSS. Y mira que en el CSS tenga el punto delante.</p>
 </details>
 <p>Si lo has hecho bien: le pones <code>class="oferta"</code> también a Margarita, guardas, y se vuelve verde sin tocar el CSS. Después, quítaselo.</p>
+
+<p>Reto rápido: encuentra el fallo del CSS.</p>
+<div data-actividad="reto-css-clases"></div>
+
+<h3>Juego: CSS Diner</h3>
+<p>Un juego para practicar selectores: tienes que escribir el selector que coge los platos que bailan. Está en inglés, pero se entiende mirando. Si quieres, tradúcelo con el botón de Chrome.</p>
+<ol>
+<li>Abre <a href="https://flukeout.github.io/" target="_blank" rel="noopener">flukeout.github.io</a>.</li>
+<li>Haz los niveles <strong>1, 2 y 6</strong>: selector de etiqueta y de clase, lo de hoy. Para saltar de nivel, pulsa el número de nivel de arriba a la derecha.</li>
+<li>Los demás usan selectores que no damos: sáltatelos.</li>
+</ol>
+<p>Si lo has hecho bien: el nivel sale marcado con un ✓ en la lista de niveles.</p>
 
 <h2>Comprueba tu CSS con F12</h2>
 <p>Cuando algo no cambia como esperabas, Chrome te enseña qué CSS le llega:</p>

@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/Forms/Your_first_form"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-formularios",
+      "tipo": "reto-web",
+      "titulo": "Cajas, desplegables y botones",
+      "banco": "formularios"
+    }
+  ]
 }

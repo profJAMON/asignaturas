@@ -23,16 +23,58 @@
 <tr><td><code>margin</code></td><td>Espacio por fuera, que separa la caja de las demás. Siempre transparente.</td><td><code>margin: 20px;</code></td></tr>
 </tbody>
 </table>
+<p>Mueve los mandos y mira qué capa crece. Hay <strong>dos cajas iguales</strong> para que veas el margen que las separa:</p>
+<div class="probador" aria-label="Laboratorio de la caja">
+<textarea data-lengua="html">
+<p class="caja">Caja 1</p>
+<p class="caja">Caja 2</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #dfe7f5;
+    font-family: Arial, sans-serif;
+}
+
+.caja {
+    background-color: #fff3bf;
+    padding: 15px;
+    border: 4px solid orange;
+    margin: 20px;
+}
+</textarea>
+<input type="range" data-sel=".caja" data-prop="padding" data-unidad="px" min="0" max="60">
+<input type="range" data-sel=".caja" data-prop="margin" data-unidad="px" min="0" max="60">
+<ul class="probador__prueba">
+<li>Sube el <code>padding</code>: el fondo amarillo crece, porque el relleno está <strong>dentro</strong> del borde.</li>
+<li>Sube el <code>margin</code>: las cajas se separan, pero el espacio es del color de la página. El margen está <strong>fuera</strong>.</li>
+<li>Pon los dos a 0. ¿Qué queda?</li>
+</ul>
+</div>
 
 <h2>Relleno, borde y esquinas</h2>
-<pre><code><span class='et'>.aviso</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#fff3bf</span>;
-    <span class='at'>padding</span>: <span class='ca'>15px</span>;
-    <span class='at'>border</span>: <span class='ca'>2px solid orange</span>;
-    <span class='at'>border-radius</span>: <span class='ca'>10px</span>;
-}</code></pre>
-<div class="salida" style="background:#ffffff;color:#000;font-family:Arial,sans-serif">
-<p style="background:#fff3bf;padding:15px;border:2px solid orange;border-radius:10px;margin:0">Hoy el circuito del volcán está cerrado.</p>
+<div class="probador" aria-label="Relleno, borde y esquinas">
+<textarea data-lengua="html">
+<p class="aviso">Hoy el circuito del volcán está cerrado.</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    font-family: Arial, sans-serif;
+}
+
+.aviso {
+    background-color: #fff3bf;
+    padding: 15px;
+    border: 2px solid orange;
+    border-radius: 10px;
+}
+</textarea>
+<input type="range" data-sel=".aviso" data-prop="border-radius" data-unidad="px" min="0" max="40">
+<select data-sel=".aviso" data-prop="border"><option>2px solid orange</option><option>2px dashed orange</option><option>2px dotted orange</option><option>6px solid orange</option><option>6px double orange</option></select>
+<ul class="probador__prueba">
+<li>Mueve las esquinas de 0 a 40.</li>
+<li>Elige otros bordes en el desplegable.</li>
+<li>Escribe tú <code>border: 2px orange;</code> (sin tipo de línea). ¿Sale el borde?</li>
+</ul>
 </div>
 <ul>
 <li><code>border</code> lleva tres valores, separados por espacios: <strong>grosor</strong>, <strong>tipo de línea</strong> (<code>solid</code>, <code>dashed</code>, <code>dotted</code>) y <strong>color</strong>.</li>
@@ -60,29 +102,45 @@
 
 <h2>Tarjetas con &lt;div&gt;</h2>
 <p><code>&lt;div&gt;</code> es una <strong>caja vacía</strong> que no se ve. Sirve para <strong>agrupar</strong> varias etiquetas y darles estilo juntas. Con una clase, se convierte en una tarjeta:</p>
-<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;h2&gt;</span>Turbo Rex<span class='et'>&lt;/h2&gt;</span>
-    <span class='et'>&lt;p&gt;</span>El más rápido en las rectas.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;/div&gt;</span></code></pre>
-<pre><code><span class='et'>.tarjeta</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
-    <span class='at'>width</span>: <span class='ca'>250px</span>;
-    <span class='at'>margin</span>: <span class='ca'>20px auto</span>;
-    <span class='at'>padding</span>: <span class='ca'>16px</span>;
-    <span class='at'>border</span>: <span class='ca'>2px solid #ffcc00</span>;
-    <span class='at'>border-radius</span>: <span class='ca'>10px</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif;color:#fff">
-<div style="background:#2a2a55;width:250px;max-width:100%;box-sizing:border-box;margin:20px auto;padding:16px;border:2px solid #ffcc00;border-radius:10px">
-<p style="font-size:1.5em;font-weight:bold;margin:0 0 .4rem;color:#fff">Turbo Rex</p>
-<p style="margin:0;color:#fff">El más rápido en las rectas.</p>
+<div class="probador" aria-label="Una tarjeta">
+<textarea data-lengua="html">
+<div class="tarjeta">
+    <h2>Turbo Rex</h2>
+    <p>El más rápido en las rectas.</p>
 </div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.tarjeta {
+    background-color: #2a2a55;
+    width: 250px;
+    margin: 20px auto;
+    padding: 16px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+}
+</textarea>
+<input type="range" data-sel=".tarjeta" data-prop="width" data-unidad="px" min="100" max="300">
+<select data-sel=".tarjeta" data-prop="margin"><option>20px auto</option><option>20px</option><option>20px 0</option></select>
+<ul class="probador__prueba">
+<li>Cambia el ancho con el mando.</li>
+<li>En <code>margin</code>, elige <code>20px</code>: ¿sigue centrada?</li>
+<li>Borra la línea del <code>width</code> entera.</li>
+</ul>
 </div>
 <ul>
 <li><code>width</code> es el <strong>ancho</strong> de la caja. Sin él, la tarjeta ocupa todo el ancho de la página.</li>
 <li><code>margin: 20px auto;</code> quiere decir: <strong>20px arriba y abajo</strong>, y <strong>automático a los lados</strong>. El navegador reparte el sitio que sobra a los dos lados y la caja queda <strong>centrada</strong>.</li>
 <li>Para poner margen solo por un lado: <code>margin-bottom</code> (abajo), <code>margin-top</code> (arriba)… Igual con <code>padding</code>.</li>
 </ul>
+
+<p>Reto rápido de cajas:</p>
+<div data-actividad="reto-caja"></div>
 
 <h3>Truco de VS Code: la tarjeta en un segundo</h3>
 <p>En el HTML, escribe <code>.tarjeta</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;div class="tarjeta"&gt;&lt;/div&gt;</code>. Pulsa <strong>Intro</strong> entre las dos etiquetas y escribe dentro. Funciona con cualquier nombre de clase: <code>.aviso</code> + Tab…</p>
@@ -111,21 +169,36 @@
 
 <h2>Cambiar al pasar el ratón: :hover</h2>
 <p><code>:hover</code> es el estilo que tiene una etiqueta <strong>mientras el ratón está encima</strong>. Se escribe pegado al selector, <strong>sin espacio</strong>, en una regla aparte:</p>
-<pre><code><span class='et'>.boton</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
-    <span class='at'>color</span>: <span class='ca'>white</span>;
-    <span class='at'>padding</span>: <span class='ca'>10px 20px</span>;
-    <span class='at'>border-radius</span>: <span class='ca'>8px</span>;
-    <span class='at'>text-decoration</span>: <span class='ca'>none</span>;
+<div class="probador" aria-label=":hover" data-alto="80">
+<textarea data-lengua="html">
+<a class="boton" href="juego.html">Jugar</a>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-<span class='et'>.boton:hover</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#ffcc00</span>;
-    <span class='at'>color</span>: <span class='ca'>#1b1b3a</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif;color:#fff">
-<p style="margin:0 0 .8rem;color:#fff">Sin el ratón: <span style="background:#2a2a55;color:#fff;padding:10px 20px;border-radius:8px;display:inline-block">Jugar</span></p>
-<p style="margin:0;color:#fff">Con el ratón encima: <span style="background:#ffcc00;color:#1b1b3a;padding:10px 20px;border-radius:8px;display:inline-block">Jugar</span></p>
+.boton {
+    background-color: #2a2a55;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.boton:hover {
+    background-color: #ffcc00;
+    color: #1b1b3a;
+}
+</textarea>
+<ul class="probador__prueba">
+<li>Pasa el ratón por encima de <strong>Jugar</strong>.</li>
+<li>Cambia los colores de <code>.boton:hover</code>.</li>
+<li>Pon un espacio: <code>.boton :hover</code>. ¿Sigue funcionando?</li>
+<li>Borra <code>text-decoration: none;</code>.</li>
+</ul>
 </div>
 <ul>
 <li>En <code>.boton:hover</code> solo pones lo que <strong>cambia</strong>. Lo demás (el relleno, las esquinas) se queda como en <code>.boton</code>.</li>
@@ -163,31 +236,49 @@
 
 <h2>Bordes para las tablas</h2>
 <p>Las tablas que hiciste en HTML no tenían líneas. Con CSS se las pones:</p>
-<pre><code><span class='et'>table</span> {
-    <span class='at'>border-collapse</span>: <span class='ca'>collapse</span>;
-}
-
-<span class='et'>th, td</span> {
-    <span class='at'>border</span>: <span class='ca'>1px solid #ffcc00</span>;
-    <span class='at'>padding</span>: <span class='ca'>8px 12px</span>;
-}
-
-<span class='et'>tr:hover</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif;color:#fff">
-<table style="border-collapse:collapse;margin:0;color:#fff;background:transparent">
-<tr><th style="border:1px solid #ffcc00;padding:8px 12px;background:transparent;color:#fff">Piloto</th><th style="border:1px solid #ffcc00;padding:8px 12px;background:transparent;color:#fff">Puntos</th></tr>
-<tr style="background:#2a2a55"><td style="border:1px solid #ffcc00;padding:8px 12px;color:#fff">Turbo Rex</td><td style="border:1px solid #ffcc00;padding:8px 12px;color:#fff">25</td></tr>
-<tr><td style="border:1px solid #ffcc00;padding:8px 12px;color:#fff">Chispa</td><td style="border:1px solid #ffcc00;padding:8px 12px;color:#fff">18</td></tr>
+<div class="probador" aria-label="Bordes de tabla">
+<textarea data-lengua="html">
+<table>
+    <tr><th>Piloto</th><th>Puntos</th></tr>
+    <tr><td>Turbo Rex</td><td>25</td></tr>
+    <tr><td>Chispa</td><td>18</td></tr>
 </table>
-<p style="margin:.5rem 0 0;font-size:.9em;color:#fff">Aquí, el ratón está encima de la fila de Turbo Rex.</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ffcc00;
+    padding: 8px 12px;
+}
+
+tr:hover {
+    background-color: #2a2a55;
+}
+</textarea>
+<select data-sel="table" data-prop="border-collapse"><option>collapse</option><option>separate</option></select>
+<input type="range" data-sel="th, td" data-prop="padding" data-unidad="px" min="0" max="30">
+<ul class="probador__prueba">
+<li>Pasa el ratón por las filas.</li>
+<li>Cambia <code>border-collapse</code> a <code>separate</code>: salen líneas dobles.</li>
+</ul>
 </div>
 <ul>
 <li><code>th, td</code> con una <strong>coma</strong>: la regla vale para los dos a la vez.</li>
 <li><code>border-collapse: collapse;</code> junta los bordes de las celdas en una sola línea. Sin él, salen líneas dobles.</li>
 <li><code>tr:hover</code>: la <strong>fila</strong> por la que pasa el ratón cambia de fondo. Así es más fácil leer una fila larga.</li>
 </ul>
+
+<p>Reto rápido: hover y tablas.</p>
+<div data-actividad="reto-hover"></div>
 
 <h3>Ejercicio 4 — La web de un club deportivo</h3>
 <p>El ejercicio más largo de hoy: junta todo lo de la sesión. Crea <code>s09-ej4.html</code> y <code>s09-ej4.css</code>, y conecta el CSS. Copia este HTML:</p>

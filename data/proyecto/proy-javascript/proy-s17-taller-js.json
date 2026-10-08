@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/First_steps/What_went_wrong"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-repaso-js",
+      "tipo": "reto-web",
+      "titulo": "Repaso de JavaScript",
+      "banco": "js-variables,js-eventos,js-value,js-if,js-classlist"
+    }
+  ]
 }

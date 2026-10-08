@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-flex",
+      "tipo": "reto-web",
+      "titulo": "¿Dónde va el display: flex?",
+      "banco": "flex"
+    }
+  ]
 }

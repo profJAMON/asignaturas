@@ -15,5 +15,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/First_steps/Variables"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-js-variables",
+      "tipo": "reto-web",
+      "titulo": "¿Qué sale en la consola?",
+      "banco": "js-variables"
+    }
+  ]
 }

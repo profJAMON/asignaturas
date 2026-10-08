@@ -15,5 +15,18 @@
       "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-caja",
+      "tipo": "reto-web",
+      "titulo": "Relleno, borde y margen",
+      "banco": "caja"
+    },
+    {
+      "id": "reto-hover",
+      "tipo": "reto-web",
+      "titulo": "Hover y bordes de tabla",
+      "banco": "hover"
+    }
+  ]
 }

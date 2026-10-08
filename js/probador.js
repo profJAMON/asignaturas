@@ -22,9 +22,12 @@
      </div>
 
    Dentro de un <textarea> el HTML se escribe tal cual (sin &lt;).
-   Un <textarea> no puede llevar dentro el texto «</textarea>».
+   Un <textarea> no puede llevar dentro el texto «</textarea>»: si el
+   ejemplo tiene una caja <textarea>, el código va en
+   <script type="text/plain" data-lengua="html"> … </script>.
 
-   Mandos (deslizadores y desplegables) que cambian una línea del CSS:
+   Mandos (deslizadores, desplegables y paletas de color
+   <input type="color">) que cambian una línea del CSS:
 
      <input type="range" data-sel=".aviso" data-prop="padding"
             data-unidad="px" min="0" max="60">
@@ -204,12 +207,13 @@
     return `<script>(function(){var T=${JSON.stringify(token)};
 function E(t,d){try{parent.postMessage({probador:T,tipo:t,datos:d},'*')}catch(e){}}
 function S(v){if(typeof v==='string')return v;if(v&&v.nodeType===1)return '<'+v.tagName.toLowerCase()+(v.id?' id="'+v.id+'"':'')+'>';try{return JSON.stringify(v)}catch(e){return String(v)}}
-console.log=function(){E('log',Array.prototype.map.call(arguments,S).join(' '))};
+function L(){var m=/:(\\d+):\\d+\\)?\\s*$/.exec((new Error().stack||'').split('\\n')[3]||'');return m?+m[1]:0}
+console.log=function(){var l=L();E('log',{p:Array.prototype.map.call(arguments,function(v){return [typeof v==='number'||typeof v==='boolean'?'n':'s',S(v)]}),l:l})};
 window.addEventListener('error',function(ev){if(ev.message)E('error',{m:String(ev.message),l:ev.lineno||0})});
 document.addEventListener('click',function(ev){var a=ev.target.closest&&ev.target.closest('a[href]');if(a){ev.preventDefault();E('enlace',a.getAttribute('href'))}},true);
 document.addEventListener('submit',function(ev){ev.preventDefault();E('envio','')},true);
 function A(){var h=document.documentElement;E('alto',Math.ceil(h.getBoundingClientRect().height))}
-window.addEventListener('load',function(){A();if(window.ResizeObserver)new ResizeObserver(A).observe(document.documentElement)});
+window.addEventListener('load',function(){A();E('titulo',document.title||'');if(window.ResizeObserver)new ResizeObserver(A).observe(document.documentElement)});
 })();<\/script>`;
   }
 
@@ -218,7 +222,7 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
   function montarDocumento(partes, token, base) {
     const cabeza = '<meta charset="utf-8">' +
       (base ? `<base href="${esc(base)}">` : '') +
-      '<style>:root{color-scheme:light}html{background:#fff}</style>' +
+      '<style>:root{color-scheme:light}</style>' +
       puente(token) +
       (partes.css ? `<style>\n${partes.css}\n</style>` : '');
     let html = partes.html || '';
@@ -260,6 +264,16 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     if (/Assignment to constant/.test(m)) return 'Has intentado cambiar una constante.';
     if (/has already been declared/.test(m)) return 'Has creado dos veces la misma variable con «let». La segunda vez, sin «let».';
     return '';
+  }
+
+  /* Qué pasaría al pulsar un enlace (en el resultado no se navega). */
+  function textoEnlace(href) {
+    if (/^https?:\/\//i.test(href)) return '🔗 Abriría otra web: ' + href;
+    if (/^#/.test(href)) return '🔗 Saltaría a otra parte de esta misma página: ' + href;
+    if (/^mailto:/i.test(href)) return '✉️ Abriría el correo para escribir a: ' + href.slice(7);
+    if (/\.html?$/i.test(href)) return '🔗 Abriría tu página «' + href + '», un archivo de tu carpeta.';
+    if (!href.trim()) return '⚠️ Este enlace no tiene dirección: el href está vacío.';
+    return '⚠️ Buscaría un archivo llamado «' + href + '» en tu carpeta y no lo encontraría. Si es otra web, ¿falta https://?';
   }
 
   /* ---------- Mandos: cambiar una línea del CSS ---------- */
@@ -307,6 +321,49 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     return { css: nuevo, pos: antes.length + sep.length + 4 };
   }
 
+  /* ---------- La consola (como la de Chrome) ---------- */
+
+  function crearConsola() {
+    const el = crear('div', 'probador__consola');
+    el.setAttribute('role', 'log');
+    el.setAttribute('aria-live', 'polite');
+    el.setAttribute('aria-label', 'Consola');
+    el.setAttribute('translate', 'no');
+    const cab = crear('div', 'probador__consola-cab', 'Consola');
+    cab.setAttribute('translate', 'yes');
+    el.appendChild(cab);
+    const lista = crear('div', 'probador__consola-lista');
+    el.appendChild(lista);
+    function linea(clase, linea) {
+      const l = crear('div', 'probador__log' + (clase ? ' ' + clase : ''));
+      if (linea) {
+        const d = crear('span', 'probador__log-linea', 'línea ' + linea);
+        d.setAttribute('translate', 'yes');
+        l.appendChild(d);
+      }
+      lista.appendChild(l);
+      el.scrollTop = el.scrollHeight;
+      return l;
+    }
+    return {
+      el,
+      limpiar() { lista.innerHTML = ''; },
+      log(datos, numLinea) {
+        const l = linea('', numLinea);
+        (datos.p || []).forEach((par, i) => {
+          if (i) l.appendChild(document.createTextNode(' '));
+          l.appendChild(crear('span', par[0] === 'n' ? 'probador__log-num' : null, par[1]));
+        });
+      },
+      error(texto, numLinea) {
+        const l = linea('probador__log--error', numLinea);
+        const t = crear('span', null, texto);
+        t.setAttribute('translate', 'yes');
+        l.appendChild(t);
+      },
+    };
+  }
+
   /* ---------- El componente ---------- */
 
   const instancias = new Map();
@@ -343,8 +400,10 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     caja.dataset.listo = 'si';
     const token = 'p' + (++contador) + '-' + Math.random().toString(36).slice(2, 8);
 
-    const areas = Array.from(caja.querySelectorAll(':scope > textarea[data-lengua]'));
-    const mandos = Array.from(caja.querySelectorAll(':scope input[type="range"][data-prop], :scope select[data-prop]'));
+    /* El código va en <textarea data-lengua>; si el ejemplo lleva su
+       propio <textarea>, en <script type="text/plain" data-lengua>. */
+    const areas = Array.from(caja.querySelectorAll(':scope > textarea[data-lengua], :scope > script[type="text/plain"][data-lengua]'));
+    const mandos = Array.from(caja.querySelectorAll(':scope input[type="range"][data-prop], :scope input[type="color"][data-prop], :scope select[data-prop]'));
     const prueba = caja.querySelector(':scope > .probador__prueba');
     const titulo = caja.getAttribute('aria-label') || '';
     const base = caja.dataset.base ? new URL(caja.dataset.base, document.baseURI).href : '';
@@ -353,7 +412,7 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
 
     const paneles = areas.map(a => ({
       lengua: a.dataset.lengua,
-      original: limpiar(a.value),
+      original: limpiar(a.tagName === 'TEXTAREA' ? a.value : a.textContent),
       area: null, pre: null, viva: null,
     }));
 
@@ -384,7 +443,9 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
       mandos.forEach(m => {
         const et = crear('label', 'probador__mando');
         const nombre = crear('span', 'probador__mando-nombre');
-        nombre.innerHTML = `<code translate="no">${esc(m.dataset.prop)}</code>`;
+        nombre.innerHTML = `<code translate="no">${esc(m.dataset.prop)}</code>` +
+          (mandos.some(o => o !== m && o.dataset.sel !== m.dataset.sel)
+            ? ` <span class="probador__mando-sel">de <code translate="no">${esc(m.dataset.sel)}</code></span>` : '');
         const salida = crear('output', 'probador__mando-valor');
         salida.setAttribute('translate', 'no');
         et.appendChild(nombre);
@@ -431,6 +492,7 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     const barra = crear('div', 'probador__navegador');
     barra.setAttribute('aria-hidden', 'true');
     barra.innerHTML = '<span></span><span></span><span></span><b>resultado</b>';
+    const rotuloBarra = barra.querySelector('b');
     vista.appendChild(barra);
     const marco = crear('iframe', 'probador__marco');
     marco.setAttribute('sandbox', 'allow-scripts');
@@ -444,11 +506,15 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     vista.appendChild(aviso);
     let consola = null;
     if (conJS) {
-      consola = crear('div', 'probador__consola');
-      consola.setAttribute('role', 'log');
-      consola.setAttribute('aria-live', 'polite');
-      consola.setAttribute('aria-label', 'Consola');
-      vista.appendChild(consola);
+      consola = crearConsola();
+      vista.appendChild(consola.el);
+    }
+    /* Solo JavaScript (sin HTML ni CSS): no hay página que enseñar,
+       solo la consola. */
+    if (conJS && !areas.some(a => a.dataset.lengua !== 'js')) {
+      vista.classList.add('probador__vista--consola');
+      barra.hidden = true;
+      marco.hidden = true;
     }
     cuerpo.appendChild(vista);
     caja.appendChild(cuerpo);
@@ -489,7 +555,7 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     function ejecutar() {
       const montado = montarDocumento(partes(), token, base);
       lineaJS = montado.lineaJS;
-      if (consola) consola.innerHTML = '';
+      if (consola) consola.limpiar();
       aviso.hidden = true;
       marco.srcdoc = montado.doc;
     }
@@ -498,11 +564,8 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
       temporizador = setTimeout(ejecutar, 300);
     }
 
-    function lineaConsola(texto, clase) {
-      if (!consola) return;
-      const l = crear('div', 'probador__log' + (clase ? ' ' + clase : ''), texto);
-      consola.appendChild(l);
-      consola.scrollTop = consola.scrollHeight;
+    function lineaDelJS(l) {
+      return lineaJS && l >= lineaJS ? l - lineaJS + 1 : 0;
     }
 
     const inst = {
@@ -511,16 +574,19 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
         if (tipo === 'alto') {
           const h = Math.min(Math.max(Number(datos) || 0, altoMin), 520);
           marco.style.height = h + 'px';
+        } else if (tipo === 'titulo') {
+          /* Como la pestaña del navegador: el <title> de la página. */
+          rotuloBarra.textContent = String(datos).trim() || 'resultado';
         } else if (tipo === 'log') {
-          lineaConsola(String(datos));
+          if (consola) consola.log(datos, lineaDelJS(datos.l));
         } else if (tipo === 'error') {
-          const linea = lineaJS && datos.l >= lineaJS ? datos.l - lineaJS + 1 : 0;
+          const linea = lineaDelJS(datos.l);
           const es = traducirError(datos.m);
-          const texto = '✗ ' + (linea ? `Línea ${linea} del JavaScript: ` : 'Error: ') + (es || datos.m);
-          if (consola) lineaConsola(texto + (es ? `  (${datos.m})` : ''), 'probador__log--error');
+          const texto = '✖ ' + (es || datos.m) + (es ? `  (${datos.m})` : '');
+          if (consola) consola.error(texto, linea);
           else { aviso.textContent = texto; aviso.hidden = false; }
         } else if (tipo === 'enlace') {
-          aviso.textContent = '🔗 Este enlace te llevaría a: ' + datos;
+          aviso.textContent = textoEnlace(String(datos));
           aviso.hidden = false;
         } else if (tipo === 'envio') {
           aviso.textContent = '📨 Se enviaría el formulario (aquí no se envía a ningún sitio).';
@@ -539,6 +605,9 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
         if (v === null) { m._salida.textContent = '—'; return; }
         if (m.tagName === 'SELECT') {
           if (Array.from(m.options).some(o => o.value === v)) m.value = v;
+        } else if (m.type === 'color') {
+          const hex = /^#([0-9a-f]{3}){1,2}$/i.test(v) ? v : null;
+          if (hex) m.value = hex.length === 4 ? '#' + hex.slice(1).split('').map(c => c + c).join('') : hex;
         } else {
           const n = parseFloat(v);
           if (!isNaN(n)) m.value = n;
@@ -563,7 +632,7 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     mandos.forEach(m => {
       const alCambiar = () => {
         if (!panelCSS) return;
-        const valor = m.tagName === 'SELECT' ? m.value : m.value + (m.dataset.unidad || '');
+        const valor = m.tagName === 'SELECT' || m.type === 'color' ? m.value : m.value + (m.dataset.unidad || '');
         const r = ponerMando(panelCSS.area.value, m, valor);
         panelCSS.area.value = r.css;
         pintarResaltado(panelCSS);
@@ -622,19 +691,32 @@ window.addEventListener('load',function(){A();if(window.ResizeObserver)new Resiz
     aviso.hidden = true;
     el.appendChild(aviso);
     const base = op.base ? new URL(op.base, document.baseURI).href : '';
+    const consola = op.consola ? crearConsola() : null;
+    if (consola) el.appendChild(consola.el);
+    if (op.soloConsola) { barra.hidden = true; marco.hidden = true; el.classList.add('probador__vista--consola'); }
+    let lineaJS = 0;
+    const lineaDelJS = l => (lineaJS && l >= lineaJS ? l - lineaJS + 1 : 0);
     instancias.set(token, {
       marco,
       recibir(tipo, datos) {
         if (tipo === 'alto') marco.style.height = Math.min(Math.max(Number(datos) || 0, altoMin), 420) + 'px';
-        else if (tipo === 'enlace') { aviso.textContent = '🔗 Este enlace te llevaría a: ' + datos; aviso.hidden = false; }
-        else if (tipo === 'log') { aviso.textContent = '› ' + datos; aviso.hidden = false; }
+        else if (tipo === 'titulo' && String(datos).trim()) barra.querySelector('b').textContent = (op.rotulo || 'resultado') + ' · pestaña: ' + String(datos).trim();
+        else if (tipo === 'enlace') { aviso.textContent = textoEnlace(String(datos)); aviso.hidden = false; }
+        else if (tipo === 'log' && consola) consola.log(datos, lineaDelJS(datos.l));
+        else if (tipo === 'error' && consola) {
+          const es = traducirError(datos.m);
+          consola.error('✖ ' + (es || datos.m), lineaDelJS(datos.l));
+        }
       },
     });
     return {
       el,
       mostrar(partes) {
         aviso.hidden = true;
-        marco.srcdoc = montarDocumento(partes, token, base).doc;
+        if (consola) consola.limpiar();
+        const m = montarDocumento(partes, token, base);
+        lineaJS = m.lineaJS;
+        marco.srcdoc = m.doc;
       },
     };
   }

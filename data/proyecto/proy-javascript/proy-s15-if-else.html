@@ -2,14 +2,21 @@
 
 <h2>Tomar decisiones: if y else</h2>
 <p>Hasta ahora, la página respondía <strong>siempre lo mismo</strong>. Con <code>if</code> (en inglés, "si") puede responder <strong>distinto según lo que pase</strong>:</p>
-<pre><code translate="no"><span class='kw'>let</span> edad = <span class='nu'>10</span>;
+<div class="probador" aria-label="if y else">
+<textarea data-lengua="js">
+let edad = 10;
 
-<span class='kw'>if</span> (edad &gt;= <span class='nu'>12</span>) {
-    console.<span class='fn'>log</span>(<span class='ca'>"Te puedes inscribir en el torneo."</span>);
-} <span class='kw'>else</span> {
-    console.<span class='fn'>log</span>(<span class='ca'>"Tienes que tener 12 años o más."</span>);
-}</code></pre>
-<div class="salida" translate="no" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">Tienes que tener 12 años o más.</div>
+if (edad >= 12) {
+    console.log("Te puedes inscribir en el torneo.");
+} else {
+    console.log("Tienes que tener 12 años o más.");
+}
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia la edad a 15. Después, a 12.</li>
+<li>Cambia <code>&gt;=</code> por <code>&gt;</code> y prueba otra vez con 12.</li>
+</ul>
+</div>
 <ul>
 <li>Entre paréntesis va la <strong>condición</strong>: una pregunta que solo puede ser verdadera o falsa. Aquí: "¿edad es mayor o igual que 12?".</li>
 <li>Si es <strong>verdadera</strong>, se ejecuta lo de las primeras llaves.</li>
@@ -43,21 +50,34 @@
 
 <h2>Un if dentro de un botón</h2>
 <p>Lo normal es decidir <strong>al pulsar un botón</strong>, según lo que ha escrito el usuario. El torneo de Pixel Kart comprueba la edad antes de inscribir:</p>
-<pre><code translate="no">boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='kw'>let</span> alias = cajaAlias.value;
-    <span class='kw'>let</span> edad = <span class='fn'>Number</span>(cajaEdad.value);
+<div class="probador" aria-label="Un if dentro de un botón" data-alto="120">
+<textarea data-lengua="html">
+<p><label for="alias">Alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
+<p><label for="edad">Edad:</label> <input type="number" id="edad" value="14"></p>
+<button type="button" id="boton">Inscribirme</button>
+<p id="mensaje"></p>
+</textarea>
+<textarea data-lengua="js">
+let cajaAlias = document.querySelector("#alias");
+let cajaEdad = document.querySelector("#edad");
+let boton = document.querySelector("#boton");
+let mensaje = document.querySelector("#mensaje");
 
-    <span class='kw'>if</span> (edad &gt;= <span class='nu'>12</span>) {
-        mensaje.textContent = <span class='ca'>"¡Inscrito, "</span> + alias + <span class='ca'>"! Nos vemos en la pista."</span>;
-    } <span class='kw'>else</span> {
-        mensaje.textContent = <span class='ca'>"Lo siento, "</span> + alias + <span class='ca'>": hay que tener 12 años o más."</span>;
+boton.addEventListener("click", function () {
+    let alias = cajaAlias.value;
+    let edad = Number(cajaEdad.value);
+
+    if (edad >= 12) {
+        mensaje.textContent = "¡Inscrito, " + alias + "! Nos vemos en la pista.";
+    } else {
+        mensaje.textContent = "Lo siento, " + alias + ": hay que tener 12 años o más.";
     }
-});</code></pre>
-<div class="salida">
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Con RayoAzul y 14 años:</p>
-<p style="margin:0 0 .8rem">¡Inscrito, RayoAzul! Nos vemos en la pista.</p>
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Con RayoAzul y 10 años:</p>
-<p style="margin:0">Lo siento, RayoAzul: hay que tener 12 años o más.</p>
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa con 14 años. Después cambia la edad a 10 y vuelve a pulsar.</li>
+<li>Escribe <code>if (edad = 12)</code> (un solo igual) y prueba con 10. ¿Qué pasa?</li>
+</ul>
 </div>
 <p>El <code>if</code> va <strong>dentro de las llaves</strong> del <code>addEventListener</code>, después de leer las cajas.</p>
 <details><summary>🤔 Antes de seguir: escribes if (edad = 12) y siempre entra en el if. ¿Por qué?</summary>
@@ -94,28 +114,60 @@
 <p>Si lo has hecho bien: con 4 bolsas sale "Total: 12 euros. Sin regalo." y con 5, la piruleta.</p>
 
 <h2>Más de dos caminos: else if</h2>
-<pre><code translate="no"><span class='kw'>let</span> puntos = <span class='nu'>7</span>;
+<div class="probador" aria-label="else if">
+<textarea data-lengua="js">
+let puntos = 7;
 
-<span class='kw'>if</span> (puntos &gt;= <span class='nu'>9</span>) {
-    console.<span class='fn'>log</span>(<span class='ca'>"¡Campeón!"</span>);
-} <span class='kw'>else if</span> (puntos &gt;= <span class='nu'>5</span>) {
-    console.<span class='fn'>log</span>(<span class='ca'>"Buena carrera."</span>);
-} <span class='kw'>else</span> {
-    console.<span class='fn'>log</span>(<span class='ca'>"Sigue practicando."</span>);
-}</code></pre>
-<div class="salida" translate="no" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">Buena carrera.</div>
+if (puntos >= 9) {
+    console.log("¡Campeón!");
+} else if (puntos >= 5) {
+    console.log("Buena carrera.");
+} else {
+    console.log("Sigue practicando.");
+}
+</textarea>
+<ul class="probador__prueba">
+<li>Prueba con 9, con 5 y con 2 puntos.</li>
+<li>Cambia el orden: pon primero <code>puntos &gt;= 5</code> y después <code>puntos &gt;= 9</code>. ¿Qué sale con 9?</li>
+</ul>
+</div>
 <p>Se comprueban <strong>en orden, de arriba abajo</strong>, y solo se ejecuta el <strong>primer</strong> camino que sea verdadero. Con 7 puntos, el primero es falso y el segundo verdadero.</p>
 
 <h3>Contar aciertos</h3>
 <p>Para un test, se usa una variable que <strong>cuenta los aciertos</strong>. Empieza en 0 y cada respuesta correcta le suma 1:</p>
-<pre><code translate="no"><span class='kw'>let</span> aciertos = <span class='nu'>0</span>;
+<div class="probador" aria-label="Contar aciertos" data-alto="130">
+<textarea data-lengua="html">
+<p>¿Cuál es el piloto más rápido?
+<select id="pregunta1"><option>Chispa</option><option>Turbo Rex</option></select></p>
+<p>¿Cuántos circuitos hay?
+<select id="pregunta2"><option>5</option><option>8</option></select></p>
+<button type="button" id="boton">Corregir</button>
+<p id="nota"></p>
+</textarea>
+<textarea data-lengua="js">
+let pregunta1 = document.querySelector("#pregunta1");
+let pregunta2 = document.querySelector("#pregunta2");
+let boton = document.querySelector("#boton");
+let nota = document.querySelector("#nota");
 
-<span class='kw'>if</span> (pregunta1.value === <span class='ca'>"Turbo Rex"</span>) {
-    aciertos = aciertos + <span class='nu'>1</span>;
-}
-<span class='kw'>if</span> (pregunta2.value === <span class='ca'>"8"</span>) {
-    aciertos = aciertos + <span class='nu'>1</span>;
-}</code></pre>
+boton.addEventListener("click", function () {
+    let aciertos = 0;
+
+    if (pregunta1.value === "Turbo Rex") {
+        aciertos = aciertos + 1;
+    }
+    if (pregunta2.value === "8") {
+        aciertos = aciertos + 1;
+    }
+
+    nota.textContent = "Has acertado " + aciertos + " de 2.";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Contesta y pulsa Corregir. Cambia las respuestas y vuelve a pulsar.</li>
+<li>Mueve <code>let aciertos = 0;</code> fuera de las llaves (encima del <code>boton.addEventListener</code>) y pulsa Corregir varias veces sin cambiar nada.</li>
+</ul>
+</div>
 <ul>
 <li><code>aciertos = aciertos + 1</code> significa "coge lo que vale <code>aciertos</code>, súmale 1 y guárdalo otra vez".</li>
 <li>Cada pregunta tiene su propio <code>if</code>, sin <code>else</code>: si falla, no se suma nada.</li>
@@ -126,6 +178,9 @@
 <p>"¡Campeón!". Es la primera condición verdadera y ya no se miran las demás.</p>
 </details>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: pon el cursor al lado de una llave <code>{</code> y VS Code marca con un recuadro <strong>su pareja</strong> <code>}</code>. Si el código se ve desordenado, pulsa <strong>Mayús + Alt + F</strong>: con las sangrías bien puestas se ve enseguida qué llave falta.</div>
+
+<p>Reto rápido: ¿qué camino sigue?</p>
+<div data-actividad="reto-js-if"></div>
 
 <h3>Ejercicio 4 — Mini test de cultura</h3>
 <p>El ejercicio más largo de hoy: junta todo. Crea <code>s15-ej4.html</code> y <code>s15-ej4.js</code>. Tres preguntas con desplegable; al pulsar "Corregir", cuenta los aciertos y da un mensaje distinto según cuántos hay.</p>

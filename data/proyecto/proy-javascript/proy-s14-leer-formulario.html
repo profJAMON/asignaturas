@@ -45,26 +45,33 @@
 
 <h2>Leer lo que escribe el usuario: value</h2>
 <p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del torneo de Pixel Kart:</p>
-<pre><code><span class='et'>&lt;form&gt;</span>
-    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label&gt;</span>
-    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span> <span class='at'>id</span>=<span class='ca'>"boton-inscribir"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button&gt;</span>
-<span class='et'>&lt;/form&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"mensaje"</span><span class='et'>&gt;&lt;/p&gt;</span></code></pre>
-<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
-<span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
-<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
-<span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
+<div class="probador" aria-label="Leer una caja: value" data-alto="90">
+<textarea data-lengua="html">
+<form>
+    <label for="alias">Tu alias:</label>
+    <input type="text" id="alias">
+    <button type="button" id="boton-inscribir">Inscribirme</button>
+</form>
+<p id="mensaje"></p>
+</textarea>
+<textarea data-lengua="js">
+// 1. Buscar los elementos
+let cajaAlias = document.querySelector("#alias");
+let boton = document.querySelector("#boton-inscribir");
+let mensaje = document.querySelector("#mensaje");
 
-<span class='co'>// 2. Esperar al clic</span>
-boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='co'>// 3. Leer la caja y responder</span>
-    <span class='kw'>let</span> alias = cajaAlias.value;
-    mensaje.textContent = <span class='ca'>"¡Hola, "</span> + alias + <span class='ca'>"! Ya estás inscrito."</span>;
-});</code></pre>
-<div class="salida">
-<p style="margin:0 0 .5rem"><label>Tu alias: <input type="text" value="RayoAzul" readonly></label> <button type="button">Inscribirme</button></p>
-<p style="margin:0">¡Hola, RayoAzul! Ya estás inscrito.</p>
+// 2. Esperar al clic
+boton.addEventListener("click", function () {
+    // 3. Leer la caja y responder
+    let alias = cajaAlias.value;
+    mensaje.textContent = "¡Hola, " + alias + "! Ya estás inscrito.";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Escribe un alias en la caja del resultado y pulsa Inscribirme. Escribe otro y vuelve a pulsar.</li>
+<li>Mueve la línea <code>let alias = cajaAlias.value;</code> fuera de las llaves, encima del <code>boton.addEventListener</code>. ¿Qué sale ahora?</li>
+<li>Escribe <code>.Value</code> con mayúscula.</li>
+</ul>
 </div>
 <ul>
 <li><code>cajaAlias.value</code> es <strong>lo que hay escrito</strong> en la caja en ese momento.</li>
@@ -96,14 +103,35 @@ boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, 
 
 <h2>Leer un desplegable</h2>
 <p>En un <code>&lt;select&gt;</code>, <code>value</code> es <strong>la opción elegida</strong>. Se lee igual que una caja:</p>
-<pre><code><span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;option&gt;</span>Turbo Rex<span class='et'>&lt;/option&gt;</span>
-    <span class='et'>&lt;option&gt;</span>Nube Veloz<span class='et'>&lt;/option&gt;</span>
-    <span class='et'>&lt;option&gt;</span>Chispa<span class='et'>&lt;/option&gt;</span>
-<span class='et'>&lt;/select&gt;</span></code></pre>
-<pre><code translate="no"><span class='kw'>let</span> piloto = cajaPiloto.value;
-mensaje.textContent = alias + <span class='ca'>" correrá con "</span> + piloto + <span class='ca'>"."</span>;</code></pre>
-<div class="salida"><p style="margin:0">RayoAzul correrá con Chispa.</p></div>
+<div class="probador" aria-label="Leer un desplegable" data-alto="90">
+<textarea data-lengua="html">
+<p><label for="alias">Tu alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
+<p><label for="piloto">Piloto:</label>
+<select id="piloto">
+    <option>Turbo Rex</option>
+    <option>Nube Veloz</option>
+    <option>Chispa</option>
+</select></p>
+<button type="button" id="boton">Elegir</button>
+<p id="mensaje"></p>
+</textarea>
+<textarea data-lengua="js">
+let cajaAlias = document.querySelector("#alias");
+let cajaPiloto = document.querySelector("#piloto");
+let boton = document.querySelector("#boton");
+let mensaje = document.querySelector("#mensaje");
+
+boton.addEventListener("click", function () {
+    let alias = cajaAlias.value;
+    let piloto = cajaPiloto.value;
+    mensaje.textContent = alias + " correrá con " + piloto + ".";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Elige un piloto y pulsa Elegir.</li>
+<li>Añade un cuarto piloto al <code>&lt;select&gt;</code> y elígelo.</li>
+</ul>
+</div>
 
 <h3>Ejercicio 4 — Pizzería Píxel</h3>
 <p>Crea <code>s14-ej4.html</code> y <code>s14-ej4.js</code>. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
@@ -132,9 +160,41 @@ resultado.textContent = <span class='ca'>"Tardarás unos "</span> + segundos + <
 <tr><td><code>Number(cajaVueltas.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
 </tbody>
 </table>
+<p>Compruébalo: escribe 3 y pulsa los dos botones.</p>
+<div class="probador" aria-label="Number()" data-alto="110">
+<textarea data-lengua="html">
+<p><label for="vueltas">Vueltas:</label> <input type="number" id="vueltas" value="3"></p>
+<button type="button" id="sin">Sin Number</button>
+<button type="button" id="con">Con Number</button>
+<p id="resultado"></p>
+</textarea>
+<textarea data-lengua="js">
+let cajaVueltas = document.querySelector("#vueltas");
+let botonSin = document.querySelector("#sin");
+let botonCon = document.querySelector("#con");
+let resultado = document.querySelector("#resultado");
+
+botonSin.addEventListener("click", function () {
+    let total = cajaVueltas.value + 1;
+    resultado.textContent = "Vueltas + 1 = " + total;
+});
+
+botonCon.addEventListener("click", function () {
+    let total = Number(cajaVueltas.value) + 1;
+    resultado.textContent = "Vueltas + 1 = " + total;
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa los dos botones con 3 en la caja. Después, con 10.</li>
+<li>Añade un <code>console.log(cajaVueltas.value);</code> dentro de las primeras llaves: fíjate en que no sale azul (es texto).</li>
+</ul>
+</div>
 <details><summary>🤔 Antes de seguir: el usuario escribe 10 y 5 en dos cajas y tu suma da 105. ¿Qué falta?</summary>
 <p>Convertir los dos valores con <code>Number()</code> antes de sumar.</p>
 </details>
+
+<p>Reto rápido: value y Number.</p>
+<div data-actividad="reto-js-value"></div>
 
 <h3>Ejercicio 5 — Parque acuático</h3>
 <p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej5.html</code> y <code>s14-ej5.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>

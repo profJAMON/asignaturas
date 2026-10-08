@@ -179,25 +179,29 @@
 
 <h2>Títulos y párrafos</h2>
 <p>HTML tiene <strong>6 niveles de título</strong>, de <code>&lt;h1&gt;</code> (el más importante) a <code>&lt;h6&gt;</code>. El texto normal va en párrafos, <code>&lt;p&gt;</code>:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Pixel Kart<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;h2&gt;</span>Modos de juego<span class='et'>&lt;/h2&gt;</span>
-<span class='et'>&lt;h3&gt;</span>Carrera rápida<span class='et'>&lt;/h3&gt;</span>
-<span class='et'>&lt;p&gt;</span>Una sola carrera contra la máquina.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;h3&gt;</span>Campeonato<span class='et'>&lt;/h3&gt;</span>
-<span class='et'>&lt;p&gt;</span>Cuatro carreras seguidas.<span class='et'>&lt;/p&gt;</span></code></pre>
-<div class="salida">
-<p style="font-size:2em;font-weight:bold;margin:0 0 .4rem">Pixel Kart</p>
-<p style="font-size:1.5em;font-weight:bold;margin:.6rem 0 .4rem">Modos de juego</p>
-<p style="font-size:1.17em;font-weight:bold;margin:.4rem 0 .3rem">Carrera rápida</p>
+<div class="probador" aria-label="Títulos y párrafos">
+<textarea data-lengua="html">
+<h1>Pixel Kart</h1>
+<h2>Modos de juego</h2>
+<h3>Carrera rápida</h3>
 <p>Una sola carrera contra la máquina.</p>
-<p style="font-size:1.17em;font-weight:bold;margin:.4rem 0 .3rem">Campeonato</p>
+<h3>Campeonato</h3>
 <p>Cuatro carreras seguidas.</p>
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia <code>&lt;h3&gt;Campeonato&lt;/h3&gt;</code> por un <code>&lt;h2&gt;</code> (las dos etiquetas).</li>
+<li>Pulsa Intro en medio de un párrafo, dentro del código. ¿Sale en dos líneas en la página?</li>
+<li>Escribe un <code>&lt;h6&gt;</code> para ver el título más pequeño.</li>
+</ul>
 </div>
 <ul>
 <li>Solo hay <strong>un <code>&lt;h1&gt;</code> por página</strong>: el título principal.</li>
 <li>Los títulos se eligen por <strong>importancia</strong>, no por tamaño: un <code>&lt;h3&gt;</code> es un apartado <strong>dentro</strong> de un <code>&lt;h2&gt;</code>. El tamaño lo cambiaremos con CSS.</li>
 <li>El navegador <strong>ignora los saltos de línea</strong> del código. Cada párrafo va en su propio <code>&lt;p&gt;</code>.</li>
 </ul>
+
+<p>Reto rápido de títulos:</p>
+<div data-actividad="reto-titulos"></div>
 
 <h3>Ejercicio 2 — El sistema solar</h3>
 <p>Crea <code>s02-ej2.html</code> (con <strong>! + Tab</strong>) y haz que se vea como en la imagen. Copia los textos tal cual.</p>
@@ -218,13 +222,17 @@
 <p>Si lo has hecho bien: tu página y la imagen tienen los títulos del mismo tamaño y en el mismo orden.</p>
 
 <h2>Negrita, cursiva, saltos y líneas</h2>
-<pre><code><span class='et'>&lt;p&gt;</span>El kart más rápido es <span class='et'>&lt;strong&gt;</span>Turbo Rex<span class='et'>&lt;/strong&gt;</span>, pero es <span class='et'>&lt;em&gt;</span>muy difícil<span class='et'>&lt;/em&gt;</span> de llevar.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;hr&gt;</span>
-<span class='et'>&lt;p&gt;</span>Circuito del volcán<span class='et'>&lt;br&gt;</span>3 vueltas<span class='et'>&lt;br&gt;</span>Dificultad alta<span class='et'>&lt;/p&gt;</span></code></pre>
-<div class="salida">
+<div class="probador" aria-label="Negrita, cursiva, saltos y líneas">
+<textarea data-lengua="html">
 <p>El kart más rápido es <strong>Turbo Rex</strong>, pero es <em>muy difícil</em> de llevar.</p>
 <hr>
 <p>Circuito del volcán<br>3 vueltas<br>Dificultad alta</p>
+</textarea>
+<ul class="probador__prueba">
+<li>Pon en negrita «Circuito del volcán».</li>
+<li>Borra el <code>&lt;/strong&gt;</code>. ¿Hasta dónde llega la negrita?</li>
+<li>Quita los <code>&lt;br&gt;</code>.</li>
+</ul>
 </div>
 <table>
 <thead><tr><th>Etiqueta</th><th>Qué hace</th><th>¿Se cierra?</th></tr></thead>
@@ -238,12 +246,23 @@
 
 <h3>Comentarios</h3>
 <p>Un <strong>comentario</strong> es una nota para quien lee el código. <strong>No se ve en la página</strong>. Sirve para marcar dónde empieza cada parte:</p>
-<pre><code><span class='co'>&lt;!-- Modos de juego --&gt;</span>
-<span class='et'>&lt;h2&gt;</span>Modos de juego<span class='et'>&lt;/h2&gt;</span></code></pre>
+<div class="probador" aria-label="Comentarios" data-alto="70">
+<textarea data-lengua="html">
+<!-- Modos de juego -->
+<h2>Modos de juego</h2>
+</textarea>
+<ul class="probador__prueba">
+<li>Escribe algo dentro del comentario. ¿Sale en la página?</li>
+<li>Borra el <code>&lt;!--</code> del principio.</li>
+</ul>
+</div>
 <p>Para escribirlo rápido: escribe el texto en una línea, déjate el cursor en ella y pulsa <strong>Ctrl + /</strong>. VS Code le pone el <code>&lt;!--</code> y el <code>--&gt;</code>.</p>
 <details><summary>🤔 Antes de seguir: quieres que "Pabellón" y "Jueves a las 17:00" salgan en dos líneas, pero dentro del mismo párrafo. ¿Qué usas?</summary>
 <p><code>&lt;br&gt;</code> entre los dos textos. Si los pones en dos <code>&lt;p&gt;</code>, son dos párrafos, con más espacio entre ellos.</p>
 </details>
+
+<p>Reto rápido: negrita, cursiva y saltos.</p>
+<div data-actividad="reto-textos"></div>
 
 <h3>Ejercicio 3 — Una noticia</h3>
 <p>Crea <code>s02-ej3.html</code> y haz que se vea como en la imagen.</p>

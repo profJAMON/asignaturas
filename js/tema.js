@@ -177,6 +177,8 @@ function pintarLeccion(contenidoHtml) {
   if (typeof iniciarDiapos === 'function') iniciarDiapos(contenedor);
   /* «Toca y mira»: código que se puede cambiar con su resultado. Ver js/probador.js. */
   if (typeof iniciarProbadores === 'function') iniciarProbadores(contenedor);
+  /* Laboratorios de teoría (terminal, URL, petición, viaje). Ver js/laboratorios.js. */
+  if (typeof iniciarLaboratorios === 'function') iniciarLaboratorios(contenedor);
   /* Marca código y salidas como no traducibles ANTES de que el traductor
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);

@@ -23,9 +23,20 @@
 
 <h2>Cambiar un texto: textContent</h2>
 <p><code>textContent</code> es <strong>el texto que hay dentro</strong> de un elemento. Si le das un valor con <code>=</code>, lo sustituye:</p>
-<pre><code translate="no"><span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);
-dato.textContent = <span class='ca'>"Turbo Rex es el piloto más rápido."</span>;</code></pre>
-<div class="salida"><p style="margin:0">Turbo Rex es el piloto más rápido.</p></div>
+<div class="probador" aria-label="textContent">
+<textarea data-lengua="html">
+<p id="dato">Pixel Kart tiene 8 pilotos.</p>
+</textarea>
+<textarea data-lengua="js">
+let dato = document.querySelector("#dato");
+dato.textContent = "Turbo Rex es el piloto más rápido.";
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia el texto nuevo por otro.</li>
+<li>Borra la segunda línea: ¿qué texto se ve ahora?</li>
+<li>Quita la <code>#</code> del <code>querySelector</code>. ¿Qué dice la consola?</li>
+</ul>
+</div>
 <p>En el HTML sigue poniendo "Pixel Kart tiene 8 pilotos.", pero en la página se ve el texto nuevo: JavaScript lo ha cambiado al cargar.</p>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el HTML, escribe <code>p#dato</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;p id="dato"&gt;&lt;/p&gt;</code>. Funciona con cualquier etiqueta: <code>button#boton-dato</code> + Tab.</div>
 
@@ -44,23 +55,28 @@ dato.textContent = <span class='ca'>"Turbo Rex es el piloto más rápido."</span
 
 <h2>Esperar al clic: addEventListener</h2>
 <p>Ahora el cambio no se hace al cargar la página, sino <strong>al pulsar un botón</strong>. Esta es la receta completa:</p>
-<pre><code><span class='et'>&lt;button</span> <span class='at'>id</span>=<span class='ca'>"boton-dato"</span><span class='et'>&gt;</span>Ver un dato curioso<span class='et'>&lt;/button&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>id</span>=<span class='ca'>"dato"</span><span class='et'>&gt;&lt;/p&gt;</span></code></pre>
-<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
-<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-dato"</span>);
-<span class='kw'>let</span> dato = document.<span class='fn'>querySelector</span>(<span class='ca'>"#dato"</span>);
+<div class="probador" aria-label="La receta de un botón" data-alto="90">
+<textarea data-lengua="html">
+<button id="boton-dato">Ver un dato curioso</button>
+<p id="dato"></p>
+</textarea>
+<textarea data-lengua="js">
+// 1. Buscar los elementos
+let boton = document.querySelector("#boton-dato");
+let dato = document.querySelector("#dato");
 
-<span class='co'>// 2. Esperar al clic</span>
-boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='co'>// 3. Hacer algo</span>
-    dato.textContent = <span class='ca'>"Turbo Rex lo diseñó un chaval de 14 años."</span>;
-});</code></pre>
-<div class="salida">
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Antes de pulsar:</p>
-<p style="margin:0 0 .8rem"><button type="button">Ver un dato curioso</button></p>
-<p style="margin:0 0 .3rem;color:var(--text-dim)">Después de pulsar:</p>
-<p style="margin:0 0 .4rem"><button type="button">Ver un dato curioso</button></p>
-<p style="margin:0">Turbo Rex lo diseñó un chaval de 14 años.</p>
+// 2. Esperar al clic
+boton.addEventListener("click", function () {
+    // 3. Hacer algo
+    dato.textContent = "Turbo Rex lo diseñó un chaval de 14 años.";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el botón del resultado.</li>
+<li>Añade <code>console.log("clic");</code> dentro de las llaves y pulsa varias veces.</li>
+<li>Cambia el texto del dato por otro.</li>
+<li>Borra el <code>});</code> del final. ¿Qué dice la consola?</li>
+</ul>
 </div>
 <ul>
 <li><code>addEventListener</code> significa "quédate escuchando". Le dices <strong>qué esperar</strong> (<code>"click"</code>) y <strong>qué hacer</strong>.</li>
@@ -71,6 +87,9 @@ boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, 
 <details><summary>🤔 Antes de seguir: pones un console.log dentro de las llaves del addEventListener. ¿Cuándo sale el mensaje en la consola?</summary>
 <p>Cada vez que se pulsa el botón. Al cargar la página no sale nada.</p>
 </details>
+
+<p>Reto rápido de botones:</p>
+<div data-actividad="reto-js-eventos"></div>
 
 <h3>Ejercicio 2 — El chiste del día</h3>
 <p>Crea <code>s13-ej2.html</code> y <code>s13-ej2.js</code>. Al pulsar el botón, aparece un chiste en el párrafo vacío.</p>
@@ -115,6 +134,25 @@ boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, 
 <li>El <code>&lt;script&gt;</code> no está al final del <code>&lt;body&gt;</code>.</li>
 <li>El <code>.js</code> es de otra página, que no tiene ese elemento. Por eso cada página tiene su propio <code>.js</code>.</li>
 </ul>
+<p>Aquí tienes uno roto. Pulsa el botón, lee la consola y arréglalo:</p>
+<div class="probador" aria-label="Arregla el error" data-alto="90">
+<textarea data-lengua="html">
+<button id="boton-saludo">Saludar</button>
+<p id="saludo"></p>
+</textarea>
+<textarea data-lengua="js">
+let boton = document.querySelector("#boton-saluda");
+let saludo = document.querySelector("#saludo");
+
+boton.addEventListener("click", function () {
+    saludo.textContent = "¡Hola, piloto!";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Compara letra a letra el id del HTML con el del JavaScript.</li>
+<li>Cuando lo arregles, la consola queda vacía y el botón funciona.</li>
+</ul>
+</div>
 <details><summary>🤔 Antes de seguir: ¿qué busca document.querySelector("#resultado")?</summary>
 <p>El elemento de la página que tiene <code>id="resultado"</code>.</p>
 </details>

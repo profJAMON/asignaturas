@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/conditionals"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-js-if",
+      "tipo": "reto-web",
+      "titulo": "¿Qué camino sigue el if?",
+      "banco": "js-if"
+    }
+  ]
 }

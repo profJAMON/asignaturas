@@ -10,5 +10,18 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/HTML_text_fundamentals"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-titulos",
+      "tipo": "reto-web",
+      "titulo": "¿Qué título es?",
+      "banco": "titulos"
+    },
+    {
+      "id": "reto-textos",
+      "tipo": "reto-web",
+      "titulo": "strong, em, br y hr",
+      "banco": "textos"
+    }
+  ]
 }

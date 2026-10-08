@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Getting_started"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-estructura",
+      "tipo": "reto-web",
+      "titulo": "head, title y body",
+      "banco": "estructura"
+    }
+  ]
 }

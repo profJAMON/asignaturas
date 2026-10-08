@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Web/API/Element/classList"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-js-classlist",
+      "tipo": "reto-web",
+      "titulo": "Poner y quitar clases",
+      "banco": "js-classlist"
+    }
+  ]
 }

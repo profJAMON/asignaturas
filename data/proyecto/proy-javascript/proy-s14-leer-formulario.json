@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/Forms/Basic_native_form_controls"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-js-value",
+      "tipo": "reto-web",
+      "titulo": "Leer cajas y sumar",
+      "banco": "js-value"
+    }
+  ]
 }

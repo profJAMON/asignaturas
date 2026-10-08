@@ -4,5 +4,12 @@
   "fecha": "",
   "descripcion": "Taller en pareja: un único estilos.css para todas las páginas, colores y letra, tarjetas con hover, menú y tarjetas en fila con Flexbox. Al final de la sesión, revisión de la web (HTML + CSS) de cada pareja y subida a GitHub.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-repaso-css",
+      "tipo": "reto-web",
+      "titulo": "Repaso de CSS",
+      "banco": "css-colores,css-clases,caja,hover,flex"
+    }
+  ]
 }

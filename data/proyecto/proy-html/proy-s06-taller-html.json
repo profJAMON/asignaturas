@@ -4,5 +4,12 @@
   "fecha": "",
   "descripcion": "Taller en pareja: las páginas de vuestra web con el mismo menú, textos, imágenes, una lista, una tabla, un enlace, el formulario en HTML y la página Sobre esta web.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-repaso-html",
+      "tipo": "reto-web",
+      "titulo": "Repaso de HTML",
+      "banco": "listas,imagenes,enlaces,tablas,formularios"
+    }
+  ]
 }

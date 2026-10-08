@@ -51,32 +51,46 @@
 </ul>
 
 <h2>Ejemplo: el torneo de Pixel Kart</h2>
-<pre><code translate="no"><span class='co'>// 1. Buscar los elementos</span>
-<span class='kw'>let</span> cajaAlias = document.<span class='fn'>querySelector</span>(<span class='ca'>"#alias"</span>);
-<span class='kw'>let</span> cajaEdad = document.<span class='fn'>querySelector</span>(<span class='ca'>"#edad"</span>);
-<span class='kw'>let</span> cajaPiloto = document.<span class='fn'>querySelector</span>(<span class='ca'>"#piloto"</span>);
-<span class='kw'>let</span> boton = document.<span class='fn'>querySelector</span>(<span class='ca'>"#boton-inscribir"</span>);
-<span class='kw'>let</span> mensaje = document.<span class='fn'>querySelector</span>(<span class='ca'>"#mensaje"</span>);
+<p>Funciona de verdad: probadlo y cambiadlo para ver qué hace cada línea. Vuestro formulario será distinto, pero la receta es la misma.</p>
+<div class="probador" aria-label="El formulario del torneo" data-alto="160">
+<textarea data-lengua="html">
+<p><label for="alias">Tu alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
+<p><label for="edad">Edad:</label> <input type="number" id="edad" value="14"></p>
+<p><label for="piloto">Piloto favorito:</label>
+<select id="piloto">
+    <option>Turbo Rex</option>
+    <option>Nube Veloz</option>
+    <option>Chispa</option>
+</select></p>
+<button type="button" id="boton-inscribir">Inscribirme</button>
+<p id="mensaje"></p>
+</textarea>
+<textarea data-lengua="js">
+// 1. Buscar los elementos
+let cajaAlias = document.querySelector("#alias");
+let cajaEdad = document.querySelector("#edad");
+let cajaPiloto = document.querySelector("#piloto");
+let boton = document.querySelector("#boton-inscribir");
+let mensaje = document.querySelector("#mensaje");
 
-<span class='co'>// 2. Esperar al clic</span>
-boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, <span class='kw'>function</span> () {
-    <span class='co'>// 3. Leer las cajas y responder según la edad</span>
-    <span class='kw'>let</span> alias = cajaAlias.value;
-    <span class='kw'>let</span> edad = <span class='fn'>Number</span>(cajaEdad.value);
-    <span class='kw'>let</span> piloto = cajaPiloto.value;
+// 2. Esperar al clic
+boton.addEventListener("click", function () {
+    // 3. Leer las cajas y responder según la edad
+    let alias = cajaAlias.value;
+    let edad = Number(cajaEdad.value);
+    let piloto = cajaPiloto.value;
 
-    <span class='kw'>if</span> (edad &gt;= <span class='nu'>12</span>) {
-        mensaje.textContent = <span class='ca'>"¡Inscrito, "</span> + alias + <span class='ca'>"! Correrás con "</span> + piloto + <span class='ca'>"."</span>;
-    } <span class='kw'>else</span> {
-        mensaje.textContent = <span class='ca'>"Lo siento, "</span> + alias + <span class='ca'>": hay que tener 12 años o más."</span>;
+    if (edad >= 12) {
+        mensaje.textContent = "¡Inscrito, " + alias + "! Correrás con " + piloto + ".";
+    } else {
+        mensaje.textContent = "Lo siento, " + alias + ": hay que tener 12 años o más.";
     }
-});</code></pre>
-<div class="salida">
-<p style="margin:0 0 .5rem"><label>Tu alias: <input type="text" value="RayoAzul" readonly></label></p>
-<p style="margin:0 0 .5rem"><label>Edad: <input type="number" value="14" readonly></label></p>
-<p style="margin:0 0 .5rem"><label>Piloto favorito: <select><option>Turbo Rex</option><option>Nube Veloz</option><option selected>Chispa</option></select></label></p>
-<p style="margin:0 0 .5rem"><button type="button">Inscribirme</button></p>
-<p style="margin:0">¡Inscrito, RayoAzul! Correrás con Chispa.</p>
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Cambiad la edad a 10 y pulsad.</li>
+<li>Provocad los errores de la tabla de abajo (un id mal, sin <code>Number()</code>, una llave de menos) y mirad qué dice la consola.</li>
+</ul>
 </div>
 
 <h2>Errores típicos</h2>
@@ -92,6 +106,9 @@ boton.<span class='fn'>addEventListener</span>(<span class='ca'>"click"</span>, 
 <tr><td>Consola: <em>Unexpected token</em> o <em>Unexpected end of input</em></td><td>Sobra o falta una llave o un paréntesis. <strong>Mayús + Alt + F</strong> para ordenar el código y verlo.</td></tr>
 </tbody>
 </table>
+
+<p>Para entrenar el ojo: retos con los errores de JavaScript más típicos. Cada vez sale uno distinto.</p>
+<div data-actividad="reto-repaso-js"></div>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">

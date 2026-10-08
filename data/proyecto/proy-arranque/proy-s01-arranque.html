@@ -94,8 +94,28 @@
 <li><code>&lt;body&gt;</code> es <strong>lo que se ve</strong> en la página.</li>
 <li><code>&lt;h1&gt;</code> es el título principal y <code>&lt;p&gt;</code> es un párrafo.</li>
 </ul>
-<p>Así se ve:</p>
-<div class="salida"><h1 style="margin:0 0 .5rem">Pixel Kart</h1><p>El juego de karts más rápido del instituto.</p></div>
+<p>Así se ve. Aquí puedes tocarla sin miedo a romper nada: arriba del resultado sale el título de la pestaña.</p>
+<div class="probador" aria-label="La estructura mínima" data-alto="120">
+<textarea data-lengua="html">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel Kart</title>
+</head>
+<body>
+    <h1>Pixel Kart</h1>
+    <p>El juego de karts más rápido del instituto.</p>
+</body>
+</html>
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia el texto del <code>&lt;title&gt;</code> y mira la barra de arriba del resultado.</li>
+<li>Cambia el texto del párrafo.</li>
+<li>Añade otro párrafo debajo, con su <code>&lt;p&gt;</code> y su <code>&lt;/p&gt;</code>.</li>
+<li>Borra el <code>&lt;/h1&gt;</code>. ¿Qué le pasa al párrafo?</li>
+</ul>
+</div>
 
 <h3>Ábrela con Live Server</h3>
 <ol>
@@ -108,6 +128,9 @@
 <div class="nota">Si no ves el botón <strong>Go Live</strong>, pulsa con el <strong>botón derecho</strong> dentro del código y elige <strong>Open with Live Server</strong>. Si tampoco aparece, la extensión no está instalada en ese ordenador: avísame.</div>
 <div class="nota">Al acabar la clase, pulsa otra vez en la barra azul donde ahora pone <strong>Port: 5500</strong> para parar Live Server.</div>
 <div class="nota">💡 Si al guardar no cambia nada, casi siempre es porque <strong>no has guardado</strong>. En VS Code, un punto blanco en la pestaña del archivo significa "hay cambios sin guardar".</div>
+
+<p>Reto rápido: cada cosa en su sitio.</p>
+<div data-actividad="reto-estructura"></div>
 
 <h2>Antes de seguir</h2>
 <details><summary>¿Qué diferencia hay entre lo que va en &lt;head&gt; y lo que va en &lt;body&gt;?</summary>

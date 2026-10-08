@@ -49,6 +49,18 @@
 <li>Los <strong>errores</strong> salen <strong>en rojo</strong>. Es lo primero que tienes que mirar cuando algo no funciona.</li>
 </ul>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el archivo <code>.js</code>, escribe <code>log</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>console.log();</code> con el cursor dentro de los paréntesis.</div>
+<p>Pruébalo aquí. La consola de debajo funciona como la de Chrome:</p>
+<div class="probador" aria-label="console.log">
+<textarea data-lengua="js">
+console.log("¡Hola desde Pixel Kart!");
+console.log("Hoy hay carrera.");
+</textarea>
+<ul class="probador__prueba">
+<li>Añade un tercer mensaje.</li>
+<li>Quita las comillas de un mensaje. ¿Qué sale en rojo?</li>
+<li>Quita el paréntesis del final <code>)</code>.</li>
+</ul>
+</div>
 
 <h3>Ejercicio 1 — Hola desde JavaScript</h3>
 <p>Crea <code>s12-ej1.html</code> (con <strong>! + Tab</strong>) y <code>s12-ej1.js</code> al lado. Conecta el <code>.js</code> al final del <code>&lt;body&gt;</code> y escribe dos <code>console.log</code>. Abre la consola y haz que se vea como en la imagen.</p>
@@ -69,14 +81,20 @@
 
 <h2>Variables</h2>
 <p>Una <strong>variable</strong> es una <strong>caja con nombre</strong> donde guardas un dato para usarlo después:</p>
-<pre><code translate="no"><span class='kw'>let</span> piloto = <span class='ca'>"Turbo Rex"</span>;
-<span class='kw'>let</span> vueltas = <span class='nu'>3</span>;
+<div class="probador" aria-label="Variables">
+<textarea data-lengua="js">
+let piloto = "Turbo Rex";
+let vueltas = 3;
 
-console.<span class='fn'>log</span>(piloto);
-console.<span class='fn'>log</span>(vueltas);</code></pre>
-<div class="salida" translate="no" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">
-<div style="padding:3px 0;border-bottom:1px solid #eee">Turbo Rex <span style="float:right;color:#777">torneo.js:4</span></div>
-<div style="padding:3px 0;border-bottom:1px solid #eee;color:#1a1aa6">3 <span style="float:right;color:#777">torneo.js:5</span></div>
+console.log(piloto);
+console.log(vueltas);
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia el piloto por <code>"Chispa"</code>.</li>
+<li>Escribe <code>console.log("piloto");</code>, con comillas. ¿Qué sale?</li>
+<li>Escribe mal el nombre: <code>console.log(pilto);</code>.</li>
+<li>Fíjate: el número sale en azul y el texto, en negro.</li>
+</ul>
 </div>
 <ul>
 <li><code>let</code> crea la variable. Después va su <strong>nombre</strong>, un <code>=</code> y el <strong>valor</strong> que guarda.</li>
@@ -111,12 +129,20 @@ console.<span class='fn'>log</span>(vueltas);</code></pre>
 </tbody>
 </table>
 <p>Se puede crear una variable a partir de otras:</p>
-<pre><code translate="no"><span class='kw'>let</span> vueltas = <span class='nu'>3</span>;
-<span class='kw'>let</span> tiempoPorVuelta = <span class='nu'>42</span>;
-<span class='kw'>let</span> tiempoTotal = vueltas * tiempoPorVuelta;
+<div class="probador" aria-label="Calcular con variables">
+<textarea data-lengua="js">
+let vueltas = 3;
+let tiempoPorVuelta = 42;
+let tiempoTotal = vueltas * tiempoPorVuelta;
 
-console.<span class='fn'>log</span>(tiempoTotal);</code></pre>
-<div class="salida" translate="no" style="background:#ffffff;color:#1a1aa6;font-family:Consolas,monospace;font-size:13px">126</div>
+console.log(tiempoTotal);
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia las vueltas a 5.</li>
+<li>Pon el 3 entre comillas: <code>"3"</code>. ¿Sigue multiplicando?</li>
+<li>Añade <code>console.log("3" + 4);</code> y <code>console.log(3 + 4);</code>.</li>
+</ul>
+</div>
 <details><summary>🤔 Antes de seguir: ¿qué sale en la consola con console.log("3" + 4)?</summary>
 <p><code>34</code>: como uno de los dos es un texto, el <code>+</code> los junta en lugar de sumarlos.</p>
 </details>
@@ -137,12 +163,22 @@ console.<span class='fn'>log</span>(tiempoTotal);</code></pre>
 
 <h2>Juntar textos y variables</h2>
 <p>El <code>+</code> con textos sirve para <strong>juntar</strong> un mensaje con el valor de una variable:</p>
-<pre><code translate="no"><span class='kw'>let</span> piloto = <span class='ca'>"Turbo Rex"</span>;
-<span class='kw'>let</span> tiempoTotal = <span class='nu'>126</span>;
+<div class="probador" aria-label="Juntar textos y variables">
+<textarea data-lengua="js">
+let piloto = "Turbo Rex";
+let tiempoTotal = 126;
 
-console.<span class='fn'>log</span>(piloto + <span class='ca'>" tarda "</span> + tiempoTotal + <span class='ca'>" segundos."</span>);</code></pre>
-<div class="salida" translate="no" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">Turbo Rex tarda 126 segundos.</div>
+console.log(piloto + " tarda " + tiempoTotal + " segundos.");
+</textarea>
+<ul class="probador__prueba">
+<li>Quita los espacios de dentro de las comillas: <code>"tarda"</code>.</li>
+<li>Añade al final <code>+ " ¡Récord!"</code>.</li>
+</ul>
+</div>
 <div class="nota">⚠️ Fíjate en los <strong>espacios dentro de las comillas</strong>: <code>" tarda "</code>. Si no los pones, sale <code>Turbo Rextarda126segundos.</code></div>
+
+<p>Reto rápido: ¿qué sale en la consola?</p>
+<div data-actividad="reto-js-variables"></div>
 
 <h3>Comentarios</h3>
 <p>En JavaScript, un comentario empieza por <code>//</code>. El navegador lo ignora. Sirve para explicar qué hace cada parte:</p>

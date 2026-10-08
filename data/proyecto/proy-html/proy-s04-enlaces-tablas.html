@@ -2,8 +2,16 @@
 
 <h2>Enlaces</h2>
 <p>Un enlace se crea con la etiqueta <code>&lt;a&gt;</code>. El atributo <code>href</code> dice <strong>adónde lleva</strong>, y el texto de dentro es <strong>lo que se ve</strong> y se pulsa:</p>
-<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"https://es.wikipedia.org/wiki/Kart"</span> <span class='at'>target</span>=<span class='ca'>"_blank"</span><span class='et'>&gt;</span>Qué es un kart<span class='et'>&lt;/a&gt;</span></code></pre>
-<div class="salida"><p><a href="https://es.wikipedia.org/wiki/Kart" target="_blank" rel="noopener">Qué es un kart</a></p></div>
+<div class="probador" aria-label="Un enlace a otra web">
+<textarea data-lengua="html">
+<p>Mira <a href="https://es.wikipedia.org/wiki/Kart" target="_blank">qué es un kart</a> antes de jugar.</p>
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el enlace del resultado: abajo te digo adónde iría.</li>
+<li>Cambia el texto que hay entre <code>&lt;a&gt;</code> y <code>&lt;/a&gt;</code>. ¿Cambia adónde lleva?</li>
+<li>Borra <code>https://</code> del <code>href</code> y vuelve a pulsar.</li>
+</ul>
+</div>
 <ul>
 <li>Un enlace a otra web empieza siempre por <code>https://</code>.</li>
 <li><code>target="_blank"</code> lo abre en una <strong>pestaña nueva</strong>, para que el visitante no salga de tu página.</li>
@@ -28,19 +36,25 @@
 <p>Cada página es un archivo <code>.html</code> distinto, en la misma carpeta. Para ir de una a otra, el enlace lleva <strong>el nombre del archivo</strong>, sin <code>https://</code>:</p>
 <pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span></code></pre>
 <p>El <strong>menú</strong> es un grupo de enlaces a todas las páginas. Va al principio del <code>&lt;body&gt;</code>, dentro de <code>&lt;nav&gt;</code>, y este dentro de <code>&lt;header&gt;</code>. El contenido de cada página va en <code>&lt;main&gt;</code>:</p>
-<pre><code><span class='et'>&lt;body&gt;</span>
-    <span class='et'>&lt;header&gt;</span>
-        <span class='et'>&lt;nav&gt;</span>
-            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"index.html"</span><span class='et'>&gt;</span>Inicio<span class='et'>&lt;/a&gt;</span>
-            <span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span>
-        <span class='et'>&lt;/nav&gt;</span>
-    <span class='et'>&lt;/header&gt;</span>
-    <span class='et'>&lt;main&gt;</span>
-        <span class='et'>&lt;h1&gt;</span>Pixel Kart<span class='et'>&lt;/h1&gt;</span>
-        <span class='et'>&lt;p&gt;</span>El juego de karts más rápido del instituto.<span class='et'>&lt;/p&gt;</span>
-    <span class='et'>&lt;/main&gt;</span>
-<span class='et'>&lt;/body&gt;</span></code></pre>
-<div class="salida"><p><a href="#" onclick="return false">Inicio</a> <a href="#" onclick="return false">Circuitos</a></p><p style="font-size:2em;font-weight:bold;margin:.4rem 0">Pixel Kart</p><p>El juego de karts más rápido del instituto.</p></div>
+<div class="probador" aria-label="Menú con header, nav y main">
+<textarea data-lengua="html">
+<header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="circuitos.html">Circuitos</a>
+    </nav>
+</header>
+<main>
+    <h1>Pixel Kart</h1>
+    <p>El juego de karts más rápido del instituto.</p>
+</main>
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa <strong>Circuitos</strong> en el resultado.</li>
+<li>Añade un tercer enlace al menú: <code>torneo.html</code>, con el texto Torneo.</li>
+<li>Borra <code>&lt;nav&gt;</code> y <code>&lt;/nav&gt;</code>. ¿Cambia algo de lo que se ve?</li>
+</ul>
+</div>
 <table>
 <thead><tr><th>Etiqueta</th><th>Qué es</th></tr></thead>
 <tbody>
@@ -51,6 +65,9 @@
 </table>
 <p>No cambian nada de lo que se ve, pero ordenan el código. Con CSS pondremos el menú en fila y con colores.</p>
 <div class="nota">⚠️ El menú tiene que ser <strong>exactamente el mismo en todas las páginas</strong>. Cuando esté bien en una, cópialo y pégalo en las demás.</div>
+
+<p>Reto rápido de enlaces:</p>
+<div data-actividad="reto-enlaces"></div>
 
 <h3>Truco de VS Code: duplicar una página</h3>
 <ol>
@@ -78,21 +95,30 @@
 
 <h2>Tablas</h2>
 <p>Una tabla sirve para <strong>datos en filas y columnas</strong>, como un horario o una clasificación. Se construye <strong>fila a fila</strong>:</p>
-<pre><code><span class='et'>&lt;table</span> <span class='at'>border</span>=<span class='ca'>"1"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;th&gt;</span>Circuito<span class='et'>&lt;/th&gt;</span>
-        <span class='et'>&lt;th&gt;</span>Dificultad<span class='et'>&lt;/th&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Playa Pixel<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Fácil<span class='et'>&lt;/td&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Volcán<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Difícil<span class='et'>&lt;/td&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-<span class='et'>&lt;/table&gt;</span></code></pre>
-<div class="salida"><table border="1" style="display:table;width:auto;border-collapse:separate;border-spacing:2px"><tr><th style="border:1px solid currentColor;padding:2px 4px">Circuito</th><th style="border:1px solid currentColor;padding:2px 4px">Dificultad</th></tr><tr><td style="border:1px solid currentColor;padding:2px 4px">Playa Pixel</td><td style="border:1px solid currentColor;padding:2px 4px">Fácil</td></tr><tr><td style="border:1px solid currentColor;padding:2px 4px">Volcán</td><td style="border:1px solid currentColor;padding:2px 4px">Difícil</td></tr></table></div>
+<div class="probador" aria-label="Tabla">
+<textarea data-lengua="html">
+<table border="1">
+    <tr>
+        <th>Circuito</th>
+        <th>Dificultad</th>
+    </tr>
+    <tr>
+        <td>Playa Pixel</td>
+        <td>Fácil</td>
+    </tr>
+    <tr>
+        <td>Volcán</td>
+        <td>Difícil</td>
+    </tr>
+</table>
+</textarea>
+<ul class="probador__prueba">
+<li>Añade una fila: <code>Montaña</code> / <code>Media</code>. (Copia un <code>&lt;tr&gt;</code> entero, con su cierre.)</li>
+<li>Borra un <code>&lt;td&gt;</code> de una fila. ¿Qué le pasa a la tabla?</li>
+<li>Añade una columna <code>Vueltas</code>: un <code>&lt;th&gt;</code> arriba y un <code>&lt;td&gt;</code> en cada fila.</li>
+<li>Quita <code>border="1"</code>.</li>
+</ul>
+</div>
 <table>
 <thead><tr><th>Etiqueta</th><th>Qué es</th></tr></thead>
 <tbody>
@@ -106,6 +132,9 @@
 <li><strong>Todas las filas tienen el mismo número de celdas.</strong> Si una tiene menos, la tabla se descuadra.</li>
 <li><code>border="1"</code> dibuja los bordes. Es una forma antigua: de momento la usamos para ver bien la tabla, y en la parte de CSS la cambiarás por estilos.</li>
 </ul>
+
+<p>Reto rápido de tablas:</p>
+<div data-actividad="reto-tablas"></div>
 
 <h3>Truco de VS Code: una tabla entera de golpe</h3>
 <p>Escribe <code>table&gt;tr*3&gt;td*2</code> y pulsa <strong>Tab</strong>: sale una tabla de 3 filas con 2 celdas cada una. Después cambia las celdas de la primera fila de <code>td</code> a <code>th</code>.</p>

@@ -75,6 +75,9 @@
 
 <p>Empieza con <code>#</code> y va al final de todo. A diferencia de las demás partes, el fragmento <strong>no se envía al servidor</strong>: lo gestiona solo el navegador, para saltar directamente a un punto concreto dentro de la misma página (por ejemplo, un apartado con ese <code>id</code>). Es exactamente lo mismo que usa el índice "En esta página" de esta propia web.</p>
 
+<p>Ahora míralo con tus URLs. Escribe o pega una dirección y cada parte se pinta de un color:</p>
+<div class="lab" data-lab="url" aria-label="Las partes de una URL"></div>
+
 <h3>Actividad 1 — El # en la barra de direcciones</h3>
 <ol>
 <li>Mira la barra de direcciones de esta página. Termina en algo como <code>tema.html?id=sesion-4-url-http-basico</code>.</li>
@@ -155,6 +158,10 @@
 <div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrita la página?</div>
 <details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
 
+<h3>Pide páginas a un servidor de práctica</h3>
+<p>Aquí tienes un servidor pequeñito, <code>pixelkart.es</code>. Pide páginas y mira la conversación: qué pide tu navegador (<code>GET</code>) y qué código le contesta el servidor. Prueba también a escribir mal una ruta, con mayúscula o con <code>http://</code>.</p>
+<div class="lab" data-lab="peticion" aria-label="Petición y respuesta con un servidor de práctica"></div>
+
 <h2>Actividades en el ordenador</h2>
 
 <div class="nota">Como en la sesión 3, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña <strong>Network</strong> (si tu Chrome está en castellano, <strong>Red</strong>). Puedes usar mi web de materiales (esta misma) o cualquier página real (por ejemplo, la del propio instituto).</div>
@@ -166,7 +173,7 @@
 <li>Busca en la lista la primera fila, la del propio documento (tipo "document"), y haz clic en ella para ver su URL completa.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> se abre un panel de detalle con la URL completa de esa petición, y puedes ver su código de estado (normalmente <code>200</code>).</p>
-<p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene). Es la pregunta 13.</p>
+<p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene). Es la pregunta 13. Cuando la tengas, compruébala pegándola en «Las partes de una URL», más arriba.</p>
 
 <h3>Actividad 3 — Encuentra una URL con parámetros</h3>
 <ol start="4">

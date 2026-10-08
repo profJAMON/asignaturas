@@ -10,5 +10,12 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Events"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-js-eventos",
+      "tipo": "reto-web",
+      "titulo": "Botones que hacen cosas",
+      "banco": "js-eventos"
+    }
+  ]
 }

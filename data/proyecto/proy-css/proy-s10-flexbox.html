@@ -6,17 +6,39 @@
 
 <h2>display: flex</h2>
 <p>La idea más importante: <code>display: flex</code> se pone en la caja <strong>que contiene</strong> a las demás (el <strong>contenedor</strong>), no en las cajas que quieres mover.</p>
-<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"fila"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Turbo Rex<span class='et'>&lt;/div&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Nube Veloz<span class='et'>&lt;/div&gt;</span>
-    <span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"caja"</span><span class='et'>&gt;</span>Chispa<span class='et'>&lt;/div&gt;</span>
-<span class='et'>&lt;/div&gt;</span></code></pre>
-<pre><code><span class='et'>.fila</span> {
-    <span class='at'>display</span>: <span class='ca'>flex</span>;
-    <span class='at'>gap</span>: <span class='ca'>20px</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif;color:#fff">
-<div style="display:flex;gap:20px;flex-wrap:wrap"><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Turbo Rex</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Nube Veloz</div><div style="padding:14px;border:2px solid #ffcc00;border-radius:8px">Chispa</div></div>
+<div class="probador" aria-label="display: flex">
+<textarea data-lengua="html">
+<div class="fila">
+    <div class="caja">Turbo Rex</div>
+    <div class="caja">Nube Veloz</div>
+    <div class="caja">Chispa</div>
+</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.caja {
+    padding: 14px;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+}
+
+.fila {
+    display: flex;
+    gap: 20px;
+}
+</textarea>
+<select data-sel=".fila" data-prop="display"><option>block</option><option>flex</option></select>
+<input type="range" data-sel=".fila" data-prop="gap" data-unidad="px" min="0" max="60">
+<ul class="probador__prueba">
+<li>Cambia <code>display</code> a <code>block</code> y otra vez a <code>flex</code>.</li>
+<li>Mueve el <code>gap</code>.</li>
+<li>Pásale el <code>display: flex;</code> a <code>.caja</code> en lugar de a <code>.fila</code>. ¿Se ponen en fila?</li>
+</ul>
 </div>
 <ul>
 <li>Con solo <code>display: flex;</code>, las tres cajas se ponen en fila.</li>
@@ -58,14 +80,60 @@
 <tr><td><code>align-items</code></td><td><code>center</code></td><td>Centra las cajas <strong>en vertical</strong>, aunque tengan distinta altura.</td></tr>
 </tbody>
 </table>
-<div class="salida">
-<p style="margin:0 0 .3rem"><code>justify-content: center</code></p>
-<div style="display:flex;justify-content:center;gap:8px;border:1px dashed var(--border);padding:6px;margin-bottom:.8rem"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
-<p style="margin:0 0 .3rem"><code>justify-content: space-between</code></p>
-<div style="display:flex;justify-content:space-between;gap:8px;border:1px dashed var(--border);padding:6px;margin-bottom:.8rem"><span style="padding:6px 12px;background:var(--surface-2)">A</span><span style="padding:6px 12px;background:var(--surface-2)">B</span><span style="padding:6px 12px;background:var(--surface-2)">C</span></div>
-<p style="margin:0 0 .3rem"><code>justify-content: space-between</code> + <code>align-items: center</code></p>
-<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px dashed var(--border);padding:6px"><span style="padding:18px 12px;background:var(--surface-2)">Logo</span><span style="padding:6px 12px;background:var(--surface-2)">Botón</span></div>
+<p>Pruébalas. Las cajas tienen alturas distintas para que se note <code>align-items</code>:</p>
+<div class="probador" aria-label="Repartir el espacio">
+<textarea data-lengua="html">
+<div class="fila">
+    <div class="caja logo">Logo</div>
+    <div class="caja">Inicio</div>
+    <div class="caja">Jugar</div>
 </div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.caja {
+    padding: 14px;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+}
+
+.logo {
+    padding: 30px 14px;
+}
+
+.fila {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+    border: 1px dashed gray;
+}
+</textarea>
+<select data-sel=".fila" data-prop="justify-content"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select>
+<select data-sel=".fila" data-prop="align-items"><option>stretch</option><option>flex-start</option><option>center</option><option>flex-end</option></select>
+<ul class="probador__prueba">
+<li>Prueba <code>justify-content: space-between</code>: una caja en cada punta.</li>
+<li>Prueba <code>align-items: center</code>: las cajas pequeñas se ponen a media altura del Logo.</li>
+<li>Busca la combinación de una cabecera típica: logo a la izquierda y botones a la derecha, centrados en vertical.</li>
+</ul>
+</div>
+
+<p>Reto rápido de Flexbox:</p>
+<div data-actividad="reto-flex"></div>
+
+<h3>Juego: Flexbox Froggy</h3>
+<p>Un juego para practicar lo de hoy: tienes que llevar cada rana a su hoja escribiendo CSS de Flexbox. Está en castellano.</p>
+<ol>
+<li>Abre <a href="https://flexboxfroggy.com/#es" target="_blank" rel="noopener">flexboxfroggy.com</a>. Si sale en inglés, elige <strong>Español</strong> en el menú de idiomas de arriba a la derecha.</li>
+<li>Haz los niveles <strong>1 a 7</strong>: <code>justify-content</code> y <code>align-items</code>, lo de hoy.</li>
+<li>Del 8 en adelante usa propiedades que no damos: si acabas todo lo demás, sigue; si no, déjalo ahí.</li>
+</ol>
+<p>Si lo has hecho bien: los niveles 1 a 7 salen marcados en verde en la lista de niveles.</p>
 
 <h3>Ejercicio 2 — La cabecera de un cine</h3>
 <p>Crea <code>s10-ej2.html</code> y <code>s10-ej2.css</code>, y conecta el CSS. Dentro del <code>&lt;body&gt;</code>:</p>
@@ -92,28 +160,46 @@
 
 <h2>El menú en fila</h2>
 <p>Un menú es un <code>&lt;nav&gt;</code> con enlaces dentro. El <code>nav</code> es el contenedor:</p>
-<pre><code><span class='et'>nav</span> {
-    <span class='at'>display</span>: <span class='ca'>flex</span>;
-    <span class='at'>justify-content</span>: <span class='ca'>center</span>;
-    <span class='at'>gap</span>: <span class='ca'>10px</span>;
-    <span class='at'>background-color</span>: <span class='ca'>#2a2a55</span>;
-    <span class='at'>padding</span>: <span class='ca'>12px</span>;
+<div class="probador" aria-label="El menú en fila" data-alto="80">
+<textarea data-lengua="html">
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="personajes.html">Personajes</a>
+    <a href="circuitos.html">Circuitos</a>
+</nav>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    font-family: Arial, sans-serif;
 }
 
-<span class='et'>nav a</span> {
-    <span class='at'>color</span>: <span class='ca'>white</span>;
-    <span class='at'>padding</span>: <span class='ca'>8px 14px</span>;
-    <span class='at'>border-radius</span>: <span class='ca'>6px</span>;
-    <span class='at'>text-decoration</span>: <span class='ca'>none</span>;
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #2a2a55;
+    padding: 12px;
 }
 
-<span class='et'>nav a:hover</span> {
-    <span class='at'>background-color</span>: <span class='ca'>#ffcc00</span>;
-    <span class='at'>color</span>: <span class='ca'>#1b1b3a</span>;
-}</code></pre>
-<div class="salida" style="background:#1b1b3a;font-family:Arial,sans-serif">
-<div style="display:flex;justify-content:center;gap:10px;background:#2a2a55;padding:12px;flex-wrap:wrap"><span style="color:#fff;padding:8px 14px;border-radius:6px">Inicio</span><span style="color:#1b1b3a;background:#ffcc00;padding:8px 14px;border-radius:6px">Personajes</span><span style="color:#fff;padding:8px 14px;border-radius:6px">Circuitos</span></div>
-<p style="margin:.5rem 0 0;font-size:.9em;color:#fff">Aquí, el ratón está encima de "Personajes".</p>
+nav a {
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #ffcc00;
+    color: #1b1b3a;
+}
+</textarea>
+<select data-sel="nav" data-prop="justify-content"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select>
+<ul class="probador__prueba">
+<li>Pasa el ratón por los enlaces.</li>
+<li>Añade un cuarto enlace: Torneo.</li>
+<li>Quita el espacio de <code>nav a</code> (<code>nava</code>). ¿Qué deja de funcionar?</li>
+</ul>
 </div>
 <ul>
 <li><code>nav a</code>, con un <strong>espacio</strong>, quiere decir: "los enlaces que están <strong>dentro</strong> de <code>nav</code>". Los demás enlaces de la página no cambian.</li>
@@ -158,16 +244,56 @@
 
 <h2>Tarjetas en fila</h2>
 <p>Las tarjetas se ponen en fila igual: se meten todas en un <code>&lt;div&gt;</code> contenedor y a ese contenedor se le pone <code>display: flex</code>.</p>
-<pre><code><span class='et'>.tarjetas</span> {
-    <span class='at'>display</span>: <span class='ca'>flex</span>;
-    <span class='at'>flex-wrap</span>: <span class='ca'>wrap</span>;
-    <span class='at'>justify-content</span>: <span class='ca'>center</span>;
-    <span class='at'>gap</span>: <span class='ca'>20px</span>;
+<div class="probador" aria-label="Tarjetas en fila">
+<textarea data-lengua="html">
+<div class="tarjetas">
+    <div class="tarjeta">
+        <h2>Turbo Rex</h2>
+        <p>El más rápido.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Chispa</h2>
+        <p>La más ágil.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Bólido</h2>
+        <p>El más fuerte.</p>
+    </div>
+</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-<span class='et'>.tarjeta h2</span> {
-    <span class='at'>color</span>: <span class='ca'>#ffcc00</span>;
-}</code></pre>
+.tarjeta {
+    width: 120px;
+    padding: 10px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+}
+
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tarjeta h2 {
+    color: #ffcc00;
+}
+</textarea>
+<select data-sel=".tarjetas" data-prop="display"><option>block</option><option>flex</option></select>
+<input type="range" data-sel=".tarjeta" data-prop="width" data-unidad="px" min="60" max="250">
+<ul class="probador__prueba">
+<li>Cambia <code>display</code> a <code>block</code>: las tarjetas vuelven a ir una debajo de otra.</li>
+<li>Haz las tarjetas más anchas con el mando: cuando no caben, bajan a la línea de abajo (eso es <code>flex-wrap: wrap</code>).</li>
+<li>Pon <code>display: flex;</code> en <code>.tarjeta</code> (sin s). ¿Qué se pone en fila?</li>
+</ul>
+</div>
 <ul>
 <li><code>.tarjetas</code> (con <strong>s</strong>) es el contenedor. <code>.tarjeta</code> (sin s) es cada tarjeta.</li>
 <li>Cada tarjeta necesita un <code>width</code>. Sin ancho, se estiran o se aplastan.</li>

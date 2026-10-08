@@ -15,5 +15,18 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-css-colores",
+      "tipo": "reto-web",
+      "titulo": "Colores y letra",
+      "banco": "css-colores"
+    },
+    {
+      "id": "reto-css-clases",
+      "tipo": "reto-web",
+      "titulo": "Selectores y clases",
+      "banco": "css-clases"
+    }
+  ]
 }

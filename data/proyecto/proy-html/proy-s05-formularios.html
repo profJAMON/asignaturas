@@ -5,12 +5,21 @@
 <p>Hoy haremos solo la parte de HTML: las cajas, las opciones y el botón. Al pulsar el botón todavía no pasará nada: lo haremos funcionar con <strong>JavaScript</strong>.</p>
 
 <h2>Las piezas de un formulario</h2>
-<pre><code><span class='et'>&lt;form&gt;</span>
-    <span class='et'>&lt;label</span> <span class='at'>for</span>=<span class='ca'>"alias"</span><span class='et'>&gt;</span>Tu alias:<span class='et'>&lt;/label&gt;</span>
-    <span class='et'>&lt;input</span> <span class='at'>type</span>=<span class='ca'>"text"</span> <span class='at'>id</span>=<span class='ca'>"alias"</span> <span class='at'>placeholder</span>=<span class='ca'>"Por ejemplo: RayoAzul"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;button</span> <span class='at'>type</span>=<span class='ca'>"button"</span><span class='et'>&gt;</span>Inscribirme<span class='et'>&lt;/button&gt;</span>
-<span class='et'>&lt;/form&gt;</span></code></pre>
-<div class="salida"><p style="margin:0"><label>Tu alias: <input type="text" placeholder="Por ejemplo: RayoAzul"></label> <button type="button">Inscribirme</button></p></div>
+<div class="probador" aria-label="Las piezas de un formulario" data-alto="70">
+<textarea data-lengua="html">
+<form>
+    <label for="alias">Tu alias:</label>
+    <input type="text" id="alias" placeholder="Por ejemplo: RayoAzul">
+    <button type="button">Inscribirme</button>
+</form>
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa el texto «Tu alias:» del resultado. ¿Dónde aparece el cursor?</li>
+<li>Cambia el <code>for</code> por <code>for="nombre"</code> y vuelve a pulsar el texto.</li>
+<li>Cambia el <code>placeholder</code> por otro ejemplo.</li>
+<li>Borra <code>type="button"</code> del botón y púlsalo: abajo te digo qué pasaría.</li>
+</ul>
+</div>
 <table>
 <thead><tr><th>Etiqueta</th><th>Para qué sirve</th></tr></thead>
 <tbody>
@@ -50,21 +59,36 @@
 <tr><td><code>checkbox</code></td><td>Una casilla para marcar.</td></tr>
 </tbody>
 </table>
-<div class="salida">
-<p style="margin:0 0 .5rem">text: <input type="text" aria-label="Ejemplo de caja de texto" style="max-width:12rem"></p>
-<p style="margin:0 0 .5rem">number: <input type="number" min="1" max="10" aria-label="Ejemplo de caja de número" style="max-width:6rem"></p>
-<p style="margin:0 0 .5rem">email: <input type="email" aria-label="Ejemplo de caja de correo" style="max-width:12rem"></p>
-<p style="margin:0 0 .5rem">date: <input type="date" aria-label="Ejemplo de caja de fecha"></p>
-<p style="margin:0">checkbox: <input type="checkbox" aria-label="Ejemplo de casilla"></p>
+<div class="probador" aria-label="Tipos de caja">
+<textarea data-lengua="html">
+<p>Alias: <input type="text"></p>
+<p>Vueltas: <input type="number" min="1" max="10"></p>
+<p>Correo: <input type="email"></p>
+<p>Día de la carrera: <input type="date"></p>
+<p>Acepto las normas: <input type="checkbox"></p>
+</textarea>
+<ul class="probador__prueba">
+<li>Escribe letras en la caja de Vueltas. Y prueba sus flechitas: ¿pasa de 10?</li>
+<li>Pulsa la caja del día: sale un calendario.</li>
+<li>Cambia <code>type="text"</code> por <code>type="date"</code> en la primera caja.</li>
+<li>Añade una caja más: <code>type="color"</code>. ¿Qué sale?</li>
+</ul>
 </div>
 <p>Y dos etiquetas más:</p>
-<pre><code><span class='et'>&lt;select</span> <span class='at'>id</span>=<span class='ca'>"piloto"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;option&gt;</span>Turbo Rex<span class='et'>&lt;/option&gt;</span>
-    <span class='et'>&lt;option&gt;</span>Chispa<span class='et'>&lt;/option&gt;</span>
-<span class='et'>&lt;/select&gt;</span>
+<div class="probador" aria-label="Desplegable y caja grande">
+<script type="text/plain" data-lengua="html">
+<select id="piloto">
+    <option>Turbo Rex</option>
+    <option>Chispa</option>
+</select>
 
-<span class='et'>&lt;textarea</span> <span class='at'>id</span>=<span class='ca'>"opinion"</span> <span class='at'>rows</span>=<span class='ca'>"3"</span> <span class='at'>cols</span>=<span class='ca'>"30"</span><span class='et'>&gt;&lt;/textarea&gt;</span></code></pre>
-<div class="salida"><p style="margin:0 0 .5rem"><select aria-label="Ejemplo de desplegable"><option>Turbo Rex</option><option>Chispa</option></select></p><textarea rows="3" cols="30" aria-label="Ejemplo de caja grande" style="max-width:100%"></textarea></div>
+<textarea id="opinion" rows="3" cols="30"></textarea>
+</script>
+<ul class="probador__prueba">
+<li>Añade un tercer piloto al desplegable y ábrelo.</li>
+<li>Cambia <code>rows="3"</code> por <code>rows="6"</code> y <code>cols="30"</code> por <code>cols="10"</code>.</li>
+</ul>
+</div>
 <ul>
 <li><code>&lt;select&gt;</code> es un <strong>desplegable</strong>; cada <code>&lt;option&gt;</code> es una opción.</li>
 <li><code>&lt;textarea&gt;</code> es una caja <strong>grande</strong>, para escribir varias líneas. Esta sí se cierra. <code>rows</code> son las líneas de alto y <code>cols</code>, los caracteres de ancho.</li>
@@ -73,6 +97,9 @@
 <details><summary>🤔 Antes de seguir: quieres que el visitante elija su nivel entre "Principiante", "Medio" y "Experto". ¿Qué usas?</summary>
 <p>Un <code>&lt;select&gt;</code> con tres <code>&lt;option&gt;</code>.</p>
 </details>
+
+<p>Reto rápido: ¿qué caja es?</p>
+<div data-actividad="reto-formularios"></div>
 
 <h3>Ejercicio 2 — Reservar una pista</h3>
 <p>Crea <code>s05-ej2.html</code> y haz que se vea como en la imagen.</p>

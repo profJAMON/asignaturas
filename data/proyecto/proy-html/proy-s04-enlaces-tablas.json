@@ -15,5 +15,18 @@
       "url": "https://developer.mozilla.org/es/docs/Learn/HTML/Tables/Basics"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "reto-enlaces",
+      "tipo": "reto-web",
+      "titulo": "¿Adónde lleva?",
+      "banco": "enlaces"
+    },
+    {
+      "id": "reto-tablas",
+      "tipo": "reto-web",
+      "titulo": "Filas y celdas",
+      "banco": "tablas"
+    }
+  ]
 }
