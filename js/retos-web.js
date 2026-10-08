@@ -35,6 +35,9 @@
                medio, pero se ejecuta el código entero)
      ordena: { tipo, pregunta, lengua, lineas: [… en su orden], fijo,
                explica }
+     interpreta: { tipo, pregunta, url, opciones: ["descripción", …],
+               porque, explica }   «¿de qué va esta página?»: la URL
+               coloreada por partes y tres descripciones.
      consola: { tipo, pregunta, codigo (JS), opciones: ["lo que sale", …],
                porque, fijo, explica }   «¿Qué sale en la consola?»;
                al acertar, se ejecuta de verdad y se ve la consola.
@@ -281,6 +284,54 @@
     pintar();
   }
 
+  /* ---------- interpreta: «¿de qué va esta página?» ---------- */
+
+  /* La URL coloreada por partes (mismos colores que el laboratorio
+     «Las partes de una URL», variables --lab-*). */
+  function urlEnColores(url) {
+    const caja = el('p', 'reto__url');
+    caja.setAttribute('translate', 'no');
+    const m = /^([a-z]+:\/\/)?([^\/?#]*)(\/[^?#]*)?(\?[^#]*)?(#.*)?$/i.exec(url) || [];
+    [[m[1], 'protocolo'], [m[2], 'dominio'], [m[3], 'ruta'], [m[4], 'query'], [m[5], 'frag']].forEach(([t, k]) => {
+      if (t) caja.appendChild(el('span', 'lab__parte lab__parte--' + k, t));
+    });
+    return caja;
+  }
+
+  function pintarInterpreta(zona, r, estado) {
+    zona.appendChild(el('p', 'reto__pregunta', r.pregunta || 'Sin abrirla: ¿de qué va esta página?'));
+    zona.appendChild(urlEnColores(r.url));
+    const lista = el('div', 'reto__opciones');
+    lista.setAttribute('role', 'group');
+    lista.setAttribute('aria-label', 'Opciones');
+    let resuelto = false;
+    barajar(r.opciones.map((t, i) => i)).forEach((idx, n) => {
+      const b = el('button', 'reto__opcion reto__opcion--texto');
+      b.type = 'button';
+      const letra = el('span', 'reto__letra', 'ABCD'[n]);
+      letra.setAttribute('aria-hidden', 'true');
+      b.appendChild(letra);
+      b.appendChild(el('span', null, r.opciones[idx]));
+      b.addEventListener('click', () => {
+        if (resuelto) return;
+        if (idx === 0) {
+          resuelto = true;
+          b.classList.add('reto__opcion--bien');
+          lista.querySelectorAll('button').forEach(x => { x.disabled = x !== b; });
+          estado.textContent = '✓ ¡Eso es! ' + (r.explica || '');
+          estado.className = 'reto__estado reto__estado--bien';
+        } else {
+          b.classList.add('reto__opcion--mal');
+          b.disabled = true;
+          estado.textContent = '✗ ' + ((r.porque && r.porque[idx]) || 'No. Mira otra vez cada parte de la URL.');
+          estado.className = 'reto__estado reto__estado--mal';
+        }
+      });
+      lista.appendChild(b);
+    });
+    zona.appendChild(lista);
+  }
+
   /* ---------- consola: «¿qué sale?» ---------- */
 
   function pintarConsola(zona, r, estado) {
@@ -328,7 +379,7 @@
     zona.appendChild(lista);
   }
 
-  const PINTORES = { elige: pintarElige, error: pintarError, ordena: pintarOrdena, consola: pintarConsola };
+  const PINTORES = { elige: pintarElige, error: pintarError, ordena: pintarOrdena, consola: pintarConsola, interpreta: pintarInterpreta };
 
   /* ---------- la actividad ---------- */
 
@@ -1241,6 +1292,106 @@
         const bien = lineas[mal];
         lineas[mal] = malo;
         return { tipo: 'error', pregunta: 'Algo sale mal en la página. Pulsa la línea del error.', lineas, mal, bien, explica };
+      },
+    ],
+
+    /* ---------- Operaciones U2 S4 · ¿de qué va esta página? ---------- */
+    urls: [
+      () => {
+        const [tienda, cosa, tipo, nombre] = azar([
+          ['tienda-deportes.es', 'zapatillas', 'running', 'zapatillas de running'],
+          ['moda-joven.es', 'camisetas', 'futbol', 'camisetas de fútbol'],
+          ['mochilas.com', 'mochilas', 'escolares', 'mochilas escolares'],
+        ]);
+        const color = azar(['azul', 'rojo', 'negro', 'verde']);
+        const talla = azar(['38', '40', '42', 'M', 'L']);
+        const [frag, queFrag] = azar([['#opiniones', 'las opiniones'], ['#envio', 'cómo se envían'], ['', '']]);
+        const sobre = queFrag ? `${queFrag[0].toUpperCase() + queFrag.slice(1)} de ${nombre}` : `${nombre[0].toUpperCase() + nombre.slice(1)}`;
+        return {
+          tipo: 'interpreta',
+          url: `https://www.${tienda}/${cosa}/${tipo}?color=${color}&talla=${talla}${frag}`,
+          opciones: [
+            `${sobre} de color ${color} y de la talla ${talla}, en una tienda online.`,
+            `${sobre} de todos los colores y todas las tallas.`,
+            `La página principal de la tienda ${tienda}.`,
+          ],
+          porque: [null, 'Fíjate en los parámetros, después del ?: color y talla filtran lo que ves.', 'Hay una ruta después del dominio: no es la portada, es una sección concreta.'],
+          explica: `La ruta (/${cosa}/${tipo}) dice qué producto; los parámetros, el color y la talla${frag ? '; y el fragmento ' + frag + ', a qué parte de la página salta' : ''}.`,
+        };
+      },
+      () => {
+        const [busca, texto] = azar([['recetas+de+tortilla', 'recetas de tortilla'], ['horario+autobus+palma', 'horario autobús palma'], ['como+hacer+un+nudo', 'como hacer un nudo']]);
+        return {
+          tipo: 'interpreta',
+          url: `https://www.google.com/search?q=${busca}`,
+          opciones: [
+            `Los resultados de Google al buscar «${texto}».`,
+            `Una web sobre «${texto}» hecha por Google.`,
+            'La página de inicio de Google, vacía.',
+          ],
+          porque: [null, 'Google no ha hecho esa web: /search es su buscador, y lo que hay detrás de q= es lo que alguien ha buscado.', 'Tiene ruta (/search) y un parámetro q: es una búsqueda hecha, no la portada.'],
+          explica: 'q= (de query, «consulta») guarda lo que has escrito en el buscador. El + es un espacio.',
+        };
+      },
+      () => {
+        const id = Math.random().toString(36).slice(2, 13);
+        const s = azar([90, 120, 300]);
+        const min = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+        return {
+          tipo: 'interpreta',
+          url: `https://www.youtube.com/watch?v=${id}&t=${s}`,
+          opciones: [
+            `Un vídeo concreto de YouTube que empieza en el minuto ${min}.`,
+            `Un vídeo de YouTube que dura ${s} segundos.`,
+            'La lista de todos los vídeos de YouTube.',
+          ],
+          porque: [null, `t=${s} no es lo que dura: es desde dónde empieza a reproducirse (${s} segundos = ${min}).`, 'v= es el código de UN vídeo concreto.'],
+          explica: `/watch es «ver»; v= dice qué vídeo y t=${s}, en qué segundo empieza.`,
+        };
+      },
+      () => {
+        const [tema, apartado, que] = azar([['Mallorca', 'Clima', 'el clima'], ['Internet', 'Historia', 'la historia'], ['Pizza', 'Ingredientes', 'los ingredientes']]);
+        return {
+          tipo: 'interpreta',
+          url: `https://es.wikipedia.org/wiki/${tema}#${apartado}`,
+          opciones: [
+            `El artículo de la Wikipedia en español sobre ${tema}, justo en el apartado de ${que}.`,
+            `Un artículo de la Wikipedia en inglés sobre ${tema}.`,
+            `Una web de ${tema} que se llama Wikipedia.`,
+          ],
+          porque: [null, 'El subdominio es es.: la Wikipedia en español.', 'wikipedia.org es el dominio: es la Wikipedia. Lo que va en la ruta es el artículo.'],
+          explica: `es. = en español; /wiki/${tema} = el artículo; #${apartado} = salta a ese apartado.`,
+        };
+      },
+      () => {
+        const [sec, sub, nom] = azar([['deportes', 'futbol', 'de fútbol'], ['cultura', 'cine', 'de cine'], ['tecnologia', 'moviles', 'de móviles']]);
+        const dia = String(azar([3, 8, 15, 21])).padStart(2, '0');
+        const mes = azar([['10', 'octubre'], ['11', 'noviembre']]);
+        return {
+          tipo: 'interpreta',
+          url: `https://www.diariodelasislas.es/${sec}/${sub}/2026/${mes[0]}/${dia}/el-partido-del-ano.html`,
+          opciones: [
+            `Una noticia ${nom}, de la sección de ${sec}, publicada el ${Number(dia)} de ${mes[1]} de 2026.`,
+            `La portada de un periódico con todas las noticias de hoy.`,
+            `Una noticia ${nom} publicada en el año ${dia}.`,
+          ],
+          porque: [null, 'Tiene una ruta larga hasta un .html: es una página concreta, no la portada.', 'Lee la ruta en orden: año / mes / día.'],
+          explica: 'Muchas webs ordenan las rutas como carpetas: sección / tema / año / mes / día / noticia.',
+        };
+      },
+      () => {
+        const [curso, grupo] = [azar(['1', '2']), azar(['A', 'B'])];
+        return {
+          tipo: 'interpreta',
+          url: `https://iesramonllull.net/horarios?curso=${curso}&grupo=${grupo}`,
+          opciones: [
+            `El horario de ${curso}.º ${grupo} en la web del instituto.`,
+            `Los horarios de todos los cursos del instituto.`,
+            `La lista de alumnos de ${curso}.º ${grupo}.`,
+          ],
+          porque: [null, 'Los parámetros curso y grupo filtran: solo uno.', 'La ruta es /horarios: va de horarios, no de alumnos.'],
+          explica: 'La ruta dice el tema (horarios) y los parámetros, cuál en concreto.',
+        };
       },
     ],
   };

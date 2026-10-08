@@ -115,6 +115,9 @@ async function cargarTema() {
     if (typeof pintarFechaPrevista === 'function') {
       pintarFechaPrevista(asignatura.id, id, unidadDeLaSesion.id);
     }
+    /* Aviso grande con la fecha del examen de la unidad (solo donde el
+       calendario lo pide con "avisoExamen", ver js/calendario.js). */
+    if (typeof pintarAvisoExamen === 'function') pintarAvisoExamen(asignatura.id, unidadDeLaSesion.id);
 
     /* La sesión se ha cargado por fetch, después de la primera pasada del
        traductor: hay que avisarle de que hay texto nuevo en pantalla. */

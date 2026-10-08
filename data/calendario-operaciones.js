@@ -64,10 +64,22 @@
    Si el ritmo real se desvía: edita las fechas de la unidad afectada
    (y las siguientes si el desfase se arrastra), o pide que se
    recalcule a partir de la fecha real en la que vais.
+
+   Aviso del examen en cada sesión (08/10/2026)
+   --------------------------------------------
+   Con "avisoExamen": true, cada sesión de una unidad con "examen"
+   empieza con un recuadro grande: «Examen de la Unidad N · jueves 22
+   de octubre · 19:10 · faltan N días» (js/calendario.js,
+   pintarAvisoExamen). Para mover un examen basta con cambiar aquí su
+   "examen": se actualiza solo en todas las sesiones de la unidad, en
+   la barra lateral y en el calendario. "horaExamen" es la hora que
+   sale en el aviso.
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-10-01",
+  "actualizado": "2026-10-08",
+  "avisoExamen": true,
+  "horaExamen": "19:10",
   "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son los jueves de 19:10 a 21:00. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {

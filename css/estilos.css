@@ -4699,3 +4699,68 @@ body::after {
   .leccion .lab__tabla th:nth-child(3) { display: none; }
   .leccion .lab__tabla td:nth-child(3) { grid-column: 1 / -1; padding-top: 0; color: var(--text-dim); }
 }
+
+/* ============================================================
+   Aviso del examen al principio de cada sesión (08/10/2026)
+   ============================================================
+   js/calendario.js (pintarAvisoExamen). Solo en Operaciones
+   ("avisoExamen" en su calendario). Magenta = aviso, como .nota,
+   pero grande: tiene que verse nada más abrir la sesión.
+   ============================================================ */
+.leccion .aviso-examen {
+  border: 2px solid var(--accent-warm);
+  border-left-width: 8px;
+  border-radius: 6px;
+  background: var(--nota-fondo);
+  padding: 0.9rem 1.2rem;
+  margin: 0 0 1.4rem;
+  text-align: center;
+}
+.leccion .aviso-examen p { margin: 0; }
+.leccion .aviso-examen__rotulo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  font-weight: 700;
+}
+.leccion .aviso-examen__fecha {
+  font-family: var(--font-titulo);
+  font-size: clamp(1.7rem, 6vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0.2rem 0;
+}
+.leccion .aviso-examen__cuenta {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--boton-texto);
+  background: var(--accent-warm);
+  border-radius: 999px;
+  padding: 0.2rem 0.9rem;
+  margin-top: 0.3rem;
+}
+.leccion .aviso-examen__nota { font-size: 0.82rem; color: var(--text-dim); margin-top: 0.5rem; }
+.leccion .aviso-examen--cerca .aviso-examen__cuenta { animation: aviso-latido 1.6s ease-in-out infinite; }
+@keyframes aviso-latido { 50% { transform: scale(1.08); } }
+.leccion .aviso-examen--pasado { border-color: var(--border); background: transparent; }
+.leccion .aviso-examen--pasado .aviso-examen__rotulo { color: var(--text-faint); }
+.leccion .aviso-examen--pasado .aviso-examen__fecha { font-size: 1.3rem; color: var(--text-dim); }
+@media (prefers-reduced-motion: reduce) { .leccion .aviso-examen--cerca .aviso-examen__cuenta { animation: none; } }
+@media print { .leccion .aviso-examen__cuenta, .leccion .aviso-examen__nota { display: none; } }
+.leccion .reto__url { margin: 0; font-family: var(--font-mono); font-size: 1rem; overflow-wrap: anywhere; padding: 0.6rem 0.7rem; background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; }
+.reto__opcion--texto { font-size: 0.95rem; line-height: 1.4; }
+/* En la hoja de papel (actividades) los colores de las partes de una URL
+   tienen que ser los del tema claro, en los dos temas. */
+.actividad {
+  --lab-protocolo: #a4126a;
+  --lab-sub: #6d28d9;
+  --lab-dominio: #0e7490;
+  --lab-ruta: #3f6212;
+  --lab-query: #92400e;
+  --lab-frag: #b4410e;
+}

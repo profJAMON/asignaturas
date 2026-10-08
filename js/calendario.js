@@ -371,6 +371,66 @@
     badge.hidden = true;
   }
 
+  /* ----------------------------------------------------------
+     Aviso grande del examen al principio de cada sesión (08/10/2026)
+     ----------------------------------------------------------
+     Solo en las asignaturas cuyo calendario lleva "avisoExamen": true
+     (de momento, Operaciones) y en las unidades con "examen". La fecha
+     sale del calendario: si el examen se mueve, se cambia allí y se
+     actualiza solo en todas las sesiones. */
+  function fechaLarga(iso) {
+    const [anio, mes, dia] = iso.split('-').map(Number);
+    const f = new Date(anio, mes - 1, dia);
+    const dias = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+    const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+    return `${dias[f.getDay()]} ${f.getDate()} de ${meses[f.getMonth()]}`;
+  }
+  function diasHasta(iso) {
+    const [a, m, d] = iso.split('-').map(Number);
+    const [ha, hm, hd] = hoyIso().split('-').map(Number);
+    return Math.round((Date.UTC(a, m - 1, d) - Date.UTC(ha, hm - 1, hd)) / 86400000);
+  }
+
+  function pintarAvisoExamen(asignaturaId, unidadId) {
+    const leccion = document.getElementById('leccion-contenido');
+    if (!leccion) return;
+    const viejo = document.getElementById('aviso-examen');
+    if (viejo) viejo.remove();
+    const d = datos(asignaturaId);
+    if (!d || !d.avisoExamen || !unidadId) return;
+    const iso = fechaExamen(asignaturaId, unidadId);
+    if (!iso) return;
+    const unidad = d.unidades.find(u => u.id === unidadId);
+    const numero = unidad && /^(Unidad|Bloque)\s+[\w-]+/i.exec(unidad.titulo);
+    const deQue = numero ? `de la ${numero[0]}` : 'de esta unidad';
+    const faltan = diasHasta(iso);
+
+    const caja = document.createElement('div');
+    caja.id = 'aviso-examen';
+    caja.className = 'aviso-examen' + (faltan < 0 ? ' aviso-examen--pasado' : faltan <= 3 ? ' aviso-examen--cerca' : '');
+    caja.setAttribute('role', 'note');
+
+    const rotulo = document.createElement('p');
+    rotulo.className = 'aviso-examen__rotulo';
+    rotulo.textContent = faltan < 0 ? `📝 El examen ${deQue} fue el` : `📝 Examen ${deQue}`;
+    const fecha = document.createElement('p');
+    fecha.className = 'aviso-examen__fecha';
+    fecha.textContent = fechaLarga(iso) + (faltan >= 0 && d.horaExamen ? ` · ${d.horaExamen}` : '');
+    caja.appendChild(rotulo);
+    caja.appendChild(fecha);
+    if (faltan >= 0) {
+      const cuenta = document.createElement('p');
+      cuenta.className = 'aviso-examen__cuenta';
+      cuenta.textContent = faltan === 0 ? '¡Es hoy!' : faltan === 1 ? '¡Es mañana!' : `Faltan ${faltan} días`;
+      caja.appendChild(cuenta);
+      const nota = document.createElement('p');
+      nota.className = 'aviso-examen__nota';
+      nota.textContent = 'Si vamos con retraso, la fecha puede cambiar: mírala siempre aquí.';
+      caja.appendChild(nota);
+    }
+    leccion.insertBefore(caja, leccion.firstChild);
+  }
+
   function refrescarDecoraciones() {
     _decoraciones.forEach(_pintarUnaDecoracion);
     _actualizarBadgeTema();
@@ -382,6 +442,7 @@
 
   window.decorarEnlaceSesion = decorarEnlaceSesion;
   window.pintarFechaPrevista = pintarFechaPrevista;
+  window.pintarAvisoExamen = pintarAvisoExamen;
   window.pintarSelectorGrupo = pintarSelectorGrupo;
   window.calendarioRitmo = {
     datos,
