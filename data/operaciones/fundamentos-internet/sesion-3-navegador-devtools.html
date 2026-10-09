@@ -87,15 +87,17 @@
 <p>Es donde el navegador "habla": avisa cuando algo ha ido mal (un archivo que no encuentra, código que falla) y también sirve para escribir instrucciones sueltas y ver el resultado al momento. Por ahora la usarás solo para leer, no para escribir código.</p>
 
 <div class="salida" style="background:var(--bg);padding:16px">
-<svg viewBox="0 0 480 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
-  <rect x="20" y="10" width="440" height="80" rx="6" fill="var(--surface)" stroke="var(--border)"/>
-  <text x="34" y="30" fill="var(--text-faint)" font-size="9">La página se ha cargado correctamente.</text>
-  <text x="34" y="46" fill="var(--text-faint)" font-size="9">Service worker registrado.</text>
-  <text x="34" y="64" fill="var(--accent-warm)" font-size="9">✕ GET foto-perfil.jpg 404 (Not Found)  —  index.html:12</text>
-  <text x="34" y="80" fill="var(--accent)" font-size="10">&gt;</text>
-
-  <text x="240" y="108" text-anchor="middle" fill="var(--text-dim)" font-size="12">Un mensaje en color suele ser un error: indica qué archivo y en qué línea ha fallado</text>
+<svg viewBox="0 0 320 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:440px;font-family:var(--font-mono)" role="img" aria-label="Consola con dos mensajes normales en gris y un error en color: no encuentra foto-perfil.jpg, en la línea 12 de index.html">
+  <rect x="4" y="4" width="312" height="124" rx="6" fill="var(--surface)" stroke="var(--border)"/>
+  <g translate="no" font-size="12">
+  <text x="14" y="26" fill="var(--text-faint)">La página se ha cargado correctamente.</text>
+  <text x="14" y="46" fill="var(--text-faint)">Service worker registrado.</text>
+  <text x="14" y="72" fill="var(--accent-warm)">✕ GET foto-perfil.jpg 404 (Not Found)</text>
+  <text x="306" y="90" text-anchor="end" fill="var(--accent-warm)">index.html:12</text>
+  <text x="14" y="116" fill="var(--accent)" font-size="14">&gt;</text>
+  </g>
 </svg>
+<p class="pie-figura">Un mensaje en color suele ser un error: indica qué archivo y en qué línea ha fallado.</p>
 </div>
 
 <h3>Network (Red) — lo que se ha descargado</h3>
