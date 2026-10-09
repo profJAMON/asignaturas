@@ -2,22 +2,45 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio 3</title>
+    <title>Mini test</title>
 </head>
 <body>
-    <h1>Tienda de chuches</h1>
-    <p>Cada bolsa cuesta 3 euros. Si gastas 15 euros o más, te regalamos una piruleta.</p>
+    <h1>Mini test de cultura</h1>
     <form>
-        <label for="bolsas">Bolsas:</label>
-        <input type="number" id="bolsas">
-        <button type="button" id="boton-calcular">Calcular</button>
+        <p>
+            <label for="pregunta1">1. ¿Cuál es la capital de Francia?</label>
+            <select id="pregunta1">
+                <option>Roma</option>
+                <option>París</option>
+                <option>Berlín</option>
+            </select>
+        </p>
+        <p>
+            <label for="pregunta2">2. ¿Cuántas patas tiene una araña?</label>
+            <select id="pregunta2">
+                <option>6</option>
+                <option>8</option>
+                <option>10</option>
+            </select>
+        </p>
+        <p>
+            <label for="pregunta3">3. ¿Cuántos minutos tiene una hora?</label>
+            <select id="pregunta3">
+                <option>30</option>
+                <option>60</option>
+                <option>100</option>
+            </select>
+        </p>
+        <button type="button" id="boton-corregir">Corregir</button>
     </form>
-    <p id="total"></p>
+    <p id="resultado"></p>
 
     <script src="s15-ej3.js"></script>
     <script>
-document.querySelector("#bolsas").value = "5";
-document.querySelector("#boton-calcular").click();
+document.querySelector("#pregunta1").value = "París";
+document.querySelector("#pregunta2").value = "6";
+document.querySelector("#pregunta3").value = "60";
+document.querySelector("#boton-corregir").click();
     </script>
 </body>
 </html>

@@ -1,10 +1,13 @@
 // 1. Buscar los elementos
-let boton = document.querySelector("#boton-solucion");
-let solucion = document.querySelector("#solucion");
+let cajaPizza = document.querySelector("#pizza");
+let cajaTamano = document.querySelector("#tamano");
+let boton = document.querySelector("#boton-pedir");
+let pedido = document.querySelector("#pedido");
 
 // 2. Esperar al clic
 boton.addEventListener("click", function () {
-    // 3. Mostrar la solución y cambiar el botón
-    solucion.textContent = "Un reloj.";
-    boton.textContent = "Ya lo sabes";
+    // 3. Leer lo elegido y responder
+    let pizza = cajaPizza.value;
+    let tamano = cajaTamano.value;
+    pedido.textContent = "Tu pedido: pizza " + pizza + " " + tamano + ".";
 });

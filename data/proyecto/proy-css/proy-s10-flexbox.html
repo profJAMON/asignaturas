@@ -1,4 +1,4 @@
-<div class="nota">Hoy: pones cajas <strong>en fila</strong> con <strong>Flexbox</strong>. Con eso haces un menú y una fila de tarjetas, y al final una mini web entera. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
+<div class="nota">Hoy: pones cajas <strong>en fila</strong> con <strong>Flexbox</strong>. Con eso haces un menú y una fila de tarjetas, y al final una mini web entera. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios. <strong>A las 17:25</strong> os juntáis en pareja para dibujar el boceto de vuestra web.</div>
 
 <h2>El problema: todo va uno debajo de otro</h2>
 <p>Los títulos, los párrafos y los <code>&lt;div&gt;</code> ocupan <strong>todo el ancho</strong> y se colocan <strong>uno debajo de otro</strong>. En la sesión 9, las dos tarjetas del club salían en columna aunque cabían en fila.</p>
@@ -344,6 +344,76 @@ body {
 <p>El selector tiene dos partes separadas por un espacio: la clase de la tarjeta y la etiqueta del título.</p>
 </details>
 <p>Si lo has hecho bien: en Chrome, pulsa <strong>F12</strong> y después el icono del <strong>móvil</strong> (arriba a la izquierda del panel). La página se ve como en un móvil: las tarjetas bajan una debajo de otra y nada se sale por la derecha.</p>
+
+<h2>A las 17:25: el boceto de vuestra web (en pareja)</h2>
+<p>La semana que viene, en el taller, ponéis el CSS en vuestra web. Para no perder tiempo probando colores al azar, hoy decidís <strong>cómo queréis que se vea</strong>. Dejad lo que estéis haciendo, aunque no hayáis acabado: lo que os falte lo podéis entregar la semana que viene.</p>
+<ol>
+<li>Os juntáis con vuestra pareja. Os doy una hoja con el dibujo de una página: el menú arriba, la zona de las tarjetas y el pie.</li>
+<li>Dibujáis <strong>vuestra portada</strong>: qué va en el menú, qué tarjetas y qué imagen lleva cada una.</li>
+<li>Elegís <strong>2 o 3 colores</strong> aquí debajo: el del menú, el de las tarjetas y el del texto. Moved los colores hasta que os guste y que el texto se lea bien.</li>
+<li>Copiáis en la hoja el código de cada color (por ejemplo, <code>#ff2a6d</code>): lo pondréis tal cual en vuestro <code>estilos.css</code>.</li>
+</ol>
+<div class="probador" aria-label="Elige los colores de vuestra web" data-alto="190">
+<textarea data-lengua="html">
+<header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Personajes</a>
+        <a href="#">Circuitos</a>
+    </nav>
+</header>
+<div class="tarjetas">
+    <div class="tarjeta">
+        <h2>Turbo Rex</h2>
+        <p>El más rápido en las rectas.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Chispa</h2>
+        <p>Acelera muy rápido al salir.</p>
+    </div>
+</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b3a;
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    background-color: #2a2a55;
+    padding: 12px;
+}
+
+nav a {
+    color: #ffcc00;
+}
+
+.tarjetas {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+.tarjeta {
+    background-color: #2a2a55;
+    padding: 12px;
+    border-radius: 10px;
+}
+</textarea>
+<input type="color" data-sel="body" data-prop="background-color">
+<input type="color" data-sel="body" data-prop="color">
+<input type="color" data-sel="nav" data-prop="background-color">
+<input type="color" data-sel=".tarjeta" data-prop="background-color">
+<input type="color" data-sel="nav a" data-prop="color">
+<ul class="probador__prueba">
+<li>Mueve los colores y mira qué línea del CSS cambia: ese código es el que copiáis.</li>
+<li>Poned un texto oscuro sobre un fondo oscuro. ¿Se lee? Así no lo queréis.</li>
+</ul>
+</div>
+<p>El alumno solo dibuja el suyo igual. La web de la pareja no se toca hoy: es un dibujo en papel.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">

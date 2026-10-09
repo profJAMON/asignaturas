@@ -213,7 +213,7 @@ const CALENDARIO_PROYECTO =
       "fecha": "2026-12-17"
     },
     "proy-s14-leer-formulario": {
-      "titulo": "Sesión 14 — Repaso y leer formularios",
+      "titulo": "Sesión 14 — Ensayo de la prueba y leer formularios",
       "unidad": "proy-javascript",
       "fecha": "2027-01-07"
     },

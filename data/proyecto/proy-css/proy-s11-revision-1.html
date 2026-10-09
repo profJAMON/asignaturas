@@ -1,10 +1,23 @@
-<div class="nota">Hoy: taller <strong>en pareja</strong>. Dais estilo a vuestra web con lo que habéis practicado en las sesiones 8, 9 y 10. <strong>Al final de la sesión reviso la web (HTML + CSS) de cada pareja.</strong></div>
+<div class="nota">Hoy: taller <strong>en pareja</strong>. Dais estilo a vuestra web con lo que habéis practicado en las sesiones 8, 9 y 10. <strong>Al acabar la sesión reviso la web (HTML + CSS) de cada pareja.</strong></div>
+
+<h2>Cómo va la tarde</h2>
+<table>
+<thead><tr><th>Hora</th><th>Qué hacéis</th></tr></thead>
+<tbody>
+<tr><td>15:55</td><td>Bajáis la última versión de la web (como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>) y sacáis el <strong>boceto</strong> de la sesión 10.</td></tr>
+<tr><td>16:02</td><td>CSS en vuestra web. A mitad, cambio de turno.</td></tr>
+<tr><td>17:00</td><td>Revisión cruzada: revisáis la web de otra pareja.</td></tr>
+<tr><td>17:10</td><td>Arregláis lo que os hayan apuntado y seguís.</td></tr>
+<tr><td>17:35</td><td>Diario de taller y subir a GitHub. Después, mi revisión.</td></tr>
+</tbody>
+</table>
 
 <h2>Cómo trabajáis hoy</h2>
 <ul>
-<li><strong>Un ordenador</strong> por pareja, con la carpeta de vuestra web abierta en VS Code.</li>
-<li><strong>Turnos de 20-30 minutos</strong>: uno escribe y el otro tiene esta página abierta, dice qué toca y revisa. Después, cambiáis.</li>
-<li>Vuestros ejercicios de las sesiones 8, 9 y 10 son vuestra <strong>chuleta</strong>: abridlos y copiad de ahí lo que necesitéis.</li>
+<li><strong>Un ordenador</strong> por pareja, con la carpeta de vuestra web abierta en VS Code. La bajáis de GitHub al empezar.</li>
+<li><strong>Conductor y copiloto</strong>, con la tarjeta, y cambio cada 30 minutos. Conduce primero quien menos escribió en la sesión 7.</li>
+<li>El copiloto tiene delante el <strong>boceto</strong> y comprueba que la web se parece: los colores son los que apuntasteis.</li>
+<li>Vuestros ejercicios de las sesiones 8, 9 y 10 y la <strong>chuleta de CSS</strong> que os doy son vuestra ayuda: abridlos y copiad de ahí lo que necesitéis.</li>
 </ul>
 
 <h2>Un único estilos.css</h2>
@@ -86,10 +99,29 @@
 <p>Para entrenar el ojo: retos con los errores de CSS más típicos. Cada vez sale uno distinto.</p>
 <div data-actividad="reto-repaso-css"></div>
 
-<div class="nota">💡 Si algo no cambia, botón derecho encima → <strong>Inspeccionar</strong>, como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>: veréis si la regla llega o está mal escrita.</div>
+<div class="nota">💡 Si algo no cambia, botón derecho encima → <strong>Inspeccionar</strong>, como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>: veréis si la regla llega o está mal escrita. Más casos: <a href="tema.html?id=proy-cuando-falla">Cuando algo no funciona</a>.</div>
+
+<h2>A las 17:00: revisión cruzada</h2>
+<p>Antes de mi revisión, cada pareja revisa la web de <strong>otra</strong>. Así os enteráis de lo que falta cuando todavía hay tiempo de arreglarlo. No cuenta para nota.</p>
+<ol>
+<li><strong>Antes de levantaros</strong>: guardad todo (<strong>Ctrl + S</strong> en cada archivo) y dejad Chrome abierto en vuestra web con Go Live.</li>
+<li>Os sentáis en el ordenador de la <strong>pareja siguiente</strong> (la 1 va a la 2, la 2 a la 3… y la 5 a la 1). Uno lee la hoja en voz alta y el otro pulsa. <strong>No se toca el código</strong>: solo se mira.</li>
+<li>En la hoja que os doy, marcáis <strong>sí</strong>, <strong>no</strong> o <strong>no lo encuentro</strong>, y la dejáis encima del teclado.</li>
+<li>Volvéis a vuestro sitio y leéis la hoja que os han dejado.</li>
+</ol>
+<table>
+<thead><tr><th>Qué se revisa</th><th>Dónde se mira</th></tr></thead>
+<tbody>
+<tr><td>3 páginas o más, con el mismo menú</td><td>En pantalla, pulsando el menú.</td></tr>
+<tr><td>Una lista y una tabla</td><td>En pantalla.</td></tr>
+<tr><td>Imágenes con <code>alt</code>, en la carpeta <code>img</code></td><td><strong>Ctrl + U</strong> y buscad (<strong>Ctrl + F</strong>) <code>img/</code> y <code>alt=</code>.</td></tr>
+<tr><td>Un solo <code>estilos.css</code> y el menú con Flexbox</td><td><strong>Ctrl + U</strong>: una sola línea con <code>estilos.css</code>. <strong>F12</strong> → Elementos, sobre el menú: tiene que salir <code>display: flex</code>.</td></tr>
+</tbody>
+</table>
+<div class="nota">⚠️ Guardad todo antes de levantaros: si no, la otra pareja no verá lo último que habéis hecho.</div>
 
 <h2>La revisión</h2>
-<p>Al final de la sesión paso por cada mesa y reviso vuestra web con Live Server: el <strong>HTML</strong> (lo del taller de la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>) y el <strong>CSS</strong> (la lista de arriba).</p>
+<p>Al acabar la sesión reviso <strong>lo que hayáis subido a GitHub</strong>: el <strong>HTML</strong> (lo del taller de la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>) y el <strong>CSS</strong> (la lista de arriba).</p>
 <ul class="checklist">
 <li>Al menos 3 páginas con el mismo menú.</li>
 <li>Imágenes en la carpeta <code>img</code>, todas con su <code>alt</code>.</li>
@@ -97,11 +129,12 @@
 <li>El formulario.</li>
 <li>Todo lo de "Lo que tiene que quedar hoy".</li>
 </ul>
-<div class="nota">⚠️ Lo que no esté hecho cuando llegue a vuestra mesa cuenta como un <strong>0</strong> en la parte de la web. Si ya lo tenéis todo, no os quedéis parados: mejorad textos, imágenes y colores.</div>
+<div class="nota">⚠️ Lo que no esté subido a GitHub al acabar la sesión cuenta como un <strong>0</strong> en esta revisión. Si ya lo tenéis todo, no os quedéis parados: mejorad textos, imágenes y colores.</div>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
 <li>Guardado todo en VS Code: ninguna pestaña con el punto blanco de "sin guardar".</li>
 <li>Subido a GitHub por <strong>quien le toca esta semana</strong>, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>. Subid también <code>estilos.css</code>.</li>
-<li>El mensaje del commit dice qué habéis hecho, por ejemplo: <code>Sesión 11: estilos, tarjetas y menú</code>.</li>
+<li>El mensaje dice qué habéis hecho y quién ha escrito, por ejemplo: <code>Sesión 11 · estilos y menú · escribió PixelRojo, TurboAzul</code>.</li>
+<li><strong>Diario de taller</strong> (2 minutos): «Hoy hemos aprendido…» y «Nos ha costado… y lo hemos arreglado con…».</li>
 </ul>

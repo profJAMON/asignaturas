@@ -1,4 +1,4 @@
-<div class="nota">Hoy: primero, <strong>20-30 minutos de repaso</strong> de lo que viste antes de Navidad (ejercicios 1 y 2). Después, aprendes a <strong>leer lo que escribe el usuario</strong> en un formulario. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
+<div class="nota">Hoy: primero, <strong>25 minutos de ensayo de la prueba</strong> sobre la web de tu pareja, para recordar lo que viste antes de Navidad. Después, aprendes a <strong>leer lo que escribe el usuario</strong> en un formulario. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
 
 <h2>Repaso: lo que ya sabías</h2>
 <p>Después de las vacaciones es normal no acordarse de casi nada. Aquí tienes lo más importante. Si algo no lo recuerdas, vuelve a la <a href="tema.html?id=proy-s12-js-variables">sesión 12</a> o a la <a href="tema.html?id=proy-s13-botones">sesión 13</a>.</p>
@@ -14,34 +14,22 @@
 </tbody>
 </table>
 
-<h3>Ejercicio 1 — Repaso: los goles de Los Rayos</h3>
-<p>Crea <code>s14-ej1.html</code> y <code>s14-ej1.js</code>. Los Rayos marcaron 2 goles en la ida y 3 en la vuelta. Calcula el total con variables y escríbelo en la consola.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" alt="Página Los Rayos. En la consola salen dos líneas: 5 en azul (1) y la frase Los Rayos han marcado 5 goles. (2). Notas: 3, en el js hay 4 variables, equipo, golesIda, golesVuelta y total, que se calcula con las otras; 4, hay 2 comentarios." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① El total, que sale en azul porque es un número.</li>
-<li>② Una frase que junta textos y variables, con los espacios bien puestos.</li>
-<li>③ Cuatro variables; <code>total</code> se calcula con las dos de goles.</li>
-<li>④ Dos comentarios.</li>
-</ul>
-<details><summary>Pista</summary>
-<p>Si el total sale <code>23</code> en lugar de <code>5</code>, has puesto los goles entre comillas: son textos y el <code>+</code> los junta.</p>
+<h2>Ensayo de la prueba (25 minutos)</h2>
+<p>El día de la prueba harás cambios, tú solo, en <strong>la web de tu pareja</strong>. Hoy lo ensayas: es lo mismo, pero <strong>no cuenta para nota</strong>. Así llegas a febrero sabiendo moverte por vuestra web.</p>
+<ol>
+<li>En Chrome, entra en el repositorio de tu pareja en GitHub → <strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>.</li>
+<li>En <strong>Descargas</strong>, botón derecho → <strong>Extraer todo…</strong>. Cámbiale el nombre a la carpeta: <code>ensayo-</code> y tu alias (por ejemplo, <code>ensayo-pixelrojo</code>).</li>
+<li>Ábrela en VS Code y pulsa <strong>Go Live</strong>.</li>
+<li>Te doy una <strong>tarjeta en papel</strong> con 3 cambios: uno de CSS y dos de JavaScript. Hazlos en esa carpeta, sin buscar en Internet.</li>
+<li>Para el JavaScript, la tarjeta te dice en qué ejercicio de la sesión 12 o 13 lo practicaste. Ábrelo y míralo.</li>
+</ol>
+<div class="nota">⚠️ Esta copia es <strong>solo tuya</strong>: no la subas a GitHub. Si la subes, cambias la web de tu pareja.</div>
+<details><summary>Pista: no encuentro dónde está el color del menú</summary>
+<p>Abre <code>estilos.css</code> y busca (<strong>Ctrl + F</strong>) <code>nav</code>. El color de fondo es la línea <code>background-color</code>.</p>
 </details>
-<p>Si lo has hecho bien: la consola no tiene errores en rojo y el 5 sale en azul.</p>
-
-<h3>Ejercicio 2 — Repaso: adivinanza</h3>
-<p>Crea <code>s14-ej2.html</code> y <code>s14-ej2.js</code>. Al pulsar el botón, aparece la solución y cambia el texto del botón.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2-antes.webp" alt="Antes de pulsar: página Adivinanza con el texto Tengo agujas y no sé coser. ¿Qué soy? y el botón Ver la solución (1). Nota 2: debajo del botón hay un párrafo con id solucion vacío." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2-despues.webp" alt="Después de pulsar: aparece Un reloj. (3) y el botón dice Ya lo sabes (4)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;button id="boton-solucion"&gt;</code>.</li>
-<li>② Un <code>&lt;p id="solucion"&gt;</code> vacío.</li>
-<li>③ Al pulsar, aparece la solución.</li>
-<li>④ Al pulsar, el botón dice "Ya lo sabes".</li>
-</ul>
-<details><summary>Pista</summary>
-<p>Es la receta de tres pasos: buscar, esperar al clic y hacer. Si no te acuerdas, mírala en la <a href="tema.html?id=proy-s13-botones">sesión 13</a>, pero escríbela tú, sin copiar y pegar.</p>
+<details><summary>Pista: el botón nuevo no hace nada</summary>
+<p>Mira tres cosas: que el <code>.js</code> está conectado justo antes de <code>&lt;/body&gt;</code>, que el <code>id</code> del HTML y el del <code>querySelector</code> son iguales, y la consola (<strong>F12</strong>).</p>
 </details>
-<p>Si lo has hecho bien: al cargar no se ve la solución; al pulsar, sí.</p>
 
 <h2>Leer lo que escribe el usuario: value</h2>
 <p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del torneo de Pixel Kart:</p>
@@ -83,9 +71,9 @@ boton.addEventListener("click", function () {
 <p><code>textContent</code> es el texto de dentro de un elemento como un párrafo: lo usamos para <strong>escribir</strong>. <code>value</code> es lo escrito o elegido en una caja de formulario: lo usamos para <strong>leer</strong>.</p>
 </details>
 
-<h3>Ejercicio 3 — Bienvenida</h3>
-<p>Crea <code>s14-ej3.html</code> y <code>s14-ej3.js</code>. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" alt="Página Bienvenida después de escribir PixelRojo y pulsar Saludar: el formulario con la etiqueta Tu alias, la caja y el botón Saludar (1), y debajo el párrafo ¡Hola, PixelRojo! Bienvenido a mi web. (2). Notas: 3, antes de pulsar el párrafo está vacío; 4, el botón tiene type button." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 1 — Bienvenida</h3>
+<p>Crea <code>s14-ej1.html</code> y <code>s14-ej1.js</code>. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" alt="Página Bienvenida después de escribir PixelRojo y pulsar Saludar: el formulario con la etiqueta Tu alias, la caja y el botón Saludar (1), y debajo el párrafo ¡Hola, PixelRojo! Bienvenido a mi web. (2). Notas: 3, antes de pulsar el párrafo está vacío; 4, el botón tiene type button." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Un <code>&lt;form&gt;</code> con <code>&lt;label&gt;</code>, un <code>&lt;input id="alias"&gt;</code> y un botón.</li>
 <li>② Un <code>&lt;p id="saludo"&gt;</code> que muestra lo escrito en la caja.</li>
@@ -133,9 +121,9 @@ boton.addEventListener("click", function () {
 </ul>
 </div>
 
-<h3>Ejercicio 4 — Pizzería Píxel</h3>
-<p>Crea <code>s14-ej4.html</code> y <code>s14-ej4.js</code>. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej4.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej4.webp" alt="Página Pizzería Píxel después de elegir Barbacoa y grande y pulsar Pedir: el desplegable Pizza (1), el desplegable Tamaño (2), el botón Pedir (3) y el párrafo Tu pedido: pizza Barbacoa grande. (4). Nota 5: las pizzas son Margarita, Barbacoa y Cuatro quesos; los tamaños, pequeña, mediana y grande." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 2 — Pizzería Píxel</h3>
+<p>Crea <code>s14-ej2.html</code> y <code>s14-ej2.js</code>. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2.webp" alt="Página Pizzería Píxel después de elegir Barbacoa y grande y pulsar Pedir: el desplegable Pizza (1), el desplegable Tamaño (2), el botón Pedir (3) y el párrafo Tu pedido: pizza Barbacoa grande. (4). Nota 5: las pizzas son Margarita, Barbacoa y Cuatro quesos; los tamaños, pequeña, mediana y grande." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="pizza"&gt;</code>.</li>
 <li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="tamano"&gt;</code>.</li>
@@ -196,9 +184,9 @@ botonCon.addEventListener("click", function () {
 <p>Reto rápido: value y Number.</p>
 <div data-actividad="reto-js-value"></div>
 
-<h3>Ejercicio 5 — Parque acuático</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej5.html</code> y <code>s14-ej5.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej5.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej5.webp" alt="Página Parque acuático Ola Loca después de escribir PixelRojo, elegir domingo, escribir 3 y pulsar Calcular: la caja Tu alias (1), el desplegable Día con sábado y domingo (2), la caja numérica Entradas (3) y el párrafo PixelRojo: 3 entradas para el domingo cuestan 24 euros. (4). Notas: 5, el número de entradas se convierte con Number antes de multiplicar; 6, el título de la pestaña es Parque acuático." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 3 — Parque acuático</h3>
+<p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej3.html</code> y <code>s14-ej3.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" alt="Página Parque acuático Ola Loca después de escribir PixelRojo, elegir domingo, escribir 3 y pulsar Calcular: la caja Tu alias (1), el desplegable Día con sábado y domingo (2), la caja numérica Entradas (3) y el párrafo PixelRojo: 3 entradas para el domingo cuestan 24 euros. (4). Notas: 5, el número de entradas se convierte con Number antes de multiplicar; 6, el título de la pestaña es Parque acuático." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="text" id="alias"&gt;</code>.</li>
 <li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="dia"&gt;</code>: sábado y domingo.</li>

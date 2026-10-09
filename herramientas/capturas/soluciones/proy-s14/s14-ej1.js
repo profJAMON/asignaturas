@@ -1,10 +1,11 @@
-// Goles de los dos partidos
-let equipo = "Los Rayos";
-let golesIda = 2;
-let golesVuelta = 3;
+// 1. Buscar los elementos
+let cajaAlias = document.querySelector("#alias");
+let boton = document.querySelector("#boton-saludar");
+let saludo = document.querySelector("#saludo");
 
-// El total es la suma de los dos partidos
-let total = golesIda + golesVuelta;
-
-console.log(total);
-console.log(equipo + " han marcado " + total + " goles.");
+// 2. Esperar al clic
+boton.addEventListener("click", function () {
+    // 3. Leer la caja y responder
+    let alias = cajaAlias.value;
+    saludo.textContent = "¡Hola, " + alias + "! Bienvenido a mi web.";
+});

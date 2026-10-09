@@ -1,0 +1,136 @@
+<div class="nota">Esta página es para cuando algo <strong>no funciona</strong> y no sabes por qué. Busca lo que <strong>ves</strong> en tu pantalla y prueba lo que dice, en orden. En cada caso hay un ejemplo roto que puedes arreglar aquí mismo.</div>
+
+<h2>Antes de nada: tres cosas que arreglan la mitad de los fallos</h2>
+<ol>
+<li><strong>Guarda</strong>: <strong>Ctrl + S</strong> en cada pestaña de VS Code. Una pestaña con un punto blanco está sin guardar.</li>
+<li><strong>Recarga</strong> Chrome con <strong>Ctrl + F5</strong>.</li>
+<li>Abre la <strong>consola</strong>: <strong>F12</strong> → <strong>Console</strong>. Si hay algo en <strong>rojo</strong>, léelo: dice el archivo y la línea.</li>
+</ol>
+
+<h2>No sale la imagen</h2>
+<p><strong>Lo que ves:</strong> un icono de imagen rota o el texto del <code>alt</code> en lugar de la foto.</p>
+<div class="probador" aria-label="Imagen que no sale" data-base="data/proyecto/proy-html/img/proy-s03/probador/" data-alto="120">
+<textarea data-lengua="html">
+<p>La Tierra:</p>
+<img src="img/Tierra.png" alt="La Tierra vista desde el espacio" width="100">
+</textarea>
+<ul class="probador__prueba">
+<li>La imagen se llama <code>tierra.png</code>, en minúsculas. Arregla el <code>src</code> y mira cómo aparece.</li>
+</ul>
+</div>
+<details><summary>Prueba esto (1): el nombre</summary>
+<p>El <code>src</code> tiene que ser <strong>exactamente</strong> el nombre del archivo: mayúsculas, minúsculas, guiones y la extensión (<code>.jpg</code>, <code>.png</code>, <code>.webp</code>). En la web publicada, <code>Tierra.png</code> y <code>tierra.png</code> son archivos distintos.</p>
+</details>
+<details><summary>Prueba esto (2): la carpeta</summary>
+<p>Si la imagen está en la carpeta <code>img</code>, el <code>src</code> empieza por <code>img/</code>. Mira en VS Code, a la izquierda, que la imagen está de verdad dentro de <code>img</code> y no en Descargas.</p>
+</details>
+
+<h2>Un enlace da "Cannot GET"</h2>
+<p><strong>Lo que ves:</strong> al pulsar un enlace del menú, una página en blanco con <code>Cannot GET /personajes.html</code>.</p>
+<details><summary>Prueba esto</summary>
+<p>El <code>href</code> y el nombre del archivo no coinciden letra a letra, o el archivo todavía no existe o no está guardado. Copia el nombre del archivo desde VS Code (botón derecho → <strong>Copy Relative Path</strong>) y pégalo en el <code>href</code>.</p>
+</details>
+
+<h2>El CSS no hace nada</h2>
+<p><strong>Lo que ves:</strong> la página sale en blanco y negro, con la letra de siempre, como si no hubiera CSS.</p>
+<details><summary>Prueba esto (1): el enlace al CSS</summary>
+<p>Dentro del <code>&lt;head&gt;</code> de <strong>esa página</strong> tiene que estar <code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code>. Si una página tiene estilos y otra no, a la otra le falta esta línea.</p>
+</details>
+<details><summary>Prueba esto (2): dónde está el archivo</summary>
+<p><code>estilos.css</code> va <strong>al lado</strong> de <code>index.html</code>, no dentro de <code>img</code>. Y el nombre tiene que ser el mismo que en el <code>href</code>.</p>
+</details>
+
+<h2>Funcionan las primeras reglas, pero las de debajo no</h2>
+<p><strong>Lo que ves:</strong> el fondo cambia, pero el título no se pone del color que has escrito más abajo.</p>
+<div class="probador" aria-label="Reglas de CSS que dejan de funcionar" data-alto="90">
+<textarea data-lengua="html">
+<h1>Pixel Kart</h1>
+<p>Carreras de karts con dinosaurios.</p>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+
+h1 {
+    color: #ffcc00;
+}
+</textarea>
+<ul class="probador__prueba">
+<li>El título tendría que salir amarillo. Busca qué falta justo antes de <code>h1</code> y ponlo.</li>
+</ul>
+</div>
+<details><summary>Prueba esto</summary>
+<p>Busca la <strong>última regla que funciona</strong>: justo al final de ella falta un <code>;</code> o una llave <code>}</code>. <strong>Mayús + Alt + F</strong> ordena el código y se ve mejor qué llave falta.</p>
+</details>
+
+<h2>El botón no hace nada</h2>
+<p><strong>Lo que ves:</strong> pulsas y no pasa nada. Lo primero, abre la consola (<strong>F12</strong>):</p>
+<table>
+<thead><tr><th>En la consola</th><th>Qué pasa</th></tr></thead>
+<tbody>
+<tr><td>En rojo: <em>Cannot read properties of null</em></td><td>El <code>id</code> del HTML y el del <code>querySelector</code> no coinciden, o falta la <code>#</code>.</td></tr>
+<tr><td>En rojo: <em>Unexpected token</em> o <em>Unexpected end of input</em></td><td>Sobra o falta una llave o un paréntesis.</td></tr>
+<tr><td>Nada</td><td>El <code>.js</code> no está conectado: mira el <code>&lt;script src="…"&gt;</code> justo antes de <code>&lt;/body&gt;</code>.</td></tr>
+<tr><td>La página parpadea y se borra lo escrito</td><td>Al botón le falta <code>type="button"</code>.</td></tr>
+</tbody>
+</table>
+<div class="probador" aria-label="Botón que no hace nada" data-alto="90">
+<textarea data-lengua="html">
+<button type="button" id="boton-saludo">Saludar</button>
+<p id="mensaje"></p>
+</textarea>
+<textarea data-lengua="js">
+let boton = document.querySelector("#boton-saludar");
+let mensaje = document.querySelector("#mensaje");
+
+boton.addEventListener("click", function () {
+    mensaje.textContent = "¡Hola, piloto!";
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Lee el error de la consola. Compara el <code>id</code> del botón en el HTML con el del <code>querySelector</code> y arréglalo.</li>
+</ul>
+</div>
+
+<h2>Una suma da 31 en lugar de 4</h2>
+<p><strong>Lo que ves:</strong> los números se pegan uno detrás de otro en vez de sumarse.</p>
+<div class="probador" aria-label="Una suma que pega los números" data-alto="90">
+<textarea data-lengua="html">
+<input type="number" id="a" value="3"> + <input type="number" id="b" value="1">
+<button type="button" id="boton">Sumar</button>
+<p id="total"></p>
+</textarea>
+<textarea data-lengua="js">
+let cajaA = document.querySelector("#a");
+let cajaB = document.querySelector("#b");
+let boton = document.querySelector("#boton");
+let total = document.querySelector("#total");
+
+boton.addEventListener("click", function () {
+    let suma = cajaA.value + cajaB.value;
+    total.textContent = "Total: " + suma;
+});
+</textarea>
+<ul class="probador__prueba">
+<li>Pulsa Sumar. Después pon <code>Number()</code> alrededor de cada <code>.value</code> y vuelve a pulsar.</li>
+</ul>
+</div>
+<details><summary>Prueba esto</summary>
+<p>Lo que viene de una caja siempre es <strong>texto</strong>. Para sumar, conviértelo: <code>Number(cajaA.value)</code>.</p>
+</details>
+
+<h2>La web publicada no tiene mis cambios</h2>
+<details><summary>Prueba esto (1): ¿lo habéis subido?</summary>
+<p>La web publicada solo cambia cuando subís a GitHub. Entrad en el repositorio y mirad arriba el último mensaje: tiene que ser el de hoy. Después, esperad un minuto y recargad con <strong>Ctrl + F5</strong>.</p>
+</details>
+<details><summary>Prueba esto (2): en Live Server se ve y publicada no</summary>
+<p>Casi siempre son <strong>mayúsculas</strong>: en vuestro ordenador <code>Logo.png</code> y <code>logo.png</code> valen igual, pero en Internet no.</p>
+</details>
+
+<h2>Mi pareja subió cambios y yo no los tengo</h2>
+<details><summary>Prueba esto</summary>
+<p>Estás trabajando con una copia vieja. Baja la última versión de GitHub (<strong>&lt;&gt; Code</strong> → <strong>Download ZIP</strong>), extráela, borra la carpeta vieja y abre la nueva en VS Code, como al empezar cada taller (<a href="tema.html?id=proy-s06-taller-html">sesión 6</a>). <strong>Nunca subas una carpeta que no hayas bajado hoy</strong>: borrarías el trabajo de tu pareja.</p>
+</details>
+
+<div class="nota">Si has probado todo y sigue sin funcionar, levanta la mano y enséñame la consola.</div>

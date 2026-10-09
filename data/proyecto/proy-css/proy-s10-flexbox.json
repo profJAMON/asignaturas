@@ -2,7 +2,7 @@
   "id": "proy-s10-flexbox",
   "titulo": "Sesión 10 — Flexbox",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: poner cajas en fila con display: flex, gap, justify-content, align-items y flex-wrap; un menú en fila con :hover, tarjetas en fila y una mini web de una página. Truco de VS Code: nav>a*4 + Tab. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales: poner cajas en fila con display: flex, gap, justify-content, align-items y flex-wrap; un menú en fila con :hover, tarjetas en fila y una mini web de una página. Truco de VS Code: nav>a*4 + Tab. Al final, en pareja, el boceto de vuestra web con sus colores. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

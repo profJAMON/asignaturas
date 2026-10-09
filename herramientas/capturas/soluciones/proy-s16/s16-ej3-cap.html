@@ -2,17 +2,26 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio 3</title>
+    <title>Club de astronomía</title>
     <link rel="stylesheet" href="s16-ej3.css">
 </head>
 <body>
-    <h1>Foto del día</h1>
-    <p>Un atardecer en la playa.</p>
-    <button id="boton-gusta">Me gusta</button>
+    <h1>Club de astronomía</h1>
+    <p>
+        <button id="boton-modo">Cambiar modo</button>
+        <button id="boton-lugar">Ver el lugar</button>
+    </p>
+    <div class="tarjeta">
+        <p>Próxima salida: sábado por la noche.</p>
+        <p id="lugar" class="oculto">Lugar: el mirador del pueblo.</p>
+    </div>
 
     <script src="s16-ej3.js"></script>
     <script>
-document.querySelector("#boton-gusta").click();
+document.querySelector("#boton-modo").click();
+document.querySelector("#boton-lugar").click();
+// Solo para la captura: que el pie se lea sobre el fondo oscuro
+document.head.insertAdjacentHTML("beforeend", "<style>#cap-pie{color:#cccccc}</style>");
     </script>
 </body>
 </html>

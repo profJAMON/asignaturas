@@ -1,8 +1,14 @@
-// 1. Buscar el botón
-let boton = document.querySelector("#boton-gusta");
+// 1. Buscar los elementos
+let botonModo = document.querySelector("#boton-modo");
+let botonLugar = document.querySelector("#boton-lugar");
+let lugar = document.querySelector("#lugar");
 
-// 2. Esperar al clic
-boton.addEventListener("click", function () {
-    // 3. Poner o quitar la clase, como un interruptor
-    boton.classList.toggle("activo");
+// 2 y 3. Modo oscuro: interruptor en el body
+botonModo.addEventListener("click", function () {
+    document.body.classList.toggle("modo-oscuro");
+});
+
+// 2 y 3. Ver el lugar: quitar la clase oculto
+botonLugar.addEventListener("click", function () {
+    lugar.classList.remove("oculto");
 });

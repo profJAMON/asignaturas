@@ -1,16 +1,17 @@
 // 1. Buscar los elementos
-let cajaNumero = document.querySelector("#numero");
-let boton = document.querySelector("#boton-probar");
-let pista = document.querySelector("#pista");
+let cajaBolsas = document.querySelector("#bolsas");
+let boton = document.querySelector("#boton-calcular");
+let total = document.querySelector("#total");
 
 // 2. Esperar al clic
 boton.addEventListener("click", function () {
-    // 3. Leer el número y decidir
-    let numero = Number(cajaNumero.value);
+    // 3. Calcular y decidir
+    let bolsas = Number(cajaBolsas.value);
+    let precio = bolsas * 3;
 
-    if (numero === 7) {
-        pista.textContent = "¡Has acertado! Era el 7.";
+    if (precio >= 15) {
+        total.textContent = "Total: " + precio + " euros. ¡Te regalamos una piruleta!";
     } else {
-        pista.textContent = "No es ese. Prueba otra vez.";
+        total.textContent = "Total: " + precio + " euros. Sin regalo.";
     }
 });

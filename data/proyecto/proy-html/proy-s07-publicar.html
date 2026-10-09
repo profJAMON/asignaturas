@@ -1,4 +1,19 @@
-<div class="nota">Hoy seguís en <strong>taller, en pareja</strong>: vuestra web sale publicada en Internet, empezáis la página "Cómo llega mi web a tu pantalla" y acabáis el plan de la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>. Recordad: la web se toca en un solo ordenador y os turnáis cada 20-30 minutos.</div>
+<div class="nota">Hoy seguís en <strong>taller, en pareja</strong>: vuestra web sale publicada en Internet, veis con vuestros ojos cómo llega a una pantalla, empezáis la página "Cómo llega mi web a tu pantalla" y acabáis el plan de la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>.</div>
+
+<h2>Cómo va la tarde</h2>
+<table>
+<thead><tr><th>Hora</th><th>Qué hacéis</th></tr></thead>
+<tbody>
+<tr><td>15:55</td><td>Bajáis la última versión de la web, como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>. Conductor: quien menos escribió la semana pasada.</td></tr>
+<tr><td>16:00</td><td>Publicar con Cloudflare.</td></tr>
+<tr><td>16:15</td><td>Cómo llega una web: lo hacemos sin ordenador, con <code>nslookup</code> y con F12.</td></tr>
+<tr><td>16:30</td><td>Borrador de <code>como-llega.html</code>.</td></tr>
+<tr><td>16:50</td><td>"Trabajar seguros".</td></tr>
+<tr><td>17:05</td><td>Acabar el HTML de la sesión 6.</td></tr>
+<tr><td>17:35</td><td>Diario de taller y subir a GitHub.</td></tr>
+</tbody>
+</table>
+<p>Recordad: la web se toca en un solo ordenador, con conductor y copiloto, y cambiáis cada 30 minutos.</p>
 
 <h2>Vuestra web ya está en Internet</h2>
 <p>He conectado el repositorio de cada pareja con <strong>Cloudflare</strong>, una empresa con miles de servidores repartidos por el mundo. A partir de hoy funciona así:</p>
@@ -10,6 +25,9 @@
 <p>No tenéis que hacer nada nuevo: <strong>subir a GitHub ya es publicar</strong>. Os daré la dirección de vuestra web, que acaba en <code>.pages.dev</code>. Apuntadla y guardadla en marcadores.</p>
 <div class="nota">⚠️ Como subir es publicar, <strong>lo que subáis lo puede ver cualquiera</strong>. Antes de subir, revisad que no hay datos personales, fotos vuestras ni textos de los que os podáis arrepentir.</div>
 <div class="nota">Esta web es para este curso. Al terminar, la retiraré de Cloudflare. El código seguirá en GitHub.</div>
+<details><summary>Si vuestra web no aparece</summary>
+<p>Avisadme. A veces la conexión entre GitHub y Cloudflare tarda en funcionar. Mientras la arreglo, seguís con todo lo demás: subís a GitHub como siempre, el <code>nslookup</code> lo hacéis con la web de otra pareja y vuestra web saldrá publicada más adelante, con la misma dirección.</p>
+</details>
 
 <h3>Si la web publicada no se ve igual que en Live Server</h3>
 <table>
@@ -67,6 +85,53 @@
 <li>El servidor se los envía y el navegador <strong>lee el HTML, el CSS y el JavaScript y dibuja la página</strong>.</li>
 </ol>
 
+<h3>Lo hacemos sin ordenador</h3>
+<p>Cinco de vosotros salís delante. Cada uno lleva un cartel: <strong>Ordenador</strong>, <strong>GitHub</strong>, <strong>Cloudflare</strong>, <strong>DNS</strong> y <strong>Navegador</strong>. Os pasáis una hoja que es «la web», en el orden del dibujo. El resto dice en voz alta qué paso es cada uno.</p>
+<p>En cada cartel está la empresa, <strong>qué tipo de empresa es</strong> y su país. Los necesitáis para vuestra página:</p>
+<table>
+<thead><tr><th>Paso</th><th>Empresa</th><th>Tipo de empresa</th></tr></thead>
+<tbody>
+<tr><td>Guardar el código</td><td>GitHub (es de Microsoft)</td><td>Plataforma para guardar código · Estados Unidos</td></tr>
+<tr><td>Publicar la web</td><td>Cloudflare</td><td>Alojamiento web: servidores que guardan webs y las entregan · Estados Unidos</td></tr>
+<tr><td>Traducir la dirección a IP</td><td>La operadora que da Internet (en casa, la de vuestro router)</td><td>Telecomunicaciones</td></tr>
+<tr><td>Dibujar la página</td><td>Google (Chrome)</td><td>Programas: hace el navegador · Estados Unidos</td></tr>
+</tbody>
+</table>
+
+<h3>Pregúntale al DNS: nslookup</h3>
+<ol>
+<li>En VS Code: menú <strong>Terminal</strong> → <strong>New Terminal</strong> (Nuevo terminal). Se abre abajo una ventana para escribir órdenes.</li>
+<li>Escribid <code>nslookup</code>, un espacio y la dirección de vuestra web <strong>sin</strong> <code>https://</code>. Pulsad <strong>Intro</strong>.</li>
+<li>Después, lo mismo con la web de clase: <code>nslookup asignaturas.profesorjamon.workers.dev</code>.</li>
+</ol>
+<p>Os saldrá algo así. Los números de vuestra pantalla serán otros:</p>
+<pre><code translate="no">&gt; nslookup pixel-kart.pages.dev
+Servidor:  UnKnown
+Address:  192.168.1.1
+↑ A: a quién preguntas
+
+Respuesta no autoritativa:
+Nombre:  pixel-kart.pages.dev
+Addresses:  2606:4700:3036::ac43:a0e
+            172.66.44.10
+↑ B: lo que te contesta</code></pre>
+<ul>
+<li>Lo de arriba (A) es <strong>a quién le has preguntado</strong>: el DNS del instituto. No es la dirección de vuestra web.</li>
+<li>Lo de abajo (B) es <strong>la respuesta</strong>. Salen varias: unas con puntos y otras, más largas, con dos puntos. Es normal.</li>
+</ul>
+<details><summary>🤔 Antes de seguir: ¿de quién son las direcciones que os ha contestado?</summary>
+<p>De <strong>Cloudflare</strong>. Vuestra web no tiene una IP «suya»: está en los servidores de Cloudflare, que guardan y entregan miles de webs a la vez, también la web de clase. Por eso las direcciones de las dos se parecen.</p>
+</details>
+
+<h3>Mira cómo llegan los archivos: F12 → Red</h3>
+<ol>
+<li>Abrid vuestra web publicada en Chrome y pulsad <strong>F12</strong>.</li>
+<li>Pestaña <strong>Red</strong> (en inglés, <em>Network</em>).</li>
+<li>Pulsad <strong>Ctrl + F5</strong> para recargar.</li>
+</ol>
+<p>Vais a ver llegar, uno por uno, <code>index.html</code>, las imágenes y el resto de archivos. Es el paso 5 del dibujo: el servidor os los envía y el navegador dibuja la página con ellos.</p>
+<div class="nota">💡 Si la terminal no se abre o <code>nslookup</code> no contesta, la red del instituto lo está bloqueando: os lo enseño yo en el proyector.</div>
+
 <h2>Antes de seguir</h2>
 <details><summary>¿Qué tenéis que hacer para que un cambio salga en la web publicada?</summary>
 <p>Subir los archivos a GitHub y esperar uno o dos minutos. Cloudflare publica los cambios solo.</p>
@@ -92,18 +157,22 @@
 <ul class="checklist">
 <li>Cread la página <code>como-llega.html</code> (duplicando otra, como en la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>) y añadidla al menú de <strong>todas</strong> las páginas.</li>
 <li>Un primer borrador: los pasos del recorrido <strong>con vuestras palabras</strong>, en una lista numerada. No copiéis el texto de esta sesión.</li>
-<li>Qué <strong>empresa</strong> hace cada paso y qué servicio os da: GitHub guarda los archivos, Cloudflare los publica en sus servidores…</li>
+<li>En cada paso, <strong>qué empresa</strong> lo hace y <strong>qué tipo de empresa es</strong>: «Cloudflare, una empresa de alojamiento web, guarda nuestra web en sus servidores».</li>
+<li>Lo que habéis visto con <code>nslookup</code>: de quién son las direcciones que os ha dado.</li>
 </ul>
 <p>El borrador lo terminaréis en la sesión 18. La página final tiene que llevar también un <strong>esquema</strong>: una tabla, un dibujo hecho por vosotros guardado en <code>img</code>, o lo que se os ocurra.</p>
 
 <h3>3. Trabajar seguros con el ordenador</h3>
-<p>Pasáis muchas horas delante de la pantalla, igual que un programador. En Instalación y mantenimiento de redes visteis los riesgos de trabajar con pantallas: si no os acordáis, repasad la <a href="tema.html?id=inst-u2-carga-fisica-y-pvd">sesión de carga física y pantallas</a>. En <code>sobre.html</code>, un apartado <strong>"Trabajar seguros"</strong>:</p>
+<p>Pasáis muchas horas delante de la pantalla, igual que un programador. En Instalación y mantenimiento de redes visteis los riesgos de trabajar con pantallas: si no os acordáis, repasad la <a href="tema.html?id=inst-u2-carga-fisica-y-pvd">sesión de carga física y pantallas</a>. En <code>sobre.html</code>, un apartado <strong>"Trabajar seguros"</strong> con frases con huecos y su <strong>«porque»</strong>, como el de la sesión 6:</p>
 <ul class="checklist">
-<li>2 riesgos de trabajar muchas horas con el ordenador y cómo se evitan.</li>
-<li>Quién tiene que hacer qué: qué le toca a la empresa (sillas, luz, pausas…) y qué le toca a quien trabaja (postura, descansos…).</li>
-<li>El precio de una cosa que protege (una silla regulable, un reposapiés, un soporte para la pantalla…), buscado en una tienda online.</li>
-<li>Una mejora que haríais en nuestra aula para trabajar más cómodos.</li>
+<li>2 riesgos: «Un riesgo de pasar muchas horas con el ordenador es ___. Se evita con ___ porque ___».</li>
+<li>Quién hace qué: «A la empresa le toca ___ (sillas, luz, pausas…). A quien trabaja le toca ___ (postura, descansos…)».</li>
+<li>El precio de una cosa que protege: «Un ___ cuesta ___ euros en ___ (tienda online)».</li>
+<li>Una mejora para nuestra aula: «En nuestra aula pondríamos ___ porque ___».</li>
 </ul>
+<details><summary>Ideas para los huecos</summary>
+<p>Riesgos: dolor de espalda, de cuello, de muñeca, ojos cansados, dolor de cabeza. Cómo se evitan: silla regulable, pantalla a la altura de los ojos, pausas cada hora, mirar lejos de vez en cuando, reposamuñecas, buena luz sin reflejos.</p>
+</details>
 
 <h3>4. Acabar el plan de la sesión 6</h3>
 <p>Seguid desde el paso donde os quedasteis en el <a href="tema.html?id=proy-s06-taller-html">taller de la sesión 6</a>. Antes de empezar con CSS, vuestra web tiene que tener todo esto:</p>
@@ -113,13 +182,16 @@
 <li>Al menos 3 imágenes con <code>alt</code>, en la carpeta <code>img</code>, y sus fuentes en <code>sobre.html</code>.</li>
 <li>Una lista, una tabla y un enlace externo.</li>
 <li>Un formulario con labels, 2 cajas, un desplegable y un botón.</li>
+<li>"Para quién es", "Webs parecidas" y "ODS" en <code>sobre.html</code>.</li>
 <li>Todo subido a GitHub y visible en la web publicada.</li>
 </ul>
 <div class="nota">En la <strong>sesión 11</strong> reviso vuestra web (HTML y CSS). Lo que falte ese día cuenta como un 0.</div>
+<p>Si algo no funciona: <a href="tema.html?id=proy-cuando-falla">Cuando algo no funciona</a>.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
 <li>Guardado todo en VS Code.</li>
-<li>Subido a GitHub por <strong>quien le toca esta semana</strong>. Mensaje: <code>Sesión 7: web publicada y como-llega</code>.</li>
+<li><strong>Diario de taller</strong> (2 minutos): «Hoy hemos aprendido…» y «Nos ha costado… y lo hemos arreglado con…».</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>. Mensaje con quién ha escrito: <code>Sesión 7 · escribió PixelRojo, TurboAzul</code>.</li>
 <li>Comprobado en la web publicada que se ven los cambios.</li>
 </ul>

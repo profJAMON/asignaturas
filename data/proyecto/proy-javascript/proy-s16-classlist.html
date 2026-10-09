@@ -1,4 +1,4 @@
-<div class="nota">Hoy: con JavaScript cambias <strong>cómo se ve</strong> algo al pulsar un botón: resaltarlo, mostrarlo, esconderlo o pasar la página a modo oscuro. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
+<div class="nota">Hoy: con JavaScript cambias <strong>cómo se ve</strong> algo al pulsar un botón: resaltarlo, mostrarlo, esconderlo o pasar la página a modo oscuro. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios. <strong>A las 17:10</strong>, en pareja, lo ponéis en vuestra web.</div>
 
 <h2>Cambiar el aspecto desde JavaScript</h2>
 <p>La idea aprovecha lo que ya sabes de CSS:</p>
@@ -151,20 +151,6 @@ botonTrucos.addEventListener("click", function () {
 <p>Reto rápido de classList:</p>
 <div data-actividad="reto-js-classlist"></div>
 
-<h3>Ejercicio 3 — Me gusta</h3>
-<p>Crea <code>s16-ej3.html</code>, <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Al pulsar "Me gusta", el botón se pone rojo; al volver a pulsar, vuelve a ser normal.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" alt="Antes de pulsar: página Foto del día con el texto Un atardecer en la playa. y el botón Me gusta normal (1)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" alt="Después de pulsar: el botón Me gusta tiene fondo rojo y letras blancas (2). Nota 3: si vuelves a pulsar, el botón vuelve a ser como antes; cada clic lo cambia." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;button id="boton-gusta"&gt;</code>.</li>
-<li>② Al pulsar, se pone la clase <code>activo</code> (fondo rojo, letras blancas).</li>
-<li>③ Al volver a pulsar, se quita: usa <code>classList.toggle</code>.</li>
-</ul>
-<details><summary>Pista</summary>
-<p>Solo necesitas buscar un elemento: el botón. La misma variable sirve para el <code>addEventListener</code> y para el <code>classList</code>.</p>
-</details>
-<p>Si lo has hecho bien: con F12 → Elements ves que <code>class="activo"</code> aparece y desaparece en el botón con cada clic.</p>
-
 <h2>Modo oscuro</h2>
 <p>La misma idea sirve para cambiar los colores de <strong>toda la página</strong>: se pone una clase en el <code>&lt;body&gt;</code>.</p>
 <div class="probador" aria-label="Modo oscuro" data-alto="150">
@@ -213,10 +199,10 @@ botonModo.addEventListener("click", function () {
 <div class="nota">El modo oscuro así solo dura <strong>mientras estás en esa página</strong>: al recargar o cambiar de página, vuelve al modo normal.</div>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: selecciona una palabra (por ejemplo, <code>oculto</code>) y pulsa <strong>Ctrl + D</strong>: se selecciona también la siguiente vez que aparece. Cada Ctrl + D añade otra. Escribe y las cambias todas a la vez. Muy útil para cambiar el nombre de una clase o de una variable sin dejarte ninguna.</div>
 
-<h3>Ejercicio 4 — Club de astronomía</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s16-ej4.html</code>, <code>s16-ej4.css</code> y <code>s16-ej4.js</code>. Un botón cambia la página a modo oscuro y otro muestra el lugar de la salida, que empieza escondido.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej4-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej4-antes.webp" alt="Antes de pulsar: página Club de astronomía con los botones Cambiar modo y Ver el lugar (1) y una tarjeta gris con Próxima salida: sábado por la noche. (2). Nota 3: dentro de la tarjeta hay un segundo párrafo con id lugar y clase oculto, que todavía no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej4-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej4-despues.webp" alt="Después de pulsar los dos botones: la página tiene fondo negro y letras claras, la tarjeta es gris oscuro (4) y dentro aparece Lugar: el mirador del pueblo. (5). Nota 6: si vuelves a pulsar Cambiar modo, la página vuelve a los colores claros." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 3 — Club de astronomía</h3>
+<p>El ejercicio más largo de hoy: junta todo. Crea <code>s16-ej3.html</code>, <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Un botón cambia la página a modo oscuro y otro muestra el lugar de la salida, que empieza escondido.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" alt="Antes de pulsar: página Club de astronomía con los botones Cambiar modo y Ver el lugar (1) y una tarjeta gris con Próxima salida: sábado por la noche. (2). Nota 3: dentro de la tarjeta hay un segundo párrafo con id lugar y clase oculto, que todavía no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" alt="Después de pulsar los dos botones: la página tiene fondo negro y letras claras, la tarjeta es gris oscuro (4) y dentro aparece Lugar: el mirador del pueblo. (5). Nota 6: si vuelves a pulsar Cambiar modo, la página vuelve a los colores claros." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Dos botones, <code>#boton-modo</code> y <code>#boton-lugar</code>, dentro de un párrafo.</li>
 <li>② Un <code>&lt;div class="tarjeta"&gt;</code> con fondo gris claro, <code>padding</code> y esquinas redondeadas.</li>
@@ -232,6 +218,23 @@ botonModo.addEventListener("click", function () {
 <p>Falta la regla <code>body.modo-oscuro .tarjeta</code>, o le falta el espacio entre <code>modo-oscuro</code> y <code>.tarjeta</code>.</p>
 </details>
 <p>Si lo has hecho bien: los dos botones funcionan en cualquier orden, sin errores en la consola.</p>
+
+<h2>A las 17:10: paso a vuestra web (en pareja)</h2>
+<p>Hoy añadís a vuestra web <strong>una funcionalidad</strong>. A las 17:10 paro la clase, aunque no hayas acabado el último ejercicio: lo que te falte lo entregas la semana que viene. Os juntáis en pareja; el alumno solo lo hace en su ordenador.</p>
+<ol>
+<li><strong>Bajad la última versión</strong> (4 minutos): en el ordenador de uno de los dos, <strong>Download ZIP</strong> del repositorio de la pareja, extraer, borrar la carpeta vieja de la web si la había y abrir la nueva en VS Code con <strong>Go Live</strong>. Como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>.</li>
+<li><strong>Una funcionalidad</strong> (16 minutos): la más fácil para vuestra web, <strong>mostrar y ocultar</strong> o <strong>modo oscuro</strong>. Hoy escribe <strong>el otro</strong>: quien fue copiloto en la sesión 15. El copiloto lee cada punto en voz alta y vigila la consola (<strong>F12</strong>).</li>
+<li><strong>Subid</strong> (5 minutos) los archivos que habéis cambiado (el <code>.html</code>, el <code>.js</code> y <code>estilos.css</code>). Mensaje: <code>Sesión 16 · escribió</code> y el alias de quien ha escrito.</li>
+</ol>
+<ul class="checklist">
+<li>La clase va en <code>estilos.css</code>: <code>.oculto { display: none; }</code> para mostrar y ocultar, o <code>body.modo-oscuro</code> para el modo oscuro.</li>
+<li>Un botón con <code>id</code> en la página.</li>
+<li>El código, en el <code>.js</code> de esa página. Si ya tiene código de la sesión 15, el nuevo va <strong>debajo</strong>, sin borrar nada.</li>
+<li>Al pulsar, <code>classList.toggle</code> pone y quita la clase. Copiad la receta del ejemplo de «Un interruptor: toggle» (mostrar y ocultar con un solo botón) o de «Modo oscuro».</li>
+<li>Ningún error en rojo en la consola.</li>
+</ul>
+<p>Si a las 17:30 todavía no funciona, <strong>subidlo igual</strong>: en el taller de la sesión 17 lo arregláis.</p>
+<p>Si algo no funciona: <a href="tema.html?id=proy-cuando-falla">Cuando algo no funciona</a>.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">

@@ -2,22 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio 2</title>
+    <title>Ejercicio 3</title>
 </head>
 <body>
-    <h1>Adivina el número</h1>
-    <p>He pensado un número del 1 al 10.</p>
+    <h1>Tienda de chuches</h1>
+    <p>Cada bolsa cuesta 3 euros. Si gastas 15 euros o más, te regalamos una piruleta.</p>
     <form>
-        <label for="numero">Tu número:</label>
-        <input type="number" id="numero">
-        <button type="button" id="boton-probar">Probar</button>
+        <label for="bolsas">Bolsas:</label>
+        <input type="number" id="bolsas">
+        <button type="button" id="boton-calcular">Calcular</button>
     </form>
-    <p id="pista"></p>
+    <p id="total"></p>
 
     <script src="s15-ej2.js"></script>
     <script>
-document.querySelector("#numero").value = "7";
-document.querySelector("#boton-probar").click();
+document.querySelector("#bolsas").value = "5";
+document.querySelector("#boton-calcular").click();
     </script>
 </body>
 </html>

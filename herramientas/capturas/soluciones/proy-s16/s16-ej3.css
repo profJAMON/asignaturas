@@ -1,4 +1,18 @@
-.activo {
-    background-color: red;
-    color: white;
+.tarjeta {
+    background-color: #eeeeee;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.oculto {
+    display: none;
+}
+
+body.modo-oscuro {
+    background-color: #111111;
+    color: #eeeeee;
+}
+
+body.modo-oscuro .tarjeta {
+    background-color: #333333;
 }

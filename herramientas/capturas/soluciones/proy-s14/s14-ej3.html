@@ -2,16 +2,30 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ejercicio 3</title>
+    <title>Parque acuático</title>
 </head>
 <body>
-    <h1>Bienvenida</h1>
+    <h1>Parque acuático Ola Loca</h1>
+    <p>Cada entrada cuesta 8 euros.</p>
     <form>
-        <label for="alias">Tu alias:</label>
-        <input type="text" id="alias">
-        <button type="button" id="boton-saludar">Saludar</button>
+        <p>
+            <label for="alias">Tu alias:</label>
+            <input type="text" id="alias">
+        </p>
+        <p>
+            <label for="dia">Día:</label>
+            <select id="dia">
+                <option>sábado</option>
+                <option>domingo</option>
+            </select>
+        </p>
+        <p>
+            <label for="entradas">Entradas:</label>
+            <input type="number" id="entradas">
+        </p>
+        <button type="button" id="boton-calcular">Calcular</button>
     </form>
-    <p id="saludo"></p>
+    <p id="resultado"></p>
 
     <script src="s14-ej3.js"></script>
 </body>

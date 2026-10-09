@@ -1,4 +1,4 @@
-<div class="nota">Hoy: haces que la página <strong>responda distinto según lo que pase</strong>, con <code>if</code> y <code>else</code>. Terminas con una calculadora y un mini test. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
+<div class="nota">Hoy: haces que la página <strong>responda distinto según lo que pase</strong>, con <code>if</code> y <code>else</code>. Terminas con una calculadora y un mini test. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios. <strong>A las 17:10</strong>, en pareja, lo ponéis en vuestra web.</div>
 
 <h2>Tomar decisiones: if y else</h2>
 <p>Hasta ahora, la página respondía <strong>siempre lo mismo</strong>. Con <code>if</code> (en inglés, "si") puede responder <strong>distinto según lo que pase</strong>:</p>
@@ -84,25 +84,9 @@ boton.addEventListener("click", function () {
 <p>Con un solo <code>=</code> no comparas: guardas 12 en <code>edad</code>. Para comparar hay que escribir <code>===</code>.</p>
 </details>
 
-<h3>Ejercicio 2 — Adivina el número</h3>
-<p>Crea <code>s15-ej2.html</code> y <code>s15-ej2.js</code>. El número secreto es el 7. Al pulsar "Probar", la página dice si has acertado o no.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej2.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej2.webp" alt="Página Adivina el número después de escribir 7 y pulsar Probar: el formulario con Tu número, la caja numérica y el botón Probar (1), y el párrafo ¡Has acertado! Era el 7. (2). Nota 3: con cualquier otro número sale No es ese. Prueba otra vez." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un formulario con <code>&lt;label&gt;</code>, <code>&lt;input type="number" id="numero"&gt;</code> y un botón.</li>
-<li>② Un <code>&lt;p id="pista"&gt;</code>: con el 7 dice que has acertado.</li>
-<li>③ Con cualquier otro número dice "No es ese. Prueba otra vez.".</li>
-</ul>
-<details><summary>Pista 1</summary>
-<p>Convierte lo escrito con <code>Number()</code> y compáralo con <code>=== 7</code>.</p>
-</details>
-<details><summary>Pista 2: con el 7 dice que no es ese</summary>
-<p>Te falta <code>Number()</code>: estás comparando el texto <code>"7"</code> con el número <code>7</code>, y para <code>===</code> no son iguales.</p>
-</details>
-<p>Si lo has hecho bien: pruebas 3, 7 y 9, y solo el 7 acierta.</p>
-
-<h3>Ejercicio 3 — Tienda de chuches</h3>
-<p>Una <strong>calculadora</strong> que da un resultado distinto según la cuenta. Crea <code>s15-ej3.html</code> y <code>s15-ej3.js</code>. Cada bolsa cuesta 3 euros. Si el total es 15 euros o más, hay regalo.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej3.webp" alt="Página Tienda de chuches después de escribir 5 y pulsar Calcular: el formulario con Bolsas, la caja y el botón Calcular (1), y el párrafo Total: 15 euros. ¡Te regalamos una piruleta! (2). Nota 3: con 2 bolsas sale Total: 6 euros. Sin regalo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 2 — Tienda de chuches</h3>
+<p>Una <strong>calculadora</strong> que da un resultado distinto según la cuenta. Crea <code>s15-ej2.html</code> y <code>s15-ej2.js</code>. Cada bolsa cuesta 3 euros. Si el total es 15 euros o más, hay regalo.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej2.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej2.webp" alt="Página Tienda de chuches después de escribir 5 y pulsar Calcular: el formulario con Bolsas, la caja y el botón Calcular (1), y el párrafo Total: 15 euros. ¡Te regalamos una piruleta! (2). Nota 3: con 2 bolsas sale Total: 6 euros. Sin regalo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Un formulario con <code>&lt;label&gt;</code>, <code>&lt;input type="number" id="bolsas"&gt;</code> y un botón.</li>
 <li>② Un <code>&lt;p id="total"&gt;</code> con el total y el regalo.</li>
@@ -182,9 +166,9 @@ boton.addEventListener("click", function () {
 <p>Reto rápido: ¿qué camino sigue?</p>
 <div data-actividad="reto-js-if"></div>
 
-<h3>Ejercicio 4 — Mini test de cultura</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s15-ej4.html</code> y <code>s15-ej4.js</code>. Tres preguntas con desplegable; al pulsar "Corregir", cuenta los aciertos y da un mensaje distinto según cuántos hay.</p>
-<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej4.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej4.webp" alt="Página Mini test de cultura después de elegir París, 6 y 60 y pulsar Corregir: la pregunta ¿Cuál es la capital de Francia? (1), ¿Cuántas patas tiene una araña? (2) y ¿Cuántos minutos tiene una hora? (3), cada una con su desplegable, el botón Corregir y el párrafo Has acertado 2 de 3. ¡Casi! (4). Notas: 5, las opciones son Roma, París, Berlín; 6, 8, 10; 30, 60, 100; 6, con las 3 bien sale ¡Perfecto! 3 de 3. y con ninguna bien, Ninguna bien. ¡Inténtalo otra vez!" loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<h3>Ejercicio 3 — Mini test de cultura</h3>
+<p>El ejercicio más largo de hoy: junta todo. Crea <code>s15-ej3.html</code> y <code>s15-ej3.js</code>. Tres preguntas con desplegable; al pulsar "Corregir", cuenta los aciertos y da un mensaje distinto según cuántos hay.</p>
+<figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej3.webp" alt="Página Mini test de cultura después de elegir París, 6 y 60 y pulsar Corregir: la pregunta ¿Cuál es la capital de Francia? (1), ¿Cuántas patas tiene una araña? (2) y ¿Cuántos minutos tiene una hora? (3), cada una con su desplegable, el botón Corregir y el párrafo Has acertado 2 de 3. ¡Casi! (4). Notas: 5, las opciones son Roma, París, Berlín; 6, 8, 10; 30, 60, 100; 6, con las 3 bien sale ¡Perfecto! 3 de 3. y con ninguna bien, Ninguna bien. ¡Inténtalo otra vez!" loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>①②③ Tres párrafos, cada uno con su <code>&lt;label&gt;</code> y su <code>&lt;select&gt;</code> (<code>pregunta1</code>, <code>pregunta2</code>, <code>pregunta3</code>).</li>
 <li>④ Un <code>&lt;p id="resultado"&gt;</code> con los aciertos.</li>
@@ -198,6 +182,23 @@ boton.addEventListener("click", function () {
 <p>Pon <code>console.log(pregunta1.value);</code> antes de los <code>if</code> para ver qué vale de verdad. Quizá la opción tiene otra tilde u otra mayúscula.</p>
 </details>
 <p>Si lo has hecho bien: pruebas a propósito las tres respuestas (3, 1 y 0 aciertos) y salen los tres mensajes.</p>
+
+<h2>A las 17:10: paso a vuestra web (en pareja)</h2>
+<p>Lo que acabas de practicar, ahora en <strong>vuestra web</strong>. A las 17:10 paro la clase, aunque no hayas acabado el último ejercicio: lo que te falte lo entregas la semana que viene. Os juntáis en pareja; el alumno solo lo hace en su ordenador.</p>
+<ol>
+<li><strong>Bajad la última versión</strong> (4 minutos): en el ordenador de uno de los dos, <strong>Download ZIP</strong> del repositorio de la pareja, extraer, borrar la carpeta vieja de la web si la había y abrir la nueva en VS Code con <strong>Go Live</strong>. Como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>.</li>
+<li><strong>El formulario responde con un <code>if</code></strong> (16 minutos). Escribe <strong>uno</strong> de los dos; el otro es el copiloto: lee en voz alta cada punto de la lista, tiene la consola (<strong>F12</strong>) abierta y avisa si sale algo en rojo.</li>
+<li><strong>Subid</strong> (5 minutos) los archivos que habéis cambiado (el <code>.html</code> y el <code>.js</code>). Mensaje: <code>Sesión 15 · escribió</code> y el alias de quien ha escrito.</li>
+</ol>
+<ul class="checklist">
+<li>El formulario de vuestra web tiene un <code>id</code> en cada caja y en el botón, y el botón lleva <code>type="button"</code>.</li>
+<li>Debajo hay un párrafo vacío con <code>id</code> para la respuesta.</li>
+<li>La página tiene su <code>.js</code>, con el mismo nombre que la página, conectado justo antes de <code>&lt;/body&gt;</code>.</li>
+<li>Al pulsar, se leen <strong>2 campos</strong> con <code>value</code> (con <code>Number()</code> si es un número).</li>
+<li>Un <code>if</code> con su <code>else</code> da dos respuestas distintas según lo escrito. Copiad la receta de «Un if dentro de un botón» y cambiad los nombres por los de vuestra web.</li>
+</ul>
+<p>Si a las 17:30 todavía no funciona, <strong>subidlo igual</strong>: en el taller de la sesión 17 lo arregláis mirando la consola.</p>
+<p>Si algo no funciona: <a href="tema.html?id=proy-cuando-falla">Cuando algo no funciona</a>.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">
