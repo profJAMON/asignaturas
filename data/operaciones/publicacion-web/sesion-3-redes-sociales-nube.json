@@ -4,5 +4,13 @@
   "fecha": "",
   "descripcion": "Tres servicios más de Internet: las redes sociales que ya usas a diario (y el algoritmo que decide qué ves), la sindicación de contenidos (RSS) que hace posible cada podcast que escuchas, y la computación en la nube que ya probaste con Google Drive sin saber que tenía nombre.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u3s2-servicios",
+      "tipo": "generador",
+      "titulo": "¿Red social, RSS o nube?",
+      "generador": "red-rss-nube",
+      "n": 5
+    }
+  ]
 }

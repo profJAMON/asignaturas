@@ -30,5 +30,13 @@
       "url": "https://es.wikipedia.org/wiki/Ayuda:Historial"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u3s1-fbw",
+      "tipo": "generador",
+      "titulo": "¿Foro, blog o wiki?",
+      "generador": "foro-blog-wiki",
+      "n": 5
+    }
+  ]
 }

@@ -4,5 +4,13 @@
   "fecha": "",
   "descripcion": "Qué información guarda cada archivo (tipo, ubicación, tamaño, fechas), las unidades de tamaño, los atributos de solo lectura y oculto, y las unidades de Este equipo: el disco, las memorias USB y cómo expulsarlas.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u1s3-unidades",
+      "tipo": "generador",
+      "titulo": "Cambia de unidad (cada escalón, 1024)",
+      "generador": "unidades-informacion",
+      "n": 5
+    }
+  ]
 }

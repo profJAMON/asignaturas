@@ -15,5 +15,13 @@
       "url": "https://support.google.com/drive/answer/2424368?hl=es"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u1s4-copias",
+      "tipo": "generador",
+      "titulo": "Pon nombre a la copia: carpeta-año-mes-día.zip",
+      "generador": "nombre-copia",
+      "n": 5
+    }
+  ]
 }

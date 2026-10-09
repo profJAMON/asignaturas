@@ -1,17 +1,29 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
 <h2>Gestores de contenidos</h2>
 
 <p>Mi web de materiales la he escrito yo, línea a línea, en HTML y CSS (lo viste por dentro con las DevTools en la Unidad 2). Pero la mayoría de las webs que visitas a diario no se han hecho así: se han creado con un <strong>gestor de contenidos</strong> (CMS, de sus siglas en inglés), un programa que permite crear y mantener una web desde una interfaz visual, sin tocar el código directamente. El más extendido es <code>WordPress</code>, pero hay muchos más (Wix, Squarespace...).</p>
 
-<div class="salida" style="background:var(--bg);padding:16px">
-<svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
-  <rect x="20" y="15" width="200" height="30" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="120" y="35" text-anchor="middle" fill="var(--accent)" font-size="10">Mi web: código a mano</text>
-  <text x="120" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">se edita el .html directamente</text>
-
-  <rect x="260" y="15" width="200" height="30" rx="6" fill="var(--surface-2)" stroke="var(--border)" stroke-width="1.5"/>
-  <text x="360" y="35" text-anchor="middle" fill="var(--text)" font-size="10">Web con gestor de contenidos</text>
-  <text x="360" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">arrastras bloques en un editor visual</text>
-</svg>
+<div class="diapos" aria-label="Una web a mano o con un gestor de contenidos">
+<div class="diapo">
+<svg viewBox="0 0 360 186" role="img" aria-label="a mano"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">a mano</text><rect x="14" y="34" width="160" height="120" rx="4" class="d-caja-on"/><text x="24" y="54" text-anchor="start" class="d-a d-peq">&lt;h1&gt;Mi web&lt;/h1&gt;</text><text x="24" y="72" text-anchor="start" class="d-a d-peq">&lt;p&gt;Hola…&lt;/p&gt;</text><text x="24" y="90" text-anchor="start" class="d-a d-peq">&lt;img src="…"&gt;</text><text x="24" y="108" text-anchor="start" class="d-a d-peq">h1 { color: … }</text><path d="M 178 94 L 204 94 M 196.8 97.5 L 204 94 L 196.8 90.5" class="d-linea-a"/><rect x="208" y="54" width="138" height="80" rx="4" class="d-caja"/><text x="277" y="84" text-anchor="middle" class="d-t">la web</text><text x="277" y="104" text-anchor="middle" class="d-d d-peq">que se ve</text><text x="180" y="176" text-anchor="middle" class="d-a d-peq">escribes tú el código, línea a línea</text></svg>
+<p class="diapo__texto"><strong>A mano</strong>: escribes tú el HTML y el CSS. Así está hecha esta web de materiales.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 186" role="img" aria-label="con un gestor"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">con un gestor</text><rect x="14" y="34" width="160" height="120" rx="4" class="d-caja-act"/><rect x="28" y="44" width="132" height="26" rx="4" class="d-caja"/><text x="94.0" y="61.5" text-anchor="middle" class="d-c d-peq">▤ Título</text><rect x="28" y="78" width="132" height="26" rx="4" class="d-caja"/><text x="94.0" y="95.5" text-anchor="middle" class="d-c d-peq">▤ Texto</text><rect x="28" y="112" width="132" height="26" rx="4" class="d-caja"/><text x="94.0" y="129.5" text-anchor="middle" class="d-c d-peq">▤ Imagen</text><path d="M 178 94 L 204 94 M 196.8 97.5 L 204 94 L 196.8 90.5" class="d-linea-c"/><rect x="208" y="54" width="138" height="80" rx="4" class="d-caja"/><text x="277" y="84" text-anchor="middle" class="d-t">la web</text><text x="277" y="104" text-anchor="middle" class="d-d d-peq">(código por debajo)</text><text x="180" y="176" text-anchor="middle" class="d-c d-peq">arrastras bloques; el código lo escribe él</text></svg>
+<p class="diapo__texto"><strong>Con un gestor de contenidos</strong>: arrastras bloques en un editor visual. El HTML y el CSS siguen ahí, pero los escribe el programa por ti.</p>
+</div>
 </div>
 
 <div class="nota">🤔 Antes de seguir: si un gestor de contenidos permite montar una web sin escribir código, ¿por qué crees que al final de este curso vas a aprender HTML y CSS a mano en vez de eso?</div>
@@ -23,17 +35,19 @@
 <li>Elige una web que conozcas (un blog, la web de un negocio pequeño, la de tu instituto...).</li>
 <li>Pulsa <code>Ctrl+U</code>: se abre una pestaña con el código fuente de la página, tal cual lo ha recibido el navegador.</li>
 <li>Pulsa <code>Ctrl+F</code> y busca la palabra <code>wp-content</code>.</li>
+<li>Apunta en tu cuaderno qué web has mirado y si aparece <code>wp-content</code> (pregunta 5). Si no aparece, prueba con otra hasta encontrar una hecha con WordPress.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> si aparece <code>wp-content</code> (normalmente muchas veces, en las rutas de las imágenes y los estilos), esa web está hecha con WordPress. Si no aparece ninguna vez, está hecha con otra cosa.</p>
 <div class="nota">💡 Esto es lo mismo que ya hacías con las DevTools en la Unidad 2, pero mirando el código que llega, no el que el navegador dibuja.</div>
 
 <h3>Actividad 2 — Monta una página con un gestor de contenidos</h3>
-<p>Ahora te toca usar uno. Vas a hacer, sin escribir código, una página parecida a una de las tuyas, con <strong>Google Sites</strong> (con tu cuenta del instituto).</p>
-<ol start="4">
+<p>Ahora te toca usar uno. Vas a hacer, sin escribir código, una página <strong>sobre un tema que te guste</strong> (tu equipo, un videojuego, un grupo de música…), con <strong>Google Sites</strong> (con tu cuenta del instituto).</p>
+<ol start="5">
 <li>Entra en <code>sites.google.com</code> con tu cuenta del centro y crea un sitio en blanco.</li>
 <li>Ponle un título, añade un cuadro de texto, una imagen y una sección nueva, arrastrando los bloques del panel de la derecha.</li>
 <li>Cuando lo tengas, pulsa <em>Publicar</em> y elige que solo lo vean las personas de tu centro.</li>
 <li>Abre tu página publicada y mira su código fuente con <code>Ctrl+U</code>.</li>
+<li>Apunta en tu cuaderno el tema de tu página, qué bloques has usado y cómo es el código que ves (pregunta 6).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> has hecho una página sin escribir ni una etiqueta, pero al mirar el código fuente ves HTML y CSS: el gestor de contenidos los ha escrito por ti (y mucho más largos y difíciles de leer que los de una web hecha a mano).</p>
 <div class="nota">🤔 Antes de seguir: si un gestor de contenidos hace la web por ti, ¿qué pierdes a cambio?</div>
@@ -41,11 +55,12 @@
 
 <h3>Actividad 3 — La wiki de clase</h3>
 <p>He creado un <strong>documento compartido</strong> donde toda la clase puede escribir a la vez. Funciona como una <strong>wiki</strong>, igual que las de la sesión 1, pero vuestra. Te paso el enlace por Classroom: si no lo ves o no te deja escribir, <strong>recuérdame que te dé acceso</strong>.</p>
-<ol start="8">
+<ol start="10">
 <li>Entra en la wiki de clase y busca el apartado del tema que te haya tocado.</li>
-<li>Añade lo tuyo: una definición, un ejemplo o una corrección de algo que esté mal. Pon tu <strong>alias</strong> entre paréntesis al lado de lo que escribas.</li>
+<li>Añade lo tuyo: una definición, un ejemplo o una corrección de algo que esté mal. Pon tu <strong>nombre</strong> entre paréntesis al lado de lo que escribas (la wiki es privada de la clase: no la ve nadie de fuera).</li>
 <li>Cuando hayan escrito varios compañeros, abre <em>Archivo → Historial de versiones → Ver el historial de versiones</em>.</li>
 <li>Busca en el historial el momento en que escribiste tú y fíjate en los nombres de la derecha y en el color con el que aparece cada uno.</li>
+<li>Apunta en tu cuaderno qué datos da el historial de tu cambio (pregunta 8).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> el historial guarda quién ha escrito cada cosa y cuándo, y desde ahí se puede volver a una versión anterior. Es exactamente lo que viste en el historial de Wikipedia en la sesión 1. Y la página final la habéis escrito entre varios, no una sola persona.</p>
 <div class="nota">🤔 Antes de seguir: si cualquiera puede escribir y borrar, ¿por qué una wiki no acaba siempre destrozada?</div>
@@ -55,43 +70,19 @@
 
 <p>En la primera sesión de la unidad anterior viste el modelo <strong>cliente-servidor</strong>: un servidor central responde a muchos clientes. Las redes <strong>P2P</strong> ("peer-to-peer", de igual a igual) funcionan al revés: no hay un servidor central, cada dispositivo se conecta directamente con los demás e intercambia información con ellos.</p>
 
-<div class="salida" style="background:var(--bg);padding:16px">
-<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
-  <rect x="190" y="15" width="100" height="32" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="240" y="36" text-anchor="middle" fill="var(--accent)" font-size="10">Servidor</text>
-
-  <line x1="240" y1="47" x2="80" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
-  <line x1="240" y1="47" x2="240" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
-  <line x1="240" y1="47" x2="400" y2="100" stroke="var(--text-faint)" stroke-width="1.5"/>
-
-  <rect x="20" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
-  <text x="80" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente A</text>
-  <rect x="180" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
-  <text x="240" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente B</text>
-  <rect x="340" y="100" width="120" height="30" rx="6" fill="var(--surface)" stroke="var(--text-faint)"/>
-  <text x="400" y="120" text-anchor="middle" fill="var(--text-dim)" font-size="9">Cliente C</text>
-
-  <text x="240" y="150" text-anchor="middle" fill="var(--text-dim)" font-size="10">Cliente-servidor (recordatorio): todo pasa por el centro</text>
-</svg>
+<div class="diapos" aria-label="Cliente-servidor y P2P">
+<div class="diapo">
+<svg viewBox="0 0 360 204" role="img" aria-label="cliente-servidor"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">cliente-servidor</text><rect x="130" y="36" width="100" height="34" rx="4" class="d-caja-on"/><text x="180.0" y="57.5" text-anchor="middle" class="d-a">servidor</text><rect x="30" y="120" width="80" height="30" rx="4" class="d-caja"/><text x="70.0" y="139.5" text-anchor="middle" class="d-d d-peq">cliente A</text><path d="M 180 72 L 70 118" class="d-linea-a"/><rect x="140" y="140" width="80" height="30" rx="4" class="d-caja"/><text x="180.0" y="159.5" text-anchor="middle" class="d-d d-peq">cliente B</text><path d="M 180 72 L 180 138" class="d-linea-a"/><rect x="250" y="120" width="80" height="30" rx="4" class="d-caja"/><text x="290.0" y="139.5" text-anchor="middle" class="d-d d-peq">cliente C</text><path d="M 180 72 L 290 118" class="d-linea-a"/><text x="180" y="194" text-anchor="middle" class="d-a d-peq">todo pasa por el servidor</text></svg>
+<p class="diapo__texto"><strong>Cliente-servidor</strong> (Unidad 2): un servidor central contesta a todos los clientes. Todo pasa por el centro.</p>
 </div>
-
-<div class="salida" style="background:var(--bg);padding:16px">
-<svg viewBox="0 0 480 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
-  <rect x="165" y="10" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
-  <text x="240" y="31" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Tu dispositivo</text>
-
-  <line x1="240" y1="42" x2="95" y2="115" stroke="var(--text-faint)" stroke-width="1.5"/>
-  <line x1="240" y1="42" x2="385" y2="115" stroke="var(--text-faint)" stroke-width="1.5"/>
-  <line x1="170" y1="131" x2="310" y2="131" stroke="var(--text-faint)" stroke-width="1.5"/>
-
-  <rect x="20" y="115" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
-  <text x="95" y="136" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Dispositivo B</text>
-
-  <rect x="310" y="115" width="150" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
-  <text x="385" y="136" text-anchor="middle" fill="var(--accent-warm)" font-size="10">Dispositivo C</text>
-
-  <text x="240" y="160" text-anchor="middle" fill="var(--text-dim)" font-size="10">P2P: cada uno habla directamente con los demás</text>
-</svg>
+<div class="diapo">
+<svg viewBox="0 0 360 204" role="img" aria-label="P2P"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">P2P</text><rect x="140" y="40" width="80" height="30" rx="4" class="d-caja-act"/><text x="180.0" y="59.5" text-anchor="middle" class="d-c d-peq">equipo A</text><rect x="30" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="70.0" y="149.5" text-anchor="middle" class="d-c d-peq">equipo B</text><rect x="250" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="290.0" y="149.5" text-anchor="middle" class="d-c d-peq">equipo C</text><path d="M 170 72 L 80 128" class="d-linea-c"/><path d="M 190 72 L 280 128" class="d-linea-c"/><path d="M 112 145 L 248 145" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">cada uno habla con los demás</text></svg>
+<p class="diapo__texto"><strong>P2P</strong>, de igual a igual: no hay servidor central. Cada equipo se conecta directamente con los demás.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 204" role="img" aria-label="BitTorrent"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">BitTorrent</text><rect x="140" y="40" width="80" height="30" rx="4" class="d-caja-act"/><text x="180" y="60" text-anchor="middle" class="d-c d-peq">tiene el 1</text><rect x="30" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="70" y="150" text-anchor="middle" class="d-c d-peq">tiene el 2</text><rect x="250" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="290" y="150" text-anchor="middle" class="d-c d-peq">tiene el 3</text><path d="M 170 72 L 82 126 M 86.3 119.3 L 82 126 L 90.0 125.2" class="d-linea-c"/><path d="M 196 72 L 284 126 M 276.0 125.2 L 284 126 L 279.7 119.3" class="d-linea-c"/><path d="M 112 150 L 246 150 M 238.8 153.5 L 246 150 L 238.8 146.5" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">cada uno pasa sus trozos a los demás</text></svg>
+<p class="diapo__texto">Así funciona <strong>BitTorrent</strong>: el archivo se parte en trozos; cada uno tiene alguno y se los pasa a los otros. Nadie tiene que mandárselo todo a todos.</p>
+</div>
 </div>
 
 <p>Seguro que ya usas P2P sin saberlo: cuando envías una foto a un amigo con "compartir cercano" o AirDrop, sin pasar por Internet, es una conexión directa de igual a igual. Otro ejemplo clásico y completamente legal es descargar una distribución Linux (como Ubuntu) por BitTorrent: en vez de que un único servidor tenga que enviar el archivo a todo el mundo, cada persona que ya lo tiene descargado comparte trozos con las demás.</p>
@@ -103,25 +94,29 @@
 
 <h3>Actividad 4 — Envía un archivo de P2P de verdad</h3>
 <p>Vas a mandarle un archivo a un compañero sin subirlo a ningún sitio: directamente de tu ordenador al suyo, con una web que usa P2P.</p>
-<ol start="12">
+<ol start="15">
 <li>Los dos abrís <code>pairdrop.net</code> en Chrome, en la misma red del aula.</li>
 <li>Cada uno verá al otro aparecer en la pantalla con un nombre inventado.</li>
 <li>Arrastra sobre el nombre de tu compañero una imagen de tu carpeta <code>practicas-u0</code> y acepta el envío.</li>
+<li>Apunta en tu cuaderno con qué nombre inventado te vio tu compañero y qué archivo le enviaste (pregunta 11).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> el archivo aparece en el ordenador de tu compañero. No lo has subido a ninguna web ni se lo has enviado por correo: ha viajado de un ordenador al otro.</p>
 <div class="nota">⚠️ Si la red del instituto no lo permite, os lo enseñaré de otra forma. Y ojo: comparte solo archivos tuyos, nunca fotos de otras personas.</div>
 
 <h3>Actividad 5 — Clasifica: ¿cliente-servidor o P2P?</h3>
-<p>En tu cuaderno, clasifica cada situación como cliente-servidor o P2P, y anota por qué:</p>
+<p>Primero practica en la pantalla: se corrige sola y puedes pedir otra tanda.</p>
+<div data-actividad="u3s3-cs-p2p"></div>
+<p>Después, en tu cuaderno (pregunta 12), clasifica cada situación como cliente-servidor o P2P, y escribe por qué:</p>
 <ul class="checklist">
 <li>Ver una película en una plataforma de streaming.</li>
 <li>Enviar una foto a un amigo por Bluetooth o AirDrop, sin conexión a Internet.</li>
 <li>Abrir mi web de materiales en el navegador.</li>
 <li>Descargar un archivo grande por BitTorrent.</li>
 </ul>
-<details><summary>Ver respuesta</summary>Streaming: cliente-servidor (el vídeo viene de los servidores de la plataforma). Bluetooth/AirDrop: P2P (los dos dispositivos hablan directamente, sin servidor). Mi web de materiales: cliente-servidor (el navegador la pide a un servidor, como viste en la unidad anterior). BitTorrent: P2P (los propios usuarios se envían trozos del archivo entre sí).</details>
 
 <h2>Repaso general de la Unidad 3</h2>
+<div data-actividad="u3s3-repaso"></div>
+
 
 <div class="salida" style="background:var(--bg);padding:14px">
 <table style="border-collapse:collapse;width:100%;font-size:0.85rem">
@@ -163,14 +158,10 @@
 <div class="nota">🤔 Antes de seguir: ¿por qué tiene sentido que el resumen de esta unidad, y no el de otra, se haga en formato blog?</div>
 <details><summary>Ver respuesta</summary>Porque en esta unidad has estudiado qué es un blog: entradas escritas por su autor, ordenadas por fecha, con la más nueva arriba. Haciendo el resumen así, construyes tú mismo lo que has estudiado — aunque el tuyo, en papel, nadie lo pueda comentar.</details>
 
-<h2>Preguntas</h2>
-
-<div class="nota">
-Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, corrige tú mismo en el cuaderno las que tengas mal: así te servirán para estudiar.
-</div>
-
-<h3>Gestores de contenidos</h3>
-
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 3 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
 <li>Explica con tus palabras qué es un gestor de contenidos (CMS).</li>
 <li>(V/F) Una web construida con WordPress no usa HTML ni CSS por debajo, solo el editor visual.</li>
@@ -182,17 +173,11 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
   </ul>
 </li>
 <li>Nombra dos gestores de contenidos distintos a WordPress.</li>
-<li>Explica qué buscaste exactamente en el código fuente de una web para saber si usaba WordPress, y qué te indicaba el resultado.</li>
-<li>Hiciste una página con Google Sites sin escribir código. ¿Qué viste al mirar su código fuente y qué conclusión sacas?</li>
+<li><strong>(Actividad 1)</strong> ¿Qué web miraste? ¿Qué buscaste exactamente en su código fuente y qué te indicó el resultado?</li>
+<li><strong>(Actividad 2)</strong> ¿De qué tema hiciste tu página de Google Sites? ¿Qué viste al mirar su código fuente y qué conclusión sacas?</li>
 <li>¿En qué se parece la wiki de clase a Wikipedia? Nombra dos cosas.</li>
-<li>En el historial de versiones de la wiki de clase, ¿qué información aparece de cada cambio? ¿Para qué sirve que se guarde?</li>
-</ol>
-
-<h3>Redes P2P</h3>
-
-<ol start="9">
+<li><strong>(Actividad 3)</strong> En el historial de versiones de la wiki de clase, ¿qué información aparece de tu cambio? ¿Para qué sirve que se guarde?</li>
 <li>Explica con tus palabras la diferencia entre el modelo cliente-servidor y el modelo P2P.</li>
-<li>(V/F) En una red P2P, todos los dispositivos que participan responden peticiones, no solo uno central.</li>
 <li>(ABC) Enviar un archivo a un compañero con AirDrop, sin conexión a Internet, es un ejemplo de:
   <ul>
     <li>a) cliente-servidor</li>
@@ -200,22 +185,29 @@ Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase,
     <li>c) computación en la nube</li>
   </ul>
 </li>
+<li><strong>(Actividad 4)</strong> ¿Con qué nombre te vio tu compañero en PairDrop y qué archivo le enviaste? ¿Pasó el archivo por algún servidor de Internet?</li>
+<li><strong>(Actividad 5)</strong> Clasifica las cuatro situaciones de la actividad como cliente-servidor o P2P, y explica por qué cada una.</li>
 <li>Explica por qué descargar un archivo por BitTorrent no depende de un único servidor que lo envíe a todo el mundo.</li>
-<li>Da un ejemplo propio (no visto en la sesión) de una situación P2P y otro de una situación cliente-servidor.</li>
-</ol>
-
-<h3>Repaso general de la Unidad 3</h3>
-
-<ol start="14">
-<li>De los tres bloques de esta unidad, resume en una frase cada uno: blogs/foros/wikis, redes sociales/RSS/nube, gestores de contenidos/P2P.</li>
+<li>Resume en una frase cada bloque de la unidad: blogs/foros/wikis, redes sociales/RSS/nube, gestores de contenidos/P2P.</li>
 <li>(ABC) Mi web de materiales, escrita a mano con HTML y CSS y alojada en un servidor de Cloudflare, es un ejemplo de:
   <ul>
     <li>a) un gestor de contenidos</li>
-    <li>b) una web "Web 1.0" alojada con computación en la nube</li>
+    <li>b) una web «Web 1.0» alojada en la nube</li>
     <li>c) una red P2P</li>
   </ul>
 </li>
-<li>(V/F) En una red P2P no hace falta un servidor central: los propios dispositivos se envían los datos entre sí.</li>
-<li>De los tres bloques de la unidad, ¿cuál crees que usarás más en tu día a día fuera de clase? Razona la respuesta.</li>
-<li>Escribe tú mismo una pregunta que conecte dos bloques distintos de esta unidad, y respóndela.</li>
 </ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>(V/F) En una red P2P, todos los dispositivos que participan responden peticiones, no solo uno central.</li>
+<li>Da un ejemplo propio (no visto en la sesión) de una situación P2P y otro de una situación cliente-servidor.</li>
+<li>Con el truco de la Actividad 1, busca otras dos webs hechas con WordPress. Escribe cuáles son.</li>
+<li>De los tres bloques de la unidad, ¿cuál crees que usarás más en tu día a día fuera de clase? Razona la respuesta.</li>
+<li>Escribe tú una pregunta que conecte dos bloques distintos de esta unidad, y respóndela.</li>
+</ol>
+</div>

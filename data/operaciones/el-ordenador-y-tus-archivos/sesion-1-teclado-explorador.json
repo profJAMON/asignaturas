@@ -4,5 +4,27 @@
   "fecha": "",
   "descripcion": "Los símbolos de programar en un teclado español, el explorador de archivos (crear, mover, copiar, renombrar y recuperar), las extensiones y la norma de clase para poner nombre a tus archivos.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u1s1-simbolos",
+      "tipo": "generador",
+      "titulo": "¿Con qué teclas sale? Escríbelo así: AltGr + 3",
+      "generador": "simbolo-teclado",
+      "n": 6
+    },
+    {
+      "id": "u1s1-extensiones",
+      "tipo": "generador",
+      "titulo": "¿Qué tipo de archivo es? Escribe: imagen, página web, estilos, texto, PDF, Word o comprimido",
+      "generador": "extension-tipo",
+      "n": 6
+    },
+    {
+      "id": "u1s1-nombres",
+      "tipo": "generador",
+      "titulo": "Corrige el nombre para que cumpla la norma de clase",
+      "generador": "nombre-archivo",
+      "n": 5
+    }
+  ]
 }

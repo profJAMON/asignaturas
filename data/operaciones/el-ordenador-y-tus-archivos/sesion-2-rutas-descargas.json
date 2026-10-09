@@ -10,5 +10,13 @@
       "url": "https://support.google.com/chrome/answer/95759?hl=es"
     }
   ],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u1s2-rutas",
+      "tipo": "generador",
+      "titulo": "Escribe la ruta (absoluta con \\, relativa con /)",
+      "generador": "ruta-archivo",
+      "n": 5
+    }
+  ]
 }
