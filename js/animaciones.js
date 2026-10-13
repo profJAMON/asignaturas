@@ -43,7 +43,7 @@ function registrarAnimacion(nombre, def) {
   'use strict';
 
   const NS = 'http://www.w3.org/2000/svg';
-  const MS_MOVIMIENTO = 750;
+  const MS_MOVIMIENTO = 500;
 
   function reducido() {
     return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -52,7 +52,7 @@ function registrarAnimacion(nombre, def) {
   /* Tiempo de lectura de un paso: alumnado que lee despacio. */
   function msLectura(html) {
     const texto = String(html).replace(/<[^>]+>/g, '');
-    return 1800 + texto.length * 35;
+    return 900 + texto.length * 18;
   }
 
   function boton(clase, texto, etiqueta) {
@@ -145,7 +145,7 @@ function registrarAnimacion(nombre, def) {
         /* suavizado: arranca y frena */
         dibujar(p < 1 ? (1 - Math.cos(Math.PI * p)) / 2 : 1);
         if (p >= 1) { fase = 'lee'; t0 = ahora; }
-      } else if (pasado >= msLectura(pasos[i].texto) + (i === n - 1 ? 2500 : 0)) {
+      } else if (pasado >= msLectura(pasos[i].texto) + (i === n - 1 ? 1500 : 0)) {
         ir(i + 1, true);
       }
       raf = requestAnimationFrame(bucle);
