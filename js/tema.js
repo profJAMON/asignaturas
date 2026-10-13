@@ -178,6 +178,8 @@ function pintarLeccion(contenidoHtml) {
   pintarComoTrabajar(contenedor);
   /* Carruseles de diapositivas paso a paso. Ver js/diapos.js. */
   if (typeof iniciarDiapos === 'function') iniciarDiapos(contenedor);
+  /* Animaciones que se mueven solas (con ‹ ⏸ ›). Ver js/animaciones.js. */
+  if (typeof iniciarAnimaciones === 'function') iniciarAnimaciones(contenedor);
   /* «Toca y mira»: código que se puede cambiar con su resultado. Ver js/probador.js. */
   if (typeof iniciarProbadores === 'function') iniciarProbadores(contenedor);
   /* Laboratorios de teoría (terminal, URL, petición, viaje). Ver js/laboratorios.js. */

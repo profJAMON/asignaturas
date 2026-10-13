@@ -3277,6 +3277,26 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   min-width: 0;
 }
 .diapos__pista > .diapo.es-actual { visibility: visible; opacity: 1; }
+
+/* Animaciones que se mueven solas — js/animaciones.js (13/10/2026).
+   Misma pizarra que las diapositivas; la escena es un .diapo (así usa
+   las clases d-*) y los mandos son los de las diapositivas. */
+.leccion .anim {
+  background: var(--figura-bg);
+  border: 1px solid var(--figura-borde);
+  border-radius: 6px;
+  padding: 0.9rem 1rem 0.8rem;
+  margin: 0 0 1.2rem;
+  isolation: isolate;
+}
+.leccion .anim:focus { outline: none; }
+.leccion .anim:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.leccion .anim__texto { min-height: 4.6em; }
+.anim__centro { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0.5rem; }
+@media print {
+  .anim__mandos { display: none !important; }
+  .leccion .anim { break-inside: avoid; }
+}
 .diapo svg { display: block; width: min(100%, 34rem); height: auto; margin: 0 auto 0.5rem; }
 .leccion .diapo__texto {
   color: var(--diapo-texto);
