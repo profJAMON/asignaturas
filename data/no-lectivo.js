@@ -15,11 +15,9 @@
    todas, y por eso vive en su propio archivo y no dentro del
    calendario de ritmo de cada una.
 
-   OJO: las fechas salen del comentario de calendario-operaciones.js
-   ("Sin clase: 12 y 13 oct, 1 nov, 7 y 8 dic, Navidad 23/12-06/01,
-   26 feb, 1 y 2 mar, Pascua 25/03-04/04, 1 may"). Los nombres los he
-   puesto yo: revísalos, sobre todo los días de libre disposición, que
-   cada centro pone donde quiere.
+   Días de libre disposición del centro (confirmados por Carles el
+   13/10/2026): 7 de diciembre, 2 de marzo y 3 de mayo. El 13 de
+   octubre y el 26 de febrero, que estaban marcados, SÍ son lectivos.
 
    Para añadir o corregir un día: una línea más aquí y ya está.
    "desde" y "hasta" son inclusivos; para un solo día, los dos iguales.
@@ -27,14 +25,15 @@
 
 const NO_LECTIVO = [
   { desde: '2026-10-12', hasta: '2026-10-12', titulo: 'Fiesta Nacional', tipo: 'festivo' },
-  { desde: '2026-10-13', hasta: '2026-10-13', titulo: 'Día de libre disposición', tipo: 'festivo' },
   { desde: '2026-11-01', hasta: '2026-11-01', titulo: 'Todos los Santos', tipo: 'festivo' },
-  { desde: '2026-12-07', hasta: '2026-12-08', titulo: 'Puente de diciembre', tipo: 'festivo' },
+  { desde: '2026-12-07', hasta: '2026-12-07', titulo: 'Día de libre disposición', tipo: 'festivo' },
+  { desde: '2026-12-08', hasta: '2026-12-08', titulo: 'La Inmaculada', tipo: 'festivo' },
   { desde: '2026-12-23', hasta: '2027-01-06', titulo: 'Vacaciones de Navidad', tipo: 'vacaciones' },
-  { desde: '2027-02-26', hasta: '2027-02-26', titulo: 'Día de libre disposición', tipo: 'festivo' },
-  { desde: '2027-03-01', hasta: '2027-03-02', titulo: 'Día de les Illes Balears', tipo: 'festivo' },
+  { desde: '2027-03-01', hasta: '2027-03-01', titulo: 'Día de les Illes Balears', tipo: 'festivo' },
+  { desde: '2027-03-02', hasta: '2027-03-02', titulo: 'Día de libre disposición', tipo: 'festivo' },
   { desde: '2027-03-25', hasta: '2027-04-04', titulo: 'Vacaciones de Pascua', tipo: 'vacaciones' },
   { desde: '2027-05-01', hasta: '2027-05-01', titulo: 'Día del Trabajo', tipo: 'festivo' },
+  { desde: '2027-05-03', hasta: '2027-05-03', titulo: 'Día de libre disposición', tipo: 'festivo' },
 ];
 
 /* ------------------------------------------------------------

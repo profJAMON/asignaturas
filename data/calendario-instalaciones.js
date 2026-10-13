@@ -39,7 +39,8 @@
    Horas de la "ESTRUCTURA ACORDADA" (ver claude/auditoria-material-redes.md
    en el proyecto), repartidas entre los días de clase reales de cada
    grupo según el calendario escolar de les Illes Balears 2026-2027
-   (con los festius propios del centro: 13 oct, 7 dic, 2 mar) y
+   (con los festius propios del centro que se creían entonces: 13 oct, 7 dic,
+   2 mar; los buenos, desde el 13/10/2026: 7 dic, 2 mar y 3 may) y
    descontando vacaciones de Nadal y Pasqua. Detalle completo, con las
    asunciones y el contraste contra las evaluaciones reales, en
    claude/calendario-1r-2n.md (proyecto "Instalaciones").

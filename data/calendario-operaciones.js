@@ -44,8 +44,10 @@
    ---------------------
    - Horario 2026-27: lunes 2 h (15:00-16:50) + jueves 3 h (18:15-20:55).
    - Del 21/09/2026 al 18/06/2027 (en 1º no hay prácticas en empresa).
-   - Sin clase: 12 y 13 oct, 1 nov, 7 y 8 dic, Navidad (23/12-06/01),
-     26 feb, 1 y 2 mar, Pascua (25/03-04/04), 1 may.
+   - Sin clase (data/no-lectivo.js, corregido el 13/10/2026): 12 oct,
+     1 nov, 7 y 8 dic, Navidad (23/12-06/01), 1 y 2 mar, Pascua
+     (25/03-04/04), 1 y 3 may. Las fechas de abajo se calcularon con el
+     calendario anterior (sin el 3 may): la U9 tiene un lunes menos.
    - Los exámenes son siempre en jueves, de 19:10 a 21:00 (2 h), así que
      cada unidad con examen termina en jueves y ese día queda ~1 h de
      clase antes del examen (repaso de la unidad).
