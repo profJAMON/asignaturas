@@ -1,8 +1,8 @@
 {
   "id": "inst-u1-ip",
-  "titulo": "Sesión 7 — La dirección IP, la máscara y las clases",
+  "titulo": "Sesión 7 — La dirección IP, las clases y la máscara",
   "fecha": "",
-  "descripcion": "Los 32 bits de una IPv4, para qué sirve la máscara de red, la notación CIDR, las clases A–E y la diferencia entre direcciones públicas y privadas.",
+  "descripcion": "Los 32 bits de una IPv4, las clases A–E con su parte de red y de host, para qué sirve la máscara de red, la máscara por defecto, la notación CIDR y la diferencia entre direcciones públicas y privadas.",
   "materiales": [],
   "actividades": [
     {
@@ -27,17 +27,17 @@
       "n": 10
     },
     {
-      "id": "practica-publica-privada",
-      "tipo": "generador",
-      "titulo": "¿Pública o privada?",
-      "generador": "publica-o-privada",
-      "n": 8
-    },
-    {
       "id": "practica-cidr",
       "tipo": "generador",
       "titulo": "Máscara decimal y notación CIDR",
       "generador": "cidr-a-mascara",
+      "n": 8
+    },
+    {
+      "id": "practica-publica-privada",
+      "tipo": "generador",
+      "titulo": "¿Pública o privada?",
+      "generador": "publica-o-privada",
       "n": 8
     }
   ]

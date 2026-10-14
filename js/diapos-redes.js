@@ -465,7 +465,8 @@
     });
     return s;
   }
-  function diaposClaseIp(o) {
+  /* conMascara = false: solo clase → red y host (para cuando aún no se ha visto la máscara) */
+  function diaposClaseIp(o, conMascara = true) {
     const ANCHO = 362, ALTO = 128;
     const ip = o.join('.');
     const k = CLASES.find(c => o[0] >= c.de && o[0] <= c.a);
@@ -480,7 +481,7 @@
     });
     if (k.oct) {
       const mo = k.mask.split('.').map(Number);
-      lista.push({
+      if (conMascara) lista.push({
         svg: svg(ANCHO, ALTO, `Clase ${k.c}: máscara por defecto ${k.mask}`,
           octetosIp(o, { y: 10 }) + octetosIp(mo, { y: 56 }) + tx(ANCHO / 2, 112, `${k.mask} = /${k.p}`, 'd-a', 'middle')),
         texto: `Clase ${k.c} → máscara por defecto <strong>${k.mask}</strong>, que en CIDR es <strong>/${k.p}</strong>.`
@@ -493,14 +494,17 @@
       partes += linea(xc + 4, 64, 352, 64, 'd-linea-c') + tx((xc + 352) / 2, 82, 'host', 'd-c', 'middle');
       lista.push({
         svg: svg(ANCHO, ALTO, `Parte de red ${red}, parte de host ${host}`, partes),
-        texto: `En la máscara, cada 255 es un octeto de <strong>red</strong> y cada 0, de <strong>host</strong>. Así que la red es <strong>${red}</strong> y el equipo es <strong>${host}</strong>.`
+        texto: conMascara
+          ? `En la máscara, cada 255 es un octeto de <strong>red</strong> y cada 0, de <strong>host</strong>. Así que la red es <strong>${red}</strong> y el equipo es <strong>${host}</strong>.`
+          : `En la clase ${k.c}, ${k.oct === 1 ? 'el primer octeto es' : `los ${k.oct} primeros octetos son`} de <strong>red</strong> y el resto, de <strong>host</strong>. Así que la red es <strong>${red}</strong> y el equipo es <strong>${host}</strong>.`
       });
     } else {
       lista.push({
         svg: svg(ANCHO, ALTO, `Clase ${k.c}: no se reparte en red y host`, regla(o[0])),
-        texto: k.c === 'D'
-          ? 'La clase D es para <strong>multicast</strong> (enviar a un grupo). No tiene máscara por defecto ni se reparte en red y host.'
-          : 'La clase E está <strong>reservada</strong> (experimental). No tiene máscara por defecto ni se reparte en red y host.'
+        texto: (k.c === 'D'
+          ? 'La clase D es para <strong>multicast</strong> (enviar a un grupo).'
+          : 'La clase E está <strong>reservada</strong> (experimental).')
+          + (conMascara ? ' No tiene máscara por defecto ni se reparte en red y host.' : ' No se reparte en red y host.')
       });
     }
     return lista;
@@ -512,6 +516,14 @@
     ejemplo: '172.20.3.4',
     error: 'Cuatro números del 0 al 255 separados por puntos, por ejemplo 172.20.3.4.',
     titulo: o => `La IP ${o.join('.')}, paso a paso`
+  });
+  registrarDiapos('clase-red-host', {
+    crear: o => diaposClaseIp(o, false),
+    leer: leerIp,
+    etiqueta: 'Escribe una dirección IP',
+    ejemplo: '172.20.3.4',
+    error: 'Cuatro números del 0 al 255 separados por puntos, por ejemplo 172.20.3.4.',
+    titulo: o => `La IP ${o.join('.')}: clase, red y host`
   });
 
   /* ============================================================

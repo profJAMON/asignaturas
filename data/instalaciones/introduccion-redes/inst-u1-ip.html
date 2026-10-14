@@ -41,9 +41,47 @@
 <div class="nota">Cuidado con dos números que se copian mal muy a menudo. Un octeto son <strong>8 bits, no 4</strong> (los bloques de 4 bits son cosa del hexadecimal y de IPv6). Y con 32 bits hay <strong>2³² direcciones posibles = 4.294.967.296</strong>, unos 4.300 millones. No 2³⁶.</div>
 <p>La forma de contar es la de un cuentakilómetros: el bloque de la derecha sube hasta 255; al sumar uno más vuelve a 0 y sube en uno el bloque de su izquierda. Igual con el resto.</p>
 
+<h2>Red y host: las clases de direcciones</h2>
+<p>Una dirección IP <strong>no dice solo quién eres: dice también en qué red estás</strong>. Es como una dirección postal, que lleva dentro la calle y el número de portal. En una IP, la «calle» es la parte de <strong>RED</strong> y el «portal», la parte de <strong>HOST</strong> (el equipo).</p>
+<p>La forma más rápida de saber dónde se corta es la <strong>clase</strong> de la dirección. Hay cinco clases, y se distinguen <strong>solo por el primer número</strong>:</p>
+<table>
+<tr><th>Clase</th><th>1.<sup>er</sup> octeto</th><th>Red / Host</th><th>Para qué</th></tr>
+<tr><td><strong>A</strong></td><td>0 – 127</td><td>1 octeto de red, 3 de host</td><td>Redes enormes, pocas</td></tr>
+<tr><td><strong>B</strong></td><td>128 – 191</td><td>2 de red, 2 de host</td><td>Redes medianas</td></tr>
+<tr><td><strong>C</strong></td><td>192 – 223</td><td>3 de red, 1 de host</td><td>Redes pequeñas, muchas</td></tr>
+<tr><td><strong>D</strong></td><td>224 – 239</td><td>No se reparte en red y host</td><td><em>Multicast</em>: enviar a un grupo</td></tr>
+<tr><td><strong>E</strong></td><td>240 – 255</td><td>No se reparte en red y host</td><td>Reservada, experimental</td></tr>
+</table>
+<div class="salida">
+<svg viewBox="0 0 600 202" width="100%" role="img" aria-label="Regla del primer octeto: de 0 a 127 clase A (1 octeto de red y 3 de host), de 128 a 191 clase B (2 y 2), de 192 a 223 clase C (3 y 1), luego D y E" style="max-width:100%;height:auto;">
+<style>
+.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
+.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
+.s{font-family:monospace;font-size:10px;fill:#9099a6}
+.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
+.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
+.w{font-family:monospace;font-size:11px;fill:#ce9178}
+.ok{font-family:monospace;font-size:11px;fill:#89d185}
+.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
+.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
+</style>
+<text x="300" y="24" text-anchor="middle" class="t">Solo hay que mirar el primer octeto</text><rect x="26.0" y="44" width="274.0" height="44" fill="#4fc1ff" opacity="0.18"/><rect x="26.0" y="44" width="274.0" height="44" fill="none" stroke="#4fc1ff"/><text x="163.0" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">A</text><text x="163.0" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">0-127</text><text x="163.0" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">R.H.H.H</text><rect x="300.0" y="44" width="137.0" height="44" fill="#89d185" opacity="0.18"/><rect x="300.0" y="44" width="137.0" height="44" fill="none" stroke="#89d185"/><text x="368.5" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#89d185">B</text><text x="368.5" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">128-191</text><text x="368.5" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">R.R.H.H</text><rect x="437.0" y="44" width="68.5" height="44" fill="#ce9178" opacity="0.18"/><rect x="437.0" y="44" width="68.5" height="44" fill="none" stroke="#ce9178"/><text x="471.2" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#ce9178">C</text><text x="471.2" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">192-223</text><text x="471.2" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">R.R.R.H</text><rect x="505.5" y="44" width="34.2" height="44" fill="#9099a6" opacity="0.18"/><rect x="505.5" y="44" width="34.2" height="44" fill="none" stroke="#9099a6"/><text x="522.6" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#9099a6">D</text><rect x="539.8" y="44" width="34.2" height="44" fill="#6a7280" opacity="0.18"/><rect x="539.8" y="44" width="34.2" height="44" fill="none" stroke="#6a7280"/><text x="556.9" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#6a7280">E</text><text x="300" y="146" text-anchor="middle" class="f">D · 224-255 no se reparten en red y host: multicast (224-239) y reservada (240-255)</text><text x="300" y="172" text-anchor="middle" class="s">10.250.1.1 empieza por 10 → clase A   ·   150.10.15.0 empieza por 150 → clase B</text><text x="300" y="188" text-anchor="middle" class="s">199.155.77.56 empieza por 199 → clase C</text>
+</svg>
+<p class="pie-figura">La clase se decide mirando únicamente el primer número. Debajo de cada clase: R = octeto de red, H = octeto de host.</p>
+</div>
+<p><strong>Para identificar la clase solo hay que mirar el primer número.</strong> 10.250.1.1 empieza por 10 → clase A. 150.10.15.0 empieza por 150 → clase B. 199.155.77.56 empieza por 199 → clase C.</p>
+<p>Un ejemplo paso a paso: primero la clase y, con la clase, qué parte es la red y qué parte el equipo. Al final puedes probar con otra IP:</p>
+<div class="diapos" data-diapos="clase-red-host" data-valor="150.10.15.0" aria-label="La IP 150.10.15.0: clase, red y host, paso a paso"></div>
+<h3>Practica — ¿de qué clase es?</h3>
+<p>Mira solo el primer octeto. Nada más.</p>
+<div data-actividad="practica-clase"></div>
+
+<h3>Practica — parte de red y parte de host</h3>
+<p>La clase te dice cuántos octetos ocupa la red; el resto es el equipo.</p>
+<div data-actividad="practica-red-host"></div>
+
 <h2>La máscara de red</h2>
-<p>Aquí está la idea importante de toda la sesión. Una dirección IP <strong>no dice solo quién eres: dice también en qué red estás</strong>. Es como una dirección postal, que lleva dentro la calle y el número de portal.</p>
-<p>Pero mirando 192.168.1.25 no hay forma de saber qué parte es la calle y qué parte el portal. Eso lo dice la <strong>máscara de red</strong>.</p>
+<p>El ordenador no se fía de la clase: junto a su IP lleva siempre una <strong>máscara de red</strong>, que dice exactamente dónde acaba la parte de red y dónde empieza la de host. Así se puede cortar también por donde no corta ninguna clase.</p>
 <ul>
 <li>Tiene el mismo formato que la IP: 32 bits, cuatro octetos.</li>
 <li>Los bits que valen <strong>1</strong> marcan la parte de <strong>RED</strong>. Los que valen <strong>0</strong>, la parte de <strong>HOST</strong> (el equipo).</li>
@@ -68,6 +106,23 @@
 </div>
 <p>Dos equipos están en <strong>la misma red</strong> si su parte de red coincide. Si coincide, se hablan directamente. Si no, necesitan un router de por medio. <strong>Ese es el motivo de que exista la máscara</strong>, y no otro.</p>
 
+<h3>La máscara por defecto de cada clase</h3>
+<p>Cada clase tiene su máscara «de serie». Se saca de los octetos de red: cada octeto de red son 8 unos (<strong>255</strong>) y cada octeto de host, 8 ceros (<strong>0</strong>).</p>
+<table>
+<tr><th>Clase</th><th>Red / Host</th><th>Máscara por defecto</th></tr>
+<tr><td><strong>A</strong></td><td>R.H.H.H</td><td>255.0.0.0</td></tr>
+<tr><td><strong>B</strong></td><td>R.R.H.H</td><td>255.255.0.0</td></tr>
+<tr><td><strong>C</strong></td><td>R.R.R.H</td><td>255.255.255.0</td></tr>
+<tr><td><strong>D</strong> y <strong>E</strong></td><td colspan="2">No tienen: no se reparten en red y host</td></tr>
+</table>
+<div class="nota">Dos direcciones especiales de cada red, que nunca se le dan a un equipo: la que tiene <strong>todos los bits de host a 0</strong> es la <strong>dirección de red</strong> (identifica a la red entera) y la que los tiene <strong>todos a 1</strong> es la de <strong>broadcast</strong> (sirve para hablar con todos los equipos de esa red a la vez). Volveremos a ellas en la sesión siguiente.</div>
+
+<p>Todo junto con un ejemplo: clase, máscara por defecto, red y host. Al final puedes probar con otra IP:</p>
+<div class="diapos" data-diapos="clase-ip" data-valor="150.10.15.0" aria-label="La IP 150.10.15.0, paso a paso"></div>
+<h3>Practica — máscara por defecto</h3>
+<p>Primero la clase, y de la clase sale la máscara.</p>
+<div data-actividad="practica-mascara"></div>
+
 <h3>Notación CIDR</h3>
 <p>Escribir 255.255.255.0 es largo. Como los unos van siempre seguidos, basta con decir <strong>cuántos hay</strong>, y eso se escribe con una barra detrás de la IP:</p>
 <table>
@@ -83,50 +138,7 @@
 <h3>Practica la notación CIDR</h3>
 <p>De decimal a barra y de barra a decimal. Son cuatro máscaras las que salen siempre; el resto se deducen.</p>
 <div data-actividad="practica-cidr"></div>
-<h2>Las clases de direcciones</h2>
-<p>Antes de CIDR, las direcciones se repartían en <strong>clases</strong> según el valor del <strong>primer octeto</strong>. Hoy el reparto real ya no funciona así, pero las clases siguen estudiándose y se siguen preguntando, porque explican de dónde salen las máscaras «por defecto» y por qué los rangos privados son los que son.</p>
-<table>
-<tr><th>Clase</th><th>1.<sup>er</sup> octeto</th><th>Red / Host</th><th>Máscara por defecto</th><th>Para qué</th></tr>
-<tr><td><strong>A</strong></td><td>0 – 127</td><td>1 octeto de red, 3 de host</td><td>255.0.0.0 (/8)</td><td>Redes enormes, pocas</td></tr>
-<tr><td><strong>B</strong></td><td>128 – 191</td><td>2 de red, 2 de host</td><td>255.255.0.0 (/16)</td><td>Redes medianas</td></tr>
-<tr><td><strong>C</strong></td><td>192 – 223</td><td>3 de red, 1 de host</td><td>255.255.255.0 (/24)</td><td>Redes pequeñas, muchas</td></tr>
-<tr><td><strong>D</strong></td><td>224 – 239</td><td colspan="2">No se reparte en red y host</td><td><em>Multicast</em>: enviar a un grupo</td></tr>
-<tr><td><strong>E</strong></td><td>240 – 255</td><td colspan="2">No se reparte en red y host</td><td>Reservada, experimental</td></tr>
-</table>
-<div class="salida">
-<svg viewBox="0 0 600 202" width="100%" role="img" aria-label="Regla del primer octeto: de 0 a 127 clase A, de 128 a 191 clase B, de 192 a 223 clase C, luego D y E" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:12px;fill:#f3f3f3}
-.b{font-family:monospace;font-size:14px;font-weight:700;fill:#f3f3f3}
-.s{font-family:monospace;font-size:10px;fill:#9099a6}
-.f{font-family:monospace;font-size:9.5px;fill:#6a7280}
-.a{font-family:monospace;font-size:11px;fill:#4fc1ff}
-.w{font-family:monospace;font-size:11px;fill:#ce9178}
-.ok{font-family:monospace;font-size:11px;fill:#89d185}
-.bad{font-family:monospace;font-size:11px;fill:#f14c4c}
-.m{font-family:monospace;font-size:12px;fill:#f3f3f3}
-</style>
-<text x="300" y="24" text-anchor="middle" class="t">Solo hay que mirar el primer octeto</text><rect x="26.0" y="44" width="274.0" height="44" fill="#4fc1ff" opacity="0.18"/><rect x="26.0" y="44" width="274.0" height="44" fill="none" stroke="#4fc1ff"/><text x="163.0" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#4fc1ff">A</text><text x="163.0" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">0-127</text><text x="163.0" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">255.0.0.0</text><rect x="300.0" y="44" width="137.0" height="44" fill="#89d185" opacity="0.18"/><rect x="300.0" y="44" width="137.0" height="44" fill="none" stroke="#89d185"/><text x="368.5" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#89d185">B</text><text x="368.5" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">128-191</text><text x="368.5" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">255.255.0.0</text><rect x="437.0" y="44" width="68.5" height="44" fill="#ce9178" opacity="0.18"/><rect x="437.0" y="44" width="68.5" height="44" fill="none" stroke="#ce9178"/><text x="471.2" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#ce9178">C</text><text x="471.2" y="104" text-anchor="middle" font-family="monospace" font-size="9.5" fill="#9099a6">192-223</text><text x="471.2" y="120" text-anchor="middle" font-family="monospace" font-size="9" fill="#6a7280">255.255.255.0</text><rect x="505.5" y="44" width="34.2" height="44" fill="#9099a6" opacity="0.18"/><rect x="505.5" y="44" width="34.2" height="44" fill="none" stroke="#9099a6"/><text x="522.6" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#9099a6">D</text><rect x="539.8" y="44" width="34.2" height="44" fill="#6a7280" opacity="0.18"/><rect x="539.8" y="44" width="34.2" height="44" fill="none" stroke="#6a7280"/><text x="556.9" y="72" text-anchor="middle" font-family="monospace" font-size="17" font-weight="700" fill="#6a7280">E</text><text x="300" y="146" text-anchor="middle" class="f">D · 224-255 no se reparten en red y host: multicast (224-239) y reservada (240-255)</text><text x="300" y="172" text-anchor="middle" class="s">10.250.1.1 empieza por 10 → clase A   ·   150.10.15.0 empieza por 150 → clase B</text><text x="300" y="188" text-anchor="middle" class="s">199.155.77.56 empieza por 199 → clase C</text>
-</svg>
-<p class="pie-figura">La clase se decide mirando únicamente el primer número de la dirección.</p>
-</div>
-<p><strong>Para identificar la clase solo hay que mirar el primer número.</strong> 10.250.1.1 empieza por 10 → clase A. 150.10.15.0 empieza por 150 → clase B. 199.155.77.56 empieza por 199 → clase C.</p>
-<div class="nota">Dos direcciones especiales de cada red, que nunca se le dan a un equipo: la que tiene <strong>todos los bits de host a 0</strong> es la <strong>dirección de red</strong> (identifica a la red entera) y la que los tiene <strong>todos a 1</strong> es la de <strong>broadcast</strong> (sirve para hablar con todos los equipos de esa red a la vez). Volveremos a ellas en la sesión siguiente.</div>
-
-<p>Todo junto con un ejemplo: clase, máscara por defecto, red y host. Al final puedes probar con otra IP:</p>
-<div class="diapos" data-diapos="clase-ip" data-valor="150.10.15.0" aria-label="La IP 150.10.15.0, paso a paso"></div>
-<h3>Practica — ¿de qué clase es?</h3>
-<p>Mira solo el primer octeto. Nada más.</p>
-<div data-actividad="practica-clase"></div>
-
-<h3>Practica — máscara por defecto</h3>
-<p>Primero la clase, y de la clase sale la máscara.</p>
-<div data-actividad="practica-mascara"></div>
-
-<h3>Practica — parte de red y parte de host</h3>
-<p>La clase te dice cuántos octetos ocupa la red; el resto es el equipo.</p>
-<div data-actividad="practica-red-host"></div>
-<h3>Direcciones públicas y privadas</h3>
+<h2>Direcciones públicas y privadas</h2>
 <p>No todas las direcciones salen a Internet. Hay tres rangos reservados para redes internas: los puedes usar en tu oficina sin pedir permiso a nadie, y los routers de Internet no los encaminan.</p>
 <table>
 <tr><th>Clase</th><th>Rango privado</th></tr>
@@ -178,10 +190,6 @@
   </ul>
 </li>
 <li>(V/F) 192.168.1.300 es una dirección IP válida.</li>
-<li>¿Para qué sirve la <strong>máscara de red</strong>?</li>
-<li>¿Cuándo están dos equipos en la misma red? ¿Qué necesitan para hablarse si no lo están?</li>
-<li>(V/F) En una máscara de red puede haber un 0 entre dos 1.</li>
-<li>Escribe en notación CIDR: 255.0.0.0 · 255.255.0.0 · 255.255.255.0.</li>
 <li>(ABC) La clase de una dirección IP se sabe mirando…
   <ul>
     <li>a) el último octeto</li>
@@ -189,8 +197,12 @@
     <li>c) la máscara</li>
   </ul>
 </li>
-<li>Di la clase y la máscara por defecto de: 10.250.1.1 · 150.10.15.0 · 199.155.77.56 · 249.240.80.78 · 117.89.56.45.</li>
 <li>Señala la parte de red y la parte de host de: 177.100.18.4 · 119.18.45.0 · 220.200.23.1 · 158.98.80.0.</li>
+<li>¿Para qué sirve la <strong>máscara de red</strong>?</li>
+<li>¿Cuándo están dos equipos en la misma red? ¿Qué necesitan para hablarse si no lo están?</li>
+<li>(V/F) En una máscara de red puede haber un 0 entre dos 1.</li>
+<li>Di la clase y la máscara por defecto de: 10.250.1.1 · 150.10.15.0 · 199.155.77.56 · 249.240.80.78 · 117.89.56.45.</li>
+<li>Escribe en notación CIDR: 255.0.0.0 · 255.255.0.0 · 255.255.255.0.</li>
 <li>¿Cuáles son los tres rangos de direcciones privadas? ¿Por qué existen?</li>
 <li>Di si son públicas o privadas, y por qué: 10.8.4.1 · 172.15.3.9 · 172.20.3.9 · 192.168.0.7 · 8.8.8.8.</li>
 <li>¿Qué es la dirección 127.0.0.1? ¿Y una 169.254.x.x?</li>

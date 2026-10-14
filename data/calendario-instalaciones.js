@@ -369,7 +369,7 @@ const CALENDARIO_INSTALACIONES = {
       "2n": "2026-09-30"
     },
     "inst-u1-ip": {
-      "titulo": "Sesión 7 — La dirección IP, la máscara y las clases",
+      "titulo": "Sesión 7 — La dirección IP, las clases y la máscara",
       "unidad": "introduccion-redes",
       "1r": "2026-10-09",
       "2n": "2026-10-02"
