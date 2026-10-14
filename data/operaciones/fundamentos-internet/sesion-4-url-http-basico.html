@@ -162,6 +162,20 @@
 
 <p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo "esto no existe aquí"; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
 
+<figure class="captura">
+<img src="data/operaciones/fundamentos-internet/img/u2/biblioteca-codigos-estado.webp" width="900" height="506" alt="Cuatro viñetas con el mismo chico con mochila delante del mostrador de una biblioteca y la misma bibliotecaria con gafas. Arriba a la izquierda, ella le da un libro y los dos sonríen. Arriba a la derecha, ella señala con el brazo hacia otra sala al fondo de un pasillo. Abajo a la izquierda, ella abre los brazos junto a una estantería vacía y él se rasca la cabeza. Abajo a la derecha, el ordenador del mostrador echa chispas y humo y ella se lleva las manos a la cabeza" loading="lazy">
+<figcaption>Pides un libro en la biblioteca, como el navegador pide una página al servidor.</figcaption>
+</figure>
+<details>
+<summary>🤔 Cada viñeta es uno de los cuatro códigos de la tabla. ¿Cuál es cada una? Piénsalo antes de abrir.</summary>
+<ol>
+<li>Arriba a la izquierda, te dan el libro: <strong>200</strong>, todo bien.</li>
+<li>Arriba a la derecha, «está en la otra sala»: <strong>301</strong>, se ha mudado.</li>
+<li>Abajo a la izquierda, la estantería está vacía: <strong>404</strong>, no existe. La bibliotecaria sí te contesta.</li>
+<li>Abajo a la derecha, se le rompe el ordenador: <strong>500</strong>, el fallo es suyo, no de lo que has pedido.</li>
+</ol>
+</details>
+
 <div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrita la página?</div>
 <details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
 
