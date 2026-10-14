@@ -123,8 +123,25 @@
 <p>Ahora tú. Haz las dos comprobaciones con cada una y escribe <strong>sí</strong> o <strong>no</strong>.</p>
 <div data-actividad="practica-mac"></div>
 <h2>Verla en tu equipo</h2>
-<p>En Windows, desde la línea de comandos:</p>
-<pre><code>ipconfig /all</code></pre>
+<p>La MAC se ve escribiendo una orden en la <strong>terminal</strong> de Windows: el <em>Símbolo del sistema</em>, que se abre con el nombre corto <code>cmd</code>. Cuatro pasos:</p>
+<div class="diapos" aria-label="Abrir la terminal y escribir ipconfig /all en cuatro pasos">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Teclado con la tecla Windows resaltada"><rect x="20" y="60" width="40" height="36" rx="4" class="d-caja"/><text x="40.0" y="83" text-anchor="middle" class="d-d">Ctrl</text><rect x="68" y="60" width="60" height="36" rx="4" class="d-caja-act"/><text x="98.0" y="83" text-anchor="middle" class="d-c">⊞ Win</text><rect x="136" y="60" width="40" height="36" rx="4" class="d-caja"/><text x="156.0" y="83" text-anchor="middle" class="d-d">Alt</text><rect x="184" y="60" width="150" height="36" rx="4" class="d-caja"/><text x="259.0" y="83" text-anchor="middle" class="d-d">espacio</text><text x="180" y="30" text-anchor="middle" class="d-c d-grande">1. tecla Windows</text></svg>
+<p class="diapo__texto">1. Pulsa la tecla <strong>Windows</strong>: la del logotipo, abajo a la izquierda, entre <kbd>Ctrl</kbd> y <kbd>Alt</kbd>. Se abre el menú Inicio.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Buscador del menú Inicio con cmd escrito y el resultado Símbolo del sistema"><rect x="40" y="10" width="280" height="34" rx="4" class="d-caja-on"/><text x="56" y="32" text-anchor="start" class="d-c">Buscar: cmd</text><rect x="40" y="56" width="280" height="50" rx="4" class="d-caja-act"/><text x="180" y="78" text-anchor="middle" class="d-c">Símbolo del sistema</text><text x="180" y="96" text-anchor="middle" class="d-d">Aplicación</text><text x="180" y="130" text-anchor="middle" class="d-t">2. escribe cmd → Intro</text></svg>
+<p class="diapo__texto">2. Escribe <code>cmd</code> (sin hacer clic en ningún sitio). Arriba sale <strong>Símbolo del sistema</strong>. Pulsa <kbd>Intro</kbd>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Ventana de la terminal con el prompt esperando una orden"><rect x="20" y="10" width="320" height="100" rx="4" class="d-caja-on"/><text x="32" y="34" text-anchor="start" class="d-d d-peq">Microsoft Windows [Versión 10…]</text><text x="32" y="66" text-anchor="start" class="d-c">C:\Users\alumno&gt;_</text><text x="180" y="130" text-anchor="middle" class="d-t">3. ventana negra con el prompt</text></svg>
+<p class="diapo__texto">3. Se abre una ventana negra que termina en <code>C:\Users\alumno&gt;</code>. <strong>Si la ves, lo has hecho bien</strong>: ya puedes escribir.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="En la terminal se escribe ipconfig, un espacio y /all, y se pulsa Intro"><rect x="20" y="10" width="320" height="64" rx="4" class="d-caja-on"/><text x="32" y="48" text-anchor="start" class="d-d">C:\Users\alumno&gt;</text><text x="168" y="48" text-anchor="start" class="d-c">ipconfig /all</text><path d="M 239 58 L 239 92" class="d-linea-a"/><text x="239" y="106" text-anchor="middle" class="d-a">espacio</text><text x="180" y="130" text-anchor="middle" class="d-t">4. ipconfig /all → Intro</text></svg>
+<p class="diapo__texto">4. Escribe <code>ipconfig /all</code>, con un <strong>espacio</strong> antes de la barra, y pulsa <kbd>Intro</kbd>. Sale mucho texto: sube con la rueda del ratón para verlo desde el principio.</p>
+</div>
+</div>
 <p>Busca la línea <strong>Dirección física</strong> dentro de cada adaptador. Fíjate en que aparece una por adaptador: Ethernet, wifi, bluetooth, adaptadores virtuales…</p>
 <figure class="captura">
 <img src="data/instalaciones/introduccion-redes/img/u1/ipconfig-all.webp" width="900" height="793" alt="Resultado de ipconfig /all en un Windows en inglés, con el adaptador Ethernet recuadrado" loading="lazy">
@@ -142,7 +159,7 @@
 <p>Fíjate en que hay un bloque por adaptador, y cada uno tiene su propia dirección física.</p>
 <p>En Linux sería <code>ip link</code> o <code>ifconfig</code>. Y en un móvil está en Ajustes → Información del teléfono → Estado.</p>
 <div class="salida">
-<p><strong>Práctica en clase.</strong> Abre <code>ipconfig /all</code> en tu equipo y apunta en el cuaderno:</p>
+<p><strong>Práctica en clase.</strong> Abre la terminal, escribe <code>ipconfig /all</code> y apunta en el cuaderno:</p>
 <ol>
 <li>Cuántos adaptadores de red aparecen y cómo se llaman.</li>
 <li>La dirección física de cada uno.</li>
