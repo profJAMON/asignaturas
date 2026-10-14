@@ -156,7 +156,34 @@
 <tr><td class="no-traducir">Default Gateway</td><td>Puerta de enlace predeterminada</td><td>El router</td></tr>
 <tr><td class="no-traducir">DNS Servers</td><td>Servidores DNS</td><td>Quién traduce los nombres</td></tr>
 </table>
-<p>Fíjate en que hay un bloque por adaptador, y cada uno tiene su propia dirección física.</p>
+<p>Así se ve un equipo con <strong>dos adaptadores</strong>: uno de cable y uno wifi.</p>
+<pre aria-label="Ejemplo de ipconfig /all con dos adaptadores: Ethernet y wifi"><span class="co">C:\Users\alumno&gt;</span> <span class="kw">ipconfig /all</span>
+
+Configuración IP de Windows
+
+   Nombre de host. . . . . . . . . : PC-AULA-07
+
+<span class="kw">Adaptador de Ethernet Ethernet:</span>             <span class="co">◄ adaptador 1 (cable)</span>
+
+   Descripción . . . . . . . . . . : Realtek PCIe GbE Family Controller
+   <span class="ca">Dirección física. . . . . . . . : 04-D4-C4-6E-1B-30</span>
+   DHCP habilitado . . . . . . . . : sí
+   Dirección IPv4. . . . . . . . . : 192.168.1.161(Preferido)
+   Máscara de subred . . . . . . . : 255.255.255.0
+   Puerta de enlace predeterminada : 192.168.1.1
+
+<span class="kw">Adaptador de LAN inalámbrica Wi-Fi:</span>         <span class="co">◄ adaptador 2 (wifi)</span>
+
+   Estado de los medios. . . . . . : medios desconectados
+   Descripción . . . . . . . . . . : Intel(R) Wi-Fi 6 AX201 160MHz
+   <span class="ca">Dirección física. . . . . . . . : 8C-1D-96-A3-5F-72</span>
+   DHCP habilitado . . . . . . . . : sí</pre>
+<ul>
+<li>Cada adaptador empieza con una línea pegada a la izquierda que dice <strong>«Adaptador de…»</strong>. Cuenta esas líneas y sabrás cuántos hay.</li>
+<li>Cada uno tiene <strong>su propia dirección física</strong>: son dos tarjetas distintas, de fabricantes distintos.</li>
+<li>El wifi está <em>desconectado</em>, pero sale igual y tiene su MAC: la tarjeta está ahí aunque no se use.</li>
+<li>Windows escribe la MAC con <strong>guiones</strong> (<code>04-D4-C4-…</code>) en vez de dos puntos. Es lo mismo.</li>
+</ul>
 <p>En Linux sería <code>ip link</code> o <code>ifconfig</code>. Y en un móvil está en Ajustes → Información del teléfono → Estado.</p>
 <div class="salida">
 <p><strong>Práctica en clase.</strong> Abre la terminal, escribe <code>ipconfig /all</code> y apunta en el cuaderno:</p>
