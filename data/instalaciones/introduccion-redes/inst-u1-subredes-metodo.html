@@ -1,0 +1,147 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Hoy: el ejercicio de subredes</h2>
+<p>Hacer <strong>subredes</strong> es partir una red en trozos más pequeños. Hoy aprendes a <strong>hacer el ejercicio</strong>, sin teoría: me dan una red y cuántas subredes o cuántos equipos necesito, y yo saco la máscara nueva y la lista de subredes.</p>
+<p>Para qué sirve y por qué funciona, lo verás en la sesión siguiente. Primero, la práctica.</p>
+<div class="nota">Hoy solo redes de <strong>clase C</strong>: las que empiezan por 192 a 223. Con ellas solo se parte el <strong>último número</strong>. La clase B llega en la unidad 7.</div>
+
+<h2>La hoja de bits</h2>
+<p>Todo el ejercicio sale de esta tabla. <strong>Cópiala en tu cuaderno</strong>: la vas a usar en todos los ejercicios.</p>
+<table class="hoja-bits">
+<tr><th>Bit</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th><th>6º</th><th>7º</th><th>8º</th></tr>
+<tr><td><strong>Peso</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+<tr><td><strong>Subredes</strong></td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td><td>256</td></tr>
+<tr><td><strong>Direcc.</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+</table>
+<p>(«Direcc.» = direcciones de cada subred.) Cómo se lee: los bits del último número <strong>se cogen desde la izquierda</strong>. Si cojo hasta el 3º, salen <strong>8 subredes</strong> de <strong>32 direcciones</strong> cada una. Cada bit más: el doble de subredes y la mitad de direcciones.</p>
+<p>La fila de subredes es fácil de recordar: empieza en 2 y va doblando. La de direcciones es la de pesos otra vez.</p>
+
+<h2>Los 5 pasos</h2>
+<div class="salida">
+<ol>
+<li><strong>Clase.</strong> Si empieza por 192 a 223, es clase C: máscara por defecto 255.255.255.0. Se parte el último número.</li>
+<li><strong>Bits que cojo.</strong>
+  <ul>
+    <li>Si me dicen <strong>subredes</strong>: en la fila de subredes, el primer número que llega.</li>
+    <li>Si me dicen <strong>equipos</strong>: les sumo 2 (la dirección de red y el broadcast). En la fila de direcciones, voy hacia la derecha mientras llegue.</li>
+  </ul>
+</li>
+<li><strong>Máscara nueva.</strong> Sumo los pesos de los bits cogidos. Ese es el último número de la máscara.</li>
+<li><strong>Cuántas.</strong> Subredes y direcciones: lo que pone la hoja en esa columna. Equipos = direcciones − 2.</li>
+<li><strong>Salto.</strong> El peso del último bit cogido. Las subredes empiezan de salto en salto: .0, .salto, .2×salto…</li>
+</ol>
+</div>
+<p>Todas las subredes se usan, también la primera y la última. Lo único que se resta son los 2 equipos de cada subred.</p>
+
+<h3>Ejemplo 1: me dicen cuántas subredes</h3>
+<p>Red 192.10.10.0 y necesito 14 subredes. Pásalo paso a paso:</p>
+<div class="diapos" data-diapos="subred-c-metodo" data-valor="192.10.10.0, 14 subredes" aria-label="192.10.10.0 con 14 subredes, paso a paso"></div>
+
+<h3>Ejemplo 2: me dicen cuántos equipos</h3>
+<p>Red 200.175.14.0 y necesito 45 equipos en cada subred. Fíjate en el +2 del paso 2. Al final puedes probar con otra red y otro número:</p>
+<div class="diapos" data-diapos="subred-c-metodo" data-valor="200.175.14.0, 45 equipos" aria-label="200.175.14.0 con 45 equipos por subred, paso a paso"></div>
+
+<h3>Practica — bits, máscara, salto y equipos</h3>
+<p>Haz los 5 pasos con la hoja delante. Cada línea te pregunta una cosa distinta.</p>
+<div data-actividad="practica-mascara-c"></div>
+
+<h2>La lista de subredes</h2>
+<p>Con el salto ya puedes escribir todas las subredes. Para cada una hay cuatro datos:</p>
+<table>
+<tr><th>Dato</th><th>Cómo se saca</th></tr>
+<tr><td><strong>Dirección de red</strong></td><td>Donde empieza. La 1ª empieza en .0 y cada una, un salto más allá.</td></tr>
+<tr><td><strong>Primer equipo</strong></td><td>La dirección de red + 1.</td></tr>
+<tr><td><strong>Último equipo</strong></td><td>El broadcast − 1.</td></tr>
+<tr><td><strong>Broadcast</strong></td><td>La red siguiente − 1.</td></tr>
+</table>
+<p>Así queda el ejemplo 1 (192.10.10.0, máscara 255.255.255.240, salto 16):</p>
+<pre><code>Subred   Red             Equipos                          Broadcast
+1ª       192.10.10.0     192.10.10.1   a 192.10.10.14     192.10.10.15
+2ª       192.10.10.16    192.10.10.17  a 192.10.10.30     192.10.10.31
+3ª       192.10.10.32    192.10.10.33  a 192.10.10.46     192.10.10.47
+4ª       192.10.10.48    192.10.10.49  a 192.10.10.62     192.10.10.63
+ …
+16ª      192.10.10.240   192.10.10.241 a 192.10.10.254    192.10.10.255</code></pre>
+<p>Y si me preguntan por una subred concreta, no hace falta escribir la lista entera: la <strong>N</strong>ª subred empieza en <strong>(N − 1) × salto</strong>.</p>
+<div class="salida">
+<p><strong>Ejemplo: ¿cuál es el broadcast de la 12ª subred de 192.10.10.0 con salto 16?</strong></p>
+<ol>
+<li>La 12ª empieza en (12 − 1) × 16 = 11 × 16 = <strong>176</strong>. Su red es 192.10.10.176.</li>
+<li>La siguiente (la 13ª) empieza en 176 + 16 = 192.</li>
+<li>Broadcast = 192 − 1 = <strong>191</strong> → <strong>192.10.10.191</strong>.</li>
+</ol>
+</div>
+<div class="nota">Ojo con el número de la subred: la <strong>1ª</strong> es la que empieza en <strong>.0</strong>. Por eso se resta 1 antes de multiplicar.</div>
+
+<h3>Practica — la subred número N</h3>
+<p>Primero saca el salto. Después, (N − 1) × salto y rellena lo que te pidan.</p>
+<div data-actividad="practica-enesima-c"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 8 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>Copia la hoja de bits de memoria: pesos, subredes y direcciones.</li>
+<li>Escribe los 5 pasos para resolver un ejercicio de subredes de clase C.</li>
+<li>(ABC) Si necesito 6 subredes, cojo…
+  <ul>
+    <li>a) 2 bits</li>
+    <li>b) 3 bits</li>
+    <li>c) 6 bits</li>
+  </ul>
+</li>
+<li>(V/F) Si necesito 30 equipos en cada subred, busco el 30 en la fila de direcciones.</li>
+<li>¿Por qué se suman 2 a los equipos que necesito antes de mirar la hoja?</li>
+<li>(ABC) Si cojo 3 bits, la máscara nueva es…
+  <ul>
+    <li>a) 255.255.255.3</li>
+    <li>b) 255.255.255.224</li>
+    <li>c) 255.255.255.248</li>
+  </ul>
+</li>
+<li>¿Qué es el salto y cómo se saca?</li>
+<li>(V/F) La primera y la última subred no se pueden usar.</li>
+<li>Red 203.45.12.0 y necesito 6 subredes. Saca, con los 5 pasos escritos: clase, bits que cojo, máscara nueva, cuántas subredes salen, cuántos equipos caben en cada una y el salto.</li>
+<li>Lo mismo con la red 199.30.7.0 y 25 equipos en cada subred.</li>
+<li>Lo mismo con la red 221.8.140.0 y 50 subredes.</li>
+<li>Lo mismo con la red 194.66.3.0 y 100 equipos en cada subred.</li>
+<li>Escribe la lista de todas las subredes de la pregunta 9: red, primer equipo, último equipo y broadcast de cada una.</li>
+<li>Red 199.30.7.0 con máscara 255.255.255.224: a) ¿dirección de red de la 5ª subred? b) ¿broadcast de la 3ª? c) ¿qué equipos tiene la 7ª? Escribe el cálculo.</li>
+<li>Una empresa tiene la red 200.20.20.0 y quiere 4 departamentos con 50 equipos cada uno. ¿Le basta con esa red? ¿Qué máscara pondrías? Explícalo con la hoja.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 8 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Comprueba dos de tus respuestas de las preguntas 9 a 12 con una calculadora de subredes de Internet (busca «calculadora subredes IP»). ¿Te coinciden? Si no, encuentra tu fallo.</li>
+<li>Inventa dos ejercicios con redes de clase C distintas, uno que diga subredes y otro que diga equipos, y resuélvelos con los 5 pasos.</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Necesito 16 subredes. ¿Cojo 4 bits o 5?</summary>
+<p><strong>4 bits.</strong> En la fila de subredes, el 16 llega justo. Con 5 saldrían 32: el doble de las que hacen falta y con la mitad de equipos cada una.</p>
+</details>
+<details>
+<summary>🤔 Necesito 30 equipos. ¿Por qué no me vale una subred de 30 direcciones?</summary>
+<p>Porque en cada subred hay dos direcciones que no se dan a nadie: la de red y la de broadcast. 30 + 2 = 32 direcciones, y en la hoja hay justo un 32.</p>
+</details>
+<details>
+<summary>🤔 ¿Qué pasa si cojo más bits de los que hacen falta?</summary>
+<p>Salen más subredes, pero caben menos equipos en cada una. Coge solo los que piden: ni uno más.</p>
+</details>

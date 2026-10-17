@@ -1509,6 +1509,9 @@ footer.pie {
   color: var(--text);
 }
 .leccion th { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint); }
+/* Hoja de bits de subredes (Instalaciones UT1 S8): 9 columnas que caben en el móvil */
+.leccion .hoja-bits th, .leccion .hoja-bits td { padding: 0.45rem 0.3rem; text-align: center; }
+.leccion .hoja-bits td:first-child { text-align: left; }
 
 .leccion .checklist { list-style: none; padding-left: 0; }
 .leccion .checklist li::before { content: "☐ "; color: var(--accent); }

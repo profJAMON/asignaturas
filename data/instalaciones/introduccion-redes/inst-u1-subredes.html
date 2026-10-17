@@ -11,7 +11,7 @@
 </div>
 
 <h2>Partir una red en trozos</h2>
-<p>Con lo de la sesión anterior ya sabes que la máscara separa la parte de red de la parte de host. Ahora vamos a usar esa idea para algo muy concreto: <strong>partir una red grande en varias más pequeñas</strong>. Eso es hacer subredes.</p>
+<p>En la sesión anterior aprendiste a hacer el ejercicio: la máscara nueva, el salto y la lista de subredes. Ahora toca entender qué estabas haciendo: <strong>partir una red grande en varias más pequeñas</strong>. Eso es hacer subredes.</p>
 <p>¿Y para qué querría nadie partir su red? Por tres razones que se ven enseguida en una oficina:</p>
 <ul>
 <li><strong>Para no desperdiciar.</strong> Una red de clase C tiene 254 huecos. Si en la oficina hay 20 equipos, sobran 234 direcciones tiradas.</li>
@@ -22,7 +22,7 @@
 <img src="data/instalaciones/introduccion-redes/img/u1/subredes-plantas.webp" width="900" height="673" alt="Un instituto de tres plantas cortado para ver el interior: en cada planta, un aula con ordenadores unidos por líneas de un color propio (cian abajo, magenta en medio, lima arriba); las tres líneas bajan a un único router en el sótano" loading="lazy">
 <figcaption>Una red partida en tres: cada planta del instituto es una subred, y todas salen por el mismo router.</figcaption>
 </figure>
-<div class="nota">Esta sesión es <strong>la primera toma de contacto</strong>. El método completo, con las tablas, la escaleta y los ejercicios largos, es la unidad 7 entera. Aquí quiero que salgas sabiendo <em>leer</em> una subred: dada una IP y una máscara, decir dónde empieza, dónde acaba y cuántos equipos caben.</div>
+<div class="nota">Aquí le damos la vuelta al ejercicio de la sesión 8. Allí te daban lo que necesitabas y sacabas las subredes; aquí te dan <strong>una IP y su máscara</strong> y dices a qué subred pertenece, dónde empieza, dónde acaba y cuántos equipos caben. La clase B y los ejercicios largos, en la unidad 7.</div>
 
 <h2>Las tres direcciones de cualquier red</h2>
 <p>En toda red, grande o pequeña, hay dos direcciones que <strong>no se le pueden dar a ningún equipo</strong>:</p>
@@ -75,7 +75,7 @@
 <p>Cuenta los bits de host, eleva 2 a esa cantidad y resta 2.</p>
 <div data-actividad="practica-hosts"></div>
 <h2>El método del salto</h2>
-<p>Aquí está el truco que hace que esto se pueda resolver mentalmente. Mira la tercera columna de la tabla: 256, 128, 64, 32, 16, 8, 4. A ese número lo vamos a llamar <strong>el salto</strong>, y es el tamaño de cada bloque.</p>
+<p>Aquí está el truco que hace que esto se pueda resolver mentalmente. Mira la tercera columna de la tabla: 256, 128, 64, 32, 16, 8, 4. Es <strong>el salto</strong> que ya usaste en la sesión 8: el tamaño de cada bloque.</p>
 <p>Los bloques empiezan siempre en múltiplos del salto, contando desde 0. Con eso, tres pasos:</p>
 <div class="salida">
 <p><strong>Ejemplo: ¿a qué red pertenece 192.168.1.100/26?</strong></p>
@@ -120,7 +120,7 @@ Red       192.168.1.64     11000000.10101000.00000001.01000000
 
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
-<p class="papel__titulo">Sesión 8 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p class="papel__titulo">Sesión 9 · Preguntas obligatorias — a mano, en el cuaderno</p>
 <p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
 <li>¿Qué son la dirección de red y la de broadcast? ¿Por qué no se le asignan a ningún equipo?</li>
@@ -155,10 +155,10 @@ Red       192.168.1.64     11000000.10101000.00000001.01000000
 
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
-<p class="papel__titulo">Sesión 8 · Sube nota — no entran en el examen</p>
+<p class="papel__titulo">Sesión 9 · Sube nota — no entran en el examen</p>
 <p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
 <ol start="16">
-<li>Comprueba dos de los ejercicios de la pregunta 8 con una calculadora de subredes de Internet (busca «calculadora subredes IP»). ¿Te coinciden? Si no, encuentra tu fallo.</li>
+<li>Busca qué es <strong>VLSM</strong> (subredes de distinto tamaño dentro de la misma red) y explica con tus palabras en qué se diferencia de lo que has hecho en la sesión 8.</li>
 <li>Inventa un ejercicio como el de la pregunta 14, con otros tres departamentos y otros números de equipos, y resuélvelo.</li>
 </ol>
 </div>

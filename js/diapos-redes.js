@@ -17,6 +17,8 @@
      mascara           "/26" o "255.255.255.192" de prefijo a decimal
      clase-ip          "10.250.1.1"              clase, máscara por defecto, red/host
      subred-salto      "192.168.1.100/26"        red, broadcast y rango
+     subred-c-metodo   "192.10.10.0, 14 subredes" clase C: bits, máscara, salto y lista
+                       (o "200.175.14.0, 45 equipos")
      ipv6-abreviar     "2035:0001:…:0001"        las tres reglas
    ============================================================ */
 
@@ -749,5 +751,170 @@
     error: 'Tienen que ser 8 bloques separados por «:», cada uno de 1 a 4 dígitos (0-9 y A-F).',
     modo: 'text',
     titulo: bl => `${bl.join(':')} abreviada, paso a paso`
+  });
+  /* ============================================================
+     8. Subredes de clase C con la hoja de bits (17/10/2026):
+        "192.10.10.0, 14 subredes" o "200.175.14.0, 45 equipos".
+        Todas las subredes se usan; solo se restan 2 a los equipos.
+     ============================================================ */
+  function calcSubredC(v) {
+    const { o, n, tipo } = v;
+    let bits;
+    if (tipo === 'subredes') {
+      bits = 0;
+      while (Math.pow(2, bits) < n) bits++;
+    } else {
+      let h = 0;
+      while (Math.pow(2, h) < n + 2) h++;
+      bits = 8 - h;
+    }
+    const sumandos = PESOS.slice(0, bits);
+    const ultimo = sumandos.reduce((a, b) => a + b, 0);
+    return {
+      o, n, tipo, bits, sumandos, ultimo,
+      pre: o.slice(0, 3).join('.'),
+      prefijo: 24 + bits,
+      subredes: Math.pow(2, bits),
+      dirs: Math.pow(2, 8 - bits),
+      salto: PESOS[bits - 1]
+    };
+  }
+  /* La hoja: pesos, subredes y direcciones de cada columna.
+     opc: cogidos (pinta las columnas cogidas), marca: [[fila, col]…]
+     en color cálido, corte (raya tras el último bit cogido),
+     suma (pesos cogidos en cálido). */
+  function hojaBits(r, opc) {
+    const X0 = 62, W = 37;
+    const filas = [
+      ['peso', i => PESOS[i]],
+      ['subredes', i => Math.pow(2, i + 1)],
+      ['direcc.', i => Math.pow(2, 7 - i)]
+    ];
+    let s = '';
+    filas.forEach((f, fi) => {
+      const y = 6 + fi * 28;
+      s += tx(4, y + 15, f[0], 'd-d d-peq');
+      for (let i = 0; i < 8; i++) {
+        const cogido = opc.cogidos && i < r.bits;
+        const marcado = (opc.marca || []).some(m => m[0] === fi && m[1] === i);
+        s += caja(X0 + i * W, y, W - 3, 22, marcado ? 'd-caja-act' : (cogido ? 'd-caja-on' : 'd-caja'));
+        let cls = cogido ? 'd-a' : 'd-d';
+        if (marcado || (opc.suma && fi === 0 && i < r.bits)) cls = 'd-c';
+        s += tx(X0 + i * W + (W - 3) / 2, y + 16, String(f[1](i)), cls, 'middle');
+      }
+    });
+    if (opc.corte) {
+      const xc = X0 + r.bits * W - 1.5;
+      s += linea(xc, 2, xc, 92, 'd-linea-c');
+    }
+    return s;
+  }
+  function diaposSubredC(v) {
+    const r = calcSubredC(v);
+    const ANCHO = 360, ALTO = 150;
+    const red = r.o.join('.');
+    const necesito = r.tipo === 'subredes' ? `${r.n} subredes` : `${r.n} equipos en cada subred`;
+    const lista = [];
+    const abajo = (a, b) => tx(ANCHO / 2, 118, a, 'd-c d-grande', 'middle') + (b ? tx(ANCHO / 2, 142, b, 'd-t', 'middle') : '');
+
+    lista.push({
+      svg: svg(ANCHO, ALTO, `${red}, necesito ${necesito}`,
+        tx(ANCHO / 2, 50, red, 'd-t d-grande', 'middle') +
+        tx(ANCHO / 2, 84, `necesito ${necesito}`, 'd-c', 'middle') +
+        tx(ANCHO / 2, 118, '¿máscara? ¿salto? ¿subredes?', 'd-d', 'middle')),
+      texto: `Me dan la red <strong>${red}</strong> y me dicen que necesito <strong>${necesito}</strong>. Voy a sacar la máscara nueva, cuántas subredes salen, cuántos equipos caben y el salto. Siempre con los mismos 5 pasos.`
+    });
+
+    let oct = '';
+    r.o.forEach((x, i) => {
+      const xx = 10 + i * 86;
+      oct += caja(xx, 14, 78, 30, i === 3 ? 'd-caja-act' : 'd-caja');
+      oct += tx(xx + 39, 34, String(x), i === 3 ? 'd-c' : 'd-a', 'middle');
+      oct += tx(xx + 39, 62, i === 3 ? 'host' : 'red', i === 3 ? 'd-c' : 'd-a', 'middle');
+    });
+    lista.push({
+      svg: svg(ANCHO, ALTO, `${r.o[0]}: clase C, máscara por defecto 255.255.255.0`,
+        oct + tx(ANCHO / 2, 96, `${r.o[0]} → clase C`, 'd-t', 'middle') +
+        tx(ANCHO / 2, 124, '255.255.255.0  (/24)', 'd-a d-grande', 'middle')),
+      texto: `Paso 1, la clase: empieza por ${r.o[0]} → <strong>clase C</strong>. Su máscara por defecto es 255.255.255.0: los tres primeros números son la red y no se tocan. Lo que voy a partir es el <strong>último número</strong>, que tiene 8 bits.`
+    });
+
+    lista.push({
+      svg: svg(ANCHO, ALTO, 'La hoja: pesos, subredes y direcciones de cada bit',
+        hojaBits(r, {}) + tx(ANCHO / 2, 124, 'los bits se cogen desde la izquierda', 'd-d', 'middle')),
+      texto: 'Paso 2, la hoja. Arriba, los <strong>pesos</strong> de los 8 bits del último número. Si cojo bits empezando por la izquierda, en esa columna leo cuántas <strong>subredes</strong> salen y cuántas <strong>direcciones</strong> tiene cada una. Cada bit más: el doble de subredes y la mitad de direcciones.'
+    });
+
+    let porque;
+    if (r.tipo === 'subredes') {
+      const noLlegan = [];
+      for (let i = 1; i < r.bits; i++) noLlegan.push(Math.pow(2, i));
+      porque = `Busco en la fila de subredes el primer número que llega a ${r.n}: ${noLlegan.length ? noLlegan.join(', ') + (noLlegan.length > 1 ? ' no llegan' : ' no llega') + '; ' : ''}<strong>${r.subredes}</strong> sí. Está en la columna ${r.bits} → <strong>cojo ${r.bits} bit${r.bits > 1 ? 's' : ''}</strong>.`;
+    } else {
+      const llegan = [];
+      for (let i = 0; i < r.bits; i++) llegan.push(Math.pow(2, 7 - i));
+      porque = `Cada subred necesita ${r.n} equipos + 2 (la de red y el broadcast) = <strong>${r.n + 2} direcciones</strong>. En la fila de direcciones voy hacia la derecha mientras llegue a ${r.n + 2}: ${llegan.join(', ')} ${llegan.length > 1 ? 'llegan' : 'llega'}; ${Math.pow(2, 7 - r.bits)} ya no. Me quedo en el <strong>${r.dirs}</strong>, columna ${r.bits} → <strong>cojo ${r.bits} bit${r.bits > 1 ? 's' : ''}</strong>.`;
+    }
+    const filaMarca = r.tipo === 'subredes' ? 1 : 2;
+    lista.push({
+      svg: svg(ANCHO, ALTO, `Cojo ${r.bits} bits`,
+        hojaBits(r, { cogidos: true, corte: true, marca: [[filaMarca, r.bits - 1]] }) + abajo(`cojo ${r.bits} bit${r.bits > 1 ? 's' : ''}`)),
+      texto: 'Paso 2. ' + porque
+    });
+
+    const suma = r.sumandos.length > 1 ? `${r.sumandos.join(' + ')} = ${r.ultimo}` : '128';
+    lista.push({
+      svg: svg(ANCHO, ALTO, `Máscara nueva 255.255.255.${r.ultimo}, /${r.prefijo}`,
+        hojaBits(r, { cogidos: true, corte: true, suma: true }) + abajo(suma, `255.255.255.${r.ultimo}   (/${r.prefijo})`)),
+      texto: `Paso 3, la <strong>máscara nueva</strong>: sumo los pesos de los bits que he cogido, ${suma}. El último número de la máscara pasa de 0 a ${r.ultimo}: <strong>255.255.255.${r.ultimo}</strong>, que es /${r.prefijo} (24 + ${r.bits}).`
+    });
+
+    lista.push({
+      svg: svg(ANCHO, ALTO, `${r.subredes} subredes de ${r.dirs} direcciones, ${r.dirs - 2} equipos en cada una`,
+        hojaBits(r, { cogidos: true, corte: true, marca: [[1, r.bits - 1], [2, r.bits - 1]] }) +
+        abajo(`${r.subredes} subredes · ${r.dirs - 2} equipos`, `${r.dirs} direcciones − 2 = ${r.dirs - 2}`)),
+      texto: `Paso 4, cuántas: en la columna ${r.bits} leo <strong>${r.subredes} subredes</strong> de <strong>${r.dirs} direcciones</strong>. Equipos en cada una: ${r.dirs} − 2 = <strong>${r.dirs - 2}</strong>, porque la dirección de red y el broadcast no se dan a nadie. Todas las subredes se usan, también la primera y la última.`
+    });
+
+    const inicios = [];
+    for (let k = 0; k < Math.min(r.subredes, 5); k++) inicios.push('.' + k * r.salto);
+    lista.push({
+      svg: svg(ANCHO, ALTO, `Salto ${r.salto}`,
+        hojaBits(r, { cogidos: true, corte: true, marca: [[0, r.bits - 1]] }) +
+        abajo(`salto = ${r.salto}`, inicios.join('  ') + (r.subredes > 5 ? '  …' : ''))),
+      texto: `Paso 5, el <strong>salto</strong>: es el peso del último bit cogido, <strong>${r.salto}</strong> (el mismo número que las direcciones de cada subred). Las subredes empiezan de ${r.salto} en ${r.salto}: ${inicios.join(', ')}${r.subredes > 5 ? '…' : '.'}`
+    });
+
+    const ks = r.subredes <= 4 ? Array.from({ length: r.subredes }, (_, k) => k + 1) : [1, 2, 3, 0, r.subredes];
+    let t = tx(10, 18, `${r.pre}. …`, 'd-d') + tx(10, 40, 'nº', 'd-d') + tx(56, 40, 'red', 'd-d') + tx(130, 40, 'equipos', 'd-d') + tx(272, 40, 'broadcast', 'd-d');
+    ks.forEach((k, i) => {
+      const y = 64 + i * 20;
+      if (k === 0) { t += tx(10, y, '…', 'd-d'); return; }
+      const ini = (k - 1) * r.salto, fin = ini + r.dirs - 1;
+      t += tx(10, y, `${k}ª`, 'd-t') + tx(56, y, `.${ini}`, 'd-a') + tx(130, y, `.${ini + 1} – .${fin - 1}`, 'd-t') + tx(272, y, `.${fin}`, 'd-c');
+    });
+    lista.push({
+      svg: svg(ANCHO, ALTO, `Lista de las ${r.subredes} subredes`, t),
+      texto: `Y la lista: la 1ª subred empieza en .0, la 2ª en .${r.salto}… La <strong>N</strong>ª empieza en (N − 1) × ${r.salto}. El <strong>broadcast</strong> de cada una es la red siguiente − 1, y los <strong>equipos</strong> son los de en medio.`
+    });
+    return lista;
+  }
+  registrarDiapos('subred-c-metodo', {
+    crear: v => diaposSubredC(v),
+    leer: s => {
+      const m = String(s).trim().match(/^(\d{1,3}(?:\.\d{1,3}){3})\s*[,;]?\s*(\d{1,3})\s*(subred(?:es)?|equipos?|hosts?)$/i);
+      if (!m) return null;
+      const o = leerIp(m[1]);
+      const n = Number(m[2]);
+      if (!o || o[0] < 192 || o[0] > 223 || o[3] !== 0) return null;
+      const tipo = /^subred/i.test(m[3]) ? 'subredes' : 'equipos';
+      if (n < 2 || (tipo === 'subredes' ? n > 64 : n > 126)) return null;
+      return { o, n, tipo };
+    },
+    etiqueta: 'Escribe una red de clase C y lo que necesitas',
+    ejemplo: '210.100.56.0, 30 equipos',
+    error: 'Escríbelo así: 210.100.56.0, 6 subredes (o 30 equipos). La red, de clase C (empieza por 192 a 223) y acabada en 0; de 2 a 64 subredes o de 2 a 126 equipos.',
+    modo: 'text',
+    titulo: v => `${v.o.join('.')}, ${v.n} ${v.tipo}, paso a paso`
   });
 })();

@@ -45,6 +45,12 @@
    asunciones y el contraste contra las evaluaciones reales, en
    claude/calendario-1r-2n.md (proyecto "Instalaciones").
 
+   17/10/2026: la UT1 gana una sesión (S8 nueva, «Subredes de clase C,
+   paso a paso»; la antigua S8 pasa a ser la S9) y pasa de 18 a 20 h;
+   la UT7 baja de 18 a 16 h (la clase C ya se ve en la UT1). Solo se han
+   corrido las fechas de las sesiones de la UT1 (DHCP y repaso caen el
+   mismo día): el resto se recalcula cuando se rehaga el calendario.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se retrasa o adelanta respecto a esto: edita las
@@ -108,7 +114,7 @@ const CALENDARIO_INSTALACIONES = {
     {
       "id": "introduccion-redes",
       "titulo": "Unidad 1. Introducción a las redes",
-      "horas": 18,
+      "horas": 20,
       "sesiones": [
         "inst-u1-comunicacion",
         "inst-u1-binario",
@@ -117,6 +123,7 @@ const CALENDARIO_INSTALACIONES = {
         "inst-u1-osi",
         "inst-u1-mac",
         "inst-u1-ip",
+        "inst-u1-subredes-metodo",
         "inst-u1-subredes",
         "inst-u1-dhcp-comandos",
         "inst-u1-repaso"
@@ -247,7 +254,7 @@ const CALENDARIO_INSTALACIONES = {
     {
       "id": "subredes",
       "titulo": "Unidad 7. Direccionamiento y subredes",
-      "horas": 18,
+      "horas": 16,
       "sesiones": [],
       "fechas": {
         "1r": {
@@ -374,20 +381,26 @@ const CALENDARIO_INSTALACIONES = {
       "1r": "2026-10-09",
       "2n": "2026-10-02"
     },
-    "inst-u1-subredes": {
-      "titulo": "Sesión 8 — Primer contacto con las subredes",
+    "inst-u1-subredes-metodo": {
+      "titulo": "Sesión 8 — Subredes de clase C, paso a paso",
       "unidad": "introduccion-redes",
       "1r": "2026-10-16",
       "2n": "2026-10-05"
     },
-    "inst-u1-dhcp-comandos": {
-      "titulo": "Sesión 9 — IPv6, DHCP y los comandos de red",
+    "inst-u1-subredes": {
+      "titulo": "Sesión 9 — Las subredes por dentro",
       "unidad": "introduccion-redes",
       "1r": "2026-10-20",
       "2n": "2026-10-06"
     },
+    "inst-u1-dhcp-comandos": {
+      "titulo": "Sesión 10 — IPv6, DHCP y los comandos de red",
+      "unidad": "introduccion-redes",
+      "1r": "2026-10-23",
+      "2n": "2026-10-07"
+    },
     "inst-u1-repaso": {
-      "titulo": "Sesión 10 — Repaso de la unidad",
+      "titulo": "Sesión 11 — Repaso de la unidad",
       "unidad": "introduccion-redes",
       "1r": "2026-10-23",
       "2n": "2026-10-07"

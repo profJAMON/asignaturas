@@ -1,8 +1,8 @@
 {
   "id": "inst-u1-subredes",
-  "titulo": "Sesión 8 — Primer contacto con las subredes",
+  "titulo": "Sesión 9 — Las subredes por dentro",
   "fecha": "",
-  "descripcion": "Dirección de red, broadcast y rango de hosts. El método del salto para resolver una subred de cabeza, y cómo saber si dos equipos se ven o no. El método completo llega en la unidad 7.",
+  "descripcion": "Para qué se parte una red, las direcciones de red y de broadcast, a qué subred pertenece una IP con el método del salto y cómo saber si dos equipos se ven o no. La clase B, en la unidad 7.",
   "materiales": [],
   "actividades": [
     {

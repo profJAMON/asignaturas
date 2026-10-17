@@ -1,0 +1,23 @@
+{
+  "id": "inst-u1-subredes-metodo",
+  "titulo": "Sesión 8 — Subredes de clase C, paso a paso",
+  "fecha": "",
+  "descripcion": "El ejercicio de subredes antes que la teoría: con la hoja de bits y 5 pasos, de una red de clase C y las subredes o equipos que necesito a la máscara nueva, el salto y la lista de subredes.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "practica-mascara-c",
+      "tipo": "generador",
+      "titulo": "Bits, máscara, salto y equipos",
+      "generador": "subred-c-mascara",
+      "n": 8
+    },
+    {
+      "id": "practica-enesima-c",
+      "tipo": "generador",
+      "titulo": "La subred número N",
+      "generador": "subred-c-enesima",
+      "n": 6
+    }
+  ]
+}

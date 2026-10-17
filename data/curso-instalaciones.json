@@ -29,6 +29,7 @@
         "inst-u1-osi",
         "inst-u1-mac",
         "inst-u1-ip",
+        "inst-u1-subredes-metodo",
         "inst-u1-subredes",
         "inst-u1-dhcp-comandos",
         "inst-u1-repaso"

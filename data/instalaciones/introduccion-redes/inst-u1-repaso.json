@@ -1,6 +1,6 @@
 {
   "id": "inst-u1-repaso",
-  "titulo": "Sesión 10 — Repaso de la unidad",
+  "titulo": "Sesión 11 — Repaso de la unidad",
   "fecha": "",
   "descripcion": "Todo lo que entra en la unidad en una página, preguntas de repaso que juntan varias sesiones y los ejercicios de cálculo juntos para entrenar antes de la prueba.",
   "materiales": [],
@@ -45,6 +45,12 @@
       "tipo": "generador",
       "titulo": "Pública o privada",
       "generador": "publica-o-privada",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Subredes de clase C",
+      "generador": "subred-c-mascara",
       "n": 6
     },
     {

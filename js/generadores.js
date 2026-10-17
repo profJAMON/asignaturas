@@ -418,6 +418,97 @@ function genMismaRed() {
   };
 }
 
+/* ---------- Subredes de clase C paso a paso (Instalaciones UT1 S8, 17/10/2026) ----------
+   Me dan una red de clase C y cuántas subredes o equipos necesito.
+   Criterio: TODAS las subredes se usan (no se restan 2 subredes);
+   solo se restan 2 a los equipos de cada subred (red y broadcast).
+   Enunciados sin "traducible", como los demás de subredes: llevan IP. */
+
+const _PESOS_OCTETO = [128, 64, 32, 16, 8, 4, 2, 1];
+
+function _potenciaQueLlega(x) {
+  let e = 0;
+  while (Math.pow(2, e) < x) e++;
+  return e;
+}
+
+function _problemaSubredC() {
+  const red = `${_ent(192, 223)}.${_ent(0, 255)}.${_ent(0, 255)}.0`;
+  const porSubredes = Math.random() < 0.5;
+  /* primero los bits (1 a 6, todos igual de probables), luego un número que los pida */
+  let bits = _ent(1, 6), pide, porque;
+  if (porSubredes) {
+    const n = bits === 1 ? 2 : _ent(Math.pow(2, bits - 1) + 1, Math.pow(2, bits));
+    pide = `necesito ${n} subredes`;
+    porque = `${n} subredes → 2^${bits} = ${Math.pow(2, bits)} llega → cojo ${bits} bit${bits > 1 ? 's' : ''}.`;
+  } else {
+    const h = 8 - bits;
+    const e = _ent(Math.max(2, Math.pow(2, h - 1) - 1), Math.pow(2, h) - 2);
+    pide = `necesito ${e} equipos en cada subred`;
+    porque = `${e} equipos + 2 = ${e + 2} direcciones → 2^${h} = ${Math.pow(2, h)} llega → dejo ${h} bits de host y cojo 8 − ${h} = ${bits}.`;
+  }
+  const sumandos = _PESOS_OCTETO.slice(0, bits);
+  const ultimo = sumandos.reduce((a, b) => a + b, 0);
+  const dirs = Math.pow(2, 8 - bits);
+  return {
+    red, pide, porque, bits, sumandos,
+    mascara: `255.255.255.${ultimo}`,
+    prefijo: 24 + bits,
+    salto: _PESOS_OCTETO[bits - 1],
+    subredes: Math.pow(2, bits),
+    dirs,
+    equipos: dirs - 2
+  };
+}
+
+function _resumenSubredC(p) {
+  const suma = p.sumandos.length > 1 ? `${p.sumandos.join(' + ')} = ${p.mascara.split('.')[3]}` : '128';
+  return `Clase C: se parte el último octeto. ${p.porque} Máscara: ${suma} → ${p.mascara} (/${p.prefijo}). Salen ${p.subredes} subredes de ${p.dirs} direcciones: ${p.equipos} equipos en cada una. Salto ${p.salto}.`;
+}
+
+function genSubredCMascara() {
+  const p = _problemaSubredC();
+  const que = _elige(['bits', 'mascara', 'mascara', 'subredes', 'equipos', 'salto']);
+  const preguntas = {
+    bits: ['¿cuántos bits cojo?', String(p.bits), 'numero'],
+    mascara: ['¿cuál es la máscara nueva?', p.mascara, 'texto'],
+    subredes: ['¿cuántas subredes salen?', String(p.subredes), 'numero'],
+    equipos: ['¿cuántos equipos caben en cada subred?', String(p.equipos), 'numero'],
+    salto: ['¿de cuánto es el salto?', String(p.salto), 'numero']
+  };
+  const [texto, respuesta, formato] = preguntas[que];
+  const salida = {
+    enunciado: `${p.red} · ${p.pide} — ${texto}`,
+    respuesta,
+    formato,
+    pista: _resumenSubredC(p)
+  };
+  if (que === 'mascara') salida.respuestas = [p.mascara, `/${p.prefijo}`];
+  return salida;
+}
+
+function genSubredCEnesima() {
+  const p = _problemaSubredC();
+  const k = _ent(1, Math.min(p.subredes, 16));
+  const que = _elige(['red', 'broadcast', 'primero', 'ultimo']);
+  const pre = p.red.split('.').slice(0, 3).join('.');
+  const ini = (k - 1) * p.dirs;
+  const fin = ini + p.dirs - 1;
+  const valores = {
+    red: ['la dirección de red', `${pre}.${ini}`],
+    broadcast: ['el broadcast', `${pre}.${fin}`],
+    primero: ['el primer equipo', `${pre}.${ini + 1}`],
+    ultimo: ['el último equipo', `${pre}.${fin - 1}`]
+  };
+  const dato = Math.random() < 0.5 ? `con máscara ${p.mascara}` : `(${p.pide})`;
+  return {
+    enunciado: `${p.red} ${dato} — ¿${valores[que][0]} de la ${k}ª subred?`,
+    respuesta: valores[que][1],
+    formato: 'texto',
+    pista: `Máscara ${p.mascara}, salto ${p.salto}. La 1ª subred empieza en .0; la ${k}ª, en (${k} − 1) × ${p.salto} = ${ini}. Red ${pre}.${ini} · equipos de .${ini + 1} a .${fin - 1} · broadcast .${fin} (la siguiente red − 1).`
+  };
+}
+
 /* ---------- MAC ---------- */
 
 function _hex() {
@@ -463,6 +554,8 @@ const GENERADORES = {
   'hosts-por-mascara': genHostsPorMascara,
   'red-y-broadcast': genRedYBroadcast,
   'misma-red': genMismaRed,
+  'subred-c-mascara': genSubredCMascara,
+  'subred-c-enesima': genSubredCEnesima,
   'mac-valida': genMacValida
 };
 
