@@ -156,6 +156,57 @@
 <p>A esa fila le falta una celda: se ve descuadrada, con un hueco al final.</p>
 </details>
 
+<h3>Juntar celdas: colspan y rowspan</h3>
+<p>A veces una celda tiene que ocupar <strong>más de una casilla</strong>: un título que cruza toda la tabla, o un día que vale para varias filas. Solo lo necesitarás si tu tabla es así. Si no, no lo uses.</p>
+<div class="probador" aria-label="Tabla con colspan y rowspan">
+<textarea data-lengua="html">
+<table border="1">
+    <tr>
+        <th colspan="3">Torneo de Pixel Kart</th>
+    </tr>
+    <tr>
+        <th>Día</th>
+        <th>Hora</th>
+        <th>Circuito</th>
+    </tr>
+    <tr>
+        <td rowspan="2">Sábado</td>
+        <td>10:00</td>
+        <td>Playa Pixel</td>
+    </tr>
+    <tr>
+        <td>12:00</td>
+        <td>Volcán</td>
+    </tr>
+    <tr>
+        <td>Domingo</td>
+        <td>11:00</td>
+        <td>Final: Castillo</td>
+    </tr>
+</table>
+</textarea>
+<ul class="probador__prueba">
+<li>Cambia <code>colspan="3"</code> por <code>colspan="2"</code>. ¿Qué le pasa al título?</li>
+<li>Quita <code>rowspan="2"</code>. ¿Dónde acaba <code>12:00</code>?</li>
+<li>Añade una fila el domingo a las <code>13:00</code> y haz que <code>Domingo</code> ocupe las dos filas.</li>
+</ul>
+</div>
+<table>
+<thead><tr><th>Atributo</th><th>Qué hace</th></tr></thead>
+<tbody>
+<tr><td><code>colspan="3"</code></td><td>La celda ocupa <strong>3 columnas</strong>: se estira <strong>a lo ancho</strong> →</td></tr>
+<tr><td><code>rowspan="2"</code></td><td>La celda ocupa <strong>2 filas</strong>: se estira <strong>hacia abajo</strong> ↓</td></tr>
+</tbody>
+</table>
+<ul>
+<li>Se ponen en un <code>&lt;td&gt;</code> o un <code>&lt;th&gt;</code>.</li>
+<li><strong>Una celda juntada cuenta por las casillas que ocupa.</strong> Con <code>colspan="3"</code>, esa fila ya está completa: no le pongas más celdas.</li>
+<li>Con <code>rowspan="2"</code>, en la fila de abajo escribes <strong>una celda menos</strong>: su casilla ya la ocupa la de arriba. Fíjate en la fila de <code>12:00</code>: solo tiene 2 <code>&lt;td&gt;</code>.</li>
+</ul>
+<details><summary>🤔 Antes de seguir: tu tabla tiene 3 columnas y una fila empieza con &lt;td colspan="2"&gt;. ¿Cuántos &lt;td&gt; más lleva esa fila?</summary>
+<p>Uno. La primera celda ya ocupa 2 de las 3 columnas.</p>
+</details>
+
 <h3>Ejercicio 4 — Cine de verano</h3>
 <p>El ejercicio largo de hoy: junta enlaces, menú, tabla y lista. Crea <code>s04-ej4.html</code> y haz que se vea como en la imagen.</p>
 <figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej4.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej4.webp" alt="Página Cine de verano con cuatro partes numeradas: 1, un menú con los enlaces Cartelera y Club de lectura; 2, una tabla con bordes con tres películas y su día y hora; 3, una lista con viñetas de normas; 4, un párrafo con un enlace a Wikipedia. Nota 5: el enlace Club de lectura lleva a s04-ej2.html, y el de Wikipedia se abre en una pestaña nueva." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>

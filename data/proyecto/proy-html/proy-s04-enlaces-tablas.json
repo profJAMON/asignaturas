@@ -2,7 +2,7 @@
   "id": "proy-s04-enlaces-tablas",
   "titulo": "Sesión 4 — Enlaces, menú y tablas",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: enlaces a otras webs y entre páginas, el menú con header, nav y main, y tablas. Trucos de VS Code: duplicar una página, table>tr*3>td*2 y Ctrl+D.",
+  "descripcion": "Ejercicios individuales: enlaces a otras webs y entre páginas, el menú con header, nav y main, y tablas (también juntar celdas con colspan y rowspan). Trucos de VS Code: duplicar una página, table>tr*3>td*2 y Ctrl+D.",
   "materiales": [
     {
       "tipo": "enlace",
