@@ -61,6 +61,14 @@
      las horas de clase (mismo método que Instalaciones). La fecha de una
      sesión es el día en que empieza. Los glosarios no llevan fecha.
 
+   Cambio del 22/10/2026
+   ---------------------
+   El examen de la U2 pasa del jueves 22/10 al MARTES 27/10, 19:10 (no
+   les dio tiempo a hacer el resumen). Ese martes Carles cambia las 3 h
+   de Instalaciones 1r por las del jueves 29/10 de Operaciones. La U3
+   pierde ese jueves: su Sesión 3 pasa al 05/11 y el lunes 09/11 queda
+   para resumen y repaso; su examen sigue el jueves 12/11.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se desvía: edita las fechas de la unidad afectada
@@ -79,10 +87,10 @@
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-10-08",
+  "actualizado": "2026-10-22",
   "avisoExamen": true,
   "horaExamen": "19:10",
-  "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son los jueves de 19:10 a 21:00. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
+  "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son de 19:10 a 21:00, normalmente en jueves. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -124,9 +132,9 @@ const CALENDARIO_OPERACIONES =
       ],
       "fechas": {
         "inicio": "2026-10-01",
-        "fin": "2026-10-22"
+        "fin": "2026-10-27"
       },
-      "examen": "2026-10-22"
+      "examen": "2026-10-27"
     },
     {
       "id": "publicacion-web",
@@ -278,7 +286,7 @@ const CALENDARIO_OPERACIONES =
     "sesion-4-gestores-contenidos-p2p": {
       "titulo": "Sesión 3. Gestores de contenidos y redes P2P",
       "unidad": "publicacion-web",
-      "fecha": "2026-11-09"
+      "fecha": "2026-11-05"
     },
     "sesion-1-el-navegador": {
       "titulo": "Sesión 1. El navegador: pestañas, favoritos e historial",

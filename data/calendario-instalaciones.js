@@ -51,6 +51,10 @@
    corrido las fechas de las sesiones de la UT1 (DHCP y repaso caen el
    mismo día): el resto se recalcula cuando se rehaga el calendario.
 
+   22/10/2026: 1r cambia el martes 27/10 (Instalaciones) por el jueves
+   29/10 (examen de Operaciones). Las sesiones 1 y 2 de la UT2 de 1r
+   pasan del 27/10 al 29/10; el resto no cambia. 2n no se toca.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se retrasa o adelanta respecto a esto: edita las
@@ -72,7 +76,7 @@ const CALENDARIO_INSTALACIONES = {
       "nombre": "2n"
     }
   ],
-  "actualizado": "2026-09-18",
+  "actualizado": "2026-10-22",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -157,7 +161,7 @@ const CALENDARIO_INSTALACIONES = {
       ],
       "fechas": {
         "1r": {
-          "inicio": "2026-10-27",
+          "inicio": "2026-10-29",
           "fin": "2026-11-17"
         },
         "2n": {
@@ -408,13 +412,13 @@ const CALENDARIO_INSTALACIONES = {
     "inst-u2-trabajo-y-salud": {
       "titulo": "Sesión 1 — Trabajo y salud",
       "unidad": "prevencion-riesgos",
-      "1r": "2026-10-27",
+      "1r": "2026-10-29",
       "2n": "2026-10-09"
     },
     "inst-u2-siniestralidad": {
       "titulo": "Sesión 2 — Siniestralidad",
       "unidad": "prevencion-riesgos",
-      "1r": "2026-10-27",
+      "1r": "2026-10-29",
       "2n": "2026-10-09"
     },
     "inst-u2-evaluacion-riesgos": {
