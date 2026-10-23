@@ -13,7 +13,7 @@
 
 <h2>Anatomía de una URL</h2>
 
-<p>Cada vez que escribes una dirección en el navegador, o haces clic en un enlace, en realidad estás usando una <code>URL</code> (Uniform Resource Locator, "localizador uniforme de recursos"). No es un texto suelto: tiene partes fijas, cada una con su función, igual que una dirección postal tiene calle, número y ciudad en un orden concreto.</p>
+<p>Cada vez que escribes una dirección en el navegador, o haces clic en un enlace, en realidad estás usando una <code>URL</code> (Uniform Resource Locator, «localizador uniforme de recursos»). No es un texto suelto: tiene partes fijas, cada una con su función, igual que una dirección postal tiene calle, número y ciudad en un orden concreto.</p>
 
 <div class="diapos" aria-label="Las cinco partes de una URL, una a una">
 <div class="diapo">
@@ -46,11 +46,11 @@
 
 <h3>Protocolo</h3>
 
-<p><code>http://</code> o <code>https://</code> indican el "idioma" con el que el navegador y el servidor se van a hablar. La <code>s</code> de <code>https</code> significa "seguro": la información viaja cifrada, para que nadie que intercepte la conexión por el camino pueda leerla. Hoy en día casi todas las páginas usan <code>https</code>; los navegadores modernos avisan con un icono de advertencia cuando una web todavía usa <code>http</code> a secas.</p>
+<p><code>http://</code> o <code>https://</code> indican el «idioma» con el que el navegador y el servidor se van a hablar. La <code>s</code> de <code>https</code> significa «seguro»: la información viaja cifrada, para que nadie que intercepte la conexión por el camino pueda leerla. Hoy en día casi todas las páginas usan <code>https</code>; los navegadores modernos avisan con un icono de advertencia cuando una web todavía usa <code>http</code> a secas.</p>
 
 <h3>Dominio</h3>
 
-<p>Ya lo viste en la sesión 1: el nombre que el DNS traduce a una IP (<code>iesramonllull.net</code>). A veces va precedido de un subdominio como <code>www.</code> o <code>blog.</code>, que identifica una parte concreta dentro de ese mismo dominio — piensa en ello como distintos departamentos de un mismo edificio, todos con la misma dirección postal pero un despacho distinto.</p>
+<p>Ya lo viste en la sesión 1: el nombre que el DNS traduce a una IP (<code>iesramonllull.net</code>). A veces va precedido de un subdominio como <code>www.</code> o <code>blog.</code>, que identifica una parte concreta dentro de ese mismo dominio: piensa en ello como distintos departamentos de un mismo edificio, todos con la misma dirección postal pero un despacho distinto.</p>
 
 <h3>Ruta (path)</h3>
 
@@ -69,11 +69,11 @@
 </div>
 
 <div class="nota">🤔 Antes de seguir: si un buscador de tienda online tiene la URL <code>tienda.com/zapatillas?color=azul&amp;talla=42</code>, ¿qué está pidiendo el usuario, con sus propias palabras?</div>
-<details><summary>Ver respuesta</summary>Está pidiendo ver la página de "zapatillas", pero filtrada solo por las que son de color azul y de la talla 42.</details>
+<details><summary>Ver respuesta</summary>Está pidiendo ver la página de «zapatillas», pero filtrada solo por las que son de color azul y de la talla 42.</details>
 
 <h3>Fragmento (ancla)</h3>
 
-<p>Empieza con <code>#</code> y va al final de todo. A diferencia de las demás partes, el fragmento <strong>no se envía al servidor</strong>: lo gestiona solo el navegador, para saltar directamente a un punto concreto dentro de la misma página (por ejemplo, un apartado con ese <code>id</code>). Es exactamente lo mismo que usa el índice "En esta página" de esta propia web.</p>
+<p>Empieza con <code>#</code> y va al final de todo. A diferencia de las demás partes, el fragmento <strong>no se envía al servidor</strong>: lo gestiona solo el navegador, para saltar directamente a un punto concreto dentro de la misma página (por ejemplo, un apartado con ese <code>id</code>). Es exactamente lo mismo que usa el índice «En esta página» de esta propia web.</p>
 
 <p>Ahora míralo con tus URLs. Escribe o pega una dirección y cada parte se pinta de un color:</p>
 <div class="lab" data-lab="url" aria-label="Las partes de una URL"></div>
@@ -139,7 +139,7 @@
 </tr>
 <tr>
   <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline)">200</td>
-  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">OK — todo ha ido bien</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">OK: todo ha ido bien</td>
   <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">La página se carga con normalidad</td>
 </tr>
 <tr>
@@ -160,7 +160,7 @@
 </table>
 </div>
 
-<p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo "esto no existe aquí"; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
+<p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo «esto no existe aquí»; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
 
 <figure class="captura">
 <img src="data/operaciones/fundamentos-internet/img/u2/biblioteca-codigos-estado.webp" width="900" height="506" alt="Cuatro viñetas con el mismo chico con mochila delante del mostrador de una biblioteca y la misma bibliotecaria con gafas. Arriba a la izquierda, ella le da un libro y los dos sonríen. Arriba a la derecha, ella señala con el brazo hacia otra sala al fondo de un pasillo. Abajo a la izquierda, ella abre los brazos junto a una estantería vacía y él se rasca la cabeza. Abajo a la derecha, el ordenador del mostrador echa chispas y humo y ella se lleva las manos a la cabeza" loading="lazy">
@@ -176,7 +176,7 @@
 </ol>
 </details>
 
-<div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería "el fallo": del servidor o de cómo está escrita la página?</div>
+<div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería «el fallo»: del servidor o de cómo está escrita la página?</div>
 <details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
 
 <h3>Pide páginas a un servidor de práctica</h3>
@@ -191,7 +191,7 @@
 <ol>
 <li>Abre cualquier página en el navegador y abre las DevTools en la pestaña Network (clic derecho → Inspeccionar → Network o Red).</li>
 <li>Recarga la página con <code>F5</code>.</li>
-<li>Busca en la lista la primera fila, la del propio documento (tipo "document"), y haz clic en ella para ver su URL completa.</li>
+<li>Busca en la lista la primera fila, la del propio documento (tipo «document»), y haz clic en ella para ver su URL completa.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> se abre un panel de detalle con la URL completa de esa petición, y puedes ver su código de estado (normalmente <code>200</code>).</p>
 <p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene). Es la pregunta 13. Cuando la tengas, compruébala pegándola en «Las partes de una URL», más arriba.</p>
@@ -212,7 +212,7 @@
 <li>Mira la fila del documento en Network.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> el código de estado de esa fila ya no es <code>200</code>: normalmente es <code>404</code>. Apúntalo (pregunta 15).</p>
-<p><strong>¿Dónde miro esto?</strong> Cada vez que algo "no carga" en una web (tuya o ajena), la columna de estado en Network es lo primero que hay que mirar: te dice si el problema es que no se encuentra el recurso (4xx) o que ha fallado el propio servidor (5xx).</p>
+<p><strong>¿Dónde miro esto?</strong> Cada vez que algo «no carga» en una web (tuya o ajena), la columna de estado en Network es lo primero que hay que mirar: te dice si el problema es que no se encuentra el recurso (4xx) o que ha fallado el propio servidor (5xx).</p>
 
 <h2>Preguntas de la sesión</h2>
 <div class="papel">

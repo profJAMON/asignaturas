@@ -7,7 +7,7 @@
   "actividades": [
     {
       "tipo": "quiz",
-      "titulo": "Prueba inicial — quince preguntas",
+      "titulo": "Prueba inicial: quince preguntas",
       "preguntas": [
         {
           "pregunta": "¿Qué es una red informática?",
@@ -133,7 +133,7 @@
     },
     {
       "tipo": "relacionar",
-      "titulo": "Los aparatos de una red — ¿para qué sirve cada uno?",
+      "titulo": "Los aparatos de una red: ¿para qué sirve cada uno?",
       "pares": [
         { "izquierda": "Router", "derecha": "Conecta tu red con Internet" },
         { "izquierda": "Switch", "derecha": "Conecta entre sí los equipos de una misma red" },

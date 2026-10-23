@@ -71,7 +71,7 @@
 <p class="pie-figura">Cada bit que pasa de host a red duplica el número de subredes y parte por la mitad los equipos que caben.</p>
 </div>
 
-<h3>Practica — ¿cuántos equipos caben?</h3>
+<h3>Practica: ¿cuántos equipos caben?</h3>
 <p>Cuenta los bits de host, eleva 2 a esa cantidad y resta 2.</p>
 <div data-actividad="practica-hosts"></div>
 <h2>El método del salto</h2>
@@ -95,16 +95,16 @@ Caben                62 equipos</code></pre>
 <div class="diapos" data-diapos="subred-salto" data-valor="192.168.1.100/26" aria-label="192.168.1.100/26, paso a paso"></div>
 <p>Con ese método se responde también a la pregunta más útil de todas: <strong>¿están estos dos equipos en la misma red?</strong> Se calcula el bloque de cada uno y se comparan.</p>
 <div class="salida">
-<p><strong>192.168.1.100/26 y 192.168.1.130/26 — ¿se ven?</strong></p>
+<p><strong>192.168.1.100/26 y 192.168.1.130/26: ¿se ven?</strong></p>
 <p>Salto 64. El 100 está en el bloque que empieza en 64 (64–127). El 130 está en el que empieza en 128 (128–191). <strong>Bloques distintos → redes distintas → no se ven</strong> sin un router de por medio, aunque estén enchufados al mismo switch y tengan cables idénticos.</p>
 <p>Esa avería —«están en el mismo switch y no se ven»— la vas a encontrar de verdad, y no se arregla mirando cables.</p>
 </div>
 
-<h3>Practica — red, broadcast y rango</h3>
+<h3>Practica: red, broadcast y rango</h3>
 <p>Calcula el salto, busca el múltiplo por debajo de la dirección y rellena el bloque.</p>
 <div data-actividad="practica-red-broadcast"></div>
 
-<h3>Practica — ¿se ven o no se ven?</h3>
+<h3>Practica: ¿se ven o no se ven?</h3>
 <p>Saca el bloque de cada una y compáralos. Si no coinciden, hace falta un router.</p>
 <div data-actividad="practica-misma-red"></div>
 <h3>Comprobarlo en binario</h3>

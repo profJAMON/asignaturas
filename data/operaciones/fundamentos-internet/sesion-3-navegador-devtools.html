@@ -13,7 +13,7 @@
 
 <h2>El navegador, por dentro</h2>
 
-<p>Ya sabes que el navegador le pide páginas a un servidor y las recibe de vuelta (lo viste en la sesión 1). Pero el navegador hace mucho más que "mostrar" lo que llega: interpreta el HTML, aplica el CSS, ejecuta el código y decide, byte a byte, qué dibuja en tu pantalla. Todo ese trabajo normalmente es invisible — pero el propio navegador trae un conjunto de herramientas para verlo por dentro, en tiempo real: las <strong>DevTools</strong> ("herramientas de desarrollador").</p>
+<p>Ya sabes que el navegador le pide páginas a un servidor y las recibe de vuelta (lo viste en la sesión 1). Pero el navegador hace mucho más que «mostrar» lo que llega: interpreta el HTML, aplica el CSS, ejecuta el código y decide, byte a byte, qué dibuja en tu pantalla. Todo ese trabajo normalmente es invisible, pero el propio navegador trae un conjunto de herramientas para verlo por dentro, en tiempo real: las <strong>DevTools</strong> («herramientas de desarrollador»).</p>
 
 <h3>HTML y CSS: las dos palabras que vas a ver hoy</h3>
 <p>Toda página web está escrita con dos tipos de código:</p>
@@ -67,7 +67,7 @@
 
 <p>Las DevTools tienen muchas pestañas, pero para empezar solo necesitas conocer bien estas tres.</p>
 
-<h3>Elements (Elementos) — la estructura de la página</h3>
+<h3>Elements (Elementos): la estructura de la página</h3>
 
 <p>Muestra el HTML y el CSS tal y como los está usando el navegador en ese preciso momento. Al pasar el ratón por una línea de código, se resalta en la página qué trozo dibuja; y al revés, al hacer clic sobre algo de la página, el panel salta a la línea de código que lo genera.</p>
 
@@ -86,9 +86,9 @@
 </div>
 </div>
 
-<h3>Console (Consola) — mensajes y errores</h3>
+<h3>Console (Consola): mensajes y errores</h3>
 
-<p>Es donde el navegador "habla": avisa cuando algo ha ido mal (un archivo que no encuentra, código que falla) y también sirve para escribir instrucciones sueltas y ver el resultado al momento. Por ahora la usarás solo para leer, no para escribir código.</p>
+<p>Es donde el navegador «habla»: avisa cuando algo ha ido mal (un archivo que no encuentra, código que falla) y también sirve para escribir instrucciones sueltas y ver el resultado al momento. Por ahora la usarás solo para leer, no para escribir código.</p>
 
 <div class="salida" style="background:var(--bg);padding:16px">
 <svg viewBox="0 0 320 132" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:440px;font-family:var(--font-mono)" role="img" aria-label="Consola con dos mensajes normales en gris y un error en color: no encuentra foto-perfil.jpg, en la línea 12 de index.html">
@@ -104,9 +104,9 @@
 <p class="pie-figura">Un mensaje en color suele ser un error: indica qué archivo y en qué línea ha fallado.</p>
 </div>
 
-<h3>Network (Red) — lo que se ha descargado</h3>
+<h3>Network (Red): lo que se ha descargado</h3>
 
-<p>Lista, uno por uno, todos los archivos que el navegador ha pedido para construir la página: el propio HTML, el CSS, las imágenes... Para cada uno indica si ha llegado bien (código de estado <code>200</code>) o si ha habido un problema (por ejemplo <code>404</code>, "no encontrado").</p>
+<p>Lista, uno por uno, todos los archivos que el navegador ha pedido para construir la página: el propio HTML, el CSS, las imágenes... Para cada uno indica si ha llegado bien (código de estado <code>200</code>) o si ha habido un problema (por ejemplo <code>404</code>, «no encontrado»).</p>
 
 <div class="salida" style="background:var(--bg);padding:14px">
 <table style="border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:0.82rem;">
@@ -143,16 +143,16 @@
 </table>
 </div>
 
-<p>Fíjate en la fila de <code>foto-perfil.jpg</code>: el navegador la ha pedido, pero no la ha encontrado con ese nombre exacto — por eso aparece en <code>404</code> en vez de <code>200</code>.</p>
+<p>Fíjate en la fila de <code>foto-perfil.jpg</code>: el navegador la ha pedido, pero no la ha encontrado con ese nombre exacto, por eso aparece en <code>404</code> en vez de <code>200</code>.</p>
 
 <h2>Actividades en el ordenador</h2>
 
-<div class="nota">Estas actividades sí se hacen en el ordenador, no en el cuaderno: la idea es que "toques" las DevTools tú mismo. Usa como página de pruebas <strong>esta misma página</strong> de mi web de materiales — no vas a romper nada: lo que cambies aquí solo lo ves tú, en tu navegador, y desaparece en cuanto recargas.</div>
+<div class="nota">Estas actividades sí se hacen en el ordenador, no en el cuaderno: la idea es que «toques» las DevTools tú mismo. Usa como página de pruebas <strong>esta misma página</strong> de mi web de materiales. No vas a romper nada: lo que cambies aquí solo lo ves tú, en tu navegador, y desaparece en cuanto recargas.</div>
 
 <h3>Actividad 1 — Abre las DevTools</h3>
 <ol>
 <li>Abre esta misma página en Chrome (si ya la estás viendo, no hace falta hacer nada).</li>
-<li>Haz clic derecho en cualquier parte de la página y elige "Inspeccionar" (en algunos navegadores, "Inspeccionar elemento"). También puedes pulsar <code>F12</code>, o <code>Ctrl+Shift+I</code> (<code>Cmd+Option+I</code> en Mac).</li>
+<li>Haz clic derecho en cualquier parte de la página y elige «Inspeccionar» (en algunos navegadores, «Inspeccionar elemento»). También puedes pulsar <code>F12</code>, o <code>Ctrl+Shift+I</code> (<code>Cmd+Option+I</code> en Mac).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> se abre un panel nuevo, normalmente a un lado o abajo, con varias pestañas arriba: Elements, Console, Network… (o Elementos, Consola, Red).</p>
 
@@ -179,11 +179,11 @@
 
 <h3>Actividad 4 — El panel Styles (Estilos), dentro de Elements</h3>
 <ol start="8">
-<li>Con un elemento seleccionado en Elements, busca un panel llamado "Styles" o "Estilos" (suele aparecer al lado o debajo del árbol de etiquetas).</li>
+<li>Con un elemento seleccionado en Elements, busca un panel llamado «Styles» o «Estilos» (suele aparecer al lado o debajo del árbol de etiquetas).</li>
 <li>Localiza alguna propiedad CSS (por ejemplo <code>color</code>, el color del texto, o <code>font-size</code>, el tamaño de letra) y haz clic sobre su valor para cambiarlo. Por ejemplo, cambia el color por <code>red</code>.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> el cambio se ve al instante en la página, igual que con el texto. Apunta qué propiedad cambiaste y qué valor pusiste (pregunta 8).</p>
-<p><strong>¿Dónde miro esto?</strong> Si algún día un elemento de una página no tiene el color o el tamaño que esperabas, este es el panel donde comprobar qué reglas CSS se le están aplicando de verdad (y cuáles se están ignorando — suelen aparecer tachadas).</p>
+<p><strong>¿Dónde miro esto?</strong> Si algún día un elemento de una página no tiene el color o el tamaño que esperabas, este es el panel donde comprobar qué reglas CSS se le están aplicando de verdad (y cuáles se están ignorando: suelen aparecer tachadas).</p>
 
 <h3>Actividad 5 — La pestaña Console</h3>
 <ol start="10">
@@ -195,7 +195,7 @@
 <li>Ahora abre otra web que uses a menudo (un periódico, una tienda…), abre su Console y recarga.</li>
 </ol>
 <p><strong>Comprobación observable:</strong> en las webs grandes es muy normal ver algún aviso (amarillo) o error (rojo). Anota en el cuaderno qué web has mirado y cuántos mensajes rojos has visto (pregunta 10).</p>
-<p><strong>¿Dónde miro esto?</strong> Cuando algo "no funciona" y no sabes por qué, la Console suele ser el primer sitio donde mirar: casi siempre te dice qué archivo y qué línea están fallando.</p>
+<p><strong>¿Dónde miro esto?</strong> Cuando algo «no funciona» y no sabes por qué, la Console suele ser el primer sitio donde mirar: casi siempre te dice qué archivo y qué línea están fallando.</p>
 
 <h3>Actividad 6 — La pestaña Network</h3>
 <ol start="13">
@@ -212,7 +212,7 @@
 <ul class="checklist">
 <li>Un texto de una página no tiene el color que esperabas.</li>
 <li>Una imagen no llega a aparecer en una página.</li>
-<li>Algo de una página "no funciona", sin más pistas.</li>
+<li>Algo de una página «no funciona», sin más pistas.</li>
 <li>Quieres ver exactamente cómo está anidada una etiqueta dentro de otra.</li>
 </ul>
 <details><summary>Ver respuesta</summary>1) Elements → panel Styles. 2) Network → busca su fila y mira el estado. 3) Console → suele señalar archivo y línea. 4) Elements → el árbol de etiquetas.</details>

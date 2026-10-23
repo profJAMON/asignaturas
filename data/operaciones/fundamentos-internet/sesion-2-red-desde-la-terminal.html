@@ -45,7 +45,7 @@ C:\Users\alumno&gt; <span style="color:#4fc1ff;">ipconfig</span><br>
 </table>
 <div class="nota">⚠️ Algunos comandos de esta sesión (<code>ping</code>, <code>tracert</code>) pueden no responder en la red del instituto: hay redes que los bloquean por seguridad. No es culpa tuya: apunta lo que salga.</div>
 
-<h2>ipconfig — ¿qué IP tengo?</h2>
+<h2>ipconfig: ¿qué IP tengo?</h2>
 <p>El comando <code>ipconfig</code> te enseña la configuración de red de <strong>tu</strong> ordenador:</p>
 <div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">ipconfig</span><br>
@@ -80,7 +80,7 @@ Adaptador de Ethernet:<br>
 <div class="nota">🤔 Antes de seguir: entonces, ¿cuántas IP tiene tu ordenador ahora mismo?</div>
 <details><summary>Ver respuesta</summary>Dos, y cada una sirve para una cosa. La privada (la de <code>ipconfig</code>) lo identifica dentro de la red del aula. La pública es la del router, la que ve Internet, y la compartes con todos los ordenadores del centro.</details>
 
-<h2>ping — ¿me responde ese servidor?</h2>
+<h2>ping: ¿me responde ese servidor?</h2>
 <p><code>ping</code> envía un mensaje muy corto a otro ordenador de Internet y mide cuánto tarda en contestar. Sirve para comprobar dos cosas: que ese servidor <strong>responde</strong> y <strong>cuánto tarda</strong>.</p>
 <div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">ping google.com</span><br>
@@ -103,7 +103,7 @@ Estadísticas de ping para 142.250.184.78:<br>
 </ol>
 <p><strong>Comprobación observable:</strong> los dos dominios tienen IP distintas. Si alguno no contesta («Tiempo de espera agotado»), no significa que la web no exista: puede que ese servidor o la red del instituto no respondan a los ping. Si se queda colgado, páralo con <kbd>Ctrl</kbd> + <kbd>C</kbd>.</p>
 
-<h2>nslookup — preguntarle al DNS</h2>
+<h2>nslookup: preguntarle al DNS</h2>
 <p>Con <code>nslookup</code> le preguntas directamente al DNS: «¿qué IP tiene este dominio?». Es justo lo que hace tu navegador por dentro cada vez que escribes una dirección (sesión 1).</p>
 <div class="salida" style="background:#1e1e1e;color:#d4d4d4;border-radius:6px;padding:14px 18px;font-family:monospace;font-size:0.85em;line-height:1.7;">
 C:\Users\alumno&gt; <span style="color:#4fc1ff;">nslookup wikipedia.org</span><br>
@@ -128,7 +128,7 @@ Address: &nbsp;<span style="color:#ce9178;">185.15.59.224</span>
 </ol>
 <p><strong>Comprobación observable:</strong> cada dominio tiene su propia IP, y en los tres casos el servidor que responde es el mismo (el DNS que usa tu ordenador). En alguno pueden salir varias IP: un dominio puede tener más de una.</p>
 
-<h2>tracert — por dónde pasa la información</h2>
+<h2>tracert: por dónde pasa la información</h2>
 <p>Entre tu ordenador y el servidor no hay un cable directo: la información va saltando de router en router. <code>tracert</code> («trace route», seguir la ruta) te enseña esos saltos uno a uno.</p>
 <div class="diapos" aria-label="tracert: el camino salto a salto">
 <div class="diapo">
