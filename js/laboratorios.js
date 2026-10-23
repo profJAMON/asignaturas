@@ -20,6 +20,9 @@
              y lo que llega.
    viaje     De la URL a la pantalla, paso a paso, quitando o poniendo
              los tres ingredientes (dominio, hosting, HTTPS).
+   piezas    Un aparato dibujado (data-figura="rack") que se toca pieza
+             a pieza: la pieza sale, se ilumina y se explica debajo.
+             Las figuras, en js/piezas-redes.js (motor js/hairline.js).
 
    Para añadir uno: una función en LABS que recibe (caja, opciones).
    Lo llama js/tema.js (pintarLeccion) con iniciarLaboratorios().
@@ -622,9 +625,87 @@
     reiniciar();
   }
 
+  /* ============================================================
+     5. Piezas: un aparato que se toca pieza a pieza (23/10/2026)
+     ============================================================
+     El dibujo lo pone js/piezas-redes.js (motor js/hairline.js).
+     Pasar el ratón por una pieza la enseña; tocarla o pulsar su
+     botón la deja elegida. Los botones son la forma de llegar con
+     teclado y lector de pantalla: el dibujo va con aria-hidden. */
+
+  const PIEZAS = {};
+  function registrarPiezas(nombre, figura) { PIEZAS[nombre] = figura; }
+
+  function labPiezas(caja) {
+    const figura = PIEZAS[caja.dataset.figura];
+    if (!figura || typeof HL === 'undefined') {
+      caja.remove();
+      return;
+    }
+    cabecera(caja);
+    const partes = figura.partes;
+
+    const escena = el('div', 'lab__piezas-escena');
+    const stage = el('div', 'lab__piezas-dibujo');
+    stage.setAttribute('data-hairline', caja.dataset.figura);
+    stage.setAttribute('aria-hidden', 'true');
+    escena.appendChild(stage);
+    caja.appendChild(escena);
+
+    const fila = el('div', 'lab__fila');
+    const botones = partes.map((p, i) => {
+      const b = boton(p.nombre);
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => fijar(fijada === i ? -1 : i));
+      fila.appendChild(b);
+      return b;
+    });
+    caja.appendChild(fila);
+
+    const texto = el('p', 'lab__piezas-texto');
+    texto.setAttribute('aria-live', 'polite');
+    caja.appendChild(texto);
+
+    let fijada = -1, vista = -2, dibujo = null;
+    function ensenar(i) {
+      if (i === vista) return;
+      vista = i;
+      if (dibujo) dibujo.mostrar(i);
+      texto.textContent = '';
+      if (i < 0) {
+        texto.appendChild(el('span', 'lab__piezas-ayuda', 'Pasa el ratón por el dibujo o toca una pieza. También puedes usar los botones.'));
+      } else {
+        texto.appendChild(el('strong', null, partes[i].nombre + '. '));
+        texto.appendChild(document.createTextNode(partes[i].texto));
+      }
+    }
+    function fijar(i) {
+      fijada = i;
+      botones.forEach((b, k) => {
+        b.classList.toggle('lab__boton--activo', k === i);
+        b.setAttribute('aria-pressed', String(k === i));
+      });
+      vista = -2;
+      ensenar(i);
+    }
+
+    try {
+      HL.inject(document);
+      const svg = HL.mk('svg', { viewBox: '0 0 400 320', 'aria-hidden': 'true', focusable: 'false' }, stage);
+      dibujo = figura.montar({ stage, svg }, {
+        encima: i => ensenar(i >= 0 ? i : fijada),
+        toca: i => fijar(i),
+        fuera: () => ensenar(fijada),
+      });
+    } catch (e) {
+      escena.remove();
+    }
+    ensenar(-1);
+  }
+
   /* ---------- arranque ---------- */
 
-  const LABS = { terminal: labTerminal, url: labUrl, peticion: labPeticion, viaje: labViaje };
+  const LABS = { terminal: labTerminal, url: labUrl, peticion: labPeticion, viaje: labViaje, piezas: labPiezas };
 
   function iniciarLaboratorios(raiz) {
     (raiz || document).querySelectorAll('.lab[data-lab]').forEach(caja => {
@@ -637,6 +718,9 @@
       f(caja);
     });
   }
-  if (typeof window !== 'undefined') window.iniciarLaboratorios = iniciarLaboratorios;
+  if (typeof window !== 'undefined') {
+    window.iniciarLaboratorios = iniciarLaboratorios;
+    window.registrarPiezas = registrarPiezas;
+  }
   if (typeof module !== 'undefined' && module.exports) module.exports = { simular, partirURL };
 })();

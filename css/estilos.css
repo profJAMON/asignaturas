@@ -4594,6 +4594,32 @@ body::after {
   min-width: 0;
 }
 .leccion .lab .probador__cabecera { margin-bottom: 0; }
+/* Laboratorio «piezas» (23/10/2026): un aparato dibujado con el motor
+   Hairline (js/hairline.js + js/piezas-redes.js) que se toca pieza a
+   pieza. Sobre la pizarra de las figuras, con los colores de las
+   diapositivas: la pieza elegida, en el cálido («lo nuevo»). Sin
+   colores nuevos: todo sale de variables que ya están en los dos temas. */
+.lab__piezas-escena {
+  background: var(--figura-bg);
+  border: 1px solid var(--figura-borde);
+  border-radius: 6px;
+  padding: 0.2rem;
+}
+.lab__piezas-dibujo {
+  width: min(100%, 30rem);
+  margin: 0 auto;
+  cursor: pointer;
+  --hl-plate: var(--figura-bg);
+  --hl-edge: var(--diapo-tenue);
+  --hl-mid: var(--diapo-tenue);
+  --hl-lo: var(--diapo-caja-borde);
+  --hl-hi: var(--diapo-calido);
+}
+.leccion .lab__piezas-texto { margin: 0; min-height: 4.8em; color: var(--text); }
+.leccion .lab__piezas-ayuda { color: var(--text-dim); font-style: italic; }
+@media print {
+  .lab__piezas-escena { break-inside: avoid; }
+}
 .lab__fila { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.5rem; min-width: 0; }
 .lab__boton {
   font-family: var(--font-mono);
