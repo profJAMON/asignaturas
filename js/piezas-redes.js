@@ -7,7 +7,8 @@
    Figuras: rack, roseta y rj45 (UT3 S7); switch y tarjeta (UT3, tarjeta de
    red y enlace); cable-utp (UT3 S5); comprobador (UT3 herramientas);
    coaxial (UT3 coaxial); sfp (UT4 conectores y empalmes); cuadro, regleta
-   y extintor (UT2 riesgo eléctrico e incendios). El marco, los
+   y extintor (UT2 riesgo eléctrico e incendios); averias (taller cruzado y
+   averías) y conector-f (taller del conector F). El marco, los
    botones y el texto los pone js/laboratorios.js (tipo «piezas»).
 
      <div class="lab" data-lab="piezas" data-figura="rack"
@@ -1390,6 +1391,169 @@ registrarPiezas('extintor', {
     bag.add(pointer(stage, {
       move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 24)),
       down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 24)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Comprobador: las averías (taller «Cruzado y averías», parte 2).
+   No se tocan piezas: cada botón es una avería, y las luces
+   recorren los 8 pines encendiéndose como con ese fallo.
+   ------------------------------------------------------------ */
+registrarPiezas('averias', {
+  ayuda: 'Elige un cable con los botones y mira cómo se encienden las luces en los dos módulos, pin a pin.',
+  partes: [
+    { nombre: 'Cable bien hecho', texto: 'Las luces van a la par: 1-1, 2-2, 3-3… hasta 8-8. Así tiene que salir un cable directo.' },
+    { nombre: 'Circuito abierto', texto: 'Una luz (aquí la 7) no se enciende en ningún lado. Ese hilo no llega al fondo del conector, está cortado o su contacto no ha bajado.' },
+    { nombre: 'Hilos cruzados', texto: 'Se encienden todas, pero descolocadas: la 3 del principal con la 4 del remoto y la 4 con la 3. Dos hilos intercambiados al ordenar (el clásico: verde y azul).' },
+    { nombre: 'Cortocircuito', texto: 'En el remoto se encienden dos luces a la vez (o ninguna, según el modelo). Dos contactos se tocan: un hilo pelado que toca a otro o una cuña que ha cortado el aislante.' },
+    { nombre: 'Todas apagadas', texto: 'Nada en el remoto. Pila gastada, extremos mal enchufados en el comprobador o cable cortado entero.' },
+    { nombre: 'Par partido', texto: '¡Todo bien, 1-1 hasta 8-8! Pero los dos extremos tienen el mismo orden equivocado. El comprobador básico no lo detecta: mira siempre los colores.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, open, poly, rrect, mk, place, pointer, put, register, solid, disposer, rings, prism, facing } = HL;
+    // qué luces del remoto se encienden cuando el principal manda por el pin i (0 a 7)
+    const MAPA = [
+      (i) => [i],
+      (i) => (i === 6 ? [] : [i]),
+      (i) => [i === 2 ? 3 : i === 3 ? 2 : i],
+      (i) => (i === 3 || i === 4 ? [3, 4] : [i]),
+      () => [],
+      (i) => [i],
+    ];
+    const bag = disposer();
+    const C = Cam(45, 0.5, 4.1);
+    fit(C, [[0, 0, 0], [26, 0, 9], [0, 46, 0], [56, 0, 8], [56, 44, 0], [20, 74, 0]], 200, 160);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+    const principal = solid(g), remoto = solid(g);
+    { const [r, i] = rings(0, 0, 26, 46, 3, 1.2); put(principal, prism(P, front, r, i, 0, 9)); }
+    { const [r, i] = rings(32, 6, 56, 40, 3, 1.2); put(remoto, prism(P, front, r, i, 0, 8)); }
+    mk('path', { d: poly(rrect(3, 6, 10, 14, 1.4).map((q) => P(q.u, q.v, 9))) + poly(rrect(1, 27, 25, 31, 1.4).map((q) => P(q.u, q.v, 9))) + poly(rrect(33, 21, 55, 25, 1.4).map((q) => P(q.u, q.v, 8))), class: 'nf lo' }, g);
+    const lx = (x0, i) => x0 + 2.2 + i * 2.35;
+    const lp = [], lr = [];
+    for (let i = 0; i < 8; i++) {
+      lp.push(mk('circle', { r: 1.15 }, g)); place(lp[i], P(lx(0, i), 29, 9));
+      lr.push(mk('circle', { r: 1.15 }, g)); place(lr[i], P(lx(32, i) - 1, 23, 8));
+    }
+    const clavP = solid(g), clavR = solid(g), cable = mk('path', { class: 'nf' }, g);
+    put(clavP, PZ.cajaY(P, 9, 2, 15, 6, 0.8, 0.4, 46, 53));
+    put(clavR, PZ.cajaY(P, 41, 2, 47, 6, 0.8, 0.4, 40, 47));
+    cable.setAttribute('d', open(PZ.curva(P, [12, 53, 4], [12, 76, 0.5], [44, 72, 0.5], [44, 47, 4], 24)));
+
+    let act = -1, desde = 0, ultimo = -2;
+    function luces(now) {
+      const paso = act < 0 ? -1 : Math.floor((now - desde) / 650) % 9; // 8 pines y una pausa
+      if (paso === ultimo) return;
+      ultimo = paso;
+      const enRemoto = paso >= 0 && paso < 8 ? MAPA[act](paso) : [];
+      for (let i = 0; i < 8; i++) {
+        lp[i].setAttribute('class', 'dot ' + (act < 0 ? (i === 0 ? 'm' : 'off') : i === paso ? '' : 'off'));
+        lr[i].setAttribute('class', 'dot ' + (enRemoto.includes(i) ? '' : 'off'));
+      }
+    }
+    const B = register(stage, (_dt, now) => { luces(now); return act >= 0; });
+    bag.add(B.unregister);
+
+    function mostrar(a) {
+      if (a === act) return;
+      act = a; desde = performance.now(); ultimo = -2;
+      cable.classList.toggle('hi', a >= 0);
+      B.wake();
+    }
+    mostrar(-1);
+    // el dibujo no elige nada: se usa con los botones
+    bag.add(pointer(stage, { move: () => avisos.encima(-1), down: () => {}, leave: () => avisos.fuera() }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Conector F montado en un coaxial RG-6 (taller del conector F).
+   Al elegir la malla o el dieléctrico, el conector sale para que
+   se vea cómo queda el cable preparado.
+   ------------------------------------------------------------ */
+registrarPiezas('conector-f', {
+  partes: [
+    { nombre: 'Conductor central', texto: 'El hilo del centro, pelado unos 6 mm. Montado, tiene que sobresalir 1-2 mm por delante del conector: hace de patilla. Si sobra, se corta.' },
+    { nombre: 'Dieléctrico', texto: 'El aislante blanco. Tiene que quedar a ras de la base interior del conector. Si el cable lleva lámina, se deja pegada a él.' },
+    { nombre: 'Malla', texto: 'Se dobla hacia atrás sobre la cubierta. Lo más importante del montaje: ningún pelo de la malla puede tocar el conductor central, o hay cortocircuito.' },
+    { nombre: 'Cuerpo del conector', texto: 'Se mete girando o empujando y, si es de compresión, se aprieta con su herramienta hasta el tope. Montado, no gira ni sale al tirar, y la malla no se ve por fuera.' },
+    { nombre: 'Tuerca', texto: 'La rosca que se enrosca en la toma de la tele o del descodificador. Se aprieta a mano.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, poly, tween, tset, tval, tdone, mk, pointer, put, register, solid, disposer } = HL;
+    const CENTRO = 0, DIEL = 1, MALLA = 2, CUERPO = 3, TUERCA = 4;
+    const CZ = 6.5;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 5.2);
+    fit(C, [[-6.5, -36, 0], [6.5, -36, 13], [-6.5, 34, 0], [6.5, 34, 13]], 200, 166);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const cubierta = solid(g), malla = solid(g), trama = mk('path', { class: 'nf lo' }, g);
+    const diel = solid(g), centro = solid(g);
+    const cuerpo = solid(g), tuerca = solid(g);
+    // la malla doblada hacia atrás: un anillo sobre la cubierta, justo detrás del corte
+    put(cubierta, PZ.tubo(P, 0, CZ, 5.2, -36, 0));
+    put(malla, PZ.tubo(P, 0, CZ, 5.7, -7, 0));
+    let d = '';
+    for (let i = 0; i < 6; i++) d += PZ.helice(P, 0, CZ, 5.75, -7, 0, 7, i * 1.05, true) + PZ.helice(P, 0, CZ, 5.75, -7, 0, -7, i * 1.05, true);
+    trama.setAttribute('d', d);
+    put(diel, PZ.tubo(P, 0, CZ, 3.2, 0, 4));
+    put(centro, PZ.tubo(P, 0, CZ, 0.55, 4, 10.8));
+    // tuerca hexagonal: anillo de seis lados redondeados
+    const hex = (R, giro) => {
+      const pts = [];
+      for (let k = 0; k < 6; k++) for (let j = -1; j <= 1; j++) {
+        const a = giro + (k * Math.PI) / 3 + j * 0.08;
+        const r = j === 0 ? R : R * 0.97;
+        pts.push({ u: r * Math.cos(a), v: CZ + r * Math.sin(a), nu: Math.cos(a), nv: Math.sin(a) });
+      }
+      return pts;
+    };
+    const t = { sale: tween(0), gira: tween(0) };
+    let pintado = '', act = -2;
+    function pintar(now) {
+      const o = tval(t.sale, now), a = tval(t.gira, now);
+      const clave = [o, a].map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      put(cuerpo, PZ.tubo(P, 0, CZ, 6.2, -10 + o, 4 + o));
+      put(tuerca, PZ.bloqueY(P, hex(7, a), PZ.aro(0, CZ, 4.4, 24), 4 + o, 9.2 + o));
+    }
+    const B = register(stage, (_dt, now) => { pintar(now); return Object.values(t).some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [CENTRO, [0, 10.5, CZ]], [CENTRO, [0.8, 10, CZ + 0.8]],
+      [DIEL, [0, 6, CZ + 6.5]],
+      [MALLA, [0, -12, CZ + 6.5]],
+      [CUERPO, [6.2, -4, CZ]], [CUERPO, [0, -6, CZ + 6.2]], [CUERPO, [4.4, -8, CZ + 4.4]],
+      [TUERCA, [6.6, 6.5, CZ]], [TUERCA, [0, 6.5, CZ + 7]], [TUERCA, [4.6, 8, CZ + 4.6]],
+    ];
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(t.sale, a === MALLA || a === DIEL ? 20 : 0, now, 0);
+      tset(t.gira, a === TUERCA ? Math.PI / 3 : 0, now, 0);
+      centro.sil.classList.toggle('hi', a === CENTRO);
+      diel.sil.classList.toggle('hi', a === DIEL);
+      malla.sil.classList.toggle('hi', a === MALLA); trama.classList.toggle('hi', a === MALLA);
+      cuerpo.sil.classList.toggle('hi', a === CUERPO);
+      tuerca.sil.classList.toggle('hi', a === TUERCA);
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 30)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 30)),
       leave: () => avisos.fuera(),
     }));
     bag.add(() => svg.replaceChildren());

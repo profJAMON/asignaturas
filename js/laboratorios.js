@@ -673,7 +673,7 @@
       if (dibujo) dibujo.mostrar(i);
       texto.textContent = '';
       if (i < 0) {
-        texto.appendChild(el('span', 'lab__piezas-ayuda', 'Pasa el ratón por el dibujo o toca una pieza. También puedes usar los botones.'));
+        texto.appendChild(el('span', 'lab__piezas-ayuda', figura.ayuda || 'Pasa el ratón por el dibujo o toca una pieza. También puedes usar los botones.'));
       } else {
         texto.appendChild(el('strong', null, partes[i].nombre + '. '));
         texto.appendChild(document.createTextNode(partes[i].texto));
