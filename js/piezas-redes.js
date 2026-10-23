@@ -6,7 +6,8 @@
    salir y encenderse, con su explicación debajo.
    Figuras: rack, roseta y rj45 (UT3 S7); switch y tarjeta (UT3, tarjeta de
    red y enlace); cable-utp (UT3 S5); comprobador (UT3 herramientas);
-   coaxial (UT3 coaxial); sfp (UT4 conectores y empalmes). El marco, los
+   coaxial (UT3 coaxial); sfp (UT4 conectores y empalmes); cuadro, regleta
+   y extintor (UT2 riesgo eléctrico e incendios). El marco, los
    botones y el texto los pone js/laboratorios.js (tipo «piezas»).
 
      <div class="lab" data-lab="piezas" data-figura="rack"
@@ -1087,6 +1088,302 @@ registrarPiezas('sfp', {
       lcs.forEach((s) => s.sil.classList.toggle('hi', a === LC)); puente.sil.classList.toggle('hi', a === LC);
       ferulas.forEach((s) => s.sil.classList.toggle('hi', a === FERULA));
       fibras.classList.toggle('hi', a === LATI); botas.forEach((s) => s.sil.classList.toggle('hi', a === LATI));
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 24)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 24)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Cuadro eléctrico (UT2 riesgo eléctrico): tapa abierta, el
+   diferencial con su botón T y los magnetotérmicos. Al pulsar la
+   T, el diferencial salta.
+   ------------------------------------------------------------ */
+registrarPiezas('cuadro', {
+  partes: [
+    { nombre: 'Tapa', texto: 'El cuadro va siempre cerrado y no se abre: dentro hay partes con tensión. Si salta un diferencial, me avisas a mí.' },
+    { nombre: 'Diferencial', texto: 'Detecta que se está escapando corriente (por ejemplo, a través de una persona) y corta en milisegundos. Los de casa saltan con 30 mA. Es el que te salva la vida.' },
+    { nombre: 'Botón de prueba T', texto: 'Simula una fuga de corriente: al pulsarlo, el diferencial tiene que saltar. Si no salta, no te protege. Conviene probarlo de vez en cuando.' },
+    { nombre: 'Magnetotérmicos', texto: 'Uno por circuito (enchufes, luces…). Cortan si hay un cortocircuito o si se pide más corriente de la que aguanta el cable. Protegen la instalación, no a las personas.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, poly, open, seg, rrect, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer } = HL;
+    const TAPA = 0, DIF = 1, BOTON = 2, MAGNETO = 3;
+    const W = 48, D = 12, H = 40, Z0 = 15, Z1 = 29; // la fila de aparatos va de Z0 a Z1
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.4);
+    fit(C, [[0, 0, 0], [W, 0, H], [0, D, 0], [W, D, H], [-18, D + 47, 0], [-18, D + 47, H], [W, D + 6, 0]], 200, 160);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const caja = solid(g);
+    put(caja, PZ.cajaY(P, 0, 0, W, H, 2.5, 1.2, 0, D));
+    // la placa interior con la ranura por donde asoman los aparatos
+    mk('path', { d: poly(rrect(4, Z0 - 2, W - 4, Z1 + 2, 1).map((q) => P(q.u, D, q.v))), class: 'nf lo' }, g);
+    // aparatos: el diferencial (ancho) y cuatro magnetotérmicos
+    const MOD = [[5, 17], [19, 24.5], [25.5, 31], [32, 37.5], [38.5, 44]];
+    const modulos = MOD.map(() => solid(g));
+    MOD.forEach(([x0, x1], i) => put(modulos[i], PZ.cajaY(P, x0, Z0, x1, Z1, 0.8, 0.5, D - 2, D + 3)));
+    const palancas = MOD.map(() => solid(g));
+    const boton = solid(g);
+    const tapa = solid(g);
+    const baja = MOD.map(() => tween(0)), pulsa = tween(0), cierra = tween(0);
+    let pintado = '', act = -2;
+
+    function pintar(now) {
+      const v = baja.map((t) => tval(t, now)).concat([tval(pulsa, now), tval(cierra, now)]);
+      const clave = v.map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      MOD.forEach(([x0, x1], i) => {
+        const cx = (x0 + x1) / 2, zc = 23.5 - v[i] * 4;
+        put(palancas[i], PZ.cajaY(P, cx - 1.4, zc - 1.6, cx + 1.4, zc + 1.6, 0.5, 0.3, D + 3, D + 5));
+      });
+      const bt = v[5];
+      put(boton, PZ.cajaY(P, 7, Z0 + 1.5, 10.5, Z0 + 5, 0.6, 0.3, D + 3, D + 4.2 - bt));
+      // la tapa gira sobre su lado izquierdo: abierta, queda delante y a la izquierda, sin tapar los aparatos
+      const a = (1 - v[6]) * 1.9, pts = [];
+      const rot = (x, y, z) => P(x * Math.cos(a) - y * Math.sin(a), D + x * Math.sin(a) + y * Math.cos(a), z);
+      for (const x of [0, W]) for (const y of [0, 1.2]) for (const z of [0, H]) pts.push(rot(x, y, z));
+      put(tapa, { sil: poly(HL.hull(pts)), crease: poly(rrect(10, 8, W - 10, H - 8, 2).map((q) => rot(q.u, 1.2, q.v))) });
+    }
+    const B = register(stage, (_dt, now) => {
+      pintar(now);
+      return baja.some((t) => !tdone(t, now)) || !tdone(pulsa, now) || !tdone(cierra, now);
+    });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [TAPA, [-10, D + 26, H - 4]], [TAPA, [-6, D + 16, 6]], [TAPA, [-14, D + 38, 20]], [TAPA, [-3, D + 8, H - 2]], [TAPA, [W / 2, D, H - 4]], [TAPA, [W / 2, D, 5]],
+      [DIF, [11, D + 3, 23]], [DIF, [7, D + 3, 27]], [DIF, [15, D + 3, 19]],
+      [BOTON, [8.7, D + 4, Z0 + 3.2]],
+      [MAGNETO, [21.7, D + 3, 23]], [MAGNETO, [28.2, D + 3, 23]], [MAGNETO, [34.7, D + 3, 23]], [MAGNETO, [41.2, D + 3, 23]],
+    ];
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(baja[0], a === DIF || a === BOTON ? 1 : 0, now, a === BOTON ? 350 : 0);
+      for (let i = 1; i < MOD.length; i++) tset(baja[i], a === MAGNETO && i === 2 ? 1 : 0, now, 0);
+      tset(pulsa, a === BOTON ? 1 : 0, now, 0);
+      tset(cierra, a === TAPA ? 1 : 0, now, 0);
+      tapa.sil.classList.toggle('hi', a === TAPA);
+      modulos[0].sil.classList.toggle('hi', a === DIF);
+      boton.sil.classList.toggle('hi', a === BOTON);
+      for (let i = 1; i < MOD.length; i++) modulos[i].sil.classList.toggle('hi', a === MAGNETO);
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 26)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 26)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Regleta (UT2 riesgo eléctrico): cuatro tomas schuko, una con
+   un aparato enchufado, interruptor con piloto, cable y clavija.
+   ------------------------------------------------------------ */
+registrarPiezas('regleta', {
+  partes: [
+    { nombre: 'Tomas', texto: 'Cuanto más enchufas, más corriente pasa por la regleta. No se sobrecarga ni se enchufa una regleta en otra. Si está caliente al tacto, algo va mal.' },
+    { nombre: 'Interruptor', texto: 'Corta la corriente de toda la regleta; el piloto dice si está encendida. Pero antes de abrir un equipo se desenchufa: apagarlo no basta.' },
+    { nombre: 'Cable', texto: 'Antes de enchufar, mira que no esté pelado ni chamuscado. Nunca va por debajo de una alfombra, donde se pisa y nadie lo ve.' },
+    { nombre: 'Clavija', texto: 'Se desenchufa tirando de la clavija, nunca del cable. Si está caliente o chamuscada, no se usa y me avisas.' },
+    { nombre: 'Toma de tierra', texto: 'Las láminas metálicas de los lados de cada toma y de la clavija. Dan a la corriente que se escapa un camino más fácil que tu cuerpo. Nunca se quita ni se anula con un adaptador.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, poly, open, seg, rrect, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer, rings, prism, facing } = HL;
+    const TOMAS = 0, INTER = 1, CABLE = 2, CLAVIJA = 3, TIERRA = 4;
+    const L = 64, AN = 15, AL = 7, XT = [9, 22, 35, 48], YT = AN / 2;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.9);
+    fit(C, [[0, 0, 0], [L, 0, AL], [0, AN, 0], [L, AN, AL], [-24, 46, 0], [-30, 30, 0], [22, YT, 26]], 200, 165);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+    const cuerpo = solid(g);
+    { const [r, i] = rings(0, 0, L, AN, 3, 1.2); put(cuerpo, prism(P, front, r, i, 0, AL)); }
+    let tomas = '', agujeros = '';
+    for (const x of XT) {
+      tomas += poly(PZ.aro(x, YT, 5, 32).map((q) => P(q.u, q.v, AL)));
+      agujeros += poly(PZ.aro(x - 2.2, YT, 0.6, 12).map((q) => P(q.u, q.v, AL))) + poly(PZ.aro(x + 2.2, YT, 0.6, 12).map((q) => P(q.u, q.v, AL)));
+    }
+    const bocas = mk('path', { d: tomas, class: 'nf' }, g);
+    mk('path', { d: agujeros, class: 'nf lo' }, g);
+    // tierra: dos láminas en cada toma (arriba y abajo del círculo)
+    let tierraT = '';
+    for (const x of XT) tierraT += seg(P(x - 1.2, YT - 4.3, AL), P(x + 1.2, YT - 4.3, AL)) + seg(P(x - 1.2, YT + 4.3, AL), P(x + 1.2, YT + 4.3, AL));
+    const tierraTomas = mk('path', { d: tierraT, class: 'nf' }, g);
+    // interruptor de balancín con su piloto
+    const inter = solid(g);
+    { const [r, i] = rings(55, 4, 61, 11, 1, 0.5); put(inter, prism(P, front, r, i, AL, AL + 1.6)); }
+    const piloto = mk('circle', { r: 1.1 }, g);
+    place(piloto, P(58, 7.5, AL + 1.7));
+    // un aparato enchufado en la segunda toma: su clavija de pie y su cable
+    const enchufada = solid(g), cableEnch = mk('path', { class: 'nf' }, g);
+    // cable de la regleta y su clavija, tirada en el suelo
+    const cable = mk('path', { class: 'nf' }, g);
+    const clavija = solid(g), patillas = [solid(g), solid(g)], laminas = solid(g);
+    const t = { saca: tween(0), sube: tween(0) };
+    let pintado = '', act = -2;
+
+    function pintar(now) {
+      const s = tval(t.saca, now), u = tval(t.sube, now);
+      const clave = [s, u].map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      const x = XT[1], z0 = AL + s;
+      { const [r, i] = [PZ.aro(x, YT, 4.4, 32), PZ.aro(x, YT, 3.8, 32)]; put(enchufada, prism(P, front, r, i, z0, z0 + 11)); }
+      cableEnch.setAttribute('d', open(PZ.curva(P, [x, YT, z0 + 11], [x, YT, z0 + 20], [x + 10, YT - 6, 26], [x + 18, YT - 10, 30], 12)));
+      // clavija de la regleta: cilindro tumbado, patillas hacia el alumno
+      const cx = -20, cy0 = 30, cz = 4.2 + u;
+      put(clavija, PZ.tubo(P, cx, cz, 4.2, cy0, cy0 + 9));
+      put(laminas, PZ.cajaY(P, cx - 1, cz + 3.7, cx + 1, cz + 4.4, 0.2, 0.1, cy0 + 5, cy0 + 9));
+      put(patillas[0], PZ.tubo(P, cx - 2.4, cz, 0.6, cy0 + 9, cy0 + 14));
+      put(patillas[1], PZ.tubo(P, cx + 2.4, cz, 0.6, cy0 + 9, cy0 + 14));
+      cable.setAttribute('d', open(PZ.curva(P, [0, YT, AL / 2], [-14, YT, 1], [cx, 10, 1], [cx, cy0, cz], 16)));
+    }
+    function luz() { piloto.setAttribute('class', 'dot ' + (act === INTER ? 'off' : act < 0 ? '' : 'm')); }
+    const B = register(stage, (_dt, now) => { pintar(now); luz(); return Object.values(t).some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [TOMAS, [XT[0], YT, AL]], [TOMAS, [XT[2], YT, AL]], [TOMAS, [XT[3], YT, AL]], [TOMAS, [XT[1], YT, AL + 8]],
+      [INTER, [58, 7.5, AL + 1.6]],
+      [CABLE, [-10, YT, 1]], [CABLE, [-20, 14, 1]], [CABLE, [-3, YT, 2]],
+      [CLAVIJA, [-20, 34, 8]], [CLAVIJA, [-20, 42, 4]], [CLAVIJA, [-16, 36, 4]],
+      [TIERRA, [XT[0], YT + 4.3, AL]], [TIERRA, [XT[2], YT + 4.3, AL]], [TIERRA, [XT[3], YT - 4.3, AL]],
+    ];
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(t.saca, a === TOMAS ? 9 : 0, now, 0);
+      tset(t.sube, a === CLAVIJA ? 5 : 0, now, 0);
+      bocas.classList.toggle('hi', a === TOMAS);
+      inter.sil.classList.toggle('hi', a === INTER);
+      cable.classList.toggle('hi', a === CABLE);
+      clavija.sil.classList.toggle('hi', a === CLAVIJA); patillas.forEach((p) => p.sil.classList.toggle('hi', a === CLAVIJA));
+      tierraTomas.classList.toggle('hi', a === TIERRA); laminas.sil.classList.toggle('hi', a === TIERRA);
+      luz();
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 22)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 22)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Extintor de polvo (UT2 incendios): las piezas en el orden en
+   que se usa. La anilla sale, la boquilla apunta, la maneta baja.
+   ------------------------------------------------------------ */
+registrarPiezas('extintor', {
+  partes: [
+    { nombre: '1. Anilla', texto: 'Primero se quita la anilla (el pasador de seguridad). Mientras está puesta, la maneta no baja y el extintor no se dispara sin querer.' },
+    { nombre: '2. Boquilla', texto: 'Después se coge la manguera y se apunta la boquilla a la base de las llamas, no a las llamas: lo que hay que apagar es lo que está ardiendo.' },
+    { nombre: '3. Maneta', texto: 'Por último se aprieta la maneta contra el asa y se mueve el chorro de un lado a otro, barriendo la base del fuego.' },
+    { nombre: 'Manómetro', texto: 'Dice si el extintor tiene presión. La aguja tiene que estar en la zona verde; si no, está descargado y no sirve.' },
+    { nombre: 'Etiqueta', texto: 'Dice qué lleva dentro (este, polvo) y para qué fuegos sirve. El de polvo y el de CO₂ valen para fuegos eléctricos, siempre con la corriente cortada.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, poly, open, seg, rrect, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer, prism, facing } = HL;
+    const ANILLA = 0, BOQUILLA = 1, MANETA = 2, MANOMETRO = 3, ETIQUETA = 4;
+    const R = 8, HC = 46;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 4.4);
+    fit(C, [[-R, -R, 0], [R, R, 0], [-R, -R, HC + 14], [R, R, HC + 14], [16, 2, HC + 12], [-4, 30, 26], [6, 14, HC + 12]], 200, 162);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+    const cuerpo = solid(g);
+    put(cuerpo, prism(P, front, PZ.aro(0, 0, R, 48).map((q) => ({ u: q.u, v: q.v, nu: q.nu, nv: q.nv })), PZ.aro(0, 0, R - 1.2, 48), 0, HC));
+    // hombro y cuello hasta la válvula
+    const hombro = solid(g);
+    put(hombro, { sil: poly(HL.hull(PZ.aro(0, 0, R - 0.5, 48).map((q) => P(q.u, q.v, HC)).concat(PZ.aro(0, 0, 2.8, 24).map((q) => P(q.u, q.v, HC + 5))))), crease: '' });
+    const valvula = solid(g);
+    put(valvula, prism(P, front, PZ.aro(0, 0, 2.6, 24), PZ.aro(0, 0, 2, 24), HC + 5, HC + 10));
+    // etiqueta: una banda en la cara de delante
+    const etiqueta = mk('path', { class: 'nf' }, g);
+    const banda = (z0, z1) => {
+      const arco = (z) => { const o = []; for (let a = -0.15; a <= 1.75; a += 0.1) o.push(P(R * Math.cos(a) + 0.05, R * Math.sin(a) + 0.05, z)); return o; };
+      const s = arco(z0), e = arco(z1);
+      return poly(s.concat(e.reverse()));
+    };
+    etiqueta.setAttribute('d', banda(14, 32));
+    const lineas = mk('path', { class: 'nf lo' }, g);
+    { let d = ''; for (const z of [18, 22, 26]) { const o = []; for (let a = 0.1; a <= 1.4; a += 0.1) o.push(P(R * Math.cos(a), R * Math.sin(a), z)); d += open(o); } lineas.setAttribute('d', d); }
+    // manómetro en la válvula, mirando al alumno
+    const mano = mk('path', { class: 'nf' }, g);
+    mano.setAttribute('d', poly(PZ.aro(0.8, HC + 7.2, 2.8, 24).map((q) => P(q.u, 3.4, q.v))) + seg(P(0.8, 3.5, HC + 7.2), P(2.2, 3.5, HC + 9)));
+    const aguja = mk('circle', { r: 0.9 }, g);
+    place(aguja, P(2.2, 3.5, HC + 9));
+    const asa = solid(g), maneta = solid(g);
+    const anilla = mk('path', { class: 'nf' }, g);
+    const manguera = mk('path', { class: 'nf' }, g), boquilla = solid(g);
+    const t = { anilla: tween(0), boq: tween(0), maneta: tween(0) };
+    let pintado = '', act = -2;
+
+    function pintar(now) {
+      const an = tval(t.anilla, now), bq = tval(t.boq, now), mn = tval(t.maneta, now);
+      const clave = [an, bq, mn].map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      put(asa, PZ.cajaY(P, 1, HC + 9, 15, HC + 10.4, 0.5, 0.25, -1.5, 1.5));
+      // la maneta sube en ángulo; apretada, baja hasta el asa
+      const zt = HC + 15 - mn * 3.6;
+      put(maneta, { sil: poly(HL.hull([[1, -1.5, HC + 11.2], [1, 1.5, HC + 11.2], [1, -1.5, HC + 12.6], [1, 1.5, HC + 12.6], [15, -1.5, zt], [15, 1.5, zt], [15, -1.5, zt + 1.4], [15, 1.5, zt + 1.4]].map(([x, y, z]) => P(x, y, z)))), crease: '' });
+      // anilla: pasador atravesando la válvula y su aro; quitada, sale hacia delante
+      const ay = 2 + an * 8;
+      const aro = PZ.aro(4, HC + 11.5, 2.4, 24).map((q) => P(q.u, ay + 4, q.v));
+      anilla.setAttribute('d', seg(P(4, ay - 3, HC + 11.5), P(4, ay + 1.6, HC + 11.5)) + poly(aro));
+      // manguera: sale de la válvula, baja por el lado y acaba en la boquilla; elegida, apunta hacia delante
+      const fin = [ -R - 1 + bq * 4, 6 + bq * 22, 22 + bq * 4 ];
+      manguera.setAttribute('d', open(PZ.curva(P, [-2, 0, HC + 7], [-R - 4, 0, HC + 4], [-R - 3, 3 + bq * 6, 34], fin, 18)));
+      put(boquilla, PZ.cajaY(P, fin[0] - 1.2, fin[2] - 1.2, fin[0] + 1.2, fin[2] + 1.2, 0.6, 0.3, fin[1], fin[1] + 5));
+    }
+    function luz() { aguja.setAttribute('class', 'dot ' + (act < 0 || act === MANOMETRO ? '' : 'm')); }
+    const B = register(stage, (_dt, now) => { pintar(now); luz(); return Object.values(t).some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [ANILLA, [4, 6, HC + 11.5]], [ANILLA, [4, 8, HC + 13]],
+      [BOQUILLA, [-R - 1, 8, 22]], [BOQUILLA, [-R - 3, 2, 36]], [BOQUILLA, [-R - 2, 0, 44]],
+      [MANETA, [12, 0, HC + 14]], [MANETA, [8, 0, HC + 13]], [MANETA, [14, 0, HC + 10]],
+      [MANOMETRO, [0.8, 3.4, HC + 7.2]],
+      [ETIQUETA, [R * 0.7, R * 0.7, 23]], [ETIQUETA, [R, 0, 18]], [ETIQUETA, [0, R, 28]],
+    ];
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      // en orden: para apuntar o apretar, la anilla ya está quitada
+      tset(t.anilla, a === ANILLA || a === BOQUILLA || a === MANETA ? 1 : 0, now, 0);
+      tset(t.boq, a === BOQUILLA || a === MANETA ? 1 : 0, now, a === ANILLA ? 0 : 150);
+      tset(t.maneta, a === MANETA ? 1 : 0, now, 350);
+      anilla.classList.toggle('hi', a === ANILLA);
+      manguera.classList.toggle('hi', a === BOQUILLA); boquilla.sil.classList.toggle('hi', a === BOQUILLA);
+      maneta.sil.classList.toggle('hi', a === MANETA);
+      mano.classList.toggle('hi', a === MANOMETRO);
+      etiqueta.classList.toggle('hi', a === ETIQUETA);
+      luz();
       B.wake();
     }
     mostrar(-1);
