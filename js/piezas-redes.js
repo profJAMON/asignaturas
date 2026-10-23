@@ -4,8 +4,9 @@
    Dibujos isométricos de trazo, hechos con el motor Hairline
    (js/hairline.js), en los que el alumno toca una pieza y la ve
    salir y encenderse, con su explicación debajo.
-   Figuras: rack, roseta y rj45 (UT3 S7) y switch (UT3, tarjeta de red y
-   enlace). El marco, los
+   Figuras: rack, roseta y rj45 (UT3 S7); switch y tarjeta (UT3, tarjeta de
+   red y enlace); cable-utp (UT3 S5); comprobador (UT3 herramientas);
+   coaxial (UT3 coaxial); sfp (UT4 conectores y empalmes). El marco, los
    botones y el texto los pone js/laboratorios.js (tipo «piezas»).
 
      <div class="lab" data-lab="piezas" data-figura="rack"
@@ -615,6 +616,483 @@ registrarPiezas('switch', {
     bag.add(pointer(stage, {
       move: (p) => avisos.encima(zona(p)),
       down: (p) => avisos.toca(zona(p)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Ayudas para cables (eje y): anillos en el plano x-z alrededor
+   de un centro, y hélices que solo pintan la cara que se ve.
+   ------------------------------------------------------------ */
+PZ.aro = (cx, cz, R, n) => HL.circ(R, n || 40).map((q) => ({ u: q.u + cx, v: q.v + cz, nu: q.nu, nv: q.nv }));
+PZ.tubo = (P, cx, cz, R, y0, y1) => PZ.bloqueY(P, PZ.aro(cx, cz, R), PZ.aro(cx, cz, R), y0, y1);
+// una hélice de radio r alrededor de (cx, cz), de y0 a y1, con paso «paso»; si soloDelante, corta la parte de detrás
+PZ.helice = (P, cx, cz, r, y0, y1, paso, fase, soloDelante) => {
+  let d = '', tramo = [];
+  const pasos = Math.max(8, Math.round((y1 - y0) / Math.abs(paso) * 16));
+  for (let i = 0; i <= pasos; i++) {
+    const y = y0 + (y1 - y0) * i / pasos, a = fase + 2 * Math.PI * (y - y0) / paso;
+    const x = cx + r * Math.cos(a), z = cz + r * Math.sin(a);
+    const delante = Math.cos(a) + Math.sin(a) > -0.15;
+    if (soloDelante && !delante) { if (tramo.length > 1) d += HL.open(tramo); tramo = []; continue; }
+    tramo.push(P(x, y, z));
+  }
+  if (tramo.length > 1) d += HL.open(tramo);
+  return d;
+};
+
+/* ------------------------------------------------------------
+   Cable de par trenzado (UT3 S5): un F/UTP de categoría alta,
+   pelado por la punta. Al elegir una capa, las de fuera se
+   retiran para que se vea entera.
+   ------------------------------------------------------------ */
+registrarPiezas('cable-utp', {
+  partes: [
+    { nombre: 'Cubierta', texto: 'El plástico de fuera. Protege los pares de golpes y de la humedad. Es de PVC o, mejor, libre de halógenos, que no suelta humo tóxico si arde.' },
+    { nombre: 'Pantalla', texto: 'Una lámina de aluminio que envuelve los cuatro pares juntos: hace de escudo contra el ruido eléctrico. Este cable la lleva porque es FTP; un UTP no tiene pantalla.' },
+    { nombre: 'Pares', texto: 'Ocho hilos de cobre, cada uno con su aislante de color, agrupados en cuatro pares. Los dos hilos de cada par van enroscados uno sobre otro: así aguantan mejor las interferencias.' },
+    { nombre: 'Cruceta', texto: 'Una pieza de plástico en forma de cruz que separa los cuatro pares para que no se molesten entre ellos. La llevan los cables de categorías altas.' },
+    { nombre: 'Hilo de rasgado', texto: 'Un hilo fuerte que va por dentro, pegado a la cubierta. Se tira de él para abrir la cubierta a lo largo sin dañar los pares.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, open, tween, tset, tval, tdone, mk, pointer, put, register, solid, disposer } = HL;
+    const CUBIERTA = 0, PANTALLA = 1, PARES = 2, CRUCETA = 3, RASGADO = 4;
+    const CZ = 7, RC = 6, RP = 5.1, RD = 2.5, RH = 0.8, PASO = 7;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 4.6);
+    fit(C, [[-RC, -46, 0], [RC, -46, 2 * CZ], [-RC, 30, 0], [RC, 30, 2 * CZ], [8, 30, 12]], 200, 168);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const cubierta = solid(g), pantalla = solid(g);
+    const ANG = [225, 135, 315, 45].map((a) => (a * Math.PI) / 180); // de atrás adelante
+    const pares = ANG.map(() => mk('path', { class: 'nf' }, g));
+    const cruzV = solid(g), cruzH = solid(g);
+    g.append(pares[3]);
+    const rasgado = mk('path', { class: 'nf' }, g);
+
+    const t = { cub: tween(0), pan: tween(0), par: tween(0), cruz: tween(0), ras: tween(0) };
+    let pintado = '';
+    function pintar(now) {
+      const v = Object.fromEntries(Object.entries(t).map(([k, x]) => [k, tval(x, now)]));
+      const clave = Object.values(v).map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      const fC = -6 - v.cub, fP = 0 - v.pan;
+      put(cubierta, PZ.tubo(P, 0, CZ, RC, -46, fC));
+      put(pantalla, PZ.tubo(P, 0, CZ, RP, fC, fP));
+      ANG.forEach((a, i) => {
+        const sale = i === 3 ? v.par : 0;
+        const cx = (RD + sale) * Math.cos(a), cz = CZ + (RD + sale) * Math.sin(a);
+        pares[i].setAttribute('d', PZ.helice(P, cx, cz, RH, fP, 26, PASO, i, false) + PZ.helice(P, cx, cz, RH, fP, 26, PASO, i + Math.PI, false));
+      });
+      const c0 = fP + v.cruz, c1 = 9 + v.cruz;
+      put(cruzV, PZ.cajaY(P, -0.35, CZ - 3.8, 0.35, CZ + 3.8, 0.15, 0.12, c0, c1));
+      put(cruzH, PZ.cajaY(P, -3.8, CZ - 0.35, 3.8, CZ + 0.35, 0.15, 0.12, c0, c1));
+      // el hilo de rasgado asoma por la boca de la cubierta, arriba, y se levanta al tirar
+      const r0 = [-1.5, fC, CZ + RC - 0.8];
+      rasgado.setAttribute('d', open(PZ.curva(P, r0, [-1.5, fC + 6, CZ + RC - 0.6 + v.ras * 0.3], [-1.8, fC + 12, CZ + RC + v.ras], [-2.2, fC + 18, CZ + RC + 1 + v.ras * 1.6], 12)));
+    }
+    const B = register(stage, (_dt, now) => { pintar(now); return Object.values(t).some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [CUBIERTA, [RC, -20, CZ]], [CUBIERTA, [0, -30, CZ + RC]], [CUBIERTA, [RC, -38, CZ]],
+      [PANTALLA, [RP, -3, CZ]], [PANTALLA, [0, -3, CZ + RP]],
+      [PARES, [RD + 1, 18, CZ + 1]], [PARES, [RD, 24, CZ + RD]], [PARES, [-RD, 20, CZ + RD]],
+      [CRUCETA, [0, 7, CZ]], [CRUCETA, [3, 6, CZ]],
+      [RASGADO, [-2, 6, CZ + RC + 0.6]], [RASGADO, [-2.2, 12, CZ + RC + 1]],
+    ];
+    let act = -2;
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(t.cub, a === PANTALLA || a === PARES || a === CRUCETA ? 7 : 0, now, 0);
+      tset(t.pan, a === PARES || a === CRUCETA ? 5 : 0, now, 40);
+      tset(t.par, a === PARES ? 2.4 : 0, now, 80);
+      tset(t.cruz, a === CRUCETA ? 9 : 0, now, 80);
+      tset(t.ras, a === RASGADO ? 4 : 0, now, 0);
+      cubierta.sil.classList.toggle('hi', a === CUBIERTA);
+      pantalla.sil.classList.toggle('hi', a === PANTALLA);
+      pares.forEach((p) => p.classList.toggle('hi', a === PARES));
+      cruzV.sil.classList.toggle('hi', a === CRUCETA); cruzH.sil.classList.toggle('hi', a === CRUCETA);
+      rasgado.classList.toggle('hi', a === RASGADO);
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 30)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 30)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Cable coaxial (UT3 coaxial): las cuatro capas, una dentro de
+   otra. Al elegir una, las de fuera se retiran.
+   ------------------------------------------------------------ */
+registrarPiezas('coaxial', {
+  partes: [
+    { nombre: 'Conductor central', texto: 'Un hilo de cobre (o de acero cobreado) en el centro. Por él va la señal.' },
+    { nombre: 'Dieléctrico', texto: 'El aislante que separa el centro de la malla y mantiene siempre la misma distancia entre los dos. Normalmente es polietileno.' },
+    { nombre: 'Malla', texto: 'El conductor exterior: una malla trenzada de cobre o aluminio, a menudo con una lámina debajo. Hace de retorno de la señal y de pantalla contra las interferencias.' },
+    { nombre: 'Cubierta', texto: 'El plástico de fuera: PVC o, mejor, libre de halógenos. Es negra si el cable va por el exterior, porque aguanta el sol.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, tween, tset, tval, tdone, mk, pointer, put, register, solid, disposer } = HL;
+    const CENTRO = 0, DIEL = 1, MALLA = 2, CUBIERTA = 3;
+    const CZ = 5.5, R = [0.9, 3.2, 4.2, 5.2];
+    const bag = disposer();
+    const C = Cam(45, 0.5, 5.4);
+    fit(C, [[-5.5, -42, 0], [5.5, -42, 11], [-5.5, 18, 0], [5.5, 18, 11]], 200, 166);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const capas = [3, 2, 1, 0].map(() => solid(g)); // de fuera adentro
+    const trama = mk('path', { class: 'nf lo' }, g);
+    capas[1].g.after(trama);
+    const t = [tween(0), tween(0), tween(0)]; // cuánto se retiran cubierta, malla y dieléctrico
+    let pintado = '';
+    function pintar(now) {
+      const v = t.map((x) => tval(x, now));
+      const clave = v.map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      const fC = -8 - v[0], fM = -1 - v[1], fD = 7 - v[2], fK = 15;
+      put(capas[0], PZ.tubo(P, 0, CZ, R[3], -42, fC));
+      put(capas[1], PZ.tubo(P, 0, CZ, R[2], fC, fM));
+      put(capas[2], PZ.tubo(P, 0, CZ, R[1], fM, fD));
+      put(capas[3], PZ.tubo(P, 0, CZ, R[0], fD, fK));
+      let d = '';
+      for (let i = 0; i < 6; i++) {
+        d += PZ.helice(P, 0, CZ, R[2] + 0.05, fC, fM, 9, i * 1.05, true);
+        d += PZ.helice(P, 0, CZ, R[2] + 0.05, fC, fM, -9, i * 1.05, true);
+      }
+      trama.setAttribute('d', d);
+    }
+    const B = register(stage, (_dt, now) => { pintar(now); return t.some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [CENTRO, [0, 13, CZ + 1]], [CENTRO, [1, 10, CZ]],
+      [DIEL, [R[1], 3, CZ]], [DIEL, [0, 4, CZ + R[1]]],
+      [MALLA, [R[2], -4, CZ]], [MALLA, [0, -5, CZ + R[2]]],
+      [CUBIERTA, [R[3], -22, CZ]], [CUBIERTA, [0, -32, CZ + R[3]]], [CUBIERTA, [R[3], -36, CZ]],
+    ];
+    let act = -2;
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      // se retiran las capas de fuera de la elegida
+      tset(t[0], a >= 0 && a < CUBIERTA ? 7 : 0, now, 0);
+      tset(t[1], a >= 0 && a < MALLA ? 6 : 0, now, 40);
+      tset(t[2], a >= 0 && a < DIEL ? 5 : 0, now, 80);
+      capas.forEach((c, i) => c.sil.classList.toggle('hi', a === 3 - i));
+      trama.classList.toggle('hi', a === MALLA);
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 30)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 30)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Comprobador de cables (UT3 herramientas): módulo principal y
+   remoto con el cable que se prueba. Al elegir las luces, se
+   encienden del 1 al 8, a la par en los dos módulos.
+   ------------------------------------------------------------ */
+registrarPiezas('comprobador', {
+  partes: [
+    { nombre: 'Módulo principal', texto: 'El principal (o maestro). Lleva el interruptor y manda un impulso por cada pin del cable, uno detrás de otro.' },
+    { nombre: 'Módulo remoto', texto: 'Va al otro extremo del cable, que puede estar en otra sala. Enciende la luz del pin por el que le llega cada impulso.' },
+    { nombre: 'Luces 1 a 8', texto: 'Una luz por pin. En un cable directo bien hecho se encienden a la par en los dos módulos: 1-1, 2-2, 3-3… hasta 8-8.' },
+    { nombre: 'Luz G', texto: 'La luz de la pantalla (masa) de los cables apantallados. Con un UTP no se enciende, porque no hay pantalla.' },
+    { nombre: 'Cable que pruebas', texto: 'Cada extremo va a un módulo. El comprobador dice si cada hilo llega y a qué pin, pero no si el cable aguanta 1 Gbps: eso lo mide un certificador.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, open, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer, reducedMotion, rings, prism, facing, rrect, poly } = HL;
+    const PRINCIPAL = 0, REMOTO = 1, LUCES = 2, LUZG = 3, CABLE = 4;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.5);
+    fit(C, [[0, 0, 0], [26, 0, 9], [0, 46, 0], [54, 0, 8], [54, 44, 0], [20, 74, 0]], 200, 160);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+    const principal = solid(g), remoto = solid(g);
+    const marcasP = mk('path', { class: 'nf lo' }, g), marcasR = mk('path', { class: 'nf lo' }, g);
+    const lucesP = [], lucesR = [];
+    for (let i = 0; i < 9; i++) { lucesP.push(mk('circle', { r: 1.15 }, g)); lucesR.push(mk('circle', { r: 1.15 }, g)); }
+    const clavP = solid(g), clavR = solid(g), cable = mk('path', { class: 'nf' }, g);
+    const t = { sube: tween(0), aparta: tween(0), saca: tween(0) };
+    let pintado = '', act = -2;
+    const lx = (x0, i) => x0 + 2.2 + i * 2.35;
+
+    function pintar(now) {
+      const s = tval(t.sube, now), ap = tval(t.aparta, now), sc = tval(t.saca, now);
+      const clave = [s, ap, sc].map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      const [pr, pi] = rings(0, 0, 26, 46, 3, 1.2);
+      put(principal, prism(P, front, pr, pi, s, 9 + s));
+      const rx = 32 + ap;
+      const [rr, ri] = rings(rx, 6, rx + 24, 40, 3, 1.2);
+      put(remoto, prism(P, front, rr, ri, 0, 8));
+      // interruptor y ventanita de luces en el principal; ventanita en el remoto
+      marcasP.setAttribute('d', poly(rrect(3, 6, 10, 14, 1.4).map((q) => P(q.u, q.v, 9 + s))) + poly(rrect(1, 27, 25, 31, 1.4).map((q) => P(q.u, q.v, 9 + s))));
+      marcasR.setAttribute('d', poly(rrect(rx + 1, 21, rx + 23, 25, 1.4).map((q) => P(q.u, q.v, 8))));
+      for (let i = 0; i < 9; i++) { place(lucesP[i], P(lx(0, i), 29, 9 + s)); place(lucesR[i], P(lx(rx, i) - 1, 23, 8)); }
+      // el cable: un latiguillo de la boca del principal (delante) a la del remoto
+      put(clavP, PZ.cajaY(P, 9, 2 + s, 15, 6 + s, 0.8, 0.4, 46 + sc, 53 + sc));
+      put(clavR, PZ.cajaY(P, rx + 9, 2, rx + 15, 6, 0.8, 0.4, 40 + sc, 47 + sc));
+      cable.setAttribute('d', open(PZ.curva(P, [12, 53 + sc, 4 + s], [12, 76, 0.5], [rx + 12, 72, 0.5], [rx + 12, 47 + sc, 4], 24)));
+    }
+
+    function luces(now) {
+      const conectado = act !== CABLE;
+      const paso = Math.floor(now / 330) % 9;
+      for (let i = 0; i < 9; i++) {
+        let c = 'off';
+        if (conectado) {
+          if (act === LUCES) c = reducedMotion() ? (i < 8 ? '' : 'off') : (i === paso && i < 8 ? '' : 'off');
+          else if (act === LUZG) c = i === 8 ? '' : 'off';
+          else if (act < 0 && i === 0) c = '';
+        }
+        lucesP[i].setAttribute('class', 'dot ' + c);
+        lucesR[i].setAttribute('class', 'dot ' + (act < 0 ? 'off' : c));
+      }
+    }
+
+    const B = register(stage, (_dt, now) => {
+      pintar(now); luces(now);
+      return Object.values(t).some((x) => !tdone(x, now)) || (act === LUCES && !reducedMotion());
+    });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [PRINCIPAL, [26, 20, 5]], [PRINCIPAL, [13, 46, 5]], [PRINCIPAL, [6, 10, 9]], [PRINCIPAL, [20, 12, 9]],
+      [REMOTO, [56, 20, 4]], [REMOTO, [44, 40, 4]], [REMOTO, [40, 12, 8]], [REMOTO, [50, 32, 8]],
+      [CABLE, [12, 56, 3]], [CABLE, [30, 74, 0.5]], [CABLE, [44, 50, 3]], [CABLE, [12, 70, 1]],
+    ];
+    for (let i = 0; i < 8; i++) ANCLAS.push([LUCES, [lx(0, i), 29, 9]], [LUCES, [lx(32, i) - 1, 23, 8]]);
+    ANCLAS.push([LUZG, [lx(0, 8), 29, 9]], [LUZG, [lx(32, 8) - 1, 23, 8]]);
+
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(t.sube, a === PRINCIPAL ? 4 : 0, now, 0);
+      tset(t.aparta, a === REMOTO ? 8 : 0, now, 0);
+      tset(t.saca, a === CABLE ? 5 : 0, now, 0);
+      principal.sil.classList.toggle('hi', a === PRINCIPAL);
+      remoto.sil.classList.toggle('hi', a === REMOTO);
+      cable.classList.toggle('hi', a === CABLE); clavP.sil.classList.toggle('hi', a === CABLE); clavR.sil.classList.toggle('hi', a === CABLE);
+      luces(now);
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 24)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 24)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Tarjeta de red de expansión (UT3 tarjeta de red y enlace):
+   pinchada en su ranura de la placa base. Al elegir el conector,
+   la tarjeta sale de la ranura.
+   ------------------------------------------------------------ */
+registrarPiezas('tarjeta', {
+  partes: [
+    { nombre: 'Puerto RJ-45', texto: 'La boca hembra donde se enchufa el latiguillo. Asoma por la parte de atrás de la caja del ordenador.' },
+    { nombre: 'Luces', texto: 'Los LED testigo junto al puerto: LINK (hay enlace) y ACT (pasan datos). Son lo primero que se mira.' },
+    { nombre: 'Chapa', texto: 'La pieza de metal que se atornilla a la caja del ordenador. Sujeta la tarjeta y deja asomar el puerto por detrás.' },
+    { nombre: 'Conector PCI Express', texto: 'Los contactos dorados de abajo. Se pinchan en una ranura PCI Express de la placa base, siempre con el ordenador apagado y desenchufado.' },
+    { nombre: 'Chip de red', texto: 'El que hace el trabajo de la tarjeta. En una tarjeta integrada, este chip va soldado directamente en la placa base.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, open, seg, poly, rrect, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer, rings, prism, facing } = HL;
+    const PUERTO = 0, LUCES = 1, CHAPA = 2, PCIE = 3, CHIP = 4;
+    const Y0 = 20, Y1 = 21.4; // grosor de la tarjeta (en vertical, mirando al alumno)
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.4);
+    fit(C, [[-6, -4, -2], [62, -4, -2], [-6, 40, -2], [62, 40, -2], [4, 20, 40], [56, 20, 40], [60, 24, 30]], 200, 166);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+    const placa = solid(g);
+    const [br, bi] = rings(-6, -4, 62, 40, 3, 1.4);
+    put(placa, prism(P, front, br, bi, -2, 0));
+    // otras pistas y una ranura más, para que se lea como placa base
+    mk('path', { d: open([P(-2, 34, 0), P(20, 34, 0), P(24, 30, 0)]) + open([P(30, 36, 0), P(58, 36, 0)]) + open([P(-2, 2, 0), P(16, 2, 0)]), class: 'nf lo' }, g);
+    const otra = solid(g);
+    { const [r, i] = rings(4, 6, 44, 9, 0.8, 0.4); put(otra, prism(P, front, r, i, 0, 3)); }
+    const ranuraAtras = solid(g);
+    const tarjeta = solid(g), contactos = mk('path', { class: 'nf lo' }, tarjeta.g);
+    const chip = solid(g), chapa = solid(g), puerto = solid(g), boca = mk('path', { class: 'nf' }, g);
+    const leds = [mk('circle', { r: 1.3 }, g), mk('circle', { r: 1.3 }, g)];
+    const ranuraDelante = solid(g);
+    const sube = tween(0);
+    let pintado = NaN, act = -2;
+
+    function pintar(now) {
+      const s = tval(sube, now);
+      if (s === pintado) return;
+      pintado = s;
+      // la ranura: la mitad de atrás antes de la tarjeta y la de delante después, para que la tarjeta quede dentro
+      { const [r, i] = rings(4, 17.5, 46, Y0, 0.6, 0.3); put(ranuraAtras, prism(P, front, r, i, 0, 4)); }
+      { const [r, i] = rings(4, Y1, 46, 24, 0.6, 0.3); put(ranuraDelante, prism(P, front, r, i, 0, 4)); }
+      const z0 = 1 + s, z1 = 25 + s;
+      put(tarjeta, PZ.cajaY(P, 6, z0, 48, z1, 1.2, 0.8, Y0, Y1));
+      let c = '';
+      for (let x = 9; x < 45; x += 1.6) if (Math.abs(x - 20) > 1) c += seg(P(x, Y1, z0 + 0.6), P(x, Y1, z0 + 2.6));
+      contactos.setAttribute('d', c);
+      put(chip, PZ.cajaY(P, 22, 9 + s, 31, 18 + s, 1, 0.6, Y1, Y1 + 1.4));
+      // chapa al extremo derecho, de pie, con su pestaña de tornillo arriba
+      put(chapa, { sil: poly(HL.hull([[48, 16, -3], [48, 26, -3], [48, 16, 36], [48, 26, 36], [49, 16, -3], [49, 26, -3], [49, 16, 36], [49, 26, 36], [49, 16, 36], [55, 16, 36], [55, 26, 36], [49, 26, 36]].map(([x, y, z]) => P(x, y, z + s)))), crease: open([P(49, 16, 36 + s), P(49, 26, 36 + s)]) });
+      const [pr, pi] = rings(49, 17.2, 54, 24.8, 0.8, 0.4);
+      put(puerto, prism(P, front, pr, pi, 14 + s, 22 + s));
+      boca.setAttribute('d', poly(rrect(18.6, 15.5, 23.4, 20.5, 0.6).map((q) => P(54, q.u, q.v + s))));
+      place(leds[0], P(54, 18.2, 21.3 + s)); place(leds[1], P(54, 23.8, 21.3 + s));
+    }
+    function luces() {
+      leds.forEach((l, i) => l.setAttribute('class', 'dot ' + (act === LUCES ? '' : act < 0 && i === 0 ? '' : 'm')));
+    }
+    const B = register(stage, (_dt, now) => { pintar(now); return !tdone(sube, now); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [PUERTO, [54, 21, 16]], [PUERTO, [52, 21, 22]],
+      [LUCES, [54, 18.2, 21.3]], [LUCES, [54, 23.8, 21.3]],
+      [CHAPA, [49, 21, 30]], [CHAPA, [52, 21, 36]], [CHAPA, [49, 21, 4]],
+      [PCIE, [14, 22, 3]], [PCIE, [30, 22, 3]], [PCIE, [40, 22, 3]],
+      [CHIP, [26.5, 22.8, 13.5]],
+    ];
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      tset(sube, a === PCIE ? 12 : 0, performance.now(), 0);
+      tarjeta.sil.classList.toggle('hi', a === PCIE); contactos.classList.toggle('hi', a === PCIE);
+      chip.sil.classList.toggle('hi', a === CHIP);
+      chapa.sil.classList.toggle('hi', a === CHAPA);
+      puerto.sil.classList.toggle('hi', a === PUERTO); boca.classList.toggle('hi', a === PUERTO);
+      luces();
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 22)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 22)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
+/* ------------------------------------------------------------
+   Módulo SFP con su latiguillo LC (UT4 conectores y empalmes):
+   el hueco del switch, el módulo, la palanca, el LC dúplex y sus
+   férulas.
+   ------------------------------------------------------------ */
+registrarPiezas('sfp', {
+  partes: [
+    { nombre: 'Módulo SFP', texto: 'El transceptor: convierte la señal eléctrica del switch en luz y al revés. Se enchufa en un hueco del switch y se cambia en caliente, sin apagar.' },
+    { nombre: 'Palanca', texto: 'El asa para sacar el módulo: se baja y se tira. Su color suele decir para qué fibra y qué distancia es el módulo, igual que su etiqueta.' },
+    { nombre: 'Conector LC dúplex', texto: 'Dos conectores LC unidos, porque la fibra va en parejas: por uno sale la luz (TX) y por el otro entra (RX). Llevan pestaña, como un RJ-45.' },
+    { nombre: 'Férulas', texto: 'Los cilindros de cerámica con la fibra pegada en el centro y la punta pulida. Al enchufar, quedan punta contra punta con las del otro lado: por eso tienen que estar limpias.' },
+    { nombre: 'Latiguillo de fibra', texto: 'Dos fibras de estructura ajustada, una para cada sentido. No se dobla en ángulo cerrado: en una curva muy cerrada, la luz se escapa.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, open, poly, rrect, tween, tset, tval, tdone, mk, pointer, put, register, solid, disposer } = HL;
+    const MODULO = 0, PALANCA = 1, LC = 2, FERULA = 3, LATI = 4;
+    const D = 24; // cara delantera del switch
+    const bag = disposer();
+    const C = Cam(45, 0.5, 4.2);
+    fit(C, [[0, 0, 0], [44, 0, 12], [0, D, 0], [44, D, 12], [10, 66, 0], [30, 66, 0], [20, 52, 8]], 200, 150);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const sw = solid(g);
+    put(sw, PZ.cajaY(P, 0, 0, 44, 12, 2, 1, 0, D));
+    const caja = poly(rrect(13.5, 2.8, 26.5, 7.6, 0.6).map((q) => P(q.u, D, q.v)));
+    mk('path', { d: caja + poly(rrect(31, 3, 39, 7.4, 0.6).map((q) => P(q.u, D, q.v))), class: 'nf lo' }, g);
+    const modulo = solid(g), bocas = mk('path', { class: 'nf' }, g), palanca = mk('path', { class: 'nf' }, g);
+    const ferulas = [solid(g), solid(g)];
+    const lcs = [solid(g), solid(g)], puente = solid(g), botas = [solid(g), solid(g)];
+    const fibras = mk('path', { class: 'nf' }, g);
+    const t = { mod: tween(0), pal: tween(0), lc: tween(0) };
+    let pintado = '';
+    const XC = [17.9, 22.1];
+
+    function pintar(now) {
+      const om = tval(t.mod, now), ap = tval(t.pal, now), ol = tval(t.lc, now) + om;
+      const clave = [om, ap, ol].map((x) => x.toFixed(3)).join();
+      if (clave === pintado) return;
+      pintado = clave;
+      const m0 = Math.max(D, 2 + om), m1 = 30 + om;
+      put(modulo, PZ.cajaY(P, 14, 3.2, 26, 7.2, 0.6, 0.4, m0, m1));
+      bocas.setAttribute('d', XC.map((x) => poly(rrect(x - 1.7, 3.8, x + 1.7, 6.6, 0.4).map((q) => P(q.u, m1, q.v)))).join(''));
+      // palanca: un alambre en U que va plano sobre la boca; abierta, gira hacia abajo
+      const a = ap * 1.3, z = (r) => 7.4 - r * Math.sin(a), y = (r) => m1 - 3 + r * Math.cos(a);
+      palanca.setAttribute('d', open([P(14, m1 - 3, 7.4), P(14, y(4.5), z(4.5)), P(26, y(4.5), z(4.5)), P(26, m1 - 3, 7.4)]));
+      // LC: el cuerpo, su puente con la pestaña y las botas; las férulas asoman al sacarlo
+      const l0 = m1 + ol, l1 = l0 + 8;
+      XC.forEach((x, i) => {
+        put(ferulas[i], PZ.tubo(P, x, 5.2, 0.7, l0 - 2.4, l0));
+        put(lcs[i], PZ.cajaY(P, x - 1.6, 3.8, x + 1.6, 6.6, 0.5, 0.3, l0, l1));
+        put(botas[i], PZ.tubo(P, x, 5.2, 1.2, l1, l1 + 6));
+      });
+      put(puente, PZ.cajaY(P, 15.6, 6.6, 24.4, 7.8, 0.4, 0.25, l0 + 3, l1));
+      fibras.setAttribute('d', XC.map((x, i) => open(PZ.curva(P, [x, l1 + 6, 5.2], [x, l1 + 16, 5], [x + (i ? 4 : -4), l1 + 20, 0.4], [x + (i ? 8 : -8), Math.max(66, l1 + 12), 0], 14))).join(''));
+      ferulas.forEach((f) => f.g.style.display = ol > 0.6 ? '' : 'none');
+    }
+    const B = register(stage, (_dt, now) => { pintar(now); return Object.values(t).some((x) => !tdone(x, now)); });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [MODULO, [26, 27, 5]], [MODULO, [20, 26, 7.2]],
+      [PALANCA, [20, 29, 7.4]], [PALANCA, [14, 29, 7.4]],
+      [LC, [20, 35, 7.8]], [LC, [24, 34, 5]], [LC, [16, 34, 5]],
+      [FERULA, [20, 31, 5]],
+      [LATI, [18, 44, 5]], [LATI, [22, 50, 3]], [LATI, [14, 58, 0.5]], [LATI, [28, 58, 0.5]],
+    ];
+    let act = -2;
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      tset(t.pal, a === PALANCA || a === MODULO ? 1 : 0, now, a === PALANCA ? 200 : 0);
+      tset(t.mod, a === MODULO ? 12 : 0, now, a === MODULO ? 250 : 0);
+      tset(t.lc, a === LC || a === FERULA || a === PALANCA ? 9 : 0, now, 0);
+      modulo.sil.classList.toggle('hi', a === MODULO);
+      palanca.classList.toggle('hi', a === PALANCA);
+      lcs.forEach((s) => s.sil.classList.toggle('hi', a === LC)); puente.sil.classList.toggle('hi', a === LC);
+      ferulas.forEach((s) => s.sil.classList.toggle('hi', a === FERULA));
+      fibras.classList.toggle('hi', a === LATI); botas.forEach((s) => s.sil.classList.toggle('hi', a === LATI));
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 24)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 24)),
       leave: () => avisos.fuera(),
     }));
     bag.add(() => svg.replaceChildren());
