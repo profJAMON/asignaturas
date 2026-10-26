@@ -2,7 +2,7 @@
 <p><strong>📋 Cómo trabajar esta sesión</strong></p>
 <ol>
 <li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
+<li>Cuando llegues a un ejercicio de pantalla o a una actividad, hazlo en ese momento. Los ejercicios se corrigen solos; en las actividades, lo que te pido apuntar es una de las preguntas obligatorias.</li>
 <li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
 <li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
 <li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
@@ -16,29 +16,43 @@
 <table>
 <tr><th></th><th>IPv4</th><th>IPv6</th></tr>
 <tr><td><strong>Bits</strong></td><td>32</td><td>128</td></tr>
-<tr><td><strong>Se divide en</strong></td><td>4 octetos (8 bits cada uno)</td><td>8 hextetos (16 bits cada uno)</td></tr>
+<tr><td><strong>Se divide en</strong></td><td>4 octetos de 8 bits</td><td>8 hextetos de 16 bits</td></tr>
 <tr><td><strong>Se escribe</strong></td><td>En decimal, separado por puntos</td><td>En hexadecimal, separado por dos puntos</td></tr>
 <tr><td><strong>Direcciones</strong></td><td>4.300 millones</td><td>340 sextillones</td></tr>
-<tr><td><strong>Ejemplo</strong></td><td>192.168.1.25</td><td>2035:0001:2FC5:0000:0000:087C:0000:0001</td></tr>
+<tr><td><strong>Ejemplo</strong></td><td>192.168.1.25</td><td>2035:0001:<br>2FC5:0000:<br>0000:087C:<br>0000:0001</td></tr>
 </table>
-<p>Además trae de serie autoconfiguración, cifrado de extremo a extremo y mejor seguridad, cosas que en IPv4 hubo que añadir después.</p>
+<p>Y trae dos cosas más. El equipo <strong>se puede poner su dirección él solo</strong>, sin que nadie se la dé. Y como hay direcciones de sobra, cada equipo puede tener <strong>su propia dirección pública</strong>: ya no hace falta que toda la casa salga a Internet con una sola, como viste en la sesión 7.</p>
 <div class="nota">Un <strong>octeto</strong> son 8 bits y se escribe en decimal (0–255). Un <strong>hexteto</strong> son 16 bits y se escribe con 4 dígitos hexadecimales. Y recuerda de la sesión de la MAC: cada dígito hexadecimal vale 4 bits. 4 dígitos × 4 bits = 16 bits. Cuadra.</div>
 
 <h3>Las tres reglas para acortar una IPv6</h3>
-<p>Escribir 32 dígitos hexadecimales es inviable, así que hay tres reglas de abreviación. Se aplican en este orden:</p>
-<pre><code>Original   2035:0001:2FC5:0000:0000:087C:0000:0001
-
-Regla 1 — quitar los ceros a la IZQUIERDA de cada bloque
-           2035:1:2FC5:0000:0000:87C:0000:1
-
-Regla 2 — un bloque de cuatro ceros se deja en un solo 0
-           2035:1:2FC5:0:0:87C:0:1
-
-Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
-           2035:1:2FC5::87C:0:1</code></pre>
+<p>Escribir 32 dígitos hexadecimales es inviable, así que hay tres reglas para acortarla. Se aplican en este orden, cada una sobre lo que dejó la anterior. Lo <del>tachado</del> es lo que se quita; lo que está en <ins>azul</ins>, cómo queda.</p>
+<div class="ipv6-reglas">
+<p class="ipv6-dir" translate="no">2035:0001:2FC5:0000:0000:087C:0000:0001</p>
+<ol>
+<li>
+<p><strong>Regla 1:</strong> en cada bloque, quita los ceros de la <strong>izquierda</strong>. Los de la derecha, nunca. Los bloques 0000 se dejan para la regla 2.</p>
+<p class="ipv6-dir" translate="no">2035:<del>000</del>1:2FC5:0000:0000:<del>0</del>87C:0000:<del>000</del>1</p>
+<p class="ipv6-dir" translate="no"><span class="ipv6-flecha">→ </span>2035:<ins>1</ins>:2FC5:0000:0000:<ins>87C</ins>:0000:<ins>1</ins></p>
+</li>
+<li>
+<p><strong>Regla 2:</strong> un bloque de cuatro ceros se queda en un solo <strong>0</strong>.</p>
+<p class="ipv6-dir" translate="no">2035:1:2FC5:<del>000</del>0:<del>000</del>0:87C:<del>000</del>0:1</p>
+<p class="ipv6-dir" translate="no"><span class="ipv6-flecha">→ </span>2035:1:2FC5:<ins>0</ins>:<ins>0</ins>:87C:<ins>0</ins>:1</p>
+</li>
+<li>
+<p><strong>Regla 3:</strong> varios bloques de ceros <strong>seguidos</strong> se cambian por <strong>::</strong>.</p>
+<p class="ipv6-dir" translate="no">2035:1:2FC5:<del>0:0</del>:87C:0:1</p>
+<p class="ipv6-dir" translate="no"><span class="ipv6-flecha">→ </span>2035:1:2FC5<ins>::</ins>87C:0:1</p>
+</li>
+</ol>
+</div>
 <div class="nota">La regla 3 solo se puede usar <strong>una vez</strong> en toda la dirección. Si se usara dos veces no habría forma de saber cuántos bloques ha comido cada «::». En el ejemplo se ha aplicado al grupo 0:0 y por eso el 0 suelto del final se queda escrito.</div>
 <p>Las tres reglas, una detrás de otra. Al final puedes probar con otra dirección:</p>
 <div class="diapos" data-diapos="ipv6-abreviar" data-valor="2035:0001:2FC5:0000:0000:087C:0000:0001" aria-label="Una IPv6 abreviada, paso a paso"></div>
+
+<h3>Practica: abrevia una IPv6</h3>
+<p>Escribe cada dirección lo más corta que puedas, aplicando las tres reglas en orden. Da igual si escribes las letras en mayúsculas o en minúsculas. Si te atascas, mete la dirección en «Prueba con otro número» del carrusel y mira los pasos.</p>
+<div data-actividad="practica-ipv6"></div>
 
 <h2>DHCP: quién reparte las direcciones</h2>
 <p>Las IP se pueden poner de dos maneras:</p>
@@ -78,9 +92,24 @@ Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
 <img src="data/instalaciones/introduccion-redes/img/u1/dhcp-hotel.webp" width="900" height="506" alt="La recepción de un hotel: una recepcionista entrega una llave luminosa a un cliente con maleta; detrás de ella, un tablero con llaves colgadas y algunos ganchos vacíos; tres personas más esperan en la cola" loading="lazy">
 <figcaption>Cada equipo que llega a la red pide su llave (su IP) al DHCP.</figcaption>
 </figure>
-<div class="salida">
-<p><strong>Por qué esto importa en el taller:</strong> si un equipo aparece con una IP <code>169.254.x.x</code>, es que pidió dirección y <strong>nadie le contestó</strong>. Eso apunta a tres sitios: el cable o el puerto, el switch, o el DHCP del router. Nunca al navegador.</p>
-</div>
+
+<h3>¿Y si nadie contesta?</h3>
+<p>Si el equipo pide IP y ningún DHCP le contesta, Windows no se queda sin nada: <strong>se pone él solo una IP que empieza por 169.254</strong>. Con esa IP no llega ni al router. Pasa cuando el cable está mal, cuando el switch no va o cuando el DHCP del router está apagado.</p>
+<p>Así se ve, más o menos, en <code>ipconfig</code> (este comando lo verás un poco más abajo):</p>
+<pre><code>Adaptador de Ethernet:
+
+  Dirección IPv4 de configuración
+  automática . . : 169.254.37.112
+  Máscara  . . . : 255.255.0.0
+  Puerta de enlace predeterminada:</code></pre>
+<p>Hay dos pistas: la IP empieza por <strong>169.254</strong> y la puerta de enlace está <strong>vacía</strong>, porque nadie se la ha dado.</p>
+<table>
+<tr><th>Lo que ves en <code>ipconfig</code></th><th>Qué ha pasado</th><th>Dónde miras</th></tr>
+<tr><td>Una IP normal (por ejemplo, <code>192.168.1.34</code>) y una puerta de enlace</td><td>El DHCP te contestó</td><td>Si algo falla, sigue con la escalera de ping (más abajo)</td></tr>
+<tr><td><code>169.254.x.x</code> y la puerta de enlace vacía</td><td>Pediste IP y nadie te contestó</td><td>El cable, el puerto del switch o el DHCP del router</td></tr>
+<tr><td>Medios desconectados</td><td>No hay cable o no hace contacto</td><td>El cable y la tarjeta de red</td></tr>
+</table>
+<div class="nota">Una IP 169.254 <strong>nunca</strong> es culpa del navegador: el fallo está antes, en la red. Cambiar de navegador o reiniciarlo no sirve de nada.</div>
 
 <h2>Quién reparte las direcciones en el mundo</h2>
 <p>Dentro de tu red te organizas tú. Pero las direcciones <strong>públicas</strong> no puede elegirlas cualquiera, o dos sitios distintos tendrían la misma y sería imposible encontrarlos.</p>
@@ -104,7 +133,16 @@ Regla 3 — un grupo de bloques de ceros SEGUIDOS se sustituye por ::
 <tr><td><code>nslookup</code></td><td>Preguntar al DNS qué IP tiene un nombre</td></tr>
 <tr><td><code>netstat</code></td><td>Ver las conexiones abiertas del equipo</td></tr>
 </table>
-<div class="nota">En Linux el equivalente de <code>ipconfig</code> es <code>ifconfig</code> (o el más moderno <code>ip a</code>), y el de <code>tracert</code> es <code>traceroute</code>. Mismo trabajo, otro nombre.</div>
+<div class="nota">En Linux el equivalente de <code>ipconfig</code> es <code>ifconfig</code> (o el más moderno <code>ip a</code>), y el de <code>tracert</code> es <code>traceroute</code>. Mismo trabajo, otro nombre. Y en el instituto <strong>no uses</strong> <code>ipconfig /release</code>: te quedas sin red hasta que hagas <code>/renew</code>.</div>
+
+<h3>Actividad 1 — Tu tarjeta, con ipconfig /all</h3>
+<ol>
+<li>Abre la terminal: <strong>Inicio → escribe <code>cmd</code> → Enter</strong>.</li>
+<li>Escribe <code>ipconfig /all</code> y pulsa Enter. Sale mucho texto. Busca el adaptador que tiene una «Dirección IPv4» (el de Ethernet o el de wifi). Si tu Windows está en inglés, mira la tabla de la sesión 6.</li>
+<li>En ese adaptador, busca estas cinco líneas: <strong>Dirección IPv4</strong>, <strong>Máscara de subred</strong>, <strong>Puerta de enlace predeterminada</strong>, <strong>Servidores DNS</strong> y <strong>DHCP habilitado</strong>.</li>
+<li>Apunta en tu cuaderno las cinco y cuántos adaptadores de red salen en total (pregunta 12).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tu IP y tu puerta de enlace empiezan por los mismos números, porque están en la misma red. En «DHCP habilitado» pone «Sí» si la IP te la dio un DHCP, y «No» si alguien la escribió a mano. Si tu IP empieza por 169.254, levanta la mano: tu ordenador no ha recibido dirección.</p>
 
 <h3>Cómo funciona ping</h3>
 <p><code>ping</code> envía a la dirección indicada un paquete llamado <strong>solicitud de eco</strong>. Si el destino lo recibe, contesta con una <strong>respuesta de eco</strong>. Si esa respuesta vuelve, hay conectividad. Y de propina te dice cuánto ha tardado.</p>
@@ -148,6 +186,27 @@ Estadísticas de ping para 192.168.1.1:
 </div>
 <p>Si los cuatro primeros van y el quinto no, tienes Internet perfectamente y lo que falla es el DNS. Ese diagnóstico, hecho en veinte segundos, es lo que separa a un técnico de alguien reiniciando el router por si acaso.</p>
 
+<h3>Actividad 2 — La escalera en tu ordenador</h3>
+<ol start="5">
+<li>En la terminal, el peldaño 1: <code>ping 127.0.0.1</code>.</li>
+<li>Peldaño 2: <code>ping</code> a tu propia IP (la que apuntaste en la Actividad 1).</li>
+<li>Peldaño 3: <code>ping</code> a tu puerta de enlace.</li>
+<li>Peldaños 4 y 5: <code>ping 8.8.8.8</code> y <code>ping www.google.es</code>.</li>
+<li>Apunta en tu cuaderno, de cada peldaño, si responde y cuántos milisegundos tarda (pregunta 14).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> los dos primeros tardan menos de 1 ms (sale <code>tiempo&lt;1m</code>), porque no salen de tu ordenador. La puerta de enlace tarda muy poco; 8.8.8.8 y Google, bastante más. Si alguno no responde pero puedes navegar, puede que la red del instituto bloquee el ping: apúntalo igual y pregúntamelo.</p>
+
+<h3>Actividad 3 — Busca la avería</h3>
+<p>Esta terminal es de práctica: funciona como la de verdad, pero dentro de la página, y aquí sí puedo romper la red para que busques el fallo.</p>
+<ol start="10">
+<li>Con <strong>Todo funciona</strong> pulsado, prueba <code>ipconfig</code> y los cinco ping de la escalera con los botones. Así ves cómo sale cuando todo va bien.</li>
+<li>Pulsa <strong>🔧 Avería misteriosa</strong>. Mira primero <code>ipconfig</code> y después sube la escalera, peldaño a peldaño.</li>
+<li>Cuando algo falle, elige abajo dónde está el problema. Si aciertas, pulsa otra vez «Avería misteriosa» para otra.</li>
+<li>Resuelve tres averías. De cada una, apunta en tu cuaderno qué fue lo primero que falló y dónde estaba el problema (pregunta 15).</li>
+</ol>
+<div class="lab" data-lab="terminal" data-escalera="redes" aria-label="Terminal de práctica con averías"></div>
+<p><strong>Comprobación observable:</strong> cuando aciertas, sale «✓ ¡Bien visto!» con el nombre de la avería.</p>
+
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
 <p class="papel__titulo">Sesión 10 · Preguntas obligatorias — a mano, en el cuaderno</p>
@@ -174,18 +233,12 @@ Estadísticas de ping para 192.168.1.1:
     <li>c) la impresora</li>
   </ul>
 </li>
-<li>¿Cuándo pondrías una IP fija y cuándo dejarías DHCP? Pon dos ejemplos de cada uno.</li>
+<li>Un ordenador tiene la IP 169.254.20.5 y no tiene puerta de enlace. ¿Qué le ha pasado? ¿En qué tres sitios buscarías el fallo?</li>
 <li>¿Para qué sirven <code>ipconfig</code>, <code>ping</code>, <code>tracert</code>, <code>nslookup</code> y <code>netstat</code>?</li>
-<li>Explica cómo funciona el comando <code>ping</code>.</li>
+<li><strong>(Actividad 1)</strong> Escribe tu dirección IPv4, tu máscara, tu puerta de enlace, tus servidores DNS y si tienes el DHCP habilitado. ¿Cuántos adaptadores de red tiene tu ordenador?</li>
 <li>Un equipo no navega. Describe, por orden, los ping que harías y qué deducirías si falla cada uno.</li>
-<li>(ABC) <code>ping 8.8.8.8</code> funciona pero <code>ping www.google.es</code> no. Falla…
-  <ul>
-    <li>a) el cable</li>
-    <li>b) el DNS</li>
-    <li>c) la tarjeta de red</li>
-  </ul>
-</li>
-<li>En tu equipo: ¿cuál es tu IP, cuántos adaptadores de red tienes y cuál es tu puerta de enlace? Haz la escalera de ping y apunta el resultado de cada paso.</li>
+<li><strong>(Actividad 2)</strong> Escribe los cinco peldaños de la escalera que hiciste en tu ordenador. De cada uno: ¿respondió? ¿Cuántos ms tardó? ¿Por qué los dos primeros son los más rápidos?</li>
+<li><strong>(Actividad 3)</strong> De las tres averías que resolviste: ¿qué fue lo primero que falló en cada una y dónde estaba el problema?</li>
 </ol>
 </div>
 
@@ -198,6 +251,8 @@ Estadísticas de ping para 192.168.1.1:
 <li>Explica la función de <strong>IANA</strong> y la de los <strong>RIR</strong>. ¿Cuál es el de Europa?</li>
 <li>(V/F) Internet tiene un dueño que lo controla todo.</li>
 <li>En el móvil, mira qué IP te da el wifi de casa y cuál te da el del instituto (o de otro sitio). ¿Son públicas o privadas? ¿Qué aparato te las ha dado?</li>
+<li>¿Cuándo pondrías una IP fija y cuándo dejarías DHCP? Pon dos ejemplos de cada uno.</li>
+<li>En tu ordenador, haz <code>nslookup www.iesramonllull.net</code> y <code>tracert 8.8.8.8</code>. Apunta la IP que te da el DNS y cuántos saltos hay hasta 8.8.8.8. ¿Cuál es el primer salto y qué aparato crees que es?</li>
 </ol>
 </div>
 

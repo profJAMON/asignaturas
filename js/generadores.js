@@ -487,27 +487,25 @@ function genSubredCMascara() {
   return salida;
 }
 
-/* La 1ª subred (26/10/2026): la Nª subred no la entendían. Se pide la red
-   de la 2ª, el broadcast de la 1ª y sus equipos, en el orden del cuaderno:
-   ① red de la 1ª (la que me dan) → ② red de la 2ª = ① + salto →
-   ③ broadcast = ② − 1 → ④ primer equipo = ① + 1 → ⑤ último = ③ − 1. */
-function genSubredCPrimera() {
+function genSubredCEnesima() {
   const p = _problemaSubredC();
-  const que = _elige(['segunda', 'segunda', 'broadcast', 'broadcast', 'broadcast', 'primero', 'ultimo', 'ultimo']);
+  const k = _ent(1, Math.min(p.subredes, 16));
+  const que = _elige(['red', 'broadcast', 'primero', 'ultimo']);
   const pre = p.red.split('.').slice(0, 3).join('.');
-  const s = p.salto;
+  const ini = (k - 1) * p.dirs;
+  const fin = ini + p.dirs - 1;
   const valores = {
-    segunda: ['la dirección de red de la 2ª subred', `${pre}.${s}`],
-    broadcast: ['el broadcast de la 1ª subred', `${pre}.${s - 1}`],
-    primero: ['el primer equipo de la 1ª subred', `${pre}.1`],
-    ultimo: ['el último equipo de la 1ª subred', `${pre}.${s - 2}`]
+    red: ['la dirección de red', `${pre}.${ini}`],
+    broadcast: ['el broadcast', `${pre}.${fin}`],
+    primero: ['el primer equipo', `${pre}.${ini + 1}`],
+    ultimo: ['el último equipo', `${pre}.${fin - 1}`]
   };
   const dato = Math.random() < 0.5 ? `con máscara ${p.mascara}` : `(${p.pide})`;
   return {
-    enunciado: `${p.red} ${dato} — ¿${valores[que][0]}?`,
+    enunciado: `${p.red} ${dato} — ¿${valores[que][0]} de la ${k}ª subred?`,
     respuesta: valores[que][1],
     formato: 'texto',
-    pista: `Máscara ${p.mascara}, salto ${s}. ① 1ª subred: ${pre}.0 · ② 2ª subred: 0 + ${s} = .${s} · ③ broadcast de la 1ª: ${s} − 1 = .${s - 1} · ④ primer equipo .1 · ⑤ último equipo .${s - 2}.`
+    pista: `Máscara ${p.mascara}, salto ${p.salto}. La 1ª subred empieza en .0; la ${k}ª, en (${k} − 1) × ${p.salto} = ${ini}. Red ${pre}.${ini} · equipos de .${ini + 1} a .${fin - 1} · broadcast .${fin} (la siguiente red − 1).`
   };
 }
 
@@ -539,6 +537,46 @@ function genMacValida() {
   };
 }
 
+/* ---------- IPv6: las tres reglas (26/10/2026, UT1 S10) ---------- */
+
+/* Una IPv6 entera con ceros a la izquierda, un tramo de 2-3 bloques
+   0000 seguidos (el único más largo) y, a veces, un 0000 suelto. */
+function genIpv6Abreviar() {
+  const bloque = () => {
+    const forma = _ent(1, 3);
+    if (forma === 1) return '0' + _hex() + _hex() + _hex();   // un cero delante
+    if (forma === 2) return '00' + _hex() + _hex();           // dos ceros delante
+    return _hex() + _hex() + _hex() + _hex();
+  };
+  const b = [];
+  for (let i = 0; i < 8; i++) {
+    let x = bloque();
+    while (/^0+$/.test(x)) x = bloque();                       // sin 0000 por azar
+    b.push(x);
+  }
+  const largo = _ent(2, 3);
+  const ini = _ent(1, 7 - largo);                              // ni al principio ni al final
+  for (let i = ini; i < ini + largo; i++) b[i] = '0000';
+  /* un 0000 suelto, separado del tramo por un bloque que no es cero */
+  if (Math.random() < 0.5) {
+    const libres = [];
+    for (let i = 0; i < 8; i++) {
+      if (i >= ini - 1 && i <= ini + largo) continue;
+      libres.push(i);
+    }
+    if (libres.length) b[libres[_ent(0, libres.length - 1)]] = '0000';
+  }
+  const r1 = b.map(x => (x === '0000' ? x : x.replace(/^0+/, '')));
+  const r2 = r1.map(x => (x === '0000' ? '0' : x));
+  const final = r2.slice(0, ini).join(':') + '::' + r2.slice(ini + largo).join(':');
+  return {
+    enunciado: b.join(':\u200B'),                            // se puede partir en los «:» (móvil)
+    respuesta: final,
+    formato: 'texto',
+    pista: `Regla 1: ${r1.join(':')} · Regla 2: ${r2.join(':')} · Regla 3: ${final}`
+  };
+}
+
 /* ---------- registro ---------- */
 
 const GENERADORES = {
@@ -557,8 +595,9 @@ const GENERADORES = {
   'red-y-broadcast': genRedYBroadcast,
   'misma-red': genMismaRed,
   'subred-c-mascara': genSubredCMascara,
-  'subred-c-primera': genSubredCPrimera,
-  'mac-valida': genMacValida
+  'subred-c-enesima': genSubredCEnesima,
+  'mac-valida': genMacValida,
+  'ipv6-abreviar': genIpv6Abreviar
 };
 
 /* Genera una tanda de n preguntas sin repetir enunciado. */

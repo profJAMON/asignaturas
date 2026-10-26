@@ -13,6 +13,10 @@
    terminal  Terminal de práctica (ipconfig, ping, nslookup, tracert)
              con averías: «Todo funciona» o «Avería misteriosa», y
              el alumno busca dónde está el problema.
+             data-escalera="redes" (26/10/2026, Instalaciones UT1 S10):
+             la escalera de ping de Instalaciones (127.0.0.1 → tu IP →
+             puerta → 8.8.8.8 → google.es) y una avería más: el DHCP
+             no contesta y el equipo se pone una 169.254.x.x.
    url       Escribes una URL y se colorea por partes (protocolo,
              subdominio, dominio, ruta, parámetros, fragmento).
    peticion  Un servidor de práctica (pixelkart.es): pides una URL y
@@ -61,7 +65,10 @@
 
   const MI_IP = '192.168.1.20';
   const ROUTER = '192.168.1.1';
+  const APIPA = '169.254.37.112';
   const HOSTS = {
+    'google.es': { ip: '142.250.200.131', ms: [12, 16], saltos: ['10.15.0.1', '*', '142.250.200.131'] },
+    'www.google.es': { ip: '142.250.200.131', ms: [12, 16], saltos: ['10.15.0.1', '*', '142.250.200.131'] },
     'google.com': { ip: '142.250.184.78', ms: [12, 16], saltos: ['10.15.0.1', '*', '142.250.184.78'] },
     'www.google.com': { ip: '142.250.184.78', ms: [12, 16], saltos: ['10.15.0.1', '*', '142.250.184.78'] },
     'youtube.com': { ip: '142.250.200.142', ms: [13, 18], saltos: ['10.15.0.1', '*', '142.250.200.142'] },
@@ -79,21 +86,38 @@
     internet: { nombre: 'El router o la operadora', paso: 3 },
     dns: { nombre: 'El DNS', paso: 4 },
   };
+  /* Con data-escalera="redes": nombres y botones de la escalera de Instalaciones. */
+  const AVERIAS_REDES = {
+    cable: 'no hay cable conectado (medios desconectados)',
+    dhcp: 'nadie te dio IP: el DHCP no contesta (169.254)',
+    router: 'entre tu ordenador y el router',
+    internet: 'la salida a Internet',
+    dns: 'el DNS',
+  };
+  const OPCIONES_REDES = [
+    ['Antes de la escalera: ipconfig no da una IP buena', ['cable', 'dhcp']],
+    ['Peldaño 3: entre tu PC y el router', ['router']],
+    ['Peldaño 4: la salida a Internet', ['internet']],
+    ['Peldaño 5: el DNS', ['dns']],
+  ];
 
-  function simular(cmd, averia) {
+  function simular(cmd, averia, redes) {
     const partes = cmd.trim().split(/\s+/);
     const orden = (partes[0] || '').toLowerCase();
     const arg = (partes[1] || '').toLowerCase().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
     const L = [];
     const sinRed = averia === 'cable';
+    const sinIp = averia === 'dhcp';
 
     function resolver(nombre) {
       if (/^\d+\.\d+\.\d+\.\d+$/.test(nombre)) return { ip: nombre };
-      if (sinRed || averia === 'router' || averia === 'internet' || averia === 'dns') return { fallo: 'dns' };
+      if (sinRed || sinIp || averia === 'router' || averia === 'internet' || averia === 'dns') return { fallo: 'dns' };
       if (HOSTS[nombre]) return { ip: HOSTS[nombre].ip, host: HOSTS[nombre] };
       return { fallo: 'noexiste' };
     }
     function alcanzable(ip) {
+      if (redes && ip === '127.0.0.1') return true;
+      if (sinIp) return ip === APIPA;
       if (sinRed) return false;
       if (ip === ROUTER) return averia !== 'router';
       if (ip === MI_IP || ip === '127.0.0.1') return true;
@@ -102,7 +126,7 @@
       return IPS_PUBLICAS[ip] || Object.values(HOSTS).some(h => h.ip === ip);
     }
     function msDe(ip) {
-      if (ip === ROUTER || ip === MI_IP || ip === '127.0.0.1') return [1, 2];
+      if (ip === ROUTER || ip === MI_IP || ip === APIPA || ip === '127.0.0.1') return [1, 2];
       if (IPS_PUBLICAS[ip]) return IPS_PUBLICAS[ip];
       const h = Object.values(HOSTS).find(x => x.ip === ip);
       return h ? h.ms : [20, 40];
@@ -119,6 +143,10 @@
         L.push([''], ['Configuración IP de Windows'], [''], ['Adaptador de Ethernet:'], ['']);
         if (sinRed) {
           L.push(['   Estado de los medios. . . . . . . . . : ', ['medios desconectados', 'mal']]);
+        } else if (sinIp) {
+          L.push(['   Dirección IPv4 de configuración automática: ', [APIPA, 'mal']]);
+          L.push(['   Máscara de subred . . . . . . . . . . : 255.255.0.0']);
+          L.push(['   Puerta de enlace predeterminada . . . : ']);
         } else {
           L.push(['   Dirección IPv4. . . . . . . . . . . . : ', [MI_IP, 'dato']]);
           L.push(['   Máscara de subred . . . . . . . . . . : 255.255.255.0']);
@@ -127,7 +155,7 @@
         return L;
       case 'ping': {
         if (!arg) return [['Falta a quién hacer ping. Por ejemplo: ping google.com']];
-        if (sinRed) return [['Error general.', 'mal']];
+        if (sinRed && !(redes && arg === '127.0.0.1')) return [['Error general.', 'mal']];
         const r = resolver(arg);
         if (r.fallo) return [[`La solicitud de ping no pudo encontrar el host ${arg}. Compruebe el nombre y vuelva a intentarlo.`, 'mal']];
         L.push([''], [`Haciendo ping a ${r.ip === arg ? arg : arg + ' [' + r.ip + ']'} con 32 bytes de datos:`]);
@@ -137,13 +165,14 @@
           return L;
         }
         const [a, b] = msDe(r.ip);
-        const ttl = /^192\.168\./.test(r.ip) || r.ip === '127.0.0.1' ? 64 : 115;
+        const ttl = /^(192\.168|169\.254)\./.test(r.ip) || r.ip === '127.0.0.1' ? 64 : 115;
         for (let i = 0; i < 4; i++) L.push([`Respuesta desde ${r.ip}: bytes=32 tiempo=`, [entre(a, b) + 'ms', 'dato'], ` TTL=${ttl}`]);
         L.push([''], [`Estadísticas de ping para ${r.ip}:`], ['    Paquetes: enviados = 4, recibidos = 4, perdidos = 0']);
         return L;
       }
       case 'nslookup': {
         if (!arg) return [['Falta el dominio. Por ejemplo: nslookup wikipedia.org']];
+        if (sinIp) return [['*** No hay ningún servidor DNS configurado.', 'mal']];
         if (sinRed || averia === 'router' || averia === 'internet' || averia === 'dns') {
           return [['Servidor:  UnKnown'], ['Address:  ' + ROUTER], [''], ['DNS request timed out.', 'mal'], ['*** Se agotó el tiempo de espera de la solicitud a UnKnown.', 'mal']];
         }
@@ -156,6 +185,12 @@
         if (!arg) return [['Falta el dominio. Por ejemplo: tracert google.com']];
         const r = resolver(arg);
         if (sinRed || r.fallo) return [[`No se puede resolver el nombre de destino ${arg}.`, 'mal']];
+        if (sinIp) {
+          L.push([''], [`Traza a ${arg} sobre un máximo de 30 saltos:`], ['']);
+          for (let n = 1; n <= 3; n++) L.push([`  ${n}     *        *        *     Tiempo de espera agotado para esta solicitud.`]);
+          L.push([''], ['(Aquí se pararía: la traza no llega.)', 'mal']);
+          return L;
+        }
         L.push([''], [`Traza a ${arg} [${r.ip}] sobre un máximo de 30 saltos:`], ['']);
         const saltos = [ROUTER].concat(r.host ? r.host.saltos : (IPS_PUBLICAS[r.ip] ? ['10.15.0.1', r.ip] : [r.ip]));
         let n = 0;
@@ -182,6 +217,7 @@
 
   function labTerminal(caja) {
     cabecera(caja);
+    const redes = caja.dataset.escalera === 'redes';
     const modos = el('div', 'lab__fila');
     const bOk = boton('✔ Todo funciona', 'lab__boton lab__boton--activo');
     const bAveria = boton('🔧 Avería misteriosa');
@@ -213,10 +249,15 @@
 
     const atajos = el('div', 'lab__fila lab__fila--atajos');
     atajos.appendChild(el('span', 'lab__nota', 'O pulsa:'));
-    ['ipconfig', 'ping ' + ROUTER, 'ping 8.8.8.8', 'nslookup google.com', 'ping google.com', 'tracert google.com'].forEach(c => {
+    const ATAJOS = redes
+      ? ['ipconfig', 'ping 127.0.0.1', 'ping ' + MI_IP, 'ping ' + ROUTER, 'ping 8.8.8.8', 'ping google.es']
+      : ['ipconfig', 'ping ' + ROUTER, 'ping 8.8.8.8', 'nslookup google.com', 'ping google.com', 'tracert google.com'];
+    let bTuIp = null;
+    ATAJOS.forEach(c => {
       const b = boton(c, 'lab__boton lab__boton--codigo');
       b.setAttribute('translate', 'no');
-      b.addEventListener('click', () => ejecutar(c));
+      b.addEventListener('click', () => ejecutar(b.textContent));
+      if (redes && c === 'ping ' + MI_IP) bTuIp = b;
       atajos.appendChild(b);
     });
     caja.appendChild(atajos);
@@ -224,18 +265,26 @@
     /* La avería misteriosa: el alumno contesta dónde está el problema. */
     const pregunta = el('div', 'lab__pregunta');
     pregunta.hidden = true;
-    pregunta.appendChild(el('p', 'lab__pregunta-texto', 'Hay una avería escondida. Usa los comandos en el orden de la tabla y decide: ¿dónde está el problema?'));
+    pregunta.appendChild(el('p', 'lab__pregunta-texto', redes
+      ? 'Hay una avería escondida. Mira primero ipconfig y después sube la escalera de ping. ¿Dónde está el problema?'
+      : 'Hay una avería escondida. Usa los comandos en el orden de la tabla y decide: ¿dónde está el problema?'));
     const opciones = el('div', 'lab__fila');
     const estado = el('p', 'lab__estado');
     estado.setAttribute('role', 'status');
-    ['cable', 'router', 'internet', 'dns'].forEach(k => {
-      const b = boton(`${AVERIAS[k].paso}. ${AVERIAS[k].nombre}`);
+    const OPCIONES = redes
+      ? OPCIONES_REDES
+      : ['cable', 'router', 'internet', 'dns'].map(k => [`${AVERIAS[k].paso}. ${AVERIAS[k].nombre}`, [k]]);
+    OPCIONES.forEach(([texto, claves]) => {
+      const b = boton(texto);
       b.addEventListener('click', () => {
-        if (k === averia) {
-          estado.textContent = `✓ ¡Bien visto! El fallo estaba en: ${AVERIAS[k].nombre.toLowerCase()}. Pulsa «Avería misteriosa» otra vez para otra.`;
+        if (claves.includes(averia)) {
+          const nombre = redes ? AVERIAS_REDES[averia] : AVERIAS[averia].nombre.toLowerCase();
+          estado.textContent = `✓ ¡Bien visto! El fallo estaba en: ${nombre}. Pulsa «Avería misteriosa» otra vez para otra.`;
           estado.className = 'lab__estado lab__estado--bien';
         } else {
-          estado.textContent = '✗ No es ahí. Sigue el orden: ipconfig → ping a la puerta de enlace → ping 8.8.8.8 → nslookup. El primero que falla te dice dónde está.';
+          estado.textContent = redes
+            ? '✗ No es ahí. Primero ipconfig: ¿tienes una IP buena? Después sube la escalera: 127.0.0.1 → tu IP → puerta de enlace → 8.8.8.8 → google.es. El primero que falla te dice dónde está.'
+            : '✗ No es ahí. Sigue el orden: ipconfig → ping a la puerta de enlace → ping 8.8.8.8 → nslookup. El primero que falla te dice dónde está.';
           estado.className = 'lab__estado lab__estado--mal';
         }
       });
@@ -274,7 +323,7 @@
       eco.appendChild(el('span', 'lab__t-cmd', cmd));
       salida.appendChild(eco);
       if (cmd.trim()) { historial.push(cmd); pos = historial.length; }
-      const r = simular(cmd, averia);
+      const r = simular(cmd, averia, redes);
       if (r === null) { salida.innerHTML = ''; return; }
       pintar(r);
       pintar([['']]);
@@ -296,13 +345,16 @@
     });
     bOk.addEventListener('click', () => {
       averia = 'ok';
+      if (bTuIp) bTuIp.textContent = 'ping ' + MI_IP;
       bOk.classList.add('lab__boton--activo'); bAveria.classList.remove('lab__boton--activo');
       pregunta.hidden = true;
       bienvenida();
     });
     bAveria.addEventListener('click', () => {
       const antes = averia;
-      do { averia = azar(['cable', 'router', 'internet', 'dns']); } while (averia === antes);
+      const lista = redes ? ['cable', 'dhcp', 'router', 'internet', 'dns'] : ['cable', 'router', 'internet', 'dns'];
+      do { averia = azar(lista); } while (averia === antes);
+      if (bTuIp) bTuIp.textContent = 'ping ' + (averia === 'dhcp' ? APIPA : MI_IP);
       bAveria.classList.add('lab__boton--activo'); bOk.classList.remove('lab__boton--activo');
       pregunta.hidden = false;
       estado.textContent = '';

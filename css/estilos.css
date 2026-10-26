@@ -1513,6 +1513,24 @@ footer.pie {
 .leccion .hoja-bits th, .leccion .hoja-bits td { padding: 0.45rem 0.3rem; text-align: center; }
 .leccion .hoja-bits td:first-child { text-align: left; }
 
+/* Pasos de una dirección que se acorta (26/10/2026, Instalaciones UT1 S10,
+   reglas de IPv6): lo que se quita, tachado en magenta (<del>); lo que
+   cambia, en cian (<ins>). */
+.leccion .ipv6-reglas ol { padding-left: 0; list-style: none; }
+.leccion .ipv6-reglas li { margin: 0 0 0.9rem; }
+.leccion .ipv6-dir {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 3vw, 0.86rem);
+  margin: 0.3rem 0 0;
+  padding: 0.35rem 0.45rem;
+  border-left: 2px solid var(--border);
+  background: var(--surface-2);
+  overflow-wrap: anywhere;
+}
+.leccion .ipv6-reglas del { color: var(--accent-warm); text-decoration-thickness: 2px; }
+.leccion .ipv6-reglas ins { text-decoration: none; color: var(--accent); font-weight: 700; }
+.leccion .ipv6-dir .ipv6-flecha { color: var(--text-faint); }
+
 .leccion .checklist { list-style: none; padding-left: 0; }
 .leccion .checklist li::before { content: "☐ "; color: var(--accent); }
 
@@ -3340,6 +3358,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .diapo svg .d-linea-c { stroke: var(--diapo-calido); stroke-width: 1.5; fill: none; }
 .diapo svg .d-linea-d { stroke: var(--diapo-tenue); stroke-width: 1.5; fill: none; }
 .diapo svg .d-relleno-c { fill: var(--diapo-calido); }
+.diapo svg .d-tachado { text-decoration: line-through; }
 
 .diapos__mandos {
   display: flex;

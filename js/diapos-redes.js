@@ -17,14 +17,14 @@
      mascara           "/26" o "255.255.255.192" de prefijo a decimal
      clase-ip          "10.250.1.1"              clase, máscara por defecto, red/host
      subred-salto      "192.168.1.100/26"        red, broadcast y rango
-     subred-c-metodo   "192.10.10.0, 14 subredes" clase C: bits, máscara, salto y 1ª subred
+     subred-c-metodo   "192.10.10.0, 14 subredes" clase C: bits, máscara, salto y lista
                        (o "200.175.14.0, 45 equipos")
      ipv6-abreviar     "2035:0001:…:0001"        las tres reglas
    ============================================================ */
 
 (function () {
   if (typeof registrarDiapos !== 'function' || !window.DIAPOS) return;
-  const { tx, caja, svg, grupos4 } = window.DIAPOS;
+  const { tx, caja, svg, esc, grupos4 } = window.DIAPOS;
 
   /* ---------- Ayudas ---------- */
 
@@ -652,25 +652,34 @@
   /* ============================================================
      7. IPv6, las tres reglas: "2035:0001:2FC5:0000:0000:087C:0000:0001"
      ============================================================ */
+  /* Una fila de 8 bloques. Cada bloque es una lista de trozos
+     [texto, clase]; clase 'fuera' = ceros que se quitan (cálido y
+     tachados), 'nuevo' = bloque que ha cambiado (cian). */
   function filaBloques(bloques, opc) {
     /* 8 cajas de 40 + 4 de hueco = 352 */
+    const y = opc.y || 14;
     let s = '';
-    bloques.forEach((b, i) => {
+    bloques.forEach((trozos, i) => {
       const x = 4 + i * 44;
-      const nuevo = opc.nuevos && opc.nuevos.includes(i);
-      const fuera = opc.fuera && opc.fuera.includes(i);
-      if (fuera) return;
-      s += caja(x, opc.y || 14, 40, 30, nuevo ? 'd-caja-act' : 'd-caja');
-      s += tx(x + 20, (opc.y || 14) + 20, b, nuevo ? 'd-c' : 'd-t', 'middle');
+      if (opc.ocultos && opc.ocultos.includes(i)) return;
+      const tachado = trozos.some(t => t[1] === 'fuera');
+      const nuevo = trozos.some(t => t[1] === 'nuevo');
+      s += caja(x, y, 40, 30, tachado ? 'd-caja-act' : (nuevo ? 'd-caja-on' : 'd-caja'));
+      const partes = trozos.map(([t, c]) => {
+        const cls = c === 'fuera' ? 'd-c d-tachado' : (c === 'nuevo' ? 'd-a' : 'd-t');
+        return `<tspan class="${cls}">${esc(t)}</tspan>`;
+      }).join('');
+      s += `<text x="${x + 20}" y="${y + 20}" text-anchor="middle">${partes}</text>`;
     });
     if (opc.hueco) {
       const [ini, fin] = opc.hueco;
       const x1 = 4 + ini * 44, x2 = 4 + fin * 44 + 40;
-      s += `<rect x="${x1}" y="${opc.y || 14}" width="${x2 - x1}" height="30" rx="4" class="d-caja-act"/>`;
-      s += tx((x1 + x2) / 2, (opc.y || 14) + 20, '::', 'd-c d-grande', 'middle');
+      s += caja(x1, y, x2 - x1, 30, 'd-caja-on');
+      s += tx((x1 + x2) / 2, y + 21, '::', 'd-a d-grande', 'middle');
     }
     return s;
   }
+  const llano = bl => bl.map(b => [[b, '']]);
   function tramoCeros(b) {
     /* el tramo más largo de bloques "0" seguidos (mínimo 2); si empatan, el primero */
     let mejor = null, ini = -1;
@@ -691,7 +700,7 @@
     return `${izq}::${der}`;
   }
   function diaposIpv6(bl) {
-    const ANCHO = 360, ALTO = 110;
+    const ANCHO = 360, ALTO = 136;
     const original = bl;
     const r1 = bl.map(b => (b === '0000' ? '0000' : b.replace(/^0+/, '')));
     const cambia1 = bl.map((b, i) => (b !== r1[i] ? i : -1)).filter(i => i >= 0);
@@ -700,40 +709,59 @@
     const tramo = tramoCeros(r2);
     const final = textoCorto(r2, tramo);
     const lista = [];
-    const linea2 = t => tx(ANCHO / 2, 78, t, 'd-t', 'middle');
+    const flecha = tx(ANCHO / 2, 60, '↓', 'd-d', 'middle');
+    const abajo = t => tx(ANCHO / 2, 124, t, 'd-t', 'middle');
+    /* antes: los ceros que se van, tachados; después: lo que cambia, en cian */
+    const antes1 = bl.map((b, i) => {
+      if (!cambia1.includes(i)) return [[b, '']];
+      const n = b.length - r1[i].length;
+      return [[b.slice(0, n), 'fuera'], [b.slice(n), '']];
+    });
+    const despues1 = r1.map((b, i) => [[b, cambia1.includes(i) ? 'nuevo' : '']]);
+    const antes2 = r1.map((b, i) => (cambia2.includes(i) ? [['000', 'fuera'], ['0', '']] : [[b, '']]));
+    const despues2 = r2.map((b, i) => [[b, cambia2.includes(i) ? 'nuevo' : '']]);
+
     lista.push({
-      svg: svg(ANCHO, ALTO, 'La dirección IPv6 entera, 8 bloques', filaBloques(original, {}) + linea2(original.join(':'))),
+      svg: svg(ANCHO, ALTO, 'La dirección IPv6 entera, 8 bloques', filaBloques(llano(original), {}) + abajo(original.join(':'))),
       texto: 'Una IPv6 entera: <strong>8 bloques</strong> de 4 dígitos hexadecimales, separados por dos puntos. Para acortarla hay tres reglas, y se aplican <strong>en orden</strong>.'
     });
     lista.push({
-      svg: svg(ANCHO, ALTO, 'Regla 1: quitar los ceros a la izquierda de cada bloque', filaBloques(r1, { nuevos: cambia1 }) + linea2(r1.join(':'))),
+      svg: svg(ANCHO, ALTO, 'Regla 1: quitar los ceros a la izquierda de cada bloque',
+        cambia1.length
+          ? filaBloques(antes1, {}) + flecha + filaBloques(despues1, { y: 70 }) + abajo(r1.join(':'))
+          : filaBloques(llano(r1), {}) + abajo(r1.join(':'))),
       texto: cambia1.length
-        ? `<strong>Regla 1:</strong> en cada bloque se quitan los ceros <strong>de la izquierda</strong> (los de la derecha nunca: cambiaría el número). Cambian ${cambia1.length === 1 ? 'el bloque marcado' : 'los bloques marcados'}. Los 0000 se dejan para la regla 2.`
+        ? '<strong>Regla 1:</strong> en cada bloque se quitan los ceros <strong>de la izquierda</strong>. Arriba, tachados, los que se van; abajo, en azul, cómo queda. Los de la derecha nunca se quitan: cambiaría el número. Los 0000 se dejan para la regla 2.'
         : '<strong>Regla 1:</strong> se quitan los ceros de la izquierda de cada bloque. Aquí no hay ninguno que quitar.'
     });
     lista.push({
-      svg: svg(ANCHO, ALTO, 'Regla 2: un bloque 0000 se deja en 0', filaBloques(r2, { nuevos: cambia2 }) + linea2(r2.join(':'))),
+      svg: svg(ANCHO, ALTO, 'Regla 2: un bloque 0000 se deja en 0',
+        cambia2.length
+          ? filaBloques(antes2, {}) + flecha + filaBloques(despues2, { y: 70 }) + abajo(r2.join(':'))
+          : filaBloques(llano(r2), {}) + abajo(r2.join(':'))),
       texto: cambia2.length
-        ? '<strong>Regla 2:</strong> un bloque de cuatro ceros, <strong>0000</strong>, se escribe con un solo <strong>0</strong>.'
+        ? '<strong>Regla 2:</strong> un bloque de cuatro ceros, <strong>0000</strong>, se queda en un solo <strong>0</strong>: se tachan tres.'
         : '<strong>Regla 2:</strong> un bloque 0000 se deja en 0. Aquí no hay ninguno.'
     });
     if (tramo) {
+      const antes3 = r2.map((b, i) => [[b, i >= tramo[0] && i <= tramo[1] ? 'fuera' : '']]);
       const fuera = [];
       for (let i = tramo[0]; i <= tramo[1]; i++) fuera.push(i);
+      const sobra = r2.filter(b => b === '0').length > tramo[1] - tramo[0] + 1;
       lista.push({
         svg: svg(ANCHO, ALTO, 'Regla 3: los bloques de ceros seguidos se cambian por dos puntos dobles',
-          filaBloques(r2, { fuera, hueco: tramo }) + linea2(final)),
-        texto: `<strong>Regla 3:</strong> los ${tramo[1] - tramo[0] + 1} bloques de ceros <strong>seguidos</strong> se sustituyen por <strong>::</strong>. Solo se puede hacer <strong>una vez</strong> en toda la dirección${r2.filter(b => b === '0').length > tramo[1] - tramo[0] + 1 ? ': por eso el otro 0 se queda escrito' : ''}.`
+          filaBloques(antes3, {}) + flecha + filaBloques(llano(r2), { y: 70, ocultos: fuera, hueco: tramo }) + abajo(final)),
+        texto: `<strong>Regla 3:</strong> los ${tramo[1] - tramo[0] + 1} bloques de ceros <strong>seguidos</strong> (tachados) se cambian por <strong>::</strong>. Solo se puede hacer <strong>una vez</strong> en toda la dirección${sobra ? ': por eso el otro 0 se queda escrito' : ''}.`
       });
     } else {
       lista.push({
-        svg: svg(ANCHO, ALTO, 'Regla 3: no hay dos bloques de ceros seguidos', filaBloques(r2, {}) + linea2(final)),
+        svg: svg(ANCHO, ALTO, 'Regla 3: no hay dos bloques de ceros seguidos', filaBloques(llano(r2), {}) + abajo(final)),
         texto: '<strong>Regla 3:</strong> sirve para dos o más bloques de ceros <strong>seguidos</strong>. Aquí no los hay, así que no se aplica.'
       });
     }
     lista.push({
       svg: svg(ANCHO, ALTO, `Resultado: ${final}`,
-        tx(ANCHO / 2, 30, original.join(':'), 'd-d', 'middle') + tx(ANCHO / 2, 52, '↓', 'd-d', 'middle') + tx(ANCHO / 2, 80, final, 'd-a d-grande', 'middle')),
+        tx(ANCHO / 2, 36, original.join(':'), 'd-d', 'middle') + tx(ANCHO / 2, 64, '↓', 'd-d', 'middle') + tx(ANCHO / 2, 96, final, 'd-a d-grande', 'middle')),
       texto: `Resultado: <strong>${final}</strong>. Es la misma dirección, solo que más corta.`
     });
     return lista;
@@ -741,7 +769,7 @@
   registrarDiapos('ipv6-abreviar', {
     crear: bl => diaposIpv6(bl),
     leer: s => {
-      const t = String(s).trim().toUpperCase();
+      const t = String(s).replace(/\u200B/g, '').trim().toUpperCase();
       const b = t.split(':');
       if (b.length !== 8 || !b.every(x => /^[0-9A-F]{1,4}$/.test(x))) return null;
       return b.map(x => x.padStart(4, '0'));
@@ -885,38 +913,17 @@
       texto: `Paso 5, el <strong>salto</strong>: es el peso del último bit cogido, <strong>${r.salto}</strong> (el mismo número que las direcciones de cada subred). Las subredes empiezan de ${r.salto} en ${r.salto}: ${inicios.join(', ')}${r.subredes > 5 ? '…' : '.'}`
     });
 
-    /* La 1ª subred (26/10/2026): ① red → ② red de la 2ª → ③ broadcast →
-       ④ primer equipo → ⑤ último. Mismo orden que el cuaderno. */
-    const s = r.salto;
-    const regla = (visibles, nuevos) => {
-      const celdas = [
-        { x: 8, w: 46, v: '.0', et: 'red', n: 1 },
-        { x: 58, w: 50, v: '.1', et: 'primer', n: 4 },
-        { x: 112, w: 22, v: '…', et: '', n: 0 },
-        { x: 138, w: 50, v: `.${s - 2}`, et: 'último', n: 5 },
-        { x: 192, w: 62, v: `.${s - 1}`, et: 'broadcast', n: 3 },
-        { x: 280, w: 72, v: `.${s}`, et: '2ª red', n: 2 }
-      ];
-      let t = tx(131, 16, '1ª subred', 'd-a', 'middle') + tx(316, 16, '2ª subred', 'd-d', 'middle');
-      t += linea(268, 24, 268, 82, 'd-linea-c');
-      celdas.forEach(c => {
-        const visible = c.n <= 1 || visibles.includes(c.n);
-        const nuevo = nuevos.includes(c.n);
-        t += caja(c.x, 30, c.w, 30, nuevo ? 'd-caja-act' : (visible ? 'd-caja-on' : 'd-caja'));
-        if (visible) t += tx(c.x + c.w / 2, 50, c.v, nuevo ? 'd-c' : (c.n === 0 ? 'd-d' : 'd-a'), 'middle');
-        if (c.et) t += tx(c.x + c.w / 2, 76, c.et, 'd-d d-peq', 'middle');
-      });
-      return t;
-    };
-    lista.push({
-      svg: svg(ANCHO, ALTO, `La 2ª subred empieza en .${s}`,
-        regla([2], [2]) + abajo(`.0 + ${s} = .${s}`)),
-      texto: `La <strong>1ª subred</strong> empieza en la red que me dan: <strong>${r.pre}.0</strong>. La <strong>2ª</strong> empieza un salto más allá: 0 + ${s} = <strong>${r.pre}.${s}</strong>.`
+    const ks = r.subredes <= 4 ? Array.from({ length: r.subredes }, (_, k) => k + 1) : [1, 2, 3, 0, r.subredes];
+    let t = tx(10, 18, `${r.pre}. …`, 'd-d') + tx(10, 40, 'nº', 'd-d') + tx(56, 40, 'red', 'd-d') + tx(130, 40, 'equipos', 'd-d') + tx(272, 40, 'broadcast', 'd-d');
+    ks.forEach((k, i) => {
+      const y = 64 + i * 20;
+      if (k === 0) { t += tx(10, y, '…', 'd-d'); return; }
+      const ini = (k - 1) * r.salto, fin = ini + r.dirs - 1;
+      t += tx(10, y, `${k}ª`, 'd-t') + tx(56, y, `.${ini}`, 'd-a') + tx(130, y, `.${ini + 1} – .${fin - 1}`, 'd-t') + tx(272, y, `.${fin}`, 'd-c');
     });
     lista.push({
-      svg: svg(ANCHO, ALTO, `Broadcast de la 1ª .${s - 1}, equipos de .1 a .${s - 2}`,
-        regla([2, 3, 4, 5], [3, 4, 5]) + abajo(`broadcast .${s - 1}`, `equipos: .1 a .${s - 2}`)),
-      texto: `El <strong>broadcast</strong> de la 1ª es la dirección justo antes de la 2ª: ${s} − 1 = <strong>.${s - 1}</strong>. Los <strong>equipos</strong> son los de en medio: del <strong>.1</strong> (red + 1) al <strong>.${s - 2}</strong> (broadcast − 1). Son ${r.dirs - 2}, los mismos del paso 4: si no te coincide, repasa.`
+      svg: svg(ANCHO, ALTO, `Lista de las ${r.subredes} subredes`, t),
+      texto: `Y la lista: la 1ª subred empieza en .0, la 2ª en .${r.salto}… La <strong>N</strong>ª empieza en (N − 1) × ${r.salto}. El <strong>broadcast</strong> de cada una es la red siguiente − 1, y los <strong>equipos</strong> son los de en medio.`
     });
     return lista;
   }

@@ -4,5 +4,13 @@
   "fecha": "",
   "descripcion": "Por qué llegó IPv6 y sus tres reglas de abreviación, cómo reparte direcciones el DHCP, quién manda en el reparto mundial (IANA y RIR) y la escalera de ping para buscar averías.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "practica-ipv6",
+      "tipo": "generador",
+      "titulo": "Abrevia la IPv6",
+      "generador": "ipv6-abreviar",
+      "n": 6
+    }
+  ]
 }
