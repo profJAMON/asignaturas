@@ -112,13 +112,48 @@
 <div class="nota">Una IP 169.254 <strong>nunca</strong> es culpa del navegador: el fallo está antes, en la red. Cambiar de navegador o reiniciarlo no sirve de nada.</div>
 
 <h2>Quién reparte las direcciones en el mundo</h2>
-<p>Dentro de tu red te organizas tú. Pero las direcciones <strong>públicas</strong> no puede elegirlas cualquiera, o dos sitios distintos tendrían la misma y sería imposible encontrarlos.</p>
-<ul>
-<li><strong>IANA</strong> (<em>Internet Assigned Numbers Authority</em>) es el organismo que está arriba del todo: asigna los grandes bloques de direcciones y coordina los números que Internet necesita tener únicos. Es una de las instituciones más antiguas de la red.</li>
-<li>Los <strong>RIR</strong> (<em>Registros Regionales de Internet</em>) son organizaciones sin ánimo de lucro que reparten esos bloques dentro de una región del mundo. El de Europa es <strong>RIPE NCC</strong>.</li>
-<li>Los RIR se los entregan a los operadores, y el operador te da a ti una dirección pública para tu router.</li>
-</ul>
-<p>Internet no tiene un dueño ni una gestión central, pero hay unas pocas cosas —como las direcciones y los nombres de dominio— que <strong>obligatoriamente</strong> hay que coordinar en todo el planeta. De eso se ocupan IANA y los RIR.</p>
+<p>Dentro de tu red te organizas tú. Pero las direcciones <strong>públicas</strong> no puede elegirlas cualquiera, o dos sitios distintos tendrían la misma y sería imposible encontrarlos. Por eso se reparten de arriba abajo, y cada uno solo puede repartir lo que le han dado.</p>
+<p>Funciona como los <strong>números de teléfono</strong>. Un organismo mundial reparte los prefijos por países (a España le tocó el +34), dentro de cada país se reparten por zonas y, al final, tu compañía te da tu número. Nadie tiene el mismo que tú.</p>
+<table>
+<tr><th>Teléfonos</th><th>Direcciones IP</th><th>Quién es</th></tr>
+<tr><td>Organismo mundial</td><td><strong>IANA</strong></td><td>Arriba del todo: reparte bloques enormes a los RIR</td></tr>
+<tr><td>Prefijo de un país (+34)</td><td><strong>RIR</strong></td><td>Reparte en una gran región del mundo. Hay 5</td></tr>
+<tr><td>Tu compañía de teléfono</td><td><strong>Operadora</strong></td><td>Movistar, Digi, Orange…: da una IP pública a cada cliente</td></tr>
+<tr><td>Tu número</td><td><strong>La IP pública de tu router</strong></td><td>Única en todo Internet</td></tr>
+</table>
+<p>El reparto, paso a paso:</p>
+<div class="diapos" aria-label="De la IANA a tu router, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="La IANA reparte bloques enormes entre los 5 RIR"><rect x="110" y="10" width="140" height="40" rx="4" class="d-caja-on"/><text x="180" y="28" text-anchor="middle" class="d-a">IANA</text><text x="180" y="43" text-anchor="middle" class="d-d d-peq">todo el mundo</text><path d="M 110 50 L 4 84" class="d-linea-d"/><path d="M 250 50 L 356 84" class="d-linea-d"/><rect x="5.0" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="39.2" y="101" text-anchor="middle" class="d-t d-peq">ARIN</text><rect x="75.4" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="109.6" y="101" text-anchor="middle" class="d-t d-peq">LACNIC</text><rect x="145.8" y="84" width="68.4" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="101" text-anchor="middle" class="d-c d-peq">RIPE NCC</text><rect x="216.2" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="250.4" y="101" text-anchor="middle" class="d-t d-peq">AFRINIC</text><rect x="286.6" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="320.8" y="101" text-anchor="middle" class="d-t d-peq">APNIC</text><text x="180" y="144" text-anchor="middle" class="d-d d-peq">un bloque enorme para cada región</text></svg>
+<p class="diapo__texto">1. Arriba del todo está la <strong>IANA</strong>. Reparte las direcciones en bloques enormes, uno para cada uno de los <strong>5 RIR</strong>, que son las cinco grandes regiones del mundo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="RIPE NCC da un trozo a cada operadora"><rect x="110" y="10" width="140" height="40" rx="4" class="d-caja-on"/><text x="180" y="28" text-anchor="middle" class="d-a">RIPE NCC</text><text x="180" y="43" text-anchor="middle" class="d-d d-peq">Europa</text><path d="M 110 50 L 4 84" class="d-linea-d"/><path d="M 250 50 L 356 84" class="d-linea-d"/><rect x="5.0" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="39.2" y="101" text-anchor="middle" class="d-t d-peq">otra</text><rect x="75.4" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="109.6" y="101" text-anchor="middle" class="d-t d-peq">otra</text><rect x="145.8" y="84" width="68.4" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="101" text-anchor="middle" class="d-c d-peq">tu</text><text x="180.0" y="116" text-anchor="middle" class="d-c d-peq">operadora</text><rect x="216.2" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="250.4" y="101" text-anchor="middle" class="d-t d-peq">otra</text><rect x="286.6" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="320.8" y="101" text-anchor="middle" class="d-t d-peq">…</text><text x="180" y="144" text-anchor="middle" class="d-d d-peq">un trozo para cada operadora</text></svg>
+<p class="diapo__texto">2. El RIR de Europa es <strong>RIPE NCC</strong>. Trocea su bloque y da un trozo a cada <strong>operadora</strong>: la tuya y todas las demás.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Tu operadora da una IP pública a cada router"><rect x="110" y="10" width="140" height="40" rx="4" class="d-caja-on"/><text x="180" y="28" text-anchor="middle" class="d-a">tu operadora</text><text x="180" y="43" text-anchor="middle" class="d-d d-peq">su trozo</text><path d="M 110 50 L 4 84" class="d-linea-d"/><path d="M 250 50 L 356 84" class="d-linea-d"/><rect x="5.0" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="39.2" y="101" text-anchor="middle" class="d-t d-peq">casa</text><rect x="75.4" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="109.6" y="101" text-anchor="middle" class="d-t d-peq">casa</text><rect x="145.8" y="84" width="68.4" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="101" text-anchor="middle" class="d-c d-peq">tu casa</text><rect x="216.2" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="250.4" y="101" text-anchor="middle" class="d-t d-peq">casa</text><rect x="286.6" y="84" width="68.4" height="40" rx="4" class="d-caja"/><text x="320.8" y="101" text-anchor="middle" class="d-t d-peq">…</text><text x="180" y="144" text-anchor="middle" class="d-d d-peq">una IP pública para cada router</text></svg>
+<p class="diapo__texto">3. Tu <strong>operadora</strong> reparte su trozo entre sus clientes: a cada casa, a cada router, le da <strong>una IP pública</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Tu router tiene la IP pública y reparte privadas por DHCP"><rect x="110" y="10" width="140" height="40" rx="4" class="d-caja-act"/><text x="180" y="28" text-anchor="middle" class="d-c">tu router</text><text x="180" y="43" text-anchor="middle" class="d-d d-peq">85.60.12.34</text><path d="M 110 50 L 4 84" class="d-linea-d"/><path d="M 250 50 L 356 84" class="d-linea-d"/><rect x="5.0" y="84" width="115.3" height="40" rx="4" class="d-caja"/><text x="62.7" y="101" text-anchor="middle" class="d-t d-peq">móvil</text><text x="62.7" y="116" text-anchor="middle" class="d-d d-peq">.1.34</text><rect x="122.3" y="84" width="115.3" height="40" rx="4" class="d-caja"/><text x="180.0" y="101" text-anchor="middle" class="d-t d-peq">portátil</text><text x="180.0" y="116" text-anchor="middle" class="d-d d-peq">.1.35</text><rect x="239.7" y="84" width="115.3" height="40" rx="4" class="d-caja"/><text x="297.3" y="101" text-anchor="middle" class="d-t d-peq">tele</text><text x="297.3" y="116" text-anchor="middle" class="d-d d-peq">.1.36</text><text x="180" y="144" text-anchor="middle" class="d-d d-peq">dentro de casa: privadas 192.168.1.x por DHCP</text></svg>
+<p class="diapo__texto">4. Tu <strong>router</strong> sale a Internet con esa IP pública. Y dentro de casa, su <strong>DHCP</strong> reparte direcciones <strong>privadas</strong> (192.168.1.algo) a tus aparatos: lo que has visto arriba.</p>
+</div>
+</div>
+<p><strong>IANA</strong> quiere decir <em>Internet Assigned Numbers Authority</em> (autoridad de números asignados de Internet). Es de las instituciones más antiguas de la red: ya repartía direcciones antes de que existiera Internet tal como lo conoces. Los <strong>RIR</strong> (<em>Registros Regionales de Internet</em>) son organizaciones sin ánimo de lucro. Cada uno se ocupa de una región:</p>
+<figure class="captura">
+<img src="data/instalaciones/introduccion-redes/img/u1/rir-mapa.webp" width="900" height="397" alt="Mapamundi con las cinco regiones de los RIR, cada una de un color: ARIN en azul (Estados Unidos y Canadá), LACNIC en verde (México, Centroamérica, el Caribe y Sudamérica), RIPE NCC en amarillo (Europa, Rusia y Oriente Medio), AFRINIC en naranja (África) y APNIC en rojo (resto de Asia y Oceanía)" loading="lazy">
+<figcaption>Los 5 RIR. España está en la zona amarilla: RIPE NCC.</figcaption>
+</figure>
+<table>
+<tr><th>RIR</th><th>Su región</th></tr>
+<tr><td>ARIN</td><td>Estados Unidos y Canadá</td></tr>
+<tr><td>LACNIC</td><td>Latinoamérica y el Caribe</td></tr>
+<tr><td><strong>RIPE NCC</strong></td><td><strong>Europa</strong>, Rusia y Oriente Medio. <strong>El nuestro</strong></td></tr>
+<tr><td>AFRINIC</td><td>África</td></tr>
+<tr><td>APNIC</td><td>Asia y Oceanía</td></tr>
+</table>
+<div class="nota">Internet <strong>no tiene un dueño</strong> ni nadie que lo mande todo. Pero hay unas pocas cosas, como las direcciones IP y los nombres de dominio, que <strong>sí</strong> hay que coordinar en todo el planeta para que no se repitan. De eso se ocupan la IANA y los RIR.</div>
 
 <h2>Los comandos que vas a usar siempre</h2>
 <p>Estas herramientas vienen con el sistema operativo y se usan desde la línea de comandos. En Windows se abre con <strong>Inicio → escribir <code>cmd</code> → Enter</strong>.</p>
@@ -225,15 +260,9 @@ Estadísticas de ping para 192.168.1.1:
 <li>Explica las tres reglas de abreviación de IPv6 con un ejemplo.</li>
 <li>Abrevia todo lo que puedas 2001:0DB8:0000:0000:0000:FF00:0042:8329 y di qué regla aplicas en cada paso.</li>
 <li>(V/F) El «::» puede aparecer dos veces en la misma dirección IPv6.</li>
-<li>Explica con tus palabras el protocolo <strong>DHCP</strong>. ¿Qué cuatro datos entrega?</li>
-<li>(ABC) En una red pequeña, el servidor DHCP suele ser…
-  <ul>
-    <li>a) el switch</li>
-    <li>b) el router</li>
-    <li>c) la impresora</li>
-  </ul>
-</li>
+<li>Explica con tus palabras el protocolo <strong>DHCP</strong>. ¿Qué cuatro datos entrega? En una red pequeña, ¿qué aparato hace de servidor DHCP?</li>
 <li>Un ordenador tiene la IP 169.254.20.5 y no tiene puerta de enlace. ¿Qué le ha pasado? ¿En qué tres sitios buscarías el fallo?</li>
+<li>Explica la función de la <strong>IANA</strong> y la de los <strong>RIR</strong>. ¿Cuántos RIR hay y cuál es el de Europa? Ordena de arriba abajo quién reparte las direcciones públicas: operadora, IANA, tu router, RIR.</li>
 <li>¿Para qué sirven <code>ipconfig</code>, <code>ping</code>, <code>tracert</code>, <code>nslookup</code> y <code>netstat</code>?</li>
 <li><strong>(Actividad 1)</strong> Escribe tu dirección IPv4, tu máscara, tu puerta de enlace, tus servidores DNS y si tienes el DHCP habilitado. ¿Cuántos adaptadores de red tiene tu ordenador?</li>
 <li>Un equipo no navega. Describe, por orden, los ping que harías y qué deducirías si falla cada uno.</li>
@@ -248,7 +277,6 @@ Estadísticas de ping para 192.168.1.1:
 <p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
 <p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol start="16">
-<li>Explica la función de <strong>IANA</strong> y la de los <strong>RIR</strong>. ¿Cuál es el de Europa?</li>
 <li>(V/F) Internet tiene un dueño que lo controla todo.</li>
 <li>En el móvil, mira qué IP te da el wifi de casa y cuál te da el del instituto (o de otro sitio). ¿Son públicas o privadas? ¿Qué aparato te las ha dado?</li>
 <li>¿Cuándo pondrías una IP fija y cuándo dejarías DHCP? Pon dos ejemplos de cada uno.</li>
