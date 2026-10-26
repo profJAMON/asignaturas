@@ -17,7 +17,7 @@
      mascara           "/26" o "255.255.255.192" de prefijo a decimal
      clase-ip          "10.250.1.1"              clase, máscara por defecto, red/host
      subred-salto      "192.168.1.100/26"        red, broadcast y rango
-     subred-c-metodo   "192.10.10.0, 14 subredes" clase C: bits, máscara, salto y lista
+     subred-c-metodo   "192.10.10.0, 14 subredes" clase C: bits, máscara, salto y 1ª subred
                        (o "200.175.14.0, 45 equipos")
      ipv6-abreviar     "2035:0001:…:0001"        las tres reglas
    ============================================================ */
@@ -885,17 +885,38 @@
       texto: `Paso 5, el <strong>salto</strong>: es el peso del último bit cogido, <strong>${r.salto}</strong> (el mismo número que las direcciones de cada subred). Las subredes empiezan de ${r.salto} en ${r.salto}: ${inicios.join(', ')}${r.subredes > 5 ? '…' : '.'}`
     });
 
-    const ks = r.subredes <= 4 ? Array.from({ length: r.subredes }, (_, k) => k + 1) : [1, 2, 3, 0, r.subredes];
-    let t = tx(10, 18, `${r.pre}. …`, 'd-d') + tx(10, 40, 'nº', 'd-d') + tx(56, 40, 'red', 'd-d') + tx(130, 40, 'equipos', 'd-d') + tx(272, 40, 'broadcast', 'd-d');
-    ks.forEach((k, i) => {
-      const y = 64 + i * 20;
-      if (k === 0) { t += tx(10, y, '…', 'd-d'); return; }
-      const ini = (k - 1) * r.salto, fin = ini + r.dirs - 1;
-      t += tx(10, y, `${k}ª`, 'd-t') + tx(56, y, `.${ini}`, 'd-a') + tx(130, y, `.${ini + 1} – .${fin - 1}`, 'd-t') + tx(272, y, `.${fin}`, 'd-c');
+    /* La 1ª subred (26/10/2026): ① red → ② red de la 2ª → ③ broadcast →
+       ④ primer equipo → ⑤ último. Mismo orden que el cuaderno. */
+    const s = r.salto;
+    const regla = (visibles, nuevos) => {
+      const celdas = [
+        { x: 8, w: 46, v: '.0', et: 'red', n: 1 },
+        { x: 58, w: 50, v: '.1', et: 'primer', n: 4 },
+        { x: 112, w: 22, v: '…', et: '', n: 0 },
+        { x: 138, w: 50, v: `.${s - 2}`, et: 'último', n: 5 },
+        { x: 192, w: 62, v: `.${s - 1}`, et: 'broadcast', n: 3 },
+        { x: 280, w: 72, v: `.${s}`, et: '2ª red', n: 2 }
+      ];
+      let t = tx(131, 16, '1ª subred', 'd-a', 'middle') + tx(316, 16, '2ª subred', 'd-d', 'middle');
+      t += linea(268, 24, 268, 82, 'd-linea-c');
+      celdas.forEach(c => {
+        const visible = c.n <= 1 || visibles.includes(c.n);
+        const nuevo = nuevos.includes(c.n);
+        t += caja(c.x, 30, c.w, 30, nuevo ? 'd-caja-act' : (visible ? 'd-caja-on' : 'd-caja'));
+        if (visible) t += tx(c.x + c.w / 2, 50, c.v, nuevo ? 'd-c' : (c.n === 0 ? 'd-d' : 'd-a'), 'middle');
+        if (c.et) t += tx(c.x + c.w / 2, 76, c.et, 'd-d d-peq', 'middle');
+      });
+      return t;
+    };
+    lista.push({
+      svg: svg(ANCHO, ALTO, `La 2ª subred empieza en .${s}`,
+        regla([2], [2]) + abajo(`.0 + ${s} = .${s}`)),
+      texto: `La <strong>1ª subred</strong> empieza en la red que me dan: <strong>${r.pre}.0</strong>. La <strong>2ª</strong> empieza un salto más allá: 0 + ${s} = <strong>${r.pre}.${s}</strong>.`
     });
     lista.push({
-      svg: svg(ANCHO, ALTO, `Lista de las ${r.subredes} subredes`, t),
-      texto: `Y la lista: la 1ª subred empieza en .0, la 2ª en .${r.salto}… La <strong>N</strong>ª empieza en (N − 1) × ${r.salto}. El <strong>broadcast</strong> de cada una es la red siguiente − 1, y los <strong>equipos</strong> son los de en medio.`
+      svg: svg(ANCHO, ALTO, `Broadcast de la 1ª .${s - 1}, equipos de .1 a .${s - 2}`,
+        regla([2, 3, 4, 5], [3, 4, 5]) + abajo(`broadcast .${s - 1}`, `equipos: .1 a .${s - 2}`)),
+      texto: `El <strong>broadcast</strong> de la 1ª es la dirección justo antes de la 2ª: ${s} − 1 = <strong>.${s - 1}</strong>. Los <strong>equipos</strong> son los de en medio: del <strong>.1</strong> (red + 1) al <strong>.${s - 2}</strong> (broadcast − 1). Son ${r.dirs - 2}, los mismos del paso 4: si no te coincide, repasa.`
     });
     return lista;
   }

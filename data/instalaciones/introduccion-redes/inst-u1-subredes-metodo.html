@@ -11,7 +11,7 @@
 </div>
 
 <h2>Hoy: el ejercicio de subredes</h2>
-<p>Hacer <strong>subredes</strong> es partir una red en trozos más pequeños. Hoy aprendes a <strong>hacer el ejercicio</strong>, sin teoría: me dan una red y cuántas subredes o cuántos equipos necesito, y yo saco la máscara nueva y la lista de subredes.</p>
+<p>Hacer <strong>subredes</strong> es partir una red en trozos más pequeños. Hoy aprendes a <strong>hacer el ejercicio</strong>, sin teoría: me dan una red y cuántas subredes o cuántos equipos necesito, y yo saco la máscara nueva y la primera subred.</p>
 <p>Para qué sirve y por qué funciona, lo verás en la sesión siguiente. Primero, la práctica.</p>
 <div class="nota">Hoy solo redes de <strong>clase C</strong>: las que empiezan por 192 a 223. Con ellas solo se parte el <strong>último número</strong>. La clase B llega en la unidad 7.</div>
 
@@ -55,37 +55,37 @@
 <p>Haz los 5 pasos con la hoja delante. Cada línea te pregunta una cosa distinta.</p>
 <div data-actividad="practica-mascara-c"></div>
 
-<h2>La lista de subredes</h2>
-<p>Con el salto ya puedes escribir todas las subredes. Para cada una hay cuatro datos:</p>
+<h2>La 1ª subred</h2>
+<p>Con el salto ya puedes sacar la <strong>1ª subred</strong>. Son 5 datos y van <strong>en este orden</strong>, porque cada uno sale del anterior:</p>
 <table>
 <tr><th>Dato</th><th>Cómo se saca</th></tr>
-<tr><td><strong>Dirección de red</strong></td><td>Donde empieza. La 1ª empieza en .0 y cada una, un salto más allá.</td></tr>
-<tr><td><strong>Primer equipo</strong></td><td>La dirección de red + 1.</td></tr>
-<tr><td><strong>Último equipo</strong></td><td>El broadcast − 1.</td></tr>
-<tr><td><strong>Broadcast</strong></td><td>La red siguiente − 1.</td></tr>
+<tr><td><strong>① Red de la 1ª subred</strong></td><td>La red que me dan (acaba en .0).</td></tr>
+<tr><td><strong>② Red de la 2ª subred</strong></td><td>① + salto.</td></tr>
+<tr><td><strong>③ Broadcast de la 1ª</strong></td><td>② − 1: la dirección justo antes de la 2ª.</td></tr>
+<tr><td><strong>④ Primer equipo</strong></td><td>① + 1.</td></tr>
+<tr><td><strong>⑤ Último equipo</strong></td><td>③ − 1.</td></tr>
 </table>
 <p>Así queda el ejemplo 1 (192.10.10.0, máscara 255.255.255.240, salto 16):</p>
-<pre><code>Subred   Red             Equipos                          Broadcast
-1ª       192.10.10.0     192.10.10.1   a 192.10.10.14     192.10.10.15
-2ª       192.10.10.16    192.10.10.17  a 192.10.10.30     192.10.10.31
-3ª       192.10.10.32    192.10.10.33  a 192.10.10.46     192.10.10.47
-4ª       192.10.10.48    192.10.10.49  a 192.10.10.62     192.10.10.63
- …
-16ª      192.10.10.240   192.10.10.241 a 192.10.10.254    192.10.10.255</code></pre>
-<p>Y si me preguntan por una subred concreta, no hace falta escribir la lista entera: la <strong>N</strong>ª subred empieza en <strong>(N − 1) × salto</strong>.</p>
+<table class="hoja-bits">
+<tr><th colspan="5">1ª subred</th><th>2ª</th></tr>
+<tr><td>① red</td><td>④ primer equipo</td><td>…</td><td>⑤ último equipo</td><td>③ broadcast</td><td>② red</td></tr>
+<tr><td><strong>.0</strong></td><td><strong>.1</strong></td><td>…</td><td><strong>.14</strong></td><td><strong>.15</strong></td><td><strong>.16</strong></td></tr>
+</table>
 <div class="salida">
-<p><strong>Ejemplo: ¿cuál es el broadcast de la 12ª subred de 192.10.10.0 con salto 16?</strong></p>
+<p><strong>Ejemplo 2: 200.175.14.0, máscara 255.255.255.192, salto 64</strong></p>
 <ol>
-<li>La 12ª empieza en (12 − 1) × 16 = 11 × 16 = <strong>176</strong>. Su red es 192.10.10.176.</li>
-<li>La siguiente (la 13ª) empieza en 176 + 16 = 192.</li>
-<li>Broadcast = 192 − 1 = <strong>191</strong> → <strong>192.10.10.191</strong>.</li>
+<li>Red de la 1ª: <strong>200.175.14.0</strong>.</li>
+<li>Red de la 2ª: 0 + 64 = <strong>200.175.14.64</strong>.</li>
+<li>Broadcast de la 1ª: 64 − 1 = <strong>200.175.14.63</strong>.</li>
+<li>Primer equipo: <strong>200.175.14.1</strong>.</li>
+<li>Último equipo: 63 − 1 = <strong>200.175.14.62</strong>.</li>
 </ol>
 </div>
-<div class="nota">Ojo con el número de la subred: la <strong>1ª</strong> es la que empieza en <strong>.0</strong>. Por eso se resta 1 antes de multiplicar.</div>
+<div class="nota">Compruébalo siempre: del .1 al .62 hay <strong>62 equipos</strong>, los mismos que salían en el paso 4. Si no te coincide, algo está mal.</div>
 
-<h3>Practica: la subred número N</h3>
-<p>Primero saca el salto. Después, (N − 1) × salto y rellena lo que te pidan.</p>
-<div data-actividad="practica-enesima-c"></div>
+<h3>Practica: la 1ª subred</h3>
+<p>Primero saca el salto. Después sigue el orden: la 2ª subred, el broadcast y los equipos.</p>
+<div data-actividad="practica-primera-c"></div>
 
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
@@ -116,8 +116,8 @@
 <li>Lo mismo con la red 199.30.7.0 y 25 equipos en cada subred.</li>
 <li>Lo mismo con la red 221.8.140.0 y 50 subredes.</li>
 <li>Lo mismo con la red 194.66.3.0 y 100 equipos en cada subred.</li>
-<li>Escribe la lista de todas las subredes de la pregunta 9: red, primer equipo, último equipo y broadcast de cada una.</li>
-<li>Red 199.30.7.0 con máscara 255.255.255.224: a) ¿dirección de red de la 5ª subred? b) ¿broadcast de la 3ª? c) ¿qué equipos tiene la 7ª? Escribe el cálculo.</li>
+<li>Saca la 1ª subred de la pregunta 9, en orden: red de la 1ª, red de la 2ª, broadcast de la 1ª, primer equipo y último equipo.</li>
+<li>Haz lo mismo con la red de la pregunta 12. Después cuenta los equipos que hay del primero al último: ¿te coinciden con los de la pregunta 12?</li>
 <li>Una empresa tiene la red 200.20.20.0 y quiere 4 departamentos con 50 equipos cada uno. ¿Le basta con esa red? ¿Qué máscara pondrías? Explícalo con la hoja.</li>
 </ol>
 </div>
@@ -129,6 +129,7 @@
 <ol start="16">
 <li>Comprueba dos de tus respuestas de las preguntas 9 a 12 con una calculadora de subredes de Internet (busca «calculadora subredes IP»). ¿Te coinciden? Si no, encuentra tu fallo.</li>
 <li>Inventa dos ejercicios con redes de clase C distintas, uno que diga subredes y otro que diga equipos, y resuélvelos con los 5 pasos.</li>
+<li>Escribe la lista de todas las subredes de la pregunta 9: red, primer equipo, último equipo y broadcast de cada una. Pista: cada subred empieza un salto más allá que la anterior.</li>
 </ol>
 </div>
 

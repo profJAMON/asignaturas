@@ -68,7 +68,7 @@
 <li>Clases por el primer octeto: <strong>A</strong> 0–127 · <strong>B</strong> 128–191 · <strong>C</strong> 192–223 · <strong>D</strong> 224–239 · <strong>E</strong> 240–255.</li>
 <li>Máscaras por defecto: <strong>A</strong> 255.0.0.0 · <strong>B</strong> 255.255.0.0 · <strong>C</strong> 255.255.255.0.</li>
 <li>Privadas: <strong>10.x.x.x</strong> · <strong>172.16–172.31</strong> · <strong>192.168.x.x</strong>.</li>
-<li>Subredes de clase C con la hoja de bits: los bits se cogen desde la izquierda; máscara nueva = suma de sus pesos; salto = peso del último bit cogido; la Nª subred empieza en (N − 1) × salto. Todas las subredes se usan.</li>
+<li>Subredes de clase C con la hoja de bits: los bits se cogen desde la izquierda; máscara nueva = suma de sus pesos; salto = peso del último bit cogido. 1ª subred: la 2ª empieza en .salto, el broadcast de la 1ª es salto − 1 y los equipos van del .1 al broadcast − 1. Todas las subredes se usan.</li>
 <li>Subredes: equipos = <strong>2<sup>bits de host</sup> − 2</strong>. Primera del bloque = red; última = broadcast.</li>
 <li><strong>IPv6</strong>: 128 bits, 8 hextetos en hexadecimal, y tres reglas para abreviar.</li>
 </ul>

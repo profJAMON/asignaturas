@@ -55,6 +55,12 @@
     },
     {
       "tipo": "generador",
+      "titulo": "La 1ª subred",
+      "generador": "subred-c-primera",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
       "titulo": "Red, broadcast y rango",
       "generador": "red-y-broadcast",
       "n": 8

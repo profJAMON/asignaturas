@@ -487,25 +487,27 @@ function genSubredCMascara() {
   return salida;
 }
 
-function genSubredCEnesima() {
+/* La 1ª subred (26/10/2026): la Nª subred no la entendían. Se pide la red
+   de la 2ª, el broadcast de la 1ª y sus equipos, en el orden del cuaderno:
+   ① red de la 1ª (la que me dan) → ② red de la 2ª = ① + salto →
+   ③ broadcast = ② − 1 → ④ primer equipo = ① + 1 → ⑤ último = ③ − 1. */
+function genSubredCPrimera() {
   const p = _problemaSubredC();
-  const k = _ent(1, Math.min(p.subredes, 16));
-  const que = _elige(['red', 'broadcast', 'primero', 'ultimo']);
+  const que = _elige(['segunda', 'segunda', 'broadcast', 'broadcast', 'broadcast', 'primero', 'ultimo', 'ultimo']);
   const pre = p.red.split('.').slice(0, 3).join('.');
-  const ini = (k - 1) * p.dirs;
-  const fin = ini + p.dirs - 1;
+  const s = p.salto;
   const valores = {
-    red: ['la dirección de red', `${pre}.${ini}`],
-    broadcast: ['el broadcast', `${pre}.${fin}`],
-    primero: ['el primer equipo', `${pre}.${ini + 1}`],
-    ultimo: ['el último equipo', `${pre}.${fin - 1}`]
+    segunda: ['la dirección de red de la 2ª subred', `${pre}.${s}`],
+    broadcast: ['el broadcast de la 1ª subred', `${pre}.${s - 1}`],
+    primero: ['el primer equipo de la 1ª subred', `${pre}.1`],
+    ultimo: ['el último equipo de la 1ª subred', `${pre}.${s - 2}`]
   };
   const dato = Math.random() < 0.5 ? `con máscara ${p.mascara}` : `(${p.pide})`;
   return {
-    enunciado: `${p.red} ${dato} — ¿${valores[que][0]} de la ${k}ª subred?`,
+    enunciado: `${p.red} ${dato} — ¿${valores[que][0]}?`,
     respuesta: valores[que][1],
     formato: 'texto',
-    pista: `Máscara ${p.mascara}, salto ${p.salto}. La 1ª subred empieza en .0; la ${k}ª, en (${k} − 1) × ${p.salto} = ${ini}. Red ${pre}.${ini} · equipos de .${ini + 1} a .${fin - 1} · broadcast .${fin} (la siguiente red − 1).`
+    pista: `Máscara ${p.mascara}, salto ${s}. ① 1ª subred: ${pre}.0 · ② 2ª subred: 0 + ${s} = .${s} · ③ broadcast de la 1ª: ${s} − 1 = .${s - 1} · ④ primer equipo .1 · ⑤ último equipo .${s - 2}.`
   };
 }
 
@@ -555,7 +557,7 @@ const GENERADORES = {
   'red-y-broadcast': genRedYBroadcast,
   'misma-red': genMismaRed,
   'subred-c-mascara': genSubredCMascara,
-  'subred-c-enesima': genSubredCEnesima,
+  'subred-c-primera': genSubredCPrimera,
   'mac-valida': genMacValida
 };
 
