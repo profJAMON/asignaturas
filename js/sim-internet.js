@@ -11,6 +11,9 @@
               los cinco operadores de la sesión (" ", -, site:,
               filetype:, OR) y cinco retos. Los anuncios no hacen
               caso de los operadores, como en uno de verdad.
+   red-casa   U2 S1 «Monta la red de casa»: IP privadas para los
+              aparatos, la pública para el router, preguntar al DNS y
+              mandar la petición al servidor de bloquecraft.es.
    bandeja    S3 «Revisa la bandeja»: seis correos; denunciar los de
               phishing, mandar la publicidad a spam y quedarse con
               los buenos. «Ver adónde lleva» enseña el enlace real.
@@ -483,6 +486,148 @@
         pantalla.appendChild(msg);
       }
       lista();
+    },
+  });
+  /* ============================================================
+     U2 S1 · Monta la red de casa
+     ============================================================ */
+  registrarSimulacion('red-casa', {
+    ventana: 'La red de tu casa',
+    mision: [
+      'Dale a cada aparato de casa una IP privada, sin repetir ninguna.',
+      'Pon en el router la IP pública que le da la operadora.',
+      'Pregunta al DNS la IP de bloquecraft.es.',
+      'Manda la petición al servidor correcto y que se cargue la página.',
+    ],
+    final: 'Apunta en tu cuaderno la IP que diste a cada aparato, la IP pública del router y la IP de bloquecraft.es. Después explica, paso a paso, el viaje desde que escribiste bloquecraft.es hasta que se cargó (pregunta 15).',
+    crear(ctx) {
+      const { el, boton, pantalla } = ctx;
+      const PUBLICA = '83.45.120.17', SERVIDOR = '91.45.7.33';
+      const OPC = [['', 'Elige una IP…'], ['192.168.1.20', '192.168.1.20'], ['192.168.1.21', '192.168.1.21'], ['192.168.1.22', '192.168.1.22'], [PUBLICA, PUBLICA], ['192.168.1.300', '192.168.1.300']];
+      const APARATOS = [['pc', '🖥 Ordenador'], ['movil', '📱 Móvil'], ['consola', '🎮 Consola']];
+      const ip = { pc: '', movil: '', consola: '' };
+      let routerFuera = '', dnsIp = '';
+      const casa = el('div', 'red__casa');
+      pantalla.appendChild(el('p', 'sim__ayuda', 'Dentro de casa, el router es la puerta: 192.168.1.1. Hacia fuera, la operadora le da una IP pública.'));
+      pantalla.appendChild(casa);
+      const msg = el('div');
+      msg.setAttribute('aria-live', 'polite');
+      function aviso(t, tipo) { msg.innerHTML = ''; if (t) msg.appendChild(ctx.aviso(t, tipo)); }
+
+      const dentro = el('fieldset', 'red__zona');
+      dentro.appendChild(el('legend', null, '🏠 Dentro de casa (red privada)'));
+      APARATOS.forEach(([k, t]) => {
+        const l = el('label', 'sim__campo');
+        l.appendChild(el('span', null, t));
+        const sel = document.createElement('select');
+        sel.className = 'lab__entrada sim__select';
+        sel.setAttribute('translate', 'no');
+        OPC.forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; sel.appendChild(o); });
+        sel.addEventListener('change', () => {
+          ip[k] = sel.value;
+          if (ip[k] === PUBLICA) aviso('Esa es una IP pública: es la del router hacia fuera, no la de un aparato de dentro de casa.', 'cuidado');
+          else if (ip[k] === '192.168.1.300') aviso('Ningún número de una IP pasa de 255: 300 no vale.', 'cuidado');
+          else aviso();
+          if (ip[k]) ctx.apunta(`${t.slice(2).trim()}: ${ip[k]}.`);
+          revisa();
+        });
+        l.appendChild(sel);
+        dentro.appendChild(l);
+      });
+      casa.appendChild(dentro);
+
+      const router = el('fieldset', 'red__zona');
+      router.appendChild(el('legend', null, '📶 Router'));
+      router.appendChild(el('p', 'sim__ayuda', 'Hacia dentro: 192.168.1.1 (la puerta de enlace)'));
+      const lr = el('label', 'sim__campo');
+      lr.appendChild(el('span', null, 'Hacia fuera (Internet):'));
+      const sr = document.createElement('select');
+      sr.className = 'lab__entrada sim__select';
+      sr.setAttribute('translate', 'no');
+      [['', 'Elige una IP…'], ['192.168.1.1', '192.168.1.1'], [PUBLICA, PUBLICA + ' (la da la operadora)'], ['192.168.1.20', '192.168.1.20']].forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; sr.appendChild(o); });
+      sr.addEventListener('change', () => {
+        routerFuera = sr.value;
+        if (routerFuera && routerFuera !== PUBLICA) aviso('Hacia fuera, Internet no entiende las IP privadas (192.168…): el router necesita la pública.', 'cuidado');
+        else aviso();
+        if (routerFuera) ctx.apunta(`Router hacia fuera: ${routerFuera}.`);
+        revisa();
+      });
+      lr.appendChild(sr);
+      router.appendChild(lr);
+      casa.appendChild(router);
+
+      const dns = el('fieldset', 'red__zona');
+      dns.appendChild(el('legend', null, '📖 DNS'));
+      const fila = el('div', 'lab__fila');
+      const nombre = document.createElement('input');
+      nombre.type = 'text';
+      nombre.className = 'lab__entrada';
+      nombre.value = 'bloquecraft.es';
+      nombre.spellcheck = false;
+      nombre.setAttribute('translate', 'no');
+      nombre.setAttribute('aria-label', 'Nombre que preguntas al DNS');
+      const pregunta = boton('Preguntar al DNS');
+      const resp = el('p', 'sim__ayuda');
+      resp.setAttribute('translate', 'no');
+      pregunta.addEventListener('click', () => {
+        const n = nombre.value.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
+        if (n === 'bloquecraft.es') {
+          dnsIp = SERVIDOR;
+          resp.textContent = `DNS: bloquecraft.es → ${SERVIDOR}`;
+          ctx.cumple(2, `Preguntar al DNS por bloquecraft.es: responde ${SERVIDOR}.`);
+        } else if (n === 'google.es' || n === 'www.google.es') {
+          resp.textContent = 'DNS: google.es → 142.250.184.78';
+          ctx.apunta('Preguntar al DNS por google.es: 142.250.184.78.');
+        } else {
+          resp.textContent = `DNS: «${n}» no está en mi lista. No sé su IP.`;
+          ctx.apunta(`Preguntar al DNS por ${n}: no existe (como en la Actividad 1).`);
+        }
+      });
+      fila.appendChild(nombre);
+      fila.appendChild(pregunta);
+      dns.appendChild(fila);
+      dns.appendChild(resp);
+      casa.appendChild(dns);
+
+      const peticion = el('fieldset', 'red__zona');
+      peticion.appendChild(el('legend', null, '📨 Petición'));
+      const fp = el('div', 'lab__fila');
+      fp.appendChild(el('span', null, 'Mandar la petición a:'));
+      const viaje = el('ol', 'red__viaje');
+      [SERVIDOR, '192.168.1.1', PUBLICA].forEach(d => {
+        const b = boton(d, 'lab__boton lab__boton--codigo');
+        b.setAttribute('translate', 'no');
+        b.addEventListener('click', () => {
+          viaje.innerHTML = '';
+          if (!['pc', 'movil', 'consola'].every(k => ip[k] && ip[k].startsWith('192.168.1.') && ip[k] !== '192.168.1.300') || new Set(Object.values(ip)).size < 3) { aviso('Antes, dale a cada aparato una IP privada distinta: sin IP, el ordenador no puede hablar con nadie.'); return; }
+          if (routerFuera !== PUBLICA) { aviso('El router todavía no tiene su IP pública: la petición no puede salir a Internet.'); return; }
+          if (d !== SERVIDOR) {
+            aviso(d === PUBLICA ? 'Esa es la IP pública de tu propio router: la petición no saldría de casa.' : 'Esa es la puerta de tu router, no el servidor de bloquecraft.es. Pregunta antes al DNS.');
+            ctx.falla(`Mandar la petición a ${d}: no es el servidor.`);
+            return;
+          }
+          if (!dnsIp) { aviso('¿Cómo sabes que es esa IP? Pregúntaselo antes al DNS.', 'cuidado'); return; }
+          aviso();
+          [`Tu ordenador (cliente, ${ip.pc}) pide la página.`, 'La petición pasa por el router (192.168.1.1).', `El router la saca a Internet con su IP pública (${PUBLICA}).`, 'La operadora la lleva por Internet.', `Llega al servidor de bloquecraft.es (${SERVIDOR}), que responde con la página.`, 'La respuesta vuelve por el mismo camino hasta tu pantalla.']
+            .forEach(t => viaje.appendChild(el('li', null, t)));
+          ctx.cumple(3, `Mandar la petición a ${SERVIDOR}: ordenador → router → Internet → servidor, y vuelta.`);
+        });
+        fp.appendChild(b);
+      });
+      peticion.appendChild(fp);
+      peticion.appendChild(viaje);
+      casa.appendChild(peticion);
+      pantalla.appendChild(msg);
+
+      function revisa() {
+        const vals = Object.values(ip);
+        const ok = vals.every(v => v && v.startsWith('192.168.1.') && v !== '192.168.1.300') && new Set(vals).size === 3;
+        if (vals.every(Boolean) && new Set(vals).size < 3) aviso('Dos aparatos con la misma IP chocan: cada uno necesita la suya.', 'cuidado');
+        if (ok) ctx.cumple(0, `IP privadas: ordenador ${ip.pc}, móvil ${ip.movil}, consola ${ip.consola}.`);
+        else if (ctx.hecho(0)) ctx.deshace(0);
+        if (routerFuera === PUBLICA) ctx.cumple(1, `Router hacia fuera: ${PUBLICA}, la IP pública que da la operadora.`);
+        else if (ctx.hecho(1)) ctx.deshace(1);
+      }
     },
   });
 })();

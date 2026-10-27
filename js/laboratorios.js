@@ -19,7 +19,8 @@
              no contesta y el equipo se pone una 169.254.x.x.
    url       Escribes una URL y se colorea por partes (protocolo,
              subdominio, dominio, ruta, parámetros, fragmento).
-   peticion  Un servidor de práctica (pixelkart.es): pides una URL y
+   peticion  Un servidor de práctica (bloquecraft.es, una web de fans
+             de Minecraft inventada): pides una URL y
              ves la petición, el código de estado (200, 301, 404, 500)
              y lo que llega.
    viaje     De la URL a la pantalla, paso a paso, quitando o poniendo
@@ -55,7 +56,7 @@
 
   function cabecera(caja, etiqueta) {
     const cab = el('div', 'probador__cabecera');
-    cab.appendChild(el('span', 'probador__etiqueta', 'Toca y mira'));
+    cab.appendChild(el('span', 'probador__etiqueta', etiqueta || 'Toca y mira'));
     const t = caja.getAttribute('aria-label');
     if (t) cab.appendChild(el('span', 'probador__titulo', t));
     caja.appendChild(cab);
@@ -476,12 +477,12 @@
      3. Petición y respuesta: un servidor de práctica
      ============================================================ */
 
-  const SERVIDOR = 'pixelkart.es';
+  const SERVIDOR = 'bloquecraft.es';
   const PAGINAS = {
-    '/': ['Pixel Kart', 'El juego de karts más rápido del instituto.'],
-    '/index.html': ['Pixel Kart', 'El juego de karts más rápido del instituto.'],
-    '/circuitos.html': ['Circuitos', 'Volcán, Playa Pixel y Ciudad Neón.'],
-    '/personajes.html': ['Personajes', 'Turbo Rex, Chispa y Nube Veloz.'],
+    '/': ['BloqueCraft', 'Guías de Minecraft hechas por fans.'],
+    '/index.html': ['BloqueCraft', 'Guías de Minecraft hechas por fans.'],
+    '/mods.html': ['Mods', 'Un minimapa, más biomas y mejores gráficos.'],
+    '/servidores.html': ['Servidores', 'Supervivencia, minijuegos y modo creativo.'],
     '/img/logo.png': ['(imagen) logo.png', 'Una imagen: el servidor manda el archivo.'],
     '/buscar': ['Resultados de la búsqueda', ''],
   };
@@ -489,7 +490,7 @@
 
   function labPeticion(caja) {
     cabecera(caja);
-    caja.appendChild(el('p', 'lab__nota', `Este servidor de práctica se llama ${SERVIDOR} y tiene: /index.html, /circuitos.html, /personajes.html, /img/logo.png y /buscar?q=… La tienda (/tienda) está rota.`));
+    caja.appendChild(el('p', 'lab__nota', `Este servidor de práctica se llama ${SERVIDOR} y tiene: /index.html, /mods.html, /servidores.html, /img/logo.png y /buscar?q=… La tienda (/tienda) está rota.`));
     const fila = el('form', 'lab__fila');
     const entrada = el('input', 'lab__entrada');
     entrada.type = 'text';
@@ -497,7 +498,7 @@
     entrada.setAttribute('autocapitalize', 'off');
     entrada.setAttribute('translate', 'no');
     entrada.setAttribute('aria-label', 'URL que pides');
-    entrada.value = 'https://pixelkart.es/circuitos.html';
+    entrada.value = 'https://bloquecraft.es/mods.html';
     const ir = boton('Pedir la página →', 'lab__boton lab__boton--activo');
     ir.type = 'submit';
     fila.appendChild(entrada);
@@ -506,7 +507,7 @@
 
     const ejemplos = el('div', 'lab__fila lab__fila--atajos');
     ejemplos.appendChild(el('span', 'lab__nota', 'Prueba:'));
-    ['https://pixelkart.es/personajes.html', 'https://pixelkart.es/Circuitos.html', 'http://pixelkart.es/', 'https://pixelkart.es/tienda', 'https://pixelkart.es/buscar?q=volcan#resultados', 'https://pixelkart.es/pilotos.html'].forEach(u => {
+    ['https://bloquecraft.es/servidores.html', 'https://bloquecraft.es/Mods.html', 'http://bloquecraft.es/', 'https://bloquecraft.es/tienda', 'https://bloquecraft.es/buscar?q=creeper#resultados', 'https://bloquecraft.es/texturas.html'].forEach(u => {
       const b = boton(u.replace('https://', '').replace('http://', 'http://'), 'lab__boton lab__boton--codigo');
       b.setAttribute('translate', 'no');
       b.addEventListener('click', () => { entrada.value = u; pedir(); });
@@ -590,7 +591,7 @@
     entrada.spellcheck = false;
     entrada.setAttribute('translate', 'no');
     entrada.setAttribute('aria-label', 'URL de la web');
-    entrada.value = 'https://pixelkart.es/circuitos.html';
+    entrada.value = 'https://bloquecraft.es/mods.html';
     fila.appendChild(entrada);
     caja.appendChild(fila);
 
@@ -628,7 +629,7 @@
       if (!/^[a-z]+:\/\//i.test(u)) u = 'https://' + u;
       const m = /^([a-z]+):\/\/([^\/?#]+)([^#]*)/i.exec(u) || [];
       const proto = (m[1] || 'https').toLowerCase();
-      const host = (m[2] || 'pixelkart.es').toLowerCase();
+      const host = (m[2] || 'bloquecraft.es').toLowerCase();
       const ruta = m[3] || '/';
       const ip = '93.184.' + (host.length * 7 % 200 + 10) + '.' + (host.length * 13 % 200 + 20);
       const P = [];

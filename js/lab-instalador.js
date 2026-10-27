@@ -95,7 +95,7 @@
      Simulador del instalador
      ============================================================ */
   function labInstalador(caja) {
-    cabecera(caja);
+    cabecera(caja, 'Simulación');
     caja.appendChild(el('p', 'lab__nota', 'Un simulador: no instala nada de verdad ni ocupa espacio. Tu PC de mentira tiene 8 GB de RAM (8192 MB) y 4 núcleos, como los del aula.'));
 
     const cuerpo = el('div', 'inst');

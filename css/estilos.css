@@ -175,6 +175,28 @@
   --lab-ruta: #a6ff4d;
   --lab-query: #ffcb6b;
   --lab-frag: #f78c6c;
+  /* Simulaciones (27/10/2026): un escritorio tipo Mac, igual en los
+     dos temas, como las hojas de cuaderno */
+  --sim-fondo-1: #5b6cc7;
+  --sim-fondo-2: #c26bb3;
+  --sim-ventana: #f6f6f7;
+  --sim-barra: #e6e6e8;
+  --sim-borde: #c9c9cc;
+  --sim-texto: #1d1d1f;
+  --sim-tenue: #55555c;
+  --sim-acento: #0a5fcc;
+  --sim-mal: #c0262d;
+  --sim-mal-fondo: rgba(192, 38, 45, 0.08);
+  --sim-bien: #1a7f37;
+  --sim-bien-fondo: rgba(26, 127, 55, 0.1);
+  --sim-cuidado: #a4126a;
+  --sim-nota: #fff2a8;
+  --sim-nota-texto: #3b3200;
+  --sim-sombra: 0 14px 32px rgba(0, 0, 0, 0.32);
+  --sim-blanco: #ffffff;
+  --sim-boton-rojo: #ff5f57;
+  --sim-boton-ambar: #febc2e;
+  --sim-boton-verde: #28c840;
   /* 06/10/2026: «Ver respuesta» / pistas en píldora de cristal con
      luz lima detrás. */
   --cristal-pista-fondo: rgba(255, 255, 255, 0.06);
@@ -358,6 +380,28 @@
   --lab-ruta: #3f6212;
   --lab-query: #92400e;
   --lab-frag: #b4410e;
+  /* Simulaciones (27/10/2026): un escritorio tipo Mac, igual en los
+     dos temas, como las hojas de cuaderno */
+  --sim-fondo-1: #5b6cc7;
+  --sim-fondo-2: #c26bb3;
+  --sim-ventana: #f6f6f7;
+  --sim-barra: #e6e6e8;
+  --sim-borde: #c9c9cc;
+  --sim-texto: #1d1d1f;
+  --sim-tenue: #55555c;
+  --sim-acento: #0a5fcc;
+  --sim-mal: #c0262d;
+  --sim-mal-fondo: rgba(192, 38, 45, 0.08);
+  --sim-bien: #1a7f37;
+  --sim-bien-fondo: rgba(26, 127, 55, 0.1);
+  --sim-cuidado: #a4126a;
+  --sim-nota: #fff2a8;
+  --sim-nota-texto: #3b3200;
+  --sim-sombra: 0 14px 32px rgba(0, 0, 0, 0.32);
+  --sim-blanco: #ffffff;
+  --sim-boton-rojo: #ff5f57;
+  --sim-boton-ambar: #febc2e;
+  --sim-boton-verde: #28c840;
   --cristal-pista-fondo: rgba(255, 255, 255, 0.55);
   --cristal-pista-borde: rgba(63, 98, 18, 0.35);
   --cristal-pista-brillo: rgba(255, 255, 255, 0.9);
@@ -4839,7 +4883,95 @@ body::after {
 .leccion .sim__bios-orden li span { margin-right: 0.5rem; }
 .leccion .sim__bios-orden li .lab__boton { margin-right: 0.3rem; vertical-align: middle; }
 .sim__bios .lab__boton { background: transparent; color: var(--lab-terminal-cmd); border-color: var(--lab-terminal-tenue); min-height: 30px; padding: 0 0.6rem; }
+/* U1: explorador de archivos de mentira (js/sim-archivos.js) */
+.exp { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.exp__barra { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; }
+.exp__barra .lab__boton { min-height: 32px; padding: 0.2rem 0.7rem; }
+.exp__ext { margin-left: auto; font-size: 0.85rem; min-height: 32px; }
+.exp__ruta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.1rem 0.2rem; border: 1px solid var(--border); border-radius: 6px; padding: 0.3rem 0.5rem; font-size: 0.85rem; }
+.exp__miga { background: none; border: 0; padding: 0.15rem 0.3rem; min-height: 28px; color: var(--accent); font: inherit; cursor: pointer; border-radius: 4px; }
+.exp__miga:hover { background: var(--surface-2); }
+.exp__sep { color: var(--text-dim); }
+.exp__ruta-real { flex-basis: 100%; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); overflow-wrap: anywhere; }
+.leccion .exp__lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: 6px; }
+.leccion .exp__lista li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 0.6rem; padding: 0.1rem 0.5rem; border-bottom: 1px solid var(--border); }
+.leccion .exp__lista li:last-child { border-bottom: 0; }
+.exp__item { background: none; border: 0; font: inherit; color: var(--text); text-align: left; padding: 0.3rem 0.4rem; min-height: 36px; border-radius: 4px; cursor: pointer; overflow-wrap: anywhere; }
+.exp__item:hover { background: var(--surface-2); }
+.exp__item--elegido { background: var(--sim-bien-fondo); outline: 2px solid var(--accent); }
+.exp__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; min-height: 2.4rem; }
+.exp__acciones .lab__boton { min-height: 32px; padding: 0.2rem 0.7rem; }
+.exp__prop { font-size: 0.85rem; flex-basis: 100%; }
+.exp__drive { border: 1px dashed var(--border); border-radius: 6px; padding: 0.5rem 0.7rem; font-size: 0.88rem; }
+.leccion .exp__drive p { margin: 0.1rem 0; }
+/* U2 S1: la red de casa */
+.red__casa { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+@media (min-width: 640px) { .red__casa { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.red__zona { border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.7rem 0.6rem; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+.red__zona legend { font-weight: 600; padding: 0 0.3rem; }
+.leccion .red__viaje { margin: 0; padding-left: 1.3rem; font-size: 0.88rem; display: flex; flex-direction: column; gap: 0.2rem; }
 @media print { .sim__mision, .sim__registro { break-inside: avoid; } }
+
+/* Aspecto «ordenador» de las simulaciones (27/10/2026, elegido por Carles
+   entre dos prototipos: escritorio tipo Mac frente a monitor retro).
+   Un fondo de escritorio; la pantalla, una ventana clara con los tres
+   botones; la misión, un pósit; «Lo que has hecho», una ventanita. Igual
+   en los dos temas. Dentro se redefinen --text, --accent… para que todo
+   lo que va dentro se pinte solo, como en las hojas de cuaderno. También
+   el simulador del instalador (U5 S3, .inst). */
+.lab[data-lab="simulacion"] .sim,
+.lab[data-lab="instalador"] .inst {
+  background: linear-gradient(135deg, var(--sim-fondo-1), var(--sim-fondo-2));
+  border-radius: 10px;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+}
+.lab[data-lab="simulacion"] .sim::before,
+.lab[data-lab="instalador"] .inst::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 1.3rem;
+  background: rgba(255, 255, 255, 0.35); border-radius: 10px 10px 0 0;
+}
+.sim__ventana, .inst__ventana, .sim__registro, .inst__registro {
+  --text: var(--sim-texto); --text-dim: var(--sim-tenue); --text-faint: var(--sim-tenue);
+  --accent: var(--sim-acento); --accent-warm: var(--sim-cuidado);
+  --surface: var(--sim-ventana); --surface-2: var(--sim-barra); --border: var(--sim-borde);
+  --error: var(--sim-mal); --error-fondo: var(--sim-mal-fondo); --ok: var(--sim-bien); --ok-fondo: var(--sim-bien-fondo);
+  --boton-texto: var(--sim-blanco);
+  color: var(--sim-texto);
+}
+.lab .sim__ventana, .lab .inst__ventana {
+  background: var(--sim-ventana); border: 1px solid var(--sim-borde); border-radius: 10px;
+  box-shadow: var(--sim-sombra); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+.lab .sim__barra, .lab .inst__barra {
+  position: relative; justify-content: center; text-align: center;
+  background: var(--sim-barra); color: var(--sim-tenue); font-family: inherit; font-size: 0.8rem;
+  padding: 0.4rem 1rem 0.4rem 4.4rem;
+}
+.lab .sim__puntos, .lab .inst__barra::before {
+  content: ''; position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+  width: 52px; height: 12px;
+  background:
+    radial-gradient(circle at 6px 6px, var(--sim-boton-rojo) 5.5px, transparent 6px),
+    radial-gradient(circle at 24px 6px, var(--sim-boton-ambar) 5.5px, transparent 6px),
+    radial-gradient(circle at 42px 6px, var(--sim-boton-verde) 5.5px, transparent 6px);
+}
+.lab .sim__ventana .lab__boton, .lab .inst__ventana .lab__boton { background: var(--sim-blanco); border-radius: 7px; font-family: inherit; }
+.lab .sim__ventana .lab__boton--activo, .lab .inst__ventana .lab__boton--activo { background: var(--sim-acento); color: var(--sim-blanco); border-color: var(--sim-acento); }
+.lab .sim__ventana .lab__entrada, .lab .inst__ventana .lab__entrada { background: var(--sim-blanco); color: var(--sim-texto); border-color: var(--sim-borde); }
+.lab .sim__mision {
+  --text: var(--sim-nota-texto); --text-dim: var(--sim-nota-texto); --ok: var(--sim-bien);
+  background: var(--sim-nota); color: var(--sim-nota-texto); border: 0; border-radius: 2px;
+  box-shadow: var(--sim-sombra); transform: rotate(-1deg);
+}
+.lab .sim__registro, .lab .inst__registro {
+  background: rgba(255, 255, 255, 0.9); border: 0; border-radius: 10px; box-shadow: var(--sim-sombra);
+}
+@media (prefers-reduced-motion: reduce) { .lab .sim__mision { transform: none; } }
+@media print {
+  .lab[data-lab="simulacion"] .sim, .lab[data-lab="instalador"] .inst { background: none; padding: 0; }
+  .lab .sim__mision { transform: none; box-shadow: none; border: 1px solid #000; }
+}
 
 /* Terminal */
 .lab__terminal {

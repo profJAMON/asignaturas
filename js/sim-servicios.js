@@ -48,7 +48,7 @@
      S1 · Modera el foro
      ============================================================ */
   registrarSimulacion('foro', {
-    ventana: 'Comunidad PixelKart · foro de ayuda',
+    ventana: 'Comunidad BloqueCraft · foro de Minecraft',
     mision: [
       'Hay un mensaje en el tema equivocado: muévelo a su tema.',
       'Marca como solución la respuesta que arregló el problema.',
@@ -58,26 +58,26 @@
     crear(ctx) {
       const { el, boton, pantalla } = ctx;
       const T = {
-        cierra: { titulo: 'El juego se cierra al arrancar', autor: 'nube_azul', msgs: [] },
-        kart: { titulo: '¿Cuál es el mejor kart para principiantes?', autor: 'rayo77', msgs: [] },
-        hielo: { titulo: 'Trucos para el circuito de hielo', autor: 'mar_gris', msgs: [] },
-        repe: { titulo: '¡¡¡SE ME CIERRA EL JUEGO!!!', autor: 'tigre_99', msgs: [] },
+        cierra: { titulo: 'Minecraft se cierra al arrancar', autor: 'nube_azul', msgs: [] },
+        kart: { titulo: '¿Qué mod me recomendáis para empezar?', autor: 'rayo77', msgs: [] },
+        hielo: { titulo: 'Trucos para sobrevivir en el Nether', autor: 'mar_gris', msgs: [] },
+        repe: { titulo: '¡¡¡SE ME CIERRA EL MINECRAFT!!!', autor: 'tigre_99', msgs: [] },
       };
       T.cierra.msgs = [
-        { id: 'c0', autor: 'nube_azul', t: 'Abro PixelKart y a los dos segundos se cierra. Tengo Windows 11. ¿Alguien sabe qué pasa?' },
+        { id: 'c0', autor: 'nube_azul', t: 'Abro Minecraft y a los dos segundos se cierra. Tengo Windows 11. ¿Alguien sabe qué pasa?' },
         { id: 'c1', autor: 'rayo77', t: 'A mí me pasaba con el antivirus. Prueba a desactivarlo un momento.' },
-        { id: 'c2', autor: 'pixel_verde', t: 'Actualiza el controlador de la tarjeta gráfica. Con el viejo, el juego se cierra al cargar.' },
+        { id: 'c2', autor: 'pixel_verde', t: 'Actualiza el controlador de la tarjeta gráfica. Con el viejo, Minecraft se cierra al cargar el mundo.' },
         { id: 'c3', autor: 'nube_azul', t: '¡Era el controlador de la gráfica! Lo he actualizado y ya funciona. Gracias, pixel_verde.' },
       ];
       T.kart.msgs = [
-        { id: 'k0', autor: 'rayo77', t: 'Empiezo a jugar y no sé qué kart elegir. ¿Cuál me recomendáis?' },
+        { id: 'k0', autor: 'rayo77', t: 'Acabo de empezar y quiero probar algún mod. ¿Cuál me recomendáis?' },
         { id: 'k1', autor: 'mar_gris', t: 'El Gato Turbo: no corre mucho, pero gira muy bien.' },
-        { id: 'k2', autor: 'luna_8', t: 'A mí también se me cierra el juego al arrancar, ¿le pasa a alguien más?', fuera: true },
+        { id: 'k2', autor: 'luna_8', t: 'A mí también se me cierra Minecraft al arrancar, ¿le pasa a alguien más?', fuera: true },
         { id: 'k3', autor: 'pixel_verde', t: 'Yo empecé con el Escarabajo. Es lento pero no derrapa.' },
       ];
       T.hielo.msgs = [
-        { id: 'h0', autor: 'mar_gris', t: 'En el circuito de hielo frena antes de las curvas, no dentro.' },
-        { id: 'h1', autor: 'luna_8', t: 'Y usa el kart más pesado: patina menos.' },
+        { id: 'h0', autor: 'mar_gris', t: 'Ponte alguna pieza de armadura de oro: así los piglins no te atacan.' },
+        { id: 'h1', autor: 'luna_8', t: 'Y lleva siempre bloques de sobra para taparte si cae lava.' },
       ];
       T.repe.msgs = [
         { id: 'r0', autor: 'tigre_99', t: 'Se me cierra nada más abrirlo, ayudaaa' },
@@ -87,7 +87,7 @@
 
       function lista() {
         abierto = null;
-        ctx.barra('Comunidad PixelKart · foro de ayuda');
+        ctx.barra('Comunidad BloqueCraft · foro de Minecraft');
         pantalla.innerHTML = '';
         pantalla.appendChild(el('p', 'sim__h', 'Temas'));
         const ul = el('ul', 'sim__temas');
@@ -110,13 +110,13 @@
       function abrir(k) {
         abierto = k;
         const tm = T[k];
-        ctx.barra('Comunidad PixelKart · ' + tm.titulo);
+        ctx.barra('Comunidad BloqueCraft · ' + tm.titulo);
         pantalla.innerHTML = '';
         const volver = boton('‹ Todos los temas');
         volver.addEventListener('click', lista);
         pantalla.appendChild(volver);
         pantalla.appendChild(el('p', 'sim__h', tm.titulo));
-        if (k === 'repe' && duplicado) pantalla.appendChild(ctx.aviso('Tema cerrado: es un duplicado de «El juego se cierra al arrancar».', 'ok'));
+        if (k === 'repe' && duplicado) pantalla.appendChild(ctx.aviso('Tema cerrado: es un duplicado de «Minecraft se cierra al arrancar».', 'ok'));
         const msg = el('div');
         tm.msgs.forEach((m, i) => {
           const c = el('div', 'sim__mensaje' + (i === 0 ? ' sim__mensaje--inicial' : '') + (solucion === m.id ? ' sim__mensaje--solucion' : ''));
@@ -145,7 +145,7 @@
               if (m.fuera && dest === 'cierra') {
                 tm.msgs.splice(tm.msgs.indexOf(m), 1);
                 T.cierra.msgs.push(m);
-                ctx.cumple(0, `Mover el mensaje de ${m.autor} («se me cierra el juego») del tema de los karts a «${T.cierra.titulo}».`);
+                ctx.cumple(0, `Mover el mensaje de ${m.autor} («se me cierra Minecraft») del tema de los mods a «${T.cierra.titulo}».`);
                 abrir(k);
                 pantalla.appendChild(ctx.aviso('Movido: ahora está en el tema donde se habla de ese problema.', 'ok'));
               } else if (m.fuera && dest === 'repe') {
@@ -184,7 +184,7 @@
               msg.innerHTML = '';
               if (dup.value === 'cierra') {
                 duplicado = true;
-                ctx.cumple(2, '«¡¡¡SE ME CIERRA EL JUEGO!!!» cerrado como duplicado de «El juego se cierra al arrancar»: la respuesta ya está allí.');
+                ctx.cumple(2, '«¡¡¡SE ME CIERRA EL MINECRAFT!!!» cerrado como duplicado de «Minecraft se cierra al arrancar»: la respuesta ya está allí.');
                 abrir(k);
               } else if (dup.value) {
                 dup.value = '';
@@ -219,7 +219,7 @@
       const BIOS = [
         ['casa', 'Vivo en C/ Major 14, 2.º B, Palma · 1.º de FP en el Ramon Llull'],
         ['clase', 'Estudiante en el Ramon Llull, 1.º de FP · 8:00 a 14:00'],
-        ['gustos', 'Karts, música y dibujo'],
+        ['gustos', 'Minecraft, música y dibujo'],
       ];
       const s = { privada: false, ubic: true, msg: 'todos', datos: true, bio: 'casa', tema: false };
       const panel = el('div', 'sim__dos');
