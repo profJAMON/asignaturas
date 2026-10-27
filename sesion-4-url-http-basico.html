@@ -1,0 +1,283 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Anatomía de una URL</h2>
+
+<p>Cada vez que escribes una dirección en el navegador, o haces clic en un enlace, en realidad estás usando una <code>URL</code> (Uniform Resource Locator, «localizador uniforme de recursos»). No es un texto suelto: tiene partes fijas, cada una con su función, igual que una dirección postal tiene calle, número y ciudad en un orden concreto.</p>
+
+<div class="diapos" aria-label="Las cinco partes de una URL, una a una">
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL completa"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-t">https://</tspan><tspan class="d-t">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-t">/posts</tspan><tspan class="d-t">?tema=web</tspan><tspan class="d-t">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-t">una URL completa</text><text x="180" y="112" text-anchor="middle" class="d-d">5 partes, siempre en este orden</text></svg>
+<p class="diapo__texto">Una <strong>URL</strong> es la dirección completa de una página. Parece un churro, pero tiene <strong>cinco partes</strong>, siempre en el mismo orden.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL con la parte 1 resaltada"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-c">https://</tspan><tspan class="d-d">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-d">/posts</tspan><tspan class="d-d">?tema=web</tspan><tspan class="d-d">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-c">1. protocolo</text><text x="180" y="112" text-anchor="middle" class="d-t">cómo viaja</text></svg>
+<p class="diapo__texto">1. El <strong>protocolo</strong>: <code>https://</code>. Dice cómo viaja la información. La <code>s</code> es de «seguro»: va cifrada.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL con la parte 2 resaltada"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-a">https://</tspan><tspan class="d-c">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-d">/posts</tspan><tspan class="d-d">?tema=web</tspan><tspan class="d-d">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-c">2. dominio</text><text x="180" y="112" text-anchor="middle" class="d-t">a qué servidor vas</text></svg>
+<p class="diapo__texto">2. El <strong>dominio</strong>: el nombre que el DNS traduce a una IP. <code>blog.</code> es un subdominio: una parte del mismo sitio.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL con la parte 3 resaltada"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-a">https://</tspan><tspan class="d-a">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-c">/posts</tspan><tspan class="d-d">?tema=web</tspan><tspan class="d-d">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-c">3. ruta</text><text x="180" y="112" text-anchor="middle" class="d-t">qué pides dentro</text></svg>
+<p class="diapo__texto">3. La <strong>ruta</strong>: <code>/posts</code>. Qué pides dentro de ese servidor. Va después del dominio y empieza por <code>/</code>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL con la parte 4 resaltada"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-a">https://</tspan><tspan class="d-a">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-a">/posts</tspan><tspan class="d-c">?tema=web</tspan><tspan class="d-d">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-c">4. parámetros</text><text x="180" y="112" text-anchor="middle" class="d-t">un filtro: clave=valor</text></svg>
+<p class="diapo__texto">4. Los <strong>parámetros</strong>: <code>?tema=web</code>. Empiezan por <code>?</code> y son <code>clave=valor</code>. Piden una versión concreta de la página, como un filtro.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 124" role="img" aria-label="URL con la parte 5 resaltada"><rect x="4" y="6" width="352" height="52" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle"><tspan class="d-a">https://</tspan><tspan class="d-a">blog.iesramonllull.net</tspan></text><text x="180" y="48" text-anchor="middle"><tspan class="d-a">/posts</tspan><tspan class="d-a">?tema=web</tspan><tspan class="d-c">#final</tspan></text><text x="180" y="88" text-anchor="middle" class="d-grande d-c">5. fragmento</text><text x="180" y="112" text-anchor="middle" class="d-t">un salto en la página</text></svg>
+<p class="diapo__texto">5. El <strong>fragmento</strong>: <code>#final</code>. Va al final y empieza por <code>#</code>. Salta a un punto de la página. <strong>No se envía al servidor</strong>.</p>
+</div>
+</div>
+
+<p>Ahora, cada parte con un poco más de detalle.</p>
+
+<h3>Protocolo</h3>
+
+<p><code>http://</code> o <code>https://</code> indican el «idioma» con el que el navegador y el servidor se van a hablar. La <code>s</code> de <code>https</code> significa «seguro»: la información viaja cifrada, para que nadie que intercepte la conexión por el camino pueda leerla. Hoy en día casi todas las páginas usan <code>https</code>; los navegadores modernos avisan con un icono de advertencia cuando una web todavía usa <code>http</code> a secas.</p>
+
+<h3>Dominio</h3>
+
+<p>Ya lo viste en la sesión 1: el nombre que el DNS traduce a una IP (<code>iesramonllull.net</code>). A veces va precedido de un subdominio como <code>www.</code> o <code>blog.</code>, que identifica una parte concreta dentro de ese mismo dominio: piensa en ello como distintos departamentos de un mismo edificio, todos con la misma dirección postal pero un despacho distinto.</p>
+
+<h3>Ruta (path)</h3>
+
+<p>Todo lo que viene después del dominio y antes de <code>?</code> o <code>#</code>. Indica qué recurso concreto pides dentro de ese servidor: puede ser un archivo real (<code>/imagenes/logo.png</code>) o, en webs más modernas, una sección organizada por carpetas aunque no exista un archivo físico con ese nombre exacto (<code>/blog/posts</code>).</p>
+
+<h3>Parámetros (query string)</h3>
+
+<p>Empiezan con <code>?</code> y son pares <code>clave=valor</code> separados por <code>&amp;</code>. Sirven para pedirle al servidor una variación concreta de la misma página, sin necesitar una ruta distinta para cada combinación posible.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <text x="15" y="25" font-size="14"><tspan fill="var(--text-faint)">?</tspan><tspan fill="var(--code-inline)">tema</tspan><tspan fill="var(--text)">=</tspan><tspan fill="var(--accent)">internet</tspan><tspan fill="var(--text-faint)">&amp;</tspan><tspan fill="var(--code-inline)">orden</tspan><tspan fill="var(--text)">=</tspan><tspan fill="var(--accent)">fecha</tspan></text>
+  <text x="15" y="50" fill="var(--text-dim)" font-size="10">clave "tema" con valor "internet", clave "orden" con valor "fecha"</text>
+  <text x="15" y="70" fill="var(--text-dim)" font-size="10">→ "dame la lista de posts, filtrada por el tema internet, ordenada por fecha"</text>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: si un buscador de tienda online tiene la URL <code>tienda.com/zapatillas?color=azul&amp;talla=42</code>, ¿qué está pidiendo el usuario, con sus propias palabras?</div>
+<details><summary>Ver respuesta</summary>Está pidiendo ver la página de «zapatillas», pero filtrada solo por las que son de color azul y de la talla 42.</details>
+
+<h3>Fragmento (ancla)</h3>
+
+<p>Empieza con <code>#</code> y va al final de todo. A diferencia de las demás partes, el fragmento <strong>no se envía al servidor</strong>: lo gestiona solo el navegador, para saltar directamente a un punto concreto dentro de la misma página (por ejemplo, un apartado con ese <code>id</code>). Es exactamente lo mismo que usa el índice «En esta página» de esta propia web.</p>
+
+<p>Ahora míralo con tus URLs. Escribe o pega una dirección y cada parte se pinta de un color:</p>
+<div class="lab" data-lab="url" aria-label="Las partes de una URL"></div>
+
+<h3>Reto 1 — ¿De qué va esta página?</h3>
+<p>Una URL te dice mucho de una página <strong>antes de abrirla</strong>. Lee cada parte por orden: el dominio (de quién es la web), la ruta (qué sección o qué página), los parámetros (qué filtro se ha elegido) y el fragmento (a qué parte salta). Por ejemplo:</p>
+<p class="no-traducir"><code>https://www.tienda.com/zapatillas/running?color=azul&amp;talla=42#opiniones</code></p>
+<p>→ las <strong>opiniones</strong> de unas <strong>zapatillas de running</strong> de una tienda online, en concreto las de color <strong>azul</strong> y la talla <strong>42</strong>.</p>
+<p>Ahora tú: elige qué página es. Cuando aciertes, pulsa <strong>Otro reto</strong>: cada vez sale una URL distinta. Haz al menos cinco. Después, contesta en el cuaderno la <strong>pregunta 9</strong>: allí lo explicas tú, con tus palabras.</p>
+<div data-actividad="reto-urls"></div>
+
+<h3>Actividad 1 — El # en la barra de direcciones</h3>
+<ol>
+<li>Mira la barra de direcciones de esta página. Termina en algo como <code>tema.html?id=sesion-4-url-http-basico</code>.</li>
+<li>En el índice «En esta página» (en el ordenador, a la derecha), pulsa «Códigos de estado».</li>
+<li>Vuelve a mirar la barra de direcciones. Apunta qué ha cambiado (pregunta 5).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> al final de la URL ha aparecido un <code>#</code> con un nombre, y la página ha saltado a ese apartado <strong>sin recargarse</strong>: el navegador no le ha pedido nada al servidor.</p>
+
+<h2>Cómo se carga una página: petición y respuesta</h2>
+
+<p>En la sesión 1 viste el esquema básico: el cliente pide, el servidor responde. Ahora que sabes leer una URL completa, puedes ver ese intercambio con más detalle: es una conversación con un formato fijo, llamada <code>HTTP</code> (HyperText Transfer Protocol).</p>
+
+<div class="diapos" aria-label="Petición y respuesta HTTP, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 120" role="img" aria-label="El navegador manda GET /posts al servidor"><rect x="6" y="34" width="100" height="50" rx="4" class="d-caja-act"/><text x="56" y="64" text-anchor="middle" class="d-c">navegador</text><rect x="254" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="304" y="64" text-anchor="middle" class="d-a">servidor</text><path d="M 108 50 L 250 50" class="d-linea-c"/><path d="M 250 50 L 242.0 46.0 L 242.0 54.0 z" class="d-relleno-c"/><text x="180" y="40" text-anchor="middle" class="d-c">GET /posts</text></svg>
+<p class="diapo__texto">1. El navegador convierte la URL en una <strong>petición</strong>: el método <code>GET</code> («dame») y la ruta que quiere.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 120" role="img" aria-label="El servidor busca la ruta /posts"><rect x="6" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="56" y="64" text-anchor="middle" class="d-a">navegador</text><rect x="254" y="34" width="100" height="50" rx="4" class="d-caja-act"/><text x="304" y="64" text-anchor="middle" class="d-c">servidor</text><path d="M 108 50 L 250 50" class="d-linea-a"/><path d="M 250 50 L 242.0 46.0 L 242.0 54.0 z" class="d-a"/><text x="180" y="40" text-anchor="middle" class="d-d">GET /posts</text><text x="290" y="106" text-anchor="middle" class="d-c">busca /posts</text></svg>
+<p class="diapo__texto">2. El <strong>servidor</strong> recibe la petición y busca lo que le piden.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 120" role="img" aria-label="El servidor responde 200 con el HTML"><rect x="6" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="56" y="64" text-anchor="middle" class="d-a">navegador</text><rect x="254" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="304" y="64" text-anchor="middle" class="d-a">servidor</text><path d="M 108 50 L 250 50" class="d-linea-a"/><path d="M 250 50 L 242.0 46.0 L 242.0 54.0 z" class="d-a"/><text x="180" y="40" text-anchor="middle" class="d-d">GET /posts</text><path d="M 252 72 L 110 72" class="d-linea-c"/><path d="M 110 72 L 118.0 76.0 L 118.0 68.0 z" class="d-relleno-c"/><text x="180" y="98" text-anchor="middle" class="d-c">200 + el HTML</text></svg>
+<p class="diapo__texto">3. Si lo encuentra, manda la <strong>respuesta</strong>: el código <code>200</code> (todo bien) y el HTML. El navegador lo dibuja.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 120" role="img" aria-label="El servidor responde 404"><rect x="6" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="56" y="64" text-anchor="middle" class="d-a">navegador</text><rect x="254" y="34" width="100" height="50" rx="4" class="d-caja-on"/><text x="304" y="64" text-anchor="middle" class="d-a">servidor</text><path d="M 108 50 L 250 50" class="d-linea-a"/><path d="M 250 50 L 242.0 46.0 L 242.0 54.0 z" class="d-a"/><text x="180" y="40" text-anchor="middle" class="d-d">GET /posts</text><path d="M 252 72 L 110 72" class="d-linea-c"/><path d="M 110 72 L 118.0 76.0 L 118.0 68.0 z" class="d-relleno-c"/><text x="180" y="98" text-anchor="middle" class="d-c d-grande">404</text></svg>
+<p class="diapo__texto">Si no lo encuentra, la respuesta es <code>404</code>: «no encontrado». El servidor sí contesta, pero para decir que eso no está.</p>
+</div>
+</div>
+
+<p>Cada petición lleva un <strong>método</strong>, que dice qué tipo de acción se está pidiendo. Los dos más conocidos:</p>
+
+<table style="width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92rem">
+<tr><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-faint);font-weight:400">Método</th><th style="text-align:left;border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-faint);font-weight:400">Para qué se usa</th></tr>
+<tr><td style="border-bottom:1px solid var(--border);padding:6px 10px"><code>GET</code></td><td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Pedir un recurso: cargar una página, hacer clic en un enlace, escribir una dirección. Es lo que has usado siempre hasta ahora.</td></tr>
+<tr><td style="padding:6px 10px"><code>POST</code></td><td style="padding:6px 10px;color:var(--text-dim)">Enviar datos al servidor (por ejemplo, un formulario). Este curso no vais a crear formularios, pero conviene saber que existe.</td></tr>
+</table>
+
+<p>Cuando navegas de página en página o abres imágenes, prácticamente siempre estás usando <code>GET</code>: nunca se lo tienes que indicar tú a mano, el navegador lo hace solo.</p>
+
+<h2>Códigos de estado</h2>
+
+<p>En la sesión 3 ya viste dos códigos en la pestaña Network (Red): <code>200</code> (todo correcto) y <code>404</code> (no encontrado). Son parte de un sistema más amplio: la respuesta del servidor siempre incluye un número de tres cifras que resume qué ha pasado, antes incluso de mirar el contenido.</p>
+
+<div class="salida" style="background:var(--bg);padding:14px">
+<table style="border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:0.82rem">
+<tr>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Código</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Significado</th>
+  <th style="border-bottom:1px solid var(--border);padding:6px 10px;text-align:left;color:var(--text-faint);font-weight:400">Ejemplo real</th>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--code-inline)">200</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">OK: todo ha ido bien</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">La página se carga con normalidad</td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent)">301</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">Redirección permanente</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Escribes <code>http://</code> y el servidor te reenvía solo a <code>https://</code></td>
+</tr>
+<tr>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--accent-warm)">404</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text)">No encontrado</td>
+  <td style="border-bottom:1px solid var(--border);padding:6px 10px;color:var(--text-dim)">Escribes mal el nombre de un archivo o de una ruta</td>
+</tr>
+<tr>
+  <td style="padding:6px 10px;color:var(--error)">500</td>
+  <td style="padding:6px 10px;color:var(--text)">Error interno del servidor</td>
+  <td style="padding:6px 10px;color:var(--text-dim)">El servidor ha recibido la petición, pero algo se ha roto al intentar responder</td>
+</tr>
+</table>
+</div>
+
+<p>Fíjate en la diferencia entre <code>404</code> y <code>500</code>: el <code>404</code> significa que el servidor sí ha respondido, pero diciendo «esto no existe aquí»; el <code>500</code> significa que el servidor tenía que responder algo, pero se ha encontrado con un fallo propio al intentarlo. El problema, en el primer caso, casi siempre está en la URL que has pedido; en el segundo, está en el propio servidor.</p>
+
+<figure class="captura">
+<img src="data/operaciones/fundamentos-internet/img/u2/biblioteca-codigos-estado.webp" width="900" height="506" alt="Cuatro viñetas con el mismo chico con mochila delante del mostrador de una biblioteca y la misma bibliotecaria con gafas. Arriba a la izquierda, ella le da un libro y los dos sonríen. Arriba a la derecha, ella señala con el brazo hacia otra sala al fondo de un pasillo. Abajo a la izquierda, ella abre los brazos junto a una estantería vacía y él se rasca la cabeza. Abajo a la derecha, el ordenador del mostrador echa chispas y humo y ella se lleva las manos a la cabeza" loading="lazy">
+<figcaption>Pides un libro en la biblioteca, como el navegador pide una página al servidor.</figcaption>
+</figure>
+<details>
+<summary>🤔 Cada viñeta es uno de los cuatro códigos de la tabla. ¿Cuál es cada una? Piénsalo antes de abrir.</summary>
+<ol>
+<li>Arriba a la izquierda, te dan el libro: <strong>200</strong>, todo bien.</li>
+<li>Arriba a la derecha, «está en la otra sala»: <strong>301</strong>, se ha mudado.</li>
+<li>Abajo a la izquierda, la estantería está vacía: <strong>404</strong>, no existe. La bibliotecaria sí te contesta.</li>
+<li>Abajo a la derecha, se le rompe el ordenador: <strong>500</strong>, el fallo es suyo, no de lo que has pedido.</li>
+</ol>
+</details>
+
+<div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería «el fallo»: del servidor o de cómo está escrita la página?</div>
+<details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
+
+<h3>Actividad 2 — Consigue cada código</h3>
+<p>Aquí tienes un servidor pequeñito, <code>bloquecraft.es</code>: una web de fans de Minecraft inventada. Pide páginas y mira la conversación: qué pide tu navegador (<code>GET</code>) y qué código le contesta el servidor.</p>
+<ol start="4">
+<li>Pulsa uno a uno los botones de «Prueba:» y mira en la conversación qué código te contesta el servidor en cada uno.</li>
+<li>Ahora escribe tú en la caja tres direcciones que <strong>no</strong> estén en los botones: una que dé <code>200</code> (otra página que sí exista), una que dé <code>404</code> (una página inventada) y una que dé <code>301</code>. La nota del servidor te dice qué páginas tiene.</li>
+<li>Apunta en tu cuaderno tus tres direcciones y el código de cada una (pregunta 12).</li>
+</ol>
+<div class="lab" data-lab="peticion" aria-label="Petición y respuesta con un servidor de práctica"></div>
+<p><strong>Comprobación observable:</strong> con tus tres direcciones, la conversación enseña un <code>200</code> con la página, un <code>404 Not Found</code> y un <code>301 Moved Permanently</code>. El <code>500</code> solo sale en la página rota de la tienda.</p>
+
+<h2>Actividades en el ordenador</h2>
+
+<div class="nota">Como en la sesión 3, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña <strong>Network</strong> (si tu Chrome está en castellano, <strong>Red</strong>). Puedes usar mi web de materiales (esta misma) o cualquier página real (por ejemplo, la del propio instituto).</div>
+
+<h3>Actividad 3 — Descompón una URL real</h3>
+<ol start="7">
+<li>Abre cualquier página en el navegador y abre las DevTools en la pestaña Network (clic derecho → Inspeccionar → Network o Red).</li>
+<li>Recarga la página con <code>F5</code>.</li>
+<li>Busca en la lista la primera fila, la del propio documento (tipo «document»), y haz clic en ella para ver su URL completa.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> se abre un panel de detalle con la URL completa de esa petición, y puedes ver su código de estado (normalmente <code>200</code>).</p>
+<p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene). Es la pregunta 13. Cuando la tengas, compruébala pegándola en «Las partes de una URL», más arriba.</p>
+
+<h3>Actividad 4 — Encuentra una URL con parámetros</h3>
+<ol start="10">
+<li>Con la pestaña Network todavía abierta, ve a un buscador (por ejemplo, el buscador interno de una tienda online o de una web de noticias) y busca algo.</li>
+<li>Mira la barra de direcciones o la nueva fila que aparece en Network: busca el símbolo <code>?</code>.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> aparece una URL con uno o varios pares <code>clave=valor</code> después de <code>?</code>, relacionados con lo que has buscado. Cópiala en el cuaderno (pregunta 14).</p>
+
+<div class="nota">🤔 Antes de seguir: ¿por qué crees que muchos buscadores usan parámetros en la URL en vez de, por ejemplo, tener una página distinta para cada búsqueda posible?</div>
+<details><summary>Ver respuesta</summary>Porque sería imposible crear de antemano una página para cada búsqueda que alguien pudiera escribir. Con parámetros, una sola página sabe leer lo que le llega en la URL y adaptar el contenido a partir de ahí.</details>
+
+<h3>Actividad 5 — Busca un código de estado distinto de 200</h3>
+<ol start="12">
+<li>Con Network abierto, escribe a propósito una dirección que no existe en un sitio real que conozcas (por ejemplo, añadiendo <code>/estoNoExiste</code> al final de un dominio).</li>
+<li>Mira la fila del documento en Network.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> el código de estado de esa fila ya no es <code>200</code>: normalmente es <code>404</code>. Apúntalo (pregunta 15).</p>
+<p><strong>¿Dónde miro esto?</strong> Cada vez que algo «no carga» en una web (tuya o ajena), la columna de estado en Network es lo primero que hay que mirar: te dice si el problema es que no se encuentra el recurso (4xx) o que ha fallado el propio servidor (5xx).</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 4 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>(V/F) El fragmento (la parte que empieza por <code>#</code>) se envía al servidor igual que el resto de la URL.</li>
+<li>(ABC) En la URL <code>https://tienda.com/productos?categoria=libros</code>, la palabra «productos» es:
+  <ul>
+    <li>a) el dominio</li>
+    <li>b) la ruta</li>
+    <li>c) un parámetro</li>
+  </ul>
+</li>
+<li>¿Qué diferencia hay entre <code>http://</code> y <code>https://</code>?</li>
+<li>En la URL <code>https://blog.iesramonllull.net/2026/proyectos?autor=ana&amp;orden=reciente</code>, ¿cuántos parámetros hay? Escribe la clave y el valor de cada uno.</li>
+<li><strong>(Actividad 1)</strong> ¿Qué cambió en la barra de direcciones al pulsar el índice? ¿Se recargó la página? ¿Por qué?</li>
+<li>Explica con tus palabras qué es una petición HTTP y qué es una respuesta HTTP.</li>
+<li>(ABC) El método que usa el navegador cuando cargas una página o haces clic en un enlace es:
+  <ul>
+    <li>a) GET</li>
+    <li>b) POST</li>
+    <li>c) LOAD</li>
+  </ul>
+</li>
+<li>(V/F) El método POST se usa normalmente para pedir una página, y el método GET para enviar datos a un formulario.</li>
+<li><strong>(Reto 1)</strong> Sin abrirlas, explica con tus palabras de qué va cada página, como en el ejemplo de las zapatillas. Fíjate en cada parte: dominio, ruta, parámetros y fragmento.
+  <ul>
+    <li>a) <code>https://www.cines-palma.es/cartelera/infantil?dia=sabado&amp;sesion=tarde</code></li>
+    <li>b) <code>https://www.recetas.com/postres/chocolate?tiempo=30#ingredientes</code></li>
+    <li>c) <code>https://es.wikipedia.org/wiki/Rafael_Nadal#Palmarés</code></li>
+  </ul>
+</li>
+<li>Explica con tus palabras la diferencia entre un error 404 y un error 500.</li>
+<li>(ABC) Escribes <code>http://</code> delante de un dominio y la web te lleva sola a la versión <code>https://</code>. El código que ha usado el servidor es:
+  <ul>
+    <li>a) 200</li>
+    <li>b) 301</li>
+    <li>c) 404</li>
+  </ul>
+</li>
+<li><strong>(Actividad 2)</strong> Escribe las tres direcciones que inventaste en el servidor de práctica y el código que te dio cada una (<code>200</code>, <code>404</code> y <code>301</code>). En el <code>404</code>, ¿de quién era el fallo: del servidor o de la dirección que pediste?</li>
+<li><strong>(Actividad 3)</strong> Copia la URL que encontraste en Network y separa sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene).</li>
+<li><strong>(Actividad 4)</strong> Copia la URL con parámetros que te salió al buscar. Escribe la clave y el valor de cada parámetro.</li>
+<li><strong>(Actividad 5)</strong> ¿Qué dirección inventada escribiste y qué código de estado te salió en Network?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 4 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Describe, paso a paso, qué ocurre desde que escribes una URL completa hasta que ves la página en pantalla. Usa las palabras «petición», «método», «respuesta» y «código de estado».</li>
+<li>Busca qué significa el código de estado 403 y en qué se diferencia de un 404.</li>
+<li>¿Qué diferencia hay entre un «dominio» (<code>google.com</code>) y una «URL» completa (<code>https://www.google.com/search?q=hola</code>)? Nombra todas las partes que conoces.</li>
+<li>En una web, una página da 404, pero la página de inicio carga bien. Explica qué comprobarías primero y por qué.</li>
+<li>Inventa una URL con parámetros para una web de recetas, de música o de videojuegos, y explica qué pide cada parámetro.</li>
+<li>Pon un ejemplo de algo que haces en Internet que usaría GET y otro que usaría POST.</li>
+<li>(V/F) El código 500 significa que el navegador no ha encontrado el archivo pedido.</li>
+</ol>
+</div>
