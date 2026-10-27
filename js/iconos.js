@@ -62,6 +62,7 @@ const ICONOS_UNIDAD = {
   'publicacion-web': _SVG('<path d="M14 30a8 8 0 0 1 1-16 11 11 0 0 1 21 3 7 7 0 0 1-1 13z"></path><rect x="17" y="34" width="14" height="8" rx="1.5"></rect><path d="M24 30v4M20 38h1" ></path>'),
   /* Lupa y sobre. */
   'navegador-servicios-internet': _SVG('<circle cx="19" cy="19" r="11"></circle><path d="M27 27l6 6"></path><rect x="26" y="30" width="18" height="12" rx="1.5"></rect><path d="M26 31l9 6 9-6" opacity="0.8"></path>'),
+  'sistemas-operativos': _SVG('<rect x="4" y="7" width="40" height="27" rx="2"></rect><path d="M18 41h12M24 34v7"></path><rect x="13" y="13" width="22" height="15" rx="1.5"></rect><path d="M13 17h22" opacity="0.8"></path>'),
   /* Tres equipos unidos. */
   'introduccion-redes': _SVG('<rect x="18" y="5" width="12" height="9" rx="1.5"></rect><rect x="4" y="33" width="12" height="9" rx="1.5"></rect><rect x="32" y="33" width="12" height="9" rx="1.5"></rect><path d="M24 14v9M10 33v-6h28v6M24 23v4"></path>'),
   /* Casco de obra. */

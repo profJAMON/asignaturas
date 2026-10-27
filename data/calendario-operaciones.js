@@ -170,7 +170,11 @@ const CALENDARIO_OPERACIONES =
       "id": "sistemas-operativos",
       "titulo": "Unidad 5. Sistemas operativos: virtualización e instalación",
       "horas": 13,
-      "sesiones": [],
+      "sesiones": [
+        "sesion-1-software-sistemas-operativos",
+        "sesion-2-maquinas-virtuales",
+        "sesion-3-instalar-linux"
+      ],
       "fechas": {
         "inicio": "2026-11-30",
         "fin": "2026-12-17"
@@ -302,6 +306,21 @@ const CALENDARIO_OPERACIONES =
       "titulo": "Sesión 3. Correo electrónico, mensajería y videollamadas",
       "unidad": "navegador-servicios-internet",
       "fecha": "2026-11-23"
+    },
+    "sesion-1-software-sistemas-operativos": {
+      "titulo": "Sesión 1. El software y los sistemas operativos",
+      "unidad": "sistemas-operativos",
+      "fecha": "2026-11-30"
+    },
+    "sesion-2-maquinas-virtuales": {
+      "titulo": "Sesión 2. Máquinas virtuales y preparar la instalación",
+      "unidad": "sistemas-operativos",
+      "fecha": "2026-12-03"
+    },
+    "sesion-3-instalar-linux": {
+      "titulo": "Sesión 3. Instalar Linux en una máquina virtual",
+      "unidad": "sistemas-operativos",
+      "fecha": "2026-12-10"
     }
   }
 }

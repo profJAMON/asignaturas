@@ -1,0 +1,219 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Un ordenador dentro de otro</h2>
+
+<p>Una <strong>máquina virtual</strong> es un ordenador de mentira, hecho de software, que funciona dentro de un ordenador de verdad. Tiene su pantalla (una ventana), su RAM, su procesador y su disco. Pero todo es prestado: son trozos del ordenador real.</p>
+
+<p>Dentro de la máquina virtual se puede instalar otro sistema operativo. Lo que pase ahí dentro se queda dentro: si algo se rompe, el Windows de fuera ni se entera.</p>
+
+<table>
+<tr><th>Palabra</th><th>Qué es</th><th>En el aula</th></tr>
+<tr><td><strong>Anfitrión</strong></td><td>El ordenador real y su sistema operativo</td><td>Tu PC con Windows</td></tr>
+<tr><td><strong>Invitado</strong></td><td>El sistema operativo de dentro de la máquina virtual</td><td>Linux</td></tr>
+<tr><td><strong>Hipervisor</strong></td><td>El programa que crea y arranca las máquinas virtuales</td><td>VirtualBox</td></tr>
+</table>
+
+<p>Toca cada pieza para verla salir y saber qué es:</p>
+
+<div class="lab" data-lab="piezas" data-figura="maquina-virtual" aria-label="Una máquina virtual por dentro"></div>
+
+<h3>Para qué sirve</h3>
+<ul>
+<li><strong>Probar sin miedo</strong>: instalar un sistema operativo, probar un programa raro o romper algo a propósito, sin tocar el ordenador de verdad.</li>
+<li><strong>Tener varios sistemas a la vez</strong>: Windows fuera y Linux dentro, en el mismo PC.</li>
+<li><strong>Aprovechar los servidores</strong>: en un solo servidor real caben muchos servidores virtuales. Así funciona la nube de la Unidad 3.</li>
+</ul>
+
+<div class="nota">🤔 Antes de seguir: si en la máquina virtual borras una carpeta del sistema y Linux deja de arrancar, ¿qué le pasa al Windows de tu PC?</div>
+<details><summary>Ver respuesta</summary>Nada. La máquina virtual está encerrada en su disco virtual, que para Windows es solo un archivo. Lo peor que puede pasar es que tengas que volver a crear la máquina virtual.</details>
+
+<h2>Dos tipos de hipervisor</h2>
+
+<div class="diapos" aria-label="Hipervisores de tipo 2 y de tipo 1">
+<div class="diapo">
+<svg viewBox="0 0 360 202" role="img" aria-label="tipo 2: en tu PC"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">tipo 2: en tu PC</text><rect x="50" y="144" width="260" height="28" rx="4" class="d-caja"/><text x="180" y="162.5" text-anchor="middle" class="d-d">ordenador real</text><rect x="50" y="108" width="260" height="28" rx="4" class="d-caja"/><text x="180" y="126.5" text-anchor="middle" class="d-d">Windows</text><rect x="50" y="72" width="260" height="28" rx="4" class="d-caja-act"/><text x="180" y="90.5" text-anchor="middle" class="d-c">VirtualBox</text><rect x="50.0" y="36" width="124.0" height="28" rx="4" class="d-caja"/><text x="112.0" y="54.5" text-anchor="middle" class="d-d d-peq">Linux</text><rect x="186.0" y="36" width="124.0" height="28" rx="4" class="d-caja"/><text x="248.0" y="54.5" text-anchor="middle" class="d-d d-peq">otro SO</text><text x="180" y="192" text-anchor="middle" class="d-d d-peq">el hipervisor va encima de Windows</text></svg>
+<p class="diapo__texto">Hipervisor de <strong>tipo 2</strong>: va <strong>encima de un sistema operativo</strong>, como un programa más. Es VirtualBox en tu PC.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 166" role="img" aria-label="tipo 1: en servidores"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">tipo 1: en servidores</text><rect x="50" y="108" width="260" height="28" rx="4" class="d-caja"/><text x="180" y="126.5" text-anchor="middle" class="d-d">servidor real</text><rect x="50" y="72" width="260" height="28" rx="4" class="d-caja-act"/><text x="180" y="90.5" text-anchor="middle" class="d-c">hipervisor</text><rect x="50.0" y="36" width="78.66666666666667" height="28" rx="4" class="d-caja"/><text x="89.33333333333334" y="54.5" text-anchor="middle" class="d-d d-peq">web 1</text><rect x="140.66666666666669" y="36" width="78.66666666666667" height="28" rx="4" class="d-caja"/><text x="180.00000000000003" y="54.5" text-anchor="middle" class="d-d d-peq">web 2</text><rect x="231.33333333333334" y="36" width="78.66666666666667" height="28" rx="4" class="d-caja"/><text x="270.6666666666667" y="54.5" text-anchor="middle" class="d-d d-peq">correo</text><text x="180" y="156" text-anchor="middle" class="d-d d-peq">el hipervisor va directo sobre el hardware</text></svg>
+<p class="diapo__texto">Hipervisor de <strong>tipo 1</strong>: va <strong>directamente sobre el hardware</strong>, sin Windows debajo. Es lo que usan los servidores y la nube.</p>
+</div>
+</div>
+
+<p>En clase usamos uno de <strong>tipo 2</strong>: VirtualBox, que es gratis y funciona en Windows, Linux y Mac. Ya lo conoces de Ofimática.</p>
+
+<h2>¿Puede tu ordenador?</h2>
+
+<p>Antes de crear una máquina virtual hay que mirar tres cosas del ordenador real:</p>
+<table>
+<tr><th>Qué</th><th>Por qué</th><th>Lo que hace falta para Linux</th></tr>
+<tr><td><strong>Virtualización</strong> activada</td><td>Sin ella, VirtualBox no arranca las máquinas</td><td>«Habilitado»</td></tr>
+<tr><td><strong>RAM</strong></td><td>Se la prestas a la máquina virtual</td><td>2 GB para la máquina</td></tr>
+<tr><td><strong>Espacio en disco</strong></td><td>El disco virtual es un archivo grande</td><td>Unos 20 GB libres</td></tr>
+</table>
+
+<h3>Actividad 1 — ¿Puede tu ordenador?</h3>
+<ol>
+<li>Pulsa a la vez <kbd>Ctrl</kbd> + <kbd>Mayús</kbd> + <kbd>Esc</kbd>: se abre el <strong>Administrador de tareas</strong>. Si sale una ventana pequeña, pulsa «Más detalles».</li>
+<li>Entra en <strong>Rendimiento</strong> (en Windows 11, el icono de la gráfica de la izquierda) y pulsa <strong>CPU</strong>. Abajo a la derecha busca <strong>Virtualización</strong>.</li>
+<li>Pulsa <strong>Memoria</strong> y mira el número grande de arriba a la derecha: es la RAM total.</li>
+<li>Cierra el Administrador de tareas. Abre el explorador de archivos y entra en <strong>Este equipo</strong> (lo viste en la Unidad 1): mira cuánto espacio libre tiene el disco C:.</li>
+<li>Apunta en tu cuaderno si la virtualización está habilitada, cuánta RAM tiene tu PC y cuánto espacio libre tiene C: (pregunta 8).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> al lado de «Virtualización» pone «Habilitado» o «Deshabilitado», y debajo de C: pone «X GB disponibles de Y GB».</p>
+<details><summary>Pista: no veo «Virtualización»</summary>Mira en la parte de abajo de la pantalla de CPU, en la lista de datos (velocidad, sockets, núcleos…). Si la ventana es pequeña, agrándala: la lista se esconde.</details>
+
+<h3>Cuánta RAM le das</h3>
+
+<div class="diapos" aria-label="Cómo se reparte la RAM">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="tu PC: 8 GB"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">tu PC: 8 GB</text><text x="20" y="52" text-anchor="start" class="d-d d-peq">8 GB de RAM</text><rect x="20" y="60" width="318.0" height="44" rx="4" class="d-caja"/><text x="180.0" y="80" text-anchor="middle" class="d-d d-peq">libre</text><text x="180.0" y="96" text-anchor="middle" class="d-d d-peq">8 GB</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">toda la RAM, sin repartir</text></svg>
+<p class="diapo__texto">Tu PC del aula tiene, por ejemplo, <strong>8 GB de RAM</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Windows"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">Windows</text><text x="20" y="52" text-anchor="start" class="d-d d-peq">8 GB de RAM</text><rect x="20" y="60" width="158.0" height="44" rx="4" class="d-caja-act"/><text x="100.0" y="80" text-anchor="middle" class="d-c d-peq">Windows</text><text x="100.0" y="96" text-anchor="middle" class="d-c d-peq">4 GB</text><rect x="180.0" y="60" width="158.0" height="44" rx="4" class="d-caja"/><text x="260.0" y="80" text-anchor="middle" class="d-d d-peq">libre</text><text x="260.0" y="96" text-anchor="middle" class="d-d d-peq">4 GB</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">Windows y tus programas</text></svg>
+<p class="diapo__texto"><strong>Windows</strong> y los programas que tienes abiertos necesitan unos 4 GB. Esos no se tocan.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="la máquina virtual"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">la máquina virtual</text><text x="20" y="52" text-anchor="start" class="d-d d-peq">8 GB de RAM</text><rect x="20" y="60" width="158.0" height="44" rx="4" class="d-caja"/><text x="100.0" y="80" text-anchor="middle" class="d-d d-peq">Windows</text><text x="100.0" y="96" text-anchor="middle" class="d-d d-peq">4 GB</text><rect x="180.0" y="60" width="78.0" height="44" rx="4" class="d-caja-act"/><text x="220.0" y="80" text-anchor="middle" class="d-c d-peq">máquina</text><text x="220.0" y="96" text-anchor="middle" class="d-c d-peq">2 GB</text><rect x="260.0" y="60" width="78.0" height="44" rx="4" class="d-caja"/><text x="300.0" y="80" text-anchor="middle" class="d-d d-peq">libre</text><text x="300.0" y="96" text-anchor="middle" class="d-d d-peq">2 GB</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">se le presta un trozo</text></svg>
+<p class="diapo__texto">A la <strong>máquina virtual</strong> le prestamos 2 GB. VirtualBox los pide en MB: 2 × 1024 = <strong>2048 MB</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="el margen"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">el margen</text><text x="20" y="52" text-anchor="start" class="d-d d-peq">8 GB de RAM</text><rect x="20" y="60" width="158.0" height="44" rx="4" class="d-caja"/><text x="100.0" y="80" text-anchor="middle" class="d-d d-peq">Windows</text><text x="100.0" y="96" text-anchor="middle" class="d-d d-peq">4 GB</text><rect x="180.0" y="60" width="78.0" height="44" rx="4" class="d-caja"/><text x="220.0" y="80" text-anchor="middle" class="d-d d-peq">máquina</text><text x="220.0" y="96" text-anchor="middle" class="d-d d-peq">2 GB</text><rect x="260.0" y="60" width="78.0" height="44" rx="4" class="d-caja-on"/><text x="300.0" y="80" text-anchor="middle" class="d-a d-peq">margen</text><text x="300.0" y="96" text-anchor="middle" class="d-a d-peq">2 GB</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">nunca más de la mitad</text></svg>
+<p class="diapo__texto">Sobran 2 GB de <strong>margen</strong>. La regla: a la máquina virtual, <strong>como mucho la mitad</strong> de la RAM. Si le das más, todo va lento.</p>
+</div>
+</div>
+
+<div data-actividad="u5s2-ram"></div>
+
+<h2>La ISO: el disco de instalación en un archivo</h2>
+
+<p>Para instalar un sistema operativo hace falta su <strong>instalador</strong>. Antes venía en un DVD. Hoy se descarga una <strong>ISO</strong>: un archivo que es la copia exacta de ese DVD. Pesa unos 3 GB.</p>
+
+<p>En un ordenador de verdad, la ISO se copia en un USB con un programa especial. En una máquina virtual es más fácil: la ISO se mete en su lector de DVD virtual, sin copiar nada.</p>
+
+<p>En la Sesión 3 instalarás <strong>Linux Mint</strong>, una distribución de Linux que se parece mucho a Windows. Lo harás en un simulador de la web: no hace falta descargar la ISO.</p>
+
+<h3>Actividad 2 — La ISO de Linux Mint</h3>
+<ol>
+<li>Abre <a href="https://www.linuxmint.com/" target="_blank">linuxmint.com</a> y pulsa <strong>Download</strong> (descargar).</li>
+<li>Verás que hay tres ediciones. Apunta sus nombres.</li>
+<li>Busca cuánto pesa la ISO (está en GB o en MB, junto al botón de descarga). <strong>No la descargues.</strong></li>
+<li>Apunta en tu cuaderno las tres ediciones y lo que pesa la ISO (pregunta 12).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> una de las ediciones se llama Xfce, y la ISO pesa unos 3 GB.</p>
+<details><summary>Pista: la página está en inglés</summary>No pasa nada: los nombres de las ediciones son nombres propios y no se traducen. El tamaño suele estar escrito como «2.9GB» (los ingleses usan punto en vez de coma).</details>
+
+<h2>Antes de instalar en un ordenador de verdad</h2>
+
+<p>En la máquina virtual no hay riesgo. En un ordenador de verdad, antes de instalar se hace esto, en este orden:</p>
+<ol>
+<li><strong>Copia de seguridad</strong> de tus archivos, como en la Unidad 1. Instalar puede borrar el disco.</li>
+<li>Comprobar los <strong>requisitos</strong>: RAM y espacio en disco.</li>
+<li>Si es un portátil, <strong>enchufarlo</strong>. Si se queda sin batería a mitad, el sistema puede quedar roto.</li>
+<li>Copiar la ISO en un <strong>USB</strong>.</li>
+<li>Cambiar el <strong>orden de arranque</strong> para que arranque desde el USB.</li>
+</ol>
+
+<h3>El orden de arranque</h3>
+
+<div class="diapos" aria-label="El orden de arranque">
+<div class="diapo">
+<svg viewBox="0 0 360 168" role="img" aria-label="normal"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">normal</text><text x="30" y="55" text-anchor="start" class="d-d">1.</text><rect x="50" y="36" width="180" height="28" rx="4" class="d-caja-act"/><text x="140" y="54.5" text-anchor="middle" class="d-c">disco duro</text><text x="30" y="91" text-anchor="start" class="d-d">2.</text><rect x="50" y="72" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="90.5" text-anchor="middle" class="d-d">USB o DVD</text><text x="30" y="127" text-anchor="start" class="d-d">3.</text><rect x="50" y="108" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="126.5" text-anchor="middle" class="d-d">red</text><path d="M 236 50 L 262 50 M 255 46.5 L 262 50 L 255 53.5" class="d-linea-c"/><rect x="266" y="36" width="84" height="28" rx="4" class="d-caja-on"/><text x="308" y="54.5" text-anchor="middle" class="d-a d-peq">Windows</text><text x="180" y="158" text-anchor="middle" class="d-d d-peq">arranca con lo primero que encuentra</text></svg>
+<p class="diapo__texto">Al encenderse, el ordenador mira una <strong>lista</strong> y arranca con lo primero que encuentra. Normalmente, el disco: arranca Windows.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 168" role="img" aria-label="para instalar"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">para instalar</text><text x="30" y="55" text-anchor="start" class="d-d">1.</text><rect x="50" y="36" width="180" height="28" rx="4" class="d-caja-act"/><text x="140" y="54.5" text-anchor="middle" class="d-c">USB o DVD</text><text x="30" y="91" text-anchor="start" class="d-d">2.</text><rect x="50" y="72" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="90.5" text-anchor="middle" class="d-d">disco duro</text><text x="30" y="127" text-anchor="start" class="d-d">3.</text><rect x="50" y="108" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="126.5" text-anchor="middle" class="d-d">red</text><path d="M 236 50 L 262 50 M 255 46.5 L 262 50 L 255 53.5" class="d-linea-c"/><rect x="266" y="36" width="84" height="28" rx="4" class="d-caja-on"/><text x="308" y="54.5" text-anchor="middle" class="d-a d-peq">instalador</text><text x="180" y="158" text-anchor="middle" class="d-d d-peq">el USB lleva la ISO</text></svg>
+<p class="diapo__texto">Para instalar, el <strong>USB con la ISO va primero</strong>. Así arranca el instalador. La lista se cambia en la BIOS, o pulsando F12, F11 o Esc al encender (depende de la marca).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 168" role="img" aria-label="después"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">después</text><text x="30" y="55" text-anchor="start" class="d-d">1.</text><rect x="50" y="36" width="180" height="28" rx="4" class="d-caja-act"/><text x="140" y="54.5" text-anchor="middle" class="d-c">disco duro</text><text x="30" y="91" text-anchor="start" class="d-d">2.</text><rect x="50" y="72" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="90.5" text-anchor="middle" class="d-d">USB o DVD</text><text x="30" y="127" text-anchor="start" class="d-d">3.</text><rect x="50" y="108" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="126.5" text-anchor="middle" class="d-d">red</text><path d="M 236 50 L 262 50 M 255 46.5 L 262 50 L 255 53.5" class="d-linea-c"/><rect x="266" y="36" width="84" height="28" rx="4" class="d-caja-on"/><text x="308" y="54.5" text-anchor="middle" class="d-a d-peq">Linux</text><text x="180" y="158" text-anchor="middle" class="d-d d-peq">ya está instalado</text></svg>
+<p class="diapo__texto">Al acabar, se <strong>quita el USB</strong> o se vuelve a poner el disco primero. Si no, volvería a arrancar el instalador.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 168" role="img" aria-label="en VirtualBox"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">en VirtualBox</text><text x="30" y="55" text-anchor="start" class="d-d">1.</text><rect x="50" y="36" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="54.5" text-anchor="middle" class="d-d">disco virtual (vacío)</text><text x="30" y="91" text-anchor="start" class="d-d">2.</text><rect x="50" y="72" width="180" height="28" rx="4" class="d-caja-act"/><text x="140" y="90.5" text-anchor="middle" class="d-c">lector con la ISO</text><text x="30" y="127" text-anchor="start" class="d-d">3.</text><rect x="50" y="108" width="180" height="28" rx="4" class="d-caja"/><text x="140" y="126.5" text-anchor="middle" class="d-d">red</text><path d="M 236 86 L 262 86 M 255 82.5 L 262 86 L 255 89.5" class="d-linea-c"/><rect x="266" y="72" width="84" height="28" rx="4" class="d-caja-on"/><text x="308" y="90.5" text-anchor="middle" class="d-a d-peq">instalador</text><text x="180" y="158" text-anchor="middle" class="d-d d-peq">el disco vacío no arranca: salta al siguiente</text></svg>
+<p class="diapo__texto">En la máquina virtual es más fácil: el disco virtual está <strong>vacío</strong>, no arranca, y el ordenador salta a la ISO del lector. El instalador arranca solo.</p>
+</div>
+</div>
+
+<p>La lista se cambia en la <strong>BIOS</strong> (en los ordenadores nuevos, <strong>UEFI</strong>): el programa que viene grabado en la placa base y que arranca antes que el sistema operativo. Se entra pulsando una tecla al encender: F2, Supr o F12, según la marca.</p>
+
+<h3>Las particiones</h3>
+
+<div class="diapos" aria-label="Las particiones de un disco">
+<div class="diapo">
+<svg viewBox="0 0 360 138" role="img" aria-label="un disco"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">un disco</text><rect x="20" y="44" width="316" height="60" rx="4" class="d-caja-on"/><text x="178.0" y="70" text-anchor="middle" class="d-a">disco de 500 GB</text><text x="178.0" y="88" text-anchor="middle" class="d-a d-peq">sin dividir</text><text x="180" y="128" text-anchor="middle" class="d-d d-peq">un solo trozo</text></svg>
+<p class="diapo__texto">Un disco nuevo es un solo espacio, como un armario vacío.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 138" role="img" aria-label="dos particiones"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">dos particiones</text><rect x="20" y="44" width="126" height="60" rx="4" class="d-caja-act"/><text x="83.0" y="70" text-anchor="middle" class="d-c">C:</text><text x="83.0" y="88" text-anchor="middle" class="d-c d-peq">200 GB · Windows</text><rect x="150" y="44" width="186" height="60" rx="4" class="d-caja-act"/><text x="243.0" y="70" text-anchor="middle" class="d-c">D:</text><text x="243.0" y="88" text-anchor="middle" class="d-c d-peq">300 GB · tus datos</text><text x="180" y="128" text-anchor="middle" class="d-d d-peq">el sistema ve dos discos</text></svg>
+<p class="diapo__texto">Se puede dividir en <strong>particiones</strong>: trozos que el sistema ve como discos distintos. Aquí, C: para Windows y D: para tus datos.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 138" role="img" aria-label="reinstalar"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">reinstalar</text><rect x="20" y="44" width="126" height="60" rx="4" class="d-caja-act"/><text x="83.0" y="70" text-anchor="middle" class="d-c">C:</text><text x="83.0" y="88" text-anchor="middle" class="d-c d-peq">se borra</text><rect x="150" y="44" width="186" height="60" rx="4" class="d-caja-on"/><text x="243.0" y="70" text-anchor="middle" class="d-a">D:</text><text x="243.0" y="88" text-anchor="middle" class="d-a d-peq">no se toca</text><text x="180" y="128" text-anchor="middle" class="d-d d-peq">tus datos siguen en D:</text></svg>
+<p class="diapo__texto">Si un día hay que reinstalar Windows, se borra <strong>solo C:</strong>. Tus archivos de D: siguen ahí.</p>
+</div>
+</div>
+
+<div class="nota">⚠️ Cuando instales Linux, el instalador te preguntará si quieres «Borrar disco e instalar». En la máquina virtual, sí: el disco es virtual y está vacío. <strong>En un ordenador de verdad, esa opción borra todo lo que hay en el disco</strong>, también Windows y tus archivos.</div>
+
+<div class="nota">🤔 Antes de seguir: ¿por qué es buena idea guardar tus archivos en D: y dejar C: solo para Windows?</div>
+<details><summary>Ver respuesta</summary>Porque si Windows se estropea y hay que reinstalarlo, se borra C:, pero D: no se toca. Tus archivos siguen ahí.</details>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 2 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es una máquina virtual? Explícalo con tus palabras.</li>
+<li>(ABC) El ordenador real en el que funciona la máquina virtual se llama:
+  <ul>
+    <li>a) invitado</li>
+    <li>b) anfitrión</li>
+    <li>c) hipervisor</li>
+  </ul>
+</li>
+<li>¿Qué es un hipervisor? Escribe un ejemplo.</li>
+<li>(V/F) Para Windows, el disco virtual de una máquina virtual es solo un archivo grande.</li>
+<li>Escribe dos cosas para las que sirve una máquina virtual.</li>
+<li>(V/F) Si rompes Linux dentro de la máquina virtual, también se rompe el Windows de tu PC.</li>
+<li>(ABC) VirtualBox es un hipervisor de tipo 2 porque:
+  <ul>
+    <li>a) va directamente sobre el hardware, sin sistema operativo debajo</li>
+    <li>b) va encima de un sistema operativo, como un programa más</li>
+    <li>c) solo puede crear dos máquinas virtuales</li>
+  </ul>
+</li>
+<li><strong>(Actividad 1)</strong> De tu PC del aula: ¿está habilitada la virtualización? ¿Cuánta RAM tiene? ¿Cuánto espacio libre tiene C:?</li>
+<li>Tu ordenador tiene 8 GB de RAM. ¿Cuánta le darías como mucho a una máquina virtual? ¿Por qué?</li>
+<li>VirtualBox pide la RAM en MB. ¿Cuántos MB tienes que escribir para darle 2 GB? Escribe la operación.</li>
+<li>¿Qué es una ISO?</li>
+<li><strong>(Actividad 2)</strong> Escribe las tres ediciones de Linux Mint y lo que pesa su ISO.</li>
+<li>¿Qué es el orden de arranque? Para instalar un sistema operativo desde un USB, ¿qué tiene que ir primero?</li>
+<li>¿Qué es una partición? Pon un ejemplo con C: y D:.</li>
+<li>(V/F) En un ordenador de verdad, «Borrar disco e instalar» solo borra el sistema operativo y deja tus archivos.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 2 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Antes de instalar un sistema operativo en un ordenador de verdad, ¿qué harías con tus archivos y cómo lo harías? Acuérdate de la Unidad 1.</li>
+<li>Busca qué tecla abre el menú de arranque en un ordenador de una marca que tengas en casa (HP, Lenovo, Asus…).</li>
+<li>Busca otro hipervisor que no sea VirtualBox y di si es de tipo 1 o de tipo 2.</li>
+<li>¿Por qué crees que a una empresa le sale más barato tener diez servidores virtuales en un servidor real que diez servidores reales?</li>
+</ol>
+</div>

@@ -1,0 +1,23 @@
+{
+  "id": "sesion-1-software-sistemas-operativos",
+  "titulo": "Sesión 1. El software y los sistemas operativos",
+  "fecha": "",
+  "descripcion": "Hardware y software, los tres tipos de software, qué hace el sistema operativo (el ordenador por capas), los sistemas operativos de hoy, software libre y propietario, y las licencias de Windows.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s1-tipo",
+      "tipo": "generador",
+      "titulo": "¿Sistema operativo, aplicación o controlador?",
+      "generador": "tipo-software",
+      "n": 5
+    },
+    {
+      "id": "u5s1-libre",
+      "tipo": "generador",
+      "titulo": "¿Libre o propietario?",
+      "generador": "libre-propietario",
+      "n": 6
+    }
+  ]
+}

@@ -29,6 +29,9 @@
              Las figuras, en js/piezas-redes.js (motor js/hairline.js).
 
    Para añadir uno: una función en LABS que recibe (caja, opciones).
+   Desde el 26/10/2026, también desde otro archivo (cargado después
+   de este): registrarLab(nombre, f). Las ayudas el, boton y
+   cabecera están en window.LAB. Así se hace js/lab-instalador.js.
    Lo llama js/tema.js (pintarLeccion) con iniciarLaboratorios().
    Comparte el aspecto de cabecera con «Toca y mira» (js/probador.js).
    ============================================================ */
@@ -773,6 +776,8 @@
   if (typeof window !== 'undefined') {
     window.iniciarLaboratorios = iniciarLaboratorios;
     window.registrarPiezas = registrarPiezas;
+    window.registrarLab = (nombre, f) => { LABS[nombre] = f; };
+    window.LAB = { el, boton, cabecera };
   }
   if (typeof module !== 'undefined' && module.exports) module.exports = { simular, partirURL };
 })();

@@ -1,0 +1,27 @@
+{
+  "id": "sesion-2-maquinas-virtuales",
+  "titulo": "Sesión 2. Máquinas virtuales y preparar la instalación",
+  "fecha": "",
+  "descripcion": "Qué es una máquina virtual (anfitrión, invitado e hipervisor), los dos tipos de hipervisor, si tu PC puede virtualizar y cuánta RAM le das, la ISO, el orden de arranque y las particiones.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Linux Mint (web oficial)",
+      "url": "https://www.linuxmint.com/"
+    },
+    {
+      "tipo": "enlace",
+      "titulo": "VirtualBox (web oficial)",
+      "url": "https://www.virtualbox.org/"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "u5s2-ram",
+      "tipo": "generador",
+      "titulo": "La RAM de la máquina virtual",
+      "generador": "ram-maquina-virtual",
+      "n": 5
+    }
+  ]
+}

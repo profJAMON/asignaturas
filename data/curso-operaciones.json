@@ -53,6 +53,17 @@
         "sesion-3-correo-mensajeria",
         "glosario-navegador-servicios-internet"
       ]
+    },
+    {
+      "id": "sistemas-operativos",
+      "titulo": "Unidad 5. Sistemas operativos: virtualización e instalación",
+      "descripcion": "Qué es el software y qué hace el sistema operativo, los sistemas operativos de hoy, software libre y licencias; qué es una máquina virtual, y cómo se instala Linux en una de ellas paso a paso.",
+      "sesiones": [
+        "sesion-1-software-sistemas-operativos",
+        "sesion-2-maquinas-virtuales",
+        "sesion-3-instalar-linux",
+        "glosario-sistemas-operativos"
+      ]
     }
   ]
 }
