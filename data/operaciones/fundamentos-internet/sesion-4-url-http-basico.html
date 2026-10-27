@@ -179,16 +179,22 @@
 <div class="nota">🤔 Antes de seguir: alguien publica su web y después mueve sin querer una imagen a otra carpeta, pero no cambia la ruta que la página usa para pedirla. ¿Qué código de estado esperarías ver para esa imagen, y de quién sería «el fallo»: del servidor o de cómo está escrita la página?</div>
 <details><summary>Ver respuesta</summary>Verías un 404, porque el servidor sí responde pero no encuentra el archivo con esa ruta exacta. El fallo no es del servidor: está en que la página (su HTML) pide la imagen en una ruta que ya no es correcta.</details>
 
-<h3>Pide páginas a un servidor de práctica</h3>
-<p>Aquí tienes un servidor pequeñito, <code>bloquecraft.es</code>: una web de fans de Minecraft inventada. Pide páginas y mira la conversación: qué pide tu navegador (<code>GET</code>) y qué código le contesta el servidor. Prueba también a escribir mal una ruta, con mayúscula o con <code>http://</code>.</p>
+<h3>Actividad 2 — Consigue cada código</h3>
+<p>Aquí tienes un servidor pequeñito, <code>bloquecraft.es</code>: una web de fans de Minecraft inventada. Pide páginas y mira la conversación: qué pide tu navegador (<code>GET</code>) y qué código le contesta el servidor.</p>
+<ol start="4">
+<li>Pulsa uno a uno los botones de «Prueba:» y mira en la conversación qué código te contesta el servidor en cada uno.</li>
+<li>Ahora escribe tú en la caja tres direcciones que <strong>no</strong> estén en los botones: una que dé <code>200</code> (otra página que sí exista), una que dé <code>404</code> (una página inventada) y una que dé <code>301</code>. La nota del servidor te dice qué páginas tiene.</li>
+<li>Apunta en tu cuaderno tus tres direcciones y el código de cada una (pregunta 12).</li>
+</ol>
 <div class="lab" data-lab="peticion" aria-label="Petición y respuesta con un servidor de práctica"></div>
+<p><strong>Comprobación observable:</strong> con tus tres direcciones, la conversación enseña un <code>200</code> con la página, un <code>404 Not Found</code> y un <code>301 Moved Permanently</code>. El <code>500</code> solo sale en la página rota de la tienda.</p>
 
 <h2>Actividades en el ordenador</h2>
 
 <div class="nota">Como en la sesión 3, esta parte se hace en el ordenador, con las DevTools abiertas en la pestaña <strong>Network</strong> (si tu Chrome está en castellano, <strong>Red</strong>). Puedes usar mi web de materiales (esta misma) o cualquier página real (por ejemplo, la del propio instituto).</div>
 
-<h3>Actividad 2 — Descompón una URL real</h3>
-<ol>
+<h3>Actividad 3 — Descompón una URL real</h3>
+<ol start="7">
 <li>Abre cualquier página en el navegador y abre las DevTools en la pestaña Network (clic derecho → Inspeccionar → Network o Red).</li>
 <li>Recarga la página con <code>F5</code>.</li>
 <li>Busca en la lista la primera fila, la del propio documento (tipo «document»), y haz clic en ella para ver su URL completa.</li>
@@ -196,8 +202,8 @@
 <p><strong>Comprobación observable:</strong> se abre un panel de detalle con la URL completa de esa petición, y puedes ver su código de estado (normalmente <code>200</code>).</p>
 <p>En tu cuaderno, copia esa URL y separa a mano sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene). Es la pregunta 13. Cuando la tengas, compruébala pegándola en «Las partes de una URL», más arriba.</p>
 
-<h3>Actividad 3 — Encuentra una URL con parámetros</h3>
-<ol start="4">
+<h3>Actividad 4 — Encuentra una URL con parámetros</h3>
+<ol start="10">
 <li>Con la pestaña Network todavía abierta, ve a un buscador (por ejemplo, el buscador interno de una tienda online o de una web de noticias) y busca algo.</li>
 <li>Mira la barra de direcciones o la nueva fila que aparece en Network: busca el símbolo <code>?</code>.</li>
 </ol>
@@ -206,8 +212,8 @@
 <div class="nota">🤔 Antes de seguir: ¿por qué crees que muchos buscadores usan parámetros en la URL en vez de, por ejemplo, tener una página distinta para cada búsqueda posible?</div>
 <details><summary>Ver respuesta</summary>Porque sería imposible crear de antemano una página para cada búsqueda que alguien pudiera escribir. Con parámetros, una sola página sabe leer lo que le llega en la URL y adaptar el contenido a partir de ahí.</details>
 
-<h3>Actividad 4 — Busca un código de estado distinto de 200</h3>
-<ol start="6">
+<h3>Actividad 5 — Busca un código de estado distinto de 200</h3>
+<ol start="12">
 <li>Con Network abierto, escribe a propósito una dirección que no existe en un sitio real que conozcas (por ejemplo, añadiendo <code>/estoNoExiste</code> al final de un dominio).</li>
 <li>Mira la fila del documento en Network.</li>
 </ol>
@@ -246,7 +252,6 @@
     <li>c) <code>https://es.wikipedia.org/wiki/Rafael_Nadal#Palmarés</code></li>
   </ul>
 </li>
-<li>(V/F) El código 500 significa que el navegador no ha encontrado el archivo pedido.</li>
 <li>Explica con tus palabras la diferencia entre un error 404 y un error 500.</li>
 <li>(ABC) Escribes <code>http://</code> delante de un dominio y la web te lleva sola a la versión <code>https://</code>. El código que ha usado el servidor es:
   <ul>
@@ -255,9 +260,10 @@
     <li>c) 404</li>
   </ul>
 </li>
-<li><strong>(Actividad 2)</strong> Copia la URL que encontraste en Network y separa sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene).</li>
-<li><strong>(Actividad 3)</strong> Copia la URL con parámetros que te salió al buscar. Escribe la clave y el valor de cada parámetro.</li>
-<li><strong>(Actividad 4)</strong> ¿Qué dirección inventada escribiste y qué código de estado te salió en Network?</li>
+<li><strong>(Actividad 2)</strong> Escribe las tres direcciones que inventaste en el servidor de práctica y el código que te dio cada una (<code>200</code>, <code>404</code> y <code>301</code>). En el <code>404</code>, ¿de quién era el fallo: del servidor o de la dirección que pediste?</li>
+<li><strong>(Actividad 3)</strong> Copia la URL que encontraste en Network y separa sus partes: protocolo, dominio, ruta (y parámetros o fragmento, si los tiene).</li>
+<li><strong>(Actividad 4)</strong> Copia la URL con parámetros que te salió al buscar. Escribe la clave y el valor de cada parámetro.</li>
+<li><strong>(Actividad 5)</strong> ¿Qué dirección inventada escribiste y qué código de estado te salió en Network?</li>
 </ol>
 </div>
 
@@ -272,5 +278,6 @@
 <li>En una web, una página da 404, pero la página de inicio carga bien. Explica qué comprobarías primero y por qué.</li>
 <li>Inventa una URL con parámetros para una web de recetas, de música o de videojuegos, y explica qué pide cada parámetro.</li>
 <li>Pon un ejemplo de algo que haces en Internet que usaría GET y otro que usaría POST.</li>
+<li>(V/F) El código 500 significa que el navegador no ha encontrado el archivo pedido.</li>
 </ol>
 </div>

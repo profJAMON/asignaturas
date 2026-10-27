@@ -474,8 +474,8 @@
         };
       },
       () => {
-        const [a, b] = varios(['Pilotos rápidos', 'Pilotos fuertes', 'Pilotos listos'], 2);
-        const [x, y] = varios(['Turbo Rex', 'Chispa', 'Bólido', 'Nube', 'Trueno'], 2);
+        const [a, b] = varios(['Mobs pacíficos', 'Mobs hostiles', 'Mobs neutrales'], 2);
+        const [x, y] = varios(['Creeper', 'Zombi', 'Esqueleto', 'Enderman', 'Aldeano'], 2);
         return {
           tipo: 'elige',
           pregunta: '¿Qué código da este resultado? Fíjate en los círculos vacíos.',
@@ -589,7 +589,7 @@
         };
       },
       () => {
-        const pag = azar([['circuitos.html', 'Circuitos'], ['personajes.html', 'Personajes'], ['torneo.html', 'Torneo']]);
+        const pag = azar([['biomas.html', 'Biomas'], ['mobs.html', 'Mobs'], ['servidor.html', 'Servidor']]);
         return {
           tipo: 'elige',
           pregunta: `En el menú falta el enlace a tu página ${pag[1]} (el archivo ${pag[0]}, en la misma carpeta). ¿Cuál es?`,
@@ -606,22 +606,22 @@
       },
       () => {
         const fallos = [
-          ['<a herf="circuitos.html">Circuitos</a>', 'Era herf: se escribe href (h-r-e-f). Pulsa Circuitos y verás que no va a ningún sitio.'],
-          ['<a href="circuitos.html>Circuitos</a>', 'Faltaban las comillas de cierre del href: se come el resto de la línea.'],
-          ['<a href="circuitos.html">Circuitos', 'Faltaba el </a>: todo lo de detrás se vuelve parte del enlace.'],
+          ['<a herf="biomas.html">Biomas</a>', 'Era herf: se escribe href (h-r-e-f). Pulsa Biomas y verás que no va a ningún sitio.'],
+          ['<a href="biomas.html>Biomas</a>', 'Faltaban las comillas de cierre del href: se come el resto de la línea.'],
+          ['<a href="biomas.html">Biomas', 'Faltaba el </a>: todo lo de detrás se vuelve parte del enlace.'],
         ];
         const [malo, explica] = azar(fallos);
         return {
           tipo: 'error',
           pregunta: 'El menú no funciona bien. Pulsa los enlaces del resultado y busca la línea del error.',
-          lineas: ['<nav>', '    <a href="index.html">Inicio</a>', '    ' + malo, '    <a href="torneo.html">Torneo</a>', '</nav>', '<p>Bienvenido a Pixel Kart.</p>'],
-          mal: 2, bien: '    <a href="circuitos.html">Circuitos</a>',
+          lineas: ['<nav>', '    <a href="index.html">Inicio</a>', '    ' + malo, '    <a href="servidor.html">Servidor</a>', '</nav>', '<p>Bienvenido a BloqueCraft.</p>'],
+          mal: 2, bien: '    <a href="biomas.html">Biomas</a>',
           explica,
         };
       },
       () => ({
         tipo: 'ordena',
-        lineas: ['<header>', '<nav>', '<a href="index.html">Inicio</a> <a href="circuitos.html">Circuitos</a>', '</nav>', '</header>', '<h1>Pixel Kart</h1>'],
+        lineas: ['<header>', '<nav>', '<a href="index.html">Inicio</a> <a href="biomas.html">Biomas</a>', '</nav>', '</header>', '<h1>BloqueCraft</h1>'],
         explica: 'header por fuera, nav dentro con los enlaces, y main después con el contenido.',
       }),
     ],
@@ -646,12 +646,12 @@
       },
       () => {
         const fallos = [
-          [2, '    <tr><td>Volcán</td></tr>', '    <tr><td>Volcán</td><td>Difícil</td></tr>', 'A una fila le faltaba una celda: todas las filas tienen que tener las mismas.'],
+          [2, '    <tr><td>Desierto</td></tr>', '    <tr><td>Desierto</td><td>Medio</td></tr>', 'A una fila le faltaba una celda: todas las filas tienen que tener las mismas.'],
           [0, '<table>', '<table border="1">', 'Faltaba border="1": la tabla estaba, pero sin bordes no se veía.'],
-          [1, '    <tr><td>Circuito</td><td>Dificultad</td></tr>', '    <tr><th>Circuito</th><th>Dificultad</th></tr>', 'Los títulos de columna van en <th>, no en <td>: por eso no salían en negrita.'],
+          [1, '    <tr><td>Bioma</td><td>Peligro</td></tr>', '    <tr><th>Bioma</th><th>Peligro</th></tr>', 'Los títulos de columna van en <th>, no en <td>: por eso no salían en negrita.'],
         ];
         const [mal, malo, bien, explica] = azar(fallos);
-        const lineas = ['<table border="1">', '    <tr><th>Circuito</th><th>Dificultad</th></tr>', '    <tr><td>Volcán</td><td>Difícil</td></tr>', '    <tr><td>Playa Pixel</td><td>Fácil</td></tr>', '</table>'];
+        const lineas = ['<table border="1">', '    <tr><th>Bioma</th><th>Peligro</th></tr>', '    <tr><td>Desierto</td><td>Medio</td></tr>', '    <tr><td>Llanura</td><td>Bajo</td></tr>', '</table>'];
         lineas[mal] = malo;
         return { tipo: 'error', pregunta: 'Esta tabla no se ve como debería. Pulsa la línea del error.', lineas, mal, bien, explica };
       },
@@ -681,12 +681,12 @@
         };
       },
       () => {
-        const p = varios(['Turbo Rex', 'Chispa', 'Bólido', 'Nube'], 3);
+        const p = varios(['Llanura', 'Bosque', 'Desierto', 'Taiga'], 3);
         return {
-          tipo: 'elige', pregunta: 'Quieres que elijan su piloto de una lista. ¿Qué código da este resultado?',
+          tipo: 'elige', pregunta: 'Quieres que elijan un bioma de una lista. ¿Qué código da este resultado?',
           opciones: [
-            `<select id="piloto">\n${p.map(x => `    <option>${x}</option>`).join('\n')}\n</select>`,
-            `<input type="text" id="piloto" placeholder="${p[0]}">`,
+            `<select id="bioma">\n${p.map(x => `    <option>${x}</option>`).join('\n')}\n</select>`,
+            `<input type="text" id="bioma" placeholder="${p[0]}">`,
             `<ul>\n${p.map(x => `    <li>${x}</li>`).join('\n')}\n</ul>`,
           ],
           explica: 'Un desplegable es <select> y cada opción un <option>.',
@@ -729,7 +729,7 @@
       () => {
         const [al, tam] = [azar(['center', 'right']), azar([20, 40, 60])];
         return {
-          tipo: 'elige', lengua: 'css', fijo: { html: '<h1>Pixel Kart</h1>\n<p>Carreras de karts.</p>' },
+          tipo: 'elige', lengua: 'css', fijo: { html: '<h1>BloqueCraft</h1>\n<p>Guías de Minecraft hechas por fans.</p>' },
           pregunta: '¿Qué CSS da este resultado? Fíjate en el tamaño y en dónde está el título.',
           opciones: [
             `h1 {\n    font-size: ${tam}px;\n    text-align: ${al};\n}`,
@@ -749,10 +749,10 @@
         const [mal, malo, bien, explica] = azar(fallos);
         const lineas = ['body {', '    background-color: #1b1b3a;', '    color: white;', '    font-size: 40px;', '}'];
         lineas[mal] = malo;
-        return { tipo: 'error', lengua: 'css', fijo: { html: '<p>Pixel Kart</p>' }, pregunta: 'Algo del CSS no funciona. Pulsa la línea del error.', lineas, mal, bien, explica };
+        return { tipo: 'error', lengua: 'css', fijo: { html: '<p>BloqueCraft</p>' }, pregunta: 'Algo del CSS no funciona. Pulsa la línea del error.', lineas, mal, bien, explica };
       },
       () => ({
-        tipo: 'ordena', lengua: 'css', fijo: { html: '<h1>Pixel Kart</h1>' },
+        tipo: 'ordena', lengua: 'css', fijo: { html: '<h1>BloqueCraft</h1>' },
         lineas: ['h1 {', 'color: orange;', 'text-align: center;', '}'],
         explica: 'Selector, llave que abre, las órdenes y la llave que cierra.',
       }),
@@ -790,14 +790,14 @@
         };
       },
       () => ({
-        tipo: 'error', lengua: 'css', fijo: { html: '<h1>Pixel Kart</h1>\n<p class="destacado">¡Circuito nuevo!</p>\n<p>Normal.</p>' },
+        tipo: 'error', lengua: 'css', fijo: { html: '<h1>BloqueCraft</h1>\n<p class="destacado">¡Bioma nuevo!</p>\n<p>Normal.</p>' },
         pregunta: 'El h1 sale naranja, pero el párrafo destacado no cambia. Pulsa la línea del error.',
         lineas: ['h1 {', '    color: orange;', '', '.destacado {', '    color: red;', '}'],
         mal: 2, bien: '}',
         explica: 'Faltaba la } que cierra la regla del h1. Sin ella, la regla de debajo no funciona.',
       }),
       () => ({
-        tipo: 'error', lengua: 'css', fijo: { html: '<p class="destacado">¡Circuito nuevo!</p>\n<p>Normal.</p>' },
+        tipo: 'error', lengua: 'css', fijo: { html: '<p class="destacado">¡Bioma nuevo!</p>\n<p>Normal.</p>' },
         pregunta: 'El párrafo destacado no sale rojo. Pulsa la línea del error.',
         lineas: ['body {', '    font-family: Arial, sans-serif;', '}', '', 'destacado {', '    color: red;', '}'],
         mal: 4, bien: '.destacado {',
@@ -829,11 +829,11 @@
         const lineas = ['.aviso {', '    padding: 15px;', '    border: 2px solid orange;', '    border-radius: 10px;', '    background-color: #fff3bf;', '}'];
         const bien = lineas[mal];
         lineas[mal] = malo;
-        return { tipo: 'error', lengua: 'css', fijo: { html: '<p class="aviso">Hoy el circuito del volcán está cerrado.</p>' }, pregunta: 'El aviso tendría que tener borde naranja, esquinas redondas y relleno. Pulsa la línea del error.', lineas, mal, bien, explica };
+        return { tipo: 'error', lengua: 'css', fijo: { html: '<p class="aviso">Hoy el servidor está cerrado por mantenimiento.</p>' }, pregunta: 'El aviso tendría que tener borde naranja, esquinas redondas y relleno. Pulsa la línea del error.', lineas, mal, bien, explica };
       },
       () => ({
         tipo: 'elige', lengua: 'css',
-        fijo: { html: '<div class="tarjeta"><h2>Turbo Rex</h2><p>El más rápido.</p></div>' },
+        fijo: { html: '<div class="tarjeta"><h2>Creeper</h2><p>Explota si te acercas.</p></div>' },
         pregunta: '¿Qué CSS deja la tarjeta así, estrecha y centrada?',
         opciones: [
           '.tarjeta {\n    width: 200px;\n    margin: 20px auto;\n    border: 2px solid blue;\n}',
@@ -844,7 +844,7 @@
       }),
       () => ({
         tipo: 'ordena', lengua: 'html', fijo: { css: '.tarjeta { border: 2px solid orange; padding: 10px; width: 200px; }' },
-        lineas: ['<div class="tarjeta">', '<h2>Chispa</h2>', '<p>La más ágil en las curvas.</p>', '</div>'],
+        lineas: ['<div class="tarjeta">', '<h2>Enderman</h2>', '<p>Si lo miras a los ojos, te ataca.</p>', '</div>'],
         explica: 'El <div> envuelve todo lo que va dentro de la tarjeta.',
       }),
     ],
@@ -868,7 +868,7 @@
       },
       () => ({
         tipo: 'elige', lengua: 'css',
-        fijo: { html: '<table><tr><th>Piloto</th><th>Puntos</th></tr><tr><td>Turbo Rex</td><td>25</td></tr><tr><td>Chispa</td><td>18</td></tr></table>' },
+        fijo: { html: '<table><tr><th>Mob</th><th>Vida</th></tr><tr><td>Zombi</td><td>20</td></tr><tr><td>Enderman</td><td>40</td></tr></table>' },
         pregunta: '¿Qué CSS da esta tabla, con una sola línea entre celdas?',
         opciones: [
           'table {\n    border-collapse: collapse;\n}\nth, td {\n    border: 1px solid black;\n    padding: 8px;\n}',
@@ -927,7 +927,7 @@
         lineas[mal] = malo;
         return {
           tipo: 'error', lengua: 'css',
-          fijo: { html: '<style>body{font-family:Arial,sans-serif} .tarjeta{width:90px;border:2px solid orange;padding:6px}</style>\n<div class="tarjetas">\n<div class="tarjeta"><b>Rex</b><p>Rápido</p></div>\n<div class="tarjeta"><b>Chispa</b><p>Ágil</p></div>\n</div>' },
+          fijo: { html: '<style>body{font-family:Arial,sans-serif} .tarjeta{width:90px;border:2px solid orange;padding:6px}</style>\n<div class="tarjetas">\n<div class="tarjeta"><b>Zombi</b><p>Lento</p></div>\n<div class="tarjeta"><b>Creeper</b><p>Explota</p></div>\n</div>' },
           pregunta: 'Las tarjetas tendrían que estar en fila, una en cada punta. Pulsa la línea del error.',
           lineas, mal, bien, explica,
         };
@@ -963,34 +963,34 @@
         };
       },
       () => {
-        const p = azar(['Chispa', 'Turbo Rex', 'Bólido']);
+        const p = azar(['Zombi', 'Creeper', 'Esqueleto']);
         return {
           tipo: 'consola',
-          codigo: `let piloto = "${p}";\nconsole.log("piloto");`,
-          opciones: ['piloto', p, `"${p}"`],
-          porque: [null, 'Ojo a las comillas del console.log: "piloto" es un texto, no la variable.', 'Las comillas no salen en la consola.'],
-          explica: 'Con comillas es el texto «piloto». Para ver lo que guarda la variable, sin comillas: console.log(piloto);',
+          codigo: `let mob = "${p}";\nconsole.log("mob");`,
+          opciones: ['mob', p, `"${p}"`],
+          porque: [null, 'Ojo a las comillas del console.log: "mob" es un texto, no la variable.', 'Las comillas no salen en la consola.'],
+          explica: 'Con comillas es el texto «mob». Para ver lo que guarda la variable, sin comillas: console.log(mob);',
         };
       },
       () => {
-        const p = azar(['Chispa', 'Nube']); const t = azar([98, 120, 75]);
+        const p = azar(['Zombi', 'Enderman']); const t = azar([20, 40, 10]);
         return {
           tipo: 'consola',
-          codigo: `let piloto = "${p}";\nlet tiempo = ${t};\nconsole.log(piloto + "tarda" + tiempo);`,
-          opciones: [`${p}tarda${t}`, `${p} tarda ${t}`, `piloto tarda tiempo`],
-          porque: [null, 'Los espacios no se ponen solos: tienen que ir dentro de las comillas, " tarda ".', 'Sin comillas, piloto y tiempo se cambian por lo que guardan.'],
+          codigo: `let mob = "${p}";\nlet vida = ${t};\nconsole.log(mob + "tiene" + vida);`,
+          opciones: [`${p}tiene${t}`, `${p} tiene ${t}`, `mob tiene vida`],
+          porque: [null, 'Los espacios no se ponen solos: tienen que ir dentro de las comillas, " tiene ".', 'Sin comillas, mob y vida se cambian por lo que guardan.'],
           explica: 'Sin espacios dentro de las comillas, todo sale pegado.',
         };
       },
       () => {
         const fallos = [
-          [2, 'console.log(pilto);', 'Era pilto: el nombre tiene que ser exactamente el de la variable.'],
-          [0, 'let piloto = Turbo Rex;', 'Los textos van entre comillas: "Turbo Rex".'],
-          [2, 'console.log(piloto;', 'Faltaba cerrar el paréntesis.'],
-          [1, 'let vueltas = "3;', 'Faltaban las comillas de cierre. (Y un número no las necesita: let vueltas = 3;)'],
+          [2, 'console.log(mbo);', 'Era mbo: el nombre tiene que ser exactamente el de la variable.'],
+          [0, 'let mob = Creeper;', 'Los textos van entre comillas: "Creeper".'],
+          [2, 'console.log(mob;', 'Faltaba cerrar el paréntesis.'],
+          [1, 'let vidas = "3;', 'Faltaban las comillas de cierre. (Y un número no las necesita: let vidas = 3;)'],
         ];
         const [mal, malo, explica] = azar(fallos);
-        const lineas = ['let piloto = "Turbo Rex";', 'let vueltas = 3;', 'console.log(piloto);', 'console.log(vueltas);'];
+        const lineas = ['let mob = "Creeper";', 'let vidas = 3;', 'console.log(mob);', 'console.log(vidas);'];
         const bien = lineas[mal];
         lineas[mal] = malo;
         return { tipo: 'error', lengua: 'js', pregunta: 'La consola enseña un error en rojo. Pulsa la línea que lo tiene.', lineas, mal, bien, explica };
@@ -1030,12 +1030,12 @@
       () => ({
         tipo: 'elige', lengua: 'js',
         fijo: { html: '<button id="boton">Ver el dato</button>\n<p id="dato">Pulsa el botón.</p>' },
-        resultado: { html: '<button id="boton">Ver el dato</button>\n<p id="dato">Pulsa el botón.</p>', js: 'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato.textContent = "Pixel Kart tiene 8 circuitos.";\n});' },
+        resultado: { html: '<button id="boton">Ver el dato</button>\n<p id="dato">Pulsa el botón.</p>', js: 'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato.textContent = "BloqueCraft tiene 8 biomas.";\n});' },
         pregunta: 'En el modelo, el texto cambia SOLO al pulsar el botón (pruébalo). ¿Qué JavaScript lo hace?',
         opciones: [
-          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato.textContent = "Pixel Kart tiene 8 circuitos.";\n});',
-          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\ndato.textContent = "Pixel Kart tiene 8 circuitos.";',
-          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato = "Pixel Kart tiene 8 circuitos.";\n});',
+          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato.textContent = "BloqueCraft tiene 8 biomas.";\n});',
+          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\ndato.textContent = "BloqueCraft tiene 8 biomas.";',
+          'let boton = document.querySelector("#boton");\nlet dato = document.querySelector("#dato");\nboton.addEventListener("click", function () {\n    dato = "BloqueCraft tiene 8 biomas.";\n});',
         ],
         porque: [null, 'Sin addEventListener, el texto cambia nada más cargar, sin pulsar.', 'Falta .textContent: así solo cambia la variable, no lo que se ve en la página.'],
         explica: 'El cambio va DENTRO de las llaves del addEventListener y con .textContent.',
@@ -1110,11 +1110,11 @@
     'js-if': [
       () => {
         const p = azar([2, 5, 7, 9, 10]);
-        const sale = p >= 9 ? '¡Campeón!' : p >= 5 ? 'Buena carrera.' : 'Sigue practicando.';
+        const sale = p >= 9 ? '¡Campeón!' : p >= 5 ? 'Buena partida.' : 'Sigue practicando.';
         return {
           tipo: 'consola',
-          codigo: `let puntos = ${p};\n\nif (puntos >= 9) {\n    console.log("¡Campeón!");\n} else if (puntos >= 5) {\n    console.log("Buena carrera.");\n} else {\n    console.log("Sigue practicando.");\n}`,
-          opciones: [sale].concat(['¡Campeón!', 'Buena carrera.', 'Sigue practicando.'].filter(x => x !== sale)),
+          codigo: `let puntos = ${p};\n\nif (puntos >= 9) {\n    console.log("¡Campeón!");\n} else if (puntos >= 5) {\n    console.log("Buena partida.");\n} else {\n    console.log("Sigue practicando.");\n}`,
+          opciones: [sale].concat(['¡Campeón!', 'Buena partida.', 'Sigue practicando.'].filter(x => x !== sale)),
           explica: `Con ${p}, ${p >= 9 ? 'la primera condición ya es verdadera' : p >= 5 ? 'la primera es falsa y la segunda verdadera' : 'las dos son falsas: va al else'}.`,
         };
       },
@@ -1192,7 +1192,7 @@
       }),
       () => ({
         tipo: 'ordena', lengua: 'css',
-        fijo: { html: '<button id="b">Modo oscuro</button>\n<p>Pixel Kart</p>', js: 'document.querySelector("#b").addEventListener("click", function () {\n    document.body.classList.toggle("modo-oscuro");\n});' },
+        fijo: { html: '<button id="b">Modo oscuro</button>\n<p>BloqueCraft</p>', js: 'document.querySelector("#b").addEventListener("click", function () {\n    document.body.classList.toggle("modo-oscuro");\n});' },
         pregunta: 'Ordena el CSS del modo oscuro. Pulsa el botón de tu página para probarlo.',
         lineas: ['body.modo-oscuro {', 'background-color: black;', 'color: white;', '}'],
         explica: 'La regla es para el body cuando tiene la clase modo-oscuro.',
@@ -1202,7 +1202,7 @@
     /* ---------- S1 · estructura de la página ---------- */
     estructura: [
       () => {
-        const [pest, tit] = azar([['Pixel Kart', 'Bienvenidos'], ['Mi web', 'Hola, mundo'], ['Recetas', 'Tortilla de patatas']]);
+        const [pest, tit] = azar([['BloqueCraft', 'Bienvenidos'], ['Mi web', 'Hola, mundo'], ['Recetas', 'Tortilla de patatas']]);
         const doc = (t, b) => `<head>\n    <title>${t}</title>\n</head>\n<body>\n    <h1>${b}</h1>\n</body>`;
         return {
           tipo: 'elige',
@@ -1214,11 +1214,11 @@
       },
       () => {
         const fallos = [
-          [1, '    <titel>Pixel Kart</titel>', 'Era titel: se escribe title. Una etiqueta mal escrita no da error, pero no funciona.'],
-          [4, '    <h1>Pixel Kart<h1>', 'Al </h1> le faltaba la barra: el título no se cierra y todo lo de debajo sale gigante.'],
+          [1, '    <titel>BloqueCraft</titel>', 'Era titel: se escribe title. Una etiqueta mal escrita no da error, pero no funciona.'],
+          [4, '    <h1>BloqueCraft<h1>', 'Al </h1> le faltaba la barra: el título no se cierra y todo lo de debajo sale gigante.'],
         ];
         const [mal, malo, explica] = azar(fallos);
-        const lineas = ['<head>', '    <title>Pixel Kart</title>', '</head>', '<body>', '    <h1>Pixel Kart</h1>', '    <p>El juego de karts más rápido.</p>', '    <p>Hecho en el instituto.</p>', '</body>'];
+        const lineas = ['<head>', '    <title>BloqueCraft</title>', '</head>', '<body>', '    <h1>BloqueCraft</h1>', '    <p>Guías de Minecraft hechas por fans.</p>', '    <p>Hecho en el instituto.</p>', '</body>'];
         const bien = lineas[mal];
         lineas[mal] = malo;
         return { tipo: 'error', pregunta: 'Esta página no sale bien. Mira el resultado (y la barra de la pestaña) y pulsa la línea del error.', lineas, mal, bien, explica };
@@ -1233,7 +1233,7 @@
     /* ---------- S2 · títulos ---------- */
     titulos: [
       () => {
-        const [a, b, c] = azar([['El sistema solar', 'Planetas rocosos', 'Marte'], ['Mi barrio', 'Sitios para comer', 'La pizzería'], ['Pixel Kart', 'Circuitos', 'El volcán']]);
+        const [a, b, c] = azar([['El sistema solar', 'Planetas rocosos', 'Marte'], ['Mi barrio', 'Sitios para comer', 'La pizzería'], ['BloqueCraft', 'Biomas', 'El desierto']]);
         return {
           tipo: 'elige', pregunta: '¿Qué código da este resultado? Fíjate en el tamaño de cada título.',
           opciones: [
@@ -1256,7 +1256,7 @@
       }),
       () => ({
         tipo: 'ordena',
-        lineas: ['<h1>Pixel Kart</h1>', '<p>Carreras de karts.</p>', '<h2>Modos de juego</h2>', '<p>Carrera rápida y campeonato.</p>'],
+        lineas: ['<h1>BloqueCraft</h1>', '<p>Guías de Minecraft hechas por fans.</p>', '<h2>Modos de juego</h2>', '<p>Supervivencia y creativo.</p>'],
         explica: 'Se escribe en el mismo orden en que se ve, de arriba abajo.',
       }),
     ],
@@ -1266,9 +1266,9 @@
       () => ({
         tipo: 'elige', pregunta: '¿Qué código da este resultado?',
         opciones: [
-          '<p>Turbo Rex es <strong>muy rápido</strong>.</p>',
-          '<p>Turbo Rex es <em>muy rápido</em>.</p>',
-          '<p><strong>Turbo Rex es muy rápido.</strong></p>',
+          '<p>El creeper es <strong>muy peligroso</strong>.</p>',
+          '<p>El creeper es <em>muy peligroso</em>.</p>',
+          '<p><strong>El creeper es muy peligroso.</strong></p>',
         ],
         explica: 'strong = negrita, solo en lo que va entre <strong> y </strong>. em = cursiva.',
       }),
@@ -1283,12 +1283,12 @@
       }),
       () => {
         const fallos = [
-          [1, '<p>El kart más rápido es <strong>Turbo Rex, pero es difícil.</p>', 'Faltaba </strong>: la negrita sigue hasta el final.'],
+          [1, '<p>El mob más peligroso es el <strong>creeper, porque explota.</p>', 'Faltaba </strong>: la negrita sigue hasta el final.'],
           [0, '<!-- Modos de juego', 'Al comentario le faltaba el --> del final: todo lo de debajo se convierte en comentario y no se ve.'],
-          [2, '<p>Circuito del volcán 3 vueltas</p>', 'Faltaba el <br> para que «3 vueltas» salga en otra línea.'],
+          [2, '<p>Bioma del desierto 3 aldeas</p>', 'Faltaba el <br> para que «3 aldeas» salga en otra línea.'],
         ];
         const [mal, malo, explica] = azar(fallos);
-        const lineas = ['<!-- Modos de juego -->', '<p>El kart más rápido es <strong>Turbo Rex</strong>, pero es difícil.</p>', '<p>Circuito del volcán<br>3 vueltas</p>', '<hr>', '<p>Fin.</p>'];
+        const lineas = ['<!-- Modos de juego -->', '<p>El mob más peligroso es el <strong>creeper</strong>, porque explota.</p>', '<p>Bioma del desierto<br>3 aldeas</p>', '<hr>', '<p>Fin.</p>'];
         const bien = lineas[mal];
         lineas[mal] = malo;
         return { tipo: 'error', pregunta: 'Algo sale mal en la página. Pulsa la línea del error.', lineas, mal, bien, explica };
