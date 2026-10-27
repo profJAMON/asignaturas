@@ -69,7 +69,7 @@
 <li>Entra en <strong>Rendimiento</strong> (en Windows 11, el icono de la gráfica de la izquierda) y pulsa <strong>CPU</strong>. Abajo a la derecha busca <strong>Virtualización</strong>.</li>
 <li>Pulsa <strong>Memoria</strong> y mira el número grande de arriba a la derecha: es la RAM total.</li>
 <li>Cierra el Administrador de tareas. Abre el explorador de archivos y entra en <strong>Este equipo</strong> (lo viste en la Unidad 1): mira cuánto espacio libre tiene el disco C:.</li>
-<li>Apunta en tu cuaderno si la virtualización está habilitada, cuánta RAM tiene tu PC y cuánto espacio libre tiene C: (pregunta 8).</li>
+<li>Apunta en tu cuaderno si la virtualización está habilitada, cuánta RAM tiene tu PC y cuánto espacio libre tiene C: (pregunta 7).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> al lado de «Virtualización» pone «Habilitado» o «Deshabilitado», y debajo de C: pone «X GB disponibles de Y GB».</p>
 <details><summary>Pista: no veo «Virtualización»</summary>Mira en la parte de abajo de la pantalla de CPU, en la lista de datos (velocidad, sockets, núcleos…). Si la ventana es pequeña, agrándala: la lista se esconde.</details>
@@ -110,7 +110,7 @@
 <li>Abre <a href="https://www.linuxmint.com/" target="_blank">linuxmint.com</a> y pulsa <strong>Download</strong> (descargar).</li>
 <li>Verás que hay tres ediciones. Apunta sus nombres.</li>
 <li>Busca cuánto pesa la ISO (está en GB o en MB, junto al botón de descarga). <strong>No la descargues.</strong></li>
-<li>Apunta en tu cuaderno las tres ediciones y lo que pesa la ISO (pregunta 12).</li>
+<li>Apunta en tu cuaderno las tres ediciones y lo que pesa la ISO (pregunta 11).</li>
 </ol>
 <p><strong>Comprobación observable:</strong> una de las ediciones se llama Xfce, y la ISO pesa unos 3 GB.</p>
 <details><summary>Pista: la página está en inglés</summary>No pasa nada: los nombres de las ediciones son nombres propios y no se traducen. El tamaño suele estar escrito como «2.9GB» (los ingleses usan punto en vez de coma).</details>
@@ -148,6 +148,23 @@
 </div>
 
 <p>La lista se cambia en la <strong>BIOS</strong> (en los ordenadores nuevos, <strong>UEFI</strong>): el programa que viene grabado en la placa base y que arranca antes que el sistema operativo. Se entra pulsando una tecla al encender: F2, Supr o F12, según la marca.</p>
+
+<h3>Actividad 3 — Cambia el orden de arranque</h3>
+<p>En la máquina virtual no hace falta, pero en un ordenador de verdad sí. Practícalo en este PC de mentira, con una BIOS como las de verdad, en inglés.</p>
+<table>
+<tr><th>En la BIOS pone…</th><th>Quiere decir</th></tr>
+<tr><td><span translate="no">Press F2 to enter Setup</span></td><td>Pulsa F2 para entrar en la BIOS</td></tr>
+<tr><td><span translate="no">Boot Priority Order</span></td><td>El orden de arranque</td></tr>
+<tr><td><span translate="no">Save Changes and Exit</span></td><td>Guardar los cambios y salir</td></tr>
+<tr><td><span translate="no">Exit Discarding Changes</span></td><td>Salir sin guardar</td></tr>
+</table>
+<ol>
+<li>Enciende el PC de la simulación y entra en la BIOS con la tecla que diga la pantalla.</li>
+<li>Pon el USB el primero, guarda y sal. Después de instalar, vuelve a dejar el disco el primero.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno la tecla con la que entraste en la BIOS, cómo quedó el orden de arranque para instalar y por qué al final volviste a poner el disco el primero (pregunta 13).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="bios" aria-label="Cambia el orden de arranque"></div>
+<p><strong>Comprobación observable:</strong> al final, al encender, arranca Linux desde el disco y no el instalador.</p>
 
 <h3>Las particiones</h3>
 
@@ -187,7 +204,6 @@
 <li>¿Qué es un hipervisor? Escribe un ejemplo.</li>
 <li>(V/F) Para Windows, el disco virtual de una máquina virtual es solo un archivo grande.</li>
 <li>Escribe dos cosas para las que sirve una máquina virtual.</li>
-<li>(V/F) Si rompes Linux dentro de la máquina virtual, también se rompe el Windows de tu PC.</li>
 <li>(ABC) VirtualBox es un hipervisor de tipo 2 porque:
   <ul>
     <li>a) va directamente sobre el hardware, sin sistema operativo debajo</li>
@@ -201,6 +217,7 @@
 <li>¿Qué es una ISO?</li>
 <li><strong>(Actividad 2)</strong> Escribe las tres ediciones de Linux Mint y lo que pesa su ISO.</li>
 <li>¿Qué es el orden de arranque? Para instalar un sistema operativo desde un USB, ¿qué tiene que ir primero?</li>
+<li><strong>(Actividad 3)</strong> En la BIOS de la simulación, ¿con qué tecla entraste? ¿Cómo quedó el orden de arranque para instalar? ¿Por qué al final volviste a poner el disco el primero?</li>
 <li>¿Qué es una partición? Pon un ejemplo con C: y D:.</li>
 <li>(V/F) En un ordenador de verdad, «Borrar disco e instalar» solo borra el sistema operativo y deja tus archivos.</li>
 </ol>
@@ -215,5 +232,6 @@
 <li>Busca qué tecla abre el menú de arranque en un ordenador de una marca que tengas en casa (HP, Lenovo, Asus…).</li>
 <li>Busca otro hipervisor que no sea VirtualBox y di si es de tipo 1 o de tipo 2.</li>
 <li>¿Por qué crees que a una empresa le sale más barato tener diez servidores virtuales en un servidor real que diez servidores reales?</li>
+<li>(V/F) Si rompes Linux dentro de la máquina virtual, también se rompe el Windows de tu PC.</li>
 </ol>
 </div>

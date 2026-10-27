@@ -4715,6 +4715,132 @@ body::after {
 .leccion .inst__lista .inst__mal { color: var(--error); }
 @media print { .inst__registro { break-inside: avoid; } }
 
+/* Simulaciones «arréglalo / hazlo tú» (27/10/2026, js/simulador.js +
+   js/sim-*.js): una ventana de mentira con una misión. A la izquierda
+   la ventana; a la derecha (debajo en el móvil) «Tu misión» y «Lo que
+   has hecho». Sin colores nuevos: superficie, borde y acentos de
+   siempre; lo cumplido en --ok, lo peligroso y lo que falla en --error. */
+.sim { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
+/* en el móvil: misión, ventana y lo que has hecho, por ese orden;
+   en escritorio, la ventana a la izquierda y lo demás a la derecha */
+@media (min-width: 900px) {
+  .sim { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); grid-template-rows: auto 1fr; grid-template-areas: "ventana mision" "ventana registro"; align-items: start; }
+  .sim__ventana { grid-area: ventana; }
+  .sim__mision { grid-area: mision; }
+  .sim__registro { grid-area: registro; }
+}
+.sim__pantalla > .lab__boton { align-self: flex-start; }
+.sim__ventana { border: 1px solid var(--border); border-radius: 6px; background: var(--surface); overflow: hidden; min-width: 0; }
+.sim__barra {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim);
+  background: var(--surface-2); border-bottom: 1px solid var(--border);
+  padding: 0.35rem 0.7rem; min-width: 0;
+}
+.sim__puntos { flex: none; width: 34px; height: 8px; background: radial-gradient(circle, var(--border) 3.5px, transparent 4px) 0 0 / 12px 8px repeat-x; }
+.sim__barra-titulo { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sim__pantalla { padding: 0.8rem; min-height: 14rem; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; overflow-wrap: anywhere; }
+.leccion .sim__pantalla p { margin: 0; }
+.leccion .sim__h { font-family: var(--font-titulo); font-weight: 600; font-size: 1rem; color: var(--text); }
+.leccion .sim__ayuda { font-size: 0.8rem; color: var(--text-dim); margin: 0; }
+.leccion .sim__etiqueta { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
+.leccion .sim__pide { font-size: 0.9rem; color: var(--accent); }
+.sim__campo { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.sim__select { flex: 1 1 12rem; max-width: 100%; }
+.sim__campo .sim__select { flex: none; }
+.sim__interruptor { display: flex; align-items: center; gap: 0.5rem; min-height: 36px; cursor: pointer; }
+.sim__interruptor input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
+.leccion .sim__aviso { font-size: 0.9rem; padding: 0.4rem 0.6rem; border-radius: 4px; border-left: 3px solid var(--error); background: var(--error-fondo); color: var(--text); margin: 0; }
+.leccion .sim__aviso--cuidado { border-left-color: var(--accent-warm); background: transparent; }
+.leccion .sim__aviso--ok { border-left-color: var(--ok); background: var(--ok-fondo); }
+.leccion .sim__peligro { color: var(--error); }
+.sim__mision { border: 1px solid var(--accent); border-radius: 6px; padding: 0.6rem 0.8rem; }
+.leccion .sim__lado-titulo { font-weight: 600; margin: 0; color: var(--text); }
+.leccion .sim__casillas { list-style: none; margin: 0.4rem 0 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; font-size: 0.88rem; }
+.leccion .sim__casilla { padding-left: 1.6rem; position: relative; color: var(--text); }
+.leccion .sim__casilla::before { content: '☐'; position: absolute; left: 0; top: -0.05em; font-size: 1.1em; color: var(--text-dim); }
+.leccion .sim__casilla--hecha { color: var(--text-dim); text-decoration: line-through; }
+.leccion .sim__casilla--hecha::before { content: '✓'; color: var(--ok); font-weight: 700; }
+.sim__registro { border: 1px dashed var(--border); border-radius: 6px; padding: 0.6rem 0.8rem; min-width: 0; max-height: 26rem; overflow-y: auto; }
+.leccion .sim__lista { margin: 0.4rem 0 0; padding-left: 1.3rem; font-size: 0.85rem; display: flex; flex-direction: column; gap: 0.2rem; overflow-wrap: anywhere; }
+.leccion .sim__lista .sim__mal { color: var(--error); }
+.leccion .sim__cumplida { border-left: 3px solid var(--ok); background: var(--ok-fondo); border-radius: 4px; padding: 0.6rem 0.8rem; }
+.leccion .sim__cumplida p { margin: 0; }
+.leccion .sim__cumplida-titulo { font-weight: 700; color: var(--ok); }
+/* piezas que usan varias simulaciones */
+.leccion .sim__temas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.leccion .sim__temas li { display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; }
+.sim__tema { background: none; border: 0; padding: 0.2rem 0; min-height: 32px; color: var(--accent); font: inherit; font-weight: 600; text-align: left; cursor: pointer; }
+.sim__tema:hover { text-decoration: underline; }
+.sim__mensaje { position: relative; border: 1px solid var(--border); border-radius: 6px; padding: 0.5rem 2.8rem 0.5rem 0.7rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.sim__mensaje--inicial { border-left: 3px solid var(--accent); }
+.sim__mensaje--solucion { border-color: var(--ok); background: var(--ok-fondo); }
+.leccion .sim__mensaje-cab { font-size: 0.85rem; color: var(--text-dim); }
+.sim__sello { margin-left: 0.5rem; color: var(--ok); font-weight: 700; }
+.sim__mas { position: absolute; top: 0.35rem; right: 0.35rem; min-height: 30px; padding: 0 0.6rem; }
+.sim__menu { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.sim__dos { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.8rem; }
+@media (min-width: 640px) { .sim__dos { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.sim__ajustes, .sim__vista { display: flex; flex-direction: column; gap: 0.4rem; min-width: 0; }
+.sim__vista { border: 1px solid var(--border); border-radius: 6px; padding: 0.6rem; }
+.sim__perfil-cab { display: flex; align-items: center; gap: 0.6rem; }
+.sim__avatar { flex: none; width: 42px; height: 42px; border-radius: 50%; border: 2px solid var(--accent); display: grid; place-items: center; font-weight: 700; color: var(--accent); }
+.leccion .sim__bio { font-size: 0.9rem; }
+.sim__fotos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.3rem; }
+.sim__foto { aspect-ratio: 1; border: 1px solid var(--border); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.2rem; }
+.sim__foto-icono { font-size: 1.6rem; }
+.sim__foto-ubic { font-size: 0.7rem; }
+.leccion .sim__candado { border: 1px dashed var(--border); border-radius: 4px; padding: 0.8rem; text-align: center; color: var(--text-dim); }
+.leccion .sim__gente { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.leccion .sim__gente li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.3rem 0.6rem; font-size: 0.88rem; }
+.leccion .sim__gente .sim__select { flex: 0 1 11rem; }
+.leccion .sim__versiones { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
+.leccion .sim__versiones li { border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9rem; }
+.sim__diff { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.85rem; border: 1px solid var(--border); border-radius: 4px; padding: 0.4rem 0.6rem; }
+.sim__diff del { color: var(--accent-warm); }
+.sim__diff ins { color: var(--accent); text-decoration: none; }
+/* U4: navegador, buscador y bandeja (js/sim-internet.js) */
+.sim__nav { border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.sim__pestanas { display: flex; flex-wrap: wrap; gap: 2px; padding: 0.3rem 0.3rem 0; background: var(--surface-2); }
+.sim__pestana { font: inherit; font-size: 0.8rem; min-height: 32px; padding: 0.2rem 0.8rem; border: 1px solid var(--border); border-bottom: 0; border-radius: 6px 6px 0 0; background: transparent; color: var(--text-dim); cursor: pointer; }
+.sim__pestana--activa { background: var(--surface); color: var(--text); border-top: 2px solid var(--accent); }
+.leccion .sim__direccion { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-dim); padding: 0.35rem 0.6rem; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); min-height: 1.9em; overflow-wrap: anywhere; }
+.sim__favoritos { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.4rem 0.8rem; padding: 0.4rem 0.6rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.sim__carpeta { border: 1px solid var(--border); border-radius: 4px; padding: 0.2rem 0.5rem; }
+.sim__carpeta { display: flex; flex-direction: column; gap: 0.3rem; }
+.sim__fav { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; }
+.sim__fav .sim__select { flex: 0 1 9rem; font-size: 0.8rem; min-height: 32px; }
+.sim__web { padding: 0.7rem; min-height: 8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+.sim__web-cont { overflow-wrap: anywhere; }
+.leccion .sim__zoom { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); align-self: flex-end; }
+.sim__tecla { font-size: 0.75rem; }
+.sim__hist { display: flex; flex-direction: column; gap: 0.2rem; }
+.sim__hist-fila { display: flex; align-items: center; gap: 0.6rem; }
+.sim__resultados { display: flex; flex-direction: column; gap: 0.7rem; }
+.sim__resultado { display: flex; flex-direction: column; gap: 0.1rem; }
+.leccion .sim__resultado-titulo { color: var(--accent); font-weight: 600; }
+.leccion .sim__resultado-texto { font-size: 0.85rem; color: var(--text-dim); }
+.sim__patrocinado { align-self: flex-start; font-size: 0.72rem; font-weight: 700; color: var(--accent-warm); }
+.sim__pdf { font-family: var(--font-mono); font-size: 0.7rem; border: 1px solid var(--accent-warm); color: var(--accent-warm); border-radius: 3px; padding: 0 0.25rem; margin-right: 0.4rem; vertical-align: 0.1em; }
+.sim__url { font-size: 0.85rem; overflow-wrap: anywhere; }
+.sim__url:empty { display: none; }
+.leccion .sim__adjunto { font-family: var(--font-mono); font-size: 0.85rem; border: 1px solid var(--border); border-radius: 4px; padding: 0.3rem 0.6rem; align-self: flex-start; }
+/* U5: dispositivos y BIOS (js/sim-sistemas.js); la BIOS, oscura en
+   los dos temas, con los colores de la terminal */
+.leccion .sim__arbol { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.1rem; }
+.leccion .sim__arbol-sub { list-style: none; margin: 0 0 0.3rem 1.4rem; padding: 0; }
+.leccion .sim__arbol .sim__tema { font-weight: 500; }
+.leccion .sim__arbol .sim__tema.sim__peligro { color: var(--error); font-weight: 700; }
+.sim__bios { background: var(--lab-terminal-bg); color: var(--lab-terminal-texto); font-family: var(--font-mono); font-size: 0.82rem; border-radius: 4px; padding: 0.7rem 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; overflow-wrap: anywhere; }
+.leccion .sim__bios p { color: var(--lab-terminal-texto); }
+.leccion .sim__bios-titulo { color: var(--lab-terminal-cmd); white-space: pre-wrap; }
+.leccion .sim__bios-orden { margin: 0; padding-left: 1.6rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.leccion .sim__bios-orden li { display: list-item; color: var(--lab-terminal-texto); }
+.leccion .sim__bios-orden li span { margin-right: 0.5rem; }
+.leccion .sim__bios-orden li .lab__boton { margin-right: 0.3rem; vertical-align: middle; }
+.sim__bios .lab__boton { background: transparent; color: var(--lab-terminal-cmd); border-color: var(--lab-terminal-tenue); min-height: 30px; padding: 0 0.6rem; }
+@media print { .sim__mision, .sim__registro { break-inside: avoid; } }
+
 /* Terminal */
 .lab__terminal {
   background: var(--lab-terminal-bg);
