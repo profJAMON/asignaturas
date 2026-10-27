@@ -11,6 +11,9 @@
               compartidos mal; cada uno, como pide su nota.
    wiki       S3 «Salva la wiki»: encontrar en el historial el cambio
               que estropeó un artículo y deshacer solo ese.
+   wiki-escribe  S3 «Escribe en la wiki» (27/10/2026): completar un
+              artículo a medio hacer en su sección, sin borrar lo de
+              otro, con resumen de edición, y mirar el historial.
 
    Todos los nombres son inventados (alias). Nada se guarda.
    ============================================================ */
@@ -578,6 +581,231 @@
         pantalla.appendChild(msg);
       }
       articulo();
+    },
+  });
+
+  /* ============================================================
+     S3 · Escribe en la wiki (27/10/2026). Sustituye a la wiki de
+     clase en Google Docs (ya hacen documentos compartidos en
+     Ofimática). Completar un artículo a medio hacer: el ejemplo en
+     su sección, sin borrar lo de otro, con resumen de edición; un
+     compañero guarda a la vez en otra sección; mirar el historial.
+     ============================================================ */
+  registrarSimulacion('wiki-escribe', {
+    ventana: 'Wiki de clase · Portada',
+    mision: [
+      'Busca el artículo que está a medio hacer (esbozo) y ábrelo.',
+      'Añade un ejemplo en la sección que toca, sin borrar lo que escribieron otros.',
+      'Guarda con un resumen de edición que diga qué has añadido.',
+      'Busca tu cambio en el historial y mira qué datos guarda.',
+    ],
+    final: 'Apunta en tu cuaderno qué artículo completaste, qué añadiste y en qué sección, y qué datos guarda el historial de tu cambio (pregunta 8).',
+    crear(ctx) {
+      const { el, boton, pantalla } = ctx;
+      const SEC = [['que', 'Qué es'], ['ejemplo', 'Ejemplo'], ['mas', 'Para saber más']];
+      const Q1 = 'El RSS avisa de lo nuevo que publica una web, sin tener que entrar a mirarla.';
+      const Q2 = 'El RSS avisa de lo nuevo que publica una web, sin tener que entrar a mirarla cada día.';
+      const E1 = 'Muchos blogs y periódicos tienen RSS.';
+      const TUYO = 'Con un lector RSS, como Feedly, sigo cinco blogs y veo sus entradas nuevas en un solo sitio.';
+      const M1 = 'Al RSS también se le llama sindicación.';
+      const TEXTOS = [
+        ['', 'Elige qué escribes…'],
+        ['ejemplo', TUYO],
+        ['nube', 'La nube guarda tus archivos en servidores de Internet y los ves desde cualquier sitio.'],
+        ['opinion', '¡¡El RSS es lo mejor de Internet y todo el mundo debería usarlo!!'],
+      ];
+      const ARTICULOS = ['Foros', 'Blogs', 'Wikis', 'Redes sociales', 'RSS', 'La nube'];
+      const copia = a => ({ que: a.que.slice(), ejemplo: a.ejemplo.slice(), mas: a.mas.slice() });
+      const V = [
+        { n: 1, cuando: '10 oct, 17:05', quien: 'ana_k', que: 'Crea el artículo', a: { que: [Q1], ejemplo: [], mas: [] } },
+        { n: 2, cuando: '10 oct, 17:20', quien: 'leo_m', que: 'Empiezo el ejemplo y añado «Para saber más»', a: { que: [Q1], ejemplo: [E1], mas: [M1] } },
+      ];
+      let actual = copia(V[1].a), guardado = false;
+
+      function portada() {
+        ctx.barra('Wiki de clase · Portada');
+        pantalla.innerHTML = '';
+        pantalla.appendChild(el('p', 'sim__h', 'Wiki de clase: Servicios de Internet'));
+        pantalla.appendChild(el('p', 'sim__ayuda', 'Cada tema es un artículo. Los que pone «esbozo» están a medio hacer.'));
+        const msg = el('div');
+        msg.setAttribute('aria-live', 'polite');
+        const ul = el('ul', 'sim__temas');
+        ARTICULOS.forEach(t => {
+          const li = el('li');
+          const b = boton(t, 'sim__tema');
+          b.addEventListener('click', () => {
+            if (t === 'RSS') {
+              ctx.cumple(0, 'En la portada, el artículo «RSS» pone «esbozo»: está a medio hacer.');
+              articulo();
+            } else {
+              msg.innerHTML = '';
+              msg.appendChild(ctx.aviso(`«${t}» ya está completo. Busca el que pone «esbozo».`, 'cuidado'));
+            }
+          });
+          li.appendChild(b);
+          li.appendChild(el('span', 'sim__etiqueta', t === 'RSS' && !guardado ? 'esbozo: le falta un ejemplo' : 'completo'));
+          ul.appendChild(li);
+        });
+        pantalla.appendChild(ul);
+        pantalla.appendChild(msg);
+      }
+      function pestanas(activa) {
+        const f = el('div', 'lab__fila');
+        [['Portada', portada], ['Leer', articulo], ['Ver historial', historial]].forEach(([t, fn]) => {
+          const b = boton(t, t === activa ? 'lab__boton lab__boton--activo' : null);
+          b.addEventListener('click', fn);
+          f.appendChild(b);
+        });
+        return f;
+      }
+      function articulo() {
+        ctx.barra('Wiki de clase · RSS');
+        pantalla.innerHTML = '';
+        pantalla.appendChild(pestanas('Leer'));
+        pantalla.appendChild(el('p', 'sim__h', 'RSS'));
+        SEC.forEach(([k, t]) => {
+          const cab = el('div', 'lab__fila');
+          cab.appendChild(el('strong', null, t));
+          if (!guardado) {
+            const ed = boton(`Editar «${t}»`);
+            ed.addEventListener('click', () => editar(k, t));
+            cab.appendChild(ed);
+          }
+          pantalla.appendChild(cab);
+          actual[k].forEach(p => pantalla.appendChild(el('p', null, p)));
+        });
+        if (!guardado) pantalla.appendChild(el('p', 'sim__ayuda', 'Cada sección se edita por separado, con su botón «Editar».'));
+      }
+      function editar(k, t) {
+        ctx.barra(`Wiki de clase · RSS · Editar «${t}»`);
+        pantalla.innerHTML = '';
+        pantalla.appendChild(el('p', 'sim__ayuda', `Lo que hay ahora en «${t}»:`));
+        const caja = el('div', 'sim__diff');
+        actual[k].forEach(p => caja.appendChild(el('span', null, p)));
+        pantalla.appendChild(caja);
+
+        const lt = el('label', 'sim__campo');
+        lt.appendChild(el('span', 'sim__ayuda', '¿Qué escribes?'));
+        const texto = select(TEXTOS, '', '¿Qué escribes?');
+        lt.appendChild(texto);
+        pantalla.appendChild(lt);
+
+        const modo = el('div', 'sim__campo');
+        modo.setAttribute('role', 'radiogroup');
+        modo.setAttribute('aria-label', '¿Cómo lo pones?');
+        modo.appendChild(el('span', 'sim__ayuda', '¿Cómo lo pones?'));
+        const nombre = 'wiki-modo-' + Math.random().toString(36).slice(2);
+        const radios = [['anadir', 'Lo añado debajo de lo que hay'], ['borrar', 'Borro lo que hay y pongo lo mío']].map(([v, txt], i) => {
+          const l = el('label', 'sim__interruptor');
+          const r = document.createElement('input');
+          r.type = 'radio';
+          r.name = nombre;
+          r.value = v;
+          r.checked = i === 0;
+          l.appendChild(r);
+          l.appendChild(document.createTextNode(' ' + txt));
+          modo.appendChild(l);
+          return r;
+        });
+        pantalla.appendChild(modo);
+
+        const lr = el('label', 'sim__campo');
+        lr.appendChild(el('span', 'sim__ayuda', 'Resumen de edición: lo que verán los demás en el historial. Tu nombre no lo escribes en el texto: el historial ya lo guarda.'));
+        const res = select([
+          ['', 'Resumen de edición…'],
+          ['bien', 'Añado un ejemplo de lector RSS'],
+          ['vago', 'cambios'],
+          ['mal', 'arreglo todo'],
+        ], '', 'Resumen de edición');
+        lr.appendChild(res);
+        pantalla.appendChild(lr);
+
+        const msg = el('div');
+        msg.setAttribute('aria-live', 'polite');
+        const guardar = boton('Guardar cambios', 'lab__boton lab__boton--activo');
+        guardar.addEventListener('click', () => {
+          msg.innerHTML = '';
+          const borrar = radios[1].checked;
+          const di = m => msg.appendChild(ctx.aviso(m));
+          if (!texto.value) return di('Elige primero qué escribes.');
+          if (texto.value === 'nube') {
+            ctx.falla('Escribir lo de la nube en el artículo del RSS.');
+            return di('Eso es de la nube, no del RSS: iría en el artículo «La nube». Aquí escribe algo del RSS.');
+          }
+          if (texto.value === 'opinion') {
+            ctx.falla('Escribir una opinión en la wiki.');
+            return di('Una wiki explica las cosas; no es sitio para opiniones. Escribe algo que le sirva a quien lo lea.');
+          }
+          if (k !== 'ejemplo') {
+            ctx.falla(`Poner el ejemplo en «${t}».`);
+            return di(`Es un ejemplo: va en la sección «Ejemplo», no en «${t}».`);
+          }
+          if (borrar) {
+            ctx.falla('Borrar la frase que escribió leo_m.');
+            return di('Borrarías la frase que escribió leo_m, que estaba bien. En una wiki se añade o se corrige; no se borra el trabajo de otro sin motivo.');
+          }
+          if (res.value !== 'bien') {
+            return di('Elige un resumen que diga qué has añadido. Así, quien mire el historial sabe qué cambiaste sin tener que leerlo todo.');
+          }
+          // Mientras tanto, mar_t ha guardado otra sección
+          const deMarT = copia(actual);
+          deMarT.que = [Q2];
+          V.push({ n: 3, cuando: 'hoy, 18:41', quien: 'mar_t', que: 'Completo la definición', a: deMarT });
+          actual = copia(deMarT);
+          actual.ejemplo.push(TUYO);
+          V.push({ n: 4, cuando: 'hoy, 18:43', quien: 'pixelrojo (tú)', que: 'Añado un ejemplo de lector RSS', a: copia(actual) });
+          guardado = true;
+          ctx.cumple(1, `Sección «Ejemplo», debajo de la frase de leo_m: «${TUYO}»`);
+          ctx.cumple(2, 'Resumen de edición: «Añado un ejemplo de lector RSS». Guardado como v4.');
+          articulo();
+          pantalla.appendChild(ctx.aviso('Guardado. Mientras editabas, mar_t ha guardado un cambio en otra sección («Qué es»). La wiki ha juntado los dos cambios. Ahora mira el historial.', 'ok'));
+        });
+        const atras = boton('‹ Cancelar');
+        atras.addEventListener('click', articulo);
+        const f = el('div', 'lab__fila');
+        f.appendChild(atras);
+        f.appendChild(guardar);
+        pantalla.appendChild(f);
+        pantalla.appendChild(msg);
+      }
+      function lineas(a) {
+        const out = [];
+        SEC.forEach(([k, t]) => a[k].forEach(p => out.push(`${t}: ${p}`)));
+        return out;
+      }
+      function diff(a, b) {
+        const x = lineas(a), y = lineas(b);
+        const box = el('div', 'sim__diff');
+        x.filter(p => y.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('del'), { textContent: '− ' + p })));
+        y.filter(p => x.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('ins'), { textContent: '+ ' + p })));
+        return box;
+      }
+      function historial() {
+        ctx.barra('Wiki de clase · RSS · Historial');
+        pantalla.innerHTML = '';
+        pantalla.appendChild(pestanas('Ver historial'));
+        pantalla.appendChild(el('p', 'sim__ayuda', 'Lo más nuevo, arriba. «Ver cambios» enseña lo que se quitó (−) y lo que se añadió (+) en esa versión.'));
+        const ul = el('ul', 'sim__versiones');
+        V.slice().reverse().forEach(v => {
+          const li = el('li');
+          li.appendChild(el('strong', null, `v${v.n}`));
+          li.appendChild(document.createTextNode(` · ${v.cuando} · ${v.quien} · «${v.que}»`));
+          const caja = el('div');
+          const ver = boton('Ver cambios');
+          ver.addEventListener('click', () => {
+            caja.innerHTML = '';
+            caja.appendChild(diff(v.n > 1 ? V[v.n - 2].a : { que: [], ejemplo: [], mas: [] }, v.a));
+            if (v.n === 4) ctx.cumple(3, 'En el historial, tu cambio es la v4: tu usuario (pixelrojo), el día y la hora (hoy, 18:43), el resumen de edición y lo que añadiste (+). Justo antes, la v3 de mar_t, guardada mientras tú editabas.');
+          });
+          const fila = el('div', 'lab__fila');
+          fila.appendChild(ver);
+          li.appendChild(fila);
+          li.appendChild(caja);
+          ul.appendChild(li);
+        });
+        pantalla.appendChild(ul);
+      }
+      portada();
     },
   });
 })();

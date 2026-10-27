@@ -29,6 +29,7 @@
         "sesion-3-navegador-devtools",
         "sesion-4-url-http-basico",
         "sesion-5-que-hace-falta-publicar",
+        "resumen-fundamentos-internet",
         "glosario-fundamentos-internet"
       ]
     },
@@ -40,6 +41,7 @@
         "sesion-2-blogs-wikis",
         "sesion-3-redes-sociales-nube",
         "sesion-4-gestores-contenidos-p2p",
+        "resumen-publicacion-web",
         "glosario-publicacion-web"
       ]
     },
@@ -51,6 +53,7 @@
         "sesion-1-el-navegador",
         "sesion-2-buscadores-privacidad",
         "sesion-3-correo-mensajeria",
+        "resumen-navegador-servicios-internet",
         "glosario-navegador-servicios-internet"
       ]
     },
@@ -62,6 +65,7 @@
         "sesion-1-software-sistemas-operativos",
         "sesion-2-maquinas-virtuales",
         "sesion-3-instalar-linux",
+        "resumen-sistemas-operativos",
         "glosario-sistemas-operativos"
       ]
     }

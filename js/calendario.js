@@ -415,7 +415,8 @@
     rotulo.textContent = faltan < 0 ? `📝 El examen ${deQue} fue el` : `📝 Examen ${deQue}`;
     const fecha = document.createElement('p');
     fecha.className = 'aviso-examen__fecha';
-    fecha.textContent = fechaLarga(iso) + (faltan >= 0 && d.horaExamen ? ` · ${d.horaExamen}` : '');
+    const hora = (unidad && unidad.horaExamen) || d.horaExamen;
+    fecha.textContent = fechaLarga(iso) + (faltan >= 0 && hora ? ` · ${hora}` : '');
     caja.appendChild(rotulo);
     caja.appendChild(fecha);
     if (faltan >= 0) {

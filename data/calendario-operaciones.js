@@ -69,6 +69,17 @@
    pierde ese jueves: su Sesión 3 pasa al 05/11 y el lunes 09/11 queda
    para resumen y repaso; su examen sigue el jueves 12/11.
 
+   Cambio del 27/10/2026
+   ---------------------
+   Cada unidad con resumen (o manual) tiene su sesión de resumen, el día
+   de antes del examen, para que siempre haya tiempo de hacerlo (si no se
+   entrega antes del examen, -1 punto en el examen). La U4 no tenía hueco:
+   todo se corre un día. Resumen de la U4 el jue 26/11 y su examen el LUNES
+   30/11 a las 15:00; la U5 empieza el jue 03/12 (S1 03/12, S2 10/12, S3
+   14/12, manual 17/12) y su examen es el LUNES 21/12 a las 15:00. La U6
+   empieza el 07/01 y pierde 2 h de su margen (20 -> 18 h). Una unidad
+   puede llevar su propia "horaExamen", que manda sobre la general.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se desvía: edita las fechas de la unidad afectada
@@ -87,7 +98,7 @@
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-10-22",
+  "actualizado": "2026-10-27",
   "avisoExamen": true,
   "horaExamen": "19:10",
   "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son de 19:10 a 21:00, normalmente en jueves. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
@@ -128,7 +139,8 @@ const CALENDARIO_OPERACIONES =
         "sesion-2-red-desde-la-terminal",
         "sesion-3-navegador-devtools",
         "sesion-4-url-http-basico",
-        "sesion-5-que-hace-falta-publicar"
+        "sesion-5-que-hace-falta-publicar",
+        "resumen-fundamentos-internet"
       ],
       "fechas": {
         "inicio": "2026-10-01",
@@ -143,7 +155,8 @@ const CALENDARIO_OPERACIONES =
       "sesiones": [
         "sesion-2-blogs-wikis",
         "sesion-3-redes-sociales-nube",
-        "sesion-4-gestores-contenidos-p2p"
+        "sesion-4-gestores-contenidos-p2p",
+        "resumen-publicacion-web"
       ],
       "fechas": {
         "inicio": "2026-10-26",
@@ -154,17 +167,19 @@ const CALENDARIO_OPERACIONES =
     {
       "id": "navegador-servicios-internet",
       "titulo": "Unidad 4. El navegador, buscadores y correo",
-      "horas": 10,
+      "horas": 12,
       "sesiones": [
         "sesion-1-el-navegador",
         "sesion-2-buscadores-privacidad",
-        "sesion-3-correo-mensajeria"
+        "sesion-3-correo-mensajeria",
+        "resumen-navegador-servicios-internet"
       ],
       "fechas": {
         "inicio": "2026-11-16",
-        "fin": "2026-11-26"
+        "fin": "2026-11-30"
       },
-      "examen": "2026-11-26"
+      "examen": "2026-11-30",
+      "horaExamen": "15:00"
     },
     {
       "id": "sistemas-operativos",
@@ -173,21 +188,23 @@ const CALENDARIO_OPERACIONES =
       "sesiones": [
         "sesion-1-software-sistemas-operativos",
         "sesion-2-maquinas-virtuales",
-        "sesion-3-instalar-linux"
+        "sesion-3-instalar-linux",
+        "resumen-sistemas-operativos"
       ],
       "fechas": {
-        "inicio": "2026-11-30",
-        "fin": "2026-12-17"
+        "inicio": "2026-12-03",
+        "fin": "2026-12-21"
       },
-      "examen": "2026-12-17"
+      "examen": "2026-12-21",
+      "horaExamen": "15:00"
     },
     {
       "id": "windows",
       "titulo": "Unidad 6. Windows",
-      "horas": 20,
+      "horas": 18,
       "sesiones": [],
       "fechas": {
-        "inicio": "2026-12-21",
+        "inicio": "2027-01-07",
         "fin": "2027-01-28"
       },
       "examen": "2027-01-28"
@@ -277,6 +294,11 @@ const CALENDARIO_OPERACIONES =
       "unidad": "fundamentos-internet",
       "fecha": "2026-10-19"
     },
+    "resumen-fundamentos-internet": {
+      "titulo": "Sesión 6. Tu resumen de la unidad",
+      "unidad": "fundamentos-internet",
+      "fecha": "2026-10-22"
+    },
     "sesion-2-blogs-wikis": {
       "titulo": "Sesión 1. Blogs, foros y wikis",
       "unidad": "publicacion-web",
@@ -291,6 +313,11 @@ const CALENDARIO_OPERACIONES =
       "titulo": "Sesión 3. Gestores de contenidos y redes P2P",
       "unidad": "publicacion-web",
       "fecha": "2026-11-05"
+    },
+    "resumen-publicacion-web": {
+      "titulo": "Sesión 4. Tu resumen de la unidad",
+      "unidad": "publicacion-web",
+      "fecha": "2026-11-09"
     },
     "sesion-1-el-navegador": {
       "titulo": "Sesión 1. El navegador: pestañas, favoritos e historial",
@@ -307,20 +334,30 @@ const CALENDARIO_OPERACIONES =
       "unidad": "navegador-servicios-internet",
       "fecha": "2026-11-23"
     },
+    "resumen-navegador-servicios-internet": {
+      "titulo": "Sesión 4. Tu resumen de la unidad",
+      "unidad": "navegador-servicios-internet",
+      "fecha": "2026-11-26"
+    },
     "sesion-1-software-sistemas-operativos": {
       "titulo": "Sesión 1. El software y los sistemas operativos",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-11-30"
+      "fecha": "2026-12-03"
     },
     "sesion-2-maquinas-virtuales": {
       "titulo": "Sesión 2. Máquinas virtuales y preparar la instalación",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-03"
+      "fecha": "2026-12-10"
     },
     "sesion-3-instalar-linux": {
       "titulo": "Sesión 3. Instalar Linux en una máquina virtual",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-10"
+      "fecha": "2026-12-14"
+    },
+    "resumen-sistemas-operativos": {
+      "titulo": "Sesión 4. Tu manual de instalación",
+      "unidad": "sistemas-operativos",
+      "fecha": "2026-12-17"
     }
   }
 }
