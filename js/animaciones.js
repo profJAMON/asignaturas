@@ -98,7 +98,15 @@ function registrarAnimacion(nombre, def) {
     grupoCentro.append(bPlay, contador);
     mandos.append(bAnt, grupoCentro, bSig);
 
+    /* Cinta «Animación · N pasos», como la de las diapositivas
+       (27/10/2026). Si diapos.js no está, se monta igual sin ella. */
+    const cinta = window.DIAPOS && window.DIAPOS.cabeceraCinta
+      ? window.DIAPOS.cabeceraCinta('Animación') : null;
+    if (cinta) cinta.querySelector('.diapos__cuantas').textContent = def.pasos.length + ' pasos';
+    if (window.DIAPOS && window.DIAPOS.ponerFiltroTiza) window.DIAPOS.ponerFiltroTiza();
+
     caja.innerHTML = '';
+    if (cinta) caja.appendChild(cinta);
     caja.append(escena, texto, mandos);
 
     const pintar = def.crear(svg);

@@ -351,8 +351,14 @@
     btnTodas.type = 'button';
     btnTodas.setAttribute('aria-pressed', 'false');
 
+    /* Cinta «Paso a paso · N diapositivas» (27/10/2026): que se vea de
+       un vistazo que hay más de una. Decorativa para el lector de
+       pantalla, que ya oye «carrusel» y «diapositiva N de M». */
+    const cabecera = cabeceraCinta('Paso a paso');
+    const cuantas = cabecera.querySelector('.diapos__cuantas');
+
     raiz.innerHTML = '';
-    raiz.append(pista, mandos, puntos, btnTodas);
+    raiz.append(cabecera, pista, mandos, puntos, btnTodas);
 
     let actual = 0;
     let diapos = [];
@@ -372,6 +378,7 @@
       contador.setAttribute('aria-label', `Diapositiva ${actual + 1} de ${diapos.length}`);
       btnAnt.disabled = actual === 0;
       btnSig.disabled = actual === diapos.length - 1;
+      revisarCerca();
     }
 
     function preparar() {
@@ -382,6 +389,8 @@
         d.setAttribute('aria-label', `${k + 1} de ${diapos.length}`);
         d.dataset.numero = k + 1;
       });
+      cuantas.textContent = diapos.length === 1 ? '1 diapositiva' : `${diapos.length} diapositivas`;
+      ponerPasos(diapos, mostrar);
       puntos.innerHTML = '';
       puntos.hidden = diapos.length > 14;
       diapos.forEach((_, k) => {
@@ -474,7 +483,118 @@
     }
   }
 
+  /* Fila de pasos de tiza (28/10/2026): en cada diapositiva, un círculo
+     por paso; el actual en amarillo, los vistos en azul y los que faltan
+     casi borrados, para que se vea que hay más. Cada círculo lleva a su
+     paso (hace lo que hacían los puntos, que ya no se ven). Con más de
+     14 pasos no se pone, como los puntos. */
+  function ponerPasos(diapos, ir) {
+    const n = diapos.length;
+    diapos.forEach((d, k) => {
+      const vieja = d.querySelector(':scope > .diapo__pasos');
+      if (vieja) vieja.remove();
+      if (n < 2 || n > 14) return;
+      const fila = el('div', 'diapo__pasos');
+      fila.setAttribute('role', 'group');
+      fila.setAttribute('aria-label', 'Pasos');
+      fila.setAttribute('translate', 'no');
+      for (let j = 0; j < n; j++) {
+        const b = el('button', 'diapo__paso' + (j === k ? ' es-actual' : j < k ? ' es-visto' : ''));
+        b.type = 'button';
+        b.textContent = j + 1;
+        b.setAttribute('aria-label', `Ir a la diapositiva ${j + 1}`);
+        if (j === k) b.setAttribute('aria-current', 'step');
+        b.addEventListener('click', () => ir(j));
+        fila.appendChild(b);
+      }
+      d.prepend(fila);
+    });
+  }
+
+  /* Filtro «tiza» para los dibujos (28/10/2026): el trazo tiembla un poco
+     y le faltan granitos, como la tiza. Se pone una sola vez en la página. */
+  function ponerFiltroTiza() {
+    if (document.getElementById('tiza')) return;
+    const caja = document.createElement('div');
+    caja.setAttribute('aria-hidden', 'true');
+    caja.style.cssText = 'position:absolute;width:0;height:0;overflow:hidden';
+    caja.innerHTML =
+      '<svg width="0" height="0" focusable="false"><filter id="tiza" x="-5%" y="-5%" width="110%" height="110%">' +
+      '<feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="2" result="r"/>' +
+      '<feDisplacementMap in="SourceGraphic" in2="r" scale="1.3" result="d"/>' +
+      '<feTurbulence type="fractalNoise" baseFrequency="2.4" numOctaves="1" result="g"/>' +
+      '<feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.9 1.35" result="m"/>' +
+      '<feComposite in="d" in2="m" operator="in"/></filter></svg>';
+    (document.querySelector('main') || document.body).appendChild(caja);
+  }
+
+  function cabeceraCinta(texto) {
+    const c = el('div', 'diapos__cabecera');
+    c.setAttribute('aria-hidden', 'true');
+    c.append(el('span', 'diapos__cinta'), el('span', 'diapos__cuantas'));
+    c.firstChild.textContent = texto;
+    return c;
+  }
+
+  /* ---------- Latido al acercar el ratón (27/10/2026) ----------
+     ‹ Anterior y Siguiente › laten cuando el ratón está a menos de
+     RADIO px, y la luz de detrás de ese botón sube. Solo con ratón (en
+     el móvil no hay «cerca»). Vale para los carruseles y para las
+     animaciones (js/animaciones.js), que usan los mismos mandos. Con
+     movimiento reducido, el CSS quita el latido y deja la luz. */
+  const RADIO = 90;
+  let ratonX = null;
+  let ratonY = null;
+  let pendiente = false;
+
+  function distancia(r) {
+    const dx = Math.max(r.left - ratonX, 0, ratonX - r.right);
+    const dy = Math.max(r.top - ratonY, 0, ratonY - r.bottom);
+    return Math.hypot(dx, dy);
+  }
+
+  function revisarCerca() {
+    pendiente = false;
+    document.querySelectorAll('.diapos__mandos').forEach(m => {
+      let mejor = null;
+      let dMejor = Infinity;
+      const botones = m.querySelectorAll(':scope > .diapos__boton');
+      if (ratonX !== null) {
+        const rm = m.getBoundingClientRect();
+        const aLaVista = rm.width > 0 && rm.bottom > -RADIO && rm.top < window.innerHeight + RADIO;
+        if (aLaVista) {
+          botones.forEach(b => {
+            if (b.disabled) return;
+            const d = distancia(b.getBoundingClientRect());
+            if (d < RADIO && d < dMejor) { mejor = b; dMejor = d; }
+          });
+        }
+      }
+      botones.forEach(b => b.classList.toggle('esta-cerca', b === mejor));
+      const sig = !!mejor && mejor.classList.contains('diapos__boton--sig');
+      m.classList.toggle('cerca-sig', sig);
+      m.classList.toggle('cerca-ant', !!mejor && !sig);
+    });
+  }
+
+  function pedirRevision() {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(revisarCerca);
+  }
+
+  document.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return;
+    ratonX = e.clientX;
+    ratonY = e.clientY;
+    pedirRevision();
+  }, { passive: true });
+  document.documentElement.addEventListener('mouseleave', () => { ratonX = null; pedirRevision(); });
+  window.addEventListener('blur', () => { ratonX = null; pedirRevision(); });
+  window.addEventListener('scroll', () => { if (ratonX !== null) pedirRevision(); }, { passive: true });
+
   function iniciarDiapos(zona) {
+    ponerFiltroTiza();
     (zona || document).querySelectorAll('.diapos').forEach(montar);
   }
 
@@ -487,5 +607,5 @@
   window.registrarDiapos = registrarDiapos;
   window.GENERADORES_DIAPOS = GENERADORES_DIAPOS;
   /* Ayudas de dibujo, para los generadores de otros archivos. */
-  window.DIAPOS = { tx, caja, svg, esc, grupos4 };
+  window.DIAPOS = { tx, caja, svg, esc, grupos4, cabeceraCinta, ponerFiltroTiza };
 })();

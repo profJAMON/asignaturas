@@ -112,6 +112,30 @@
   --cristal-luz-1: rgba(34, 211, 238, 0.42);
   --cristal-luz-2: rgba(255, 77, 157, 0.38);
   --cristal-trama: rgba(255, 255, 255, 0.07);
+  /* 28/10/2026: diapositivas en pizarra verde con tiza. Iguales en los
+     dos temas (la pizarra es pizarra siempre, como el cuaderno es papel).
+     Franja «Paso a paso» de arriba, neón de los botones de vidrio
+     (en r, g, b para poder darles transparencia) y luz más fuerte cuando
+     el ratón se acerca a ‹ Anterior (1) o Siguiente › (2). */
+  --pizarra-fondo: #22412f;
+  --pizarra-marco: #7a5532;
+  --pizarra-marco-osc: #4e341d;
+  --tiza: #f3f1e7;
+  --tiza-tenue: rgba(243, 241, 231, 0.62);
+  --tiza-apagada: rgba(243, 241, 231, 0.3);
+  --tiza-raya: rgba(243, 241, 231, 0.55);
+  --tiza-azul: #9fd6ff;
+  --tiza-azul-tenue: rgba(159, 214, 255, 0.6);
+  --tiza-rosa: #ff9ec7;
+  --tiza-amarilla: #ffe680;
+  --tiza-resalte: rgba(255, 158, 199, 0.12);
+  --franja-1: #22d3ee;
+  --franja-2: #ff4d9d;
+  --franja-tinta: #0a0e14;
+  --neon-ant: 34, 211, 238;
+  --neon-sig: 255, 77, 157;
+  --cristal-luz-1-fuerte: rgba(34, 211, 238, 0.75);
+  --cristal-luz-2-fuerte: rgba(255, 77, 157, 0.7);
 
   /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
      de las preguntas a mano (.papel). */
@@ -324,6 +348,26 @@
   --cristal-luz-1: rgba(79, 193, 255, 0.4);
   --cristal-luz-2: rgba(255, 122, 184, 0.36);
   --cristal-trama: rgba(255, 255, 255, 0.07);
+  /* Pizarra: los mismos valores que en oscuro. */
+  --pizarra-fondo: #22412f;
+  --pizarra-marco: #7a5532;
+  --pizarra-marco-osc: #4e341d;
+  --tiza: #f3f1e7;
+  --tiza-tenue: rgba(243, 241, 231, 0.62);
+  --tiza-apagada: rgba(243, 241, 231, 0.3);
+  --tiza-raya: rgba(243, 241, 231, 0.55);
+  --tiza-azul: #9fd6ff;
+  --tiza-azul-tenue: rgba(159, 214, 255, 0.6);
+  --tiza-rosa: #ff9ec7;
+  --tiza-amarilla: #ffe680;
+  --tiza-resalte: rgba(255, 158, 199, 0.12);
+  --franja-1: #22d3ee;
+  --franja-2: #ff4d9d;
+  --franja-tinta: #0a0e14;
+  --neon-ant: 34, 211, 238;
+  --neon-sig: 255, 77, 157;
+  --cristal-luz-1-fuerte: rgba(34, 211, 238, 0.75);
+  --cristal-luz-2-fuerte: rgba(255, 77, 157, 0.7);
 
   --fila-alterna: rgba(14, 116, 144, 0.05);
   --papel-linea: rgba(14, 116, 144, 0.16);
@@ -4183,6 +4227,373 @@ body::after {
 @media print {
   .diapos__pista > .diapo { filter: none !important; transform: none !important; }
   .diapos__mandos::before { display: none; }
+}
+
+/* ============================================================
+   Diapositivas en pizarra (28/10/2026)
+   ============================================================
+   Los alumnos no leían el texto de las diapositivas ni se daban cuenta
+   de que había más de una. Ahora el carrusel es una pizarra verde con
+   marco de madera, como una explicación de clase con tiza:
+   - arriba, la franja «Paso a paso · N diapositivas» (js/diapos.js,
+     cabeceraCinta; en las animaciones, «Animación · N pasos»);
+   - la frase, a la izquierda, escrita a mano en tiza y grande; la
+     palabra clave (<strong>) en tiza amarilla subrayada;
+   - encima de la frase, la fila de pasos: el actual en un círculo
+     amarillo, los vistos en azul y los que faltan casi borrados
+     (.diapo__pasos, la pone diapos.js en cada diapositiva);
+   - el dibujo, a la derecha, con trazo de tiza (filtro #tiza, lo
+     pone diapos.js una vez) y rótulos a mano. En el móvil, la frase
+     arriba y el dibujo debajo;
+   - ‹ Anterior y Siguiente ›, de vidrio líquido con neón (cian y
+     magenta), con la luz de siempre detrás y el latido al acercar el
+     ratón.
+   Las variables --pizarra-*, --tiza-*, --franja-* y --neon-* valen lo
+   mismo en los dos temas. Dentro de la pizarra se redefinen las
+   --diapo-*, así que las clases d-* de los SVG se pintan solas. */
+
+.leccion .diapos,
+.leccion .anim {
+  --diapo-texto: var(--tiza);
+  --diapo-tenue: var(--tiza-tenue);
+  --diapo-acento: var(--tiza-azul);
+  --diapo-calido: var(--tiza-rosa);
+  --diapo-caja: transparent;
+  --diapo-caja-borde: var(--tiza-raya);
+  --diapo-resalte: var(--tiza-resalte);
+  --figura-borde: var(--tiza-apagada);
+  --figura-pie: var(--tiza-tenue);
+  position: relative;
+  padding: 0 0 0.9rem;
+  overflow: hidden;
+  border: 12px solid var(--pizarra-marco);
+  border-radius: 6px;
+  /* El filo oscuro del marco y la sombra de dentro son la madera y el
+     hueco de la pizarra: dibujo, no sombra de separación. */
+  box-shadow: inset 0 0 0 2px var(--pizarra-marco-osc), inset 0 0 60px rgba(0, 0, 0, 0.45);
+  background:
+    radial-gradient(ellipse 40% 30% at 20% 30%, rgba(255, 255, 255, 0.06), transparent 70%),
+    radial-gradient(ellipse 35% 25% at 75% 70%, rgba(255, 255, 255, 0.05), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    var(--pizarra-fondo);
+}
+
+/* Franja de arriba: «Paso a paso · N diapositivas» (aria-hidden: el
+   lector ya oye «carrusel» y «diapositiva N de M»). */
+.diapos__cabecera {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.diapos__cinta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.75rem 0.28rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-weight: 700;
+}
+/* Triángulo de «play», dibujado con bordes (sin emoji). */
+.diapos__cinta::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 7px solid;
+  border-top: 4.5px solid transparent;
+  border-bottom: 4.5px solid transparent;
+}
+.leccion .diapos .diapos__cabecera,
+.leccion .anim .diapos__cabecera {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(90deg, var(--franja-1), var(--franja-2));
+}
+.leccion .diapos .diapos__cinta,
+.leccion .anim .diapos__cinta {
+  background: var(--franja-tinta);
+  border-color: var(--franja-tinta);
+  color: #fff;
+}
+.leccion .diapos .diapos__cinta::before,
+.leccion .anim .diapos__cinta::before { border-left-color: var(--franja-2); }
+.leccion .diapos .diapos__cuantas,
+.leccion .anim .diapos__cuantas { color: var(--franja-tinta); font-weight: 700; }
+
+/* Frase a la izquierda, dibujo a la derecha. */
+.diapos__pista { padding: 1rem 1.2rem 0.2rem; }
+.diapo {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(0, 1.3fr);
+  grid-template-rows: auto 1fr;
+  column-gap: 1.4rem;
+  align-items: start;
+}
+.diapo > * { min-width: 0; }
+.diapo > .diapo__pasos { grid-column: 1; grid-row: 1; }
+.leccion .diapo > .diapo__texto { grid-column: 1; grid-row: 2; align-self: center; }
+.diapo > svg,
+.diapo > img { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+/* Una diapositiva sin texto (solo dibujo) usa todo el ancho. */
+.diapo:not(:has(> .diapo__texto)) { grid-template-columns: 1fr; }
+.diapo:not(:has(> .diapo__texto)) > svg,
+.diapo:not(:has(> .diapo__texto)) > img { grid-column: 1; }
+
+.diapo svg {
+  width: 100%;
+  max-width: 44rem;
+  max-height: 62vh;
+  margin: 0 auto;
+  filter: url(#tiza);
+}
+.diapo img {
+  max-width: 100%;
+  max-height: 21rem;
+  margin: 0 auto;
+  border: 3px solid var(--tiza);
+  border-radius: 2px;
+  transform: rotate(-1.2deg);
+}
+.diapo svg text { font-family: var(--font-mano); font-size: 16px; }
+.diapo svg .d-peq { font-size: 13px; }
+.diapo svg .d-grande { font-size: 20px; }
+.diapo svg .d-enorme { font-size: 38px; }
+.diapo svg .d-caja,
+.diapo svg .d-caja-on { stroke-width: 1.6; }
+
+.leccion .diapo__texto {
+  font-family: var(--font-mano);
+  font-size: 1.65rem;
+  line-height: 1.3;
+  text-align: left;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: var(--tiza);
+  text-shadow: 0 0 1px rgba(243, 241, 231, 0.6), 0 0 6px rgba(243, 241, 231, 0.15);
+}
+.leccion .diapo__texto strong {
+  color: var(--tiza-amarilla);
+  font-weight: 400;
+  text-decoration: underline wavy;
+  text-decoration-color: var(--tiza-amarilla);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+.leccion .diapo__texto:empty { display: none; }
+.leccion .diapo__texto code { color: var(--tiza-azul); background: none; }
+
+/* Fila de pasos: se ve de un vistazo que hay más. */
+.diapo__pasos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin: 0 0 0.8rem;
+}
+.diapo__paso {
+  display: grid;
+  place-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  font-family: var(--font-mano);
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--tiza-apagada);
+  background: none;
+  border: 2px solid var(--tiza-apagada);
+  border-radius: 50% 46% 52% 48%;
+  cursor: pointer;
+  transform: rotate(-5deg);
+}
+.diapo__paso:nth-child(even) { transform: rotate(4deg); }
+.diapo__paso:hover { color: var(--tiza); border-color: var(--tiza); }
+.diapo__paso:focus-visible { outline: 2px solid var(--tiza-amarilla); outline-offset: 2px; }
+.diapo__paso.es-visto { color: var(--tiza-azul-tenue); border-color: var(--tiza-azul-tenue); }
+.diapo__paso.es-actual {
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.55rem;
+  color: var(--tiza-amarilla);
+  border: 2.5px solid var(--tiza-amarilla);
+  text-shadow: 0 0 6px rgba(255, 230, 128, 0.35);
+  cursor: default;
+}
+/* La fila hace lo que hacían los puntos. */
+.leccion .diapos .diapos__puntos { display: none; }
+
+/* Animaciones: la escena es el dibujo y el texto va fuera de ella. */
+.leccion .anim {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(0, 1.3fr);
+  grid-template-areas: "cab cab" "texto escena" "mandos mandos";
+  column-gap: 1.4rem;
+  align-items: center;
+}
+.leccion .anim > .diapos__cabecera { grid-area: cab; margin-bottom: 1rem; }
+.leccion .anim > .anim__escena { grid-area: escena; display: block; padding-right: 1.2rem; }
+.leccion .anim > .anim__texto { grid-area: texto; padding-left: 1.2rem; }
+.leccion .anim > .anim__mandos { grid-area: mandos; }
+
+/* Mandos */
+.leccion .diapos .diapos__mandos,
+.leccion .anim .diapos__mandos { padding: 0 1.2rem; margin-top: 1rem; }
+.leccion .diapos .diapos__prueba { margin-left: 1.2rem; margin-right: 1.2rem; }
+.leccion .diapos .diapos__todas { margin: 0.5rem auto 0; }
+.diapos__boton, .leccion .diapos__contador { white-space: nowrap; }
+.leccion .diapos .diapos__etiqueta { color: var(--tiza-tenue); }
+.leccion .diapos .diapos__campo { background: rgba(0, 0, 0, 0.25); color: var(--tiza); }
+
+/* ‹ Anterior y Siguiente ›: vidrio líquido con neón. Brillo curvo de
+   arriba (la lente), filo claro, luz del color por dentro desde abajo
+   y halo por fuera. Son luz, no sombras de separación. */
+.diapos__mandos > .diapos__boton {
+  --neon: var(--neon-ant);
+  --halo: 1;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.07) 48%, rgba(var(--neon), 0.1) 100%);
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -10px 18px -6px rgba(var(--neon), 0.55),
+    inset 0 0 0 1px rgba(var(--neon), 0.35),
+    0 0 calc(14px * var(--halo)) rgba(var(--neon), 0.55),
+    0 0 calc(34px * var(--halo)) rgba(var(--neon), 0.28);
+  text-shadow: 0 0 8px rgba(var(--neon), 0.9), 0 1px 0 rgba(0, 0, 0, 0.35);
+}
+.diapos__mandos > .diapos__boton--sig { --neon: var(--neon-sig); }
+.diapos__mandos > .diapos__boton::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: 8%;
+  top: 2px;
+  height: 48%;
+  border-radius: 999px 999px 60% 60% / 999px 999px 100% 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+.diapos__mandos > .diapos__boton:hover:not(:disabled) {
+  --halo: 1.4;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.1) 48%, rgba(var(--neon), 0.18) 100%);
+}
+.diapos__mandos > .diapos__boton:disabled {
+  opacity: 0.4;
+  box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  text-shadow: none;
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .diapos__mandos > .diapos__boton {
+    -webkit-backdrop-filter: blur(10px) saturate(190%) brightness(1.15);
+    backdrop-filter: blur(10px) saturate(190%) brightness(1.15);
+  }
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .diapos__mandos > .diapos__boton { background: var(--cristal-opaco); }
+}
+
+/* Latido al acercar el ratón (js/diapos.js marca .esta-cerca, y
+   .cerca-ant / .cerca-sig en los mandos para subir su luz). */
+@keyframes diapos-latido {
+  0%   { transform: scale(1); }
+  14%  { transform: scale(1.08); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.05); }
+  70%, 100% { transform: scale(1); }
+}
+.diapos__mandos > .diapos__boton.esta-cerca:not(:disabled) {
+  --halo: 1.6;
+  animation: diapos-latido 1.15s ease-in-out infinite;
+}
+.diapos__mandos::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -0.6rem -0.4rem -2.6rem;
+  border-radius: 999px;
+  background: radial-gradient(ellipse 30% 70% at var(--cerca-x, 50%) 45%, var(--cerca-luz, transparent), transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.diapos__mandos.cerca-ant { --cerca-x: 14%; --cerca-luz: var(--cristal-luz-1-fuerte); }
+.diapos__mandos.cerca-sig { --cerca-x: 86%; --cerca-luz: var(--cristal-luz-2-fuerte); }
+.diapos__mandos.cerca-ant::after,
+.diapos__mandos.cerca-sig::after { opacity: 1; }
+
+/* «Ver todas»: una debajo de otra; el número ya lo dice la fila. */
+.diapos--todas .diapos__pista > .diapo { border-top-color: var(--tiza-apagada); }
+.diapos--todas .diapos__pista > .diapo::before { display: none; }
+
+/* Móvil: frase arriba, dibujo debajo. */
+@media (max-width: 700px) {
+  .diapo { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto auto; }
+  .leccion .diapo > .diapo__texto { grid-row: 2; }
+  .diapo > svg,
+  .diapo > img { grid-column: 1; grid-row: 3; margin-top: 0.8rem; }
+  .leccion .diapo__texto { font-size: 1.35rem; }
+  .leccion .diapos,
+  .leccion .anim { border-width: 8px; }
+  .diapos__pista { padding: 0.8rem 0.8rem 0.2rem; }
+  .leccion .anim { grid-template-columns: minmax(0, 1fr); grid-template-areas: "cab" "texto" "escena" "mandos"; }
+  .leccion .anim > .anim__texto { padding: 0 0.8rem; }
+  .leccion .anim > .anim__escena { padding: 0.6rem 0.8rem 0; }
+}
+@media (max-width: 480px) {
+  .leccion .diapos,
+  .leccion .anim { padding: 0 0 0.7rem; }
+  .leccion .diapos .diapos__mandos,
+  .leccion .anim .diapos__mandos { padding: 0 0.6rem; gap: 0.4rem; }
+  .diapos__mandos > .diapos__boton { padding: 0.6rem 0.95rem; font-size: 0.85rem; }
+  .diapo__pasos { gap: 0.25rem; }
+  .diapo__paso { width: 1.75rem; height: 1.75rem; font-size: 1.05rem; }
+  .diapo__paso.es-actual { width: 2.15rem; height: 2.15rem; font-size: 1.3rem; }
+  .leccion .diapos .diapos__prueba { margin-left: 0.6rem; margin-right: 0.6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diapos__mandos > .diapos__boton.esta-cerca:not(:disabled) { animation: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .diapos__mandos > .diapos__boton {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: var(--cristal-opaco);
+  }
+  .diapos__mandos::after { display: none; }
+}
+/* En papel, tiza oscura sobre blanco, sin marco ni filtros. */
+@media print {
+  .leccion .diapos,
+  .leccion .anim {
+    --tiza: #111; --tiza-tenue: #444; --tiza-azul: #0e5a8a; --tiza-rosa: #a4126a; --tiza-amarilla: #7a5a00;
+    --tiza-raya: #666; --tiza-apagada: #999;
+    background: #fff;
+    border: 1px solid #999;
+    box-shadow: none;
+  }
+  .leccion .diapos .diapos__todas { display: none; }
+  .leccion .diapo__texto { text-shadow: none; }
+  .diapo svg { filter: none; }
+  .diapos__cabecera, .diapo__pasos, .diapos__mandos::after { display: none; }
 }
 
 /* ============================================================
