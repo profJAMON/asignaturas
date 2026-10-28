@@ -115,8 +115,7 @@
   /* 28/10/2026: diapositivas en pizarra verde con tiza. Iguales en los
      dos temas (la pizarra es pizarra siempre, como el cuaderno es papel).
      Franja «Paso a paso» de arriba, neón de los botones de vidrio
-     (en r, g, b para poder darles transparencia) y luz más fuerte cuando
-     el ratón se acerca a ‹ Anterior (1) o Siguiente › (2). */
+     (en r, g, b para poder darles transparencia). */
   --pizarra-fondo: #22412f;
   --pizarra-marco: #7a5532;
   --pizarra-marco-osc: #4e341d;
@@ -134,8 +133,6 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
-  --cristal-luz-1-fuerte: rgba(34, 211, 238, 0.75);
-  --cristal-luz-2-fuerte: rgba(255, 77, 157, 0.7);
 
   /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
      de las preguntas a mano (.papel). */
@@ -366,8 +363,6 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
-  --cristal-luz-1-fuerte: rgba(34, 211, 238, 0.75);
-  --cristal-luz-2-fuerte: rgba(255, 77, 157, 0.7);
 
   --fila-alterna: rgba(14, 116, 144, 0.05);
   --papel-linea: rgba(14, 116, 144, 0.16);
@@ -4246,8 +4241,8 @@ body::after {
      pone diapos.js una vez) y rótulos a mano. En el móvil, la frase
      arriba y el dibujo debajo;
    - ‹ Anterior y Siguiente ›, de vidrio líquido con neón (cian y
-     magenta), con la luz de siempre detrás y el latido al acercar el
-     ratón.
+     magenta); la luz es solo la del botón, sin estela detrás; laten
+     al acercar el ratón.
    Las variables --pizarra-*, --tiza-*, --franja-* y --neon-* valen lo
    mismo en los dos temas. Dentro de la pizarra se redefinen las
    --diapo-*, así que las clases d-* de los SVG se pintan solas. */
@@ -4473,8 +4468,7 @@ body::after {
     inset 0 -1px 0 rgba(255, 255, 255, 0.18),
     inset 0 -10px 18px -6px rgba(var(--neon), 0.55),
     inset 0 0 0 1px rgba(var(--neon), 0.35),
-    0 0 calc(14px * var(--halo)) rgba(var(--neon), 0.55),
-    0 0 calc(34px * var(--halo)) rgba(var(--neon), 0.28);
+    0 0 calc(6px * var(--halo)) rgba(var(--neon), 0.6);
   text-shadow: 0 0 8px rgba(var(--neon), 0.9), 0 1px 0 rgba(0, 0, 0, 0.35);
 }
 .diapos__mandos > .diapos__boton--sig { --neon: var(--neon-sig); }
@@ -4509,8 +4503,7 @@ body::after {
   .diapos__mandos > .diapos__boton { background: var(--cristal-opaco); }
 }
 
-/* Latido al acercar el ratón (js/diapos.js marca .esta-cerca, y
-   .cerca-ant / .cerca-sig en los mandos para subir su luz). */
+/* Latido al acercar el ratón (js/diapos.js marca .esta-cerca). */
 @keyframes diapos-latido {
   0%   { transform: scale(1); }
   14%  { transform: scale(1.08); }
@@ -4522,23 +4515,11 @@ body::after {
   --halo: 1.6;
   animation: diapos-latido 1.15s ease-in-out infinite;
 }
-.diapos__mandos::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -0.6rem -0.4rem -2.6rem;
-  border-radius: 999px;
-  background: radial-gradient(ellipse 30% 70% at var(--cerca-x, 50%) 45%, var(--cerca-luz, transparent), transparent 72%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
-  mask-image: radial-gradient(ellipse 60% 70% at 50% 45%, #000 55%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-.diapos__mandos.cerca-ant { --cerca-x: 14%; --cerca-luz: var(--cristal-luz-1-fuerte); }
-.diapos__mandos.cerca-sig { --cerca-x: 86%; --cerca-luz: var(--cristal-luz-2-fuerte); }
-.diapos__mandos.cerca-ant::after,
-.diapos__mandos.cerca-sig::after { opacity: 1; }
+/* 28/10/2026: sin luz de neón detrás de los mandos (ni la de siempre
+   ni la que subía con el latido): Carles no quiere estela; la luz es
+   solo la del botón. */
+.leccion .diapos .diapos__mandos::before,
+.leccion .anim .diapos__mandos::before { display: none; }
 
 /* «Ver todas»: una debajo de otra; el número ya lo dice la fila. */
 .diapos--todas .diapos__pista > .diapo { border-top-color: var(--tiza-apagada); }
@@ -4578,7 +4559,6 @@ body::after {
     backdrop-filter: none;
     background: var(--cristal-opaco);
   }
-  .diapos__mandos::after { display: none; }
 }
 /* En papel, tiza oscura sobre blanco, sin marco ni filtros. */
 @media print {
@@ -4593,7 +4573,7 @@ body::after {
   .leccion .diapos .diapos__todas { display: none; }
   .leccion .diapo__texto { text-shadow: none; }
   .diapo svg { filter: none; }
-  .diapos__cabecera, .diapo__pasos, .diapos__mandos::after { display: none; }
+  .diapos__cabecera, .diapo__pasos { display: none; }
 }
 
 /* ============================================================
