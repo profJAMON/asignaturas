@@ -32,31 +32,31 @@
 </details>
 
 <h2>Leer lo que escribe el usuario: value</h2>
-<p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del torneo de Pixel Kart:</p>
+<p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del servidor de BloqueCraft:</p>
 <div class="probador" aria-label="Leer una caja: value" data-alto="90">
 <textarea data-lengua="html">
 <form>
     <label for="alias">Tu alias:</label>
     <input type="text" id="alias">
-    <button type="button" id="boton-inscribir">Inscribirme</button>
+    <button type="button" id="boton-unirme">Unirme</button>
 </form>
 <p id="mensaje"></p>
 </textarea>
 <textarea data-lengua="js">
 // 1. Buscar los elementos
 let cajaAlias = document.querySelector("#alias");
-let boton = document.querySelector("#boton-inscribir");
+let boton = document.querySelector("#boton-unirme");
 let mensaje = document.querySelector("#mensaje");
 
 // 2. Esperar al clic
 boton.addEventListener("click", function () {
     // 3. Leer la caja y responder
     let alias = cajaAlias.value;
-    mensaje.textContent = "¡Hola, " + alias + "! Ya estás inscrito.";
+    mensaje.textContent = "¡Hola, " + alias + "! Ya estás en el servidor.";
 });
 </textarea>
 <ul class="probador__prueba">
-<li>Escribe un alias en la caja del resultado y pulsa Inscribirme. Escribe otro y vuelve a pulsar.</li>
+<li>Escribe un alias en la caja del resultado y pulsa Unirme. Escribe otro y vuelve a pulsar.</li>
 <li>Mueve la línea <code>let alias = cajaAlias.value;</code> fuera de las llaves, encima del <code>boton.addEventListener</code>. ¿Qué sale ahora?</li>
 <li>Escribe <code>.Value</code> con mayúscula.</li>
 </ul>
@@ -94,30 +94,30 @@ boton.addEventListener("click", function () {
 <div class="probador" aria-label="Leer un desplegable" data-alto="90">
 <textarea data-lengua="html">
 <p><label for="alias">Tu alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
-<p><label for="piloto">Piloto:</label>
-<select id="piloto">
-    <option>Turbo Rex</option>
-    <option>Nube Veloz</option>
-    <option>Chispa</option>
+<p><label for="mob">Mob favorito:</label>
+<select id="mob">
+    <option>Creeper</option>
+    <option>Enderman</option>
+    <option>Zombi</option>
 </select></p>
 <button type="button" id="boton">Elegir</button>
 <p id="mensaje"></p>
 </textarea>
 <textarea data-lengua="js">
 let cajaAlias = document.querySelector("#alias");
-let cajaPiloto = document.querySelector("#piloto");
+let cajaMob = document.querySelector("#mob");
 let boton = document.querySelector("#boton");
 let mensaje = document.querySelector("#mensaje");
 
 boton.addEventListener("click", function () {
     let alias = cajaAlias.value;
-    let piloto = cajaPiloto.value;
-    mensaje.textContent = alias + " correrá con " + piloto + ".";
+    let mob = cajaMob.value;
+    mensaje.textContent = "A " + alias + " le gusta el " + mob + ".";
 });
 </textarea>
 <ul class="probador__prueba">
-<li>Elige un piloto y pulsa Elegir.</li>
-<li>Añade un cuarto piloto al <code>&lt;select&gt;</code> y elígelo.</li>
+<li>Elige un mob y pulsa Elegir.</li>
+<li>Añade un cuarto mob al <code>&lt;select&gt;</code> y elígelo.</li>
 </ul>
 </div>
 
@@ -138,43 +138,43 @@ boton.addEventListener("click", function () {
 
 <h2>Números que vienen de una caja</h2>
 <p>Todo lo que se lee con <code>value</code> es <strong>texto</strong>, aunque la caja sea <code>type="number"</code>. Para hacer cuentas, primero se convierte con <code>Number()</code>:</p>
-<pre><code translate="no"><span class='kw'>let</span> vueltas = <span class='fn'>Number</span>(cajaVueltas.value);
-<span class='kw'>let</span> segundos = vueltas * <span class='nu'>42</span>;
-resultado.textContent = <span class='ca'>"Tardarás unos "</span> + segundos + <span class='ca'>" segundos."</span>;</code></pre>
+<pre><code translate="no"><span class='kw'>let</span> cofres = <span class='fn'>Number</span>(cajaCofres.value);
+<span class='kw'>let</span> diamantes = cofres * <span class='nu'>4</span>;
+resultado.textContent = <span class='ca'>"Tendrás "</span> + diamantes + <span class='ca'>" diamantes."</span>;</code></pre>
 <table>
 <thead><tr><th>Si el usuario escribe 3</th><th>Resultado</th></tr></thead>
 <tbody>
-<tr><td><code>cajaVueltas.value + 1</code></td><td><code>31</code> (junta textos)</td></tr>
-<tr><td><code>Number(cajaVueltas.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
+<tr><td><code>cajaCofres.value + 1</code></td><td><code>31</code> (junta textos)</td></tr>
+<tr><td><code>Number(cajaCofres.value) + 1</code></td><td><code>4</code> (suma)</td></tr>
 </tbody>
 </table>
 <p>Compruébalo: escribe 3 y pulsa los dos botones.</p>
 <div class="probador" aria-label="Number()" data-alto="110">
 <textarea data-lengua="html">
-<p><label for="vueltas">Vueltas:</label> <input type="number" id="vueltas" value="3"></p>
+<p><label for="cofres">Cofres:</label> <input type="number" id="cofres" value="3"></p>
 <button type="button" id="sin">Sin Number</button>
 <button type="button" id="con">Con Number</button>
 <p id="resultado"></p>
 </textarea>
 <textarea data-lengua="js">
-let cajaVueltas = document.querySelector("#vueltas");
+let cajaCofres = document.querySelector("#cofres");
 let botonSin = document.querySelector("#sin");
 let botonCon = document.querySelector("#con");
 let resultado = document.querySelector("#resultado");
 
 botonSin.addEventListener("click", function () {
-    let total = cajaVueltas.value + 1;
-    resultado.textContent = "Vueltas + 1 = " + total;
+    let total = cajaCofres.value + 1;
+    resultado.textContent = "Cofres + 1 = " + total;
 });
 
 botonCon.addEventListener("click", function () {
-    let total = Number(cajaVueltas.value) + 1;
-    resultado.textContent = "Vueltas + 1 = " + total;
+    let total = Number(cajaCofres.value) + 1;
+    resultado.textContent = "Cofres + 1 = " + total;
 });
 </textarea>
 <ul class="probador__prueba">
 <li>Pulsa los dos botones con 3 en la caja. Después, con 10.</li>
-<li>Añade un <code>console.log(cajaVueltas.value);</code> dentro de las primeras llaves: fíjate en que no sale azul (es texto).</li>
+<li>Añade un <code>console.log(cajaCofres.value);</code> dentro de las primeras llaves: fíjate en que no sale azul (es texto).</li>
 </ul>
 </div>
 <details><summary>🤔 Antes de seguir: el usuario escribe 10 y 5 en dos cajas y tu suma da 105. ¿Qué falta?</summary>
@@ -183,6 +183,10 @@ botonCon.addEventListener("click", function () {
 
 <p>Reto rápido: value y Number.</p>
 <div data-actividad="reto-js-value"></div>
+
+<h3>Simulación: Suma bien</h3>
+<p>Un formulario que suma las esmeraldas del cofre y del inventario. Escribe 2 y 3 y pulsa Sumar: no sale 5. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="suma-bien" aria-label="Suma bien"></div>
 
 <h3>Ejercicio 3 — Parque acuático</h3>
 <p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej3.html</code> y <code>s14-ej3.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>

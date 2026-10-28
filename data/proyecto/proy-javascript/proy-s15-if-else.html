@@ -7,7 +7,7 @@
 let edad = 10;
 
 if (edad >= 12) {
-    console.log("Te puedes inscribir en el torneo.");
+    console.log("Te puedes unir al servidor.");
 } else {
     console.log("Tienes que tener 12 años o más.");
 }
@@ -35,6 +35,10 @@ if (edad >= 12) {
 </table>
 <div class="nota">⚠️ Un solo <code>=</code> <strong>guarda</strong> un valor (<code>let edad = 10</code>). Para <strong>comparar</strong> se usan tres: <code>===</code>. Confundirlos es el error más típico con <code>if</code>.</div>
 
+<h3>Simulación: Prueba el límite</h3>
+<p>Un <code>if</code> que parece que funciona, pero tiene un fallo. Para encontrarlo hay que probar bien: con el número del límite y con los de al lado. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="prueba-casos" aria-label="Prueba el límite"></div>
+
 <h3>Ejercicio 1 — Montaña rusa</h3>
 <p>Crea <code>s15-ej1.html</code> y <code>s15-ej1.js</code>. Guarda una altura en una variable y, con un <code>if</code>, escribe en la consola si puedes subir (120 cm o más) o no.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej1.webp" alt="Página Montaña rusa con el texto Para subir tienes que medir 120 cm o más. En la consola sale Puedes subir a la montaña rusa. (1). Notas: 2, en el js la variable altura vale 130 y hay un if con su else; 3, si cambias altura a 110 y guardas, sale Todavía no puedes subir." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
@@ -49,12 +53,12 @@ if (edad >= 12) {
 <p>Si lo has hecho bien: prueba con 120 justo. Tiene que decir que puedes subir.</p>
 
 <h2>Un if dentro de un botón</h2>
-<p>Lo normal es decidir <strong>al pulsar un botón</strong>, según lo que ha escrito el usuario. El torneo de Pixel Kart comprueba la edad antes de inscribir:</p>
+<p>Lo normal es decidir <strong>al pulsar un botón</strong>, según lo que ha escrito el usuario. El servidor de BloqueCraft comprueba la edad antes de dejarte entrar:</p>
 <div class="probador" aria-label="Un if dentro de un botón" data-alto="120">
 <textarea data-lengua="html">
 <p><label for="alias">Alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
 <p><label for="edad">Edad:</label> <input type="number" id="edad" value="14"></p>
-<button type="button" id="boton">Inscribirme</button>
+<button type="button" id="boton">Unirme</button>
 <p id="mensaje"></p>
 </textarea>
 <textarea data-lengua="js">
@@ -68,7 +72,7 @@ boton.addEventListener("click", function () {
     let edad = Number(cajaEdad.value);
 
     if (edad >= 12) {
-        mensaje.textContent = "¡Inscrito, " + alias + "! Nos vemos en la pista.";
+        mensaje.textContent = "¡Bienvenido, " + alias + "! Nos vemos en el servidor.";
     } else {
         mensaje.textContent = "Lo siento, " + alias + ": hay que tener 12 años o más.";
     }
@@ -105,7 +109,7 @@ let puntos = 7;
 if (puntos >= 9) {
     console.log("¡Campeón!");
 } else if (puntos >= 5) {
-    console.log("Buena carrera.");
+    console.log("Buena partida.");
 } else {
     console.log("Sigue practicando.");
 }
@@ -121,9 +125,9 @@ if (puntos >= 9) {
 <p>Para un test, se usa una variable que <strong>cuenta los aciertos</strong>. Empieza en 0 y cada respuesta correcta le suma 1:</p>
 <div class="probador" aria-label="Contar aciertos" data-alto="130">
 <textarea data-lengua="html">
-<p>¿Cuál es el piloto más rápido?
-<select id="pregunta1"><option>Chispa</option><option>Turbo Rex</option></select></p>
-<p>¿Cuántos circuitos hay?
+<p>¿Qué mob explota?
+<select id="pregunta1"><option>Zombi</option><option>Creeper</option></select></p>
+<p>¿Cuántos biomas hay en BloqueCraft?
 <select id="pregunta2"><option>5</option><option>8</option></select></p>
 <button type="button" id="boton">Corregir</button>
 <p id="nota"></p>
@@ -137,7 +141,7 @@ let nota = document.querySelector("#nota");
 boton.addEventListener("click", function () {
     let aciertos = 0;
 
-    if (pregunta1.value === "Turbo Rex") {
+    if (pregunta1.value === "Creeper") {
         aciertos = aciertos + 1;
     }
     if (pregunta2.value === "8") {

@@ -6,7 +6,7 @@
 <li>Un archivo <code>.js</code>: lo que se mueve o reacciona (botones, cálculos).</li>
 <li>Una carpeta <code>img</code>: las imágenes.</li>
 </ul>
-<p>Durante el curso os enseñaré una web de ejemplo que iré construyendo en cada sesión: <strong>Pixel Kart</strong>, un videojuego de carreras inventado. Vosotros haréis lo mismo, pero con vuestro propio tema.</p>
+<p>Durante el curso os enseñaré una web de ejemplo que iré construyendo en cada sesión: <strong>BloqueCraft</strong>, una web de fans de Minecraft inventada. Vosotros haréis lo mismo, pero con vuestro propio tema.</p>
 <div class="nota">🤔 Haz la prueba: en cualquier web, pulsa <code>Ctrl+U</code>. Lo que ves es su código HTML. Todas las webs del mundo están hechas de texto como ese.</div>
 
 <h2>Tu pareja y vuestro tema</h2>
@@ -16,13 +16,13 @@
 <li><strong>Alias</strong> de cada uno. Es el nombre que saldrá en la web en lugar de vuestro nombre real.</li>
 <li><strong>Las 3 páginas</strong> que tendrá la web como mínimo, y qué irá en cada una.</li>
 </ol>
-<p>Ejemplo de ficha de Pixel Kart:</p>
+<p>Ejemplo de ficha de BloqueCraft:</p>
 <table>
 <thead><tr><th>Página</th><th>Qué contiene</th></tr></thead>
 <tbody>
-<tr><td>Inicio</td><td>Qué es el juego y por qué mola</td></tr>
-<tr><td>Personajes</td><td>Los pilotos, con foto y una descripción</td></tr>
-<tr><td>Circuitos</td><td>Una tabla con los circuitos, su longitud y su dificultad</td></tr>
+<tr><td>Inicio</td><td>Qué es Minecraft y por qué mola</td></tr>
+<tr><td>Mobs</td><td>Las criaturas del juego, con foto y una descripción</td></tr>
+<tr><td>Biomas</td><td>Una tabla con los biomas, qué hay en cada uno y lo peligrosos que son</td></tr>
 </tbody>
 </table>
 <p>Más adelante añadiréis las páginas "Sobre esta web" y "Cómo llega mi web a tu pantalla", que son obligatorias para todos.</p>
@@ -36,19 +36,23 @@
 </ul>
 <div class="nota">Un buen alias no se parece a tu nombre real: <code>RayoAzul</code> sí, <code>MarcosG2009</code> no.</div>
 
+<h2>Pruébalo primero: tu primera página</h2>
+<p>Antes de hacerlo en el ordenador, haz todo el recorrido de hoy en esta simulación con la web de ejemplo: crear la carpeta, abrirla en VS Code, crear <code>index.html</code> y verla con Go Live. Después, los pasos de verdad están justo debajo. No se entrega: es para que veas cómo se hace antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="primera-pagina" aria-label="Tu primera página"></div>
+
 <h2>Tu carpeta de proyecto</h2>
 <p>Todo el curso vais a trabajar dentro de <strong>una sola carpeta</strong>. Creadla ahora en el ordenador de la pareja:</p>
 <ol>
 <li>Abre el <strong>Explorador de archivos</strong>: es el icono de la <strong>carpeta amarilla</strong> de la barra de abajo. También se abre pulsando a la vez <strong>Windows + E</strong>.</li>
 <li>En la columna de la izquierda, pulsa <strong>Documentos</strong>.</li>
 <li>Pulsa con el <strong>botón derecho</strong> en un espacio en blanco de la ventana → <strong>Nuevo</strong> → <strong>Carpeta</strong>. Aparece una carpeta llamada "Nueva carpeta" con el nombre en azul.</li>
-<li>Sin pulsar nada más, escribe el nombre de vuestro tema <strong>en minúsculas, sin espacios ni tildes</strong> (por ejemplo, <code>pixel-kart</code>) y pulsa <strong>Intro</strong>.</li>
-<li>Haz <strong>doble clic</strong> en la carpeta para entrar en ella. Arriba, en la barra de dirección, tiene que poner <em>Documentos › pixel-kart</em>.</li>
+<li>Sin pulsar nada más, escribe el nombre de vuestro tema <strong>en minúsculas, sin espacios ni tildes</strong> (por ejemplo, <code>bloquecraft</code>) y pulsa <strong>Intro</strong>.</li>
+<li>Haz <strong>doble clic</strong> en la carpeta para entrar en ella. Arriba, en la barra de dirección, tiene que poner <em>Documentos › bloquecraft</em>.</li>
 <li>Dentro, repite el paso 3 y llama a la nueva carpeta <code>img</code>. Aquí guardaréis las imágenes.</li>
 </ol>
 <p>Así tiene que quedar:</p>
 <pre><code>Documentos/
-└── pixel-kart/
+└── bloquecraft/
     └── img/</code></pre>
 <div class="nota">¿Te has equivocado con el nombre? Botón derecho sobre la carpeta → <strong>Cambiar nombre</strong> (en Windows 11 es un icono de un cuadro con una barra, arriba del menú), escribe el nombre bueno e <strong>Intro</strong>.</div>
 <div class="nota">⚠️ Nombres de archivos y carpetas: <strong>minúsculas, sin espacios, sin tildes, sin ñ</strong>. Usa guiones si necesitas separar palabras. Un espacio o una tilde en un nombre es la causa número uno de "¡no me sale la imagen!".</div>
@@ -81,11 +85,11 @@
 <span class='et'>&lt;html</span> <span class='at'>lang</span>=<span class='ca'>"es"</span><span class='et'>&gt;</span>
 <span class='et'>&lt;head</span><span class='et'>&gt;</span>
     <span class='et'>&lt;meta</span> <span class='at'>charset</span>=<span class='ca'>"UTF-8"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;title</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/title</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;title</span><span class='et'>&gt;</span>BloqueCraft<span class='et'>&lt;/title</span><span class='et'>&gt;</span>
 <span class='et'>&lt;/head</span><span class='et'>&gt;</span>
 <span class='et'>&lt;body</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;h1</span><span class='et'>&gt;</span>Pixel Kart<span class='et'>&lt;/h1</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;p</span><span class='et'>&gt;</span>El juego de karts más rápido del instituto.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;h1</span><span class='et'>&gt;</span>BloqueCraft<span class='et'>&lt;/h1</span><span class='et'>&gt;</span>
+    <span class='et'>&lt;p</span><span class='et'>&gt;</span>Guías de Minecraft hechas por fans.<span class='et'>&lt;/p</span><span class='et'>&gt;</span>
 <span class='et'>&lt;/body</span><span class='et'>&gt;</span>
 <span class='et'>&lt;/html</span><span class='et'>&gt;</span></code></pre>
 <ul>
@@ -101,11 +105,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Pixel Kart</title>
+    <title>BloqueCraft</title>
 </head>
 <body>
-    <h1>Pixel Kart</h1>
-    <p>El juego de karts más rápido del instituto.</p>
+    <h1>BloqueCraft</h1>
+    <p>Guías de Minecraft hechas por fans.</p>
 </body>
 </html>
 </textarea>

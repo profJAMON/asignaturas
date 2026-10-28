@@ -13,13 +13,13 @@
 </table>
 
 <h2>Conectar un archivo JavaScript</h2>
-<p>Igual que el CSS, el JavaScript va en un archivo aparte. Cada página tiene <strong>su propio archivo JS, con el mismo nombre</strong>. En Pixel Kart, la página <code>torneo.html</code> tiene su <code>torneo.js</code>. En tus ejercicios, <code>s12-ej1.html</code> tiene su <code>s12-ej1.js</code>.</p>
+<p>Igual que el CSS, el JavaScript va en un archivo aparte. Cada página tiene <strong>su propio archivo JS, con el mismo nombre</strong>. En BloqueCraft, la página <code>servidor.html</code> tiene su <code>servidor.js</code>. En tus ejercicios, <code>s12-ej1.html</code> tiene su <code>s12-ej1.js</code>.</p>
 <p>Se conecta con la etiqueta <code>&lt;script&gt;</code>, justo <strong>antes de cerrar el <code>&lt;body&gt;</code></strong>:</p>
 <pre><code><span class='et'>&lt;body&gt;</span>
-    <span class='et'>&lt;h1&gt;</span>Torneo de Pixel Kart<span class='et'>&lt;/h1&gt;</span>
+    <span class='et'>&lt;h1&gt;</span>Servidor de BloqueCraft<span class='et'>&lt;/h1&gt;</span>
     ...
 
-    <span class='et'>&lt;script</span> <span class='at'>src</span>=<span class='ca'>"torneo.js"</span><span class='et'>&gt;&lt;/script&gt;</span>
+    <span class='et'>&lt;script</span> <span class='at'>src</span>=<span class='ca'>"servidor.js"</span><span class='et'>&gt;&lt;/script&gt;</span>
 <span class='et'>&lt;/body&gt;</span></code></pre>
 <p>Va al final a propósito: así, cuando el JavaScript empieza a funcionar, todo el HTML de la página ya existe.</p>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el HTML, escribe <code>script:src</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;script src=""&gt;&lt;/script&gt;</code> y deja el cursor entre las comillas, listo para el nombre del archivo.</div>
@@ -35,25 +35,25 @@
 <li>Se abre un panel. Arriba tiene pestañas: <em>Elements</em>, <em>Console</em>… Pulsa <strong>Console</strong>.</li>
 </ol>
 <p>Para escribir en la consola se usa <code>console.log</code>:</p>
-<pre><code translate="no">console.<span class='fn'>log</span>(<span class='ca'>"¡Hola desde Pixel Kart!"</span>);</code></pre>
+<pre><code translate="no">console.<span class='fn'>log</span>(<span class='ca'>"¡Hola desde BloqueCraft!"</span>);</code></pre>
 <div class="salida" translate="no" style="background:#ffffff;color:#1f1f1f;font-family:Consolas,monospace;font-size:13px">
 <div style="border-bottom:1px solid #ddd;padding-bottom:4px;margin-bottom:6px;color:#555;font-family:Arial,sans-serif;font-size:12px">Elements &nbsp; <span style="color:#1a73e8;border-bottom:2px solid #1a73e8;padding-bottom:3px">Console</span> &nbsp; Sources &nbsp; Network</div>
-<div style="padding:3px 0;border-bottom:1px solid #eee;color:#1f1f1f">¡Hola desde Pixel Kart! <span style="float:right;color:#777">torneo.js:1</span></div>
-<div style="padding:3px 4px;background:#fdecea;color:#c5221f;border-bottom:1px solid #f5c2c0">✖ Uncaught ReferenceError: piloto is not defined <span style="float:right;color:#c5221f">torneo.js:3</span></div>
+<div style="padding:3px 0;border-bottom:1px solid #eee;color:#1f1f1f">¡Hola desde BloqueCraft! <span style="float:right;color:#777">servidor.js:1</span></div>
+<div style="padding:3px 4px;background:#fdecea;color:#c5221f;border-bottom:1px solid #f5c2c0">✖ Uncaught ReferenceError: mbo is not defined <span style="float:right;color:#c5221f">servidor.js:3</span></div>
 </div>
 <ul>
 <li>Lo que va entre los paréntesis sale en la consola.</li>
 <li>Los <strong>textos</strong> van siempre <strong>entre comillas</strong>.</li>
 <li>Cada orden termina con <strong>punto y coma</strong> <code>;</code>.</li>
-<li>A la derecha sale <strong>el archivo y la línea</strong>: <code>torneo.js:3</code> es "línea 3 de torneo.js".</li>
+<li>A la derecha sale <strong>el archivo y la línea</strong>: <code>servidor.js:3</code> es "línea 3 de servidor.js".</li>
 <li>Los <strong>errores</strong> salen <strong>en rojo</strong>. Es lo primero que tienes que mirar cuando algo no funciona.</li>
 </ul>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el archivo <code>.js</code>, escribe <code>log</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>console.log();</code> con el cursor dentro de los paréntesis.</div>
 <p>Pruébalo aquí. La consola de debajo funciona como la de Chrome:</p>
 <div class="probador" aria-label="console.log">
 <textarea data-lengua="js">
-console.log("¡Hola desde Pixel Kart!");
-console.log("Hoy hay carrera.");
+console.log("¡Hola desde BloqueCraft!");
+console.log("Hoy se juega en el servidor.");
 </textarea>
 <ul class="probador__prueba">
 <li>Añade un tercer mensaje.</li>
@@ -83,23 +83,23 @@ console.log("Hoy hay carrera.");
 <p>Una <strong>variable</strong> es una <strong>caja con nombre</strong> donde guardas un dato para usarlo después:</p>
 <div class="probador" aria-label="Variables">
 <textarea data-lengua="js">
-let piloto = "Turbo Rex";
-let vueltas = 3;
+let mob = "Creeper";
+let vidas = 3;
 
-console.log(piloto);
-console.log(vueltas);
+console.log(mob);
+console.log(vidas);
 </textarea>
 <ul class="probador__prueba">
-<li>Cambia el piloto por <code>"Chispa"</code>.</li>
-<li>Escribe <code>console.log("piloto");</code>, con comillas. ¿Qué sale?</li>
-<li>Escribe mal el nombre: <code>console.log(pilto);</code>.</li>
+<li>Cambia el mob por <code>"Zombi"</code>.</li>
+<li>Escribe <code>console.log("mob");</code>, con comillas. ¿Qué sale?</li>
+<li>Escribe mal el nombre: <code>console.log(mbo);</code>.</li>
 <li>Fíjate: el número sale en azul y el texto, en negro.</li>
 </ul>
 </div>
 <ul>
 <li><code>let</code> crea la variable. Después va su <strong>nombre</strong>, un <code>=</code> y el <strong>valor</strong> que guarda.</li>
 <li>Para usar el dato, escribe el nombre <strong>sin comillas</strong>.</li>
-<li>Nombres: sin espacios ni tildes, y que digan qué guardan. Si son varias palabras, se juntan y cada una empieza en mayúscula: <code>tiempoPorVuelta</code>.</li>
+<li>Nombres: sin espacios ni tildes, y que digan qué guardan. Si son varias palabras, se juntan y cada una empieza en mayúscula: <code>diamantesPorCofre</code>.</li>
 <li>En la consola, los <strong>números</strong> salen en <strong>azul</strong> y los <strong>textos</strong>, en negro.</li>
 </ul>
 <div class="nota">En internet verás también <code>const</code> en lugar de <code>let</code>. Hace casi lo mismo: crea una caja, pero su valor ya no se puede cambiar. Nosotros usamos siempre <code>let</code>.</div>
@@ -131,14 +131,14 @@ console.log(vueltas);
 <p>Se puede crear una variable a partir de otras:</p>
 <div class="probador" aria-label="Calcular con variables">
 <textarea data-lengua="js">
-let vueltas = 3;
-let tiempoPorVuelta = 42;
-let tiempoTotal = vueltas * tiempoPorVuelta;
+let cofres = 3;
+let diamantesPorCofre = 4;
+let diamantesTotal = cofres * diamantesPorCofre;
 
-console.log(tiempoTotal);
+console.log(diamantesTotal);
 </textarea>
 <ul class="probador__prueba">
-<li>Cambia las vueltas a 5.</li>
+<li>Cambia los cofres a 5.</li>
 <li>Pon el 3 entre comillas: <code>"3"</code>. ¿Sigue multiplicando?</li>
 <li>Añade <code>console.log("3" + 4);</code> y <code>console.log(3 + 4);</code>.</li>
 </ul>
@@ -146,6 +146,10 @@ console.log(tiempoTotal);
 <details><summary>🤔 Antes de seguir: ¿qué sale en la consola con console.log("3" + 4)?</summary>
 <p><code>34</code>: como uno de los dos es un texto, el <code>+</code> los junta en lugar de sumarlos.</p>
 </details>
+
+<h3>Simulación: Haz caso a la consola</h3>
+<p>Una página con su JavaScript y tres fallos. La consola de debajo de la página es como la de Chrome: lee lo que dice. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="consola-js" aria-label="Haz caso a la consola"></div>
 
 <h3>Ejercicio 3 — Reparto de pizza</h3>
 <p>Crea <code>s12-ej3.html</code> y <code>s12-ej3.js</code>. Una pizza tiene 8 porciones y sois 4 amigos. Calcula con variables cuántas porciones toca a cada uno.</p>
@@ -165,24 +169,24 @@ console.log(tiempoTotal);
 <p>El <code>+</code> con textos sirve para <strong>juntar</strong> un mensaje con el valor de una variable:</p>
 <div class="probador" aria-label="Juntar textos y variables">
 <textarea data-lengua="js">
-let piloto = "Turbo Rex";
-let tiempoTotal = 126;
+let mob = "Creeper";
+let distancia = 3;
 
-console.log(piloto + " tarda " + tiempoTotal + " segundos.");
+console.log(mob + " explota a " + distancia + " bloques.");
 </textarea>
 <ul class="probador__prueba">
-<li>Quita los espacios de dentro de las comillas: <code>"tarda"</code>.</li>
+<li>Quita los espacios de dentro de las comillas: <code>"explota a"</code>.</li>
 <li>Añade al final <code>+ " ¡Récord!"</code>.</li>
 </ul>
 </div>
-<div class="nota">⚠️ Fíjate en los <strong>espacios dentro de las comillas</strong>: <code>" tarda "</code>. Si no los pones, sale <code>Turbo Rextarda126segundos.</code></div>
+<div class="nota">⚠️ Fíjate en los <strong>espacios dentro de las comillas</strong>: <code>" explota a "</code>. Si no los pones, sale <code>Creeperexplota a3bloques.</code></div>
 
 <p>Reto rápido: ¿qué sale en la consola?</p>
 <div data-actividad="reto-js-variables"></div>
 
 <h3>Comentarios</h3>
 <p>En JavaScript, un comentario empieza por <code>//</code>. El navegador lo ignora. Sirve para explicar qué hace cada parte:</p>
-<pre><code translate="no"><span class='co'>// Precio de la entrada al torneo</span>
+<pre><code translate="no"><span class='co'>// Precio de un mapa de aventuras</span>
 <span class='kw'>let</span> precio = <span class='nu'>10</span>;</code></pre>
 <p>Igual que en HTML, <strong>Ctrl + /</strong> convierte la línea en comentario.</p>
 

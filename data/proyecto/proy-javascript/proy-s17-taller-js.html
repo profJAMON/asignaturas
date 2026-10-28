@@ -22,19 +22,23 @@
 </ul>
 
 <h2>Un archivo JS por página</h2>
-<p>Cada página que necesite JavaScript tiene <strong>su propio <code>.js</code>, con el mismo nombre</strong>. Así es la carpeta de Pixel Kart:</p>
-<pre><code translate="no">pixel-kart/
+<p>Cada página que necesite JavaScript tiene <strong>su propio <code>.js</code>, con el mismo nombre</strong>. Así es la carpeta de BloqueCraft:</p>
+<pre><code translate="no">bloquecraft/
 ├── index.html
 ├── index.js        ← modo oscuro de la portada
-├── personajes.html
-├── personajes.js   ← mostrar y ocultar los trucos
-├── circuitos.html  (no tiene JS)
-├── torneo.html
-├── torneo.js       ← el formulario de inscripción
+├── mobs.html
+├── mobs.js         ← mostrar y ocultar los trucos
+├── biomas.html     (no tiene JS)
+├── servidor.html
+├── servidor.js     ← el formulario para unirse
 ├── estilos.css
 └── img/</code></pre>
-<p>Y cada página conecta <strong>solo el suyo</strong>, justo antes de <code>&lt;/body&gt;</code>: <code>torneo.html</code> lleva <code>&lt;script src="torneo.js"&gt;&lt;/script&gt;</code>.</p>
-<div class="nota">⚠️ ¿Por qué no un solo <code>.js</code> para todas? Porque si <code>index.html</code> carga el código del torneo, <code>querySelector("#boton-inscribir")</code> no encuentra nada en la portada y sale el error <em>Cannot read properties of null</em>. Con un archivo por página, cada código solo busca lo que su página tiene.</div>
+<p>Y cada página conecta <strong>solo el suyo</strong>, justo antes de <code>&lt;/body&gt;</code>: <code>servidor.html</code> lleva <code>&lt;script src="servidor.js"&gt;&lt;/script&gt;</code>.</p>
+<div class="nota">⚠️ ¿Por qué no un solo <code>.js</code> para todas? Porque si <code>index.html</code> carga el código del servidor, <code>querySelector("#boton-unirme")</code> no encuentra nada en la portada y sale el error <em>Cannot read properties of null</em>. Con un archivo por página, cada código solo busca lo que su página tiene.</div>
+
+<h3>Simulación: pásalo a vuestra web</h3>
+<p>Antes de tocar vuestra web, pasad el código de un ejercicio a la web de BloqueCraft en esta simulación. Es lo que más falla al pasar código de los ejercicios a la web. No se entrega.</p>
+<div class="lab" data-lab="simulacion" data-sim="pasa-a-tu-web" aria-label="Pásalo a vuestra web"></div>
 
 <h2>Lo que tiene que quedar hoy en vuestra web</h2>
 <h3>El formulario funciona</h3>
@@ -64,27 +68,27 @@
 <li>Abrís <strong>todas</strong> las páginas con la consola abierta y pulsáis todos los botones: ningún error en rojo.</li>
 </ul>
 
-<h2>Ejemplo: el torneo de Pixel Kart</h2>
+<h2>Ejemplo: el servidor de BloqueCraft</h2>
 <p>Funciona de verdad: probadlo y cambiadlo para ver qué hace cada línea. Vuestro formulario será distinto, pero la receta es la misma.</p>
-<div class="probador" aria-label="El formulario del torneo" data-alto="160">
+<div class="probador" aria-label="El formulario del servidor" data-alto="160">
 <textarea data-lengua="html">
 <p><label for="alias">Tu alias:</label> <input type="text" id="alias" value="RayoAzul"></p>
 <p><label for="edad">Edad:</label> <input type="number" id="edad" value="14"></p>
-<p><label for="piloto">Piloto favorito:</label>
-<select id="piloto">
-    <option>Turbo Rex</option>
-    <option>Nube Veloz</option>
-    <option>Chispa</option>
+<p><label for="mob">Mob favorito:</label>
+<select id="mob">
+    <option>Creeper</option>
+    <option>Enderman</option>
+    <option>Zombi</option>
 </select></p>
-<button type="button" id="boton-inscribir">Inscribirme</button>
+<button type="button" id="boton-unirme">Unirme</button>
 <p id="mensaje"></p>
 </textarea>
 <textarea data-lengua="js">
 // 1. Buscar los elementos
 let cajaAlias = document.querySelector("#alias");
 let cajaEdad = document.querySelector("#edad");
-let cajaPiloto = document.querySelector("#piloto");
-let boton = document.querySelector("#boton-inscribir");
+let cajaMob = document.querySelector("#mob");
+let boton = document.querySelector("#boton-unirme");
 let mensaje = document.querySelector("#mensaje");
 
 // 2. Esperar al clic
@@ -92,10 +96,10 @@ boton.addEventListener("click", function () {
     // 3. Leer las cajas y responder según la edad
     let alias = cajaAlias.value;
     let edad = Number(cajaEdad.value);
-    let piloto = cajaPiloto.value;
+    let mob = cajaMob.value;
 
     if (edad >= 12) {
-        mensaje.textContent = "¡Inscrito, " + alias + "! Correrás con " + piloto + ".";
+        mensaje.textContent = "¡Bienvenido, " + alias + "! Cuidado con el " + mob + ".";
     } else {
         mensaje.textContent = "Lo siento, " + alias + ": hay que tener 12 años o más.";
     }
@@ -152,7 +156,7 @@ boton.addEventListener("click", function () {
 <ul class="checklist">
 <li>Guardado todo en VS Code (ninguna pestaña con el punto blanco de "sin guardar").</li>
 <li>Ninguna página tiene errores en rojo en la consola.</li>
-<li>Ha subido a GitHub <strong>quien le toca esta semana</strong> (los pasos, en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>), con un mensaje que diga qué habéis hecho y quién ha escrito. Por ejemplo: <code>Sesión 17 · formulario y modo oscuro · escribió PixelRojo, TurboAzul</code>. Subid también los <code>.js</code>.</li>
+<li>Ha subido a GitHub <strong>quien le toca esta semana</strong> (los pasos, en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>), con un mensaje que diga qué habéis hecho y quién ha escrito. Por ejemplo: <code>Sesión 17 · formulario y modo oscuro · escribió PixelRojo, CreeperVerde</code>. Subid también los <code>.js</code>.</li>
 <li><strong>Diario de taller</strong> (2 minutos): «Hoy hemos aprendido…» y «Nos ha costado… y lo hemos arreglado con…».</li>
 <li>Me habéis dado las dos hojas de la ficha y el diario.</li>
 <li>En la web publicada, el formulario y las funcionalidades funcionan igual que en el ordenador.</li>

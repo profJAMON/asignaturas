@@ -18,11 +18,11 @@
 <div class="nota">⚠️ En <code>classList</code> el nombre de la clase va <strong>sin punto</strong>: <code>add("oculto")</code>. El punto solo se pone en el CSS: <code>.oculto { … }</code>.</div>
 
 <h2>Poner una clase: add</h2>
-<p>En Pixel Kart, al pulsar un botón se resalta el piloto ganador:</p>
+<p>En BloqueCraft, al pulsar un botón se resalta el mob más peligroso:</p>
 <div class="probador" aria-label="classList.add" data-alto="90">
 <textarea data-lengua="html">
-<p id="turbo-rex">Turbo Rex</p>
-<p>Chispa</p>
+<p id="creeper">Creeper</p>
+<p>Zombi</p>
 <button id="boton-ganador">¿Quién ha ganado?</button>
 </textarea>
 <textarea data-lengua="css">
@@ -32,11 +32,11 @@
 }
 </textarea>
 <textarea data-lengua="js">
-let turboRex = document.querySelector("#turbo-rex");
+let creeper = document.querySelector("#creeper");
 let botonGanador = document.querySelector("#boton-ganador");
 
 botonGanador.addEventListener("click", function () {
-    turboRex.classList.add("ganador");
+    creeper.classList.add("ganador");
 });
 </textarea>
 <ul class="probador__prueba">
@@ -72,7 +72,7 @@ botonGanador.addEventListener("click", function () {
 <button id="boton-mostrar">Ver trucos</button>
 <button id="boton-ocultar">Ocultar trucos</button>
 <ul id="trucos" class="oculto">
-    <li>Derrapa antes de la curva para ganar un turbo.</li>
+    <li>Pon antorchas: con luz no aparecen mobs.</li>
 </ul>
 </textarea>
 <textarea data-lengua="css">
@@ -124,7 +124,7 @@ botonOcultar.addEventListener("click", function () {
 <textarea data-lengua="html">
 <button id="boton-trucos">Trucos</button>
 <ul id="trucos" class="oculto">
-    <li>Derrapa antes de la curva para ganar un turbo.</li>
+    <li>Pon antorchas: con luz no aparecen mobs.</li>
     <li>Las monedas azules valen el doble.</li>
 </ul>
 </textarea>
@@ -156,8 +156,8 @@ botonTrucos.addEventListener("click", function () {
 <div class="probador" aria-label="Modo oscuro" data-alto="150">
 <textarea data-lengua="html">
 <button id="boton-modo">Modo oscuro</button>
-<h1>Pixel Kart</h1>
-<div class="tarjeta">Turbo Rex: el más rápido.</div>
+<h1>BloqueCraft</h1>
+<div class="tarjeta">Creeper: explota si te acercas.</div>
 </textarea>
 <textarea data-lengua="css">
 body {
@@ -198,6 +198,10 @@ botonModo.addEventListener("click", function () {
 </ul>
 <div class="nota">El modo oscuro así solo dura <strong>mientras estás en esa página</strong>: al recargar o cambiar de página, vuelve al modo normal.</div>
 <div class="nota">💡 <strong>Truco de VS Code</strong>: selecciona una palabra (por ejemplo, <code>oculto</code>) y pulsa <strong>Ctrl + D</strong>: se selecciona también la siguiente vez que aparece. Cada Ctrl + D añade otra. Escribe y las cambias todas a la vez. Muy útil para cambiar el nombre de una clase o de una variable sin dejarte ninguna.</div>
+
+<h3>Simulación: Arregla el modo noche</h3>
+<p>Un botón de modo noche que no oscurece la página y, cuando lo arreglas, no vuelve. Dos fallos: uno en el CSS y otro en el JS. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="modo-noche" aria-label="Arregla el modo noche"></div>
 
 <h3>Ejercicio 3 — Club de astronomía</h3>
 <p>El ejercicio más largo de hoy: junta todo. Crea <code>s16-ej3.html</code>, <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Un botón cambia la página a modo oscuro y otro muestra el lugar de la salida, que empieza escondido.</p>

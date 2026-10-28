@@ -6,7 +6,7 @@
 <tbody>
 <tr><td>15:55</td><td>Bajáis la última versión de la web, como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>. Conductor: quien menos escribió la semana pasada.</td></tr>
 <tr><td>16:00</td><td>Publicar con Cloudflare.</td></tr>
-<tr><td>16:15</td><td>Cómo llega una web: lo hacemos sin ordenador, con <code>nslookup</code> y con F12.</td></tr>
+<tr><td>16:15</td><td>Cómo llega una web: la simulación (cada uno en su ordenador), sin ordenador, con <code>nslookup</code> y con F12.</td></tr>
 <tr><td>16:30</td><td>Borrador de <code>como-llega.html</code>.</td></tr>
 <tr><td>16:50</td><td>"Trabajar seguros".</td></tr>
 <tr><td>17:05</td><td>Acabar el HTML de la sesión 6.</td></tr>
@@ -85,6 +85,10 @@
 <li>El servidor se los envía y el navegador <strong>lee el HTML, el CSS y el JavaScript y dibuja la página</strong>.</li>
 </ol>
 
+<h3>Pruébalo primero aquí</h3>
+<p>Antes de hacerlo con vuestra web, recorre todo el viaje en esta simulación con la web de BloqueCraft (una web de fans de Minecraft inventada): subes un cambio, miras cómo lo publica Cloudflare, arreglas una imagen que en Live Server sale pero publicada no, y le preguntas al DNS con <code>nslookup</code>. En la terminal se escribe <code>nslookup</code>, un espacio y la dirección de la web <strong>sin</strong> <code>https://</code>.</p>
+<div class="lab" data-lab="simulacion" data-sim="publica" aria-label="Publica y sigue el viaje"></div>
+
 <h3>Lo hacemos sin ordenador</h3>
 <p>Cinco de vosotros salís delante. Cada uno lleva un cartel: <strong>Ordenador</strong>, <strong>GitHub</strong>, <strong>Cloudflare</strong>, <strong>DNS</strong> y <strong>Navegador</strong>. Os pasáis una hoja que es «la web», en el orden del dibujo. El resto dice en voz alta qué paso es cada uno.</p>
 <p>En cada cartel está la empresa, <strong>qué tipo de empresa es</strong> y su país. Los necesitáis para vuestra página:</p>
@@ -105,13 +109,13 @@
 <li>Después, lo mismo con la web de clase: <code>nslookup asignaturas.profesorjamon.workers.dev</code>.</li>
 </ol>
 <p>Os saldrá algo así. Los números de vuestra pantalla serán otros:</p>
-<pre><code translate="no">&gt; nslookup pixel-kart.pages.dev
+<pre><code translate="no">&gt; nslookup bloquecraft.pages.dev
 Servidor:  UnKnown
 Address:  192.168.1.1
 ↑ A: a quién preguntas
 
 Respuesta no autoritativa:
-Nombre:  pixel-kart.pages.dev
+Nombre:  bloquecraft.pages.dev
 Addresses:  2606:4700:3036::ac43:a0e
             172.66.44.10
 ↑ B: lo que te contesta</code></pre>
@@ -192,6 +196,6 @@ Addresses:  2606:4700:3036::ac43:a0e
 <ul class="checklist">
 <li>Guardado todo en VS Code.</li>
 <li><strong>Diario de taller</strong> (2 minutos): «Hoy hemos aprendido…» y «Nos ha costado… y lo hemos arreglado con…».</li>
-<li>Subido a GitHub por <strong>quien le toca esta semana</strong>. Mensaje con quién ha escrito: <code>Sesión 7 · escribió PixelRojo, TurboAzul</code>.</li>
+<li>Subido a GitHub por <strong>quien le toca esta semana</strong>. Mensaje con quién ha escrito: <code>Sesión 7 · escribió PixelRojo, CreeperVerde</code>.</li>
 <li>Comprobado en la web publicada que se ven los cambios.</li>
 </ul>

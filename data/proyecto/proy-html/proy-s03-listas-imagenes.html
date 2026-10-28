@@ -6,9 +6,9 @@
 <div class="probador" aria-label="Lista con viñetas">
 <textarea data-lengua="html">
 <ul>
-    <li>12 pilotos</li>
-    <li>8 circuitos</li>
-    <li>Modo para dos jugadores</li>
+    <li>12 mobs</li>
+    <li>8 biomas</li>
+    <li>Un servidor para jugar juntos</li>
 </ul>
 </textarea>
 <ul class="probador__prueba">
@@ -22,9 +22,9 @@
 <div class="probador" aria-label="Lista numerada">
 <textarea data-lengua="html">
 <ol>
-    <li>Gana el campeonato del volcán.</li>
-    <li>Consigue 50 monedas.</li>
-    <li>Compra a Turbo Rex en la tienda.</li>
+    <li>Tala un árbol.</li>
+    <li>Haz una mesa de trabajo.</li>
+    <li>Construye un refugio antes de que se haga de noche.</li>
 </ol>
 </textarea>
 <ul class="probador__prueba">
@@ -61,19 +61,19 @@
 <div class="probador" aria-label="Una lista dentro de otra">
 <textarea data-lengua="html">
 <ul>
-    <li>Pilotos rápidos
+    <li>Mobs hostiles
         <ul>
-            <li>Turbo Rex</li>
-            <li>Chispa</li>
+            <li>Creeper</li>
+            <li>Zombi</li>
         </ul>
     </li>
-    <li>Pilotos fuertes</li>
+    <li>Mobs pacíficos</li>
 </ul>
 </textarea>
 <ul class="probador__prueba">
-<li>Añade un tercer piloto rápido a la lista de dentro.</li>
+<li>Añade un tercer mob hostil a la lista de dentro.</li>
 <li>Cambia la <code>ul</code> de <strong>dentro</strong> por <code>ol</code>.</li>
-<li>Pon otra lista dentro de «Pilotos fuertes» con dos pilotos.</li>
+<li>Pon otra lista dentro de «Mobs pacíficos» con dos mobs (vaca, oveja…).</li>
 </ul>
 </div>
 <p>El navegador mete la lista de dentro un poco más a la derecha y le cambia las viñetas por círculos vacíos. Eso no lo escribes tú.</p>
@@ -102,7 +102,7 @@
 
 <h2>Imágenes</h2>
 <p>Para poner una imagen, primero la guardas en una carpeta <code>img</code> y después la enlazas con la etiqueta <code>&lt;img&gt;</code>:</p>
-<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/turbo-rex.png"</span> <span class='at'>alt</span>=<span class='ca'>"Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</span><span class='et'>&gt;</span></code></pre>
+<pre><code><span class='et'>&lt;img</span> <span class='at'>src</span>=<span class='ca'>"img/creeper.png"</span> <span class='at'>alt</span>=<span class='ca'>"Un creeper verde, de pie, mirando de frente"</span><span class='et'>&gt;</span></code></pre>
 <ul>
 <li><code>&lt;img&gt;</code> <strong>no se cierra</strong>: no existe <code>&lt;/img&gt;</code>.</li>
 <li><code>src</code> dice <strong>dónde está</strong> la imagen.</li>
@@ -115,7 +115,7 @@
 <li>Las personas ciegas usan programas que <strong>leen la página en voz alta</strong>. De una imagen leen su <code>alt</code>.</li>
 <li>Si la imagen no carga, el navegador muestra el <code>alt</code> en su lugar.</li>
 </ul>
-<p>Un buen <code>alt</code> describe <strong>lo que se ve</strong>: <code>alt="Turbo Rex, un dinosaurio verde conduciendo un kart rojo"</code> ✅. <code>alt="imagen"</code> o <code>alt="foto1"</code> ❌ no dicen nada.</p>
+<p>Un buen <code>alt</code> describe <strong>lo que se ve</strong>: <code>alt="Un creeper verde, de pie, mirando de frente"</code> ✅. <code>alt="imagen"</code> o <code>alt="foto1"</code> ❌ no dicen nada.</p>
 
 <h3>Rutas: cómo encuentra el navegador la imagen</h3>
 <p>La <strong>ruta</strong> es el camino desde el archivo HTML hasta la imagen:</p>
@@ -151,6 +151,10 @@
 <div class="nota">💡 Truco para no equivocarte: en el panel de la izquierda de VS Code, botón derecho sobre la imagen → <strong>Copy Relative Path</strong> y pégala en el <code>src</code>. Si sale con la barra al revés (<code>img\tierra.png</code>), cámbiala por <code>/</code>.</div>
 <p>Reto rápido: ¿encuentras el fallo?</p>
 <div data-actividad="reto-imagenes"></div>
+
+<h3>Simulación: ¿Por qué no sale la imagen?</h3>
+<p>Una página con dos imágenes que no salen y un <code>alt</code> que no dice nada. Arréglala en este VS Code de mentira: cambias el código, guardas con <strong>Ctrl + S</strong> y miras con <strong>Go Live</strong>. <strong>F12 → Red</strong> te dice qué imagen no encuentra. No se entrega: es para que veas cómo se hace antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="sin-imagen" aria-label="¿Por qué no sale la imagen?"></div>
 
 <h3>Ejercicio 3 — La Tierra y la Luna</h3>
 <p>Te he preparado dos imágenes. Primero, guárdalas en tu carpeta:</p>

@@ -9,9 +9,9 @@
 <div class="probador" aria-label="display: flex">
 <textarea data-lengua="html">
 <div class="fila">
-    <div class="caja">Turbo Rex</div>
-    <div class="caja">Nube Veloz</div>
-    <div class="caja">Chispa</div>
+    <div class="caja">Creeper</div>
+    <div class="caja">Enderman</div>
+    <div class="caja">Zombi</div>
 </div>
 </textarea>
 <textarea data-lengua="css">
@@ -164,8 +164,8 @@ body {
 <textarea data-lengua="html">
 <nav>
     <a href="index.html">Inicio</a>
-    <a href="personajes.html">Personajes</a>
-    <a href="circuitos.html">Circuitos</a>
+    <a href="mobs.html">Mobs</a>
+    <a href="biomas.html">Biomas</a>
 </nav>
 </textarea>
 <textarea data-lengua="css">
@@ -197,7 +197,7 @@ nav a:hover {
 <select data-sel="nav" data-prop="justify-content"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select>
 <ul class="probador__prueba">
 <li>Pasa el ratón por los enlaces.</li>
-<li>Añade un cuarto enlace: Torneo.</li>
+<li>Añade un cuarto enlace: Servidor.</li>
 <li>Quita el espacio de <code>nav a</code> (<code>nava</code>). ¿Qué deja de funcionar?</li>
 </ul>
 </div>
@@ -213,6 +213,10 @@ nav a:hover {
 <li><code>*4</code> quiere decir "4 veces".</li>
 </ul>
 <p>Después, pulsa <strong>Tab</strong> para saltar de un hueco al siguiente y escribir cada <code>href</code> y cada texto.</p>
+
+<h3>Simulación: Ponlo en fila</h3>
+<p>Un menú y unas tarjetas que no se ponen en fila, aunque el CSS lleva <code>display: flex</code>. Descubre por qué. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="en-fila" aria-label="Ponlo en fila"></div>
 
 <h3>Ejercicio 3 — El menú de un zoo</h3>
 <p>Crea <code>s10-ej3.html</code> y <code>s10-ej3.css</code>, y conecta el CSS. Escribe el menú con <strong>nav&gt;a*4 + Tab</strong>. El HTML tiene que quedar así:</p>
@@ -248,16 +252,16 @@ nav a:hover {
 <textarea data-lengua="html">
 <div class="tarjetas">
     <div class="tarjeta">
-        <h2>Turbo Rex</h2>
-        <p>El más rápido.</p>
+        <h2>Creeper</h2>
+        <p>Explota si te acercas.</p>
     </div>
     <div class="tarjeta">
-        <h2>Chispa</h2>
-        <p>La más ágil.</p>
+        <h2>Zombi</h2>
+        <p>Va más rápido de noche.</p>
     </div>
     <div class="tarjeta">
-        <h2>Bólido</h2>
-        <p>El más fuerte.</p>
+        <h2>Esqueleto</h2>
+        <p>Dispara flechas.</p>
     </div>
 </div>
 </textarea>
@@ -358,18 +362,18 @@ body {
 <header>
     <nav>
         <a href="#">Inicio</a>
-        <a href="#">Personajes</a>
-        <a href="#">Circuitos</a>
+        <a href="#">Mobs</a>
+        <a href="#">Biomas</a>
     </nav>
 </header>
 <div class="tarjetas">
     <div class="tarjeta">
-        <h2>Turbo Rex</h2>
-        <p>El más rápido en las rectas.</p>
+        <h2>Creeper</h2>
+        <p>Explota si te acercas.</p>
     </div>
     <div class="tarjeta">
-        <h2>Chispa</h2>
-        <p>Acelera muy rápido al salir.</p>
+        <h2>Zombi</h2>
+        <p>Va más rápido de noche.</p>
     </div>
 </div>
 </textarea>

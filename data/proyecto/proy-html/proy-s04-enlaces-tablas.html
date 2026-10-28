@@ -4,7 +4,7 @@
 <p>Un enlace se crea con la etiqueta <code>&lt;a&gt;</code>. El atributo <code>href</code> dice <strong>adónde lleva</strong>, y el texto de dentro es <strong>lo que se ve</strong> y se pulsa:</p>
 <div class="probador" aria-label="Un enlace a otra web">
 <textarea data-lengua="html">
-<p>Mira <a href="https://es.wikipedia.org/wiki/Kart" target="_blank">qué es un kart</a> antes de jugar.</p>
+<p>Mira <a href="https://es.wikipedia.org/wiki/Minecraft" target="_blank">qué es Minecraft</a> antes de jugar.</p>
 </textarea>
 <ul class="probador__prueba">
 <li>Pulsa el enlace del resultado: abajo te digo adónde iría.</li>
@@ -34,24 +34,24 @@
 
 <h2>Una web de varias páginas</h2>
 <p>Cada página es un archivo <code>.html</code> distinto, en la misma carpeta. Para ir de una a otra, el enlace lleva <strong>el nombre del archivo</strong>, sin <code>https://</code>:</p>
-<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"circuitos.html"</span><span class='et'>&gt;</span>Circuitos<span class='et'>&lt;/a&gt;</span></code></pre>
+<pre><code><span class='et'>&lt;a</span> <span class='at'>href</span>=<span class='ca'>"biomas.html"</span><span class='et'>&gt;</span>Biomas<span class='et'>&lt;/a&gt;</span></code></pre>
 <p>El <strong>menú</strong> es un grupo de enlaces a todas las páginas. Va al principio del <code>&lt;body&gt;</code>, dentro de <code>&lt;nav&gt;</code>, y este dentro de <code>&lt;header&gt;</code>. El contenido de cada página va en <code>&lt;main&gt;</code>:</p>
 <div class="probador" aria-label="Menú con header, nav y main">
 <textarea data-lengua="html">
 <header>
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="circuitos.html">Circuitos</a>
+        <a href="biomas.html">Biomas</a>
     </nav>
 </header>
 <main>
-    <h1>Pixel Kart</h1>
-    <p>El juego de karts más rápido del instituto.</p>
+    <h1>BloqueCraft</h1>
+    <p>Guías de Minecraft hechas por fans.</p>
 </main>
 </textarea>
 <ul class="probador__prueba">
-<li>Pulsa <strong>Circuitos</strong> en el resultado.</li>
-<li>Añade un tercer enlace al menú: <code>torneo.html</code>, con el texto Torneo.</li>
+<li>Pulsa <strong>Biomas</strong> en el resultado.</li>
+<li>Añade un tercer enlace al menú: <code>mobs.html</code>, con el texto Mobs.</li>
 <li>Borra <code>&lt;nav&gt;</code> y <code>&lt;/nav&gt;</code>. ¿Cambia algo de lo que se ve?</li>
 </ul>
 </div>
@@ -77,6 +77,10 @@
 <li>Ábrela y cambia el <code>&lt;title&gt;</code> y lo que hay dentro de <code>&lt;main&gt;</code>. El menú se queda igual.</li>
 </ol>
 
+<h3>Simulación: Arregla el menú</h3>
+<p>Tres páginas de BloqueCraft (una web de fans de Minecraft inventada) con el menú roto y un enlace a otra web mal hecho. Para cambiar de página, pulsa su nombre arriba. No se entrega: es para que veas cómo se hace antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="menu-roto" aria-label="Arregla el menú"></div>
+
 <h3>Ejercicio 2 — Dos páginas con menú</h3>
 <p>Crea <code>s04-ej2.html</code> como en la imagen. Después, duplícala con el truco y llama a la copia <code>s04-ej2-horario.html</code>. En la copia, cambia el <code>&lt;h1&gt;</code> por "Horario" y el párrafo por "Nos vemos los martes en la biblioteca."</p>
 <figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej2.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej2.webp" alt="Página Club de lectura con dos partes numeradas: 1, un menú con dos enlaces, Inicio y Horario; 2, el contenido principal con el título Club de lectura y un párrafo. Nota 3: hay una segunda página, s04-ej2-horario.html, con el mismo menú." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
@@ -99,23 +103,23 @@
 <textarea data-lengua="html">
 <table border="1">
     <tr>
-        <th>Circuito</th>
-        <th>Dificultad</th>
+        <th>Bioma</th>
+        <th>Peligro</th>
     </tr>
     <tr>
-        <td>Playa Pixel</td>
-        <td>Fácil</td>
+        <td>Llanura</td>
+        <td>Bajo</td>
     </tr>
     <tr>
-        <td>Volcán</td>
-        <td>Difícil</td>
+        <td>Desierto</td>
+        <td>Medio</td>
     </tr>
 </table>
 </textarea>
 <ul class="probador__prueba">
-<li>Añade una fila: <code>Montaña</code> / <code>Media</code>. (Copia un <code>&lt;tr&gt;</code> entero, con su cierre.)</li>
+<li>Añade una fila: <code>Montaña</code> / <code>Alto</code>. (Copia un <code>&lt;tr&gt;</code> entero, con su cierre.)</li>
 <li>Borra un <code>&lt;td&gt;</code> de una fila. ¿Qué le pasa a la tabla?</li>
-<li>Añade una columna <code>Vueltas</code>: un <code>&lt;th&gt;</code> arriba y un <code>&lt;td&gt;</code> en cada fila.</li>
+<li>Añade una columna <code>Aldeas</code>: un <code>&lt;th&gt;</code> arriba y un <code>&lt;td&gt;</code> en cada fila.</li>
 <li>Quita <code>border="1"</code>.</li>
 </ul>
 </div>
@@ -162,26 +166,26 @@
 <textarea data-lengua="html">
 <table border="1">
     <tr>
-        <th colspan="3">Torneo de Pixel Kart</th>
+        <th colspan="3">Partidas en el servidor de BloqueCraft</th>
     </tr>
     <tr>
         <th>Día</th>
         <th>Hora</th>
-        <th>Circuito</th>
+        <th>Mapa</th>
     </tr>
     <tr>
         <td rowspan="2">Sábado</td>
         <td>10:00</td>
-        <td>Playa Pixel</td>
+        <td>Isla del cielo</td>
     </tr>
     <tr>
         <td>12:00</td>
-        <td>Volcán</td>
+        <td>Templo del desierto</td>
     </tr>
     <tr>
         <td>Domingo</td>
         <td>11:00</td>
-        <td>Final: Castillo</td>
+        <td>Final: el Nether</td>
     </tr>
 </table>
 </textarea>
