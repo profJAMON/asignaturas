@@ -181,6 +181,24 @@
   --probador-consola-error-bg: #fdecea;
   --probador-viva: rgba(34, 211, 238, 0.30);
   --probador-resultado: #ffffff;
+  /* 28/10/2026: «Toca y mira» con aspecto de escritorio (opción A):
+     el código, un VS Code oscuro; igual en los dos temas. */
+  --tm-vs-bg: #1e1e1e;
+  --tm-vs-titulo: #3c3c3c;
+  --tm-vs-titulo-texto: #cccccc;
+  --tm-vs-pestanas: #252526;
+  --tm-vs-texto: #d4d4d4;
+  --tm-vs-separa: #000000;
+  --tm-vs-et: #569cd6;
+  --tm-vs-at: #9cdcfe;
+  --tm-vs-ca: #ce9178;
+  --tm-vs-co: #6a9955;
+  --tm-vs-kw: #c586c0;
+  --tm-vs-fn: #dcdcaa;
+  --tm-vs-nu: #b5cea8;
+  --tm-vs-acento: #0078d4;
+  --tm-direccion: #ffffff;
+  --tm-codigo-claro: rgba(0, 0, 0, 0.07);
   --reto-bien-fondo: #eef7e6;
   /* 08/10/2026: laboratorios de teoría (js/laboratorios.js). La terminal
      es oscura en los dos temas, como las de las sesiones. */
@@ -404,6 +422,24 @@
   --probador-consola-error-bg: #fdecea;
   --probador-viva: rgba(14, 116, 144, 0.22);
   --probador-resultado: #ffffff;
+  /* 28/10/2026: «Toca y mira» con aspecto de escritorio (opción A):
+     el código, un VS Code oscuro; igual en los dos temas. */
+  --tm-vs-bg: #1e1e1e;
+  --tm-vs-titulo: #3c3c3c;
+  --tm-vs-titulo-texto: #cccccc;
+  --tm-vs-pestanas: #252526;
+  --tm-vs-texto: #d4d4d4;
+  --tm-vs-separa: #000000;
+  --tm-vs-et: #569cd6;
+  --tm-vs-at: #9cdcfe;
+  --tm-vs-ca: #ce9178;
+  --tm-vs-co: #6a9955;
+  --tm-vs-kw: #c586c0;
+  --tm-vs-fn: #dcdcaa;
+  --tm-vs-nu: #b5cea8;
+  --tm-vs-acento: #0078d4;
+  --tm-direccion: #ffffff;
+  --tm-codigo-claro: rgba(0, 0, 0, 0.07);
   --reto-bien-fondo: #eef7e6;
   /* 08/10/2026: laboratorios de teoría (js/laboratorios.js). La terminal
      es oscura en los dos temas, como las de las sesiones. */
@@ -4935,6 +4971,118 @@ body::after {
 }
 .leccion .probador__prueba { margin: 0; padding-left: 1.3rem; font-size: 0.92rem; }
 .leccion .probador__prueba li { margin-bottom: 0.2rem; }
+
+/* «Toca y mira» con aspecto de escritorio (28/10/2026, elegido por Carles
+   entre dos prototipos: escritorio completo frente a solo la barra de
+   ventana). Como las simulaciones: fondo de escritorio, el código en un
+   VS Code oscuro (una pestaña por archivo), el resultado en un Chrome con
+   la dirección de Live Server, los mandos en una ventanita y «Prueba a…»
+   en un pósit. Igual en los dos temas. Solo dentro de .leccion .probador:
+   los retos rápidos y el VS Code de mentira de las simulaciones usan
+   también .probador__vista y no cambian. */
+.leccion .probador {
+  background: linear-gradient(135deg, var(--sim-fondo-1), var(--sim-fondo-2));
+  border: 0;
+  border-radius: 10px;
+  padding: 0 1rem 1rem;
+}
+.leccion .probador .probador__cabecera {
+  margin: 0 -1rem 1rem;
+  padding: 0.35rem 1rem;
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 10px 10px 0 0;
+}
+.leccion .probador .probador__titulo { color: var(--sim-texto); font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 600; }
+.leccion .probador .probador__deshacer { background: var(--sim-blanco); color: var(--sim-texto); border: 0; box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); }
+.leccion .probador .probador__deshacer:hover { background: var(--sim-ventana); }
+.leccion .probador .probador__mandos {
+  --text: var(--sim-texto); --text-dim: var(--sim-tenue); --text-faint: var(--sim-tenue);
+  --accent: var(--sim-acento); --border: var(--sim-borde); --surface: var(--sim-blanco);
+  background: var(--sim-ventana);
+  color: var(--sim-texto);
+  border-radius: 10px;
+  box-shadow: var(--sim-sombra);
+  padding: 0.7rem 0.9rem;
+}
+.leccion .probador .probador__mandos code { color: var(--sim-texto); background: var(--sim-barra); }
+.leccion .probador .probador__codigo {
+  gap: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--sim-sombra);
+  background: var(--tm-vs-bg);
+}
+.leccion .probador .probador__codigo::before {
+  content: 'Visual Studio Code';
+  display: block;
+  background-color: var(--tm-vs-titulo);
+  color: var(--tm-vs-titulo-texto);
+  text-align: center;
+  font: 0.75rem system-ui, -apple-system, 'Segoe UI', sans-serif;
+  padding: 0.4rem 1rem 0.4rem 4.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-image:
+    radial-gradient(circle at calc(0.7rem + 6px) 50%, var(--sim-boton-rojo) 5.5px, transparent 6px),
+    radial-gradient(circle at calc(0.7rem + 24px) 50%, var(--sim-boton-ambar) 5.5px, transparent 6px),
+    radial-gradient(circle at calc(0.7rem + 42px) 50%, var(--sim-boton-verde) 5.5px, transparent 6px);
+}
+.leccion .probador .probador__panel { background: var(--tm-vs-pestanas); }
+.leccion .probador .probador__panel + .probador__panel { border-top: 1px solid var(--tm-vs-separa); }
+.leccion .probador .probador__lengua {
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 0.9rem;
+  background: var(--tm-vs-bg);
+  color: var(--tm-vs-texto);
+  border-top: 2px solid var(--tm-vs-acento);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+.leccion .probador .probador__editor {
+  --code-bg: var(--tm-vs-bg); --code-text: var(--tm-vs-texto);
+  --code-tag: var(--tm-vs-et); --code-attr: var(--tm-vs-at); --code-string: var(--tm-vs-ca);
+  --code-comment: var(--tm-vs-co); --code-keyword: var(--tm-vs-kw); --code-function: var(--tm-vs-fn); --code-number: var(--tm-vs-nu);
+  border: 0;
+  border-radius: 0;
+}
+.leccion .probador .probador__editor:focus-within { outline-offset: -2px; outline-color: var(--tm-vs-acento); }
+.leccion .probador .probador__vista { border: 0; border-radius: 10px; box-shadow: var(--sim-sombra); }
+.leccion .probador .probador__navegador { background: var(--sim-barra); padding: 7px 10px; gap: 6px; }
+.leccion .probador .probador__navegador span { width: 11px; height: 11px; flex: none; }
+.leccion .probador .probador__navegador span:nth-child(1) { background: var(--sim-boton-rojo); }
+.leccion .probador .probador__navegador span:nth-child(2) { background: var(--sim-boton-ambar); }
+.leccion .probador .probador__navegador span:nth-child(3) { background: var(--sim-boton-verde); }
+.leccion .probador .probador__navegador b {
+  flex: 1;
+  min-width: 0;
+  margin-left: 0.6rem;
+  background: var(--tm-direccion);
+  color: var(--sim-tenue);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.leccion .probador .probador__navegador b::before { content: '127.0.0.1:5500 · '; }
+.leccion .probador .probador__pruebas {
+  --text: var(--sim-nota-texto); --accent: var(--sim-cuidado); --tarea-texto: var(--sim-cuidado);
+  background: var(--sim-nota);
+  color: var(--sim-nota-texto);
+  border-radius: 2px;
+  box-shadow: var(--sim-sombra);
+  padding: 0.6rem 0.9rem;
+  margin-top: 1rem;
+  transform: rotate(-0.6deg);
+}
+.leccion .probador .probador__pruebas code { color: var(--sim-nota-texto); background: var(--tm-codigo-claro); }
+@media (prefers-reduced-motion: reduce) { .leccion .probador .probador__pruebas { transform: none; } }
+@media print {
+  .leccion .probador { background: none; padding: 0; }
+  .leccion .probador .probador__pruebas { transform: none; box-shadow: none; border: 1px solid #000; }
+}
 
 /* ---- Retos rápidos (dentro de la hoja cuadriculada) ---- */
 .actividad[data-tipo="reto-web"] { --color-tipo: var(--accent); }
