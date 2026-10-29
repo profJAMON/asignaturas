@@ -5675,3 +5675,35 @@ body::after {
   --lab-query: #92400e;
   --lab-frag: #b4410e;
 }
+
+/* ============================================================
+   Botón grande «Ejemplo de web» (29/10/2026, Proyecto S6)
+   ============================================================
+   Un <details class="ejemplo-web"> con la web de ejemplo dentro
+   (simulación web-ejemplo). El summary no es la píldora de las
+   pistas: es un rótulo grande con el fondo de escritorio de las
+   simulaciones, para que se vea de lejos. Sin colores nuevos. */
+.leccion details.ejemplo-web { background: none; padding: 0; border: 0; margin: 0 0 1.4rem; }
+.leccion details.ejemplo-web > summary {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 1rem 1.2rem 1rem 3.2rem; position: relative;
+  border: 2px solid var(--accent-lima); border-radius: 12px;
+  background: linear-gradient(135deg, var(--sim-fondo-1), var(--sim-fondo-2));
+  color: var(--sim-blanco); box-shadow: var(--sim-sombra);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.leccion details.ejemplo-web > summary::before {
+  content: "▸"; position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%);
+  font-size: 1.8rem; line-height: 1;
+}
+.leccion details.ejemplo-web[open] > summary::before { content: "▾"; }
+.leccion details.ejemplo-web[open] > summary { margin-bottom: 0.8rem; }
+.ejemplo-web__titulo {
+  font-family: var(--font-titulo); font-weight: 700; font-size: 1.7rem; line-height: 1.1;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.ejemplo-web__sub { font-family: var(--font-mono); font-size: 0.85rem; }
+.leccion details.ejemplo-web > summary:hover { border-color: var(--sim-blanco); }
+.leccion details.ejemplo-web > summary:focus-visible { outline: 3px solid var(--accent-lima); outline-offset: 3px; }
+@media (max-width: 640px) { .ejemplo-web__titulo { font-size: 1.35rem; } }
+@media print { .leccion details.ejemplo-web > summary { background: none; color: inherit; box-shadow: none; } }
