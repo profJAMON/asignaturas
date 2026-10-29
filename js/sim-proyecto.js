@@ -1967,6 +1967,10 @@
         pintarCodigo();
       });
 
+      /* dentro de un desplegable (S6) no se puede medir hasta que se abre */
+      const plegable = pantalla.closest('details');
+      if (plegable) plegable.addEventListener('toggle', () => { if (plegable.open) { ajustarAlto(); pintarMarcas(); } });
+
       abrir.href = CARPETA + 'index.html';
       marco.src = CARPETA + 'index.html';
     },
