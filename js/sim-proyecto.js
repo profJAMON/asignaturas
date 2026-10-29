@@ -39,6 +39,9 @@
    prueba-casos     S15: probar el límite de un if (> en vez de >=).
    modo-noche       S16: body.modo-oscuro y toggle.
    pasa-a-tu-web    S17: un JS por página y los id de tu web.
+   web-ejemplo      «Web de ejemplo» (29/10/2026): la web de BloqueCraft
+                    de verdad para ver qué tiene que tener la vuestra
+                    (ver el bloque del final).
    Las de S8-S17 usan simCodigo: un VS Code de mentira con Live
    Server (se ve lo GUARDADO; lo que no existe da 404 en F12 → Red).
 
@@ -1291,7 +1294,7 @@
     });
   }
   const P_MENU = { t: '3 páginas o más, con el mismo menú', si: true, porque: 'Las tres páginas tienen el mismo menú dentro de <header> y <nav>.', pista: 'Pasa por las tres páginas con los botones: ¿el menú es el mismo en todas?' };
-  const P_LISTA = { t: 'Una lista y una tabla', si: false, porque: 'Hay una lista en la portada, pero no hay ninguna tabla en ninguna página.', pista: 'Mira las tres páginas: hay lista, pero ¿hay tabla? Si dudas, Ctrl + U y busca <table>.' };
+  const P_LISTA = { t: 'Una lista ol, una ul y una tabla', si: false, porque: 'Hay una lista en la portada, pero no hay ninguna tabla en ninguna página.', pista: 'Mira las tres páginas: hay lista, pero ¿hay tabla? Si dudas, Ctrl + U y busca <table>.' };
   const P_ALT = { t: 'Imágenes con alt, en la carpeta img', si: false, porque: 'En circuitos.html, la imagen img/puerta.png no tiene alt.', pista: 'En pantalla no se ve el alt. Haz Ctrl + U en cada página y mira cada <img>: ¿todas llevan alt="…"?' };
   const P_CSS = { t: 'Un solo estilos.css y el menú con Flexbox', si: true, porque: 'Cada página tiene una sola línea con estilos.css, y el nav tiene display: flex.', pista: 'Ctrl + U: ¿cuántas líneas <link> hay? Y F12 → Elementos sobre el menú: ¿sale display: flex?' };
   simRevisa('revisa-web', {
@@ -1678,5 +1681,294 @@
       { t: 'El desplegable tiene que tener sus dos modos para elegir.', ok: g => { const m = /<select\b[^>]*>([\s\S]*?)<\/select>/i.exec(g['s05-servidor.html']); return !!m && (m[1].match(/<option\b/gi) || []).length >= 2; }, hecho: 'Cada opción del desplegable en su <option>.', pista: 'El desplegable sale vacío. Dentro de un <select>, cada opción va en un <option>, no en un <li>.' },
     ],
     final: 'Un formulario bien hecho: cada label con su for igual al id de la caja, el type que toca (number, email…) y las opciones del select en <option>.',
+  });
+})();
+
+/* ============================================================
+   web-ejemplo (29/10/2026): la web de ejemplo de BloqueCraft, de
+   verdad. Son cuatro páginas en HTML sin CSS ni JS, hechas solo con
+   lo que se ve hasta la S5, en
+   data/proyecto/proy-antes-de-empezar/ejemplo-bloquecraft/. Se
+   cargan en un iframe del mismo origen: el menú navega de verdad.
+   La misión: pasar por las 4 páginas y tocar cada cosa obligatoria
+   (imagen, ol, ul, tabla, formulario, enlace a otra web).
+   «Ver etiquetas» las marca dentro de la página con su etiqueta;
+   «¿Dónde está…?» lleva a cada una (el camino con teclado);
+   «Ver el código» enseña el HTML de la página con las líneas de lo
+   último que ha tocado resaltadas. Sin pregunta ni entrega.
+   Los colores de las marcas salen de las variables --sim-*.
+   ============================================================ */
+(function () {
+  'use strict';
+  if (typeof window.registrarSimulacion !== 'function') return;
+
+  const CARPETA = 'data/proyecto/proy-antes-de-empezar/ejemplo-bloquecraft/';
+  const COSAS = [
+    { sel: 'img', etq: '<img>', corto: 'Imagen', pagina: 'index.html', abre: '<img', cierra: '',
+      texto: 'Imagen: <img> con src (img/ y el nombre del archivo) y alt (lo que se ve). No se cierra.' },
+    { sel: 'ol', etq: '<ol>', corto: 'Lista ordenada', pagina: 'index.html', abre: '<ol', cierra: '</ol>',
+      texto: 'Lista ordenada: <ol> con un <li> por cosa. Sale con números: úsala cuando el orden importa, como unos pasos.' },
+    { sel: 'ul', etq: '<ul>', corto: 'Lista no ordenada', pagina: 'mobs.html', abre: '<ul', cierra: '</ul>',
+      texto: 'Lista no ordenada: <ul> con un <li> por cosa. Sale con puntos: el orden da igual.' },
+    { sel: 'table', etq: '<table>', corto: 'Tabla', pagina: 'mobs.html', abre: '<table', cierra: '</table>',
+      texto: 'Tabla: <table>. Cada fila es un <tr>; en la primera, <th> (el encabezado, en negrita); en las demás, <td>.' },
+    { sel: 'form', etq: '<form>', corto: 'Formulario', pagina: 'biomas.html', abre: '<form', cierra: '</form>',
+      texto: 'Formulario: <form> con cada caja (<input>) y el desplegable (<select>) con su <label>, y un <button type="button">. Aún no hace nada: lo haréis funcionar con JavaScript.' },
+    { sel: 'a[href^="http"]', etq: '<a href="https://…">', corto: 'Enlace a otra web', pagina: 'mobs.html', abre: 'href="http', cierra: '',
+      texto: 'Enlace a otra web: <a> con href="https://…" (la dirección entera) y target="_blank" (se abre en otra pestaña).' },
+  ];
+
+  registrarSimulacion('web-ejemplo', {
+    etiqueta: 'Web de ejemplo',
+    ventana: '127.0.0.1:5500/index.html',
+    mision: [
+      'Pasa por las 4 páginas con el menú de arriba.',
+      'Toca una imagen.',
+      'Toca una lista ordenada (la de números).',
+      'Toca una lista no ordenada (la de puntos).',
+      'Toca una tabla.',
+      'Toca el formulario.',
+      'Toca un enlace a otra web.',
+    ],
+    final: 'Todo esto tiene que estar también en vuestra web: 4 páginas con el mismo menú, al menos 3 imágenes, una lista ordenada, una no ordenada, una tabla, un formulario y un enlace a otra web. Con vuestro tema y vuestras palabras.',
+    crear(ctx) {
+      const { el, boton, pantalla } = ctx;
+      const lento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let actual = 'index.html';
+      let etiquetas = false;
+      let foco = null;          /* { i, n (cuál de la página), pagina } */
+      let pendiente = -1;       /* cosa que enseñar al acabar de cargar */
+      let turnoCodigo = 0;
+      const vistas = new Set();
+
+      pantalla.appendChild(el('p', 'sim__ayuda', 'Navega con el menú y toca en la página cada cosa de la misión. Si no la encuentras, pulsa «Ver etiquetas».'));
+
+      const fila = el('div', 'lab__fila');
+      const bEtq = boton('🏷️ Ver etiquetas');
+      bEtq.setAttribute('aria-pressed', 'false');
+      const bCod = boton('</> Ver el código');
+      bCod.setAttribute('aria-pressed', 'false');
+      const abrir = el('a', 'lab__boton', '↗ Abrir en otra pestaña');
+      abrir.target = '_blank';
+      abrir.rel = 'noopener';
+      abrir.style.cssText = 'display:inline-flex;align-items:center;text-decoration:none';
+      fila.appendChild(bEtq);
+      fila.appendChild(bCod);
+      fila.appendChild(abrir);
+      pantalla.appendChild(fila);
+
+      const dondeFila = el('div', 'lab__fila');
+      dondeFila.appendChild(el('span', 'sim__etiqueta', '¿Dónde está…?'));
+      COSAS.forEach((c, i) => {
+        const b = boton(c.corto);
+        b.addEventListener('click', () => ensenar(i));
+        dondeFila.appendChild(b);
+      });
+      pantalla.appendChild(dondeFila);
+
+      const avisos = el('div');
+      pantalla.appendChild(avisos);
+
+      const marco = el('iframe');
+      marco.title = 'Web de ejemplo BloqueCraft';
+      marco.style.cssText = 'display:block;width:100%;height:320px;border:1px solid var(--border);border-radius:6px;background:var(--sim-blanco)';
+      pantalla.appendChild(marco);
+
+      const pre = el('pre');
+      pre.setAttribute('translate', 'no');
+      pre.className = 'notranslate';
+      pre.style.cssText = 'margin:0;max-height:24rem;overflow:auto;position:relative';
+      pre.setAttribute('aria-label', 'Código de la página');
+      pre.tabIndex = 0;
+      pre.hidden = true;
+      const code = el('code');
+      pre.appendChild(code);
+      pantalla.appendChild(pre);
+
+      function avisar(t, tipo) {
+        avisos.innerHTML = '';
+        avisos.appendChild(ctx.aviso(t, tipo));
+      }
+      function nombreDe(ruta) {
+        let n = decodeURIComponent(ruta.split('/').pop() || '');
+        if (!n) n = 'index.html';
+        if (!/\.html$/i.test(n)) n += '.html';
+        return n;
+      }
+      function doc() {
+        try { return marco.contentDocument && marco.contentDocument.body ? marco.contentDocument : null; } catch (e) { return null; }
+      }
+      function color(v) { return getComputedStyle(pantalla).getPropertyValue(v).trim(); }
+
+      function ajustarAlto() {
+        const d = doc();
+        if (!d) return;
+        marco.style.height = '0px';
+        const h = d.documentElement.scrollHeight;
+        marco.style.height = Math.min(Math.max(h + 4, 200), 520) + 'px';
+      }
+
+      function pintarMarcas() {
+        const d = doc();
+        if (!d) return;
+        d.querySelectorAll('.ej-etq').forEach(n => n.remove());
+        d.querySelectorAll('.ej-marca').forEach(n => n.classList.remove('ej-marca', 'ej-marca--vista'));
+        d.body.classList.toggle('ej-con', etiquetas);
+        d.body.style.paddingTop = etiquetas ? '4px' : '';
+        const w = d.defaultView;
+        const poner = (nodo, texto, visto) => {
+          nodo.classList.add('ej-marca');
+          if (visto) nodo.classList.add('ej-marca--vista');
+          const r = nodo.getBoundingClientRect();
+          const t = d.createElement('span');
+          t.className = 'ej-etq' + (visto ? ' ej-etq--vista' : '');
+          t.textContent = texto;
+          t.style.left = Math.max(0, r.left + w.scrollX - 3) + 'px';
+          t.style.top = Math.max(0, r.top + w.scrollY - 20) + 'px';
+          d.body.appendChild(t);
+        };
+        if (etiquetas) {
+          const nav = d.querySelector('nav');
+          if (nav) poner(nav, '<nav> menú', ctx.hecho(0));
+          COSAS.forEach((c, i) => d.querySelectorAll(c.sel).forEach(n => poner(n, c.etq, ctx.hecho(i + 1))));
+        } else if (foco && foco.pagina === actual) {
+          const n = d.querySelectorAll(COSAS[foco.i].sel)[foco.n];
+          if (n) poner(n, COSAS[foco.i].etq, true);
+        }
+      }
+
+      function pintarCodigo() {
+        if (pre.hidden) return;
+        const turno = ++turnoCodigo;
+        const pagina = actual;
+        fetch(CARPETA + pagina).then(r => r.text()).then(t => {
+          if (turno !== turnoCodigo) return;
+          const lineas = t.replace(/\r/g, '').replace(/\n$/, '').split('\n');
+          let desde = -1, hasta = -1;
+          if (foco && foco.pagina === pagina) {
+            const c = COSAS[foco.i];
+            let vistas2 = -1;
+            for (let k = 0; k < lineas.length; k++) {
+              if (lineas[k].indexOf(c.abre) >= 0 && ++vistas2 === foco.n) { desde = k; break; }
+            }
+            hasta = desde;
+            if (desde >= 0 && c.cierra) {
+              for (let k = desde; k < lineas.length; k++) if (lineas[k].indexOf(c.cierra) >= 0) { hasta = k; break; }
+            }
+          }
+          const ancho = String(lineas.length).length;
+          const resaltar = window.resaltarCodigo || (x => x.replace(/&/g, '&amp;').replace(/</g, '&lt;'));
+          code.innerHTML = lineas.map((l, k) => {
+            const marca = k >= desde && k <= hasta && desde >= 0;
+            const num = '<span aria-hidden="true" style="color:var(--text-faint);user-select:none">' + String(k + 1).padStart(ancho, ' ') + '  </span>';
+            return '<span style="display:block' + (marca ? ';background:var(--sim-nota)' : '') + '"' + (marca ? ' data-marca' : '') + '>' + num + (resaltar(l, 'html') || ' ') + '</span>';
+          }).join('');
+          const m = code.querySelector('[data-marca]');
+          if (m) pre.scrollTop = Math.max(0, m.offsetTop - 40);
+          else pre.scrollTop = 0;
+        }).catch(() => { code.textContent = 'No he podido leer el código de ' + pagina + '. Ábrela en otra pestaña y pulsa Ctrl + U.'; });
+      }
+
+      function encontrado(i, nodo) {
+        const d = doc();
+        const n = Array.prototype.indexOf.call(d.querySelectorAll(COSAS[i].sel), nodo);
+        foco = { i, n: Math.max(0, n), pagina: actual };
+        ctx.cumple(i + 1, COSAS[i].corto + ': ' + COSAS[i].etq + ' en ' + actual + '.');
+        avisar(COSAS[i].texto + (pre.hidden ? ' Pulsa «Ver el código» para ver cómo está escrito.' : ''), 'ok');
+        pintarMarcas();
+        pintarCodigo();
+        const r = nodo.getBoundingClientRect();
+        const w = d.defaultView;
+        if (r.top < 0 || r.bottom > w.innerHeight) w.scrollTo({ top: Math.max(0, r.top + w.scrollY - 40), behavior: lento ? 'auto' : 'smooth' });
+      }
+
+      function ensenar(i) {
+        const c = COSAS[i];
+        const d = doc();
+        if (!d || actual !== c.pagina) {
+          pendiente = i;
+          marco.src = CARPETA + c.pagina;
+          return;
+        }
+        const nodo = d.querySelector(c.sel);
+        if (nodo) encontrado(i, nodo);
+      }
+
+      function preparar(d) {
+        const st = d.createElement('style');
+        const acento = color('--sim-acento'), bien = color('--sim-bien'), blanco = color('--sim-blanco');
+        st.textContent =
+          '.ej-marca{outline:3px solid ' + acento + ';outline-offset:2px}' +
+          '.ej-marca--vista{outline-color:' + bien + '}' +
+          '.ej-etq{position:absolute;z-index:5;background:' + acento + ';color:' + blanco + ';font:bold 12px/18px ui-monospace,Consolas,monospace;padding:0 6px;border-radius:4px;pointer-events:none;white-space:nowrap}' +
+          '.ej-etq--vista{background:' + bien + '}' +
+          /* con etiquetas, sitio encima de cada pieza para que no tape el texto */
+          '.ej-con nav,.ej-con img,.ej-con ol,.ej-con ul,.ej-con table,.ej-con form,.ej-con p:has(> a[href^="http"]){margin-top:24px}';
+        d.head.appendChild(st);
+        d.addEventListener('click', e => {
+          const a = e.target.closest('a');
+          if (a) {
+            if (/^https?:/i.test(a.getAttribute('href') || '')) {
+              e.preventDefault();
+              encontrado(5, a);
+              avisar(COSAS[5].texto + ' Este llevaría a ' + a.href + ' en otra pestaña: aquí no lo abro para que no salgas de la web de ejemplo.', 'ok');
+            }
+            return;
+          }
+          for (let i = 0; i < COSAS.length - 1; i++) {
+            const n = e.target.closest(COSAS[i].sel);
+            if (n) { encontrado(i, n); return; }
+          }
+        });
+        d.addEventListener('submit', e => {
+          e.preventDefault();
+          avisar('El formulario aún no hace nada: lo haréis funcionar con JavaScript.', 'cuidado');
+        });
+        d.defaultView.addEventListener('resize', () => { ajustarAlto(); pintarMarcas(); });
+      }
+
+      marco.addEventListener('load', () => {
+        const d = doc();
+        if (!d) return;
+        let ruta = '';
+        try { ruta = marco.contentWindow.location.pathname; } catch (e) { return; }
+        actual = nombreDe(ruta);
+        ctx.barra('127.0.0.1:5500/' + actual);
+        abrir.href = CARPETA + actual;
+        if (!vistas.has(actual)) {
+          vistas.add(actual);
+          ctx.apunta('Página ' + vistas.size + ' de 4: ' + actual);
+          if (vistas.size === 4) ctx.cumple(0, 'Has pasado por las 4 páginas con el menú.');
+        }
+        preparar(d);
+        ajustarAlto();
+        pintarMarcas();
+        pintarCodigo();
+        if (pendiente >= 0) {
+          const i = pendiente;
+          pendiente = -1;
+          ensenar(i);
+        }
+      });
+
+      bEtq.addEventListener('click', () => {
+        etiquetas = !etiquetas;
+        bEtq.setAttribute('aria-pressed', String(etiquetas));
+        bEtq.classList.toggle('lab__boton--activo', etiquetas);
+        bEtq.textContent = etiquetas ? '🏷️ Quitar etiquetas' : '🏷️ Ver etiquetas';
+        pintarMarcas();
+        ajustarAlto();
+      });
+      bCod.addEventListener('click', () => {
+        pre.hidden = !pre.hidden;
+        bCod.setAttribute('aria-pressed', String(!pre.hidden));
+        bCod.classList.toggle('lab__boton--activo', !pre.hidden);
+        bCod.textContent = pre.hidden ? '</> Ver el código' : '</> Quitar el código';
+        pintarCodigo();
+      });
+
+      abrir.href = CARPETA + 'index.html';
+      marco.src = CARPETA + 'index.html';
+    },
   });
 })();

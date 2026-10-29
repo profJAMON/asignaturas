@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biomas · BloqueCraft</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="mobs.html">Mobs</a>
+            <a href="biomas.html">Biomas</a>
+            <a href="sobre.html">Sobre esta web</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Biomas</h1>
+        <p>Un bioma es una zona del mundo con su paisaje y sus animales.</p>
+        <img src="img/bosque.jpg" alt="Un bosque con tres árboles sobre la hierba.">
+        <img src="img/montanas.jpg" alt="Dos montañas grises y un sol amarillo.">
+        <img src="img/aldea.jpg" alt="Una aldea con dos casas de madera.">
+        <p>Bosque, montañas y aldea.</p>
+        <p>Si talas un bosque entero, tarda mucho en volver: planta un brote por cada árbol que cortes.</p>
+
+        <!-- Cuando funcione: dirá en qué bioma te conviene empezar -->
+        <h2>¿Dónde empiezo?</h2>
+        <form>
+            <label for="alias">Tu alias en el juego</label><br>
+            <input type="text" id="alias"><br>
+            <label for="dias">Días que juegas a la semana</label><br>
+            <input type="number" id="dias" min="1" max="7"><br>
+            <label for="gusto">Lo que más te gusta</label><br>
+            <select id="gusto">
+                <option>Construir</option>
+                <option>Explorar</option>
+                <option>Luchar</option>
+            </select><br><br>
+            <button type="button" id="boton-bioma">Recomiéndame un bioma</button>
+        </form>
+    </main>
+</body>
+</html>

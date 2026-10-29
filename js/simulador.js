@@ -21,6 +21,7 @@
        ventana: 'Fotogram',              // título de la barra
        mision: ['Haz la cuenta privada', '…'],
        final: 'Apunta en tu cuaderno…',  // al cumplirlo todo
+       etiqueta: 'Web de ejemplo',       // opcional (29/10/2026); si no, «Simulación»
        crear(ctx) { … }                  // monta la pantalla
      });
 
@@ -44,9 +45,9 @@
   const { el, boton } = window.LAB;
   const SIMS = {};
 
-  function cabecera(caja) {
+  function cabecera(caja, etiqueta) {
     const cab = el('div', 'probador__cabecera');
-    cab.appendChild(el('span', 'probador__etiqueta', 'Simulación'));
+    cab.appendChild(el('span', 'probador__etiqueta', etiqueta || 'Simulación'));
     const t = caja.getAttribute('aria-label');
     if (t) cab.appendChild(el('span', 'probador__titulo', t));
     caja.appendChild(cab);
@@ -55,7 +56,7 @@
   function labSimulacion(caja) {
     const def = SIMS[caja.dataset.sim];
     if (!def) { caja.remove(); return; }
-    cabecera(caja);
+    cabecera(caja, def.etiqueta);
 
     const cuerpo = el('div', 'sim');
     const ventana = el('div', 'sim__ventana');
