@@ -124,6 +124,26 @@
   --senal-verde: #23914a;
   --senal-blanco: #ffffff;
   --senal-negro: #1b1b1b;
+  /* Resumen de unidad en tarjetas (30/10/2026): un color por grupo de bloques */
+  --resumen-ambar: #ffb547;
+  --rs-1: var(--accent);
+  --rs-2: var(--accent-lima);
+  --rs-3: var(--resumen-ambar);
+  --rs-4: var(--accent-warm);
+  /* Colores de verdad que se dibujan en los resúmenes (30/10/2026): hilos del par trenzado,
+     cubiertas de fibra y pulidos de conector. Iguales en los dos temas. */
+  --hilo-blanco: #f4f4f4;
+  --hilo-naranja: #f08a24;
+  --hilo-verde: #2fa84f;
+  --hilo-azul: #2f6fd6;
+  --hilo-marron: #8a5a2b;
+  --fibra-amarillo: #f0d000;
+  --fibra-naranja: #e8802a;
+  --fibra-aguamarina: #3ac8c8;
+  --fibra-violeta: #a060d0;
+  --fibra-lima: #9ae040;
+  --conector-upc: #2f6fd6;
+  --conector-apc: #23a55a;
   --pizarra-marco: #7a5532;
   --pizarra-marco-osc: #4e341d;
   --tiza: #f3f1e7;
@@ -379,6 +399,26 @@
   --senal-verde: #23914a;
   --senal-blanco: #ffffff;
   --senal-negro: #1b1b1b;
+  /* Resumen de unidad en tarjetas (30/10/2026): un color por grupo de bloques */
+  --resumen-ambar: #8f5200;
+  --rs-1: var(--accent);
+  --rs-2: var(--accent-lima);
+  --rs-3: var(--resumen-ambar);
+  --rs-4: var(--accent-warm);
+  /* Colores de verdad que se dibujan en los resúmenes (30/10/2026): hilos del par trenzado,
+     cubiertas de fibra y pulidos de conector. Iguales en los dos temas. */
+  --hilo-blanco: #f4f4f4;
+  --hilo-naranja: #f08a24;
+  --hilo-verde: #2fa84f;
+  --hilo-azul: #2f6fd6;
+  --hilo-marron: #8a5a2b;
+  --fibra-amarillo: #f0d000;
+  --fibra-naranja: #e8802a;
+  --fibra-aguamarina: #3ac8c8;
+  --fibra-violeta: #a060d0;
+  --fibra-lima: #9ae040;
+  --conector-upc: #2f6fd6;
+  --conector-apc: #23a55a;
   --pizarra-marco: #7a5532;
   --pizarra-marco-osc: #4e341d;
   --tiza: #f3f1e7;
@@ -5733,3 +5773,216 @@ body::after {
 .leccion details.ejemplo-web > summary:focus-visible { outline: 3px solid var(--accent-lima); outline-offset: 3px; }
 @media (max-width: 640px) { .ejemplo-web__titulo { font-size: 1.35rem; } }
 @media print { .leccion details.ejemplo-web > summary { background: none; color: inherit; box-shadow: none; } }
+
+/* ============================================================
+   Resumen de unidad en esquema (30/10/2026, Instalaciones UT1 S11)
+   Una tarjeta de color por bloque, con un índice arriba. Cada bloque
+   lleva .rs-c1 … .rs-c4: el color de su grupo (--rs-1 … --rs-4,
+   declarados en los dos temas). Elegido por Carles el 30/10/2026
+   entre tarjetas y pizarra (prototipos con capturas).
+   ============================================================ */
+.leccion .resumen { --rs: var(--rs-1); margin: 1rem 0 1.5rem; }
+.leccion .resumen .rs-c1 { --rs: var(--rs-1); }
+.leccion .resumen .rs-c2 { --rs: var(--rs-2); }
+.leccion .resumen .rs-c3 { --rs: var(--rs-3); }
+.leccion .resumen .rs-c4 { --rs: var(--rs-4); }
+
+/* Índice: un botón por bloque */
+.leccion .rs-indice { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0.5rem; margin: 0 0 1.2rem; }
+.leccion .rs-indice a {
+  display: flex; align-items: center; gap: 0.6rem; min-height: 44px; padding: 0.4rem 0.7rem;
+  border: 1px solid var(--border); border-left: 4px solid var(--rs); border-radius: 6px;
+  background: var(--surface); color: var(--text); text-decoration: none; font-weight: 600; line-height: 1.2;
+}
+.leccion .rs-indice a:hover, .leccion .rs-indice a:focus-visible { border-color: var(--rs); }
+.leccion .rs-indice small { display: block; font-weight: 400; color: var(--text-dim); font-size: 0.78rem; }
+.leccion .rs-n {
+  flex: none; display: grid; place-items: center; width: 1.9rem; height: 1.9rem; border-radius: 999px;
+  background: var(--rs); color: var(--boton-texto); font-family: var(--font-titulo); font-weight: 700;
+}
+
+/* Rejilla de bloques */
+.leccion .rs-rejilla { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; align-items: start; }
+@media (min-width: 1100px) { .leccion .rs-rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); } .leccion .rs-ancho { grid-column: 1 / -1; } }
+.leccion .rs-bloque {
+  min-width: 0; display: flex; flex-direction: column; gap: 0.7rem; padding: 0.9rem 1rem 1rem;
+  background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--rs); border-radius: 8px;
+  scroll-margin-top: calc(var(--alto-barra, 60px) + 1rem);
+}
+.leccion .rs-bloque > * { margin: 0; }
+.leccion .rs-cab { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
+.leccion .rs-num {
+  flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 8px;
+  background: var(--rs); color: var(--boton-texto); font-family: var(--font-titulo); font-size: 1.3rem; font-weight: 700;
+}
+.leccion .rs-cab h3 { margin: 0; padding: 0; border: 0; background: none; font-size: 1.15rem; color: var(--rs); flex: 1 1 auto; }
+.leccion .rs-cab h3::before { content: none; }
+.leccion .rs-ses { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-dim); }
+.leccion .rs-idea { font-size: 1.08rem; line-height: 1.45; }
+.leccion .rs-bloque strong, .leccion .rs-bloque dt, .leccion .rs-vs-t { color: var(--rs); }
+.leccion .rs-sub { font-weight: 600; color: var(--text); }
+.leccion .rs-cuenta { color: var(--text-dim); }
+.leccion .rs-bloque code { overflow-wrap: anywhere; }
+
+/* Cajas en fila con flechas (el viaje de un mensaje, el reparto de IP) */
+.leccion .rs-flujo { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; }
+.leccion .rs-caja {
+  display: inline-flex; flex-direction: column; padding: 0.35rem 0.6rem; border: 2px solid var(--rs); border-radius: 6px;
+  font-weight: 700; line-height: 1.2; color: var(--text);
+}
+.leccion .rs-caja small { font-weight: 400; color: var(--text-dim); font-size: 0.75rem; }
+.leccion .rs-flecha { color: var(--rs); font-weight: 700; }
+
+/* Fichas: término a la izquierda, qué es a la derecha */
+.leccion .rs-fichas { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.45rem; }
+.leccion .rs-fichas > div { padding: 0.45rem 0.6rem; background: var(--surface-2); border-radius: 6px; min-width: 0; }
+.leccion .rs-fichas dt { font-weight: 700; }
+.leccion .rs-fichas dd { margin: 0.1rem 0 0; color: var(--text); }
+.leccion .rs-fichas.rs-mini { grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr)); }
+.leccion .rs-fichas.rs-mini dd { font-family: var(--font-mono); font-weight: 700; }
+
+/* Avisos y trucos */
+.leccion .rs-aviso, .leccion .rs-truco { padding: 0.45rem 0.65rem; border-radius: 6px; }
+.leccion .rs-aviso { background: var(--nota-fondo); border-left: 3px solid var(--accent-warm); }
+.leccion .rs-truco { background: var(--pista-fondo); border-left: 3px solid var(--accent-lima); }
+
+/* Octeto: pesos y bits */
+.leccion .rs-octeto { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 3px; max-width: 26rem; font-family: var(--font-mono); text-align: center; }
+.leccion .rs-peso { font-size: 0.8rem; color: var(--text-dim); padding: 0.15rem 0; }
+.leccion .rs-bit { font-size: 1.15rem; font-weight: 700; padding: 0.3rem 0; border: 1px solid var(--border); border-radius: 4px; color: var(--text-dim); }
+.leccion .rs-bit.rs-on { border-color: var(--rs); color: var(--rs); background: var(--surface-2); }
+
+/* Escalera de unidades */
+.leccion .rs-escalera { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.3rem; font-family: var(--font-mono); }
+.leccion .rs-esc { padding: 0.3rem 0.55rem; border: 2px solid var(--rs); border-radius: 6px; font-weight: 700; }
+.leccion .rs-x { font-size: 0.72rem; color: var(--text-dim); }
+
+/* Comparación en dos columnas */
+.leccion .rs-vs { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.5rem; }
+.leccion .rs-vs > div { padding: 0.55rem 0.7rem; border: 1px solid var(--border); border-radius: 6px; min-width: 0; display: flex; flex-direction: column; gap: 0.2rem; }
+.leccion .rs-vs p { margin: 0; }
+.leccion .rs-vs-t { font-family: var(--font-titulo); font-weight: 700; font-size: 1.05rem; }
+.leccion .rs-ej { color: var(--text-dim); font-size: 0.88rem; }
+.leccion .rs-formula { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.8rem; padding: 0.5rem 0.7rem; border: 2px dashed var(--rs); border-radius: 6px; font-family: var(--font-mono); font-weight: 700; }
+
+/* Alcance: cajas que crecen */
+.leccion .rs-alcance { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.leccion .rs-alcance li { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.3rem 0.6rem; border-left: 4px solid var(--rs); background: var(--surface-2); border-radius: 4px; }
+.leccion .rs-alcance li:nth-child(1) { width: 55%; } .leccion .rs-alcance li:nth-child(2) { width: 70%; }
+.leccion .rs-alcance li:nth-child(3) { width: 85%; } .leccion .rs-alcance li:nth-child(4) { width: 100%; }
+.leccion .rs-alcance li { min-width: min(100%, 15rem); }
+.leccion .rs-alcance strong { font-family: var(--font-mono); color: var(--rs); min-width: 2.6rem; }
+.leccion .rs-alcance span { color: var(--text-dim); font-size: 0.9rem; }
+
+/* Chips */
+.leccion .rs-chips { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.leccion .rs-chips li { padding: 0.25rem 0.65rem; border: 1px solid var(--rs); border-radius: 999px; font-size: 0.9rem; }
+
+/* Pila OSI */
+.leccion .rs-pila { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 3px; }
+.leccion .rs-pila li { display: grid; grid-template-columns: 2rem minmax(0, 8.5rem) minmax(0, 1fr); align-items: center; gap: 0.5rem; padding: 0.3rem 0.5rem; background: var(--surface-2); border-radius: 4px; }
+.leccion .rs-pila li.rs-marca { outline: 2px solid var(--rs); outline-offset: -2px; }
+.leccion .rs-capa { font-family: var(--font-mono); font-weight: 700; color: var(--rs); text-align: center; }
+.leccion .rs-pila span:last-child { color: var(--text-dim); font-size: 0.88rem; }
+.leccion .rs-pila b { color: var(--rs); }
+
+/* Tabla de clases */
+.leccion table.rs-tabla { font-size: 0.85rem; margin: 0; }
+.leccion table.rs-tabla code { white-space: nowrap; overflow-wrap: normal; font-size: 0.78rem; }
+.leccion table.rs-tabla td:nth-child(2) { white-space: nowrap; }
+.leccion table.rs-tabla th, .leccion table.rs-tabla td { padding: 0.3rem 0.4rem; }
+@media (max-width: 640px) { .leccion table.rs-tabla th, .leccion table.rs-tabla td { padding: 0.25rem 0.2rem; } .leccion table.rs-tabla { font-size: 0.78rem; } .leccion table.rs-tabla code { font-size: 0.7rem; padding: 0 0.15rem; } }
+@media (max-width: 360px) { .leccion table.rs-tabla { font-size: 0.72rem; } .leccion table.rs-tabla code { font-size: 0.62rem; } .leccion .rs-letra { font-size: 1rem; } }
+.leccion .rs-letra { font-family: var(--font-titulo); font-size: 1.15rem; font-weight: 700; color: var(--rs); text-align: center; }
+
+/* Pasos numerados */
+.leccion .rs-pasos { list-style: none; padding: 0; counter-reset: rsp; display: flex; flex-direction: column; gap: 0.35rem; }
+.leccion .rs-pasos li { counter-increment: rsp; display: flex; flex-wrap: wrap; gap: 0.15rem 0.5rem; align-items: baseline; padding-left: 2.1rem; position: relative; }
+.leccion .rs-pasos li::before {
+  content: counter(rsp); position: absolute; left: 0; top: 0; width: 1.5rem; height: 1.5rem; border-radius: 999px;
+  display: grid; place-items: center; background: var(--rs); color: var(--boton-texto); font-weight: 700; font-size: 0.8rem;
+}
+.leccion .rs-pasos span { color: var(--text-dim); }
+
+/* Subredes en fila */
+.leccion .rs-bloques-ip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3px; font-family: var(--font-mono); text-align: center; font-weight: 700; }
+.leccion .rs-bloques-ip span { padding: 0.4rem 0; border: 2px solid var(--rs); border-radius: 4px; }
+.leccion .rs-bloques-ip span:nth-child(2) { background: var(--surface-2); color: var(--rs); }
+
+/* Escalera de ping */
+.leccion .rs-escalon { list-style: none; padding: 0; counter-reset: rse; display: flex; flex-direction: column; gap: 3px; }
+.leccion .rs-escalon li { counter-increment: rse; display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.6rem; padding: 0.3rem 0.55rem; background: var(--surface-2); border-radius: 4px; border-left: 4px solid var(--rs); }
+.leccion .rs-escalon li:nth-child(2) { margin-left: 0.8rem; } .leccion .rs-escalon li:nth-child(3) { margin-left: 1.6rem; }
+.leccion .rs-escalon li:nth-child(4) { margin-left: 2.4rem; } .leccion .rs-escalon li:nth-child(5) { margin-left: 3.2rem; }
+.leccion .rs-escalon li::before { content: counter(rse); font-family: var(--font-mono); font-weight: 700; color: var(--rs); }
+.leccion .rs-escalon span { color: var(--text-dim); font-size: 0.88rem; margin-left: auto; }
+
+.leccion .rs-columnas { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem 1.5rem; }
+.leccion .rs-columnas > div { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.leccion .rs-columnas > div > * { margin: 0; }
+.leccion .rs-ipv6 { font-family: var(--font-mono); font-size: clamp(0.62rem, 2.55vw, 0.85rem); overflow-wrap: anywhere; }
+.leccion .rs-ipv6 del { color: var(--text-dim); }
+.leccion .rs-ipv6 ins { text-decoration: none; color: var(--rs); font-weight: 700; }
+
+
+/* Más dibujos del resumen (30/10/2026, repasos de Instalaciones UT2-UT4) */
+.leccion table.rs-tabla th small { display: block; font-weight: 400; text-transform: none; letter-spacing: 0; }
+.leccion table.rs-matriz td { text-align: center; }
+@media (max-width: 360px) { .leccion table.rs-tabla th small { display: none; } .leccion table.rs-tabla th, .leccion table.rs-tabla td { padding: 0.2rem 0.15rem; } }
+.leccion table.rs-matriz td.rs-marca { outline: 2px solid var(--rs); outline-offset: -3px; font-weight: 700; color: var(--rs); }
+
+/* Señales de seguridad: la forma y el color, sin dibujo */
+.leccion .rs-senales { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.leccion .rs-senales li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.6rem; }
+.leccion .rs-senales span:last-child { color: var(--text-dim); font-size: 0.9rem; }
+.leccion .rs-forma { flex: none; width: 1.8rem; height: 1.8rem; box-sizing: border-box; }
+.leccion .rs-prohibicion { border-radius: 50%; border: 4px solid var(--senal-rojo); background: linear-gradient(45deg, transparent 43%, var(--senal-rojo) 43% 57%, transparent 57%), var(--senal-blanco); }
+.leccion .rs-obligacion { border-radius: 50%; background: var(--senal-azul); }
+.leccion .rs-advertencia { background: var(--senal-negro); clip-path: polygon(50% 0, 100% 100%, 0 100%); position: relative; }
+.leccion .rs-advertencia::after { content: ""; position: absolute; inset: 4px 4px 2px; background: var(--senal-amarillo); clip-path: polygon(50% 12%, 92% 100%, 8% 100%); }
+.leccion .rs-salvamento { border-radius: 3px; background: var(--senal-verde); }
+.leccion .rs-incendios { border-radius: 3px; background: var(--senal-rojo); }
+
+/* Hilos de T568A y T568B */
+.leccion .rs-hilos { display: grid; grid-template-columns: 2.2rem repeat(8, minmax(0, 1fr)); gap: 3px; max-width: 26rem; align-items: center; font-family: var(--font-mono); }
+.leccion .rs-norma { font-weight: 700; color: var(--rs); font-size: 0.85rem; }
+.leccion .rs-pines .rs-norma { font-weight: 400; color: var(--text-dim); }
+.leccion .rs-hilo { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.leccion .rs-hilo b { font-size: 0.75rem; font-weight: 400; color: var(--text-dim); }
+.leccion .rs-pines .rs-hilo b { font-weight: 700; color: var(--text); }
+.leccion .rs-hilo i { display: block; width: 100%; height: 1.6rem; border-radius: 3px; border: 1px solid var(--border); box-sizing: border-box; }
+.leccion .h-n { background: var(--hilo-naranja); }
+.leccion .h-v { background: var(--hilo-verde); }
+.leccion .h-a { background: var(--hilo-azul); }
+.leccion .h-m { background: var(--hilo-marron); }
+.leccion .h-bn { background: repeating-linear-gradient(135deg, var(--hilo-blanco) 0 5px, var(--hilo-naranja) 5px 9px); }
+.leccion .h-bv { background: repeating-linear-gradient(135deg, var(--hilo-blanco) 0 5px, var(--hilo-verde) 5px 9px); }
+.leccion .h-ba { background: repeating-linear-gradient(135deg, var(--hilo-blanco) 0 5px, var(--hilo-azul) 5px 9px); }
+.leccion .h-bm { background: repeating-linear-gradient(135deg, var(--hilo-blanco) 0 5px, var(--hilo-marron) 5px 9px); }
+
+/* Muestras de color (cubiertas de fibra, pulidos de conector) */
+.leccion .rs-colores { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.leccion .rs-colores li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.55rem; }
+.leccion .rs-colores small { color: var(--text-dim); font-size: 0.85rem; }
+.leccion .rs-color { flex: none; width: 2.6rem; height: 0.9rem; border-radius: 999px; border: 1px solid var(--border); }
+.leccion .c-fibra-amarillo { background: var(--fibra-amarillo); }
+.leccion .c-fibra-naranja { background: var(--fibra-naranja); }
+.leccion .c-fibra-aguamarina { background: var(--fibra-aguamarina); }
+.leccion .c-fibra-violeta { background: var(--fibra-violeta); }
+.leccion .c-fibra-lima { background: var(--fibra-lima); }
+.leccion .c-conector-upc { background: var(--conector-upc); }
+.leccion .c-conector-apc { background: var(--conector-apc); }
+
+/* Semáforo del margen */
+.leccion .rs-semaforo { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.3rem; }
+.leccion .rs-semaforo li { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.6rem; }
+.leccion .rs-semaforo span:last-child { color: var(--text-dim); }
+.leccion .rs-luz { flex: none; width: 1.1rem; height: 1.1rem; border-radius: 50%; }
+.leccion .rs-rojo { background: var(--error); }
+.leccion .rs-ambar { background: var(--resumen-ambar); }
+.leccion .rs-verde { background: var(--ok); }
+
+@media print {
+  .leccion .rs-indice { display: none; }
+  .leccion .rs-bloque { break-inside: avoid; }
+}
