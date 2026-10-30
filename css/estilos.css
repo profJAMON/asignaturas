@@ -117,6 +117,13 @@
      Franja «Paso a paso» de arriba, neón de los botones de vidrio
      (en r, g, b para poder darles transparencia). */
   --pizarra-fondo: #22412f;
+  /* Señales de seguridad en las diapositivas (29/10/2026): colores normalizados, iguales en los dos temas */
+  --senal-rojo: #e0322b;
+  --senal-azul: #1f5fbf;
+  --senal-amarillo: #f6c614;
+  --senal-verde: #23914a;
+  --senal-blanco: #ffffff;
+  --senal-negro: #1b1b1b;
   --pizarra-marco: #7a5532;
   --pizarra-marco-osc: #4e341d;
   --tiza: #f3f1e7;
@@ -365,6 +372,13 @@
   --cristal-trama: rgba(255, 255, 255, 0.07);
   /* Pizarra: los mismos valores que en oscuro. */
   --pizarra-fondo: #22412f;
+  /* Señales de seguridad en las diapositivas (29/10/2026): colores normalizados, iguales en los dos temas */
+  --senal-rojo: #e0322b;
+  --senal-azul: #1f5fbf;
+  --senal-amarillo: #f6c614;
+  --senal-verde: #23914a;
+  --senal-blanco: #ffffff;
+  --senal-negro: #1b1b1b;
   --pizarra-marco: #7a5532;
   --pizarra-marco-osc: #4e341d;
   --tiza: #f3f1e7;
@@ -3478,6 +3492,18 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .diapo svg .d-linea-d { stroke: var(--diapo-tenue); stroke-width: 1.5; fill: none; }
 .diapo svg .d-relleno-c { fill: var(--diapo-calido); }
 .diapo svg .d-tachado { text-decoration: line-through; }
+/* Señales de seguridad dentro de una diapositiva (29/10/2026, Instalaciones UT2 S8):
+   sus colores son los de la norma, no los de la tiza. */
+.diapo svg .d-s-rojo { fill: var(--senal-rojo); }
+.diapo svg .d-s-azul { fill: var(--senal-azul); }
+.diapo svg .d-s-amarillo { fill: var(--senal-amarillo); }
+.diapo svg .d-s-verde { fill: var(--senal-verde); }
+.diapo svg .d-s-blanco { fill: var(--senal-blanco); }
+.diapo svg .d-s-negro { fill: var(--senal-negro); }
+.diapo svg .d-s-aro-rojo { fill: none; stroke: var(--senal-rojo); stroke-width: 9; }
+.diapo svg .d-s-banda-roja { stroke: var(--senal-rojo); stroke-width: 9; }
+.diapo svg .d-s-trazo-blanco { fill: none; stroke: var(--senal-blanco); stroke-width: 5; }
+.diapo svg .d-s-borde-negro { stroke: var(--senal-negro); stroke-width: 6; stroke-linejoin: round; }
 
 .diapos__mandos {
   display: flex;
