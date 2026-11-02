@@ -5921,24 +5921,31 @@ body { font-family: var(--font-body); }
    (si no, el navegador lo extiende a toda la pantalla). El fondo de
    pantalla es el body::before (ver arriba). */
 html { background: var(--escritorio-2); }
+/* El overflow del <body> (el clip de las esquinas redondeadas) pasaría
+   a toda la pantalla si el <html> lo tiene en visible, y la página no
+   se desplazaría (pasó el 02/11/2026 en la primera prueba). Con un
+   valor propio en el <html>, el del <body> se queda en el body. */
+html { overflow-y: auto; }
 @media (min-width: 1000px) {
+  /* Ventana maximizada: ocupa toda la pantalla menos un filo de 10 px
+     de fondo de pantalla (02/11/2026: con un tope de 1520 px quedaba
+     estrecha en pantallas grandes). */
   body {
-    width: min(1520px, 100% - 40px);
-    margin: 20px auto;
-    min-height: calc(100vh - 40px);
+    width: calc(100% - 20px);
+    margin: 10px auto;
+    min-height: calc(100vh - 20px);
     border-radius: 12px;
     overflow: clip;
     box-shadow: var(--ventana-sombra);
   }
   .sidebar,
-  .indice { height: calc(100vh - var(--alto-barra) - 20px); }
-  /* Los botones de plegar van fijos a la pantalla: se suma el margen
-     de la ventana (el % de un elemento fijo es el ancho de la pantalla
-     sin la barra de desplazamiento). */
-  .toggle-menu { left: calc(max(20px, (100% - 1520px) / 2) + var(--ancho-menu) - 13px); }
-  :root[data-menu="oculto"] .toggle-menu { left: calc(max(20px, (100% - 1520px) / 2) + 6px); }
-  .toggle-indice { right: calc(max(20px, (100% - 1520px) / 2) + var(--ancho-indice) - 13px); }
-  :root[data-indice="oculto"] .toggle-indice { right: calc(max(20px, (100% - 1520px) / 2) + 6px); }
+  .indice { height: calc(100vh - var(--alto-barra) - 10px); }
+  /* Los botones de plegar van fijos a la pantalla: se suma el filo de
+     la ventana. */
+  .toggle-menu { left: calc(10px + var(--ancho-menu) - 13px); }
+  :root[data-menu="oculto"] .toggle-menu { left: calc(10px + 6px); }
+  .toggle-indice { right: calc(10px + var(--ancho-indice) - 13px); }
+  :root[data-indice="oculto"] .toggle-indice { right: calc(10px + 6px); }
 }
 
 /* ---- Barra de la ventana ---- */
