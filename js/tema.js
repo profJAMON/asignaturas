@@ -172,6 +172,8 @@ function pintarLeccion(contenidoHtml) {
   const contenedor = document.getElementById('leccion-contenido');
   contenedor.innerHTML = contenidoHtml;
   agruparSubsecciones(contenedor);
+  /* Preguntas por el camino: cabecera de cada una y lista del final. */
+  pintarPreguntas(contenedor);
   /* Actividades, retos y ejercicios resaltados + enlace desde la pregunta. */
   marcarTareas(contenedor);
   /* «📋 Cómo trabajar esta sesión» en pasos con dibujo. */
@@ -257,6 +259,51 @@ function pintarComoTrabajar(raiz) {
    preguntas a mano «(Actividad 2)» lleva a él. Sin tocar el HTML de
    ninguna sesión. */
 const _TAREA = /^(Actividad|Reto|Ejercicio)\s+(\d+)\b/i;
+
+/* ============================================================
+   Preguntas por el camino (02/11/2026)
+   ============================================================
+   Los alumnos iban directos a las preguntas del final, no leían la
+   sesión y las contestaban con ChatGPT. Ahora cada pregunta obligatoria
+   va justo debajo de lo que la responde, en una tira de hoja de rayas:
+     <div class="papel pregunta" data-n="4"><p>Texto…</p></div>
+   (y, si es ABC, su <ul> dentro). Aquí se le pone la cabecera
+   «✏️ Pregunta 4 · a mano, en tu cuaderno» y el id pregunta-4, y se
+   rellena la lista del final (<ol data-lista-preguntas></ol>) con un
+   enlace a cada una. El texto de la lista sale de data-titulo o, si no
+   lo lleva, del principio de la pregunta. */
+function pintarPreguntas(raiz) {
+  const preguntas = Array.from(raiz.querySelectorAll('.pregunta[data-n]'));
+  if (!preguntas.length) return;
+  preguntas.forEach(p => {
+    const n = p.dataset.n;
+    if (!p.id) p.id = `pregunta-${n}`;
+    if (p.querySelector(':scope > .pregunta__cab')) return;
+    const cab = document.createElement('p');
+    cab.className = 'papel__titulo pregunta__cab';
+    cab.innerHTML = `<span aria-hidden="true">✏️</span> Pregunta ${n} <small>a mano, en tu cuaderno</small>`;
+    p.prepend(cab);
+    p.setAttribute('aria-label', `Pregunta ${n}`);
+  });
+  raiz.querySelectorAll('ol[data-lista-preguntas]').forEach(ol => {
+    ol.innerHTML = '';
+    preguntas.forEach(p => {
+      const li = document.createElement('li');
+      li.value = Number(p.dataset.n);
+      const a = document.createElement('a');
+      a.href = `#${p.id}`;
+      let texto = p.dataset.titulo;
+      if (!texto) {
+        const primero = p.querySelector(':scope > p:not(.pregunta__cab)');
+        texto = (primero ? primero.textContent : '').trim().replace(/\s+/g, ' ');
+        if (texto.length > 80) texto = texto.slice(0, texto.lastIndexOf(' ', 78)) + '…';
+      }
+      a.textContent = texto;
+      li.appendChild(a);
+      ol.appendChild(li);
+    });
+  });
+}
 
 function marcarTareas(raiz) {
   const destinos = {};

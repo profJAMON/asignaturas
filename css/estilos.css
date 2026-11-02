@@ -6284,6 +6284,25 @@ html { overflow-y: auto; }
 :root[data-pagina="portada"] .asignatura-card { border-radius: 16px; }
 :root[data-pagina="portada"] .main-content { padding-block: 2.6rem 3.4rem; }
 
+/* ---- Preguntas por el camino (02/11/2026) ----
+   Cada pregunta obligatoria es una tira de hoja de rayas (.papel) justo
+   debajo de lo que la responde; al final, la lista con un enlace a cada
+   una (.papel--lista). La cabecera y la lista las pone pintarPreguntas
+   (js/tema.js). */
+.leccion .papel.pregunta { margin: 1.4rem 0; scroll-margin-top: calc(var(--alto-barra) + 1rem); }
+.leccion .pregunta__cab { display: flex; align-items: baseline; gap: 0.45rem; flex-wrap: wrap; }
+.leccion .pregunta__cab small { font-family: var(--font-body); font-size: 0.78rem; color: var(--hoja-dim); }
+.leccion .papel.pregunta > p:last-child,
+.leccion .papel.pregunta > ul:last-child { margin-bottom: 0; }
+.leccion .papel.pregunta > ul { list-style: none; padding-left: 0.4rem; }
+.leccion .papel.pregunta:target { animation: destello-pregunta 1.2s ease 2; }
+@keyframes destello-pregunta { 50% { box-shadow: 0 0 0 4px var(--hoja-margen); } }
+.leccion .papel--lista a { color: var(--hoja-tinta); text-decoration-color: var(--hoja-linea); }
+.leccion .papel--lista a:hover { text-decoration-color: currentColor; }
+@media print {
+  .leccion .papel--lista { display: none; }
+}
+
 /* ---- Barra en escritorio estrecho ----
    Entre 1000 y 1400 px los botones de idioma se montaban sobre el
    buscador (pasaba ya antes del rediseño, ver guia-web 4, Maquetación).

@@ -3,7 +3,7 @@
 <ol>
 <li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
 <li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota (como mucho, 15). Muchas hablan de un dibujo o de un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
 <li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
 <li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
 <li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
@@ -13,6 +13,30 @@
 <h2>No todos los cables de red son iguales</h2>
 <p>Dos cables pueden parecer idénticos por fuera y uno aguantar 10 Gbps mientras el otro no pasa de 100 Mbps. Lo que los diferencia es la <strong>categoría</strong> (<em>Cat</em>): una clasificación que dice hasta qué <strong>frecuencia</strong> (ancho de banda, en MHz) funciona bien el cable. Y de esa frecuencia depende la velocidad que puede llevar.</p>
 <p>Para subir de categoría, el fabricante cuida más el cable: trenzado más apretado y distinto en cada par, hilos más gruesos, cruceta separadora, pantallas… Todo para que haya menos diafonía y menos pérdidas a frecuencias altas.</p>
+<p>No hace falta adivinar la categoría: el fabricante la imprime en la cubierta, junto con otros datos. Estos son dos cables del almacén del taller:</p>
+<div class="salida">
+<svg viewBox="0 0 600 170" width="100%" role="img" aria-label="Dos trozos de cable gris iguales. En la cubierta del cable A pone: CAT.6A U/FTP 23AWG 500MHz LSZH 305m. En la del cable B: CAT.5E UTP 24AWG 100MHz PVC 305m." style="max-width:100%;height:auto;">
+<style>
+.cc6-t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.cc6-s{font-family:monospace;font-size:11px;fill:#9aa0a6}
+.cc6-a{font-family:monospace;font-size:12px;font-weight:bold;fill:#4fc1ff}
+.cc6-imp{font-family:monospace;font-size:14px;font-weight:bold;fill:#1e1e1e;letter-spacing:1px}
+.cc6-et{font-family:sans-serif;font-size:15px;font-weight:bold;fill:#202020}
+.cc6-et2{font-family:monospace;font-size:14px;fill:#202020}
+</style>
+<text x="20" y="22" class="cc6-s">Cable A</text>
+<rect x="20" y="30" width="560" height="40" rx="20" fill="#9aa0a6"/>
+<text x="60" y="56" class="cc6-imp">CAT.6A  U/FTP  23AWG  500MHz  LSZH  305m</text>
+<text x="20" y="102" class="cc6-s">Cable B</text>
+<rect x="20" y="110" width="560" height="40" rx="20" fill="#9aa0a6"/>
+<text x="60" y="136" class="cc6-imp">CAT.5E  UTP  24AWG  100MHz  PVC  305m</text>
+</svg>
+<p class="pie-figura">Lee lo que pone en cada cubierta.</p>
+</div>
+
+<div class="papel pregunta" data-n="1" data-titulo="Los dos cables del almacén: categoría y frecuencia">
+<p>Mira los dos cables de la figura. ¿Qué es la <strong>categoría</strong> de un cable? ¿Cuál de los dos aguanta más frecuencia? Copia de su cubierta la categoría y la frecuencia, con su unidad.</p>
+</div>
 
 <h2>La tabla de categorías</h2>
 <table>
@@ -24,10 +48,64 @@
 <tr><td>Cat 7 / 7A</td><td>600 / 1.000 MHz</td><td>10 Gbps</td><td>100 m</td><td>Siempre apantallado; norma europea (ISO), poco usado</td></tr>
 <tr><td>Cat 8</td><td>2.000 MHz</td><td>25 o 40 Gbps</td><td><strong>30 m</strong></td><td>Solo dentro de centros de datos, entre armarios</td></tr>
 </table>
+
+<div class="papel pregunta" data-n="2" data-titulo="La tabla de 5e, 6 y 6A">
+<p>Copia de la tabla de arriba las filas de <strong>Cat 5e, Cat 6 y Cat 6A</strong>, con su ancho de banda, su velocidad y su distancia.</p>
+</div>
+
+<div class="papel pregunta" data-n="3" data-titulo="(ABC) Hasta dónde llega el Cat 8">
+<p>(ABC) Según la tabla, un cable Cat 8 llega como máximo a…</p>
+<ul>
+<li>a) 30 m</li>
+<li>b) 100 m</li>
+<li>c) 500 m</li>
+</ul>
+</div>
 <div class="nota">Mi presentación dice que «no se puede poner cable de categoría inferior a 5e». Es verdad, pero se ha quedado corto: hoy en una instalación nueva lo normal es poner <strong>Cat 6 o 6A</strong>. La diferencia de precio es pequeña y el cable de la pared dura 15 o 20 años; los aparatos se cambian mucho antes.</div>
+<p>Más categoría es más caro. Por eso se compra la categoría <strong>más baja que cumple</strong>, no la más alta. Estos son los precios de una tienda de material (inventados, pero parecidos a los de verdad):</p>
+<table>
+<tr><th>Bobina de 305 m</th><th>Precio</th></tr>
+<tr><td>Cat 5e UTP</td><td>89 €</td></tr>
+<tr><td>Cat 6 UTP</td><td>129 €</td></tr>
+<tr><td>Cat 6A F/UTP</td><td>219 €</td></tr>
+<tr><td>Cat 7 S/FTP</td><td>264 €</td></tr>
+</table>
+
+<div class="papel pregunta" data-n="4" data-titulo="La bobina para la academia de Marta">
+<p>Marta monta la red de una academia. Necesita <strong>10 Gbps</strong> en puestos que están a <strong>85 m</strong> del armario y tiene <strong>250 €</strong> para el cable. Con la tabla de categorías y los precios de la tienda: ¿qué bobina compra? ¿Por qué no le vale la Cat 6, aunque la tabla diga que puede dar 10 Gbps?</p>
+</div>
+
+<div class="papel pregunta" data-n="5" data-titulo="La categoría mínima y la recomendada">
+<p>Mira la nota de arriba («Mi presentación dice…»). ¿Qué categoría es el mínimo admitido hoy? ¿Cuál recomendarías en una instalación nueva? ¿Por qué?</p>
+</div>
 
 <h3>La categoría la marca el eslabón más débil</h3>
 <p>Un enlace es <strong>todo el camino</strong>: latiguillo, roseta, cable de pared, panel de parcheo y otro latiguillo. Si pones cable Cat 6A con rosetas Cat 5e, tienes un enlace Cat 5e. Por eso, al comprar material, <strong>todo tiene que ser de la misma categoría</strong>.</p>
+<p>Este es el enlace del puesto de Ana, en el taller, con la categoría de cada pieza:</p>
+<div class="salida">
+<svg viewBox="0 0 600 140" width="100%" role="img" aria-label="El enlace del puesto de Ana, de izquierda a derecha: PC, latiguillo Cat 6A, roseta Cat 5e, cable de pared Cat 6, panel de parcheo Cat 6A, latiguillo Cat 6A y switch." style="max-width:100%;height:auto;">
+<style>
+.cc6-t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.cc6-s{font-family:monospace;font-size:11px;fill:#9aa0a6}
+.cc6-a{font-family:monospace;font-size:12px;font-weight:bold;fill:#4fc1ff}
+.cc6-imp{font-family:monospace;font-size:14px;font-weight:bold;fill:#1e1e1e;letter-spacing:1px}
+.cc6-et{font-family:sans-serif;font-size:15px;font-weight:bold;fill:#202020}
+.cc6-et2{font-family:monospace;font-size:14px;fill:#202020}
+</style>
+<rect x="10" y="45" width="50" height="34" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="35" y="66" text-anchor="middle" class="cc6-t">PC</text>
+<line x1="60" y1="62" x2="128" y2="62" stroke="#dcdcaa" stroke-width="4"/><text x="94" y="38" text-anchor="middle" class="cc6-s">latiguillo</text><text x="94" y="100" text-anchor="middle" class="cc6-a">6A</text>
+<rect x="130" y="49" width="28" height="26" fill="#252526" stroke="#4ec9b0"/><text x="144" y="22" text-anchor="middle" class="cc6-s">roseta</text><line x1="144" y1="26" x2="144" y2="47" stroke="#858585"/><text x="144" y="100" text-anchor="middle" class="cc6-a">5e</text>
+<line x1="158" y1="62" x2="390" y2="62" stroke="#4fc1ff" stroke-width="4"/><text x="274" y="38" text-anchor="middle" class="cc6-s">cable de pared</text><text x="274" y="100" text-anchor="middle" class="cc6-a">6</text>
+<rect x="392" y="49" width="40" height="26" fill="#252526" stroke="#4ec9b0"/><text x="412" y="38" text-anchor="middle" class="cc6-s">panel</text><text x="412" y="100" text-anchor="middle" class="cc6-a">6A</text>
+<line x1="432" y1="62" x2="510" y2="62" stroke="#dcdcaa" stroke-width="4"/><text x="471" y="38" text-anchor="middle" class="cc6-s">latiguillo</text><text x="471" y="100" text-anchor="middle" class="cc6-a">6A</text>
+<rect x="512" y="45" width="78" height="34" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="551" y="66" text-anchor="middle" class="cc6-t">switch</text>
+<text x="300" y="130" text-anchor="middle" class="cc6-s">debajo de cada pieza, su categoría</text>
+</svg>
+</div>
+
+<div class="papel pregunta" data-n="6" data-titulo="El enlace del puesto de Ana">
+<p>Mira el enlace del puesto de Ana. ¿De qué categoría es el enlace completo? ¿Por qué? ¿Qué <strong>una sola pieza</strong> cambiarías para que el enlace fuera Cat 6?</p>
+</div>
 
 <div data-actividad="u3s6-categorias"></div>
 
@@ -54,9 +132,42 @@
 </svg>
 <p class="pie-figura">Si el puesto está más lejos, no se estira el cable: se pone otro switch más cerca, o fibra.</p>
 </div>
+<p>Este es el plano del taller con lo que mide cada tramo de tres puestos:</p>
+<div class="salida">
+<svg viewBox="0 0 600 230" width="100%" role="img" aria-label="Plano del taller. A la izquierda, el armario con el switch. Puesto 1: 62 metros de cable fijo y latiguillos de 3 y 5 metros. Puesto 2: 88 metros de cable fijo y latiguillos de 3 y 8 metros. Puesto 3: 93 metros de cable fijo y latiguillos de 2 y 2 metros." style="max-width:100%;height:auto;">
+<style>
+.cc6-t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.cc6-s{font-family:monospace;font-size:11px;fill:#9aa0a6}
+.cc6-a{font-family:monospace;font-size:12px;font-weight:bold;fill:#4fc1ff}
+.cc6-imp{font-family:monospace;font-size:14px;font-weight:bold;fill:#1e1e1e;letter-spacing:1px}
+.cc6-et{font-family:sans-serif;font-size:15px;font-weight:bold;fill:#202020}
+.cc6-et2{font-family:monospace;font-size:14px;fill:#202020}
+</style>
+<rect x="14" y="80" width="74" height="70" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="51" y="112" text-anchor="middle" class="cc6-t">armario</text><text x="51" y="128" text-anchor="middle" class="cc6-s">(switch)</text>
+<path d="M88 100 H300 V40 H400" stroke="#4fc1ff" stroke-width="4" fill="none"/><rect x="402" y="22" width="80" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="442" y="44" text-anchor="middle" class="cc6-t">Puesto 1</text>
+<text x="190" y="92" class="cc6-a">fijo 62 m</text><text x="490" y="36" class="cc6-s">latiguillos</text><text x="490" y="50" class="cc6-s">3 m + 5 m</text>
+<path d="M88 115 H400" stroke="#4fc1ff" stroke-width="4" fill="none"/><rect x="402" y="97" width="80" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="442" y="119" text-anchor="middle" class="cc6-t">Puesto 2</text>
+<text x="190" y="109" class="cc6-a">fijo 88 m</text><text x="490" y="111" class="cc6-s">latiguillos</text><text x="490" y="125" class="cc6-s">3 m + 8 m</text>
+<path d="M88 130 H300 V190 H400" stroke="#4fc1ff" stroke-width="4" fill="none"/><rect x="402" y="172" width="80" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="442" y="194" text-anchor="middle" class="cc6-t">Puesto 3</text>
+<text x="190" y="148" class="cc6-a">fijo 93 m</text><text x="490" y="186" class="cc6-s">latiguillos</text><text x="490" y="200" class="cc6-s">2 m + 2 m</text>
+</svg>
+<p class="pie-figura">Plano del taller: el cable fijo va por la pared; los latiguillos, uno en el puesto y otro en el armario.</p>
+</div>
+
+<div class="papel pregunta" data-n="7" data-titulo="Los tres puestos del plano del taller">
+<p>Explica cómo se reparten los 100 m de un enlace. Después, en el plano del taller, di qué puestos <strong>no</strong> cumplen: escribe la cuenta de cada uno y qué condición falla. Ojo: un puesto puede sumar menos de 100 m y aun así no cumplir.</p>
+</div>
+
+<div class="papel pregunta" data-n="8" data-titulo="(V/F) Un puesto a 110 m">
+<p>(V/F) Si un puesto está a 110 m del switch, basta con usar un cable de más calidad.</p>
+</div>
 
 <h2>Ethernet: el idioma del cable</h2>
 <p>El cable solo es el camino. Lo que viaja por él sigue las normas de <strong>Ethernet</strong> (IEEE 802.3), la familia de estándares de casi todas las redes locales con cable. Ethernet define la capa física y la de enlace del modelo OSI: qué señal va por los hilos y cómo son las tramas con sus direcciones MAC.</p>
+
+<div class="papel pregunta" data-n="9" data-titulo="Qué es Ethernet y qué capas define">
+<p>¿Qué es Ethernet? ¿Qué capas del modelo OSI define y qué decide en cada una?</p>
+</div>
 
 <h3>Cómo se leen los nombres</h3>
 <p>Cada variante de Ethernet tiene un nombre con tres partes. Por ejemplo, <strong>1000BASE-T</strong>:</p>
@@ -67,6 +178,41 @@
 <tr><td><strong>T</strong></td><td>El medio: <em>T</em> = par trenzado. Otras letras: <em>2</em> y <em>5</em> = coaxial (185 y 500 m), <em>F</em>, <em>SX</em>, <em>LX</em> = fibra</td></tr>
 </table>
 
+<div class="papel pregunta" data-n="10" data-titulo="Las partes de 1000BASE-T, 100BASE-TX y 10GBASE-T">
+<p>Con la tabla de arriba: ¿qué significa cada parte de <strong>1000BASE-T</strong>? ¿Y de <strong>100BASE-TX</strong> y <strong>10GBASE-T</strong>?</p>
+</div>
+<p>Estos nombres vienen en las etiquetas de los aparatos. Esta es la de debajo del switch del armario del taller:</p>
+<div class="salida">
+<svg viewBox="0 0 600 120" width="100%" role="img" aria-label="Etiqueta pegada debajo del switch del taller. Pone: SW-24G Gigabit Switch. 24 por 10/100/1000BASE-T. 4 por SFP+ 10GBASE-SR. 1 por Console. 230 voltios, 50 hercios." style="max-width:100%;height:auto;">
+<style>
+.cc6-t{font-family:monospace;font-size:12px;fill:#d4d4d4}
+.cc6-s{font-family:monospace;font-size:11px;fill:#9aa0a6}
+.cc6-a{font-family:monospace;font-size:12px;font-weight:bold;fill:#4fc1ff}
+.cc6-imp{font-family:monospace;font-size:14px;font-weight:bold;fill:#1e1e1e;letter-spacing:1px}
+.cc6-et{font-family:sans-serif;font-size:15px;font-weight:bold;fill:#202020}
+.cc6-et2{font-family:monospace;font-size:14px;fill:#202020}
+</style>
+<rect x="60" y="10" width="480" height="100" rx="6" fill="#f1f1ec" stroke="#9aa0a6"/>
+<text x="80" y="38" class="cc6-et">SW-24G   Gigabit Switch</text>
+<text x="80" y="62" class="cc6-et2">24 × 10/100/1000BASE-T</text>
+<text x="80" y="82" class="cc6-et2">4 × SFP+ 10GBASE-SR</text>
+<text x="80" y="100" class="cc6-et2">1 × Console · 230V~ 50Hz</text>
+</svg>
+</div>
+
+<div class="papel pregunta" data-n="11" data-titulo="La etiqueta del switch del taller">
+<p>Mira la etiqueta del switch del taller. ¿Cuántos puertos van por cable de cobre y cuántos por fibra? ¿A qué velocidad como mucho va cada tipo? Di <strong>en qué parte del nombre</strong> te has fijado para saberlo.</p>
+</div>
+
+<div class="papel pregunta" data-n="12" data-titulo="(ABC) Qué significa la T">
+<p>(ABC) En 1000BASE-T, la T significa…</p>
+<ul>
+<li>a) televisión</li>
+<li>b) par trenzado</li>
+<li>c) transmisión</li>
+</ul>
+</div>
+
 <h3>Las que te vas a encontrar</h3>
 <table>
 <tr><th>Nombre</th><th>Apodo</th><th>Velocidad</th><th>Cable mínimo</th><th>Pares que usa</th></tr>
@@ -75,48 +221,34 @@
 <tr><td>1000BASE-T</td><td>Gigabit Ethernet</td><td>1 Gbps</td><td>Cat 5e</td><td><strong>los 4</strong></td></tr>
 <tr><td>10GBASE-T</td><td>10 Gigabit</td><td>10 Gbps</td><td>Cat 6A</td><td>los 4</td></tr>
 </table>
+
+<div class="papel pregunta" data-n="13" data-titulo="Pares y cable mínimo de 100BASE-TX y 1000BASE-T">
+<p>Con la tabla de arriba: ¿cuántos pares usa 100BASE-TX? ¿Y 1000BASE-T? ¿Qué cable mínimo pide cada uno?</p>
+</div>
 <div class="nota">Un error muy extendido, que también está en mis diapositivas: «solo se usan dos pares, el azul y el marrón sobran». Era verdad a 10 y 100 Mbps. <strong>A 1 Gbps se usan los cuatro pares</strong>, y en los dos sentidos a la vez. Si un cable tiene el par azul o el marrón mal crimpado, puede funcionar «a 100» y no «a 1000». Es una avería clásica: el equipo navega, pero lento.</div>
+
+<div class="papel pregunta" data-n="14" data-titulo="(V/F) Los pares azul y marrón a 1 Gbps">
+<p>(V/F) A 1 Gbps los pares azul y marrón no se usan.</p>
+</div>
+
+<div class="papel pregunta" data-n="15" data-titulo="El PC que solo conecta a 100 Mbps">
+<p>Lee la nota de arriba. Un PC con tarjeta gigabit solo conecta a 100 Mbps con un cable concreto; con otro cable, va a 1 Gbps. ¿Qué le puede pasar al primer cable? ¿Qué pares mirarías?</p>
+</div>
 
 <div data-actividad="u3s6-generador"></div>
 
 <h2>Preguntas de la sesión</h2>
-<div class="papel">
+<div class="papel papel--lista">
 <p class="papel__titulo">Sesión 6 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol>
-<li>¿Qué indica la <strong>categoría</strong> de un cable? ¿En qué unidad se mide?</li>
-<li>Completa una tabla de las categorías 5e, 6 y 6A con ancho de banda, velocidad y distancia.</li>
-<li>¿Qué categoría mínima se admite hoy? ¿Cuál recomendarías en una instalación nueva? ¿Por qué?</li>
-<li>(ABC) Un cable Cat 8 llega como máximo a…
-  <ul>
-    <li>a) 30 m</li>
-    <li>b) 100 m</li>
-    <li>c) 500 m</li>
-  </ul>
-</li>
-<li>Instalas cable Cat 6A con rosetas y panel Cat 5e. ¿De qué categoría es el enlace? ¿Por qué?</li>
-<li>Explica la regla de los 100 metros y cómo se reparten. Un puesto queda a 120 m del armario: ¿qué soluciones le das?</li>
-<li>(V/F) Si un puesto está a 110 m del switch, basta con usar un cable de más calidad.</li>
-<li>¿Qué es Ethernet? ¿Qué capas del modelo OSI define?</li>
-<li>¿Qué significa cada parte de <strong>1000BASE-T</strong>? ¿Y de <strong>100BASE-TX</strong> y <strong>10GBASE-T</strong>?</li>
-<li>(ABC) En 1000BASE-T, la T significa…
-  <ul>
-    <li>a) televisión</li>
-    <li>b) par trenzado</li>
-    <li>c) transmisión</li>
-  </ul>
-</li>
-<li>¿Cuántos pares usan 100BASE-TX y 1000BASE-T?</li>
-<li>(V/F) A 1 Gbps los pares azul y marrón no se usan.</li>
-<li>Un PC con tarjeta gigabit solo conecta a 100 Mbps con un cable concreto; con otro, va a 1 Gbps. Da una explicación posible.</li>
-</ol>
+<p>Ya las has visto por el camino. Comprueba que tienes las 15 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F y, si es falsa, cópiala corregida. <strong>(ABC)</strong>: la letra y la respuesta entera.</p>
+<ol data-lista-preguntas></ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
 <p class="papel__titulo">Sesión 6 · Sube nota — no entran en el examen</p>
-<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 14.</p>
-<ol start="14">
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
 <li>Busca dónde se usa el cable Cat 8 y por qué allí basta con que llegue a 30 m.</li>
 <li>Busca en una tienda online el precio de una bobina de 305 m de Cat 6 y de una de Cat 6A. ¿Cuánto más cuesta la 6A?</li>
 </ol>
