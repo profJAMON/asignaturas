@@ -124,11 +124,11 @@ function _subirUnidad(resumen) {
   }
 }
 
-/* El título de la unidad en el menú (03/10/2026): una etiqueta corta
-   con el número ("U3") y el nombre en letra normal. Antes era
-   "Unidad 3. Medios de transmisión: cobre" en negrita y ocupaba tres
-   líneas. Lo que se quita de la vista ("Unidad 3. ") se queda para el
-   lector de pantalla. Las unidades sin número llevan su dibujo. */
+/* El título de la unidad en el menú. 03/10/2026: etiqueta «U3» y el
+   nombre sin «Unidad 3.». 02/11/2026 (escritorio): el dibujo de la
+   unidad hace de icono de carpeta en todas y encima del nombre se lee
+   «Unidad 3» entero, para que se vea qué unidad es sin adivinarlo. Las
+   unidades sin número llevan solo el nombre. */
 function _pintarResumenUnidad(resumen, unidad, asignatura) {
   const partes = typeof partirTituloUnidad === 'function'
     ? partirTituloUnidad(unidad.titulo)
@@ -136,28 +136,29 @@ function _pintarResumenUnidad(resumen, unidad, asignatura) {
   const chip = document.createElement('span');
   chip.className = 'unidad__chip';
   chip.setAttribute('aria-hidden', 'true');
-  if (partes.corto) {
-    chip.textContent = partes.corto;
-    chip.setAttribute('translate', 'no');
-  } else if (typeof iconoDeUnidad === 'function') {
+  if (typeof iconoDeUnidad === 'function') {
     chip.innerHTML = iconoDeUnidad(unidad.id, asignatura.id);
     chip.classList.add('unidad__chip--icono');
+  } else {
+    chip.textContent = partes.corto;
+    chip.setAttribute('translate', 'no');
   }
   const nombre = document.createElement('span');
   nombre.className = 'unidad__nombre';
   if (partes.prefijo) {
-    const oculto = document.createElement('span');
-    oculto.className = 'solo-lector';
-    oculto.textContent = partes.prefijo;
-    nombre.appendChild(oculto);
+    const etiqueta = document.createElement('span');
+    etiqueta.className = 'unidad__etiqueta';
+    etiqueta.textContent = partes.prefijo.replace(/\.\s*$/, '');
+    nombre.appendChild(etiqueta);
+    nombre.appendChild(document.createTextNode(' '));
   }
   nombre.appendChild(document.createTextNode(partes.nombre));
   resumen.appendChild(chip);
   resumen.appendChild(nombre);
 }
 
-/* La sesión, con su número en un círculo y el nombre al lado. El
-   círculo se rellena cuando ya la has abierto (ver .sesion--vista). */
+/* La sesión, con su número («S6») en una etiqueta y el nombre al lado.
+   La etiqueta se rellena cuando ya la has abierto (ver .sesion--vista). */
 function _pintarTituloSesion(enlace, titulo) {
   const partes = typeof partirTituloSesion === 'function'
     ? partirTituloSesion(titulo)
@@ -168,7 +169,7 @@ function _pintarTituloSesion(enlace, titulo) {
   num.setAttribute('translate', 'no');
   /* Sin número (un glosario, por ejemplo): un punto, para que el
      nombre quede alineado con el de las demás. */
-  num.textContent = partes.numero || '·';
+  num.textContent = partes.numero ? 'S' + partes.numero : '·';
   const oculto = document.createElement('span');
   oculto.className = 'solo-lector';
   oculto.textContent = partes.prefijo;

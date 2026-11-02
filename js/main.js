@@ -33,7 +33,7 @@ function arrancarPortada() {
   } else {
     pintarCabecera(
       'Material de clase',
-      'Apuntes y Actividades',
+      'Apuntes y actividades',
       'Elige la asignatura con la que quieres trabajar.',
       false
     );

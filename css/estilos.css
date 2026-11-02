@@ -7,40 +7,39 @@
    Jerarquía de encabezados de sesión: numerada y con sangría por subsección.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&family=Patrick+Hand&family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=Patrick+Hand&family=Instrument+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&display=swap');
 
 :root {
   color-scheme: dark;
 
   /* ----------------------------------------------------------
-     Paleta oscura (2026-09: pasa de gris VS Code a azul profundo).
-     El fondo se va al azul casi negro y los acentos son los tres
-     del cartel: cian, magenta y lima. Todo lo demás de la hoja ya
-     estaba escrito con estas variables, así que el cambio de
-     aspecto vive entero aquí arriba.
-     Contrastes medidos sobre --bg: texto 16,8:1 · dim 9,0:1 ·
-     faint 6,1:1 · cian 10,7:1 · magenta 6,3:1 · lima 15,7:1 ·
-     error 6,0:1. Todos por encima de AA (4,5:1), incluido
-     --text-faint, que en la paleta anterior se quedaba en 3,44:1.
-     Sobre las tarjetas (--surface) el peor caso es 5,7:1.
+     Paleta oscura. 02/11/2026: escritorio tipo macOS (antes, el azul
+     casi negro del estilo cyberpunk). Grises neutros de ventana y tres
+     acentos que siguen significando lo mismo: azul = actividad
+     (--accent), rosa = aviso y preguntas a mano (--accent-warm) y
+     verde = pista (--accent-lima). Los nombres de las variables se
+     quedan para no tocar las reglas que ya las usan.
+     Contrastes medidos sobre --bg: texto 14,1:1 · dim 8,3:1 ·
+     faint 6,0:1 · azul 6,3:1 · rosa 6,2:1 · verde 8,8:1 · error 6,0:1
+     · resalte ámbar 11,8:1. Sobre --surface, el peor es faint, 5,3:1.
      ---------------------------------------------------------- */
 
-  --bg: #0a0e14;
-  --surface: #0f151e;
-  --surface-2: #16202c;
-  --border: #223244;
-  --text: #e6f0fa;
-  --text-dim: #9fb3c8;
-  --text-faint: #7c93ab;
-  --accent: #22d3ee;
-  --accent-dim: #0e9fb8;
+  --bg: #1e1e21;
+  --surface: #27272b;
+  --surface-2: #323237;
+  --border: #3d3d44;
+  --text: #ececf0;
+  --text-dim: #b6b6c0;
+  --text-faint: #9a9aa6;
+  --accent: #4aa3ff;
+  --accent-dim: #2f86e0;
   /* El "cálido" de la paleta anterior (salmón) pasa a ser el magenta:
      es el segundo acento del estilo y lo usan el badge, las notas y
      los metadatos. El nombre de la variable se queda para no tocar
      las treinta reglas que ya la usan. */
-  --accent-warm: #ff4d9d;
+  --accent-warm: #ff6b96;
   /* Tercer acento. Es el del código en línea y el de las pistas. */
-  --accent-lima: #a6ff4d;
+  --accent-lima: #5bd46f;
   --code-bg: #ffffff;
   --code-text: #1e1e1e;
   --code-tag: #800000;
@@ -50,37 +49,27 @@
   --code-keyword: #0000ff;   /* JS: palabras clave (let, if, for…) */
   --code-function: #795e26;  /* JS: funciones y métodos */
   --code-number: #098658;    /* JS: números */
-  --code-inline: #a6ff4d;
+  --code-inline: #5bd46f;
   --code-borde: transparent;
-  --ok: #5bf29b;
-  --error: #ff4d6d;
+  --ok: #4fd17a;
+  --error: #ff6b6b;
 
-  /* ---- Estilo del tema (rejilla, brillos, barra superior) ----
-     Estas cuatro son las que dan el aire "terminal". Bajar --glow a
-     "none" y --rejilla a transparent deja la web sobria sin tocar
-     ninguna otra regla: es el interruptor del estilo. */
-  --rejilla: rgba(34, 211, 238, 0.05);
-  --rejilla-paso: 34px;
-  --glow: 0 0 22px rgba(34, 211, 238, 0.4);
-  --glow-suave: 0 0 14px rgba(34, 211, 238, 0.25);
-  --glow-sesion: inset 2px 0 14px -6px rgba(34, 211, 238, 0.9);
   /* El brillo de la tarjeta de asignatura al pasar por encima. Lleva
      dentro var(--color-asig) a propósito: las variables se resuelven
      en el elemento que las USA, así que cada tarjeta brilla de su
      propio color sin declarar aquí una variable por asignatura. */
-  --glow-tarjeta: 0 0 24px -8px var(--color-asig, var(--accent));
-  --barrido: rgba(34, 211, 238, 0.06);
-  --barra-bg: rgba(10, 14, 20, 0.92);
+  --glow-tarjeta: 0 10px 28px -16px var(--color-asig, var(--accent));
+  --barra-bg: #2b2b30;
 
   /* Fondos tenues de los bloques con acento propio. */
-  --nota-fondo: rgba(255, 77, 157, 0.07);
-  --pista-fondo: rgba(166, 255, 77, 0.06);
+  --nota-fondo: rgba(255, 107, 150, 0.08);
+  --pista-fondo: rgba(91, 212, 111, 0.07);
 
   /* Colores que antes estaban escritos a pelo en las reglas. Viven aquí
      para que el modo claro pueda cambiarlos sin tocar nada más.
      Los fondos de acierto y error van con los --ok y --error nuevos:
      se quedaron con los viejos al cambiar la paleta. */
-  --boton-texto: #04121a;
+  --boton-texto: #0b1a2a;
   --ok-fondo: rgba(91, 242, 155, 0.12);
   --error-fondo: rgba(255, 77, 109, 0.12);
   --marca-bien: #5bf29b;
@@ -89,8 +78,8 @@
   /* Las figuras (.salida con un SVG dentro). Los diagramas llevan sus
      colores escritos dentro del propio SVG, con la paleta oscura, así que
      en modo claro conservan este fondo de pizarra. Ver más abajo. */
-  --figura-bg: var(--surface);
-  --figura-borde: var(--border);
+  --figura-bg: #26262b;
+  --figura-borde: #3d3d44;
   --figura-pie: var(--text-faint);
   --figura-enlace: var(--accent);
   /* Diapositivas (js/diapos.js): colores de los dibujos de dentro. */
@@ -109,8 +98,8 @@
   --cristal-brillo: rgba(255, 255, 255, 0.3);
   --cristal-opaco: #1b2430;
   --cristal-texto: #f3f3f3;
-  --cristal-luz-1: rgba(34, 211, 238, 0.42);
-  --cristal-luz-2: rgba(255, 77, 157, 0.38);
+  --cristal-luz-1: rgba(74, 163, 255, 0.42);
+  --cristal-luz-2: rgba(255, 107, 150, 0.38);
   --cristal-trama: rgba(255, 255, 255, 0.07);
   /* 28/10/2026: diapositivas en pizarra verde con tiza. Iguales en los
      dos temas (la pizarra es pizarra siempre, como el cuaderno es papel).
@@ -163,15 +152,11 @@
 
   /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
      de las preguntas a mano (.papel). */
-  --fila-alterna: rgba(159, 179, 200, 0.05);
-  --papel-linea: rgba(159, 179, 200, 0.13);
-  --papel-margen: rgba(255, 77, 157, 0.5);
+  --fila-alterna: rgba(182, 182, 192, 0.05);
+  --papel-linea: rgba(182, 182, 192, 0.13);
+  --papel-margen: rgba(255, 107, 150, 0.5);
 
   /* 03/10/2026 (2): escena de las cabeceras y franjas de los apartados. */
-  --circuito: rgba(34, 211, 238, 0.45);
-  --glow-cabecera: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 0 26px -10px var(--color-activa, var(--accent));
-  --neblina: 16%;
-  --banda: rgba(34, 211, 238, 0.14);
 
   /* Hojas de cuaderno: ejercicios de pantalla (cuadrícula) y preguntas
      a mano (rayas). Son papel en los dos temas, igual que las figuras
@@ -190,13 +175,13 @@
   --hoja-linea: rgba(29, 79, 176, 0.20);
   --hoja-margen: rgba(200, 30, 80, 0.45);
   --hoja-fila: rgba(29, 79, 176, 0.05);
-  --cinta-actividad: rgba(34, 211, 238, 0.55);
+  --cinta-actividad: rgba(74, 163, 255, 0.5);
   /* 06/10/2026: fondo del bloque de una actividad de la explicación. */
-  --tarea-fondo: rgba(34, 211, 238, 0.06);
+  --tarea-fondo: rgba(74, 163, 255, 0.07);
   --tarea-texto: #ffffff;
   /* 07/10/2026: «Toca y mira» (js/probador.js) y retos rápidos. */
-  --probador-borde: rgba(34, 211, 238, 0.45);
-  --probador-fondo: rgba(34, 211, 238, 0.04);
+  --probador-borde: rgba(74, 163, 255, 0.45);
+  --probador-fondo: rgba(74, 163, 255, 0.04);
   --probador-nav: #e6e9ee;
   --probador-nav-punto: #c2c8d1;
   --probador-nav-texto: #4b5563;
@@ -206,7 +191,7 @@
   --probador-consola-num: #1a1aa6;
   --probador-consola-error: #c5221f;
   --probador-consola-error-bg: #fdecea;
-  --probador-viva: rgba(34, 211, 238, 0.30);
+  --probador-viva: rgba(74, 163, 255, 0.3);
   --probador-resultado: #ffffff;
   /* 28/10/2026: «Toca y mira» con aspecto de escritorio (opción A):
      el código, un VS Code oscuro; igual en los dos temas. */
@@ -266,24 +251,25 @@
   /* 06/10/2026: «Ver respuesta» / pistas en píldora de cristal con
      luz lima detrás. */
   --cristal-pista-fondo: rgba(255, 255, 255, 0.06);
-  --cristal-pista-borde: rgba(166, 255, 77, 0.38);
+  --cristal-pista-borde: rgba(91, 212, 111, 0.42);
   --cristal-pista-brillo: rgba(255, 255, 255, 0.22);
-  --cristal-pista-luz: rgba(166, 255, 77, 0.30);
-  --cristal-pista-trama: rgba(166, 255, 77, 0.10);
+  --cristal-pista-luz: rgba(91, 212, 111, 0.28);
+  --cristal-pista-trama: rgba(91, 212, 111, 0.1);
   --cinta-papel: rgba(255, 77, 157, 0.45);
 
-  --font-titulo: 'Chakra Petch', 'JetBrains Mono', ui-monospace, monospace;
+  --font-titulo: 'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
   --font-mano: 'Patrick Hand', 'Comic Sans MS', cursive;
-  --font-cartel: 'Anton', Impact, 'Arial Narrow', sans-serif;
 
-  /* Tarjetas de asignatura de la portada como bloque macizo (03/10/2026). */
-  --tile-mezcla: 88%;
+  /* Tarjetas de asignatura de la portada como bloque macizo (03/10/2026);
+     desde el 02/11/2026, en el degradado de cada asignatura y con texto
+     blanco en los dos temas (ver «Escritorio», al final). */
+  --tile-mezcla: 100%;
   --tile-fondo: #0a0e14;
-  --tile-texto: #0a0e14;
-  --tile-texto-suave: rgba(10, 14, 20, 0.72);
+  --tile-texto: #ffffff;
+  --tile-texto-suave: rgba(255, 255, 255, 0.86);
 
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --font-body: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Instrument Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Alto de la barra superior. Lo usan también .sidebar y .indice para
      quedarse pegadas justo por debajo, así que se cambia aquí y se
@@ -297,7 +283,34 @@
   /* Anchos de las columnas laterales. */
   --ancho-menu: 200px;
   --ancho-indice: 180px;
+  /* Escritorio (02/11/2026): fondo de pantalla, ventana, menú tipo
+     Finder, carteles de cristal de los apartados y resaltado. */
+  --escritorio-1: #22374d;
+  --escritorio-2: #0a1119;
+  --ventana-sombra: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  --sidebar-bg: #26262a;
+  --semaforo-rojo: #ff5f57;
+  --semaforo-ambar: #febc2e;
+  --semaforo-verde: #28c840;
+  --cartel-fondo: rgba(38, 38, 44, 0.5);
+  --cartel-borde: rgba(255, 255, 255, 0.16);
+  --cartel-brillo: rgba(255, 255, 255, 0.26);
+  --cartel-sombra: rgba(0, 0, 0, 0.45);
+  --cartel-opaco: #2c2c31;
+  --cartel-manchas: 0.6;
+  --resalte: #ffd54a;
+  --resalte-raya: #ffcf3f;
+  --tinte-asig: 20%;
+  --letra-asig-mezcla: #ffffff;
+  --letra-asig: 42%;
+  --asig-1: #3f6fd1;
+  --asig-2: #7b4fd0;
+  --asig-texto: #ffffff;
+  --asig-texto-suave: rgba(255, 255, 255, 0.86);
+  --asig-velo: rgba(255, 255, 255, 0.16);
+  --asig-velo-borde: rgba(255, 255, 255, 0.34);
 }
+
 
 /* ============================================================
    Modo claro  (js/aspecto.js)
@@ -320,33 +333,25 @@
 :root[data-tema="claro"] {
   color-scheme: light;
 
-  /* El cian y el magenta de neón solo funcionan sobre fondo oscuro: en
-     claro bajan a su versión oscura (cian petróleo y magenta vino) para
-     no caer por debajo de AA. La rejilla y los brillos casi desaparecen:
-     sobre blanco ensucian en vez de decorar.
-     Contrastes medidos sobre blanco: cian 5,4:1 · magenta 7,3:1 ·
-     lima 7,1:1 · faint 5,9:1. Sobre tarjeta, el peor es 4,7:1. */
+  /* Los acentos bajan a su versión oscura para no caer por debajo de AA.
+     Contrastes medidos sobre blanco (02/11/2026): azul 5,7:1 · rosa
+     6,3:1 · verde 5,4:1 · faint 5,7:1 · resalte ámbar 6,7:1. Sobre
+     tarjeta (--surface), el peor es el verde, 4,9:1. */
   --bg: #ffffff;
-  --surface: #f4f7fa;
-  --surface-2: #e7edf3;
-  --border: #c9d4e0;
-  --text: #101720;
-  --text-dim: #3e4a57;
-  --text-faint: #5a6675;
-  --accent: #0e7490;
-  --accent-dim: #0b5b72;
-  --accent-warm: #a4126a;
-  --accent-lima: #3f6212;
-
-  --rejilla: rgba(14, 116, 144, 0.05);
-  --glow: none;
-  --glow-suave: none;
-  --glow-sesion: none;
-  --glow-tarjeta: none;
-  --barrido: rgba(14, 116, 144, 0.035);
-  --barra-bg: rgba(255, 255, 255, 0.94);
-  --nota-fondo: rgba(164, 18, 106, 0.05);
-  --pista-fondo: rgba(63, 98, 18, 0.06);
+  --surface: #f5f5f7;
+  --surface-2: #e9e9ee;
+  --border: #d9d9df;
+  --text: #1d1d22;
+  --text-dim: #4d4d56;
+  --text-faint: #66666f;
+  --accent: #0062d1;
+  --accent-dim: #004fa8;
+  --accent-warm: #b8175a;
+  --accent-lima: #2a7a2e;
+  --glow-tarjeta: 0 10px 24px -16px var(--color-asig, var(--accent));
+  --barra-bg: #ececf0;
+  --nota-fondo: rgba(184, 23, 90, 0.05);
+  --pista-fondo: rgba(42, 122, 46, 0.06);
 
   /* El bloque de código ya era claro en modo oscuro; sobre página blanca
      necesita un gris muy suave y un borde para no perder la caja. */
@@ -356,7 +361,7 @@
   --code-keyword: #0000ff;
   --code-function: #795e26;
   --code-number: #098658;
-  --code-inline: #116329;
+  --code-inline: #2a7a2e;
 
   --ok: #157f3d;
   --error: #c2262f;
@@ -436,14 +441,9 @@
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
 
-  --fila-alterna: rgba(14, 116, 144, 0.05);
-  --papel-linea: rgba(14, 116, 144, 0.16);
-  --papel-margen: rgba(164, 18, 106, 0.4);
-
-  --circuito: rgba(14, 116, 144, 0.30);
-  --glow-cabecera: 0 8px 22px -14px var(--color-activa, var(--accent));
-  --neblina: 9%;
-  --banda: rgba(14, 116, 144, 0.10);
+  --fila-alterna: rgba(0, 0, 0, 0.03);
+  --papel-linea: rgba(0, 0, 0, 0.1);
+  --papel-margen: rgba(184, 23, 90, 0.4);
 
   --hoja-bg: #fbf7ec;
   --hoja-bg-2: #efe7d3;
@@ -459,12 +459,12 @@
   --hoja-linea: rgba(29, 79, 176, 0.20);
   --hoja-margen: rgba(200, 30, 80, 0.45);
   --hoja-fila: rgba(29, 79, 176, 0.05);
-  --cinta-actividad: rgba(14, 116, 144, 0.35);
-  --tarea-fondo: rgba(14, 116, 144, 0.06);
+  --cinta-actividad: rgba(0, 98, 209, 0.3);
+  --tarea-fondo: rgba(0, 98, 209, 0.05);
   --tarea-texto: #0b1220;
   /* 07/10/2026: «Toca y mira» (js/probador.js) y retos rápidos. */
-  --probador-borde: rgba(14, 116, 144, 0.50);
-  --probador-fondo: rgba(14, 116, 144, 0.04);
+  --probador-borde: rgba(0, 98, 209, 0.45);
+  --probador-fondo: rgba(0, 98, 209, 0.03);
   --probador-nav: #e6e9ee;
   --probador-nav-punto: #c2c8d1;
   --probador-nav-texto: #4b5563;
@@ -474,7 +474,7 @@
   --probador-consola-num: #1a1aa6;
   --probador-consola-error: #c5221f;
   --probador-consola-error-bg: #fdecea;
-  --probador-viva: rgba(14, 116, 144, 0.22);
+  --probador-viva: rgba(0, 98, 209, 0.2);
   --probador-resultado: #ffffff;
   /* 28/10/2026: «Toca y mira» con aspecto de escritorio (opción A):
      el código, un VS Code oscuro; igual en los dos temas. */
@@ -532,17 +532,35 @@
   --sim-boton-ambar: #febc2e;
   --sim-boton-verde: #28c840;
   --cristal-pista-fondo: rgba(255, 255, 255, 0.55);
-  --cristal-pista-borde: rgba(63, 98, 18, 0.35);
+  --cristal-pista-borde: rgba(42, 122, 46, 0.45);
   --cristal-pista-brillo: rgba(255, 255, 255, 0.9);
-  --cristal-pista-luz: rgba(101, 163, 13, 0.28);
-  --cristal-pista-trama: rgba(63, 98, 18, 0.12);
+  --cristal-pista-luz: rgba(42, 122, 46, 0.2);
+  --cristal-pista-trama: rgba(42, 122, 46, 0.08);
   --cinta-papel: rgba(164, 18, 106, 0.28);
 
   --tile-mezcla: 100%;
   --tile-fondo: #ffffff;
   --tile-texto: #ffffff;
   --tile-texto-suave: rgba(255, 255, 255, 0.85);
+  /* Escritorio (02/11/2026): fondo de pantalla, ventana, menú tipo
+     Finder, carteles de cristal de los apartados y resaltado. */
+  --escritorio-1: #a9cbe3;
+  --escritorio-2: #4f7ea8;
+  --ventana-sombra: 0 24px 70px rgba(10, 30, 50, 0.32), 0 0 0 1px rgba(0, 0, 0, 0.12);
+  --sidebar-bg: #ececf0;
+  --cartel-fondo: rgba(255, 255, 255, 0.36);
+  --cartel-borde: rgba(255, 255, 255, 0.95);
+  --cartel-brillo: #ffffff;
+  --cartel-sombra: rgba(20, 20, 40, 0.1);
+  --cartel-opaco: #f3f3f6;
+  --cartel-manchas: 0.7;
+  --resalte: #8f4a00;
+  --resalte-raya: #f5b301;
+  --tinte-asig: 10%;
+  --letra-asig-mezcla: #000000;
+  --letra-asig: 82%;
 }
+
 
 /* ============================================================
    Transición entre páginas
@@ -698,20 +716,18 @@ body {
   .toggle-col { display: none; }
 }
 
-/* La rejilla del fondo. Va en un pseudoelemento fijo y no en el
-   background de body porque así no se arrastra al hacer scroll ni se
-   repinta con cada desplazamiento. En modo claro --rejilla es casi
-   transparente, de modo que este mismo bloque sirve para los dos temas. */
+/* El fondo de pantalla del escritorio (02/11/2026; antes, la rejilla).
+   Va en un pseudoelemento fijo y no en el background de body porque así
+   no se arrastra al hacer scroll ni se repinta con cada desplazamiento.
+   Se ve alrededor de la ventana (ver «Escritorio», al final); en el
+   móvil la ventana ocupa toda la pantalla y lo tapa. */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image:
-    linear-gradient(var(--rejilla) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rejilla) 1px, transparent 1px);
-  background-size: var(--rejilla-paso) var(--rejilla-paso);
+  background-image: linear-gradient(160deg, color-mix(in srgb, var(--asig-1) 35%, var(--escritorio-1)), var(--escritorio-2) 75%);
 }
 
 /* Sin esto, un <pre> muy largo puede ensanchar su columna del grid
@@ -743,8 +759,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 h1, h2, h3 {
-  text-transform: uppercase;
-  letter-spacing: 0.01em;
+  /* Hasta el 02/11/2026, en mayúsculas; con el escritorio, en minúscula
+     normal y un poco más juntas. */
+  letter-spacing: -0.01em;
 }
 
 /* ============================================================
@@ -773,20 +790,6 @@ h1, h2, h3 {
   border-bottom: 1px solid var(--border);
 }
 
-/* El filo de neón de debajo de la barra. Es el único sitio de la web
-   donde se cruzan los tres acentos, y es lo que marca el estilo en
-   cuanto abres la página. En modo claro los colores ya son oscuros,
-   así que queda como una línea fina de color. */
-.barra::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent-warm) 70%, transparent);
-  opacity: 0.7;
-}
 
 .barra__marca {
   font-family: var(--font-mono);
@@ -826,7 +829,6 @@ h1, h2, h3 {
 .barra__enlace[aria-current="page"] {
   color: var(--accent);
   border-bottom-color: var(--accent);
-  text-shadow: var(--glow-suave);
 }
 
 /* ---- Los dos selectores, aplanados dentro de la barra ---- */
@@ -1000,10 +1002,6 @@ h1, h2, h3 {
   border-left-color: var(--accent);
   background: var(--surface-2);
   font-weight: 600;
-  /* Única sombra de toda la hoja, y no separa nada del fondo: es el
-     resplandor del filo de la sesión en la que estás. En modo claro
-     --glow-sesion vale "none" y desaparece sola. */
-  box-shadow: var(--glow-sesion);
 }
 
 /* ---------- Índice de la página (columna derecha) ---------- */
@@ -1073,31 +1071,6 @@ h1, h2, h3 {
   margin-bottom: 2.2rem;
 }
 
-/* Escuadras de neón en dos esquinas de la cabecera. Es el sustituto
-   de la sombra (que la guía prohíbe): marca la tarjeta sin separarla
-   del fondo con un degradado. Puramente decorativo. */
-.card::before,
-.card::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-}
-.card::before {
-  top: -1px;
-  left: -1px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-  border-radius: 6px 0 0 0;
-}
-.card::after {
-  right: -1px;
-  bottom: -1px;
-  border-right: 2px solid var(--accent-warm);
-  border-bottom: 2px solid var(--accent-warm);
-  border-radius: 0 0 6px 0;
-}
 
 /* Cabecera de una sesión: el número grande a la izquierda y el resto
    del texto a su derecha. */
@@ -1121,7 +1094,6 @@ h1, h2, h3 {
   margin-top: 0.1rem;
   color: transparent;
   -webkit-text-stroke: 2px var(--accent);
-  text-shadow: var(--glow);
 }
 
 /* Si el navegador no sabe dibujar letra hueca, se pinta maciza: sin
@@ -1148,8 +1120,6 @@ h1, h2, h3 {
   line-height: 1.15;
   color: var(--text);
   margin: 0.7rem 0 0.8rem;
-  /* En modo claro --glow vale "none" y esta línea no hace nada. */
-  text-shadow: var(--glow);
 }
 
 .card p {
@@ -2422,8 +2392,6 @@ font {
   padding: 0;
   margin-bottom: 2.4rem;
 }
-:root[data-pagina="portada"] .main-content > .card::before,
-:root[data-pagina="portada"] .main-content > .card::after { display: none; }
 
 :root[data-pagina="portada"] .card h1 {
   font-size: clamp(2.1rem, 5.5vw, 3.2rem);
@@ -2449,26 +2417,6 @@ font {
 :root[data-pagina="portada"] #portada-semana,
 :root[data-pagina="portada"] .pie { grid-column: 1 / -1; }
 
-/* El barrido de luz. Solo en la portada: en una sesión, algo que se
-   mueve por detrás del texto mientras lees es justo lo que no
-   quieres. Va en position fixed para no mover nada de sitio, y
-   prefers-reduced-motion lo deja quieto. */
-:root[data-pagina="portada"] body::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 170px;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, var(--barrido), transparent);
-  animation: barrer 10s linear infinite;
-}
-@keyframes barrer {
-  from { transform: translateY(-190px); }
-  to { transform: translateY(100vh); }
-}
 
 :root[data-pagina="portada"] #indice-portada {
   display: grid;
@@ -3015,7 +2963,6 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   font-family: var(--font-mono);
   font-size: 0.85rem;
   cursor: pointer;
-  box-shadow: var(--glow-suave);
   animation: entrar 0.25s ease both;
 }
 .retomar:hover { background: var(--surface-2); }
@@ -3075,7 +3022,6 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   border-radius: 8px;
   background: var(--surface);
   overflow: hidden;
-  box-shadow: var(--glow-suave);
   animation: entrar 0.16s ease both;
 }
 
@@ -3195,24 +3141,6 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 :root[data-color-asig="1"] { --color-activa: var(--accent-warm); }
 :root[data-color-asig="2"] { --color-activa: var(--accent-lima); }
 
-/* La franja: 4px de color macizo pegados arriba del todo. Es lo que
-   se ve con el rabillo del ojo sin leer nada. */
-:root[data-color-asig] .barra::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--color-activa);
-  pointer-events: none;
-}
-/* El filo de debajo deja de ser el degradado de tres colores y pasa a
-   ser el de la asignatura. */
-:root[data-color-asig] .barra::after {
-  background: var(--color-activa);
-  opacity: 1;
-}
 
 .barra__marca--asignatura {
   display: inline-flex;
@@ -3691,23 +3619,6 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .boton { transition: background-color 0.12s ease, transform 0.08s ease; }
 .boton:active { transform: translateY(1px); }
 
-/* ---- Apartados de la lección: número en una etiqueta ----
-   Una sesión larga se "escanea" por estos números. */
-.leccion h2::before {
-  content: counter(h2count);
-  display: inline-block;
-  min-width: 1.9em;
-  padding: 0.18em 0.45em;
-  margin-right: 0.6em;
-  border-radius: 5px;
-  background: var(--accent);
-  color: var(--boton-texto);
-  font-size: 0.85em;
-  line-height: 1.3;
-  text-align: center;
-  vertical-align: 0.08em;
-}
-.leccion h3::before { color: var(--accent); }
 
 /* ---- Preguntas a mano: hoja de cuaderno ----
    Líneas horizontales y margen rojo: se entiende "esto va en el
@@ -3991,15 +3902,6 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .card h1 { font-size: clamp(1.7rem, 3.4vw, 2.6rem); }
 .leccion h2 { font-size: 1.3rem; }
 
-/* ---- Ambiente: neblina del color de la asignatura arriba ---- */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background: radial-gradient(60rem 26rem at 70% -6rem, color-mix(in srgb, var(--color-activa, var(--accent)) var(--neblina), transparent), transparent 70%);
-}
 
 /* ---- Cabeceras de sesión y de asignatura: escena ---- */
 .card--sesion,
@@ -4007,11 +3909,7 @@ body::after {
   overflow: hidden;
   border-color: color-mix(in srgb, var(--color-activa, var(--accent)) 55%, var(--border));
   background: linear-gradient(120deg, color-mix(in srgb, var(--color-activa, var(--accent)) 12%, var(--surface)) 0%, var(--surface) 60%);
-  /* Luz, no separación (como --glow-sesion). */
-  box-shadow: var(--glow-cabecera);
 }
-.card--sesion::before, .card--asignatura::before { top: 0; left: 0; }
-.card--sesion::after, .card--asignatura::after { right: 0; bottom: 0; }
 .card__escena {
   position: absolute;
   inset: 0;
@@ -4024,24 +3922,6 @@ body::after {
 .card--asignatura > .card__escena { grid-column: auto; grid-row: auto; justify-self: stretch; }
 .card--sesion > :not(.card__escena),
 .card--asignatura > :not(.card__escena) { position: relative; z-index: 1; }
-.card__circuito {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 440px;
-  height: 100%;
-  background-color: var(--circuito);
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M0 30h60l20 20h60l20-20h60M40 120V80l20-20h40M150 0v30M180 120V90l20-20h20'/%3E%3Ccircle cx='60' cy='30' r='3'/%3E%3Ccircle cx='160' cy='50' r='3'/%3E%3Ccircle cx='100' cy='60' r='3'/%3E%3Ccircle cx='150' cy='30' r='3'/%3E%3C/svg%3E"), linear-gradient(90deg, transparent, #000 60%);
-  -webkit-mask-size: 440px auto, 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: right top, 0 0;
-  -webkit-mask-composite: source-in;
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120' fill='none' stroke='%23000' stroke-width='1'%3E%3Cpath d='M0 30h60l20 20h60l20-20h60M40 120V80l20-20h40M150 0v30M180 120V90l20-20h20'/%3E%3Ccircle cx='60' cy='30' r='3'/%3E%3Ccircle cx='160' cy='50' r='3'/%3E%3Ccircle cx='100' cy='60' r='3'/%3E%3Ccircle cx='150' cy='30' r='3'/%3E%3C/svg%3E"), linear-gradient(90deg, transparent, #000 60%);
-  mask-size: 440px auto, 100% 100%;
-  mask-repeat: no-repeat;
-  mask-position: right top, 0 0;
-  mask-composite: intersect;
-}
 .card__marca-agua {
   position: absolute;
   right: -1.5rem;
@@ -4059,22 +3939,10 @@ body::after {
 :root[data-tema="claro"] .card--asignatura h1 { text-shadow: none; }
 
 @media (max-width: 640px) {
-  .card__circuito { width: 280px; -webkit-mask-size: 280px auto, 100% 100%; mask-size: 280px auto, 100% 100%; }
   .card__marca-agua { opacity: 0.09; right: -2rem; bottom: -2rem; }
   .card__marca-agua svg { width: 9rem; height: 9rem; }
 }
 
-/* ---- Apartados: franja de luz que separa el título del texto ---- */
-.leccion h2 {
-  border-top: none;
-  margin-top: 2.6rem;
-  padding: 0.55rem 0.9rem;
-  border-left: 3px solid var(--accent);
-  border-radius: 0 6px 6px 0;
-  background: linear-gradient(90deg, var(--banda), transparent 75%);
-  text-shadow: var(--glow-suave);
-}
-.leccion h2:first-child { padding-top: 0.55rem; }
 
 /* ---- Hojas de cuaderno ----
    Dentro de la hoja se redefinen los colores de siempre (--text,
@@ -4185,7 +4053,7 @@ body::after {
 :root[data-pagina="portada"] .asignatura-card .asignatura-card__titulo,
 :root[data-pagina="portada"] .asignatura-card:hover .asignatura-card__titulo {
   color: var(--tile-texto);
-  font-family: var(--font-cartel);
+  font-family: var(--font-titulo);
   font-weight: 400;
   font-size: clamp(1.5rem, 7vw, 1.9rem);
   line-height: 1.02;
@@ -4205,7 +4073,7 @@ body::after {
 
 /* 2. Titular enorme de la portada general, en letra de cartel. */
 :root[data-pagina="portada"] .main-content > .card h1 {
-  font-family: var(--font-cartel);
+  font-family: var(--font-titulo);
   font-weight: 400;
   font-size: clamp(2.4rem, 10vw, 6.4rem);
   line-height: 0.95;
@@ -4222,13 +4090,6 @@ body::after {
 .grupo { padding: 0.35rem 0.75rem; }
 .boton { padding: 0.65rem 1.4rem; }
 
-/* 4. Menú de arriba en mayúsculas mono, más espaciado. */
-.barra__enlace {
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
 /* Móviles muy estrechos: si Anton no llega a cargar, la letra de
    reserva es más ancha y «ACTIVIDADES_» se salía unos píxeles. */
 @media (max-width: 360px) {
@@ -5985,4 +5846,466 @@ body::after {
 @media print {
   .leccion .rs-indice { display: none; }
   .leccion .rs-bloque { break-inside: avoid; }
+}
+
+/* ============================================================
+   Escritorio (02/11/2026)
+   ============================================================
+   Carles eligió entre prototipos con capturas (A minimal tipo Apple,
+   B escritorio, C máquina): B, la web como una ventana de macOS sobre
+   un fondo de pantalla, con:
+   - cabecera de sesión y de asignatura en degradado de la asignatura,
+     con el dibujo de la unidad (sin las pistas de circuito);
+   - apartados (h2) como cartel de cristal tipo Liquid Glass, con dos
+     manchas del degradado detrás para que el cristal se note;
+   - subapartados (h3) como cartel pequeño tintado con flecha ↳, y su
+     contenido sangrado con una raya del color de la asignatura;
+   - lo importante (<strong> en la explicación) en ámbar y subrayado;
+   - menú lateral tipo Finder: «Unidad N» encima del nombre, «SN» en
+     cada sesión, hueca si no la has abierto y rellena si sí;
+   - letra Instrument Sans para leer y Bricolage Grotesque en títulos.
+   Sin cambios: hojas de cuaderno, pizarra, simulaciones, «Toca y mira».
+   El significado de los acentos se queda (azul = actividad, rosa =
+   aviso y preguntas a mano, verde = pista); cambian los tonos.
+   La paleta vive arriba, en los dos bloques de tema. Este bloque va al
+   final para ganar a las reglas de cada componente sin reescribirlas:
+   es la capa del escritorio. Se quitaron la rejilla, los brillos de
+   neón, la neblina, las pistas de circuito, las escuadras de las
+   tarjetas, las mayúsculas de los títulos y las letras Chakra Petch y
+   Anton. La portada general también va dentro de la ventana.
+   ============================================================ */
+
+/* ---- Degradado de cada asignatura (posición en la lista, como
+   --color-activa). Los mismos en los dos temas: la cabecera es un
+   objeto de color, como la pizarra. Texto blanco con contraste AA. ---- */
+:root {
+  --asig-op-1: #4a52d6;   /* Operaciones: índigo → violeta */
+  --asig-op-2: #8a3fd0;
+  --asig-inst-1: #c93a22; /* Instalaciones: coral → rosa */
+  --asig-inst-2: #b8205a;
+  --asig-proy-1: #0d7d7a; /* Proyecto: turquesa → azul */
+  --asig-proy-2: #2357b8;
+}
+:root[data-color-asig="0"] { --asig-1: var(--asig-op-1); --asig-2: var(--asig-op-2); }
+:root[data-color-asig="1"] { --asig-1: var(--asig-inst-1); --asig-2: var(--asig-inst-2); }
+:root[data-color-asig="2"] { --asig-1: var(--asig-proy-1); --asig-2: var(--asig-proy-2); }
+/* Portada y calendario: cada asignatura con su color (el de texto,
+   mezclado para que se lea sobre el fondo de cada tema)… */
+[data-color="0"] { --color-asig: color-mix(in srgb, var(--asig-op-1) var(--letra-asig), var(--letra-asig-mezcla)); }
+[data-color="1"] { --color-asig: color-mix(in srgb, var(--asig-inst-1) var(--letra-asig), var(--letra-asig-mezcla)); }
+[data-color="2"] { --color-asig: color-mix(in srgb, var(--asig-proy-1) var(--letra-asig), var(--letra-asig-mezcla)); }
+/* …y las tarjetas grandes, en su degradado. */
+:root[data-pagina="portada"] .asignatura-card[data-color="0"] { --color-asig: var(--asig-op-1); background: linear-gradient(135deg, var(--asig-op-1), var(--asig-op-2)); }
+:root[data-pagina="portada"] .asignatura-card[data-color="1"] { --color-asig: var(--asig-inst-1); background: linear-gradient(135deg, var(--asig-inst-1), var(--asig-inst-2)); }
+:root[data-pagina="portada"] .asignatura-card[data-color="2"] { --color-asig: var(--asig-proy-1); background: linear-gradient(135deg, var(--asig-proy-1), var(--asig-proy-2)); }
+
+.card { border-radius: 14px; }
+:root[data-color-asig] { --color-activa: var(--asig-1); }
+:root {
+  --asig-tinte: color-mix(in srgb, var(--asig-1) var(--tinte-asig), var(--bg));
+  --asig-letra: color-mix(in srgb, var(--asig-1) var(--letra-asig), var(--letra-asig-mezcla));
+}
+/* color-mix se resuelve donde se declara: se repite con los atributos
+   para que lleve el color de la asignatura y del tema. */
+:root[data-tema="claro"],
+:root[data-color-asig] {
+  --asig-tinte: color-mix(in srgb, var(--asig-1) var(--tinte-asig), var(--bg));
+  --asig-letra: color-mix(in srgb, var(--asig-1) var(--letra-asig), var(--letra-asig-mezcla));
+}
+
+/* ---- Letra ---- */
+body { font-family: var(--font-body); }
+
+/* ---- La ventana (escritorio) ----
+   El <html> pinta el fondo para que el del <body> se quede en su caja
+   (si no, el navegador lo extiende a toda la pantalla). El fondo de
+   pantalla es el body::before (ver arriba). */
+html { background: var(--escritorio-2); }
+@media (min-width: 1000px) {
+  body {
+    width: min(1520px, 100% - 40px);
+    margin: 20px auto;
+    min-height: calc(100vh - 40px);
+    border-radius: 12px;
+    overflow: clip;
+    box-shadow: var(--ventana-sombra);
+  }
+  .sidebar,
+  .indice { height: calc(100vh - var(--alto-barra) - 20px); }
+  /* Los botones de plegar van fijos a la pantalla: se suma el margen
+     de la ventana (el % de un elemento fijo es el ancho de la pantalla
+     sin la barra de desplazamiento). */
+  .toggle-menu { left: calc(max(20px, (100% - 1520px) / 2) + var(--ancho-menu) - 13px); }
+  :root[data-menu="oculto"] .toggle-menu { left: calc(max(20px, (100% - 1520px) / 2) + 6px); }
+  .toggle-indice { right: calc(max(20px, (100% - 1520px) / 2) + var(--ancho-indice) - 13px); }
+  :root[data-indice="oculto"] .toggle-indice { right: calc(max(20px, (100% - 1520px) / 2) + 6px); }
+}
+
+/* ---- Barra de la ventana ---- */
+.barra { background: var(--barra-bg); backdrop-filter: none; gap: 1rem; }
+.barra::before {
+  content: "";
+  position: static;
+  flex: none;
+  width: 52px;
+  height: 12px;
+  background:
+    radial-gradient(circle at 6px 6px, var(--semaforo-rojo) 5.5px, transparent 6px),
+    radial-gradient(circle at 26px 6px, var(--semaforo-ambar) 5.5px, transparent 6px),
+    radial-gradient(circle at 46px 6px, var(--semaforo-verde) 5.5px, transparent 6px);
+}
+.barra__marca--asignatura {
+  font-family: var(--font-titulo);
+  font-size: 0.98rem;
+  color: var(--text);
+  border: 0;
+  background: none;
+  padding: 0.25rem 0.4rem;
+  border-radius: 7px;
+}
+.barra__marca--asignatura:hover { color: var(--text); background: var(--surface-2); }
+.barra__marca--asignatura .barra__icono { color: var(--asig-letra); }
+.barra__enlace {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--text-dim);
+  padding: 0.3rem 0.65rem;
+  border: 0;
+  border-radius: 7px;
+}
+.barra__enlace:hover { color: var(--text); background: var(--surface-2); }
+.barra__enlace[aria-current="page"] { color: var(--text); background: var(--surface-2); border: 0; text-shadow: none; }
+.barra__buscar { border-radius: 8px; font-family: var(--font-body); }
+
+/* ---- Menú lateral, tipo Finder ---- */
+.sidebar { background: var(--sidebar-bg); padding: 1.2rem 0.7rem; }
+.sidebar__asignatura-nombre,
+:root[data-color-asig] .sidebar__asignatura-nombre {
+  font-family: var(--font-titulo);
+  font-size: 0.98rem;
+  color: var(--text);
+  border-left: 0;
+  padding-left: 0;
+}
+.sidebar__cambiar { font-family: var(--font-body); font-size: 0.8rem; }
+.unidad summary {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 500;
+  padding: 0.38rem 0.45rem;
+  border-radius: 7px;
+  align-items: flex-start;
+}
+.unidad summary::before { margin-top: 0.55rem; font-size: 0.7rem; }
+.unidad__chip,
+.unidad__chip--icono {
+  min-width: 0;
+  width: 1.15rem;
+  height: auto;
+  padding: 0;
+  margin-top: 0.3rem;
+  border: 0;
+  background: none;
+  color: var(--asig-letra);
+}
+.unidad__chip--icono svg { width: 1.15rem; height: 1.15rem; stroke-width: 2.2; }
+.unidad__nombre { font-weight: 600; line-height: 1.25; padding-top: 0; }
+.unidad__etiqueta {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-faint);
+  margin-bottom: 0.05rem;
+}
+.sesion,
+.sesion--con-numero {
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  border-left: 0;
+  border-radius: 7px;
+  margin-left: 1rem;
+  padding: 0.38rem 0.5rem;
+  color: var(--text-dim);
+}
+.sesion--con-numero { grid-template-columns: auto minmax(0, 1fr); column-gap: 0.5rem; }
+.sesion__num {
+  width: auto;
+  min-width: 1.85rem;
+  height: 1.2rem;
+  padding: 0 0.28rem;
+  border-radius: 5px;
+  font-size: 0.66rem;
+  margin-top: 0.05rem;
+}
+.sesion.activa {
+  background: var(--accent);
+  color: var(--boton-texto);
+  box-shadow: none;
+}
+.sesion.activa .sesion__num {
+  background: transparent;
+  border-color: currentColor;
+  color: inherit;
+}
+.sesion.activa .sesion__fecha { color: inherit; opacity: 0.85; }
+
+/* ---- Índice de la página ---- */
+.indice__titulo { font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; text-transform: none; letter-spacing: 0; }
+.indice a {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  margin-left: 0;
+  padding-left: 0.7rem;
+  border-left: 2px solid var(--border);
+}
+.indice a:hover { border-left-color: var(--asig-1); }
+.indice a.indice__sub { padding-left: 1.4rem; font-size: 0.78rem; }
+
+.volver { font-family: var(--font-body); color: var(--asig-letra); }
+
+/* ---- Cabeceras de sesión y de asignatura: degradado ---- */
+.card--sesion,
+.card--asignatura {
+  background: linear-gradient(120deg, var(--asig-1), var(--asig-2));
+  border: 0;
+  border-radius: 16px;
+  color: var(--asig-texto);
+  box-shadow: 0 18px 40px -26px var(--asig-1);
+}
+.card--sesion::before, .card--sesion::after,
+.card--asignatura::before, .card--asignatura::after { display: none; }
+.card__marca-agua { color: var(--asig-texto); opacity: 0.2; }
+.card--sesion .numero-sesion {
+  font-family: var(--font-titulo);
+  -webkit-text-stroke: 2px var(--asig-texto);
+  -webkit-text-stroke-color: var(--asig-texto);
+  text-shadow: none;
+}
+@supports not (-webkit-text-stroke: 1px red) {
+  .card--sesion .numero-sesion { color: var(--asig-texto); }
+}
+.card--sesion h1, .card--asignatura h1,
+:root[data-tema="claro"] .card--sesion h1,
+:root[data-tema="claro"] .card--asignatura h1 {
+  color: var(--asig-texto);
+  text-shadow: none;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.card--sesion p, .card--asignatura p { color: var(--asig-texto-suave); }
+.card--sesion .tema-asignatura,
+.card--asignatura .tema-asignatura { color: var(--asig-texto); font-family: var(--font-body); letter-spacing: 0.02em; }
+.card--sesion .badge, .card--asignatura .badge {
+  background: var(--asig-velo);
+  border-color: transparent;
+  color: var(--asig-texto);
+  font-family: var(--font-body);
+}
+.card--sesion .selector-grupo,
+.card--asignatura .selector-grupo { color: var(--asig-texto); }
+.card--sesion .selector-grupo *,
+.card--asignatura .selector-grupo * { color: var(--asig-texto); }
+.card--sesion .grupo, .card--asignatura .grupo {
+  background: var(--asig-velo);
+  border-color: var(--asig-velo-borde);
+}
+.card--sesion .grupo[aria-pressed="true"], .card--asignatura .grupo[aria-pressed="true"],
+.card--sesion .grupo--activo, .card--asignatura .grupo--activo {
+  background: var(--asig-texto);
+  color: var(--asig-1);
+}
+
+/* ---- Apartados (h2): cartel de cristal ---- */
+.leccion { isolation: isolate; }
+.leccion h2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-titulo);
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  text-shadow: none;
+  margin: 2.8rem 0 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--cartel-borde);
+  border-radius: 16px;
+  background: var(--cartel-fondo);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: inset 0 1px 0 var(--cartel-brillo), inset 0 -1px 0 var(--cartel-sombra), 0 10px 30px -18px var(--asig-1);
+}
+.leccion h2:first-child { margin-top: 0.6rem; padding-top: 0.6rem; }
+.leccion h2::before {
+  content: counter(h2count);
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.35rem;
+  margin: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--asig-1), var(--asig-2));
+  color: var(--asig-texto);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: 0;
+  box-shadow: inset 0 1px 0 var(--asig-velo-borde);
+}
+/* Las dos manchas de color que se ven a través del cristal. */
+.leccion h2::after {
+  content: "";
+  position: absolute;
+  inset: -10px 12% -10px -1%;
+  z-index: -1;
+  border-radius: 24px;
+  background:
+    radial-gradient(closest-side at 18% 50%, var(--asig-1), transparent),
+    radial-gradient(closest-side at 62% 55%, var(--asig-2), transparent);
+  filter: blur(16px);
+  opacity: var(--cartel-manchas);
+  pointer-events: none;
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .leccion h2 { background: var(--cartel-opaco); }
+  .leccion h2::after { display: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .leccion h2 { background: var(--cartel-opaco); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .leccion h2::after { display: none; }
+}
+
+/* ---- Subapartados (h3): flecha, cartel pequeño y sangrado ---- */
+.leccion .subseccion:not(.subseccion--tarea) {
+  margin: 1.6rem 0 1.6rem 0.9rem;
+  padding-left: 1.3rem;
+  border-left: 3px solid transparent;
+  border-image: linear-gradient(var(--asig-1), color-mix(in srgb, var(--asig-2) 10%, transparent)) 1;
+}
+.leccion .subseccion:not(.subseccion--tarea) > h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 0.9rem -0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9px;
+  background: var(--asig-tinte);
+  color: var(--asig-letra);
+  font-family: var(--font-titulo);
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.leccion .subseccion:not(.subseccion--tarea) > h3::before {
+  content: "↳\00a0" counter(h2count) "." counter(h3count);
+  flex: none;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+/* ---- Lo importante: color y raya ---- */
+.leccion strong {
+  color: var(--resalte);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--resalte-raya);
+  text-decoration-thickness: 0.16em;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: none;
+}
+/* Dentro de los objetos con aspecto propio (hoja, escritorio, «Toca y
+   mira»…) y en los pasos de las actividades (ahí la negrita marca el
+   botón o el menú que hay que pulsar, no algo que estudiar), como
+   antes: el color de su acento y sin raya. */
+.leccion :is(.papel, .actividad, .lab, .probador, .pasos, .aviso-examen, .ejemplo-web, .subseccion--tarea, .h3--tarea, .salida) strong {
+  color: var(--accent);
+  text-decoration: none;
+}
+/* El resumen pone el color de cada bloque; aquí solo se quita la raya.
+   Las diapositivas no se tocan: llevan su tiza amarilla ondulada. */
+.leccion .resumen strong { text-decoration: none; }
+
+/* El título en negrita de un aviso («📋 Cómo trabajar esta sesión»)
+   es un rótulo, no algo que estudiar: sin raya, en el rosa del aviso. */
+.leccion .nota > p:first-child > strong:only-child { color: var(--accent-warm); text-decoration: none; }
+
+/* Pistas y «Antes de seguir»: la misma letra que el texto. */
+.leccion > details > summary,
+.leccion .subseccion > details > summary { font-family: var(--font-body); }
+
+/* ---- Portada general ----
+   También dentro de la ventana. El titular deja la letra de cartel y las
+   mayúsculas (Bricolage, como el resto de títulos), sin el cursor «_»
+   detrás; las tarjetas de asignatura, igual. La marca de la barra dice
+   «Asignaturas» en vez de la ruta «~/asignaturas_». */
+.barra__prompt, .barra__cursor { display: none; }
+.barra__marca:not(.barra__marca--asignatura) {
+  font-family: var(--font-titulo);
+  font-size: 0.98rem;
+  color: var(--text);
+  text-transform: capitalize;
+}
+.barra__marca:not(.barra__marca--asignatura):hover { color: var(--text); }
+:root[data-pagina="portada"] .main-content > .card h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+:root[data-pagina="portada"] .card h1::after { content: none; }
+:root[data-pagina="portada"] .asignatura-card .asignatura-card__titulo,
+:root[data-pagina="portada"] .asignatura-card:hover .asignatura-card__titulo {
+  text-transform: none;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  line-height: 1.1;
+}
+:root[data-pagina="portada"] .asignatura-card { border-radius: 16px; }
+:root[data-pagina="portada"] .main-content { padding-block: 2.6rem 3.4rem; }
+
+/* ---- Barra en escritorio estrecho ----
+   Entre 1000 y 1400 px los botones de idioma se montaban sobre el
+   buscador (pasaba ya antes del rediseño, ver guia-web 4, Maquetación).
+   Por orden: nombre corto de la asignatura, buscador sin texto y, al
+   final, sin semáforo. */
+@media (min-width: 761px) and (max-width: 1400px) {
+  .barra__marca--asignatura .barra__nombre { display: none; }
+  .barra__marca--asignatura .barra__nombre-corto { display: inline; }
+}
+@media (min-width: 761px) and (max-width: 1240px) {
+  .barra__buscar-texto, .barra__atajo { display: none; }
+  .barra { gap: 0.6rem; }
+  .barra__nav { gap: 0.2rem; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .barra::before { display: none; }
+}
+
+/* ---- Móvil y tableta: sin ventana ---- */
+@media (max-width: 760px) {
+  .barra::before { display: none; }
+  .leccion h2 { font-size: 1.22rem; padding: 0.55rem 0.8rem; gap: 0.6rem; }
+  .leccion h2::before { min-width: 1.75rem; height: 1.75rem; font-size: 0.85rem; }
+  .leccion .subseccion:not(.subseccion--tarea) { margin-left: 0.15rem; padding-left: 0.9rem; }
+  .leccion .subseccion:not(.subseccion--tarea) > h3 { font-size: 1.02rem; margin-left: -0.2rem; }
+}
+@media print {
+  body { width: auto !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; }
+  body::before, .barra::before, .leccion h2::after { display: none !important; }
+  .leccion h2 { background: none; box-shadow: none; border-color: #999; }
+  .card--sesion, .card--asignatura { background: none; color: #000; box-shadow: none; border: 1px solid #999; }
 }
