@@ -3,7 +3,7 @@
 <ol>
 <li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
 <li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota. Muchas hablan de un dibujo, una tabla o un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
 <li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
 <li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
 <li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
@@ -26,6 +26,14 @@
 <p>Así es una tarjeta de expansión, pinchada en su ranura de la placa base. Toca cada parte.</p>
 <div class="lab" data-lab="piezas" data-figura="tarjeta" aria-label="Una tarjeta de red por dentro"></div>
 
+<div class="papel pregunta" data-n="1">
+<p>¿Qué tipos de tarjeta de red hay según cómo se conectan al equipo?</p>
+</div>
+
+<div class="papel pregunta" data-n="2" data-titulo="(V/F) Tarjetas PCMCIA">
+<p>(V/F) Según la nota del apartado «Cómo es una tarjeta de red», hoy las tarjetas de red de los portátiles son PCMCIA.</p>
+</div>
+
 <h2>Las luces: lo primero que se mira</h2>
 <p>Junto al conector RJ-45, la tarjeta y cada puerto del switch llevan uno o dos <strong>LED testigo</strong>. Antes de tocar ningún menú, un técnico <strong>mira las luces</strong>.</p>
 <table>
@@ -38,12 +46,29 @@
 <div class="lab" data-lab="piezas" data-figura="switch" aria-label="Un switch por delante"></div>
 <div class="nota">Truco para probar un latiguillo (te servirá en el taller): enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada. Si enciende, pero el switch lo marca en el color de 100 Mbps cuando debería ir a 1 Gbps, sospecha del par azul o del marrón.</div>
 
+<div class="papel pregunta" data-n="3" data-titulo="Las luces LINK y ACT">
+<p>Toca las luces del switch en el laboratorio de arriba y mira su tabla. ¿Qué indican LINK y ACT? ¿Qué pasa con LINK al sacar un latiguillo?</p>
+</div>
+
+<div class="papel pregunta" data-n="4">
+<p>(ABC) Enchufas el cable y no se enciende LINK en ninguno de los dos lados. Sospechas primero del…</p>
+<ul>
+    <li>a) navegador</li>
+    <li>b) cable</li>
+    <li>c) DNS</li>
+  </ul>
+</div>
+
 <h2>Autonegociación</h2>
 <p>Al enchufar el cable, la tarjeta y el switch se «presentan» y acuerdan dos cosas: la <strong>velocidad</strong> y el <strong>modo dúplex</strong>. Es la <strong>autonegociación</strong>, y elige lo mejor que admitan <strong>los dos</strong> (y el cable).</p>
 <ul>
 <li>Tarjeta 10/100/1000 + switch 10/100 → <strong>100 Mbps</strong>.</li>
 <li>Tarjeta 10/100/1000 + switch gigabit + cable con un par mal → normalmente <strong>100 Mbps</strong>, porque a gigabit hacen falta los cuatro pares.</li>
 </ul>
+
+<div class="papel pregunta" data-n="5">
+<p>¿Qué es la <strong>autonegociación</strong>? Una tarjeta gigabit conectada a un switch 10/100, ¿a qué velocidad va?</p>
+</div>
 
 <h2>Flujo de datos: simplex, semidúplex y dúplex</h2>
 <p>El modo dúplex dice <strong>en qué sentido y cuándo</strong> pueden ir los datos por un enlace. Es un concepto general de cualquier comunicación, no solo de redes:</p>
@@ -90,6 +115,27 @@
 
 <div data-actividad="u3s10-enlace"></div>
 
+<div class="papel pregunta" data-n="6" data-titulo="Simplex, semidúplex y dúplex">
+<p>Mira el dibujo de los tres modos de flujo. Explica simplex, semidúplex y dúplex con el ejemplo de la vida diaria de cada uno.</p>
+</div>
+
+<div class="papel pregunta" data-n="7">
+<p>(ABC) Un enlace entre un PC y un switch funciona en…</p>
+<ul>
+    <li>a) simplex</li>
+    <li>b) semidúplex</li>
+    <li>c) dúplex</li>
+  </ul>
+</div>
+
+<div class="papel pregunta" data-n="8">
+<p>¿Qué modo usa un hub y cuál un switch? ¿Qué consecuencia tiene?</p>
+</div>
+
+<div class="papel pregunta" data-n="9" data-titulo="El duplex mismatch">
+<p>Lee la nota de la avería clásica del apartado. ¿Qué es un duplex mismatch? ¿Cómo se evita?</p>
+</div>
+
 <h2>Verlo en Windows</h2>
 <h3>Administrador de dispositivos</h3>
 <p>Botón derecho sobre Inicio → <strong>Administrador de dispositivos</strong> → <strong>Adaptadores de red</strong>. Ahí aparecen todas las tarjetas del equipo.</p>
@@ -99,41 +145,28 @@
 <li>En sus <strong>Propiedades → Opciones avanzadas</strong> está «Velocidad y dúplex», normalmente en <em>Negociación automática</em>. Déjalo así salvo que haya un motivo.</li>
 </ul>
 
+<div class="papel pregunta" data-n="10">
+<p>¿Cómo compruebas en Windows si la tarjeta de red funciona y a qué velocidad ha enlazado?</p>
+</div>
+
+<div class="papel pregunta" data-n="11">
+<p>(V/F) Un triángulo amarillo en el Administrador de dispositivos indica que la tarjeta está deshabilitada.</p>
+</div>
+
 <h3>Velocidad a la que ha enlazado</h3>
 <p>En <strong>Configuración → Red e Internet → Ethernet</strong> aparece la «velocidad de vínculo». O, más rápido, en PowerShell:</p>
 <pre><code>Get-NetAdapter</code></pre>
 <p>La columna <strong>LinkSpeed</strong> te dice si ha negociado 100 Mbps o 1 Gbps, y <strong>Status</strong> si hay enlace (<em>Up</em>) o no (<em>Disconnected</em>). Y para la MAC, ya los conoces: <code>ipconfig /all</code> o <code>getmac</code>.</p>
 
+<div class="papel pregunta" data-n="12">
+<p>Mira las luces del puerto de red de tu PC y del switch, abre el Administrador de dispositivos y ejecuta <code>Get-NetAdapter</code>. Apunta lo que ves y qué significa.</p>
+</div>
+
 <h2>Preguntas de la sesión</h2>
-<div class="papel">
+<div class="papel papel--lista">
 <p class="papel__titulo">Sesión 10 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol>
-<li>¿Qué tipos de tarjeta de red hay según cómo se conectan al equipo?</li>
-<li>(V/F) Hoy las tarjetas de red de los portátiles son PCMCIA.</li>
-<li>¿Qué indican las luces <strong>LINK</strong> y <strong>ACT</strong>?</li>
-<li>(ABC) Enchufas el cable y no se enciende LINK en ninguno de los dos lados. Sospechas primero del…
-  <ul>
-    <li>a) navegador</li>
-    <li>b) cable</li>
-    <li>c) DNS</li>
-  </ul>
-</li>
-<li>¿Qué es la <strong>autonegociación</strong>? Una tarjeta gigabit conectada a un switch 10/100, ¿a qué velocidad va?</li>
-<li>Explica <strong>simplex</strong>, <strong>semidúplex</strong> y <strong>dúplex</strong> con un ejemplo de la vida diaria de cada uno.</li>
-<li>(ABC) Un enlace entre un PC y un switch funciona en…
-  <ul>
-    <li>a) simplex</li>
-    <li>b) semidúplex</li>
-    <li>c) dúplex</li>
-  </ul>
-</li>
-<li>¿Qué modo usa un hub y cuál un switch? ¿Qué consecuencia tiene?</li>
-<li>¿Qué es un <em>duplex mismatch</em>? ¿Cómo se evita?</li>
-<li>¿Cómo compruebas en Windows si la tarjeta de red funciona y a qué velocidad ha enlazado?</li>
-<li>(V/F) Un triángulo amarillo en el Administrador de dispositivos indica que la tarjeta está deshabilitada.</li>
-<li>Mira las luces del puerto de red de tu PC y del switch, abre el Administrador de dispositivos y ejecuta <code>Get-NetAdapter</code>. Apunta lo que ves y qué significa.</li>
-</ol>
+<p>Ya las has visto por el camino. Comprueba que tienes las 12 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol data-lista-preguntas></ol>
 </div>
 
 <h2>⭐ Sube nota</h2>

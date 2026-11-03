@@ -3,7 +3,7 @@
 <ol>
 <li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
 <li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota. Muchas hablan de un dibujo, una tabla o un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
 <li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
 <li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
 <li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
@@ -21,10 +21,31 @@
 
 <p>Las topologías físicas son seis: <strong>punto a punto, bus, anillo, estrella, árbol y malla</strong>. Hoy vemos las tres primeras; en la próxima sesión, las otras tres.</p>
 
+<div class="papel pregunta" data-n="1">
+<p>¿Qué es la <strong>topología</strong> de una red? Explica la diferencia entre topología física y lógica.</p>
+</div>
+
+<div class="papel pregunta" data-n="2" data-titulo="El hub: estrella física, ¿y lógica?">
+<p>Lee la nota del primer apartado (el ejemplo del hub). Un hub forma una estrella física: ¿qué topología lógica tiene? ¿Por qué?</p>
+</div>
+
+<div class="papel pregunta" data-n="3">
+<p>Nombra las seis topologías físicas.</p>
+</div>
+
 <h2>Punto a punto</h2>
 <p>La más sencilla: <strong>dos equipos y un cable</strong> entre ellos. No hay nadie más con quien compartir el medio, así que no hay que decidir quién habla.</p>
 <p>La usas cuando unes dos portátiles con un cable para pasar un archivo grande, o cuando dos switches se enlazan entre sí. De hecho, cada cable de una red en estrella es un enlace punto a punto.</p>
 <p>Todas las demás son <strong>multipunto</strong>: varios equipos comparten la red y hay que organizar quién usa el medio en cada momento.</p>
+
+<div class="papel pregunta" data-n="4">
+<p>(ABC) Unir dos portátiles con un cable para pasarse un archivo es una topología…</p>
+<ul>
+    <li>a) en bus</li>
+    <li>b) punto a punto</li>
+    <li>c) en anillo</li>
+  </ul>
+</div>
 
 <h2>Bus</h2>
 <div class="salida">
@@ -67,6 +88,22 @@
 </td></tr>
 </table>
 <p>Hoy está <strong>obsoleta</strong> en redes locales. La estudiamos porque explica muchas cosas de Ethernet (las colisiones, por ejemplo) y porque aún quedan instalaciones antiguas.</p>
+
+<div class="papel pregunta" data-n="5" data-titulo="Dibuja un bus y su problema">
+<p>Mira el dibujo de la topología en bus. Dibuja tú una con cuatro ordenadores y una impresora, marca los terminadores y explica, con su tabla de ventajas e inconvenientes, su principal problema.</p>
+</div>
+
+<div class="papel pregunta" data-n="6">
+<p>¿Qué es un <strong>terminador</strong> y para qué sirve? ¿Qué pasa si quitas uno?</p>
+</div>
+
+<div class="papel pregunta" data-n="7">
+<p>¿Qué es una colisión? ¿Por qué en el bus hay colisiones?</p>
+</div>
+
+<div class="papel pregunta" data-n="8">
+<p>(V/F) En una red en bus, si se estropea la tarjeta de red de un PC, se cae toda la red.</p>
+</div>
 
 <h2>Anillo</h2>
 <div class="salida">
@@ -122,38 +159,40 @@
 
 <div data-actividad="u3s2-bus-o-anillo"></div>
 
-<h2>Preguntas de la sesión</h2>
-<div class="papel">
-<p class="papel__titulo">Sesión 2 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol>
-<li>¿Qué es la <strong>topología</strong> de una red? Explica la diferencia entre topología física y lógica.</li>
-<li>Un hub forma una estrella física. ¿Qué topología lógica tiene? ¿Por qué?</li>
-<li>Nombra las seis topologías físicas.</li>
-<li>(ABC) Unir dos portátiles con un cable para pasarse un archivo es una topología…
-  <ul>
-    <li>a) en bus</li>
-    <li>b) punto a punto</li>
-    <li>c) en anillo</li>
-  </ul>
-</li>
-<li>Dibuja una topología en <strong>bus</strong> con cuatro ordenadores y una impresora. Marca los terminadores y explica su principal inconveniente.</li>
-<li>¿Qué es un <strong>terminador</strong> y para qué sirve? ¿Qué pasa si quitas uno?</li>
-<li>¿Qué es una colisión? ¿Por qué en el bus hay colisiones?</li>
-<li>(V/F) En una red en bus, si se estropea la tarjeta de red de un PC, se cae toda la red.</li>
-<li>Dibuja una topología en <strong>anillo</strong> con cinco ordenadores e indica con flechas el sentido de los datos. ¿Qué pasa si falla un equipo?</li>
-<li>¿Qué es el <strong>testigo</strong> (token) en una red Token Ring y para qué sirve?</li>
-<li>(ABC) En Token Ring no hay colisiones porque…
-  <ul>
+<div class="papel pregunta" data-n="9" data-titulo="Dibuja un anillo">
+<p>Mira el dibujo del anillo. Dibuja tú uno con cinco ordenadores e indica con flechas el sentido de los datos. ¿Qué pasa si falla un equipo?</p>
+</div>
+
+<div class="papel pregunta" data-n="10">
+<p>¿Qué es el <strong>testigo</strong> (token) en una red Token Ring y para qué sirve?</p>
+</div>
+
+<div class="papel pregunta" data-n="11">
+<p>(ABC) En Token Ring no hay colisiones porque…</p>
+<ul>
     <li>a) los datos van muy despacio</li>
     <li>b) solo transmite el equipo que tiene el testigo</li>
     <li>c) usa fibra óptica</li>
   </ul>
-</li>
-<li>¿Qué ventaja tiene el <strong>doble anillo</strong>?</li>
-<li>(V/F) Token Ring usaba fibra óptica.</li>
-<li>Escribe dos ventajas y dos inconvenientes del bus y del anillo. ¿Por qué ya casi no se usan?</li>
-</ol>
+</div>
+
+<div class="papel pregunta" data-n="12">
+<p>¿Qué ventaja tiene el <strong>doble anillo</strong>?</p>
+</div>
+
+<div class="papel pregunta" data-n="13" data-titulo="(V/F) Token Ring y la fibra">
+<p>(V/F) Según la nota del apartado «Anillo», Token Ring usaba fibra óptica.</p>
+</div>
+
+<div class="papel pregunta" data-n="14">
+<p>Escribe dos ventajas y dos inconvenientes del bus y del anillo. ¿Por qué ya casi no se usan?</p>
+</div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel papel--lista">
+<p class="papel__titulo">Sesión 2 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p>Ya las has visto por el camino. Comprueba que tienes las 14 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol data-lista-preguntas></ol>
 </div>
 
 <h2>⭐ Sube nota</h2>

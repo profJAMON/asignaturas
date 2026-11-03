@@ -3,7 +3,7 @@
 <ol>
 <li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
 <li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
+<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota. Muchas hablan de un dibujo, una tabla o un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
 <li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
 <li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
 <li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
@@ -56,6 +56,22 @@
 </table>
 <div class="nota">El punto débil del centro tiene arreglo barato: tener un switch de repuesto en el armario. Cambiarlo cuesta diez minutos. Por eso las ventajas de la estrella ganan de largo.</div>
 
+<div class="papel pregunta" data-n="1" data-titulo="Dibuja una estrella">
+<p>Mira el dibujo de la estrella. Dibuja tú una con un switch, cuatro PC y una impresora.</p>
+</div>
+
+<div class="papel pregunta" data-n="2">
+<p>Escribe tres ventajas y dos inconvenientes de la topología en estrella.</p>
+</div>
+
+<div class="papel pregunta" data-n="3">
+<p>(V/F) En una estrella, si se rompe el cable de un equipo, se cae toda la red.</p>
+</div>
+
+<div class="papel pregunta" data-n="4" data-titulo="El punto débil de la estrella">
+<p>Lee la nota de debajo de la tabla de la estrella. ¿Cuál es el punto débil de la estrella y cómo se arregla de forma barata?</p>
+</div>
+
 <h2>Árbol (o estrella extendida)</h2>
 <p>Cuando la red crece, no se lleva un cable desde cada puesto del edificio hasta un único switch: se ponen <strong>varias estrellas colgando de un nodo principal</strong>. Un switch troncal une los switches de cada planta, y de cada uno salen los cables a sus equipos. Por su forma de ramas se llama <strong>árbol</strong>, y también <strong>estrella extendida</strong> o jerárquica.</p>
 <div class="salida">
@@ -88,9 +104,17 @@
 <li><strong>Inconvenientes</strong>: si falla el nodo troncal o el cable que baja a una planta, se queda sin red todo lo que cuelga de él. Es más compleja de planificar.</li>
 </ul>
 
+<div class="papel pregunta" data-n="5">
+<p>¿Qué es una topología en <strong>árbol</strong>? ¿Dónde se usa? Dibuja una para un edificio de tres plantas con cuatro equipos por planta.</p>
+</div>
+
 <h2>Malla</h2>
 <p>En la malla los equipos se unen <strong>directamente entre sí</strong>, con enlaces dedicados. Si <strong>cada equipo está unido con todos los demás</strong>, se llama <strong>malla completa</strong> (o totalmente conexa).</p>
 <p>La gracia es la <strong>redundancia</strong>: si se corta un enlace, los datos van por otro camino. Por eso se usa donde la red <em>no se puede caer</em>: entre los routers de Internet, en los centros de datos o entre las sedes de un banco. El precio es mucho cable, muchos puertos y una configuración complicada.</p>
+
+<div class="papel pregunta" data-n="6">
+<p>¿Qué es una <strong>malla completa</strong>? ¿Cuándo compensa usarla?</p>
+</div>
 
 <h3>¿Cuántos cables necesita una malla completa?</h3>
 <p>Cada uno de los <em>n</em> equipos se une con los otros <em>n − 1</em>. Eso daría <em>n · (n − 1)</em> cables, pero así contamos cada cable dos veces (el de A a B y el de B a A son el mismo). Por eso se divide entre dos:</p>
@@ -123,8 +147,33 @@
 
 <div data-actividad="u3s3-malla"></div>
 
+<div class="papel pregunta" data-n="7">
+<p>Escribe la fórmula de los enlaces de una malla completa y explica por qué se divide entre 2.</p>
+</div>
+
+<div class="papel pregunta" data-n="8" data-titulo="Enlaces de mallas de 5, 8 y 12">
+<p>Mira el dibujo de las tres mallas y comprueba con la fórmula que con 4 equipos salen los enlaces del dibujo. Después calcula los enlaces de una malla completa de 5, 8 y 12 equipos.</p>
+</div>
+
+<div class="papel pregunta" data-n="9">
+<p>(ABC) Una malla completa de 6 equipos tiene…</p>
+<ul>
+    <li>a) 12 enlaces</li>
+    <li>b) 15 enlaces</li>
+    <li>c) 30 enlaces</li>
+  </ul>
+</div>
+
 <h2>Redes híbridas</h2>
 <p>En la vida real rara vez encontrarás una topología pura. Una empresa puede tener <strong>estrellas</strong> en cada planta, un <strong>árbol</strong> que las une en el edificio y una <strong>malla parcial</strong> entre sus sedes para que no se corte nunca. A eso se le llama <strong>topología híbrida</strong> o mixta.</p>
+
+<div class="papel pregunta" data-n="10">
+<p>¿Qué es una topología <strong>híbrida</strong>? Pon un ejemplo.</p>
+</div>
+
+<div class="papel pregunta" data-n="11">
+<p>(V/F) En la vida real casi siempre se encuentran topologías puras.</p>
+</div>
 
 <h2>Las seis, de un vistazo</h2>
 <table>
@@ -139,38 +188,28 @@
 
 <div data-actividad="u3s3-relacionar"></div>
 
-<h2>Preguntas de la sesión</h2>
-<div class="papel">
-<p class="papel__titulo">Sesión 3 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol>
-<li>Dibuja una topología en <strong>estrella</strong> con un switch, cuatro PC y una impresora.</li>
-<li>Escribe tres ventajas y dos inconvenientes de la topología en estrella.</li>
-<li>(V/F) En una estrella, si se rompe el cable de un equipo, se cae toda la red.</li>
-<li>¿Cuál es el punto débil de la estrella y cómo se soluciona de forma barata?</li>
-<li>¿Qué es una topología en <strong>árbol</strong>? ¿Dónde se usa? Dibuja una para un edificio de tres plantas con cuatro equipos por planta.</li>
-<li>¿Qué es una <strong>malla completa</strong>? ¿Cuándo compensa usarla?</li>
-<li>Escribe la fórmula de los enlaces de una malla completa y explica por qué se divide entre 2.</li>
-<li>Calcula los enlaces de una malla completa de 5, 8 y 12 equipos.</li>
-<li>(ABC) Una malla completa de 6 equipos tiene…
-  <ul>
-    <li>a) 12 enlaces</li>
-    <li>b) 15 enlaces</li>
-    <li>c) 30 enlaces</li>
-  </ul>
-</li>
-<li>¿Qué topología necesita más cableado? ¿Cuál es la más usada en redes locales? ¿Por qué?</li>
-<li>(ABC) La topología habitual de una red local actual es…
-  <ul>
+<div class="papel pregunta" data-n="12" data-titulo="Más cable y más usada, con la tabla">
+<p>Con la tabla «Las seis, de un vistazo»: ¿qué topología necesita más cable? ¿Cuál es la más usada en redes locales? ¿Por qué?</p>
+</div>
+
+<div class="papel pregunta" data-n="13">
+<p>(ABC) La topología habitual de una red local actual es…</p>
+<ul>
     <li>a) el bus</li>
     <li>b) el anillo</li>
     <li>c) la estrella</li>
   </ul>
-</li>
-<li>¿Qué es una topología <strong>híbrida</strong>? Pon un ejemplo.</li>
-<li>(V/F) En la vida real casi siempre se encuentran topologías puras.</li>
-<li>Una empresa tiene cuatro sedes y quiere que, si se corta una conexión, sigan comunicadas. ¿Qué topología le propones? ¿Cuántos enlaces hacen falta?</li>
-</ol>
+</div>
+
+<div class="papel pregunta" data-n="14">
+<p>Una empresa tiene cuatro sedes y quiere que, si se corta una conexión, sigan comunicadas. ¿Qué topología le propones? ¿Cuántos enlaces hacen falta?</p>
+</div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel papel--lista">
+<p class="papel__titulo">Sesión 3 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p>Ya las has visto por el camino. Comprueba que tienes las 14 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol data-lista-preguntas></ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
