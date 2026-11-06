@@ -360,7 +360,7 @@
       'Colócala bien respecto a la ventana.',
       'Deja sitio delante del teclado para las muñecas.',
     ],
-    final: 'Apunta en tu cuaderno cómo has dejado la silla, la pantalla (distancia y altura), la ventana y el teclado, y qué notabas al principio con cada cosa mal colocada (pregunta 12).',
+    final: 'Así queda bien: espalda apoyada y pies en el suelo, pantalla a 40 cm o más con el borde de arriba a la altura de los ojos, ventana de lado y teclado a la altura de los codos.',
     crear(ctx) {
       const { el, pantalla } = ctx;
       const s = { silla: 'alta', respaldo: false, distancia: 30, altura: 'abajo', ventana: 'detras-pantalla', teclado: false };

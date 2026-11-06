@@ -243,6 +243,12 @@
   --sim-cuidado: #a4126a;
   --sim-nota: #fff2a8;
   --sim-nota-texto: #3b3200;
+  /* Escenas guiadas (06/11/2026): velo y marcas encima de una ilustración
+     fija (oscura), así que valen igual en los dos temas. */
+  --escena-velo: rgba(4, 6, 14, 0.8);
+  --escena-mal: #ff5c8a;
+  --escena-bien: #52e07e;
+  --escena-chapa-texto: #10131c;
   --sim-sombra: 0 14px 32px rgba(0, 0, 0, 0.32);
   --sim-blanco: #ffffff;
   --sim-boton-rojo: #ff5f57;
@@ -526,6 +532,12 @@
   --sim-cuidado: #a4126a;
   --sim-nota: #fff2a8;
   --sim-nota-texto: #3b3200;
+  /* Escenas guiadas (06/11/2026): velo y marcas encima de una ilustración
+     fija (oscura), así que valen igual en los dos temas. */
+  --escena-velo: rgba(4, 6, 14, 0.8);
+  --escena-mal: #ff5c8a;
+  --escena-bien: #52e07e;
+  --escena-chapa-texto: #10131c;
   --sim-sombra: 0 14px 32px rgba(0, 0, 0, 0.32);
   --sim-blanco: #ffffff;
   --sim-boton-rojo: #ff5f57;
@@ -6334,4 +6346,158 @@ html { overflow-y: auto; }
   body::before, .barra::before, .leccion h2::after { display: none !important; }
   .leccion h2 { background: none; box-shadow: none; border-color: #999; }
   .card--sesion, .card--asignatura { background: none; color: #000; box-shadow: none; border: 1px solid #999; }
+}
+
+/* ============================================================
+   Escenas guiadas y preguntas de votación (06/11/2026)
+   ============================================================
+   Para dar la clase en la pantalla grande. Ver js/escenas.js.
+   Escena: la ilustración arriba (o a la izquierda desde 1100 px), los
+   apartados en botones y el panel con la pregunta y lo destapado.
+   Acento azul: es algo que se hace. Votación: acento rosa, como las
+   preguntas. Sin colores sueltos: --escena-* en los dos temas. */
+.leccion .escena {
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "lienzo" "mandos" "panel";
+  padding: 0.9rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.leccion .escena__lienzo { grid-area: lienzo; position: relative; line-height: 0; border-radius: 10px; overflow: hidden; }
+.leccion .escena__fondo { display: block; width: 100%; height: auto; }
+.leccion .escena__capa { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.leccion .escena__velo { fill: var(--escena-velo); opacity: 0; transition: opacity 0.35s ease; }
+.leccion .escena--velada .escena__velo { opacity: 1; }
+.leccion .escena__aro { fill: none; stroke-width: 4; stroke-dasharray: 10 6; }
+.leccion .escena__aro--mal { stroke: var(--escena-mal); }
+.leccion .escena__aro--bien { stroke: var(--escena-bien); }
+.leccion .escena__chapa--mal { fill: var(--escena-mal); }
+.leccion .escena__chapa--bien { fill: var(--escena-bien); }
+.leccion .escena__chapa-num { fill: var(--escena-chapa-texto); font-family: var(--font-titulo); font-weight: 800; }
+.leccion .escena__mandos { grid-area: mandos; align-self: start; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.leccion .escena__boton {
+  font: 600 1rem var(--font-body);
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem 0.45rem 0.5rem;
+  min-height: 44px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.leccion .escena__boton:hover { border-color: var(--accent); }
+.leccion .escena__boton[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.leccion .escena__boton--todo,
+.leccion .escena__boton--pantalla { padding-left: 0.95rem; }
+.leccion .escena__boton--pantalla { margin-left: auto; }
+.leccion .escena__num {
+  display: inline-grid; place-items: center;
+  width: 1.7rem; height: 1.7rem; border-radius: 50%;
+  font: 700 0.9rem var(--font-mono);
+  background: var(--surface-2); color: var(--text);
+}
+.leccion .escena__boton[aria-pressed="true"] .escena__num { background: var(--bg); color: var(--accent); }
+.leccion .escena__panel { grid-area: panel; font-size: 1.15rem; }
+.leccion .escena__panel p { margin: 0.3rem 0; }
+.leccion .escena__ayuda { color: var(--text-dim); }
+.leccion .escena__subtitulo { font: 700 1.3rem var(--font-titulo); color: var(--text); }
+.leccion .escena__pregunta { font-size: 1.3rem; color: var(--text); }
+.leccion .escena__destapar,
+.leccion .escena__siguiente {
+  margin-top: 0.6rem;
+  font: 700 1.05rem var(--font-body);
+  min-height: 44px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.leccion .escena__destapar { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); }
+.leccion .escena__siguiente { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.leccion .escena__lista { list-style: none; margin: 0.5rem 0 0.8rem; padding: 0; display: grid; gap: 0.5rem; }
+.leccion .escena__item {
+  display: grid; grid-template-columns: auto auto minmax(0, 1fr); gap: 0.5rem; align-items: start;
+  padding: 0.5rem 0.7rem; border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+}
+.leccion .escena__item--mal { border-left: 4px solid var(--error); }
+.leccion .escena__item--bien { border-left: 4px solid var(--ok); }
+.leccion .escena__marca { font-weight: 800; font-size: 1.2rem; line-height: 1.4; }
+.leccion .escena__item--mal .escena__marca { color: var(--error); }
+.leccion .escena__item--bien .escena__marca { color: var(--ok); }
+.leccion .escena__nitem {
+  display: inline-grid; place-items: center; min-width: 1.7rem; height: 1.7rem; margin-top: 0.1rem;
+  border-radius: 50%; font: 700 0.95rem var(--font-mono); background: var(--surface-2); color: var(--text);
+}
+@media (min-width: 1100px) {
+  .leccion .escena {
+    grid-template-columns: minmax(0, 2.2fr) minmax(16rem, 1fr);
+    grid-template-areas: "lienzo panel" "mandos panel";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+  }
+}
+/* En pantalla completa (el proyector): la escena tan grande como quepa. */
+.escena:fullscreen {
+  background: var(--bg);
+  padding: 1.2rem;
+  border: 0;
+  overflow: auto;
+  grid-template-columns: minmax(0, 2.2fr) minmax(18rem, 1fr);
+  grid-template-areas: "lienzo panel" "mandos panel";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+}
+.escena:fullscreen .escena__fondo { max-height: calc(100vh - 7rem); width: auto; max-width: 100%; margin: 0 auto; }
+.escena:fullscreen .escena__lienzo { justify-self: center; }
+.escena:fullscreen .escena__panel { font-size: 1.35rem; }
+.leccion .escena :is(.escena__panel, .escena__lista) strong { color: inherit; text-decoration: none; }
+
+/* Pregunta de votación */
+.leccion .votacion {
+  margin: 1.3rem 0;
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-warm);
+  border-radius: 14px;
+  background: var(--surface);
+}
+.leccion .votacion__cab { margin: 0 0 0.4rem; font: 700 0.95rem var(--font-body); color: var(--accent-warm); }
+.leccion .votacion__cab small { font-weight: 400; color: var(--text-dim); margin-left: 0.4rem; }
+.leccion .votacion__pregunta { font-size: 1.3rem; font-weight: 600; margin: 0.2rem 0 0.7rem; }
+.leccion .votacion__opciones { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.leccion .votacion__opciones li {
+  display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;
+  font-size: 1.15rem; padding: 0.45rem 0.6rem; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg);
+}
+.leccion .votacion__letra {
+  display: inline-grid; place-items: center; flex: none;
+  width: 2.3rem; height: 2.3rem; border-radius: 8px;
+  font: 800 1.3rem var(--font-titulo);
+  background: var(--accent-warm); color: var(--bg);
+}
+.leccion .votacion--revelada .votacion__opciones li:not([data-correcta]) { opacity: 0.45; }
+.leccion .votacion--revelada .votacion__opciones li[data-correcta] { border-color: var(--ok); background: var(--ok-fondo); }
+.leccion .votacion__ok { margin-left: auto; font-weight: 700; color: var(--ok); }
+.leccion .votacion__revelar {
+  margin-top: 0.8rem;
+  font: 700 1rem var(--font-body);
+  min-height: 44px; padding: 0.45rem 1.1rem; border-radius: 999px; cursor: pointer;
+  color: var(--accent-warm); background: transparent; border: 1px solid var(--accent-warm);
+}
+.leccion .votacion__porque { margin-top: 0.6rem; padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--bg); border: 1px dashed var(--border); }
+.leccion .votacion__porque p { margin: 0.2rem 0; }
+@media (prefers-reduced-motion: reduce) {
+  .leccion .escena__velo { transition: none; }
+}
+@media print {
+  .leccion .escena__mandos, .leccion .votacion__revelar { display: none; }
+  .leccion .votacion__porque[hidden] { display: block; }
 }

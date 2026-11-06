@@ -186,6 +186,8 @@ function pintarLeccion(contenidoHtml) {
   if (typeof iniciarProbadores === 'function') iniciarProbadores(contenedor);
   /* Laboratorios de teoría (terminal, URL, petición, viaje). Ver js/laboratorios.js. */
   if (typeof iniciarLaboratorios === 'function') iniciarLaboratorios(contenedor);
+  /* Escenas guiadas y preguntas de votación (clase en la pantalla grande). Ver js/escenas.js. */
+  if (typeof iniciarEscenas === 'function') iniciarEscenas(contenedor);
   /* Marca código y salidas como no traducibles ANTES de que el traductor
      automático vea el contenido recién insertado. Ver js/idioma.js. */
   if (typeof protegerCodigo === 'function') protegerCodigo(contenedor);
