@@ -1,21 +1,33 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota. Muchas hablan de un dibujo, una tabla o un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
 </div>
 
+
 <h2>Por qué se dibuja una red</h2>
 <p>Imagina que te llaman de una oficina porque «no va Internet en el despacho del fondo». Si hay un <strong>mapa de la red</strong> colgado en el armario, en dos minutos sabes de qué roseta sale ese puesto, a qué puerto del switch llega y por dónde pasa el cable. Si no lo hay, te toca ir siguiendo cables por el falso techo.</p>
-<figure class="captura">
+<p>Mirad la escena por partes antes de seguir.</p>
+<div class="escena" aria-label="Escena: un técnico buscando un cable en el falso techo">
 <img src="data/instalaciones/medios-cobre/img/u3/techo-sin-mapa.webp" width="900" height="673" alt="Un técnico subido a una escalera mete la cabeza por una placa abierta del falso techo de una oficina; arriba hay una maraña enorme de cables iguales y sin etiquetar que van en todas direcciones" loading="lazy">
-<figcaption>Sin mapa de red: buscando un cable entre cientos iguales.</figcaption>
-</figure>
+<div class="escena__paso" data-titulo="El techo" data-pregunta="Mirad los cables del techo. ¿Cuál va al despacho del fondo?">
+<p data-zona="560,140,330,110" data-tipo="mal">Cientos de cables <strong>iguales y sin etiquetar</strong>: imposible saber cuál es cuál.</p>
+</div>
+<div class="escena__paso" data-titulo="El técnico" data-pregunta="¿Qué está haciendo él?">
+<p data-zona="292,255,70,62" data-tipo="mal">Buscando un cable <strong>a ciegas</strong>, subido a una escalera. Puede tardar horas.</p>
+</div>
+<div class="escena__paso" data-titulo="La oficina" data-pregunta="¿Cuántos puestos hay que podrían ser el del fondo?">
+<p data-zona="560,585,330,80" data-tipo="mal">Decenas de puestos. Sin mapa, no sabes de qué roseta ni de qué puerto del switch sale cada uno.</p>
+</div>
+</div>
+
 <p>El mapa (o <strong>esquema</strong>) de red es el plano del instalador. Sirve para montar la red, para mantenerla y para que el siguiente técnico no tenga que adivinar nada.</p>
 
 <h2>Mapa físico y mapa lógico</h2>
@@ -24,17 +36,10 @@
 <li>El <strong>mapa lógico</strong> dibuja cómo se organizan los datos: direcciones IP, subredes, qué servicio da cada servidor. Lo usarás en la unidad de subredes.</li>
 </ul>
 
-<div class="papel pregunta" data-n="1" data-titulo="El técnico en el techo: mapa físico y lógico">
-<p>Mira la imagen del técnico con la cabeza metida en el techo, al principio de la sesión. ¿Qué le habría ahorrado un mapa físico? ¿En qué se diferencia el mapa físico del mapa lógico?</p>
-</div>
-
-<div class="papel pregunta" data-n="2">
-<p>(ABC) Las direcciones IP y las subredes se dibujan en el mapa…</p>
-<ul>
-    <li>a) físico</li>
-    <li>b) lógico</li>
-    <li>c) de rosetas</li>
-  </ul>
+<div class="votacion">
+<p class="votacion__pregunta">Las direcciones IP y las subredes se dibujan en el mapa…</p>
+<ol class="votacion__opciones"><li>Físico</li><li data-correcta>Lógico</li></ol>
+<div class="votacion__porque"><p><strong>Lógico</strong>. El físico dibuja aparatos, cables, rosetas y puertos.</p></div>
 </div>
 
 <h2>Los símbolos</h2>
@@ -72,10 +77,6 @@
 <p class="pie-figura">Símbolos simplificados. El switch lleva flechas en los dos sentidos; el router, dentro de un círculo.</p>
 </div>
 
-<div class="papel pregunta" data-n="3" data-titulo="Los símbolos del esquema">
-<p>Copia del dibujo de los símbolos los de PC, portátil, servidor, impresora, switch, router, punto de acceso e Internet, con su nombre debajo.</p>
-</div>
-
 <h2>Qué tiene que llevar un buen mapa físico</h2>
 <ol>
 <li><strong>Todos los aparatos</strong> con su símbolo y un <strong>nombre único</strong>: PC-TALLER-03, SW-PLANTA1, IMPR-SECRETARÍA…</li>
@@ -87,20 +88,15 @@
 </ol>
 <div class="nota">Un mapa que no se actualiza es peor que no tener mapa, porque te hace buscar donde no es. La regla del instalador: <strong>si cambias un cable, cambias el mapa</strong>. Y la etiqueta del cable dice lo mismo que el mapa.</div>
 
-<div class="papel pregunta" data-n="4">
-<p>Escribe cinco cosas que tiene que llevar un buen mapa físico.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Un mapa desactualizado es mejor que no tener mapa.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Te hace buscar donde no es. <strong>Si cambias un cable, cambias el mapa.</strong></p></div>
 </div>
-
-<div class="papel pregunta" data-n="5" data-titulo="(V/F) El mapa desactualizado">
-<p>(V/F) Según la nota del apartado «Qué tiene que llevar un buen mapa físico», un mapa desactualizado es mejor que no tener mapa.</p>
-</div>
-
-<div class="papel pregunta" data-n="6">
-<p>¿Por qué hay que apuntar el número de puerto en el mapa?</p>
-</div>
-
-<div class="papel pregunta" data-n="7">
-<p>Pon tres ejemplos de nombres únicos para aparatos de una red, como los de la sesión.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Para qué sirve apuntar el puerto del switch en el mapa?</p>
+<ol class="votacion__opciones"><li>Para que quede más bonito</li><li data-correcta>Para saber a qué puerto llega cada puesto sin seguir el cable</li><li>Para saber la IP del equipo</li></ol>
+<div class="votacion__porque"><p>Para ir directo al <strong>puerto</strong> cuando falla un puesto, sin seguir cables por el techo.</p></div>
 </div>
 
 <h2>Leer un esquema</h2>
@@ -141,10 +137,6 @@
 </ul>
 <p>Tres trucos para que quede limpio: usa <strong>conectores</strong>, no líneas sueltas; <strong>alinea</strong> las cajas con la rejilla; y pon los nombres <strong>siempre en el mismo sitio</strong> (debajo, por ejemplo).</p>
 
-<div class="papel pregunta" data-n="8">
-<p>¿Qué dos programas gratuitos puedes usar para dibujar un mapa de red? Da tres trucos para que quede limpio.</p>
-</div>
-
 <h2>Práctica con el ordenador</h2>
 <p>Esta práctica se hace en el ordenador y <strong>se entrega el archivo</strong>. Antes, dibuja a mano en el cuaderno el mapa del taller (es la última pregunta de la sesión).</p>
 <ol>
@@ -155,19 +147,27 @@
 </ol>
 <p><strong>Si lo has hecho bien:</strong> al mover una caja, los conectores se quedan pegados a ella; y el archivo tiene siete páginas (el taller y las seis topologías).</p>
 
-<div class="papel pregunta" data-n="9">
-<p>Dibuja el mapa físico de una oficina con un router, un switch, tres PC, una impresora y un punto de acceso. Pon nombre a cada aparato e indica los puertos.</p>
-</div>
-
-<div class="papel pregunta" data-n="10">
-<p>Recorre el taller y dibuja su mapa físico: todos los equipos, el switch y el puerto al que llega cada cable.</p>
-</div>
-
 <h2>Preguntas de la sesión</h2>
-<div class="papel papel--lista">
+<div class="papel">
 <p class="papel__titulo">Sesión 4 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p>Ya las has visto por el camino. Comprueba que tienes las 10 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol data-lista-preguntas></ol>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>Mira la imagen del técnico con la cabeza metida en el techo, al principio de la sesión. ¿Qué le habría ahorrado un mapa físico? ¿En qué se diferencia el mapa físico del mapa lógico?</li>
+<li>(ABC) Las direcciones IP y las subredes se dibujan en el mapa…
+<ul>
+    <li>a) físico</li>
+    <li>b) lógico</li>
+    <li>c) de rosetas</li>
+  </ul></li>
+<li>Copia del dibujo de los símbolos los de PC, portátil, servidor, impresora, switch, router, punto de acceso e Internet, con su nombre debajo.</li>
+<li>Escribe cinco cosas que tiene que llevar un buen mapa físico.</li>
+<li>(V/F) Según la nota del apartado «Qué tiene que llevar un buen mapa físico», un mapa desactualizado es mejor que no tener mapa.</li>
+<li>¿Por qué hay que apuntar el número de puerto en el mapa?</li>
+<li>Pon tres ejemplos de nombres únicos para aparatos de una red, como los de la sesión.</li>
+<li>¿Qué dos programas gratuitos puedes usar para dibujar un mapa de red? Da tres trucos para que quede limpio.</li>
+<li>Dibuja el mapa físico de una oficina con un router, un switch, tres PC, una impresora y un punto de acceso. Pon nombre a cada aparato e indica los puertos.</li>
+<li>Recorre el taller y dibuja su mapa físico: todos los equipos, el switch y el puerto al que llega cada cable.</li>
+</ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
@@ -179,13 +179,3 @@
 <li>En draw.io, busca la biblioteca de símbolos de red de Cisco. Dibuja dos símbolos que no salgan en la sesión y di qué aparato es cada uno.</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 ¿Por qué hay que apuntar el número de puerto en el mapa?</summary>
-<p>Porque cuando un puesto falla, lo primero es ir al switch y mirar <strong>su</strong> puerto: si tiene luz, si parpadea. Sin el número, tienes 24 o 48 puertos iguales para elegir.</p>
-</details>
-<details>
-<summary>🤔 Cambias un equipo de roseta y no tocas el mapa. ¿Qué problema causas?</summary>
-<p>El siguiente que busque ese equipo mirará la roseta equivocada. Un mapa desactualizado <strong>hace perder más tiempo</strong> que no tener ninguno.</p>
-</details>

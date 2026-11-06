@@ -1,14 +1,16 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Las <strong>preguntas obligatorias</strong> están por el camino, en hojas de rayas con un lápiz ✏️, justo debajo de lo que las responde. Contéstalas <strong>a mano en tu cuaderno</strong> cuando llegues a ellas, con su número. Van con nota. Muchas hablan de un dibujo, una tabla o un caso de esta página: sin leer lo de encima, no se pueden contestar. Al final tienes la lista de todas para comprobar que no te falta ninguna.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
 </div>
+
 
 <h2>El cable que vas a tocar todo el curso</h2>
 <p>El <strong>cable de par trenzado</strong> es el medio de las redes locales. Está en el latiguillo de tu PC, en las paredes del instituto y en el rack del taller. Si abres uno, dentro encuentras siempre lo mismo:</p>
@@ -50,8 +52,10 @@
 <p>Así es un cable de par trenzado por dentro. Toca cada parte y las de fuera se apartan para que la veas entera.</p>
 <div class="lab" data-lab="piezas" data-figura="cable-utp" aria-label="Un cable de par trenzado por dentro"></div>
 
-<div class="papel pregunta" data-n="1" data-titulo="El corte del cable de par trenzado">
-<p>Mira el corte del cable del dibujo y toca sus piezas en el laboratorio. Dibuja tú el corte y señala: cubierta, pares, hilo de color, hilo blanco rayado y cruceta.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Cuántos hilos lleva un cable de par trenzado de red?</p>
+<ol class="votacion__opciones"><li>4</li><li>6</li><li data-correcta>8</li><li>16</li></ol>
+<div class="votacion__porque"><p><strong>8 hilos</strong>, en 4 pares.</p></div>
 </div>
 
 <h2>Los cuatro pares y sus colores</h2>
@@ -64,20 +68,12 @@
 </table>
 <p>Los colores no son decoración: son la única forma de saber, en cada extremo, qué hilo es cuál. Por eso el orden en el conector está normalizado y no se improvisa.</p>
 
-<div class="papel pregunta" data-n="2" data-titulo="Los cuatro pares y sus colores">
-<p>Copia de la tabla de arriba los cuatro pares con sus dos colores.</p>
-</div>
-
-<div class="papel pregunta" data-n="3">
-<p>(ABC) Un cable de par trenzado tiene…</p>
-<ul>
-    <li>a) 4 hilos en 2 pares</li>
-    <li>b) 8 hilos en 4 pares</li>
-    <li>c) 8 hilos sueltos</li>
-  </ul>
-</div>
-
 <h2>¿Por qué trenzado?</h2>
+<div class="votacion">
+<p class="votacion__pregunta">Antes de explicarlo: ¿para qué se trenzan los hilos?</p>
+<ol class="votacion__opciones"><li>Para que el cable tenga más potencia</li><li data-correcta>Para defenderse del ruido</li><li>Para que ocupe menos</li></ol>
+<div class="votacion__porque"><p>Para defenderse del <strong>ruido</strong>. Ahora vemos cómo.</p></div>
+</div>
 <p>Mi presentación dice que se trenza «para aumentar la potencia del cable». No es eso. El trenzado sirve para <strong>defenderse del ruido</strong>. Te lo explico en dos pasos:</p>
 <ol>
 <li>Cada par no lleva «un uno por un hilo y un cero por otro»: los dos hilos llevan <strong>la misma señal, pero invertida</strong>. El receptor no mira cada hilo por separado, sino <strong>la diferencia</strong> entre los dos.</li>
@@ -104,18 +100,6 @@
 <p>Además, <strong>cada par lleva un paso de trenzado distinto</strong> (unos más apretados que otros). Así se evita que la señal de un par se cuele en el de al lado, un problema que se llama <strong>diafonía</strong> (<em>crosstalk</em>). Cuanto mayor es la categoría del cable, más cuidado está el trenzado.</p>
 <div class="nota">Consecuencia práctica para el taller: cuando montes un conector, <strong>destrenza lo mínimo</strong>. Cada centímetro que desenroscas de más es un centímetro sin protección contra el ruido. Lo comprobarás cuando crimpes en el taller.</div>
 
-<div class="papel pregunta" data-n="4" data-titulo="Por qué trenzado, con el dibujo">
-<p>Mira el dibujo del par trenzado con la interferencia. Explica con tus palabras por qué se trenzan los hilos. ¿Qué es la diafonía?</p>
-</div>
-
-<div class="papel pregunta" data-n="5">
-<p>(V/F) Los hilos se trenzan para aumentar la potencia del cable.</p>
-</div>
-
-<div class="papel pregunta" data-n="6" data-titulo="No destrenzar de más">
-<p>Lee la nota del taller del apartado «¿Por qué trenzado?». ¿Por qué no se deben destrenzar los pares más de lo necesario al poner un conector?</p>
-</div>
-
 <h2>Apantallado o sin apantallar</h2>
 <p>Donde hay mucho ruido eléctrico (una nave industrial, cerca de motores o de líneas de corriente) el trenzado no basta y se añade una <strong>pantalla</strong>: una lámina de aluminio o una malla metálica que hace de escudo.</p>
 <table>
@@ -126,21 +110,10 @@
 </table>
 <p>Los apantallados rinden mejor ante interferencias, pero son más caros, más gruesos, más difíciles de doblar y tienen una condición: <strong>la pantalla debe conectarse a tierra</strong> en el rack, con conectores apantallados. Una pantalla sin tierra puede comportarse como una antena y empeorar las cosas.</p>
 
-<div class="papel pregunta" data-n="7">
-<p>Explica la diferencia entre UTP, FTP y STP: qué pantalla lleva cada uno, una ventaja y un inconveniente.</p>
-</div>
-
-<div class="papel pregunta" data-n="8">
-<p>¿Qué hay que tener en cuenta al instalar cable apantallado?</p>
-</div>
-
-<div class="papel pregunta" data-n="9">
-<p>(ABC) Para cablear una oficina normal se usa…</p>
-<ul>
-    <li>a) UTP</li>
-    <li>b) STP</li>
-    <li>c) coaxial</li>
-  </ul>
+<div class="votacion">
+<p class="votacion__pregunta">Para cablear una oficina normal, sin motores ni máquinas cerca, se usa…</p>
+<ol class="votacion__opciones"><li data-correcta>UTP</li><li>STP</li><li>Coaxial</li></ol>
+<div class="votacion__porque"><p><strong>UTP</strong>: más barato y fácil. El apantallado, donde hay mucho ruido, y con la pantalla a tierra.</p></div>
 </div>
 
 <h3>La nomenclatura moderna</h3>
@@ -155,10 +128,6 @@
 
 <div data-actividad="u3s5-tipos"></div>
 
-<div class="papel pregunta" data-n="10" data-titulo="U/UTP y S/FTP, con la tabla">
-<p>Con la tabla de la nomenclatura moderna: ¿qué significan U/UTP y S/FTP? ¿Qué lleva cada uno, en global y por par?</p>
-</div>
-
 <h2>Rígido o flexible</h2>
 <p>Mi presentación los llama «subtipos». Por dentro, cada hilo puede ser:</p>
 <ul>
@@ -167,35 +136,72 @@
 </ul>
 <div class="nota">Cada tipo lleva su conector: los RJ-45 para hilo rígido y para hilo flexible tienen las cuchillas distintas. Con el conector equivocado, el cable da fallos intermitentes, que son los peores de encontrar.</div>
 
-<div class="papel pregunta" data-n="11">
-<p>¿Qué diferencia hay entre cable <strong>rígido</strong> y <strong>flexible</strong>? ¿Dónde se usa cada uno?</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué cable lleva un latiguillo, que se enchufa y desenchufa todo el día?</p>
+<ol class="votacion__opciones"><li>Rígido</li><li data-correcta>Flexible</li></ol>
+<div class="votacion__porque"><p><strong>Flexible</strong>: aguanta el movimiento. El rígido, por la pared.</p></div>
 </div>
-
-<div class="papel pregunta" data-n="12" data-titulo="(V/F) Conector de rígido y de flexible">
-<p>(V/F) Según la nota del apartado «Rígido o flexible», un conector RJ-45 para hilo rígido sirve igual de bien para hilo flexible.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Un RJ-45 para hilo rígido sirve igual de bien para hilo flexible.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Las cuchillas son distintas: con el equivocado salen <strong>fallos intermitentes</strong>.</p></div>
 </div>
 
 <h2>La cubierta: PVC o libre de halógenos</h2>
 <p>Enlaza con lo que viste de incendios en la Unidad 2. Si arde un cable con cubierta de <strong>PVC</strong>, suelta un humo negro, espeso y <strong>tóxico</strong>. Por eso en edificios con público (colegios, hospitales, oficinas) se instala cable <strong>LSZH</strong> (<em>Low Smoke Zero Halogen</em>): poco humo y sin halógenos. Suele reconocerse porque su cubierta no es gris, sino de otro color (verde, naranja, violeta), aunque lo seguro es leer lo que viene impreso en la cubierta.</p>
-<figure class="captura">
+<div class="escena" aria-label="Escena: el mismo fuego con cable de PVC y con cable LSZH">
 <img src="data/instalaciones/medios-cobre/img/u3/humo-halogenos.webp" width="900" height="506" alt="Dos mitades del mismo pasillo con fuego en la bandeja de cables del techo. A la izquierda, un humo negro y espeso llena el pasillo y la persona va encogida tapándose la boca. A la derecha, solo sale un poco de humo claro, el pasillo está iluminado y la persona camina hacia la salida abierta" loading="lazy">
-<figcaption>El mismo fuego en la bandeja de cables. Izquierda: cubierta de PVC, humo negro y tóxico que no deja ver la salida. Derecha: cable libre de halógenos (LSZH), poco humo y la salida a la vista.</figcaption>
-</figure>
+<div class="escena__paso" data-titulo="El fuego" data-pregunta="¿Dónde empieza el fuego en los dos lados?">
+<p data-zona="135,85,70,42" data-tipo="mal">En la <strong>bandeja de cables</strong> del techo.</p>
+<p data-zona="590,92,62,38" data-tipo="mal">El mismo fuego, en la misma bandeja.</p>
+</div>
+<div class="escena__paso" data-titulo="El humo" data-pregunta="¿Qué humo sale en cada lado?">
+<p data-zona="220,240,200,150" data-tipo="mal">Cubierta de <strong>PVC</strong>: humo negro, espeso y tóxico.</p>
+<p data-zona="612,48,40,40" data-tipo="bien">Cable <strong>LSZH</strong>: poco humo y claro.</p>
+</div>
+<div class="escena__paso" data-titulo="La salida" data-pregunta="¿Quién encuentra la salida?">
+<p data-zona="188,360,52,82" data-tipo="mal">No ve nada y se tapa la boca.</p>
+<p data-zona="738,225,46,78" data-tipo="bien">La salida, a la vista. Sale andando.</p>
+</div>
+</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">Vas a cablear un colegio. ¿Qué cubierta pides?</p>
+<ol class="votacion__opciones"><li>PVC, que es más barato</li><li data-correcta>LSZH</li><li>Da igual</li></ol>
+<div class="votacion__porque"><p><strong>LSZH</strong>: en un edificio con público, poco humo y sin halógenos.</p></div>
+</div>
 <p>Y eso nos lleva a una costumbre que tienes que coger: <strong>lee la cubierta del cable</strong>. Ahí viene impreso casi todo: tipo, categoría, si es LSZH, la norma y hasta los metros.</p>
 
-<div class="papel pregunta" data-n="13" data-titulo="El pasillo con fuego: el cable LSZH">
-<p>Mira la imagen de las dos mitades del pasillo con fuego en la bandeja de cables. ¿Qué es un cable LSZH y por qué se usa en edificios con público?</p>
-</div>
-
-<div class="papel pregunta" data-n="14">
-<p>Coge un trozo de cable del taller y copia lo que lleva impreso en la cubierta. Explica qué significa cada dato que reconozcas.</p>
-</div>
-
 <h2>Preguntas de la sesión</h2>
-<div class="papel papel--lista">
+<div class="papel">
 <p class="papel__titulo">Sesión 5 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p>Ya las has visto por el camino. Comprueba que tienes las 14 en el cuaderno; si te falta alguna, toca su nombre y te llevo a ella. <strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
-<ol data-lista-preguntas></ol>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>Mira el corte del cable del dibujo y toca sus piezas en el laboratorio. Dibuja tú el corte y señala: cubierta, pares, hilo de color, hilo blanco rayado y cruceta.</li>
+<li>Copia de la tabla de arriba los cuatro pares con sus dos colores.</li>
+<li>(ABC) Un cable de par trenzado tiene…
+<ul>
+    <li>a) 4 hilos en 2 pares</li>
+    <li>b) 8 hilos en 4 pares</li>
+    <li>c) 8 hilos sueltos</li>
+  </ul></li>
+<li>Mira el dibujo del par trenzado con la interferencia. Explica con tus palabras por qué se trenzan los hilos. ¿Qué es la diafonía?</li>
+<li>(V/F) Los hilos se trenzan para aumentar la potencia del cable.</li>
+<li>Lee la nota del taller del apartado «¿Por qué trenzado?». ¿Por qué no se deben destrenzar los pares más de lo necesario al poner un conector?</li>
+<li>Explica la diferencia entre UTP, FTP y STP: qué pantalla lleva cada uno, una ventaja y un inconveniente.</li>
+<li>¿Qué hay que tener en cuenta al instalar cable apantallado?</li>
+<li>(ABC) Para cablear una oficina normal se usa…
+<ul>
+    <li>a) UTP</li>
+    <li>b) STP</li>
+    <li>c) coaxial</li>
+  </ul></li>
+<li>Con la tabla de la nomenclatura moderna: ¿qué significan U/UTP y S/FTP? ¿Qué lleva cada uno, en global y por par?</li>
+<li>¿Qué diferencia hay entre cable <strong>rígido</strong> y <strong>flexible</strong>? ¿Dónde se usa cada uno?</li>
+<li>(V/F) Según la nota del apartado «Rígido o flexible», un conector RJ-45 para hilo rígido sirve igual de bien para hilo flexible.</li>
+<li>Mira la imagen de las dos mitades del pasillo con fuego en la bandeja de cables. ¿Qué es un cable LSZH y por qué se usa en edificios con público?</li>
+<li>Coge un trozo de cable del taller y copia lo que lleva impreso en la cubierta. Explica qué significa cada dato que reconozcas.</li>
+</ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
@@ -207,17 +213,3 @@
 <li>Busca qué significa <strong>AWG</strong> en un cable de red. ¿Un número más alto es un hilo más grueso o más fino?</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 ¿Por qué no se destrenzan los pares más de lo necesario al poner un conector?</summary>
-<p>Porque el trenzado es lo que anula el ruido y evita la diafonía. La parte destrenzada queda desprotegida y el cable puede no pasar las pruebas.</p>
-</details>
-<details>
-<summary>🤔 Tienes que cablear una oficina normal. ¿UTP o STP?</summary>
-<p><strong>UTP</strong>. Es suficiente, más barato, más fácil de instalar y no necesita tierra. El apantallado se deja para entornos con mucho ruido eléctrico.</p>
-</details>
-<details>
-<summary>🤔 ¿Qué cable usas para la roseta de la pared y cuál para el latiguillo?</summary>
-<p>Para la pared, <strong>rígido</strong> (no se mueve y transmite mejor). Para el latiguillo, <strong>flexible</strong> (se dobla y se enchufa muchas veces).</p>
-</details>
