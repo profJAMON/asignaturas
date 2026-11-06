@@ -233,7 +233,7 @@
     const porque = caja.querySelector('.votacion__porque');
     const cab = el('p', 'votacion__cab');
     cab.innerHTML = ol
-      ? '<span aria-hidden="true">🗳️ </span>Votad a la vez <small>levanta tu tarjeta</small>'
+      ? '<span aria-hidden="true">🗳️ </span>Votad a la vez <small>levanta la mano</small>'
       : '<span aria-hidden="true">💬 </span>Pregunta para la clase <small>la contestamos entre todos</small>';
     caja.prepend(cab);
     if (ol) {

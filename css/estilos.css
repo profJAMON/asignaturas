@@ -3472,18 +3472,18 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .diapo svg .d-linea-d { stroke: var(--diapo-tenue); stroke-width: 1.5; fill: none; }
 .diapo svg .d-relleno-c { fill: var(--diapo-calido); }
 .diapo svg .d-tachado { text-decoration: line-through; }
-/* Señales de seguridad dentro de una diapositiva (29/10/2026, Instalaciones UT2 S8):
-   sus colores son los de la norma, no los de la tiza. */
-.diapo svg .d-s-rojo { fill: var(--senal-rojo); }
-.diapo svg .d-s-azul { fill: var(--senal-azul); }
-.diapo svg .d-s-amarillo { fill: var(--senal-amarillo); }
-.diapo svg .d-s-verde { fill: var(--senal-verde); }
-.diapo svg .d-s-blanco { fill: var(--senal-blanco); }
-.diapo svg .d-s-negro { fill: var(--senal-negro); }
-.diapo svg .d-s-aro-rojo { fill: none; stroke: var(--senal-rojo); stroke-width: 9; }
-.diapo svg .d-s-banda-roja { stroke: var(--senal-rojo); stroke-width: 9; }
-.diapo svg .d-s-trazo-blanco { fill: none; stroke: var(--senal-blanco); stroke-width: 5; }
-.diapo svg .d-s-borde-negro { stroke: var(--senal-negro); stroke-width: 6; stroke-linejoin: round; }
+/* Señales de seguridad dentro de una diapositiva (29/10/2026, Instalaciones UT2 S8)
+   o de una pregunta de votación (06/11/2026): sus colores son los de la norma. */
+:is(.diapo, .votacion) svg .d-s-rojo { fill: var(--senal-rojo); }
+:is(.diapo, .votacion) svg .d-s-azul { fill: var(--senal-azul); }
+:is(.diapo, .votacion) svg .d-s-amarillo { fill: var(--senal-amarillo); }
+:is(.diapo, .votacion) svg .d-s-verde { fill: var(--senal-verde); }
+:is(.diapo, .votacion) svg .d-s-blanco { fill: var(--senal-blanco); }
+:is(.diapo, .votacion) svg .d-s-negro { fill: var(--senal-negro); }
+:is(.diapo, .votacion) svg .d-s-aro-rojo { fill: none; stroke: var(--senal-rojo); stroke-width: 9; }
+:is(.diapo, .votacion) svg .d-s-banda-roja { stroke: var(--senal-rojo); stroke-width: 9; }
+:is(.diapo, .votacion) svg .d-s-trazo-blanco { fill: none; stroke: var(--senal-blanco); stroke-width: 5; }
+:is(.diapo, .votacion) svg .d-s-borde-negro { stroke: var(--senal-negro); stroke-width: 6; stroke-linejoin: round; }
 
 .diapos__mandos {
   display: flex;
@@ -6471,6 +6471,7 @@ html { overflow-y: auto; }
 .leccion .votacion__cab { margin: 0 0 0.4rem; font: 700 0.95rem var(--font-body); color: var(--accent-warm); }
 .leccion .votacion__cab small { font-weight: 400; color: var(--text-dim); margin-left: 0.4rem; }
 .leccion .votacion__pregunta { font-size: 1.3rem; font-weight: 600; margin: 0.2rem 0 0.7rem; }
+.leccion .votacion__dibujo { display: block; width: 9rem; height: auto; margin: 0.2rem 0 0.8rem; }
 .leccion .votacion__opciones { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
 .leccion .votacion__opciones li {
   display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap;

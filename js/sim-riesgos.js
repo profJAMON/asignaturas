@@ -91,7 +91,7 @@
       'Elige para cada uno una medida que lo baje.',
       'Vuelve a valorar los tres después de la medida.',
     ],
-    final: 'Apunta en tu cuaderno, para cada peligro, la valoración de antes, la medida que elegiste y la valoración de después. Y por qué no valían los guantes al cortar canaleta (pregunta 13).',
+    final: 'Los tres peligros han bajado de valoración. Fíjate en cada uno: ¿la medida bajó la probabilidad o la consecuencia? Y los guantes no valían al cortar canaleta: el peligro eran las virutas en los ojos.',
     crear(ctx) {
       const { el, boton, pantalla } = ctx;
       const est = PELIGROS.map(() => ({ fase: 0, medida: null }));
@@ -259,7 +259,7 @@
       'Arregla las dos cosas que pueden caer encima de alguien.',
       'Arregla lo que puede golpear a alguien que pasa.',
     ],
-    final: 'Apunta en tu cuaderno los cinco peligros que has arreglado, qué riesgo del lugar de trabajo era cada uno y qué hiciste (pregunta 9).',
+    final: 'Taller en orden: cinco peligros arreglados, uno o dos de cada riesgo del lugar de trabajo. Y lo que ya estaba bien, se queda como estaba.',
     crear(ctx) {
       const { el, boton, pantalla } = ctx;
       const hecho = {};
