@@ -83,6 +83,9 @@
     caja.querySelectorAll(':scope > .escena__paso').forEach(p => p.remove());
 
     /* Lienzo: la imagen y el velo con agujeros. */
+    /* Proporción de la imagen: en pantalla completa el lienzo crece hasta
+       llenar el alto sin deformarla (css: .escena:fullscreen). */
+    caja.style.setProperty('--escena-ar', String(W / H));
     const lienzo = el('div', 'escena__lienzo');
     fondo.replaceWith(lienzo);
     lienzo.appendChild(fondo);
