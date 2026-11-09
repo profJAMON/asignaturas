@@ -1,0 +1,161 @@
+<h2>De la teoría a la práctica</h2>
+
+<p>En la unidad anterior viste los tres ingredientes que hacen falta para que cualquier persona del mundo pueda visitar una página: un <strong>dominio</strong>, un <strong>hosting</strong> y un <strong>certificado HTTPS</strong>. Hoy vas a comprobar el segundo en persona, sin gastar dinero ni esperar días: vas a poner tu propia web en Internet de verdad, aunque sea solo durante un rato.</p>
+
+<div class="nota">Esta sesión es en el ordenador, no en el cuaderno: vas a publicar tu web personal (la que llevas construyendo desde la Unidad 1) tal cual está ahora mismo.</div>
+
+<h2>Qué es un servicio "arrastra y publica"</h2>
+
+<p>Contratar un hosting de verdad implica elegir una empresa, pagar y configurar cosas. Para aprender el concepto sin esa complicación existen servicios que hacen lo mismo en segundos: arrastras la carpeta con tu web y ellos se encargan de guardarla en un servidor real, encendido, con una URL válida y HTTPS. El que vas a usar hoy se llama <code>Cloudflare Drop</code>.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="10" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="240" y="31" text-anchor="middle" fill="var(--accent)" font-size="11">1. Tu carpeta: HTML, CSS e imágenes juntos</text>
+
+  <line x1="240" y1="42" x2="240" y2="58" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v2)"/>
+
+  <rect x="20" y="60" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
+  <text x="240" y="81" text-anchor="middle" fill="var(--code-inline)" font-size="11">2. La arrastras a cloudflare.com/drop</text>
+
+  <line x1="240" y1="92" x2="240" y2="108" stroke="var(--text-faint)" stroke-width="2" marker-end="url(#v2)"/>
+
+  <rect x="20" y="110" width="440" height="32" rx="6" fill="var(--surface)" stroke="var(--accent-warm)" stroke-width="1.5"/>
+  <text x="240" y="131" text-anchor="middle" fill="var(--accent-warm)" font-size="11">3. En segundos, una URL ya visible en Internet</text>
+
+  <text x="240" y="165" text-anchor="middle" fill="var(--text-dim)" font-size="10">Es el mismo "hosting" de la sesión anterior,</text>
+  <text x="240" y="180" text-anchor="middle" fill="var(--text-dim)" font-size="10">pero de prueba, gratis y sin instalar nada</text>
+
+  <defs><marker id="v2" markerWidth="8" markerHeight="8" refX="4" refY="6" orient="auto"><path d="M0,0 L8,0 L4,8 Z" fill="var(--text-faint)"/></marker></defs>
+</svg>
+</div>
+
+<div class="nota">🤔 Antes de seguir: hasta ahora veías tu web con Live Server, en una dirección tipo <code>127.0.0.1:5500</code>. ¿En qué se diferencia eso de lo que vas a hacer ahora?</div>
+<details><summary>Ver respuesta</summary>Live Server es un pequeño servidor que funciona <strong>dentro de tu propio ordenador</strong>: la dirección <code>127.0.0.1</code> significa "este mismo ordenador", así que solo tú puedes ver tu web ahí. Cuando la subes con Cloudflare Drop, un servidor real la guarda y responde a cualquiera que pida esa URL, esté donde esté — es justo lo que viste en la Unidad 2 sobre cliente-servidor y hosting, pero ahora ocurriendo de verdad con tu propia web.</details>
+
+<h2>Por qué esta y no otra</h2>
+
+<p>Hay varios servicios parecidos (Netlify Drop es el más conocido). Se usa Cloudflare Drop en esta sesión por un motivo concreto: tu web queda visible de verdad, para cualquiera, nada más soltar la carpeta, sin tener que crear ninguna cuenta primero. Otros servicios similares ahora piden una cuenta desde el principio o limitan cuántas veces puedes probarlo sin registrarte — justo lo que se quiere evitar en esta sesión.</p>
+
+<p>A cambio, tiene un límite: si no la "reclamas" con una cuenta, tu web desaparece pasada una hora.</p>
+
+<div class="salida" style="background:var(--bg);padding:16px">
+<svg viewBox="0 0 480 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:var(--font-mono)">
+  <rect x="20" y="15" width="200" height="30" rx="15" fill="var(--surface)" stroke="var(--code-inline)" stroke-width="1.5"/>
+  <text x="35" y="35" fill="var(--code-inline)" font-size="12">✓</text>
+  <text x="55" y="35" fill="var(--text)" font-size="11">Reclamada con una cuenta</text>
+  <text x="120" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">queda publicada para siempre</text>
+
+  <rect x="260" y="15" width="200" height="30" rx="15" fill="var(--surface)" stroke="var(--text-faint)" stroke-width="1.5"/>
+  <text x="275" y="35" fill="var(--text-faint)" font-size="11">⏳</text>
+  <text x="296" y="35" fill="var(--text)" font-size="11">Sin reclamar</text>
+  <text x="360" y="60" text-anchor="middle" fill="var(--text-dim)" font-size="9">desaparece pasada 1 hora</text>
+</svg>
+</div>
+
+<p>Para hoy eso no es un problema: el objetivo es sentir la publicación real, no dejar esta versión para siempre. Tu web "de verdad, para siempre" llegará más adelante, cuando la migremos a un sitio permanente.</p>
+
+<h2>Actividad — publica tu web, de verdad</h2>
+
+<div class="nota">Trabajas con tu propia web personal tal como está ahora. No hace falta que esté terminada del todo: sirve cualquier versión que ya tengas.</div>
+
+<h3>Paso 1 — comprueba tu carpeta</h3>
+<p>Antes de subir nada, abre la carpeta de tu web en tu ordenador y comprueba que están <strong>todos</strong> los archivos juntos, en la misma carpeta: <code>index.html</code>, <code>estilos.css</code> y todas las imágenes que uses. Si alguno vive en otra carpeta (por ejemplo, sigue en "Descargas"), muévelo ahora.</p>
+
+<div class="nota">Esto no es un detalle menor: si subes solo el <code>.html</code> sin el CSS o sin las imágenes, tu web se publicará, pero se verá rota — sin estilos, con las imágenes caídas. La causa es la misma de siempre: una ruta que apunta a un archivo que no está donde toca.</div>
+<div class="nota">⚠️ Cuidado con las <strong>mayúsculas</strong>. En tu ordenador, Windows no distingue entre <code>Foto.JPG</code> y <code>foto.jpg</code>: tu web se ve bien con Live Server aunque en el HTML hayas escrito el nombre de otra forma. El servidor de Internet <strong>sí</strong> los distingue, y allí esa imagen dará un error 404. Antes de subir, comprueba que cada <code>src</code> y cada <code>href</code> escribe el nombre del archivo exactamente igual, mayúsculas incluidas. Por eso la norma de clase de la Unidad 0: nombres en minúsculas, sin espacios ni tildes.</div>
+
+<h3>Paso 2 — comprueba que no hay datos personales</h3>
+<p>Vas a publicar <strong>toda</strong> la carpeta, también los archivos de práctica (<code>prueba.html</code>, <code>prueba-css.html</code>, <code>reto-final.html</code>...). Aunque no estén enlazados desde tu <code>index.html</code>, se publican igual y cualquiera que conozca su dirección puede abrirlos.</p>
+<p>Abre cada <code>.html</code> de tu carpeta y comprueba:</p>
+<ul class="checklist">
+<li>No aparece tu nombre real ni tus apellidos: solo tu alias (mira también el <code>&lt;title&gt;</code>, el <code>&lt;footer&gt;</code> y la <code>meta description</code>).</li>
+<li>No hay fotos tuyas ni de otras personas.</li>
+<li>No aparece tu instituto, tu pueblo, tu dirección, tu teléfono ni tus redes sociales.</li>
+<li>No hay ningún horario real.</li>
+<li>Los nombres de los archivos tampoco dicen quién eres (nada de <code>foto-marc-garcia.jpg</code>).</li>
+</ul>
+<p>Si encuentras algo, cámbialo <strong>antes</strong> de subir la carpeta. Una vez publicada, cualquiera puede verla (y guardarla).</p>
+
+<h3>Paso 3 — sube tu carpeta</h3>
+<ol>
+<li>Abre <code>cloudflare.com/drop</code> en tu navegador.</li>
+<li>Arrastra la carpeta completa de tu web (o selecciónala) hasta el recuadro de la página.</li>
+<li>Espera unos segundos.</li>
+</ol>
+<p><strong>Comprobación observable:</strong> aparece una URL nueva, con <code>https://</code> y un nombre que no habías escrito tú.</p>
+
+<h3>Paso 4 — compruébalo desde fuera</h3>
+<ol start="4">
+<li>Copia esa URL.</li>
+<li>Pídele a un compañero que la abra en su móvil, usando datos móviles (no la wifi del instituto).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tu compañero ve tu página exactamente igual que tú, sin que le hayas pasado ningún archivo — solo un enlace. Eso es justo lo que significa "estar publicada": cualquiera con la URL puede pedirla, desde cualquier red, y el servidor responde.</p>
+
+<div class="nota">🤔 Antes de seguir: si tu compañero solo estuviera conectado a la wifi del instituto, en vez de a datos móviles, ¿habría alguna diferencia?</div>
+<details><summary>Ver respuesta</summary>No debería haberla: tu web ya no depende de tu ordenador ni de tu red — está en un servidor de Cloudflare, accesible desde cualquier conexión a Internet. Se pide con datos precisamente para comprobar eso con seguridad: que no la ve solo porque está en la misma red que tú.</details>
+
+<h3>Paso 5 — decide qué hacer con la cuenta atrás</h3>
+<p>Verás un aviso con el tiempo que queda antes de que tu web desaparezca. Tienes dos opciones: dejar que pase el tiempo (tu web se borra sola, sin que tengas que hacer nada) o pulsar "Claim"/"Reclamar" y crear una cuenta gratuita si quieres conservarla más tiempo. Ninguna de las dos es obligatoria para la actividad de hoy.</p>
+
+<h2>Repaso: qué acabas de hacer</h2>
+
+<ul class="checklist">
+<li>Subiste tu web a un servidor real con un servicio "arrastra y publica" (Cloudflare Drop).</li>
+<li>Obtuviste una URL pública con HTTPS, sin configurar nada tú mismo.</li>
+<li>Comprobaste que tu web no tenía datos personales antes de publicarla.</li>
+<li>Comprobaste desde otra red que la web responde a cualquiera, no solo a ti.</li>
+<li>Viste la diferencia entre una publicación temporal (sin reclamar) y una permanente (reclamada con una cuenta).</li>
+</ul>
+
+<p>Esto es una versión de prueba del hosting, pensada para aprender el concepto rápido y gratis. Más adelante en el curso publicarás tu web de forma permanente, con GitHub Pages — y de paso aprenderás a usar Git y la terminal.</p>
+
+<h2>Preguntas</h2>
+
+<div class="nota">
+Responde estas preguntas en tu cuaderno, a mano. Cuando las corrijamos en clase, sube tú mismo las respuestas correctas a tu web personal.
+</div>
+
+<ol>
+<li>Explica con tus palabras qué hace un servicio como Cloudflare Drop cuando arrastras tu carpeta.</li>
+<li>(V/F) Publicar tu web con Cloudflare Drop es lo mismo que verla con Live Server en tu ordenador.</li>
+<li>¿Por qué es importante que <code>index.html</code>, <code>estilos.css</code> y las imágenes estén todos dentro de la misma carpeta antes de subirla?</li>
+<li>(V/F) Si un archivo de práctica de tu carpeta (por ejemplo <code>prueba.html</code>) tiene tu nombre real, no pasa nada, porque no está enlazado desde tu <code>index.html</code>.</li>
+<li>(V/F) Si en tu HTML escribes <code>src="foto.jpg"</code> pero el archivo se llama <code>Foto.JPG</code>, la imagen se verá igual en tu ordenador que en la web publicada.</li>
+<li>(ABC) Si subes solo el archivo <code>index.html</code>, sin el CSS ni las imágenes, tu web publicada se verá:
+  <ul>
+    <li>a) exactamente igual que en tu ordenador</li>
+    <li>b) sin estilos y con las imágenes rotas</li>
+    <li>c) no se publica en absoluto</li>
+  </ul>
+</li>
+<li>¿Qué comprueba exactamente que un compañero abra tu URL con datos móviles en vez de con la wifi del instituto?</li>
+<li>(V/F) Una vez subida, la URL de tu web es accesible desde cualquier conexión a Internet, no solo desde la red del instituto.</li>
+<li>Explica con tus palabras qué significa "reclamar" una web subida con Cloudflare Drop.</li>
+<li>(ABC) Si no reclamas tu web con una cuenta, ¿qué ocurre pasada una hora?
+  <ul>
+    <li>a) se publica de forma permanente igualmente</li>
+    <li>b) desaparece</li>
+    <li>c) empieza a costar dinero automáticamente</li>
+  </ul>
+</li>
+<li>(V/F) Para poder subir algo a Cloudflare Drop y que quede visible, es obligatorio crear una cuenta antes.</li>
+<li>De los tres ingredientes que viste en la sesión anterior (dominio, hosting, HTTPS), ¿cuál has comprobado hoy en persona? Explica cómo se relaciona con lo que has hecho.</li>
+<li>¿La URL que te ha dado Cloudflare Drop usa <code>http://</code> o <code>https://</code>? ¿Qué significa eso, según lo que viste en la unidad anterior?</li>
+<li>Busca información y explica qué otro servicio parecido a Cloudflare Drop existe (por ejemplo Netlify Drop), y en qué se diferencia de lo que has usado hoy.</li>
+<li>(V/F) Esta forma de publicar (Cloudflare Drop) es la misma que vas a usar al final del curso para dejar tu web publicada de forma permanente.</li>
+<li>Imagina que cambias una imagen de tu web después de publicarla con Cloudflare Drop. ¿Qué crees que tendrías que hacer para que ese cambio se vea en la URL publicada?</li>
+<li>(ABC) La principal ventaja de usar Cloudflare Drop en vez de otro servicio parecido, en esta sesión, es que:
+  <ul>
+    <li>a) es más rápido de escribir el código</li>
+    <li>b) no obliga a crear una cuenta para publicar de inmediato</li>
+    <li>c) permite usar lenguajes de programación distintos a HTML y CSS</li>
+  </ul>
+</li>
+<li>(V/F) Reclamar una web con una cuenta la hace desaparecer antes.</li>
+<li>Explica con tus propias palabras qué diferencia hay entre "publicación temporal" (como la de hoy) y "publicación permanente" (como la que veremos con GitHub Pages más adelante).</li>
+<li>Si tu web publicada se ve sin estilos (letra por defecto, sin colores), ¿qué archivo sospecharías que falta o tiene la ruta mal?</li>
+<li>(V/F) Una vez que tu web desaparece por no haberla reclamado, cualquiera con la URL antigua sigue pudiendo verla.</li>
+<li>¿Qué papel juega exactamente el servidor de Cloudflare en todo este proceso? Relaciónalo con el concepto de "cliente-servidor" que viste al principio de la unidad anterior.</li>
+<li>Escribe tú mismo una pregunta de tipo "qué pasaría si..." sobre lo que has hecho hoy (por ejemplo, sobre la carpeta, la cuenta atrás o la comprobación con el compañero), y respóndela.</li>
+</ol>
