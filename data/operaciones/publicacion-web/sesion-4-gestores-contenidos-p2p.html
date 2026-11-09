@@ -122,20 +122,8 @@
 
 <p>En la primera sesión de la unidad anterior viste el modelo <strong>cliente-servidor</strong>: un servidor central responde a muchos clientes. Las redes <strong>P2P</strong> («peer-to-peer», de igual a igual) funcionan al revés: no hay un servidor central, cada dispositivo se conecta directamente con los demás e intercambia información con ellos.</p>
 
-<div class="diapos" aria-label="Cliente-servidor y P2P">
-<div class="diapo">
-<svg viewBox="0 0 360 204" role="img" aria-label="cliente-servidor"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">cliente-servidor</text><rect x="130" y="36" width="100" height="34" rx="4" class="d-caja-on"/><text x="180.0" y="57.5" text-anchor="middle" class="d-a">servidor</text><rect x="30" y="120" width="80" height="30" rx="4" class="d-caja"/><text x="70.0" y="139.5" text-anchor="middle" class="d-d d-peq">cliente A</text><path d="M 180 72 L 70 118" class="d-linea-a"/><rect x="140" y="140" width="80" height="30" rx="4" class="d-caja"/><text x="180.0" y="159.5" text-anchor="middle" class="d-d d-peq">cliente B</text><path d="M 180 72 L 180 138" class="d-linea-a"/><rect x="250" y="120" width="80" height="30" rx="4" class="d-caja"/><text x="290.0" y="139.5" text-anchor="middle" class="d-d d-peq">cliente C</text><path d="M 180 72 L 290 118" class="d-linea-a"/><text x="180" y="194" text-anchor="middle" class="d-a d-peq">todo pasa por el servidor</text></svg>
-<p class="diapo__texto"><strong>Cliente-servidor</strong> (Unidad 2): un servidor central contesta a todos los clientes. Todo pasa por el centro.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 204" role="img" aria-label="P2P"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">P2P</text><rect x="140" y="40" width="80" height="30" rx="4" class="d-caja-act"/><text x="180.0" y="59.5" text-anchor="middle" class="d-c d-peq">equipo A</text><rect x="30" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="70.0" y="149.5" text-anchor="middle" class="d-c d-peq">equipo B</text><rect x="250" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="290.0" y="149.5" text-anchor="middle" class="d-c d-peq">equipo C</text><path d="M 170 72 L 80 128" class="d-linea-c"/><path d="M 190 72 L 280 128" class="d-linea-c"/><path d="M 112 145 L 248 145" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">cada uno habla con los demás</text></svg>
-<p class="diapo__texto"><strong>P2P</strong>, de igual a igual: no hay servidor central. Cada equipo se conecta directamente con los demás.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 204" role="img" aria-label="BitTorrent"><text x="180" y="20" text-anchor="middle" class="d-c d-grande">BitTorrent</text><rect x="140" y="40" width="80" height="30" rx="4" class="d-caja-act"/><text x="180" y="60" text-anchor="middle" class="d-c d-peq">tiene el 1</text><rect x="30" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="70" y="150" text-anchor="middle" class="d-c d-peq">tiene el 2</text><rect x="250" y="130" width="80" height="30" rx="4" class="d-caja-act"/><text x="290" y="150" text-anchor="middle" class="d-c d-peq">tiene el 3</text><path d="M 170 72 L 82 126 M 86.3 119.3 L 82 126 L 90.0 125.2" class="d-linea-c"/><path d="M 196 72 L 284 126 M 276.0 125.2 L 284 126 L 279.7 119.3" class="d-linea-c"/><path d="M 112 150 L 246 150 M 238.8 153.5 L 246 150 L 238.8 146.5" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">cada uno pasa sus trozos a los demás</text></svg>
-<p class="diapo__texto">Así funciona <strong>BitTorrent</strong>: el archivo se parte en trozos; cada uno tiene alguno y se los pasa a los otros. Nadie tiene que mandárselo todo a todos.</p>
-</div>
-</div>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 10</strong>.</p>
+<div class="anim" data-anim="p2p" aria-label="Cliente-servidor y P2P, en marcha"></div>
 
 <p>Seguro que ya usas P2P sin saberlo: cuando envías una foto a un amigo con «compartir cercano» o AirDrop, sin pasar por Internet, es una conexión directa de igual a igual. Otro ejemplo clásico y completamente legal es descargar una distribución Linux (como Ubuntu) por BitTorrent: en vez de que un único servidor tenga que enviar el archivo a todo el mundo, cada persona que ya lo tiene descargado comparte trozos con las demás.</p>
 
@@ -145,7 +133,7 @@
 </figure>
 
 <div class="papel pregunta" data-n="10" data-titulo="Cliente-servidor y P2P">
-<p>Mira el dibujo «Cliente-servidor y P2P». ¿Quién envía el archivo a quién en cada uno? Explica con tus palabras la diferencia entre el modelo cliente-servidor y el modelo P2P.</p>
+<p><strong>(Animación)</strong> Mira la animación «Cliente-servidor y P2P». ¿Quién envía el archivo a quién en cada uno? Explica con tus palabras la diferencia entre el modelo cliente-servidor y el modelo P2P.</p>
 </div>
 
 <div class="papel pregunta" data-n="11">
