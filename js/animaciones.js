@@ -20,6 +20,11 @@
        pintar(i, p)    // dibuja el paso i; p va de 0 a 1 (0 = aún como
                        // el paso anterior, 1 = paso i terminado)
      });
+   Opcional en la definición (09/11/2026):
+     estilo: 'iso'       escena isométrica 3D (js/anim-iso.js), sin pizarra:
+                         dibujo a todo el ancho y la frase debajo
+     msMovimiento: 1200  lo que dura el movimiento de cada paso (por
+                         defecto 500 ms; los paquetes que viajan, más)
 
    Comportamiento:
    - Arranca sola la primera vez que se ve en pantalla y da vueltas.
@@ -74,8 +79,11 @@ function registrarAnimacion(nombre, def) {
     caja.setAttribute('aria-roledescription', 'animación');
     if (!caja.getAttribute('aria-label')) caja.setAttribute('aria-label', def.titulo || '');
 
+    const iso = def.estilo === 'iso';
+    if (iso) caja.classList.add('anim--iso');
+    const msMovimiento = def.msMovimiento || MS_MOVIMIENTO;
     const escena = document.createElement('div');
-    escena.className = 'diapo anim__escena';
+    escena.className = iso ? 'anim__escena anim__escena--iso' : 'diapo anim__escena';
     const svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('role', 'img');
     svg.setAttribute('aria-label', def.titulo || caja.getAttribute('aria-label') || '');
@@ -103,7 +111,7 @@ function registrarAnimacion(nombre, def) {
     const cinta = window.DIAPOS && window.DIAPOS.cabeceraCinta
       ? window.DIAPOS.cabeceraCinta('Animación') : null;
     if (cinta) cinta.querySelector('.diapos__cuantas').textContent = def.pasos.length + ' pasos';
-    if (window.DIAPOS && window.DIAPOS.ponerFiltroTiza) window.DIAPOS.ponerFiltroTiza();
+    if (!iso && window.DIAPOS && window.DIAPOS.ponerFiltroTiza) window.DIAPOS.ponerFiltroTiza();
 
     caja.innerHTML = '';
     if (cinta) caja.appendChild(cinta);
@@ -149,7 +157,7 @@ function registrarAnimacion(nombre, def) {
       if (!enMarcha) return;
       const pasado = ahora - t0;
       if (fase === 'mueve') {
-        const p = pasado / MS_MOVIMIENTO;
+        const p = pasado / msMovimiento;
         /* suavizado: arranca y frena */
         dibujar(p < 1 ? (1 - Math.cos(Math.PI * p)) / 2 : 1);
         if (p >= 1) { fase = 'lee'; t0 = ahora; }

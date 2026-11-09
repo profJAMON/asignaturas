@@ -149,6 +149,28 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
+  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Iguales en
+     los dos temas, como la pizarra: la escena es siempre de noche. */
+  --iso-fondo-1: #121a30;
+  --iso-fondo-2: #1f1538;
+  --iso-luz-1: rgba(74, 163, 255, 0.30);
+  --iso-luz-2: rgba(255, 107, 150, 0.20);
+  --iso-borde: rgba(255, 255, 255, 0.14);
+  --iso-cara-sup: #58658c;
+  --iso-cara-izq: #39425f;
+  --iso-cara-der: #293049;
+  --iso-cable: #3d4864;
+  --iso-sombra: rgba(0, 0, 0, 0.32);
+  --iso-texto: #eef0f6;
+  --iso-tenue: #a9b0c4;
+  --iso-cristal: rgba(255, 255, 255, 0.09);
+  --iso-cristal-borde: rgba(255, 255, 255, 0.22);
+  --iso-nucleo: #ffffff;
+  --iso-azul: #5cb4ff;
+  --iso-rosa: #ff6b96;
+  --iso-lima: #5bd46f;
+  --iso-ambar: #ffbf47;
+  --iso-tinta: #0b1020;
 
   /* 03/10/2026: filas alternas de los generadores y hoja de cuaderno
      de las preguntas a mano (.papel). */
@@ -446,6 +468,28 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
+  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Iguales en
+     los dos temas, como la pizarra: la escena es siempre de noche. */
+  --iso-fondo-1: #121a30;
+  --iso-fondo-2: #1f1538;
+  --iso-luz-1: rgba(74, 163, 255, 0.30);
+  --iso-luz-2: rgba(255, 107, 150, 0.20);
+  --iso-borde: rgba(255, 255, 255, 0.14);
+  --iso-cara-sup: #58658c;
+  --iso-cara-izq: #39425f;
+  --iso-cara-der: #293049;
+  --iso-cable: #3d4864;
+  --iso-sombra: rgba(0, 0, 0, 0.32);
+  --iso-texto: #eef0f6;
+  --iso-tenue: #a9b0c4;
+  --iso-cristal: rgba(255, 255, 255, 0.09);
+  --iso-cristal-borde: rgba(255, 255, 255, 0.22);
+  --iso-nucleo: #ffffff;
+  --iso-azul: #5cb4ff;
+  --iso-rosa: #ff6b96;
+  --iso-lima: #5bd46f;
+  --iso-ambar: #ffbf47;
+  --iso-tinta: #0b1020;
 
   --fila-alterna: rgba(0, 0, 0, 0.03);
   --papel-linea: rgba(0, 0, 0, 0.1);
@@ -4549,6 +4593,125 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   .leccion .diapo__texto { text-shadow: none; }
   .diapo svg { filter: none; }
   .diapos__cabecera, .diapo__pasos { display: none; }
+}
+
+
+/* ============================================================
+   Animaciones isométricas — js/anim-iso.js (09/11/2026)
+   ============================================================
+   Elegidas por Carles frente a la pizarra para lo que se mueve
+   (paquetes que viajan): aparatos con volumen, luz que corre por el
+   cable y fondo con dos luces que flotan. Sin marco de madera ni tiza:
+   el dibujo va a todo el ancho y la frase debajo, en letra normal.
+   Mismos mandos y franja que las demás animaciones. Colores en las
+   variables --iso-* (iguales en los dos temas). */
+.leccion .anim.anim--iso {
+  display: block;
+  border: 1px solid var(--iso-borde);
+  border-radius: 14px;
+  box-shadow: none;
+  background: linear-gradient(135deg, var(--iso-fondo-1), var(--iso-fondo-2));
+  overflow: hidden;
+  position: relative;
+}
+.leccion .anim--iso::before,
+.leccion .anim--iso::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(48px);
+  animation: iso-flota 16s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.leccion .anim--iso::before { background: var(--iso-luz-1); left: -14%; top: -28%; }
+.leccion .anim--iso::after { background: var(--iso-luz-2); right: -18%; bottom: -36%; animation-delay: -8s; }
+@keyframes iso-flota { to { transform: translate(16%, 10%) scale(1.15); } }
+.leccion .anim--iso > .diapos__cabecera { margin-bottom: 0; }
+.leccion .anim--iso > .anim__escena { padding: 0.6rem 1rem 0; }
+.anim__escena--iso svg { display: block; width: 100%; max-width: 48rem; height: auto; margin: 0 auto; }
+.leccion .anim--iso > .anim__texto {
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--iso-texto);
+  text-align: center;
+  text-shadow: none;
+  max-width: 44rem;
+  min-height: 3.6em;
+  margin: 0.4rem auto 0;
+  padding: 0 1rem;
+}
+.leccion .anim--iso > .anim__texto strong {
+  color: var(--iso-ambar);
+  text-decoration: none;
+}
+.leccion .anim--iso .diapos__contador { color: var(--iso-tenue); }
+
+/* Dibujo */
+.i-svg text { font-family: var(--font-body); }
+.i-svg .i-t { fill: var(--iso-texto); font-size: 20px; }
+.i-svg .i-negrita { font-family: var(--font-titulo); font-weight: 800; font-size: 20px; }
+.i-svg .i-titulo { font-family: var(--font-titulo); font-weight: 800; font-size: 17px; fill: var(--iso-tenue); letter-spacing: 0.04em; text-transform: uppercase; }
+.i-svg .i-mono { font-family: var(--font-mono); font-weight: 600; font-size: 19px; fill: var(--iso-texto); }
+.i-svg .i-mono-a { font-family: var(--font-mono); font-weight: 600; font-size: 19px; fill: var(--iso-azul); }
+.i-svg .i-mono-r { font-family: var(--font-mono); font-weight: 600; font-size: 19px; fill: var(--iso-rosa); }
+.i-svg .i-mono-l { font-family: var(--font-mono); font-weight: 600; font-size: 19px; fill: var(--iso-lima); }
+.i-svg .i-tenue { fill: var(--iso-tenue); }
+.i-svg .i-cara-sup { fill: var(--iso-cara-sup); }
+.i-svg .i-cara-izq { fill: var(--iso-cara-izq); }
+.i-svg .i-cara-der { fill: var(--iso-cara-der); }
+.i-svg .i-cara-sup-a { fill: var(--iso-azul); }
+.i-svg .i-cara-sup-l { fill: var(--iso-lima); }
+.i-svg .i-sombra { fill: var(--iso-sombra); }
+.i-svg .i-pantalla { fill: var(--iso-azul); opacity: 0.55; }
+.i-svg .i-led { fill: var(--iso-lima); opacity: 0.3; filter: var(--iso-filtro); }
+.i-svg .i-antena { stroke: var(--iso-cara-izq); stroke-width: 5; stroke-linecap: round; }
+.i-svg .i-ranura { stroke: var(--iso-cara-sup); stroke-width: 3; stroke-linecap: round; }
+.i-svg .i-nube { fill: var(--iso-cristal); stroke: var(--iso-cristal-borde); }
+.i-svg .i-cristal { fill: var(--iso-cristal); stroke: var(--iso-cristal-borde); }
+.i-svg .i-raya { stroke: var(--iso-cristal-borde); }
+.i-svg .i-cable { stroke: var(--iso-cable); stroke-width: 6; stroke-linecap: round; fill: none; }
+.i-svg .i-cable-luz { stroke: var(--iso-azul); stroke-width: 3; stroke-linecap: round; fill: none; opacity: 0; filter: var(--iso-filtro); transition: opacity 0.25s; }
+.i-svg .i-cable-luz.es-on { opacity: 0.95; }
+.i-svg .i-cable-luz.i-luz-lima { stroke: var(--iso-lima); }
+.i-svg .i-cable-luz.i-luz-rosa { stroke: var(--iso-rosa); }
+.i-svg .i-paq-nucleo { fill: var(--iso-nucleo); }
+.i-svg .i-chip { fill: var(--iso-azul); }
+.i-svg .i-paq--rosa .i-chip { fill: var(--iso-rosa); }
+.i-svg .i-paq--lima .i-chip { fill: var(--iso-lima); }
+.i-svg .i-paq--ambar .i-chip { fill: var(--iso-ambar); }
+.i-svg .i-paq .i-chip.i-chip-azul { fill: var(--iso-azul); }
+.i-svg .i-paq .i-chip.i-chip-rosa { fill: var(--iso-rosa); }
+.i-svg .i-paq .i-chip.i-chip-lima { fill: var(--iso-lima); }
+.i-svg .i-paq .i-chip.i-chip-ambar { fill: var(--iso-ambar); }
+.i-svg .i-chip-texto { font-family: var(--font-mono); font-weight: 700; font-size: 17px; fill: var(--iso-tinta); }
+.i-svg .i-bocadillo { fill: var(--iso-texto); }
+.i-svg .i-bocadillo-texto { fill: var(--iso-tinta); font-weight: 600; }
+.i-svg .i-marca circle { stroke-width: 0; }
+.i-svg .i-marca path { fill: none; stroke: var(--iso-tinta); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.i-svg .i-marca--si circle { fill: var(--iso-lima); }
+.i-svg .i-marca--no circle { fill: var(--iso-rosa); }
+.i-svg .i-zona-a { fill: var(--iso-azul); opacity: 0.16; }
+.i-svg .i-zona-l { fill: var(--iso-lima); opacity: 0.16; }
+.i-svg .i-on { opacity: 1; }
+.i-svg .i-brilla { filter: var(--iso-filtro); }
+@media (max-width: 700px) {
+  .leccion .anim.anim--iso { border-width: 1px; }
+  .leccion .anim--iso > .anim__escena { padding: 0.4rem 0.3rem 0; }
+  .leccion .anim--iso > .anim__texto { font-size: 1.05rem; padding: 0 0.7rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .leccion .anim--iso::before,
+  .leccion .anim--iso::after { animation: none; }
+  .i-svg .i-cable-luz { transition: none; }
+}
+@media print {
+  .leccion .anim--iso::before,
+  .leccion .anim--iso::after { display: none; }
 }
 
 /* ============================================================
