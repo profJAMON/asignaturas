@@ -4681,6 +4681,15 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .i-svg .i-cable-luz.i-luz-rosa { stroke: var(--iso-rosa); }
 .i-svg .i-cable-luz.i-luz-ambar { stroke: var(--iso-ambar); }
 .i-svg .i-cable-ambar { stroke: var(--iso-ambar); stroke-width: 3; stroke-dasharray: 8 7; opacity: 0.8; }
+.i-svg .i-hilo { stroke-width: 7; stroke-linecap: round; fill: none; }
+.i-svg .i-hilo-a { stroke: var(--iso-azul); }
+.i-svg .i-hilo-b { stroke: var(--iso-texto); }
+.i-svg .i-hilo-naranja { stroke: var(--hilo-naranja); }
+.i-svg .i-hilo-verde { stroke: var(--hilo-verde); }
+.i-svg .i-hilo-azul { stroke: var(--hilo-azul); }
+.i-svg .i-hilo-marron { stroke: var(--hilo-marron); }
+.i-svg .i-hilo-off { stroke: var(--iso-fondo-1); opacity: 0.75; }
+.i-svg .i-rayo { stroke: var(--iso-ambar); stroke-width: 3.5; fill: none; stroke-linejoin: round; filter: var(--iso-filtro); }
 .i-svg .i-limite { stroke: var(--iso-rosa); stroke-width: 2; stroke-dasharray: 6 6; }
 .i-svg .i-cara-sup-r { fill: var(--iso-rosa); }
 .i-svg .i-pierna { stroke: var(--iso-cara-izq); stroke-width: 9; stroke-linecap: round; }

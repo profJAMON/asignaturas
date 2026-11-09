@@ -32,35 +32,10 @@
 <div class="votacion">
 <p class="votacion__pregunta">Antes de verlo: unes dos PC con un cable directo y sin Auto-MDIX. ¿Se comunican?</p>
 <ol class="votacion__opciones"><li>Sí</li><li data-correcta>No</li></ol>
-<div class="votacion__porque"><p>No: los dos <strong>transmiten por 1-2</strong> y nadie escucha por su par. Mirad el dibujo.</p></div>
+<div class="votacion__porque"><p>No: los dos <strong>transmiten por 1-2</strong> y nadie escucha por su par. Mirad la animación.</p></div>
 </div>
-<div class="salida">
-<svg viewBox="0 0 600 250" width="100%" role="img" aria-label="Arriba, dos PC unidos con cable directo: los pines de transmitir 1 y 2 llegan a los pines de transmitir del otro, y no funciona. Abajo, con cable cruzado: los pines 1 y 2 de un PC llegan a los pines 3 y 6 del otro, y funciona" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<text x="20" y="20" class="t">Cable directo entre dos PC</text>
-<rect x="30" y="30" width="90" height="70" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="75" y="46" text-anchor="middle" class="s">PC A</text>
-<text x="112" y="68" text-anchor="end" class="t" style="fill:#e8892e">TX 1-2</text><text x="112" y="90" text-anchor="end" class="t" style="fill:#3aa757">RX 3-6</text>
-<rect x="480" y="30" width="90" height="70" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="525" y="46" text-anchor="middle" class="s">PC B</text>
-<text x="488" y="68" class="t" style="fill:#e8892e">TX 1-2</text><text x="488" y="90" class="t" style="fill:#3aa757">RX 3-6</text>
-<line x1="120" y1="64" x2="480" y2="64" stroke="#e8892e" stroke-width="3"/>
-<line x1="120" y1="86" x2="480" y2="86" stroke="#3aa757" stroke-width="3"/>
-<text x="300" y="58" text-anchor="middle" class="s">TX choca con TX</text>
-<text x="300" y="112" text-anchor="middle" class="t" style="fill:#f48771">✕ no funciona</text>
-
-<text x="20" y="146" class="t">Cable cruzado entre dos PC</text>
-<rect x="30" y="156" width="90" height="70" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="75" y="172" text-anchor="middle" class="s">PC A</text>
-<text x="112" y="194" text-anchor="end" class="t" style="fill:#e8892e">TX 1-2</text><text x="112" y="216" text-anchor="end" class="t" style="fill:#3aa757">RX 3-6</text>
-<rect x="480" y="156" width="90" height="70" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="525" y="172" text-anchor="middle" class="s">PC B</text>
-<text x="488" y="194" class="t" style="fill:#e8892e">TX 1-2</text><text x="488" y="216" class="t" style="fill:#3aa757">RX 3-6</text>
-<path d="M 120 190 C 300 190, 300 212, 480 212" stroke="#e8892e" stroke-width="3" fill="none"/>
-<path d="M 120 212 C 300 212, 300 190, 480 190" stroke="#3aa757" stroke-width="3" fill="none"/>
-<text x="300" y="242" text-anchor="middle" class="t" style="fill:#4ec9b0">✓ lo que habla uno llega a la oreja del otro</text>
-</svg>
-<p class="pie-figura">El cruce convierte la transmisión de un equipo en la recepción del otro.</p>
-</div>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 3</strong>.</p>
+<div class="anim" data-anim="tx-rx" aria-label="Cable directo y cable cruzado, en marcha"></div>
 
 <h2>¿Y por qué del PC al switch va directo?</h2>
 <p>Porque el <strong>switch ya lleva el cruce por dentro</strong>. Sus puertos están cableados al revés que los del PC: <strong>reciben por 1-2 y transmiten por 3-6</strong>. Así, con un cable directo, lo que el PC transmite por 1-2 entra justo por donde el switch escucha.</p>
@@ -132,7 +107,7 @@
 <ol>
 <li>¿Qué es un <strong>cable directo</strong>? ¿Y uno <strong>cruzado</strong>? ¿Qué terminación lleva cada extremo?</li>
 <li>Un cable directo, ¿qué pin de un extremo llega a qué pin del otro? ¿Y un cruzado T568A–T568B?</li>
-<li>Mira el dibujo de arriba, el de los dos PC unidos con cable directo. Explica, dibujándolo tú, por qué no se comunican (sin Auto-MDIX).</li>
+<li><strong>(Animación)</strong> Mira la animación, la de los dos PC unidos con cable directo. Explica, dibujándolo tú, por qué no se comunican (sin Auto-MDIX).</li>
 <li>Con la primera tabla del apartado: ¿qué es un puerto MDI y uno MDI-X? Copia dos aparatos de cada tipo.</li>
 <li>(ABC) Un switch tiene puertos…
 <ul>

@@ -77,38 +77,8 @@
 
 <h2>Flujo de datos: simplex, semidúplex y dúplex</h2>
 <p>El modo dúplex dice <strong>en qué sentido y cuándo</strong> pueden ir los datos por un enlace. Es un concepto general de cualquier comunicación, no solo de redes:</p>
-<div class="salida">
-<svg viewBox="0 0 600 210" width="100%" role="img" aria-label="Tres modos de flujo de datos: simplex, en un solo sentido, como una calle de dirección única; semidúplex, en los dos sentidos pero por turnos, como un walkie-talkie; y dúplex completo, en los dos sentidos a la vez, como una llamada de teléfono" style="max-width:100%;height:auto;">
-<style>
-.t{font-family:monospace;font-size:12px;fill:#d4d4d4}
-.s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<defs><marker id="u3fd" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4fc1ff"/></marker>
-<marker id="u3fd2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4ec9b0"/></marker></defs>
-<g>
-<rect x="20" y="16" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="38" text-anchor="middle" class="s">A</text>
-<rect x="300" y="16" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="38" text-anchor="middle" class="s">B</text>
-<line x1="84" y1="34" x2="294" y2="34" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
-<text x="380" y="30" class="t">Simplex</text><text x="380" y="46" class="s">un sentido. Ej.: la TDT</text>
-</g>
-<g>
-<rect x="20" y="84" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="106" text-anchor="middle" class="s">A</text>
-<rect x="300" y="84" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="106" text-anchor="middle" class="s">B</text>
-<line x1="84" y1="102" x2="294" y2="102" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
-<line x1="294" y1="102" x2="84" y2="102" stroke="#4ec9b0" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#u3fd2)"/>
-<text x="190" y="96" text-anchor="middle" class="s">por turnos</text>
-<text x="380" y="98" class="t">Semidúplex</text><text x="380" y="114" class="s">por turnos. Ej.: walkie</text>
-</g>
-<g>
-<rect x="20" y="152" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="50" y="174" text-anchor="middle" class="s">A</text>
-<rect x="300" y="152" width="60" height="36" rx="3" fill="#252526" stroke="#d4d4d4"/><text x="330" y="174" text-anchor="middle" class="s">B</text>
-<line x1="84" y1="162" x2="294" y2="162" stroke="#4fc1ff" stroke-width="3" marker-end="url(#u3fd)"/>
-<line x1="294" y1="180" x2="84" y2="180" stroke="#4ec9b0" stroke-width="3" marker-end="url(#u3fd2)"/>
-<text x="380" y="166" class="t">Dúplex (full-duplex)</text><text x="380" y="182" class="s">a la vez. Ej.: teléfono</text>
-</g>
-</svg>
-<p class="pie-figura">Una calle de sentido único, un puente de un carril con semáforo y una carretera de doble sentido.</p>
-</div>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 6</strong>.</p>
+<div class="anim" data-anim="flujo" aria-label="Simplex, semidúplex y dúplex, en marcha"></div>
 <table>
 <tr><th>Modo</th><th>Cómo funciona</th><th>En una red</th></tr>
 <tr><td><strong>Simplex</strong></td><td>Solo un sentido. Uno emite y el otro solo recibe.</td><td>No se usa en enlaces Ethernet; sí en la emisión de TV o radio</td></tr>
@@ -166,7 +136,7 @@
     <li>c) DNS</li>
   </ul></li>
 <li>¿Qué es la <strong>autonegociación</strong>? Una tarjeta gigabit conectada a un switch 10/100, ¿a qué velocidad va?</li>
-<li>Mira el dibujo de los tres modos de flujo. Explica simplex, semidúplex y dúplex con el ejemplo de la vida diaria de cada uno.</li>
+<li><strong>(Animación)</strong> Mira la animación de los tres modos de flujo. Explica simplex, semidúplex y dúplex con el ejemplo de la vida diaria de cada uno.</li>
 <li>(ABC) Un enlace entre un PC y un switch funciona en…
 <ul>
     <li>a) simplex</li>

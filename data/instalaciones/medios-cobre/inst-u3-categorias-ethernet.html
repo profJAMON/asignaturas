@@ -13,6 +13,23 @@
 
 
 <h2>No todos los cables de red son iguales</h2>
+<p>Antes de la teoría, mirad esta nave. Vamos parte por parte.</p>
+<div class="escena" aria-label="Escena: una nave larga con un armario en un extremo y un ordenador al fondo">
+<img src="data/instalaciones/medios-cobre/img/u3/categorias-nave.webp" width="900" height="506" alt="Una nave de oficina muy larga. En un extremo, un armario rack; al lado, un ordenador en una mesa y un técnico de pie mirando al fondo. Del armario sale un cable azul que recorre todo el suelo hasta un ordenador que está en el otro extremo, muy lejos. En el suelo, junto al armario, una bobina grande de cable azul y un cable gris viejo enrollado." loading="lazy">
+<div class="escena__paso" data-titulo="El cable largo" data-pregunta="El ordenador del fondo está a 120 m del armario. ¿Le llegará bien la red?">
+<p data-zona="498,268,120,62" data-tipo="mal">No: un tramo de par trenzado no puede pasar de <strong>100 m</strong>. A 120 m la señal llega demasiado débil.</p>
+<p data-zona="798,88,46,36" data-tipo="mal">Arreglo: un switch a mitad de camino o un tramo de fibra.</p>
+</div>
+<div class="escena__paso" data-titulo="Junto al armario" data-pregunta="¿Y el ordenador que está al lado del armario?">
+<p data-zona="200,318,42,40" data-tipo="bien">Un cable corto: muy por debajo de los 100 m. Sin problema.</p>
+</div>
+<div class="escena__paso" data-titulo="La bobina" data-pregunta="Vamos a cablear la oficina nueva. ¿Qué categoría de cable compramos?">
+<p data-zona="75,423,46,42" data-tipo="bien">Hoy el mínimo es <strong>Cat 5e</strong>, pero en una instalación nueva se pone <strong>Cat 6 o Cat 6A</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="El cable gris" data-pregunta="¿Y ese cable gris viejo y aplastado? ¿Lo aprovechamos?">
+<p data-zona="166,445,56,30" data-tipo="mal">Un cable viejo y aplastado baja la velocidad de <strong>todo el enlace</strong>: un enlace vale lo que su peor pieza.</p>
+</div>
+</div>
 <p>Dos cables pueden parecer idénticos por fuera y uno aguantar 10 Gbps mientras el otro no pasa de 100 Mbps. Lo que los diferencia es la <strong>categoría</strong> (<em>Cat</em>): una clasificación que dice hasta qué <strong>frecuencia</strong> (ancho de banda, en MHz) funciona bien el cable. Y de esa frecuencia depende la velocidad que puede llevar.</p>
 <p>Para subir de categoría, el fabricante cuida más el cable: trenzado más apretado y distinto en cada par, hilos más gruesos, cruceta separadora, pantallas… Todo para que haya menos diafonía y menos pérdidas a frecuencias altas.</p>
 <p>No hace falta adivinar la categoría: el fabricante la imprime en la cubierta, junto con otros datos. Estos son dos cables del almacén del taller:</p>
@@ -195,6 +212,8 @@
 <tr><td>10GBASE-T</td><td>10 Gigabit</td><td>10 Gbps</td><td>Cat 6A</td><td>los 4</td></tr>
 </table>
 
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 13</strong>.</p>
+<div class="anim" data-anim="pares-ethernet" aria-label="Qué pares usa Ethernet a 100 Mbps y a 1 Gbps"></div>
 <div class="nota">Un error muy extendido, que también está en mis diapositivas: «solo se usan dos pares, el azul y el marrón sobran». Era verdad a 10 y 100 Mbps. <strong>A 1 Gbps se usan los cuatro pares</strong>, y en los dos sentidos a la vez. Si un cable tiene el par azul o el marrón mal crimpado, puede funcionar «a 100» y no «a 1000». Es una avería clásica: el equipo navega, pero lento.</div>
 
 <div class="votacion">
@@ -232,7 +251,7 @@
 <li>b) par trenzado</li>
 <li>c) transmisión</li>
 </ul></li>
-<li>Con la tabla de arriba: ¿cuántos pares usa 100BASE-TX? ¿Y 1000BASE-T? ¿Qué cable mínimo pide cada uno?</li>
+<li><strong>(Animación)</strong> Mira la animación de los pares. ¿Cuántos pares usa 100BASE-TX? ¿Y 1000BASE-T? ¿Qué cable mínimo pide cada uno?</li>
 <li>(V/F) A 1 Gbps los pares azul y marrón no se usan.</li>
 <li>Lee la nota de arriba. Un PC con tarjeta gigabit solo conecta a 100 Mbps con un cable concreto; con otro cable, va a 1 Gbps. ¿Qué le puede pasar al primer cable? ¿Qué pares mirarías?</li>
 </ol>
