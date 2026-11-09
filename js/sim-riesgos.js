@@ -33,6 +33,7 @@
       const o = document.createElement('option');
       o.value = v;
       o.textContent = t;
+      if (v === '') { o.disabled = true; o.hidden = true; } /* «Elige…»: rótulo, no opción (09/11/2026) */
       if (v === valor) o.selected = true;
       s.appendChild(o);
     });

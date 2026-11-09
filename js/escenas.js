@@ -36,6 +36,10 @@
      </div>
    Sin <ol>, es una pregunta abierta para la clase con su respuesta.
    La respuesta queda escondida hasta pulsar «Revelar». Sin JS se ve todo.
+
+   RONDA (09/11/2026): dos o más .votacion seguidas, sin nada en
+   medio, llevan delante el botón «📺 Proyectar la ronda» (ver
+   montarRonda).
    ============================================================ */
 (function () {
   const NS = 'http://www.w3.org/2000/svg';
@@ -267,8 +271,95 @@
     if (porque) b.after(porque);
   }
 
+  /* ---------- Ronda en la pantalla grande (09/11/2026) ----------
+     Dos o más .votacion seguidas forman una ronda (la «Ronda rápida»
+     de los repasos). Delante sale «📺 Proyectar la ronda»: pantalla
+     completa, una pregunta cada vez y en letra grande, con ‹ Anterior,
+     Siguiente › y Salir. También van las flechas y AvPág / RePág (las
+     teclas del mando de presentaciones). Si el navegador no deja la
+     pantalla completa, la ronda tapa la página igual. */
+  function montarRonda(primera) {
+    if (primera.parentElement && primera.parentElement.classList.contains('ronda')) return;
+    const items = [];
+    for (let n = primera; n && n.classList && n.classList.contains('votacion'); n = n.nextElementSibling) items.push(n);
+    if (items.length < 2) return;
+
+    const ronda = el('div', 'ronda');
+    primera.before(ronda);
+    const barra = el('div', 'ronda__barra');
+    const bProy = el('button', 'ronda__proyectar', '📺 Proyectar la ronda');
+    bProy.type = 'button';
+    barra.appendChild(bProy);
+    ronda.appendChild(barra);
+    items.forEach(v => ronda.appendChild(v));
+
+    const nav = el('div', 'ronda__nav');
+    nav.hidden = true;
+    const bAnt = el('button', null, '‹ Anterior');
+    const cont = el('span', 'ronda__contador');
+    const bSig = el('button', null, 'Siguiente ›');
+    const bSalir = el('button', 'ronda__salir', '✕ Salir');
+    [bAnt, bSig, bSalir].forEach(b => { b.type = 'button'; });
+    cont.setAttribute('aria-live', 'polite');
+    nav.append(bAnt, cont, bSig, bSalir);
+    ronda.appendChild(nav);
+
+    let actual = 0;
+    let abierta = false;
+    let enCompleta = false;
+
+    function mostrar(i) {
+      actual = Math.max(0, Math.min(items.length - 1, i));
+      items.forEach((v, k) => v.classList.toggle('ronda__actual', k === actual));
+      cont.textContent = `Pregunta ${actual + 1} de ${items.length}`;
+      bAnt.disabled = actual === 0;
+      bSig.disabled = actual === items.length - 1;
+    }
+    function teclas(e) {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown') { mostrar(actual + 1); e.preventDefault(); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { mostrar(actual - 1); e.preventDefault(); }
+      else if (e.key === 'Escape' && !enCompleta) cerrar();
+    }
+    function abrir() {
+      abierta = true;
+      ronda.classList.add('ronda--pantalla');
+      document.documentElement.classList.add('ronda-abierta');
+      barra.hidden = true;
+      nav.hidden = false;
+      mostrar(actual);
+      document.addEventListener('keydown', teclas);
+      if (ronda.requestFullscreen) ronda.requestFullscreen().catch(() => {});
+      bSig.focus();
+    }
+    function cerrar() {
+      if (!abierta) return;
+      abierta = false;
+      ronda.classList.remove('ronda--pantalla');
+      document.documentElement.classList.remove('ronda-abierta');
+      items.forEach(v => v.classList.remove('ronda__actual'));
+      nav.hidden = true;
+      barra.hidden = false;
+      document.removeEventListener('keydown', teclas);
+      if (document.fullscreenElement === ronda) document.exitFullscreen().catch(() => {});
+      items[actual].scrollIntoView({ block: 'center' });
+      bProy.focus({ preventScroll: true });
+    }
+    document.addEventListener('fullscreenchange', () => {
+      if (document.fullscreenElement === ronda) enCompleta = true;
+      else if (enCompleta) { enCompleta = false; cerrar(); }
+    });
+    bProy.addEventListener('click', abrir);
+    bSalir.addEventListener('click', cerrar);
+    bAnt.addEventListener('click', () => mostrar(actual - 1));
+    bSig.addEventListener('click', () => mostrar(actual + 1));
+  }
+
   window.iniciarEscenas = function (raiz) {
     (raiz || document).querySelectorAll('.escena').forEach(montarEscena);
     (raiz || document).querySelectorAll('.votacion').forEach(montarVotacion);
+    (raiz || document).querySelectorAll('.votacion').forEach(v => {
+      const prev = v.previousElementSibling;
+      if (!prev || !prev.classList.contains('votacion')) montarRonda(v);
+    });
   };
 })();

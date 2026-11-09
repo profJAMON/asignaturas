@@ -4,5 +4,13 @@
   "fecha": "",
   "descripcion": "Sesión para hacer en el cuaderno el resumen de la Unidad 3. Se entrega antes del examen.",
   "materiales": [],
-  "actividades": []
+  "actividades": [
+    {
+      "id": "u3s3-repaso",
+      "tipo": "generador",
+      "titulo": "Repaso de la unidad: ¿qué servicio es?",
+      "generador": "servicio-web",
+      "n": 6
+    }
+  ]
 }

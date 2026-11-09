@@ -34,6 +34,7 @@
       const o = document.createElement('option');
       o.value = v;
       o.textContent = t;
+      if (v === '') { o.disabled = true; o.hidden = true; } /* «Elige…»: rótulo, no opción (09/11/2026) */
       if (v === valor) o.selected = true;
       s.appendChild(o);
     });
@@ -522,7 +523,7 @@
         const sel = document.createElement('select');
         sel.className = 'lab__entrada sim__select';
         sel.setAttribute('translate', 'no');
-        OPC.forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; sel.appendChild(o); });
+        OPC.forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; if (!v) { o.disabled = true; o.hidden = true; o.selected = true; } sel.appendChild(o); });
         sel.addEventListener('change', () => {
           ip[k] = sel.value;
           if (ip[k] === PUBLICA) aviso('Esa es una IP pública: es la del router hacia fuera, no la de un aparato de dentro de casa.', 'cuidado');
@@ -544,7 +545,7 @@
       const sr = document.createElement('select');
       sr.className = 'lab__entrada sim__select';
       sr.setAttribute('translate', 'no');
-      [['', 'Elige una IP…'], ['192.168.1.1', '192.168.1.1'], [PUBLICA, PUBLICA + ' (la da la operadora)'], ['192.168.1.20', '192.168.1.20']].forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; sr.appendChild(o); });
+      [['', 'Elige una IP…'], ['192.168.1.1', '192.168.1.1'], [PUBLICA, PUBLICA + ' (la da la operadora)'], ['192.168.1.20', '192.168.1.20']].forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; if (!v) { o.disabled = true; o.hidden = true; o.selected = true; } sr.appendChild(o); });
       sr.addEventListener('change', () => {
         routerFuera = sr.value;
         if (routerFuera && routerFuera !== PUBLICA) aviso('Hacia fuera, Internet no entiende las IP privadas (192.168…): el router necesita la pública.', 'cuidado');

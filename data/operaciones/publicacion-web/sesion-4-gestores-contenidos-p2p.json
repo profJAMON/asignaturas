@@ -22,13 +22,6 @@
       "titulo": "¿Cliente-servidor o P2P?",
       "generador": "cs-o-p2p",
       "n": 5
-    },
-    {
-      "id": "u3s3-repaso",
-      "tipo": "generador",
-      "titulo": "Repaso de la unidad: ¿qué servicio es?",
-      "generador": "servicio-web",
-      "n": 6
     }
   ]
 }

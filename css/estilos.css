@@ -5451,6 +5451,10 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .sim__campo { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
 .sim__select { flex: 1 1 12rem; max-width: 100%; }
 .sim__campo .sim__select { flex: none; }
+/* Sin elegir aún (09/11/2026): el rótulo «Elige…» sale tenue y en cursiva para
+   que no parezca una respuesta; dentro de la lista ya no sale (va oculto). */
+.leccion .lab .sim__select:has(option[value=""]:checked) { color: var(--text-dim); font-style: italic; }
+.leccion .lab .sim__select option { color: var(--text); font-style: normal; }
 .sim__interruptor { display: flex; align-items: center; gap: 0.5rem; min-height: 36px; cursor: pointer; }
 .sim__interruptor input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; }
 .leccion .sim__aviso { font-size: 0.9rem; padding: 0.4rem 0.6rem; border-radius: 4px; border-left: 3px solid var(--error); background: var(--error-fondo); color: var(--text); margin: 0; }
@@ -6676,10 +6680,52 @@ html { overflow-y: auto; }
 }
 .leccion .votacion__porque { margin-top: 0.6rem; padding: 0.6rem 0.8rem; border-radius: 10px; background: var(--bg); border: 1px dashed var(--border); }
 .leccion .votacion__porque p { margin: 0.2rem 0; }
+/* Ronda en la pantalla grande (09/11/2026): varias .votacion seguidas
+   con «📺 Proyectar la ronda» (js/escenas.js, montarRonda). Una pregunta
+   cada vez, a pantalla completa y en letra grande. Sin colores nuevos. */
+.leccion .ronda__barra { margin: 0.6rem 0 0.2rem; }
+.leccion .ronda__barra[hidden], .leccion .ronda__nav[hidden] { display: none; }
+.leccion .ronda__proyectar,
+.leccion .ronda__nav button {
+  font: 700 1rem var(--font-body);
+  min-height: 44px; padding: 0.45rem 1.2rem; border-radius: 999px; cursor: pointer;
+  color: var(--bg); background: var(--accent-warm); border: 1px solid var(--accent-warm);
+}
+.leccion .ronda__nav button { color: var(--accent-warm); background: var(--surface); }
+.leccion .ronda__nav button:disabled { opacity: 0.4; cursor: default; }
+.leccion .ronda__nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.8rem; }
+.leccion .ronda__contador { font: 600 1.15rem var(--font-body); color: var(--text-dim); min-width: 9rem; text-align: center; }
+.leccion .ronda--pantalla {
+  position: fixed; inset: 0; z-index: 2000;
+  width: 100%; height: 100%; margin: 0; box-sizing: border-box;
+  display: flex; flex-direction: column; gap: 1.2rem;
+  padding: clamp(1rem, 3vw, 3rem);
+  background: var(--bg); overflow: auto;
+}
+/* Sin pantalla completa, la ronda tapa la página: se quita el aislamiento
+   de .leccion (si no, la barra de arriba queda encima) y no se desplaza
+   lo de detrás. */
+html.ronda-abierta, html.ronda-abierta body { overflow: hidden; }
+html.ronda-abierta .leccion { isolation: auto; }
+.leccion .ronda--pantalla > .votacion { display: none; }
+.leccion .ronda--pantalla > .votacion.ronda__actual {
+  display: block; width: 100%; max-width: 72rem; margin: auto; box-sizing: border-box;
+  padding: clamp(1.2rem, 3vw, 2.6rem); border-left-width: 8px; border-radius: 20px;
+}
+.leccion .ronda--pantalla .votacion__cab { font-size: 1.3rem; }
+.leccion .ronda--pantalla .votacion__pregunta { font-size: clamp(1.7rem, 3.6vw, 3.1rem); line-height: 1.2; margin-bottom: 1.4rem; }
+.leccion .ronda--pantalla .votacion__dibujo { width: 14rem; }
+.leccion .ronda--pantalla .votacion__opciones { gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+.leccion .ronda--pantalla .votacion__opciones li { font-size: clamp(1.3rem, 2.6vw, 2.2rem); padding: 1rem 1.2rem; border-radius: 16px; flex-wrap: nowrap; }
+.leccion .ronda--pantalla .votacion__letra { width: 3.6rem; height: 3.6rem; border-radius: 12px; font-size: 2rem; }
+.leccion .ronda--pantalla .votacion__revelar { font-size: 1.3rem; min-height: 56px; padding: 0.6rem 1.6rem; }
+.leccion .ronda--pantalla .votacion__porque { font-size: clamp(1.2rem, 2.2vw, 1.8rem); }
+.leccion .ronda--pantalla .ronda__nav button { font-size: 1.2rem; min-height: 52px; }
 @media (prefers-reduced-motion: reduce) {
   .leccion .escena__velo { transition: none; }
 }
 @media print {
-  .leccion .escena__mandos, .leccion .votacion__revelar { display: none; }
+  .leccion .escena__mandos, .leccion .votacion__revelar,
+  .leccion .ronda__barra, .leccion .ronda__nav { display: none; }
   .leccion .votacion__porque[hidden] { display: block; }
 }
