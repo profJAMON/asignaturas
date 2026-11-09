@@ -4680,6 +4680,8 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .i-svg .i-cable-luz.i-luz-lima { stroke: var(--iso-lima); }
 .i-svg .i-cable-luz.i-luz-rosa { stroke: var(--iso-rosa); }
 .i-svg .i-cable-luz.i-luz-ambar { stroke: var(--iso-ambar); }
+.i-svg .i-cable-ambar { stroke: var(--iso-ambar); stroke-width: 3; stroke-dasharray: 8 7; opacity: 0.8; }
+.i-svg .i-limite { stroke: var(--iso-rosa); stroke-width: 2; stroke-dasharray: 6 6; }
 .i-svg .i-cara-sup-r { fill: var(--iso-rosa); }
 .i-svg .i-pierna { stroke: var(--iso-cara-izq); stroke-width: 9; stroke-linecap: round; }
 .i-svg .i-suelo { fill: var(--iso-cara-der); opacity: 0.6; }

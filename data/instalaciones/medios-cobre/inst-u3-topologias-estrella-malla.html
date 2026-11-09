@@ -18,20 +18,22 @@
 <ol class="votacion__opciones"><li>Se cae toda la red</li><li data-correcta>Solo se queda sin red ese PC</li><li>Se cae la mitad de la red</li></ol>
 <div class="votacion__porque"><p>Solo ese PC: cada uno tiene <strong>su propio cable</strong>.</p></div>
 </div>
-<div class="diapos" aria-label="Qué pasa cuando algo falla en una estrella">
-<div class="diapo">
-<svg viewBox="0 0 360 180" role="img" aria-label="Un switch en el centro con cinco equipos alrededor"><path d="M 89.8 49.4 L 148.6 77.1" class="d-linea-a"/><rect x="52" y="28" width="36" height="24" rx="3" class="d-caja-on"/><text x="70" y="45" text-anchor="middle" class="d-t d-peq">PC 1</text><path d="M 270.2 49.4 L 211.4 77.1" class="d-linea-a"/><rect x="272" y="28" width="36" height="24" rx="3" class="d-caja-on"/><text x="290" y="45" text-anchor="middle" class="d-t d-peq">PC 2</text><path d="M 79.9 132.1 L 148.1 104.7" class="d-linea-a"/><rect x="42" y="128" width="36" height="24" rx="3" class="d-caja-on"/><text x="60" y="145" text-anchor="middle" class="d-t d-peq">PC 3</text><path d="M 280.1 132.1 L 211.9 104.7" class="d-linea-a"/><rect x="282" y="128" width="36" height="24" rx="3" class="d-caja-on"/><text x="300" y="145" text-anchor="middle" class="d-t d-peq">PC 4</text><path d="M 180.0 146.0 L 180.0 108.0" class="d-linea-a"/><rect x="162" y="148" width="36" height="24" rx="3" class="d-caja-on"/><text x="180" y="165" text-anchor="middle" class="d-t d-peq">impr.</text><rect x="150" y="78" width="60" height="28" rx="4" class="d-caja-on"/><text x="180" y="97" text-anchor="middle" class="d-t d-peq">switch</text></svg>
-<p class="diapo__texto">Cada equipo, con <strong>su propio cable</strong> hasta el switch.</p>
+<div class="escena" aria-label="Escena: una oficina de dos plantas con un switch en cada una">
+<img src="data/instalaciones/medios-cobre/img/u3/estrella-plantas.webp" width="900" height="506" alt="Oficina de dos plantas vista en corte. En cada planta hay un armario con un switch al que llegan varios cables azules desde los ordenadores. Un cable sube por la pared y une los dos armarios. En la planta de abajo, una mujer usa una impresora junto al armario y un hombre trabaja en su ordenador. En otra mesa de abajo hay un ordenador con la pantalla apagada y el cable suelto, colgando hasta el suelo." loading="lazy">
+<div class="escena__paso" data-titulo="Los armarios" data-pregunta="¿Adónde van todos los cables de cada planta?">
+<p data-zona="611,134,58,46" data-tipo="bien">Al <strong>switch</strong> de su planta: cada equipo con su propio cable. Es una <strong>estrella</strong>.</p>
+<p data-zona="605,295,58,46" data-tipo="bien">Abajo, otra estrella con su switch. La impresora también tiene su cable.</p>
 </div>
-<div class="diapo">
-<svg viewBox="0 0 360 180" role="img" aria-label="El cable del PC 3 cortado; los demás siguen conectados"><path d="M 89.8 49.4 L 148.6 77.1" class="d-linea-a"/><rect x="52" y="28" width="36" height="24" rx="3" class="d-caja-on"/><text x="70" y="45" text-anchor="middle" class="d-t d-peq">PC 1</text><path d="M 270.2 49.4 L 211.4 77.1" class="d-linea-a"/><rect x="272" y="28" width="36" height="24" rx="3" class="d-caja-on"/><text x="290" y="45" text-anchor="middle" class="d-t d-peq">PC 2</text><path d="M 79.9 132.1 L 148.1 104.7" class="d-linea-d"/><path d="M 114.0 110.0 L 126.0 122.0 M 126.0 110.0 L 114.0 122.0" class="d-linea-c"/><rect x="42" y="128" width="36" height="24" rx="3" class="d-caja-act"/><text x="60" y="145" text-anchor="middle" class="d-c d-peq">PC 3</text><path d="M 280.1 132.1 L 211.9 104.7" class="d-linea-a"/><rect x="282" y="128" width="36" height="24" rx="3" class="d-caja-on"/><text x="300" y="145" text-anchor="middle" class="d-t d-peq">PC 4</text><path d="M 180.0 146.0 L 180.0 108.0" class="d-linea-a"/><rect x="162" y="148" width="36" height="24" rx="3" class="d-caja-on"/><text x="180" y="165" text-anchor="middle" class="d-t d-peq">impr.</text><rect x="150" y="78" width="60" height="28" rx="4" class="d-caja-on"/><text x="180" y="97" text-anchor="middle" class="d-t d-peq">switch</text></svg>
-<p class="diapo__texto">Se corta el cable del PC 3: <strong>solo cae ese equipo</strong>. Los demás ni se enteran.</p>
+<div class="escena__paso" data-titulo="Entre plantas" data-pregunta="¿Cómo se unen las dos plantas?">
+<p data-zona="662,214,22,62" data-tipo="bien">Un cable une los dos switches: estrellas colgadas de otra. Es un <strong>árbol</strong> (estrella extendida).</p>
 </div>
-<div class="diapo">
-<svg viewBox="0 0 360 180" role="img" aria-label="El switch tachado y todos los equipos sin conexión"><path d="M 89.8 49.4 L 148.6 77.1" class="d-linea-d"/><rect x="52" y="28" width="36" height="24" rx="3" class="d-caja"/><text x="70" y="45" text-anchor="middle" class="d-d d-peq">PC 1</text><path d="M 270.2 49.4 L 211.4 77.1" class="d-linea-d"/><rect x="272" y="28" width="36" height="24" rx="3" class="d-caja"/><text x="290" y="45" text-anchor="middle" class="d-d d-peq">PC 2</text><path d="M 79.9 132.1 L 148.1 104.7" class="d-linea-d"/><rect x="42" y="128" width="36" height="24" rx="3" class="d-caja"/><text x="60" y="145" text-anchor="middle" class="d-d d-peq">PC 3</text><path d="M 280.1 132.1 L 211.9 104.7" class="d-linea-d"/><rect x="282" y="128" width="36" height="24" rx="3" class="d-caja"/><text x="300" y="145" text-anchor="middle" class="d-d d-peq">PC 4</text><path d="M 180.0 146.0 L 180.0 108.0" class="d-linea-d"/><rect x="162" y="148" width="36" height="24" rx="3" class="d-caja"/><text x="180" y="165" text-anchor="middle" class="d-d d-peq">impr.</text><rect x="150" y="78" width="60" height="28" rx="4" class="d-caja-act"/><text x="180" y="97" text-anchor="middle" class="d-c d-peq">switch</text><path d="M 156 80 L 204 104 M 204 80 L 156 104" class="d-linea-c"/></svg>
-<p class="diapo__texto">Falla el <strong>switch</strong>: cae toda la red. Arreglo barato: un switch de repuesto.</p>
+<div class="escena__paso" data-titulo="El PC apagado" data-pregunta="¿Por qué este ordenador no tiene red? ¿Y los demás?">
+<p data-zona="460,420,82,56" data-tipo="mal">Tiene el <strong>cable suelto</strong>: solo él se queda sin red.</p>
+<p data-zona="193,311,48,42" data-tipo="bien">Los demás siguen funcionando: cada uno tiene <strong>su propio cable</strong>.</p>
 </div>
 </div>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<div class="anim" data-anim="estrella" aria-label="La topología en estrella, en marcha"></div>
 <div class="salida">
 <svg viewBox="0 0 600 220" width="100%" role="img" aria-label="Topología en estrella: un switch en el centro y seis equipos, cada uno unido al switch con su propio cable; uno de los cables está cortado y solo ese equipo se queda sin red" style="max-width:100%;height:auto;">
 <style>
@@ -190,6 +192,7 @@
 <li>Escribe tres ventajas y dos inconvenientes de la topología en estrella.</li>
 <li>(V/F) En una estrella, si se rompe el cable de un equipo, se cae toda la red.</li>
 <li>Lee la nota de debajo de la tabla de la estrella. ¿Cuál es el punto débil de la estrella y cómo se arregla de forma barata?</li>
+<li><strong>(Animación)</strong> Mira la animación de la estrella. ¿Qué pasa si se corta el cable de un equipo? ¿Y si falla el switch?</li>
 <li>¿Qué es una topología en <strong>árbol</strong>? ¿Dónde se usa? Dibuja una para un edificio de tres plantas con cuatro equipos por planta.</li>
 <li>¿Qué es una <strong>malla completa</strong>? ¿Cuándo compensa usarla?</li>
 <li>Escribe la fórmula de los enlaces de una malla completa y explica por qué se divide entre 2.</li>
@@ -216,8 +219,8 @@
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
 <p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
-<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 15.</p>
-<ol start="15">
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
 <li>Calcula los enlaces de una malla completa de 20 equipos. Con ese resultado, explica por qué no se cablea así una oficina.</li>
 <li>Dibuja la topología de la red de tu casa. ¿Es una estrella, un árbol o una híbrida? ¿Por qué?</li>
 </ol>

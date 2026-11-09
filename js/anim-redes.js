@@ -12,6 +12,9 @@
    subredes-switch  UT1 S9 · mismo switch, dos subredes: hace falta router.
    dhcp             UT1 S10 · pedir IP y, si nadie contesta, 169.254.
    ping-escalera    UT1 S10 · los cinco peldaños de ping.
+   atenuacion       UT3 S1 · a 150 m la señal no se entiende; switch en medio.
+   bus, anillo      UT3 S2 · colisión, corte, testigo y doble anillo.
+   estrella         UT3 S3 · un cable cortado frente al switch caído.
    ============================================================ */
 
 (function () {
@@ -410,4 +413,163 @@
       ]
     });
   })();
+
+  /* ============================================================
+     UT3 (09/11/2026): atenuacion · bus · anillo · estrella
+     ============================================================ */
+
+  /* PC pequeño (escala 0,72) para escenas con varias filas. */
+  function pcPeq(k, x, y, rotulo) {
+    const g = window.ANIM.el('g', { transform: `translate(${x},${y}) scale(0.72)` }, k.svg);
+    k.pc(g, 0, 0);
+    if (rotulo) k.texto(k.svg, x, y + 44, rotulo, 'i-t i-negrita');
+    return g;
+  }
+
+  /* atenuacion · UT3 S1 */
+  (function () {
+    const F = { a: 92, b: 202, c: 312 };           // tres filas
+    const X0 = 90, PXM = 2.6;                       // 1 m = 2,6 px
+    const xm = m => X0 + 40 + m * PXM;
+    ISO.animacion('atenuacion', {
+      titulo: 'La señal se debilita con la distancia: a 150 m de cable ya no se entiende; con un switch en medio, sí',
+      msMovimiento: 1500,
+      dibujar(k) {
+        const el = window.ANIM.el;
+        k.cable('ca', [X0 + 30, F.a], [xm(80), F.a]);
+        k.cable('cb', [X0 + 30, F.b], [xm(150), F.b]);
+        k.cable('cc', [X0 + 30, F.c], [xm(150), F.c]);
+        [['a', 80], ['b', 150], ['c', 150]].forEach(([f, m]) => {
+          pcPeq(k, X0, F[f] - 10);
+          pcPeq(k, xm(m) + 36, F[f] - 10);
+          k.pastilla(k.svg, X0 + 110, F[f] - 34, m + ' m', { claseTexto: 'i-mono' });
+        });
+        const sw = k.nombre('sw', el('g', { transform: `translate(${xm(75)},${F.c - 2}) scale(0.5)` }, k.svg));
+        k.switch_(sw, 0, 0, 4, ' ');
+        const raya = k.nombre('limite', el('g', {}, k.svg));
+        el('line', { x1: xm(100), y1: 40, x2: xm(100), y2: 350, class: 'i-limite' }, raya);
+        k.texto(raya, xm(100) + 8, 346, '100 m', 'i-mono-r', 'start');
+        k.nombre('okA', k.marca(k.svg, xm(80) + 36, F.a - 52, true));
+        k.nombre('noB', k.marca(k.svg, xm(150) + 36, F.b - 52, false));
+        k.nombre('okC', k.marca(k.svg, xm(150) + 36, F.c - 52, true));
+      },
+      pasos: [
+        { texto: 'Tres cables de par trenzado: 80 m, 150 m y 150 m con algo en medio.' },
+        { texto: 'Con 80 m, la señal llega <strong>clara</strong>.',
+          ver: ['okA'], luz: ['ca'], paq: [{ id: 'pa', ruta: ruta([X0 + 34, F.a - 6], [xm(80), F.a - 6]), chips: ['1011'] }] },
+        { texto: 'Con 150 m, la señal se va <strong>debilitando</strong> y llega tan flojita que ya no se entiende. Es la atenuación.',
+          ver: ['okA', 'noB'], luz: ['cb'], textos: { 'pb.0': '1?·?' },
+          paq: [{ id: 'pb', ruta: ruta([X0 + 34, F.b - 6], [xm(150), F.b - 6]), chips: [{ t: '1011', c: 'rosa' }], color: 'rosa' }] },
+        { texto: 'Por eso cada medio tiene una <strong>distancia máxima</strong>. En par trenzado, 100 m por tramo.',
+          ver: ['okA', 'noB', 'limite'] },
+        { texto: 'Si hace falta más, un <strong>switch</strong> en medio recibe la señal y la vuelve a enviar fuerte.',
+          ver: ['okA', 'noB', 'limite', 'sw', 'okC'], luz: ['cc'],
+          paq: [{ id: 'pc', ruta: ruta([X0 + 34, F.c - 6], [xm(75), F.c - 6], [xm(150), F.c - 6]), chips: ['1011'], color: 'lima' }] }
+      ]
+    });
+  })();
+
+  /* bus · UT3 S2 */
+  (function () {
+    const Y = 206, XS = [150, 270, 390, 510];
+    const N = ['A', 'B', 'C', 'D'];
+    const arriba = i => i % 2 === 0;
+    const pcY = i => arriba(i) ? 96 : 292;
+    const toma = i => [XS[i], Y];
+    const pie = i => [XS[i], arriba(i) ? 128 : 250];
+    ISO.animacion('bus', {
+      titulo: 'Topología en bus: un solo cable para todos, colisiones y qué pasa si se corta',
+      msMovimiento: 1500,
+      dibujar(k) {
+        k.cable('bus', [52, Y], [588, Y]);
+        XS.forEach((x, i) => k.cable('d' + N[i], pie(i), toma(i)));
+        [40, 600].forEach(x => {
+          k.caja(k.svg, x, Y + 12, 16, 8, 22);
+        });
+        k.texto(k.svg, 40, Y + 46, 'Terminador', 'i-t i-tenue', 'start').setAttribute('x', 6);
+        k.texto(k.svg, 634, Y + 46, 'Terminador', 'i-t i-tenue', 'end');
+        XS.forEach((x, i) => k.pc(k.svg, x, pcY(i) - (arriba(i) ? 0 : 0), N[i]));
+        k.nombre('siC', k.marca(k.svg, XS[2] + 46, pcY(2) - 40, true));
+        k.nombre('choque', k.bocadillo(k.svg, 330, 150, '¡Colisión!', [330, 196]));
+        k.nombre('corte', k.marca(k.svg, 330, Y, false));
+      },
+      pasos: [
+        { texto: 'Un solo cable para todos: el <strong>bus</strong>. En cada punta, un terminador que absorbe la señal.' },
+        { texto: 'A envía a C. La señal recorre el bus entero y la reciben todos, pero solo C se la queda.',
+          ver: ['siC'], luz: ['dA', 'bus', 'dC'],
+          paq: [{ id: 'izq', ruta: ruta(pie(0), toma(0), [52, Y]), chips: ['para C'], va: true },
+                { id: 'der', ruta: ruta(pie(0), toma(0), [588, Y]), chips: ['para C'], va: true }] },
+        { texto: 'A y D envían a la vez: las señales chocan. Es una <strong>colisión</strong> y hay que repetir.',
+          ver: ['choque'], luz: ['dA', 'dD', 'bus'],
+          paq: [{ id: 'a2', ruta: ruta(pie(0), toma(0), [330, Y]), chips: ['de A'], cae: true },
+                { id: 'd2', ruta: ruta(pie(3), toma(3), [330, Y]), chips: ['de D'], color: 'rosa', cae: true }] },
+        { texto: 'Se corta el bus (o falla un terminador): se cae <strong>toda la red</strong>.',
+          ver: ['corte'], paq: [{ id: 'a3', ruta: ruta(pie(0), toma(0), [400, Y]), chips: ['de A'], cae: true }] }
+      ]
+    });
+  })();
+
+  /* anillo · UT3 S2 */
+  (function () {
+    const C = [320, 186], RX = 222, RY = 118;
+    const N = ['A', 'B', 'C', 'D', 'E'];
+    const ang = i => -Math.PI / 2 + i * 2 * Math.PI / 5;
+    const P = i => [C[0] + RX * Math.cos(ang(i)), C[1] + RY * Math.sin(ang(i))];
+    const vuelta = (desde, pasos, sentido) => {
+      const r = [];
+      for (let j = 0; j <= pasos; j++) r.push(P(((desde + sentido * j) % 5 + 5) % 5));
+      return r;
+    };
+    ISO.animacion('anillo', {
+      titulo: 'Topología en anillo: el testigo da vueltas, un fallo rompe el anillo y el doble anillo lo salva',
+      msMovimiento: 1700,
+      dibujar(k) {
+        const el = window.ANIM.el;
+        const doble = k.nombre('doble', el('g', {}, k.svg));
+        el('ellipse', { cx: C[0], cy: C[1], rx: RX + 26, ry: RY + 20, class: 'i-cable i-cable-ambar' }, doble);
+        for (let i = 0; i < 5; i++) k.cable('t' + i, P(i), P((i + 1) % 5));
+        N.forEach((n, i) => { const [x, y] = P(i); k.pc(k.svg, x, y - 16, n); });
+        k.nombre('siC', k.marca(k.svg, P(2)[0] + 44, P(2)[1] - 56, true));
+        k.nombre('noB', k.marca(k.svg, P(1)[0] + 44, P(1)[1] - 56, false));
+      },
+      pasos: [
+        { texto: 'Cada equipo, unido al siguiente. Los datos dan la vuelta <strong>en un solo sentido</strong>.' },
+        { texto: 'Da vueltas un <strong>testigo</strong>. Solo transmite quien lo tiene: no hay colisiones.',
+          luz: ['t0', 't1', 't2', 't3', 't4'], paq: [{ id: 'tk', ruta: vuelta(0, 5, 1), chips: ['testigo'], color: 'ambar' }] },
+        { texto: 'A tiene el testigo y envía a C. El mensaje pasa por B, que lo deja seguir.',
+          ver: ['siC'], luz: ['t0', 't1'], paq: [{ id: 'm', ruta: vuelta(0, 2, 1), chips: ['para C'] }] },
+        { texto: 'Si falla un equipo, se rompe el anillo y <strong>nadie llega</strong>.',
+          ver: ['noB'], luz: ['t0'], paq: [{ id: 'm2', ruta: vuelta(0, 1, 1), chips: ['para C'], cae: true }] },
+        { texto: 'Con <strong>doble anillo</strong>, los datos dan la vuelta por el otro lado y la red sigue.',
+          ver: ['noB', 'doble', 'siC'], luz: ['t4', 't3', 't2'],
+          paq: [{ id: 'm3', ruta: vuelta(0, 3, -1), chips: ['para C'], color: 'lima' }] }
+      ]
+    });
+  })();
+
+  /* estrella · UT3 S3 */
+  ISO.animacion('estrella', {
+    titulo: 'Topología en estrella: cada equipo con su cable al switch; si cae un cable solo cae ese equipo, si cae el switch cae toda la red',
+    msMovimiento: 1400,
+    dibujar(k) {
+      estrella(k, { A: 'A', B: 'B', C: 'C', D: 'D' });
+      k.nombre('siC', k.marca(k.svg, 490, 90, true));
+      k.nombre('corteB', k.marca(k.svg, 220, 248, false));
+      k.nombre('siA', k.marca(k.svg, 150, 90, true));
+      k.nombre('caeSw', k.marca(k.svg, 380, 168, false));
+      k.nombre('repuesto', k.bocadillo(k.svg, 320, 52, 'Un switch de repuesto', [320, 170]));
+    },
+    pasos: [
+      { texto: 'Cada equipo, con <strong>su propio cable</strong> hasta el switch.' },
+      { texto: 'A envía a C: pasa por el switch, que se lo da solo a C.',
+        ver: ['siC'], luz: ['cA', 'cC'], paq: [{ id: 'p', ruta: ruta(LADO.A, BOCA.A, BOCA.C, LADO.C), chips: ['para C'] }] },
+      { texto: 'Se corta el cable de B: <strong>solo cae B</strong>. D sigue hablando con A sin enterarse.',
+        ver: ['corteB', 'siA'], luz: ['cD', 'cA'], paq: [{ id: 'p2', ruta: ruta(LADO.D, BOCA.D, BOCA.A, LADO.A), chips: ['para A'], color: 'lima' }] },
+      { texto: 'Falla el switch: cae <strong>toda la red</strong>. Es el punto débil de la estrella.',
+        ver: ['caeSw'], luz: ['cA'], paq: [{ id: 'p3', ruta: ruta(LADO.A, BOCA.A, SW), chips: ['para C'], cae: true }] },
+      { texto: 'El arreglo barato: tener un switch de repuesto en el armario.',
+        ver: ['caeSw', 'repuesto'] }
+    ]
+  });
+
 })();
