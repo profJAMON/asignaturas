@@ -1,0 +1,76 @@
+{
+  "id": "inst-u5-ondas",
+  "titulo": "Sesión 2 — Las ondas: lo que viaja por el aire",
+  "fecha": "",
+  "descripcion": "Ondas mecánicas y electromagnéticas, amplitud, longitud de onda y frecuencia (sin cálculos), el espectro electromagnético, analógico y digital, AM y FM.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s2-ondas",
+      "tipo": "quiz",
+      "titulo": "Las ondas",
+      "preguntas": [
+        {
+          "pregunta": "El sonido es una onda…",
+          "opciones": [
+            "Electromagnética",
+            "Mecánica",
+            "Digital",
+            "Infrarroja"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El wifi usa…",
+          "opciones": [
+            "Microondas",
+            "Rayos X",
+            "Ultravioleta",
+            "Sonido"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "La distancia entre dos picos de una onda es…",
+          "opciones": [
+            "La frecuencia",
+            "La amplitud",
+            "La longitud de onda",
+            "El hercio"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El mando de la tele usa luz…",
+          "opciones": [
+            "Ultravioleta",
+            "Infrarroja",
+            "Visible",
+            "Gamma"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "1 GHz son…",
+          "opciones": [
+            "Mil hercios",
+            "Un millón de hercios",
+            "Mil millones de hercios",
+            "Diez hercios"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En AM cambia…",
+          "opciones": [
+            "La frecuencia",
+            "La altura (amplitud)",
+            "La velocidad",
+            "El color"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "inst-u5-bandas",
+  "titulo": "Sesión 4 — 2,4 GHz, 5 GHz y 6 GHz",
+  "fecha": "",
+  "descripcion": "Las bandas del wifi: alcance, paredes, velocidad e interferencias de 2,4 y 5 GHz, la banda de 6 GHz, los canales (1, 6 y 11) y las redes con dos nombres.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s4-banda",
+      "tipo": "generador",
+      "titulo": "¿2,4 GHz o 5 GHz?",
+      "generador": "wifi-banda",
+      "n": 6
+    }
+  ]
+}

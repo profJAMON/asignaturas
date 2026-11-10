@@ -1,0 +1,16 @@
+{
+  "id": "inst-u5-estandares",
+  "titulo": "Sesión 5 — Las versiones del wifi: 802.11 y Wi-Fi 4, 5, 6 y 7",
+  "fecha": "",
+  "descripcion": "La norma IEEE 802.11 y la marca Wi-Fi, las versiones del wifi con sus bandas y velocidades (de 802.11b a Wi-Fi 7) y la diferencia entre la velocidad teórica y la real.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s5-nombre",
+      "tipo": "generador",
+      "titulo": "El nombre del wifi",
+      "generador": "wifi-nombre",
+      "n": 6
+    }
+  ]
+}

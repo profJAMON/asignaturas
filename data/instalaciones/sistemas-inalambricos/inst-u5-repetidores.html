@@ -1,0 +1,98 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Una casa con zonas sin wifi</h2>
+<p>Mirad el plano de la casa. Alguien ha puesto repetidores. ¿Los ha puesto bien?</p>
+<div class="escena" aria-label="Escena: plano de una casa con router y repetidores">
+<img src="data/instalaciones/sistemas-inalambricos/img/u5/repetidores-casa.webp" width="900" height="506" alt="El plano de una casa grande visto desde arriba: el router en una habitación de una esquina con un círculo de cobertura; un repetidor en el pasillo del centro con un círculo grande; al fondo, un dormitorio a oscuras con otro repetidor de círculo pequeño y una persona con el móvil" loading="lazy">
+<div class="escena__paso" data-titulo="El router" data-pregunta="¿Dónde está el router? ¿Hasta dónde llega?">
+<p data-zona="105,340,60,50" data-tipo="bien">El <strong>router</strong>, en una esquina: su señal se apaga antes de llegar al otro lado.</p>
+</div>
+<div class="escena__paso" data-titulo="Los repetidores" data-pregunta="¿Cuál de los dos repetidores está bien puesto?">
+<p data-zona="445,250,50,60" data-tipo="bien">En el <strong>pasillo</strong>, a mitad de camino: le llega buena señal y la reparte.</p>
+<p data-zona="675,118,35,35" data-tipo="mal">En el dormitorio del fondo, donde ya llegaba <strong>muy poca señal</strong>: repite poco.</p>
+</div>
+<div class="escena__paso" data-titulo="La zona oscura" data-pregunta="¿Por qué no tiene wifi ese dormitorio?">
+<p data-zona="780,115,40,55" data-tipo="mal">Una <strong>zona de sombra</strong>: no llega el router y su repetidor casi no recibe nada.</p>
+</div>
+</div>
+
+<h2>Qué es un repetidor</h2>
+<p>Un <strong>repetidor</strong> (o extensor de wifi) recoge la señal del router y la <strong>vuelve a emitir</strong> para que llegue más lejos. Se enchufa a la pared y se configura con una app o con un botón.</p>
+<table>
+<tr><th>Ventajas</th><th>Inconvenientes</th></tr>
+<tr><td>Pequeño, barato y fácil de poner</td><td>Usa la misma radio para escuchar al router y para repetir, <strong>por turnos</strong>: la velocidad baja, más o menos a la mitad</td></tr>
+<tr><td>Llena zonas de sombra sin pasar cables</td><td>Su señal nunca es mejor que la que recibe</td></tr>
+</table>
+<div class="nota">La presentación dice que el repetidor trabaja en la capa 1 de OSI. Eso vale para el <strong>repetidor de cable</strong> clásico, que solo amplifica la señal. Un repetidor <strong>wifi</strong> recibe y vuelve a mandar tramas, con sus direcciones MAC: trabaja en la <strong>capa 2</strong>.</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Por qué un repetidor wifi baja la velocidad?</p>
+<ol class="votacion__opciones"><li>Porque gasta mucha luz</li><li data-correcta>Porque escucha y repite por turnos, con la misma radio</li><li>Porque cambia la contraseña</li></ol>
+<div class="votacion__porque"><p>Porque <strong>escucha y repite por turnos</strong>: la mitad del tiempo recibe y la otra mitad emite.</p></div>
+</div>
+
+<h2>Dónde se pone</h2>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 4</strong>.</p>
+<div class="anim" data-anim="wifi-repetidor" aria-label="Dónde se pone un repetidor"></div>
+<ol>
+<li><strong>A mitad de camino</strong> entre el router y la zona sin señal, donde el wifi <strong>aún llega bien</strong> (dos o tres rayitas en el móvil).</li>
+<li>Nunca donde la señal ya es débil: repetiría una señal mala.</li>
+<li>En alto y despejado, lejos del microondas, de espejos grandes, de acuarios y de armarios metálicos.</li>
+</ol>
+<div class="votacion">
+<p class="votacion__pregunta">¿Dónde pones el repetidor?</p>
+<ol class="votacion__opciones"><li>En la habitación donde no llega nada</li><li data-correcta>A mitad de camino, donde aún llega bien</li><li>Pegado al router</li></ol>
+<div class="votacion__porque"><p><strong>A mitad de camino</strong>, donde la señal aún es buena.</p></div>
+</div>
+
+<h2>Mejor que un repetidor</h2>
+<ul>
+<li><strong>Wifi en malla</strong> (<em>mesh</em>): dos o tres aparatos iguales que se hablan entre ellos con un solo nombre de red. El móvil pasa de uno a otro solo. Pierden mucho menos que un repetidor.</li>
+<li><strong>Un punto de acceso por cable</strong>: lo mejor, porque no gasta wifi para hablar con el router. Si no se puede pasar cable, unos adaptadores <strong>PLC</strong> llevan la red por los enchufes.</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Un punto de acceso unido al router por cable funciona mejor que un repetidor.</p>
+<ol class="votacion__opciones" data-letras="VF"><li data-correcta>Verdadero</li><li>Falso</li></ol>
+<div class="votacion__porque"><p>Verdadero. No gasta la radio en hablar con el router: toda la velocidad es para los aparatos.</p></div>
+</div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 8 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué hace un <strong>repetidor</strong> wifi?</li>
+<li>Da dos ventajas y dos inconvenientes del repetidor.</li>
+<li>¿Por qué un repetidor wifi baja la velocidad más o menos a la mitad?</li>
+<li><strong>(Animación)</strong> Mira la animación del repetidor. ¿Dónde está mal puesto y dónde bien? ¿Por qué?</li>
+<li>(ABC) El sitio para un repetidor es…
+<ul>
+    <li>a) donde ya no llega nada</li>
+    <li>b) a mitad de camino, donde aún llega bien</li>
+    <li>c) en un armario metálico</li>
+  </ul></li>
+<li>¿Qué es una <strong>zona de sombra</strong>?</li>
+<li>¿Qué es el wifi en <strong>malla</strong> (mesh)? ¿Por qué es mejor que un repetidor?</li>
+<li>Dibuja el plano de tu casa (o de una casa inventada) con el router y di dónde pondrías un repetidor o un punto de acceso.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 8 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 9.</p>
+<ol start="9">
+<li>Con el móvil, mira cuántas rayitas de wifi tienes en cada habitación de tu casa. Haz un mapa de cobertura.</li>
+<li>Busca tres modelos de repetidor o de wifi en malla con su precio y sus características.</li>
+</ol>
+</div>

@@ -1560,3 +1560,116 @@ registrarPiezas('conector-f', {
     return { mostrar, destroy: bag.dispose };
   },
 });
+
+/* ------------------------------------------------------------
+   punto-acceso (UT5 «El punto de acceso, el SSID y el PoE»,
+   10/11/2026): un punto de acceso de sobremesa con dos antenas.
+   Al sacar el latiguillo, la luz se apaga: le llegaban por él los
+   datos y la corriente (PoE). Al elegir el reset, la luz parpadea.
+   ------------------------------------------------------------ */
+registrarPiezas('punto-acceso', {
+  partes: [
+    { nombre: 'Luz', texto: 'El LED de funcionamiento. Encendida fija: el punto de acceso tiene corriente y funciona. Si parpadea, está arrancando o volviendo a los valores de fábrica.' },
+    { nombre: 'Puerto LAN (PoE)', texto: 'Un puerto RJ-45 hembra para unirlo con un cable al switch de la red. Si es PoE, por el mismo cable le llega también la corriente: no hace falta enchufe.' },
+    { nombre: 'Latiguillo', texto: 'Viene del switch. Lleva los datos y, con PoE, la corriente. Sácalo y mira la luz: se apaga, porque se queda sin red y sin corriente.' },
+    { nombre: 'Botón reset', texto: 'Un agujerito con un botón dentro. Se aprieta unos segundos con un clip y el punto de acceso vuelve a los valores de fábrica: se borran el nombre de la red, la contraseña y la IP que le hubieras puesto.' },
+    { nombre: 'Antenas', texto: 'Envían y reciben las ondas del wifi. Van enroscadas en sus conectores de antena, así que se pueden cambiar por otras. Se ponen rectas y separadas, no tumbadas.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, rrect, poly, open, seg, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer, reducedMotion } = HL;
+    const LUZ = 0, PUERTO = 1, LATI = 2, RESET = 3, ANT = 4;
+    const W = 44, D = 30, H = 8;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.9);
+    fit(C, [[0, 0, 0], [W, 0, H], [0, D, 0], [W, D, H], [0, 0, H + 30], [W, 0, H + 30], [18, 66, 0], [34, 60, 0]], 200, 160);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const F = (x, z) => P(x, D, z);
+    const cara = (x0, z0, x1, z1, r) => poly(rrect(x0, z0, x1, z1, r, 3).map((q) => F(q.u, q.v)));
+
+    // antenas detrás, para que la caja las tape por abajo
+    const antenas = mk('path', { class: 'nf' }, g);
+    const cuerpo = solid(g);
+    put(cuerpo, PZ.cajaY(P, 0, 0, W, H, 2.5, 1, 0, D));
+    let rejilla = '';
+    for (let i = 0; i < 5; i++) rejilla += seg(P(8 + i * 3, 8, H), P(8 + i * 3, 20, H));
+    mk('path', { d: rejilla, class: 'nf lo' }, g);
+    const puerto = mk('path', { d: cara(12, 1.4, 21, 5.8, 0.6) + seg(F(15.5, 5.8), F(17.5, 5.8)), class: 'nf' }, g);
+    const reset = mk('circle', { r: 1.3, class: 'nf' }, g); place(reset, F(29, 3.6));
+    const luz = mk('circle', { r: 1.4 }, g); place(luz, P(36, D - 5, H));
+    const clavija = { cuerpo: solid(g), bota: solid(g) }, cable = mk('path', { class: 'nf' }, g);
+    const t = { out: tween(0), ant: tween(0) };
+    let pintado = '';
+
+    function pintar(now) {
+      const o = tval(t.out, now), a = tval(t.ant, now);
+      const clave = o.toFixed(3) + ',' + a.toFixed(3);
+      if (clave === pintado) return;
+      pintado = clave;
+      const x = 16.5, y0 = Math.max(D, 26 + o), y1 = 36 + o;
+      put(clavija.cuerpo, PZ.cajaY(P, x - 2.4, 1.8, x + 2.4, 5.4, 0.6, 0.4, y0, y1));
+      put(clavija.bota, PZ.cajaY(P, x - 1.6, 2.4, x + 1.6, 4.8, 0.6, 0.3, y1, y1 + 5));
+      cable.setAttribute('d', open(PZ.curva(P, [x, y1 + 5, 3.6], [x, y1 + 14, 3.4], [x - 2, y1 + 20, 0.4], [x - 6, 66, 0], 14)));
+      // antenas: en reposo, un poco inclinadas; al elegirlas, rectas
+      const inc = 8 * (1 - a);
+      let d = '';
+      for (const [ax, sx] of [[5, -1], [W - 5, 1]]) {
+        const pie = [ax, 3, H], punta = [ax + sx * inc, 3, H + 28];
+        d += open([P(pie[0] - 1, pie[1], pie[2]), P(punta[0] - 1, punta[1], punta[2]), P(punta[0] + 1, punta[1], punta[2]), P(pie[0] + 1, pie[1], pie[2])]);
+        d += open([P(pie[0] - 2, pie[1], pie[2]), P(pie[0] - 2, pie[1], pie[2] + 3), P(pie[0] + 2, pie[1], pie[2] + 3), P(pie[0] + 2, pie[1], pie[2])]);
+      }
+      antenas.setAttribute('d', d);
+    }
+
+    let elegida = -2;
+    function pintarLuz(now) {
+      const parpadeo = !reducedMotion() && Math.floor(now / 300) % 2 === 0;
+      let c = 'm';
+      if (elegida === LATI) c = 'off';
+      else if (elegida === RESET) c = parpadeo ? '' : 'off';
+      else if (elegida === LUZ) c = '';
+      luz.setAttribute('class', 'dot ' + c);
+    }
+
+    const B = register(stage, (_dt, now) => {
+      pintar(now);
+      pintarLuz(now);
+      return !tdone(t.out, now) || !tdone(t.ant, now) || (elegida === RESET && !reducedMotion());
+    });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [LUZ, [36, D - 5, H]], [LUZ, [36, D - 8, H]],
+      [PUERTO, [16.5, D, 4.6]], [PUERTO, [12, D, 3]],
+      [LATI, [16.5, 40, 3.6]], [LATI, [16, 52, 2.5]], [LATI, [12, 62, 0.5]],
+      [RESET, [29, D, 3.6]], [RESET, [31, D, 3.6]],
+      [ANT, [5, 3, H + 14]], [ANT, [5, 3, H + 24]], [ANT, [W - 5, 3, H + 14]], [ANT, [W - 5, 3, H + 24]],
+    ];
+
+    function mostrar(a) {
+      if (a === elegida) return;
+      elegida = a;
+      const now = performance.now();
+      tset(t.out, a === LATI ? 14 : 0, now, 0);
+      tset(t.ant, a === ANT ? 1 : 0, now, 0);
+      clavija.cuerpo.sil.classList.toggle('hi', a === LATI);
+      clavija.bota.sil.classList.toggle('hi', a === LATI);
+      cable.classList.toggle('hi', a === LATI);
+      puerto.classList.toggle('hi', a === PUERTO);
+      reset.classList.toggle('hi', a === RESET);
+      antenas.classList.toggle('hi', a === ANT);
+      pintarLuz(now);
+      B.wake();
+    }
+    mostrar(-1);
+
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 20)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 20)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});

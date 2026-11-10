@@ -1,0 +1,111 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>El wifi de una oficina</h2>
+<p>Mirad la oficina. Hay wifi, pero no hay ningún router con antenas encima de una mesa. ¿De dónde sale?</p>
+<div class="escena" aria-label="Escena: una oficina con punto de acceso en el techo">
+<img src="data/instalaciones/sistemas-inalambricos/img/u5/punto-acceso-poe.webp" width="900" height="506" alt="Una oficina: en una esquina, un armario con un switch; por arriba de la pared va un cable hasta un punto de acceso redondo y blanco, sin enchufe; otro cable llega a una cámara de seguridad; dos personas trabajan con portátiles sin cables y un ordenador de sobremesa va por cable a la roseta" loading="lazy">
+<div class="escena__paso" data-titulo="El armario" data-pregunta="¿Qué hay en el armario de la esquina?">
+<p data-zona="168,148,62,28" data-tipo="bien">El <strong>switch</strong>: de él salen los cables de toda la oficina.</p>
+</div>
+<div class="escena__paso" data-titulo="Arriba" data-pregunta="¿Qué es lo redondo de arriba? ¿Dónde está su enchufe?">
+<p data-zona="504,92,45,30" data-tipo="bien">Un <strong>punto de acceso</strong>: el que da el wifi. Sin enchufe: le llega la corriente por el cable (<strong>PoE</strong>).</p>
+<p data-zona="772,195,40,30" data-tipo="bien">Una <strong>cámara IP</strong>: también se alimenta por el cable de red.</p>
+</div>
+<div class="escena__paso" data-titulo="Las mesas" data-pregunta="¿Quién va por wifi y quién por cable?">
+<p data-zona="365,300,110,60" data-tipo="bien">Los portátiles, por <strong>wifi</strong>: se mueven.</p>
+<p data-zona="750,300,85,60" data-tipo="bien">El ordenador de sobremesa, por <strong>cable</strong> hasta la roseta: no se mueve.</p>
+</div>
+</div>
+
+<h2>Router wifi y punto de acceso</h2>
+<p>El router de tu casa es en realidad <strong>tres aparatos en una caja</strong>: un router (que sale a Internet), un switch (los puertos de atrás) y un <strong>punto de acceso</strong> (el wifi).</p>
+<p>Un <strong>punto de acceso</strong> (AP, <em>Access Point</em>) es solo la parte del wifi: une los aparatos inalámbricos con una red de cable. En una empresa, el router está en el armario y se ponen <strong>varios puntos de acceso</strong>, cada uno con su cable hasta el switch.</p>
+<p>Ejemplo: tienes dos ordenadores con cable en un switch y quieres añadir un portátil por wifi. Un portátil no se puede «enchufar» al switch por el aire: conectas un <strong>punto de acceso</strong> al switch con un latiguillo, y el portátil se conecta a él.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Quieres dar wifi a una red que solo tiene un switch y cables. ¿Qué añades?</p>
+<ol class="votacion__opciones"><li>Otro switch</li><li data-correcta>Un punto de acceso conectado al switch</li><li>Un splitter</li></ol>
+<div class="votacion__porque"><p>Un <strong>punto de acceso</strong>, con un latiguillo hasta el switch.</p></div>
+</div>
+
+<h2>El SSID: el nombre de la red</h2>
+<p>El <strong>SSID</strong> es el <strong>nombre de la red wifi</strong>: el que ves en la lista del móvil. En una empresa, todos los puntos de acceso emiten el <strong>mismo SSID</strong>: así, al moverte por el edificio, el móvil pasa de uno a otro sin cortarse.</p>
+<div class="votacion">
+<p class="votacion__pregunta">El SSID es la contraseña del wifi.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. El SSID es el <strong>nombre</strong> de la red. La contraseña es otra cosa.</p></div>
+</div>
+
+<h2>Un punto de acceso por dentro</h2>
+<p>Toca cada pieza. Prueba a sacar el latiguillo y mira la luz.</p>
+<div class="lab" data-lab="piezas" data-figura="punto-acceso" aria-label="Un punto de acceso por dentro"></div>
+
+<h2>PoE: la corriente por el cable de red</h2>
+<p>Los puntos de acceso se ponen donde mejor reparten la señal: en el techo, en lo alto de una pared, en medio de una nave. Ahí casi nunca hay enchufe. La solución es <strong>PoE</strong> (<em>Power over Ethernet</em>): por el mismo cable de red llegan los datos y la corriente.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 7</strong>.</p>
+<div class="anim" data-anim="wifi-poe" aria-label="PoE: datos y corriente por el mismo cable"></div>
+<ul>
+<li>La corriente la pone un <strong>switch PoE</strong> o, si el switch no lo es, un <strong>inyector PoE</strong> entre el switch y el aparato.</li>
+<li>Hace falta cable de <strong>categoría 5e o superior</strong>, bien crimpado.</li>
+<li>No solo los puntos de acceso: también las <strong>cámaras IP</strong> y los <strong>teléfonos IP</strong> de las oficinas.</li>
+</ul>
+<div class="nota">La presentación dice que PoE funciona «sin importar su categoría» y que lo usan «principalmente» los aparatos inalámbricos. Hace falta cable de categoría 5e o superior, y lo usan igual las cámaras y los teléfonos IP.</div>
+<div class="votacion">
+<p class="votacion__pregunta">Pones un punto de acceso PoE en un switch normal, sin PoE. ¿Qué pasa?</p>
+<ol class="votacion__opciones"><li>Funciona igual</li><li data-correcta>No enciende: no le llega corriente</li><li>Se quema el switch</li></ol>
+<div class="votacion__porque"><p><strong>No enciende</strong>: solo le llegan datos. Hace falta un switch PoE o un inyector.</p></div>
+</div>
+
+<h2>Los modos de un punto de acceso</h2>
+<table>
+<tr><th>Modo</th><th>Para qué</th></tr>
+<tr><td><strong>Punto de acceso</strong></td><td>Dar wifi a una red de cable. El normal.</td></tr>
+<tr><td><strong>Repetidor</strong></td><td>Recoger un wifi que llega débil y volver a emitirlo (la sesión siguiente).</td></tr>
+<tr><td><strong>Puente</strong> (<em>bridge</em>)</td><td>Unir dos redes de cable por el aire, por ejemplo dos naves.</td></tr>
+</table>
+<p>Para repetidor y puente, los aparatos se tienen que hablar entre sí por wifi: es lo que se llama <strong>WDS</strong>.</p>
+
+<div data-actividad="u5s7-ap"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 7 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué tres aparatos lleva dentro el router wifi de casa?</li>
+<li>¿Qué es un <strong>punto de acceso</strong>? ¿En qué se diferencia del router de casa?</li>
+<li>Tienes dos ordenadores con cable en un switch y quieres añadir un portátil por wifi. Haz un dibujo de cómo lo conectas.</li>
+<li>¿Qué es el <strong>SSID</strong>? ¿Por qué todos los puntos de acceso de una empresa llevan el mismo?</li>
+<li>Toca las piezas del punto de acceso en el laboratorio. ¿Para qué sirven la luz, el puerto LAN, el botón reset y las antenas?</li>
+<li>(V/F) Al pulsar el botón reset unos segundos, el punto de acceso vuelve a los valores de fábrica.</li>
+<li><strong>(Animación)</strong> Mira la animación del techo. ¿Qué es <strong>PoE</strong> y qué viaja por el cable?</li>
+<li>(ABC) Si el switch no tiene PoE, para alimentar el punto de acceso usas…
+<ul>
+    <li>a) un inyector PoE</li>
+    <li>b) un splitter</li>
+    <li>c) un repetidor</li>
+  </ul></li>
+<li>Di tres aparatos que se suelen alimentar por PoE.</li>
+<li>¿Para qué sirven los modos repetidor y puente de un punto de acceso?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 7 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Busca el precio de un punto de acceso de techo con PoE y de un inyector PoE.</li>
+<li>Fíjate en el techo del instituto, de un hospital o de un centro comercial: ¿ves puntos de acceso? Dibuja dónde están.</li>
+</ol>
+</div>

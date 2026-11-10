@@ -86,6 +86,22 @@
       ]
     },
     {
+      "id": "sistemas-inalambricos",
+      "titulo": "Unidad 5. Sistemas inalámbricos",
+      "descripcion": "Cómo llega Internet a casa, las ondas que viajan por el aire, las redes sin cables por su tamaño, las bandas de 2,4, 5 y 6 GHz, las versiones del wifi, su seguridad, el punto de acceso con PoE y los repetidores.",
+      "sesiones": [
+        "inst-u5-acceso-internet",
+        "inst-u5-ondas",
+        "inst-u5-alcance",
+        "inst-u5-bandas",
+        "inst-u5-estandares",
+        "inst-u5-seguridad",
+        "inst-u5-punto-acceso",
+        "inst-u5-repetidores",
+        "inst-u5-repaso"
+      ]
+    },
+    {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
       "descripcion": "El final del curso, en el taller: fabricar y comprobar latiguillos directos y cruzados, diagnosticar averías con el comprobador y montar conectores de coaxial. Aquí irán también el cableado estructurado y el montaje de la red de la oficina.",

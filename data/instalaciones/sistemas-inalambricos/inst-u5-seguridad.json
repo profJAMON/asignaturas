@@ -1,0 +1,16 @@
+{
+  "id": "inst-u5-seguridad",
+  "titulo": "Sesión 6 — Seguridad wifi",
+  "fecha": "",
+  "descripcion": "Por qué el wifi se cifra, WEP, WPA, WPA2 y WPA3, cómo dejar seguro el wifi de casa (contraseña, WPS, red de invitados) y cómo usar un wifi público.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s6-seguridad",
+      "tipo": "generador",
+      "titulo": "Seguridad wifi",
+      "generador": "wifi-seguridad",
+      "n": 6
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "inst-u5-acceso-internet",
+  "titulo": "Sesión 1 — Cómo llega Internet a casa",
+  "fecha": "",
+  "descripcion": "El ISP, del ADSL a la fibra (FTTH), fibra y coaxial (HFC), satélite y datos móviles, qué es y qué no es el wifi, y los hotspots.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s1-acceso",
+      "tipo": "quiz",
+      "titulo": "Cómo llega Internet",
+      "preguntas": [
+        {
+          "pregunta": "La empresa que te da acceso a Internet es el…",
+          "opciones": [
+            "ISP",
+            "SSID",
+            "ONT",
+            "AP"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "En FTTH, la fibra llega…",
+          "opciones": [
+            "Hasta la central",
+            "Hasta un nodo del barrio",
+            "Hasta dentro de casa",
+            "Hasta el móvil"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "En HFC, el último tramo hasta casa es de…",
+          "opciones": [
+            "Fibra",
+            "Coaxial",
+            "Par trenzado",
+            "Wifi"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "La caja de la pared que recibe la fibra en casa es la…",
+          "opciones": [
+            "ONT",
+            "PLC",
+            "NIC",
+            "SFP"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "Para una casa sin cables en la montaña, lo más lógico es…",
+          "opciones": [
+            "ADSL",
+            "HFC",
+            "Satélite o 4G/5G",
+            "FTTH"
+          ],
+          "correcta": 2
+        },
+        {
+          "pregunta": "El wifi de casa sirve para…",
+          "opciones": [
+            "Traer Internet desde la operadora",
+            "Unir tus aparatos con el router sin cables",
+            "Cambiar de ISP",
+            "Hacer llamadas por el fijo"
+          ],
+          "correcta": 1
+        }
+      ]
+    }
+  ]
+}

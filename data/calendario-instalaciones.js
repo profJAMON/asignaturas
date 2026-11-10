@@ -227,7 +227,17 @@ const CALENDARIO_INSTALACIONES = {
       "id": "sistemas-inalambricos",
       "titulo": "Unidad 5. Sistemas inalámbricos",
       "horas": 20,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u5-acceso-internet",
+        "inst-u5-ondas",
+        "inst-u5-alcance",
+        "inst-u5-bandas",
+        "inst-u5-estandares",
+        "inst-u5-seguridad",
+        "inst-u5-punto-acceso",
+        "inst-u5-repetidores",
+        "inst-u5-repaso"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2027-02-02",
@@ -582,6 +592,60 @@ const CALENDARIO_INSTALACIONES = {
       "unidad": "fibra-optica",
       "1r": "2027-01-29",
       "2n": "2026-12-01"
+    },
+    "inst-u5-acceso-internet": {
+      "titulo": "Sesión 1 — Cómo llega Internet a casa",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-02",
+      "2n": "2026-12-02"
+    },
+    "inst-u5-ondas": {
+      "titulo": "Sesión 2 — Las ondas: lo que viaja por el aire",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-05",
+      "2n": "2026-12-04"
+    },
+    "inst-u5-alcance": {
+      "titulo": "Sesión 3 — Redes inalámbricas: de la WPAN a la WWAN",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-11",
+      "2n": "2026-12-09"
+    },
+    "inst-u5-bandas": {
+      "titulo": "Sesión 4 — 2,4 GHz, 5 GHz y 6 GHz",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-12",
+      "2n": "2026-12-11"
+    },
+    "inst-u5-estandares": {
+      "titulo": "Sesión 5 — Las versiones del wifi: 802.11 y Wi-Fi 4, 5, 6 y 7",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-18",
+      "2n": "2026-12-14"
+    },
+    "inst-u5-seguridad": {
+      "titulo": "Sesión 6 — Seguridad wifi",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-23",
+      "2n": "2026-12-16"
+    },
+    "inst-u5-punto-acceso": {
+      "titulo": "Sesión 7 — El punto de acceso, el SSID y el PoE",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-02-25",
+      "2n": "2026-12-18"
+    },
+    "inst-u5-repetidores": {
+      "titulo": "Sesión 8 — Repetidores y wifi en malla",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-03-04",
+      "2n": "2026-12-21"
+    },
+    "inst-u5-repaso": {
+      "titulo": "Sesión 9 — Repaso de la unidad",
+      "unidad": "sistemas-inalambricos",
+      "1r": "2027-03-09",
+      "2n": "2026-12-22"
     },
     "inst-u3-taller-latiguillo": {
       "titulo": "Sesión 1 — Taller: fabrica un latiguillo directo",

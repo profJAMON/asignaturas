@@ -161,8 +161,7 @@ const CALENDARIO_OPERACIONES =
       "fechas": {
         "inicio": "2026-10-26",
         "fin": "2026-11-12"
-      },
-      "examen": "2026-11-12"
+      }
     },
     {
       "id": "navegador-servicios-internet",

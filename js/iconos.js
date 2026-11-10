@@ -71,6 +71,7 @@ const ICONOS_UNIDAD = {
   'medios-cobre': _SVG('<path d="M4 18c6 0 8 12 14 12s8-12 14-12 8 12 12 12"></path><path d="M4 30c6 0 8-12 14-12s8 12 14 12 8-12 12-12" opacity="0.6"></path>'),
   /* Un rayo de luz rebotando dentro de la fibra. */
   'fibra-optica': _SVG('<path d="M4 14h40M4 34h40"></path><path d="M4 30l8-16 8 20 8-20 8 20 8-16" opacity="0.8"></path>'),
+  'sistemas-inalambricos': _SVG('<circle cx="24" cy="38" r="2.5"></circle><path d="M16 30a11 11 0 0 1 16 0"></path><path d="M10 23a20 20 0 0 1 28 0"></path><path d="M4 16a29 29 0 0 1 40 0" opacity="0.8"></path>'),
   /* Un armario rack. */
   'cableado-estructurado': _SVG('<rect x="10" y="4" width="28" height="40" rx="2"></rect><path d="M14 11h20M14 18h20M14 25h20M14 32h20"></path><path d="M30 11h1M30 18h1M30 25h1"></path><path d="M14 44v-2M34 44v-2"></path>'),
   /* Botón de encendido. */

@@ -1,0 +1,118 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Una casa, dos bandas</h2>
+<p>Mirad la casa. El router es el mismo para todos, pero no a todos les va igual. ¿Por qué?</p>
+<div class="escena" aria-label="Escena: una casa de dos plantas con un router wifi">
+<img src="data/instalaciones/sistemas-inalambricos/img/u5/bandas-casa.webp" width="900" height="506" alt="Una casa de dos plantas vista en corte: en el salón, un router junto a la tele; en la cocina, un microondas; arriba, detrás de una pared de ladrillo, un chico desesperado con un portátil; en el jardín, una persona con un móvil; un enchufe y altavoces inteligentes por la casa" loading="lazy">
+<div class="escena__paso" data-titulo="Cerca del router" data-pregunta="¿Qué aparatos están cerca del router? ¿Qué necesitan?">
+<p data-zona="380,340,95,50" data-tipo="bien">La tele, <strong>cerca</strong> y pidiendo mucha velocidad: <strong>5 GHz</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="Lejos y con paredes" data-pregunta="¿Quién está lejos o detrás de paredes?">
+<p data-zona="395,125,70,60" data-tipo="mal">Arriba, detrás de una pared de ladrillo: la señal llega débil. Mejor <strong>2,4 GHz</strong>.</p>
+<p data-zona="770,355,35,60" data-tipo="mal">En el jardín, lejos: <strong>2,4 GHz</strong>, que llega más lejos.</p>
+</div>
+<div class="escena__paso" data-titulo="Lo que molesta" data-pregunta="¿Qué hay en la cocina que puede molestar? ¿Y esos aparatos pequeños?">
+<p data-zona="202,292,35,25" data-tipo="mal">El <strong>microondas</strong>: trabaja en 2,4 GHz y, encendido, estropea esa banda.</p>
+<p data-zona="50,345,22,28" data-tipo="bien">Enchufes y altavoces inteligentes: casi todos solo van en <strong>2,4 GHz</strong>.</p>
+</div>
+</div>
+
+<h2>2,4 GHz, 5 GHz y 6 GHz</h2>
+<p>El wifi trabaja en varias <strong>bandas</strong> de frecuencia. Casi todos los routers emiten en dos a la vez: <strong>2,4 GHz</strong> y <strong>5 GHz</strong>.</p>
+<table>
+<tr><th></th><th>2,4 GHz</th><th>5 GHz</th></tr>
+<tr><td>Alcance</td><td><strong>Más</strong></td><td>Menos</td></tr>
+<tr><td>Atraviesa paredes</td><td><strong>Mejor</strong></td><td>Peor</td></tr>
+<tr><td>Velocidad</td><td>Menos</td><td><strong>Más</strong></td></tr>
+<tr><td>Interferencias</td><td>Muchas: microondas, Bluetooth, los wifi vecinos</td><td><strong>Pocas</strong></td></tr>
+<tr><td>Úsala para…</td><td>Lo que está lejos y la domótica</td><td>Lo que está cerca y pide velocidad: consola, tele, ordenador</td></tr>
+</table>
+<p>¿Por qué? Recuerda la sesión 2: a <strong>más frecuencia</strong>, la onda lleva más datos, pero se apaga antes y le cuesta más atravesar las cosas.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<div class="anim" data-anim="wifi-bandas" aria-label="Hasta dónde llega cada banda"></div>
+<div class="nota">Hay una tercera banda, la de <strong>6 GHz</strong>, que traen el Wifi 6E y el Wifi 7. Es todavía más rápida, tiene aún menos alcance y está casi vacía, porque pocos aparatos la usan. Mi presentación solo habla de 2,4 y 5 GHz.</div>
+<div class="votacion">
+<p class="votacion__pregunta">Juegas en línea con la consola al lado del router. ¿Qué banda?</p>
+<ol class="votacion__opciones"><li>2,4 GHz</li><li data-correcta>5 GHz</li></ol>
+<div class="votacion__porque"><p><strong>5 GHz</strong>: estás cerca y necesitas velocidad.</p></div>
+</div><div class="votacion">
+<p class="votacion__pregunta">El móvil, en el jardín, a 20 metros del router. ¿Qué banda?</p>
+<ol class="votacion__opciones"><li data-correcta>2,4 GHz</li><li>5 GHz</li></ol>
+<div class="votacion__porque"><p><strong>2,4 GHz</strong>: llega más lejos y atraviesa mejor.</p></div>
+</div>
+
+<div data-actividad="u5s4-banda"></div>
+
+<h2>Los canales</h2>
+<div class="diapos" aria-label="Los canales de 2,4 GHz, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Una carretera con trece carriles numerados del 1 al 13"><line class="d-linea-d" x1="20" y1="110" x2="340" y2="110"></line><g class="d-t d-peq"><text x="20" y="130">1</text><text x="70" y="130">3</text><text x="120" y="130">5</text><text x="170" y="130">7</text><text x="220" y="130">9</text><text x="270" y="130">11</text><text x="320" y="130">13</text></g><text class="d-t" x="70" y="40">la banda de 2,4 GHz</text></svg>
+<p class="diapo__texto">La banda de 2,4 GHz se parte en <strong>canales</strong>, como los carriles de una carretera. En Europa hay 13.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Tres arcos anchos que se pisan unos a otros"><line class="d-linea-d" x1="20" y1="110" x2="340" y2="110"></line><path class="d-linea-c" fill="none" d="M40 110 Q 90 20 140 110"></path><path class="d-linea-c" fill="none" d="M70 110 Q 120 20 170 110"></path><path class="d-linea-c" fill="none" d="M100 110 Q 150 20 200 110"></path><text class="d-t d-c" x="120" y="140">se pisan</text></svg>
+<p class="diapo__texto">Pero cada wifi ocupa <strong>varios carriles</strong> a la vez. Dos redes en canales cercanos <strong>se pisan</strong> y van peor.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Tres arcos separados en los canales 1, 6 y 11"><line class="d-linea-d" x1="20" y1="110" x2="340" y2="110"></line><path class="d-linea-a" fill="none" d="M20 110 Q 70 20 120 110"></path><path class="d-linea-a" fill="none" d="M125 110 Q 175 20 225 110"></path><path class="d-linea-a" fill="none" d="M230 110 Q 280 20 330 110"></path><g class="d-t d-a"><text x="62" y="135">1</text><text x="168" y="135">6</text><text x="268" y="135">11</text></g></svg>
+<p class="diapo__texto">Solo caben <strong>tres que no se pisan</strong>: el <strong>1, el 6 y el 11</strong>. En 5 GHz hay muchos más canales libres.</p>
+</div>
+</div>
+<p>Si el wifi va lento y hay muchas redes vecinas, una prueba es cambiar el canal del router a uno menos usado (en 2,4 GHz, el 1, el 6 o el 11) o pasarse a 5 GHz.</p>
+<div class="votacion">
+<p class="votacion__pregunta">En 2,4 GHz hay tres canales que no se pisan: el 1, el 6 y el 11.</p>
+<ol class="votacion__opciones" data-letras="VF"><li data-correcta>Verdadero</li><li>Falso</li></ol>
+<div class="votacion__porque"><p>Verdadero. Por eso los técnicos reparten los puntos de acceso entre el <strong>1, el 6 y el 11</strong>.</p></div>
+</div>
+
+<h2>Una red con dos nombres</h2>
+<p>Muchos routers muestran dos redes: <code translate="no">MiCasa</code> y <code translate="no">MiCasa-5G</code>. Son el mismo router en sus dos bandas. Otros usan un solo nombre y el router mueve cada aparato a la banda que más le conviene. (Ojo: ese «5G» es de 5 GHz, no tiene nada que ver con el 5G del móvil.)</p>
+<div class="votacion">
+<p class="votacion__pregunta">La red «MiCasa-5G» del router es el 5G del móvil.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Es la banda de <strong>5 GHz</strong> del wifi. El 5G del móvil es otra cosa: una WWAN.</p></div>
+</div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 4 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué dos bandas usan casi todos los routers wifi?</li>
+<li>Haz una tabla comparando 2,4 GHz y 5 GHz: alcance, paredes, velocidad e interferencias.</li>
+<li>¿Por qué la banda de 5 GHz llega menos lejos? Relaciónalo con la frecuencia.</li>
+<li>(ABC) ¿Qué aparato de casa molesta al wifi de 2,4 GHz?
+<ul>
+    <li>a) el microondas</li>
+    <li>b) la nevera</li>
+    <li>c) el televisor apagado</li>
+  </ul></li>
+<li><strong>(Animación)</strong> Mira la animación de las bandas. ¿Qué banda elegirías para una consola junto al router y cuál para un móvil en el jardín? ¿Por qué?</li>
+<li>¿En qué banda conectarías los enchufes y bombillas inteligentes? ¿Por qué?</li>
+<li>¿Qué es la banda de 6 GHz y qué Wifi la usan?</li>
+<li>¿Qué es un <strong>canal</strong> wifi? ¿Qué tres canales de 2,4 GHz no se pisan?</li>
+<li>(V/F) Si tu router muestra la red «Casa-5G», estás usando el 5G del móvil.</li>
+<li>El wifi va lento en un piso con muchas redes vecinas. Di dos cosas que probarías.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 4 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Con una app de análisis wifi en el móvil, mira qué canales usan las redes de tu casa o de tu calle. ¿Hay alguno saturado?</li>
+<li>Mira en la etiqueta o en el manual de tu router si emite en 2,4 GHz, en 5 GHz o en las dos.</li>
+</ol>
+</div>

@@ -1,0 +1,37 @@
+{
+  "id": "inst-u5-repaso",
+  "titulo": "Sesión 9 — Repaso de la unidad",
+  "fecha": "",
+  "descripcion": "Toda la unidad de sistemas inalámbricos en una página: ronda rápida, resumen en tarjetas, preguntas de repaso con su respuesta y los generadores (tipo de red, banda, versión de wifi y seguridad).",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5r-alcance",
+      "tipo": "generador",
+      "titulo": "¿Qué red es?",
+      "generador": "red-alcance",
+      "n": 6
+    },
+    {
+      "id": "u5r-banda",
+      "tipo": "generador",
+      "titulo": "¿2,4 GHz o 5 GHz?",
+      "generador": "wifi-banda",
+      "n": 6
+    },
+    {
+      "id": "u5r-nombre",
+      "tipo": "generador",
+      "titulo": "El nombre del wifi",
+      "generador": "wifi-nombre",
+      "n": 6
+    },
+    {
+      "id": "u5r-seguridad",
+      "tipo": "generador",
+      "titulo": "Seguridad wifi",
+      "generador": "wifi-seguridad",
+      "n": 6
+    }
+  ]
+}

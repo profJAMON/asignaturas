@@ -1,0 +1,114 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Un café con wifi gratis</h2>
+<p>Mirad la cafetería. Hay wifi gratis para todos… y eso tiene sus riesgos. Vamos por partes.</p>
+<div class="escena" aria-label="Escena: una cafetería con wifi público">
+<img src="data/instalaciones/sistemas-inalambricos/img/u5/wifi-publico.webp" width="900" height="506" alt="Una cafetería: un router en la pared con un pósit pegado; en una mesa, un chico con un portátil que muestra un candado; enfrente, una persona con el pelo largo que mira su pantalla; un camarero en la barra; en otra mesa, una chica con el móvil que muestra un escudo" loading="lazy">
+<div class="escena__paso" data-titulo="El router" data-pregunta="¿Qué hay pegado en el router? ¿Quién puede verlo?">
+<p data-zona="150,140,55,45" data-tipo="mal">La contraseña del wifi en un <strong>pósit</strong>, a la vista de todos.</p>
+</div>
+<div class="escena__paso" data-titulo="La mesa" data-pregunta="¿Qué hace el chico? ¿Y quien está enfrente?">
+<p data-zona="275,265,70,70" data-tipo="mal">Usa un wifi público. El candado (HTTPS) protege esa web, pero para el <strong>banco</strong>, mejor los datos del móvil.</p>
+<p data-zona="466,300,50,70" data-tipo="mal">La persona de enfrente mira su pantalla… y en un wifi abierto podría «escuchar» lo que viaja por el aire.</p>
+</div>
+<div class="escena__paso" data-titulo="Lo que se hace bien" data-pregunta="¿Y la chica del móvil?">
+<p data-zona="723,345,50,60" data-tipo="bien">Usa los <strong>datos del móvil</strong> o una <strong>VPN</strong> (el escudo), que cifra todo lo que manda.</p>
+</div>
+</div>
+
+<h2>Por qué el wifi necesita seguridad</h2>
+<p>Un cable solo llega a donde lo llevas. Las ondas del wifi llegan a <strong>todo el que esté cerca</strong>: el vecino, la calle, el de la mesa de al lado. Por eso un wifi tiene que <strong>cifrar</strong> lo que manda: convertirlo en algo que solo entienden el router y tu aparato, que conocen la clave.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 3</strong>.</p>
+<div class="anim" data-anim="wifi-cifrado" aria-label="Wifi abierto o cifrado"></div>
+<div class="votacion">
+<p class="votacion__pregunta">En un wifi abierto, sin contraseña, ¿quién puede ver lo que mandas?</p>
+<ol class="votacion__opciones"><li>Solo tú</li><li>Solo el router</li><li data-correcta>Cualquiera que esté cerca y sepa escuchar</li></ol>
+<div class="votacion__porque"><p><strong>Cualquiera que esté cerca</strong> y sepa escuchar. Por eso se cifra.</p></div>
+</div>
+
+<h2>WEP, WPA, WPA2 y WPA3</h2>
+<p>Son los sistemas de seguridad del wifi, de más antiguo a más nuevo:</p>
+<table>
+<tr><th>Sistema</th><th>Año</th><th>¿Seguro?</th></tr>
+<tr><td><strong>WEP</strong></td><td>1999</td><td><strong>No</strong>. Se rompe en minutos. Desaconsejado desde 2004.</td></tr>
+<tr><td><strong>WPA</strong></td><td>2003</td><td>No. Fue un parche rápido para WEP; también está roto.</td></tr>
+<tr><td><strong>WPA2</strong></td><td>2004</td><td><strong>Sí</strong>, con una buena contraseña. Trajo el cifrado <strong>AES</strong>.</td></tr>
+<tr><td><strong>WPA3</strong></td><td>2018</td><td><strong>El mejor</strong>. Más difícil de atacar aunque la contraseña sea floja.</td></tr>
+</table>
+<p>Regla: elige <strong>WPA3</strong>; si algún aparato no lo admite, el modo mixto <strong>WPA2/WPA3</strong>. Nunca WEP ni WPA.</p>
+<div class="nota">Mi presentación dice que WPA2 es «la mejor opción» y que WEP «sigue siendo la primera opción» de los routers. Hoy la mejor es <strong>WPA3</strong>, y los routers actuales ya ni ofrecen WEP.</div>
+<div class="votacion">
+<p class="votacion__pregunta">El router te deja elegir WEP, WPA2 o WPA3. ¿Cuál pones?</p>
+<ol class="votacion__opciones"><li>WEP</li><li>WPA2</li><li data-correcta>WPA3</li></ol>
+<div class="votacion__porque"><p><strong>WPA3</strong>, el más nuevo. Si un aparato viejo no lo admite, WPA2/WPA3.</p></div>
+</div>
+
+<div data-actividad="u5s6-seguridad"></div>
+
+<h2>Cómo dejar seguro el wifi de casa</h2>
+<ol>
+<li><strong>WPA3</strong> (o WPA2/WPA3), nunca WEP.</li>
+<li>Una <strong>contraseña larga</strong>: una frase de 12 caracteres o más, no la del pósit de fábrica.</li>
+<li>Cambiar la contraseña para <strong>entrar a configurar el router</strong> (la de admin), que es otra distinta.</li>
+<li>Apagar el <strong>WPS</strong> (el botón para conectar sin contraseña): se puede atacar.</li>
+<li>Un <strong>nombre de red</strong> (SSID) sin datos personales: ni tu nombre ni tu piso.</li>
+<li>Una <strong>red de invitados</strong> para las visitas y los aparatos de domótica.</li>
+</ol>
+<div class="nota">Esconder el nombre de la red <strong>no la protege</strong>: los programas de análisis la ven igual. Lo que protege es el cifrado y la contraseña.</div>
+<div class="votacion">
+<p class="votacion__pregunta">Si escondo el nombre de mi wifi, nadie puede entrar.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Una red oculta se encuentra igual. Lo que protege es <strong>WPA3</strong> y una <strong>contraseña larga</strong>.</p></div>
+</div>
+
+<h2>En un wifi público</h2>
+<ul>
+<li>Nada de <strong>banco, compras ni contraseñas</strong> importantes. Para eso, los datos del móvil.</li>
+<li>Solo webs con <strong>HTTPS</strong> (el candado).</li>
+<li>Una <strong>VPN</strong> cifra todo lo que sale del aparato.</li>
+<li>Al irte, «<strong>olvidar</strong> esta red», para que el móvil no se conecte solo a otra con el mismo nombre.</li>
+</ul>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 6 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Por qué una red inalámbrica es menos segura que una de cable?</li>
+<li>¿Qué quiere decir <strong>cifrar</strong>?</li>
+<li><strong>(Animación)</strong> Mira la animación del espía. ¿Qué ve en una red abierta? ¿Y en una con WPA3? ¿Y con WEP?</li>
+<li>Ordena de más seguro a menos seguro: WPA2, WEP, WPA3, WPA. ¿Desde qué año se desaconseja WEP?</li>
+<li>(ABC) ¿Qué cifrado trajo WPA2?
+<ul>
+    <li>a) AES</li>
+    <li>b) WEP</li>
+    <li>c) SSID</li>
+  </ul></li>
+<li>(V/F) WEP sigue siendo una buena opción para el wifi de casa.</li>
+<li>Di cuatro cosas que harías para dejar seguro el wifi de tu casa.</li>
+<li>¿Qué es el <strong>WPS</strong> y por qué conviene apagarlo?</li>
+<li>(V/F) Esconder el nombre de la red es suficiente para que nadie entre.</li>
+<li>Estás en el wifi gratis de una estación y tienes que pagar algo por Internet. ¿Qué haces?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 6 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Mira en el móvil qué seguridad tiene el wifi de tu casa (WPA2, WPA3…). Si es WEP o WPA, díselo a quien lo configuró.</li>
+<li>Busca qué es una VPN y cuándo merece la pena usarla.</li>
+</ol>
+</div>

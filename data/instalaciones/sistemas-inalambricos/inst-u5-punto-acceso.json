@@ -1,0 +1,76 @@
+{
+  "id": "inst-u5-punto-acceso",
+  "titulo": "Sesión 7 — El punto de acceso, el SSID y el PoE",
+  "fecha": "",
+  "descripcion": "Router wifi y punto de acceso, cómo se añade wifi a una red de cable, el SSID, las partes de un punto de acceso, PoE (switch PoE e inyector) y los modos punto de acceso, repetidor y puente.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s7-ap",
+      "tipo": "quiz",
+      "titulo": "Punto de acceso y PoE",
+      "preguntas": [
+        {
+          "pregunta": "El nombre de una red wifi es el…",
+          "opciones": [
+            "SSID",
+            "WPA",
+            "PoE",
+            "ISP"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "PoE quiere decir que por el cable de red llega también…",
+          "opciones": [
+            "El wifi",
+            "La corriente",
+            "La fibra",
+            "El SSID"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para dar wifi a una red de cable se conecta al switch un…",
+          "opciones": [
+            "Splitter",
+            "Punto de acceso",
+            "Módem USB",
+            "Inyector de fibra"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "El botón reset de un punto de acceso…",
+          "opciones": [
+            "Lo apaga para siempre",
+            "Lo devuelve a los valores de fábrica",
+            "Cambia de banda",
+            "Activa el PoE"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Una cámara IP en el techo sin enchufe cerca se alimenta con…",
+          "opciones": [
+            "Pilas",
+            "PoE",
+            "Bluetooth",
+            "Wifi"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "Para unir dos naves por el aire, el punto de acceso va en modo…",
+          "opciones": [
+            "Punto de acceso",
+            "Repetidor",
+            "Puente",
+            "Invitado"
+          ],
+          "correcta": 2
+        }
+      ]
+    }
+  ]
+}

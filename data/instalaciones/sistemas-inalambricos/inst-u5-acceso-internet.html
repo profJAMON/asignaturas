@@ -1,0 +1,117 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Una calle, cinco formas de conectarse</h2>
+<p>Mirad la escena. Todas estas casas tienen Internet, pero no les llega igual. Vamos por partes.</p>
+<div class="escena" aria-label="Escena: un pueblo con distintas formas de llegar Internet a casa">
+<img src="data/instalaciones/sistemas-inalambricos/img/u5/acceso-internet.webp" width="900" height="506" alt="Un pueblo de noche visto desde arriba: en el centro, el edificio de la operadora, del que salen líneas de luz por las calles; una casa con una cajita blanca en la fachada; un bloque de pisos con un armario en la acera; en una colina, una casa de campo con una antena parabólica que apunta a un satélite; a la derecha, una torre de telefonía móvil y un chico mirando el móvil" loading="lazy">
+<div class="escena__paso" data-titulo="La central" data-pregunta="¿De dónde sale Internet para todo el pueblo?">
+<p data-zona="434,378,75,45" data-tipo="bien">La <strong>central</strong> de la operadora (el ISP). De ahí salen todos los cables.</p>
+</div>
+<div class="escena__paso" data-titulo="Por cable" data-pregunta="¿Qué cable le llega a la casa? ¿Y al bloque de pisos?">
+<p data-zona="130,235,105,85" data-tipo="bien"><strong>Fibra hasta casa</strong> (FTTH): llega a una cajita en la pared, la ONT.</p>
+<p data-zona="395,175,95,120" data-tipo="bien">Al bloque: fibra hasta el <strong>armario de la calle</strong> y de ahí al edificio.</p>
+</div>
+<div class="escena__paso" data-titulo="Por el aire" data-pregunta="¿Y la casa de la colina? ¿Y el chico de la calle?">
+<p data-zona="640,125,45,40" data-tipo="bien">Una <strong>antena parabólica</strong> que habla con un <strong>satélite</strong>: donde no llega el cable.</p>
+<p data-zona="780,320,70,110" data-tipo="bien">La <strong>antena del móvil</strong>: Internet por 4G o 5G.</p>
+</div>
+</div>
+
+<h2>Quién te da Internet: el ISP</h2>
+<p>Para tener Internet en casa se contrata a una empresa: Movistar, Vodafone, Orange, Digi… Es el <strong>ISP</strong> (<em>Internet Service Provider</em>, proveedor de acceso a Internet). Te lleva la conexión hasta casa y te da el router. Algunos ofrecen también correo, televisión o alojamiento web.</p>
+<p>Lo que cambia de un ISP a otro, o de una casa a otra, es <strong>cómo llega</strong> esa conexión: por fibra, por coaxial, por el aire…</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué es un ISP?</p>
+<ol class="votacion__opciones"><li>El cable que llega a casa</li><li data-correcta>La empresa que te da acceso a Internet</li><li>El nombre de tu wifi</li></ol>
+<div class="votacion__porque"><p>Es la <strong>empresa</strong> que te da acceso a Internet: Movistar, Vodafone, Orange…</p></div>
+</div>
+
+<h2>Del ADSL a la fibra</h2>
+<h3>El ADSL, ya historia</h3>
+<p>El <strong>ADSL</strong> aprovechaba el cable de cobre del teléfono fijo para llevar datos. Era <strong>asimétrico</strong>: bajaba mucho más rápido de lo que subía. Antes del ADSL se usaba un módem que no dejaba hablar por teléfono y navegar a la vez, y no pasaba de 56 kbps.</p>
+<div class="nota">Mi presentación habla del ADSL como algo actual. En España <strong>ya no existe</strong>: Telefónica cerró sus últimas centrales de cobre en mayo de 2025 y hoy lo normal es la fibra.</div>
+<h3>FTTH: fibra hasta casa</h3>
+<p><strong>FTTH</strong> (<em>Fiber To The Home</em>) quiere decir que la <strong>fibra llega hasta dentro de casa</strong>, a una cajita llamada <strong>ONT</strong>, que pasa la luz a señal eléctrica para el router. Ya la viste en la unidad de fibra: es monomodo y el conector suele ser SC/APC, verde. Lleva Internet, teléfono y televisión.</p>
+<h3>HFC: fibra y coaxial</h3>
+<p><strong>HFC</strong> (híbrido de fibra y coaxial) lleva la fibra hasta un <strong>nodo del barrio</strong> y, desde ahí, sigue por <strong>cable coaxial</strong> hasta casa. Es la red de las antiguas compañías de cable (como ONO). En casa, el coaxial puede pasar por un <strong>splitter</strong>, una pieza que divide la señal para conectar varios aparatos.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<div class="anim" data-anim="wifi-acceso" aria-label="Fibra hasta casa o fibra y coaxial"></div>
+<table>
+<tr><th></th><th>FTTH</th><th>HFC</th></tr>
+<tr><td>Hasta casa llega…</td><td><strong>Fibra</strong></td><td><strong>Coaxial</strong></td></tr>
+<tr><td>Interferencias</td><td>No</td><td>Sí: señal eléctrica</td></tr>
+<tr><td>Velocidad</td><td>Más</td><td>Menos</td></tr>
+<tr><td>Hoy</td><td>Lo que se instala</td><td>Se va quitando</td></tr>
+</table>
+<div class="nota">La presentación dice que la HFC es «más barata y mejor en calidad-precio». Era así hace unos años; hoy las operadoras instalan fibra hasta casa y la HFC se va quedando atrás.</div>
+<div class="votacion">
+<p class="votacion__pregunta">En una casa con HFC, ¿qué cable entra en el piso?</p>
+<ol class="votacion__opciones"><li>Fibra</li><li data-correcta>Coaxial</li><li>Par trenzado</li></ol>
+<div class="votacion__porque"><p>El <strong>coaxial</strong>: la fibra se queda en el nodo del barrio.</p></div>
+</div>
+
+<h2>Cuando no llega el cable</h2>
+<ul>
+<li><strong>Satélite</strong>: una antena parabólica en el tejado habla con un satélite. Llega a cualquier sitio, también a la montaña o al campo. Era cara y con retardo; los satélites nuevos, más cerca de la Tierra, lo han mejorado mucho.</li>
+<li><strong>Datos móviles (4G y 5G)</strong>: Internet a través de las antenas del móvil. Sirve en el teléfono, en un router 4G/5G para una casa sin fibra o compartiendo los datos del móvil con el portátil (el móvil hace de punto de acceso).</li>
+</ul>
+<div class="nota">Dos cosas de la presentación que ya no se usan: el <strong>módem USB</strong> (hoy se comparten los datos del móvil) y <strong>WiMAX</strong>, que daba Internet por radio a kilómetros y lo sustituyeron el 4G y el 5G. Y el <strong>PLC</strong> (Internet por los enchufes) no te lo da la operadora: son unos adaptadores para llevar la red de una habitación a otra de tu casa por la instalación eléctrica.</div>
+<div class="votacion">
+<p class="votacion__pregunta">Una casa en la montaña donde no llega ningún cable. ¿Qué le pondrías?</p>
+<ol class="votacion__opciones"><li>FTTH</li><li>HFC</li><li data-correcta>Satélite o router 4G/5G</li></ol>
+<div class="votacion__porque"><p><strong>Satélite</strong> o un <strong>router 4G/5G</strong>, si hay cobertura de móvil.</p></div>
+</div>
+
+<h2>¿Y el wifi?</h2>
+<p>El <strong>wifi no es la forma de llegar Internet a casa</strong>: es la red <strong>sin cables dentro</strong> de casa, entre el router y tus aparatos. Da igual que a casa llegue fibra, coaxial o 5G: dentro, el router lo reparte por cable o por wifi. Una zona con wifi en un sitio público (una cafetería, una estación) se llama <strong>hotspot</strong>.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Si tengo wifi en casa, no necesito fibra ni ninguna otra conexión.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. El wifi solo une tus aparatos con el router. Lo que trae Internet a casa es la <strong>fibra</strong> (o el coaxial, o el 5G).</p></div>
+</div>
+
+<div data-actividad="u5s1-acceso"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 1 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es un <strong>ISP</strong>? Pon dos ejemplos.</li>
+<li>¿Qué era el ADSL y por qué decimos que era asimétrico?</li>
+<li>(V/F) Hoy en España la mayoría de casas se conecta a Internet por ADSL.</li>
+<li>Explica qué es <strong>FTTH</strong>. ¿Qué es la ONT?</li>
+<li><strong>(Animación)</strong> Mira la animación de las dos casas. ¿En qué se diferencian FTTH y HFC? ¿Cuál tiene más interferencias y por qué?</li>
+<li>¿Para qué sirve un <strong>splitter</strong> coaxial?</li>
+<li>(ABC) Una casa aislada en la montaña, sin ningún cable, se conecta por…
+<ul>
+    <li>a) FTTH</li>
+    <li>b) satélite o 4G/5G</li>
+    <li>c) HFC</li>
+  </ul></li>
+<li>¿Qué tecnología sustituyó a WiMAX y al módem USB?</li>
+<li>(V/F) El wifi es la conexión que trae Internet desde la operadora hasta tu casa.</li>
+<li>¿Qué es un <strong>hotspot</strong>? Pon un ejemplo.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 1 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Pregunta en casa cómo os llega Internet (fibra, coaxial, 5G…) y qué empresa es vuestro ISP. Dibuja el camino desde la calle hasta tu habitación.</li>
+<li>Busca qué velocidad de bajada y de subida tiene la conexión de tu casa o una oferta de fibra. ¿Es simétrica?</li>
+</ol>
+</div>

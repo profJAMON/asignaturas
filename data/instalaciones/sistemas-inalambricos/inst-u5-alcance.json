@@ -1,0 +1,16 @@
+{
+  "id": "inst-u5-alcance",
+  "titulo": "Sesión 3 — Redes inalámbricas: de la WPAN a la WWAN",
+  "fecha": "",
+  "descripcion": "Las redes inalámbricas por su tamaño (WPAN, WLAN, WMAN y WWAN) con su tecnología, y las ventajas e inconvenientes de ir sin cables.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u5s3-alcance",
+      "tipo": "generador",
+      "titulo": "¿Qué red es?",
+      "generador": "red-alcance",
+      "n": 8
+    }
+  ]
+}
