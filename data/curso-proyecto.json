@@ -6,8 +6,7 @@
       "descripcion": "Qué vamos a hacer en el módulo, cómo se calcula la nota, los requisitos de la web y cómo trabajamos en pareja.",
       "sesiones": [
         "proy-como-se-evalua",
-        "proy-cuando-falla",
-        "proy-web-ejemplo"
+        "proy-cuando-falla"
       ]
     },
     {
@@ -28,6 +27,7 @@
         "proy-s04-enlaces-tablas",
         "proy-s05-formularios",
         "proy-s06-taller-html",
+        "proy-web-ejemplo",
         "proy-s07-publicar"
       ]
     },
@@ -39,7 +39,8 @@
         "proy-s08-css",
         "proy-s09-caja",
         "proy-s10-flexbox",
-        "proy-s11-revision-1"
+        "proy-s11-revision-1",
+        "proy-web-ejemplo-css"
       ]
     },
     {

@@ -1,12 +1,13 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
 </div>
 
@@ -84,6 +85,11 @@
 </div>
 
 <p>Y lo más importante: <strong>las pérdidas en dB se suman</strong>, como el dinero de una compra. Si el cable se come 1 dB, las conexiones 1,5 dB y los empalmes 0,6 dB, en total se pierden 1 + 1,5 + 0,6 = <strong>3,1 dB</strong>.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Un enlace pierde 3 dB. ¿Cuánta luz llega al otro lado?</p>
+<ol class="votacion__opciones"><li data-correcta>La mitad</li><li>Un tercio</li><li>Casi nada</li></ol>
+<div class="votacion__porque"><p><strong>La mitad</strong>: cada 3 dB, la luz se queda en la mitad. Con 6 dB, un cuarto.</p></div>
+</div>
 
 <h2>Lo que «cuesta» cada cosa</h2>
 <p>Piénsalo como una tienda: cada elemento del enlace tiene un precio en dB. Estos son los precios que usamos para calcular (son los máximos que permite la norma, así vamos sobre seguro):</p>
@@ -156,6 +162,12 @@
 </div>
 <div class="nota">Es el error más habitual: multiplicar 400 × 3,5 en lugar de 0,4 × 3,5. Si te sale una pérdida de cientos o miles de dB, <strong>has olvidado pasar a km</strong>.</div>
 
+<div class="votacion">
+<p class="votacion__pregunta">350 m, en kilómetros, son…</p>
+<ol class="votacion__opciones"><li>3,5 km</li><li data-correcta>0,35 km</li><li>0,035 km</li></ol>
+<div class="votacion__porque"><p><strong>0,35 km</strong>: se divide entre 1000 (la coma, tres sitios a la izquierda).</p></div>
+</div>
+
 <div data-actividad="u4s4-km"></div>
 
 <h2>El presupuesto de pérdidas, paso a paso</h2>
@@ -226,6 +238,13 @@
 
 <p>Mira los dos tickets: con cinco veces menos cable, el multimodo pierde más. Y en los dos, <strong>las conexiones «cuestan» más que el cable</strong>. Cada conexión que te ahorres es luz que ganas.</p>
 
+<p>Míralo en marcha antes de hacer los tickets de las <strong>preguntas 6 y 7</strong>: la luz va «pagando» por el camino.</p>
+<div class="anim" data-anim="fibra-presupuesto" aria-label="El presupuesto de pérdidas, en marcha"></div>
+<div class="votacion">
+<p class="votacion__pregunta">Multimodo de 200 m con 2 conexiones y sin empalmes. ¿Cuánto pierde?</p>
+<div class="votacion__porque"><p>200 m = 0,2 km → 0,2 × 3,5 = 0,7 dB. Conexiones: 2 × 0,75 = 1,5 dB. <strong>Total: 2,2 dB</strong>.</p></div>
+</div>
+
 <div data-actividad="u4s4-perdidas"></div>
 
 <h2>El margen: ¿llega la luz?</h2>
@@ -268,6 +287,12 @@
 </div>
 
 <p>Si el margen sale en rojo o ámbar, se arregla siempre por uno de estos caminos: <strong>quitar conexiones</strong> (empalmar directo en vez de pasar por un panel intermedio), hacer <strong>empalmes por fusión</strong> bien hechos, <strong>acortar</strong> el recorrido, pasar a <strong>monomodo</strong> o poner un <strong>módulo que aguante más</strong>.</p>
+
+<div class="votacion">
+<p class="votacion__pregunta">El módulo aguanta 5 dB y el enlace pierde 4 dB. ¿Qué color sale en el semáforo?</p>
+<ol class="votacion__opciones"><li>Rojo</li><li data-correcta>Ámbar</li><li>Verde</li></ol>
+<div class="votacion__porque"><p>Margen = 5 − 4 = 1 dB: <strong>ámbar</strong>. Funciona, pero va justo.</p></div>
+</div>
 
 <div data-actividad="u4s4-margen"></div>
 
@@ -318,6 +343,11 @@
 </div>
 
 <div class="nota">La luz roja del localizador visual sí se ve, pero es un láser: tampoco se mira de frente. Se mira la fibra <strong>de lado</strong>, donde se escapa la luz.</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué aparato te dice <strong>en qué metro</strong> está el corte o el empalme malo?</p>
+<ol class="votacion__opciones"><li>El microscopio</li><li>El medidor de potencia</li><li data-correcta>El OTDR</li></ol>
+<div class="votacion__porque"><p>El <strong>OTDR</strong>: dibuja el enlace y marca dónde se pierde la luz.</p></div>
+</div>
 
 <h3>Cuando un enlace no funciona: el orden</h3>
 <div class="salida">
@@ -347,6 +377,11 @@
 <text x="530" y="250" text-anchor="middle" class="fperdid10-s">del más fácil</text><text x="530" y="263" text-anchor="middle" class="fperdid10-s">y barato</text><text x="530" y="276" text-anchor="middle" class="fperdid10-s">al más caro</text>
 </svg>
 <p class="pie-figura">Siempre de arriba abajo: lo fácil primero.</p>
+</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">El medidor marca 9 dB en un enlace que calculaste en 3 dB. ¿Qué piensas?</p>
+<div class="votacion__porque"><p>Que algo va mal en el camino. Lo primero, <strong>conectores sucios</strong>; después, una curva cerrada o un empalme malo. El OTDR te dirá dónde.</p></div>
 </div>
 
 <h2>Preguntas de la sesión</h2>
@@ -394,17 +429,3 @@
 <li>Inventa un enlace de fibra (tipo, metros, conexiones y empalmes), haz su ticket de pérdidas y calcula el margen con un módulo que aguanta 8 dB.</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 Multimodo de 200 m, 2 conexiones, sin empalmes. ¿Cuánto pierde?</summary>
-<p>200 m = 0,2 km → 0,2 × 3,5 = <strong>0,7 dB</strong>. Conexiones: 2 × 0,75 = <strong>1,5 dB</strong>. Empalmes: 0. <strong>Total: 2,2 dB</strong>.</p>
-</details>
-<details>
-<summary>🤔 El módulo aguanta 5 dB y el ticket da 4 dB. ¿Qué color del semáforo?</summary>
-<p>Margen = 5 − 4 = <strong>1 dB</strong>: <strong>ámbar</strong>. Funciona, pero va justo.</p>
-</details>
-<details>
-<summary>🤔 El medidor marca 9 dB en un enlace que calculaste en 3 dB. ¿Qué piensas?</summary>
-<p>Que algo va mal en el camino: lo primero, <strong>conectores sucios</strong>; después, una curva cerrada o un empalme malo. El OTDR te dirá dónde.</p>
-</details>

@@ -1,12 +1,13 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
 </div>
 
@@ -119,6 +120,11 @@
 <p class="pie-figura">Dibujos esquemáticos. En blanco, la férula de cerámica con la fibra en el centro.</p>
 </div>
 
+<div class="votacion">
+<p class="votacion__pregunta">Un cable de cobre se puede empalmar retorciendo los hilos. ¿Por qué con la fibra no vale algo así?</p>
+<div class="votacion__porque"><p>Porque hay que dejar dos núcleos de <strong>9 µm</strong> exactamente enfrentados. Un desvío de pocas micras, o una mota de polvo, y la luz se sale.</p></div>
+</div>
+
 <h3>Los conectores que te vas a encontrar</h3>
 <table>
 <tr><th>Conector</th><th>Cómo es</th><th>Dónde</th></tr>
@@ -130,6 +136,12 @@
 </table>
 <p>Truco para no confundir LC y SC: <strong>L</strong>C = <strong>L</strong>ittle (pequeño); <strong>S</strong>C = <strong>S</strong>quare (cuadrado).</p>
 
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué conector lleva un módulo SFP normal de un switch?</p>
+<ol class="votacion__opciones"><li>SC</li><li data-correcta>LC dúplex</li><li>ST</li></ol>
+<div class="votacion__porque"><p><strong>LC dúplex</strong>: dos LC pequeños, uno para TX y otro para RX.</p></div>
+</div>
+
 <h3>El pulido de la punta: UPC y APC</h3>
 <p>Aunque se pula muy bien, siempre se refleja un poquito de luz hacia atrás en cada conector. Hay dos acabados:</p>
 <ul>
@@ -137,6 +149,12 @@
 <li><strong>APC</strong> (<em>Angled Physical Contact</em>): punta cortada a <strong>8 grados</strong>. La luz que rebota se va hacia el revestimiento y no vuelve al emisor. Cuerpo <strong>verde</strong>. Se usa en <strong>FTTH</strong> y en televisión por fibra, donde los reflejos molestan mucho.</li>
 </ul>
 <div class="nota"><strong>Nunca se enchufa un APC (verde) con un UPC (azul).</strong> Las puntas no encajan: quedan separadas por un hueco de aire, se pierde casi toda la luz y se pueden rayar las dos férulas. Regla fácil: <strong>verde con verde, azul con azul</strong>.</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">En la ONT de casa ves un conector verde. ¿Qué es?</p>
+<ol class="votacion__opciones"><li>Un UPC multimodo</li><li data-correcta>Un APC, punta a 8°</li><li>Un ST antiguo</li></ol>
+<div class="votacion__porque"><p>Un <strong>APC</strong> (casi seguro SC/APC). Verde solo con verde.</p></div>
+</div>
 
 <div data-actividad="u4s3-conectores"></div>
 
@@ -168,6 +186,13 @@
 <text x="300" y="194" text-anchor="middle" class="fconect3-s">Solución: abre el clip y da la vuelta a las dos fibras en un extremo.</text>
 </svg>
 <p class="pie-figura">Lo que uno transmite tiene que entrar por donde el otro recibe.</p>
+</div>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 8</strong>.</p>
+<div class="anim" data-anim="fibra-polaridad" aria-label="TX y RX: la polaridad A-B"></div>
+<div class="votacion">
+<p class="votacion__pregunta">Montas un enlace de fibra y el puerto no enciende. ¿Qué pruebas primero?</p>
+<ol class="votacion__opciones"><li>Cambiar el switch</li><li data-correcta>Dar la vuelta a la pareja del LC en un extremo</li><li>Doblar el cable para que haga contacto</li></ol>
+<div class="votacion__porque"><p><strong>Dar la vuelta a la pareja</strong>: si TX llega a TX, no hay enlace.</p></div>
 </div>
 <div class="nota">La presentación dice que la transmisión es «unidireccional (dos fibras, una para cada sentido)». Es lo habitual, pero no siempre: hay transceptores <strong>BiDi</strong> que usan <strong>una sola fibra</strong> con una longitud de onda para cada sentido. Así funciona la fibra que llega a tu casa (GPON): una única fibra para subir y bajar.</div>
 
@@ -241,6 +266,12 @@
 <p class="pie-figura">Los seis pasos de un empalme por fusión.</p>
 </div>
 <p>También existen <strong>conectores de campo</strong> (prepulidos), que se montan en la punta de una fibra sin fusionadora. Son cómodos pero pierden más que un pigtail empalmado.</p>
+
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué pierde menos luz?</p>
+<ol class="votacion__opciones"><li data-correcta>Un empalme por fusión</li><li>Un par de conectores</li></ol>
+<div class="votacion__porque"><p>El <strong>empalme por fusión</strong>: 0,05-0,1 dB. Un par de conectores, bastante más.</p></div>
+</div>
 
 <h2>La electrónica: transceptores y conversores</h2>
 <div class="salida">
@@ -329,6 +360,12 @@
 <li>Tapones siempre puestos en lo que no se use.</li>
 </ul>
 
+<div class="votacion">
+<p class="votacion__pregunta">Si un conector de fibra tiene polvo, basta con soplarlo antes de enchufarlo.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Soplar mete saliva y no quita la grasa. Se <strong>inspecciona</strong> con el microscopio, se limpia con el limpiador de un clic y se vuelve a inspeccionar.</p></div>
+</div>
+
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
 <p class="papel__titulo">Sesión 3 · Preguntas obligatorias — a mano, en el cuaderno</p>
@@ -347,7 +384,7 @@
 <li>¿Qué conector lleva normalmente la ONT de la fibra de casa? ¿De qué color es?</li>
 <li>Diferencia entre pulido <strong>UPC</strong> y <strong>APC</strong>. ¿Qué color identifica a cada uno?</li>
 <li>(V/F) Un conector APC verde se puede enchufar con uno UPC azul sin problema.</li>
-<li>¿Por qué un enlace de fibra suele necesitar dos fibras? ¿Qué es la polaridad A-B? ¿Qué haces si el puerto no enciende?</li>
+<li><strong>(Animación)</strong> Mira la animación de TX y RX. ¿Por qué un enlace de fibra suele necesitar dos fibras? ¿Qué es la polaridad A-B? ¿Qué haces si el puerto no enciende?</li>
 <li>Dibuja un enlace de fibra entre dos armarios y nombra: SFP, latiguillo, bandeja, pigtail, empalme y cable troncal.</li>
 <li>¿Qué es un <strong>pigtail</strong>? ¿Y una bandeja de empalmes?</li>
 <li>Compara el empalme por fusión y el mecánico: cómo se hace, pérdida y uso.</li>
@@ -373,17 +410,3 @@
 <li>Escribe en orden los seis pasos de un empalme por fusión.</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 Conector verde en la ONT de casa. ¿Qué es?</summary>
-<p>Un <strong>APC</strong>, casi seguro <strong>SC/APC</strong>: monomodo con la punta a 8°. Solo se conecta con otro verde.</p>
-</details>
-<details>
-<summary>🤔 ¿Qué conector lleva un módulo SFP normal?</summary>
-<p><strong>LC dúplex</strong>: dos LC, uno para TX y otro para RX.</p>
-</details>
-<details>
-<summary>🤔 ¿Qué pierde menos, un empalme por fusión o un conector?</summary>
-<p>El <strong>empalme por fusión</strong> (0,05-0,1 dB). Un par de conectores pierde bastante más, del orden de 0,3-0,75 dB.</p>
-</details>

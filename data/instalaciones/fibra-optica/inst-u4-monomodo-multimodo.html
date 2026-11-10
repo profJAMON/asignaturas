@@ -1,12 +1,13 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
 </div>
 
@@ -79,6 +80,8 @@
 
 <p>A eso se le llama <strong>dispersión modal</strong>. Para que los pulsos no se pisen, o se envían <strong>más despacio</strong> o el cable tiene que ser <strong>más corto</strong>. Por eso en multimodo: <strong>a más velocidad, menos metros</strong>.</p>
 <p>La monomodo tiene un solo camino (un solo corredor), así que casi no le pasa. Por eso llega a <strong>decenas de kilómetros</strong>.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<div class="anim" data-anim="fibra-modos" aria-label="Multimodo y monomodo: muchos caminos o uno solo"></div>
 
 <details>
 <summary>Para saber más: salto de índice e índice gradual</summary>
@@ -88,10 +91,20 @@
 </ul>
 </details>
 
+<div class="votacion">
+<p class="votacion__pregunta">La multimodo pierde menos luz por metro que el cobre. Entonces, ¿por qué llega menos lejos que la monomodo?</p>
+<div class="votacion__porque"><p>Por la <strong>dispersión modal</strong>: la luz va por muchos caminos, llega a destiempo y, con la distancia, los pulsos se mezclan. Por eso, a más velocidad, menos metros.</p></div>
+</div>
+
 <div data-actividad="u4s2-modos"></div>
 
 <h2>La luz que se usa</h2>
 <p>La luz de las redes es <strong>infrarroja</strong>: está justo después del rojo y el ojo no la ve. Por eso es tan peligroso mirar la punta de una fibra.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Si una fibra está encendida, en la punta se ve una lucecita roja.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. La luz de las redes es <strong>infrarroja</strong>: el ojo no la ve. Que no veas nada no quiere decir que esté apagada.</p></div>
+</div>
 <div class="salida">
 <svg viewBox="0 0 600 156" width="100%" role="img" aria-label="Barra de colores de la luz desde el violeta hasta el rojo, que es lo que ve el ojo, y a continuación una zona oscura de infrarrojo invisible donde están las tres luces de la fibra: 850 nanómetros para multimodo, y 1310 y 1550 nanómetros para monomodo" style="max-width:100%;height:auto;">
 <defs><linearGradient id="u4arcoiris" x1="0" x2="1" y1="0" y2="0">
@@ -153,6 +166,12 @@
 <p class="pie-figura">El color de la cubierta te dice el tipo de fibra de un vistazo.</p>
 </div>
 
+<div class="votacion">
+<p class="votacion__pregunta">En un armario, un latiguillo aguamarina llega a un panel del que sale cable amarillo. ¿Está bien montado?</p>
+<ol class="votacion__opciones"><li>Sí: los dos son de fibra</li><li data-correcta>No: aguamarina es multimodo y amarillo es monomodo</li></ol>
+<div class="votacion__porque"><p><strong>No</strong>: aguamarina es <strong>multimodo</strong> y amarillo, <strong>monomodo</strong>. No se mezclan.</p></div>
+</div>
+
 <details>
 <summary>Para saber más: la tabla completa</summary>
 <table>
@@ -168,6 +187,12 @@
 </details>
 
 <div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal. Tampoco se mezcla el OM1 naranja con los demás: su núcleo es más gordo y se pierde luz en cada unión.</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">En un cable pone 9/125. ¿Qué fibra es?</p>
+<ol class="votacion__opciones"><li>Multimodo</li><li data-correcta>Monomodo</li></ol>
+<div class="votacion__porque"><p><strong>Monomodo</strong>: núcleo de 9 µm. El 125 es el revestimiento, que miden igual todas.</p></div>
+</div>
 
 <h2>Hasta dónde llega cada una</h2>
 <p>Así se ve la diferencia de distancias. La barra del cobre está para comparar:</p>
@@ -233,6 +258,12 @@
 </div>
 <p>Hoy el cable monomodo cuesta lo mismo o menos que el multimodo, así que en instalaciones nuevas se pone cada vez más monomodo incluso dentro del edificio: <strong>no se queda pequeña</strong>.</p>
 
+<div class="votacion">
+<p class="votacion__pregunta">La fibra que llega a una casa (FTTH) es…</p>
+<ol class="votacion__opciones"><li>Multimodo</li><li data-correcta>Monomodo</li></ol>
+<div class="votacion__porque"><p><strong>Monomodo</strong> (amarilla): viene de muy lejos, desde la central de la operadora.</p></div>
+</div>
+
 <div data-actividad="u4s2-identifica"></div>
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
@@ -249,7 +280,7 @@
   </ul>
 </li>
 <li>¿Qué es la <strong>dispersión modal</strong>? ¿A qué tipo de fibra afecta y qué consecuencia tiene?</li>
-<li>Explica la dispersión modal con el ejemplo de la carrera de corredores.</li>
+<li><strong>(Animación)</strong> Mira la animación de los caminos de la luz. Explica la dispersión modal con el ejemplo de la carrera de corredores.</li>
 <li>(V/F) En multimodo, cuanta más velocidad, más metros puede tener el enlace.</li>
 <li>¿Por qué no se ve la luz que va por una fibra? ¿Qué peligro tiene?</li>
 <li>Escribe el color de cubierta de OS2, OM1, OM3, OM4 y OM5.</li>
@@ -278,17 +309,3 @@
 <li>Inventa un caso como el de la pregunta 15 (dos sitios a unir y la distancia) y razona qué fibra elegirías.</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 ¿Por qué la multimodo llega menos lejos si pierde menos luz por el camino que un cobre?</summary>
-<p>Porque su límite no es solo la pérdida, sino la <strong>dispersión modal</strong>: los pulsos se ensanchan hasta mezclarse. Por eso a más velocidad, menos distancia.</p>
-</details>
-<details>
-<summary>🤔 ¿Qué quiere decir 50/125?</summary>
-<p>Núcleo de <strong>50 µm</strong> y revestimiento de <strong>125 µm</strong>: una multimodo OM2, OM3, OM4 u OM5.</p>
-</details>
-<details>
-<summary>🤔 Latiguillo aguamarina en un switch cuyo otro extremo lleva cable amarillo. ¿Funciona?</summary>
-<p>No debería montarse así: <strong>aguamarina es multimodo y amarillo es monomodo</strong>. No se mezclan.</p>
-</details>

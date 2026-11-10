@@ -1,0 +1,48 @@
+<div class="nota">Esto no es una sesión: es <strong>lo mínimo que os pido en CSS</strong>, para que lo veáis hecho. Es la misma <strong>BloqueCraft</strong> del <a href="tema.html?id=proy-web-ejemplo">ejemplo de HTML</a>, ahora con un único <code>estilos.css</code>. Vuestra web tiene que tener <strong>las mismas cosas</strong>, con vuestros colores y vuestro tema. Volved aquí siempre que no sepáis qué os falta.</div>
+
+<h2>Recórrela y toca cada cosa</h2>
+<ol>
+<li>Pasa por las 4 páginas con el menú de arriba: <strong>Inicio, Mobs, Biomas y Sobre esta web</strong>.</li>
+<li>Pasa el ratón por el menú y por las tarjetas de <strong>Mobs</strong>: cambian de color.</li>
+<li>Toca en la página cada cosa de la misión: el título, el texto amarillo, una tarjeta y la tabla.</li>
+<li>Pulsa <strong>Ver el CSS</strong> para ver <code>estilos.css</code>. Las reglas de lo último que has tocado salen en amarillo.</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="web-ejemplo-css" aria-label="Así puede quedar vuestra web con CSS"></div>
+
+<h2>Lo mínimo que os pido en CSS</h2>
+<p>La última columna dice en qué ejercicio lo practicasteis.</p>
+<table>
+<thead><tr><th>Qué</th><th>En BloqueCraft</th><th>Dónde</th></tr></thead>
+<tbody>
+<tr><td>Un único <code>estilos.css</code>, conectado en todas las páginas con <code>&lt;link&gt;</code></td><td>Las 4 páginas</td><td><a href="tema.html?id=proy-s08-css">S8, ejercicio 1</a></td></tr>
+<tr><td>2 o 3 colores y una letra: <code>background-color</code>, <code>color</code> y <code>font-family</code> en <code>body</code></td><td>Fondo azul oscuro, texto blanco y títulos amarillos</td><td><a href="tema.html?id=proy-s08-css">S8</a></td></tr>
+<tr><td>Una clase vuestra, usada en 2 etiquetas o más</td><td><code>.destacado</code>, en Inicio, Mobs y Biomas</td><td><a href="tema.html?id=proy-s08-css">S8, ejercicio 4</a></td></tr>
+<tr><td>El menú en fila con Flexbox y con <code>:hover</code></td><td>El menú de arriba</td><td><a href="tema.html?id=proy-s10-flexbox">S10, ejercicio 3</a></td></tr>
+<tr><td>3 tarjetas con imagen, título y texto: fondo, <code>padding</code>, borde, esquinas y <code>width</code></td><td>Mobs: creeper, zombi y araña</td><td><a href="tema.html?id=proy-s09-caja">S9, ejercicio 2</a></td></tr>
+<tr><td>Las tarjetas en fila, con <code>gap</code> y <code>flex-wrap: wrap</code></td><td>Mobs</td><td><a href="tema.html?id=proy-s10-flexbox">S10, ejercicio 4</a></td></tr>
+<tr><td>Algo que cambia al pasar el ratón por una tarjeta: <code>:hover</code></td><td>El borde pasa a naranja</td><td><a href="tema.html?id=proy-s09-caja">S9, ejercicio 4</a></td></tr>
+<tr><td>La tabla con bordes, sin líneas dobles y con espacio en las celdas</td><td>Mobs</td><td><a href="tema.html?id=proy-s09-caja">S9, ejercicio 4</a></td></tr>
+</tbody>
+</table>
+<p>Comprobación en Chrome: <strong>F12</strong> → icono del <strong>móvil</strong>. Las tarjetas bajan una debajo de otra y nada se sale por la derecha.</p>
+
+<h2>Cómo es su carpeta</h2>
+<pre><code>bloquecraft/
+├── index.html
+├── mobs.html
+├── biomas.html
+├── sobre.html
+├── estilos.css   ← uno solo, para todas las páginas
+└── img/
+    ├── noche.jpg
+    ├── bosque.jpg
+    ├── montanas.jpg
+    ├── aldea.jpg
+    ├── creeper.jpg
+    ├── zombi.jpg
+    └── arana.jpg</code></pre>
+<p>Para ver una página entera como la vería Chrome, pulsad <strong>Abrir en otra pestaña</strong>. Con <strong>F12</strong> → <strong>Elementos</strong> veis qué regla del CSS pinta cada cosa.</p>
+
+<div class="nota">⚠️ <strong>No copiéis los colores</strong> de BloqueCraft. Lo que se copia es <strong>la forma</strong>: qué reglas hay y dónde van. Los colores y la letra son los de vuestro boceto.</div>
+
+<p>Para dar estilo a la vuestra, seguid <a href="tema.html?id=proy-s11-revision-1">el taller de la sesión 11</a>.</p>

@@ -1,13 +1,32 @@
 <div class="nota" id="como-trabajar">
-<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<p><strong>📋 Cómo va esta sesión</strong></p>
 <ol>
-<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas: están para que lo entiendas sin que yo lo explique en la pizarra. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
-<li>Cuando llegues a un ejercicio de pantalla, hazlo en ese momento. Se corrige solo y puedes repetirlo las veces que quieras.</li>
-<li>Al final tienes las <strong>preguntas obligatorias</strong> de la sesión (como mucho, 15). Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Van con nota y todas se contestan con lo que hay en esta sesión o en las anteriores.</li>
-<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
-<li>Si algo no lo entiendes o no encuentras una respuesta, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
-<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de la sesión de repaso: tal cual, parecidas o juntando varias.</li>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
 </ol>
+</div>
+
+<h2>Dos edificios, una nave y una tormenta</h2>
+<p>Mirad la escena. Hoy vamos por partes: por qué aquí se pone fibra y no el cable de cobre de la Unidad 3.</p>
+<div class="escena" aria-label="Escena: dos edificios de un campus unidos por fibra, con una nave de motores en medio y una tormenta">
+<img src="data/instalaciones/fibra-optica/img/u4/fibra-entre-edificios.webp" width="900" height="506" alt="Dos edificios de un campus, separados, unidos por un cable de fibra que brilla bajo tierra; en medio, una nave con motores grandes y cables de fuerza, y un rayo que cae sobre la nave" loading="lazy">
+<div class="escena__paso" data-titulo="La distancia" data-pregunta="¿Están cerca o lejos los dos edificios? ¿Llegaría un cable de red normal?">
+<p data-zona="125,140,100,60" data-tipo="bien">Edificio A, en una punta del campus.</p>
+<p data-zona="790,170,90,55" data-tipo="bien">Edificio B, en la otra: hay <strong>cientos de metros</strong>. El par trenzado solo llega a <strong>100 m</strong>; la fibra, a kilómetros.</p>
+</div>
+<div class="escena__paso" data-titulo="La nave" data-pregunta="¿Qué hay en la nave del medio? ¿Qué le harían al cobre?">
+<p data-zona="460,250,75,35" data-tipo="mal">Motores grandes: hacen <strong>interferencias</strong> electromagnéticas.</p>
+<p data-zona="425,360,50,60" data-tipo="mal">Cables de fuerza al lado del cable de datos. Al cobre le meterían ruido; a la luz, <strong>no</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="La tormenta" data-pregunta="Cae un rayo. ¿Por dónde podría viajar la descarga?">
+<p data-zona="510,90,40,80" data-tipo="mal">Un <strong>rayo</strong>. Por un cable de cobre, la descarga podría viajar de un edificio a otro.</p>
+<p data-zona="440,440,140,30" data-tipo="bien">La fibra es <strong>vidrio</strong>: no conduce electricidad. Un rayo en un edificio no viaja al otro.</p>
+</div>
 </div>
 
 <h2>Luz en vez de electricidad</h2>
@@ -34,6 +53,11 @@
 </div>
 
 <div class="nota">Mi presentación dice que la luz «va rebotando por sus paredes». Vale como idea, pero no rebota contra la cubierta de plástico: rebota en el <strong>límite entre núcleo y revestimiento</strong>, que son los dos de vidrio. Sin revestimiento no hay rebote.</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">Si el núcleo y el revestimiento son los dos de vidrio, ¿por qué no se escapa la luz?</p>
+<div class="votacion__porque"><p>Porque no son iguales: en el núcleo la luz va un poco más lenta (tiene <strong>mayor índice de refracción</strong>). La luz que llega rasante al límite <strong>rebota entera</strong> hacia dentro.</p></div>
+</div>
 
 <p>De aquí sale la regla de oro al manejar fibra: <strong>nada de curvas cerradas</strong>. Si doblas demasiado el cable, la luz deja de llegar al borde con el ángulo bueno, se escapa y la señal se pierde. Cada cable indica su <strong>radio mínimo de curvatura</strong>; como regla fácil, no hagas curvas más cerradas que una lata de refresco, y nunca ates el cable con bridas apretadas.</p>
 
@@ -62,6 +86,12 @@
 <text x="452" y="34" text-anchor="middle" class="fque-es2-s">no llega nada</text>
 </svg>
 <p class="pie-figura">Regla fácil: nunca más cerrado que una lata de refresco.</p>
+</div>
+
+<div class="votacion">
+<p class="votacion__pregunta">Tienes que llevar un latiguillo de fibra por la esquina de un armario. ¿Qué haces?</p>
+<ol class="votacion__opciones"><li>Lo doblo en ángulo recto y lo sujeto con una brida apretada</li><li data-correcta>Le doy una curva amplia, más abierta que una lata de refresco</li><li>Lo doblo y lo aplasto con la puerta para que no se mueva</li></ol>
+<div class="votacion__porque"><p>Una <strong>curva amplia</strong>. En un codo cerrado la luz deja de rebotar y se escapa.</p></div>
 </div>
 
 <h2>Las partes de una fibra</h2>
@@ -125,6 +155,12 @@
 
 <div class="nota">Dos correcciones a mi presentación. El núcleo multimodo mide <strong>50 o 62,5 µm</strong>, no «entre 50 y 125»: 125 µm es el revestimiento. Y la cubierta no mide «decenas de milímetros»: el recubrimiento primario tiene 0,25 mm, y un latiguillo entero ronda los 2-3 mm.</div>
 
+<div class="votacion">
+<p class="votacion__pregunta">Tiras de un cable de fibra para pasarlo por un tubo. ¿Qué parte aguanta el tirón?</p>
+<ol class="votacion__opciones"><li>El núcleo</li><li>El revestimiento</li><li data-correcta>Los hilos de aramida</li></ol>
+<div class="votacion__porque"><p>La <strong>aramida</strong>. El vidrio es tan fino que se partiría.</p></div>
+</div>
+
 <div data-actividad="u4s1-partes"></div>
 
 <h2>Cómo se agrupan las fibras en un cable</h2>
@@ -167,19 +203,15 @@
 </table>
 <p>Lo típico en una empresa: un cable de estructura holgada llega desde otro edificio hasta el armario, y allí se <strong>empalma</strong> con trocitos de fibra ajustada que ya llevan su conector (se llaman <em>pigtails</em>). Lo verás en la sesión 3.</p>
 
+<div class="votacion">
+<p class="votacion__pregunta">Hay que pasar un cable de fibra enterrado de un edificio a otro. ¿Qué estructura eliges?</p>
+<ol class="votacion__opciones"><li data-correcta>Holgada</li><li>Ajustada</li></ol>
+<div class="votacion__porque"><p><strong>Holgada</strong>: la fibra va suelta en tubos con gel y aguanta el frío, el calor y el agua. La ajustada es para interiores.</p></div>
+</div>
+
 <h2>Por qué se usa (y por qué no en todas partes)</h2>
-<figure class="captura">
-<img src="data/instalaciones/fibra-optica/img/u4/fibra-entre-edificios.webp" width="900" height="506" alt="Dos edificios de un campus, separados, unidos por un cable de fibra que brilla bajo tierra; en medio, una nave con motores grandes y cables de fuerza, y un rayo que cae sobre la nave" loading="lazy">
-<figcaption>Un campus de noche: dos edificios lejos, una nave llena de motores y una tormenta.</figcaption>
-</figure>
-<details>
-<summary>🤔 ¿Por qué aquí se usa fibra y no cable de cobre? Busca tres razones en el dibujo.</summary>
-<ol>
-<li>Los edificios están <strong>lejos</strong>: el par trenzado solo llega a 100 m, la fibra, a kilómetros.</li>
-<li>Pasa al lado de <strong>motores y cables de fuerza</strong>: al cobre le meterían interferencias; a la luz, no.</li>
-<li>Hay <strong>rayos</strong>: la fibra no conduce electricidad, así que una descarga en un edificio no viaja al otro.</li>
-</ol>
-</details>
+<p>Lo que habéis visto en la escena, en marcha: te ayuda con la <strong>pregunta 12</strong>.</p>
+<div class="anim" data-anim="fibra-edificios" aria-label="Dos edificios a 300 m: cobre o fibra"></div>
 <div class="salida">
 <svg viewBox="0 0 600 250" width="100%" role="img" aria-label="Tarjetas de ventajas en verde: llega a kilómetros, muchísima velocidad, no le afectan los motores, no conduce electricidad, no se puede espiar fácilmente. Tarjetas de inconvenientes en rojo: se rompe si se dobla, instalar es caro, los aparatos son caros, el polvo la estropea, no alimenta aparatos" style="max-width:100%;height:auto;">
 <style>
@@ -231,6 +263,12 @@
 
 <div class="nota">En la tabla de medios de la presentación pongo la fibra con «&lt;2 km». Eso es cierto para <strong>multimodo</strong> (y en la práctica menos: unos cientos de metros a 10 Gbps). La <strong>monomodo</strong> va de 10 a 40 km con transceptores normales, y mucho más con equipos especiales.</div>
 
+<div class="votacion">
+<p class="votacion__pregunta">La fibra puede alimentar una cámara por el mismo cable, como el PoE del cobre.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. La fibra es vidrio: <strong>no lleva corriente</strong>. Para alimentar aparatos por el cable hace falta cobre.</p></div>
+</div>
+
 <div data-actividad="u4s1-ventajas"></div>
 
 <h2>Seguridad con la fibra</h2>
@@ -273,14 +311,27 @@
 <li>Pon siempre los <strong>tapones</strong> a conectores y puertos que no se usan: protegen del polvo y de la luz.</li>
 <li>Al cortar fibra desnuda salen <strong>astillas de vidrio</strong> casi invisibles que se clavan en la piel y no salen en una radiografía. Se trabaja con gafas, sobre una alfombrilla oscura, los restos van a un <strong>recipiente para fibra</strong> con tapa, y no se come ni se bebe en la mesa.</li>
 </ul>
-<figure class="captura">
+<p>Mirad cómo trabaja este técnico. Vamos por partes.</p>
+<div class="escena" aria-label="Escena: un técnico trabajando con fibra desnuda">
 <img src="data/instalaciones/fibra-optica/img/u4/fibra-seguridad.webp" width="900" height="506" alt="Un técnico con gafas de seguridad recoge con unas pinzas restos de fibra sobre una alfombrilla negra y los mete en un bote con tapa; en la mesa, latiguillos de fibra con tapones y un microscopio de fibra" loading="lazy">
-<figcaption>Así se trabaja con fibra desnuda.</figcaption>
-</figure>
-<details>
-<summary>🤔 ¿Cuántas de las normas de arriba está cumpliendo?</summary>
-<p>Todas: lleva <strong>gafas</strong>, trabaja sobre una <strong>alfombrilla oscura</strong> (las astillas se ven), recoge los restos con <strong>pinzas</strong> y los mete en un <strong>bote con tapa</strong>, los conectores llevan <strong>tapones</strong>, tiene un <strong>microscopio</strong> para mirar los conectores (nunca el ojo) y en la mesa <strong>no hay comida ni bebida</strong>.</p>
-</details>
+<div class="escena__paso" data-titulo="Los ojos y las manos" data-pregunta="¿Qué lleva en los ojos? ¿Con qué coge los restos?">
+<p data-zona="555,110,70,28" data-tipo="bien"><strong>Gafas</strong> de seguridad: las astillas de vidrio saltan.</p>
+<p data-zona="400,240,32,62" data-tipo="bien"><strong>Pinzas</strong>: nunca los dedos. Las astillas se clavan en la piel.</p>
+</div>
+<div class="escena__paso" data-titulo="La mesa" data-pregunta="¿Sobre qué trabaja? ¿Dónde acaban los restos?">
+<p data-zona="250,330,150,45" data-tipo="bien"><strong>Alfombrilla oscura</strong>: sobre negro se ven las astillas.</p>
+<p data-zona="505,290,38,42" data-tipo="bien">Los restos, a un <strong>bote con tapa</strong>. Ni a la papelera ni al suelo. Y en la mesa, nada de comida ni bebida.</p>
+</div>
+<div class="escena__paso" data-titulo="Los conectores" data-pregunta="¿Cómo están las puntas de los latiguillos? ¿Con qué se miran?">
+<p data-zona="365,430,60,38" data-tipo="bien">Los conectores, con sus <strong>tapones</strong>: contra el polvo y contra la luz.</p>
+<p data-zona="600,435,82,42" data-tipo="bien">Un <strong>microscopio de fibra</strong>: la punta se mira con él, <strong>nunca con el ojo</strong>.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Si no ves luz en la punta de una fibra, puedes mirarla de cerca sin peligro.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. La luz de las redes es <strong>infrarroja</strong>: no se ve y puede dañar la retina. Se mira con el microscopio.</p></div>
+</div>
 
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
@@ -304,7 +355,7 @@
 <li>Da cuatro ventajas de la fibra frente al par trenzado.</li>
 <li>Da tres inconvenientes de la fibra frente al par trenzado.</li>
 <li>(V/F) La fibra sirve para alimentar aparatos por el cable, como el PoE del cobre.</li>
-<li>¿Por qué se usa fibra para unir dos edificios aunque estén a menos de 100 m?</li>
+<li><strong>(Animación)</strong> Mira la animación de los dos edificios. ¿Por qué se usa fibra para unir dos edificios, aunque estén a menos de 100 m? Da dos razones.</li>
 <li>¿Por qué es peligroso mirar el extremo de una fibra aunque no se vea luz? ¿Con qué se inspecciona?</li>
 <li>(ABC) Los restos de fibra al cortarla…
   <ul>
@@ -326,17 +377,3 @@
 <li>Busca en tu casa la roseta óptica o la ONT de la fibra. Dibuja por dónde entra el cable y de qué color es el conector. (Mírala, pero no desenchufes nada.)</li>
 </ol>
 </div>
-
-<h2>Antes de seguir</h2>
-<details>
-<summary>🤔 Si el núcleo y el revestimiento son de vidrio, ¿por qué no se escapa la luz?</summary>
-<p>Porque tienen <strong>distinto índice de refracción</strong>: el núcleo, un poco más alto. La luz que llega al límite con un ángulo rasante se refleja entera hacia dentro.</p>
-</details>
-<details>
-<summary>🤔 ¿Qué parte aguanta cuando se tira de un cable de fibra?</summary>
-<p>Los <strong>hilos de aramida</strong> del refuerzo. El vidrio es muy fino y se partiría.</p>
-</details>
-<details>
-<summary>🤔 Hay que unir dos edificios a 300 m. ¿Por qué fibra y no cobre?</summary>
-<p>Porque el par trenzado solo llega a <strong>100 m</strong>, y además la fibra <strong>no conduce electricidad</strong>, así que no pasa de un edificio a otro una descarga o una diferencia de tierra.</p>
-</details>

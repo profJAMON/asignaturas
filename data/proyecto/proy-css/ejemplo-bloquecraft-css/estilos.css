@@ -1,0 +1,89 @@
+/* Toda la web: colores y letra */
+body {
+    background-color: #1b1b3a;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    color: #ffcc00;
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+/* Nuestra clase: lo importante, en amarillo */
+.destacado {
+    color: #ffcc00;
+    font-weight: bold;
+}
+
+/* El menú, en fila */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    background-color: #2a2a55;
+    padding: 14px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+nav a:hover {
+    background-color: #ffcc00;
+    color: #1b1b3a;
+}
+
+/* Las tarjetas, en fila */
+.tarjetas {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tarjeta {
+    background-color: #2a2a55;
+    width: 170px;
+    padding: 14px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+}
+
+.tarjeta img {
+    width: 100%;
+}
+
+.tarjeta:hover {
+    border-color: #ff6b35;
+}
+
+/* La tabla, con bordes */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ffcc00;
+    padding: 8px 12px;
+}
+
+th {
+    background-color: #2a2a55;
+}
+
+/* Los enlaces a otras webs */
+a {
+    color: #66ccff;
+}
