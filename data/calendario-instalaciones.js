@@ -305,36 +305,29 @@ const CALENDARIO_INSTALACIONES = {
     {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
-      "horas": 12,
+      "horas": "1r: 24 · 2n: 12",
       "sesiones": [
+        "inst-u8-que-es",
+        "inst-u8-canalizaciones",
+        "inst-u8-armario",
         "inst-u3-taller-latiguillo",
         "inst-u3-taller-cruzado-averias",
-        "inst-taller-conector-f"
+        "inst-u8-taller-toma-panel",
+        "inst-u8-plano",
+        "inst-u8-taller-canaleta",
+        "inst-taller-conector-f",
+        "inst-u9-oficina-diseno",
+        "inst-u9-oficina-montaje",
+        "inst-u9-oficina-entrega"
       ],
       "fechas": {
         "1r": {
           "inicio": "2027-05-18",
-          "fin": "2027-06-01"
+          "fin": "2027-06-15"
         },
         "2n": {
           "inicio": "2027-02-15",
           "fin": "2027-02-23"
-        }
-      }
-    },
-    {
-      "id": "montaje-oficina",
-      "titulo": "Unidad 9. Montaje de la red de la oficina",
-      "horas": 12,
-      "sesiones": [],
-      "fechas": {
-        "1r": {
-          "inicio": "2027-06-01",
-          "fin": "2027-06-18"
-        },
-        "2n": {
-          "inicio": "2027-02-24",
-          "fin": null
         }
       }
     },
@@ -782,23 +775,71 @@ const CALENDARIO_INSTALACIONES = {
       "1r": "2027-05-14",
       "2n": "2027-02-10"
     },
-    "inst-u3-taller-latiguillo": {
-      "titulo": "Sesión 1 — Taller: fabrica un latiguillo directo",
+    "inst-u8-que-es": {
+      "titulo": "Sesión 1 — El cableado estructurado: el edificio por dentro",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-18",
       "2n": "2027-02-15"
     },
-    "inst-u3-taller-cruzado-averias": {
-      "titulo": "Sesión 2 — Taller: cable cruzado y diagnóstico de averías",
+    "inst-u8-canalizaciones": {
+      "titulo": "Sesión 2 — Canalizaciones: por dónde van los cables",
       "unidad": "cableado-estructurado",
-      "1r": "2027-05-21",
+      "1r": "2027-05-18",
       "2n": "2027-02-16"
     },
-    "inst-taller-conector-f": {
-      "titulo": "Sesión 3 — Taller: conector F en cable coaxial",
+    "inst-u8-armario": {
+      "titulo": "Sesión 3 — El armario de planta",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-21",
+      "2n": "2027-02-17"
+    },
+    "inst-u3-taller-latiguillo": {
+      "titulo": "Sesión 4 — Taller: fabrica un latiguillo directo",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-25",
-      "2n": "2027-02-17"
+      "2n": "2027-02-19"
+    },
+    "inst-u3-taller-cruzado-averias": {
+      "titulo": "Sesión 5 — Taller: cable cruzado y diagnóstico de averías",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-28",
+      "2n": "2027-02-22"
+    },
+    "inst-u8-taller-toma-panel": {
+      "titulo": "Sesión 6 — Taller: toma de pared y panel de parcheo",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-01",
+      "2n": "2027-02-23"
+    },
+    "inst-u8-plano": {
+      "titulo": "Sesión 7 — Planos y documentación de la red",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-04"
+    },
+    "inst-u8-taller-canaleta": {
+      "titulo": "Sesión 8 — Taller: canaleta y caja de superficie",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-08"
+    },
+    "inst-taller-conector-f": {
+      "titulo": "Sesión 9 — Taller: conector F en cable coaxial",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-08"
+    },
+    "inst-u9-oficina-diseno": {
+      "titulo": "Sesión 10 — Proyecto: diseña la red de la gestoría",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-11"
+    },
+    "inst-u9-oficina-montaje": {
+      "titulo": "Sesión 11 — Proyecto: monta tu parte de la gestoría",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-15"
+    },
+    "inst-u9-oficina-entrega": {
+      "titulo": "Sesión 12 — Proyecto: prueba y entrega la red",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-06-15"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "id": "inst-u8-que-es",
+  "titulo": "Sesión 1 — El cableado estructurado: el edificio por dentro",
+  "fecha": "",
+  "descripcion": "Por qué un edificio se cablea con un orden: el área de trabajo y sus tomas, el cableado horizontal, el armario de planta, el vertical, el armario del edificio, la entrada y el campus. La regla de los 100 metros (90 de cable fijo y 5 en cada latiguillo).",
+  "materiales": [],
+  "actividades": [
+    { "id": "u8s1-canal", "tipo": "generador", "titulo": "¿Cumple la regla de los 100 m?", "generador": "canal-100m", "n": 8 }
+  ]
+}

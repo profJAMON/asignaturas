@@ -1,0 +1,10 @@
+{
+  "id": "inst-u8-canalizaciones",
+  "titulo": "Sesión 2 — Canalizaciones: por dónde van los cables",
+  "fecha": "",
+  "descripcion": "Canaleta, bandeja, techo y suelo técnico, canalización empotrada y tubo enterrado: cuándo se usa cada una. Las reglas para tender el cable: sin tirar ni doblar, lejos de la corriente, bridas sin apretar, nada por el suelo y sin empalmes.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u8s2-canalizacion", "tipo": "generador", "titulo": "¿Por dónde lo canalizas?", "generador": "canalizacion-elige", "n": 6 }
+  ]
+}

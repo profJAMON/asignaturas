@@ -1,0 +1,135 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes unas pocas <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Esta unidad <strong>no tiene examen</strong>: lo que cuenta es lo que montas en el taller y estas preguntas. Lo que veas hoy lo vas a usar con las manos dentro de unos días.</li>
+</ol>
+</div>
+
+<h2>Una red que no has montado tú</h2>
+<p>Te llaman para arreglar la red de una gestoría. Una mesa no tiene Internet. No conoces el edificio: ¿cómo sabes por dónde va su cable, a qué boca del panel llega y qué IP debería tener? Mirando la <strong>documentación</strong> que dejó el instalador. Si no la dejó, toca ir probando cable a cable.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Quién tiene que hacer los planos y las tablas de una red?</p>
+<ol class="votacion__opciones"><li>El cliente, cuando le llegue la factura</li><li data-correcta>El instalador, al terminar el trabajo</li><li>Nadie: se mira abriendo el armario</li></ol>
+<div class="votacion__porque"><p><strong>El instalador</strong>. Documentar es parte del trabajo, como poner las tomas.</p></div>
+</div>
+
+<h2>Dos dibujos de la misma red</h2>
+<p>Una red se dibuja de dos maneras. Las dos son de la misma gestoría:</p>
+<div class="salida">
+<svg viewBox="0 0 640 380" width="100%" role="img" aria-label="Plano de la gestoría, de 12 por 7 metros, visto desde arriba. A la izquierda, Atención al público, de 5 metros de ancho, con la puerta de la calle abajo y dos mesas, M1 y M2. A la derecha, Administración, de 7 metros, con cuatro mesas, M3 a M6, la impresora en la pared derecha y un punto de acceso wifi en el techo, en el centro. El armario está en la esquina de arriba a la derecha. Una canaleta recorre las paredes desde el armario; cada mesa tiene dos tomas en la canaleta, la impresora una y el punto de acceso otra." style="max-width:100%;height:auto;">
+<style>.u8p{font-family:sans-serif;font-size:12px;fill:#d4d4d4}.u8q{font-family:sans-serif;font-size:11px;fill:#858585}.u8r{font-family:sans-serif;font-size:12px;font-weight:700;fill:#ff79c6}.u8s{font-family:sans-serif;font-size:12px;font-weight:700;fill:#4fc1ff}</style>
+<rect x="40" y="30" width="540" height="300" fill="none" stroke="#d4d4d4" stroke-width="4"/>
+<path d="M265 30 V140 M265 190 V330" stroke="#d4d4d4" stroke-width="3"/>
+<path d="M90 330 H160" stroke="#25262b" stroke-width="6"/><text x="125" y="350" text-anchor="middle" class="u8q">puerta de la calle</text>
+<text x="160" y="185" text-anchor="middle" class="u8p">Atención al público</text><text x="360" y="150" text-anchor="middle" class="u8p">Administración</text>
+<!-- canaleta -->
+<path d="M560 46 H56 V314 M560 46 V314 H280" stroke="#4fc1ff" stroke-width="3" stroke-dasharray="7 4" fill="none"/>
+<!-- armario -->
+<rect x="540" y="36" width="34" height="30" fill="#3a3d41" stroke="#ff79c6" stroke-width="2"/><text x="556" y="100" text-anchor="middle" class="u8r">armario</text>
+<!-- mesas -->
+<g fill="#3a3d41" stroke="#858585">
+<rect x="62" y="110" width="70" height="40"/><rect x="62" y="220" width="70" height="40"/>
+<rect x="300" y="52" width="80" height="40"/><rect x="420" y="52" width="80" height="40"/>
+<rect x="300" y="268" width="80" height="40"/><rect x="420" y="268" width="80" height="40"/>
+</g>
+<g class="u8p" text-anchor="middle"><text x="97" y="135">M1</text><text x="97" y="245">M2</text><text x="340" y="77">M3</text><text x="460" y="77">M4</text><text x="340" y="293">M5</text><text x="460" y="293">M6</text></g>
+<!-- tomas -->
+<g fill="#ffd866"><rect x="52" y="120" width="8" height="8"/><rect x="52" y="132" width="8" height="8"/><rect x="52" y="230" width="8" height="8"/><rect x="52" y="242" width="8" height="8"/>
+<rect x="320" y="42" width="8" height="8"/><rect x="332" y="42" width="8" height="8"/><rect x="440" y="42" width="8" height="8"/><rect x="452" y="42" width="8" height="8"/>
+<rect x="320" y="310" width="8" height="8"/><rect x="332" y="310" width="8" height="8"/><rect x="440" y="310" width="8" height="8"/><rect x="452" y="310" width="8" height="8"/>
+<rect x="556" y="200" width="8" height="8"/></g>
+<!-- impresora y AP -->
+<rect x="530" y="185" width="26" height="36" fill="#3a3d41" stroke="#858585"/><text x="520" y="236" text-anchor="end" class="u8q">impresora</text>
+<circle cx="420" cy="180" r="12" fill="none" stroke="#4fc1ff" stroke-width="2"/><text x="420" y="207" text-anchor="middle" class="u8q">punto de acceso (techo)</text>
+<path d="M432 180 C 500 180 545 120 560 66" stroke="#ffd866" stroke-dasharray="2 3" fill="none"/>
+<!-- cotas -->
+<path d="M40 340 H580" stroke="#858585" stroke-width="0.5"/><text x="310" y="376" text-anchor="middle" class="u8q">12 m de ancho</text>
+<path d="M600 30 V330" stroke="#858585"/><text x="606" y="184" class="u8q">7 m</text>
+<text x="150" y="24" text-anchor="middle" class="u8q">5 m</text><text x="420" y="24" text-anchor="middle" class="u8q">7 m</text>
+<g><rect x="400" y="348" width="10" height="10" fill="#ffd866"/><text x="414" y="357" class="u8q">toma RJ-45</text>
+<path d="M490 353 H520" stroke="#4fc1ff" stroke-width="3" stroke-dasharray="7 4"/><text x="526" y="357" class="u8q">canaleta</text></g>
+</svg>
+<p class="pie-figura">El <strong>plano físico</strong>: el local visto desde arriba, con las paredes, las mesas, las tomas, la canaleta y el armario. Dice <strong>dónde</strong> está cada cosa y por dónde va el cable.</p>
+</div>
+<div class="salida">
+<svg viewBox="0 0 700 260" width="100%" role="img" aria-label="Esquema lógico de la misma red: Internet llega al router de la operadora, con la IP 192.168.20.1. Del router, un cable al switch de 24 bocas. Del switch salen cables a los seis ordenadores, M1 a M6, que cogen la IP por DHCP; a la impresora, con la IP fija 192.168.20.10; y al punto de acceso, con la IP fija 192.168.20.11." style="max-width:100%;height:auto;">
+<style>.u8t{font-family:sans-serif;font-size:12px;fill:#d4d4d4}.u8u{font-family:monospace;font-size:11px;fill:#4fc1ff}</style>
+<ellipse cx="80" cy="50" rx="55" ry="26" fill="none" stroke="#858585"/><text x="80" y="55" text-anchor="middle" class="u8t">Internet</text>
+<path d="M135 50 H200" stroke="#ffd866" stroke-width="2"/>
+<circle cx="230" cy="50" r="28" fill="#3a3d41" stroke="#ff79c6" stroke-width="2"/><path d="M215 42 L245 42 M240 37 L245 42 L240 47 M245 58 L215 58 M220 53 L215 58 L220 63" stroke="#ff79c6" stroke-width="2" fill="none"/>
+<text x="230" y="96" text-anchor="middle" class="u8t">router</text><text x="230" y="114" text-anchor="middle" class="u8u" translate="no">192.168.20.1</text>
+<path d="M258 50 H360" stroke="#d4d4d4" stroke-width="2"/>
+<rect x="360" y="32" width="120" height="36" rx="3" fill="#3a3d41" stroke="#4fc1ff" stroke-width="2"/><path d="M372 44 H400 M395 40 L400 44 L395 48 M412 56 H384 M389 52 L384 56 L389 60" stroke="#4fc1ff" stroke-width="2" fill="none"/><text x="445" y="55" text-anchor="middle" class="u8t">switch</text>
+<g stroke="#d4d4d4">
+<path d="M380 68 L60 170 M390 68 L130 170 M400 68 L200 170 M410 68 L270 170 M420 68 L340 170 M430 68 L410 170 M450 68 L510 170 M465 68 L630 170"/>
+</g>
+<g fill="#3a3d41" stroke="#858585">
+<rect x="40" y="170" width="40" height="28"/><rect x="110" y="170" width="40" height="28"/><rect x="180" y="170" width="40" height="28"/><rect x="250" y="170" width="40" height="28"/><rect x="320" y="170" width="40" height="28"/><rect x="390" y="170" width="40" height="28"/>
+<rect x="488" y="170" width="44" height="28"/>
+</g>
+<circle cx="630" cy="184" r="14" fill="none" stroke="#4fc1ff" stroke-width="2"/>
+<g class="u8t" text-anchor="middle"><text x="60" y="190">M1</text><text x="130" y="190">M2</text><text x="200" y="190">M3</text><text x="270" y="190">M4</text><text x="340" y="190">M5</text><text x="410" y="190">M6</text>
+<text x="510" y="216">impresora</text><text x="630" y="216">punto de acceso</text></g>
+<text x="235" y="220" text-anchor="middle" class="u8u">IP por DHCP</text>
+<text x="510" y="232" text-anchor="middle" class="u8u" translate="no">192.168.20.10</text><text x="630" y="232" text-anchor="middle" class="u8u" translate="no">192.168.20.11</text>
+</svg>
+<p class="pie-figura">El <strong>esquema lógico</strong>: qué aparato está conectado a cuál y con qué IP. No dice dónde está cada cosa. El router (círculo) y el switch (rectángulo) se dibujan con los símbolos de Cisco, los que usa todo el mundo.</p>
+</div>
+<table>
+<tr><th></th><th>Plano físico</th><th>Esquema lógico</th></tr>
+<tr><td>Qué enseña</td><td>Dónde está cada cosa</td><td>Qué se conecta con qué</td></tr>
+<tr><td>Lleva</td><td>Paredes, mesas, tomas, canaletas, armario, medidas</td><td>Router, switch, equipos, IP y máscara</td></tr>
+<tr><td>Lo usas para</td><td>Tirar el cable, encontrar una toma</td><td>Configurar y buscar fallos de red</td></tr>
+</table>
+<div class="votacion">
+<p class="votacion__pregunta">Quieres saber en qué pared está la toma de la mesa M5. ¿Qué miras?</p>
+<ol class="votacion__opciones"><li data-correcta>El plano físico</li><li>El esquema lógico</li></ol>
+<div class="votacion__porque"><p>El <strong>plano físico</strong>: es el que dibuja paredes y tomas.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Y qué IP tiene la impresora?</p>
+<ol class="votacion__opciones"><li>El plano físico</li><li data-correcta>El esquema lógico</li></ol>
+<div class="votacion__porque"><p>El <strong>esquema lógico</strong>: <span translate="no">192.168.20.10</span>.</p></div>
+</div>
+
+<h2>Lo que el instalador entrega</h2>
+<ol>
+<li>El <strong>plano físico</strong>, con el nombre de cada toma.</li>
+<li>El <strong>esquema lógico</strong>, con las IP.</li>
+<li>El <strong>esquema del armario</strong>: qué hay en cada U (lo hiciste en la sesión 3).</li>
+<li>La <strong>tabla de tomas</strong>: de cada toma, a qué boca del panel y del switch va, y si funciona.</li>
+<li>Las <strong>pruebas</strong>: el resultado del comprobador de cada enlace. Los instaladores usan un <strong>certificador</strong>, un comprobador caro que además mide si cada cable llega a su categoría (por ejemplo, Cat 6).</li>
+</ol>
+<table>
+<tr><th>Toma</th><th>Puesto</th><th>Panel</th><th>Switch</th><th>¿Va?</th></tr>
+<tr><td>P0-01</td><td>M1</td><td>1</td><td>1</td><td>Sí</td></tr>
+<tr><td>P0-02</td><td>M1</td><td>2</td><td>—</td><td>Sí</td></tr>
+<tr><td>P0-03</td><td>M2</td><td>3</td><td>3</td><td>No (hilo 4)</td></tr>
+</table>
+<p class="pie-figura">El principio de una tabla de tomas. «Panel» y «Switch»: el número de boca. «—»: la toma de reserva, que no va al switch.</p>
+
+<h3>Actividad 1 — Tu aula en dos dibujos</h3>
+<ol>
+<li>En tu cuaderno, dibuja el <strong>plano físico</strong> de tu aula visto desde arriba: paredes, puerta, mesas, tomas y armario. No hace falta que esté a escala, pero apunta las medidas que sepas (las de la sesión 1).</li>
+<li>Al lado, dibuja su <strong>esquema lógico</strong>: router, switch y algunos ordenadores, con los símbolos de arriba.</li>
+<li>Ponle a una toma un nombre como <strong>P0-01</strong>, en los dos dibujos (pregunta 5).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tienes dos dibujos de la misma aula y una toma con el mismo nombre en los dos.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 7 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad.</p>
+<ol>
+<li>¿Qué diferencia hay entre el plano físico y el esquema lógico de una red?</li>
+<li>Escribe las cinco cosas que entrega el instalador al acabar.</li>
+<li>¿Qué columnas tiene una tabla de tomas? ¿Para qué sirve?</li>
+<li>(V/F) Un certificador solo dice si el cable tiene los ocho hilos bien, igual que el comprobador del taller.</li>
+<li><strong>(Actividad 1)</strong> El plano físico y el esquema lógico de tu aula.</li>
+</ol>
+</div>

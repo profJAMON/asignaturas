@@ -1,0 +1,22 @@
+{
+  "id": "inst-u8-taller-toma-panel",
+  "titulo": "Sesión 6 — Taller: toma de pared y panel de parcheo",
+  "fecha": "",
+  "descripcion": "Guía paso a paso para montar un enlace fijo: cable rígido con una toma RJ-45 de pared en una punta y ponchado en el panel de parcheo en la otra, en T568B. Comprobarlo con dos latiguillos y etiquetar las dos puntas.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u8t-toma",
+      "tipo": "quiz",
+      "titulo": "¿Lo tienes claro antes de ponchar?",
+      "preguntas": [
+        { "pregunta": "¿Qué se hace lo primero de todo?", "opciones": ["Ponchar la toma", "Etiquetar las dos puntas del cable", "Comprobar", "Cerrar la toma"], "correcta": 1 },
+        { "pregunta": "¿Qué cable se usa para el enlace fijo de la pared?", "opciones": ["Flexible, como los latiguillos", "Rígido, el de instalación", "Coaxial", "Da igual"], "correcta": 1 },
+        { "pregunta": "En la toma, ¿qué fila de colores usas?", "opciones": ["La A", "La B, como en los latiguillos", "Una en cada punta", "La que tenga más colores"], "correcta": 1 },
+        { "pregunta": "¿Cuánto cable puede quedar destrenzado junto a las ranuras?", "opciones": ["Como mucho 1 cm", "Unos 5 cm", "Todo lo que se pele", "No importa"], "correcta": 0 },
+        { "pregunta": "Al ponchar, la cuchilla de la herramienta va…", "opciones": ["Hacia dentro de la toma", "Hacia fuera, para cortar lo que sobra", "Da igual", "Sin cuchilla"], "correcta": 1 },
+        { "pregunta": "Para comprobar el enlace fijo, el comprobador se conecta…", "opciones": ["Directamente a la toma, sin latiguillos", "Con un latiguillo en la toma y otro en la boca del panel", "Al switch", "Solo a la toma"], "correcta": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "inst-u8-armario",
+  "titulo": "Sesión 3 — El armario de planta",
+  "fecha": "",
+  "descripcion": "Qué lleva un armario de planta, de arriba abajo: panel de parcheo, pasahilos, switch, bandeja y regleta. Cómo se cuenta lo que hace falta (tomas + 25 %, paneles de 24, switches, U) y cómo se etiqueta. Simulación «Monta el armario de la planta».",
+  "materiales": [],
+  "actividades": [
+    { "id": "u8s3-armario", "tipo": "generador", "titulo": "Cuentas del armario", "generador": "armario-cuenta", "n": 6 }
+  ]
+}

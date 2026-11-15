@@ -137,11 +137,20 @@
     {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
-      "descripcion": "El final del curso, en el taller: fabricar y comprobar latiguillos directos y cruzados, diagnosticar averías con el comprobador y montar conectores de coaxial. Aquí irán también el cableado estructurado y el montaje de la red de la oficina.",
+      "descripcion": "El final del curso, sin examen: cómo se cablea un edificio (tomas, canalizaciones, armario y documentación) y el taller (latiguillos, tomas de pared, panel de parcheo y canaleta). 1r acaba con el proyecto de montar la red de una gestoría; 2n hace las sesiones 1 a 6.",
       "sesiones": [
+        "inst-u8-que-es",
+        "inst-u8-canalizaciones",
+        "inst-u8-armario",
         "inst-u3-taller-latiguillo",
         "inst-u3-taller-cruzado-averias",
-        "inst-taller-conector-f"
+        "inst-u8-taller-toma-panel",
+        "inst-u8-plano",
+        "inst-u8-taller-canaleta",
+        "inst-taller-conector-f",
+        "inst-u9-oficina-diseno",
+        "inst-u9-oficina-montaje",
+        "inst-u9-oficina-entrega"
       ]
     }
   ]

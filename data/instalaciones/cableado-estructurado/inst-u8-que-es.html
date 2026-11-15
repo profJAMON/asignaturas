@@ -1,0 +1,157 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes unas pocas <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Esta unidad <strong>no tiene examen</strong>: lo que cuenta es lo que montas en el taller y estas preguntas. Lo que veas hoy lo vas a usar con las manos dentro de unos días.</li>
+</ol>
+</div>
+
+<h2>Una red que tiene que durar</h2>
+<p>Cuando se cablea un edificio, se hace <strong>una vez</strong> y tiene que servir muchos años: 10, 15 o más. En ese tiempo cambian los ordenadores, se mueven las mesas y llegan aparatos nuevos. Por eso no se tira un cable suelto a cada ordenador: se sigue un orden que se llama <strong>cableado estructurado</strong>.</p>
+<div class="votacion">
+<p class="votacion__pregunta">En una oficina mueven todas las mesas de sitio. ¿Qué es mejor?</p>
+<ol class="votacion__opciones"><li>Tirar cables nuevos desde el switch hasta cada mesa</li><li data-correcta>Tener tomas de red en las paredes que van a un armario, y solo cambiar los latiguillos</li><li>Poner un switch pequeño en cada mesa</li></ol>
+<div class="votacion__porque"><p>Con <strong>tomas en la pared</strong> el cable fijo no se toca nunca: si la mesa cambia de sitio, la enchufas a otra toma con un latiguillo. Eso es el cableado estructurado.</p></div>
+</div>
+<div class="escena" aria-label="Escena: el edificio por dentro">
+<img src="data/instalaciones/cableado-estructurado/img/u8/edificio-cableado.webp" width="900" height="508" alt="Un edificio de tres plantas visto por dentro, con otro pequeño al lado. En cada planta, mesas con ordenador; encima de cada ordenador, una toma en la pared, y de las tomas sale un cable por la pared hasta una caja con luces en un lado de la planta. Por un hueco del edificio sube un cable grueso de arriba abajo. En la planta baja hay un armario grande al que llega un cable desde una arqueta de la calle. Un tubo enterrado une el hueco del edificio grande con una caja con luces del edificio pequeño, que tiene dos mesas." loading="lazy">
+<div class="escena__paso" data-titulo="La mesa" data-pregunta="¿Dónde se enchufa cada ordenador?">
+<p data-zona="130,52,9,11" data-tipo="bien">En una <strong>toma</strong> de la pared, con un latiguillo corto: es el <strong>área de trabajo</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="Por la pared" data-pregunta="¿Adónde va el cable que sale de las tomas?">
+<p data-zona="320,70,90,12" data-tipo="bien">El <strong>cableado horizontal</strong>: va por la pared hasta el armario de la planta.</p>
+<p data-zona="430,90,18,22" data-tipo="bien">El <strong>armario de planta</strong>: uno en cada planta.</p>
+</div>
+<div class="escena__paso" data-titulo="El hueco" data-pregunta="¿Qué es el cable grueso que sube por el edificio?">
+<p data-zona="473,210,12,140" data-tipo="bien">El <strong>cableado vertical</strong> (troncal): une los armarios de las plantas.</p>
+</div>
+<div class="escena__paso" data-titulo="La planta baja" data-pregunta="¿Qué llega desde la calle?">
+<p data-zona="395,330,30,40" data-tipo="bien">El <strong>armario del edificio</strong>, el principal.</p>
+<p data-zona="150,400,25,15" data-tipo="bien">Por la arqueta de la calle entra la <strong>operadora</strong>: es la entrada.</p>
+</div>
+<div class="escena__paso" data-titulo="El otro edificio" data-pregunta="¿Cómo se une el edificio pequeño?">
+<p data-zona="550,355,60,20" data-tipo="bien">Con un cable <strong>enterrado</strong> en un tubo: es el <strong>campus</strong>. Casi siempre, fibra.</p>
+</div>
+</div>
+
+<h2>De la mesa a la calle</h2>
+<p>El cableado estructurado divide el edificio en partes. Síguelas con el dedo, desde tu ordenador hasta la calle:</p>
+<div class="salida">
+<svg viewBox="0 0 640 300" width="100%" role="img" aria-label="Esquema de un edificio de dos plantas: en cada planta, un ordenador con un latiguillo a una toma de pared; de la toma, el cableado horizontal va al armario de planta. Un cable vertical une los armarios de las plantas con el armario del edificio, en la planta baja. A ese armario llega la operadora desde la calle y sale un cable enterrado hacia otro edificio." style="max-width:100%;height:auto;">
+<style>
+.u8a{font-family:sans-serif;font-size:12px;fill:#d4d4d4}
+.u8b{font-family:sans-serif;font-size:11px;fill:#858585}
+.u8c{font-family:sans-serif;font-size:12px;fill:#4fc1ff;font-weight:700}
+.u8m{font-family:sans-serif;font-size:12px;fill:#ff79c6;font-weight:700}
+</style>
+<rect x="20" y="20" width="430" height="250" fill="none" stroke="#858585" stroke-width="2"/>
+<path d="M20 145 H450" stroke="#858585" stroke-width="2"/>
+<text x="28" y="38" class="u8b">Planta 1</text><text x="28" y="163" class="u8b">Planta baja</text>
+<!-- planta 1 -->
+<rect x="40" y="80" width="40" height="28" rx="3" fill="#3a3d41" stroke="#4fc1ff"/><text x="60" y="122" text-anchor="middle" class="u8b">PC</text>
+<path d="M80 95 H120" stroke="#ffd866" stroke-width="2"/><rect x="120" y="86" width="12" height="18" fill="#d4d4d4"/>
+<path d="M132 95 H330" stroke="#4fc1ff" stroke-width="3" stroke-dasharray="6 4"/>
+<rect x="330" y="60" width="44" height="60" rx="3" fill="#3a3d41" stroke="#4fc1ff" stroke-width="2"/>
+<text x="352" y="134" text-anchor="middle" class="u8c">armario de planta</text>
+<!-- planta baja -->
+<rect x="40" y="205" width="40" height="28" rx="3" fill="#3a3d41" stroke="#4fc1ff"/><text x="60" y="247" text-anchor="middle" class="u8b">PC</text>
+<path d="M80 220 H120" stroke="#ffd866" stroke-width="2"/><rect x="120" y="211" width="12" height="18" fill="#d4d4d4"/>
+<path d="M132 220 H330" stroke="#4fc1ff" stroke-width="3" stroke-dasharray="6 4"/>
+<rect x="330" y="180" width="60" height="80" rx="3" fill="#3a3d41" stroke="#ff79c6" stroke-width="2"/>
+<text x="360" y="284" text-anchor="middle" class="u8m">armario del edificio</text>
+<!-- vertical -->
+<path d="M392 120 V180" stroke="#ff79c6" stroke-width="5"/>
+<text x="400" y="155" class="u8m">vertical</text>
+<!-- entrada y campus -->
+<path d="M390 230 H520" stroke="#ffd866" stroke-width="3"/><text x="525" y="226" class="u8a">la operadora</text><text x="525" y="242" class="u8b">(entrada)</text>
+<path d="M390 250 Q 470 300 560 270" stroke="#ff79c6" stroke-width="3" fill="none" stroke-dasharray="3 4"/><text x="520" y="292" class="u8b">a otro edificio (campus)</text>
+<!-- etiquetas -->
+<text x="100" y="74" text-anchor="middle" class="u8a">latiguillo</text>
+<text x="126" y="132" text-anchor="middle" class="u8a">toma</text>
+<text x="230" y="84" text-anchor="middle" class="u8c">cableado horizontal</text>
+</svg>
+<p class="pie-figura">De la mesa a la calle: latiguillo → toma → cableado horizontal → armario de planta → vertical → armario del edificio → entrada.</p>
+</div>
+<table>
+<tr><th>Parte</th><th>Qué es</th></tr>
+<tr><td><strong>Área de trabajo</strong></td><td>La mesa: el ordenador, su latiguillo y las tomas de la pared.</td></tr>
+<tr><td><strong>Cableado horizontal</strong></td><td>Los cables fijos que van de las tomas de una planta a su armario, por canaletas o por el techo.</td></tr>
+<tr><td><strong>Armario de planta</strong></td><td>Donde llegan todos los cables de esa planta. También se llama <strong>distribuidor de planta</strong>.</td></tr>
+<tr><td><strong>Cableado vertical</strong></td><td>Une los armarios de las plantas con el del edificio. También se llama <strong>troncal</strong> (en inglés, <em>backbone</em>). Suele ser fibra.</td></tr>
+<tr><td><strong>Armario del edificio</strong></td><td>El armario principal. Aquí está el router y llega la operadora (la <strong>entrada</strong>).</td></tr>
+<tr><td><strong>Campus</strong></td><td>Une varios edificios, por cable enterrado. Casi siempre, fibra.</td></tr>
+</table>
+<div class="votacion">
+<p class="votacion__pregunta">El cable que va de la toma de tu mesa al armario de tu planta es…</p>
+<ol class="votacion__opciones"><li data-correcta>Cableado horizontal</li><li>Cableado vertical</li><li>Un latiguillo</li></ol>
+<div class="votacion__porque"><p><strong>Horizontal</strong>: es fijo y no sale de la planta. El latiguillo es el cable corto que va del ordenador a la toma.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué une los armarios de la planta 1 y de la planta 2 con el de la planta baja?</p>
+<ol class="votacion__opciones"><li>El cableado horizontal</li><li data-correcta>El cableado vertical (troncal)</li><li>El campus</li></ol>
+<div class="votacion__porque"><p>El <strong>vertical</strong>: sube por el edificio, de armario a armario.</p></div>
+</div>
+
+<h2>El área de trabajo</h2>
+<ul>
+<li>Cada puesto tiene <strong>al menos dos tomas</strong> de red. Mi presentación recomienda tres: una para el ordenador, otra para el teléfono y una de reserva.</li>
+<li>Del ordenador a la toma va un <strong>latiguillo</strong> corto, de <strong>5 m como mucho</strong>.</li>
+<li>La toma se llama <strong>TO</strong> (del inglés <em>Telecommunication Outlet</em>, toma de telecomunicaciones).</li>
+</ul>
+<div class="nota">Aquí tengo que corregir mi presentación: en una diapositiva pone «tomas eléctricas». Son <strong>tomas de red</strong> (RJ-45). Las eléctricas son los enchufes, y van por otro lado.</div>
+
+<h2>La regla de los 100 metros</h2>
+<p>Por el cobre, la señal se debilita con la distancia (lo viste en la unidad 3). Por eso hay tres medidas que no se pueden pasar:</p>
+<div class="salida">
+<svg viewBox="0 0 640 150" width="100%" role="img" aria-label="Un ordenador, un latiguillo de 5 metros como mucho hasta la toma, un cable fijo de 90 metros como mucho hasta el panel del armario y otro latiguillo de 5 metros como mucho hasta el switch. Todo junto, 100 metros como mucho." style="max-width:100%;height:auto;">
+<style>.u8d{font-family:sans-serif;font-size:13px;fill:#d4d4d4}.u8e{font-family:sans-serif;font-size:14px;font-weight:700;fill:#ffd866}.u8f{font-family:sans-serif;font-size:14px;font-weight:700;fill:#4fc1ff}</style>
+<rect x="10" y="40" width="60" height="36" rx="4" fill="#3a3d41" stroke="#4fc1ff"/><text x="40" y="63" text-anchor="middle" class="u8d">PC</text>
+<path d="M70 58 H130" stroke="#ffd866" stroke-width="3"/><text x="100" y="34" text-anchor="middle" class="u8e">≤ 5 m</text>
+<rect x="130" y="46" width="22" height="26" fill="#d4d4d4"/><text x="141" y="96" text-anchor="middle" class="u8d">toma</text>
+<path d="M152 58 H470" stroke="#4fc1ff" stroke-width="4"/><text x="311" y="34" text-anchor="middle" class="u8f">cable fijo ≤ 90 m</text>
+<rect x="470" y="40" width="40" height="36" rx="3" fill="#3a3d41" stroke="#4fc1ff"/><text x="490" y="96" text-anchor="middle" class="u8d">panel</text>
+<path d="M510 58 H560" stroke="#ffd866" stroke-width="3"/><text x="535" y="34" text-anchor="middle" class="u8e">≤ 5 m</text>
+<rect x="560" y="40" width="70" height="36" rx="3" fill="#3a3d41" stroke="#4fc1ff"/><text x="595" y="63" text-anchor="middle" class="u8d">switch</text>
+<path d="M10 120 H630" stroke="#858585" stroke-dasharray="4 4"/><text x="320" y="140" text-anchor="middle" class="u8d">todo junto: 100 m como mucho</text>
+</svg>
+<p class="pie-figura">90 m de cable fijo + 5 m de latiguillo en cada punta = 100 m.</p>
+</div>
+<ul>
+<li>Si una mesa queda a más de 90 m de cable del armario, la solución <strong>no</strong> es un latiguillo más corto: hace falta <strong>otro armario de planta</strong> más cerca.</li>
+<li>El cable no va en línea recta: sube, baja y rodea paredes. Por eso un armario de planta solo da servicio, más o menos, a lo que esté a <strong>50 m</strong> a su alrededor.</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">El cable fijo mide 60 m y el latiguillo del ordenador, 12 m. ¿Vale?</p>
+<ol class="votacion__opciones"><li>Sí: no llega a 100 m</li><li data-correcta>No: el latiguillo pasa de 5 m</li></ol>
+<div class="votacion__porque"><p>No: aunque todo junto no llegue a 100 m, <strong>cada latiguillo es de 5 m como mucho</strong>. Si la mesa está lejos de la toma, se pone otra toma más cerca.</p></div>
+</div>
+
+<h2>A practicar</h2>
+<p>Contesta «sí» o «no».</p>
+<div data-actividad="u8s1-canal"></div>
+
+<h3>Actividad 1 — La red de tu aula</h3>
+<ol>
+<li>Busca en el aula las <strong>tomas de red</strong> de la pared. Cuéntalas.</li>
+<li>Busca el <strong>armario</strong> al que van (en el aula, en el pasillo o en otra sala). Si no lo ves, pregúntamelo.</li>
+<li>Cuenta los pasos que hay del armario a la toma más lejana, siguiendo la pared. Cada paso es, más o menos, <strong>un metro</strong>.</li>
+<li>Apúntalo en tu cuaderno (pregunta 5).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> tienes un número de tomas, dónde está el armario y una distancia en metros.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 1 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad.</p>
+<ol>
+<li>¿Qué es el cableado estructurado? ¿Por qué es mejor que tirar un cable del switch a cada ordenador?</li>
+<li>Ordena desde la mesa hasta la calle: armario de planta, toma, cableado vertical, latiguillo, armario del edificio, cableado horizontal.</li>
+<li>Escribe las tres medidas de la regla de los 100 metros.</li>
+<li>(V/F) Si una toma está a 95 m de cable del armario, basta con usar latiguillos más cortos.</li>
+<li><strong>(Actividad 1)</strong> En tu aula: ¿cuántas tomas hay? ¿Dónde está el armario? ¿A cuántos metros está la toma más lejana?</li>
+</ol>
+</div>
