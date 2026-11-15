@@ -1,0 +1,96 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Cuando el salto cae en el 4º número</h2>
+<p>Si cojo <strong>más de 8 bits</strong>, el 3º número de la máscara es 255 y el último bit cogido está en el <strong>4º número</strong>. Entonces el salto cae en el 4º: las subredes son pequeñas, como las de la clase C.</p>
+<ul>
+<li>Ejemplo: 180.1.0.0 y 60 equipos. 62 direcciones → 64 → cojo <strong>10 bits</strong>: máscara <span translate="no">255.255.255.192</span>, <strong>salto 64 en el 4º número</strong>.</li>
+<li>Subredes: <span translate="no">180.1.0.0</span>, <span translate="no">180.1.0.64</span>, <span translate="no">180.1.0.128</span>, <span translate="no">180.1.0.192</span>… ¿y después?</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Salto 64 en el 4º número. ¿Qué subred va después de 180.1.0.192?</p>
+<ol class="votacion__opciones"><li>180.1.0.256</li><li data-correcta>180.1.1.0</li><li>180.1.0.255</li></ol>
+<div class="votacion__porque"><p>192 + 64 = 256, que no existe: el 4º vuelve a 0 y el 3º sube 1 → <strong>180.1.1.0</strong>. El cuentakilómetros de la sesión anterior.</p></div>
+</div>
+<table>
+<tr><th>Subred</th><th>Red</th></tr>
+<tr><td>1ª</td><td translate="no">180.1.0.0</td></tr>
+<tr><td>2ª</td><td translate="no">180.1.0.64</td></tr>
+<tr><td>3ª</td><td translate="no">180.1.0.128</td></tr>
+<tr><td>4ª</td><td translate="no">180.1.0.192</td></tr>
+<tr><td>5ª</td><td translate="no">180.1.1.0 ← el 3º sube 1</td></tr>
+</table>
+
+<h2>¿En qué número cae? Mira la máscara</h2>
+<ul>
+<li>Si el 3º número de la máscara <strong>no es 255</strong> (y el 4º es 0): el salto cae en el <strong>3º</strong>. Ejemplo: 255.255.252.0 → salto 4 en el 3º.</li>
+<li>Si el 3º es <strong>255</strong>: el salto cae en el <strong>4º</strong>. Ejemplo: 255.255.255.192 → salto 64 en el 4º.</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Máscara 255.255.255.128. ¿Salto y número?</p>
+<ol class="votacion__opciones"><li>128, en el 3º</li><li data-correcta>128, en el 4º</li><li>1, en el 3º</li></ol>
+<div class="votacion__porque"><p>El 3º es 255: el salto cae en el <strong>4º</strong>. 256 − 128 = <strong>128</strong>.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Con salto en el 4º número, el 3º número de las subredes siempre es 0.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso: cuando el 4º da la vuelta, el 3º sube. Las primeras sí empiezan por .0, pero luego viene .1, .2…</p></div>
+</div>
+
+<h2>El ejemplo entero</h2>
+<div class="diapos" data-diapos="subred-b-metodo" data-valor="180.1.0.0, 60 equipos" aria-label="180.1.0.0 con 60 equipos por subred, paso a paso"></div>
+
+<h2>A practicar</h2>
+<div data-actividad="u7s4-salto"></div>
+
+<h3>Actividad 1 — El salto en el 4º número</h3>
+<ol>
+<li>En el laboratorio, la red 172.16.0.0. Ponla con 10 bits.</li>
+<li>Mira el salto, el número donde cae y la 1ª y la 2ª subred. Compáralo con 6 bits.</li>
+<li>Vuelve a 10 bits y apunta en tu cuaderno la máscara, el salto, en qué número cae y la red de la 1ª y de la 2ª subred (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="hoja-b" data-red="172.16.0.0" data-bits="8" aria-label="La hoja doble de 172.16.0.0"></div>
+<p><strong>Comprobación observable:</strong> con 10 bits, la 2ª subred es la 172.16.0.64.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 4 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Cuándo cae el salto en el 4º número?</li>
+<li>Si cojo 10 bits, ¿cuánto vale el 3º número de la máscara? ¿Por qué?</li>
+<li>(ABC) Con la máscara 255.255.255.192, el salto es…
+<ul>
+<li>a) 192, en el 4º</li>
+<li>b) 64, en el 4º</li>
+<li>c) 64, en el 3º</li>
+</ul></li>
+<li>180.1.0.0 y 60 equipos en cada subred: máscara, salto, en qué número cae y la red de la 1ª y de la 2ª subred.</li>
+<li>Con salto 64 en el 4º número, ¿qué subred va después de 180.1.0.192? Explica por qué.</li>
+<li>(V/F) Con el salto en el 4º número, el 3º número de las subredes siempre es 0.</li>
+<li>165.3.0.0 y 100 equipos en cada subred: máscara, salto, en qué número cae y la red de la 1ª y de la 2ª subred.</li>
+<li>Compara 172.16.0.0 con 6 bits y con 10 bits: máscara, salto y en qué número cae.</li>
+<li>¿Cómo sabes, solo mirando la máscara, en qué número cae el salto?</li>
+<li><strong>(Actividad 1)</strong> En el laboratorio, con 10 bits: ¿máscara?, ¿salto?, ¿en qué número?, ¿red de la 1ª y de la 2ª subred?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 4 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Escribe las 8 primeras subredes de 180.1.0.0 con máscara 255.255.255.192.</li>
+<li>Una red de clase B con máscara 255.255.255.0: ¿cuántas subredes salen y cuántos equipos caben? ¿A qué se parece cada subred?</li>
+</ol>
+</div>

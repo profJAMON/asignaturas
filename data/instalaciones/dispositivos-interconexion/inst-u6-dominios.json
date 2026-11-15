@@ -1,0 +1,16 @@
+{
+  "id": "inst-u6-dominios",
+  "titulo": "Sesión 6 — Dominios de colisión y de difusión",
+  "fecha": "",
+  "descripcion": "Qué es un dominio de colisión y un dominio de difusión, qué separa cada aparato (hub, switch y router), el método para contarlos, un ejemplo resuelto en diapositivas, redes para comprobar con su solución y ejercicios generados.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s6-dominios",
+      "tipo": "generador",
+      "titulo": "Cuenta los dominios",
+      "generador": "dominios-cuenta",
+      "n": 6
+    }
+  ]
+}

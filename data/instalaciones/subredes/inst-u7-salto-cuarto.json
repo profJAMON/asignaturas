@@ -1,0 +1,10 @@
+{
+  "id": "inst-u7-salto-cuarto",
+  "titulo": "Sesión 4 — El salto en el 4º número",
+  "fecha": "",
+  "descripcion": "Cuando se cogen más de 8 bits: el 3º número de la máscara es 255, el salto cae en el 4º y, al dar la vuelta, el 3º sube 1. Cómo saber en qué número cae el salto mirando la máscara.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7s4-salto", "tipo": "generador", "titulo": "Máscara, salto y número", "generador": "subred-b-mascara", "n": 8 }
+  ]
+}

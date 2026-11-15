@@ -1,0 +1,8 @@
+{
+  "id": "inst-u7-de-c-a-b",
+  "titulo": "Sesión 1 — De la clase C a la clase B: la hoja doble",
+  "fecha": "",
+  "descripcion": "Qué cambia en las subredes de clase B (128 a 191, máscara 255.255.0.0, se parten el 3º y el 4º número), la hoja doble para el cuaderno y los dos primeros pasos: la clase y los bits que cojo. Laboratorio para mover el corte.",
+  "materiales": [],
+  "actividades": []
+}

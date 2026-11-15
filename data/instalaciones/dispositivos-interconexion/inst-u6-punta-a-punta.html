@@ -1,0 +1,112 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Todos los aparatos, juntos</h2>
+<p>Ya conoces todos los aparatos de la unidad por separado. Hoy seguimos un paquete desde un ordenador hasta una web de Internet, pasando por un hub, un switch y un router. Cada uno mira una cosa distinta del paquete.</p>
+<div class="votacion">
+<p class="votacion__pregunta">El paquete de A va a una web de Internet. ¿Qué dirección del paquete mira el switch?</p>
+<ol class="votacion__opciones"><li>Ninguna</li><li data-correcta>La MAC de destino</li><li>La IP de destino</li></ol>
+<div class="votacion__porque"><p>La <strong>MAC de destino</strong>, que es la del router (la puerta de enlace de A).</p></div>
+</div>
+<p>Míralo en marcha: te ayuda con las <strong>preguntas 1, 3 y 4</strong>.</p>
+<div class="anim" data-anim="viaje-dispositivos" aria-label="Un paquete pasa por un hub, un switch y un router"></div>
+
+<h2>Qué mira cada aparato</h2>
+<table>
+<tr><th>Aparato</th><th>Capa</th><th>Qué mira</th></tr>
+<tr><td>Hub</td><td translate="no">1</td><td>Nada: repite bits</td></tr>
+<tr><td>Switch</td><td translate="no">2</td><td>La MAC</td></tr>
+<tr><td>Punto de acceso</td><td translate="no">2</td><td>La MAC (une el wifi con el cable)</td></tr>
+<tr><td>Router</td><td translate="no">3</td><td>La IP</td></tr>
+</table>
+<p>Y los dominios (sesión 6): el hub no separa nada; el switch separa los de <strong>colisión</strong>; el router separa los de colisión y los de <strong>difusión</strong>.</p>
+<p>Fíjate en una cosa de la animación: el router <strong>cambia la MAC</strong> del paquete (pone la del siguiente salto) pero <strong>deja la IP igual</strong>, de punta a punta. Lo viste en la unidad 1.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Ordena de capa más baja a más alta: router, hub, switch.</p>
+<div class="votacion__porque"><p><strong>Hub (1), switch (2), router (3).</strong></p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Por qué a B le llega el paquete de A, si A lo enviaba a Internet?</p>
+<div class="votacion__porque"><p>Porque están en un <strong>hub</strong>, que repite todo por todas sus bocas. B lo tira. Con un switch no le llegaría.</p></div>
+</div>
+
+<h2>Monta la red de una academia</h2>
+<p>Ahora al revés: te doy lo que necesita una academia y tú eliges los aparatos. Antes de pasar cada diapositiva, la clase dice qué pondría.</p>
+<div class="diapos" aria-label="La red de la academia, pieza a pieza">
+<div class="diapo">
+<svg viewBox="0 0 360 180" role="img" aria-label="Una academia con dos aulas de 12 ordenadores; quieren wifi, dos cámaras y que la profesora trabaje desde casa"><rect x="10" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="85" y="164" text-anchor="middle" class="d-d d-peq">aula 1 · 12 PC</text><rect x="200" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="275" y="164" text-anchor="middle" class="d-d d-peq">aula 2 · 12 PC</text><text x="180" y="40" text-anchor="middle" class="d-c">dos aulas, wifi, cámaras</text><text x="180" y="66" text-anchor="middle" class="d-c">y la profe desde casa</text></svg>
+<p class="diapo__texto">Una academia: dos aulas de 12 ordenadores, wifi para los alumnos, dos cámaras en el techo y una profesora que trabaja desde casa.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 180" role="img" aria-label="Un switch de 24 bocas en cada aula"><rect x="10" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="85" y="164" text-anchor="middle" class="d-d d-peq">aula 1 · 12 PC</text><rect x="200" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="275" y="164" text-anchor="middle" class="d-d d-peq">aula 2 · 12 PC</text><rect x="45" y="112" width="80" height="22" rx="4" class="d-caja-act"/><text x="85" y="128" text-anchor="middle" class="d-c d-peq">switch 24</text><rect x="235" y="112" width="80" height="22" rx="4" class="d-caja-act"/><text x="275" y="128" text-anchor="middle" class="d-c d-peq">switch 24</text></svg>
+<p class="diapo__texto">En cada aula, un <strong>switch</strong> de 24 bocas Gigabit: 12 ordenadores y sitio para crecer.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 180" role="img" aria-label="Un router une los dos switches y sale a Internet"><rect x="10" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="85" y="164" text-anchor="middle" class="d-d d-peq">aula 1 · 12 PC</text><rect x="200" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="275" y="164" text-anchor="middle" class="d-d d-peq">aula 2 · 12 PC</text><rect x="45" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="85" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><rect x="235" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="275" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><path d="M 85 112 L 160 66 M 275 112 L 200 66 M 180 26 L 180 10" class="d-linea-c"/><circle cx="180" cy="50" r="24" class="d-caja-act"/><text x="180" y="55" text-anchor="middle" class="d-c d-peq">router</text><text x="240" y="16" text-anchor="middle" class="d-d d-peq">Internet</text></svg>
+<p class="diapo__texto">Un <strong>router</strong> une las dos aulas: son dos redes y los broadcast de una no molestan a la otra. Y sale a Internet.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 180" role="img" aria-label="El switch del aula 1 con PoE para los puntos de acceso y las cámaras"><rect x="10" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="85" y="164" text-anchor="middle" class="d-d d-peq">aula 1 · 12 PC</text><rect x="200" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="275" y="164" text-anchor="middle" class="d-d d-peq">aula 2 · 12 PC</text><rect x="45" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="85" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><rect x="235" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="275" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><path d="M 85 112 L 160 66 M 275 112 L 200 66 M 180 26 L 180 10" class="d-linea-a"/><circle cx="180" cy="50" r="24" class="d-caja-on"/><text x="180" y="55" text-anchor="middle" class="d-a d-peq">router</text><text x="240" y="16" text-anchor="middle" class="d-d d-peq">Internet</text><text x="85" y="147" text-anchor="middle" class="d-c d-peq">+ PoE: AP y cámaras</text></svg>
+<p class="diapo__texto">El switch del aula 1, con <strong>PoE</strong>: así funcionan sin enchufe el punto de acceso del wifi y las cámaras del techo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 180" role="img" aria-label="Cortafuegos en el router y un túnel VPN desde casa de la profesora"><rect x="10" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="85" y="164" text-anchor="middle" class="d-d d-peq">aula 1 · 12 PC</text><rect x="200" y="100" width="150" height="70" rx="8" class="d-caja"/><text x="275" y="164" text-anchor="middle" class="d-d d-peq">aula 2 · 12 PC</text><rect x="45" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="85" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><rect x="235" y="112" width="80" height="22" rx="4" class="d-caja-on"/><text x="275" y="128" text-anchor="middle" class="d-a d-peq">switch 24</text><path d="M 85 112 L 160 66 M 275 112 L 200 66 M 180 26 L 180 10" class="d-linea-a"/><circle cx="180" cy="50" r="24" class="d-caja-on"/><text x="180" y="55" text-anchor="middle" class="d-a d-peq">router</text><text x="240" y="16" text-anchor="middle" class="d-d d-peq">Internet</text><text x="85" y="147" text-anchor="middle" class="d-a d-peq">+ PoE: AP y cámaras</text><text x="70" y="40" text-anchor="middle" class="d-c d-peq">cortafuegos</text><path d="M 300 40 Q 250 30 200 46" class="d-linea-c"/><text x="318" y="60" text-anchor="middle" class="d-c d-peq">VPN casa</text></svg>
+<p class="diapo__texto">El router lleva <strong>cortafuegos</strong>, y la profesora entra desde casa por una <strong>VPN</strong>, sin abrir nada peligroso.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Por qué en la academia hace falta un router, además de los dos switches?</p>
+<div class="votacion__porque"><p>Para <strong>salir a Internet</strong> y para que las dos aulas sean <strong>redes distintas</strong>: los broadcast de un aula no molestan a la otra.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">La profesora necesita entrar desde casa al servidor de la academia. ¿Qué es lo más seguro?</p>
+<ol class="votacion__opciones"><li>Abrir el escritorio remoto del servidor a todo Internet</li><li data-correcta>Una VPN</li><li>Un proxy</li></ol>
+<div class="votacion__porque"><p>Una <strong>VPN</strong>: entra por un túnel cifrado y el cortafuegos sigue cerrado para los demás.</p></div>
+</div>
+
+<h2>A practicar</h2>
+<div data-actividad="u6s10-capa"></div>
+<div data-actividad="u6s10-funcion"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 10 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li><strong>(Animación)</strong> Cuando pasa el paquete de A, ¿qué mira el hub? ¿Y el switch? ¿Y el router?</li>
+<li>Copia la tabla «Qué mira cada aparato».</li>
+<li><strong>(Animación)</strong> ¿Por qué a B le llega el paquete de A, si iba a Internet? ¿Qué hace B con él?</li>
+<li><strong>(Animación)</strong> (ABC) ¿Qué aparato cambia la MAC del paquete y deja la IP igual?
+<ul>
+<li>a) el hub</li>
+<li>b) el switch</li>
+<li>c) el router</li>
+</ul></li>
+<li>Ordena de capa más baja a más alta: router, hub y switch.</li>
+<li>(V/F) Un punto de acceso trabaja en la capa 3.</li>
+<li>Dibuja la red de la academia con todos sus aparatos.</li>
+<li>¿Por qué en la academia hace falta un router además de los switches? Di dos razones.</li>
+<li>¿Qué características tiene que tener el switch del aula 1? ¿Por qué?</li>
+<li>¿Cómo entra la profesora desde casa sin dejar abierto nada peligroso?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 10 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Dibuja cómo te imaginas la red del instituto: los armarios, los switches de cada planta, el router y la salida a Internet.</li>
+<li>Diseña la red de una tienda con 3 cajas registradoras, wifi para los clientes (separado de las cajas) y 4 cámaras. Di qué aparatos pones y por qué.</li>
+</ol>
+</div>

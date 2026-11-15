@@ -1,0 +1,16 @@
+{
+  "id": "inst-u6-seguridad",
+  "titulo": "Sesión 9 — Cortafuegos, proxy, VPN y pasarela",
+  "fecha": "",
+  "descripcion": "La pasarela (gateway) y la puerta de enlace; el cortafuegos y sus reglas (lo que se pide, lo que entra sin pedir y los puertos abiertos); el proxy como intermediario que filtra; la VPN como túnel cifrado; los tres comparados. Simulación: proteger la red de una empresa.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s9-seguridad",
+      "tipo": "generador",
+      "titulo": "¿Cortafuegos, proxy o VPN?",
+      "generador": "seguridad-red",
+      "n": 6
+    }
+  ]
+}

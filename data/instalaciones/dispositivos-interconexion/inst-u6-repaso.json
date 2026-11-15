@@ -1,0 +1,13 @@
+{
+  "id": "inst-u6-repaso",
+  "titulo": "Sesión 11 — Repaso de la unidad",
+  "fecha": "",
+  "descripcion": "Toda la unidad de dispositivos de interconexión en una página: ronda rápida, resumen en tarjetas, preguntas de repaso con su respuesta y los generadores (tabla MAC, dominios, aparatos y seguridad).",
+  "materiales": [],
+  "actividades": [
+    { "id": "u6r-mac", "tipo": "generador", "titulo": "¿Por dónde sale la trama?", "generador": "mac-salida", "n": 6 },
+    { "id": "u6r-dominios", "tipo": "generador", "titulo": "Cuenta los dominios", "generador": "dominios-cuenta", "n": 6 },
+    { "id": "u6r-funcion", "tipo": "generador", "titulo": "¿Qué aparato es?", "generador": "aparato-funcion", "n": 6 },
+    { "id": "u6r-seguridad", "tipo": "generador", "titulo": "¿Cortafuegos, proxy o VPN?", "generador": "seguridad-red", "n": 6 }
+  ]
+}

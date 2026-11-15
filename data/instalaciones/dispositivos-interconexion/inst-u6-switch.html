@@ -1,0 +1,118 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Cambiamos el hub por un switch</h2>
+<p>Los mismos cuatro ordenadores de la sesión anterior, pero ahora en el centro hay un <strong>switch</strong> (en castellano, <strong>conmutador</strong>). Por fuera se parece mucho a un hub: una caja con bocas RJ-45. Por dentro, no.</p>
+<p>Ahora, la mitad derecha de la escena de la sesión anterior.</p>
+<div class="escena" aria-label="Escena: el cartero con su libreta">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/megafono-cartero.webp" width="900" height="508" alt="Una imagen partida en dos, con el mismo cartero en un rellano con cuatro puertas. A la izquierda grita con un megáfono y se asoman los cuatro vecinos, varios tapándose los oídos. A la derecha mira una libreta y le da un sobre a un solo vecino; las otras tres puertas están cerradas." loading="lazy">
+<div class="escena__paso" data-titulo="El cartero" data-pregunta="¿Qué hace distinto el cartero de la derecha?">
+<p data-zona="680,225,18,15" data-tipo="bien">Mira su <strong>libreta</strong> para saber quién vive en cada puerta: es la <strong>tabla MAC</strong>.</p>
+<p data-zona="757,170,25,60" data-tipo="bien">Entrega la carta <strong>a una sola puerta</strong>: así trabaja un <strong>switch</strong>.</p>
+<p data-zona="600,140,30,70" data-tipo="bien">Las demás puertas siguen <strong>cerradas</strong>: nadie más recibe la carta.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">A envía una trama a C. El switch ya sabe en qué boca está C. ¿Quién la recibe?</p>
+<ol class="votacion__opciones"><li data-correcta>Solo C</li><li>Todos menos A</li><li>Todos, también A</li></ol>
+<div class="votacion__porque"><p><strong>Solo C</strong>. El switch lee a quién va la trama y la saca solo por la boca de C.</p></div>
+</div>
+
+<h2>El switch lee la MAC</h2>
+<p>El switch trabaja en la <strong>capa 2</strong>: lee la <strong>dirección MAC</strong> de cada trama (la de la tarjeta de red, unidad 1). Para saber por qué boca sacarla, tiene una <strong>tabla MAC</strong>: una lista de qué MAC hay detrás de cada boca.</p>
+<ul>
+<li>Nadie le escribe la tabla: la <strong>aprende solo</strong>. Cada vez que le llega una trama, mira la MAC de <strong>origen</strong> y apunta que ese equipo está en la boca por la que ha entrado.</li>
+<li>Para decidir por dónde la saca, mira la MAC de <strong>destino</strong> y la busca en la tabla.</li>
+</ul>
+<div class="nota"><strong>Cómo escribimos los ejercicios.</strong> Una MAC tiene seis grupos (3A:F0:7C:12:B9:0A). Para ir rápido, en los ejercicios solo ponemos el último: <strong translate="no">0A</strong>. Las bocas se llaman <strong translate="no">Fa1, Fa2, Fa3…</strong> (Fa es de FastEthernet, el nombre que usa Cisco). Y <strong translate="no">FF</strong> es el broadcast, la MAC <span translate="no">FF:FF:FF:FF:FF:FF</span>, que quiere decir «para todos».</div>
+<p>Míralo en marcha: te ayuda con las <strong>preguntas 3 y 4</strong>.</p>
+<div class="anim" data-anim="switch-aprende" aria-label="El switch aprende su tabla MAC trama a trama"></div>
+
+<h2>Tres formas de enviar una trama</h2>
+<table>
+<tr><th>El destino…</th><th>El switch la saca…</th><th>Se llama</th></tr>
+<tr><td>está en la tabla</td><td>solo por la boca de ese equipo</td><td><strong>Unicast</strong> (a uno)</td></tr>
+<tr><td>no está en la tabla</td><td>por todas las bocas menos por la que entró</td><td><strong>Inundación</strong> (<em>flooding</em>)</td></tr>
+<tr><td>es <span translate="no">FF</span></td><td>por todas las bocas menos por la que entró</td><td><strong>Broadcast</strong> (a todos)</td></tr>
+</table>
+<p>La inundación y el broadcast salen igual, pero no son lo mismo: en la inundación la trama es para uno solo y el switch no sabe dónde está; en el broadcast la trama es para todos.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Le llega una trama para 0D, y 0D no está en la tabla. El switch…</p>
+<ol class="votacion__opciones"><li>la tira</li><li data-correcta>la envía por todas las bocas menos por la de entrada</li><li>espera a que 0D hable</li></ol>
+<div class="votacion__porque"><p>Hace una <strong>inundación</strong>. Cuando 0D conteste, el switch lo apuntará.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Para apuntar en la tabla, el switch mira la MAC de…</p>
+<ol class="votacion__opciones"><li data-correcta>origen</li><li>destino</li></ol>
+<div class="votacion__porque"><p>De <strong>origen</strong>: sabe por qué boca ha entrado, así que sabe dónde está quien la envía.</p></div>
+</div>
+
+<h2>Sin colisiones</h2>
+<p>Cada boca del switch es un camino aparte entre el ordenador y el switch. Por eso:</p>
+<ul>
+<li>Los equipos trabajan en <strong>dúplex</strong>: envían y reciben a la vez, y no hay colisiones.</li>
+<li>Varios pares de ordenadores pueden hablar a la vez: A con C y B con D al mismo tiempo.</li>
+<li>Cada boca va a su velocidad: una a 100 Mbps y otra a 1000 Mbps, sin frenarse entre ellas.</li>
+<li>Los demás no reciben lo que no es para ellos: es más seguro que el hub.</li>
+</ul>
+
+<h2>Hub y switch, lado a lado</h2>
+<table>
+<tr><th></th><th>Hub</th><th>Switch</th></tr>
+<tr><td>Aspecto</td><td>Caja con bocas RJ-45</td><td>Caja con bocas RJ-45</td></tr>
+<tr><td>Configuración</td><td>Ninguna: se enchufa y funciona</td><td>Ninguna en los sencillos: se enchufa y funciona</td></tr>
+<tr><td>Capa</td><td translate="no">1</td><td translate="no">2</td></tr>
+<tr><td>Una trama para C</td><td>A todos</td><td>Solo a C</td></tr>
+<tr><td>Colisiones</td><td>Sí (semidúplex)</td><td>No (dúplex)</td></tr>
+<tr><td>Velocidad</td><td>Hasta 100 Mbps, compartidos</td><td>Hasta 1 Gbps o más, en cada boca</td></tr>
+</table>
+<div class="votacion">
+<p class="votacion__pregunta">Con un switch, A puede hablar con C mientras B habla con D, sin chocar.</p>
+<ol class="votacion__opciones" data-letras="VF"><li data-correcta>Verdadero</li><li>Falso</li></ol>
+<div class="votacion__porque"><p>Verdadero: cada boca es un camino aparte.</p></div>
+</div>
+
+<div data-actividad="u6s3-switch"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 3 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es un <strong>switch</strong>? ¿En qué capa trabaja y qué dirección lee?</li>
+<li>¿Qué es la <strong>tabla MAC</strong>? ¿Qué guarda cada línea?</li>
+<li><strong>(Animación)</strong> ¿Cómo aprende el switch en qué boca está cada equipo? ¿Mira el origen o el destino?</li>
+<li><strong>(Animación)</strong> Un switch recién encendido. 0A, en Fa1, envía una trama a 0C. ¿Qué apunta el switch? ¿Por dónde la saca? ¿Por qué?</li>
+<li>¿Qué es una <strong>inundación</strong> (<em>flooding</em>)? ¿Cuándo la hace el switch?</li>
+<li>¿Qué es un <strong>broadcast</strong>? ¿Cómo es su MAC de destino?</li>
+<li>(ABC) Si la MAC de destino está en la tabla, el switch saca la trama…
+<ul>
+<li>a) por todas las bocas</li>
+<li>b) solo por la boca de ese equipo</li>
+<li>c) por la boca por la que entró</li>
+</ul></li>
+<li>(V/F) Con un switch, dos ordenadores que envían a la vez chocan.</li>
+<li>Di dos semejanzas y dos diferencias entre un hub y un switch.</li>
+<li>¿Por qué los switches han sustituido a los hubs? Di dos razones.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>El router de casa lleva un switch pequeño dentro. Mira por detrás tu router (sin desenchufar nada): ¿cuántas bocas LAN tiene?</li>
+<li>Un switch borra de su tabla los equipos que llevan un rato sin hablar. Busca cuánto tiempo suelen guardarlos y por qué lo hacen.</li>
+</ol>
+</div>

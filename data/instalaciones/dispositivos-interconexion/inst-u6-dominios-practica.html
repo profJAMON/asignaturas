@@ -1,0 +1,87 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>El método, en una tarjeta</h2>
+<div class="nota">
+<p><strong>Colisión:</strong> cada cable que sale de una boca de un switch o de un router es un dominio (también los cables entre aparatos). Todo lo que cuelga de un hub, con su cable de subida, es uno solo.</p>
+<p><strong>Difusión:</strong> las bocas del router que se usan. Sin router, 1.</p>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Un switch con 3 ordenadores y un hub con 2 en otra de sus bocas. ¿Cuántos dominios de colisión?</p>
+<ol class="votacion__opciones"><li>5</li><li data-correcta>4</li><li>2</li></ol>
+<div class="votacion__porque"><p><strong>4</strong>: los 3 cables de los ordenadores del switch, más 1 por el hub con todo lo suyo.</p></div>
+</div>
+
+<h2>Los cuatro errores de siempre</h2>
+<p>Son los que más se repiten en el examen. Mira cada red, cuéntala y después pulsa «Ver la solución».</p>
+
+<h3>Error 1: olvidar el cable entre aparatos</h3>
+<p>El cable que une dos switches, o un switch con el router, también es un dominio de colisión.</p>
+<div class="lab" data-lab="red" data-red="S(P,P,S(P,P))" data-solucion aria-label="Dos switches unidos, con dos ordenadores cada uno"></div>
+
+<h3>Error 2: contar uno a uno los ordenadores de un hub</h3>
+<p>Los ordenadores de un hub comparten el mismo camino: todos juntos son un solo dominio de colisión, por muchos que haya.</p>
+<div class="lab" data-lab="red" data-red="S(P,H(P,P,P,P))" data-solucion aria-label="Un switch con un ordenador y un hub con cuatro"></div>
+
+<h3>Error 3: pensar que el switch separa la difusión</h3>
+<p>Por muchos switches que tenga una red, si no hay router, es <strong>un solo</strong> dominio de difusión.</p>
+<div class="lab" data-lab="red" data-red="S(S(P,P),S(P,P),S(P,P))" data-solucion aria-label="Un switch principal con tres switches, cada uno con dos ordenadores"></div>
+
+<h3>Error 4: contar el router como un dominio de difusión más</h3>
+<p>El router no es un dominio: lo que cuenta son <strong>sus bocas usadas</strong>. Un router con tres bocas usadas hace 3 dominios de difusión, no 4.</p>
+<div class="lab" data-lab="red" data-red="R(S(P,P),S(P,P),H(P,P))" data-solucion aria-label="Un router con tres bocas: dos switches y un hub"></div>
+
+<h3>Actividad 1 — Cuenta los dominios</h3>
+<ol>
+<li>En la pantalla de abajo sale una red distinta cada vez. Cuéntala con el método de la tarjeta.</li>
+<li>Escribe los dominios de colisión y de difusión y pulsa «Comprobar».</li>
+<li>Si fallas, lee la pista y vuelve a intentarlo. Después puedes pulsar «Ver la solución» para ver cada dominio numerado y coloreado.</li>
+<li>Pulsa «Otra red» y sigue hasta cumplir la misión.</li>
+<li>Cuando salga «¡Misión cumplida!», dibuja en tu cuaderno la última red que has contado y escribe cuántos dominios de colisión y de difusión tiene, y por qué (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="cuenta-dominios" aria-label="Cuenta los dominios"></div>
+<p><strong>Comprobación observable:</strong> las tres casillas de la misión están marcadas; para la tercera hace falta acertar tres redes seguidas a la primera.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 7 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. En las redes 1 a 6 (debajo de las preguntas), dibuja la red en el cuaderno, numera sus dominios de colisión y escribe cuántos hay de cada tipo.</p>
+<ol>
+<li>(V/F) El cable que une un switch con un router no cuenta como dominio de colisión.</li>
+<li>¿Por qué los ordenadores de un hub cuentan como un solo dominio de colisión?</li>
+<li>¿Por qué un switch no separa los dominios de difusión?</li>
+<li>Red 1.</li>
+<li>Red 2.</li>
+<li>Red 3.</li>
+<li>Red 4.</li>
+<li>Red 5.</li>
+<li>Red 6.</li>
+<li><strong>(Actividad 1)</strong> Dibuja la última red que has contado en la simulación. ¿Cuántos dominios de colisión y de difusión tiene? ¿Por qué?</li>
+</ol>
+</div>
+<div class="lab" data-lab="red" data-red="S(P,P,P,S(P,P))" aria-label="Red 1"></div>
+<div class="lab" data-lab="red" data-red="S(P,H(P,P),H(P,P,P))" aria-label="Red 2"></div>
+<div class="lab" data-lab="red" data-red="R(S(P,P,P),H(P,P))" aria-label="Red 3"></div>
+<div class="lab" data-lab="red" data-red="R(S(P,P),S(P,P),S(P,P,P))" aria-label="Red 4"></div>
+<div class="lab" data-lab="red" data-red="R(S(P,H(P,P)),H(P,P,P))" aria-label="Red 5"></div>
+<div class="lab" data-lab="red" data-red="H(P,P,S(P,P,P))" aria-label="Red 6"></div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 7 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Dibuja la red de una empresa inventada con 20 ordenadores que tenga exactamente 3 dominios de difusión y 25 de colisión.</li>
+<li>Busca en Internet una imagen de un ejercicio de dominios de colisión y difusión (de Packet Tracer o de otro instituto), resuélvelo y comprueba la solución si la trae.</li>
+</ol>
+</div>

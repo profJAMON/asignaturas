@@ -1,0 +1,23 @@
+{
+  "id": "inst-u6-punta-a-punta",
+  "titulo": "Sesión 10 — Un mensaje de punta a punta",
+  "fecha": "",
+  "descripcion": "Un paquete pasa por un hub, un switch y un router: qué mira cada aparato, en qué capa trabaja y qué dominios separa. Caso práctico: elegir los aparatos de la red de una academia.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s10-capa",
+      "tipo": "generador",
+      "titulo": "¿En qué capa trabaja?",
+      "generador": "aparato-capa",
+      "n": 6
+    },
+    {
+      "id": "u6s10-funcion",
+      "tipo": "generador",
+      "titulo": "¿Qué aparato es?",
+      "generador": "aparato-funcion",
+      "n": 6
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "inst-u7-repaso",
+  "titulo": "Sesión 8 — Repaso de la unidad",
+  "fecha": "",
+  "descripcion": "Toda la unidad de subredes de clase B en una página: ronda rápida, resumen en tarjetas, preguntas de repaso con su respuesta, los generadores y la hoja doble para comprobar.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7r-mascara", "tipo": "generador", "titulo": "Bits, máscara y salto", "generador": "subred-b-mascara", "n": 6 },
+    { "id": "u7r-primera", "tipo": "generador", "titulo": "La 1ª y la 2ª subred", "generador": "subred-b-primera", "n": 6 },
+    { "id": "u7r-ip", "tipo": "generador", "titulo": "¿Se la puedo dar?", "generador": "puedo-dar-ip", "n": 6 }
+  ]
+}

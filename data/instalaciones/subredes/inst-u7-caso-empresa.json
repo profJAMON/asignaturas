@@ -1,0 +1,8 @@
+{
+  "id": "inst-u7-caso-empresa",
+  "titulo": "Sesión 7 — El caso de una empresa, de punta a punta",
+  "fecha": "",
+  "descripcion": "Un caso completo con la red 172.30.0.0 y 6 departamentos de hasta 900 equipos: los bits (por subredes o por equipos), la máscara, el salto, la 1ª y la 2ª subred, la puerta de enlace de cada departamento y los dominios de difusión. Simulación «Las subredes de la empresa».",
+  "materiales": [],
+  "actividades": []
+}

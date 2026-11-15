@@ -1,0 +1,83 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Paso 3: la máscara nueva</h2>
+<p>Ya sabes cuántos bits coges. Ahora, la <strong>máscara nueva</strong>. Hay dos casos, según dónde acaba el corte:</p>
+<table>
+<tr><th>Si cojo…</th><th>La máscara</th><th>Ejemplo</th></tr>
+<tr><td>8 bits o menos</td><td>Sumo sus pesos: ese es el <strong>3º número</strong>. El 4º se queda en 0.</td><td translate="no">5 bits: 128+64+32+16+8 = 248 → 255.255.248.0</td></tr>
+<tr><td>Más de 8 bits</td><td>El 3º número se llena: <strong>255</strong>. Los bits que sobran pasan al 4º: sumo sus pesos.</td><td translate="no">10 bits: 8 + 2 → 255.255.255.192</td></tr>
+</table>
+<p>La máscara corta también se escribe con la barra: <strong>/16 + los bits que cojo</strong>. Con 5 bits, /21; con 10, /26.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Cojo 5 bits en una red de clase B. ¿Cuál es la máscara?</p>
+<ol class="votacion__opciones"><li>255.255.255.248</li><li data-correcta>255.255.248.0</li><li>255.255.5.0</li></ol>
+<div class="votacion__porque"><p>Los 5 bits caben en el 3º número: 128 + 64 + 32 + 16 + 8 = <strong>248</strong>. El 4º, a 0.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Cojo 11 bits. ¿Cuánto vale el 3º número de la máscara?</p>
+<div class="votacion__porque"><p><strong>255</strong>: los 8 primeros bits lo llenan. Los 3 que sobran van al 4º: 128 + 64 + 32 = 224 → 255.255.255.224.</p></div>
+</div>
+
+<h2>Paso 4: cuántas</h2>
+<p>En la columna del último bit cogido, la hoja doble te dice cuántas <strong>subredes</strong> salen y cuántas <strong>direcciones</strong> tiene cada una. Los <strong>equipos</strong> son las direcciones − 2 (la de red y el broadcast no se dan a nadie). Todas las subredes se usan.</p>
+
+<h2>Todo junto, paso a paso</h2>
+<p>Ejemplo: 150.10.0.0 y 300 equipos en cada subred. Al final puedes probar con otra red y otro número.</p>
+<div class="diapos" data-diapos="subred-b-metodo" data-valor="150.10.0.0, 300 equipos" aria-label="150.10.0.0 con 300 equipos por subred, paso a paso"></div>
+
+<h2>A practicar</h2>
+<p>Con la hoja doble delante. Cada línea pregunta una cosa: bits, máscara, equipos, salto o en qué número cae el salto (estas dos, las veremos a fondo en las sesiones siguientes).</p>
+<div data-actividad="u7s2-mascara"></div>
+
+<h3>Actividad 1 — Más de 8 bits</h3>
+<ol>
+<li>En el laboratorio, la red 172.16.0.0 con 10 bits cogidos.</li>
+<li>Mira la máscara que sale. Pulsa «− 1 bit» hasta 8 y vuelve a 10: fíjate en qué pasa con el 3º número de la máscara.</li>
+<li>Apunta en tu cuaderno la máscara con 10 bits, cuántas subredes y cuántos equipos salen, y por qué el 3º número es 255 (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="hoja-b" data-red="172.16.0.0" data-bits="10" aria-label="La hoja doble de 172.16.0.0 con 10 bits"></div>
+<p><strong>Comprobación observable:</strong> con 10 bits, la máscara acaba en .192.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 2 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra. En las preguntas 6 a 9, saca con la hoja los bits, la máscara (también con /), cuántas subredes salen y cuántos equipos caben en cada una.</p>
+<ol>
+<li>Escribe los pasos 1 a 4 para una red de clase B.</li>
+<li>¿Cómo se saca la máscara si cojo 8 bits o menos? Pon un ejemplo.</li>
+<li>¿Y si cojo más de 8 bits? ¿Qué número de la máscara vale 255?</li>
+<li>(ABC) Con 5 bits, la máscara es…
+<ul>
+<li>a) 255.255.255.248</li>
+<li>b) 255.255.248.0</li>
+<li>c) 255.255.5.0</li>
+</ul></li>
+<li>(V/F) Con 11 bits, la máscara es 255.255.224.0.</li>
+<li>172.16.0.0 y necesito 20 subredes.</li>
+<li>150.10.0.0 y necesito 300 equipos en cada subred.</li>
+<li>135.20.0.0 y necesito 12 subredes.</li>
+<li>180.1.0.0 y necesito 60 equipos en cada subred.</li>
+<li><strong>(Actividad 1)</strong> En el laboratorio, ¿qué máscara sale con 10 bits? ¿Cuántas subredes y cuántos equipos? ¿Por qué el 3º número es 255?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 2 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Haz una tabla con todas las máscaras de clase B, de /17 a /30: la máscara entera, las subredes y los equipos.</li>
+<li>Comprueba dos de tus respuestas de las preguntas 6 a 9 con una calculadora de subredes de Internet. ¿Coinciden?</li>
+</ol>
+</div>

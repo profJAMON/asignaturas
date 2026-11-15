@@ -1,0 +1,21 @@
+{
+  "id": "inst-u6-switches",
+  "titulo": "Sesión 5 — Los switches por fuera",
+  "fecha": "",
+  "descripcion": "Cómo se elige un switch: de sobremesa o de rack (1 U, 24 o 48 bocas), velocidad de cada boca y autonegociación, bocas SFP para fibra, gestionable o no (VLAN), PoE, y switches en cascada o apilados. Simulación: elegir el switch de un aula.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s5-switches",
+      "tipo": "quiz",
+      "titulo": "Elegir un switch",
+      "preguntas": [
+        { "pregunta": "Un switch de rack normal ocupa…", "opciones": ["1 U", "4 U", "8 U"], "correcta": 0 },
+        { "pregunta": "Para unir dos armarios a 180 m se usa…", "opciones": ["UTP de categoría 6", "Fibra por las bocas SFP", "Un hub"], "correcta": 1 },
+        { "pregunta": "El switch que deja ver el estado de cada boca desde el navegador es…", "opciones": ["No gestionable", "Gestionable", "De sobremesa"], "correcta": 1 },
+        { "pregunta": "Las cámaras del techo funcionan sin enchufe gracias a un switch…", "opciones": ["PoE", "SFP", "Apilado"], "correcta": 0 },
+        { "pregunta": "Varios switches unidos por detrás que funcionan como uno solo están…", "opciones": ["En cascada", "Apilados", "En anillo"], "correcta": 1 }
+      ]
+    }
+  ]
+}

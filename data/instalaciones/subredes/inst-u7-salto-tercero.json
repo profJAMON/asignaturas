@@ -1,0 +1,10 @@
+{
+  "id": "inst-u7-salto-tercero",
+  "titulo": "Sesión 3 — El salto en el 3º número",
+  "fecha": "",
+  "descripcion": "El paso 5 en clase B cuando se cogen 8 bits o menos: el salto cae en el 3º número y las subredes empiezan con el 4º a 0. El truco 256 − máscara y por qué cada vuelta del 4º número son 256 direcciones.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7s3-salto", "tipo": "generador", "titulo": "Máscara, salto y número", "generador": "subred-b-mascara", "n": 8 }
+  ]
+}

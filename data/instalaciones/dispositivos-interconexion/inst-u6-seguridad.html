@@ -1,0 +1,124 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Una empresa conectada a Internet</h2>
+<p>La empresa de la sesión anterior ya tiene sus dos redes y su router. Ahora tiene que protegerse: por Internet le llegan millones de intentos de conexión al día, la mayoría de programas que buscan ordenadores mal protegidos.</p>
+<div class="escena" aria-label="Escena: la entrada de una empresa">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/portero-tunel.webp" width="900" height="508" alt="Una calle de noche vista en corte. A la izquierda, la entrada de un edificio de oficinas con un vigilante que mira una tablilla y hace un gesto con la mano a una mujer que espera fuera. En la acera, un chico en bicicleta va hacia una tienda con un paquete en el escaparate. A la derecha, una casa. Por debajo del suelo, un túnel iluminado va desde la casa hasta el sótano del edificio, donde hay servidores; por el túnel camina una persona con un portátil." loading="lazy">
+<div class="escena__paso" data-titulo="El vigilante" data-pregunta="¿Qué hace el vigilante de la puerta?">
+<p data-zona="120,210,22,40" data-tipo="bien">Mira <strong>su lista</strong> y decide quién pasa: es el <strong>cortafuegos</strong>.</p>
+<p data-zona="78,225,15,32" data-tipo="mal">A ella <strong>no la deja pasar</strong>: no está en la lista.</p>
+</div>
+<div class="escena__paso" data-titulo="La bici" data-pregunta="¿Para qué sale el chico de la bici?">
+<p data-zona="427,175,28,25" data-tipo="bien">Va a la tienda <strong>en nombre de los de dentro</strong> y les trae lo que piden: es el <strong>proxy</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="El túnel" data-pregunta="¿Quién va por el túnel? ¿Lo ve alguien desde la calle?">
+<p data-zona="505,365,22,30" data-tipo="bien">Alguien que trabaja <strong>desde casa</strong> entra en la empresa por un túnel que nadie ve desde fuera: es la <strong>VPN</strong>.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué le puede pasar a una empresa conectada a Internet sin ninguna protección?</p>
+<div class="votacion__porque"><p>Que alguien entre en sus ordenadores, robe o cifre sus archivos para pedir un rescate, o use sus equipos para atacar a otros. Hoy vemos tres defensas: el <strong>cortafuegos</strong>, el <strong>proxy</strong> y la <strong>VPN</strong>.</p></div>
+</div>
+
+<h2>La pasarela (gateway)</h2>
+<p>Una <strong>pasarela</strong> (en inglés, <em>gateway</em>) es un aparato que une dos redes que funcionan de forma distinta y <strong>traduce</strong> entre ellas. Como tiene que traducir, la comunicación va un poco más lenta.</p>
+<p>La palabra se usa mucho con otro sentido: la <strong>«puerta de enlace»</strong> que ves en <code>ipconfig</code> (en inglés, <em>default gateway</em>) es el router por el que sales de tu red (sesión 8). Muchas veces, la pasarela es el propio router, que además hace de cortafuegos.</p>
+
+<h2>El cortafuegos (firewall)</h2>
+<p>Un <strong>cortafuegos</strong> mira cada conexión que entra o sale de la red y, según unas <strong>reglas</strong>, la deja pasar o la bloquea. La regla básica:</p>
+<ul>
+<li>Lo que <strong>pide alguien de dentro</strong> sale, y su respuesta entra.</li>
+<li>Lo que <strong>entra sin que nadie lo haya pedido</strong> se bloquea.</li>
+<li>Salvo lo que una regla abra a propósito: por ejemplo, el <strong>puerto 443</strong> del servidor de la web de la empresa, para que la vean los clientes. (Un puerto es un número que dice a qué programa va la conexión: 443 es la web segura.)</li>
+</ul>
+<p>Lo lleva el router de casa y el de la empresa, y también Windows (el Firewall de Windows Defender), que protege cada ordenador. Míralo en marcha: te ayuda con las <strong>preguntas 3 y 4</strong>.</p>
+<div class="anim" data-anim="cortafuegos" aria-label="El cortafuegos deja pasar lo que se pide y bloquea lo demás; la VPN entra por un túnel cifrado"></div>
+<div class="votacion">
+<p class="votacion__pregunta">Alguien de Internet intenta conectarse a un PC de la oficina sin que nadie de dentro lo haya pedido. El cortafuegos…</p>
+<ol class="votacion__opciones"><li>lo deja pasar</li><li data-correcta>lo bloquea</li><li>le pide la contraseña</li></ol>
+<div class="votacion__porque"><p>Lo <strong>bloquea</strong>: nadie de dentro lo ha pedido y ninguna regla lo abre.</p></div>
+</div>
+
+<h2>El proxy</h2>
+<p>Un <strong>proxy</strong> es un <strong>intermediario</strong>: tu ordenador no va directamente a la web, se la pide al proxy, y el proxy va a buscarla y te la da.</p>
+<ul>
+<li><strong>Filtra</strong>: puede no dejar entrar en ciertas webs (apuestas, juegos, redes sociales en horario de clase). Es lo que hacen muchos institutos.</li>
+<li>Guarda una <strong>copia</strong> de las páginas que más se visitan (caché), y así cargan antes.</li>
+<li>La web ve la <strong>IP del proxy</strong>, no la de tu ordenador.</li>
+<li><strong>No cifra</strong> nada: solo hace de intermediario.</li>
+</ul>
+
+<h2>La VPN</h2>
+<p>Una <strong>VPN</strong> (red privada virtual) crea un <strong>túnel cifrado</strong> por Internet hasta otra red. Lo que va dentro del túnel no lo puede leer nadie por el camino.</p>
+<ul>
+<li><strong>Teletrabajo</strong>: desde casa entras en la red de la empresa como si estuvieras en la oficina, sin abrir nada peligroso al resto de Internet.</li>
+<li><strong>Wifi público</strong> (un aeropuerto, una cafetería): nadie de esa red puede leer lo que envías.</li>
+<li>Las VPN de pago hacen que parezca que te conectas desde otro país.</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Con una VPN eres totalmente anónimo en Internet.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Los demás no ven lo que haces, pero la <strong>empresa de la VPN sí</strong> puede verlo, y las webs donde entras con tu cuenta saben quién eres.</p></div>
+</div>
+
+<h2>Los tres, lado a lado</h2>
+<table>
+<tr><th></th><th>Qué hace</th><th>¿Cifra?</th></tr>
+<tr><td><strong>Cortafuegos</strong></td><td>Deja pasar o bloquea conexiones con reglas.</td><td>No</td></tr>
+<tr><td><strong>Proxy</strong></td><td>Va a la web por ti y puede filtrar.</td><td>No</td></tr>
+<tr><td><strong>VPN</strong></td><td>Hace un túnel hasta otra red.</td><td>Sí</td></tr>
+</table>
+<p>Un ejemplo de cada uno: con el <strong>cortafuegos</strong>, nadie de fuera entra en los PC de la oficina; con el <strong>proxy</strong>, el instituto bloquea las webs de apuestas; con la <strong>VPN</strong>, una trabajadora entra desde casa.</p>
+<div class="nota">Aquí tengo que corregir la tabla de mi presentación en dos cosas. (1) Dice que la VPN da «anonimato total»: no es así, la empresa de la VPN puede ver lo que haces. (2) Pone el cortafuegos en la capa 7: la mayoría mira las direcciones IP y los puertos (capas 3 y 4), y solo algunos, los más modernos, miran hasta la capa 7.</div>
+
+<h2>A practicar</h2>
+<div data-actividad="u6s9-seguridad"></div>
+
+<h3>Actividad 1 — Protege la red de la empresa</h3>
+<ol>
+<li>Abajo tienes la página de configuración del router de la empresa, con tres pestañas: Cortafuegos, Proxy y VPN.</li>
+<li>Mira la lista «Cómo está la red»: las líneas en rojo son problemas.</li>
+<li>Arregla cada problema en su pestaña. Ojo: para que Ana trabaje desde casa hay una forma segura y otra peligrosa.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno qué has cambiado en cada pestaña y qué hace cada una (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="protege-empresa" aria-label="Protege la red de la empresa"></div>
+<p><strong>Comprobación observable:</strong> las cinco líneas de «Cómo está la red» llevan ✓.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 9 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad.</p>
+<ol>
+<li>¿Qué es una <strong>pasarela</strong> (<em>gateway</em>)? ¿Qué es la «puerta de enlace» de <code>ipconfig</code>?</li>
+<li>¿Qué es un <strong>cortafuegos</strong>? ¿Qué decide y con qué?</li>
+<li><strong>(Animación)</strong> ¿Por qué entra la respuesta de una web que has pedido, y no entra alguien que intenta conectarse a tu PC?</li>
+<li><strong>(Animación)</strong> (V/F) Con el cortafuegos bloqueando todo lo que entra, los clientes pueden ver igual la web de la empresa.</li>
+<li>¿Qué es un <strong>proxy</strong>? Di dos cosas para las que lo usa un instituto.</li>
+<li>(V/F) Un proxy cifra todo lo que envías.</li>
+<li>¿Qué es una <strong>VPN</strong>? Pon dos ejemplos de cuándo se usa.</li>
+<li>(V/F) Con una VPN eres totalmente anónimo en Internet.</li>
+<li>¿Cortafuegos, proxy o VPN? a) Desde la oficina no se puede entrar en webs de apuestas. b) Un trabajador se conecta desde un hotel a los archivos de la empresa. c) Nadie de Internet puede conectarse a la impresora de la oficina.</li>
+<li><strong>(Actividad 1)</strong> En la simulación, ¿qué has cambiado en cada pestaña? ¿Qué hace el cortafuegos, el proxy y la VPN?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 9 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>En tu PC del aula, abre <em>Seguridad de Windows → Firewall y protección de red</em>, sin cambiar nada. ¿Está activado? ¿Para qué tipos de red?</li>
+<li>Busca qué son los puertos 80, 443 y 22, y para qué se usa cada uno.</li>
+</ol>
+</div>

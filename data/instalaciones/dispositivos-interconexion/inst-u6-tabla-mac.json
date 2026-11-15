@@ -1,0 +1,16 @@
+{
+  "id": "inst-u6-tabla-mac",
+  "titulo": "Sesión 4 — La tabla MAC, paso a paso",
+  "fecha": "",
+  "descripcion": "Los ejercicios de tabla MAC: los cuatro pasos (origen, broadcast, destino conocido o descarte, inundación), dos ejemplos resueltos en diapositivas, uno con un hub, ejercicios generados y la simulación «Eres el switch».",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s4-mac",
+      "tipo": "generador",
+      "titulo": "¿Por dónde sale la trama?",
+      "generador": "mac-salida",
+      "n": 6
+    }
+  ]
+}

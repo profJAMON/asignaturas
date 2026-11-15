@@ -1,0 +1,10 @@
+{
+  "id": "inst-u7-puedo-dar-ip",
+  "titulo": "Sesión 6 — ¿Puedo dar esta IP?",
+  "fecha": "",
+  "descripcion": "Cómo saber si una IP se le puede dar a un equipo (clase C y B): el salto, la subred donde cae, su broadcast y si es la red o el broadcast. Las IP acabadas en .0 o .255 que sí son de un equipo. Simulación «¿Se la doy?».",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7s6-ip", "tipo": "generador", "titulo": "¿Se la puedo dar?", "generador": "puedo-dar-ip", "n": 8 }
+  ]
+}

@@ -1,0 +1,118 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Hoy: subredes de clase B</h2>
+<p>En la unidad 1 hiciste subredes de <strong>clase C</strong> con la hoja de bits y los 5 pasos. En esta unidad hacemos lo mismo con la <strong>clase B</strong>. Como allí, primero aprendes <strong>a hacer el ejercicio</strong>; el porqué viene después.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿De qué clase es la red 172.16.0.0?</p>
+<ol class="votacion__opciones"><li>A</li><li data-correcta>B</li><li>C</li></ol>
+<div class="votacion__porque"><p><strong>Clase B</strong>: empieza por 172, que está entre 128 y 191.</p></div>
+</div>
+
+<h2>Qué cambia de la C a la B</h2>
+<table>
+<tr><th></th><th>Clase C</th><th>Clase B</th></tr>
+<tr><td>Primer número</td><td translate="no">192 a 223</td><td translate="no">128 a 191</td></tr>
+<tr><td>Máscara por defecto</td><td translate="no">255.255.255.0</td><td translate="no">255.255.0.0</td></tr>
+<tr><td>Lo que se parte</td><td>El 4º número (8 bits)</td><td>El <strong>3º y el 4º</strong> (16 bits)</td></tr>
+</table>
+<p>Con 16 bits en lugar de 8 salen subredes mucho más grandes, o muchas más. Pero el método es el mismo: <strong>los bits se cogen desde la izquierda</strong>. Primero los del 3º número y, si no bastan, siguen los del 4º.</p>
+<div class="votacion">
+<p class="votacion__pregunta">En la red 150.10.0.0, ¿qué números se pueden partir para hacer subredes?</p>
+<ol class="votacion__opciones"><li>Solo el 4º</li><li data-correcta>El 3º y el 4º</li><li>El 2º, el 3º y el 4º</li></ol>
+<div class="votacion__porque"><p><strong>El 3º y el 4º</strong>. 150 y 10 son la red: no se tocan.</p></div>
+</div>
+
+<h2>La hoja doble</h2>
+<p>Es la hoja de bits de la unidad 1, <strong>dos veces seguidas</strong>: la primera para el 3º número y la segunda para el 4º. <strong>Cópiala en el cuaderno</strong>: la usarás en toda la unidad.</p>
+<table class="hoja-bits hoja-doble">
+<tr><th>3º nº</th><th>1º</th><th>2º</th><th>3º</th><th>4º</th><th>5º</th><th>6º</th><th>7º</th><th>8º</th></tr>
+<tr><td><strong>Peso</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+<tr><td><strong>Subredes</strong></td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td><td>64</td><td>128</td><td>256</td></tr>
+<tr><td><strong>Direcc.</strong></td><td>32768</td><td>16384</td><td>8192</td><td>4096</td><td>2048</td><td>1024</td><td>512</td><td>256</td></tr>
+</table>
+<table class="hoja-bits hoja-doble">
+<tr><th>4º nº</th><th>9º</th><th>10º</th><th>11º</th><th>12º</th><th>13º</th><th>14º</th><th>15º</th><th>16º</th></tr>
+<tr><td><strong>Peso</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+<tr><td><strong>Subredes</strong></td><td>512</td><td>1024</td><td>2048</td><td>4096</td><td>8192</td><td>16384</td><td>32768</td><td>65536</td></tr>
+<tr><td><strong>Direcc.</strong></td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td></tr>
+</table>
+<ul>
+<li>La fila de <strong>subredes</strong> empieza en 2 y va doblando, y <strong>sigue</strong> en el 4º número: después de 256 viene 512.</li>
+<li>La fila de <strong>direcciones</strong> es al revés: va a la mitad. En el 4º número es igual que en la clase C.</li>
+<li>Si cojo hasta un bit, en su columna leo cuántas subredes salen y cuántas direcciones tiene cada una.</li>
+</ul>
+
+<h2>Los dos primeros pasos</h2>
+<ol>
+<li><strong>Clase.</strong> De 128 a 191: clase B, máscara 255.255.0.0. Se parten el 3º y el 4º número.</li>
+<li><strong>Bits que cojo.</strong>
+<ul>
+<li>Si me dicen <strong>subredes</strong>: en la fila de subredes, el primer número que llega.</li>
+<li>Si me dicen <strong>equipos</strong>: les sumo 2 y, en la fila de direcciones, voy hacia la derecha mientras llegue.</li>
+</ul></li>
+</ol>
+<p>Igual que en la clase C. Los otros tres pasos (máscara, cuántas y salto) los vemos en las sesiones siguientes.</p>
+<div class="votacion">
+<p class="votacion__pregunta">172.16.0.0 y necesito 20 subredes. ¿Cuántos bits cojo?</p>
+<ol class="votacion__opciones"><li>4</li><li data-correcta>5</li><li>20</li></ol>
+<div class="votacion__porque"><p><strong>5 bits</strong>: con 4 salen 16 (no llega); con 5 salen <strong>32</strong>.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">150.10.0.0 y necesito 300 equipos en cada subred. ¿Cuántos bits cojo?</p>
+<ol class="votacion__opciones"><li>9</li><li data-correcta>7</li><li>8</li></ol>
+<div class="votacion__porque"><p>300 + 2 = 302. En la fila de direcciones, 512 llega y 256 ya no: me quedo en la columna <strong>7</strong>.</p></div>
+</div>
+
+<h3>Actividad 1 — Mueve el corte</h3>
+<ol>
+<li>En el laboratorio de abajo, la hoja doble de la red 172.16.0.0. Las columnas cogidas salen marcadas y el corte, en rosa.</li>
+<li>Pulsa «+ 1 bit» y «− 1 bit» y mira cómo cambian las subredes y los equipos.</li>
+<li>Busca cuántos bits puedes coger como mucho si cada subred necesita <strong>1000 equipos</strong>.</li>
+<li>Apunta en tu cuaderno esos bits, cuántas subredes salen y cuántos equipos caben en cada una (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="hoja-b" data-red="172.16.0.0" data-bits="3" aria-label="La hoja doble de 172.16.0.0"></div>
+<p><strong>Comprobación observable:</strong> con tus bits caben 1000 equipos o más; con uno más, ya no.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 1 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra. En las preguntas 6 a 9, di cuántos bits cojo y por qué, con la hoja.</p>
+<ol>
+<li>¿Cómo sabes que una IP es de clase B? ¿Cuál es su máscara por defecto?</li>
+<li>En una red de clase B, ¿qué números se parten para hacer subredes? ¿Cuántos bits son?</li>
+<li>Copia la hoja doble: pesos, subredes y direcciones del 3º y del 4º número.</li>
+<li>(ABC) En 172.16.0.0 necesito 20 subredes. Cojo…
+<ul>
+<li>a) 4 bits</li>
+<li>b) 5 bits</li>
+<li>c) 20 bits</li>
+</ul></li>
+<li>(V/F) Si necesito 300 equipos en cada subred, busco el 300 en la fila de direcciones.</li>
+<li>135.20.0.0 y necesito 12 subredes.</li>
+<li>140.5.0.0 y necesito 100 subredes.</li>
+<li>160.20.0.0 y necesito 2000 equipos en cada subred.</li>
+<li>180.1.0.0 y necesito 60 equipos en cada subred.</li>
+<li><strong>(Actividad 1)</strong> En el laboratorio, ¿cuántos bits puedes coger como mucho para que quepan 1000 equipos? ¿Cuántas subredes salen y cuántos equipos caben?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 1 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Inventa dos ejercicios de clase B, uno que diga subredes y otro que diga equipos, y resuélvelos.</li>
+<li>¿Por qué con una red de clase B se pueden hacer subredes mucho más grandes que con una de clase C? Explícalo con las dos hojas.</li>
+</ol>
+</div>

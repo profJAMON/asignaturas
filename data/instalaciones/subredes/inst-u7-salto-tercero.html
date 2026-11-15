@@ -1,0 +1,82 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Paso 5: el salto</h2>
+<p>Como en la clase C, el <strong>salto</strong> es el <strong>peso del último bit cogido</strong>. La novedad de la clase B es que hay que decir <strong>en qué número cae</strong>: en el 3º o en el 4º. Hoy, el caso más fácil: cuando cojo <strong>8 bits o menos</strong>, el salto cae en el <strong>3º número</strong>.</p>
+<ul>
+<li>Las subredes van de salto en salto <strong>en el 3º número</strong>, y el 4º empieza siempre en 0.</li>
+<li>Ejemplo, 172.16.0.0 con 5 bits (255.255.248.0): salto 8. La 1ª subred es <span translate="no">172.16.0.0</span>; la 2ª, <span translate="no">172.16.8.0</span>; la 3ª, <span translate="no">172.16.16.0</span>…</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Máscara 255.255.240.0. ¿De cuánto es el salto y en qué número cae?</p>
+<ol class="votacion__opciones"><li>240, en el 3º</li><li data-correcta>16, en el 3º</li><li>16, en el 4º</li></ol>
+<div class="votacion__porque"><p>240 = 128 + 64 + 32 + 16: el último peso es <strong>16</strong>, y está en el <strong>3º número</strong>.</p></div>
+</div>
+<div class="nota"><strong>Truco para la máscara:</strong> el salto es también <strong>256 − el número de la máscara que no es 255 ni 0</strong>. 256 − 248 = 8; 256 − 240 = 16.</div>
+
+<h2>Por qué: cada número da una vuelta</h2>
+<p>El 4º número va de 0 a 255: son <strong>256 direcciones</strong>. Cuando se acaba, vuelve a 0 y el 3º sube 1, como el cuentakilómetros de un coche. Así que cada vez que el 3º número sube 1, han pasado 256 direcciones.</p>
+<p>Con salto 8 en el 3º, cada subred tiene 8 × 256 = <strong>2048 direcciones</strong>: justo lo que dice la hoja doble en la columna 5.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Cuántas direcciones hay de 172.16.0.0 a 172.16.7.255?</p>
+<div class="votacion__porque"><p>Del 0 al 7 en el 3º número son 8 vueltas del 4º: 8 × 256 = <strong>2048</strong>. Es la 1ª subred entera de 255.255.248.0.</p></div>
+</div>
+
+<h2>El ejemplo entero</h2>
+<p>172.16.0.0 y 20 subredes, con los 5 pasos. Mira sobre todo las dos últimas diapositivas.</p>
+<div class="diapos" data-diapos="subred-b-metodo" data-valor="172.16.0.0, 20 subredes" aria-label="172.16.0.0 con 20 subredes, paso a paso"></div>
+
+<h2>A practicar</h2>
+<div data-actividad="u7s3-salto"></div>
+
+<h3>Actividad 1 — El salto en el 3º número</h3>
+<ol>
+<li>En el laboratorio, la red 172.16.0.0. Ponla con 4 bits.</li>
+<li>Mira el salto y la 1ª y la 2ª subred que salen debajo. Prueba con 3 y con 6 bits: fíjate en que el 4º número de las subredes siempre es 0.</li>
+<li>Vuelve a 4 bits y apunta en tu cuaderno el salto, en qué número cae y la red de la 1ª y de la 2ª subred (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="hoja-b" data-red="172.16.0.0" data-bits="2" aria-label="La hoja doble de 172.16.0.0"></div>
+<p><strong>Comprobación observable:</strong> con 4 bits, la 2ª subred es la 172.16.16.0.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 3 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es el salto? ¿Cómo se saca en una red de clase B?</li>
+<li>¿Cuándo cae el salto en el 3º número?</li>
+<li>(ABC) Con la máscara 255.255.240.0, el salto es…
+<ul>
+<li>a) 240</li>
+<li>b) 16</li>
+<li>c) 4</li>
+</ul></li>
+<li>172.16.0.0 con máscara 255.255.248.0: salto, en qué número cae, y la red de la 1ª y de la 2ª subred.</li>
+<li>150.10.0.0 y 300 equipos en cada subred: máscara, salto y la red de la 1ª y de la 2ª subred.</li>
+<li>(V/F) Cuando el salto cae en el 3º número, las subredes empiezan siempre con el 4º número a 0.</li>
+<li>¿Por qué cada vez que el 3º número sube 1 pasan 256 direcciones?</li>
+<li>135.20.0.0 y 12 subredes: máscara, salto y en qué número cae.</li>
+<li>¿Cuántas direcciones hay de 172.16.0.0 a 172.16.7.255? ¿Cómo lo has calculado?</li>
+<li><strong>(Actividad 1)</strong> En el laboratorio, con 4 bits: ¿salto?, ¿en qué número?, ¿red de la 1ª y de la 2ª subred?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Escribe las 8 subredes de 172.16.0.0 con máscara 255.255.224.0.</li>
+<li>Busca qué es un cuentakilómetros mecánico y explica con él por qué el 3º número sube 1 cuando el 4º pasa de 255.</li>
+</ol>
+</div>

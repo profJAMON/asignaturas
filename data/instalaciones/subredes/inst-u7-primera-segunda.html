@@ -1,0 +1,100 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Los cinco datos de la 1ª subred</h2>
+<p>Igual que en la clase C (unidad 1), con la máscara y el salto ya puedes sacar la <strong>1ª subred</strong> entera. Son cinco datos y van <strong>en este orden</strong>, porque cada uno sale del anterior:</p>
+<table>
+<tr><th>Dato</th><th>Cómo se saca</th></tr>
+<tr><td><strong>① Red de la 1ª</strong></td><td>La red que me dan (acaba en .0.0).</td></tr>
+<tr><td><strong>② Red de la 2ª</strong></td><td>① + el salto, en su número.</td></tr>
+<tr><td><strong>③ Broadcast de la 1ª</strong></td><td>② − 1.</td></tr>
+<tr><td><strong>④ Primer equipo</strong></td><td>① + 1.</td></tr>
+<tr><td><strong>⑤ Último equipo</strong></td><td>③ − 1.</td></tr>
+</table>
+
+<h2>Restar 1 a una IP acabada en .0</h2>
+<p>Es lo único nuevo, y lo que más se equivoca. Con el salto en el 3º número, la red de la 2ª subred acaba en <strong>.0</strong>. Al restarle 1, el 4º número no puede bajar de 0: <strong>pasa a 255 y el 3º baja 1</strong>. Es el cuentakilómetros hacia atrás.</p>
+<table>
+<tr><th>Red de la 2ª</th><th>− 1 = broadcast de la 1ª</th></tr>
+<tr><td translate="no">172.16.8.0</td><td translate="no">172.16.7.255</td></tr>
+<tr><td translate="no">150.10.2.0</td><td translate="no">150.10.1.255</td></tr>
+<tr><td translate="no">180.1.0.64</td><td translate="no">180.1.0.63 (aquí no hay vuelta)</td></tr>
+</table>
+<div class="votacion">
+<p class="votacion__pregunta">¿Cuánto es 172.16.16.0 − 1?</p>
+<ol class="votacion__opciones"><li>172.16.16.255</li><li data-correcta>172.16.15.255</li><li>172.16.15.0</li></ol>
+<div class="votacion__porque"><p>El 4º pasa de 0 a <strong>255</strong> y el 3º baja de 16 a <strong>15</strong>.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">El último equipo de la 1ª subred de 172.16.0.0/21 es…</p>
+<ol class="votacion__opciones"><li>172.16.7.255</li><li data-correcta>172.16.7.254</li><li>172.16.8.254</li></ol>
+<div class="votacion__porque"><p>El broadcast es 172.16.7.255; el último equipo, uno menos: <strong>172.16.7.254</strong>.</p></div>
+</div>
+
+<h2>Dos ejemplos</h2>
+<table>
+<tr><th></th><th translate="no">172.16.0.0 /21 (salto 8 en el 3º)</th><th translate="no">180.1.0.0 /26 (salto 64 en el 4º)</th></tr>
+<tr><td>① Red de la 1ª</td><td translate="no">172.16.0.0</td><td translate="no">180.1.0.0</td></tr>
+<tr><td>② Red de la 2ª</td><td translate="no">172.16.8.0</td><td translate="no">180.1.0.64</td></tr>
+<tr><td>③ Broadcast</td><td translate="no">172.16.7.255</td><td translate="no">180.1.0.63</td></tr>
+<tr><td>④ Primer equipo</td><td translate="no">172.16.0.1</td><td translate="no">180.1.0.1</td></tr>
+<tr><td>⑤ Último equipo</td><td translate="no">172.16.7.254</td><td translate="no">180.1.0.62</td></tr>
+</table>
+<div class="nota">Compruébalo siempre con los equipos: en la de la derecha, del .1 al .62 hay <strong>62</strong>, los que dice la hoja. En la de la izquierda, 2048 direcciones − 2 = 2046 equipos.</div>
+<p>Otro, paso a paso. Al final puedes probar con tu propia red:</p>
+<div class="diapos" data-diapos="subred-b-metodo" data-valor="135.20.0.0, 12 subredes" aria-label="135.20.0.0 con 12 subredes, paso a paso"></div>
+
+<h2>A practicar</h2>
+<div data-actividad="u7s5-primera"></div>
+
+<h3>Actividad 1 — Los cinco datos</h3>
+<ol>
+<li>En el laboratorio, la red 172.16.0.0. Ponla con 7 bits.</li>
+<li>Antes de mirar lo de abajo, saca en el cuaderno los cinco datos de la 1ª subred.</li>
+<li>Compáralos con lo que dice el laboratorio y corrige lo que tengas mal (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="hoja-b" data-red="172.16.0.0" data-bits="3" aria-label="La hoja doble de 172.16.0.0"></div>
+<p><strong>Comprobación observable:</strong> con 7 bits, el broadcast de la 1ª subred acaba en .1.255.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 5 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra. En las preguntas 4, 5, 6 y 9, saca los cinco datos de la 1ª subred, en orden.</p>
+<ol>
+<li>Escribe los cinco datos de la 1ª subred y cómo se saca cada uno, en orden.</li>
+<li>¿Cuánto es 172.16.8.0 − 1? Explica por qué.</li>
+<li>(ABC) El broadcast de la 1ª subred de 172.16.0.0 /21 es…
+<ul>
+<li>a) 172.16.8.255</li>
+<li>b) 172.16.7.255</li>
+<li>c) 172.16.0.255</li>
+</ul></li>
+<li>172.16.0.0 y 20 subredes.</li>
+<li>150.10.0.0 y 300 equipos en cada subred.</li>
+<li>180.1.0.0 y 60 equipos en cada subred.</li>
+<li>Cuenta los equipos de la pregunta 6, del primero al último. ¿Te coinciden con los de la hoja?</li>
+<li>(V/F) El primer equipo de la 1ª subred de una red de clase B siempre acaba en .0.1.</li>
+<li>165.3.0.0 con máscara 255.255.255.128.</li>
+<li><strong>(Actividad 1)</strong> Los cinco datos de la 1ª subred de 172.16.0.0 con 7 bits. ¿Qué tenías mal antes de mirar el laboratorio?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 5 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Saca también los cinco datos de la 2ª subred de la pregunta 4. Pista: su broadcast es la red de la 3ª − 1.</li>
+<li>Comprueba las preguntas 4 y 6 con una calculadora de subredes de Internet.</li>
+</ol>
+</div>

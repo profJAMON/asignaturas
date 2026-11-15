@@ -1,0 +1,10 @@
+{
+  "id": "inst-u7-primera-segunda",
+  "titulo": "Sesión 5 — La 1ª y la 2ª subred",
+  "fecha": "",
+  "descripcion": "Los cinco datos de la 1ª subred en clase B (red de la 1ª y de la 2ª, broadcast, primer y último equipo) y cómo se resta 1 a una IP acabada en .0: el 4º pasa a 255 y el 3º baja 1.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7s5-primera", "tipo": "generador", "titulo": "La 1ª y la 2ª subred", "generador": "subred-b-primera", "n": 8 }
+  ]
+}

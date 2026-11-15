@@ -1,0 +1,21 @@
+{
+  "id": "inst-u6-switch",
+  "titulo": "Sesión 3 — El switch aprende: la tabla MAC",
+  "fecha": "",
+  "descripcion": "El switch (conmutador): trabaja en la capa 2 y lee la MAC; cómo aprende su tabla MAC mirando el origen; unicast, inundación y broadcast; dúplex y sin colisiones; hub y switch comparados.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s3-switch",
+      "tipo": "quiz",
+      "titulo": "El switch",
+      "preguntas": [
+        { "pregunta": "Para apuntar en su tabla, el switch mira la MAC de…", "opciones": ["Origen", "Destino", "Las dos"], "correcta": 0 },
+        { "pregunta": "El destino está en la tabla. La trama sale…", "opciones": ["Por todas las bocas", "Solo por la boca de ese equipo", "Por ninguna"], "correcta": 1 },
+        { "pregunta": "El destino no está en la tabla. El switch hace…", "opciones": ["Una inundación", "Un broadcast", "Una colisión"], "correcta": 0 },
+        { "pregunta": "Una trama con destino FF es…", "opciones": ["Unicast", "Broadcast", "Una colisión"], "correcta": 1 },
+        { "pregunta": "Con un switch, los equipos trabajan en…", "opciones": ["Semidúplex", "Dúplex", "Simplex"], "correcta": 1 }
+      ]
+    }
+  ]
+}

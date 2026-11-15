@@ -1711,6 +1711,12 @@ footer.pie {
 /* Hoja de bits de subredes (Instalaciones UT1 S8): 9 columnas que caben en el móvil */
 .leccion .hoja-bits th, .leccion .hoja-bits td { padding: 0.45rem 0.3rem; text-align: center; }
 .leccion .hoja-bits td:first-child { text-align: left; }
+/* Hoja doble de clase B (UT7, 15/11/2026): números de hasta 5 cifras; en el móvil, letra y relleno más pequeños para que quepan las 9 columnas. */
+@media (max-width: 640px) {
+  .leccion .hoja-bits.hoja-doble { font-size: 0.72rem; }
+  .leccion .hoja-bits.hoja-doble th, .leccion .hoja-bits.hoja-doble td { padding: 0.35rem 0.08rem; }
+  .leccion .lab .hoja-bits.hoja-doble { font-size: 0.6rem; }
+}
 
 /* Pasos de una dirección que se acorta (26/10/2026, Instalaciones UT1 S10,
    reglas de IPv6): lo que se quita, tachado en magenta (<del>); lo que
@@ -3484,6 +3490,8 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   margin: 0 auto;
   text-align: center;
 }
+/* Crédito de una foto de Wikimedia Commons (UT6, 15/11/2026): pequeño y apagado, en su propia línea. */
+.leccion .diapo__texto small { display: block; margin-top: 0.4em; font-size: 0.62em; opacity: 0.75; }
 .leccion .diapo__texto strong { color: var(--diapo-acento); }
 
 /* Clases para los SVG de dentro (escritos a mano o generados). Con

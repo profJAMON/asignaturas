@@ -1,0 +1,149 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Dos departamentos, dos redes</h2>
+<p>Una pequeña empresa tiene dos departamentos: <strong>Contabilidad</strong> y el <strong>Taller</strong>. Cada uno tiene su switch y su red: Contabilidad usa las direcciones <span translate="no">192.168.1.x</span> y el Taller, las <span translate="no">192.168.2.x</span>. Así un problema en el Taller (un broadcast, un ordenador infectado) no llega a Contabilidad.</p>
+<div class="escena" aria-label="Escena: dos departamentos y un router">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/dos-departamentos.webp" width="900" height="508" alt="Dos salas separadas por una pared. A la izquierda, una oficina con tres mesas con ordenador, papeles y una calculadora, y un hombre con traje leyendo un papel. A la derecha, un taller con herramientas colgadas en la pared, un banco de trabajo, dos ordenadores y un mecánico. Cada sala tiene una cajita con luces a la que van los cables de sus ordenadores. Encima de la pared, un aparato con dos antenas une las dos cajitas, y de él baja un cable hasta la calle." loading="lazy">
+<div class="escena__paso" data-titulo="Las dos redes" data-pregunta="¿Cuántas redes ves?">
+<p data-zona="325,190,25,14" data-tipo="bien">Contabilidad tiene su <strong>switch</strong>…</p>
+<p data-zona="560,193,25,12" data-tipo="bien">…y el Taller, el suyo: son <strong>dos redes</strong> distintas.</p>
+</div>
+<div class="escena__paso" data-titulo="El aparato de la pared" data-pregunta="¿Qué hace el aparato que está encima de la pared?">
+<p data-zona="447,82,32,18" data-tipo="bien">Es el <strong>router</strong>: une las dos redes y decide por dónde va cada paquete.</p>
+<p data-zona="460,450,25,15" data-tipo="bien">Por este cable sale a Internet: otra red más.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Un ordenador de Contabilidad tiene que imprimir en la impresora del Taller. ¿Qué aparato hace falta entre las dos redes?</p>
+<ol class="votacion__opciones"><li>Un hub</li><li>Otro switch</li><li data-correcta>Un router</li></ol>
+<div class="votacion__porque"><p>Un <strong>router</strong>: es el aparato que une redes distintas.</p></div>
+</div>
+
+<h2>Qué es un router</h2>
+<p>El <strong>router</strong> (en castellano, <strong>encaminador</strong> o enrutador) <strong>une redes distintas</strong> y lleva los paquetes de una a otra. Trabaja en la <strong>capa 3</strong>: lee la <strong>IP de destino</strong> y decide por qué boca lo saca. A eso se le llama <strong>encaminar</strong>.</p>
+<ul>
+<li>Cada boca del router está en <strong>una red distinta</strong>, con una IP de esa red.</li>
+<li>Para decidir, mira su <strong>tabla de rutas</strong>: qué red hay detrás de cada boca.</li>
+<li>No deja pasar los <strong>broadcast</strong> de una red a otra (sesión 6).</li>
+</ul>
+<table>
+<tr><th>Tabla de rutas del router</th><th>Sale por</th></tr>
+<tr><td translate="no">192.168.1.0 (Contabilidad)</td><td>Boca 1</td></tr>
+<tr><td translate="no">192.168.2.0 (Taller)</td><td>Boca 2</td></tr>
+<tr><td>Cualquier otra (Internet)</td><td>Boca de Internet</td></tr>
+</table>
+<p>Míralo en marcha: te ayuda con las <strong>preguntas 3, 4 y 5</strong>.</p>
+<div class="anim" data-anim="router-redes" aria-label="Un router une dos redes y no deja pasar el broadcast"></div>
+<p>En resumen: <strong>el switch crea una red</strong> (une los equipos de un sitio) y <strong>el router une redes</strong> (las de los departamentos, o la tuya con Internet).</p>
+
+<h2>La puerta de enlace</h2>
+<div class="diapos" aria-label="Cómo decide tu PC si usa la puerta de enlace">
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Tu PC, con la IP 192.168.1.10, va a enviar algo y mira la IP de destino"><rect x="20" y="70" width="60" height="36" rx="4" class="d-caja-on"/><text x="50" y="93" text-anchor="middle" class="d-a d-peq">tu PC</text><text x="50" y="124" text-anchor="middle" class="d-d d-peq">192.168.1.10</text><text x="230" y="60" text-anchor="middle" class="d-c">¿para 192.168.1.11</text><text x="230" y="84" text-anchor="middle" class="d-c">o para 192.168.2.20?</text></svg>
+<p class="diapo__texto">Tu PC va a enviar algo. Antes, mira la <strong>IP de destino</strong> y la compara con la suya, usando la máscara.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="El destino 192.168.1.11 está en la misma red: va directo por el switch"><rect x="20" y="70" width="60" height="36" rx="4" class="d-caja-on"/><text x="50" y="93" text-anchor="middle" class="d-a d-peq">tu PC</text><text x="50" y="124" text-anchor="middle" class="d-d d-peq">192.168.1.10</text><path d="M 80 88 L 170 88" class="d-linea-a"/><rect x="170" y="76" width="60" height="24" rx="4" class="d-caja"/><text x="200" y="93" text-anchor="middle" class="d-t d-peq">switch</text><path d="M 230 88 L 280 88" class="d-linea-a"/><rect x="280" y="70" width="60" height="36" rx="4" class="d-caja-on"/><text x="310" y="124" text-anchor="middle" class="d-a d-peq">.1.11</text><text x="200" y="40" text-anchor="middle" class="d-a">misma red: directo</text></svg>
+<p class="diapo__texto">¿Es de <strong>mi red</strong> (192.168.1.x)? Se lo envía directamente, por el switch. El router ni se entera.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="El destino 192.168.2.20 es de otra red: se lo da al router, su puerta de enlace 192.168.1.1"><rect x="20" y="70" width="60" height="36" rx="4" class="d-caja-on"/><text x="50" y="93" text-anchor="middle" class="d-a d-peq">tu PC</text><text x="50" y="124" text-anchor="middle" class="d-d d-peq">192.168.1.10</text><path d="M 80 88 L 190 60" class="d-linea-c"/><circle cx="210" cy="55" r="20" class="d-caja-act"/><text x="210" y="60" text-anchor="middle" class="d-c d-peq">router</text><text x="210" y="100" text-anchor="middle" class="d-c d-peq">192.168.1.1</text><path d="M 230 55 L 300 55" class="d-linea-c"/><text x="320" y="40" text-anchor="middle" class="d-d d-peq">.2.20</text><text x="200" y="150" text-anchor="middle" class="d-c">otra red: al router</text></svg>
+<p class="diapo__texto">¿Es de <strong>otra red</strong>? No puede llegar solo: se lo da al router. La IP del router en tu red es tu <strong>puerta de enlace</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="La salida de ipconfig con la dirección IPv4, la máscara y la puerta de enlace predeterminada"><rect x="20" y="20" width="320" height="120" rx="6" class="d-caja"/><text x="36" y="50" class="d-t d-peq">Dirección IPv4: 192.168.1.10</text><text x="36" y="78" class="d-t d-peq">Máscara: 255.255.255.0</text><text x="36" y="106" class="d-c d-peq">Puerta de enlace: 192.168.1.1</text></svg>
+<p class="diapo__texto">La ves con <strong>ipconfig</strong>: «Puerta de enlace predeterminada». Siempre es una IP de <strong>tu misma red</strong>.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Un PC del Taller tiene la IP 192.168.2.20. ¿Cuál es su puerta de enlace?</p>
+<ol class="votacion__opciones"><li>192.168.1.1</li><li data-correcta>192.168.2.1</li><li>8.8.8.8</li></ol>
+<div class="votacion__porque"><p><strong>192.168.2.1</strong>: la IP del router en la red del Taller. La puerta de enlace siempre está en tu misma red.</p></div>
+</div>
+
+<h3>Actividad 1 — Conecta el PC de Contabilidad</h3>
+<ol>
+<li>Alguien ha puesto a mano la IP, la máscara y la puerta de enlace de un PC de Contabilidad, y no funciona.</li>
+<li>Prueba primero los tres ping, tal como está. Lee lo que pasa.</li>
+<li>Cambia lo que esté mal (pulsa fuera de la casilla para guardarlo) y vuelve a probar.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno la IP, la máscara y la puerta de enlace que has puesto, y por qué con la puerta de enlace mal llegabas al compañero pero no al Taller (pregunta 11).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="puerta-enlace" aria-label="Conecta el PC de Contabilidad"></div>
+<p><strong>Comprobación observable:</strong> los tres ping responden con «Respuesta desde…».</p>
+
+<h2>El router de casa, por dentro</h2>
+<p>El aparato que la operadora te pone en casa se llama router, pero lleva <strong>varios aparatos en una caja</strong>:</p>
+<ul>
+<li>Un <strong>router</strong>: une tu red de casa con la de la operadora (Internet).</li>
+<li>Un <strong>switch</strong> pequeño: las bocas LAN de detrás.</li>
+<li>Un <strong>punto de acceso</strong>: el wifi (unidad 5).</li>
+<li>Un <strong>servidor DHCP</strong>: da la IP a cada aparato que se conecta (unidad 1).</li>
+<li>El <strong>NAT</strong>: hace que todos los aparatos de casa salgan a Internet con la única IP pública del router (unidad 1).</li>
+<li>Un <strong>cortafuegos</strong>: lo vemos en la sesión siguiente.</li>
+</ul>
+<div class="diapos" aria-label="Un router de casa por detrás, en foto">
+<div class="diapo">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/router-detras.webp" width="900" height="501" alt="Un router negro visto por detrás: un agujero de reset, cuatro bocas de red marcadas LAN 1 a 4, una boca marcada WAN y la entrada de corriente" loading="lazy">
+<p class="diapo__texto">Un router de casa por detrás: las 4 bocas <strong>LAN</strong> son su switch pequeño; la <strong>WAN</strong> es la que va a la operadora (Internet). <small>Foto: FelipeTD, CC BY-SA 4.0, Wikimedia Commons.</small></p>
+</div>
+</div>
+<p>Toca cada pieza. Prueba a sacar el cable de la boca de Internet y mira las luces.</p>
+<div class="lab" data-lab="piezas" data-figura="router-casa" aria-label="El router de casa por fuera"></div>
+
+<h2>Router y switch, lado a lado</h2>
+<table>
+<tr><th></th><th>Switch</th><th>Router</th></tr>
+<tr><td>Para qué</td><td>Crea una red: une los equipos de un sitio.</td><td>Une redes distintas, también con Internet.</td></tr>
+<tr><td>Capa</td><td translate="no">2</td><td translate="no">3 (y también las de abajo)</td></tr>
+<tr><td>Qué mira</td><td>La MAC de destino</td><td>La IP de destino</td></tr>
+<tr><td>Con qué decide</td><td>Tabla MAC</td><td>Tabla de rutas</td></tr>
+<tr><td>Broadcast</td><td>Lo deja pasar</td><td>Lo para</td></tr>
+</table>
+<div class="nota">Aquí tengo que corregir mi presentación en cuatro cosas. (1) Dice que el sistema del router se llama IOS: ese es el de los routers de Cisco; cada marca tiene el suyo. (2) La tabla pone «enrutamiento no adaptable (DHCP)»: el DHCP no es enrutamiento, es el servicio que reparte las IP, que en casa va dentro del router. (3) Habla del «router ADSL»: el ADSL ya no existe en España (unidad 5). (4) Dice que los routers de rack se unen por cable serie: hoy se unen por Ethernet o por fibra.</div>
+
+<div data-actividad="u6s8-router"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 8 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es un <strong>router</strong>? ¿En qué capa trabaja y qué dirección mira?</li>
+<li>Completa y explica: «Un switch ______ una red; un router ______ redes».</li>
+<li><strong>(Animación)</strong> A (192.168.1.10) envía algo a B (192.168.1.11). ¿Pasa por el router? ¿Por qué?</li>
+<li><strong>(Animación)</strong> A envía algo a C (192.168.2.20). Explica por dónde va, aparato a aparato.</li>
+<li><strong>(Animación)</strong> (V/F) El router deja pasar los broadcast de una red a la otra.</li>
+<li>¿Qué es la <strong>puerta de enlace</strong>? ¿Dónde la ves en Windows?</li>
+<li>(ABC) Un PC de la red 192.168.5.0 tiene de puerta de enlace…
+<ul>
+<li>a) 192.168.5.1</li>
+<li>b) 192.168.6.1</li>
+<li>c) 8.8.8.8</li>
+</ul></li>
+<li>¿Qué aparatos y servicios lleva dentro el router de casa? Di cuatro.</li>
+<li>Toca las piezas del router de casa. ¿A qué boca va el cable de la fibra? ¿Qué pasa con las luces si lo quitas?</li>
+<li>Copia la tabla «Router y switch, lado a lado».</li>
+<li><strong>(Actividad 1)</strong> En la simulación, ¿qué IP, máscara y puerta de enlace has puesto? ¿Por qué con la puerta de enlace mal llegabas al compañero pero no al Taller?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 8 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 12.</p>
+<ol start="12">
+<li>En el ordenador de casa (o en el del aula), abre la terminal, escribe <code>ipconfig</code> y apunta tu IP y tu puerta de enlace. ¿Están en la misma red?</li>
+<li>Busca qué es un <strong>switch de capa 3</strong> y en qué se parece a un router.</li>
+</ol>
+</div>

@@ -1,0 +1,21 @@
+{
+  "id": "inst-u6-hub",
+  "titulo": "Sesión 2 — El hub y las colisiones",
+  "fecha": "",
+  "descripcion": "El hub (concentrador): trabaja en la capa 1 y repite cada trama por todas sus bocas; las colisiones, el semidúplex y por qué la red va más lenta con más equipos; estrella física y bus lógico; hubs en cascada (Up-Link) y el problema de seguridad.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s2-hub",
+      "tipo": "quiz",
+      "titulo": "El hub",
+      "preguntas": [
+        { "pregunta": "A envía a C por un hub. ¿Quién recibe la trama?", "opciones": ["Solo C", "Todos menos A", "Nadie"], "correcta": 1 },
+        { "pregunta": "Dos ordenadores envían a la vez por un hub. Sus tramas…", "opciones": ["Pasan las dos", "Chocan: es una colisión", "Se ordenan solas"], "correcta": 1 },
+        { "pregunta": "Con un hub, los equipos trabajan en…", "opciones": ["Semidúplex", "Dúplex", "Simplex"], "correcta": 0 },
+        { "pregunta": "La velocidad máxima de un hub es…", "opciones": ["10 Gbps", "1 Gbps", "100 Mbps"], "correcta": 2 },
+        { "pregunta": "Con un hub, la topología lógica es…", "opciones": ["Estrella", "Bus", "Anillo"], "correcta": 1 }
+      ]
+    }
+  ]
+}

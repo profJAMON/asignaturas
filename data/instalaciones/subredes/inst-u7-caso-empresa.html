@@ -1,0 +1,103 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>El caso: la red de una empresa</h2>
+<p>Una empresa tiene la red <strong>172.30.0.0</strong> y <strong>6 departamentos</strong>. El más grande tendrá unos <strong>900 equipos</strong>. Quiere una subred por departamento, por orden: Dirección la 1ª, Ventas la 2ª, Almacén la 3ª… Hoy lo resolvemos de punta a punta, con todo lo de la unidad.</p>
+<div class="escena" aria-label="Escena: una empresa con seis departamentos">
+<img src="data/instalaciones/subredes/img/u7/empresa-departamentos.webp" width="900" height="508" alt="Un edificio de tres plantas visto por dentro, con seis salas de colores: un despacho con sofá, una sala de diseño con pantallas y una impresora 3D, una oficina con teléfonos y un hombre hablando, un taller con herramientas, un almacén con estanterías de cajas y una recepción con sillones. En el sótano, un armario con un aparato del que sale un cable hacia cada sala." loading="lazy">
+<div class="escena__paso" data-titulo="Los departamentos" data-pregunta="¿Cuántos departamentos hay? ¿Cuántas subredes necesitas?">
+<p data-zona="300,90,125,40" data-tipo="bien"><strong>Dirección</strong>: la 1ª subred.</p>
+<p data-zona="300,200,125,40" data-tipo="bien"><strong>Ventas</strong>: la 2ª.</p>
+<p data-zona="300,310,125,40" data-tipo="bien"><strong>Almacén</strong>: la 3ª.</p>
+<p data-zona="590,90,125,40" data-tipo="bien">Diseño.</p>
+<p data-zona="590,200,125,40" data-tipo="bien">Taller.</p>
+<p data-zona="590,310,125,40" data-tipo="bien">Recepción. En total, <strong>6 subredes</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="El sótano" data-pregunta="¿Qué aparato une los seis departamentos?">
+<p data-zona="450,432,30,14" data-tipo="bien">Un <strong>router</strong>, con una boca para cada subred. Su IP en cada una es la <strong>puerta de enlace</strong> de ese departamento.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿De qué clase es la red y qué máscara tiene por defecto?</p>
+<div class="votacion__porque"><p>172 → <strong>clase B</strong>, máscara 255.255.0.0. Se parten el 3º y el 4º número.</p></div>
+</div>
+
+<h2>¿Cuántos bits? Dos respuestas buenas</h2>
+<ul>
+<li><strong>Por las subredes</strong>: necesito 6 → la hoja dice 8 → <strong>3 bits</strong>. Caben 8190 equipos en cada una: sobran muchos.</li>
+<li><strong>Por los equipos</strong>: 900 + 2 = 902 → 1024 → <strong>6 bits</strong>. Salen 64 subredes: sobran muchas.</li>
+</ul>
+<p>Las dos valen, y cualquier número de bits entre 3 y 6 también: hay subredes para todos y caben 900 equipos. Hoy cogemos <strong>3 bits</strong>, por las subredes: deja sitio para que los departamentos crezcan.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Con 3 bits, ¿máscara, salto y número?</p>
+<div class="votacion__porque"><p>128 + 64 + 32 = 224 → <strong>255.255.224.0</strong> (/19). Salto <strong>32 en el 3º</strong> número.</p></div>
+</div>
+<div class="diapos" data-diapos="subred-b-metodo" data-valor="172.30.0.0, 6 subredes" aria-label="172.30.0.0 con 6 subredes, paso a paso"></div>
+
+<h2>Dirección y Ventas</h2>
+<table>
+<tr><th></th><th>Dirección (1ª)</th><th>Ventas (2ª)</th></tr>
+<tr><td>Red</td><td translate="no">172.30.0.0</td><td translate="no">172.30.32.0</td></tr>
+<tr><td>Puerta de enlace (primer equipo)</td><td translate="no">172.30.0.1</td><td translate="no">172.30.32.1</td></tr>
+<tr><td>Último equipo</td><td translate="no">172.30.31.254</td><td translate="no">172.30.63.254</td></tr>
+<tr><td>Broadcast</td><td translate="no">172.30.31.255</td><td translate="no">172.30.63.255</td></tr>
+</table>
+<p>Cada departamento es una red distinta: los une un <strong>router</strong>, con una boca (o una interfaz) en cada subred. Su IP en cada subred es la <strong>puerta de enlace</strong> de los ordenadores de ese departamento (unidad 6). Y cada subred es un <strong>dominio de difusión</strong>: los broadcast de Ventas no llegan a Dirección.</p>
+<div class="votacion">
+<p class="votacion__pregunta">Un PC de Ventas tiene de puerta de enlace 172.30.0.1. ¿Funciona?</p>
+<ol class="votacion__opciones"><li>Sí</li><li data-correcta>No</li></ol>
+<div class="votacion__porque"><p>No: 172.30.0.1 es de la subred de Dirección. La puerta de enlace tiene que estar en <strong>su misma subred</strong>: 172.30.32.1.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Se le puede dar 172.30.16.0 a un PC de Dirección?</p>
+<ol class="votacion__opciones"><li data-correcta>Sí</li><li>No</li></ol>
+<div class="votacion__porque"><p>Sí: Dirección va de 172.30.0.0 a 172.30.31.255, y la .16.0 no es ni la red ni el broadcast.</p></div>
+</div>
+
+<h3>Actividad 1 — Las subredes de la empresa</h3>
+<ol>
+<li>En la pantalla de abajo, elige cuántos bits coges. Te dice si valen para 6 departamentos de 900 equipos.</li>
+<li>Prueba también con bits que no valen y lee por qué. Puedes quedarte con cualquier número que valga: los datos de Ventas cambian.</li>
+<li>Escribe la red, la puerta de enlace y el broadcast de Ventas con los bits que has elegido, y pulsa «Comprobar».</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno los bits, la máscara y los tres datos de Ventas (pregunta 9).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="empresa-subredes" aria-label="Las subredes de la empresa"></div>
+<p><strong>Comprobación observable:</strong> las cuatro casillas de la misión están marcadas.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 7 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. Todas son del caso de la empresa: red 172.30.0.0, 6 departamentos, 900 equipos el más grande.</p>
+<ol>
+<li>¿Cuántos bits cojo si lo hago por las subredes? ¿Y por los equipos? ¿Valen los dos? ¿Por qué?</li>
+<li>Con 3 bits: máscara (también con /), cuántas subredes salen y cuántos equipos caben en cada una.</li>
+<li>Con 3 bits: salto y en qué número cae.</li>
+<li>Dirección (1ª subred): red, primer equipo, último equipo y broadcast.</li>
+<li>Ventas (2ª subred): red, puerta de enlace y broadcast.</li>
+<li>¿Se le puede dar 172.30.31.255 a un PC de Dirección? ¿Y 172.30.16.0? ¿Por qué?</li>
+<li>¿Qué aparato une las subredes de los departamentos? ¿Cuántos dominios de difusión hay si se usan las 6?</li>
+<li>(V/F) Un PC de Ventas puede tener de puerta de enlace 172.30.0.1.</li>
+<li><strong>(Actividad 1)</strong> En la simulación, ¿cuántos bits has cogido? ¿Qué máscara sale? ¿Cuál es la red, la puerta de enlace y el broadcast de Ventas?</li>
+<li>La empresa crece a 10 departamentos. ¿Le siguen valiendo 3 bits? ¿Cuántos cogerías? ¿Caben 900 equipos?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 7 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Haz la tabla de los 6 departamentos (red, puerta de enlace y broadcast de cada uno) con 3 bits.</li>
+<li>Dibuja la red de la empresa: el router, un switch por departamento y algunos PC, con su IP y su puerta de enlace.</li>
+</ol>
+</div>

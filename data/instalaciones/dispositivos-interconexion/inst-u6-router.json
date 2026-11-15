@@ -1,0 +1,21 @@
+{
+  "id": "inst-u6-router",
+  "titulo": "Sesión 8 — El router y la puerta de enlace",
+  "fecha": "",
+  "descripcion": "El router: une redes distintas, trabaja en la capa 3 con la IP y su tabla de rutas, y para los broadcast; la puerta de enlace y cómo decide el PC si la usa; el router de casa por dentro (router, switch, punto de acceso, DHCP, NAT y cortafuegos); router y switch comparados. Simulación: configurar la puerta de enlace.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s8-router",
+      "tipo": "quiz",
+      "titulo": "El router",
+      "preguntas": [
+        { "pregunta": "El router lee la dirección…", "opciones": ["MAC", "IP", "Las dos, igual que el switch"], "correcta": 1 },
+        { "pregunta": "A (192.168.1.10) envía a B (192.168.1.11). El paquete…", "opciones": ["Va directo por el switch", "Pasa por el router", "Sale a Internet"], "correcta": 0 },
+        { "pregunta": "La puerta de enlace de un PC es…", "opciones": ["La IP del switch", "La IP del router en su misma red", "La IP pública"], "correcta": 1 },
+        { "pregunta": "El servidor DHCP del router de casa…", "opciones": ["Enruta los paquetes", "Reparte las IP", "Cifra el wifi"], "correcta": 1 },
+        { "pregunta": "¿Qué aparato para los broadcast?", "opciones": ["Hub", "Switch", "Router"], "correcta": 2 }
+      ]
+    }
+  ]
+}

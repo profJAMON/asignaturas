@@ -1673,3 +1673,140 @@ registrarPiezas('punto-acceso', {
     return { mostrar, destroy: bag.dispose };
   },
 });
+
+/* ------------------------------------------------------------
+   router-casa (UT6 S8, 13/11/2026): el router de casa por fuera.
+   Boca WAN (la que viene de la ONT) con su cable, cuatro bocas LAN
+   (con un latiguillo en la 1), antenas, luces, botón reset y
+   conector de corriente. Al elegir la WAN, su cable sale y la luz
+   de Internet se apaga; al elegir las LAN, sale el latiguillo y se
+   apaga la luz de su boca.
+   ------------------------------------------------------------ */
+registrarPiezas('router-casa', {
+  partes: [
+    { nombre: 'Boca WAN (Internet)', texto: 'La boca separada de las demás (en muchos routers, de otro color). Aquí llega el cable que viene de la ONT de la fibra: es la que une tu casa con la red de la operadora. Aquí trabaja la parte de router. Sácalo: se apaga la luz de Internet.' },
+    { nombre: 'Bocas LAN', texto: 'Cuatro bocas RJ-45 para los aparatos de casa con cable: la tele, la consola, el ordenador. Por dentro hay un switch pequeño, que entrega cada trama solo al aparato que toca.' },
+    { nombre: 'Antenas', texto: 'Son la parte de punto de acceso: dan el wifi y lo unen con la red de cable. Se ponen rectas y separadas.' },
+    { nombre: 'Luces', texto: 'De izquierda a derecha: corriente, Internet, wifi y una por cada boca LAN. Si la de Internet está apagada o en rojo, el fallo está en la línea de la operadora, no en tus aparatos.' },
+    { nombre: 'Botón reset', texto: 'Apretado unos segundos con un clip, el router vuelve a los valores de fábrica: se borran el nombre del wifi, su contraseña y todo lo que hubieras configurado.' },
+    { nombre: 'Corriente', texto: 'El conector del alimentador. Apagar y encender el router borra su tabla y lo arranca de cero: por eso es lo primero que te pide la operadora cuando llamas.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, rrect, poly, open, seg, tween, tset, tval, tdone, mk, place, pointer, put, register, solid, disposer } = HL;
+    const WAN = 0, LAN = 1, ANT = 2, LUCES = 3, RESET = 4, CORR = 5;
+    const W = 58, D = 30, H = 10;
+    const xLan = (k) => 22 + k * 7.6;
+    const XW = 9;
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.9);
+    fit(C, [[0, 0, 0], [W, 0, H], [0, D, 0], [W, D, H], [0, 0, H + 30], [W, 0, H + 30], [-2, 70, 0], [W, 66, 0]], 200, 160);
+    const P = proj(C);
+    const g = mk('g', {}, svg);
+    const F = (x, z) => P(x, D, z);
+    const cara = (x0, z0, x1, z1, r) => poly(rrect(x0, z0, x1, z1, r, 3).map((q) => F(q.u, q.v)));
+
+    const antenas = mk('path', { class: 'nf' }, g);
+    const cuerpo = solid(g);
+    put(cuerpo, PZ.cajaY(P, 0, 0, W, H, 2.5, 1, 0, D));
+    let rej = '';
+    for (let i = 0; i < 8; i++) rej += seg(P(16 + i * 3.2, 6, H), P(16 + i * 3.2, 18, H));
+    mk('path', { d: rej, class: 'nf lo' }, g);
+    const wan = mk('path', { d: cara(XW - 3, 1.6, XW + 3, 6.2, 0.6) + cara(XW - 3.8, 1, XW + 3.8, 6.8, 0.8), class: 'nf' }, g);
+    let bl = '';
+    for (let k = 0; k < 4; k++) bl += cara(xLan(k) - 2.8, 1.6, xLan(k) + 2.8, 6.2, 0.6) + seg(F(xLan(k) - 1, 6.2), F(xLan(k) + 1, 6.2));
+    const lan = mk('path', { d: bl, class: 'nf' }, g);
+    const reset = mk('circle', { r: 1.2, class: 'nf' }, g); place(reset, F(XW + 44, 4));
+    const corr = mk('circle', { r: 1.9, class: 'nf' }, g); place(corr, F(W - 4, 4));
+    // luces en la tapa, junto al borde de delante: corriente, Internet, wifi y 4 LAN
+    const luz = [];
+    for (let i = 0; i < 7; i++) { luz.push(mk('circle', { r: 1.1 }, g)); place(luz[i], P(14 + i * 5, D - 4, H)); }
+
+    const cl = { wan: { cuerpo: solid(g), bota: solid(g), out: tween(0), x: XW, pint: NaN }, lan: { cuerpo: solid(g), bota: solid(g), out: tween(0), x: xLan(0), pint: NaN } };
+    const cab = { wan: mk('path', { class: 'nf' }, g), lan: mk('path', { class: 'nf' }, g) };
+    const t = { ant: tween(0) };
+    let antPint = NaN;
+
+    function pintar(now) {
+      for (const k of ['wan', 'lan']) {
+        const c = cl[k], o = tval(c.out, now);
+        if (o === c.pint) continue;
+        c.pint = o;
+        const x = c.x, y0 = Math.max(D, 26 + o), y1 = 36 + o;
+        put(c.cuerpo, PZ.cajaY(P, x - 2.4, 1.8, x + 2.4, 5.8, 0.6, 0.4, y0, y1));
+        put(c.bota, PZ.cajaY(P, x - 1.6, 2.4, x + 1.6, 5.2, 0.6, 0.3, y1, y1 + 5));
+        const fin = k === 'wan' ? [x - 10, 70, 0] : [x + 8, 70, 0];
+        cab[k].setAttribute('d', open(PZ.curva(P, [x, y1 + 5, 3.8], [x, y1 + 14, 3.6], [fin[0] * 0.6 + x * 0.4, y1 + 20, 0.4], fin, 14)));
+      }
+      const a = tval(t.ant, now);
+      if (a !== antPint) {
+        antPint = a;
+        const inc = 8 * (1 - a);
+        let d = '';
+        for (const [ax, sx] of [[6, -1], [W - 6, 1]]) {
+          const pie = [ax, 3, H], punta = [ax + sx * inc, 3, H + 28];
+          d += open([P(pie[0] - 1, pie[1], pie[2]), P(punta[0] - 1, punta[1], punta[2]), P(punta[0] + 1, punta[1], punta[2]), P(pie[0] + 1, pie[1], pie[2])]);
+          d += open([P(pie[0] - 2, pie[1], pie[2]), P(pie[0] - 2, pie[1], pie[2] + 3), P(pie[0] + 2, pie[1], pie[2] + 3), P(pie[0] + 2, pie[1], pie[2])]);
+        }
+        antenas.setAttribute('d', d);
+      }
+    }
+
+    let elegida = -2;
+    function pintarLuces() {
+      const sinWan = elegida === WAN, sinLan = elegida === LAN;
+      luz.forEach((l, i) => {
+        let c = 'm';
+        if (i === 1 && sinWan) c = 'off';
+        if (i === 3 && sinLan) c = 'off';
+        if (i >= 4) c = 'off';
+        if (elegida === LUCES && c !== 'off') c = '';
+        l.setAttribute('class', 'dot ' + c);
+      });
+    }
+
+    const B = register(stage, (_dt, now) => {
+      pintar(now);
+      return !tdone(cl.wan.out, now) || !tdone(cl.lan.out, now) || !tdone(t.ant, now);
+    });
+    bag.add(B.unregister);
+
+    const ANCLAS = [
+      [WAN, [XW, D, 4]], [WAN, [XW, 40, 3.8]], [WAN, [XW - 3, 55, 2]],
+      [LAN, [xLan(1), D, 4]], [LAN, [xLan(2), D, 4]], [LAN, [xLan(3), D, 4]], [LAN, [xLan(0), 40, 3.8]],
+      [ANT, [6, 3, H + 14]], [ANT, [6, 3, H + 24]], [ANT, [W - 6, 3, H + 14]], [ANT, [W - 6, 3, H + 24]],
+      [LUCES, [17, D - 4, H]], [LUCES, [29, D - 4, H]], [LUCES, [41, D - 4, H]],
+      [RESET, [XW + 44, D, 4]],
+      [CORR, [W - 4, D, 4]],
+    ];
+
+    function mostrar(a) {
+      if (a === elegida) return;
+      elegida = a;
+      const now = performance.now();
+      tset(cl.wan.out, a === WAN ? 14 : 0, now, 0);
+      tset(cl.lan.out, a === LAN ? 14 : 0, now, 0);
+      tset(t.ant, a === ANT ? 1 : 0, now, 0);
+      wan.classList.toggle('hi', a === WAN);
+      for (const s of [cl.wan.cuerpo, cl.wan.bota]) s.sil.classList.toggle('hi', a === WAN);
+      cab.wan.classList.toggle('hi', a === WAN);
+      lan.classList.toggle('hi', a === LAN);
+      for (const s of [cl.lan.cuerpo, cl.lan.bota]) s.sil.classList.toggle('hi', a === LAN);
+      cab.lan.classList.toggle('hi', a === LAN);
+      antenas.classList.toggle('hi', a === ANT);
+      reset.classList.toggle('hi', a === RESET);
+      corr.classList.toggle('hi', a === CORR);
+      pintarLuces();
+      B.wake();
+    }
+    mostrar(-1);
+
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 18)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 18)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});

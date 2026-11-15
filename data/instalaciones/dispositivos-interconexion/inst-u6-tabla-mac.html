@@ -1,0 +1,131 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Hoy: los ejercicios de tabla MAC</h2>
+<p>En la sesión anterior viste cómo aprende el switch. Hoy lo practicamos como en el examen: te doy la tabla y una trama, y tú dices qué hace el switch. Es lo que más cuesta de la unidad, así que vamos despacio.</p>
+<p>Cada ejercicio tiene tres cosas:</p>
+<ul>
+<li>Un <strong>dibujo</strong> de la red: el switch, sus bocas (<span translate="no">Fa1, Fa2…</span>) y qué equipo hay en cada una. A veces, en una boca hay un hub con varios equipos.</li>
+<li>La <strong>tabla MAC</strong> tal como está en ese momento: qué MAC ha aprendido el switch y en qué boca.</li>
+<li>La <strong>trama</strong>: de quién es (origen), para quién es (destino) y por qué boca entra.</li>
+</ul>
+
+<h2>Los cuatro pasos</h2>
+<p>Cópialos en el cuaderno. Siempre en este orden:</p>
+<ol>
+<li><strong>Mira el origen.</strong> ¿Está en la tabla? Si no está, apúntalo con la boca por la que ha entrado la trama.</li>
+<li><strong>Mira el destino.</strong> ¿Es <span translate="no">FF</span>? Es un broadcast: sale por todas las bocas menos por la de entrada.</li>
+<li><strong>¿El destino está en la tabla?</strong> Si está en otra boca, sale <strong>solo por esa</strong>. Si está en la misma boca por la que entró, el switch la <strong>descarta</strong>.</li>
+<li><strong>¿No está?</strong> Inundación: sale por todas las bocas menos por la de entrada.</li>
+</ol>
+<div class="nota">El paso 1 (apuntar el origen) se hace siempre primero, pero no cambia por dónde sale la trama: eso lo deciden los pasos 2, 3 y 4.</div>
+
+<h2>Ejemplo 1: el switch ya conoce el destino</h2>
+<div class="diapos" aria-label="Ejemplo 1 de tabla MAC, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Un switch con 0A en Fa1, 0B en Fa2, 0C en Fa3 y 0D en Fa4. La tabla tiene 0A en Fa1 y 0C en Fa3. Llega una trama de 0B a 0C por Fa2"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-c"/><text x="88" y="62" class="d-peq d-c">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-d"/><text x="178" y="62" class="d-peq d-d">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="158" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="175" y="118" text-anchor="middle" class="d-t">0D</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0C → Fa3</text><text x="20" y="184" class="d-peq d-d">trama: de 0B a 0C, entra por Fa2</text></svg>
+<p class="diapo__texto">Los datos: la tabla tiene <strong>dos líneas</strong>. Llega una trama de 0B para 0C, y entra por Fa2 (en rosa).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Paso 1: 0B no estaba en la tabla y se apunta 0B en Fa2"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-c"/><text x="88" y="62" class="d-peq d-c">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-d"/><text x="178" y="62" class="d-peq d-d">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="158" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="175" y="118" text-anchor="middle" class="d-t">0D</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0C → Fa3</text><text x="290" y="102" text-anchor="middle" class="d-c">0B → Fa2</text><text x="20" y="184" class="d-peq d-d">trama: de 0B a 0C, entra por Fa2</text></svg>
+<p class="diapo__texto">Paso 1. Miro el <strong>origen</strong>: 0B no está en la tabla. Lo apunto con la boca por la que ha entrado: 0B → Fa2.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Paso 2: el destino es 0C, no es FF"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-c"/><text x="88" y="62" class="d-peq d-c">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-d"/><text x="178" y="62" class="d-peq d-d">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="158" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="175" y="118" text-anchor="middle" class="d-t">0D</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0C → Fa3</text><text x="290" y="102" text-anchor="middle" class="d-t">0B → Fa2</text><text x="290" y="130" text-anchor="middle" class="d-peq d-c">0C no es FF</text><text x="20" y="184" class="d-peq d-d">trama: de 0B a 0C, entra por Fa2</text></svg>
+<p class="diapo__texto">Paso 2. Miro el <strong>destino</strong>: es 0C. No es FF, así que no es un broadcast.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Paso 3: 0C está en la tabla, en Fa3, y la trama sale solo por Fa3"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-c"/><text x="88" y="62" class="d-peq d-c">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-a"/><text x="133" y="62" class="d-peq d-a">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-d"/><text x="178" y="62" class="d-peq d-d">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="158" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="175" y="118" text-anchor="middle" class="d-t">0D</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-c">0C → Fa3</text><text x="290" y="102" text-anchor="middle" class="d-t">0B → Fa2</text><text x="20" y="184" class="d-peq d-d">trama: de 0B a 0C, entra por Fa2</text></svg>
+<p class="diapo__texto">Paso 3. Busco 0C en la tabla: está en <strong>Fa3</strong>, que no es la boca de entrada. La trama sale solo por Fa3 (en azul).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Resultado: unicast por Fa3 y la tabla con tres líneas"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-c"/><text x="88" y="62" class="d-peq d-c">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-a"/><text x="133" y="62" class="d-peq d-a">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-d"/><text x="178" y="62" class="d-peq d-d">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="158" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="175" y="118" text-anchor="middle" class="d-t">0D</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0C → Fa3</text><text x="290" y="102" text-anchor="middle" class="d-t">0B → Fa2</text><text x="290" y="130" text-anchor="middle" class="d-peq d-c">unicast</text><text x="20" y="184" class="d-peq d-d">trama: de 0B a 0C, entra por Fa2</text></svg>
+<p class="diapo__texto">Resultado: la tabla tiene una línea más y la trama ha ido solo a 0C. Es un envío <strong>unicast</strong>. 0A y 0D ni se enteran.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Con la tabla del final del ejemplo 1, llega una trama de 0A para 0B por Fa1. ¿Por dónde sale?</p>
+<ol class="votacion__opciones"><li data-correcta>Solo por Fa2</li><li>Por Fa2, Fa3 y Fa4</li><li>Se descarta</li></ol>
+<div class="votacion__porque"><p>0B ya está apuntado en <strong>Fa2</strong>: sale solo por ahí.</p></div>
+</div>
+
+<h2>Ejemplo 2: con un hub en una boca</h2>
+<div class="diapos" aria-label="Ejemplo 2 de tabla MAC, con un hub, paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Un switch con 0A en Fa1, 0B en Fa2, 0C en Fa3 y un hub en Fa4 con 0D y 0E. La tabla tiene 0A en Fa1 y 0D en Fa4. Llega una trama de 0E a 0B por Fa4"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-d"/><text x="88" y="62" class="d-peq d-d">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-c"/><text x="178" y="62" class="d-peq d-c">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="155" y="80" width="40" height="18" rx="4" class="d-caja"/><text x="175" y="94" text-anchor="middle" class="d-peq d-d">hub</text><path d="M 175 98 L 151 126" class="d-linea-d"/><rect x="136" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="151" y="160" text-anchor="middle" class="d-t">0D</text><path d="M 175 98 L 199 126" class="d-linea-d"/><rect x="184" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="199" y="160" text-anchor="middle" class="d-t">0E</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0D → Fa4</text><text x="20" y="184" class="d-peq d-d">trama: de 0E a 0B, entra por Fa4</text></svg>
+<p class="diapo__texto">Ahora en Fa4 hay un <strong>hub</strong> con dos ordenadores: 0D y 0E. Llega una trama de 0E para 0B por Fa4.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Paso 1: se apunta 0E en Fa4"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-d"/><text x="88" y="62" class="d-peq d-d">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-c"/><text x="178" y="62" class="d-peq d-c">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="155" y="80" width="40" height="18" rx="4" class="d-caja"/><text x="175" y="94" text-anchor="middle" class="d-peq d-d">hub</text><path d="M 175 98 L 151 126" class="d-linea-d"/><rect x="136" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="151" y="160" text-anchor="middle" class="d-t">0D</text><path d="M 175 98 L 199 126" class="d-linea-d"/><rect x="184" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="199" y="160" text-anchor="middle" class="d-t">0E</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0D → Fa4</text><text x="290" y="102" text-anchor="middle" class="d-c">0E → Fa4</text><text x="20" y="184" class="d-peq d-d">trama: de 0E a 0B, entra por Fa4</text></svg>
+<p class="diapo__texto">Paso 1. 0E no estaba: apunto <strong>0E → Fa4</strong>. Detrás de una boca puede haber varias MAC si hay un hub.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Pasos 2 a 4: 0B no está en la tabla y la trama sale por Fa1, Fa2 y Fa3"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-a"/><text x="43" y="62" class="d-peq d-a">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-a"/><text x="88" y="62" class="d-peq d-a">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-a"/><text x="133" y="62" class="d-peq d-a">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-c"/><text x="178" y="62" class="d-peq d-c">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="155" y="80" width="40" height="18" rx="4" class="d-caja"/><text x="175" y="94" text-anchor="middle" class="d-peq d-d">hub</text><path d="M 175 98 L 151 126" class="d-linea-d"/><rect x="136" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="151" y="160" text-anchor="middle" class="d-t">0D</text><path d="M 175 98 L 199 126" class="d-linea-d"/><rect x="184" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="199" y="160" text-anchor="middle" class="d-t">0E</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0D → Fa4</text><text x="290" y="102" text-anchor="middle" class="d-t">0E → Fa4</text><text x="290" y="130" text-anchor="middle" class="d-peq d-c">inundación</text><text x="20" y="184" class="d-peq d-d">trama: de 0E a 0B, entra por Fa4</text></svg>
+<p class="diapo__texto">Pasos 2 a 4. 0B no es FF y <strong>no está en la tabla</strong>: inundación. Sale por todas las bocas menos Fa4.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Otra trama: de 0D a 0E, entra por Fa4"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-d"/><text x="88" y="62" class="d-peq d-d">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-c"/><text x="178" y="62" class="d-peq d-c">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="155" y="80" width="40" height="18" rx="4" class="d-caja"/><text x="175" y="94" text-anchor="middle" class="d-peq d-d">hub</text><path d="M 175 98 L 151 126" class="d-linea-d"/><rect x="136" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="151" y="160" text-anchor="middle" class="d-t">0D</text><path d="M 175 98 L 199 126" class="d-linea-d"/><rect x="184" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="199" y="160" text-anchor="middle" class="d-t">0E</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0D → Fa4</text><text x="290" y="102" text-anchor="middle" class="d-t">0E → Fa4</text><text x="20" y="184" class="d-peq d-d">trama: de 0D a 0E, entra por Fa4</text></svg>
+<p class="diapo__texto">Otra trama: de 0D para 0E, entra por Fa4. Paso 1: 0D <strong>ya estaba</strong> en la tabla. No apunto nada.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="0E está en Fa4, la misma boca por la que entró: el switch la descarta"><rect x="20" y="18" width="180" height="24" rx="5" class="d-caja-on"/><text x="110" y="35" text-anchor="middle" class="d-a">switch</text><path d="M 40 42 L 40 80" class="d-linea-d"/><text x="43" y="62" class="d-peq d-d">Fa1</text><path d="M 85 42 L 85 80" class="d-linea-d"/><text x="88" y="62" class="d-peq d-d">Fa2</text><path d="M 130 42 L 130 80" class="d-linea-d"/><text x="133" y="62" class="d-peq d-d">Fa3</text><path d="M 175 42 L 175 80" class="d-linea-c"/><text x="178" y="62" class="d-peq d-c">Fa4</text><rect x="23" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="40" y="118" text-anchor="middle" class="d-t">0A</text><rect x="68" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="85" y="118" text-anchor="middle" class="d-t">0B</text><rect x="113" y="80" width="34" height="20" rx="3" class="d-caja"/><text x="130" y="118" text-anchor="middle" class="d-t">0C</text><rect x="155" y="80" width="40" height="18" rx="4" class="d-caja"/><text x="175" y="94" text-anchor="middle" class="d-peq d-d">hub</text><path d="M 175 98 L 151 126" class="d-linea-d"/><rect x="136" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="151" y="160" text-anchor="middle" class="d-t">0D</text><path d="M 175 98 L 199 126" class="d-linea-d"/><rect x="184" y="126" width="30" height="18" rx="3" class="d-caja"/><text x="199" y="160" text-anchor="middle" class="d-t">0E</text><text x="290" y="34" text-anchor="middle" class="d-d">tabla MAC</text><text x="290" y="58" text-anchor="middle" class="d-t">0A → Fa1</text><text x="290" y="80" text-anchor="middle" class="d-t">0D → Fa4</text><text x="290" y="102" text-anchor="middle" class="d-c">0E → Fa4</text><text x="290" y="130" text-anchor="middle" class="d-peq d-c">se descarta</text><text x="20" y="184" class="d-peq d-d">trama: de 0D a 0E, entra por Fa4</text></svg>
+<p class="diapo__texto">0E está en <strong>Fa4</strong>, la misma boca por la que ha entrado: el hub ya se la ha dado. El switch la <strong>descarta</strong>.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Con la tabla del ejemplo 2, llega un broadcast de 0A (destino FF) por Fa1. ¿Qué apunta el switch y por dónde sale?</p>
+<div class="votacion__porque"><p>0A ya estaba: <strong>no apunta nada</strong>. Es un broadcast: sale por <strong>Fa2, Fa3 y Fa4</strong> (y el hub se lo da a 0D y a 0E).</p></div>
+</div>
+
+<h2>A practicar</h2>
+<p>Cada línea es una tabla y una trama. Escribe la boca por la que sale (por ejemplo <span translate="no">Fa3</span>), «todos menos <span translate="no">Fa2</span>» o «se descarta». Si te atascas, sigue los cuatro pasos con el dedo.</p>
+<div data-actividad="u6s4-mac"></div>
+
+<h3>Actividad 1 — Eres el switch</h3>
+<ol>
+<li>En la pantalla de abajo tú eres el switch. Te llega una trama: mira el dibujo y tu tabla MAC.</li>
+<li>Contesta las dos preguntas: qué haces con el origen y por dónde envías la trama. Pulsa «Comprobar».</li>
+<li>Si fallas, lee por qué. Pulsa «Siguiente trama» y sigue. Tu tabla va creciendo con cada trama.</li>
+<li>Si ya no quedan equipos por aprender, pulsa «Reiniciar el switch»: la tabla se vacía, como al apagarlo.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno la tabla MAC tal como ha quedado y, de la última trama, el origen, el destino, la boca de entrada y por dónde ha salido (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="tabla-mac" aria-label="Eres el switch"></div>
+<p><strong>Comprobación observable:</strong> las cinco casillas de la misión están marcadas y la tabla tiene, por lo menos, tres líneas.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 4 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p>En los ejercicios 5 a 8, contesta tres cosas: a) ¿qué apunta el switch?; b) ¿por dónde sale la trama?; c) ¿es unicast, inundación, broadcast o se descarta? El switch es el de los ejemplos: <span translate="no">0A</span> en <span translate="no">Fa1</span>, <span translate="no">0B</span> en <span translate="no">Fa2</span>, <span translate="no">0C</span> en <span translate="no">Fa3</span> y un hub en <span translate="no">Fa4</span> con <span translate="no">0D</span> y <span translate="no">0E</span>.</p>
+<ol>
+<li>Escribe los cuatro pasos para saber qué hace un switch con una trama.</li>
+<li>¿Por qué el switch apunta la MAC de origen y no la de destino?</li>
+<li>¿Cuándo descarta el switch una trama? ¿Por qué no hace falta enviarla?</li>
+<li>¿En qué se parecen y en qué se diferencian una inundación y un broadcast?</li>
+<li translate="no">Tabla: 0A → Fa1, 0B → Fa2. Trama de 0C a 0A, entra por Fa3.</li>
+<li translate="no">Tabla: 0A → Fa1, 0B → Fa2, 0C → Fa3. Trama de 0B a 0D, entra por Fa2.</li>
+<li translate="no">Tabla: 0A → Fa1, 0D → Fa4. Trama de 0A a FF, entra por Fa1.</li>
+<li translate="no">Tabla: 0A → Fa1, 0D → Fa4, 0E → Fa4. Trama de 0E a 0D, entra por Fa4.</li>
+<li>El switch empieza con la tabla vacía y le llegan, en este orden: una trama de 0A a 0B (por Fa1), una de 0B a 0A (por Fa2) y una de 0C a FF (por Fa3). Escribe por dónde sale cada una y cómo queda la tabla al final.</li>
+<li><strong>(Actividad 1)</strong> En la simulación, ¿cómo ha quedado tu tabla MAC? De la última trama: origen, destino, boca de entrada y por dónde ha salido.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 4 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Inventa tres tramas para el switch de los ejemplos (una unicast, una inundación y una que se descarte) y escribe su solución.</li>
+<li>Pásale tus tres tramas a un compañero, que las resuelva, y corregidlas juntos.</li>
+</ol>
+</div>

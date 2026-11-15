@@ -1,0 +1,119 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Cuatro ordenadores y un hub</h2>
+<p>Cuatro ordenadores, A, B, C y D, conectados a un <strong>hub</strong> (en castellano, <strong>concentrador</strong>). A quiere enviarle algo a C.</p>
+<p>Mira la mitad izquierda: así trabaja un hub.</p>
+<div class="escena" aria-label="Escena: el megáfono y el cartero">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/megafono-cartero.webp" width="900" height="508" alt="Una imagen partida en dos, con el mismo cartero en un rellano con cuatro puertas. A la izquierda grita con un megáfono y se asoman los cuatro vecinos, varios tapándose los oídos. A la derecha mira una libreta y le da un sobre a un solo vecino; las otras tres puertas están cerradas." loading="lazy">
+<div class="escena__paso" data-titulo="El megáfono" data-pregunta="¿A quién le llega lo que grita el cartero?">
+<p data-zona="240,215,25,18" data-tipo="bien">El megáfono grita <strong>a todas las puertas</strong>: así trabaja un <strong>hub</strong>.</p>
+<p data-zona="145,150,25,60" data-tipo="mal">Se asoman <strong>todos</strong>, aunque el mensaje sea para uno solo.</p>
+<p data-zona="40,205,32,60" data-tipo="mal">Si dos gritan a la vez, no se entiende nada: es una <strong>colisión</strong>.</p>
+</div>
+<div class="escena__paso" data-titulo="El cartero" data-pregunta="¿Qué hace distinto el cartero de la derecha?">
+<p data-zona="680,225,18,15" data-tipo="bien">Mira su <strong>libreta</strong> para saber quién vive en cada puerta: es la <strong>tabla MAC</strong>.</p>
+<p data-zona="757,170,25,60" data-tipo="bien">Entrega la carta <strong>a una sola puerta</strong>: así trabaja un <strong>switch</strong>.</p>
+<p data-zona="600,140,30,70" data-tipo="bien">Las demás puertas siguen <strong>cerradas</strong>: nadie más recibe la carta.</p>
+</div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Quién recibe la trama de A?</p>
+<ol class="votacion__opciones"><li>Solo C</li><li data-correcta>B, C y D: todos menos A</li><li>Nadie, hasta que C la pida</li></ol>
+<div class="votacion__porque"><p><strong>Todos menos A</strong>. El hub no sabe quién es C: repite la trama por todas sus bocas.</p></div>
+</div>
+<p>El hub casi ha desaparecido: hoy se usa el switch. Pero hay que conocerlo, porque explica por qué se inventó el switch, y porque algunas redes antiguas todavía lo tienen.</p>
+
+<p>Así es uno de verdad:</p>
+<div class="diapos" aria-label="Un hub de verdad, en foto">
+<div class="diapo">
+<img src="data/instalaciones/dispositivos-interconexion/img/u6/hub.webp" width="900" height="381" alt="Un hub gris de Hewlett Packard con 8 bocas numeradas, una luz por boca, una luz de colisión y un conector redondo antiguo a la izquierda" loading="lazy">
+<p class="diapo__texto">Un <strong>hub</strong> de 8 bocas de los años 90. Mira la luz <strong>Col</strong>: se encendía cuando había una colisión. <small>Foto: Zac67, CC BY-SA 4.0, Wikimedia Commons.</small></p>
+</div>
+</div>
+
+<h2>El hub repite, no piensa</h2>
+<p>El hub trabaja en la <strong>capa 1</strong>: no lee ninguna dirección, ni la MAC ni la IP. Solo recibe bits por una boca y los <strong>repite por todas las demás</strong>. Todos oyen todo, y cada ordenador tira lo que no es para él.</p>
+<p>Míralo en marcha: te ayuda con las <strong>preguntas 3 y 5</strong>.</p>
+<div class="anim" data-anim="hub-colision" aria-label="El hub repite cada trama a todos y, si dos envían a la vez, chocan"></div>
+
+<h2>Las colisiones</h2>
+<p>Por un hub solo puede pasar <strong>una trama cada vez</strong>. Si dos ordenadores envían a la vez, sus tramas se mezclan y se estropean las dos: es una <strong>colisión</strong>. Cada uno espera un rato distinto y lo vuelve a enviar.</p>
+<ul>
+<li>Los equipos de un hub trabajan en <strong>semidúplex</strong>: envían o reciben, pero no las dos cosas a la vez (lo viste en la unidad 3).</li>
+<li>Cuantos más equipos hay, <strong>más colisiones</strong> y más repeticiones: la red va cada vez más lenta.</li>
+<li>Los hubs llegan como mucho a <strong>100 Mbps</strong> (Fast Ethernet). No hay hubs Gigabit.</li>
+</ul>
+<div class="votacion">
+<p class="votacion__pregunta">Con un hub, dos ordenadores pueden enviar a la vez sin problemas.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso: sus tramas <strong>chocan</strong>. Por el hub pasa una cada vez.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Una red con hub y 20 ordenadores va más lenta que una con 4. ¿Por qué?</p>
+<div class="votacion__porque"><p>Con más equipos hay <strong>más colisiones</strong> y hay que repetir más tramas. Además, todos comparten el mismo camino.</p></div>
+</div>
+
+<h2>Estrella por fuera, bus por dentro</h2>
+<p>Con un hub, los cables forman una <strong>estrella</strong> (topología física): cada ordenador con su cable hasta el centro. Pero los datos se comportan como en un <strong>bus</strong> (topología lógica): lo que envía uno lo reciben todos y, si dos hablan a la vez, chocan. Lo viste en la unidad 3.</p>
+
+<h2>Hubs en cascada</h2>
+<p>Cuando un hub se quedaba sin bocas, se unía con otro: <strong>en cascada</strong>. Había dos formas:</p>
+<ul>
+<li>Por la boca especial <strong>Up-Link</strong> de uno, que ya va cruzada, con un latiguillo directo hasta una boca normal del otro. Algunos hubs tenían un botón para cambiar una boca entre normal y Up-Link.</li>
+<li>Por dos bocas normales, con un <strong>cable cruzado</strong>.</li>
+</ul>
+<p>Con dos hubs unidos, todos los ordenadores de los dos siguen compartiendo el mismo camino: <strong>más equipos chocando</strong>.</p>
+
+<h2>Un problema de seguridad</h2>
+<p>Como el hub repite todo a todos, cualquier ordenador conectado puede quedarse con lo que envían los demás con un programa que capture el tráfico. Con un hub, nada de lo que viaja sin cifrar es privado.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿En qué capa trabaja el hub?</p>
+<ol class="votacion__opciones"><li data-correcta>Capa 1</li><li>Capa 2</li><li>Capa 3</li></ol>
+<div class="votacion__porque"><p><strong>Capa 1</strong>: solo repite bits, no lee direcciones.</p></div>
+</div>
+
+<div data-actividad="u6s2-hub"></div>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 2 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es un <strong>hub</strong>? ¿Cómo se llama en castellano?</li>
+<li>(ABC) El hub trabaja en la capa…
+<ul>
+<li>a) 1</li>
+<li>b) 2</li>
+<li>c) 3</li>
+</ul>
+¿Qué quiere decir eso de cómo trata los datos?</li>
+<li><strong>(Animación)</strong> A envía una trama a C a través de un hub. ¿Quién la recibe? ¿Qué hacen B y D con ella?</li>
+<li>¿Qué es una <strong>colisión</strong>? ¿Qué pasa con las tramas que chocan?</li>
+<li><strong>(Animación)</strong> ¿Por qué una red con hub va más lenta cuantos más ordenadores tiene?</li>
+<li>(V/F) Hay hubs que funcionan a 1 Gbps.</li>
+<li>Un hub forma una estrella física. ¿Qué topología lógica tiene? ¿Por qué?</li>
+<li>¿Qué es conectar dos hubs en cascada? Di las dos formas de hacerlo.</li>
+<li>¿Por qué un hub es un problema de seguridad?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 2 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 10.</p>
+<ol start="10">
+<li>Busca si todavía se venden hubs nuevos. ¿Qué encuentras en su lugar cuando buscas «hub de red»?</li>
+<li>La palabra «hub» se usa también para los «hubs USB». Busca qué son y en qué se parecen a un hub de red.</li>
+</ol>
+</div>

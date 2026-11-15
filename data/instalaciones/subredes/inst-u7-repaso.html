@@ -1,0 +1,182 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Empezamos juntos con una ronda rápida en la pantalla grande. Levanta la mano a la vez que todos: con los dedos, 1 = A, 2 = B, 3 = C; pulgar arriba, verdadero; abajo, falso.</li>
+<li>Lee el resumen de la unidad. Si algo no te suena, vuelve a la sesión donde se explica y míralo otra vez.</li>
+<li>Contesta a mano en el cuaderno las <strong>preguntas de repaso</strong>. Son más largas que las de las sesiones: juntan cosas de varias sesiones, como pasará en el examen. Cuando acabes cada una, ábrete su «Ver respuesta» y corrígete.</li>
+<li>Entrena con los ejercicios de pantalla del final hasta que te salgan todos seguidos.</li>
+<li>Repasa las preguntas obligatorias de cada sesión que tengas corregidas en el cuaderno. <strong>El examen sale de las preguntas obligatorias de todas las sesiones de la unidad y de las de esta página</strong>: tal cual, parecidas o juntando varias. Las de ⭐ Sube nota no salen.</li>
+<li>Si hay algo que no entiendes, <strong>pregúntamelo</strong>: para eso es esta sesión.</li>
+</ol>
+</div>
+
+<h2>Ronda rápida</h2>
+<p>Una pregunta de cada sesión. Votad todos a la vez.</p>
+<div class="votacion">
+<p class="votacion__pregunta">En una red de clase B, ¿qué números se parten?</p>
+<ol class="votacion__opciones"><li>Solo el 4º</li><li data-correcta>El 3º y el 4º</li><li>Los cuatro</li></ol>
+<div class="votacion__porque"><p><strong>El 3º y el 4º</strong>: 16 bits. (Sesión 1)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Cojo 10 bits en clase B. La máscara es…</p>
+<ol class="votacion__opciones"><li>255.255.192.0</li><li data-correcta>255.255.255.192</li><li>255.255.10.0</li></ol>
+<div class="votacion__porque"><p>8 bits llenan el 3º (255) y 2 pasan al 4º: 128 + 64 = 192. (Sesión 2)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Máscara 255.255.248.0. ¿Salto?</p>
+<ol class="votacion__opciones"><li data-correcta>8 en el 3º</li><li>8 en el 4º</li><li>248 en el 3º</li></ol>
+<div class="votacion__porque"><p>256 − 248 = <strong>8</strong>, en el 3º. (Sesión 3)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Salto 64 en el 4º. ¿Qué subred va después de 180.1.0.192?</p>
+<ol class="votacion__opciones"><li>180.1.0.256</li><li data-correcta>180.1.1.0</li></ol>
+<div class="votacion__porque"><p>El 4º da la vuelta y el 3º sube 1. (Sesión 4)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Cuánto es 172.16.8.0 − 1?</p>
+<ol class="votacion__opciones"><li>172.16.8.255</li><li data-correcta>172.16.7.255</li></ol>
+<div class="votacion__porque"><p>El 4º pasa a 255 y el 3º baja 1. (Sesión 5)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Se puede dar 172.16.20.0 con máscara 255.255.248.0?</p>
+<ol class="votacion__opciones"><li data-correcta>Sí</li><li>No: es una red</li></ol>
+<div class="votacion__porque"><p>Sí: su red es 172.16.16.0 y su broadcast, 172.16.23.255. (Sesión 6)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">La puerta de enlace de un PC está…</p>
+<ol class="votacion__opciones"><li data-correcta>en su misma subred</li><li>en la 1ª subred siempre</li></ol>
+<div class="votacion__porque"><p><strong>En su misma subred</strong>: es la IP del router en esa subred. (Sesión 7)</p></div>
+</div>
+
+<h2>Lo que tienes que saber de esta unidad</h2>
+<p>Si te sabes esta página, tienes la unidad. Toca un bloque para ir directo a él.</p>
+<div class="resumen" id="resumen-u7">
+<nav class="rs-indice" aria-label="Bloques del resumen">
+<a href="#rs7-hoja" class="rs-c1"><span class="rs-n" translate="no">1</span><span>La hoja doble y los bits <small>sesión 1</small></span></a>
+<a href="#rs7-mascara" class="rs-c2"><span class="rs-n" translate="no">2</span><span>Máscara y salto <small>sesiones 2, 3 y 4</small></span></a>
+<a href="#rs7-subred" class="rs-c3"><span class="rs-n" translate="no">3</span><span>La 1ª y la 2ª subred <small>sesión 5</small></span></a>
+<a href="#rs7-ip" class="rs-c4"><span class="rs-n" translate="no">4</span><span>¿Puedo dar esta IP? <small>sesiones 6 y 7</small></span></a>
+</nav>
+<div class="rs-rejilla">
+
+<section class="rs-bloque rs-c1" id="rs7-hoja" aria-labelledby="rs7-hoja-t">
+<div class="rs-cab"><span class="rs-num" aria-hidden="true">1</span><h3 id="rs7-hoja-t">La hoja doble y los bits</h3><span class="rs-ses">sesión 1</span></div>
+<p class="rs-idea">Clase B (128-191): máscara 255.255.0.0; se parten el <strong>3º y el 4º</strong> número. Los bits se cogen desde la izquierda.</p>
+<ol class="rs-pasos">
+<li>Subredes: el primer número de la fila que llega.</li>
+<li>Equipos: + 2, y en la fila de direcciones, hacia la derecha mientras llegue.</li>
+</ol>
+<p class="rs-truco">Subredes: 2, 4… 256, 512… Direcciones: 32768… 256 | 128… 1.</p>
+</section>
+
+<section class="rs-bloque rs-c2" id="rs7-mascara" aria-labelledby="rs7-mascara-t">
+<div class="rs-cab"><span class="rs-num" aria-hidden="true">2</span><h3 id="rs7-mascara-t">Máscara y salto</h3><span class="rs-ses">sesiones 2, 3 y 4</span></div>
+<div class="rs-vs">
+<div><p class="rs-vs-t">8 bits o menos</p><p translate="no">255.255.suma.0 · salto en el 3º</p></div>
+<div><p class="rs-vs-t">Más de 8 bits</p><p translate="no">255.255.255.suma · salto en el 4º</p></div>
+</div>
+<p class="rs-formula">salto = 256 − el número de la máscara que no es 255 ni 0</p>
+<p class="rs-aviso">⚠ Cuando el 4º da la vuelta (256), vuelve a 0 y el 3º sube 1.</p>
+</section>
+
+<section class="rs-bloque rs-c3" id="rs7-subred" aria-labelledby="rs7-subred-t">
+<div class="rs-cab"><span class="rs-num" aria-hidden="true">3</span><h3 id="rs7-subred-t">La 1ª y la 2ª subred</h3><span class="rs-ses">sesión 5</span></div>
+<ol class="rs-pasos">
+<li>Red de la 1ª: la que me dan.</li>
+<li>Red de la 2ª: + el salto.</li>
+<li>Broadcast de la 1ª: la 2ª − 1.</li>
+<li>Primer equipo: la 1ª + 1. Último: el broadcast − 1.</li>
+</ol>
+<p class="rs-truco" translate="no">172.16.8.0 − 1 = 172.16.7.255</p>
+</section>
+
+<section class="rs-bloque rs-c4" id="rs7-ip" aria-labelledby="rs7-ip-t">
+<div class="rs-cab"><span class="rs-num" aria-hidden="true">4</span><h3 id="rs7-ip-t">¿Puedo dar esta IP?</h3><span class="rs-ses">sesiones 6 y 7</span></div>
+<ol class="rs-pasos">
+<li>Salto y número.</li>
+<li>Su subred: el múltiplo del salto que queda por debajo.</li>
+<li>Su broadcast: la red siguiente − 1.</li>
+<li>¿Es la red o el broadcast? No. Si no, sí.</li>
+</ol>
+<p class="rs-aviso">⚠ En clase B, una IP acabada en .0 o .255 puede ser de un equipo.</p>
+</section>
+
+</div>
+</div>
+
+<h2>Preguntas de repaso</h2>
+<p>Estas preguntas juntan lo de varias sesiones. Cada una lleva debajo <strong>«Ver respuesta»</strong>. Contéstala primero tú en el cuaderno y ábrela después, para corregirte.</p>
+<div class="nota">¿Y el resto del examen? Sale de las <strong>preguntas de cada sesión</strong> de la unidad, que ya tienes contestadas y corregidas en el cuaderno.</div>
+
+<div class="papel">
+<p class="papel__titulo">UD 7 — Subredes de clase B · Preguntas de repaso — a mano, en el cuaderno</p>
+<ol>
+<li>Red 145.60.0.0 y necesito 40 subredes. Saca los bits, la máscara (también con /), cuántas subredes salen, cuántos equipos caben, el salto y en qué número cae.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li>40 subredes → 64 llega → <strong>6 bits</strong>.</li>
+<li translate="no">128+64+32+16+8+4 = 252 → 255.255.252.0 (/22).</li>
+<li>64 subredes de 1024 direcciones: <strong>1022 equipos</strong>.</li>
+<li><strong>Salto 4 en el 3º</strong> número.</li>
+</ul>
+</details>
+</li>
+<li>Con la misma red, saca los cinco datos de la 1ª subred.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li translate="no">Red de la 1ª: 145.60.0.0 · red de la 2ª: 145.60.4.0</li>
+<li translate="no">Broadcast de la 1ª: 145.60.3.255</li>
+<li translate="no">Primer equipo: 145.60.0.1 · último: 145.60.3.254</li>
+</ul>
+</details>
+</li>
+<li>Red 170.8.0.0 y 25 equipos en cada subred: bits, máscara, salto, número y los cinco datos de la 1ª subred.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li>25 + 2 = 27 → 32 → dejo 5 bits de host → cojo <strong>11 bits</strong>.</li>
+<li translate="no">255.255.255.224 (/27) · salto 32 en el 4º.</li>
+<li translate="no">1ª: 170.8.0.0 · 2ª: 170.8.0.32 · broadcast: 170.8.0.31 · equipos de 170.8.0.1 a 170.8.0.30.</li>
+</ul>
+</details>
+</li>
+<li>Explica con un ejemplo por qué, después de 170.8.0.224 con salto 32, la subred siguiente es 170.8.1.0.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<p>224 + 32 = 256, y el 4º número solo llega a 255. Como en un cuentakilómetros, vuelve a 0 y el 3º sube 1: <strong>170.8.1.0</strong>.</p>
+</details>
+</li>
+<li>¿Se pueden dar a un equipo estas IP? a) 145.60.8.0 con 255.255.252.0. b) 145.60.7.255 con 255.255.252.0. c) 145.60.6.0 con 255.255.252.0.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li>Salto 4 en el 3º: subredes 145.60.0.0, .4.0, .8.0…</li>
+<li>a) <strong>No</strong>: es la red de la 3ª subred.</li>
+<li>b) <strong>No</strong>: es el broadcast de la subred 145.60.4.0 (la siguiente, .8.0, − 1).</li>
+<li>c) <strong>Sí</strong>: está en la subred .4.0, que va hasta .7.255; no es ni la red ni el broadcast.</li>
+</ul>
+</details>
+</li>
+<li>Una empresa tiene 172.20.0.0 y 3 departamentos de 4000 equipos. ¿Cuántos bits como mínimo y como máximo? Con el mínimo: máscara y red, puerta de enlace y broadcast del 2º departamento.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li>Por subredes: 3 → 4 → <strong>2 bits</strong> como mínimo. Por equipos: 4002 → 4096 → 12 bits de host → <strong>4 bits</strong> como máximo.</li>
+<li translate="no">Con 2 bits: 255.255.192.0 (/18), salto 64 en el 3º.</li>
+<li translate="no">2º departamento: red 172.20.64.0 · puerta de enlace 172.20.64.1 · broadcast 172.20.127.255.</li>
+</ul>
+</details>
+</li>
+<li>Mirando solo la máscara, ¿cómo sabes en qué número cae el salto? Pon un ejemplo de cada caso.
+<details class="respuesta"><summary>Ver respuesta</summary>
+<ul>
+<li>Si el 3º número no es 255: en el <strong>3º</strong>. Ejemplo: 255.255.240.0, salto 16 en el 3º.</li>
+<li>Si el 3º es 255: en el <strong>4º</strong>. Ejemplo: 255.255.255.128, salto 128 en el 4º.</li>
+</ul>
+</details>
+</li>
+</ol>
+</div>
+
+<h2>Entrena</h2>
+<div data-actividad="u7r-mascara"></div>
+<div data-actividad="u7r-primera"></div>
+<div data-actividad="u7r-ip"></div>
+<p>Y la hoja doble, para comprobar lo que quieras:</p>
+<div class="lab" data-lab="hoja-b" data-red="145.60.0.0" data-bits="6" aria-label="La hoja doble de 145.60.0.0"></div>

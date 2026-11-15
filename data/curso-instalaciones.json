@@ -102,6 +102,39 @@
       ]
     },
     {
+      "id": "dispositivos-interconexion",
+      "titulo": "Unidad 6. Dispositivos de interconexión",
+      "descripcion": "Los aparatos que forman y unen las redes: hub, switch y router; la tabla MAC del switch, los dominios de colisión y de difusión, la puerta de enlace, y el cortafuegos, el proxy y la VPN.",
+      "sesiones": [
+        "inst-u6-electronica-red",
+        "inst-u6-hub",
+        "inst-u6-switch",
+        "inst-u6-tabla-mac",
+        "inst-u6-switches",
+        "inst-u6-dominios",
+        "inst-u6-dominios-practica",
+        "inst-u6-router",
+        "inst-u6-seguridad",
+        "inst-u6-punta-a-punta",
+        "inst-u6-repaso"
+      ]
+    },
+    {
+      "id": "subredes",
+      "titulo": "Unidad 7. Direccionamiento y subredes",
+      "descripcion": "Subredes de clase B con la hoja doble: los bits, la máscara, el salto en el 3º o en el 4º número, la 1ª y la 2ª subred, si una IP se puede dar a un equipo y el caso de una empresa.",
+      "sesiones": [
+        "inst-u7-de-c-a-b",
+        "inst-u7-mascara-b",
+        "inst-u7-salto-tercero",
+        "inst-u7-salto-cuarto",
+        "inst-u7-primera-segunda",
+        "inst-u7-puedo-dar-ip",
+        "inst-u7-caso-empresa",
+        "inst-u7-repaso"
+      ]
+    },
+    {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
       "descripcion": "El final del curso, en el taller: fabricar y comprobar latiguillos directos y cruzados, diagnosticar averías con el comprobador y montar conectores de coaxial. Aquí irán también el cableado estructurado y el montaje de la red de la oficina.",

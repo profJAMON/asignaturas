@@ -1,0 +1,104 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo va esta sesión</strong></p>
+<ol>
+<li>La explicación la hacemos juntos, en la pantalla grande. Mira la proyección mientras explico.</li>
+<li>En las escenas y en las diapositivas, antes de que destape nada, di qué ves. Primero habla la clase; después lo explico yo.</li>
+<li>En las preguntas de votación, levanta la mano a la vez que todos, cuando te lo diga. Con los dedos: 1 = A, 2 = B, 3 = C, 4 = D. Pulgar arriba, verdadero; abajo, falso.</li>
+<li>Si algo no lo entiendes, dilo en ese momento. Que te lo explique un compañero que lo haya entendido; si seguís igual, pregúntamelo.</li>
+<li>Al final tienes las <strong>preguntas obligatorias</strong>. Contéstalas a mano en tu cuaderno, con su número. Van con nota.</li>
+<li>Después vienen las <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas todas las obligatorias. No salen en el examen.</li>
+<li>Cuando las corrijamos, arregla las que tengas mal. <strong>El examen de la unidad se hace con las preguntas obligatorias de cada sesión</strong> y las de repaso: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>¿Se la puedo dar a un equipo?</h2>
+<p>Una pregunta de examen de todos los años: te dan una IP y su máscara, y tienes que decir si se le puede dar a un ordenador. No se pueden dar <strong>la dirección de red</strong> ni <strong>el broadcast</strong> de una subred. Todas las demás, sí.</p>
+<div class="votacion">
+<p class="votacion__pregunta">¿Se puede dar 192.168.1.64 con máscara 255.255.255.192?</p>
+<ol class="votacion__opciones"><li>Sí</li><li data-correcta>No</li></ol>
+<div class="votacion__porque"><p>No: salto 64, y 64 es justo donde empieza la 2ª subred. Es una <strong>dirección de red</strong>.</p></div>
+</div>
+
+<h2>Los cuatro pasos</h2>
+<ol>
+<li><strong>El salto y su número</strong>: con la máscara (256 − el número que no es 255 ni 0).</li>
+<li><strong>La subred donde cae la IP</strong>: en el número del salto, el múltiplo del salto que queda por debajo (o igual). Los números de detrás, a 0.</li>
+<li><strong>Su broadcast</strong>: la red siguiente − 1.</li>
+<li>¿La IP es la red o el broadcast? <strong>No se puede dar.</strong> ¿Es otra? <strong>Sí.</strong></li>
+</ol>
+<p>Paso a paso, con una que engaña:</p>
+<div class="diapos" aria-label="¿Se puede dar 172.16.20.0 con máscara 255.255.248.0?">
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="172.16.20.0 con máscara 255.255.248.0: ¿se puede dar a un equipo?"><text x="180" y="60" text-anchor="middle" class="d-t d-grande">172.16.20.0</text><text x="180" y="92" text-anchor="middle" class="d-a">máscara 255.255.248.0</text><text x="180" y="126" text-anchor="middle" class="d-c">¿se la doy a un equipo?</text></svg>
+<p class="diapo__texto">Un PC pide la <strong>172.16.20.0</strong>, con máscara 255.255.248.0. Acaba en .0: ¿será una dirección de red? Hay que comprobarlo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="Salto 8 en el 3º número"><text x="180" y="60" text-anchor="middle" class="d-t">256 − 248 = 8</text><text x="180" y="100" text-anchor="middle" class="d-c d-grande">salto 8 en el 3º</text></svg>
+<p class="diapo__texto">Paso 1, el <strong>salto</strong>: 256 − 248 = 8. El 3º número no es 255, así que cae en el <strong>3º número</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="Las subredes en el 3º número: 0, 8, 16, 24; el 20 cae entre 16 y 24"><path d="M 20 70 L 340 70" class="d-linea-d"/><path d="M 30 62 L 30 78" class="d-linea-a"/><text x="30" y="100" text-anchor="middle" class="d-a">0</text><path d="M 105 62 L 105 78" class="d-linea-a"/><text x="105" y="100" text-anchor="middle" class="d-a">8</text><path d="M 180 62 L 180 78" class="d-linea-a"/><text x="180" y="100" text-anchor="middle" class="d-c">16</text><path d="M 255 62 L 255 78" class="d-linea-a"/><text x="255" y="100" text-anchor="middle" class="d-a">24</text><path d="M 330 62 L 330 78" class="d-linea-a"/><text x="330" y="100" text-anchor="middle" class="d-a">32</text><rect x="180" y="56" width="75" height="28" rx="4" class="d-caja-act" fill-opacity="0.15"/><path d="M 217 40 L 217 66" class="d-linea-c"/><text x="217" y="34" text-anchor="middle" class="d-c">20</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">el 3º número, de salto en salto</text></svg>
+<p class="diapo__texto">Paso 2, ¿en qué subred cae? Las subredes van de 8 en 8: 0, 8, 16, 24… El 20 está entre 16 y 24: su subred es la <strong>172.16.16.0</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="El broadcast de esa subred es 172.16.23.255"><text x="20" y="40" class="d-d">red</text><text x="200" y="40" class="d-a">172.16.16.0</text><text x="20" y="80" class="d-d">broadcast</text><text x="200" y="80" class="d-c">172.16.23.255</text><text x="20" y="120" class="d-d">siguiente red</text><text x="200" y="120" class="d-a">172.16.24.0</text></svg>
+<p class="diapo__texto">Paso 3, el <strong>broadcast</strong>: la red siguiente (172.16.24.0) − 1 = <strong>172.16.23.255</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="172.16.20.0 no es la red ni el broadcast: sí se puede dar"><text x="180" y="50" text-anchor="middle" class="d-t">172.16.20.0</text><text x="180" y="84" text-anchor="middle" class="d-d">≠ 172.16.16.0 · ≠ 172.16.23.255</text><text x="180" y="124" text-anchor="middle" class="d-c d-grande">sí se puede dar</text></svg>
+<p class="diapo__texto">Paso 4: no es la red ni el broadcast. <strong>Sí se puede dar</strong>, aunque acabe en .0. En clase B, una IP acabada en .0 o en .255 puede ser de un equipo.</p>
+</div>
+</div>
+<div class="nota">En la clase C, una IP acabada en .0 es siempre una red. En la <strong>clase B no</strong>: 172.16.20.0 /21 es un equipo. Y 172.16.8.255 /21, también: no es el broadcast, que es 172.16.15.255.</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Se puede dar 150.10.3.255 con máscara 255.255.254.0?</p>
+<ol class="votacion__opciones"><li>Sí</li><li data-correcta>No</li></ol>
+<div class="votacion__porque"><p>Salto 2 en el 3º: su subred es la 150.10.2.0, y la siguiente, la 150.10.4.0. El broadcast es 150.10.4.0 − 1 = <strong>150.10.3.255</strong>: no se puede dar.</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Se puede dar 180.1.0.130 con máscara 255.255.255.192?</p>
+<ol class="votacion__opciones"><li data-correcta>Sí</li><li>No</li></ol>
+<div class="votacion__porque"><p>Salto 64 en el 4º: está en la subred 180.1.0.128, que va hasta el broadcast 180.1.0.191. El .130 es un equipo: <strong>sí</strong>.</p></div>
+</div>
+
+<h2>A practicar</h2>
+<p>Contesta «sí», «red» o «broadcast».</p>
+<div data-actividad="u7s6-ip"></div>
+
+<h3>Actividad 1 — ¿Se la doy?</h3>
+<ol>
+<li>En la pantalla de abajo repartes las IP del instituto. Arriba sale la red y su máscara, y la IP que pide un ordenador.</li>
+<li>Haz los cuatro pasos en el cuaderno y contesta: dársela, o decir que es la de red o el broadcast.</li>
+<li>Si fallas, lee en qué subred estaba. Pulsa «Siguiente petición» y sigue; «Otra red» cambia la red y la máscara.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno tres de las IP que te han pedido, con su máscara, qué has contestado y por qué (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="da-ip" aria-label="¿Se la doy?"></div>
+<p><strong>Comprobación observable:</strong> las cuatro casillas de la misión están marcadas; la última pide cinco aciertos seguidos.</p>
+
+<h2>Preguntas de la sesión</h2>
+<div class="papel">
+<p class="papel__titulo">Sesión 6 · Preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. En las preguntas 4 a 9, di si se puede dar la IP a un equipo y por qué: salto, subred, red y broadcast.</p>
+<ol>
+<li>Escribe los cuatro pasos para saber si una IP se le puede dar a un equipo.</li>
+<li>(V/F) Una IP acabada en .0 nunca se puede dar a un equipo.</li>
+<li>(V/F) Una IP acabada en .255 nunca se puede dar a un equipo.</li>
+<li translate="no">192.168.1.64 con máscara 255.255.255.192.</li>
+<li translate="no">192.168.1.127 con máscara 255.255.255.192.</li>
+<li translate="no">172.16.24.0 con máscara 255.255.248.0.</li>
+<li translate="no">172.16.20.0 con máscara 255.255.248.0.</li>
+<li translate="no">150.10.3.255 con máscara 255.255.254.0.</li>
+<li translate="no">180.1.0.130 con máscara 255.255.255.192.</li>
+<li><strong>(Actividad 1)</strong> Tres de las IP que te han pedido en la simulación, con su máscara: ¿qué has contestado y por qué?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 6 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 11.</p>
+<ol start="11">
+<li>Inventa tres IP con la máscara 255.255.252.0: una que se pueda dar acabada en .0, una que sea de red y una que sea broadcast.</li>
+<li>Mira la IP y la máscara de tu ordenador del aula con <code>ipconfig</code>. ¿Cuál es la red y el broadcast de su subred?</li>
+</ol>
+</div>

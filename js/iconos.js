@@ -72,6 +72,10 @@ const ICONOS_UNIDAD = {
   /* Un rayo de luz rebotando dentro de la fibra. */
   'fibra-optica': _SVG('<path d="M4 14h40M4 34h40"></path><path d="M4 30l8-16 8 20 8-20 8 20 8-16" opacity="0.8"></path>'),
   'sistemas-inalambricos': _SVG('<circle cx="24" cy="38" r="2.5"></circle><path d="M16 30a11 11 0 0 1 16 0"></path><path d="M10 23a20 20 0 0 1 28 0"></path><path d="M4 16a29 29 0 0 1 40 0" opacity="0.8"></path>'),
+  /* Un switch con flechas de ida y vuelta (UT6, 13/11/2026). */
+  'dispositivos-interconexion': _SVG('<rect x="5" y="18" width="38" height="14" rx="3"></rect><path d="M11 25h2M17 25h2M23 25h2M29 25h2"></path><path d="M14 12h20l-4-4M34 38H14l4 4"></path>'),
+  /* Una red partida en cuatro trozos (UT7, 15/11/2026). */
+  'subredes': _SVG('<rect x="6" y="6" width="36" height="36" rx="4"></rect><path d="M24 6v36M6 24h36"></path><circle cx="15" cy="15" r="2"></circle><circle cx="33" cy="33" r="2"></circle>'),
   /* Un armario rack. */
   'cableado-estructurado': _SVG('<rect x="10" y="4" width="28" height="40" rx="2"></rect><path d="M14 11h20M14 18h20M14 25h20M14 32h20"></path><path d="M30 11h1M30 18h1M30 25h1"></path><path d="M14 44v-2M34 44v-2"></path>'),
   /* Botón de encendido. */

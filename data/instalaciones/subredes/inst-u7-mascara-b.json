@@ -1,0 +1,10 @@
+{
+  "id": "inst-u7-mascara-b",
+  "titulo": "Sesión 2 — La máscara de clase B, paso a paso",
+  "fecha": "",
+  "descripcion": "Los pasos 3 y 4 en clase B: la máscara nueva cuando el corte cae en el 3º número y cuando pasa al 4º (el 3º vale 255), la barra (/16 + bits) y cuántas subredes y equipos salen. Diapositivas generadas, ejercicios y laboratorio.",
+  "materiales": [],
+  "actividades": [
+    { "id": "u7s2-mascara", "tipo": "generador", "titulo": "Bits, máscara y equipos", "generador": "subred-b-mascara", "n": 8 }
+  ]
+}

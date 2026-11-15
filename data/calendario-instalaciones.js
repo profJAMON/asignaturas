@@ -76,7 +76,7 @@ const CALENDARIO_INSTALACIONES = {
       "nombre": "2n"
     }
   ],
-  "actualizado": "2026-10-22",
+  "actualizado": "2026-11-15",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -253,7 +253,19 @@ const CALENDARIO_INSTALACIONES = {
       "id": "dispositivos-interconexion",
       "titulo": "Unidad 6. Dispositivos de interconexión",
       "horas": 24,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u6-electronica-red",
+        "inst-u6-hub",
+        "inst-u6-switch",
+        "inst-u6-tabla-mac",
+        "inst-u6-switches",
+        "inst-u6-dominios",
+        "inst-u6-dominios-practica",
+        "inst-u6-router",
+        "inst-u6-seguridad",
+        "inst-u6-punta-a-punta",
+        "inst-u6-repaso"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2027-03-09",
@@ -269,7 +281,16 @@ const CALENDARIO_INSTALACIONES = {
       "id": "subredes",
       "titulo": "Unidad 7. Direccionamiento y subredes",
       "horas": 16,
-      "sesiones": [],
+      "sesiones": [
+        "inst-u7-de-c-a-b",
+        "inst-u7-mascara-b",
+        "inst-u7-salto-tercero",
+        "inst-u7-salto-cuarto",
+        "inst-u7-primera-segunda",
+        "inst-u7-puedo-dar-ip",
+        "inst-u7-caso-empresa",
+        "inst-u7-repaso"
+      ],
       "fechas": {
         "1r": {
           "inicio": "2027-04-20",
@@ -646,6 +667,120 @@ const CALENDARIO_INSTALACIONES = {
       "unidad": "sistemas-inalambricos",
       "1r": "2027-03-09",
       "2n": "2026-12-22"
+    },
+    "inst-u6-electronica-red": {
+      "titulo": "Sesión 1 — La electrónica de red y el armario",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-03-09",
+      "2n": "2027-01-08"
+    },
+    "inst-u6-hub": {
+      "titulo": "Sesión 2 — El hub y las colisiones",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-03-12",
+      "2n": "2027-01-11"
+    },
+    "inst-u6-switch": {
+      "titulo": "Sesión 3 — El switch aprende: la tabla MAC",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-03-16",
+      "2n": "2027-01-12"
+    },
+    "inst-u6-tabla-mac": {
+      "titulo": "Sesión 4 — La tabla MAC, paso a paso",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-03-19",
+      "2n": "2027-01-13"
+    },
+    "inst-u6-switches": {
+      "titulo": "Sesión 5 — Los switches por fuera",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-03-23",
+      "2n": "2027-01-15"
+    },
+    "inst-u6-dominios": {
+      "titulo": "Sesión 6 — Dominios de colisión y de difusión",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-06",
+      "2n": "2027-01-18"
+    },
+    "inst-u6-dominios-practica": {
+      "titulo": "Sesión 7 — Dominios: a practicar",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-09",
+      "2n": "2027-01-19"
+    },
+    "inst-u6-router": {
+      "titulo": "Sesión 8 — El router y la puerta de enlace",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-13",
+      "2n": "2027-01-20"
+    },
+    "inst-u6-seguridad": {
+      "titulo": "Sesión 9 — Cortafuegos, proxy, VPN y pasarela",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-16",
+      "2n": "2027-01-22"
+    },
+    "inst-u6-punta-a-punta": {
+      "titulo": "Sesión 10 — Un mensaje de punta a punta",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-20",
+      "2n": "2027-01-25"
+    },
+    "inst-u6-repaso": {
+      "titulo": "Sesión 11 — Repaso de la unidad",
+      "unidad": "dispositivos-interconexion",
+      "1r": "2027-04-20",
+      "2n": "2027-01-26"
+    },
+    "inst-u7-de-c-a-b": {
+      "titulo": "Sesión 1 — De la clase C a la clase B: la hoja doble",
+      "unidad": "subredes",
+      "1r": "2027-04-23",
+      "2n": "2027-01-29"
+    },
+    "inst-u7-mascara-b": {
+      "titulo": "Sesión 2 — La máscara de clase B, paso a paso",
+      "unidad": "subredes",
+      "1r": "2027-04-27",
+      "2n": "2027-02-01"
+    },
+    "inst-u7-salto-tercero": {
+      "titulo": "Sesión 3 — El salto en el 3º número",
+      "unidad": "subredes",
+      "1r": "2027-04-30",
+      "2n": "2027-02-02"
+    },
+    "inst-u7-salto-cuarto": {
+      "titulo": "Sesión 4 — El salto en el 4º número",
+      "unidad": "subredes",
+      "1r": "2027-05-04",
+      "2n": "2027-02-03"
+    },
+    "inst-u7-primera-segunda": {
+      "titulo": "Sesión 5 — La 1ª y la 2ª subred",
+      "unidad": "subredes",
+      "1r": "2027-05-07",
+      "2n": "2027-02-05"
+    },
+    "inst-u7-puedo-dar-ip": {
+      "titulo": "Sesión 6 — ¿Puedo dar esta IP?",
+      "unidad": "subredes",
+      "1r": "2027-05-11",
+      "2n": "2027-02-08"
+    },
+    "inst-u7-caso-empresa": {
+      "titulo": "Sesión 7 — El caso de una empresa, de punta a punta",
+      "unidad": "subredes",
+      "1r": "2027-05-14",
+      "2n": "2027-02-09"
+    },
+    "inst-u7-repaso": {
+      "titulo": "Sesión 8 — Repaso de la unidad",
+      "unidad": "subredes",
+      "1r": "2027-05-14",
+      "2n": "2027-02-10"
     },
     "inst-u3-taller-latiguillo": {
       "titulo": "Sesión 1 — Taller: fabrica un latiguillo directo",

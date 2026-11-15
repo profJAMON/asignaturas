@@ -1,0 +1,21 @@
+{
+  "id": "inst-u6-electronica-red",
+  "titulo": "Sesión 1 — La electrónica de red y el armario",
+  "fecha": "",
+  "descripcion": "Qué es la electrónica de red (hub, switch y router), qué hace cada aparato y en qué capa trabaja, el armario de comunicaciones (19 pulgadas, unidades U) y la topología en estrella.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s1-aparatos",
+      "tipo": "quiz",
+      "titulo": "¿Qué aparato es?",
+      "preguntas": [
+        { "pregunta": "Repite lo que le llega por todas sus bocas, sin mirar a quién va.", "opciones": ["Hub", "Switch", "Router"], "correcta": 0 },
+        { "pregunta": "Entrega cada trama solo al equipo que toca, mirando la MAC.", "opciones": ["Hub", "Switch", "Router"], "correcta": 1 },
+        { "pregunta": "Une la red del instituto con Internet.", "opciones": ["Hub", "Switch", "Router"], "correcta": 2 },
+        { "pregunta": "El switch trabaja en la capa…", "opciones": ["1", "2", "3"], "correcta": 1 },
+        { "pregunta": "¿Cuál NO es electrónica de red?", "opciones": ["El switch", "El servidor de archivos", "El router"], "correcta": 1 }
+      ]
+    }
+  ]
+}
