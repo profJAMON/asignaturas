@@ -1,0 +1,207 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el momento en que aparecen, en el Linux de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Los permisos</h2>
+
+<p>En la Unidad 6 viste los permisos de Windows (NTFS), con muchas casillas por usuario. Los de Linux son más sencillos: cada archivo y cada carpeta tiene un <strong>propietario</strong> (un usuario), un <strong>grupo</strong>, y permisos para tres tipos de gente:</p>
+<table>
+<tr><th>Para quién</th><th>Letra</th><th>Quién es</th></tr>
+<tr><td>Propietario</td><td><code translate="no">u</code></td><td>El dueño del archivo (normalmente, quien lo creó).</td></tr>
+<tr><td>Grupo</td><td><code translate="no">g</code></td><td>Los usuarios del grupo del archivo.</td></tr>
+<tr><td>Otros</td><td><code translate="no">o</code></td><td>Todos los demás.</td></tr>
+</table>
+<p>Y hay tres permisos:</p>
+<table>
+<tr><th>Permiso</th><th>En un archivo</th><th>En una carpeta</th></tr>
+<tr><td><code translate="no">r</code> (leer)</td><td>Ver lo que tiene dentro.</td><td>Ver qué hay dentro (<code translate="no">ls</code>).</td></tr>
+<tr><td><code translate="no">w</code> (escribir)</td><td>Cambiarlo.</td><td>Crear y borrar archivos dentro.</td></tr>
+<tr><td><code translate="no">x</code> (ejecutar)</td><td>Ejecutarlo como un programa.</td><td>Entrar en ella (<code translate="no">cd</code>).</td></tr>
+</table>
+
+<h3>Leer los permisos con ls -l</h3>
+<div class="salida"><pre><code translate="no">-rwxr-xr--  1 alumno alumno  312 feb 18 16:05 arrancar.sh</code></pre></div>
+<p>Las diez primeras letras son los permisos. Pasa las diapositivas para leerlas:</p>
+<div class="diapos" aria-label="Leer -rwxr-xr--">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="el tipo"><text x="40" y="70" class="d-c d-enorme">-</text><text x="70" y="70" class="d-d d-enorme">rwxr-xr--</text><path d="M 38 82 L 60 82" class="d-linea-c"/><text x="50" y="118" text-anchor="middle" class="d-c d-peq">tipo</text><text x="200" y="118" text-anchor="middle" class="d-d d-peq">- archivo · d carpeta</text></svg>
+<p class="diapo__texto">1. La primera dice qué es: <code translate="no">-</code> un <strong>archivo</strong>, <code translate="no">d</code> una carpeta.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="propietario"><text x="40" y="70" class="d-d d-enorme">-</text><text x="70" y="70" class="d-c d-enorme">rwx</text><text x="170" y="70" class="d-d d-enorme">r-xr--</text><path d="M 70 82 L 162 82" class="d-linea-c"/><text x="116" y="118" text-anchor="middle" class="d-c d-peq">propietario: leer, escribir, ejecutar</text></svg>
+<p class="diapo__texto">2. Las tres siguientes, el <strong>propietario</strong>: <code translate="no">rwx</code>, lo puede todo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="grupo"><text x="40" y="70" class="d-d d-enorme">-rwx</text><text x="170" y="70" class="d-c d-enorme">r-x</text><text x="260" y="70" class="d-d d-enorme">r--</text><path d="M 170 82 L 252 82" class="d-linea-c"/><text x="210" y="118" text-anchor="middle" class="d-c d-peq">grupo: leer y ejecutar</text></svg>
+<p class="diapo__texto">3. Después, el <strong>grupo</strong>: <code translate="no">r-x</code>, leer y ejecutar. El guion quiere decir «no»: no puede cambiarlo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="otros"><text x="40" y="70" class="d-d d-enorme">-rwxr-x</text><text x="260" y="70" class="d-c d-enorme">r--</text><path d="M 260 82 L 334 82" class="d-linea-c"/><text x="296" y="118" text-anchor="middle" class="d-c d-peq">otros: solo leer</text></svg>
+<p class="diapo__texto">4. Las últimas, <strong>otros</strong>: <code translate="no">r--</code>, solo leerlo.</p>
+</div>
+</div>
+<p>Después de los permisos, <code translate="no">ls -l</code> enseña el propietario (<code translate="no">alumno</code>) y el grupo (<code translate="no">alumno</code>).</p>
+
+<h3>Los permisos con números</h3>
+<p>Cada permiso vale un número: <strong>r = 4, w = 2, x = 1</strong>. Se suman de tres en tres:</p>
+<div class="diapos" aria-label="rwx en números">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="rwx es 7"><text x="60" y="60" class="d-c d-grande">r w x</text><text x="60" y="100" class="d-t">4 + 2 + 1 = </text><text x="200" y="100" class="d-c d-grande">7</text></svg>
+<p class="diapo__texto">1. <code translate="no">rwx</code> = 4 + 2 + 1 = <strong>7</strong>: todo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="rw- es 6"><text x="60" y="60" class="d-c d-grande">r w -</text><text x="60" y="100" class="d-t">4 + 2 + 0 = </text><text x="200" y="100" class="d-c d-grande">6</text></svg>
+<p class="diapo__texto">2. <code translate="no">rw-</code> = 4 + 2 = <strong>6</strong>: leer y cambiar.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="r-x es 5 y r-- es 4"><text x="40" y="60" class="d-c d-grande">r - x</text><text x="40" y="96" class="d-t">4 + 1 = 5</text><text x="210" y="60" class="d-c d-grande">r - -</text><text x="210" y="96" class="d-t">4</text></svg>
+<p class="diapo__texto">3. <code translate="no">r-x</code> = <strong>5</strong>; <code translate="no">r--</code> = <strong>4</strong>; <code translate="no">---</code> = 0.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="rw-r--r-- es 644"><text x="40" y="60" class="d-c d-grande">rw-</text><text x="140" y="60" class="d-a d-grande">r--</text><text x="240" y="60" class="d-a d-grande">r--</text><text x="56" y="104" class="d-c d-grande">6</text><text x="156" y="104" class="d-a d-grande">4</text><text x="256" y="104" class="d-a d-grande">4</text><text x="180" y="138" text-anchor="middle" class="d-c d-peq">644</text></svg>
+<p class="diapo__texto">4. Uno por trío: <code translate="no">rw-r--r--</code> = <strong>644</strong>.</p>
+</div>
+</div>
+<table>
+<tr><th>Número</th><th>Letras</th><th>Para qué</th></tr>
+<tr><td><code translate="no">755</code></td><td><code translate="no">rwxr-xr-x</code></td><td>Programas y carpetas: todos los usan, solo tú los cambias.</td></tr>
+<tr><td><code translate="no">644</code></td><td><code translate="no">rw-r--r--</code></td><td>Archivos normales: todos los leen, solo tú los cambias.</td></tr>
+<tr><td><code translate="no">600</code></td><td><code translate="no">rw-------</code></td><td>Archivos privados: solo tú.</td></tr>
+<tr><td><code translate="no">777</code></td><td><code translate="no">rwxrwxrwx</code></td><td>Todo para todos: <strong>nunca</strong>. Cualquiera lo puede cambiar o borrar.</td></tr>
+</table>
+<div data-actividad="u7s6-permisos"></div>
+
+<h3>Cambiar los permisos: chmod</h3>
+<table>
+<tr><th>Orden</th><th>Qué hace</th></tr>
+<tr><td><code translate="no">chmod 644 notas.txt</code></td><td>Pone los permisos con número.</td></tr>
+<tr><td><code translate="no">chmod +x arrancar.sh</code></td><td>Le da permiso de ejecución (para usarlo como programa).</td></tr>
+<tr><td><code translate="no">chmod o-r notas.txt</code></td><td>Quita (<code translate="no">-</code>) el permiso de leer (<code translate="no">r</code>) a otros (<code translate="no">o</code>).</td></tr>
+</table>
+<ul>
+<li>Solo puede cambiar los permisos <strong>el propietario</strong> (o root, con <code translate="no">sudo</code>).</li>
+<li>Para ejecutar un programa que está en la carpeta en la que estás, se pone <code translate="no">./</code> delante: <code translate="no">./arrancar.sh</code>. El <code translate="no">./</code> quiere decir «de esta carpeta».</li>
+<li>Sin terminal: en el Gestor de archivos, clic derecho → Propiedades → pestaña <strong>Permisos</strong>, y «Permitir que este archivo se ejecute como un programa».</li>
+</ul>
+
+<div class="nota">🤔 Antes de seguir: un archivo tiene <code translate="no">-rw-------</code>. ¿Quién lo puede leer?</div>
+<details><summary>Ver respuesta</summary>Solo el <strong>propietario</strong> (y root). El grupo y otros tienen <code translate="no">---</code>: nada. Es un 600.</details>
+
+<h3>Actividad 1 — El servidor de BloqueCraft</h3>
+<p>Tienes en tu carpeta los archivos de un servidor de Minecraft, con los permisos mal puestos. En el Linux de mentira, la Terminal ya está abierta:</p>
+<ol>
+<li>Lee la misión (el pósit amarillo).</li>
+<li>Apunta los permisos que tienen al principio, antes de cambiarlos: los necesitas para la pregunta.</li>
+<li>Puedes usar <code translate="no">chmod</code> o las Propiedades del Gestor de archivos.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno lo que te pide (pregunta 10).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="l-permisos" aria-label="El servidor de BloqueCraft"></div>
+<p><strong>Comprobación observable:</strong> <code translate="no">./arrancar.sh</code> escribe «Servidor listo» y <code translate="no">ls -l</code> enseña <code translate="no">-rw-------</code> en <code translate="no">claves.txt</code> y <code translate="no">-rw-r--r--</code> en <code translate="no">lista-blanca.txt</code>.</p>
+
+<h2>Los procesos</h2>
+<p>Un <strong>proceso</strong> es un programa que está funcionando. Cada uno tiene un número, el <strong>PID</strong>. Un mismo programa puede tener varios procesos.</p>
+
+<h3>El Gestor de tareas</h3>
+<p>Es el Administrador de tareas de Linux Mint, y se abre con el mismo atajo: <code translate="no">Ctrl + Shift + Esc</code>.</p>
+<ul>
+<li>Arriba, cuánta CPU y memoria se está usando.</li>
+<li>Debajo, los procesos con su PID, su memoria y su CPU. Un clic en una columna los <strong>ordena</strong> (por CPU, se ve el que más gasta).</li>
+<li>Clic derecho en un proceso: <strong>Terminar</strong> le pide que se cierre, como al pulsar la ✕. <strong>Matar</strong> lo cierra a la fuerza: se pierde lo que no estaba guardado. Primero se prueba Terminar.</li>
+</ul>
+
+<div class="diapos" aria-label="Un programa colgado">
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="no responde"><rect x="60" y="20" width="240" height="110" rx="6" class="d-caja-act"/><text x="180" y="44" text-anchor="middle" class="d-c d-peq">Minecraft Launcher (no responde)</text><text x="180" y="90" text-anchor="middle" class="d-d d-peq">la ✕ no hace nada</text></svg>
+<p class="diapo__texto">1. Un programa se <strong>cuelga</strong>: no hace caso a la ✕.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Gestor de tareas"><rect x="40" y="16" width="280" height="130" rx="6" class="d-caja"/><text x="56" y="40" class="d-d d-peq">Tarea                PID     CPU</text><rect x="48" y="50" width="264" height="20" rx="3" class="d-caja-act"/><text x="56" y="64" class="d-c d-peq">minecraft-launcher   3412   97 %</text><text x="56" y="88" class="d-d d-peq">firefox              2210    2 %</text><text x="180" y="164" text-anchor="middle" class="d-c d-peq">Ctrl + Shift + Esc · ordenar por CPU</text></svg>
+<p class="diapo__texto">2. Abres el <strong>Gestor de tareas</strong> y lo ordenas por CPU: arriba sale el colgado.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Terminar"><rect x="40" y="16" width="280" height="130" rx="6" class="d-caja"/><rect x="48" y="50" width="264" height="20" rx="3" class="d-caja-on"/><text x="56" y="64" class="d-a d-peq">minecraft-launcher   3412   97 %</text><rect x="180" y="74" width="110" height="60" rx="4" class="d-caja-act"/><text x="192" y="94" class="d-c d-peq">Terminar</text><text x="192" y="118" class="d-d d-peq">Matar</text></svg>
+<p class="diapo__texto">3. Clic derecho → <strong>Terminar</strong>. Si está muy colgado, no hace caso.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="Matar"><rect x="40" y="16" width="280" height="130" rx="6" class="d-caja"/><rect x="48" y="50" width="264" height="20" rx="3" class="d-caja-on"/><text x="56" y="64" class="d-a d-peq">minecraft-launcher   3412   97 %</text><rect x="180" y="74" width="110" height="60" rx="4" class="d-caja"/><text x="192" y="94" class="d-d d-peq">Terminar</text><text x="192" y="118" class="d-c d-peq">Matar</text><text x="180" y="164" text-anchor="middle" class="d-c d-peq">se cierra a la fuerza</text></svg>
+<p class="diapo__texto">4. Entonces, <strong>Matar</strong>: se cierra a la fuerza.</p>
+</div>
+</div>
+
+<h3>Los procesos en la terminal</h3>
+<table>
+<tr><th>Orden</th><th>Qué hace</th></tr>
+<tr><td><code translate="no">ps aux</code></td><td>Enseña todos los procesos, con su PID.</td></tr>
+<tr><td><code translate="no">ps aux | grep palabra</code></td><td>Solo las líneas que tienen esa palabra (<code translate="no">|</code> pasa el resultado a <code translate="no">grep</code>, que busca).</td></tr>
+<tr><td><code translate="no">top</code></td><td>Los procesos en vivo, los que más gastan arriba. Se sale con <code translate="no">q</code>.</td></tr>
+<tr><td><code translate="no">kill 3412</code></td><td>Le pide al proceso 3412 que se cierre (como Terminar).</td></tr>
+<tr><td><code translate="no">kill -9 3412</code></td><td>Lo mata a la fuerza (como Matar).</td></tr>
+<tr><td><code translate="no">killall nombre</code></td><td>Cierra todos los procesos con ese nombre.</td></tr>
+</table>
+<p>Solo puedes cerrar <strong>tus</strong> procesos; los del sistema (de root) necesitan <code translate="no">sudo</code>.</p>
+
+<h3>Actividad 2 — El juego colgado</h3>
+<p>En el Linux de mentira, el lanzador del juego se ha quedado colgado:</p>
+<ol start="5">
+<li>Lee la misión (el pósit amarillo).</li>
+<li>Los atajos (Ctrl + Shift + Esc, Ctrl + Alt + T), en el teclado de abajo.</li>
+<li>Para la Terminal, el <code translate="no">|</code> está en la tecla del 1 con AltGr de tu teclado (AltGr + 1).</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno lo que te pide (pregunta 15).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="l-procesos" aria-label="El juego colgado"></div>
+<p><strong>Comprobación observable:</strong> la ventana del juego ya no está y ni <code translate="no">minecraft-launcher</code> ni <code translate="no">bloquecraft-chat</code> salen en el Gestor de tareas.</p>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 6 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Para qué tres tipos de usuario tiene permisos cada archivo?</li>
+<li>¿Qué quieren decir r, w y x en un archivo? ¿Y la x en una carpeta?</li>
+<li>Explica qué quiere decir <span translate="no">-rwxr-xr--</span>, parte por parte.</li>
+<li>(ABC) ¿Qué número es <span translate="no">rw-r--r--</span>?
+  <ul>
+    <li>a) 755</li>
+    <li>b) 644</li>
+    <li>c) 600</li>
+  </ul>
+</li>
+<li>Escribe con letras los permisos 755. ¿Para qué se usan?</li>
+<li>(V/F) Poner 777 es buena idea para que todo funcione.</li>
+<li>¿Qué hace <span translate="no">chmod +x arrancar.sh</span>? ¿Por qué hace falta para ejecutarlo?</li>
+<li>¿Para qué sirve el <span translate="no">./</span> de <span translate="no">./arrancar.sh</span>?</li>
+<li>¿Quién puede cambiar los permisos de un archivo?</li>
+<li><strong>(Actividad 1)</strong> En la simulación: los permisos que tenía cada archivo al principio y las órdenes chmod que usaste.</li>
+<li>¿Qué es un proceso? ¿Qué es el PID?</li>
+<li>¿Cómo se abre el Gestor de tareas? ¿Qué diferencia hay entre Terminar y Matar?</li>
+<li>(ABC) Para ver todos los procesos en la terminal:
+  <ul>
+    <li>a) <span translate="no">ls -l</span></li>
+    <li>b) <span translate="no">ps aux</span></li>
+    <li>c) <span translate="no">pwd</span></li>
+  </ul>
+</li>
+<li>Escribe la orden para cerrar el proceso 4321 y la orden para matarlo si no hace caso.</li>
+<li><strong>(Actividad 2)</strong> En la simulación: cómo abriste el Gestor de tareas, qué programa gastaba más CPU y cuánta, qué pasó con Terminar y con Matar, y las dos órdenes de la Terminal con el PID.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 6 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Busca qué hace la orden <span translate="no">chown</span>.</li>
+<li>Busca qué es la <span translate="no">t</span> de los permisos de <span translate="no">/tmp</span> (<span translate="no">drwxrwxrwt</span>).</li>
+<li>Busca qué es <span translate="no">htop</span> y en qué se parece a <span translate="no">top</span>.</li>
+<li>Busca qué es un proceso «zombi».</li>
+</ol>
+</div>

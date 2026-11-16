@@ -1,0 +1,154 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el momento en que aparecen, en el Linux de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Usuarios y root</h2>
+
+<p>Como en Windows, cada persona que usa el ordenador tiene su <strong>usuario</strong>, con su contraseña y su carpeta personal en <code translate="no">/home</code>.</p>
+<p>Además hay un usuario especial: <strong>root</strong>, el administrador (también se dice superusuario). Root puede hacerlo todo: instalar programas, crear usuarios, cambiar cualquier archivo… y también romper el sistema entero.</p>
+<p>Por eso en Linux Mint <strong>nadie trabaja como root</strong>. Trabajas con tu usuario normal y, cuando hace falta algo de administrador, se lo pides con <code translate="no">sudo</code>.</p>
+
+<h3>Los grupos</h3>
+<p>Los usuarios se juntan en <strong>grupos</strong>. Uno muy importante es el grupo <strong>sudo</strong>: los usuarios que están en él pueden usar <code translate="no">sudo</code>. Es lo que en Windows era una cuenta de administrador (Unidad 6); los que no están, son como una cuenta estándar.</p>
+<p>La orden <code translate="no">groups</code> enseña tus grupos; <code translate="no">groups ana</code>, los de ana.</p>
+
+<h3>sudo: «hazlo como administrador»</h3>
+<p><code translate="no">sudo</code> se escribe delante de otra orden y quiere decir: <strong>haz esto como root</strong>. Pasa las diapositivas:</p>
+<div class="diapos" aria-label="sudo paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="sin sudo"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="46" class="d-a d-peq">~$</text><text x="46" y="46" class="d-t d-peq">apt install vlc</text><text x="22" y="74" class="d-c d-peq">E: ... ¿es usted superusuario?</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">Permiso denegado</text></svg>
+<p class="diapo__texto">1. Sin <code translate="no">sudo</code>, instalar da error: <strong>no eres administrador</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="con sudo"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="46" class="d-a d-peq">~$</text><text x="46" y="46" class="d-c d-peq">sudo</text><text x="84" y="46" class="d-t d-peq">apt install vlc</text><text x="22" y="74" class="d-t d-peq">[sudo] contraseña para alumno:</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">sudo delante</text></svg>
+<p class="diapo__texto">2. Con <code translate="no">sudo</code> delante, te pide <strong>tu contraseña</strong>, la de tu usuario (no la de root).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="no se ve nada"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="46" class="d-t d-peq">[sudo] contraseña para alumno:</text><rect x="234" y="34" width="8" height="16" class="d-relleno-c"/><text x="180" y="140" text-anchor="middle" class="d-c d-peq">ni letras ni asteriscos</text></svg>
+<p class="diapo__texto">3. Al escribirla <strong>no sale nada</strong>, ni asteriscos. Está bien: escríbela y pulsa Intro.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="se instala"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="46" class="d-t d-peq">Configurando vlc ...</text><text x="22" y="74" class="d-a d-peq">~$</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">15 minutos sin volver a pedirla</text></svg>
+<p class="diapo__texto">4. Se hace. Durante <strong>15 minutos</strong> no te la vuelve a pedir.</p>
+</div>
+</div>
+
+<p><strong>Cuándo hace falta <code translate="no">sudo</code>:</strong> instalar o quitar programas, crear usuarios y cambiar cosas fuera de tu carpeta personal. <strong>Cuándo no:</strong> todo lo de tu carpeta personal (crear, copiar, borrar, cambiar permisos de lo tuyo). No lo uses «por si acaso»: un error con <code translate="no">sudo</code> puede romper el sistema, y si un programa malo se ejecuta con <code translate="no">sudo</code>, puede hacer lo que quiera.</p>
+<div data-actividad="u7s5-sudo"></div>
+
+<h3>Crear un usuario</h3>
+<p>Con la terminal: <code translate="no">sudo adduser ana</code>. Te pide:</p>
+<ol>
+<li>tu contraseña (por el <code translate="no">sudo</code>);</li>
+<li>la contraseña nueva de ana, <strong>dos veces</strong>;</li>
+<li>unos datos (nombre completo, teléfono…): con Intro se dejan vacíos;</li>
+<li>«¿Es correcta la información?»: S e Intro.</li>
+</ol>
+<p>Se crea su carpeta personal, <code translate="no">/home/ana</code>. Ana no estará en el grupo sudo: será un usuario normal. (También se puede hacer con el programa «Usuarios y grupos» del Menú.)</p>
+
+<div class="nota">🤔 Antes de seguir: ¿hace falta <code translate="no">sudo</code> para crear la carpeta <code translate="no">fotos</code> en tu carpeta personal?</div>
+<details><summary>Ver respuesta</summary>No: tu carpeta personal es tuya. <code translate="no">mkdir fotos</code> funciona sin <code translate="no">sudo</code>. Hace falta para lo que es del <strong>sistema</strong>.</details>
+
+<h2>Instalar programas</h2>
+
+<p>En Windows, los programas se bajan de muchas webs (los <code translate="no">.exe</code>). En Linux se instalan desde los <strong>repositorios</strong>: almacenes de programas en Internet, revisados por la gente de la distribución. Es como la tienda de aplicaciones del móvil.</p>
+<p>El programa que los descarga e instala es el <strong>gestor de paquetes</strong>. En Linux Mint (y en Ubuntu y Debian) se llama <strong>apt</strong>. Cada programa viene en un paquete.</p>
+
+<div class="diapos" aria-label="De dónde sale un programa">
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="repositorio"><rect x="20" y="40" width="110" height="80" rx="6" class="d-caja-act"/><text x="75" y="76" text-anchor="middle" class="d-c d-peq">repositorio</text><text x="75" y="96" text-anchor="middle" class="d-d d-peq">vlc, gimp…</text><rect x="230" y="40" width="110" height="80" rx="6" class="d-caja"/><text x="285" y="86" text-anchor="middle" class="d-d d-peq">tu ordenador</text></svg>
+<p class="diapo__texto">1. Los programas están en el <strong>repositorio</strong>, en Internet, revisados.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="update"><rect x="20" y="40" width="110" height="80" rx="6" class="d-caja-on"/><text x="75" y="86" text-anchor="middle" class="d-a d-peq">repositorio</text><rect x="230" y="40" width="110" height="80" rx="6" class="d-caja"/><text x="285" y="76" text-anchor="middle" class="d-d d-peq">tu ordenador</text><text x="285" y="96" text-anchor="middle" class="d-c d-peq">lista nueva</text><path d="M 130 80 L 230 80" class="d-linea-c"/><text x="180" y="150" text-anchor="middle" class="d-c d-peq">sudo apt update</text></svg>
+<p class="diapo__texto">2. <code translate="no">sudo apt update</code> baja la <strong>lista</strong> de lo que hay (y de qué versión). No instala nada.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="install"><rect x="20" y="40" width="110" height="80" rx="6" class="d-caja-on"/><text x="75" y="86" text-anchor="middle" class="d-a d-peq">repositorio</text><rect x="230" y="40" width="110" height="80" rx="6" class="d-caja-act"/><text x="285" y="86" text-anchor="middle" class="d-c d-peq">vlc instalado</text><path d="M 130 80 L 230 80" class="d-linea-c"/><text x="180" y="150" text-anchor="middle" class="d-c d-peq">sudo apt install vlc</text></svg>
+<p class="diapo__texto">3. <code translate="no">sudo apt install vlc</code> lo <strong>descarga e instala</strong>, con lo que necesite.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 170" role="img" aria-label="en el menú"><rect x="110" y="20" width="140" height="110" rx="6" class="d-caja"/><text x="124" y="44" class="d-d d-peq">Menú</text><rect x="122" y="80" width="116" height="22" rx="3" class="d-caja-act"/><text x="132" y="96" class="d-c d-peq">VLC</text><text x="180" y="156" text-anchor="middle" class="d-c d-peq">ya aparece en el menú</text></svg>
+<p class="diapo__texto">4. Ya está en el <strong>Menú</strong>, como cualquier otro programa.</p>
+</div>
+</div>
+
+<table>
+<tr><th>Orden</th><th>Qué hace</th></tr>
+<tr><td><code translate="no">sudo apt update</code></td><td>Actualiza la lista de programas del repositorio.</td></tr>
+<tr><td><code translate="no">sudo apt upgrade</code></td><td>Actualiza los programas que ya tienes instalados.</td></tr>
+<tr><td><code translate="no">sudo apt install nombre</code></td><td>Instala un programa. Pregunta «¿Desea continuar? [S/n]»: S e Intro.</td></tr>
+<tr><td><code translate="no">sudo apt remove nombre</code></td><td>Desinstala un programa.</td></tr>
+<tr><td><code translate="no">apt search palabra</code></td><td>Busca programas (no hace falta <code translate="no">sudo</code>: solo mira).</td></tr>
+</table>
+<p>Lo mismo se puede hacer sin terminal, con el <strong>Gestor de software</strong> del Menú: buscas el programa, pulsas Instalar y escribes tu contraseña.</p>
+
+<h3>Cuando sale un error</h3>
+<table>
+<tr><th>Mensaje</th><th>Qué pasa</th></tr>
+<tr><td><code translate="no">Permiso denegado</code> o <code translate="no">¿es usted superusuario?</code></td><td>Te has olvidado de <code translate="no">sudo</code>. Truco: <code translate="no">sudo !!</code> repite la orden anterior con <code translate="no">sudo</code>.</td></tr>
+<tr><td><code translate="no">No se ha podido localizar el paquete</code></td><td>El nombre está mal escrito (van en minúsculas).</td></tr>
+<tr><td><code translate="no">Lo siento, pruebe otra vez.</code></td><td>Contraseña incorrecta.</td></tr>
+</table>
+<div class="nota">⚠️ Instala siempre desde el <strong>Gestor de software</strong> o con <code translate="no">apt</code>. Un programa bajado de una web rara puede traer un virus, igual que un <code translate="no">.exe</code> en Windows.</div>
+
+<h3>Actividad 1 — Instala programas y crea un usuario</h3>
+<p>En el Linux de mentira, la Terminal ya está abierta. Tu contraseña es <code translate="no">alumno</code>.</p>
+<ol>
+<li>Lee la misión (el pósit amarillo).</li>
+<li>Prueba la primera orden sin <code translate="no">sudo</code> para ver el error; luego, con <code translate="no">sudo</code>.</li>
+<li>Para el Gestor de software: Menú → escribe «software».</li>
+<li>Al crear a ana, inventa una contraseña para ella y escríbela dos veces.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno lo que te pide (pregunta 15).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="l-programas" aria-label="Instala programas y crea un usuario"></div>
+<p><strong>Comprobación observable:</strong> Minetest y VLC salen en el Menú, y <code translate="no">groups ana</code> no enseña el grupo sudo.</p>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 5 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es root?</li>
+<li>(V/F) En Linux Mint se trabaja siempre con el usuario root.</li>
+<li>¿Qué es el grupo sudo? ¿A qué tipo de cuenta de Windows se parece?</li>
+<li>¿Qué hace <span translate="no">sudo</span>? ¿Qué contraseña te pide?</li>
+<li>(V/F) Al escribir la contraseña de sudo no sale nada en la pantalla, ni asteriscos.</li>
+<li>(ABC) ¿Cuál de estas órdenes necesita sudo?
+  <ul>
+    <li>a) <span translate="no">ls</span></li>
+    <li>b) <span translate="no">mkdir fotos</span>, en tu carpeta personal</li>
+    <li>c) <span translate="no">apt install vlc</span></li>
+  </ul>
+</li>
+<li>¿Por qué no hay que usar sudo para todo?</li>
+<li>Escribe la orden para crear la usuaria marta. ¿En qué carpeta tendrá sus archivos?</li>
+<li>¿Qué es un repositorio?</li>
+<li>¿Qué es apt?</li>
+<li>¿Qué diferencia hay entre <span translate="no">apt update</span> y <span translate="no">apt upgrade</span>?</li>
+<li>Escribe la orden para instalar gimp y la orden para desinstalarlo.</li>
+<li>¿Qué quiere decir el error «¿es usted superusuario?»? ¿Cómo se arregla?</li>
+<li>¿Por qué es mejor instalar desde los repositorios que bajar programas de cualquier web?</li>
+<li><strong>(Actividad 1)</strong> En la simulación: la orden de cada punto, el error que salió sin sudo y quién está en el grupo sudo.</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 5 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Busca qué es un paquete <span translate="no">.deb</span>.</li>
+<li>Busca qué es Flatpak y por qué Linux Mint lo usa en el Gestor de software.</li>
+<li>Busca qué hace la orden <span translate="no">sudo deluser</span>.</li>
+<li>Busca qué mensaje enseña sudo la primera vez que lo usas (habla de una gran responsabilidad).</li>
+</ol>
+</div>

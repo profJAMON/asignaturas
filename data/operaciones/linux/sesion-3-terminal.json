@@ -1,0 +1,16 @@
+{
+  "id": "sesion-3-terminal",
+  "titulo": "Sesión 3. La terminal",
+  "fecha": "",
+  "descripcion": "Qué es la terminal y el prompt, cómo se escribe una orden, moverse con pwd, ls y cd, crear, copiar, mover y borrar con mkdir, touch, cp, mv y rm, Tab y los errores más comunes.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s3-ordenes",
+      "tipo": "generador",
+      "titulo": "¿Qué orden escribo?",
+      "generador": "orden-linux",
+      "n": 5
+    }
+  ]
+}

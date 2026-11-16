@@ -1,0 +1,16 @@
+{
+  "id": "sesion-1-linux-escritorio",
+  "titulo": "Sesión 1. Linux y su escritorio",
+  "fecha": "",
+  "descripcion": "Qué es Linux, el núcleo y las distribuciones, el escritorio de Linux Mint Xfce, el menú, las ventanas, las áreas de trabajo, los atajos y apagar bien.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s1-atajos",
+      "tipo": "generador",
+      "titulo": "¿Qué atajo uso en Linux Mint?",
+      "generador": "atajo-linux",
+      "n": 5
+    }
+  ]
+}

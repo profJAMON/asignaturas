@@ -1,0 +1,16 @@
+{
+  "id": "sesion-2-archivos-linux",
+  "titulo": "Sesión 2. Archivos en Linux: todo cuelga de /",
+  "fecha": "",
+  "descripcion": "El árbol de carpetas que empieza en la raíz, /home y la carpeta personal (~), rutas absolutas y relativas, nombres con mayúsculas y ocultos, el Gestor de archivos y el archivador .tar.gz.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s2-rutas",
+      "tipo": "generador",
+      "titulo": "¿Cuál es la ruta absoluta?",
+      "generador": "ruta-linux",
+      "n": 5
+    }
+  ]
+}

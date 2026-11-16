@@ -82,6 +82,21 @@
         "resumen-windows",
         "glosario-windows"
       ]
+    },
+    {
+      "id": "linux",
+      "titulo": "Unidad 7. Linux",
+      "descripcion": "Manejar Linux Mint: el escritorio y los atajos, los archivos en un solo árbol que empieza en /, la terminal, los USB y sus sistemas de archivos, sudo e instalar programas, los permisos y los procesos.",
+      "sesiones": [
+        "sesion-1-linux-escritorio",
+        "sesion-2-archivos-linux",
+        "sesion-3-terminal",
+        "sesion-4-usb-linux",
+        "sesion-5-usuarios-programas",
+        "sesion-6-permisos-procesos",
+        "resumen-linux",
+        "glosario-linux"
+      ]
     }
   ]
 }

@@ -347,6 +347,35 @@
   --term-fondo: #0c0c0c;
   --term-texto: #cccccc;
   --term-prompt: #f2f2f2;
+  /* Linux Mint (Xfce) de mentira (16/11/2026, js/mint.js): colores de
+     Mint-Y en claro, iguales en los dos temas, como los de Windows 11. */
+  --mint-fondo-1: #18231b;
+  --mint-fondo-2: #36502f;
+  --mint-fondo-3: #87a95f;
+  --mint-panel: rgba(34, 36, 34, 0.94);
+  --mint-panel-texto: #f2f2f2;
+  --mint-panel-hover: rgba(255, 255, 255, 0.14);
+  --mint-panel-activo: rgba(143, 178, 106, 0.42);
+  --mint-acento: #4c7a28;
+  --mint-acento-claro: #dde9cf;
+  --mint-sel-borde: #a7c785;
+  --mint-ventana: #f6f6f6;
+  --mint-barra: #e2e2e2;
+  --mint-barra-inactiva: #efefef;
+  --mint-borde: #c6c6c6;
+  --mint-carpeta: #8fb26a;
+  --mint-carpeta-2: #6a8f45;
+  --mint-naranja: #e8600a;
+  --mint-morado: #5b3fa3;
+  --mint-ambar: #ffbd4f;
+  --mint-oscuro: #333333;
+  --mint-cerrar: #d0463b;
+  --mint-term-fondo: #1f2120;
+  --mint-term-texto: #e1e1df;
+  --mint-term-verde: #8ae234;
+  --mint-term-azul: #82aee0;
+  --mint-term-rojo: #ff6b6b;
+  --mint-velo: rgba(10, 14, 10, 0.72);
   /* 06/10/2026: «Ver respuesta» / pistas en píldora de cristal con
      luz lima detrás. */
   --cristal-pista-fondo: rgba(255, 255, 255, 0.06);
@@ -729,6 +758,35 @@
   --term-fondo: #0c0c0c;
   --term-texto: #cccccc;
   --term-prompt: #f2f2f2;
+  /* Linux Mint (Xfce) de mentira (16/11/2026, js/mint.js): colores de
+     Mint-Y en claro, iguales en los dos temas, como los de Windows 11. */
+  --mint-fondo-1: #18231b;
+  --mint-fondo-2: #36502f;
+  --mint-fondo-3: #87a95f;
+  --mint-panel: rgba(34, 36, 34, 0.94);
+  --mint-panel-texto: #f2f2f2;
+  --mint-panel-hover: rgba(255, 255, 255, 0.14);
+  --mint-panel-activo: rgba(143, 178, 106, 0.42);
+  --mint-acento: #4c7a28;
+  --mint-acento-claro: #dde9cf;
+  --mint-sel-borde: #a7c785;
+  --mint-ventana: #f6f6f6;
+  --mint-barra: #e2e2e2;
+  --mint-barra-inactiva: #efefef;
+  --mint-borde: #c6c6c6;
+  --mint-carpeta: #8fb26a;
+  --mint-carpeta-2: #6a8f45;
+  --mint-naranja: #e8600a;
+  --mint-morado: #5b3fa3;
+  --mint-ambar: #ffbd4f;
+  --mint-oscuro: #333333;
+  --mint-cerrar: #d0463b;
+  --mint-term-fondo: #1f2120;
+  --mint-term-texto: #e1e1df;
+  --mint-term-verde: #8ae234;
+  --mint-term-azul: #82aee0;
+  --mint-term-rojo: #ff6b6b;
+  --mint-velo: rgba(10, 14, 10, 0.72);
   --cristal-pista-fondo: rgba(255, 255, 255, 0.55);
   --cristal-pista-borde: rgba(42, 122, 46, 0.45);
   --cristal-pista-brillo: rgba(255, 255, 255, 0.9);
@@ -7991,3 +8049,289 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .generador__fila--dibujo .ejercicio-dibujo { grid-column: 2 / -1; margin: 0.2rem 0; }
 .generador__fila--dibujo .generador__enunciado { grid-column: 2; }
 @media print { .ejercicio-dibujo { break-inside: avoid; } }
+
+/* ============================================================
+   Linux Mint (Xfce) de mentira (16/11/2026, js/mint.js)
+   Para la Unidad 7 de Operaciones. Reutiliza las clases del Windows
+   11 de mentira (ventanas, menús, diálogos, avisos y el teclado en
+   pantalla): la raíz lleva «w11 mint» y aquí solo cambian los
+   colores (--w11-* apuntan a --mint-*) y lo que es distinto en Xfce:
+   el panel de abajo, el menú de aplicaciones, el título de las
+   ventanas en el centro, el Gestor de archivos, la Terminal y el
+   Gestor de tareas. Igual en los dos temas.
+   ============================================================ */
+.mint {
+  --w11-acento: var(--mint-acento); --w11-acento-claro: var(--mint-acento-claro); --w11-sel-borde: var(--mint-sel-borde);
+  --w11-carpeta: var(--mint-carpeta); --w11-carpeta-2: var(--mint-carpeta-2); --w11-mica: var(--mint-barra);
+  --w11-ventana: var(--mint-ventana); --w11-borde: var(--mint-borde); --w11-cerrar: var(--mint-cerrar);
+  --accent: var(--mint-acento); --border: var(--mint-borde);
+  background: var(--mint-fondo-1);
+  font-family: Ubuntu, 'Noto Sans', 'DejaVu Sans', system-ui, -apple-system, sans-serif;
+}
+.mint__fondo { background:
+  radial-gradient(ellipse 60% 55% at 72% 70%, var(--mint-fondo-3), transparent 64%),
+  radial-gradient(ellipse 70% 60% at 25% 20%, var(--mint-fondo-2), transparent 70%),
+  linear-gradient(160deg, var(--mint-fondo-1), var(--mint-fondo-2)); }
+.mnti-verde { fill: var(--mint-carpeta); }
+.mnti-blanco { fill: var(--w11-blanco); }
+.mnti-oscuro { fill: var(--mint-oscuro); }
+.mnti-naranja { fill: var(--mint-naranja); }
+.mnti-morado { fill: var(--mint-morado); }
+.mnti-ambar { fill: var(--mint-ambar); }
+.mnti-blanco-trazo { fill: none; stroke: var(--w11-blanco); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.mnti-verde-trazo { fill: none; stroke: var(--mint-term-verde); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.mnti-gris-trazo { fill: none; stroke: var(--mint-carpeta-2); stroke-width: 1.4; stroke-linecap: round; }
+/* panel de abajo */
+.mint__panel { position: absolute; left: 0; right: 0; bottom: 0; height: 44px; z-index: 5000; display: flex; align-items: center; gap: 2px; padding: 0 4px; background: var(--mint-panel); color: var(--mint-panel-texto); }
+.mint__pb { flex: none; height: 38px; min-width: 36px; padding: 0 6px; border: 0; border-radius: 4px; background: transparent; color: inherit; font: inherit; display: flex; align-items: center; gap: 6px; }
+.mint__pb > .w11-ico { width: 24px; height: 24px; }
+.mint__pb:hover, .mint__pb--activo { background: var(--mint-panel-hover); }
+.mint__pb:focus-visible, .mint__tarea:focus-visible, .mint__area:focus-visible { outline: 2px solid var(--mint-sel-borde); outline-offset: -2px; }
+.mint__pb-t { font-size: 13px; font-weight: 600; }
+.mint__lanz { display: flex; gap: 1px; flex: none; }
+.mint__psep { flex: none; width: 1px; height: 26px; margin: 0 4px; background: var(--mint-panel-hover); }
+.mint__tareas { flex: 1 1 auto; min-width: 0; display: flex; gap: 2px; overflow: hidden; }
+.mint__tarea { flex: 0 1 180px; min-width: 40px; height: 36px; padding: 0 8px; border: 0; border-bottom: 2px solid transparent; border-radius: 3px; background: transparent; color: inherit; font: inherit; font-size: 12px; display: flex; align-items: center; gap: 6px; }
+.mint__tarea > .w11-ico { width: 18px; height: 18px; }
+.mint__tarea-t { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mint__tarea:hover { background: var(--mint-panel-hover); }
+.mint__tarea--activa { background: var(--mint-panel-activo); border-bottom-color: var(--mint-carpeta); }
+.mint__tarea--min { opacity: 0.7; }
+.mint__areas { flex: none; display: flex; gap: 3px; padding: 0 4px; }
+.mint__area { position: relative; width: 34px; height: 26px; padding: 0; border: 1px solid var(--mint-panel-hover); border-radius: 3px; background: transparent; color: inherit; overflow: hidden; }
+.mint__area--actual { background: var(--mint-panel-activo); border-color: var(--mint-carpeta); }
+.mint__area-v { position: absolute; background: var(--mint-panel-texto); opacity: 0.55; border-radius: 1px; }
+.mint__area-n { position: absolute; right: 2px; bottom: 0; font-size: 10px; line-height: 1.1; opacity: 0.85; }
+.mint__bandeja { flex: none; display: flex; align-items: center; gap: 8px; padding: 0 6px; font-size: 13px; }
+.mint__bico { width: 16px; height: 16px; }
+.mint__reloj { font-weight: 600; }
+@container (max-width: 600px) {
+  .mint__pb-t, .mint__bico, .mint__lanz, .mint__psep { display: none; }
+  .mint__tarea { flex-basis: 40px; }
+  .mint__tarea-t { display: none; }
+  .mint__area { width: 24px; }
+}
+@container (max-width: 420px) {
+  .mint__pb:not(.mint__pb--menu) { display: none; }
+  .mint__areas { gap: 2px; padding: 0 2px; }
+  .mint__area { width: 18px; }
+  .mint__bandeja { padding: 0 2px; font-size: 12px; }
+}
+/* iconos del escritorio */
+.mint__iconos { flex-direction: column; }
+.mint-icono .w11-ico { width: 42px; height: 42px; }
+/* ventanas tipo Xfce: título centrado, botones a la derecha */
+.mint .w11-v { border-radius: 6px 6px 3px 3px; }
+.mint-v__barra { height: 30px; padding-left: 4px; background: var(--mint-barra); border-bottom: 1px solid var(--mint-borde); }
+.mint .w11-v:not(.w11-v--activa) .mint-v__barra { background: var(--mint-barra-inactiva); }
+.mint-v__barra .w11-v__titulo { text-align: center; font-weight: 600; }
+.mint-v__menu { flex: none; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 3px; background: transparent; display: grid; place-items: center; }
+.mint-v__menu:hover, .mint-v__menu:focus-visible { background: var(--w11-hover); outline: none; }
+.mint-v__botones .w11-v__b { width: 30px; height: 24px; margin: 3px 1px; border-radius: 50%; }
+.mint-v__botones .w11-v__b svg { width: 11px; height: 11px; stroke-width: 1.6; }
+.mint-v__botones .w11-v__b--cerrar { width: 24px; }
+/* menú de aplicaciones (Whisker) */
+.mint-wm { position: absolute; left: 4px; bottom: 50px; width: min(470px, calc(100% - 8px)); max-height: calc(100% - 58px); display: flex; flex-direction: column; background: var(--mint-ventana); border: 1px solid var(--mint-borde); border-radius: 6px; box-shadow: var(--w11-sombra); color: var(--w11-texto); }
+.mint-wm__cab { flex: none; display: flex; align-items: center; justify-content: space-between; padding: 8px 10px; border-bottom: 1px solid var(--mint-borde); }
+.mint-wm__usu { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.mint-wm__usu > .w11-ico { width: 28px; height: 28px; }
+.mint-wm__acc { display: flex; gap: 2px; }
+.mint-wm__b { width: 32px; height: 32px; padding: 0; border: 0; border-radius: 4px; background: transparent; color: var(--w11-texto); display: grid; place-items: center; }
+.mint-wm__b > .w11-ico { width: 18px; height: 18px; }
+.mint-wm__b:hover, .mint-wm__b:focus-visible { background: var(--w11-hover); outline: none; }
+.mint-wm__cuerpo { flex: 1; min-height: 0; display: flex; }
+.mint-wm__lista { flex: 1 1 60%; min-width: 0; overflow: auto; padding: 4px; }
+.mint-wm__cats { flex: 0 0 38%; overflow: auto; padding: 4px; border-left: 1px solid var(--mint-borde); }
+.mint-wm__app, .mint-wm__cat { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 32px; padding: 3px 8px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; text-align: left; }
+.mint-wm__app > .w11-ico { width: 24px; height: 24px; }
+.mint-wm__app:hover, .mint-wm__app:focus-visible, .mint-wm__cat:hover, .mint-wm__cat:focus-visible { background: var(--mint-acento-claro); outline: none; }
+.mint-wm__cat--actual { background: var(--mint-acento); color: var(--w11-blanco); }
+.mint-wm__cat--actual:hover { background: var(--mint-acento); }
+.leccion .mint .mint-wm__nada { margin: 8px; color: var(--w11-tenue); }
+.mint-wm__buscar { flex: none; margin: 8px; height: 32px; padding: 0 10px; border: 1px solid var(--mint-borde); border-radius: 4px; background: var(--w11-blanco); color: var(--w11-texto); font: inherit; }
+.mint-wm__buscar:focus { outline: 2px solid var(--mint-acento); outline-offset: -1px; }
+@container (max-width: 480px) { .mint-wm__cats { display: none; } }
+/* menús, diálogos, avisos */
+.mint .w11-menu { border-radius: 4px; }
+.mint .w11-menu__item:focus-visible { outline-color: var(--mint-acento); }
+.mint-dlg { border-radius: 6px; }
+.mint-dlg__cab { background: var(--mint-barra); justify-content: center; position: relative; font-weight: 600; }
+.mint-dlg__cab .w11-v__b { position: absolute; right: 0; top: 0; }
+.mint .w11-btn--primario { background: var(--mint-acento); border-color: var(--mint-acento); }
+.mint .w11-btn:focus-visible { outline-color: var(--mint-acento); }
+.mint-campo { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+.mint-input { min-height: 30px; padding: 0 8px; border: 1px solid var(--mint-borde); border-radius: 4px; background: var(--w11-blanco); color: var(--w11-texto); font: inherit; }
+.mint-input:focus { outline: 2px solid var(--mint-acento); outline-offset: -1px; }
+.leccion .mint .mint-dlg__error { color: var(--w11-rojo); font-weight: 600; }
+.leccion .mint .mint-dlg__error:empty { display: none; }
+.mint__toasts { top: 8px; bottom: auto; }
+.mint-toast { background: var(--mint-ventana); border-radius: 6px; }
+.mint-alttab { flex-direction: row; align-items: center; }
+.mint-alttab__v { width: 56px; height: 56px; padding: 6px; border: 2px solid transparent; border-radius: 6px; background: transparent; display: grid; place-items: center; }
+.mint-alttab__v > .w11-ico { width: 36px; height: 36px; }
+.mint-alttab__v--elegida { border-color: var(--w11-blanco); background: var(--mint-panel-hover); }
+.leccion .mint .mint-alttab__t { flex-basis: 100%; text-align: center; color: var(--w11-blanco); font-size: 12px; }
+/* bloquear, cerrar sesión, apagado */
+.mint-bloqueo { position: absolute; inset: 0; z-index: 8000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(160deg, var(--mint-fondo-1), var(--mint-fondo-2)); color: var(--w11-blanco); }
+.leccion .mint .mint-bloqueo__hora { font-size: 52px; font-weight: 300; line-height: 1; }
+.leccion .mint .mint-bloqueo__fecha { font-size: 15px; margin-bottom: 10px; }
+.mint-bloqueo__caja { display: flex; flex-direction: column; align-items: center; gap: 8px; width: min(260px, 90%); padding: 16px; border-radius: 8px; background: var(--mint-panel); }
+.mint-bloqueo__ico { width: 54px; height: 54px; }
+.leccion .mint .mint-bloqueo__usu { font-weight: 600; }
+.mint-bloqueo__caja .mint-input { width: 100%; }
+.leccion .mint .mint-bloqueo__err { color: var(--mint-ambar); font-size: 12px; }
+.leccion .mint .mint-bloqueo__err:empty { display: none; }
+.mint-salir { position: absolute; inset: 0; z-index: 7500; display: grid; place-items: center; padding: 10px; background: var(--mint-velo); }
+.mint-salir__caja { display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 100%; padding: 16px; border-radius: 8px; background: var(--mint-ventana); box-shadow: var(--w11-sombra); color: var(--w11-texto); }
+.leccion .mint .mint-salir__titulo { font-size: 15px; font-weight: 600; }
+.mint-salir__fila { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; }
+.mint-salir__b { width: 86px; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 8px 4px; border: 1px solid var(--mint-borde); border-radius: 6px; background: var(--w11-blanco); color: inherit; font: inherit; font-size: 12px; text-align: center; }
+.mint-salir__b > .w11-ico { width: 28px; height: 28px; }
+.mint-salir__b:hover, .mint-salir__b:focus-visible { background: var(--mint-acento-claro); border-color: var(--mint-acento); outline: none; }
+.mint-apagado { position: absolute; inset: 0; z-index: 9000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: var(--w11-negro); color: var(--mint-term-texto); }
+.leccion .mint .mint-apagado__t { font-size: 15px; }
+.mint-apagado__on { width: 58px; height: 58px; border: 2px solid var(--mint-carpeta); border-radius: 50%; background: transparent; color: var(--mint-carpeta); font-size: 26px; }
+.mint-apagado__on:focus-visible { outline: 3px solid var(--mint-ambar); outline-offset: 3px; }
+/* Gestor de archivos (Thunar) */
+.mint-th { background: var(--mint-ventana); }
+.mint-th__menu { flex: none; display: flex; gap: 2px; padding: 2px 4px; border-bottom: 1px solid var(--mint-borde); }
+.mint-th__mb { padding: 3px 8px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; font-size: 12px; }
+.mint-th__mb:hover, .mint-th__mb:focus-visible { background: var(--w11-hover); outline: none; }
+.mint-th__barra { flex: none; display: flex; align-items: center; gap: 2px; padding: 4px 6px; border-bottom: 1px solid var(--mint-borde); }
+.mint-th__nb { flex: none; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 4px; background: transparent; color: var(--w11-texto); display: grid; place-items: center; }
+.mint-th__nb > .w11-ico { width: 16px; height: 16px; }
+.mint-th__nb:hover:not(:disabled) { background: var(--w11-hover); }
+.mint-th__nb:disabled { opacity: 0.4; }
+.mint-th__ruta { flex: 1 1 auto; min-width: 0; height: 30px; display: flex; align-items: center; gap: 2px; overflow-x: auto; overflow-y: hidden; white-space: nowrap; cursor: text; scrollbar-width: thin; }
+.mint-th__miga { flex: none; height: 26px; padding: 0 8px; border: 1px solid var(--mint-borde); border-radius: 4px; background: var(--w11-blanco); color: inherit; font: inherit; font-size: 12px; }
+.mint-th__miga--actual { background: var(--mint-acento-claro); border-color: var(--mint-sel-borde); font-weight: 600; }
+.mint-th__rutaedit { width: 100%; height: 28px; padding: 0 8px; border: 1px solid var(--mint-acento); border-radius: 4px; background: var(--w11-blanco); color: var(--w11-texto); font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', var(--font-mono), monospace; font-size: 13px; }
+.mint-th__main { flex: 1; min-height: 0; display: flex; }
+.mint-th__lado { flex: 0 0 150px; display: flex; flex-direction: column; gap: 1px; padding: 4px; overflow: auto; border-right: 1px solid var(--mint-borde); background: var(--mint-barra-inactiva); }
+.leccion .mint .mint-th__lt { margin: 6px 4px 2px; font-size: 11px; font-weight: 700; color: var(--w11-tenue); }
+.mint-th__li { flex: none; display: flex; align-items: center; gap: 6px; min-height: 26px; width: 100%; padding: 0 6px; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; font-size: 12px; text-align: left; white-space: nowrap; overflow: hidden; }
+.mint-th__li span { overflow: hidden; text-overflow: ellipsis; }
+.mint-th__li > .w11-ico { width: 16px; height: 16px; }
+.mint-th__li:hover { background: var(--w11-hover); }
+.mint-th__li--actual { background: var(--mint-acento); color: var(--w11-blanco); }
+.mint-th__li--actual:hover { background: var(--mint-acento); }
+.mint-th__dev { display: flex; align-items: center; gap: 2px; }
+.mint-th__dev .mint-th__li { flex: 1; min-width: 0; }
+.mint-th__eject { flex: none; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 3px; background: transparent; color: inherit; font-size: 14px; }
+.mint-th__eject:hover, .mint-th__eject:focus-visible { background: var(--w11-hover); outline: 2px solid var(--mint-acento); outline-offset: -2px; }
+.mint-th__lista { flex: 1; min-width: 0; overflow: auto; padding: 6px; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px; background: var(--w11-blanco); }
+.mint-th__lista:focus-visible { outline: 2px solid var(--mint-acento); outline-offset: -2px; }
+.mint-th__item { width: 88px; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 4px 2px; border: 1px solid transparent; border-radius: 4px; user-select: none; touch-action: manipulation; }
+.mint-th__item > .w11-ico { width: 42px; height: 42px; }
+.mint-th__n { max-width: 100%; font-size: 12px; line-height: 1.2; text-align: center; overflow-wrap: anywhere; max-height: 2.45em; overflow: hidden; }
+.mint-th__item:hover { background: var(--w11-hover); }
+.mint-th__item--sel, .mint-th__item--sel:hover { background: var(--mint-acento-claro); border-color: var(--mint-sel-borde); }
+.mint-th__item--oculto > .w11-ico, .mint-th__item--cortado > .w11-ico { opacity: 0.5; }
+.mint-th__candado { position: absolute; right: -2px; bottom: -2px; width: 45%; height: 45%; }
+.leccion .mint .mint-th__vacia { margin: 16px; color: var(--w11-tenue); }
+.mint-th__estado { flex: none; padding: 3px 10px; font-size: 11px; color: var(--w11-tenue); border-top: 1px solid var(--mint-borde); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@container (max-width: 520px) { .mint-th__lado { flex-basis: 108px; } .mint-th__item { width: 74px; } }
+/* Propiedades */
+.mint-props__tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--mint-borde); }
+.mint-props__tab { padding: 5px 12px; border: 1px solid transparent; border-bottom: 0; border-radius: 4px 4px 0 0; background: transparent; color: inherit; font: inherit; }
+.mint-props__tab--on { border-color: var(--mint-borde); background: var(--w11-blanco); font-weight: 600; margin-bottom: -1px; }
+.mint-props__cont { padding-top: 8px; }
+.mint-props__dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; margin: 0; }
+.mint-props__dl dt { font-weight: 600; }
+.mint-props__dl dd { margin: 0; overflow-wrap: anywhere; }
+.mint-props__perm { display: flex; flex-direction: column; gap: 6px; }
+.mint-props__pf { display: grid; grid-template-columns: 6.5rem 4.5rem minmax(0, 1fr); align-items: center; gap: 6px; }
+.mint-props__pl { font-weight: 600; }
+.mint-props__q { color: var(--w11-tenue); overflow-wrap: anywhere; }
+.mint-props__x { display: flex; align-items: flex-start; gap: 6px; margin-top: 4px; }
+.leccion .mint .mint-props__nota { color: var(--w11-tenue); font-size: 12px; }
+.leccion .mint .mint-props__num { margin-top: 4px; padding: 4px 8px; border-radius: 4px; background: var(--mint-term-fondo); color: var(--mint-term-texto); font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', var(--font-mono), monospace; font-size: 12px; }
+@container (max-width: 420px) { .mint-props__pf { grid-template-columns: 1fr 1fr; } .mint-props__pf .mint-input { grid-column: 1 / -1; } }
+/* Terminal */
+.mint-term { background: var(--mint-term-fondo); color: var(--mint-term-texto); }
+.mint-term__menu { flex: none; display: flex; gap: 12px; padding: 3px 10px; font-size: 12px; background: var(--mint-barra-inactiva); color: var(--w11-texto); border-bottom: 1px solid var(--mint-borde); }
+.mint-term__pant { flex: 1; min-height: 0; overflow: auto; padding: 6px 8px; font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', var(--font-mono), monospace; font-size: 13px; line-height: 1.35; cursor: text; }
+.mint-term__salida { white-space: pre-wrap; overflow-wrap: anywhere; }
+.mint-t-l { min-height: 1.35em; }
+.mint-t-cols { display: flex; flex-wrap: wrap; gap: 0 1.6em; }
+.mint-t-u, .mint-t-exe { color: var(--mint-term-verde); font-weight: 700; }
+.mint-t-r, .mint-t-dir { color: var(--mint-term-azul); font-weight: 700; }
+.mint-t-root { color: var(--mint-term-rojo); font-weight: 700; }
+.mint-term__linea { display: flex; align-items: baseline; flex-wrap: wrap; }
+.mint-term__pr { flex: none; white-space: pre-wrap; max-width: 100%; }
+.mint .mint-term__in:focus, .mint .mint-term__in:focus-visible { outline: none; box-shadow: none; }
+.mint-term__in { flex: 1 1 6rem; min-width: 6rem; padding: 0; border: 0; outline: none; background: transparent; color: var(--mint-term-texto); font: inherit; caret-color: var(--mint-term-verde); }
+/* Gestor de tareas */
+.mint-tm { background: var(--mint-ventana); }
+.mint-tm__arriba { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 8px 10px; border-bottom: 1px solid var(--mint-borde); }
+.mint-tm__medidor { display: flex; flex-direction: column; gap: 3px; min-width: 7rem; font-size: 12px; }
+.mint-tm__barra { display: block; width: 7rem; height: 8px; border-radius: 4px; background: var(--w11-libre); overflow: hidden; }
+.mint-tm__relleno { display: block; height: 100%; background: var(--mint-acento); }
+.mint-tm__relleno--alto { background: var(--w11-lleno); }
+.mint-tm__buscar { flex: 1 1 8rem; min-width: 6rem; }
+.mint-tm__tabla { flex: 1; min-height: 0; overflow: auto; padding: 2px 6px 6px; }
+.mint-tm__fila { display: grid; grid-template-columns: minmax(0, 2.4fr) minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 0.8fr); align-items: center; width: 100%; min-height: 26px; padding: 0; border: 0; border-radius: 3px; background: transparent; color: inherit; font: inherit; font-size: 12px; text-align: left; }
+.mint-tm__fila:hover { background: var(--w11-hover); }
+.mint-tm__fila--cab { position: sticky; top: 0; z-index: 1; background: var(--mint-ventana); border-bottom: 1px solid var(--mint-borde); }
+.mint-tm__fila--sel, .mint-tm__fila--sel:hover { background: var(--mint-acento-claro); }
+.mint-tm__fila--colgado .mint-tm__c:first-child { color: var(--w11-rojo); font-weight: 600; }
+.mint-tm__col { padding: 5px 8px; border: 0; background: transparent; color: var(--w11-tenue); font: inherit; font-size: 12px; text-align: left; }
+.mint-tm__col:hover { background: var(--w11-hover); }
+.mint-tm__c { padding: 2px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mint-tm__fila:focus-visible { outline: 2px solid var(--mint-acento); outline-offset: -2px; }
+/* Discos (gnome-disks) */
+.mint-dk { flex-direction: row; background: var(--mint-ventana); }
+.mint-dk__lado { flex: 0 0 34%; max-width: 15rem; display: flex; flex-direction: column; gap: 2px; padding: 6px; overflow: auto; border-right: 1px solid var(--mint-borde); background: var(--mint-barra-inactiva); }
+.mint-dk__disco { display: grid; grid-template-columns: 28px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 8px; align-items: center; width: 100%; padding: 6px; border: 0; border-radius: 4px; background: transparent; color: inherit; font: inherit; text-align: left; }
+.mint-dk__disco > .w11-ico { grid-row: 1 / 3; width: 28px; height: 28px; }
+.mint-dk__dt { font-weight: 600; font-size: 12px; }
+.mint-dk__ds { font-size: 11px; color: var(--w11-tenue); }
+.mint-dk__disco:hover { background: var(--w11-hover); }
+.mint-dk__disco--sel, .mint-dk__disco--sel:hover { background: var(--mint-acento); color: var(--w11-blanco); }
+.mint-dk__disco--sel .mint-dk__ds { color: inherit; }
+.mint-dk__der { flex: 1; min-width: 0; overflow: auto; padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+.mint-dk__cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.leccion .mint .mint-dk__titulo { font-size: 15px; font-weight: 700; }
+.leccion .mint .mint-dk__sub { font-weight: 700; margin-top: 4px; }
+.mint-dk__dl { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; font-size: 12px; }
+.mint-dk__dl dt { color: var(--w11-tenue); text-align: right; }
+.mint-dk__dl dd { margin: 0; overflow-wrap: anywhere; }
+.mint-dk__mapa { display: flex; gap: 2px; min-height: 64px; padding: 3px; border: 1px solid var(--mint-borde); border-radius: 4px; background: var(--w11-blanco); }
+.mint-dk__vol { flex: 1 1 0; min-width: 3.4rem; display: flex; flex-direction: column; justify-content: center; gap: 1px; padding: 4px 6px; border: 1px solid var(--mint-borde); border-radius: 3px; background: var(--mint-barra-inactiva); color: inherit; font: inherit; font-size: 11px; text-align: left; overflow: hidden; }
+.mint-dk__vol span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mint-dk__vol--sel { background: var(--mint-acento); border-color: var(--mint-acento); color: var(--w11-blanco); }
+.mint-dk__acc { display: flex; gap: 4px; }
+.mint-dk__b { min-width: 34px; height: 30px; padding: 0 8px; border: 1px solid var(--mint-borde); border-radius: 4px; background: var(--w11-blanco); color: var(--w11-texto); font: inherit; font-size: 14px; }
+.mint-dk__b:hover, .mint-dk__b:focus-visible { background: var(--mint-acento-claro); outline: none; border-color: var(--mint-acento); }
+.mint-dk__tipos { display: flex; flex-direction: column; gap: 6px; margin: 8px 0 0; padding: 8px 10px; border: 1px solid var(--mint-borde); border-radius: 4px; }
+.mint-dk__tipos legend { padding: 0 4px; font-weight: 600; }
+.mint-dk__radio { display: flex; align-items: flex-start; gap: 8px; }
+.mint-dk__radio input { margin-top: 3px; accent-color: var(--mint-acento); }
+@container (max-width: 480px) { .mint-dk { flex-direction: column; } .mint-dk__lado { flex: none; max-width: none; border-right: 0; border-bottom: 1px solid var(--mint-borde); } }
+/* Gestor de software (mintinstall) */
+.mint-sw { background: var(--mint-ventana); }
+.mint-sw__cab { flex: none; display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-bottom: 1px solid var(--mint-borde); }
+.mint-sw__buscar { flex: 1; min-width: 0; }
+.mint-sw__cuerpo { flex: 1; min-height: 0; overflow: auto; padding: 10px; }
+.leccion .mint .mint-sw__sub { font-weight: 700; margin-bottom: 6px; }
+.mint-sw__rej { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.mint-sw__tarjeta { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 10px; border: 1px solid var(--mint-borde); border-radius: 6px; background: var(--w11-blanco); color: inherit; font: inherit; text-align: left; }
+.mint-sw__tarjeta > .w11-ico { width: 36px; height: 36px; }
+.mint-sw__tarjeta:hover, .mint-sw__tarjeta:focus-visible { border-color: var(--mint-acento); outline: none; }
+.mint-sw__tn { font-weight: 700; }
+.mint-sw__td { font-size: 12px; color: var(--w11-tenue); }
+.mint-sw__ya { font-size: 11px; font-weight: 700; color: var(--mint-acento); }
+.leccion .mint .mint-sw__nada { color: var(--w11-tenue); }
+.mint-sw__parriba { display: flex; gap: 14px; align-items: flex-start; }
+.mint-sw__pico { width: 64px; height: 64px; }
+.leccion .mint .mint-sw__pn { font-size: 18px; font-weight: 700; }
+.leccion .mint .mint-sw__pd { font-size: 12px; color: var(--w11-tenue); }
+.mint-sw__bots { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+.mint-sw__prog { width: 10rem; height: 8px; border-radius: 4px; background: var(--w11-libre); overflow: hidden; }
+.mint-sw__progr { display: block; width: 40%; height: 100%; background: var(--mint-acento); animation: mint-progreso 1.3s ease-in-out forwards; }
+@keyframes mint-progreso { from { width: 5%; } to { width: 100%; } }
+@media (prefers-reduced-motion: reduce) { .mint-sw__progr { animation: none; width: 70%; } }
+/* ventana colgada */
+.mint-colgado { align-items: center; justify-content: center; gap: 8px; padding: 16px; background: var(--mint-barra-inactiva); filter: grayscale(0.6); text-align: center; }
+.mint-colgado__ico { width: 64px; height: 64px; }
+.leccion .mint .mint-colgado__t { font-weight: 700; color: var(--w11-rojo); }

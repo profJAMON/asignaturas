@@ -1,0 +1,175 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el momento en que aparecen, en el Linux de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Qué es la terminal</h2>
+
+<p>La <strong>terminal</strong> es una ventana donde escribes <strong>órdenes</strong> (también se llaman comandos) en lugar de hacer clic. Ya usaste una en la Unidad 2: el <code translate="no">cmd</code> de Windows, con <code translate="no">ipconfig</code> y <code translate="no">ping</code>. Se abre con <code translate="no">Ctrl + Alt + T</code>.</p>
+<p>¿Para qué, si hay ratón?</p>
+<ul>
+<li>Muchas cosas son <strong>más rápidas</strong>: mover 200 fotos con una sola orden.</li>
+<li>Los <strong>servidores</strong> no tienen pantalla ni ratón: se manejan solo con la terminal. El de BloqueCraft, también.</li>
+<li>Las órdenes son <strong>las mismas en todas las distribuciones</strong>, aunque cada una tenga su escritorio.</li>
+</ul>
+
+<h3>Lo que te enseña antes de escribir</h3>
+<p>Antes del sitio donde escribes sale el <strong>prompt</strong>. Pasa las diapositivas para ver qué te dice:</p>
+<div class="diapos" aria-label="Las partes del prompt">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="el usuario"><rect x="10" y="40" width="340" height="44" rx="6" class="d-caja"/><text x="24" y="68" class="d-c">alumno</text><text x="88" y="68" class="d-d">@aula-pc:~$</text><path d="M 24 76 L 82 76" class="d-linea-c"/><text x="52" y="118" text-anchor="middle" class="d-c d-peq">usuario</text></svg>
+<p class="diapo__texto">1. Primero, tu <strong>usuario</strong>: quién está escribiendo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="el equipo"><rect x="10" y="40" width="340" height="44" rx="6" class="d-caja"/><text x="24" y="68" class="d-a">alumno</text><text x="80" y="68" class="d-d">@</text><text x="96" y="68" class="d-c">aula-pc</text><text x="160" y="68" class="d-d">:~$</text><path d="M 96 76 L 156 76" class="d-linea-c"/><text x="126" y="118" text-anchor="middle" class="d-c d-peq">nombre del ordenador</text></svg>
+<p class="diapo__texto">2. Después de la @, el <strong>nombre del ordenador</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="la carpeta"><rect x="10" y="40" width="340" height="44" rx="6" class="d-caja"/><text x="24" y="68" class="d-a">alumno@aula-pc</text><text x="146" y="68" class="d-d">:</text><text x="156" y="68" class="d-c">~</text><text x="170" y="68" class="d-d">$</text><path d="M 154 76 L 168 76" class="d-linea-c"/><text x="160" y="118" text-anchor="middle" class="d-c d-peq">carpeta en la que estás (~ = la tuya)</text></svg>
+<p class="diapo__texto">3. Después de los dos puntos, la <strong>carpeta en la que estás</strong>. <code translate="no">~</code> es tu carpeta personal.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="el símbolo final"><rect x="10" y="40" width="340" height="44" rx="6" class="d-caja"/><text x="24" y="68" class="d-a">alumno@aula-pc:~</text><text x="166" y="68" class="d-c d-grande">$</text><text x="250" y="68" text-anchor="middle" class="d-d">#  = root</text><text x="180" y="118" text-anchor="middle" class="d-c d-peq">$ usuario normal · # administrador</text></svg>
+<p class="diapo__texto">4. Al final, <code translate="no">$</code> si eres un <strong>usuario normal</strong>; <code translate="no">#</code> si eres el administrador (root).</p>
+</div>
+</div>
+
+<h3>Cómo se escribe una orden</h3>
+<p>Una orden tiene hasta tres partes, separadas por espacios:</p>
+<div class="salida"><pre><code translate="no">ls  -l  Documentos
+│   │   └─ sobre qué: un archivo o una carpeta
+│   └───── opciones: empiezan por un guion
+└───────── la orden</code></pre></div>
+<ul>
+<li>Se ejecuta con <strong>Intro</strong>.</li>
+<li><strong>Las mayúsculas cuentan</strong>: <code translate="no">LS</code> no existe; <code translate="no">ls</code>, sí.</li>
+<li>El espacio separa las partes. Por eso los nombres sin espacios (la norma de clase) son más cómodos: un nombre con espacio va entre comillas: <code translate="no">cd "Mis cosas"</code>.</li>
+</ul>
+
+<h2>Moverse por las carpetas</h2>
+<table>
+<tr><th>Orden</th><th>Qué hace</th><th>Ejemplo</th></tr>
+<tr><td><code translate="no">pwd</code></td><td>Dice en qué carpeta estás</td><td><code translate="no">pwd</code> → <code translate="no">/home/alumno</code></td></tr>
+<tr><td><code translate="no">ls</code></td><td>Enseña lo que hay en la carpeta (carpetas en azul)</td><td><code translate="no">ls</code></td></tr>
+<tr><td><code translate="no">ls -a</code></td><td>También los ocultos (los que empiezan por punto)</td><td><code translate="no">ls -a</code></td></tr>
+<tr><td><code translate="no">ls -l</code></td><td>Con todos los detalles: permisos, dueño, tamaño y fecha</td><td><code translate="no">ls -l Documentos</code></td></tr>
+<tr><td><code translate="no">cd carpeta</code></td><td>Entra en una carpeta</td><td><code translate="no">cd Documentos</code></td></tr>
+<tr><td><code translate="no">cd ..</code></td><td>Sube a la carpeta de arriba</td><td><code translate="no">cd ..</code></td></tr>
+<tr><td><code translate="no">cd</code> o <code translate="no">cd ~</code></td><td>Vuelve a tu carpeta personal</td><td><code translate="no">cd</code></td></tr>
+<tr><td><code translate="no">cd /</code></td><td>Va a la raíz</td><td><code translate="no">cd /</code></td></tr>
+</table>
+
+<div class="diapos" aria-label="cd paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="pwd"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="48" class="d-a d-peq">~$</text><text x="46" y="48" class="d-c d-peq">pwd</text><text x="22" y="76" class="d-t d-peq">/home/alumno</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">estás en tu carpeta personal</text></svg>
+<p class="diapo__texto">1. <code translate="no">pwd</code>: estás en <strong>/home/alumno</strong>, tu carpeta personal.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="cd Documentos"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="48" class="d-a d-peq">~$</text><text x="46" y="48" class="d-c d-peq">cd Documentos</text><text x="22" y="76" class="d-a d-peq">~/Documentos$</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">/home/alumno/Documentos</text></svg>
+<p class="diapo__texto">2. <code translate="no">cd Documentos</code>: entras. El prompt ya dice <strong>~/Documentos</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="cd .."><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="48" class="d-a d-peq">~/Documentos$</text><text x="128" y="48" class="d-c d-peq">cd ..</text><text x="22" y="76" class="d-a d-peq">~$</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">subes una carpeta</text></svg>
+<p class="diapo__texto">3. <code translate="no">cd ..</code>: <strong>subes</strong> a la carpeta de arriba, otra vez a la tuya.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="cd /"><rect x="10" y="20" width="340" height="80" rx="6" class="d-caja"/><text x="22" y="48" class="d-a d-peq">~$</text><text x="46" y="48" class="d-c d-peq">cd /</text><text x="22" y="76" class="d-a d-peq">/$</text><text x="80" y="76" class="d-c d-peq">cd</text><text x="22" y="96" class="d-a d-peq">~$</text><text x="180" y="140" text-anchor="middle" class="d-c d-peq">a la raíz y vuelta a casa</text></svg>
+<p class="diapo__texto">4. <code translate="no">cd /</code> te lleva a la raíz; <code translate="no">cd</code> solo, <strong>vuelta a tu carpeta</strong> estés donde estés.</p>
+</div>
+</div>
+
+<h3>Trucos que ahorran mucho</h3>
+<ul>
+<li><strong>Tab</strong> completa el nombre: escribe <code translate="no">cd Doc</code>, pulsa Tab y sale <code translate="no">cd Documentos/</code>. Así no te equivocas y no tienes que escribir tildes (<code translate="no">Im</code> + Tab → <code translate="no">Imágenes/</code>).</li>
+<li>La flecha <strong>↑</strong> vuelve a sacar las órdenes que ya escribiste.</li>
+<li><code translate="no">clear</code> (o <code translate="no">Ctrl + L</code>) limpia la pantalla.</li>
+<li><code translate="no">Ctrl + C</code> <strong>cancela</strong> la orden que se está escribiendo o haciendo. En la terminal no copia: para copiar y pegar se usan <code translate="no">Ctrl + Shift + C</code> y <code translate="no">Ctrl + Shift + V</code>.</li>
+</ul>
+
+<div class="nota">🤔 Antes de seguir: estás en <code translate="no">/home/alumno/Documentos</code> y escribes <code translate="no">cd ..</code> dos veces. ¿Dónde estás?</div>
+<details><summary>Ver respuesta</summary>En <code translate="no">/home</code>: cada <code translate="no">cd ..</code> sube una carpeta (de Documentos a alumno y de alumno a home).</details>
+
+<h2>Crear, copiar, mover y borrar</h2>
+<table>
+<tr><th>Orden</th><th>Qué hace</th><th>Ejemplo</th></tr>
+<tr><td><code translate="no">mkdir</code></td><td>Crea una carpeta</td><td><code translate="no">mkdir fotos</code></td></tr>
+<tr><td><code translate="no">touch</code></td><td>Crea un archivo vacío</td><td><code translate="no">touch notas.txt</code></td></tr>
+<tr><td><code translate="no">cp</code></td><td>Copia (el original se queda)</td><td><code translate="no">cp notas.txt fotos</code></td></tr>
+<tr><td><code translate="no">cp -r</code></td><td>Copia una carpeta entera</td><td><code translate="no">cp -r fotos fotos-copia</code></td></tr>
+<tr><td><code translate="no">mv</code></td><td>Mueve (el original desaparece de su sitio)</td><td><code translate="no">mv foto.png fotos</code></td></tr>
+<tr><td><code translate="no">mv</code></td><td>Cambia el nombre</td><td><code translate="no">mv notas.txt viejo.txt</code></td></tr>
+<tr><td><code translate="no">rm</code></td><td>Borra un archivo</td><td><code translate="no">rm viejo.txt</code></td></tr>
+<tr><td><code translate="no">rm -r</code></td><td>Borra una carpeta con todo lo de dentro</td><td><code translate="no">rm -r fotos-copia</code></td></tr>
+<tr><td><code translate="no">cat</code></td><td>Enseña lo que hay escrito en un archivo</td><td><code translate="no">cat notas.txt</code></td></tr>
+</table>
+<p>Se puede usar una ruta en cualquiera de ellas: <code translate="no">cp ~/Descargas/mapa.png ~/Imágenes</code>. Y el asterisco quiere decir «cualquier cosa»: <code translate="no">mv *.png fotos</code> mueve todas las imágenes .png.</p>
+<div class="nota">⚠️ <strong><code translate="no">rm</code> no usa la papelera</strong>: lo que borras se borra para siempre. Antes de pulsar Intro, mira bien lo que has escrito.</div>
+
+<h3>Cuando sale un error</h3>
+<table>
+<tr><th>Mensaje</th><th>Qué pasa</th></tr>
+<tr><td><code translate="no">No existe el archivo o el directorio</code></td><td>El nombre está mal escrito (¡mayúsculas!) o no estás en la carpeta que crees. Mira con <code translate="no">pwd</code> y <code translate="no">ls</code>.</td></tr>
+<tr><td><code translate="no">orden no encontrada</code></td><td>La orden está mal escrita: <code translate="no">sl</code> en vez de <code translate="no">ls</code>.</td></tr>
+<tr><td><code translate="no">Es un directorio</code></td><td>Has querido borrar o copiar una carpeta sin <code translate="no">-r</code>.</td></tr>
+<tr><td><code translate="no">Permiso denegado</code></td><td>No es tuyo. Lo verás en las Sesiones 5 y 6.</td></tr>
+</table>
+<div data-actividad="u7s3-ordenes"></div>
+
+<h3>Actividad 1 — Solo con la terminal</h3>
+<p>En el Linux de mentira, la Terminal ya está abierta. Haz clic en ella y escribe con tu teclado; cada orden, con Intro. Prueba Tab y la flecha ↑.</p>
+<ol>
+<li>Lee la misión (el pósit amarillo).</li>
+<li>Todo se hace escribiendo órdenes: nada con el ratón.</li>
+<li>Si una orden da error, lee el mensaje y mira la tabla de los errores.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno, en orden, las órdenes que has escrito para cada punto (pregunta 15).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="l-terminal" aria-label="Solo con la terminal"></div>
+<p><strong>Comprobación observable:</strong> <code translate="no">ls -l</code> dentro de <code translate="no">practicas-u7</code> enseña tres archivos: <code translate="no">aldea.png</code>, <code translate="no">castillo.png</code> y <code translate="no">lista-mods.txt</code>.</p>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 3 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es la terminal? Escribe dos razones para usarla.</li>
+<li>Explica qué quiere decir cada parte de <span translate="no">alumno@aula-pc:~$</span>.</li>
+<li>(V/F) En el prompt, <span translate="no">#</span> quiere decir que eres un usuario normal.</li>
+<li>¿Qué hacen <span translate="no">pwd</span>, <span translate="no">ls</span> y <span translate="no">cd</span>?</li>
+<li>¿Qué diferencia hay entre <span translate="no">ls</span>, <span translate="no">ls -a</span> y <span translate="no">ls -l</span>?</li>
+<li>(ABC) Estás en <span translate="no">/home/alumno/Documentos</span> y escribes <span translate="no">cd ..</span>. ¿Dónde estás?
+  <ul>
+    <li>a) <span translate="no">/home/alumno</span></li>
+    <li>b) <span translate="no">/home</span></li>
+    <li>c) <span translate="no">/</span></li>
+  </ul>
+</li>
+<li>¿Para qué sirve la tecla Tab en la terminal? ¿Y la flecha ↑?</li>
+<li>¿Qué hace <span translate="no">Ctrl + C</span> en la terminal? ¿Cómo se copia y se pega?</li>
+<li>Escribe la orden para crear una carpeta llamada fotos y la orden para entrar en ella.</li>
+<li>¿Qué diferencia hay entre <span translate="no">cp</span> y <span translate="no">mv</span>?</li>
+<li>¿Cómo se cambia el nombre de un archivo con la terminal? Pon un ejemplo.</li>
+<li>(V/F) Lo que borras con <span translate="no">rm</span> va a la papelera.</li>
+<li>¿Por qué <span translate="no">rm fotos</span> da el error «Es un directorio»? ¿Cómo se borra esa carpeta?</li>
+<li>¿Qué quiere decir el error «No existe el archivo o el directorio»? Escribe dos causas.</li>
+<li><strong>(Actividad 1)</strong> En la simulación, ¿qué órdenes has escrito para cada punto de la misión?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Busca qué hace <span translate="no">ls -lh</span> y en qué se diferencia de <span translate="no">ls -l</span>.</li>
+<li>Busca qué hace <span translate="no">mkdir -p a/b/c</span>.</li>
+<li>Busca qué es bash y el nombre de otros dos intérpretes de órdenes.</li>
+<li>Escribe la orden que copiaría todas las imágenes .png de Descargas a Imágenes.</li>
+</ol>
+</div>

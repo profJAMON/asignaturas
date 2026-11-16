@@ -90,6 +90,12 @@
    14/12 y examen el JUEVES 17/12 a las 19:10 (vuelve a caer en la semana
    de la 1ª evaluación). El lun 21/12 queda libre; la U6 no cambia.
 
+   Unidad 7, Linux (16/11/2026)
+   ----------------------------
+   Creada con 6 sesiones + resumen: lun 01/02, jue 04/02, lun 08/02,
+   jue 11/02, lun 15/02, jue 18/02; resumen lun 22/02; examen jue
+   25/02 a las 19:10. Sin cambios en las demás unidades.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se desvía: edita las fechas de la unidad afectada
@@ -229,7 +235,15 @@ const CALENDARIO_OPERACIONES =
       "id": "linux",
       "titulo": "Unidad 7. Linux",
       "horas": 20,
-      "sesiones": [],
+      "sesiones": [
+        "sesion-1-linux-escritorio",
+        "sesion-2-archivos-linux",
+        "sesion-3-terminal",
+        "sesion-4-usb-linux",
+        "sesion-5-usuarios-programas",
+        "sesion-6-permisos-procesos",
+        "resumen-linux"
+      ],
       "fechas": {
         "inicio": "2027-02-01",
         "fin": "2027-02-25"
@@ -404,6 +418,41 @@ const CALENDARIO_OPERACIONES =
       "titulo": "Sesión 6. Tu resumen de la unidad",
       "unidad": "windows",
       "fecha": "2027-01-25"
+    },
+    "sesion-1-linux-escritorio": {
+      "titulo": "Sesión 1. Linux y su escritorio",
+      "unidad": "linux",
+      "fecha": "2027-02-01"
+    },
+    "sesion-2-archivos-linux": {
+      "titulo": "Sesión 2. Archivos en Linux: todo cuelga de /",
+      "unidad": "linux",
+      "fecha": "2027-02-04"
+    },
+    "sesion-3-terminal": {
+      "titulo": "Sesión 3. La terminal",
+      "unidad": "linux",
+      "fecha": "2027-02-08"
+    },
+    "sesion-4-usb-linux": {
+      "titulo": "Sesión 4. Unidades y USB en Linux",
+      "unidad": "linux",
+      "fecha": "2027-02-11"
+    },
+    "sesion-5-usuarios-programas": {
+      "titulo": "Sesión 5. Usuarios, sudo e instalar programas",
+      "unidad": "linux",
+      "fecha": "2027-02-15"
+    },
+    "sesion-6-permisos-procesos": {
+      "titulo": "Sesión 6. Permisos y procesos",
+      "unidad": "linux",
+      "fecha": "2027-02-18"
+    },
+    "resumen-linux": {
+      "titulo": "Sesión 7. Tu resumen de la unidad",
+      "unidad": "linux",
+      "fecha": "2027-02-22"
     }
   }
 }

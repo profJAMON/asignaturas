@@ -218,6 +218,116 @@ registrarPiezas('capas', {
   },
 });
 
+/* ------------------------------------------------------------
+   Una distribución de Linux por capas (U7 S1), como «capas» de la
+   U5: de abajo arriba, hardware, núcleo Linux, terminal y
+   herramientas, escritorio y aplicaciones. La capa elegida sale
+   como un cajón.
+   ------------------------------------------------------------ */
+registrarPiezas('distribucion-linux', {
+  partes: [
+    { nombre: 'Aplicaciones', texto: 'Los programas que usas: Firefox, LibreOffice, el Editor de textos, un juego. Casi todos son libres y se instalan desde los repositorios.' },
+    { nombre: 'Escritorio', texto: 'Lo que ves: el panel, el menú y las ventanas. En el aula es Xfce, ligero. Linux Mint también trae Cinnamon y MATE: mismo Linux, otro escritorio.' },
+    { nombre: 'Terminal y herramientas', texto: 'El intérprete de órdenes (bash) y las órdenes básicas (ls, cd, cp…), además del gestor de paquetes (apt), que instala los programas.' },
+    { nombre: 'Núcleo Linux', texto: 'El corazón del sistema (en inglés, kernel). Habla con el hardware y reparte la memoria y el procesador entre los programas. Es el mismo en Mint, Ubuntu, Debian o Android.' },
+    { nombre: 'Hardware', texto: 'Lo que se puede tocar: el procesador, la memoria RAM, el disco y la pantalla. Linux funciona desde en un móvil hasta en un superordenador.' },
+  ],
+
+  montar({ stage, svg }, avisos) {
+    const { Cam, fit, proj, facing, prism, rings, rrect, poly, seg, tween, tset, tval, tdone, mk, pointer, put, register, solid, disposer } = HL;
+    const APPS = 0, ESC = 1, TERM = 2, NUC = 3, HW = 4;
+    const W = 56, D = 34, PULL = 16, HUECO = 1.4;
+    // de abajo arriba: parte y alto
+    const PISOS = [[HW, 9], [NUC, 7], [TERM, 7], [ESC, 9], [APPS, 7]];
+    const ALTO = PISOS.reduce((a, [, h]) => a + h + HUECO, 0);
+
+    const bag = disposer();
+    const C = Cam(45, 0.5, 3.0);
+    fit(C, [[0, 0, 0], [W, 0, 0], [0, D + PULL, 0], [W, D + PULL, 0], [0, 0, ALTO], [W, D + PULL, ALTO]], 200, 160);
+    const P = proj(C), front = facing(C);
+    const g = mk('g', {}, svg);
+
+    const capas = [];
+    let z = 0;
+    for (const [parte, alto] of PISOS) {
+      const c = { parte, z0: z, z1: z + alto, grp: mk('g', {}, g), out: tween(0), pintado: NaN };
+      z += alto + HUECO;
+      c.cuerpo = solid(c.grp);
+      c.cara = mk('path', { class: 'nf' }, c.grp);
+      capas.push(c);
+    }
+    const porParte = {};
+    capas.forEach((c) => { porParte[c.parte] = c; });
+
+    function cajon(c, o) {
+      const y1 = D + o, [r, ir] = rings(0, o, W, y1, 1.6, 0.8);
+      put(c.cuerpo, prism(P, front, r, ir, c.z0, c.z1));
+      const F = (x, zz) => P(x, y1, zz);
+      const caja = (a, b, cc, d, rr) => poly(rrect(a, b, cc, d, rr, 3).map((q) => F(q.u, q.v)));
+      const m = c.z0 + 2, M = c.z1 - 2;
+      let d = '';
+      if (c.parte === HW) {
+        // puertos a la izquierda y rejilla de ventilación a la derecha
+        for (let k = 0; k < 3; k++) d += caja(5 + k * 6, m, 9 + k * 6, M, 0.6);
+        for (let k = 0; k < 6; k++) d += seg(F(34 + k * 3, m), F(34 + k * 3, M));
+      } else if (c.parte === NUC) {
+        // el núcleo: un chip con patillas
+        d += caja(20, m, 36, M, 0.8);
+        for (let k = 0; k < 4; k++) { d += seg(F(12 + k * 1.8, (m + M) / 2), F(13 + k * 1.8, (m + M) / 2)); d += seg(F(38 + k * 1.8, (m + M) / 2), F(39 + k * 1.8, (m + M) / 2)); }
+      } else if (c.parte === TERM) {
+        // un prompt: > y unas líneas
+        d += seg(F(7, M), F(10, (m + M) / 2)) + seg(F(10, (m + M) / 2), F(7, m));
+        d += seg(F(13, m), F(26, m)) + seg(F(29, m), F(46, m));
+      } else if (c.parte === ESC) {
+        // una ventana y el panel de abajo
+        d += caja(10, m + 1.6, 40, M, 1);
+        d += seg(F(4, m), F(52, m));
+      } else if (c.parte === APPS) {
+        // tres iconos de programa
+        for (let k = 0; k < 3; k++) d += caja(11 + k * 13, m, 19 + k * 13, M, 1);
+      }
+      c.cara.setAttribute('d', d);
+    }
+
+    function pintar(now) {
+      let mueve = false;
+      for (const c of capas) {
+        const o = tval(c.out, now);
+        if (!tdone(c.out, now)) mueve = true;
+        if (o === c.pintado) continue;
+        c.pintado = o;
+        cajon(c, o);
+      }
+      return mueve;
+    }
+    const B = register(stage, (_dt, now) => pintar(now));
+    bag.add(B.unregister);
+
+    // anclas: el centro de la cara de delante de cada capa, en reposo
+    const ANCLAS = capas.map((c) => [c.parte, [W / 2, D, (c.z0 + c.z1) / 2]]);
+    let act = -2;
+    function mostrar(a) {
+      if (a === act) return;
+      act = a;
+      const now = performance.now();
+      for (const c of capas) {
+        const sale = c.parte === a;
+        tset(c.out, sale ? PULL : 0, now, 0);
+        c.cuerpo.sil.classList.toggle('hi', sale);
+      }
+      B.wake();
+    }
+    mostrar(-1);
+    bag.add(pointer(stage, {
+      move: (p) => avisos.encima(PZ.cerca(P, ANCLAS, p, 40)),
+      down: (p) => avisos.toca(PZ.cerca(P, ANCLAS, p, 40)),
+      leave: () => avisos.fuera(),
+    }));
+    bag.add(() => svg.replaceChildren());
+    return { mostrar, destroy: bag.dispose };
+  },
+});
+
 
 /* ------------------------------------------------------------
    Una máquina virtual por dentro (U5 S2). De abajo arriba: el

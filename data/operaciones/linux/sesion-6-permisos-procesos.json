@@ -1,0 +1,16 @@
+{
+  "id": "sesion-6-permisos-procesos",
+  "titulo": "Sesión 6. Permisos y procesos",
+  "fecha": "",
+  "descripcion": "Propietario, grupo y otros; los permisos r, w y x, leerlos con ls -l y con números (755, 644, 600), chmod y ./; los procesos y el PID, el Gestor de tareas, ps, kill y kill -9.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s6-permisos",
+      "tipo": "generador",
+      "titulo": "Los permisos con números",
+      "generador": "permisos-numero",
+      "n": 5
+    }
+  ]
+}

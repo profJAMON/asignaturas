@@ -1,0 +1,16 @@
+{
+  "id": "sesion-5-usuarios-programas",
+  "titulo": "Sesión 5. Usuarios, sudo e instalar programas",
+  "fecha": "",
+  "descripcion": "Los usuarios, root y el grupo sudo, qué hace sudo y cuándo hace falta, crear un usuario con adduser, los repositorios y apt, y el Gestor de software.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s5-sudo",
+      "tipo": "generador",
+      "titulo": "¿Hace falta sudo?",
+      "generador": "sudo-si-no",
+      "n": 5
+    }
+  ]
+}

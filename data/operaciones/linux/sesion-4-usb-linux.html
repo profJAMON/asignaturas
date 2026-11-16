@@ -1,0 +1,144 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el momento en que aparecen, en el Linux de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Los discos en Linux</h2>
+
+<p>En Linux, cada disco tiene un nombre corto que empieza por <code translate="no">sd</code>, y cada partición (cada trozo del disco, Unidad 5) lleva un número:</p>
+<table>
+<tr><th>Nombre</th><th>Qué es</th></tr>
+<tr><td><code translate="no">sda</code></td><td>El primer disco: el del ordenador.</td></tr>
+<tr><td><code translate="no">sda1</code>, <code translate="no">sda2</code></td><td>Las particiones de ese disco. En una está Linux.</td></tr>
+<tr><td><code translate="no">sdb</code></td><td>El segundo disco: por ejemplo, el USB que acabas de pinchar.</td></tr>
+<tr><td><code translate="no">sdb1</code></td><td>La partición del USB, donde están tus archivos.</td></tr>
+</table>
+
+<h3>Montar y expulsar</h3>
+<p>Como en Linux no hay letras, para usar un disco hay que <strong>colgarlo</strong> de una carpeta del árbol. Eso se llama <strong>montar</strong>, y la carpeta es el <strong>punto de montaje</strong>. Un USB se monta en <code translate="no">/media/tu-usuario/NOMBRE-DEL-USB</code>.</p>
+<p>Linux Mint lo hace solo: al pinchar el USB, sale en el Gestor de archivos, en <strong>Dispositivos</strong>; al abrirlo, se monta. Pasa las diapositivas:</p>
+
+<div class="diapos" aria-label="Montar y expulsar un USB">
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="conectas el USB"><rect x="20" y="40" width="150" height="100" rx="6" class="d-caja"/><text x="95" y="96" text-anchor="middle" class="d-d d-peq">ordenador</text><rect x="210" y="76" width="70" height="28" rx="4" class="d-caja-act"/><rect x="186" y="82" width="24" height="16" rx="2" class="d-caja-act"/><text x="245" y="95" text-anchor="middle" class="d-c d-peq">USB</text><path d="M 170 90 L 186 90" class="d-linea-c"/><text x="180" y="176" text-anchor="middle" class="d-c d-peq">sdb</text></svg>
+<p class="diapo__texto">1. Pinchas el USB. Linux lo ve como un disco nuevo: <strong>sdb</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="aparece en Dispositivos"><rect x="20" y="20" width="320" height="140" rx="6" class="d-caja"/><rect x="20" y="20" width="110" height="140" rx="6" class="d-caja"/><text x="32" y="46" class="d-d d-peq">Equipo</text><text x="32" y="66" class="d-d d-peq">alumno</text><text x="32" y="100" class="d-d d-peq">Dispositivos</text><rect x="28" y="108" width="94" height="22" rx="3" class="d-caja-act"/><text x="36" y="124" class="d-c d-peq">KINGSTON</text><text x="180" y="180" text-anchor="middle" class="d-c d-peq">Gestor de archivos → Dispositivos</text></svg>
+<p class="diapo__texto">2. Sale en el Gestor de archivos, en <strong>Dispositivos</strong>, con su nombre.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="se monta en media"><rect x="150" y="10" width="60" height="24" rx="4" class="d-caja-on"/><text x="180" y="27" text-anchor="middle" class="d-a">/</text><rect x="146" y="52" width="68" height="24" rx="4" class="d-caja-on"/><text x="180" y="69" text-anchor="middle" class="d-a d-peq">media</text><rect x="146" y="94" width="68" height="24" rx="4" class="d-caja-on"/><text x="180" y="111" text-anchor="middle" class="d-a d-peq">alumno</text><rect x="136" y="136" width="88" height="24" rx="4" class="d-caja-act"/><text x="180" y="153" text-anchor="middle" class="d-c d-peq">KINGSTON</text><path d="M 180 34 L 180 52 M 180 76 L 180 94 M 180 118 L 180 136" class="d-linea-a"/><text x="180" y="184" text-anchor="middle" class="d-c d-peq">/media/alumno/KINGSTON</text></svg>
+<p class="diapo__texto">3. Al abrirlo, se <strong>monta</strong>: sus archivos aparecen dentro de <code translate="no">/media/alumno/KINGSTON</code>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="expulsar"><rect x="20" y="20" width="320" height="140" rx="6" class="d-caja"/><rect x="20" y="20" width="110" height="140" rx="6" class="d-caja"/><text x="32" y="100" class="d-d d-peq">Dispositivos</text><rect x="28" y="108" width="94" height="22" rx="3" class="d-caja-on"/><text x="36" y="124" class="d-a d-peq">KINGSTON</text><circle cx="112" cy="119" r="9" class="d-caja-act"/><text x="112" y="124" text-anchor="middle" class="d-c d-peq">⏏</text><text x="180" y="180" text-anchor="middle" class="d-c d-peq">el botón ⏏ desmonta el USB</text></svg>
+<p class="diapo__texto">4. Antes de quitarlo, pulsa <strong>⏏ Expulsar</strong>: Linux acaba de escribir y lo desmonta.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="ya se puede quitar"><rect x="20" y="40" width="150" height="100" rx="6" class="d-caja"/><text x="95" y="96" text-anchor="middle" class="d-d d-peq">ordenador</text><rect x="240" y="76" width="70" height="28" rx="4" class="d-caja-act"/><rect x="216" y="82" width="24" height="16" rx="2" class="d-caja-act"/><text x="275" y="95" text-anchor="middle" class="d-c d-peq">USB</text><text x="180" y="176" text-anchor="middle" class="d-c d-peq">«Ya puedes quitar KINGSTON»</text></svg>
+<p class="diapo__texto">5. Cuando sale el aviso <strong>«Ya puedes quitar…»</strong>, lo sacas.</p>
+</div>
+</div>
+
+<p>¿Por qué no se quita sin más? Como en Windows (Unidad 6): Linux no escribe al momento, guarda un poco en la memoria y lo escribe después. Si quitas el USB antes, <strong>se pueden perder o estropear archivos</strong>.</p>
+
+<h3>Los discos en la terminal</h3>
+<table>
+<tr><th>Orden</th><th>Qué enseña</th></tr>
+<tr><td><code translate="no">lsblk</code></td><td>Los discos y sus particiones, su tamaño y dónde están montados.</td></tr>
+<tr><td><code translate="no">lsblk -f</code></td><td>Lo mismo y, además, el <strong>sistema de archivos</strong> y el nombre de cada partición.</td></tr>
+<tr><td><code translate="no">df -h</code></td><td>Cuánto espacio está usado y libre en cada disco montado (en G y M, que se leen fácil).</td></tr>
+</table>
+<p>Así sale <code translate="no">lsblk -f</code> con un USB pinchado:</p>
+<div class="salida"><pre><code translate="no">NAME   FSTYPE LABEL       SIZE TYPE MOUNTPOINTS
+sda                     238,5G disk
+├─sda1 vfat               512M part /boot/efi
+└─sda2 ext4               238G part /
+sdb                        16G disk
+└─sdb1 ext4   KINGSTON     16G part /media/alumno/KINGSTON</code></pre></div>
+<p>Se lee por filas: la partición <code translate="no">sdb1</code> del USB tiene el sistema de archivos <code translate="no">ext4</code>, se llama KINGSTON, mide 16 GB y está montada en <code translate="no">/media/alumno/KINGSTON</code>.</p>
+
+<h2>Los sistemas de archivos</h2>
+<p>En la Unidad 6 viste FAT32, exFAT y NTFS. Linux tiene el suyo: <strong>ext4</strong>.</p>
+<table>
+<tr><th>Sistema</th><th>Quién lo lee</th><th>Para qué</th></tr>
+<tr><td>ext4</td><td>Linux. <strong>Windows no lo lee</strong>.</td><td>El disco donde está instalado Linux.</td></tr>
+<tr><td>NTFS</td><td>Windows; Linux también. Muchas teles, no.</td><td>El disco de Windows.</td></tr>
+<tr><td>FAT32</td><td>Todos, también aparatos viejos.</td><td>USB pequeños. Archivos de 4 GB como mucho.</td></tr>
+<tr><td>exFAT</td><td>Windows, Mac, Linux y muchas teles.</td><td>USB y discos externos para usar en todas partes.</td></tr>
+</table>
+<div data-actividad="u7s4-fs"></div>
+
+<div class="nota">🤔 Antes de seguir: en casa formateas un USB en ext4. ¿Lo podrás abrir en el Windows del instituto?</div>
+<details><summary>Ver respuesta</summary>No: <strong>Windows no lee ext4</strong>. Para usarlo en los dos, formatéalo en exFAT (o en FAT32 si los archivos son pequeños).</details>
+
+<h2>Formatear un USB con Discos</h2>
+<p>Discos es el programa de Linux Mint para ver y preparar los discos. Se abre desde el Menú (búscalo escribiendo «discos»).</p>
+<ol>
+<li>A la izquierda, elige la <strong>unidad del USB</strong> (la de 16 GB). <strong>¡No el disco del ordenador!</strong></li>
+<li>Debajo de la barra de Volúmenes, pulsa ⚙ → <strong>Formatear partición…</strong></li>
+<li>Escribe el nombre del volumen y elige el tipo. exFAT está en «Otro».</li>
+<li>Siguiente → <strong>Formatear</strong>.</li>
+<li>Escribe tu contraseña: formatear es cosa de administrador (lo verás en la Sesión 5).</li>
+</ol>
+<div class="nota">⚠️ <strong>Formatear borra todo lo que hay en el USB.</strong> Copia antes lo que quieras guardar. Y mira dos veces que has elegido el USB: si formateas el disco del ordenador, borras Linux entero.</div>
+
+<h3>Actividad 1 — El USB de un amigo</h3>
+<p>Un amigo te deja un USB con el mapa del servidor. Lo formateó en su Linux. En el Linux de mentira:</p>
+<ol>
+<li>Lee la misión (el pósit amarillo). Hazla en orden.</li>
+<li>Para la terminal, usa Ctrl + Alt + T en el teclado de abajo.</li>
+<li>Si te pide la contraseña, es <code translate="no">alumno</code>.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno lo que te pide (pregunta 15).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="l-usb" aria-label="El USB de un amigo"></div>
+<p><strong>Comprobación observable:</strong> el mapa está en tus Documentos y el USB, ya vacío y con el nombre CLASE, ha desaparecido de Dispositivos.</p>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 4 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué son <span translate="no">sda</span>, <span translate="no">sda1</span> y <span translate="no">sdb</span>?</li>
+<li>¿Qué es montar un disco? ¿Qué es el punto de montaje?</li>
+<li>¿Dónde se monta el USB KINGSTON del usuario alumno? Escribe la ruta.</li>
+<li>(V/F) En Linux, el USB sale como la unidad <span translate="no">E:</span>.</li>
+<li>Escribe los pasos para quitar un USB con seguridad. ¿Por qué no se quita sin más?</li>
+<li>¿Qué enseña <span translate="no">lsblk</span>? ¿Y <span translate="no">lsblk -f</span>?</li>
+<li>¿Qué enseña <span translate="no">df -h</span>?</li>
+<li>(ABC) El sistema de archivos del disco donde está instalado Linux es:
+  <ul>
+    <li>a) NTFS</li>
+    <li>b) ext4</li>
+    <li>c) FAT32</li>
+  </ul>
+</li>
+<li>(V/F) Windows puede abrir sin problemas un USB en ext4.</li>
+<li>¿Qué sistema de archivos eliges para un USB que vas a usar en Windows, en Linux y en la tele? ¿Por qué?</li>
+<li>¿Qué límite tiene FAT32?</li>
+<li>Escribe los pasos para formatear un USB con Discos.</li>
+<li>¿Qué hay que hacer siempre antes de formatear? ¿Por qué hay que mirar bien qué disco eliges?</li>
+<li>¿Por qué Discos te pide la contraseña para formatear?</li>
+<li><strong>(Actividad 1)</strong> En la simulación: ¿dónde estaba montado el USB y qué sistema de archivos tenía? ¿Cuál elegiste al formatear y por qué? ¿Cómo lo expulsaste?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 4 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Busca qué hay en la carpeta <span translate="no">/dev</span>.</li>
+<li>Busca por qué un disco puede tener varias particiones. Pon un ejemplo.</li>
+<li>Busca qué sistema de archivos usan los Mac y si Linux lo puede leer.</li>
+<li>Busca qué hace la orden <span translate="no">umount</span>.</li>
+</ol>
+</div>

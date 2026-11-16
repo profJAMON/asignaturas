@@ -1,0 +1,16 @@
+{
+  "id": "sesion-4-usb-linux",
+  "titulo": "Sesión 4. Unidades y USB en Linux",
+  "fecha": "",
+  "descripcion": "Los discos sda y sdb, montar y expulsar un USB, lsblk y df -h, los sistemas de archivos (ext4, NTFS, FAT32 y exFAT) y formatear un USB con Discos.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u7s4-fs",
+      "tipo": "generador",
+      "titulo": "¿Qué sistema de archivos elijo?",
+      "generador": "fs-linux",
+      "n": 4
+    }
+  ]
+}

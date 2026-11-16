@@ -64,6 +64,7 @@ const ICONOS_UNIDAD = {
   'navegador-servicios-internet': _SVG('<circle cx="19" cy="19" r="11"></circle><path d="M27 27l6 6"></path><rect x="26" y="30" width="18" height="12" rx="1.5"></rect><path d="M26 31l9 6 9-6" opacity="0.8"></path>'),
   'sistemas-operativos': _SVG('<rect x="4" y="7" width="40" height="27" rx="2"></rect><path d="M18 41h12M24 34v7"></path><rect x="13" y="13" width="22" height="15" rx="1.5"></rect><path d="M13 17h22" opacity="0.8"></path>'),
   windows: _SVG('<rect x="5" y="6" width="38" height="30" rx="2.5"></rect><path d="M5 31h38"></path><path d="M14 17h7v-7h-7zM23 17h7v-7h-7zM14 26h7v-7h-7zM23 26h7v-7h-7z"></path><path d="M18 42h12M24 36v6"></path>'),
+  linux: _SVG('<path d="M24 5c-6 0-9 5-9 11 0 4-4 8-6 13-2 5 0 9 4 10l3-2h16l3 2c4-1 6-5 4-10-2-5-6-9-6-13 0-6-3-11-9-11z"></path><path d="M18 20c-3 4-4 9-3 15M30 20c3 4 4 9 3 15"></path><circle cx="21" cy="14" r="1.2"></circle><circle cx="27" cy="14" r="1.2"></circle><path d="M21.5 18.5l2.5 2 2.5-2"></path><path d="M12 39c-2 1-3 3-1 4h7l1-3M36 39c2 1 3 3 1 4h-7l-1-3"></path>'),
   /* Tres equipos unidos. */
   'introduccion-redes': _SVG('<rect x="18" y="5" width="12" height="9" rx="1.5"></rect><rect x="4" y="33" width="12" height="9" rx="1.5"></rect><rect x="32" y="33" width="12" height="9" rx="1.5"></rect><path d="M24 14v9M10 33v-6h28v6M24 23v4"></path>'),
   /* Casco de obra. */
