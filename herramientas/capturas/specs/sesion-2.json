@@ -59,7 +59,7 @@
     "texto": "Al hacer clic en este enlace, la página salta a la sección de destino."
    }
   ],
-  "pie": "Es la web de ejemplo de PixelRojo: la tuya lleva tu alias y tu contenido."
+  "pie": "Es la web de ejemplo de ProfesorCabron: la tuya lleva tu alias y tu contenido."
  },
  {
   "solucion": "soluciones/s2/reto1-webs.html",
@@ -93,7 +93,7 @@
     "texto": "Al hacer clic en cada enlace, la web se abre en una pestaña nueva."
    }
   ],
-  "pie": "Ejemplo de PixelRojo: tus webs y tus descripciones serán las tuyas."
+  "pie": "Ejemplo de ProfesorCabron: tus webs y tus descripciones serán las tuyas."
  },
  {
   "solucion": "soluciones/s2/reto2-indice.html",
@@ -124,7 +124,7 @@
     "texto": "Cada enlace del índice salta a su <h2>. Tu índice tiene un enlace por cada <h2> de tu página."
    }
   ],
-  "pie": "Es la web de ejemplo de PixelRojo: la tuya lleva tus propios apartados."
+  "pie": "Es la web de ejemplo de ProfesorCabron: la tuya lleva tus propios apartados."
  },
  {
   "solucion": "soluciones/s2/reto3-receta.html",

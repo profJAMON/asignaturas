@@ -8,7 +8,7 @@
    27/10/2026): son para entender cómo funciona algo antes de
    hacerlo de verdad. Van justo antes de la parte práctica.
    La web de ejemplo es BloqueCraft (web de fans de Minecraft
-   inventada), de la pareja PixelRojo y CreeperVerde.
+   inventada), de la pareja ProfesorCabron y CreeperVerde.
 
    primera-pagina   S1: carpeta con nombre limpio, img, index.html al
                     lado de img, <title> y <h1>, guardar y Go Live.
@@ -125,7 +125,7 @@
       const raiz = carpeta('Este equipo', [carpeta('C:', [
         carpeta('Users', [carpeta('alumno', [
           carpeta('Desktop', []),
-          carpeta('Documents', [copiaVieja(), carpeta('ejercicios-pixelrojo', [archivo('s05-ej1.html', 3 * KB)])]),
+          carpeta('Documents', [copiaVieja(), carpeta('ejercicios-profesorcabron', [archivo('s05-ej1.html', 3 * KB)])]),
           carpeta('Downloads', [archivo('horario.pdf', 210 * KB)]),
         ])]),
       ], { unidad: true, etiqueta: 'Disco local', capacidad: 237 * 1024 * 1024 * KB, libre: 112 * 1024 * 1024 * KB })], { raiz: true });
@@ -309,7 +309,7 @@
           errores.push('Lo que has subido es igual que lo que ya había: falta el cambio de hoy. Escríbelo en VS Code, guárdalo y vuelve a subir.');
         }
         const alias = /sesi[oó]n\s*6/i.test(mensaje) && /escribi[oó]\s+\S+/i.test(mensaje);
-        if (!alias) errores.push(`El mensaje es «${mensaje}». Tiene que decir la sesión y quién ha escrito, por ejemplo: Sesión 6 · escribió PixelRojo, CreeperVerde.`);
+        if (!alias) errores.push(`El mensaje es «${mensaje}». Tiene que decir la sesión y quién ha escrito, por ejemplo: Sesión 6 · escribió ProfesorCabron, CreeperVerde.`);
         if (errores.length) {
           ctx.falla(quien);
           aviso(errores.join(' '));
@@ -433,7 +433,7 @@
         app: 'code',
         local: { cambio: false, sucio: false, logo: 'Logo.png' },
         repo: { cambio: false, logo: 'Logo.png' },
-        deploys: [{ msg: 'Sesión 6 · escribió PixelRojo, CreeperVerde', ok: true, snap: { cambio: false, logo: 'Logo.png' } }],
+        deploys: [{ msg: 'Sesión 6 · escribió ProfesorCabron, CreeperVerde', ok: true, snap: { cambio: false, logo: 'Logo.png' } }],
         visto: { cambio: false, logo: 'Logo.png' },   // lo que enseña Chrome
         f12: false,
         renombrando: false,
@@ -612,7 +612,7 @@
         const ok = boton('Commit changes', 'lab__boton lab__boton--activo');
         ok.addEventListener('click', () => {
           const m = i.value.trim() || 'Add files via upload';
-          if (!(/sesi[oó]n\s*7/i.test(m) && /escribi[oó]\s+\S+/i.test(m))) { aviso('El mensaje tiene que decir la sesión y quién ha escrito: Sesión 7 · escribió PixelRojo, CreeperVerde.', 'cuidado'); return; }
+          if (!(/sesi[oó]n\s*7/i.test(m) && /escribi[oó]\s+\S+/i.test(m))) { aviso('El mensaje tiene que decir la sesión y quién ha escrito: Sesión 7 · escribió ProfesorCabron, CreeperVerde.', 'cuidado'); return; }
           if (!s.local.cambio) { aviso('Todavía no has escrito el cambio de hoy en VS Code.', 'cuidado'); return; }
           if (s.local.sucio) { ctx.falla('Subir con index.html sin guardar.'); aviso('index.html tiene el ● de sin guardar: a GitHub sube lo guardado. Guarda primero.', 'cuidado'); }
           s.repo = { cambio: s.local.cambio && !s.local.sucio, logo: s.local.logo };
@@ -960,7 +960,7 @@
      S8 · Conecta el CSS
      ============================================================ */
   simCodigo('conecta-css', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's08-mobs.html',
     archivos: {
       's08-mobs.html': '<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <title>Mobs</title>\n    <link rel="stylesheet" href="s08-mob.css">\n</head>\n<body>\n    <h1>Mobs de Minecraft</h1>\n    <p class="peligro">El creeper explota si te acercas.</p>\n    <p>El aldeano te cambia cosas por esmeraldas.</p>\n</body>\n</html>\n',
@@ -978,7 +978,7 @@
      S9 · Arregla la caja
      ============================================================ */
   simCodigo('arregla-caja', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's09-mobs.css',
     archivos: {
       's09-mobs.html': '<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <title>Mobs</title>\n    <link rel="stylesheet" href="s09-mobs.css">\n</head>\n<body>\n    <div class="tarjeta">\n        <h2>Creeper</h2>\n        <p>Explota si te acercas.</p>\n    </div>\n    <p>\n        <a class="boton" href="#">Jugar</a>\n        <a class="boton" href="#">Opciones</a>\n    </p>\n</body>\n</html>\n',
@@ -996,7 +996,7 @@
      S10 · Ponlo en fila
      ============================================================ */
   simCodigo('en-fila', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's10-menu.css',
     archivos: {
       's10-menu.html': '<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <title>BloqueCraft</title>\n    <link rel="stylesheet" href="s10-menu.css">\n</head>\n<body>\n    <nav>\n        <a href="#">Inicio</a>\n        <a href="#">Mobs</a>\n        <a href="#">Biomas</a>\n    </nav>\n    <div class="tarjetas">\n        <div class="tarjeta">Creeper</div>\n        <div class="tarjeta">Zombi</div>\n        <div class="tarjeta">Enderman</div>\n    </div>\n</body>\n</html>\n',
@@ -1014,7 +1014,7 @@
      S12 · La consola
      ============================================================ */
   simCodigo('consola-js', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's12-mobs.js',
     consola: true,
     archivos: {
@@ -1033,7 +1033,7 @@
      S13 · El botón no hace nada
      ============================================================ */
   simCodigo('boton-muerto', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's13-chiste.html',
     consola: true,
     archivos: {
@@ -1052,7 +1052,7 @@
      S14 · Suma bien
      ============================================================ */
   simCodigo('suma-bien', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's14-esmeraldas.js',
     consola: true,
     archivos: {
@@ -1070,7 +1070,7 @@
      S16 · Modo noche
      ============================================================ */
   simCodigo('modo-noche', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's16-noche.css',
     consola: true,
     archivos: {
@@ -1523,7 +1523,7 @@
         carpeta('Desktop', []),
         carpeta('Documents', [
           carpeta('bloquecraft', [archivo('index.html', 2 * KB), carpeta('img', [])]),
-          carpeta('ejercicios-pixelrojo', [archivo('s02-ej1.html', 1 * KB), archivo('s02-ej2.html', 2 * KB), archivo('s02-ej3.html', 2 * KB)]),
+          carpeta('ejercicios-profesorcabron', [archivo('s02-ej1.html', 1 * KB), archivo('s02-ej2.html', 2 * KB), archivo('s02-ej3.html', 2 * KB)]),
         ]),
         carpeta('Downloads', []),
       ])])], { unidad: true, etiqueta: 'Disco local', capacidad: 237 * 1024 * 1024 * KB, libre: 112 * 1024 * 1024 * KB })], { raiz: true });
@@ -1540,8 +1540,8 @@
       function aviso(t, tipo) { msg.innerHTML = ''; if (t) msg.appendChild(ctx.aviso(t, tipo)); }
       const E = window.SIM_EXPLORADOR(Object.assign({}, ctx, { pantalla: vistaExp }), { raiz, inicio: DOCS, extensiones: true, cambio: comprobar });
       function comprobar() {
-        const z = E.buscar(DOCS).hijos.find(h => h.zipDe === 'ejercicios-pixelrojo');
-        if (z) ctx.cumple(0, 'Comprimir ejercicios-pixelrojo: sale ejercicios-pixelrojo.zip al lado.');
+        const z = E.buscar(DOCS).hijos.find(h => h.zipDe === 'ejercicios-profesorcabron');
+        if (z) ctx.cumple(0, 'Comprimir ejercicios-profesorcabron: sale ejercicios-profesorcabron.zip al lado.');
         if (E.buscar(DOCS).hijos.some(h => h.zipDe === 'bloquecraft') && s.app === 'exp') E.aviso('Esa es la web de la pareja. Lo que se entrega en Classroom es tu carpeta de ejercicios.', 'cuidado');
       }
       function pintar() {
@@ -1601,7 +1601,7 @@
               s.eligiendo = false;
               s.adjuntos.push(a);
               ctx.apunta(`Adjuntar ${t}.`);
-              if (a.zipDe === 'ejercicios-pixelrojo') { ctx.cumple(1, 'Adjuntar ejercicios-pixelrojo.zip a la tarea.'); aviso(); }
+              if (a.zipDe === 'ejercicios-profesorcabron') { ctx.cumple(1, 'Adjuntar ejercicios-profesorcabron.zip a la tarea.'); aviso(); }
               else if (a.zipDe) aviso('Ese .zip es el de la web de la pareja, no el de tus ejercicios.', 'cuidado');
               else aviso(`«${a.n}» es un solo ejercicio. Se entrega la carpeta entera, comprimida en .zip.`, 'cuidado');
               pintarCr();
@@ -1615,8 +1615,8 @@
       function entregar() {
         if (!s.adjuntos.length) { aviso('Si entregas sin adjuntar nada, no me llega ningún ejercicio. Primero añade el .zip.', 'cuidado'); ctx.falla('Intentar entregar sin nada adjunto.'); return; }
         s.entregado = true;
-        const bien = s.adjuntos.some(a => a.zipDe === 'ejercicios-pixelrojo');
-        const sobran = s.adjuntos.some(a => a.zipDe !== 'ejercicios-pixelrojo');
+        const bien = s.adjuntos.some(a => a.zipDe === 'ejercicios-profesorcabron');
+        const sobran = s.adjuntos.some(a => a.zipDe !== 'ejercicios-profesorcabron');
         if (bien && !sobran) { ctx.cumple(2, 'Entregar: la tarea pasa a «Entregado».'); aviso('Entregado. Si la semana que viene acabas algo más, anulas la entrega, adjuntas el zip nuevo y vuelves a entregar.', 'ok'); }
         else { ctx.falla('Entregar con ' + s.adjuntos.map(a => a.n).join(', ') + '.'); aviso('Entregado, pero lo adjunto no es el .zip de tus ejercicios (o sobra algo). Pulsa «Anular entrega», quita lo que no va y adjunta el zip.', 'cuidado'); }
         pintarCr();
@@ -1630,7 +1630,7 @@
      ============================================================ */
   const ALT = (html, re) => { const m = new RegExp('<img\\b[^>]*src=["\'][^"\']*' + re + '[^"\']*["\'][^>]*>', 'i').exec(html || ''); return m ? ((/alt\s*=\s*["']([^"']*)["']/i.exec(m[0]) || [])[1] || '') : null; };
   simCodigo('sin-imagen', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's03-mobs.html',
     renombrar: true,
     archivos: {
@@ -1672,7 +1672,7 @@
      S5 · Arregla el formulario
      ============================================================ */
   simCodigo('formulario-roto', {
-    carpeta: 'ejercicios-pixelrojo',
+    carpeta: 'ejercicios-profesorcabron',
     abrir: 's05-servidor.html',
     archivos: {
       's05-servidor.html': '<!DOCTYPE html>\n<html lang="es">\n<head>\n    <meta charset="UTF-8">\n    <title>Servidor</title>\n</head>\n<body>\n    <h1>Únete al servidor de BloqueCraft</h1>\n    <form>\n        <label for="alias">Tu alias:</label>\n        <input type="text" id="nombre">\n\n        <label for="edad">Edad:</label>\n        <input type="text" id="edad">\n\n        <label for="modo">Modo de juego:</label>\n        <select id="modo">\n            <li>Supervivencia</li>\n            <li>Creativo</li>\n        </select>\n\n        <button type="button">Unirme</button>\n    </form>\n</body>\n</html>\n',

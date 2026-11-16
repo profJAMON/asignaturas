@@ -142,7 +142,7 @@
         cont.classList.add('w11-foro');
         const cab = el('div', 'w11-web__cab');
         const logo = enlace('⛏ BloqueCraft', () => C2.ir(HOST), 'w11-web__logo');
-        cab.append(logo, el('span', 'w11-web__hueco'), avatar('pixelrojo'), el('span', 'w11-web__sub', 'pixelrojo 🛡 moderador'));
+        cab.append(logo, el('span', 'w11-web__hueco'), avatar('profesorcabron'), el('span', 'w11-web__sub', 'profesorcabron 🛡 moderador'));
         cont.appendChild(cab);
         const k = Object.keys(SLUG).find(x => ruta === '/t/' + SLUG[x]);
         if (k) return tema(k, t, cont);
@@ -339,7 +339,7 @@
         else if (ctx.hecho(i)) { ctx.deshace(i); ctx.falla('Deshacer: ' + texto.split(':')[0].toLowerCase() + ' vuelve a estar mal.'); }
       }
       const C = WIN11.web(W, {
-        pestanas: [{ url: HOST + '/accounts/edit', t: 'Configuración • Fotogram' }, { url: HOST + '/pixelrojo', t: 'pixelrojo • Fotogram' }],
+        pestanas: [{ url: HOST + '/accounts/edit', t: 'Configuración • Fotogram' }, { url: HOST + '/profesorcabron', t: 'profesorcabron • Fotogram' }],
         sitios: { [HOST]: pagina },
       });
       C.activa = 0;
@@ -350,18 +350,18 @@
         return perfil(t, cont);
       }
       function perfil(t, cont) {
-        t.t = 'pixelrojo • Fotogram';
+        t.t = 'profesorcabron • Fotogram';
         const aviso = el('p', 'w11-fg__como', 'Estás viendo tu perfil como lo ve alguien que no te sigue.');
         cont.appendChild(aviso);
         const cab = el('div', 'w11-fg__cab');
         const av = el('span', 'w11-fg__avatar', 'P');
         const d = el('div', 'w11-fg__datos');
         const n = el('p', 'w11-fg__nombre');
-        n.append(sinTraducir(el('strong', null, 'pixelrojo')), document.createTextNode(s.privada ? '  🔒' : ''));
+        n.append(sinTraducir(el('strong', null, 'profesorcabron')), document.createTextNode(s.privada ? '  🔒' : ''));
         d.appendChild(n);
         d.appendChild(el('p', 'w11-fg__cuenta', '3 publicaciones · 212 seguidores · 180 seguidos'));
         d.appendChild(el('p', 'w11-fg__bio', s.bio));
-        if (s.datos) d.appendChild(sinTraducir(el('p', 'w11-fg__contacto', '✉ pixelrojo@correo.es · ☎ 600 000 000')));
+        if (s.datos) d.appendChild(sinTraducir(el('p', 'w11-fg__contacto', '✉ profesorcabron@correo.es · ☎ 600 000 000')));
         const b = el('div', 'w11-fg__botones');
         b.appendChild(boton2('Seguir', 'w11-web__btn--primario', () => W.aviso('Es tu propio perfil, visto desde fuera.', 'cuidado')));
         if (s.msg === 'todos') b.appendChild(boton2('Enviar mensaje', null, () => W.aviso('Cualquiera, aunque no te conozca, te puede escribir.', 'cuidado')));
@@ -399,7 +399,7 @@
         if (s.sec === 'editar') {
           pag.appendChild(el('p', 'w11-fg__h', 'Editar perfil'));
           const fila = el('div', 'w11-fg__yo');
-          fila.append(el('span', 'w11-fg__avatar w11-fg__avatar--peq', 'P'), sinTraducir(el('strong', null, 'pixelrojo')));
+          fila.append(el('span', 'w11-fg__avatar w11-fg__avatar--peq', 'P'), sinTraducir(el('strong', null, 'profesorcabron')));
           pag.appendChild(fila);
           const lb = el('label', 'w11-fg__campo');
           lb.appendChild(el('span', 'w11-fg__etq', 'Presentación'));
@@ -613,7 +613,7 @@
               const f = el('div', 'w11-share__p');
               f.appendChild(avatar(q));
               const d = el('span', 'w11-share__pd');
-              d.append(el('span', null, q === 'yo' ? 'pixelrojo (tú)' : PERSONAS[q]), sinTraducir(el('span', 'w11-web__sub', (q === 'yo' ? 'pixelrojo' : q) + '@' + DOM)));
+              d.append(el('span', null, q === 'yo' ? 'profesorcabron (tú)' : PERSONAS[q]), sinTraducir(el('span', 'w11-web__sub', (q === 'yo' ? 'profesorcabron' : q) + '@' + DOM)));
               f.appendChild(d);
               if (q === 'yo') f.appendChild(el('span', 'w11-web__sub', 'Propietario'));
               else f.appendChild(desplegable(ROLES.concat([['quitar', 'Quitar acceso']]), r, 'Permiso de ' + PERSONAS[q], v => {
@@ -661,7 +661,7 @@
   function cabWiki(cont, ir, host, art, pest, alPest) {
     const c = el('div', 'w11-wiki__cab');
     const logo = enlace('📖 Wiki de clase', () => ir(host), 'w11-wiki__logo');
-    c.append(logo, el('span', 'w11-web__hueco'), el('span', 'w11-web__sub', '👤 pixelrojo'));
+    c.append(logo, el('span', 'w11-web__hueco'), el('span', 'w11-web__sub', '👤 profesorcabron'));
     cont.appendChild(c);
     if (!art) return;
     const t = el('div', 'w11-wiki__tabs');
@@ -835,7 +835,7 @@
             if (r.length < 8 || ['cambios', 'cambio', 'arreglo', 'arreglado', 'edito'].indexOf(n) !== -1) { W.aviso('Escribe un resumen que se entienda: qué versión deshaces y por qué (por ejemplo, que era vandalismo).', 'cuidado'); i.focus(); return; }
             actual = nuevo;
             arreglado = true;
-            V.push({ n: 6, cuando: '16:05 16 nov 2026', quien: 'pixelrojo', que: r, texto: nuevo.slice(), bytes: 98 });
+            V.push({ n: 6, cuando: '16:05 16 nov 2026', quien: 'profesorcabron', que: r, texto: nuevo.slice(), bytes: 98 });
             ctx.cumple(1, 'Historial → «deshacer» en la versión de 83.45.12.7: vuelven el ejemplo y los comentarios, y se queda el enlace de pau_r.');
             ctx.cumple(2, `Resumen de edición: «${r}». Queda como la versión más nueva del historial.`);
             ir({ p: 'leer' });
@@ -949,7 +949,7 @@
           cab.append('Versión de ', sinTraducir(el('strong', null, v.quien)), ` · ${v.cuando} · resumen: «${v.que}»`);
           main.appendChild(cab);
           main.appendChild(diffWiki(lin(a), lin(b)));
-          if (v.quien === 'pixelrojo' && vista.con !== 'act') ctx.cumple(3, `En el historial, tu cambio: tu usuario (pixelrojo), la fecha y la hora (${v.cuando}), los bytes añadidos (+${v.bytes}), tu resumen y lo que añadiste (+). Justo antes, la versión de mar_t, guardada mientras tú editabas.`);
+          if (v.quien === 'profesorcabron' && vista.con !== 'act') ctx.cumple(3, `En el historial, tu cambio: tu usuario (profesorcabron), la fecha y la hora (${v.cuando}), los bytes añadidos (+${v.bytes}), tu resumen y lo que añadiste (+). Justo antes, la versión de mar_t, guardada mientras tú editabas.`);
           main.appendChild(enlace('‹ Volver al historial', () => ir({ p: 'historial' })));
         }
       }
@@ -1020,7 +1020,7 @@
           V.push({ n: 3, cuando: '18:41 16 nov 2026', quien: 'mar_t', que: 'Completo la definición', a: deMarT, bytes: tam(deMarT) - tam(actual) });
           actual = copia(deMarT);
           actual.ejemplo = antes.concat(nuevas);
-          V.push({ n: 4, cuando: '18:43 16 nov 2026', quien: 'pixelrojo', que: r, a: copia(actual), bytes: tam(actual) - tam(deMarT) });
+          V.push({ n: 4, cuando: '18:43 16 nov 2026', quien: 'profesorcabron', que: r, a: copia(actual), bytes: tam(actual) - tam(deMarT) });
           guardado = true;
           ctx.cumple(1, `Sección «Ejemplo» → [editar]: pegar debajo de la frase de leo_m «${nuevas.join(' ')}»`);
           ctx.cumple(2, `Resumen de edición: «${r}».`);
