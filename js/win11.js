@@ -902,6 +902,26 @@
         const t = W._campo, i = t.selectionStart, j = t.selectionEnd;
         if (i != null) { const a = i === j ? Math.max(0, i - 1) : i; t.value = t.value.slice(0, a) + t.value.slice(j); t.setSelectionRange(a, a); t.dispatchEvent(new Event('input', { bubbles: true })); return true; }
       }
+      // Ctrl + C / X / V / A del teclado en pantalla en un campo (16/11/2026).
+      // Lo copiado con el teclado de verdad también llega aquí (evento copy).
+      if (info.pantalla && W._campo && document.body.contains(W._campo) && /^Ctrl \+ [CXVA]$/.test(c)) {
+        const t = W._campo, i = t.selectionStart, j = t.selectionEnd;
+        const k = c.slice(-1);
+        if (k === 'A') { t.focus(); t.select(); return true; }
+        if (k === 'C' || k === 'X') {
+          if (i != null && j > i) W._portapapeles = t.value.slice(i, j);
+          if (k === 'X' && i != null && j > i && !t.readOnly) { t.value = t.value.slice(0, i) + t.value.slice(j); t.setSelectionRange(i, i); t.dispatchEvent(new Event('input', { bubbles: true })); }
+          return true;
+        }
+        if (k === 'V' && W._portapapeles && !t.readOnly && i != null) {
+          t.value = t.value.slice(0, i) + W._portapapeles + t.value.slice(j);
+          const p = i + W._portapapeles.length;
+          t.setSelectionRange(p, p);
+          t.dispatchEvent(new Event('input', { bubbles: true }));
+          return true;
+        }
+        return true;
+      }
       if (c === 'Intro' && W._campo && info.pantalla && document.body.contains(W._campo)) {
         W._campo.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
         return true;
@@ -927,6 +947,9 @@
       if (!enCampo && c === 'Tab') return; // Tab mueve el foco, como siempre
       if (W.pulsar(c, { fisico: true })) e.preventDefault();
     });
+    const copia = () => { const t = W._campo; if (t && t.selectionEnd > t.selectionStart) W._portapapeles = t.value.slice(t.selectionStart, t.selectionEnd); };
+    raiz.addEventListener('copy', copia);
+    raiz.addEventListener('cut', copia);
     raiz.addEventListener('keyup', e => { if (e.key === 'Alt' && altTab) acabaAltTab(); });
     raiz.addEventListener('pointerdown', e => {
       if (!e.target.closest('input, textarea, select, button, [tabindex]:not(.w11)')) raiz.focus({ preventScroll: true });

@@ -1,58 +1,101 @@
 /* ============================================================
    Simulaciones de la Unidad 3 de Operaciones (servicios de
-   Internet), 27/10/2026. Usan el marco de js/simulador.js y van
-   en tema.html después de él.
+   Internet), 27/10/2026; rehechas el 16/11/2026 para que sean lo
+   más reales posible (lo pidieron los alumnos): van en el Windows
+   11 de mentira (js/win11.js) con un Chrome de mentira y webs que
+   imitan las de verdad (WIN11.web, en js/sim-internet.js). Se
+   usan con el ratón y el teclado, sin listas de «elige qué hacer».
 
-   foro       S1 «Modera el foro»: mover un mensaje a su hilo,
-              marcar la solución y cerrar un tema repetido.
-   perfil     S2 «Arregla este perfil»: una red social con el perfil
-              mal configurado; al lado, «Así te ve un desconocido».
-   compartir  S2 «Comparte bien»: un Drive con cuatro archivos
-              compartidos mal; cada uno, como pide su nota.
-   wiki       S3 «Salva la wiki»: encontrar en el historial el cambio
-              que estropeó un artículo y deshacer solo ese.
-   wiki-escribe  S3 «Escribe en la wiki» (27/10/2026): completar un
-              artículo a medio hacer en su sección, sin borrar lo de
-              otro, con resumen de edición, y mirar el historial.
+   foro       S2 «Modera el foro»: un foro tipo Discourse. Mover un
+              mensaje a su tema (⋯ → Mover a otro tema), marcar la
+              solución (☑ Solución) y cerrar un tema repetido
+              (🔧 → Cerrar como duplicado).
+   perfil     S3 «Arregla este perfil»: una red social tipo
+              Instagram (Fotogram). Configuración con interruptores
+              y la biografía, que se escribe de verdad. En otra
+              pestaña, el perfil como lo ve un desconocido.
+   compartir  S3 «Comparte bien»: Google Drive con clic derecho →
+              Compartir y la ventana de compartir de Google
+              (personas, permisos, acceso general).
+   wiki       S4 «Salva la wiki»: una wiki tipo Wikipedia. Historial
+              con (act | ant), «deshacer» y versiones antiguas.
+   wiki-escribe  S4 «Escribe en la wiki»: editar la sección que toca
+              copiando el ejemplo de tus apuntes (Bloc de notas) con
+              Ctrl + C y Ctrl + V; resumen de edición escrito.
 
    Todos los nombres son inventados (alias). Nada se guarda.
    ============================================================ */
 
 (function () {
   'use strict';
-  if (typeof window.registrarSimulacion !== 'function') return;
+  if (typeof window.registrarSimulacion !== 'function' || !window.LAB) return;
+  const { el, boton } = window.LAB;
+  const norm = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ' ').trim();
+  const sinTraducir = n => { n.setAttribute('translate', 'no'); return n; };
 
-  function select(opciones, valor, etiqueta) {
-    const s = document.createElement('select');
-    s.className = 'lab__entrada sim__select';
-    if (etiqueta) s.setAttribute('aria-label', etiqueta);
-    opciones.forEach(([v, t]) => {
-      const o = document.createElement('option');
-      o.value = v;
-      o.textContent = t;
-      if (v === '') { o.disabled = true; o.hidden = true; } /* «Elige…»: rótulo, no opción (09/11/2026) */
-      if (v === valor) o.selected = true;
-      s.appendChild(o);
-    });
-    return s;
+  /* ---------- piezas de las webs ---------- */
+  const COLORES = ['a', 'b', 'c', 'd', 'e', 'f'];
+  function avatar(nombre) {
+    const a = el('span', 'w11-web__av w11-web__av--' + COLORES[(nombre.charCodeAt(0) + nombre.length) % COLORES.length], (nombre[0] || '?').toUpperCase());
+    a.setAttribute('aria-hidden', 'true');
+    return a;
   }
-  function interruptor(el, texto, valor, onCambio) {
-    const l = el('label', 'sim__interruptor');
-    const c = document.createElement('input');
-    c.type = 'checkbox';
-    c.setAttribute('role', 'switch');
-    c.checked = valor;
-    c.addEventListener('change', () => onCambio(c.checked));
-    l.appendChild(c);
-    l.appendChild(document.createTextNode(' ' + texto));
+  function boton2(t, clase, f) {
+    const b = boton(t, 'w11-web__btn' + (clase ? ' ' + clase : ''));
+    if (f) b.addEventListener('click', f);
+    return b;
+  }
+  function enlace(t, f, clase) {
+    const a = el('a', 'w11-web__a' + (clase ? ' ' + clase : ''), t);
+    a.href = '#';
+    a.addEventListener('click', e => { e.preventDefault(); f(e); });
+    return a;
+  }
+  function interruptor(texto, sub, valor, alCambiar) {
+    const l = el('label', 'w11-web__sw');
+    const t = el('span', 'w11-web__sw-t');
+    t.appendChild(el('span', null, texto));
+    if (sub) t.appendChild(el('span', 'w11-web__sub', sub));
+    const i = document.createElement('input');
+    i.type = 'checkbox';
+    i.setAttribute('role', 'switch');
+    i.checked = !!valor;
+    i.addEventListener('change', () => alCambiar(i.checked));
+    l.append(t, i);
     return l;
   }
+  function radios(nombre, opciones, valor, alCambiar) {
+    const f = el('div', 'w11-web__radios');
+    f.setAttribute('role', 'radiogroup');
+    opciones.forEach(([v, t]) => {
+      const l = el('label', 'w11-web__radio');
+      const r = document.createElement('input');
+      r.type = 'radio';
+      r.name = nombre;
+      r.value = v;
+      r.checked = v === valor;
+      r.addEventListener('change', () => { if (r.checked) alCambiar(v); });
+      l.append(el('span', null, t), r);
+      f.appendChild(l);
+    });
+    return f;
+  }
+  function desplegable(opciones, valor, etiqueta, alCambiar) {
+    const s = document.createElement('select');
+    s.className = 'w11-web__sel';
+    s.setAttribute('aria-label', etiqueta);
+    opciones.forEach(([v, t]) => { const o = document.createElement('option'); o.value = v; o.textContent = t; o.selected = v === valor; s.appendChild(o); });
+    s.addEventListener('change', () => alCambiar(s.value));
+    return s;
+  }
+  const equipo = () => window.WIN11.fs.equipo(window.WIN11.fs.usuario({}));
+  const escritorio = ctx => window.WIN11.escritorio(ctx, { fs: equipo(), barra: ['explorador', 'navegador'] });
 
   /* ============================================================
-     S1 · Modera el foro
+     S2 · Modera el foro
      ============================================================ */
   registrarSimulacion('foro', {
-    ventana: 'Comunidad BloqueCraft · foro de Minecraft',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Hay un mensaje en el tema equivocado: muévelo a su tema.',
       'Marca como solución la respuesta que arregló el problema.',
@@ -60,156 +103,217 @@
     ],
     final: 'Apunta en tu cuaderno qué mensaje moviste y adónde, qué respuesta marcaste como solución y por qué, y qué tema estaba repetido (pregunta 6).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
+      const W = escritorio(ctx);
+      const HOST = 'comunidad.bloquecraft.es';
       const T = {
-        cierra: { titulo: 'Minecraft se cierra al arrancar', autor: 'nube_azul', msgs: [] },
-        kart: { titulo: '¿Qué mod me recomendáis para empezar?', autor: 'rayo77', msgs: [] },
-        hielo: { titulo: 'Trucos para sobrevivir en el Nether', autor: 'mar_gris', msgs: [] },
-        repe: { titulo: '¡¡¡SE ME CIERRA EL MINECRAFT!!!', autor: 'tigre_99', msgs: [] },
+        cierra: { titulo: 'Minecraft se cierra al arrancar', cat: 'Ayuda', autor: 'nube_azul', hace: '2 h', msgs: [] },
+        mods: { titulo: '¿Qué mod me recomendáis para empezar?', cat: 'Mods', autor: 'rayo77', hace: '5 h', msgs: [] },
+        nether: { titulo: 'Trucos para sobrevivir en el Nether', cat: 'Trucos', autor: 'mar_gris', hace: '1 d', msgs: [] },
+        repe: { titulo: '¡¡¡SE ME CIERRA EL MINECRAFT!!!', cat: 'Ayuda', autor: 'tigre_99', hace: '20 min', msgs: [] },
       };
       T.cierra.msgs = [
-        { id: 'c0', autor: 'nube_azul', t: 'Abro Minecraft y a los dos segundos se cierra. Tengo Windows 11. ¿Alguien sabe qué pasa?' },
-        { id: 'c1', autor: 'rayo77', t: 'A mí me pasaba con el antivirus. Prueba a desactivarlo un momento.' },
-        { id: 'c2', autor: 'pixel_verde', t: 'Actualiza el controlador de la tarjeta gráfica. Con el viejo, Minecraft se cierra al cargar el mundo.' },
-        { id: 'c3', autor: 'nube_azul', t: '¡Era el controlador de la gráfica! Lo he actualizado y ya funciona. Gracias, pixel_verde.' },
+        { id: 'c0', autor: 'nube_azul', hace: '2 h', t: 'Abro Minecraft y a los dos segundos se cierra. Tengo Windows 11. ¿Alguien sabe qué pasa?' },
+        { id: 'c1', autor: 'rayo77', hace: '2 h', t: 'A mí me pasaba con el antivirus. Prueba a desactivarlo un momento.' },
+        { id: 'c2', autor: 'pixel_verde', hace: '1 h', t: 'Actualiza el controlador de la tarjeta gráfica. Con el viejo, Minecraft se cierra al cargar el mundo.' },
+        { id: 'c3', autor: 'nube_azul', hace: '45 min', t: '¡Era el controlador de la gráfica! Lo he actualizado y ya funciona. Gracias, pixel_verde.' },
       ];
-      T.kart.msgs = [
-        { id: 'k0', autor: 'rayo77', t: 'Acabo de empezar y quiero probar algún mod. ¿Cuál me recomendáis?' },
-        { id: 'k1', autor: 'mar_gris', t: 'El Gato Turbo: no corre mucho, pero gira muy bien.' },
-        { id: 'k2', autor: 'luna_8', t: 'A mí también se me cierra Minecraft al arrancar, ¿le pasa a alguien más?', fuera: true },
-        { id: 'k3', autor: 'pixel_verde', t: 'Yo empecé con el Escarabajo. Es lento pero no derrapa.' },
+      T.mods.msgs = [
+        { id: 'k0', autor: 'rayo77', hace: '5 h', t: 'Acabo de empezar y quiero probar algún mod. ¿Cuál me recomendáis?' },
+        { id: 'k1', autor: 'mar_gris', hace: '4 h', t: 'Uno de minimapa: así no te pierdes al explorar.' },
+        { id: 'k2', autor: 'luna_8', hace: '3 h', t: 'A mí también se me cierra Minecraft al arrancar, ¿le pasa a alguien más?', fuera: true },
+        { id: 'k3', autor: 'pixel_verde', hace: '2 h', t: 'Yo empecé con uno que enseña las recetas de fabricación. Va muy bien.' },
       ];
-      T.hielo.msgs = [
-        { id: 'h0', autor: 'mar_gris', t: 'Ponte alguna pieza de armadura de oro: así los piglins no te atacan.' },
-        { id: 'h1', autor: 'luna_8', t: 'Y lleva siempre bloques de sobra para taparte si cae lava.' },
+      T.nether.msgs = [
+        { id: 'h0', autor: 'mar_gris', hace: '1 d', t: 'Ponte alguna pieza de armadura de oro: así los piglins no te atacan.' },
+        { id: 'h1', autor: 'luna_8', hace: '1 d', t: 'Y lleva siempre bloques de sobra para taparte si cae lava.' },
       ];
       T.repe.msgs = [
-        { id: 'r0', autor: 'tigre_99', t: 'Se me cierra nada más abrirlo, ayudaaa' },
+        { id: 'r0', autor: 'tigre_99', hace: '20 min', t: 'Se me cierra nada más abrirlo, ayudaaa' },
       ];
-      const orden = ['cierra', 'kart', 'hielo', 'repe'];
-      let solucion = null, duplicado = false, abierto = null;
+      const SLUG = { cierra: 'minecraft-se-cierra-al-arrancar', mods: 'que-mod-me-recomendais', nether: 'trucos-nether', repe: 'se-me-cierra-el-minecraft' };
+      const orden = ['repe', 'cierra', 'mods', 'nether'];
+      let solucion = null, duplicado = false;
 
-      function lista() {
-        abierto = null;
-        ctx.barra('Comunidad BloqueCraft · foro de Minecraft');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', 'sim__h', 'Temas'));
-        const ul = el('ul', 'sim__temas');
-        orden.forEach(k => {
-          const tm = T[k];
-          const li = el('li');
-          const b = boton(tm.titulo, 'sim__tema');
-          b.addEventListener('click', () => abrir(k));
-          li.appendChild(b);
-          const info = [`${tm.autor} · ${tm.msgs.length - 1} respuestas`];
-          if (k === 'cierra' && solucion) info.push('✓ resuelto');
-          if (k === 'repe' && duplicado) info.push('cerrado: duplicado');
-          li.appendChild(el('span', 'sim__ayuda', info.join(' · ')));
-          ul.appendChild(li);
+      const C = WIN11.web(W, {
+        pestanas: [{ url: HOST }],
+        sitios: { [HOST]: pagina },
+      });
+      function pagina(t, cont, C2, ruta) {
+        cont.classList.add('w11-foro');
+        const cab = el('div', 'w11-web__cab');
+        const logo = enlace('⛏ BloqueCraft', () => C2.ir(HOST), 'w11-web__logo');
+        cab.append(logo, el('span', 'w11-web__hueco'), avatar('pixelrojo'), el('span', 'w11-web__sub', 'pixelrojo 🛡 moderador'));
+        cont.appendChild(cab);
+        const k = Object.keys(SLUG).find(x => ruta === '/t/' + SLUG[x]);
+        if (k) return tema(k, t, cont);
+        t.t = 'BloqueCraft · Comunidad';
+        const nav = el('div', 'w11-foro__nav');
+        nav.append(el('span', 'w11-foro__pill w11-foro__pill--on', 'Últimos'), el('span', 'w11-foro__pill', 'Categorías'), el('span', 'w11-foro__pill', 'Principales'));
+        cont.appendChild(nav);
+        const tabla = el('div', 'w11-foro__lista');
+        tabla.setAttribute('role', 'table');
+        const fc = el('div', 'w11-foro__fila w11-foro__fila--cab');
+        fc.setAttribute('role', 'row');
+        fc.append(el('span', null, 'Tema'), el('span', 'w11-foro__num', 'Respuestas'), el('span', 'w11-foro__num', 'Actividad'));
+        tabla.appendChild(fc);
+        orden.forEach(x => {
+          const tm = T[x];
+          const f = el('div', 'w11-foro__fila');
+          f.setAttribute('role', 'row');
+          const c = el('span', 'w11-foro__tit');
+          if (x === 'repe' && duplicado) c.appendChild(el('span', 'w11-foro__candado', '🔒 '));
+          c.appendChild(enlace(tm.titulo, () => C2.ir(HOST + '/t/' + SLUG[x])));
+          if (x === 'cierra' && solucion) c.appendChild(el('span', 'w11-foro__resuelto', '☑ Resuelto'));
+          const cat = el('span', 'w11-foro__cat w11-foro__cat--' + norm(tm.cat), tm.cat);
+          c.append(document.createElement('br'), cat);
+          f.append(c, el('span', 'w11-foro__num', String(tm.msgs.length - 1)), el('span', 'w11-foro__num', tm.hace));
+          tabla.appendChild(f);
         });
-        pantalla.appendChild(ul);
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Eres moderador: en cada mensaje tienes el botón «⋯» con las opciones.'));
+        cont.appendChild(tabla);
       }
-
-      function abrir(k) {
-        abierto = k;
+      function elegirTema(titulo, excluir, alElegir) {
+        let elegido = null;
+        C.modal(titulo, caja => {
+          const i = document.createElement('input');
+          i.type = 'search';
+          i.className = 'w11-web__campo';
+          i.placeholder = 'Busca el tema por su título';
+          i.setAttribute('aria-label', 'Buscar tema');
+          const lista = el('div', 'w11-foro__elige');
+          const pinta = () => {
+            lista.innerHTML = '';
+            const q = norm(i.value);
+            Object.keys(T).filter(x => x !== excluir && (!q || norm(T[x].titulo).indexOf(q) !== -1)).forEach(x => {
+              const l = el('label', 'w11-web__radio');
+              const r = document.createElement('input');
+              r.type = 'radio';
+              r.name = 'tema-destino';
+              r.checked = elegido === x;
+              r.addEventListener('change', () => { elegido = x; });
+              l.append(el('span', null, T[x].titulo), r);
+              lista.appendChild(l);
+            });
+            if (!lista.childNodes.length) lista.appendChild(el('p', 'w11-web__sub', 'Ningún tema se llama así.'));
+          };
+          i.addEventListener('input', pinta);
+          caja.append(i, lista);
+          pinta();
+        }, [{ t: 'Cancelar' }, { t: 'Aceptar', primario: true, f: () => { if (!elegido) { W.aviso('Elige primero un tema de la lista.', 'cuidado'); return false; } alElegir(elegido); } }]);
+      }
+      function tema(k, t, cont) {
         const tm = T[k];
-        ctx.barra('Comunidad BloqueCraft · ' + tm.titulo);
-        pantalla.innerHTML = '';
-        const volver = boton('‹ Todos los temas');
-        volver.addEventListener('click', lista);
-        pantalla.appendChild(volver);
-        pantalla.appendChild(el('p', 'sim__h', tm.titulo));
-        if (k === 'repe' && duplicado) pantalla.appendChild(ctx.aviso('Tema cerrado: es un duplicado de «Minecraft se cierra al arrancar».', 'ok'));
-        const msg = el('div');
-        tm.msgs.forEach((m, i) => {
-          const c = el('div', 'sim__mensaje' + (i === 0 ? ' sim__mensaje--inicial' : '') + (solucion === m.id ? ' sim__mensaje--solucion' : ''));
-          const cab = el('p', 'sim__mensaje-cab');
-          cab.appendChild(el('strong', null, m.autor));
-          if (i === 0) cab.appendChild(document.createTextNode(' · abrió el tema'));
-          if (solucion === m.id) cab.appendChild(el('span', 'sim__sello', '✓ Solución'));
-          c.appendChild(cab);
-          c.appendChild(el('p', null, m.t));
-          const mas = boton('⋯', 'lab__boton sim__mas');
-          mas.setAttribute('aria-label', 'Opciones del mensaje de ' + m.autor);
-          mas.setAttribute('aria-expanded', 'false');
-          const menu = el('div', 'sim__menu');
-          menu.hidden = true;
-          mas.addEventListener('click', () => {
-            menu.hidden = !menu.hidden;
-            mas.setAttribute('aria-expanded', String(!menu.hidden));
-          });
-          c.appendChild(mas);
-          c.appendChild(menu);
-          if (i > 0) {
-            const mover = select([['', 'Mover a otro tema…']].concat(orden.filter(o => o !== k).map(o => [o, T[o].titulo])), '', 'Mover a otro tema');
-            mover.addEventListener('change', () => {
-              const dest = mover.value;
-              if (!dest) return;
-              if (m.fuera && dest === 'cierra') {
-                tm.msgs.splice(tm.msgs.indexOf(m), 1);
-                T.cierra.msgs.push(m);
-                ctx.cumple(0, `Mover el mensaje de ${m.autor} («se me cierra Minecraft») del tema de los mods a «${T.cierra.titulo}».`);
-                abrir(k);
-                pantalla.appendChild(ctx.aviso('Movido: ahora está en el tema donde se habla de ese problema.', 'ok'));
-              } else if (m.fuera && dest === 'repe') {
-                mover.value = '';
-                msg.innerHTML = '';
-                msg.appendChild(ctx.aviso('Ese tema es el repetido: así lo tendrías en dos sitios. Muévelo al tema original.'));
-              } else {
-                mover.value = '';
-                msg.innerHTML = '';
-                msg.appendChild(ctx.aviso('Este mensaje está bien donde está: habla de lo mismo que el tema.'));
-                ctx.falla(`Intentar mover un mensaje que estaba bien (${m.autor}).`);
-              }
-            });
-            menu.appendChild(mover);
-            if (k === 'cierra') {
-              const sol = boton('✓ Marcar como solución');
-              sol.addEventListener('click', () => {
-                msg.innerHTML = '';
-                if (m.id === 'c2') {
-                  solucion = 'c2';
-                  ctx.cumple(1, 'Marcar como solución la respuesta de pixel_verde (el controlador de la gráfica): nube_azul dice que fue eso.');
-                  abrir(k);
-                } else if (m.autor === 'nube_azul') {
-                  msg.appendChild(ctx.aviso('Ese mensaje es el «gracias»: dice qué funcionó, pero la solución la dio otra persona. Márcala a ella.'));
-                } else {
-                  msg.appendChild(ctx.aviso('¿Seguro? Lee el último mensaje de nube_azul: dice qué le funcionó.'));
-                  ctx.falla(`Marcar como solución una respuesta que no arregló nada (${m.autor}).`);
-                }
-              });
-              menu.appendChild(sol);
-            }
-          }
-          if (i === 0 && k === 'repe' && !duplicado) {
-            const dup = select([['', 'Cerrar como duplicado de…']].concat(orden.filter(o => o !== 'repe').map(o => [o, T[o].titulo])), '', 'Cerrar como duplicado de');
-            dup.addEventListener('change', () => {
-              msg.innerHTML = '';
-              if (dup.value === 'cierra') {
+        t.t = tm.titulo + ' - BloqueCraft';
+        const h = el('div', 'w11-foro__h');
+        const ht = el('div');
+        ht.appendChild(el('p', 'w11-foro__h1', (k === 'repe' && duplicado ? '🔒 ' : '') + tm.titulo));
+        ht.appendChild(el('span', 'w11-foro__cat w11-foro__cat--' + norm(tm.cat), tm.cat));
+        const llave = boton2('🔧', 'w11-foro__llave');
+        llave.setAttribute('aria-label', 'Acciones de moderador del tema');
+        llave.title = 'Acciones de moderador';
+        llave.addEventListener('click', () => {
+          const r = llave.getBoundingClientRect();
+          W.menu(r.right - 230, r.bottom, [
+            { t: 'Fijar el tema', f: () => W.aviso('Fijar lo pone el primero de la lista. No es lo que pide la misión.', 'cuidado') },
+            { t: 'Cerrar el tema', f: () => { ctx.apunta(`Cerrar «${tm.titulo}» sin decir por qué.`); W.aviso(k === 'repe' ? 'Si solo lo cierras, quien llegue aquí no sabrá dónde está la respuesta. Ciérralo como duplicado del tema original: así enlaza con él.' : 'Este tema no hay que cerrarlo.', 'cuidado'); } },
+            { t: 'Cerrar como duplicado…', f: () => elegirTema('Cerrar como duplicado de…', k, x => {
+              if (k === 'repe' && x === 'cierra') {
                 duplicado = true;
-                ctx.cumple(2, '«¡¡¡SE ME CIERRA EL MINECRAFT!!!» cerrado como duplicado de «Minecraft se cierra al arrancar»: la respuesta ya está allí.');
-                abrir(k);
-              } else if (dup.value) {
-                dup.value = '';
-                msg.appendChild(ctx.aviso('Ese tema habla de otra cosa. ¿Cuál trata del mismo problema?'));
+                ctx.cumple(2, '🔧 → Cerrar como duplicado: «¡¡¡SE ME CIERRA EL MINECRAFT!!!» es el mismo problema que «Minecraft se cierra al arrancar», donde ya está la respuesta.');
+              } else if (k === 'repe') {
+                ctx.falla(`Cerrar el tema repetido como duplicado de «${T[x].titulo}», que habla de otra cosa.`);
+                W.aviso('Ese tema habla de otra cosa. ¿Cuál trata del mismo problema?', 'cuidado');
+              } else {
+                ctx.falla(`Cerrar «${tm.titulo}» como duplicado: no está repetido.`);
+                W.aviso('Este tema no está repetido. Busca el que pregunta lo mismo que otro.', 'cuidado');
               }
-            });
-            menu.appendChild(dup);
-          }
-          pantalla.appendChild(c);
+              C.pintar();
+            }) },
+            { t: 'Eliminar el tema', f: () => { ctx.falla(`Intentar eliminar «${tm.titulo}».`); W.aviso('Si lo eliminas, tigre_99 no sabrá qué ha pasado. Mejor ciérralo como duplicado: así le lleva a la respuesta.', 'cuidado'); } },
+          ]);
         });
-        pantalla.appendChild(msg);
+        h.append(ht, llave);
+        cont.appendChild(h);
+        if (k === 'repe' && duplicado) {
+          const a = el('div', 'w11-foro__aviso');
+          a.append('🔒 Tema cerrado. Es un duplicado de ', enlace(T.cierra.titulo, () => C.ir(HOST + '/t/' + SLUG.cierra)), '.');
+          cont.appendChild(a);
+        }
+        tm.msgs.forEach((m, i) => {
+          const p = el('article', 'w11-foro__post' + (solucion === m.id ? ' w11-foro__post--sol' : ''));
+          const c = el('div', 'w11-foro__post-cab');
+          const n = el('strong', null, m.autor);
+          sinTraducir(n);
+          c.append(avatar(m.autor), n, el('span', 'w11-web__sub', m.hace));
+          if (solucion === m.id) c.appendChild(el('span', 'w11-foro__sello', '☑ Solución'));
+          p.appendChild(c);
+          p.appendChild(el('p', 'w11-foro__texto', m.t));
+          if (i === 0 && k === 'cierra' && solucion) {
+            const s = el('div', 'w11-foro__aviso w11-foro__aviso--ok');
+            s.append('☑ Resuelto: ', enlace('ver la respuesta de ' + T.cierra.msgs.find(x => x.id === solucion).autor, () => { const x = cont.querySelector('.w11-foro__post--sol'); if (x) x.scrollIntoView({ block: 'center' }); }));
+            p.appendChild(s);
+          }
+          const acc = el('div', 'w11-foro__acc');
+          const gusta = boton2('♡', 'w11-foro__ab');
+          gusta.setAttribute('aria-label', 'Me gusta');
+          gusta.addEventListener('click', () => { gusta.textContent = gusta.textContent === '♡' ? '♥' : '♡'; });
+          acc.appendChild(gusta);
+          if (i > 0 && T[k].cat === 'Ayuda') {
+            const sol = boton2(solucion === m.id ? '☑ Solución' : '☐ Solución', 'w11-foro__ab');
+            sol.title = 'Marcar esta respuesta como la solución';
+            sol.addEventListener('click', () => {
+              if (solucion === m.id) { solucion = null; if (ctx.hecho(1)) ctx.deshace(1); C.pintar(); return; }
+              solucion = m.id;
+              if (m.id === 'c2') ctx.cumple(1, 'En la respuesta de pixel_verde (actualizar el controlador de la gráfica), ☐ Solución: nube_azul dice que fue eso lo que le funcionó.');
+              else {
+                if (ctx.hecho(1)) ctx.deshace(1);
+                if (m.autor === 'nube_azul') { ctx.apunta('Marcar como solución el «gracias» de nube_azul.'); W.aviso('Ese mensaje es el «gracias»: dice qué funcionó, pero la solución la dio otra persona. Márcala a ella.', 'cuidado'); }
+                else { ctx.falla(`Marcar como solución la respuesta de ${m.autor}, que no arregló nada.`); W.aviso('¿Seguro? Lee el último mensaje de nube_azul: dice qué le funcionó.', 'cuidado'); }
+              }
+              C.pintar();
+            });
+            acc.appendChild(sol);
+          }
+          const mas = boton2('⋯', 'w11-foro__ab');
+          mas.setAttribute('aria-label', 'Más opciones del mensaje de ' + m.autor);
+          mas.addEventListener('click', () => {
+            const r = mas.getBoundingClientRect();
+            W.menu(r.left - 150, r.bottom, [
+              { t: 'Copiar enlace', f: () => W.notificacion('Enlace copiado', HOST + '/t/' + SLUG[k]) },
+              { t: 'Responder citando', off: true },
+              { sep: true },
+              { t: '🔧 Mover a otro tema…', off: i === 0, f: () => elegirTema('Mover el mensaje a un tema existente', k, x => mover(k, m, x)) },
+              { t: 'Eliminar', f: () => { ctx.falla(`Intentar borrar el mensaje de ${m.autor}.`); W.aviso('Borrar un mensaje que está bien escrito no es moderar: si está en el sitio equivocado, se mueve.', 'cuidado'); } },
+            ]);
+          });
+          acc.appendChild(mas);
+          p.appendChild(acc);
+          cont.appendChild(p);
+        });
+        cont.appendChild(enlace('‹ Todos los temas', () => C.ir(HOST), 'w11-foro__volver'));
       }
-      lista();
+      function mover(k, m, dest) {
+        if (m.fuera && dest === 'cierra') {
+          T[k].msgs.splice(T[k].msgs.indexOf(m), 1);
+          T.cierra.msgs.push(Object.assign({}, m, { hace: 'ahora' }));
+          ctx.cumple(0, `⋯ → Mover a otro tema: el mensaje de ${m.autor} («se me cierra Minecraft») pasa del tema de los mods a «${T.cierra.titulo}».`);
+          W.aviso('Movido: ahora está en el tema donde se habla de ese problema.', 'ok');
+          C.ir(HOST + '/t/' + SLUG.cierra);
+          return;
+        }
+        if (m.fuera && dest === 'repe') { W.aviso('Ese tema es el repetido: lo vas a cerrar. Muévelo al tema original.', 'cuidado'); return; }
+        if (m.fuera) { ctx.falla(`Mover el mensaje de ${m.autor} a «${T[dest].titulo}».`); W.aviso('Ese tema habla de otra cosa. ¿Cuál trata del mismo problema que el mensaje?', 'cuidado'); return; }
+        ctx.falla(`Intentar mover un mensaje que estaba bien (${m.autor}).`);
+        W.aviso('Este mensaje está bien donde está: habla de lo mismo que el tema.', 'cuidado');
+      }
+      void C;
     },
   });
 
   /* ============================================================
-     S2 · Arregla este perfil
+     S3 · Arregla este perfil
      ============================================================ */
   registrarSimulacion('perfil', {
-    ventana: 'Fotogram · Configuración',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Haz la cuenta privada.',
       'Que las fotos no digan dónde estás.',
@@ -217,100 +321,148 @@
       'Quita el correo y el teléfono del perfil.',
       'Cambia la biografía: dice dónde vives.',
     ],
-    final: 'Apunta en tu cuaderno las cinco cosas que cambiaste y por qué es peligrosa una de ellas (pregunta 5).',
+    final: 'Apunta en tu cuaderno las cinco cosas que cambiaste y por qué es peligrosa una de ellas (pregunta 6).',
     crear(ctx) {
-      const { el, pantalla } = ctx;
-      const BIOS = [
-        ['casa', 'Vivo en C/ Major 14, 2.º B, Palma · 1.º de FP en el Ramon Llull'],
-        ['clase', 'Estudiante en el Ramon Llull, 1.º de FP · 8:00 a 14:00'],
-        ['gustos', 'Minecraft, música y dibujo'],
-      ];
-      const s = { privada: false, ubic: true, msg: 'todos', datos: true, bio: 'casa', tema: false };
-      const panel = el('div', 'sim__dos');
-      const ajustes = el('div', 'sim__ajustes');
-      const vista = el('div', 'sim__vista');
-      panel.appendChild(ajustes);
-      panel.appendChild(vista);
-      pantalla.appendChild(el('p', 'sim__ayuda', 'El perfil es de «pixelrojo». A la derecha ves lo que ve cualquier desconocido. Cambia lo que haga falta.'));
-      pantalla.appendChild(panel);
-      const msg = el('div');
-      msg.setAttribute('aria-live', 'polite');
-      pantalla.appendChild(msg);
-
-      ajustes.appendChild(el('p', 'sim__h', 'Privacidad'));
-      ajustes.appendChild(interruptor(el, 'Cuenta privada', s.privada, v => { s.privada = v; cambio(0, v, 'Cuenta privada: activada. Solo ven tus fotos los seguidores que aceptas.'); }));
-      ajustes.appendChild(interruptor(el, 'Añadir mi ubicación a las fotos', s.ubic, v => { s.ubic = v; cambio(1, !v, 'Ubicación en las fotos: desactivada.'); }));
-      const sMsg = select([['todos', 'Todo el mundo'], ['seguidores', 'Solo mis seguidores'], ['nadie', 'Nadie']], s.msg, 'Quién puede enviarte mensajes');
-      sMsg.addEventListener('change', () => {
-        s.msg = sMsg.value;
-        msg.innerHTML = '';
-        if (s.msg === 'nadie') msg.appendChild(ctx.aviso('Así no te podrían escribir ni tus amigos. La misión pide «solo seguidores».', 'cuidado'));
-        cambio(2, s.msg === 'seguidores', 'Mensajes: solo de mis seguidores.');
-      });
-      const l = el('label', 'sim__campo');
-      l.appendChild(el('span', 'sim__ayuda', 'Quién puede enviarte mensajes'));
-      l.appendChild(sMsg);
-      ajustes.appendChild(l);
-      ajustes.appendChild(interruptor(el, 'Mostrar correo y teléfono en el perfil', s.datos, v => { s.datos = v; cambio(3, !v, 'Correo y teléfono: ocultos.'); }));
-      ajustes.appendChild(el('p', 'sim__h', 'Perfil'));
-      const sBio = select(BIOS.map(([k, t]) => [k, t]), s.bio, 'Biografía');
-      sBio.addEventListener('change', () => {
-        s.bio = sBio.value;
-        msg.innerHTML = '';
-        if (s.bio === 'clase') msg.appendChild(ctx.aviso('Esta tampoco: dice en qué centro estás y a qué hora sales. Con eso te pueden encontrar.', 'cuidado'));
-        cambio(4, s.bio === 'gustos', 'Biografía: sin dirección ni horarios, solo gustos.');
-      });
-      const lb = el('label', 'sim__campo');
-      lb.appendChild(el('span', 'sim__ayuda', 'Biografía'));
-      lb.appendChild(sBio);
-      ajustes.appendChild(lb);
-      ajustes.appendChild(el('p', 'sim__h', 'Pantalla'));
-      ajustes.appendChild(interruptor(el, 'Modo oscuro', s.tema, v => {
-        s.tema = v;
-        msg.innerHTML = '';
-        msg.appendChild(ctx.aviso('El modo oscuro solo cambia los colores: no tiene nada que ver con tu privacidad.', 'cuidado'));
-      }));
-
+      const W = escritorio(ctx);
+      const HOST = 'fotogram.com';
+      const BIO0 = 'Vivo en C/ Major 14, 2.º B, Palma · 1.º de FP en el Ramon Llull · Minecraft, música y dibujo 🎨';
+      const s = { privada: false, ubic: true, msg: 'todos', datos: true, bio: BIO0, tema: false, sec: 'editar' };
+      // ¿la biografía dice dónde vive o dónde está?
+      function problemaBio(b) {
+        const n = norm(b);
+        if (/\bc\/|calle|major|\b\d+ ?,? ?\d*\.? ?º|\bpiso\b|palma/.test(n) || /\b\d{1,3}\b/.test(n.replace(/\d{1,2}:\d{2}/g, ''))) return 'casa';
+        if (/llull|instituto|\bies\b|\d{1,2}:\d{2}|de \d+ a \d+/.test(n)) return 'clase';
+        return '';
+      }
       function cambio(i, bien, texto) {
         if (bien) ctx.cumple(i, texto);
         else if (ctx.hecho(i)) { ctx.deshace(i); ctx.falla('Deshacer: ' + texto.split(':')[0].toLowerCase() + ' vuelve a estar mal.'); }
-        pintarVista();
       }
-      function pintarVista() {
-        vista.innerHTML = '';
-        vista.appendChild(el('p', 'sim__h', 'Así te ve un desconocido'));
-        const cab = el('div', 'sim__perfil-cab');
-        cab.appendChild(el('span', 'sim__avatar', 'P'));
-        const n = el('div');
-        n.appendChild(el('strong', null, 'pixelrojo'));
-        n.appendChild(el('p', 'sim__ayuda', s.privada ? '🔒 Cuenta privada' : 'Cuenta pública'));
-        cab.appendChild(n);
-        vista.appendChild(cab);
-        vista.appendChild(el('p', 'sim__bio', BIOS.find(b => b[0] === s.bio)[1]));
-        if (s.datos) vista.appendChild(el('p', 'sim__peligro', '✉ pixelrojo@correo.es · ☎ 600 000 000'));
+      const C = WIN11.web(W, {
+        pestanas: [{ url: HOST + '/accounts/edit', t: 'Configuración • Fotogram' }, { url: HOST + '/pixelrojo', t: 'pixelrojo • Fotogram' }],
+        sitios: { [HOST]: pagina },
+      });
+      C.activa = 0;
+      C.pintar();
+      function pagina(t, cont, C2, ruta) {
+        cont.classList.add('w11-fg');
+        if (ruta.indexOf('/accounts') === 0) return ajustes(t, cont);
+        return perfil(t, cont);
+      }
+      function perfil(t, cont) {
+        t.t = 'pixelrojo • Fotogram';
+        const aviso = el('p', 'w11-fg__como', 'Estás viendo tu perfil como lo ve alguien que no te sigue.');
+        cont.appendChild(aviso);
+        const cab = el('div', 'w11-fg__cab');
+        const av = el('span', 'w11-fg__avatar', 'P');
+        const d = el('div', 'w11-fg__datos');
+        const n = el('p', 'w11-fg__nombre');
+        n.append(sinTraducir(el('strong', null, 'pixelrojo')), document.createTextNode(s.privada ? '  🔒' : ''));
+        d.appendChild(n);
+        d.appendChild(el('p', 'w11-fg__cuenta', '3 publicaciones · 212 seguidores · 180 seguidos'));
+        d.appendChild(el('p', 'w11-fg__bio', s.bio));
+        if (s.datos) d.appendChild(sinTraducir(el('p', 'w11-fg__contacto', '✉ pixelrojo@correo.es · ☎ 600 000 000')));
+        const b = el('div', 'w11-fg__botones');
+        b.appendChild(boton2('Seguir', 'w11-web__btn--primario', () => W.aviso('Es tu propio perfil, visto desde fuera.', 'cuidado')));
+        if (s.msg === 'todos') b.appendChild(boton2('Enviar mensaje', null, () => W.aviso('Cualquiera, aunque no te conozca, te puede escribir.', 'cuidado')));
+        d.appendChild(b);
+        cab.append(av, d);
+        cont.appendChild(cab);
         if (s.privada) {
-          vista.appendChild(el('p', 'sim__candado', '🔒 Esta cuenta es privada. Síguela para ver sus fotos.'));
-        } else {
-          const fotos = el('div', 'sim__fotos');
-          ['🏎️', '🎨', '🎧'].forEach(e => {
-            const f = el('div', 'sim__foto');
-            f.appendChild(el('span', 'sim__foto-icono', e));
-            if (s.ubic) f.appendChild(el('span', 'sim__peligro sim__foto-ubic', '📍 Palma'));
-            fotos.appendChild(f);
-          });
-          vista.appendChild(fotos);
+          const c = el('div', 'w11-fg__privada');
+          c.append(el('p', 'w11-fg__candado', '🔒'), el('p', null, 'Esta cuenta es privada'), el('p', 'w11-web__sub', 'Síguela para ver sus fotos y vídeos.'));
+          cont.appendChild(c);
+          return;
         }
-        const boton = el('p', 'sim__ayuda', s.msg === 'todos' ? '💬 Cualquiera puede enviarle un mensaje' : s.msg === 'seguidores' ? '💬 Solo sus seguidores pueden escribirle' : '💬 No acepta mensajes');
-        if (s.msg === 'todos') boton.classList.add('sim__peligro');
-        vista.appendChild(boton);
+        const fotos = el('div', 'w11-fg__fotos');
+        ['🏞️', '🎨', '🎧'].forEach(e => {
+          const f = el('div', 'w11-fg__foto');
+          f.appendChild(el('span', 'w11-fg__foto-ico', e));
+          if (s.ubic) f.appendChild(el('span', 'w11-fg__ubic', '📍 Palma, plaza Major'));
+          fotos.appendChild(f);
+        });
+        cont.appendChild(fotos);
       }
-      pintarVista();
+      function ajustes(t, cont) {
+        t.t = 'Configuración • Fotogram';
+        const caja = el('div', 'w11-fg__ajustes');
+        const nav = el('nav', 'w11-fg__nav');
+        nav.appendChild(el('p', 'w11-fg__nav-t', 'Configuración'));
+        [['editar', 'Editar perfil'], ['privacidad', 'Privacidad de la cuenta'], ['mensajes', 'Mensajes'], ['publicaciones', 'Publicaciones'], ['pantalla', 'Pantalla']].forEach(([k, n]) => {
+          const b = boton(n, 'w11-fg__ni' + (s.sec === k ? ' w11-fg__ni--on' : ''));
+          b.addEventListener('click', () => { s.sec = k; C.pintar(); });
+          nav.appendChild(b);
+        });
+        const pag = el('div', 'w11-fg__pag');
+        caja.append(nav, pag);
+        cont.appendChild(caja);
+        if (s.sec === 'editar') {
+          pag.appendChild(el('p', 'w11-fg__h', 'Editar perfil'));
+          const fila = el('div', 'w11-fg__yo');
+          fila.append(el('span', 'w11-fg__avatar w11-fg__avatar--peq', 'P'), sinTraducir(el('strong', null, 'pixelrojo')));
+          pag.appendChild(fila);
+          const lb = el('label', 'w11-fg__campo');
+          lb.appendChild(el('span', 'w11-fg__etq', 'Presentación'));
+          const ta = document.createElement('textarea');
+          ta.className = 'w11-web__campo w11-fg__bio-edit';
+          ta.maxLength = 150;
+          ta.value = s.bio;
+          ta.spellcheck = false;
+          const cuenta = el('span', 'w11-web__sub', ta.value.length + ' / 150');
+          ta.addEventListener('input', () => { cuenta.textContent = ta.value.length + ' / 150'; });
+          lb.append(ta, cuenta);
+          pag.appendChild(lb);
+          pag.appendChild(interruptor('Mostrar el correo y el teléfono en el perfil', 'Cualquiera que vea tu perfil los podrá ver.', s.datos, v => {
+            s.datos = v;
+            cambio(3, !v, 'Editar perfil → «Mostrar el correo y el teléfono»: desactivado.');
+          }));
+          const env = boton2('Enviar', 'w11-web__btn--primario', () => {
+            s.bio = ta.value.trim();
+            const p = problemaBio(s.bio);
+            if (p === 'casa') { cambio(4, false, 'Biografía: sin dirección ni horarios.'); W.aviso('Guardada, pero todavía dice dónde vives (la calle, el número o la ciudad). Bórralo.', 'cuidado'); }
+            else if (p === 'clase') { cambio(4, false, 'Biografía: sin dirección ni horarios.'); W.aviso('Guardada, pero dice en qué instituto estás o a qué hora sales. Con eso te pueden encontrar.', 'cuidado'); }
+            else { cambio(4, true, `Editar perfil → Presentación: «${s.bio || '(vacía)'}». Ya no dice dónde vives ni dónde estudias.`); W.notificacion('Fotogram', 'Perfil guardado.'); }
+            ctx.apunta('Guardar la presentación: «' + s.bio + '».');
+          });
+          pag.appendChild(env);
+          pag.appendChild(el('p', 'w11-web__sub', 'La presentación (biografía) se cambia al pulsar «Enviar».'));
+        } else if (s.sec === 'privacidad') {
+          pag.appendChild(el('p', 'w11-fg__h', 'Privacidad de la cuenta'));
+          pag.appendChild(interruptor('Cuenta privada', 'Si es privada, solo las personas que apruebes podrán ver tus fotos y vídeos.', s.privada, v => {
+            s.privada = v;
+            cambio(0, v, 'Privacidad de la cuenta → Cuenta privada: activada. Solo te ven los seguidores que apruebas.');
+          }));
+        } else if (s.sec === 'mensajes') {
+          pag.appendChild(el('p', 'w11-fg__h', 'Mensajes'));
+          pag.appendChild(el('p', 'w11-fg__etq', '¿Quién puede enviarte solicitudes de mensajes?'));
+          pag.appendChild(radios('fg-msg', [['todos', 'Todo el mundo en Fotogram'], ['seguidores', 'Solo tus seguidores'], ['nadie', 'Nadie']], s.msg, v => {
+            s.msg = v;
+            if (v === 'nadie') W.aviso('Así no te podrían escribir ni tus amigos. La misión pide «solo seguidores».', 'cuidado');
+            cambio(2, v === 'seguidores', 'Mensajes → Solo tus seguidores.');
+          }));
+        } else if (s.sec === 'publicaciones') {
+          pag.appendChild(el('p', 'w11-fg__h', 'Publicaciones'));
+          pag.appendChild(interruptor('Añadir mi ubicación a las fotos', 'Fotogram pone en cada foto el sitio donde la hiciste.', s.ubic, v => {
+            s.ubic = v;
+            cambio(1, !v, 'Publicaciones → «Añadir mi ubicación a las fotos»: desactivado.');
+          }));
+        } else {
+          pag.appendChild(el('p', 'w11-fg__h', 'Pantalla'));
+          pag.appendChild(interruptor('Modo oscuro', null, s.tema, v => {
+            s.tema = v;
+            W.aviso('El modo oscuro solo cambia los colores: no tiene nada que ver con tu privacidad.', 'cuidado');
+          }));
+        }
+        const ver = boton2('👁 Ver mi perfil como público', 'w11-fg__ver', () => { C.activa = 1; C.pintar(); });
+        pag.appendChild(ver);
+      }
     },
   });
 
   /* ============================================================
-     S2 · Comparte bien
+     S3 · Comparte bien
      ============================================================ */
+  const DOM = 'iesramonllull.net';
   const PIDE = [
     'que lo editen Ana y Leo, y nadie más',
     'que toda la gente del instituto las vea, sin cambiarlas',
@@ -318,20 +470,20 @@
     'que Leo pueda comentar, pero no cambiar nada',
   ];
   registrarSimulacion('compartir', {
-    ventana: 'Mi unidad · Drive de mentira',
+    ventana: 'Windows 11 · Google Chrome',
     mision: ['trabajo-grupo', 'fotos-excursion', 'dni-escaneado', 'apuntes-u3'].map((n, i) => `${n}: ${PIDE[i]}.`),
     final: 'Apunta en tu cuaderno cómo dejaste compartido cada uno de los cuatro archivos y por qué (pregunta 14).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
-      const DOM = 'iesramonllull.net';
+      const W = escritorio(ctx);
+      const ic = WIN11.icono;
       const ARCH = [
-        { n: 'trabajo-grupo.docx', i: '📄', general: 'enlace', rolG: 'editor', gente: [] },
-        { n: 'fotos-excursion', i: '📁', general: 'dominio', rolG: 'editor', gente: [] },
-        { n: 'dni-escaneado.pdf', i: '📕', general: 'enlace', rolG: 'lector', gente: [] },
-        { n: 'apuntes-u3.docx', i: '📄', general: 'restringido', rolG: 'lector', gente: [['leo', 'editor']] },
+        { n: 'trabajo-grupo', i: 'word', tipo: 'Documento', general: 'enlace', rolG: 'editor', gente: [] },
+        { n: 'fotos-excursion', i: 'carpeta', tipo: 'Carpeta', general: 'dominio', rolG: 'editor', gente: [] },
+        { n: 'dni-escaneado.pdf', i: 'pdf', tipo: 'PDF', general: 'enlace', rolG: 'lector', gente: [] },
+        { n: 'apuntes-u3', i: 'word', tipo: 'Documento', general: 'restringido', rolG: 'lector', gente: [['leo', 'editor']] },
       ];
+      const PERSONAS = { ana: 'Ana Ruiz', leo: 'Leo Martín', mar: 'Mar Torres' };
       const ROLES = [['lector', 'Lector'], ['comentador', 'Comentador'], ['editor', 'Editor']];
-      const GENERAL = [['restringido', 'Restringido: solo las personas añadidas'], ['dominio', `Cualquiera de ${DOM}`], ['enlace', 'Cualquiera con el enlace']];
       const rol = (a, q) => (a.gente.find(g => g[0] === q) || [])[1];
       const COMPRUEBA = [
         a => a.general === 'restringido' && rol(a, 'ana') === 'editor' && rol(a, 'leo') === 'editor' && a.gente.length === 2,
@@ -340,113 +492,227 @@
         a => a.general === 'restringido' && rol(a, 'leo') === 'comentador' && a.gente.length === 1,
       ];
       function describir(a) {
-        const g = a.general === 'restringido' ? 'restringido' : (a.general === 'dominio' ? `todo ${DOM}` : 'cualquiera con el enlace') + ' como ' + a.rolG;
+        const g = a.general === 'restringido' ? 'acceso restringido' : (a.general === 'dominio' ? `todo ${DOM}` : 'cualquiera con el enlace') + ' como ' + a.rolG;
         const p = a.gente.map(([q, r]) => `${q} (${r})`).join(', ');
         return g + (p ? '; ' + p : '');
       }
-
-      function lista() {
-        ctx.barra('Mi unidad · Drive de mentira');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Toca un archivo para ver con quién está compartido.'));
-        const ul = el('ul', 'sim__temas');
+      let sel = -1;
+      const C = WIN11.web(W, {
+        pestanas: [{ url: 'drive.google.com/drive/my-drive' }],
+        sitios: { 'drive.google.com': pagina },
+      });
+      function pagina(t, cont) {
+        t.t = 'Mi unidad - Google Drive';
+        cont.classList.add('w11-drive');
+        const bar = el('div', 'w11-drive__bar');
+        bar.append(boton2('+ Nuevo', 'w11-mail__redactar', () => W.aviso('Hoy no hace falta crear nada: comparte bien lo que ya hay.', 'cuidado')), el('p', 'w11-drive__migas', 'Mi unidad'));
+        cont.appendChild(bar);
+        const tabla = el('div', 'w11-gd');
+        tabla.setAttribute('role', 'table');
+        const cab = el('div', 'w11-gd__fila w11-gd__fila--cab');
+        cab.append(el('span', null, 'Nombre'), el('span', 'w11-gd__c', 'Propietario'), el('span', 'w11-gd__c', 'Compartido'), el('span', 'w11-gd__acc', ''));
+        tabla.appendChild(cab);
         ARCH.forEach((a, k) => {
-          const li = el('li');
-          const b = boton(`${a.i} ${a.n}`, 'sim__tema');
-          b.setAttribute('translate', 'no');
-          b.addEventListener('click', () => abrir(k));
-          li.appendChild(b);
-          li.appendChild(el('span', 'sim__ayuda', (ctx.hecho(k) ? '✓ ' : '') + 'Compartido: ' + describir(a)));
-          ul.appendChild(li);
+          const f = el('div', 'w11-gd__fila' + (sel === k ? ' w11-gd__fila--sel' : ''));
+          f.setAttribute('role', 'row');
+          f.tabIndex = 0;
+          const n = el('span', 'w11-gd__n');
+          n.append(ic(a.i), sinTraducir(el('span', null, a.n)));
+          if (a.general !== 'restringido' || a.gente.length) n.appendChild(el('span', 'w11-gd__comp', '👥'));
+          const comp = a.general === 'enlace' ? 'Cualquiera con el enlace' : a.general === 'dominio' ? 'IES Ramon Llull' : a.gente.length ? a.gente.length + ' persona' + (a.gente.length > 1 ? 's' : '') : 'Solo tú';
+          const acc = boton2('👤+', 'w11-gd__share');
+          acc.setAttribute('aria-label', 'Compartir ' + a.n);
+          acc.title = 'Compartir';
+          acc.addEventListener('click', e => { e.stopPropagation(); compartir(k); });
+          f.append(n, el('span', 'w11-gd__c', 'yo'), el('span', 'w11-gd__c', comp), acc);
+          f.addEventListener('click', () => { sel = k; C.pintar(); });
+          f.addEventListener('dblclick', () => W.aviso(a.tipo === 'Carpeta' ? 'Para compartir no hace falta entrar: clic derecho → Compartir.' : 'Para compartirlo no hace falta abrirlo: clic derecho → Compartir.', 'cuidado'));
+          f.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            sel = k;
+            C.pintar();
+            W.menu(e.clientX, e.clientY, [
+              { t: 'Abrir con', off: true },
+              { sep: true },
+              { t: 'Descargar', off: true },
+              { t: 'Cambiar nombre', off: true },
+              { t: 'Hacer una copia', off: true },
+              { sep: true },
+              { t: 'Compartir', sub: [
+                { t: 'Compartir', f: () => compartir(k) },
+                { t: 'Copiar enlace', f: () => { ctx.apunta(`Copiar el enlace de ${a.n} (${describir(a)}).`); W.notificacion('Enlace copiado', a.general === 'restringido' ? 'Solo lo podrán abrir las personas con acceso.' : 'Lo podrá abrir ' + (a.general === 'dominio' ? 'cualquiera del instituto.' : 'cualquiera que tenga el enlace.')); } },
+              ] },
+              { t: 'Información del archivo', off: true },
+              { sep: true },
+              { t: 'Mover a la papelera', f: () => W.aviso('Borrarlo no es compartirlo bien: déjalo compartido como pide la misión.', 'cuidado') },
+            ]);
+          });
+          f.addEventListener('keydown', e => { if (e.key === 'Enter') compartir(k); });
+          tabla.appendChild(f);
         });
-        pantalla.appendChild(ul);
+        cont.appendChild(tabla);
+        cont.appendChild(el('p', 'w11-web__sub', 'Clic derecho en un archivo → Compartir, o el botón 👤+ de su fila.'));
       }
-      function abrir(k) {
+      function compartir(k) {
         const a = ARCH[k];
-        ctx.barra('Compartir «' + a.n + '»');
-        pantalla.innerHTML = '';
-        const nombre = el('p', 'sim__h', `${a.i} ${a.n}`);
-        nombre.setAttribute('translate', 'no');
-        pantalla.appendChild(nombre);
-        pantalla.appendChild(el('p', 'sim__pide', 'Lo que pide: ' + PIDE[k] + '.'));
-
-        pantalla.appendChild(el('p', 'sim__etiqueta', 'Personas con acceso'));
-        const gente = el('ul', 'sim__gente');
-        const fila = (q, r, tuyo) => {
-          const li = el('li');
-          li.appendChild(el('span', null, tuyo ? 'pixelrojo (tú) · propietario' : `${q}@${DOM}`));
-          if (!tuyo) {
-            const s = select(ROLES.concat([['quitar', 'Quitar acceso']]), r, 'Permiso de ' + q);
-            s.addEventListener('change', () => {
-              if (s.value === 'quitar') a.gente = a.gente.filter(g => g[0] !== q);
-              else a.gente.find(g => g[0] === q)[1] = s.value;
-              abrir(k);
-            });
-            li.appendChild(s);
-          }
-          gente.appendChild(li);
-        };
-        fila('pixelrojo', '', true);
-        a.gente.forEach(([q, r]) => fila(q, r));
-        pantalla.appendChild(gente);
-
-        const nueva = el('div', 'lab__fila');
-        const quien = select([['', 'Añadir a…'], ['ana', `ana@${DOM}`], ['leo', `leo@${DOM}`], ['mar', `mar@${DOM}`]].filter(([q]) => !q || !rol(a, q)), '', 'Añadir a una persona');
-        const rolN = select(ROLES, 'lector', 'Permiso de la persona nueva');
-        const anadir = boton('Añadir');
-        anadir.addEventListener('click', () => {
-          if (!quien.value) return;
-          a.gente.push([quien.value, rolN.value]);
-          abrir(k);
-        });
-        nueva.appendChild(quien);
-        nueva.appendChild(rolN);
-        nueva.appendChild(anadir);
-        pantalla.appendChild(nueva);
-
-        pantalla.appendChild(el('p', 'sim__etiqueta', 'Acceso general'));
-        const filaG = el('div', 'lab__fila');
-        const g = select(GENERAL, a.general, 'Acceso general');
-        const rg = select(ROLES, a.rolG, 'Permiso del acceso general');
-        rg.hidden = a.general === 'restringido';
-        g.addEventListener('change', () => { a.general = g.value; abrir(k); });
-        rg.addEventListener('change', () => { a.rolG = rg.value; });
-        filaG.appendChild(g);
-        filaG.appendChild(rg);
-        pantalla.appendChild(filaG);
-        if (a.general === 'enlace') pantalla.appendChild(ctx.aviso('Con el enlace, cualquiera que lo reciba lo abre, aunque no sea del instituto. Si alguien lo reenvía, ya no controlas quién lo ve.', 'cuidado'));
-
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        const listo = boton('Listo', 'lab__boton lab__boton--activo');
-        listo.addEventListener('click', () => {
-          msg.innerHTML = '';
-          if (COMPRUEBA[k](a)) {
-            ctx.cumple(k, `${a.n}: ${describir(a)}.`);
-            lista();
-          } else {
-            if (ctx.hecho(k)) ctx.deshace(k);
-            ctx.falla(`${a.n}: ${describir(a)} (no es lo que pide).`);
-            msg.appendChild(ctx.aviso('Todavía no está como pide. Vuelve a leer «Lo que pide» y mira quién tiene acceso y con qué permiso.'));
-          }
-        });
-        const atras = boton('‹ Volver sin comprobar');
-        atras.addEventListener('click', lista);
-        const mandos = el('div', 'lab__fila');
-        mandos.appendChild(atras);
-        mandos.appendChild(listo);
-        pantalla.appendChild(mandos);
-        pantalla.appendChild(msg);
+        const copia = JSON.parse(JSON.stringify({ general: a.general, rolG: a.rolG, gente: a.gente }));
+        let nuevos = [];
+        C.modal(`Compartir «${a.n}»`, caja => {
+          const pinta = () => {
+            caja.innerHTML = '';
+            // añadir personas
+            const add = el('div', 'w11-share__add');
+            const i = document.createElement('input');
+            i.className = 'w11-web__campo';
+            i.placeholder = 'Añadir personas, grupos o eventos de calendario';
+            i.setAttribute('aria-label', 'Añadir personas');
+            i.spellcheck = false;
+            const sug = el('div', 'w11-share__sug');
+            const sugerir = () => {
+              sug.innerHTML = '';
+              const q = norm(i.value);
+              if (!q) return;
+              Object.keys(PERSONAS).filter(p => !rol(copia, p) && nuevos.indexOf(p) === -1 && (norm(PERSONAS[p]).indexOf(q) !== -1 || (p + '@' + DOM).indexOf(q) !== -1)).forEach(p => {
+                const b = boton('', 'w11-share__s');
+                b.append(avatar(p), el('span', null, PERSONAS[p]), sinTraducir(el('span', 'w11-web__sub', p + '@' + DOM)));
+                b.addEventListener('click', () => { nuevos.push(p); pinta(); });
+                sug.appendChild(b);
+              });
+              if (!sug.childNodes.length) sug.appendChild(el('p', 'w11-web__sub', 'Nadie del instituto se llama así.'));
+            };
+            i.addEventListener('input', sugerir);
+            add.append(i, sug);
+            caja.appendChild(add);
+            if (nuevos.length) {
+              const chips = el('div', 'w11-share__chips');
+              nuevos.forEach(p => {
+                const c = el('span', 'w11-share__chip');
+                c.appendChild(sinTraducir(el('span', null, p + '@' + DOM)));
+                const x = boton('×', 'w11-share__x');
+                x.setAttribute('aria-label', 'Quitar ' + p);
+                x.addEventListener('click', () => { nuevos = nuevos.filter(y => y !== p); pinta(); });
+                c.appendChild(x);
+                chips.appendChild(c);
+              });
+              const rN = desplegable(ROLES, caja.dataset.rolN || 'editor', 'Permiso de las personas nuevas', v => { caja.dataset.rolN = v; });
+              chips.appendChild(rN);
+              caja.appendChild(chips);
+              const env = boton2('Enviar', 'w11-web__btn--primario', () => {
+                const r = caja.dataset.rolN || 'editor';
+                nuevos.forEach(p => copia.gente.push([p, r]));
+                ctx.apunta(`${a.n}: añadir a ${nuevos.join(' y ')} como ${r}.`);
+                nuevos = [];
+                pinta();
+              });
+              caja.appendChild(env);
+              return;
+            }
+            caja.appendChild(el('p', 'w11-share__h', 'Personas con acceso'));
+            const lista = el('div', 'w11-share__lista');
+            const fila = (q, r) => {
+              const f = el('div', 'w11-share__p');
+              f.appendChild(avatar(q));
+              const d = el('span', 'w11-share__pd');
+              d.append(el('span', null, q === 'yo' ? 'pixelrojo (tú)' : PERSONAS[q]), sinTraducir(el('span', 'w11-web__sub', (q === 'yo' ? 'pixelrojo' : q) + '@' + DOM)));
+              f.appendChild(d);
+              if (q === 'yo') f.appendChild(el('span', 'w11-web__sub', 'Propietario'));
+              else f.appendChild(desplegable(ROLES.concat([['quitar', 'Quitar acceso']]), r, 'Permiso de ' + PERSONAS[q], v => {
+                if (v === 'quitar') copia.gente = copia.gente.filter(g => g[0] !== q);
+                else copia.gente.find(g => g[0] === q)[1] = v;
+                pinta();
+              }));
+              lista.appendChild(f);
+            };
+            fila('yo');
+            copia.gente.forEach(([q, r]) => fila(q, r));
+            caja.appendChild(lista);
+            caja.appendChild(el('p', 'w11-share__h', 'Acceso general'));
+            const g = el('div', 'w11-share__g');
+            g.appendChild(el('span', 'w11-share__gi', copia.general === 'restringido' ? '🔒' : copia.general === 'dominio' ? '🏫' : '🌐'));
+            const gd = el('div', 'w11-share__gd');
+            gd.appendChild(desplegable([['restringido', 'Restringido'], ['dominio', 'IES Ramon Llull'], ['enlace', 'Cualquier persona con el enlace']], copia.general, 'Acceso general', v => { copia.general = v; pinta(); }));
+            gd.appendChild(el('span', 'w11-web__sub', copia.general === 'restringido' ? 'Solo pueden abrirlo con este enlace las personas que tienen acceso' : copia.general === 'dominio' ? 'Cualquier persona de este grupo que tenga el enlace puede acceder' : 'Cualquier persona de Internet que tenga el enlace puede acceder'));
+            g.appendChild(gd);
+            if (copia.general !== 'restringido') g.appendChild(desplegable(ROLES, copia.rolG, 'Permiso del acceso general', v => { copia.rolG = v; }));
+            caja.appendChild(g);
+          };
+          pinta();
+        }, [
+          { t: '🔗 Copiar enlace', f: () => { W.notificacion('Enlace copiado', ''); return false; } },
+          { t: 'Hecho', primario: true, f: () => {
+            if (nuevos.length) { W.aviso('Has escrito personas pero no has pulsado «Enviar»: no se han añadido.', 'cuidado'); return false; }
+            Object.assign(a, copia);
+            if (COMPRUEBA[k](a)) { ctx.cumple(k, `${a.n}: ${describir(a)}.`); W.aviso(`${a.n}: compartido como pide.`, 'ok'); }
+            else {
+              if (ctx.hecho(k)) ctx.deshace(k);
+              ctx.falla(`${a.n}: ${describir(a)} (no es lo que pide).`);
+              W.aviso(`${a.n}: todavía no está como pide la misión. Mira quién tiene acceso, con qué permiso, y el acceso general.`, 'cuidado');
+            }
+            C.pintar();
+          } },
+        ]);
       }
-      lista();
     },
   });
 
   /* ============================================================
-     S3 · Salva la wiki
+     Una wiki tipo Wikipedia (MediaWiki) para las dos de la S4
+     ============================================================ */
+  function cabWiki(cont, ir, host, art, pest, alPest) {
+    const c = el('div', 'w11-wiki__cab');
+    const logo = enlace('📖 Wiki de clase', () => ir(host), 'w11-wiki__logo');
+    c.append(logo, el('span', 'w11-web__hueco'), el('span', 'w11-web__sub', '👤 pixelrojo'));
+    cont.appendChild(c);
+    if (!art) return;
+    const t = el('div', 'w11-wiki__tabs');
+    const izq = el('div', 'w11-wiki__tg');
+    izq.append(el('span', 'w11-wiki__tab w11-wiki__tab--on', 'Artículo'), el('span', 'w11-wiki__tab', 'Discusión'));
+    const der = el('div', 'w11-wiki__tg');
+    [['leer', 'Leer'], ['editar', 'Editar'], ['historial', 'Ver historial']].forEach(([k, n]) => {
+      const a = enlace(n, () => alPest(k), 'w11-wiki__tab' + (pest === k ? ' w11-wiki__tab--on' : ''));
+      der.appendChild(a);
+    });
+    t.append(izq, der);
+    cont.appendChild(t);
+  }
+  function diffWiki(a, b) {
+    const box = el('table', 'w11-wiki__diff');
+    const tb = el('tbody');
+    const quitado = a.filter(p => b.indexOf(p) === -1), puesto = b.filter(p => a.indexOf(p) === -1);
+    const n = Math.max(quitado.length, puesto.length);
+    const cab = el('tr');
+    cab.append(el('th', null, 'Versión de antes'), el('th', null, 'Versión de después'));
+    tb.appendChild(cab);
+    for (let i = 0; i < n; i++) {
+      const tr = el('tr');
+      const x = el('td', quitado[i] ? 'w11-wiki__del' : null, quitado[i] ? '− ' + quitado[i] : '');
+      const y = el('td', puesto[i] ? 'w11-wiki__ins' : null, puesto[i] ? '+ ' + puesto[i] : '');
+      tr.append(x, y);
+      tb.appendChild(tr);
+    }
+    if (!n) { const tr = el('tr'); const td = el('td', null, 'Sin cambios en el texto.'); td.colSpan = 2; tr.appendChild(td); tb.appendChild(tr); }
+    box.appendChild(tb);
+    return box;
+  }
+  function filaHist(v, prev, ult, op) {
+    const li = el('li', 'w11-wiki__hf');
+    const r = (t, f) => f ? enlace(t, f) : el('span', 'w11-web__sub', t);
+    li.append('(', r('act', ult ? null : op.act), ' | ', r('ant', prev ? op.ant : null), ') ');
+    li.append(enlace(v.cuando, op.ver), ' ');
+    const q = sinTraducir(el('strong', 'w11-wiki__quien', v.quien));
+    li.append(q, ' ');
+    const bytes = v.bytes > 0 ? '+' + v.bytes : String(v.bytes);
+    li.appendChild(el('span', 'w11-wiki__bytes ' + (v.bytes < 0 ? 'w11-wiki__bytes--menos' : 'w11-wiki__bytes--mas'), '(' + bytes + ')'));
+    li.append(' . . ', el('em', null, v.que ? '(' + v.que + ')' : '(sin resumen)'));
+    if (op.deshacer) li.append(' (', enlace('deshacer', op.deshacer), ')');
+    return li;
+  }
+
+  /* ============================================================
+     S4 · Salva la wiki
      ============================================================ */
   registrarSimulacion('wiki', {
-    ventana: 'Wiki de clase · Blogs',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Encuentra en el historial la versión que estropeó el artículo.',
       'Arréglalo sin perder los cambios buenos que vinieron después.',
@@ -454,359 +720,316 @@
     ],
     final: 'Apunta en tu cuaderno qué versión estropeó el artículo, quién la hizo, qué cambió y por qué no bastaba con volver a la versión anterior (pregunta 9).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
+      const W = escritorio(ctx);
+      const HOST = 'wiki.iesramonllull.net';
+      const URL = HOST + '/wiki/Blogs';
       const P1 = 'Un blog publica entradas con fecha. La más nueva sale arriba.';
       const P2 = 'Ejemplo: Xataka es un blog de tecnología.';
       const P3 = 'Muchos blogs dejan comentarios debajo de cada entrada.';
       const MALO = 'los blogs son una tontería y nadie los lee jajaja';
       const P4 = 'Para saber más: Microsiervos, un blog de curiosidades.';
-      // cada versión: quién, qué hizo y cómo queda el artículo
       const V = [
-        { n: 1, quien: 'ana_k', que: 'Crea el artículo', texto: [P1] },
-        { n: 2, quien: 'leo_m', que: 'Añade un ejemplo', texto: [P1, P2] },
-        { n: 3, quien: 'mar_t', que: 'Añade los comentarios', texto: [P1, P2, P3] },
-        { n: 4, quien: '83.45.12.7 (sin cuenta)', que: 'Cambio sin resumen', texto: [P1, MALO] },
-        { n: 5, quien: 'pau_r', que: 'Añade un enlace', texto: [P1, MALO, P4] },
+        { n: 1, cuando: '18:05 2 nov 2026', quien: 'ana_k', que: 'Creo el artículo', texto: [P1], bytes: 62 },
+        { n: 2, cuando: '18:20 2 nov 2026', quien: 'leo_m', que: 'Añado un ejemplo', texto: [P1, P2], bytes: 42 },
+        { n: 3, cuando: '17:12 5 nov 2026', quien: 'mar_t', que: 'Añado los comentarios', texto: [P1, P2, P3], bytes: 56 },
+        { n: 4, cuando: '23:47 9 nov 2026', quien: '83.45.12.7', que: '', texto: [P1, MALO], bytes: -50 },
+        { n: 5, cuando: '10:31 12 nov 2026', quien: 'pau_r', que: 'Añado un enlace', texto: [P1, MALO, P4], bytes: 56 },
       ];
-      let actual = V[4].texto.slice(), encontrada = false, arreglado = false;
-
-      function articulo() {
-        ctx.barra('Wiki de clase · Blogs');
-        pantalla.innerHTML = '';
-        const tabs = el('div', 'lab__fila');
-        const leer = boton('Leer', 'lab__boton lab__boton--activo');
-        const hist = boton('Ver historial');
-        hist.addEventListener('click', historial);
-        tabs.appendChild(leer);
-        tabs.appendChild(hist);
-        pantalla.appendChild(tabs);
-        pantalla.appendChild(el('p', 'sim__h', 'Blogs'));
-        actual.forEach(p => pantalla.appendChild(el('p', p === MALO ? 'sim__peligro' : null, p)));
-        if (!arreglado) pantalla.appendChild(el('p', 'sim__ayuda', 'Algo no cuadra: ¿falta algo? ¿sobra algo? Mira el historial.'));
-      }
-      function diff(a, b) {
-        const box = el('div', 'sim__diff');
-        a.filter(p => b.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('del'), { textContent: '− ' + p })));
-        b.filter(p => a.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('ins'), { textContent: '+ ' + p })));
-        if (!box.childNodes.length) box.appendChild(el('span', 'sim__ayuda', 'Sin cambios.'));
-        return box;
-      }
-      function historial() {
-        ctx.barra('Wiki de clase · Blogs · Historial');
-        pantalla.innerHTML = '';
-        const volver = boton('‹ Volver al artículo');
-        volver.addEventListener('click', articulo);
-        pantalla.appendChild(volver);
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Lo más nuevo, arriba. «Ver cambios» enseña lo que se quitó (−) y lo que se añadió (+) en esa versión.'));
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        const ul = el('ul', 'sim__versiones');
-        V.slice().reverse().forEach(v => {
-          const li = el('li');
-          li.appendChild(el('strong', null, `v${v.n}`));
-          li.appendChild(document.createTextNode(` · ${v.quien} · ${v.que}`));
-          const caja = el('div');
-          const ver = boton('Ver cambios');
-          ver.addEventListener('click', () => {
-            caja.innerHTML = '';
-            caja.appendChild(diff(v.n > 1 ? V[v.n - 2].texto : [], v.texto));
-            if (v.n === 4 && !encontrada) {
-              encontrada = true;
-              ctx.cumple(0, 'En el historial, «Ver cambios» de la v4: un usuario sin cuenta (83.45.12.7) quitó un ejemplo y un párrafo y escribió una tontería.');
-            }
+      let actual = V[4].texto.slice(), arreglado = false, vista = { p: 'leer' };
+      const C = WIN11.web(W, { pestanas: [{ url: URL }], sitios: { [HOST]: pagina } });
+      function ir(p) { vista = p; C.pintar(); }
+      const ver = v => () => {
+        if (v.n === 4) ctx.cumple(0, `Historial → (ant) de la versión de las ${v.cuando.split(' ')[0]} del 9 nov: la hizo 83.45.12.7 (sin cuenta), sin resumen y con −50 bytes. Quitó el ejemplo y los comentarios y escribió una tontería.`);
+        ir({ p: 'diff', n: v.n });
+      };
+      function pagina(t, cont) {
+        cont.classList.add('w11-wiki');
+        t.t = 'Blogs - Wiki de clase';
+        cabWiki(cont, u => C.ir(u), HOST, true, vista.p === 'diff' || vista.p === 'vieja' ? 'historial' : vista.p, k => ir({ p: k }));
+        const main = el('div', 'w11-wiki__main');
+        cont.appendChild(main);
+        if (vista.p === 'leer') {
+          main.appendChild(el('p', 'w11-wiki__h1', 'Blogs'));
+          main.appendChild(el('p', 'w11-web__sub', 'De Wiki de clase'));
+          actual.forEach(p => main.appendChild(el('p', null, p)));
+          return;
+        }
+        if (vista.p === 'editar') {
+          main.appendChild(el('p', 'w11-wiki__h1', 'Editando «Blogs»'));
+          main.appendChild(el('p', 'w11-wiki__nota', 'Para arreglar lo que hizo una sola versión sin perder lo de después, no hace falta escribirlo todo otra vez: en el historial, cada versión tiene su enlace «deshacer».'));
+          const ta = document.createElement('textarea');
+          ta.className = 'w11-web__campo w11-wiki__ta';
+          ta.value = actual.join('\n\n');
+          ta.setAttribute('aria-label', 'Texto del artículo');
+          main.appendChild(ta);
+          main.appendChild(boton2('Cancelar', null, () => ir({ p: 'leer' })));
+          ta.addEventListener('input', () => { ta.dataset.tocado = '1'; });
+          main.appendChild(boton2('Guardar cambios', 'w11-web__btn--primario', () => W.aviso('Aquí tendrías que reescribir de memoria lo que se borró. Mejor usa «deshacer» en la versión mala del historial.', 'cuidado')));
+          return;
+        }
+        if (vista.p === 'historial') {
+          main.appendChild(el('p', 'w11-wiki__h1', 'Blogs: historial de revisiones'));
+          main.appendChild(el('p', 'w11-wiki__nota', 'Lo más nuevo, arriba. (act) = diferencias con la versión actual; (ant) = diferencias con la versión anterior. Pulsa la fecha para ver cómo era el artículo.'));
+          const ul = el('ul', 'w11-wiki__hist');
+          V.slice().reverse().forEach((v, i) => {
+            const ult = i === 0;
+            ul.appendChild(filaHist(v, v.n > 1, ult, {
+              act: () => ir({ p: 'diff', n: v.n, con: 'act' }),
+              ant: ver(v),
+              ver: () => ir({ p: 'vieja', n: v.n }),
+              deshacer: v.n > 1 && !(arreglado && v.n === 4) ? () => deshacer(v) : null,
+            }));
           });
-          const fila = el('div', 'lab__fila');
-          fila.appendChild(ver);
-          if (v.n === 4) {
-            const deshacer = boton('↶ Deshacer este cambio');
-            deshacer.addEventListener('click', resumen);
-            fila.appendChild(deshacer);
-          }
-          if (v.n < 5) {
-            const rest = boton(`Restaurar la v${v.n}`);
-            rest.addEventListener('click', () => {
-              msg.innerHTML = '';
-              if (v.n === 3) {
-                msg.appendChild(ctx.aviso('Si vuelves a la v3, también pierdes el enlace que añadió pau_r en la v5, que estaba bien. Mejor deshaz solo la v4.'));
-                ctx.falla('Restaurar la v3 perdería el enlace bueno de la v5.');
-              } else {
-                msg.appendChild(ctx.aviso(`La v${v.n} es todavía más antigua: perderías más cambios buenos.`));
-              }
-            });
-            fila.appendChild(rest);
-          }
-          li.appendChild(fila);
-          li.appendChild(caja);
-          ul.appendChild(li);
-        });
-        pantalla.appendChild(ul);
-        pantalla.appendChild(msg);
+          main.appendChild(ul);
+          return;
+        }
+        if (vista.p === 'diff') {
+          const v = V[vista.n - 1];
+          const a = vista.con === 'act' ? v.texto : (vista.n > 1 ? V[vista.n - 2].texto : []);
+          const b = vista.con === 'act' ? V[V.length - 1].texto : v.texto;
+          main.appendChild(el('p', 'w11-wiki__h1', 'Blogs: diferencias entre revisiones'));
+          const cab = el('p', 'w11-wiki__nota');
+          cab.append(vista.con === 'act' ? `Desde la versión de ${v.cuando} hasta la actual.` : 'Cambios de la versión de ', vista.con === 'act' ? '' : sinTraducir(el('strong', null, v.quien)), vista.con === 'act' ? '' : ` (${v.cuando}). Resumen: ${v.que || '(sin resumen)'}.`);
+          main.appendChild(cab);
+          main.appendChild(diffWiki(a, b));
+          const f = el('p');
+          f.appendChild(enlace('‹ Volver al historial', () => ir({ p: 'historial' })));
+          if (vista.con !== 'act' && vista.n > 1 && !(arreglado && v.n === 4)) f.append('  ·  ', enlace('deshacer esta versión', () => deshacer(v)));
+          main.appendChild(f);
+          return;
+        }
+        if (vista.p === 'vieja') {
+          const v = V[vista.n - 1];
+          main.appendChild(el('p', 'w11-wiki__h1', 'Blogs'));
+          const n = el('div', 'w11-wiki__vieja');
+          n.append(`Esta es una versión antigua de esta página, editada por ${v.quien} el ${v.cuando}. Puede ser muy distinta de la versión actual.`);
+          main.appendChild(n);
+          v.texto.forEach(p => main.appendChild(el('p', null, p)));
+          if (v.n < V.length) main.appendChild(boton2('Restaurar esta versión', null, () => {
+            if (v.n === 3) { ctx.falla('Restaurar la versión del 5 nov (mar_t): se perdería el enlace bueno de pau_r.'); W.aviso('Si vuelves a esta versión, también pierdes el enlace que añadió pau_r después, que estaba bien. Mejor deshaz solo la versión mala.', 'cuidado'); }
+            else if (v.n === 4) W.aviso('Esta es la versión estropeada: restaurarla no arregla nada.', 'cuidado');
+            else if (v.n === 5) W.aviso('Esta ya es la versión actual.', 'cuidado');
+            else W.aviso('Es todavía más antigua: perderías más cambios buenos. Busca la versión que estropeó el artículo y deshaz solo esa.', 'cuidado');
+          }));
+          main.appendChild(enlace('‹ Volver al historial', () => ir({ p: 'historial' })));
+          return;
+        }
+        if (vista.p === 'deshacer') {
+          main.appendChild(el('p', 'w11-wiki__h1', 'Editando «Blogs» (deshacer)'));
+          main.appendChild(el('p', 'w11-wiki__nota', 'Se puede deshacer la edición. Comprueba las diferencias de abajo y, si es lo que quieres, guarda los cambios.'));
+          const nuevo = [P1, P2, P3, P4];
+          main.appendChild(diffWiki(actual, nuevo));
+          const l = el('label', 'w11-wiki__resumen');
+          l.appendChild(el('span', null, 'Resumen:'));
+          const i = document.createElement('input');
+          i.className = 'w11-web__campo';
+          i.spellcheck = false;
+          i.maxLength = 200;
+          i.setAttribute('aria-label', 'Resumen de edición');
+          l.appendChild(i);
+          main.appendChild(l);
+          main.appendChild(el('p', 'w11-web__sub', 'El resumen lo verán los demás en el historial: di qué has hecho y por qué.'));
+          const f = el('div', 'w11-wiki__botones');
+          f.append(boton2('Guardar cambios', 'w11-web__btn--primario', () => {
+            const r = i.value.trim(), n = norm(r);
+            if (r.length < 8 || ['cambios', 'cambio', 'arreglo', 'arreglado', 'edito'].indexOf(n) !== -1) { W.aviso('Escribe un resumen que se entienda: qué versión deshaces y por qué (por ejemplo, que era vandalismo).', 'cuidado'); i.focus(); return; }
+            actual = nuevo;
+            arreglado = true;
+            V.push({ n: 6, cuando: '16:05 16 nov 2026', quien: 'pixelrojo', que: r, texto: nuevo.slice(), bytes: 98 });
+            ctx.cumple(1, 'Historial → «deshacer» en la versión de 83.45.12.7: vuelven el ejemplo y los comentarios, y se queda el enlace de pau_r.');
+            ctx.cumple(2, `Resumen de edición: «${r}». Queda como la versión más nueva del historial.`);
+            ir({ p: 'leer' });
+            W.notificacion('Wiki de clase', 'Se ha guardado tu edición.');
+          }), boton2('Cancelar', null, () => ir({ p: 'historial' })));
+          main.appendChild(f);
+        }
       }
-      function resumen() {
-        ctx.barra('Wiki de clase · Blogs · Deshacer');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', null, 'Se va a quitar solo lo que hizo la v4. Lo de la v5 se queda.'));
-        pantalla.appendChild(diff(V[4].texto, [P1, P2, P3, P4]));
-        const opc = select([
-          ['', 'Resumen de edición…'],
-          ['bien', 'Deshago el vandalismo de la v4 (83.45.12.7)'],
-          ['nada', 'cambios'],
-          ['mal', 'borro lo del otro porque sí'],
-        ], '', 'Resumen de edición');
-        const l = el('label', 'sim__campo');
-        l.appendChild(el('span', 'sim__ayuda', 'Resumen de edición: lo que verán los demás en el historial.'));
-        l.appendChild(opc);
-        pantalla.appendChild(l);
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        const guardar = boton('Guardar cambios', 'lab__boton lab__boton--activo');
-        guardar.addEventListener('click', () => {
-          msg.innerHTML = '';
-          if (opc.value !== 'bien') {
-            msg.appendChild(ctx.aviso('Escoge un resumen que diga a los demás qué has hecho y por qué. Así, quien mire el historial lo entiende.'));
-            return;
-          }
-          actual = [P1, P2, P3, P4];
-          arreglado = true;
-          V.push({ n: 6, quien: 'pixelrojo (tú)', que: 'Deshago el vandalismo de la v4', texto: actual.slice() });
-          ctx.cumple(1, 'Deshacer solo la v4: vuelven el ejemplo y los comentarios, y se queda el enlace de la v5.');
-          ctx.cumple(2, 'Resumen de edición: «Deshago el vandalismo de la v4». Queda como v6 en el historial.');
-          articulo();
-        });
-        const atras = boton('‹ Cancelar');
-        atras.addEventListener('click', historial);
-        const f = el('div', 'lab__fila');
-        f.appendChild(atras);
-        f.appendChild(guardar);
-        pantalla.appendChild(f);
-        pantalla.appendChild(msg);
+      function deshacer(v) {
+        if (v.n === 4) { ir({ p: 'deshacer' }); return; }
+        if (v.n === 5) { ctx.falla('Deshacer la edición de pau_r, que estaba bien.'); W.aviso('Esa es la de pau_r: añadió un enlace que estaba bien. ¿Qué versión estropeó el artículo?', 'cuidado'); return; }
+        if (v.n === 6) { W.aviso('Esa es tu propia edición.', 'cuidado'); return; }
+        W.aviso('No se ha podido deshacer: ese trozo lo cambiaron versiones posteriores. Busca la versión que estropeó el artículo.', 'cuidado');
+        ctx.apunta(`Deshacer la versión de ${v.quien}: no se puede (conflicto con versiones posteriores).`);
       }
-      articulo();
     },
   });
 
   /* ============================================================
-     S3 · Escribe en la wiki (27/10/2026). Sustituye a la wiki de
-     clase en Google Docs (ya hacen documentos compartidos en
-     Ofimática). Completar un artículo a medio hacer: el ejemplo en
-     su sección, sin borrar lo de otro, con resumen de edición; un
-     compañero guarda a la vez en otra sección; mirar el historial.
+     S4 · Escribe en la wiki (27/10/2026; real desde el 16/11/2026)
      ============================================================ */
   registrarSimulacion('wiki-escribe', {
-    ventana: 'Wiki de clase · Portada',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Busca el artículo que está a medio hacer (esbozo) y ábrelo.',
-      'Añade un ejemplo en la sección que toca, sin borrar lo que escribieron otros.',
+      'Añade el ejemplo de tus apuntes en la sección que toca, sin borrar lo que escribieron otros.',
       'Guarda con un resumen de edición que diga qué has añadido.',
       'Busca tu cambio en el historial y mira qué datos guarda.',
     ],
     final: 'Apunta en tu cuaderno qué artículo completaste, qué añadiste y en qué sección, y qué datos guarda el historial de tu cambio (pregunta 8).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
+      const W = escritorio(ctx);
+      const HOST = 'wiki.iesramonllull.net';
       const SEC = [['que', 'Qué es'], ['ejemplo', 'Ejemplo'], ['mas', 'Para saber más']];
       const Q1 = 'El RSS avisa de lo nuevo que publica una web, sin tener que entrar a mirarla.';
       const Q2 = 'El RSS avisa de lo nuevo que publica una web, sin tener que entrar a mirarla cada día.';
       const E1 = 'Muchos blogs y periódicos tienen RSS.';
       const TUYO = 'Con un lector RSS, como Feedly, sigo cinco blogs y veo sus entradas nuevas en un solo sitio.';
+      const NUBE = 'La nube guarda tus archivos en servidores de Internet y los ves desde cualquier sitio.';
+      const OPINION = '¡¡El RSS es lo mejor de Internet y todo el mundo debería usarlo!!';
       const M1 = 'Al RSS también se le llama sindicación.';
-      const TEXTOS = [
-        ['', 'Elige qué escribes…'],
-        ['ejemplo', TUYO],
-        ['nube', 'La nube guarda tus archivos en servidores de Internet y los ves desde cualquier sitio.'],
-        ['opinion', '¡¡El RSS es lo mejor de Internet y todo el mundo debería usarlo!!'],
-      ];
-      const ARTICULOS = ['Foros', 'Blogs', 'Wikis', 'Redes sociales', 'RSS', 'La nube'];
+      const OTROS = {
+        Foros: ['Un foro ordena los mensajes por temas. Cada tema empieza con una pregunta y debajo van las respuestas.'],
+        Blogs: ['Un blog publica entradas con fecha. La más nueva sale arriba.', 'Muchos blogs dejan comentarios debajo de cada entrada.'],
+        Wikis: ['Una wiki la escriben muchas personas. Todo cambio queda en el historial y se puede deshacer.'],
+        'Redes sociales': ['En una red social cada persona tiene su perfil y comparte fotos, vídeos y mensajes con sus seguidores.'],
+        'La nube': ['La nube guarda tus archivos en servidores de Internet. Los puedes abrir desde cualquier dispositivo con conexión.'],
+      };
       const copia = a => ({ que: a.que.slice(), ejemplo: a.ejemplo.slice(), mas: a.mas.slice() });
+      const tam = a => SEC.reduce((s, [k]) => s + a[k].join('').length, 0);
       const V = [
-        { n: 1, cuando: '10 oct, 17:05', quien: 'ana_k', que: 'Crea el artículo', a: { que: [Q1], ejemplo: [], mas: [] } },
-        { n: 2, cuando: '10 oct, 17:20', quien: 'leo_m', que: 'Empiezo el ejemplo y añado «Para saber más»', a: { que: [Q1], ejemplo: [E1], mas: [M1] } },
+        { n: 1, cuando: '17:05 10 oct 2026', quien: 'ana_k', que: 'Creo el artículo', a: { que: [Q1], ejemplo: [], mas: [] } },
+        { n: 2, cuando: '17:20 10 oct 2026', quien: 'leo_m', que: 'Empiezo el ejemplo y añado «Para saber más»', a: { que: [Q1], ejemplo: [E1], mas: [M1] } },
       ];
-      let actual = copia(V[1].a), guardado = false;
+      V.forEach((v, i) => { v.bytes = tam(v.a) - (i ? tam(V[i - 1].a) : 0); });
+      let actual = copia(V[1].a), guardado = false, vista = { p: 'portada' };
+      const C = WIN11.web(W, { pestanas: [{ url: HOST }], sitios: { [HOST]: pagina } });
+      // Tus apuntes, en el Bloc de notas
+      const bloc = W.abrirApp('bloc', { texto: 'Apuntes U3 - RSS y la nube\r\n\r\nEjemplo de RSS:\r\n' + TUYO + '\r\n\r\nLa nube:\r\n' + NUBE + '\r\n\r\nLo que dijo Leo en clase:\r\n' + OPINION + '\r\n' });
+      if (bloc) { bloc.titulo('apuntes-u3.txt: Bloc de notas'); bloc.rect = { x: 44, y: 6, w: 54, h: 66 }; if (bloc.estado === 'max' && (W.escena.clientWidth === 0 || W.escena.clientWidth >= 560)) bloc.estado = 'normal'; bloc.colocar(); }
+      W.notificacion('Tus apuntes', 'Están en el Bloc de notas. Para pasar el ejemplo a la wiki: selecciónalo, cópialo (Ctrl + C) y pégalo (Ctrl + V).', 'bloc');
 
-      function portada() {
-        ctx.barra('Wiki de clase · Portada');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', 'sim__h', 'Wiki de clase: Servicios de Internet'));
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Cada tema es un artículo. Los que pone «esbozo» están a medio hacer.'));
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        const ul = el('ul', 'sim__temas');
-        ARTICULOS.forEach(t => {
-          const li = el('li');
-          const b = boton(t, 'sim__tema');
-          b.addEventListener('click', () => {
-            if (t === 'RSS') {
-              ctx.cumple(0, 'En la portada, el artículo «RSS» pone «esbozo»: está a medio hacer.');
-              articulo();
-            } else {
-              msg.innerHTML = '';
-              msg.appendChild(ctx.aviso(`«${t}» ya está completo. Busca el que pone «esbozo».`, 'cuidado'));
-            }
+      function ir(p) { vista = p; C.pintar(); }
+      function pagina(t, cont, C2, ruta) {
+        cont.classList.add('w11-wiki');
+        const art = decodeURIComponent((ruta.match(/^\/wiki\/(.+)$/) || [])[1] || '').replace(/_/g, ' ');
+        if (!art) { vista = { p: 'portada' }; return portada(t, cont); }
+        if (art !== 'RSS') return otro(art, t, cont);
+        if (vista.p === 'portada') vista = { p: 'leer' };
+        t.t = 'RSS - Wiki de clase';
+        cabWiki(cont, u => C.ir(u), HOST, true, ['editar', 'leer', 'historial'].indexOf(vista.p) !== -1 ? vista.p : vista.p === 'diff' ? 'historial' : 'editar', k => {
+          if (k === 'editar') { W.aviso('Edita solo la sección que toca, con su enlace [editar].', 'cuidado'); return; }
+          ir({ p: k });
+        });
+        const main = el('div', 'w11-wiki__main');
+        cont.appendChild(main);
+        if (vista.p === 'leer') {
+          ctx.cumple(0, 'En la portada, el artículo «RSS» pone «esbozo»: está a medio hacer.');
+          main.appendChild(el('p', 'w11-wiki__h1', 'RSS'));
+          if (!guardado) main.appendChild(el('div', 'w11-wiki__esbozo', '✎ Este artículo es un esbozo: le falta un ejemplo. Puedes ayudar ampliándolo.'));
+          SEC.forEach(([k, n]) => {
+            const h = el('p', 'w11-wiki__h2', n);
+            const e = el('span', 'w11-wiki__ed');
+            e.append('[', enlace('editar', () => ir({ p: 'editar', sec: k })), ']');
+            h.appendChild(e);
+            main.appendChild(h);
+            actual[k].forEach(p => main.appendChild(el('p', null, p)));
           });
-          li.appendChild(b);
-          li.appendChild(el('span', 'sim__etiqueta', t === 'RSS' && !guardado ? 'esbozo: le falta un ejemplo' : 'completo'));
+          return;
+        }
+        if (vista.p === 'editar') return editar(main, vista.sec);
+        if (vista.p === 'historial') {
+          main.appendChild(el('p', 'w11-wiki__h1', 'RSS: historial de revisiones'));
+          main.appendChild(el('p', 'w11-wiki__nota', 'Lo más nuevo, arriba. (ant) enseña lo que cambió en esa versión.'));
+          const ul = el('ul', 'w11-wiki__hist');
+          V.slice().reverse().forEach((v, i) => ul.appendChild(filaHist(v, v.n > 1, i === 0, {
+            act: () => ir({ p: 'diff', n: v.n, con: 'act' }),
+            ant: () => ir({ p: 'diff', n: v.n }),
+            ver: () => ir({ p: 'diff', n: v.n }),
+          })));
+          main.appendChild(ul);
+          return;
+        }
+        if (vista.p === 'diff') {
+          const v = V[vista.n - 1];
+          const lin = a => { const o = []; SEC.forEach(([k, n]) => a[k].forEach(p => o.push(`${n}: ${p}`))); return o; };
+          const a = vista.con === 'act' ? v.a : (vista.n > 1 ? V[vista.n - 2].a : { que: [], ejemplo: [], mas: [] });
+          const b = vista.con === 'act' ? V[V.length - 1].a : v.a;
+          main.appendChild(el('p', 'w11-wiki__h1', 'RSS: diferencias entre revisiones'));
+          const cab = el('p', 'w11-wiki__nota');
+          cab.append('Versión de ', sinTraducir(el('strong', null, v.quien)), ` · ${v.cuando} · resumen: «${v.que}»`);
+          main.appendChild(cab);
+          main.appendChild(diffWiki(lin(a), lin(b)));
+          if (v.quien === 'pixelrojo' && vista.con !== 'act') ctx.cumple(3, `En el historial, tu cambio: tu usuario (pixelrojo), la fecha y la hora (${v.cuando}), los bytes añadidos (+${v.bytes}), tu resumen y lo que añadiste (+). Justo antes, la versión de mar_t, guardada mientras tú editabas.`);
+          main.appendChild(enlace('‹ Volver al historial', () => ir({ p: 'historial' })));
+        }
+      }
+      function portada(t, cont) {
+        t.t = 'Wiki de clase';
+        cabWiki(cont, u => C.ir(u), HOST, false);
+        const main = el('div', 'w11-wiki__main');
+        main.appendChild(el('p', 'w11-wiki__h1', 'Wiki de clase: Servicios de Internet'));
+        main.appendChild(el('p', null, 'Cada tema de la unidad es un artículo. Los que pone «esbozo» están a medio hacer: ayúdanos a completarlos.'));
+        const ul = el('ul', 'w11-wiki__lista');
+        ['Foros', 'Blogs', 'Wikis', 'Redes sociales', 'RSS', 'La nube'].forEach(n => {
+          const li = el('li');
+          li.appendChild(enlace(n, () => { vista = { p: 'leer' }; C.ir(HOST + '/wiki/' + n.replace(/ /g, '_')); }));
+          if (n === 'RSS' && !guardado) li.appendChild(el('span', 'w11-wiki__marca', ' (esbozo)'));
           ul.appendChild(li);
         });
-        pantalla.appendChild(ul);
-        pantalla.appendChild(msg);
+        main.appendChild(ul);
+        cont.appendChild(main);
       }
-      function pestanas(activa) {
-        const f = el('div', 'lab__fila');
-        [['Portada', portada], ['Leer', articulo], ['Ver historial', historial]].forEach(([t, fn]) => {
-          const b = boton(t, t === activa ? 'lab__boton lab__boton--activo' : null);
-          b.addEventListener('click', fn);
-          f.appendChild(b);
-        });
-        return f;
+      function otro(n, t, cont) {
+        t.t = n + ' - Wiki de clase';
+        cabWiki(cont, u => C.ir(u), HOST, true, 'leer', () => W.aviso(`«${n}» ya está completo. El que hay que completar es el que pone «esbozo» en la portada.`, 'cuidado'));
+        const main = el('div', 'w11-wiki__main');
+        main.appendChild(el('p', 'w11-wiki__h1', n));
+        (OTROS[n] || ['Esta página no existe todavía.']).forEach(p => main.appendChild(el('p', null, p)));
+        main.appendChild(enlace('‹ Portada', () => C.ir(HOST)));
+        cont.appendChild(main);
       }
-      function articulo() {
-        ctx.barra('Wiki de clase · RSS');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(pestanas('Leer'));
-        pantalla.appendChild(el('p', 'sim__h', 'RSS'));
-        SEC.forEach(([k, t]) => {
-          const cab = el('div', 'lab__fila');
-          cab.appendChild(el('strong', null, t));
-          if (!guardado) {
-            const ed = boton(`Editar «${t}»`);
-            ed.addEventListener('click', () => editar(k, t));
-            cab.appendChild(ed);
-          }
-          pantalla.appendChild(cab);
-          actual[k].forEach(p => pantalla.appendChild(el('p', null, p)));
-        });
-        if (!guardado) pantalla.appendChild(el('p', 'sim__ayuda', 'Cada sección se edita por separado, con su botón «Editar».'));
-      }
-      function editar(k, t) {
-        ctx.barra(`Wiki de clase · RSS · Editar «${t}»`);
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', 'sim__ayuda', `Lo que hay ahora en «${t}»:`));
-        const caja = el('div', 'sim__diff');
-        actual[k].forEach(p => caja.appendChild(el('span', null, p)));
-        pantalla.appendChild(caja);
-
-        const lt = el('label', 'sim__campo');
-        lt.appendChild(el('span', 'sim__ayuda', '¿Qué escribes?'));
-        const texto = select(TEXTOS, '', '¿Qué escribes?');
-        lt.appendChild(texto);
-        pantalla.appendChild(lt);
-
-        const modo = el('div', 'sim__campo');
-        modo.setAttribute('role', 'radiogroup');
-        modo.setAttribute('aria-label', '¿Cómo lo pones?');
-        modo.appendChild(el('span', 'sim__ayuda', '¿Cómo lo pones?'));
-        const nombre = 'wiki-modo-' + Math.random().toString(36).slice(2);
-        const radios = [['anadir', 'Lo añado debajo de lo que hay'], ['borrar', 'Borro lo que hay y pongo lo mío']].map(([v, txt], i) => {
-          const l = el('label', 'sim__interruptor');
-          const r = document.createElement('input');
-          r.type = 'radio';
-          r.name = nombre;
-          r.value = v;
-          r.checked = i === 0;
-          l.appendChild(r);
-          l.appendChild(document.createTextNode(' ' + txt));
-          modo.appendChild(l);
-          return r;
-        });
-        pantalla.appendChild(modo);
-
-        const lr = el('label', 'sim__campo');
-        lr.appendChild(el('span', 'sim__ayuda', 'Resumen de edición: lo que verán los demás en el historial. Tu nombre no lo escribes en el texto: el historial ya lo guarda.'));
-        const res = select([
-          ['', 'Resumen de edición…'],
-          ['bien', 'Añado un ejemplo de lector RSS'],
-          ['vago', 'cambios'],
-          ['mal', 'arreglo todo'],
-        ], '', 'Resumen de edición');
-        lr.appendChild(res);
-        pantalla.appendChild(lr);
-
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        const guardar = boton('Guardar cambios', 'lab__boton lab__boton--activo');
-        guardar.addEventListener('click', () => {
-          msg.innerHTML = '';
-          const borrar = radios[1].checked;
-          const di = m => msg.appendChild(ctx.aviso(m));
-          if (!texto.value) return di('Elige primero qué escribes.');
-          if (texto.value === 'nube') {
-            ctx.falla('Escribir lo de la nube en el artículo del RSS.');
-            return di('Eso es de la nube, no del RSS: iría en el artículo «La nube». Aquí escribe algo del RSS.');
-          }
-          if (texto.value === 'opinion') {
-            ctx.falla('Escribir una opinión en la wiki.');
-            return di('Una wiki explica las cosas; no es sitio para opiniones. Escribe algo que le sirva a quien lo lea.');
-          }
-          if (k !== 'ejemplo') {
-            ctx.falla(`Poner el ejemplo en «${t}».`);
-            return di(`Es un ejemplo: va en la sección «Ejemplo», no en «${t}».`);
-          }
-          if (borrar) {
-            ctx.falla('Borrar la frase que escribió leo_m.');
-            return di('Borrarías la frase que escribió leo_m, que estaba bien. En una wiki se añade o se corrige; no se borra el trabajo de otro sin motivo.');
-          }
-          if (res.value !== 'bien') {
-            return di('Elige un resumen que diga qué has añadido. Así, quien mire el historial sabe qué cambiaste sin tener que leerlo todo.');
-          }
+      function editar(main, k) {
+        const nombre = SEC.find(x => x[0] === k)[1];
+        main.appendChild(el('p', 'w11-wiki__h1', `Editando «RSS» (sección «${nombre}»)`));
+        main.appendChild(el('p', 'w11-wiki__nota', 'Escribe o pega el texto. Las líneas que empiezan por == son el título de la sección: déjalas.'));
+        const ta = document.createElement('textarea');
+        ta.className = 'w11-web__campo w11-wiki__ta';
+        ta.spellcheck = false;
+        ta.value = `== ${nombre} ==\n` + actual[k].join('\n') + (actual[k].length ? '\n' : '');
+        ta.setAttribute('aria-label', 'Texto de la sección ' + nombre);
+        main.appendChild(ta);
+        const l = el('label', 'w11-wiki__resumen');
+        l.appendChild(el('span', null, 'Resumen:'));
+        const res = document.createElement('input');
+        res.className = 'w11-web__campo';
+        res.spellcheck = false;
+        res.maxLength = 200;
+        res.setAttribute('aria-label', 'Resumen de edición');
+        l.appendChild(res);
+        main.appendChild(l);
+        main.appendChild(el('p', 'w11-web__sub', 'El resumen lo verán los demás en el historial. Tu nombre no hace falta: el historial ya lo guarda.'));
+        const f = el('div', 'w11-wiki__botones');
+        f.append(boton2('Guardar cambios', 'w11-web__btn--primario', () => {
+          const lineas = ta.value.split(/\r?\n/).map(x => x.trim()).filter(x => x && !/^==.*==$/.test(x));
+          const antes = actual[k];
+          const borradas = antes.filter(p => lineas.indexOf(p) === -1);
+          const nuevas = lineas.filter(p => antes.indexOf(p) === -1);
+          const txt = norm(nuevas.join(' '));
+          const di = m => W.aviso(m, 'cuidado');
+          if (!nuevas.length && !borradas.length) return di('No has cambiado nada. Pega el ejemplo de tus apuntes debajo de lo que hay.');
+          if (borradas.length) { ctx.falla(`Borrar lo que escribió otro en «${nombre}».`); return di('Has borrado lo que escribió otra persona, que estaba bien. En una wiki se añade o se corrige; no se borra el trabajo de otro sin motivo. Déjalo como estaba y añade lo tuyo debajo.'); }
+          if (txt.indexOf('la nube guarda') !== -1) { ctx.falla('Pegar lo de la nube en el artículo del RSS.'); return di('Eso es de la nube, no del RSS: iría en el artículo «La nube». Aquí va el ejemplo del RSS.'); }
+          if (txt.indexOf('lo mejor de internet') !== -1) { ctx.falla('Escribir una opinión en la wiki.'); return di('Eso es una opinión. Una wiki explica las cosas; no es sitio para opiniones.'); }
+          if (k !== 'ejemplo') { ctx.falla(`Poner el ejemplo en «${nombre}».`); return di(`Es un ejemplo: va en la sección «Ejemplo», no en «${nombre}».`); }
+          if (txt.length < 20) return di('Es muy corto. Pega el ejemplo entero de tus apuntes.');
+          const r = res.value.trim(), nr = norm(r);
+          if (r.length < 8 || ['cambios', 'cambio', 'arreglo todo', 'arreglo', 'edito'].indexOf(nr) !== -1 || !/ejempl|rss|lector|feedly|anad|complet/.test(nr)) { res.focus(); return di('Escribe un resumen que diga qué has añadido (por ejemplo, que añades un ejemplo). Así, quien mire el historial lo sabe sin leerlo todo.'); }
           // Mientras tanto, mar_t ha guardado otra sección
           const deMarT = copia(actual);
           deMarT.que = [Q2];
-          V.push({ n: 3, cuando: 'hoy, 18:41', quien: 'mar_t', que: 'Completo la definición', a: deMarT });
+          V.push({ n: 3, cuando: '18:41 16 nov 2026', quien: 'mar_t', que: 'Completo la definición', a: deMarT, bytes: tam(deMarT) - tam(actual) });
           actual = copia(deMarT);
-          actual.ejemplo.push(TUYO);
-          V.push({ n: 4, cuando: 'hoy, 18:43', quien: 'pixelrojo (tú)', que: 'Añado un ejemplo de lector RSS', a: copia(actual) });
+          actual.ejemplo = antes.concat(nuevas);
+          V.push({ n: 4, cuando: '18:43 16 nov 2026', quien: 'pixelrojo', que: r, a: copia(actual), bytes: tam(actual) - tam(deMarT) });
           guardado = true;
-          ctx.cumple(1, `Sección «Ejemplo», debajo de la frase de leo_m: «${TUYO}»`);
-          ctx.cumple(2, 'Resumen de edición: «Añado un ejemplo de lector RSS». Guardado como v4.');
-          articulo();
-          pantalla.appendChild(ctx.aviso('Guardado. Mientras editabas, mar_t ha guardado un cambio en otra sección («Qué es»). La wiki ha juntado los dos cambios. Ahora mira el historial.', 'ok'));
-        });
-        const atras = boton('‹ Cancelar');
-        atras.addEventListener('click', articulo);
-        const f = el('div', 'lab__fila');
-        f.appendChild(atras);
-        f.appendChild(guardar);
-        pantalla.appendChild(f);
-        pantalla.appendChild(msg);
+          ctx.cumple(1, `Sección «Ejemplo» → [editar]: pegar debajo de la frase de leo_m «${nuevas.join(' ')}»`);
+          ctx.cumple(2, `Resumen de edición: «${r}».`);
+          ir({ p: 'leer' });
+          W.aviso('Guardado. Mientras editabas, mar_t ha guardado un cambio en otra sección («Qué es»). La wiki ha juntado los dos cambios. Ahora mira el historial.', 'ok');
+        }), boton2('Cancelar', null, () => ir({ p: 'leer' })));
+        main.appendChild(f);
+        ta.focus({ preventScroll: true });
       }
-      function lineas(a) {
-        const out = [];
-        SEC.forEach(([k, t]) => a[k].forEach(p => out.push(`${t}: ${p}`)));
-        return out;
-      }
-      function diff(a, b) {
-        const x = lineas(a), y = lineas(b);
-        const box = el('div', 'sim__diff');
-        x.filter(p => y.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('del'), { textContent: '− ' + p })));
-        y.filter(p => x.indexOf(p) === -1).forEach(p => box.appendChild(Object.assign(el('ins'), { textContent: '+ ' + p })));
-        return box;
-      }
-      function historial() {
-        ctx.barra('Wiki de clase · RSS · Historial');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(pestanas('Ver historial'));
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Lo más nuevo, arriba. «Ver cambios» enseña lo que se quitó (−) y lo que se añadió (+) en esa versión.'));
-        const ul = el('ul', 'sim__versiones');
-        V.slice().reverse().forEach(v => {
-          const li = el('li');
-          li.appendChild(el('strong', null, `v${v.n}`));
-          li.appendChild(document.createTextNode(` · ${v.cuando} · ${v.quien} · «${v.que}»`));
-          const caja = el('div');
-          const ver = boton('Ver cambios');
-          ver.addEventListener('click', () => {
-            caja.innerHTML = '';
-            caja.appendChild(diff(v.n > 1 ? V[v.n - 2].a : { que: [], ejemplo: [], mas: [] }, v.a));
-            if (v.n === 4) ctx.cumple(3, 'En el historial, tu cambio es la v4: tu usuario (pixelrojo), el día y la hora (hoy, 18:43), el resumen de edición y lo que añadiste (+). Justo antes, la v3 de mar_t, guardada mientras tú editabas.');
-          });
-          const fila = el('div', 'lab__fila');
-          fila.appendChild(ver);
-          li.appendChild(fila);
-          li.appendChild(caja);
-          ul.appendChild(li);
-        });
-        pantalla.appendChild(ul);
-      }
-      portada();
     },
   });
 })();

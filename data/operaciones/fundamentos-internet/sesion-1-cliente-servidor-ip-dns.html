@@ -108,14 +108,14 @@
 <div class="nota">👀 Lo que puedes ver distinto: si la red del instituto bloquea la dirección, sale una página del filtro del centro en vez del error de Chrome. Prueba entonces con otro nombre inventado o pregúntamelo.</div>
 
 <h3>Actividad 2 — Monta la red de casa</h3>
-<p>Junta todo lo de esta sesión en una red de mentira: tu casa, el router, el DNS y el servidor de una web de fans de Minecraft.</p>
+<p>Junta todo lo de esta sesión en el Windows de mentira de abajo: la página de tu router, el DNS y el servidor de una web de fans de Minecraft.</p>
 <ol>
-<li>Lee la misión. Dale una IP a cada aparato de casa y al router hacia fuera, eligiendo de las listas.</li>
-<li>Pregunta al DNS por <code>bloquecraft.es</code> y manda la petición a la IP que te dé.</li>
+<li>Lee la misión. En Chrome está abierta la página del router (<code>192.168.1.1</code>). En «Red local», escribe la IP fija de cada aparato y pulsa «Guardar». En «Internet» está su IP pública.</li>
+<li>Abre la <strong>Terminal</strong> (en la barra de tareas) y escribe estas órdenes, cada una seguida de <kbd>Intro</kbd>: <code>ipconfig</code> (la IP de tu ordenador), <code>nslookup bloquecraft.es</code> (preguntar al DNS) y <code>tracert bloquecraft.es</code> (el camino hasta el servidor). Después abre <code>bloquecraft.es</code> en Chrome.</li>
 <li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno las IP que pusiste y explica, paso a paso, el viaje desde que escribiste <code>bloquecraft.es</code> hasta que se cargó (pregunta 15).</li>
 </ol>
 <div class="lab" data-lab="simulacion" data-sim="red-casa" aria-label="Monta la red de casa"></div>
-<p><strong>Comprobación observable:</strong> las cuatro casillas tienen ✓ y debajo de «Petición» sale el viaje de ida y vuelta.</p>
+<p><strong>Comprobación observable:</strong> las cuatro casillas tienen ✓; <code>tracert</code> enseña los saltos de tu ordenador al router, a la operadora y al servidor de <code>bloquecraft.es</code>, y la web se carga en Chrome.</p>
 
 <h2>Internet e intranet</h2>
 <p>Una <strong>intranet</strong> es una red privada de una empresa o de un centro que usa la misma tecnología que Internet (páginas web, carpetas compartidas, impresoras en red...), pero a la que <strong>solo se puede entrar desde dentro</strong>. En el instituto, por ejemplo, las carpetas compartidas del servidor o una web interna del centro son intranet: desde casa no las ves.</p>

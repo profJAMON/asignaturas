@@ -15,7 +15,9 @@
               los cinco operadores de la sesión (" ", -, site:,
               filetype:, OR) y cinco retos. Los anuncios no hacen
               caso de los operadores, como en uno de verdad.
-   red-casa   U2 S1 «Monta la red de casa» (sin cambios).
+   red-casa   U2 S1 «Monta la red de casa» (rehecha el 16/11/2026):
+              la página del router en Chrome (IP fijas) y la Terminal
+              (ipconfig, nslookup, ping, tracert).
    bandeja    S3 «Revisa la bandeja»: un correo como el del
               instituto; denunciar phishing (⋮), mandar a spam (⚠),
               destacar con la estrella. Al pasar el ratón por un
@@ -225,7 +227,18 @@
         cont.appendChild(i);
         return;
       }
-      if (op.pagina) op.pagina(t, cont, C);
+      if (op.pagina) {
+        const antes = t.t;
+        op.pagina(t, cont, C);
+        // la web cambia el título: que lo enseñen ya la pestaña y la ventana (16/11/2026)
+        if (t.t !== antes) {
+          v.titulo(nombreDe(t) + ' - Google Chrome');
+          const tt = tiras.querySelectorAll('.w11-ch__tab-t')[C.activa];
+          if (tt) tt.textContent = nombreDe(t);
+          const fv = tiras.querySelectorAll('.w11-ch__fav')[C.activa];
+          if (fv) fv.textContent = (nombreDe(t)[0] || '·').toUpperCase();
+        }
+      }
     }
     function barraMarcadores() {
       const b = el('div', 'w11-ch__marc');
@@ -422,6 +435,99 @@
     return C;
   }
   if (window.WIN11) window.WIN11.chrome = chrome;
+
+  /* ============================================================
+     Webs de mentira dentro del Chrome de mentira (16/11/2026).
+     WIN11.web(W, op) abre Chrome con unas webs inventadas que se
+     pueden escribir en la barra de direcciones; lo demás da el
+     error de Chrome «No se puede acceder a este sitio».
+       op.pestanas  [{ url }]          (el título lo pone la web)
+       op.sitios    { 'host': (t, cont, C, ruta) => … }
+                    la web pone t.t (título de la pestaña)
+       op.evento    como en chrome()
+     Devuelve C con C.ir(url) (navegar en la pestaña activa) y
+     C.modal(titulo, crear(caja), botones) (ventana de la web).
+     ============================================================ */
+  function partes(txt) {
+    const u = String(txt || '').trim().replace(/^https?:\/\//i, '').replace(/^www\./i, '');
+    const i = u.indexOf('/');
+    return { host: (i === -1 ? u : u.slice(0, i)).toLowerCase(), ruta: i === -1 ? '/' : u.slice(i) };
+  }
+  function web(W, op) {
+    const { el, boton } = window.LAB;
+    let C = null;
+    const pinta = (t, cont, C2) => {
+      const p = partes(t.url);
+      cont.classList.add('w11-web');
+      const f = op.sitios[p.host];
+      if (f) return f(t, cont, C2, p.ruta);
+      if (p.host === 'google.com' && /^\/search/.test(p.ruta)) {
+        const q = decodeURIComponent(p.ruta.replace(/^\/search\?q=/, ''));
+        t.t = q + ' - Buscar con Google';
+        const b = el('div', 'w11-web__error');
+        b.append(el('p', 'w11-web__error-t', 'Resultados de «' + q + '»'), el('p', null, 'Para ir a una web que ya conoces, escribe su dirección exacta en la barra de arriba (por ejemplo, la que pone en la misión o en los pasos de la actividad).'));
+        cont.appendChild(b);
+        return;
+      }
+      t.t = p.host || 'Nueva pestaña';
+      const e = el('div', 'w11-web__error');
+      e.append(el('p', 'w11-web__error-ico', '☹'), el('p', 'w11-web__error-t', 'No se puede acceder a este sitio'));
+      const d = el('p', null, '');
+      const h = el('strong', null, p.host);
+      h.setAttribute('translate', 'no');
+      d.append('No se ha encontrado la dirección IP del servidor de ', h, '.');
+      const c = el('p', 'w11-web__error-cod', 'DNS_PROBE_FINISHED_NXDOMAIN');
+      c.setAttribute('translate', 'no');
+      e.append(d, c);
+      cont.appendChild(e);
+      if (op.evento) op.evento('error', { host: p.host });
+    };
+    C = chrome(W, {
+      pestanas: op.pestanas.map(x => Object.assign({ t: partes(x.url).host }, x)),
+      marcadores: op.marcadores || null,
+      evento: op.evento,
+      pagina: pinta,
+      navegar(txt, t) {
+        if (!txt) return;
+        const p = partes(txt);
+        const dominio = /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(p.host) || /^\d+\.\d+\.\d+\.\d+$/.test(p.host);
+        Object.assign(t, { url: dominio ? p.host + (p.ruta === '/' ? '' : p.ruta) : 'google.com/search?q=' + encodeURIComponent(txt), pag: 'web', zoom: t.zoom || 100 });
+        if (op.evento) op.evento('navegar', { url: t.url });
+      },
+    });
+    C.ir = url => { const t = C.tabs[C.activa]; if (!t) return; t.url = url; t.pag = 'web'; C.pintar(); };
+    C.partes = partes;
+    C.modal = (titulo, crear, botones) => {
+      const v = C.ventana();
+      const zona = v && v.cuerpo.querySelector('.w11-ch__web');
+      if (!zona) return null;
+      const velo = el('div', 'w11-web__velo');
+      const caja = el('div', 'w11-web__modal');
+      caja.setAttribute('role', 'dialog');
+      caja.setAttribute('aria-modal', 'true');
+      caja.setAttribute('aria-label', titulo);
+      caja.appendChild(el('p', 'w11-web__modal-t', titulo));
+      const cuerpo = el('div', 'w11-web__modal-c');
+      caja.appendChild(cuerpo);
+      const cerrar = () => velo.remove();
+      if (crear) crear(cuerpo, cerrar);
+      const pie = el('div', 'w11-web__modal-pie');
+      (botones || [{ t: 'Aceptar', primario: true }]).forEach(b => {
+        const x = boton(b.t, 'w11-web__btn' + (b.primario ? ' w11-web__btn--primario' : ''));
+        x.addEventListener('click', () => { if (b.f && b.f(cuerpo) === false) return; cerrar(); });
+        pie.appendChild(x);
+      });
+      caja.appendChild(pie);
+      velo.appendChild(caja);
+      velo.addEventListener('keydown', e => { if (e.key === 'Escape') { e.stopPropagation(); cerrar(); } });
+      zona.appendChild(velo);
+      const f = caja.querySelector('input, textarea, select, button');
+      if (f) f.focus({ preventScroll: true });
+      return { cerrar, caja: cuerpo };
+    };
+    return C;
+  }
+  if (window.WIN11) window.WIN11.web = web;
 
   /* ============================================================
      S1 · Ordena este navegador
@@ -796,145 +902,222 @@
   });
 
   /* ============================================================
-     U2 S1 · Monta la red de casa
+     U2 S1 · Monta la red de casa (rehecha el 16/11/2026 en el
+     Windows 11 de mentira): la página del router en Chrome
+     (192.168.1.1) para dar a cada aparato su IP fija, y la Terminal
+     con ipconfig, nslookup, ping y tracert.
      ============================================================ */
   registrarSimulacion('red-casa', {
-    ventana: 'La red de tu casa',
+    ventana: 'Windows 11',
     mision: [
-      'Dale a cada aparato de casa una IP privada, sin repetir ninguna.',
-      'Pon en el router la IP pública que le da la operadora.',
-      'Pregunta al DNS la IP de bloquecraft.es.',
-      'Manda la petición al servidor correcto y que se cargue la página.',
+      'En la página del router (192.168.1.1), dale a cada aparato de casa una IP fija privada, sin repetir ninguna.',
+      'Busca la IP pública del router (Internet) y la de tu ordenador (ipconfig en la Terminal).',
+      'Pregunta al DNS la IP de bloquecraft.es (nslookup en la Terminal).',
+      'Mira el camino hasta bloquecraft.es (tracert) y abre la web en Chrome.',
     ],
     final: 'Apunta en tu cuaderno la IP que diste a cada aparato, la IP pública del router y la IP de bloquecraft.es. Después explica, paso a paso, el viaje desde que escribiste bloquecraft.es hasta que se cargó (pregunta 15).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
-      const PUBLICA = '83.45.120.17', SERVIDOR = '91.45.7.33';
-      const OPC = [['', 'Elige una IP…'], ['192.168.1.20', '192.168.1.20'], ['192.168.1.21', '192.168.1.21'], ['192.168.1.22', '192.168.1.22'], [PUBLICA, PUBLICA], ['192.168.1.300', '192.168.1.300']];
-      const APARATOS = [['pc', '🖥 Ordenador'], ['movil', '📱 Móvil'], ['consola', '🎮 Consola']];
-      const ip = { pc: '', movil: '', consola: '' };
-      let routerFuera = '', dnsIp = '';
-      const casa = el('div', 'red__casa');
-      pantalla.appendChild(el('p', 'sim__ayuda', 'Dentro de casa, el router es la puerta: 192.168.1.1. Hacia fuera, la operadora le da una IP pública.'));
-      pantalla.appendChild(casa);
-      const msg = el('div');
-      msg.setAttribute('aria-live', 'polite');
-      function aviso(t, tipo) { msg.innerHTML = ''; if (t) msg.appendChild(ctx.aviso(t, tipo)); }
-
-      const dentro = el('fieldset', 'red__zona');
-      dentro.appendChild(el('legend', null, '🏠 Dentro de casa (red privada)'));
-      APARATOS.forEach(([k, t]) => {
-        const l = el('label', 'sim__campo');
-        l.appendChild(el('span', null, t));
-        const sel = document.createElement('select');
-        sel.className = 'lab__entrada sim__select';
-        sel.setAttribute('translate', 'no');
-        OPC.forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; if (!v) { o.disabled = true; o.hidden = true; o.selected = true; } sel.appendChild(o); });
-        sel.addEventListener('change', () => {
-          ip[k] = sel.value;
-          if (ip[k] === PUBLICA) aviso('Esa es una IP pública: es la del router hacia fuera, no la de un aparato de dentro de casa.', 'cuidado');
-          else if (ip[k] === '192.168.1.300') aviso('Ningún número de una IP pasa de 255: 300 no vale.', 'cuidado');
-          else aviso();
-          if (ip[k]) ctx.apunta(`${t.slice(2).trim()}: ${ip[k]}.`);
-          revisa();
+      const { el, boton } = window.LAB;
+      const PUBLICA = '83.45.120.17', SERVIDOR = '91.45.7.33', ROUTER = '192.168.1.1';
+      const AP = [
+        { k: 'pc', n: 'Ordenador (PC-SALON)', mac: 'A4:5E:60:1B:22:7F', ic: '🖥️' },
+        { k: 'movil', n: 'Móvil (Galaxy-de-Pau)', mac: '3C:28:6D:90:11:AB', ic: '📱' },
+        { k: 'consola', n: 'Consola (Switch)', mac: '98:41:5C:07:E2:10', ic: '🎮' },
+      ];
+      const fija = { pc: '', movil: '', consola: '' };
+      const visto = { publica: false, ipconfig: false, tracert: false, web: false };
+      let pag = 'estado';
+      const W = WIN11.escritorio(ctx, { fs: WIN11.fs.equipo(WIN11.fs.usuario({})), barra: ['explorador', 'navegador', 'terminal'],
+        apps: { terminal: { n: 'Terminal', icono: 'terminal', enInicio: true, buscar: ['terminal', 'cmd', 'simbolo del sistema', 'símbolo del sistema', 'powershell'], abrir: () => terminal() } } });
+      const ipPC = () => fija.pc || '192.168.1.35';
+      function revisa() {
+        if (visto.publica && visto.ipconfig) ctx.cumple(1, `IP pública del router (página del router → Internet): ${PUBLICA}. IP de tu ordenador (ipconfig): ${ipPC()}. Son distintas: dentro de casa se usan IP privadas (192.168…); hacia Internet, el router sale con la pública.`);
+        if (visto.tracert && visto.web) ctx.cumple(3, `tracert bloquecraft.es: tu ordenador (${ipPC()}) → router (${ROUTER}) → operadora → Internet → servidor de bloquecraft.es (${SERVIDOR}). En Chrome, bloquecraft.es se carga.`);
+      }
+      const C = WIN11.web(W, {
+        pestanas: [{ url: ROUTER, t: 'Router · Inicio' }],
+        sitios: { [ROUTER]: router, 'bloquecraft.es': fans, [SERVIDOR]: fans, [PUBLICA]: deFuera },
+      });
+      function deFuera(t, cont) {
+        t.t = PUBLICA;
+        const e = el('div', 'w11-web__error');
+        e.append(el('p', 'w11-web__error-t', 'No se puede acceder a este sitio'), el('p', null, `${PUBLICA} ha rechazado la conexión. (Es la IP pública de tu propio router: desde fuera no enseña nada.)`));
+        cont.appendChild(e);
+      }
+      function fans(t, cont) {
+        t.t = 'BloqueCraft · Web de fans de Minecraft';
+        cont.classList.add('w11-fans');
+        const c = el('div', 'w11-fans__cab');
+        c.append(el('p', 'w11-fans__logo', '⛏ BloqueCraft'), el('p', null, 'La web de fans de Minecraft'));
+        cont.appendChild(c);
+        ['Los mejores mods para empezar', 'Trucos para el Nether', 'Construye tu primera casa de supervivencia'].forEach(x => cont.appendChild(el('p', 'w11-fans__art', '▸ ' + x)));
+        if (!visto.web) { visto.web = true; ctx.apunta(`Chrome → bloquecraft.es: la página se carga (el servidor está en ${SERVIDOR}).`); revisa(); }
+      }
+      function router(t, cont, C2) {
+        cont.classList.add('w11-rt');
+        t.t = 'Router · ' + { estado: 'Inicio', internet: 'Internet', lan: 'Red local' }[pag];
+        const cab = el('div', 'w11-rt__cab');
+        cab.append(el('p', 'w11-rt__logo', '📶 Router Wi-Fi 6'), el('span', 'w11-web__hueco'), el('span', 'w11-web__sub', 'admin'));
+        cont.appendChild(cab);
+        const caja = el('div', 'w11-rt__caja');
+        const nav = el('nav', 'w11-rt__nav');
+        [['estado', 'Inicio'], ['internet', 'Internet'], ['lan', 'Red local (LAN)']].forEach(([k, n]) => {
+          const b = boton(n, 'w11-rt__ni' + (pag === k ? ' w11-rt__ni--on' : ''));
+          b.addEventListener('click', () => { pag = k; C2.pintar(); });
+          nav.appendChild(b);
         });
-        l.appendChild(sel);
-        dentro.appendChild(l);
-      });
-      casa.appendChild(dentro);
-
-      const router = el('fieldset', 'red__zona');
-      router.appendChild(el('legend', null, '📶 Router'));
-      router.appendChild(el('p', 'sim__ayuda', 'Hacia dentro: 192.168.1.1 (la puerta de enlace)'));
-      const lr = el('label', 'sim__campo');
-      lr.appendChild(el('span', null, 'Hacia fuera (Internet):'));
-      const sr = document.createElement('select');
-      sr.className = 'lab__entrada sim__select';
-      sr.setAttribute('translate', 'no');
-      [['', 'Elige una IP…'], ['192.168.1.1', '192.168.1.1'], [PUBLICA, PUBLICA + ' (la da la operadora)'], ['192.168.1.20', '192.168.1.20']].forEach(([v, x]) => { const o = document.createElement('option'); o.value = v; o.textContent = x; if (!v) { o.disabled = true; o.hidden = true; o.selected = true; } sr.appendChild(o); });
-      sr.addEventListener('change', () => {
-        routerFuera = sr.value;
-        if (routerFuera && routerFuera !== PUBLICA) aviso('Hacia fuera, Internet no entiende las IP privadas (192.168…): el router necesita la pública.', 'cuidado');
-        else aviso();
-        if (routerFuera) ctx.apunta(`Router hacia fuera: ${routerFuera}.`);
-        revisa();
-      });
-      lr.appendChild(sr);
-      router.appendChild(lr);
-      casa.appendChild(router);
-
-      const dns = el('fieldset', 'red__zona');
-      dns.appendChild(el('legend', null, '📖 DNS'));
-      const fila = el('div', 'lab__fila');
-      const nombre = document.createElement('input');
-      nombre.type = 'text';
-      nombre.className = 'lab__entrada';
-      nombre.value = 'bloquecraft.es';
-      nombre.spellcheck = false;
-      nombre.setAttribute('translate', 'no');
-      nombre.setAttribute('aria-label', 'Nombre que preguntas al DNS');
-      const pregunta = boton('Preguntar al DNS');
-      const resp = el('p', 'sim__ayuda');
-      resp.setAttribute('translate', 'no');
-      pregunta.addEventListener('click', () => {
-        const n = nombre.value.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
-        if (n === 'bloquecraft.es') {
-          dnsIp = SERVIDOR;
-          resp.textContent = `DNS: bloquecraft.es → ${SERVIDOR}`;
-          ctx.cumple(2, `Preguntar al DNS por bloquecraft.es: responde ${SERVIDOR}.`);
-        } else if (n === 'google.es' || n === 'www.google.es') {
-          resp.textContent = 'DNS: google.es → 142.250.184.78';
-          ctx.apunta('Preguntar al DNS por google.es: 142.250.184.78.');
+        const main = el('div', 'w11-rt__main');
+        caja.append(nav, main);
+        cont.appendChild(caja);
+        const tabla = filas => {
+          const tb = el('div', 'w11-rt__tabla');
+          filas.forEach(([k, v]) => { const f = el('div', 'w11-rt__f'); f.append(el('span', 'w11-web__sub', k), el('strong', null, v)); f.lastChild.setAttribute('translate', 'no'); tb.appendChild(f); });
+          return tb;
+        };
+        if (pag === 'estado') {
+          main.appendChild(el('p', 'w11-rt__h', 'Inicio'));
+          main.appendChild(tabla([['Internet', '● Conectado'], ['Wi-Fi', 'CASA-2.4G y CASA-5G'], ['Aparatos conectados', '3']]));
+          main.appendChild(el('p', 'w11-web__sub', 'En «Internet» está la conexión con la operadora; en «Red local», los aparatos de casa.'));
+        } else if (pag === 'internet') {
+          main.appendChild(el('p', 'w11-rt__h', 'Internet (WAN)'));
+          main.appendChild(tabla([['Estado', '● Conectado'], ['IP pública', PUBLICA], ['Puerta de enlace de la operadora', '83.45.120.1'], ['Servidor DNS', '80.58.61.250']]));
+          main.appendChild(el('p', 'w11-web__sub', 'Esta IP la pone la operadora. Es la que ve Internet cuando sales desde cualquier aparato de casa.'));
+          if (!visto.publica) { visto.publica = true; ctx.apunta(`Página del router → Internet: IP pública ${PUBLICA}.`); revisa(); }
         } else {
-          resp.textContent = `DNS: «${n}» no está en mi lista. No sé su IP.`;
-          ctx.apunta(`Preguntar al DNS por ${n}: no existe (como en la Actividad 1).`);
+          main.appendChild(el('p', 'w11-rt__h', 'Red local (LAN)'));
+          main.appendChild(tabla([['IP del router', ROUTER], ['Máscara de subred', '255.255.255.0'], ['DHCP (IP automáticas)', '192.168.1.33 – 192.168.1.199']]));
+          main.appendChild(el('p', 'w11-rt__h2', 'IP fijas (reserva DHCP)'));
+          main.appendChild(el('p', 'w11-web__sub', 'Escribe la IP que tendrá siempre cada aparato y pulsa «Guardar».'));
+          const tb = el('div', 'w11-rt__res');
+          const ent = {};
+          AP.forEach(a => {
+            const f = el('label', 'w11-rt__r');
+            const d = el('span', 'w11-rt__rd');
+            d.append(el('span', null, a.ic + ' ' + a.n), el('span', 'w11-web__sub', 'MAC ' + a.mac));
+            d.lastChild.setAttribute('translate', 'no');
+            const i = document.createElement('input');
+            i.className = 'w11-web__campo w11-rt__ip';
+            i.value = fija[a.k];
+            i.placeholder = '192.168.1.…';
+            i.spellcheck = false;
+            i.inputMode = 'decimal';
+            i.setAttribute('translate', 'no');
+            i.setAttribute('aria-label', 'IP fija de ' + a.n);
+            ent[a.k] = i;
+            f.append(d, i);
+            tb.appendChild(f);
+          });
+          main.appendChild(tb);
+          const msg = el('div', 'w11-rt__msg');
+          msg.setAttribute('aria-live', 'polite');
+          const g = boton('Guardar', 'w11-web__btn w11-web__btn--primario');
+          g.addEventListener('click', () => {
+            msg.innerHTML = '';
+            const err = (a, t) => { msg.appendChild(el('p', 'w11-rt__err', `${a.n}: ${t}`)); ent[a.k].classList.add('w11-rt__ip--mal'); };
+            const vals = {};
+            let mal = false;
+            AP.forEach(a => {
+              ent[a.k].classList.remove('w11-rt__ip--mal');
+              const v = ent[a.k].value.trim();
+              vals[a.k] = v;
+              const p = v.split('.');
+              if (!v) { err(a, 'falta la IP.'); mal = true; return; }
+              if (p.length !== 4 || p.some(x => !/^\d{1,3}$/.test(x))) { err(a, 'eso no es una IP: son cuatro números separados por puntos.'); mal = true; return; }
+              if (p.some(x => +x > 255)) { err(a, 'ningún número de una IP pasa de 255.'); mal = true; ctx.apunta(`${a.n}: ${v} (no vale: pasa de 255).`); return; }
+              if (v === PUBLICA) { err(a, 'esa es la IP pública del router, la de fuera. Dentro de casa, cada aparato lleva una privada: 192.168.1.…'); mal = true; ctx.falla(`Poner a ${a.n} la IP pública (${PUBLICA}).`); return; }
+              if (p.slice(0, 3).join('.') !== '192.168.1') { err(a, 'tiene que estar en tu red: 192.168.1.…'); mal = true; return; }
+              if (v === ROUTER) { err(a, '192.168.1.1 ya es del router.'); mal = true; return; }
+              if (p[3] === '0' || p[3] === '255') { err(a, 'el .0 y el .255 están reservados: usa otro número.'); mal = true; }
+            });
+            if (!mal) {
+              const r = Object.values(vals);
+              if (new Set(r).size < r.length) { msg.appendChild(el('p', 'w11-rt__err', 'Dos aparatos con la misma IP chocarían: cada uno necesita la suya.')); ctx.falla('Repetir una IP en dos aparatos.'); mal = true; }
+            }
+            if (mal) { if (ctx.hecho(0)) ctx.deshace(0); return; }
+            Object.assign(fija, vals);
+            msg.appendChild(el('p', 'w11-rt__ok', '✔ Guardado. Los aparatos tendrán estas IP la próxima vez que se conecten.'));
+            ctx.cumple(0, `Router → Red local → IP fijas: ordenador ${fija.pc}, móvil ${fija.movil}, consola ${fija.consola}.`);
+          });
+          main.append(g, msg);
         }
-      });
-      fila.appendChild(nombre);
-      fila.appendChild(pregunta);
-      dns.appendChild(fila);
-      dns.appendChild(resp);
-      casa.appendChild(dns);
-
-      const peticion = el('fieldset', 'red__zona');
-      peticion.appendChild(el('legend', null, '📨 Petición'));
-      const fp = el('div', 'lab__fila');
-      fp.appendChild(el('span', null, 'Mandar la petición a:'));
-      const viaje = el('ol', 'red__viaje');
-      [SERVIDOR, '192.168.1.1', PUBLICA].forEach(d => {
-        const b = boton(d, 'lab__boton lab__boton--codigo');
-        b.setAttribute('translate', 'no');
-        b.addEventListener('click', () => {
-          viaje.innerHTML = '';
-          if (!['pc', 'movil', 'consola'].every(k => ip[k] && ip[k].startsWith('192.168.1.') && ip[k] !== '192.168.1.300') || new Set(Object.values(ip)).size < 3) { aviso('Antes, dale a cada aparato una IP privada distinta: sin IP, el ordenador no puede hablar con nadie.'); return; }
-          if (routerFuera !== PUBLICA) { aviso('El router todavía no tiene su IP pública: la petición no puede salir a Internet.'); return; }
-          if (d !== SERVIDOR) {
-            aviso(d === PUBLICA ? 'Esa es la IP pública de tu propio router: la petición no saldría de casa.' : 'Esa es la puerta de tu router, no el servidor de bloquecraft.es. Pregunta antes al DNS.');
-            ctx.falla(`Mandar la petición a ${d}: no es el servidor.`);
+      }
+      // ---------- Terminal ----------
+      function terminal() {
+        const ya = W.ventana('terminal');
+        if (ya) { ya.enfocar(); return ya; }
+        let salida, entrada;
+        const v = W.abrir({ app: 'terminal', titulo: 'Símbolo del sistema', icono: 'terminal', ancho: 62, alto: 70, crear: c => {
+          c.classList.add('w11-term');
+          c.setAttribute('translate', 'no');
+          salida = el('pre', 'w11-term__out');
+          salida.textContent = 'Microsoft Windows [Versión 10.0.26100.2314]\n(c) Microsoft Corporation. Todos los derechos reservados.\n\n';
+          const fila = el('label', 'w11-term__fila');
+          fila.appendChild(el('span', 'w11-term__prompt', 'C:\\Users\\alumno>'));
+          entrada = document.createElement('input');
+          entrada.className = 'w11-term__in';
+          entrada.spellcheck = false;
+          entrada.autocomplete = 'off';
+          entrada.setAttribute('aria-label', 'Escribe una orden y pulsa Intro');
+          entrada.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); orden(entrada.value); entrada.value = ''; } });
+          fila.appendChild(entrada);
+          c.append(salida, fila);
+          c.addEventListener('click', () => entrada.focus({ preventScroll: true }));
+          setTimeout(() => entrada.focus({ preventScroll: true }), 0);
+        } });
+        function escribe(t) { salida.textContent += t; const c = v.cuerpo; c.scrollTop = c.scrollHeight; }
+        function nombreDe(x) { return (x || '').toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, ''); }
+        function resuelve(n) { return n === 'bloquecraft.es' ? SERVIDOR : (n === 'google.es' || n === 'google.com') ? '142.250.184.78' : /^\d+\.\d+\.\d+\.\d+$/.test(n) ? n : null; }
+        function orden(txt) {
+          const t = txt.trim();
+          escribe('C:\\Users\\alumno>' + txt + '\n');
+          if (!t) return;
+          const [cmd, arg] = t.split(/\s+/);
+          const c = cmd.toLowerCase();
+          if (c === 'cls') { salida.textContent = ''; return; }
+          if (c === 'ipconfig') {
+            escribe(`\nConfiguración IP de Windows\n\nAdaptador de LAN inalámbrica Wi-Fi:\n\n   Dirección IPv4. . . . . . . . . . . . . . : ${ipPC()}\n   Máscara de subred . . . . . . . . . . . . : 255.255.255.0\n   Puerta de enlace predeterminada . . . . . : ${ROUTER}\n\n`);
+            if (!visto.ipconfig) { visto.ipconfig = true; ctx.apunta(`ipconfig: la IP de tu ordenador es ${ipPC()} (privada) y la puerta de enlace, el router (${ROUTER}).`); revisa(); }
+            if (!fija.pc) W.aviso('Todavía no le has dado su IP fija: esta la ha puesto el router automáticamente (DHCP).', 'cuidado');
             return;
           }
-          if (!dnsIp) { aviso('¿Cómo sabes que es esa IP? Pregúntaselo antes al DNS.', 'cuidado'); return; }
-          aviso();
-          [`Tu ordenador (cliente, ${ip.pc}) pide la página.`, 'La petición pasa por el router (192.168.1.1).', `El router la saca a Internet con su IP pública (${PUBLICA}).`, 'La operadora la lleva por Internet.', `Llega al servidor de bloquecraft.es (${SERVIDOR}), que responde con la página.`, 'La respuesta vuelve por el mismo camino hasta tu pantalla.']
-            .forEach(t => viaje.appendChild(el('li', null, t)));
-          ctx.cumple(3, `Mandar la petición a ${SERVIDOR}: ordenador → router → Internet → servidor, y vuelta.`);
-        });
-        fp.appendChild(b);
-      });
-      peticion.appendChild(fp);
-      peticion.appendChild(viaje);
-      casa.appendChild(peticion);
-      pantalla.appendChild(msg);
-
-      function revisa() {
-        const vals = Object.values(ip);
-        const ok = vals.every(v => v && v.startsWith('192.168.1.') && v !== '192.168.1.300') && new Set(vals).size === 3;
-        if (vals.every(Boolean) && new Set(vals).size < 3) aviso('Dos aparatos con la misma IP chocan: cada uno necesita la suya.', 'cuidado');
-        if (ok) ctx.cumple(0, `IP privadas: ordenador ${ip.pc}, móvil ${ip.movil}, consola ${ip.consola}.`);
-        else if (ctx.hecho(0)) ctx.deshace(0);
-        if (routerFuera === PUBLICA) ctx.cumple(1, `Router hacia fuera: ${PUBLICA}, la IP pública que da la operadora.`);
-        else if (ctx.hecho(1)) ctx.deshace(1);
+          if (c === 'nslookup') {
+            const n = nombreDe(arg);
+            if (!n) { escribe('Uso: nslookup nombre (por ejemplo, nslookup bloquecraft.es)\n\n'); return; }
+            const ip = resuelve(n);
+            escribe(`Servidor:  dns.operadora.es\nAddress:  80.58.61.250\n\n`);
+            if (ip && !/^\d/.test(n)) {
+              escribe(`Respuesta no autoritativa:\nNombre:  ${n}\nAddress:  ${ip}\n\n`);
+              if (n === 'bloquecraft.es') ctx.cumple(2, `nslookup bloquecraft.es: el DNS responde ${SERVIDOR}.`);
+              else ctx.apunta(`nslookup ${n}: ${ip}.`);
+            } else if (!ip) { escribe(`*** dns.operadora.es no encuentra ${n}: Non-existent domain\n\n`); ctx.apunta(`nslookup ${n}: no existe.`); }
+            else escribe(`*** dns.operadora.es no encuentra ${n}: es una IP, no un nombre.\n\n`);
+            return;
+          }
+          if (c === 'ping') {
+            const n = nombreDe(arg);
+            const ip = n === 'router' ? null : (n === ROUTER || n === PUBLICA || Object.values(fija).indexOf(n) !== -1) ? n : resuelve(n);
+            if (!n) { escribe('Uso: ping nombre o IP\n\n'); return; }
+            if (!ip) { escribe(`La solicitud de ping no pudo encontrar el host ${n}. Compruebe el nombre y vuelva a intentarlo.\n\n`); return; }
+            const ms = ip === ROUTER || ip.startsWith('192.168.') ? 2 : 24;
+            escribe(`\nHaciendo ping a ${n}${n !== ip ? ' [' + ip + ']' : ''} con 32 bytes de datos:\n` + [0, 1, 2, 3].map(i => `Respuesta desde ${ip}: bytes=32 tiempo=${ms + i}ms TTL=${ms > 5 ? 54 : 64}`).join('\n') + '\n\n');
+            ctx.apunta(`ping ${n}: responde.`);
+            return;
+          }
+          if (c === 'tracert') {
+            const n = nombreDe(arg);
+            const ip = resuelve(n);
+            if (!n) { escribe('Uso: tracert nombre\n\n'); return; }
+            if (!ip) { escribe(`No se puede resolver el nombre del sistema de destino ${n}.\n\n`); return; }
+            escribe(`\nTraza a ${n}${n !== ip ? ' [' + ip + ']' : ''}\nsobre un máximo de 30 saltos:\n\n  1     2 ms     1 ms     2 ms  ${ROUTER}\n  2     9 ms     8 ms     9 ms  83.45.120.1\n  3    14 ms    13 ms    14 ms  core1.operadora.es [80.58.10.4]\n  4    21 ms    20 ms    22 ms  ix.madrid.es [193.149.1.30]\n  5    24 ms    23 ms    24 ms  ${ip}\n\nTraza completa.\n\n`);
+            if (n === 'bloquecraft.es' || ip === SERVIDOR) { if (!visto.tracert) { visto.tracert = true; ctx.apunta(`tracert bloquecraft.es: 1 el router (${ROUTER}), 2 la operadora, 3-4 Internet, 5 el servidor (${SERVIDOR}).`); revisa(); } }
+            return;
+          }
+          if (c === 'help' || c === 'ayuda') { escribe('Órdenes que entiende esta Terminal: ipconfig, nslookup, ping, tracert, cls.\n\n'); return; }
+          escribe(`"${cmd}" no se reconoce como un comando interno o externo,\nprograma o archivo por lotes ejecutable.\n\n`);
+        }
+        return v;
       }
+      void C;
     },
   });
 })();
