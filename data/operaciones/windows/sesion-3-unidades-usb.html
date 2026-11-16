@@ -1,0 +1,165 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen: unas en tu Windows de verdad y otras en el Windows de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>Las unidades</h2>
+
+<p>Cada disco o memoria que tiene el ordenador es una <strong>unidad</strong>, y Windows le pone una <strong>letra</strong>:</p>
+
+<table>
+<tr><th>Letra</th><th>Qué suele ser</th></tr>
+<tr><td><code translate="no">C:</code></td><td>El disco donde está instalado Windows (<strong>Disco local</strong>)</td></tr>
+<tr><td><code translate="no">D:</code>, <code translate="no">E:</code>, <code translate="no">F:</code>…</td><td>Otros discos, el lector de DVD o los USB que conectas. La letra la elige Windows</td></tr>
+</table>
+
+<p>Las ves en el Explorador, en <strong>Este equipo</strong>. Cada una lleva una barra: la parte azul es lo que está ocupado. Si la barra se pone <strong>roja</strong>, queda menos del 10 % libre.</p>
+
+<h2>Los sistemas de archivos</h2>
+
+<p>Para guardar archivos en un disco, hay que organizarlo de una forma. Esa forma es el <strong>sistema de archivos</strong>. Los tres de Windows:</p>
+
+<table>
+<tr><th>Sistema</th><th>Archivo más grande</th><th>Dónde se usa</th></tr>
+<tr><td><strong>FAT32</strong></td><td>4 GB</td><td>USB y tarjetas pequeñas, aparatos viejos (radios del coche, cámaras). Lo entiende todo</td></tr>
+<tr><td><strong>exFAT</strong></td><td>Sin límite práctico</td><td>USB y discos externos que usas en Windows, Mac y teles</td></tr>
+<tr><td><strong>NTFS</strong></td><td>Sin límite práctico</td><td>El disco de Windows (<code translate="no">C:</code>). Tiene <strong>permisos</strong> (Sesión 5). Un Mac solo lo puede leer</td></tr>
+</table>
+
+<p>Mira qué pasa con un vídeo grande y un USB en FAT32:</p>
+
+<div class="diapos" aria-label="Por qué no se copia el vídeo">
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="el vídeo y el USB"><rect x="20" y="50" width="120" height="50" rx="4" class="d-caja-act"/><text x="80.0" y="80.0" text-anchor="middle" class="d-c d-peq">vídeo 6,2 GB</text><rect x="220" y="40" width="120" height="70" rx="4" class="d-caja"/><text x="280.0" y="80.0" text-anchor="middle" class="d-d d-peq">USB · FAT32</text><text x="280" y="130" text-anchor="middle" class="d-d d-peq">28,8 GB libres</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">6,2 GB → USB</text></svg>
+<p class="diapo__texto">1. Quieres copiar un vídeo de <strong>6,2 GB</strong> a un USB con 28,8 GB libres. Sitio hay de sobra.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="no se copia"><rect x="20" y="50" width="120" height="50" rx="4" class="d-caja-act"/><text x="80.0" y="80.0" text-anchor="middle" class="d-c d-peq">vídeo 6,2 GB</text><path d="M 150 75 L 210 75" class="d-linea-c"/><path d="M 170 60 L 190 90 M 190 60 L 170 90" class="d-linea-c"/><rect x="220" y="40" width="120" height="70" rx="4" class="d-caja"/><text x="280.0" y="80.0" text-anchor="middle" class="d-d d-peq">USB · FAT32</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">demasiado grande</text></svg>
+<p class="diapo__texto">2. Pero Windows dice: «El archivo es <strong>demasiado grande para el sistema de archivos</strong> de destino».</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="la regla de FAT32"><rect x="70" y="40" width="220" height="60" rx="4" class="d-caja-act"/><text x="180.0" y="75.0" text-anchor="middle" class="d-c d-peq">FAT32: máximo 4 GB por archivo</text><text x="180" y="130" text-anchor="middle" class="d-d d-peq">no es falta de espacio: es la regla de FAT32</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">FAT32</text></svg>
+<p class="diapo__texto">3. El USB está en <strong>FAT32</strong>, que no admite archivos de más de 4 GB. No es falta de espacio.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="con exFAT sí"><rect x="110" y="40" width="140" height="60" rx="4" class="d-caja-on"/><text x="180.0" y="75.0" text-anchor="middle" class="d-a d-peq">USB · exFAT</text><path d="M 180 105 L 180 125" class="d-linea-c"/><rect x="110" y="128" width="140" height="34" rx="4" class="d-caja-act"/><text x="180.0" y="150.0" text-anchor="middle" class="d-c d-peq">vídeo 6,2 GB ✓</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">exFAT</text></svg>
+<p class="diapo__texto">4. La solución: <strong>formatearlo en exFAT</strong> (o NTFS). Pero formatear borra todo: antes, saca lo que haya dentro.</p>
+</div>
+</div>
+
+<p>Para saber qué sistema de archivos tiene una unidad: clic derecho en ella → <strong>Propiedades</strong>. Ahí sale también el espacio usado, el libre y la capacidad.</p>
+
+<p>Practica: ¿qué sistema de archivos elegirías?</p>
+
+<div data-actividad="u6s3-fs"></div>
+
+<h2>Formatear un USB</h2>
+
+<p><strong>Formatear</strong> es preparar una unidad con un sistema de archivos. Se hace cuando un USB es nuevo, da errores o tiene un sistema que no te sirve. <strong>Borra todo lo que hay dentro.</strong></p>
+
+<div class="diapos" aria-label="Formatear un USB paso a paso">
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="guardar antes"><rect x="40" y="40" width="280" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">1. Guarda en el ordenador lo que hay en el USB</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">antes de nada</text></svg>
+<p class="diapo__texto">1. <strong>Antes de nada</strong>, copia al ordenador todo lo que quieras guardar del USB: al formatear se borra.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="formatear"><rect x="40" y="40" width="280" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">2. Clic derecho en el USB → Formatear…</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">clic derecho</text></svg>
+<p class="diapo__texto">2. En «Este equipo», <strong>clic derecho</strong> en el USB → <strong>Formatear…</strong></p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="elegir"><rect x="40" y="30" width="280" height="30" rx="4" class="d-caja-act"/><text x="180.0" y="50.0" text-anchor="middle" class="d-c d-peq">Sistema de archivos: exFAT</text><rect x="40" y="70" width="280" height="30" rx="4" class="d-caja-act"/><text x="180.0" y="90.0" text-anchor="middle" class="d-c d-peq">Etiqueta del volumen: CLASE</text><rect x="40" y="110" width="280" height="30" rx="4" class="d-caja"/><text x="180.0" y="130.0" text-anchor="middle" class="d-d d-peq">Formato rápido ✓</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">elige</text></svg>
+<p class="diapo__texto">3. Elige el <strong>sistema de archivos</strong> y escribe la <strong>etiqueta</strong> (el nombre del USB). Deja marcado «Formato rápido».</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="iniciar"><rect x="40" y="40" width="280" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">Iniciar → Aceptar → «Formato completado»</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">Iniciar</text></svg>
+<p class="diapo__texto">4. <strong>Iniciar</strong>. Windows avisa de que se borrará todo: <strong>Aceptar</strong>. Al acabar: «Formato completado».</p>
+</div>
+</div>
+
+<div class="nota">⚠️ Windows no te deja formatear <code translate="no">C:</code>: es donde está Windows. Y fíjate bien en la letra antes de formatear: si eliges el disco equivocado, pierdes lo que había.</div>
+
+<h2>Expulsar antes de quitar</h2>
+
+<p>Antes de sacar un USB, <strong>expúlsalo</strong>: clic derecho en el USB → <strong>Expulsar</strong>, y espera al aviso «Es seguro quitar el hardware». Si lo sacas mientras Windows aún está escribiendo, el archivo se puede quedar a medias o estropear.</p>
+
+<div class="nota">🤔 Antes de seguir: tienes un USB en FAT32 con tus apuntes y quieres meter un vídeo de 5 GB. ¿Qué haces, y en qué orden?</div>
+<details><summary>Ver respuesta</summary>1) Copio los apuntes al ordenador. 2) Formateo el USB en <strong>exFAT</strong> (o NTFS). 3) Copio otra vez los apuntes y el vídeo. 4) Lo expulso antes de quitarlo.</details>
+
+<h2>Ganar espacio en el disco</h2>
+
+<p>Cuando <code translate="no">C:</code> se llena, el ordenador va lento y no deja actualizar. Windows trae dos herramientas para limpiar sin tocar tus archivos:</p>
+
+<table>
+<tr><th>Herramienta</th><th>Qué borra</th></tr>
+<tr><td><strong>Liberador de espacio en disco</strong> (Inicio → escribe «liberador»)</td><td>Archivos temporales, la Papelera, miniaturas, restos de actualizaciones</td></tr>
+<tr><td><strong>Configuración → Sistema → Almacenamiento</strong> (<code translate="no">Windows + I</code>)</td><td>Lo mismo, y te enseña qué ocupa más</td></tr>
+</table>
+
+<p>Cuidado con la casilla <strong>Descargas</strong>: borra tu carpeta Descargas entera, y ahí suele haber cosas tuyas.</p>
+
+<h3>Actividad 1 — Mira cuánto puedes liberar</h3>
+<p>En tu ordenador de verdad. Solo mirar: <strong>no borres nada</strong>.</p>
+<ol>
+<li>Abre Inicio y escribe <code translate="no">liberador</code>. Abre «Liberador de espacio en disco» y elige la unidad <code translate="no">C:</code>.</li>
+<li>Espera a que calcule. Mira la lista: cada casilla dice cuánto ocupa.</li>
+<li>Apunta en tu cuaderno las dos cosas que más ocupan y cuánto espacio en total podrías liberar. Después pulsa <strong>Cancelar</strong> (pregunta 11).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> has cerrado el Liberador con «Cancelar» y no se ha borrado nada.</p>
+
+<h3>Actividad 2 — El vídeo que no cabe</h3>
+<p>Ahora en un Windows 11 de mentira, con un USB en FAT32 que tiene cosas tuyas dentro. Hazlo como en tu ordenador: clic derecho, copiar y pegar, arrastrar, «Este equipo».</p>
+<ol start="4">
+<li>Lee la misión y prueba primero a copiar el vídeo. Lee bien el mensaje.</li>
+<li>Antes de formatear, mira las propiedades del USB: ¿qué sistema de archivos tiene? Y guarda lo de dentro.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno qué sistema de archivos tenía el USB, qué mensaje salió y por qué, qué sistema elegiste al formatear y por qué guardaste antes lo que había en el USB (pregunta 13).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="w-usb" aria-label="El vídeo que no cabe"></div>
+<p><strong>Comprobación observable:</strong> el USB se llama CLASE, tiene el vídeo y ha salido el aviso «Es seguro quitar el hardware».</p>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 3 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Qué es una unidad? ¿Qué suele ser la unidad <code translate="no">C:</code>?</li>
+<li>En «Este equipo», ¿qué quiere decir que la barra de una unidad esté roja?</li>
+<li>¿Qué es un sistema de archivos?</li>
+<li>(ABC) El archivo más grande que admite FAT32 es de:
+  <ul>
+    <li>a) 4 GB</li>
+    <li>b) 32 GB</li>
+    <li>c) no tiene límite</li>
+  </ul>
+</li>
+<li>Escribe los tres sistemas de archivos de Windows y dónde se usa cada uno.</li>
+<li>(V/F) Si un archivo no se copia porque es «demasiado grande para el sistema de archivos», es que el USB está lleno.</li>
+<li>¿Dónde se mira qué sistema de archivos tiene una unidad?</li>
+<li>¿Qué es formatear? ¿Qué le pasa a lo que había dentro?</li>
+<li>Escribe en orden los pasos para formatear un USB en exFAT con el nombre CLASE.</li>
+<li>¿Por qué hay que expulsar un USB antes de quitarlo? ¿Cómo se hace?</li>
+<li><strong>(Actividad 1)</strong> En el Liberador de espacio de tu ordenador, ¿qué dos cosas ocupaban más? ¿Cuánto podías liberar en total?</li>
+<li>¿Por qué hay que tener cuidado con la casilla «Descargas» del Liberador de espacio?</li>
+<li><strong>(Actividad 2)</strong> En la simulación: ¿qué sistema de archivos tenía el USB? ¿Qué mensaje salió al copiar el vídeo y por qué? ¿Qué sistema elegiste al formatear? ¿Por qué guardaste antes lo que había en el USB?</li>
+<li>(V/F) Windows te deja formatear el disco <code translate="no">C:</code> mientras lo estás usando.</li>
+<li>Quieres un USB para llevar un vídeo de 8 GB a la tele de casa y a un Mac. ¿Qué sistema de archivos eliges? ¿Por qué no los otros dos?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 3 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>Mira las propiedades de un USB tuyo: ¿qué sistema de archivos tiene y cuánto ocupa?</li>
+<li>Busca qué diferencia hay entre «Formato rápido» y el formato normal.</li>
+<li>Busca qué hace «Optimizar unidades» (desfragmentar) y si hace falta en un disco SSD.</li>
+<li>En tu ordenador, Configuración → Sistema → Almacenamiento: ¿qué es lo que más ocupa?</li>
+</ol>
+</div>

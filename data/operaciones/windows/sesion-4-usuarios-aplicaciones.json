@@ -1,0 +1,16 @@
+{
+  "id": "sesion-4-usuarios-aplicaciones",
+  "titulo": "Sesión 4. Cuentas de usuario, aplicaciones e impresoras",
+  "fecha": "",
+  "descripcion": "Cuentas de administrador y estándar, cuenta Microsoft y cuenta local, crear una cuenta para otra persona, instalar y desinstalar aplicaciones, la impresora predeterminada y el idioma del teclado.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s4-cuentas",
+      "tipo": "generador",
+      "titulo": "¿Estándar o administrador?",
+      "generador": "tipo-cuenta",
+      "n": 5
+    }
+  ]
+}

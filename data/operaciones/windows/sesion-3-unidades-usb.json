@@ -1,0 +1,16 @@
+{
+  "id": "sesion-3-unidades-usb",
+  "titulo": "Sesión 3. Unidades: formatear un USB y ganar espacio",
+  "fecha": "",
+  "descripcion": "Las unidades y sus letras, el espacio libre, los sistemas de archivos FAT32, exFAT y NTFS (y el límite de 4 GB), formatear y expulsar un USB, y el Liberador de espacio en disco.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s3-fs",
+      "tipo": "generador",
+      "titulo": "¿FAT32, exFAT o NTFS?",
+      "generador": "sistema-archivos",
+      "n": 5
+    }
+  ]
+}

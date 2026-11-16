@@ -1,0 +1,16 @@
+{
+  "id": "sesion-5-tareas-permisos",
+  "titulo": "Sesión 5. Administrador de tareas, permisos y restaurar el sistema",
+  "fecha": "",
+  "descripcion": "El Administrador de tareas (cerrar un programa colgado, memoria, aplicaciones de arranque), los permisos NTFS de una carpeta y los puntos de restauración.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s5-permisos",
+      "tipo": "generador",
+      "titulo": "¿Qué permiso le das?",
+      "generador": "permiso-ntfs",
+      "n": 5
+    }
+  ]
+}

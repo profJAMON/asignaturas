@@ -1,0 +1,16 @@
+{
+  "id": "sesion-2-archivos-a-fondo",
+  "titulo": "Sesión 2. Archivos a fondo: Papelera, accesos directos y atributos",
+  "fecha": "",
+  "descripcion": "El Explorador de Windows 11, la Papelera de reciclaje (restaurar, vaciar, Shift + Supr), copia o acceso directo, los atributos solo lectura y oculto, ver los archivos ocultos y buscar con el asterisco.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s2-papelera",
+      "tipo": "generador",
+      "titulo": "¿Papelera, para siempre o acceso directo?",
+      "generador": "papelera-acceso",
+      "n": 5
+    }
+  ]
+}

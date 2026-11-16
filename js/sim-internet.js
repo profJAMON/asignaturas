@@ -1,29 +1,34 @@
 /* ============================================================
    Simulaciones de la Unidad 4 de Operaciones (el navegador,
-   buscadores y correo), 27/10/2026. Usan el marco de
-   js/simulador.js y van en tema.html después de él.
+   buscadores y correo), 27/10/2026; rehechas el 15/11/2026 para
+   que sean lo más reales posible: van dentro del Windows 11 de
+   mentira (js/win11.js) con un Chrome de mentira, y los atajos se
+   pulsan con el teclado (el de verdad o el de la pantalla), no con
+   botones que ya dicen el atajo.
 
-   navegador  S1 «Ordena este navegador»: recuperar una pestaña,
-              ordenar favoritos en una carpeta, encontrar una web en
-              el historial y dejar el zoom al 100 %, con botones de
-              atajos de teclado.
+   navegador  S1 «Ordena este navegador»: recuperar una pestaña
+              (Ctrl + Shift + T, clic derecho en la barra de
+              pestañas o ⋮ → Historial), meter marcadores en una
+              carpeta (arrastrar, Editar… o Cortar y Pegar), buscar
+              en el historial y dejar el zoom al 100 %.
    buscador   S2 «Encuéntralo»: un buscador de mentira que entiende
               los cinco operadores de la sesión (" ", -, site:,
               filetype:, OR) y cinco retos. Los anuncios no hacen
               caso de los operadores, como en uno de verdad.
-   red-casa   U2 S1 «Monta la red de casa»: IP privadas para los
-              aparatos, la pública para el router, preguntar al DNS y
-              mandar la petición al servidor de bloquecraft.es.
-   bandeja    S3 «Revisa la bandeja»: seis correos; denunciar los de
-              phishing, mandar la publicidad a spam y quedarse con
-              los buenos. «Ver adónde lleva» enseña el enlace real.
+   red-casa   U2 S1 «Monta la red de casa» (sin cambios).
+   bandeja    S3 «Revisa la bandeja»: un correo como el del
+              instituto; denunciar phishing (⋮), mandar a spam (⚠),
+              destacar con la estrella. Al pasar el ratón por un
+              botón del correo sale abajo adónde lleva, como en Chrome.
 
    Todo inventado: webs, correos y nombres. Nada se guarda.
    ============================================================ */
 
+
 (function () {
   'use strict';
   if (typeof window.registrarSimulacion !== 'function') return;
+  const { el } = window.LAB;
 
   const norm = t => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   function select(opciones, valor, etiqueta) {
@@ -42,203 +47,457 @@
   }
 
   /* ============================================================
+     Un Chrome de mentira dentro del Windows 11 de mentira
+     (15/11/2026, para que las simulaciones de la U4 sean reales).
+     chrome(W, op) abre la ventana de Chrome maximizada con
+     pestañas, barra de direcciones, ☆, ⋮, barra de marcadores y la
+     página. El estado (C) se guarda aunque se cierre la ventana:
+     al volver a abrir Chrome desde la barra de tareas sigue igual,
+     y Ctrl + Shift + T recupera lo cerrado, como el de verdad.
+       op.pestanas   [{ t, url, zoom, pag: 'web' }]
+       op.marcadores [{ n, url } | { n, carpeta: true, hijos: [] }] o null
+       op.pagina(tab, cont, C)   dibuja una página «web»
+       op.navegar(texto, tab, C) escribir en la barra de direcciones
+       op.historial  [{ d, h, n, url }]
+       op.descargas  [{ n, url }]
+       op.evento(nombre, datos)  'reabrir', 'cerrar', 'zoom', 'historial',
+                     'abrir-historial', 'marcadores', 'descargas'
+     ============================================================ */
+  function chrome(W, op) {
+    const { el, boton } = window.LAB;
+    const ic = window.WIN11.icono;
+    const C = W._chrome || (W._chrome = {
+      tabs: op.pestanas.map(t => Object.assign({ zoom: 100, pag: 'web' }, t)),
+      activa: op.activa || 0, cerradas: (op.cerradas || []).slice(), marcas: op.marcadores, barra: !!op.marcadores,
+    });
+    const ev = (n, d) => op.evento && op.evento(n, d || {});
+    let v = null, cuerpo = null;
+    const tab = () => C.tabs[C.activa];
+    C.pintar = pintar;
+    C.ventana = () => v;
+    W.apps.navegador.abrir = () => abrirVentana();
+    function abrirVentana() {
+      if (!C.tabs.length) { C.tabs.push({ t: 'Nueva pestaña', url: '', zoom: 100, pag: 'nueva' }); C.activa = 0; }
+      return W.abrir({ app: 'navegador', titulo: '', icono: 'navegador', estado: 'max', crear: (c, vv) => { v = vv; cuerpo = c; c.classList.add('w11-ch'); pintar(); },
+        onTecla: tecla, alCerrar: () => { v = null; } });
+    }
+    abrirVentana();
+    function nombreDe(t) { return t.pag === 'historial' ? 'Historial' : t.pag === 'descargas' ? 'Descargas' : t.t; }
+    function urlDe(t) { return t.pag === 'historial' ? 'chrome://history' : t.pag === 'descargas' ? 'chrome://downloads' : t.url || ''; }
+    function pintar() {
+      if (!v || !cuerpo) return;
+      const t = tab();
+      v.titulo(t ? nombreDe(t) + ' - Google Chrome' : 'Google Chrome');
+      cuerpo.innerHTML = '';
+      // pestañas
+      const tiras = el('div', 'w11-ch__tabs');
+      tiras.setAttribute('role', 'tablist');
+      C.tabs.forEach((x, i) => {
+        const p = el('div', 'w11-ch__tab' + (i === C.activa ? ' w11-ch__tab--activa' : ''));
+        p.setAttribute('role', 'tab');
+        p.setAttribute('aria-selected', String(i === C.activa));
+        const b = boton('', 'w11-ch__tab-b');
+        b.append(el('span', 'w11-ch__fav', (nombreDe(x)[0] || '·').toUpperCase()), el('span', 'w11-ch__tab-t', nombreDe(x)));
+        b.addEventListener('click', () => { C.activa = i; pintar(); });
+        b.addEventListener('auxclick', e => { if (e.button === 1) cerrar(i, 'clic con la rueda'); });
+        const x2 = boton('×', 'w11-ch__tab-x');
+        x2.setAttribute('aria-label', 'Cerrar pestaña ' + nombreDe(x));
+        x2.addEventListener('click', e => { e.stopPropagation(); cerrar(i, 'la × de la pestaña'); });
+        p.append(b, x2);
+        p.addEventListener('contextmenu', e => {
+          e.preventDefault(); e.stopPropagation();
+          W.menu(e.clientX, e.clientY, [
+            { t: 'Nueva pestaña a la derecha', f: () => nueva('menú de la pestaña') },
+            { t: 'Volver a cargar', atajo: 'Ctrl+R' },
+            { t: 'Duplicar', f: () => { C.tabs.splice(i + 1, 0, Object.assign({}, x)); C.activa = i + 1; pintar(); } },
+            { sep: true },
+            { t: 'Cerrar', atajo: 'Ctrl+W', f: () => cerrar(i, 'clic derecho en la pestaña → Cerrar') },
+            { t: 'Cerrar otras pestañas', f: () => { C.tabs.filter((y, j) => j !== i).forEach(y => C.cerradas.unshift(y)); C.tabs = [x]; C.activa = 0; ev('cerrar', {}); pintar(); } },
+          ]);
+        });
+        tiras.appendChild(p);
+      });
+      const mas = boton('+', 'w11-ch__nueva');
+      mas.setAttribute('aria-label', 'Nueva pestaña');
+      mas.addEventListener('click', () => nueva('el botón +'));
+      tiras.appendChild(mas);
+      tiras.addEventListener('contextmenu', e => {
+        if (e.target.closest('.w11-ch__tab')) return;
+        e.preventDefault();
+        W.menu(e.clientX, e.clientY, [
+          { t: 'Nueva pestaña', atajo: 'Ctrl+T', f: () => nueva('menú de la barra de pestañas') },
+          { t: 'Volver a abrir pestaña cerrada', atajo: 'Ctrl+Mayús+T', off: !C.cerradas.length, f: () => reabrir('clic derecho en la barra de pestañas → Volver a abrir pestaña cerrada') },
+        ]);
+      });
+      // barra de herramientas
+      const her = el('div', 'w11-ch__her');
+      const bt = (txt, lab, f, off) => { const b = boton(txt, 'w11-ch__hb'); b.setAttribute('aria-label', lab); b.title = lab; if (off) b.disabled = true; b.addEventListener('click', f); her.appendChild(b); return b; };
+      bt('←', 'Atrás', () => {}, true);
+      bt('→', 'Adelante', () => {}, true);
+      bt('⟳', 'Volver a cargar', () => pintar());
+      const omni = el('div', 'w11-ch__omni');
+      const ent = document.createElement('input');
+      ent.className = 'w11-ch__url';
+      ent.value = t ? urlDe(t) : '';
+      ent.spellcheck = false;
+      ent.setAttribute('aria-label', 'Barra de direcciones y de búsqueda');
+      ent.setAttribute('translate', 'no');
+      ent.placeholder = 'Busca en Google o escribe una URL';
+      ent.addEventListener('focus', () => ent.select());
+      ent.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        e.preventDefault();
+        const x = tab();
+        if (op.navegar) op.navegar(ent.value.trim(), x, C);
+        pintar();
+      });
+      omni.appendChild(ent);
+      if (t && t.zoom !== 100) {
+        const z = boton('🔍', 'w11-ch__zoomb');
+        z.setAttribute('aria-label', `Zoom: ${t.zoom} %`);
+        z.title = `Zoom: ${t.zoom} %`;
+        z.addEventListener('click', () => {
+          const r = z.getBoundingClientRect();
+          W.menu(r.left - 140, r.bottom, [
+            { t: `Zoom: ${t.zoom} %`, off: true },
+            { t: 'Alejar  −', f: () => zoom(-10, 'la lupa de la barra de direcciones') },
+            { t: 'Acercar  +', f: () => zoom(10, 'la lupa de la barra de direcciones') },
+            { t: 'Restablecer', f: () => zoom(0, 'la lupa de la barra de direcciones → Restablecer') },
+          ]);
+        });
+        omni.appendChild(z);
+      }
+      const est = boton('☆', 'w11-ch__estrella');
+      est.setAttribute('aria-label', 'Añadir esta pestaña a marcadores');
+      est.addEventListener('click', () => marcar('la estrella ☆'));
+      omni.appendChild(est);
+      her.appendChild(omni);
+      const menu = bt('⋮', 'Personaliza y controla Google Chrome', () => {
+        const r = menu.getBoundingClientRect();
+        W.menu(r.right - 260, r.bottom, [
+          { t: 'Nueva pestaña', atajo: 'Ctrl+T', f: () => nueva('menú ⋮') },
+          { t: 'Nueva ventana', atajo: 'Ctrl+N', off: true },
+          { t: 'Nueva ventana de incógnito', atajo: 'Ctrl+Mayús+N', off: true },
+          { sep: true },
+          { t: 'Marcadores y listas', sub: [
+            { t: 'Añadir pestaña a marcadores…', atajo: 'Ctrl+D', f: () => marcar('menú ⋮ → Marcadores') },
+            { t: 'Mostrar barra de marcadores', atajo: 'Ctrl+Mayús+B', marca: C.barra, f: () => { C.barra = !C.barra; pintar(); } },
+          ] },
+          { t: 'Historial', sub: [
+            { t: 'Historial', atajo: 'Ctrl+H', f: () => historial('menú ⋮ → Historial') },
+            { sep: true },
+            { t: 'Cerradas recientemente', off: true },
+          ].concat(C.cerradas.slice(0, 5).map((x, i) => ({ t: nombreDe(x), noTraducir: true, f: () => reabrir('menú ⋮ → Historial → Cerradas recientemente', i) }))) },
+          { t: 'Descargas', atajo: 'Ctrl+J', f: () => descargas('menú ⋮ → Descargas') },
+          { sep: true },
+          { t: `Zoom: ${t ? t.zoom : 100} %`, sub: [
+            { t: 'Alejar', atajo: 'Ctrl+-', f: () => zoom(-10, 'menú ⋮ → Zoom') },
+            { t: 'Acercar', atajo: 'Ctrl++', f: () => zoom(10, 'menú ⋮ → Zoom') },
+          ] },
+          { t: 'Imprimir…', atajo: 'Ctrl+P', off: true },
+          { t: 'Borrar datos de navegación…', atajo: 'Ctrl+Mayús+Supr', off: true },
+          { sep: true },
+          { t: 'Configuración', off: true },
+        ]);
+      });
+      cuerpo.append(tiras, her);
+      // marcadores
+      if (C.marcas && C.barra) cuerpo.appendChild(barraMarcadores());
+      // página
+      const web = el('div', 'w11-ch__web');
+      const cont = el('div', 'w11-ch__cont');
+      cont.style.fontSize = ((t ? t.zoom : 100) / 100) + 'em';
+      web.appendChild(cont);
+      cuerpo.appendChild(web);
+      const estado = el('div', 'w11-ch__estado');
+      estado.setAttribute('translate', 'no');
+      estado.setAttribute('aria-live', 'polite');
+      cuerpo.appendChild(estado);
+      C.estado = u => { estado.textContent = u || ''; estado.classList.toggle('w11-ch__estado--on', !!u); };
+      if (!t) return;
+      if (t.pag === 'historial') return pagHistorial(cont);
+      if (t.pag === 'descargas') return pagDescargas(cont);
+      if (t.pag === 'nueva') {
+        cont.classList.add('w11-ch__nuevap');
+        cont.appendChild(el('p', 'w11-ch__logo', 'Buscador'));
+        const i = document.createElement('input'); i.className = 'w11-campo w11-ch__busca'; i.placeholder = 'Busca o escribe una URL'; i.setAttribute('aria-label', 'Buscar');
+        i.addEventListener('keydown', e => { if (e.key === 'Enter' && op.navegar) { op.navegar(i.value.trim(), t, C); pintar(); } });
+        cont.appendChild(i);
+        return;
+      }
+      if (op.pagina) op.pagina(t, cont, C);
+    }
+    function barraMarcadores() {
+      const b = el('div', 'w11-ch__marc');
+      C.marcas.forEach(m => b.appendChild(chipMarca(m, C.marcas)));
+      return b;
+    }
+    function chipMarca(m, dentro) {
+      const b = boton('', 'w11-ch__m' + (m.carpeta ? ' w11-ch__m--carpeta' : ''));
+      b.append(el('span', 'w11-ch__micono', m.carpeta ? '📁' : '⭐'), el('span', null, m.n));
+      b._marca = m;
+      if (m.carpeta) b.dataset.carpeta = '1';
+      b.addEventListener('click', () => {
+        if (b._arr && Date.now() - b._arr < 300) return;
+        if (m.carpeta) {
+          const r = b.getBoundingClientRect();
+          W.menu(r.left, r.bottom, m.hijos.length ? m.hijos.map(h => ({ t: '⭐ ' + h.n, f: () => abrirUrl(h) })) : [{ t: '(vacía)', off: true }]);
+          ev('carpeta', { m });
+          return;
+        }
+        abrirUrl(m);
+      });
+      b.addEventListener('contextmenu', e => {
+        e.preventDefault(); e.stopPropagation();
+        if (m.carpeta) {
+          W.menu(e.clientX, e.clientY, [
+            { t: 'Pegar', atajo: 'Ctrl+V', off: !C.portaMarca, f: () => { mover(C.portaMarca, m, 'Cortar y pegar en la carpeta'); C.portaMarca = null; } },
+            { t: 'Cambiar nombre…', off: true },
+          ]);
+          return;
+        }
+        W.menu(e.clientX, e.clientY, [
+          { t: 'Abrir en una pestaña nueva', f: () => { C.tabs.push({ t: m.n, url: m.url, zoom: 100, pag: 'web' }); C.activa = C.tabs.length - 1; pintar(); } },
+          { sep: true },
+          { t: 'Editar…', f: () => editar(m) },
+          { sep: true },
+          { t: 'Cortar', atajo: 'Ctrl+X', f: () => { C.portaMarca = m; W.notificacion('Marcadores', `Has cortado «${m.n}». Pégalo con clic derecho en la carpeta.`, 'copiar'); } },
+          { t: 'Eliminar', f: () => { quitarMarca(m); ev('marcadores', { eliminado: m }); pintar(); } },
+        ]);
+      });
+      if (!m.carpeta) arrastrarMarca(b, m);
+      return b;
+    }
+    function quitarMarca(m) {
+      [C.marcas].concat(C.marcas.filter(x => x.carpeta).map(x => x.hijos)).forEach(l => { const i = l.indexOf(m); if (i !== -1) l.splice(i, 1); });
+    }
+    function mover(m, carpeta, como) {
+      if (!m) return;
+      quitarMarca(m);
+      (carpeta ? carpeta.hijos : C.marcas).push(m);
+      ev('marcadores', { m, carpeta, como });
+      pintar();
+    }
+    function editar(m) {
+      let sel, nom;
+      W.dialogo({ titulo: 'Editar marcador', crear: t => {
+        const l1 = el('label', 'w11-form__campo'); nom = document.createElement('input'); nom.className = 'w11-campo'; nom.value = m.n; l1.append(el('span', null, 'Nombre'), nom); t.appendChild(l1);
+        const l2 = el('label', 'w11-form__campo'); const u = document.createElement('input'); u.className = 'w11-campo'; u.value = m.url || ''; u.readOnly = true; u.setAttribute('translate', 'no'); l2.append(el('span', null, 'URL'), u); t.appendChild(l2);
+        const l3 = el('label', 'w11-form__campo'); sel = document.createElement('select'); sel.className = 'w11-campo';
+        sel.innerHTML = '<option value="">Barra de marcadores</option>' + C.marcas.filter(x => x.carpeta).map((x, i) => `<option value="${i}">Barra de marcadores › ${x.n}</option>`).join('');
+        const dentro = C.marcas.filter(x => x.carpeta).findIndex(x => x.hijos.indexOf(m) !== -1);
+        sel.value = dentro === -1 ? '' : String(dentro);
+        l3.append(el('span', null, 'Carpeta'), sel); t.appendChild(l3);
+      }, botones: [{ t: 'Guardar', primario: true, f: () => { m.n = nom.value.trim() || m.n; mover(m, sel.value === '' ? null : C.marcas.filter(x => x.carpeta)[+sel.value], 'clic derecho → Editar… → Carpeta'); } }, { t: 'Cancelar' }] });
+    }
+    function arrastrarMarca(b, m) {
+      let ini = null, fant = null;
+      b.addEventListener('pointerdown', e => { if (e.button === 0 && e.pointerType !== 'touch') ini = { x: e.clientX, y: e.clientY, id: e.pointerId }; });
+      b.addEventListener('pointermove', e => {
+        if (!ini) return;
+        if (!fant && Math.abs(e.clientX - ini.x) + Math.abs(e.clientY - ini.y) < 8) return;
+        if (!fant) { fant = el('div', 'w11-fantasma', '⭐ ' + m.n); W.escena.appendChild(fant); try { b.setPointerCapture(ini.id); } catch (_) { /* nada */ } }
+        const r = W.escena.getBoundingClientRect();
+        fant.style.left = (e.clientX - r.left + 10) + 'px'; fant.style.top = (e.clientY - r.top + 10) + 'px';
+        W.escena.querySelectorAll('.w11-soltar').forEach(x => x.classList.remove('w11-soltar'));
+        const d = document.elementsFromPoint(e.clientX, e.clientY).map(x => x.closest && x.closest('[data-carpeta]')).find(Boolean);
+        if (d) d.classList.add('w11-soltar');
+      });
+      const fin = e => {
+        if (!ini) return;
+        ini = null;
+        if (!fant) return;
+        fant.remove(); fant = null;
+        b._arr = Date.now();
+        W.escena.querySelectorAll('.w11-soltar').forEach(x => x.classList.remove('w11-soltar'));
+        const d = document.elementsFromPoint(e.clientX, e.clientY).map(x => x.closest && x.closest('[data-carpeta]')).find(Boolean);
+        if (d && d._marca) mover(m, d._marca, 'arrastrar a la carpeta');
+      };
+      b.addEventListener('pointerup', fin);
+      b.addEventListener('pointercancel', fin);
+    }
+    function abrirUrl(m) { const t = tab(); if (!t) return; Object.assign(t, { t: m.n, url: m.url, pag: 'web', zoom: 100 }); pintar(); }
+    function nueva(origen) { C.tabs.push({ t: 'Nueva pestaña', url: '', zoom: 100, pag: 'nueva' }); C.activa = C.tabs.length - 1; ev('nueva', { origen }); pintar(); }
+    function cerrar(i, origen) {
+      const t = C.tabs.splice(i, 1)[0];
+      if (!t) return;
+      C.cerradas.unshift(t);
+      if (C.activa >= C.tabs.length) C.activa = C.tabs.length - 1;
+      ev('cerrar', { tab: t, origen });
+      if (!C.tabs.length) { C.activa = 0; if (v) v.cerrar(); W.notificacion('Google Chrome', 'Has cerrado la última pestaña y se ha cerrado Chrome. Vuelve a abrirlo desde la barra de tareas.', 'navegador'); return; }
+      pintar();
+    }
+    function reabrir(origen, i) {
+      if (!C.cerradas.length) { W.aviso('No queda ninguna pestaña cerrada que recuperar.', 'cuidado'); return; }
+      const t = C.cerradas.splice(i || 0, 1)[0];
+      C.tabs.push(t);
+      C.activa = C.tabs.length - 1;
+      ev('reabrir', { tab: t, origen });
+      pintar();
+    }
+    function zoom(d, origen) {
+      const t = tab();
+      if (!t || t.pag !== 'web') { W.aviso('El zoom se cambia en una página web. Vuelve a una pestaña.', 'cuidado'); return; }
+      t.zoom = d === 0 ? 100 : Math.min(200, Math.max(50, t.zoom + d));
+      ev('zoom', { tab: t, origen });
+      pintar();
+    }
+    function historial(origen) { C.tabs.push({ t: 'Historial', pag: 'historial', zoom: 100, busca: '' }); C.activa = C.tabs.length - 1; ev('historial', { origen }); pintar(); }
+    function descargas(origen) { C.tabs.push({ t: 'Descargas', pag: 'descargas', zoom: 100 }); C.activa = C.tabs.length - 1; ev('descargas', { origen }); pintar(); }
+    function marcar(origen) {
+      const t = tab();
+      if (!t || t.pag !== 'web' || !C.marcas) return;
+      if (!C.marcas.some(m => m.url === t.url) && !C.marcas.filter(m => m.carpeta).some(c => c.hijos.some(m => m.url === t.url))) C.marcas.push({ n: t.t, url: t.url });
+      W.notificacion('Marcador añadido', `«${t.t}» está en la barra de marcadores (${origen}).`, 'navegador');
+      ev('marcadores', { nuevo: t, como: origen });
+      pintar();
+    }
+    function pagHistorial(cont) {
+      const t = tab();
+      cont.classList.add('w11-ch__interna');
+      cont.appendChild(el('p', 'w11-ch__h1', 'Historial'));
+      const b = document.createElement('input');
+      b.type = 'search'; b.className = 'w11-campo w11-ch__busca'; b.placeholder = 'Buscar en el historial'; b.setAttribute('aria-label', 'Buscar en el historial');
+      b.value = t.busca || '';
+      const lista = el('div', 'w11-ch__hist');
+      cont.append(b, lista);
+      const norm2 = x => x.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      function filtra() {
+        t.busca = b.value;
+        lista.innerHTML = '';
+        const q = norm2(b.value.trim());
+        let dia = '';
+        (op.historial || []).filter(h => !q || norm2(h.n + ' ' + h.url).indexOf(q) !== -1).forEach(h => {
+          if (h.d !== dia) { dia = h.d; lista.appendChild(el('p', 'w11-ch__dia', dia)); }
+          const f = boton('', 'w11-ch__hfila');
+          const u = el('span', 'w11-ch__hurl', h.url); u.setAttribute('translate', 'no');
+          f.append(el('span', 'w11-ch__hhora', h.h), el('span', 'w11-ch__htit', h.n), u);
+          f.addEventListener('click', () => { Object.assign(t, { t: h.n.split(':')[0], url: h.url, pag: 'web', zoom: 100 }); ev('abrir-historial', { h, busca: b.value.trim() }); pintar(); });
+          f.addEventListener('mouseenter', () => C.estado(h.url));
+          f.addEventListener('mouseleave', () => C.estado(''));
+          lista.appendChild(f);
+        });
+        if (!lista.childNodes.length) lista.appendChild(el('p', 'w11-nota', 'No hay nada en el historial con esa palabra.'));
+      }
+      b.addEventListener('input', filtra);
+      filtra();
+    }
+    function pagDescargas(cont) {
+      cont.classList.add('w11-ch__interna');
+      cont.appendChild(el('p', 'w11-ch__h1', 'Descargas'));
+      (op.descargas || []).forEach(d => {
+        const f = el('div', 'w11-cfg__tarjeta');
+        const n = el('span', 'w11-cfg__ttexto');
+        const a = el('span', 'w11-cfg__ttitulo', d.n); a.setAttribute('translate', 'no');
+        const b = el('span', 'w11-cfg__tsub', d.url); b.setAttribute('translate', 'no');
+        n.append(a, b);
+        f.append(n, el('span', 'w11-cfg__valor', 'Mostrar en carpeta'));
+        cont.appendChild(f);
+      });
+    }
+    function tecla(c) {
+      const T = {
+        'Ctrl + T': () => nueva('Ctrl + T'),
+        'Ctrl + W': () => cerrar(C.activa, 'Ctrl + W'),
+        'Ctrl + Shift + T': () => reabrir('Ctrl + Shift + T'),
+        'Ctrl + Tab': () => { if (C.tabs.length) { C.activa = (C.activa + 1) % C.tabs.length; pintar(); } },
+        'Ctrl + Shift + Tab': () => { if (C.tabs.length) { C.activa = (C.activa - 1 + C.tabs.length) % C.tabs.length; pintar(); } },
+        'Ctrl + H': () => historial('Ctrl + H'),
+        'Ctrl + J': () => descargas('Ctrl + J'),
+        'Ctrl + D': () => marcar('Ctrl + D'),
+        'Ctrl + Shift + B': () => { C.barra = !C.barra; pintar(); },
+        'Ctrl + +': () => zoom(10, 'Ctrl + +'),
+        'Ctrl + Shift + +': () => zoom(10, 'Ctrl + +'),
+        'Ctrl + -': () => zoom(-10, 'Ctrl + -'),
+        'Ctrl + 0': () => zoom(0, 'Ctrl + 0'),
+        'Ctrl + L': () => { const i = cuerpo && cuerpo.querySelector('.w11-ch__url'); if (i) i.focus(); },
+        'F5': () => pintar(),
+        'Ctrl + R': () => pintar(),
+      };
+      if (!T[c]) return false;
+      T[c]();
+      return true;
+    }
+    C.tecla = tecla;
+    return C;
+  }
+  if (window.WIN11) window.WIN11.chrome = chrome;
+
+  /* ============================================================
      S1 · Ordena este navegador
      ============================================================ */
   registrarSimulacion('navegador', {
-    ventana: 'Chrome de mentira',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Recupera la pestaña de la web de materiales, que se ha cerrado sin querer.',
-      'Mete en la carpeta «Clase» los tres favoritos de clase. «Juegos gratis» se queda fuera.',
+      'Mete en la carpeta «Clase» de la barra de marcadores los tres marcadores de clase. «Juegos gratis» se queda fuera.',
       'Encuentra en el historial la tienda de bicis que viste el martes y ábrela.',
       'La pestaña de Wikipedia está al 150 %: déjala al 100 %.',
     ],
-    final: 'Apunta en tu cuaderno el atajo que usaste para cada una de las cuatro cosas, o dónde pulsaste si no había atajo (pregunta 12).',
+    final: 'Apunta en tu cuaderno cómo has hecho cada una de las cuatro cosas: el atajo de teclado que has pulsado o dónde has hecho clic (pregunta 12).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
-      const s = {
-        tabs: [
-          { n: 'YouTube', url: 'youtube.com', zoom: 100 },
-          { n: 'Wikipedia', url: 'es.wikipedia.org', zoom: 150 },
+      const W = WIN11.escritorio(ctx, { fs: WIN11.fs.equipo(WIN11.fs.usuario({})), barra: ['explorador', 'navegador'] });
+      const DE_CLASE = ['Web de materiales', 'Classroom', 'Gmail del instituto'];
+      const C = chrome(W, {
+        pestanas: [
+          { t: 'YouTube', url: 'youtube.com' },
+          { t: 'Wikipedia: Navegador web', url: 'es.wikipedia.org/wiki/Navegador_web', zoom: 150 },
         ],
         activa: 1,
-        cerradas: [{ n: 'Materiales', url: 'asignaturas.profesorjamon.workers.dev', zoom: 100 }],
-        favs: [
-          { n: 'Web de materiales', clase: true, en: 'barra' },
-          { n: 'Juegos gratis', clase: false, en: 'barra' },
-          { n: 'Classroom', clase: true, en: 'barra' },
-          { n: 'Gmail del instituto', clase: true, en: 'barra' },
+        cerradas: [{ t: 'Web de materiales', url: 'asignaturas.profesorjamon.workers.dev', zoom: 100, pag: 'web' }],
+        marcadores: [
+          { n: 'Clase', carpeta: true, hijos: [] },
+          { n: 'Web de materiales', url: 'asignaturas.profesorjamon.workers.dev' },
+          { n: 'Juegos gratis', url: 'juegos-gratis-ya.net' },
+          { n: 'Classroom', url: 'classroom.google.com' },
+          { n: 'Gmail del instituto', url: 'mail.google.com' },
         ],
-        vista: 'web', busca: '', abierta: false,
-      };
-      const HIST = [
-        { d: 'Hoy', h: '16:02', n: 'Wikipedia: Navegador web', url: 'es.wikipedia.org' },
-        { d: 'Hoy', h: '15:40', n: 'YouTube', url: 'youtube.com' },
-        { d: 'Hoy', h: '15:05', n: 'Web de materiales', url: 'asignaturas.profesorjamon.workers.dev' },
-        { d: 'Martes', h: '18:31', n: 'Pedalea: tienda de bicis', url: 'pedalea-bicis.es', bici: true },
-        { d: 'Martes', h: '18:20', n: 'Gmail del instituto', url: 'mail.google.com' },
-        { d: 'Martes', h: '18:15', n: 'El tiempo en Palma', url: 'eltiempo-palma.es' },
-        { d: 'Lunes', h: '15:10', n: 'Classroom', url: 'classroom.google.com' },
-      ];
-      const marco = el('div', 'sim__nav');
-      const tiras = el('div', 'sim__pestanas');
-      const fav = el('div', 'sim__favoritos');
-      const dir = el('div', 'sim__direccion');
-      dir.setAttribute('translate', 'no');
-      const web = el('div', 'sim__web');
-      marco.appendChild(tiras);
-      marco.appendChild(dir);
-      marco.appendChild(fav);
-      marco.appendChild(web);
-      pantalla.appendChild(marco);
-      const msg = el('div');
-      msg.setAttribute('aria-live', 'polite');
-      pantalla.appendChild(msg);
-      pantalla.appendChild(el('p', 'sim__etiqueta', 'Teclado: pulsa un atajo'));
-      const teclas = el('div', 'lab__fila');
-      pantalla.appendChild(teclas);
-
-      const ATAJOS = [
-        ['Ctrl + T', () => { s.tabs.push({ n: 'Pestaña nueva', url: '', zoom: 100 }); s.activa = s.tabs.length - 1; s.vista = 'web'; ctx.apunta('Ctrl + T: pestaña nueva.'); }],
-        ['Ctrl + W', () => {
-          if (!s.tabs.length) return;
-          const t = s.tabs.splice(s.activa, 1)[0];
-          s.cerradas.unshift(t);
-          s.activa = Math.max(0, s.activa - 1);
-          ctx.apunta(`Ctrl + W: cerrar la pestaña «${t.n}».`);
-          if (t.n === 'Materiales' && ctx.hecho(0)) { ctx.deshace(0); ctx.falla('Has vuelto a cerrar la pestaña de materiales.'); }
-        }],
-        ['Ctrl + Shift + T', () => {
-          const t = s.cerradas.shift();
-          if (!t) { aviso('No queda ninguna pestaña cerrada que recuperar.'); return; }
-          s.tabs.push(t);
-          s.activa = s.tabs.length - 1;
-          s.vista = 'web';
-          if (t.n === 'Materiales') ctx.cumple(0, 'Ctrl + Shift + T: vuelve la pestaña de la web de materiales.');
-          else ctx.apunta(`Ctrl + Shift + T: vuelve «${t.n}».`);
-        }],
-        ['Ctrl + Tab', () => { if (s.tabs.length) s.activa = (s.activa + 1) % s.tabs.length; s.vista = 'web'; }],
-        ['Ctrl + H', () => { s.vista = 'historial'; ctx.apunta('Ctrl + H: abrir el historial.'); }],
-        ['Ctrl + J', () => { s.vista = 'descargas'; ctx.apunta('Ctrl + J: abrir la lista de descargas.'); }],
-        ['Ctrl + +', () => zoom(+10)],
-        ['Ctrl + -', () => zoom(-10)],
-        ['Ctrl + 0', () => zoom(0)],
-      ];
-      ATAJOS.forEach(([t, f]) => {
-        const b = boton(t, 'lab__boton sim__tecla');
-        b.setAttribute('translate', 'no');
-        b.addEventListener('click', () => { msg.innerHTML = ''; f(); pintar(); });
-        teclas.appendChild(b);
+        historial: [
+          { d: 'Hoy · jueves, 19 de noviembre', h: '16:02', n: 'Wikipedia: Navegador web', url: 'es.wikipedia.org' },
+          { d: 'Hoy · jueves, 19 de noviembre', h: '15:40', n: 'YouTube', url: 'youtube.com' },
+          { d: 'Hoy · jueves, 19 de noviembre', h: '15:05', n: 'Web de materiales', url: 'asignaturas.profesorjamon.workers.dev' },
+          { d: 'Martes, 17 de noviembre', h: '18:31', n: 'Pedalea: tienda de bicis', url: 'pedalea-bicis.es', bici: true },
+          { d: 'Martes, 17 de noviembre', h: '18:20', n: 'Gmail del instituto', url: 'mail.google.com' },
+          { d: 'Martes, 17 de noviembre', h: '18:15', n: 'El tiempo en Palma', url: 'eltiempo-palma.es' },
+          { d: 'Lunes, 16 de noviembre', h: '15:10', n: 'Classroom', url: 'classroom.google.com' },
+        ],
+        descargas: [{ n: 'horario-1r.pdf', url: 'iesramonllull.net/horario-1r.pdf' }],
+        pagina(t, cont) {
+          const h = el('p', 'w11-ch__h1', t.t); h.setAttribute('translate', 'no');
+          cont.appendChild(h);
+          cont.appendChild(el('p', null, 'Así se ve esta página. (En esta simulación las webs no tienen nada más.)'));
+          if (t.zoom !== 100) cont.appendChild(el('p', 'w11-nota', `Zoom de esta página: ${t.zoom} %`));
+        },
+        navegar(txt, t) {
+          if (!txt) return;
+          const u = /\./.test(txt) && !/\s/.test(txt) ? txt.replace(/^https?:\/\//, '') : 'buscador.es/search?q=' + encodeURIComponent(txt);
+          Object.assign(t, { t: /\./.test(txt) && !/\s/.test(txt) ? u.split('/')[0] : txt + ' - Buscar', url: u, pag: 'web', zoom: 100 });
+        },
+        evento(n, d) {
+          if (n === 'reabrir') {
+            if (d.tab.url === 'asignaturas.profesorjamon.workers.dev') ctx.cumple(0, `Recuperar la pestaña de la web de materiales: ${d.origen}.`);
+            else ctx.apunta(`Recuperar la pestaña «${d.tab.t}» (${d.origen}).`);
+          }
+          if (n === 'cerrar' && d.tab && d.tab.url === 'asignaturas.profesorjamon.workers.dev' && ctx.hecho(0)) { ctx.deshace(0); ctx.falla('Has vuelto a cerrar la pestaña de la web de materiales.'); }
+          if (n === 'historial') ctx.apunta(`Abrir el historial (${d.origen}).`);
+          if (n === 'abrir-historial') {
+            if (d.h.bici) ctx.cumple(2, `Historial${d.busca ? ', buscar «' + d.busca + '»' : ''} y abrir «${d.h.n}» (martes, ${d.h.h}).`);
+            else ctx.apunta(`Abrir desde el historial «${d.h.n}».`);
+          }
+          if (n === 'zoom' && /wikipedia/.test(d.tab.url)) {
+            if (d.tab.zoom === 100) ctx.cumple(3, `Wikipedia al 100 %: ${d.origen}.`);
+            else { if (ctx.hecho(3)) ctx.deshace(3); ctx.apunta(`Zoom de Wikipedia al ${d.tab.zoom} % (${d.origen}).`); }
+          }
+          if (n === 'marcadores') {
+            if (d.m && d.carpeta && !DE_CLASE.includes(d.m.n)) W.aviso(`«${d.m.n}» no es de clase: no va en esa carpeta.`, 'cuidado');
+            if (d.m) ctx.apunta(`Mover el marcador «${d.m.n}» ${d.carpeta ? 'a la carpeta «Clase»' : 'a la barra'} (${d.como}).`);
+            const clase = C.marcas.find(m => m.carpeta);
+            const ok = DE_CLASE.every(x => clase.hijos.some(m => m.n === x)) && !clase.hijos.some(m => m.n === 'Juegos gratis');
+            if (ok) ctx.cumple(1, `Marcadores: ${DE_CLASE.join(', ')} dentro de «Clase»; «Juegos gratis», fuera.`);
+            else if (ctx.hecho(1)) ctx.deshace(1);
+          }
+        },
       });
-      function aviso(t, tipo) { msg.innerHTML = ''; msg.appendChild(ctx.aviso(t, tipo)); }
-      function zoom(d) {
-        const t = s.tabs[s.activa];
-        if (!t || s.vista !== 'web') { aviso('El zoom se cambia en una página. Vuelve a una pestaña.'); return; }
-        t.zoom = d === 0 ? 100 : Math.min(200, Math.max(50, t.zoom + d));
-        if (t.n === 'Wikipedia') {
-          if (t.zoom === 100) ctx.cumple(3, d === 0 ? 'Ctrl + 0 en Wikipedia: zoom al 100 %.' : 'Ctrl + - en Wikipedia hasta el 100 %.');
-          else if (ctx.hecho(3)) ctx.deshace(3);
-        }
-      }
-      function compruebaFavs() {
-        const bien = s.favs.every(f => (f.en === 'clase') === f.clase);
-        if (bien) ctx.cumple(1, 'Favoritos: Web de materiales, Classroom y Gmail del instituto dentro de «Clase»; «Juegos gratis», fuera.');
-        else if (ctx.hecho(1)) ctx.deshace(1);
-      }
-
-      function pintar() {
-        tiras.innerHTML = '';
-        s.tabs.forEach((t, i) => {
-          const b = boton(t.n, 'sim__pestana' + (i === s.activa && s.vista === 'web' ? ' sim__pestana--activa' : ''));
-          b.addEventListener('click', () => { s.activa = i; s.vista = 'web'; msg.innerHTML = ''; pintar(); });
-          tiras.appendChild(b);
-        });
-        if (!s.tabs.length) tiras.appendChild(el('span', 'sim__ayuda', 'No hay pestañas abiertas.'));
-        const t = s.tabs[s.activa];
-        dir.textContent = s.vista === 'historial' ? 'chrome://history' : s.vista === 'descargas' ? 'chrome://downloads' : (t && t.url) || '';
-
-        fav.innerHTML = '';
-        const enBarra = s.favs.filter(f => f.en === 'barra');
-        const enClase = s.favs.filter(f => f.en === 'clase');
-        const carpeta = el('div', 'sim__carpeta');
-        const sum = boton(`📁 Clase (${enClase.length}) ${s.abierta ? '▾' : '▸'}`, 'sim__tema');
-        sum.setAttribute('aria-expanded', String(!!s.abierta));
-        sum.addEventListener('click', () => { s.abierta = !s.abierta; pintar(); });
-        carpeta.appendChild(sum);
-        if (s.abierta) {
-          enClase.forEach(f => carpeta.appendChild(favorito(f)));
-          if (!enClase.length) carpeta.appendChild(el('p', 'sim__ayuda', 'Vacía.'));
-        }
-        fav.appendChild(carpeta);
-        enBarra.forEach(f => fav.appendChild(favorito(f)));
-
-        web.innerHTML = '';
-        if (s.vista === 'historial') return pintarHistorial();
-        if (s.vista === 'descargas') {
-          web.appendChild(el('p', 'sim__h', 'Descargas'));
-          web.appendChild(el('p', null, 'horario-1r.pdf · Mostrar en la carpeta'));
-          web.appendChild(el('p', 'sim__ayuda', 'Esto es la lista de descargas, no el historial.'));
-          return;
-        }
-        if (!t) { web.appendChild(el('p', 'sim__ayuda', 'Abre una pestaña con Ctrl + T o recupera una cerrada.')); return; }
-        const cont = el('div', 'sim__web-cont');
-        cont.style.fontSize = (t.zoom / 100) + 'em';
-        cont.appendChild(el('p', 'sim__h', t.n));
-        cont.appendChild(el('p', null, t.url ? 'Así se ve la página.' : 'Pestaña nueva: escribe una dirección arriba.'));
-        web.appendChild(cont);
-        web.appendChild(el('p', 'sim__zoom', `🔍 ${t.zoom} %`));
-      }
-      function favorito(f) {
-        const d = el('span', 'sim__fav');
-        d.appendChild(el('span', null, '⭐ ' + f.n));
-        const m = select([['barra', 'En la barra'], ['clase', 'En «Clase»']], f.en, 'Dónde está ' + f.n);
-        m.addEventListener('change', () => {
-          f.en = m.value;
-          ctx.apunta(`Mover «${f.n}» ${f.en === 'clase' ? 'a la carpeta «Clase»' : 'a la barra'}.`);
-          if (f.en === 'clase' && !f.clase) aviso('«Juegos gratis» no es de clase: no va en esa carpeta.');
-          compruebaFavs();
-          pintar();
-        });
-        d.appendChild(m);
-        return d;
-      }
-      function pintarHistorial() {
-        web.appendChild(el('p', 'sim__h', 'Historial'));
-        const b = document.createElement('input');
-        b.type = 'search';
-        b.className = 'lab__entrada';
-        b.placeholder = 'Buscar en el historial';
-        b.setAttribute('aria-label', 'Buscar en el historial');
-        b.value = s.busca;
-        const lista = el('div', 'sim__hist');
-        function filtra() {
-          s.busca = b.value;
-          lista.innerHTML = '';
-          const q = norm(b.value.trim());
-          let dia = '';
-          HIST.filter(h => !q || norm(h.n + ' ' + h.url).includes(q)).forEach(h => {
-            if (h.d !== dia) { dia = h.d; lista.appendChild(el('p', 'sim__etiqueta', dia)); }
-            const fila = el('div', 'sim__hist-fila');
-            fila.appendChild(el('span', 'sim__ayuda', h.h));
-            const a = boton(h.n, 'sim__tema');
-            a.addEventListener('click', () => {
-              s.tabs.push({ n: h.n.split(':')[0], url: h.url, zoom: 100 });
-              s.activa = s.tabs.length - 1;
-              s.vista = 'web';
-              if (h.bici) ctx.cumple(2, `Ctrl + H, buscar «${b.value.trim() || 'bici'}» y abrir «${h.n}» (martes, ${h.h}).`);
-              else ctx.apunta(`Abrir desde el historial «${h.n}».`);
-              pintar();
-            });
-            fila.appendChild(a);
-            lista.appendChild(fila);
-          });
-          if (!lista.childNodes.length) lista.appendChild(el('p', 'sim__ayuda', 'No hay nada con esa palabra.'));
-        }
-        b.addEventListener('input', filtra);
-        web.appendChild(b);
-        web.appendChild(lista);
-        filtra();
-      }
-      pintar();
     },
   });
 
@@ -309,7 +568,7 @@
   ];
 
   registrarSimulacion('buscador', {
-    ventana: 'Buscador de mentira',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Recetas de lentejas, pero ninguna con chorizo.',
       'El calendario escolar, pero solo de la web del instituto (iesramonllull.net).',
@@ -319,61 +578,72 @@
     ],
     final: 'Apunta en tu cuaderno la búsqueda exacta que escribiste para cada reto (pregunta 8).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
-      pantalla.appendChild(el('p', 'sim__ayuda', 'Este buscador solo tiene unas pocas webs inventadas, pero entiende los cinco operadores de la tabla. Escribe, pulsa «Buscar» y mira si los resultados cumplen un reto.'));
-      const fila = el('div', 'lab__fila');
-      const q = document.createElement('input');
-      q.type = 'search';
-      q.className = 'lab__entrada';
-      q.setAttribute('translate', 'no');
-      q.setAttribute('aria-label', 'Lo que buscas');
-      q.placeholder = 'por ejemplo: receta lentejas';
-      q.spellcheck = false;
-      const buscar = boton('Buscar', 'lab__boton lab__boton--activo');
-      fila.appendChild(q);
-      fila.appendChild(buscar);
-      pantalla.appendChild(fila);
-      const msg = el('div');
-      msg.setAttribute('aria-live', 'polite');
-      pantalla.appendChild(msg);
-      const res = el('div', 'sim__resultados');
-      pantalla.appendChild(res);
-
-      function hacer() {
-        const texto = q.value.trim();
-        msg.innerHTML = '';
-        res.innerHTML = '';
+      const { el } = ctx;
+      const W = WIN11.escritorio(ctx, { fs: WIN11.fs.equipo(WIN11.fs.usuario({})), barra: ['explorador', 'navegador'] });
+      W.aviso('Este buscador solo tiene unas pocas webs inventadas, pero entiende los cinco operadores de la tabla. Escribe en su cuadro o en la barra de direcciones y pulsa Intro.', 'cuidado');
+      function buscarEn(t, texto) {
+        Object.assign(t, { t: texto ? texto + ' - Buscador' : 'Buscador', url: texto ? 'buscador.es/search?q=' + encodeURIComponent(texto) : 'buscador.es', pag: 'web', q: texto, zoom: 100 });
         if (!texto) return;
-        if (/(^|\s)-\s/.test(texto)) msg.appendChild(ctx.aviso('El - va pegado a la palabra: -chorizo, no - chorizo.', 'cuidado'));
-        if (/(site|filetype):\s/i.test(texto)) msg.appendChild(ctx.aviso('Después de site: y filetype: no va espacio.', 'cuidado'));
-        if (/\sor\s/.test(texto)) msg.appendChild(ctx.aviso('El OR va en mayúsculas. En minúsculas, es una palabra más.', 'cuidado'));
         const terms = analizar(texto);
         const encontrados = PAGINAS.filter(p => casa(p, terms));
-        const pos = terms.filter(t => t.tipo === 'si' || t.tipo === 'o').map(t => [].concat(t.v)).flat();
-        const anuncio = ANUNCIOS.find(a => pos.indexOf(a.para) !== -1);
-        if (anuncio) res.appendChild(tarjeta(anuncio, true));
-        res.appendChild(el('p', 'sim__ayuda', `${encontrados.length} resultado${encontrados.length === 1 ? '' : 's'}`));
-        encontrados.forEach(p => res.appendChild(tarjeta(p)));
         let algo = false;
-        RETOS.forEach((r, i) => {
-          if (!ctx.hecho(i) && r.r(encontrados)) { ctx.cumple(i, `Reto ${i + 1}: ${texto}`); algo = true; }
-        });
+        RETOS.forEach((r, i) => { if (!ctx.hecho(i) && r.r(encontrados)) { ctx.cumple(i, `Reto ${i + 1}: ${texto}`); algo = true; } });
         if (!algo) ctx.apunta(`Buscar: ${texto}`);
       }
-      function tarjeta(p, anuncio) {
+      const C = chrome(W, {
+        pestanas: [{ t: 'Buscador', url: 'buscador.es' }],
+        marcadores: null,
+        navegar(txt, t) { buscarEn(t, txt); },
+        pagina(t, cont, C2) {
+          cont.classList.add('w11-bus');
+          const cab = el('div', 'w11-bus__cab' + (t.q ? '' : ' w11-bus__cab--inicio'));
+          cab.appendChild(el('p', 'w11-ch__logo', 'Buscador'));
+          const q = document.createElement('input');
+          q.type = 'search';
+          q.className = 'w11-campo w11-ch__busca';
+          q.value = t.q || '';
+          q.placeholder = 'por ejemplo: receta lentejas';
+          q.spellcheck = false;
+          q.setAttribute('translate', 'no');
+          q.setAttribute('aria-label', 'Lo que buscas');
+          q.addEventListener('keydown', e => { if (e.key === 'Enter') { buscarEn(t, q.value.trim()); C2.pintar(); } });
+          cab.appendChild(q);
+          cont.appendChild(cab);
+          if (!t.q) return;
+          const texto = t.q;
+          const avisos = [];
+          if (/(^|\s)-\s/.test(texto)) avisos.push('El - va pegado a la palabra: -chorizo, no - chorizo.');
+          if (/(site|filetype):\s/i.test(texto)) avisos.push('Después de site: y filetype: no va espacio.');
+          if (/\sor\s/.test(texto)) avisos.push('El OR va en mayúsculas. En minúsculas, es una palabra más.');
+          if (avisos.length) W.aviso(avisos.join(' '), 'cuidado'); else W.aviso();
+          const terms = analizar(texto);
+          const encontrados = PAGINAS.filter(p => casa(p, terms));
+          const pos = terms.filter(x => x.tipo === 'si' || x.tipo === 'o').map(x => [].concat(x.v)).flat();
+          const anuncio = ANUNCIOS.find(a => pos.indexOf(a.para) !== -1);
+          const res = el('div', 'sim__resultados w11-bus__res');
+          res.appendChild(el('p', 'w11-nota', `Unos ${encontrados.length} resultado${encontrados.length === 1 ? '' : 's'}`));
+          if (anuncio) res.appendChild(tarjeta(anuncio, true, C2));
+          encontrados.forEach(p => res.appendChild(tarjeta(p, false, C2)));
+          cont.appendChild(res);
+        },
+      });
+      function tarjeta(p, anuncio, C2) {
         const c = el('div', 'sim__resultado');
         if (anuncio) c.appendChild(el('span', 'sim__patrocinado', 'Patrocinado'));
         const u = el('p', 'sim__ayuda', p.u);
         u.setAttribute('translate', 'no');
         c.appendChild(u);
-        const tt = el('p', 'sim__resultado-titulo', p.t);
+        const tt = el('a', 'sim__resultado-titulo', p.t);
+        tt.href = '#';
+        tt.addEventListener('click', e => { e.preventDefault(); W.aviso('En esta simulación no hace falta entrar en las webs: mira si los resultados cumplen el reto.', 'cuidado'); });
+        tt.addEventListener('mouseenter', () => C2.estado('https://' + p.u));
+        tt.addEventListener('mouseleave', () => C2.estado(''));
         if (p.pdf) tt.prepend(el('span', 'sim__pdf', 'PDF'));
         c.appendChild(tt);
         c.appendChild(el('p', 'sim__resultado-texto', p.x));
         return c;
       }
-      buscar.addEventListener('click', hacer);
-      q.addEventListener('keydown', e => { if (e.key === 'Enter') hacer(); });
+      void C;
     },
   });
 
@@ -389,106 +659,142 @@
     { de: 'Banco Seguro <seguridad@banco-seguro-verificar.com>', as: 'Hemos detectado un acceso extraño', cu: 'Estimado cliente: para proteger tu cuenta, confirma tu usuario y tu contraseña pulsando el botón.', enlace: ['Confirmar mis datos', 'http://banco-seguro-verificar.com/acceso'], tipo: 'phishing', por: 'Ningún banco te pide la contraseña por correo. Saludo genérico («Estimado cliente») y un dominio raro.' },
   ];
   registrarSimulacion('bandeja', {
-    ventana: 'Correo de mentira · Recibidos',
+    ventana: 'Windows 11 · Google Chrome',
     mision: [
       'Denuncia como phishing los tres correos trampa.',
-      'Marca como «de fiar» los dos correos buenos.',
+      'Destaca con la estrella ☆ los dos correos de fiar.',
       'Manda a spam la publicidad.',
     ],
     final: 'Apunta en tu cuaderno los tres correos de phishing y, de cada uno, la señal que te hizo sospechar (pregunta 13).',
     crear(ctx) {
-      const { el, boton, pantalla } = ctx;
-      const estado = CORREOS.map(() => '');
-      let abierto = -1;
-      const NOMBRE = { bueno: 'de fiar', phishing: 'phishing', spam: 'spam' };
+      const { el, boton } = ctx;
+      const ic = WIN11.icono;
+      const W = WIN11.escritorio(ctx, { fs: WIN11.fs.equipo(WIN11.fs.usuario({})), barra: ['explorador', 'navegador'] });
+      const est = CORREOS.map(() => ({ carpeta: 'rec', estrella: false, leido: false }));
+      let abierto = -1, carpeta = 'rec';
+      const FECHAS = ['10:42', '9:15', '8:03', 'ayer', 'ayer', '16 nov'];
       function recalcula() {
-        const ok = t => CORREOS.every((c, i) => c.tipo !== t || estado[i] === t);
-        [['phishing', 0], ['bueno', 1], ['spam', 2]].forEach(([t, i]) => {
-          if (ok(t)) ctx.cumple(i);
-          else if (ctx.hecho(i)) ctx.deshace(i);
-        });
+        const tipos = { phishing: 'phish', spam: 'spam' };
+        const ok0 = CORREOS.every((c, i) => (c.tipo === 'phishing') === (est[i].carpeta === 'phish'));
+        const ok1 = CORREOS.every((c, i) => (c.tipo === 'bueno') === (est[i].estrella && est[i].carpeta === 'rec'));
+        const ok2 = CORREOS.every((c, i) => (c.tipo === 'spam') === (est[i].carpeta === 'spam'));
+        [ok0, ok1, ok2].forEach((ok, i) => { if (ok) ctx.cumple(i); else if (ctx.hecho(i)) ctx.deshace(i); });
+        void tipos;
       }
-      function lista() {
-        abierto = -1;
-        ctx.barra('Correo de mentira · Recibidos');
-        pantalla.innerHTML = '';
-        pantalla.appendChild(el('p', 'sim__ayuda', 'Abre cada correo, míralo bien y decide qué es.'));
-        const ul = el('ul', 'sim__temas');
-        CORREOS.forEach((c, i) => {
-          const li = el('li');
-          const b = boton(c.as, 'sim__tema');
-          b.addEventListener('click', () => abrir(i));
-          li.appendChild(b);
-          const de = el('span', 'sim__ayuda', c.de.split(' <')[0] + (estado[i] ? ' · ' + (estado[i] === 'bueno' ? '✓ de fiar' : estado[i] === 'spam' ? '🗑 spam' : '⚠ denunciado') : ''));
-          li.appendChild(de);
-          ul.appendChild(li);
-        });
-        pantalla.appendChild(ul);
-      }
-      function abrir(i) {
-        abierto = i;
+      function clasifica(i, como) {
         const c = CORREOS[i];
-        ctx.barra('Correo de mentira · ' + c.as);
-        pantalla.innerHTML = '';
-        const volver = boton('‹ Recibidos');
-        volver.addEventListener('click', lista);
-        pantalla.appendChild(volver);
-        pantalla.appendChild(el('p', 'sim__h', c.as));
-        const de = el('p', 'sim__ayuda', 'De: ' + c.de);
-        de.setAttribute('translate', 'no');
-        pantalla.appendChild(de);
-        pantalla.appendChild(el('p', null, c.cu));
-        const msg = el('div');
-        msg.setAttribute('aria-live', 'polite');
-        if (c.enlace) {
-          const f = el('div', 'lab__fila');
-          const b = boton(c.enlace[0], 'lab__boton sim__enlace');
-          b.addEventListener('click', () => {
-            msg.innerHTML = '';
-            msg.appendChild(ctx.aviso('Antes de pulsar un enlace de un correo, mira adónde lleva. Usa «Ver adónde lleva».', 'cuidado'));
+        const bien = (como === 'phish' && c.tipo === 'phishing') || (como === 'spam' && c.tipo === 'spam') || (como === 'estrella' && c.tipo === 'bueno');
+        const NOM = { phish: 'denunciar phishing', spam: 'marcar como spam', estrella: 'destacar con la estrella' };
+        if (bien) { ctx.apunta(`«${c.as}»: ${NOM[como]}. ${c.por}`); W.aviso('Bien visto. ' + c.por, 'ok'); }
+        else {
+          ctx.falla(`«${c.as}»: ${NOM[como]}, pero no lo es.`);
+          W.aviso('No es eso. ' + (c.tipo === 'phishing' ? 'Míralo otra vez: el remitente letra a letra, adónde lleva el enlace (pasa el ratón por encima), el adjunto, si mete prisa o te pide datos.' : c.tipo === 'spam' ? 'No pide datos ni mete prisa: es publicidad que no has pedido.' : 'Mira el remitente y adónde lleva: ¿hay algo raro de verdad?'), 'cuidado');
+        }
+        recalcula();
+      }
+      chrome(W, {
+        pestanas: [{ t: 'Recibidos - correo del instituto', url: 'correo.iesramonllull.net/#inbox' }],
+        marcadores: null,
+        pagina(t, cont, C) {
+          cont.classList.add('w11-mail');
+          cont.style.fontSize = '';
+          const lado = el('div', 'w11-mail__lado');
+          const red = boton('✏️ Redactar', 'w11-mail__redactar');
+          red.addEventListener('click', () => W.aviso('Hoy no hace falta escribir: revisa la bandeja.', 'cuidado'));
+          lado.appendChild(red);
+          [['rec', 'Recibidos'], ['est', 'Destacados'], ['spam', 'Spam'], ['phish', 'Denunciados']].forEach(([k, n]) => {
+            const cuenta = k === 'est' ? est.filter(e => e.estrella).length : est.filter(e => e.carpeta === k).length;
+            const b = boton('', 'w11-mail__carp' + (carpeta === k ? ' w11-mail__carp--actual' : ''));
+            b.append(el('span', null, n), el('span', 'w11-mail__num', cuenta ? String(cuenta) : ''));
+            b.addEventListener('click', () => { carpeta = k; abierto = -1; C.pintar(); });
+            lado.appendChild(b);
           });
-          const ver = boton('🔍 Ver adónde lleva');
-          const url = el('code', 'sim__url', '');
-          url.setAttribute('translate', 'no');
-          ver.addEventListener('click', () => { url.textContent = c.enlace[1]; ctx.apunta(`«${c.as}»: el enlace lleva a ${c.enlace[1]}.`); });
-          f.appendChild(b);
-          f.appendChild(ver);
-          pantalla.appendChild(f);
-          pantalla.appendChild(url);
+          const main = el('div', 'w11-mail__main');
+          cont.append(lado, main);
+          if (abierto !== -1) return correo(main, C);
+          const lista = el('div', 'w11-mail__lista');
+          lista.setAttribute('role', 'list');
+          const vis = CORREOS.map((c, i) => i).filter(i => carpeta === 'est' ? est[i].estrella : est[i].carpeta === carpeta);
+          if (!vis.length) lista.appendChild(el('p', 'w11-nota w11-mail__vacia', carpeta === 'rec' ? '¡Bandeja vacía!' : 'No hay correos aquí.'));
+          vis.forEach(i => {
+            const c = CORREOS[i];
+            const f = el('div', 'w11-mail__fila' + (est[i].leido ? '' : ' w11-mail__fila--nuevo'));
+            f.setAttribute('role', 'listitem');
+            const s = boton(est[i].estrella ? '★' : '☆', 'w11-mail__estrella' + (est[i].estrella ? ' w11-mail__estrella--on' : ''));
+            s.setAttribute('aria-label', (est[i].estrella ? 'Quitar estrella: ' : 'Destacar: ') + c.as);
+            s.setAttribute('aria-pressed', String(est[i].estrella));
+            s.addEventListener('click', e => { e.stopPropagation(); est[i].estrella = !est[i].estrella; if (est[i].estrella) clasifica(i, 'estrella'); else recalcula(); C.pintar(); });
+            const abrir = boton('', 'w11-mail__abrir');
+            const de = el('span', 'w11-mail__de', c.de.split(' <')[0]);
+            de.setAttribute('translate', 'no');
+            const as = el('span', 'w11-mail__as');
+            as.append(el('strong', null, c.as), document.createTextNode(' — ' + c.cu));
+            abrir.append(de, as, el('span', 'w11-mail__fecha', FECHAS[i]));
+            abrir.addEventListener('click', () => { abierto = i; est[i].leido = true; C.pintar(); });
+            f.append(s, abrir);
+            lista.appendChild(f);
+          });
+          main.appendChild(lista);
+        },
+      });
+      function correo(main, C) {
+        const i = abierto, c = CORREOS[i];
+        const bar = el('div', 'w11-mail__bar');
+        const b = (txt, lab, f) => { const x = boton(txt, 'w11-mail__ib'); x.setAttribute('aria-label', lab); x.title = lab; x.addEventListener('click', f); bar.appendChild(x); return x; };
+        b('←', 'Volver a Recibidos', () => { abierto = -1; C.pintar(); });
+        b('🗄', 'Archivar', () => { W.aviso('Archivar lo quita de Recibidos pero no dice qué es. Decide si es de fiar, spam o phishing.', 'cuidado'); });
+        b('⚠', 'Marcar como spam', () => { est[i].carpeta = 'spam'; est[i].estrella = false; clasifica(i, 'spam'); abierto = -1; C.pintar(); });
+        b('🗑', 'Eliminar', () => { W.aviso('Eliminarlo no avisa a nadie. Si es una trampa, denúncialo; si es publicidad, mándalo a spam.', 'cuidado'); });
+        const mas = b('⋮', 'Más', () => {
+          const r = mas.getBoundingClientRect();
+          W.menu(r.left, r.bottom, [
+            { t: 'Responder', off: true }, { t: 'Reenviar', off: true },
+            { sep: true },
+            { t: `Bloquear a «${c.de.split(' <')[0]}»`, off: true },
+            { t: 'Denunciar spam', f: () => { est[i].carpeta = 'spam'; est[i].estrella = false; clasifica(i, 'spam'); abierto = -1; C.pintar(); } },
+            { t: 'Denunciar phishing', f: () => { est[i].carpeta = 'phish'; est[i].estrella = false; clasifica(i, 'phish'); abierto = -1; C.pintar(); } },
+          ]);
+        });
+        main.appendChild(bar);
+        const h = el('p', 'w11-mail__titulo', c.as);
+        main.appendChild(h);
+        const cab = el('div', 'w11-mail__cab');
+        cab.appendChild(ic('usuario', 'w11-mail__avatar'));
+        const quien = el('div', 'w11-mail__quien');
+        const nom = el('span', 'w11-mail__nombre', c.de.split(' <')[0]);
+        const dir = el('span', 'w11-mail__dir', '<' + c.de.split(' <')[1]);
+        nom.setAttribute('translate', 'no'); dir.setAttribute('translate', 'no');
+        quien.append(nom, dir, el('span', 'w11-mail__para', 'para mí'));
+        cab.append(quien, el('span', 'w11-mail__fecha', FECHAS[i]));
+        const s = boton(est[i].estrella ? '★' : '☆', 'w11-mail__estrella' + (est[i].estrella ? ' w11-mail__estrella--on' : ''));
+        s.setAttribute('aria-label', est[i].estrella ? 'Quitar estrella' : 'Destacar');
+        s.setAttribute('aria-pressed', String(est[i].estrella));
+        s.addEventListener('click', () => { est[i].estrella = !est[i].estrella; if (est[i].estrella) clasifica(i, 'estrella'); else recalcula(); C.pintar(); });
+        cab.appendChild(s);
+        main.appendChild(cab);
+        main.appendChild(el('p', 'w11-mail__cuerpo', c.cu));
+        if (c.enlace) {
+          const a = el('a', 'w11-mail__boton', c.enlace[0]);
+          a.href = '#';
+          const ver = () => { C.estado(c.enlace[1]); if (!c._visto) { c._visto = true; ctx.apunta(`«${c.as}»: el botón lleva a ${c.enlace[1]}.`); } };
+          a.addEventListener('mouseenter', ver);
+          a.addEventListener('focus', ver);
+          a.addEventListener('mouseleave', () => C.estado(''));
+          a.addEventListener('blur', () => C.estado(''));
+          a.addEventListener('contextmenu', e => { e.preventDefault(); ver(); W.menu(e.clientX, e.clientY, [{ t: 'Copiar dirección del enlace', f: () => W.notificacion('Enlace copiado', c.enlace[1], 'copiar') }]); });
+          a.addEventListener('click', e => { e.preventDefault(); ver(); W.aviso('¡Cuidado! Antes de pulsar el botón de un correo, pasa el ratón por encima y mira abajo a la izquierda adónde lleva de verdad.', 'cuidado'); });
+          main.appendChild(a);
         }
         if (c.adjunto) {
-          const a = el('p', 'sim__adjunto', '📎 ' + c.adjunto);
-          a.setAttribute('translate', 'no');
-          pantalla.appendChild(a);
+          const ad = el('div', 'w11-mail__adjunto');
+          ad.append(ic(/\.exe$/.test(c.adjunto) ? 'exe' : 'pdf'), el('span', null, c.adjunto));
+          ad.setAttribute('translate', 'no');
+          main.appendChild(ad);
         }
-        pantalla.appendChild(el('p', 'sim__etiqueta', '¿Qué es este correo?'));
-        const fila = el('div', 'lab__fila');
-        [['bueno', '✓ Es de fiar'], ['spam', '🗑 Spam'], ['phishing', '⚠ Denunciar phishing']].forEach(([t, txt]) => {
-          const b = boton(txt, 'lab__boton' + (estado[i] === t ? ' lab__boton--activo' : ''));
-          b.setAttribute('aria-pressed', String(estado[i] === t));
-          b.addEventListener('click', () => {
-            estado[i] = t;
-            if (t === c.tipo) {
-              ctx.apunta(`«${c.as}»: ${NOMBRE[t]}. ${c.por}`);
-              recalcula();
-              lista();
-              pantalla.appendChild(ctx.aviso('Bien visto. ' + c.por, 'ok'));
-            } else {
-              ctx.falla(`«${c.as}»: lo marcaste como ${NOMBRE[t]}, pero no lo es.`);
-              recalcula();
-              abrir(i);
-              const pista = c.tipo === 'phishing' ? 'Míralo otra vez: el remitente, el enlace, el adjunto, si mete prisa o te pide datos.' : c.tipo === 'spam' ? 'No pide datos ni mete prisa: es publicidad que no has pedido.' : 'Mira el remitente y adónde lleva: ¿hay algo raro de verdad?';
-              pantalla.appendChild(ctx.aviso('No es eso. ' + pista));
-            }
-          });
-          fila.appendChild(b);
-        });
-        pantalla.appendChild(fila);
-        pantalla.appendChild(msg);
       }
-      lista();
     },
   });
+
   /* ============================================================
      U2 S1 · Monta la red de casa
      ============================================================ */

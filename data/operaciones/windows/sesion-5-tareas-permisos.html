@@ -1,0 +1,178 @@
+<div class="nota" id="como-trabajar">
+<p><strong>📋 Cómo trabajar esta sesión</strong></p>
+<ol>
+<li>Lee la sesión de arriba abajo, a tu ritmo. Mira bien los dibujos y las tablas. Las diapositivas se pasan con los botones ‹ ›: míralas paso a paso.</li>
+<li>Cuando llegues a un «🤔 Antes de seguir», piénsalo tú primero y luego abre la respuesta.</li>
+<li>Las actividades se hacen en el ordenador en el momento en que aparecen: unas en tu Windows de verdad y otras en el Windows de mentira de la simulación. Lo que te piden apuntar es una de las preguntas de la sesión.</li>
+<li>Al final tienes las <strong>15 preguntas de la sesión</strong>. Contéstalas <strong>a mano en tu cuaderno</strong>, con el número de cada pregunta. Son obligatorias y van con nota. Todas se contestan con lo que hay en esta página o en sesiones anteriores.</li>
+<li>Después vienen las preguntas <strong>⭐ Sube nota</strong>. Solo cuentan si tienes hechas las 15 obligatorias. No salen en el examen.</li>
+<li>Si te atascas, vuelve al dibujo. Si sigues sin entenderlo, <strong>levanta la mano y pregúntamelo</strong>: te lo explico a ti.</li>
+<li>Cuando las corrijamos, arregla en tu cuaderno las que tengas mal. <strong>El examen de la unidad se hace con las 15 preguntas de cada sesión</strong>: tal cual, parecidas o juntando varias.</li>
+</ol>
+</div>
+
+<h2>El Administrador de tareas</h2>
+
+<p>Enseña los programas que están funcionando y cuánto gasta cada uno. Sirve sobre todo para <strong>cerrar un programa colgado</strong> (en su ventana pone «No responde» y no hace caso de nada).</p>
+
+<p>Tres formas de abrirlo:</p>
+<ul>
+<li><code translate="no">Ctrl + Shift + Esc</code>: directo.</li>
+<li><code translate="no">Ctrl + Alt + Supr</code> → Administrador de tareas (funciona aunque todo esté colgado).</li>
+<li>Clic derecho en la barra de tareas o en el botón Inicio → Administrador de tareas.</li>
+</ul>
+
+<table>
+<tr><th>Pestaña o botón</th><th>Para qué sirve</th></tr>
+<tr><td><strong>Procesos</strong></td><td>Lo que está funcionando, con su estado, su CPU y su memoria. Clic en una columna para ordenar</td></tr>
+<tr><td><strong>Finalizar tarea</strong></td><td>Cierra a la fuerza el programa elegido. Lo que no estaba guardado, se pierde</td></tr>
+<tr><td><strong>Rendimiento</strong></td><td>Gráficas de la CPU, la memoria, el disco y la red</td></tr>
+<tr><td><strong>Aplicaciones de arranque</strong></td><td>Lo que se abre solo al encender. Si hay muchas, el ordenador tarda en arrancar: <strong>Deshabilitar</strong> las que no hacen falta</td></tr>
+</table>
+
+<div class="nota">⚠️ No finalices «Explorador de Windows»: desaparecen la barra de tareas y el escritorio. Si pasa, se arregla con «Ejecutar nueva tarea» → <code translate="no">explorer</code>. Ni toques los «Procesos de Windows» que no conoces.</div>
+
+<h3>Actividad 1 — Mira tu Administrador de tareas</h3>
+<p>En tu ordenador de verdad. Solo mirar: no finalices nada.</p>
+<ol>
+<li>Pulsa <code translate="no">Ctrl + Shift + Esc</code>.</li>
+<li>En <strong>Procesos</strong>, haz clic en la columna <strong>Memoria</strong> para ordenar: el primero es el que más gasta.</li>
+<li>Entra en <strong>Aplicaciones de arranque</strong> y cuenta cuántas están «Habilitado».</li>
+<li>Apunta en tu cuaderno los dos procesos que más memoria gastan y cuántas aplicaciones de arranque están habilitadas (pregunta 6).</li>
+</ol>
+<p><strong>Comprobación observable:</strong> en la columna Memoria sale una flechita y los números van de mayor a menor.</p>
+
+<h3>Actividad 2 — El juego colgado</h3>
+<p>En un Windows 11 de mentira. Recuerda: <code translate="no">Ctrl + Shift + Esc</code> y <code translate="no">Ctrl + Alt + Supr</code> se los queda tu ordenador de verdad; púlsalos en el teclado de debajo de la pantalla.</p>
+<ol start="5">
+<li>Lee la misión. Primero, prueba a cerrar el juego con la ✕ de su ventana: verás qué pasa.</li>
+<li>Abre el Administrador de tareas y hazlo desde ahí.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno cómo abriste el Administrador de tareas, cómo cerraste el juego, qué programa gastaba más memoria y cuánta, y dónde quitaste Turbo Optimizador del arranque (pregunta 7).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="w-tareas" aria-label="El juego colgado"></div>
+<p><strong>Comprobación observable:</strong> el juego ya no está en la barra de tareas y Turbo Optimizador sale «Deshabilitado».</p>
+
+<h2>Los permisos</h2>
+
+<p>En un ordenador que usa mucha gente (el del aula, el de una oficina), no todos tienen que poder hacer lo mismo con cada carpeta. Para eso están los <strong>permisos NTFS</strong>: dicen qué puede hacer cada usuario o grupo con una carpeta o un archivo. Solo existen en discos con <strong>NTFS</strong> (Sesión 3): un USB en FAT32 o exFAT no tiene permisos.</p>
+
+<table>
+<tr><th>Permiso</th><th>Qué deja hacer</th></tr>
+<tr><td><strong>Lectura</strong></td><td>Abrir y ver</td></tr>
+<tr><td><strong>Mostrar el contenido de la carpeta</strong></td><td>Ver qué archivos hay dentro</td></tr>
+<tr><td><strong>Lectura y ejecución</strong></td><td>Lo anterior y, además, abrir programas</td></tr>
+<tr><td><strong>Escritura</strong></td><td>Crear archivos y cambiarlos</td></tr>
+<tr><td><strong>Modificar</strong></td><td>Todo lo anterior y, además, borrar</td></tr>
+<tr><td><strong>Control total</strong></td><td>Todo, también cambiar los permisos</td></tr>
+</table>
+
+<p>Dónde se ven: clic derecho en la carpeta → <strong>Propiedades</strong> → pestaña <strong>Seguridad</strong>. Arriba, los usuarios y grupos; abajo, sus permisos. Para cambiarlos: <strong>Editar…</strong></p>
+
+<div class="diapos" aria-label="Permisos de la carpeta de notas">
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="alumnos leen"><rect x="30" y="40" width="300" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">Alumnos: Lectura ✓  ·  Escritura ✗</text><text x="180" y="110" text-anchor="middle" class="d-d d-peq">abren las notas, pero no las cambian</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">Alumnos</text></svg>
+<p class="diapo__texto">1. Los <strong>Alumnos</strong> tienen <strong>Lectura</strong>: abren las notas, pero no pueden cambiarlas.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="profe modifica"><rect x="30" y="40" width="300" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">profe: Modificar ✓</text><text x="180" y="110" text-anchor="middle" class="d-d d-peq">las abre, las cambia y las borra</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">profe</text></svg>
+<p class="diapo__texto">2. El usuario <strong>profe</strong> tiene <strong>Modificar</strong>: las abre, las cambia y las borra.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="administradores"><rect x="30" y="40" width="300" height="40" rx="4" class="d-caja-act"/><text x="180.0" y="65.0" text-anchor="middle" class="d-c d-peq">Administradores: Control total ✓</text><text x="180" y="110" text-anchor="middle" class="d-d d-peq">todo, también cambiar los permisos</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">Administradores</text></svg>
+<p class="diapo__texto">3. Los <strong>Administradores</strong> tienen <strong>Control total</strong>: todo, también cambiar los permisos.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="denegar manda"><rect x="30" y="30" width="300" height="34" rx="4" class="d-caja"/><text x="180.0" y="52.0" text-anchor="middle" class="d-d d-peq">Permitir: Lectura ✓</text><rect x="30" y="72" width="300" height="34" rx="4" class="d-caja-act"/><text x="180.0" y="94.0" text-anchor="middle" class="d-c d-peq">Denegar: Lectura ✓</text><text x="180" y="135" text-anchor="middle" class="d-c d-peq">gana Denegar: no la abre</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">Denegar manda</text></svg>
+<p class="diapo__texto">4. Si una casilla de <strong>Denegar</strong> está marcada, <strong>gana a Permitir</strong>. Por eso, para quitar un permiso, se desmarca «Permitir»; «Denegar» casi nunca se usa.</p>
+</div>
+</div>
+
+<p>Practica: ¿qué permiso le das?</p>
+
+<div data-actividad="u6s5-permisos"></div>
+
+<h3>Actividad 3 — Protege las notas</h3>
+<p>En el Windows 11 de mentira hay una carpeta con notas en <code translate="no">C:\Datos</code>. Ahora mismo los alumnos pueden hacer de todo con ella.</p>
+<ol start="8">
+<li>Lee la misión. Clic derecho en <code translate="no">notas-1r</code> → Propiedades → Seguridad. Primero mira; luego, Editar…</li>
+<li>Al quitar un permiso, Windows quita también los que van dentro de él (sin «Modificar» no hay «Control total»).</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno qué permisos tenía el grupo Alumnos al principio, cuáles le has dejado y qué permiso le has dado a profe. Explica por qué no hay que usar «Denegar» en la lectura (pregunta 12).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="w-permisos" aria-label="Protege las notas"></div>
+<p><strong>Comprobación observable:</strong> en la pestaña Seguridad, Alumnos tiene marcadas solo Lectura y ejecución, Mostrar el contenido y Lectura, y profe tiene Modificar.</p>
+
+<h2>Restaurar el sistema</h2>
+
+<p>A veces, después de instalar algo, Windows empieza a fallar. Para eso están los <strong>puntos de restauración</strong>:</p>
+
+<div class="diapos" aria-label="Un punto de restauración">
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="punto de restauración"><path d="M 30 90 L 330 90" class="d-linea-d"/><circle cx="60" cy="90" r="7" class="d-relleno-c"/><text x="60" y="120" text-anchor="middle" class="d-c d-peq">lunes</text><circle cx="140" cy="90" r="7" class="d-caja"/><text x="140" y="120" text-anchor="middle" class="d-d d-peq">martes</text><circle cx="220" cy="90" r="7" class="d-caja"/><text x="220" y="120" text-anchor="middle" class="d-d d-peq">miércoles</text><circle cx="300" cy="90" r="7" class="d-caja"/><text x="300" y="120" text-anchor="middle" class="d-d d-peq">hoy</text><text x="60" y="70" text-anchor="middle" class="d-a d-peq">punto</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">lunes: punto de restauración</text></svg>
+<p class="diapo__texto">1. El lunes Windows guarda un <strong>punto de restauración</strong>: una foto de cómo está el sistema (programas, controladores, configuración).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="instalas algo"><path d="M 30 90 L 330 90" class="d-linea-d"/><circle cx="60" cy="90" r="7" class="d-caja"/><text x="60" y="120" text-anchor="middle" class="d-d d-peq">lunes</text><circle cx="140" cy="90" r="7" class="d-relleno-c"/><text x="140" y="120" text-anchor="middle" class="d-c d-peq">martes</text><circle cx="220" cy="90" r="7" class="d-caja"/><text x="220" y="120" text-anchor="middle" class="d-d d-peq">miércoles</text><circle cx="300" cy="90" r="7" class="d-caja"/><text x="300" y="120" text-anchor="middle" class="d-d d-peq">hoy</text><text x="60" y="70" text-anchor="middle" class="d-a d-peq">punto</text><text x="180" y="194" text-anchor="middle" class="d-c d-peq">martes: instalas un programa</text></svg>
+<p class="diapo__texto">2. El martes instalas un programa o un controlador.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="falla"><path d="M 30 90 L 330 90" class="d-linea-d"/><circle cx="60" cy="90" r="7" class="d-caja"/><text x="60" y="120" text-anchor="middle" class="d-d d-peq">lunes</text><circle cx="140" cy="90" r="7" class="d-caja"/><text x="140" y="120" text-anchor="middle" class="d-d d-peq">martes</text><circle cx="220" cy="90" r="7" class="d-relleno-c"/><text x="220" y="120" text-anchor="middle" class="d-c d-peq">miércoles</text><circle cx="300" cy="90" r="7" class="d-caja"/><text x="300" y="120" text-anchor="middle" class="d-d d-peq">hoy</text><text x="60" y="70" text-anchor="middle" class="d-a d-peq">punto</text><path d="M 205 40 L 235 60 M 235 40 L 205 60" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">miércoles: algo falla</text></svg>
+<p class="diapo__texto">3. Desde entonces, el ordenador <strong>falla</strong>: se cuelga o se queda sin sonido.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 200" role="img" aria-label="volver"><path d="M 30 90 L 330 90" class="d-linea-d"/><circle cx="60" cy="90" r="7" class="d-relleno-c"/><text x="60" y="120" text-anchor="middle" class="d-c d-peq">lunes</text><circle cx="140" cy="90" r="7" class="d-caja"/><text x="140" y="120" text-anchor="middle" class="d-d d-peq">martes</text><circle cx="220" cy="90" r="7" class="d-caja"/><text x="220" y="120" text-anchor="middle" class="d-d d-peq">miércoles</text><circle cx="300" cy="90" r="7" class="d-caja"/><text x="300" y="120" text-anchor="middle" class="d-d d-peq">hoy</text><text x="60" y="70" text-anchor="middle" class="d-a d-peq">punto</text><path d="M 300 60 C 240 30, 120 30, 66 78" class="d-linea-c"/><text x="180" y="194" text-anchor="middle" class="d-c d-peq">vuelves al lunes</text></svg>
+<p class="diapo__texto">4. Con <strong>Restaurar sistema</strong> vuelves al punto del lunes: el programa del martes desaparece. <strong>Tus documentos no se tocan.</strong></p>
+</div>
+</div>
+
+<p>Dónde está: Inicio → escribe «<strong>punto de restauración</strong>» → «Crear un punto de restauración». En esa ventana, «Crear…» guarda uno ahora y «<strong>Restaurar sistema…</strong>» vuelve a uno anterior. Windows crea uno solo antes de cada actualización o instalación grande.</p>
+
+<div class="nota">⚠️ Restaurar el sistema <strong>no es una copia de seguridad</strong>: no guarda tus documentos. Tus archivos se protegen con una copia en otro sitio, como la de Drive de la Unidad 1.</div>
+
+<div class="nota">🤔 Antes de seguir: has instalado un juego y desde entonces no hay sonido. Restauras el sistema al punto de la semana pasada. ¿Qué pasa con el juego? ¿Y con el trabajo que guardaste ayer en Documentos?</div>
+<details><summary>Ver respuesta</summary>El juego <strong>desaparece</strong> (se instaló después del punto) y, con suerte, vuelve el sonido. El trabajo de Documentos <strong>se queda</strong>: Restaurar sistema no toca tus archivos.</details>
+
+<div class="papel">
+<p class="papel__titulo">Sesión 5 · 15 preguntas obligatorias — a mano, en el cuaderno</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<ol>
+<li>¿Para qué sirve el Administrador de tareas? Escribe tres formas de abrirlo.</li>
+<li>(V/F) Si cierras un programa con «Finalizar tarea», no pierdes nada de lo que no habías guardado.</li>
+<li>¿Qué haces si un programa se queda en «No responde»? Escribe los pasos.</li>
+<li>(ABC) En la pestaña Procesos, para saber qué programa gasta más memoria:
+  <ul>
+    <li>a) haces clic en la columna Memoria</li>
+    <li>b) finalizas todos los procesos</li>
+    <li>c) reinicias el ordenador</li>
+  </ul>
+</li>
+<li>¿Qué son las aplicaciones de arranque? ¿Por qué conviene deshabilitar las que no hacen falta?</li>
+<li><strong>(Actividad 1)</strong> En tu ordenador, ¿qué dos procesos gastaban más memoria? ¿Cuántas aplicaciones de arranque estaban habilitadas?</li>
+<li><strong>(Actividad 2)</strong> En la simulación: ¿cómo abriste el Administrador de tareas? ¿Cómo cerraste el juego? ¿Qué programa gastaba más memoria y cuánta? ¿Dónde quitaste Turbo Optimizador del arranque?</li>
+<li>¿Qué son los permisos NTFS? ¿Por qué un USB en FAT32 no los tiene?</li>
+<li>Escribe los seis permisos NTFS y qué deja hacer cada uno.</li>
+<li>(ABC) Para que los alumnos puedan abrir las notas pero no cambiarlas, les das:
+  <ul>
+    <li>a) Control total</li>
+    <li>b) Modificar</li>
+    <li>c) Lectura</li>
+  </ul>
+</li>
+<li>¿Qué gana, «Permitir» o «Denegar»? ¿Cómo se quita entonces un permiso?</li>
+<li><strong>(Actividad 3)</strong> En la simulación: ¿qué permisos tenía el grupo Alumnos al principio? ¿Cuáles le has dejado? ¿Qué permiso le has dado a profe? ¿Por qué no hay que usar «Denegar» en la lectura?</li>
+<li>¿Qué es un punto de restauración?</li>
+<li>(V/F) Restaurar el sistema borra los documentos que guardaste después del punto de restauración.</li>
+<li>¿Dónde se busca «Restaurar sistema»? ¿Por qué no sirve como copia de seguridad?</li>
+</ol>
+</div>
+
+<h2>⭐ Sube nota</h2>
+<div class="papel papel--extra">
+<p class="papel__titulo">Sesión 5 · Sube nota — no entran en el examen</p>
+<p>Solo cuentan si tienes hechas las 15 obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
+<ol start="16">
+<li>En la pestaña Rendimiento de tu ordenador, ¿cuánta memoria RAM tiene y cuánta está usando?</li>
+<li>Busca qué es Windows Update y por qué no hay que apagar el ordenador mientras actualiza.</li>
+<li>En tu ordenador, mira los permisos de tu carpeta Documentos (Propiedades → Seguridad). ¿Qué usuarios y grupos salen?</li>
+<li>Busca qué hace el modo seguro de Windows y cuándo se usa.</li>
+</ol>
+</div>

@@ -68,6 +68,20 @@
         "resumen-sistemas-operativos",
         "glosario-sistemas-operativos"
       ]
+    },
+    {
+      "id": "windows",
+      "titulo": "Unidad 6. Windows",
+      "descripcion": "Manejar Windows 11 como en casa y en el trabajo: el escritorio y las ventanas con sus atajos, la Papelera y los accesos directos, formatear un USB, las cuentas de usuario, el Administrador de tareas y los permisos.",
+      "sesiones": [
+        "sesion-1-escritorio-ventanas",
+        "sesion-2-archivos-a-fondo",
+        "sesion-3-unidades-usb",
+        "sesion-4-usuarios-aplicaciones",
+        "sesion-5-tareas-permisos",
+        "resumen-windows",
+        "glosario-windows"
+      ]
     }
   ]
 }

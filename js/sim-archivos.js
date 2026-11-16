@@ -312,10 +312,20 @@
   const ESCRITORIO = ['C:', 'Users', 'alumno', 'Desktop'];
 
   /* ============================================================
-     S1 · Ordena el escritorio
+     Desde el 15/11/2026 las cuatro simulaciones de la U1 van en el
+     Windows 11 de mentira (js/win11.js y js/win11-archivos.js), con
+     su Explorador de verdad: clic derecho, arrastrar, F2, Ctrl + C /
+     Ctrl + V, Ver → Mostrar → Extensiones… El explorador de antes
+     (SIM_EXPLORADOR, arriba) se queda para las simulaciones de
+     Proyecto.
      ============================================================ */
+  const W11 = window.WIN11 && window.WIN11.fs ? window.WIN11.fs : null;
+  const ESC = ['C:', 'Users', 'alumno', 'Desktop'];
+  const pc = (o, ...mas) => W11.equipo(W11.usuario(o), ...mas);
+
+  /* S1 · Ordena el escritorio */
   registrarSimulacion('ordena-escritorio', {
-    ventana: 'Explorador de archivos',
+    ventana: 'Windows 11',
     mision: [
       'Crea en el Escritorio una carpeta llamada practicas-u1.',
       'Mete dentro los tres archivos de clase. El juego se queda fuera.',
@@ -324,40 +334,33 @@
     ],
     final: 'Apunta en tu cuaderno los tres nombres que estaban mal, cómo los has dejado y cuál tenía la extensión repetida (pregunta 15).',
     crear(ctx) {
-      const E = crearExplorador(ctx, {
-        raiz: equipo(usuario([
-          archivo('Trabajo Final.docx', 48 * KB),
-          archivo('foto perro.JPG', 2 * MB),
-          archivo('notas.txt.txt', 3 * KB),
-          archivo('juego-gratis.exe', 85 * MB),
-        ])),
-        inicio: ESCRITORIO,
-        cambio,
-      });
+      const W = WIN11.escritorio(ctx, { fs: pc({ escritorio: [
+        W11.archivo('Trabajo Final.docx', 48 * KB), W11.archivo('foto perro.JPG', 2 * MB),
+        W11.archivo('notas.txt.txt', 3 * KB, { contenido: 'Notas de clase' }), W11.archivo('juego-gratis.exe', 85 * MB),
+      ] }), barra: ['explorador', 'navegador'] });
+      W.abrirExplorador(ESC);
       const CLASE = [/trabajo/i, /perro/i, /notas/i];
-      function cambio() {
-        const p = E.buscar(ESCRITORIO.concat('practicas-u1'));
-        if (p) ctx.cumple(0, 'Nueva carpeta en el Escritorio: practicas-u1.');
+      W.on('cambio', () => {
+        const p = W.buscar(ESC.concat('practicas-u1'));
+        if (p) ctx.cumple(0, 'Nuevo → Carpeta en el Escritorio: practicas-u1.');
+        else if (ctx.hecho(0)) ctx.deshace(0);
         const dentro = p ? p.hijos : [];
         const clase = CLASE.map(r => dentro.find(h => r.test(h.n)));
         const juego = dentro.some(h => /juego/i.test(h.n));
-        if (juego) E.aviso('El juego no es de clase: no va en la carpeta de prácticas.', 'cuidado');
+        if (juego) W.aviso('El juego no es de clase: no va en la carpeta de prácticas.', 'cuidado');
         if (clase.every(Boolean) && !juego) ctx.cumple(1, 'Mover a practicas-u1 los tres archivos de clase.');
         else if (ctx.hecho(1)) ctx.deshace(1);
-        if (E.extensiones()) ctx.cumple(2, 'Con las extensiones a la vista, «notas.txt» era en realidad «notas.txt.txt».');
-        const bien = clase.every(h => h && norma(h.n)) &&
-          clase[0] && /\.docx$/.test(clase[0].n) && clase[1] && /\.jpg$/.test(clase[1].n) && clase[2] && /\.txt$/.test(clase[2].n);
+        if (W.est.verExt) ctx.cumple(2, 'Ver → Mostrar → Extensiones de nombre de archivo: «notas.txt» era en realidad «notas.txt.txt».');
+        const bien = clase.every(h => h && norma(h.n)) && /\.docx$/.test(clase[0].n) && /\.jpg$/.test(clase[1].n) && /\.txt$/.test(clase[2].n);
         if (bien) ctx.cumple(3, `Nombres con la norma: ${clase.map(h => h.n).join(', ')}.`);
         else if (ctx.hecho(3)) ctx.deshace(3);
-      }
+      });
     },
   });
 
-  /* ============================================================
-     S2 · Sigue la ruta
-     ============================================================ */
+  /* S2 · Sigue la ruta */
   registrarSimulacion('sigue-ruta', {
-    ventana: 'Explorador de archivos',
+    ventana: 'Windows 11',
     mision: [
       'Abre la carpeta C:\\Users\\alumno\\Desktop\\practicas-u0\\textos.',
       'La foto perro.jpg se ha descargado en Descargas: muévela a la carpeta img de mi-web.',
@@ -366,19 +369,25 @@
     final: 'Apunta en tu cuaderno la ruta completa de la foto después de moverla y su ruta relativa desde mi-web (pregunta 12).',
     crear(ctx) {
       const { el, boton, pantalla } = ctx;
-      const E = crearExplorador(ctx, {
-        raiz: equipo(usuario([
-          carpeta('practicas-u0', [carpeta('textos', [archivo('notas.txt', 3 * KB)]), carpeta('imagenes')]),
-          carpeta('mi-web', [archivo('index.html', 4 * KB), carpeta('img', [archivo('logo.png', 24 * KB)])]),
-        ], [archivo('perro.jpg', 1.4 * MB), archivo('horario.pdf', 210 * KB)])),
-        inicio: ['C:'],
-        cambio,
-      });
-      function cambio() {
-        if (E.ruta().toLowerCase() === 'c:\\users\\alumno\\desktop\\practicas-u0\\textos') ctx.cumple(0, 'Llegar a C:\\Users\\alumno\\Desktop\\practicas-u0\\textos: C: › Usuarios › alumno › Escritorio › practicas-u0 › textos.');
-        const img = E.buscar(ESCRITORIO.concat('mi-web', 'img'));
-        if (img && img.hijos.some(h => h.n === 'perro.jpg')) ctx.cumple(1, 'Cortar perro.jpg en Descargas y pegarla en C:\\Users\\alumno\\Desktop\\mi-web\\img.');
-      }
+      const W = WIN11.escritorio(ctx, { fs: pc({
+        escritorio: [
+          W11.carpeta('practicas-u0', [W11.carpeta('textos', [W11.archivo('notas.txt', 3 * KB)]), W11.carpeta('imagenes')]),
+          W11.carpeta('mi-web', [W11.archivo('index.html', 4 * KB), W11.carpeta('img', [W11.archivo('logo.png', 24 * KB)])]),
+        ],
+        descargas: [W11.archivo('perro.jpg', 1.4 * MB), W11.archivo('horario.pdf', 210 * KB)],
+      }), barra: ['explorador', 'navegador'] });
+      W.abrirExplorador(['C:']);
+      const revisa = () => {
+        if (W.exploradores().some(E => E.ruta().toLowerCase() === 'c:\\users\\alumno\\desktop\\practicas-u0\\textos')) ctx.cumple(0, 'Llegar a C:\\Users\\alumno\\Desktop\\practicas-u0\\textos (en el Explorador, «Usuarios» y «Escritorio»; en la ruta, Users y Desktop).');
+        const img = W.buscar(ESC.concat('mi-web', 'img'));
+        const des = W.buscar(['C:', 'Users', 'alumno', 'Downloads']);
+        if (img && img.hijos.some(h => h.n === 'perro.jpg')) {
+          if (des.hijos.some(h => h.n === 'perro.jpg')) W.aviso('La foto está en img, pero sigue también en Descargas: la has copiado. La misión pide moverla (cortar y pegar, o arrastrar).', 'cuidado');
+          else ctx.cumple(1, 'Mover perro.jpg de Descargas a C:\\Users\\alumno\\Desktop\\mi-web\\img.');
+        }
+      };
+      W.on('cambio', revisa);
+      W.on('navegar', revisa);
       const fila = el('div', 'lab__fila');
       const rel = document.createElement('input');
       rel.type = 'text';
@@ -398,19 +407,16 @@
         else if (/^c:/i.test(v)) { ctx.falla(`Ruta relativa: ${v}`); msg.appendChild(ctx.aviso('Esa es la ruta absoluta (empieza por el disco). La relativa empieza desde mi-web.')); }
         else { ctx.falla(`Ruta relativa: ${v}`); msg.appendChild(ctx.aviso('Todavía no. Desde mi-web: ¿en qué carpeta entras? ¿Cómo se llama el archivo? Sepáralos con /.')); }
       });
-      fila.appendChild(rel);
-      fila.appendChild(comprueba);
-      pantalla.appendChild(el('p', 'sim__etiqueta', 'La ruta relativa de la foto, desde mi-web:'));
-      pantalla.appendChild(fila);
-      pantalla.appendChild(msg);
+      fila.append(rel, comprueba);
+      pantalla.insertBefore(msg, pantalla.querySelector('.w11__teclado'));
+      pantalla.insertBefore(fila, msg);
+      pantalla.insertBefore(el('p', 'sim__etiqueta', 'La ruta relativa de la foto, desde mi-web:'), fila);
     },
   });
 
-  /* ============================================================
-     S3 · ¿Cabe en el USB?
-     ============================================================ */
+  /* S3 · ¿Cabe en el USB? */
   registrarSimulacion('cabe-usb', {
-    ventana: 'Explorador de archivos',
+    ventana: 'Windows 11',
     mision: [
       'Mira en Propiedades cuánto ocupan trabajos-clase y musica, y cuánto espacio libre tiene el USB.',
       'Copia al USB (E:) las carpetas trabajos-clase y musica.',
@@ -418,32 +424,29 @@
     ],
     final: 'Apunta en tu cuaderno cuánto ocupa cada carpeta, cuánto espacio libre tenía el USB y por qué no cabía fotos-viaje (pregunta 15).',
     crear(ctx) {
-      const usb = carpeta('E:', [archivo('presentacion.pptx', 300 * MB)], { unidad: true, usb: true, etiqueta: 'USB', capacidad: 16 * GB, libre: 2.5 * GB });
-      const musica = carpeta('musica', Array.from({ length: 12 }, (_, i) => archivo(`cancion-${i + 1}.mp3`, Math.round(102.4 * MB))));
-      const trabajos = carpeta('trabajos-clase', [archivo('resumen-u2.docx', 350 * MB), archivo('maqueta.pdf', 500 * MB)]);
-      const fotos = carpeta('fotos-viaje', Array.from({ length: 7 }, (_, i) => archivo(`foto-${i + 1}.jpg`, 512 * MB)));
-      const E = crearExplorador(ctx, {
-        raiz: equipo(usuario([trabajos, musica, fotos, archivo('pelicula.mp4', 2.1 * GB)]), usb),
-        inicio: ESCRITORIO,
-        cambio,
-      });
-      function cambio() {
-        if (trabajos.vistoTam && musica.vistoTam && usb.vistoTam) ctx.cumple(0, `Propiedades: trabajos-clase ${tamano(peso(trabajos))}, musica ${tamano(peso(musica))}; el USB tiene ${tamano(usb.libre)} libres.`);
+      const usb = W11.unidad('E:', 'USB', 14.6 * GB, 2.5 * GB, [W11.archivo('presentacion.pptx', 300 * MB)], { usb: true, fs: 'FAT32' });
+      const musica = W11.carpeta('musica', Array.from({ length: 12 }, (_, i) => W11.archivo(`cancion-${i + 1}.mp3`, 102.4 * MB)));
+      const trabajos = W11.carpeta('trabajos-clase', [W11.archivo('resumen-u2.docx', 350 * MB), W11.archivo('maqueta.pdf', 500 * MB)]);
+      const fotos = W11.carpeta('fotos-viaje', Array.from({ length: 7 }, (_, i) => W11.archivo(`foto-${i + 1}.jpg`, 512 * MB)));
+      const W = WIN11.escritorio(ctx, { fs: pc({ escritorio: [trabajos, musica, fotos, W11.archivo('pelicula.mp4', 2.1 * GB)] }, usb), barra: ['explorador', 'navegador'] });
+      W.abrirExplorador(ESC);
+      W.notificacion('USB (E:)', 'Se ha conectado un dispositivo USB.', 'usb');
+      W.on('cambio', () => {
+        if (trabajos._vistoTam && musica._vistoTam && usb._vistoTam) ctx.cumple(0, `Propiedades: trabajos-clase ${tamano(peso(trabajos))}, musica ${tamano(peso(musica))}; el USB tiene ${tamano(usb.libre)} libres.`);
         const ok = ['trabajos-clase', 'musica'].every(n => usb.hijos.some(h => h.n === n));
-        if (ok) ctx.cumple(1, 'Copiar trabajos-clase y musica y pegarlas en el USB (E:).');
+        if (ok) ctx.cumple(1, 'Copiar trabajos-clase y musica al USB (E:).');
         if (usb.expulsado) {
-          if (ok) ctx.cumple(2, 'Este equipo → USB (E:) → Expulsar. Ya se puede quitar.');
-          else { E.aviso('Lo has expulsado antes de copiar. Vuelve a empezar.', 'cuidado'); ctx.falla('Expulsar el USB antes de copiar nada.'); }
+          if (ok) ctx.cumple(2, 'Clic derecho en USB (E:) → Expulsar: «Es seguro quitar el hardware».');
+          else { W.aviso('Lo has expulsado antes de copiar. Pulsa «Empezar otra vez».', 'cuidado'); ctx.falla('Expulsar el USB antes de copiar nada.'); }
         }
-      }
+      });
+      W.on('fs', d => { if (d.tipo === 'propiedades') setTimeout(() => W.emit('cambio'), 0); });
     },
   });
 
-  /* ============================================================
-     S4 · Haz la copia de seguridad
-     ============================================================ */
+  /* S4 · Haz la copia de seguridad */
   registrarSimulacion('copia-drive', {
-    ventana: 'Explorador de archivos',
+    ventana: 'Windows 11',
     mision: [
       'Comprime la carpeta mi-web del Escritorio.',
       'Ponle al .zip la fecha de hoy, 3 de noviembre de 2026, como dice la norma.',
@@ -451,61 +454,89 @@
     ],
     final: 'Apunta en tu cuaderno el nombre exacto de la copia y en qué carpeta de Drive la has dejado (pregunta 6).',
     crear(ctx) {
-      const { el, pantalla } = ctx;
-      const drive = { 'Mi unidad': [], 'copias-mi-web': [archivo('mi-web-2026-10-05.zip', 1.2 * MB)], fotos: [] };
-      const DESTINOS = Object.keys(drive);
-      const visor = el('div', 'exp__drive');
-      const E = crearExplorador(ctx, {
-        raiz: equipo(usuario([
-          carpeta('mi-web', [archivo('index.html', 6 * KB), archivo('estilos.css', 3 * KB), archivo('resumenes.html', 9 * KB), carpeta('img', [archivo('logo.png', 40 * KB), archivo('foto.jpg', 1.8 * MB)])]),
-          carpeta('practicas-u0', [carpeta('textos')]),
-        ])),
-        inicio: ESCRITORIO,
-        cambio,
-        acciones(n) {
-          if (n.carpeta) return [];
-          return [['☁️ Subir a Drive…', () => subir(n)]];
+      const { el, boton } = ctx;
+      const W = WIN11.escritorio(ctx, { fs: pc({ escritorio: [
+        W11.carpeta('mi-web', [W11.archivo('index.html', 6 * KB), W11.archivo('estilos.css', 3 * KB), W11.archivo('resumenes.html', 9 * KB), W11.carpeta('img', [W11.archivo('logo.png', 40 * KB), W11.archivo('foto.jpg', 1.8 * MB)])]),
+        W11.carpeta('practicas-u0', [W11.carpeta('textos')]),
+      ] }), barra: ['explorador', 'navegador'] });
+      W.abrirExplorador(ESC);
+      const drive = { 'Mi unidad': [], 'copias-mi-web': [W11.archivo('mi-web-2026-10-05.zip', 1.2 * MB)], fotos: [] };
+      let dCarpeta = 'Mi unidad';
+      const zipDe = h => h.zipDe && h.zipDe.join() === 'mi-web';
+      W.on('cambio', () => {
+        const zip = W.buscar(ESC).hijos.find(zipDe);
+        if (zip) ctx.cumple(0, 'Clic derecho en mi-web → Comprimir en archivo ZIP: sale mi-web.zip.');
+        if (zip && zip.n === 'mi-web-2026-11-03.zip') ctx.cumple(1, 'Cambiar el nombre (F2) a mi-web-2026-11-03.zip (año-mes-día).');
+        else if (zip && /mi-web-0?3-11-2026/.test(zip.n)) W.aviso('La fecha va al revés: año-mes-día. Así las copias se ordenan solas.', 'cuidado');
+      });
+      const C = WIN11.chrome(W, {
+        pestanas: [{ t: 'Mi unidad - Google Drive', url: 'drive.google.com/drive/my-drive' }],
+        marcadores: null,
+        pagina(t, cont, C2) {
+          cont.classList.add('w11-drive');
+          const bar = el('div', 'w11-drive__bar');
+          const nuevo = boton('+ Nuevo', 'w11-mail__redactar');
+          nuevo.addEventListener('click', () => {
+            const r = nuevo.getBoundingClientRect();
+            W.menu(r.left, r.bottom, [{ t: 'Carpeta nueva', off: true }, { sep: true }, { t: 'Subir archivo', icono: 'documento', f: () => elegir(C2) }, { t: 'Subir carpeta', icono: 'carpeta', f: () => W.aviso('Sube el .zip, no la carpeta: una copia es un solo archivo comprimido.', 'cuidado') }]);
+          });
+          bar.appendChild(nuevo);
+          const migas = el('p', 'w11-drive__migas');
+          const mi = boton('Mi unidad', 'w11-cfg__hm'); mi.addEventListener('click', () => { dCarpeta = 'Mi unidad'; C2.pintar(); });
+          migas.appendChild(mi);
+          if (dCarpeta !== 'Mi unidad') migas.append(document.createTextNode(' › '), el('span', null, dCarpeta));
+          bar.appendChild(migas);
+          cont.appendChild(bar);
+          const lista = el('div', 'w11-drive__lista');
+          if (dCarpeta === 'Mi unidad') ['copias-mi-web', 'fotos'].forEach(d => {
+            const f = boton('', 'w11-drive__item');
+            f.append(WIN11.icono('carpeta'), el('span', null, d));
+            f.lastChild.setAttribute('translate', 'no');
+            let u = 0;
+            f.addEventListener('click', () => { if (Date.now() - u < 450) { dCarpeta = d; C2.pintar(); } u = Date.now(); });
+            f.addEventListener('keydown', e => { if (e.key === 'Enter') { dCarpeta = d; C2.pintar(); } });
+            lista.appendChild(f);
+          });
+          drive[dCarpeta].forEach(a => { const f = el('div', 'w11-drive__item'); f.append(WIN11.icono('zip'), el('span', null, a.n)); f.lastChild.setAttribute('translate', 'no'); lista.appendChild(f); });
+          if (!lista.childNodes.length) lista.appendChild(el('p', 'w11-nota', 'Esta carpeta está vacía. Usa «+ Nuevo».'));
+          cont.appendChild(lista);
         },
       });
-      function cambio() {
-        const esc = E.buscar(ESCRITORIO);
-        const zip = esc.hijos.find(h => h.zipDe === 'mi-web');
-        if (zip) ctx.cumple(0, 'Clic derecho en mi-web → Comprimir en archivo ZIP: sale mi-web.zip.');
-        if (zip && zip.n === 'mi-web-2026-11-03.zip') ctx.cumple(1, 'Cambiar el nombre a mi-web-2026-11-03.zip (año-mes-día).');
-        else if (zip && /mi-web-0?3-11-2026/.test(zip.n)) E.aviso('La fecha va al revés: año-mes-día. Así las copias se ordenan solas.', 'cuidado');
+      function elegir(C2) {
+        let aqui = ESC, sel = null;
+        const d = W.dialogo({ titulo: 'Abrir', crear: t => {
+          const pinta = () => {
+            t.innerHTML = '';
+            const atajos = el('div', 'lab__fila');
+            [['Escritorio', ESC], ['Documentos', ['C:', 'Users', 'alumno', 'Documents']], ['Descargas', ['C:', 'Users', 'alumno', 'Downloads']]].forEach(([n, r]) => { const b = boton(n, 'w11-btn'); b.addEventListener('click', () => { aqui = r; sel = null; pinta(); }); atajos.appendChild(b); });
+            t.appendChild(atajos);
+            const ruta = el('p', 'w11-nota', aqui.join('\\').replace('C:', 'C:')); ruta.setAttribute('translate', 'no'); t.appendChild(ruta);
+            const lista = el('div', 'w11-perm__lista');
+            (W.buscar(aqui).hijos || []).forEach(h => {
+              const b = boton('', 'w11-perm__g' + (h === sel ? ' w11-perm__g--sel' : ''));
+              b.append(WIN11.icono(h.carpeta ? 'carpeta' : /\.zip$/i.test(h.n) ? 'zip' : 'documento'), el('span', null, h.n));
+              b.lastChild.setAttribute('translate', 'no');
+              let u = 0;
+              b.addEventListener('click', () => { if (h.carpeta && Date.now() - u < 450) { aqui = aqui.concat(h.n); sel = null; pinta(); return; } u = Date.now(); sel = h; pinta(); });
+              lista.appendChild(b);
+            });
+            t.appendChild(lista);
+          };
+          pinta();
+        }, botones: [{ t: 'Abrir', primario: true, f: () => {
+          if (!sel) { W.aviso('Elige primero el archivo que quieres subir.', 'cuidado'); return false; }
+          if (sel.carpeta) { W.aviso('Es una carpeta: entra con doble clic o sube el .zip.', 'cuidado'); return false; }
+          drive[dCarpeta].push(Object.assign({}, sel, { _p: null }));
+          ctx.apunta(`Drive → + Nuevo → Subir archivo: «${sel.n}» a «${dCarpeta}».`);
+          if (!zipDe(sel)) W.aviso('Eso no es la copia de mi-web: hay que subir el .zip.', 'cuidado');
+          else if (dCarpeta !== 'copias-mi-web') W.aviso('Súbela a la carpeta «copias-mi-web», donde guardas todas: entra en ella antes de subir.', 'cuidado');
+          else if (sel.n !== 'mi-web-2026-11-03.zip') W.aviso('Antes de subirla, ponle la fecha de hoy al nombre.', 'cuidado');
+          else { ctx.cumple(2, 'Subir mi-web-2026-11-03.zip a Drive, a la carpeta «copias-mi-web».'); W.aviso('Copia subida. Ya está a salvo aunque se borre tu usuario.', 'ok'); }
+          C2.pintar();
+        } }, { t: 'Cancelar' }] });
+        void d;
       }
-      function pintarDrive() {
-        visor.innerHTML = '';
-        visor.appendChild(el('p', 'sim__etiqueta', '☁️ Tu Drive'));
-        DESTINOS.forEach(d => {
-          visor.appendChild(el('p', null, (d === 'Mi unidad' ? '🏠 ' : '📁 ') + d + (drive[d].length ? ': ' + drive[d].map(a => a.n).join(', ') : ' (vacía)')));
-        });
-      }
-      function subir(n) {
-        const acciones = pantalla.querySelector('.exp__acciones');
-        const vieja = acciones.querySelector('.exp__subir');
-        if (vieja) vieja.remove();
-        const fila = el('div', 'lab__fila exp__subir');
-        fila.appendChild(el('span', 'sim__ayuda', `Subir «${n.n}» a:`));
-        DESTINOS.forEach(d => {
-          const b = ctx.boton(d);
-          b.addEventListener('click', () => {
-            fila.remove();
-            drive[d].push(copia(n));
-            ctx.apunta(`Subir «${n.n}» a Drive, a «${d}».`);
-            pintarDrive();
-            if (!n.zipDe) E.aviso('Eso no es la copia de mi-web: hay que subir el .zip.', 'cuidado');
-            else if (d !== 'copias-mi-web') E.aviso('Súbela a la carpeta «copias-mi-web», donde guardas todas.', 'cuidado');
-            else if (n.n !== 'mi-web-2026-11-03.zip') E.aviso('Antes de subirla, ponle la fecha de hoy al nombre.', 'cuidado');
-            else { ctx.cumple(2, 'Subir mi-web-2026-11-03.zip a Drive, carpeta «copias-mi-web».'); E.aviso('Copia subida. Ya está a salvo aunque se borre tu usuario.', 'ok'); }
-          });
-          fila.appendChild(b);
-        });
-        E.aviso();
-        acciones.appendChild(fila);
-      }
-      pintarDrive();
-      pantalla.appendChild(visor);
+      C.ventana().minimizar();
     },
   });
 })();

@@ -201,7 +201,14 @@ const CALENDARIO_OPERACIONES =
       "id": "windows",
       "titulo": "Unidad 6. Windows",
       "horas": 18,
-      "sesiones": [],
+      "sesiones": [
+        "sesion-1-escritorio-ventanas",
+        "sesion-2-archivos-a-fondo",
+        "sesion-3-unidades-usb",
+        "sesion-4-usuarios-aplicaciones",
+        "sesion-5-tareas-permisos",
+        "resumen-windows"
+      ],
       "fechas": {
         "inicio": "2027-01-07",
         "fin": "2027-01-28"
@@ -357,6 +364,36 @@ const CALENDARIO_OPERACIONES =
       "titulo": "Sesión 4. Tu manual de instalación",
       "unidad": "sistemas-operativos",
       "fecha": "2026-12-17"
+    },
+    "sesion-1-escritorio-ventanas": {
+      "titulo": "Sesión 1. El escritorio, el menú Inicio y las ventanas",
+      "unidad": "windows",
+      "fecha": "2027-01-07"
+    },
+    "sesion-2-archivos-a-fondo": {
+      "titulo": "Sesión 2. Archivos a fondo: Papelera, accesos directos y atributos",
+      "unidad": "windows",
+      "fecha": "2027-01-11"
+    },
+    "sesion-3-unidades-usb": {
+      "titulo": "Sesión 3. Unidades: formatear un USB y ganar espacio",
+      "unidad": "windows",
+      "fecha": "2027-01-14"
+    },
+    "sesion-4-usuarios-aplicaciones": {
+      "titulo": "Sesión 4. Cuentas de usuario, aplicaciones e impresoras",
+      "unidad": "windows",
+      "fecha": "2027-01-18"
+    },
+    "sesion-5-tareas-permisos": {
+      "titulo": "Sesión 5. Administrador de tareas, permisos y restaurar el sistema",
+      "unidad": "windows",
+      "fecha": "2027-01-21"
+    },
+    "resumen-windows": {
+      "titulo": "Sesión 6. Tu resumen de la unidad",
+      "unidad": "windows",
+      "fecha": "2027-01-25"
     }
   }
 }

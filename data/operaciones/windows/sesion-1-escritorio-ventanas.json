@@ -1,0 +1,16 @@
+{
+  "id": "sesion-1-escritorio-ventanas",
+  "titulo": "Sesión 1. El escritorio, el menú Inicio y las ventanas",
+  "fecha": "",
+  "descripcion": "Las versiones de Windows, las partes del escritorio y de una ventana, el menú Inicio, ajustar dos ventanas a media pantalla, los atajos de teclado y apagar bien el ordenador.",
+  "materiales": [],
+  "actividades": [
+    {
+      "id": "u6s1-atajos",
+      "tipo": "generador",
+      "titulo": "¿Qué atajo uso?",
+      "generador": "atajo-windows",
+      "n": 5
+    }
+  ]
+}
