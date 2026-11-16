@@ -80,6 +80,16 @@
    empieza el 07/01 y pierde 2 h de su margen (20 -> 18 h). Una unidad
    puede llevar su propia "horaExamen", que manda sobre la general.
 
+   Cambio del 16/11/2026
+   ---------------------
+   Vamos una sesión por detrás: la S1 de la U4 se dio el jue 12/11 y el
+   lun 16/11 toca la S2. Examen CONJUNTO de las Unidades 3 y 4 el JUEVES
+   26/11 a las 19:10 (va en la U4, con "examenTitulo" y "avisoExamenDe").
+   U4: S1 12/11, S2 16/11, S3 19/11, resumen lun 23/11, examen jue 26/11.
+   La U5 se adelanta un día: S1 lun 30/11, S2 03/12, S3 10/12, manual lun
+   14/12 y examen el JUEVES 17/12 a las 19:10 (vuelve a caer en la semana
+   de la 1ª evaluación). El lun 21/12 queda libre; la U6 no cambia.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se desvía: edita las fechas de la unidad afectada
@@ -98,7 +108,7 @@
    ============================================================ */
 const CALENDARIO_OPERACIONES = 
 {
-  "actualizado": "2026-10-27",
+  "actualizado": "2026-11-16",
   "avisoExamen": true,
   "horaExamen": "19:10",
   "nota": "Fechas calculadas a partir de las horas por unidad y el horario real (lunes 2 h + jueves 3 h), con el calendario escolar 2026-2027. Los exámenes son de 19:10 a 21:00, normalmente en jueves. Pueden retrasarse; sirven para saber si vas bien de tiempo, no como fecha exacta.",
@@ -160,7 +170,7 @@ const CALENDARIO_OPERACIONES =
       ],
       "fechas": {
         "inicio": "2026-10-26",
-        "fin": "2026-11-12"
+        "fin": "2026-11-09"
       }
     },
     {
@@ -174,11 +184,12 @@ const CALENDARIO_OPERACIONES =
         "resumen-navegador-servicios-internet"
       ],
       "fechas": {
-        "inicio": "2026-11-16",
-        "fin": "2026-11-30"
+        "inicio": "2026-11-12",
+        "fin": "2026-11-26"
       },
-      "examen": "2026-11-30",
-      "horaExamen": "15:00"
+      "examen": "2026-11-26",
+      "examenTitulo": "Examen de las Unidades 3 y 4",
+      "avisoExamenDe": "de las Unidades 3 y 4"
     },
     {
       "id": "sistemas-operativos",
@@ -191,11 +202,10 @@ const CALENDARIO_OPERACIONES =
         "resumen-sistemas-operativos"
       ],
       "fechas": {
-        "inicio": "2026-12-03",
-        "fin": "2026-12-21"
+        "inicio": "2026-11-30",
+        "fin": "2026-12-17"
       },
-      "examen": "2026-12-21",
-      "horaExamen": "15:00"
+      "examen": "2026-12-17"
     },
     {
       "id": "windows",
@@ -328,42 +338,42 @@ const CALENDARIO_OPERACIONES =
     "sesion-1-el-navegador": {
       "titulo": "Sesión 1. El navegador: pestañas, favoritos e historial",
       "unidad": "navegador-servicios-internet",
-      "fecha": "2026-11-16"
+      "fecha": "2026-11-12"
     },
     "sesion-2-buscadores-privacidad": {
       "titulo": "Sesión 2. Buscadores y privacidad al navegar",
       "unidad": "navegador-servicios-internet",
-      "fecha": "2026-11-19"
+      "fecha": "2026-11-16"
     },
     "sesion-3-correo-mensajeria": {
       "titulo": "Sesión 3. Correo electrónico, mensajería y videollamadas",
       "unidad": "navegador-servicios-internet",
-      "fecha": "2026-11-23"
+      "fecha": "2026-11-19"
     },
     "resumen-navegador-servicios-internet": {
       "titulo": "Sesión 4. Tu resumen de la unidad",
       "unidad": "navegador-servicios-internet",
-      "fecha": "2026-11-26"
+      "fecha": "2026-11-23"
     },
     "sesion-1-software-sistemas-operativos": {
       "titulo": "Sesión 1. El software y los sistemas operativos",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-03"
+      "fecha": "2026-11-30"
     },
     "sesion-2-maquinas-virtuales": {
       "titulo": "Sesión 2. Máquinas virtuales y preparar la instalación",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-10"
+      "fecha": "2026-12-03"
     },
     "sesion-3-instalar-linux": {
       "titulo": "Sesión 3. Instalar Linux en una máquina virtual",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-14"
+      "fecha": "2026-12-10"
     },
     "resumen-sistemas-operativos": {
       "titulo": "Sesión 4. Tu manual de instalación",
       "unidad": "sistemas-operativos",
-      "fecha": "2026-12-17"
+      "fecha": "2026-12-14"
     },
     "sesion-1-escritorio-ventanas": {
       "titulo": "Sesión 1. El escritorio, el menú Inicio y las ventanas",

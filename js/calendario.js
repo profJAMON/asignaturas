@@ -402,7 +402,9 @@
     if (!iso) return;
     const unidad = d.unidades.find(u => u.id === unidadId);
     const numero = unidad && /^(Unidad|Bloque)\s+[\w-]+/i.exec(unidad.titulo);
-    const deQue = numero ? `de la ${numero[0]}` : 'de esta unidad';
+    /* "avisoExamenDe": rótulo propio para un examen de varias unidades
+       (16/11/2026: «de las Unidades 3 y 4» en Operaciones). */
+    const deQue = (unidad && unidad.avisoExamenDe) || (numero ? `de la ${numero[0]}` : 'de esta unidad');
     const faltan = diasHasta(iso);
 
     const caja = document.createElement('div');
