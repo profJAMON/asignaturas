@@ -964,14 +964,10 @@
     const avT = el('div', 'w11__teclado-aviso');
     avT.setAttribute('role', 'note');
     const l1 = el('p', 'w11__teclado-l1');
-    l1.append(el('span', 'w11__teclado-ico', '⌨️'), el('strong', null, 'Toca la pantalla de Windows y usa el teclado de tu ordenador.'));
+    l1.append(el('span', 'w11__teclado-ico', '⌨️'), el('strong', null, 'Para escribir, usa tu teclado (toca antes la pantalla de Windows).'));
     const l2 = el('p', 'w11__teclado-l2');
-    l2.appendChild(el('strong', null, '⚠️ Estas teclas, solo en el teclado de abajo:'));
-    const chips = el('span', 'w11__teclado-chips');
-    chips.setAttribute('translate', 'no');
-    ['⊞ Windows', 'Alt + Tab', 'Alt + F4', 'Ctrl + Alt + Supr', 'Ctrl + Shift + Esc', 'Ctrl + T', 'Ctrl + W', 'Ctrl + Shift + T'].forEach(k => chips.appendChild(el('kbd', 'w11__teclado-k', k)));
-    l2.appendChild(chips);
-    const l3 = el('p', 'w11__teclado-l3', 'Ctrl, Shift, Alt y ⊞ se quedan pulsadas hasta la tecla siguiente. ⊞ sola: tócala dos veces.');
+    l2.appendChild(el('strong', null, '👇 Para los atajos (Alt + Tab, Ctrl + C, Windows + E…), usa el teclado de abajo.'));
+    const l3 = el('p', 'w11__teclado-l3', 'Ctrl, Alt, Shift y la tecla Windows: tócalas primero y después la otra tecla.');
     avT.append(l1, l2, l3);
     ayudaTeclado.append(avT, cabT);
     const T = teclado(ayudaTeclado, (c, info) => W.pulsar(c, info), (m, conOtra) => { if (m === 'Alt' && altTab) acabaAltTab(); });
