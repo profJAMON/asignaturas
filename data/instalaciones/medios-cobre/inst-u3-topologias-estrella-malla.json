@@ -49,6 +49,73 @@
         { "izquierda": "Árbol", "derecha": "Switches de planta colgando de un troncal" },
         { "izquierda": "Malla", "derecha": "Varios caminos: si uno se corta, hay otro" }
       ]
+    },
+    {
+      "id": "u3s3-dibujos",
+      "tipo": "quiz",
+      "titulo": "¿Qué topología es? Mira el dibujo",
+      "preguntas": [
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-estrella-arriba",
+          "opciones": ["Bus", "Estrella", "Árbol"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-anillo-pc",
+          "opciones": ["Anillo", "Malla", "Estrella"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-arbol-switches",
+          "opciones": ["Estrella", "Bus", "Árbol"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-bus-pc",
+          "opciones": ["Bus", "Estrella", "Punto a punto"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-malla-parcial",
+          "opciones": ["Anillo", "Malla", "Híbrida"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-arbol-radial",
+          "opciones": ["Estrella", "Malla", "Árbol"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-doble-anillo",
+          "opciones": ["Bus", "Anillo (doble anillo)", "Malla"],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-malla-completa-pc",
+          "opciones": ["Malla", "Anillo", "Estrella"],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-hibrida-arbol-anillo",
+          "opciones": ["Árbol", "Anillo", "Híbrida"],
+          "correcta": 2
+        },
+        {
+          "pregunta": "¿Qué topología es?",
+          "dibujo": "topo-bus-servidor",
+          "opciones": ["Estrella", "Bus", "Anillo"],
+          "correcta": 1
+        }
+      ]
     }
   ]
 }

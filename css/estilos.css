@@ -7963,3 +7963,31 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
   text-transform: uppercase;
 }
 @media print { .leccion .tarea-donde { border-color: currentColor; color: inherit; } }
+
+/* ---------- Dibujos en los ejercicios (16/11/2026) ----------
+   Campo "dibujo" de una pregunta de test o de un generador
+   (js/actividades.js, crearDibujo). Primer uso: las topologías de
+   Instalaciones UT3 (js/topologias-dibujo.js). Siempre van dentro de
+   la hoja de cuaderno (.actividad), que ya redefine --bg, --text y
+   --accent con tinta sobre papel: igual en los dos temas y sin
+   colores nuevos. Trazo en tinta; los aparatos centrales, en azul. */
+.ejercicio-dibujo {
+  max-width: 24rem;
+  margin: 0 0 0.7rem;
+  padding: 0.35rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+}
+.ejercicio-dibujo svg { display: block; width: 100%; height: auto; }
+.ejercicio-dibujo .tp-l { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }
+.ejercicio-dibujo .tp-e { fill: var(--bg); stroke: currentColor; stroke-width: 1.5; }
+.ejercicio-dibujo .tp-c { fill: var(--bg); stroke: var(--accent); stroke-width: 2; }
+.ejercicio-dibujo .tp-p { fill: var(--accent); }
+.ejercicio-dibujo .tp-t { fill: currentColor; }
+/* En un generador, el dibujo ocupa la fila de arriba y la pregunta y
+   la casilla van debajo, como siempre. */
+.generador__fila--dibujo .ejercicio-dibujo { grid-column: 2 / -1; margin: 0.2rem 0; }
+.generador__fila--dibujo .generador__enunciado { grid-column: 2; }
+@media print { .ejercicio-dibujo { break-inside: avoid; } }

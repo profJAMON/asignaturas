@@ -22,6 +22,12 @@
       "titulo": "¿Qué topología? ¿Qué cable?",
       "generador": "topologia-y-medio",
       "n": 10
+    },
+    {
+      "tipo": "generador",
+      "titulo": "¿Qué topología es? Mira el dibujo",
+      "generador": "topologia-dibujo",
+      "n": 8
     }
   ]
 }

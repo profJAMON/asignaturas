@@ -610,8 +610,11 @@ function generarTanda(clave, n) {
   while (preguntas.length < n && intentos < n * 40) {
     intentos++;
     const p = gen();
-    if (vistos.has(p.enunciado)) continue;
-    vistos.add(p.enunciado);
+    /* Los de dibujo repiten enunciado («¿Qué topología es?»): se
+       distinguen por su clave. */
+    const k = p.clave || p.enunciado;
+    if (vistos.has(k)) continue;
+    vistos.add(k);
     preguntas.push(p);
   }
   return preguntas;

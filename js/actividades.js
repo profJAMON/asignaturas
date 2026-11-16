@@ -31,6 +31,26 @@ function crearElementoConCodigo(etiqueta, clase, texto) {
   return el;
 }
 
+/* Dibujo de un ejercicio (campo "dibujo" de una pregunta de test o de
+   un generador). Puede ser el SVG ya hecho o el nombre de un dibujo
+   registrado en window.DIBUJOS (p. ej. js/topologias-dibujo.js).
+   Lo escribimos nosotros, nunca el alumno: por eso va con innerHTML.
+   Devuelve null si no hay dibujo. */
+function crearDibujo(dibujo) {
+  if (!dibujo) return null;
+  let marcado = '';
+  if (typeof dibujo === 'string' && dibujo.trim().startsWith('<svg')) {
+    marcado = dibujo;
+  } else if (window.DIBUJOS && typeof window.DIBUJOS[dibujo] === 'function') {
+    marcado = window.DIBUJOS[dibujo]();
+  }
+  if (!marcado) return null;
+  const caja = crearElemento('div', 'ejercicio-dibujo');
+  caja.setAttribute('translate', 'no');
+  caja.innerHTML = marcado;
+  return caja;
+}
+
 /* ---------- Quiz de opción múltiple ---------- */
 
 function renderQuiz(contenedor, datos) {
@@ -52,6 +72,8 @@ function renderQuiz(contenedor, datos) {
   (datos.preguntas || []).forEach((preg, i) => {
     const bloque = crearElemento('div', 'pregunta');
     bloque.appendChild(crearElementoConCodigo('p', 'pregunta__enunciado', `${i + 1}. ${preg.pregunta}`));
+    const dibujoPregunta = crearDibujo(preg.dibujo);
+    if (dibujoPregunta) bloque.appendChild(dibujoPregunta);
 
     const opcionesEl = crearElemento('div', 'opciones');
     const botones = [];
@@ -278,6 +300,13 @@ function renderGenerador(contenedor, datos) {
     preguntas.forEach((preg, i) => {
       const fila = crearElemento('div', 'generador__fila');
       fila.appendChild(crearElemento('span', 'generador__numero', `${i + 1}.`));
+
+      /* Con dibujo, va encima de la pregunta, en la misma fila. */
+      const dibujoFila = crearDibujo(preg.dibujo);
+      if (dibujoFila) {
+        fila.classList.add('generador__fila--dibujo');
+        fila.appendChild(dibujoFila);
+      }
 
       const enunciado = crearElemento('span', 'generador__enunciado', preg.enunciado);
       /* Los enunciados de números y códigos no se traducen. Los que son
