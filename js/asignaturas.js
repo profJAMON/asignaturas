@@ -20,7 +20,7 @@
 const ASIGNATURAS = [
   {
     id: 'operaciones',
-    nombre: 'Operaciones Básicas',
+    nombre: 'Operaciones auxiliares para la configuración y la explotación',
     /* Nombre corto, para donde no cabe el largo (botones Continuar). */
     corto: 'Operaciones',
     descripcion: 'Aprendes a manejar el ordenador, cómo funciona Internet por dentro y los sistemas operativos, y al final creas tu propia web con HTML y CSS.',
@@ -29,7 +29,7 @@ const ASIGNATURAS = [
   },
   {
     id: 'instalaciones',
-    nombre: 'Instalación y mantenimiento de redes',
+    nombre: 'Instalación y mantenimiento de redes para transmisión de datos',
     corto: 'Instalaciones',
     descripcion: 'Cómo se monta la red de una oficina: cables, dispositivos, direcciones y seguridad en el taller.',
     curso: 'data/curso-instalaciones.json',
@@ -37,7 +37,7 @@ const ASIGNATURAS = [
   },
   {
     id: 'proyecto',
-    nombre: 'Proyecto Intermodular',
+    nombre: 'Proyecto intermodular de aprendizaje colaborativo',
     corto: 'Proyecto',
     descripcion: 'Construyes y publicas una web por parejas con HTML, CSS y JavaScript, conectando lo aprendido en las demás asignaturas.',
     curso: 'data/curso-proyecto.json',
