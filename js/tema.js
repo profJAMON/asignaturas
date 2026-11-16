@@ -317,6 +317,18 @@ function marcarTareas(raiz) {
     if (h.parentElement.classList.contains('subseccion')) h.parentElement.classList.add('subseccion--tarea');
     if (!h.id) h.id = clave;
     if (!destinos[clave]) destinos[clave] = h.id;
+    /* Si la actividad se hace en una simulación (o en un laboratorio) de
+       la propia página, se dice debajo del título: los pasos son para
+       la pantalla de mentira, no para su ordenador (16/11/2026). */
+    const grupo = h.parentElement.classList.contains('subseccion') ? h.parentElement : null;
+    const lab = grupo && grupo.querySelector('.lab[data-lab]');
+    if (lab && !grupo.querySelector('.tarea-donde')) {
+      const sim = /^(simulacion|instalador|averias-instalacion)$/.test(lab.dataset.lab);
+      const p = document.createElement('p');
+      p.className = 'tarea-donde';
+      p.textContent = sim ? '🎮 Hazlo en la simulación de abajo ↓' : '🧪 Hazlo en el «Toca y mira» de abajo ↓';
+      h.insertAdjacentElement('afterend', p);
+    }
   });
   raiz.querySelectorAll('.papel strong').forEach(s => {
     const m = s.textContent.trim().match(/^\((Actividad|Reto|Ejercicio)\s+(\d+)\)$/i);

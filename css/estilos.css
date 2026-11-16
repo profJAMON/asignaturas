@@ -7944,3 +7944,22 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
   .w11-meet__b[aria-label="Más opciones"] { display: none; }
   .w11-meet__b svg { width: 19px; height: 19px; }
 }
+
+/* Actividad que se hace en la simulación (o el laboratorio) de la
+   página: aviso debajo del título (16/11/2026; js/tema.js, marcarTareas). */
+.leccion .tarea-donde {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: -0.3rem 0 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--accent-warm);
+  border-radius: 1rem;
+  color: var(--accent-warm);
+  font-family: var(--font-titulo);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media print { .leccion .tarea-donde { border-color: currentColor; color: inherit; } }
