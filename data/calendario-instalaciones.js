@@ -55,6 +55,14 @@
    29/10 (examen de Operaciones). Las sesiones 1 y 2 de la UT2 de 1r
    pasan del 27/10 al 29/10; el resto no cambia. 2n no se toca.
 
+   16/11/2026: 2n va por la UT3 S2 (Topologías: bus y anillo) el lunes
+   16/11 (estaba prevista el 30/10). Se han corrido 9 días de clase de 2n
+   todas sus fechas desde la UT3 S2 hasta el final, sin cambiar el reparto
+   de horas; la UT3 S1 se ha puesto el viernes 13/11. Decisión de Carles:
+   solo recalcular, sin recortar todavía. Con este ritmo 2n NO llega: las
+   fechas que pasan del 22/02/2027 (examen final) se ven a propósito.
+   1r no se toca.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se retrasa o adelanta respecto a esto: edita las
@@ -76,7 +84,7 @@ const CALENDARIO_INSTALACIONES = {
       "nombre": "2n"
     }
   ],
-  "actualizado": "2026-11-15",
+  "actualizado": "2026-11-16",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -195,8 +203,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-01-19"
         },
         "2n": {
-          "inicio": "2026-10-28",
-          "fin": "2026-11-23"
+          "inicio": "2026-11-13",
+          "fin": "2026-12-11"
         }
       }
     },
@@ -218,8 +226,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-02-02"
         },
         "2n": {
-          "inicio": "2026-11-24",
-          "fin": "2026-12-01"
+          "inicio": "2026-12-14",
+          "fin": "2026-12-21"
         }
       }
     },
@@ -244,8 +252,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-03-09"
         },
         "2n": {
-          "inicio": "2026-12-02",
-          "fin": "2026-12-22"
+          "inicio": "2026-12-22",
+          "fin": "2027-01-22"
         }
       }
     },
@@ -272,8 +280,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-04-20"
         },
         "2n": {
-          "inicio": "2027-01-08",
-          "fin": "2027-01-27"
+          "inicio": "2027-01-25",
+          "fin": "2027-02-12"
         }
       }
     },
@@ -297,8 +305,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-05-14"
         },
         "2n": {
-          "inicio": "2027-01-29",
-          "fin": "2027-02-12"
+          "inicio": "2027-02-15",
+          "fin": "2027-03-05"
         }
       }
     },
@@ -326,8 +334,8 @@ const CALENDARIO_INSTALACIONES = {
           "fin": "2027-06-15"
         },
         "2n": {
-          "inicio": "2027-02-15",
-          "fin": "2027-02-23"
+          "inicio": "2027-03-08",
+          "fin": "2027-03-16"
         }
       }
     },
@@ -497,319 +505,319 @@ const CALENDARIO_INSTALACIONES = {
       "titulo": "Sesión 1 — Los medios de transmisión",
       "unidad": "medios-cobre",
       "1r": "2026-11-20",
-      "2n": "2026-10-28"
+      "2n": "2026-11-13"
     },
     "inst-u3-topologias-bus-anillo": {
       "titulo": "Sesión 2 — Topologías (I): punto a punto, bus y anillo",
       "unidad": "medios-cobre",
       "1r": "2026-11-24",
-      "2n": "2026-10-30"
+      "2n": "2026-11-16"
     },
     "inst-u3-topologias-estrella-malla": {
       "titulo": "Sesión 3 — Topologías (II): estrella, árbol y malla",
       "unidad": "medios-cobre",
       "1r": "2026-11-24",
-      "2n": "2026-11-02"
+      "2n": "2026-11-17"
     },
     "inst-u3-mapa-de-red": {
       "titulo": "Sesión 4 — El mapa de la red",
       "unidad": "medios-cobre",
       "1r": "2026-11-27",
-      "2n": "2026-11-03"
+      "2n": "2026-11-18"
     },
     "inst-u3-par-trenzado": {
       "titulo": "Sesión 5 — El cable de par trenzado",
       "unidad": "medios-cobre",
       "1r": "2026-12-01",
-      "2n": "2026-11-04"
+      "2n": "2026-11-20"
     },
     "inst-u3-categorias-ethernet": {
       "titulo": "Sesión 6 — Categorías del cable y Ethernet",
       "unidad": "medios-cobre",
       "1r": "2026-12-04",
-      "2n": "2026-11-06"
+      "2n": "2026-11-23"
     },
     "inst-u3-conectores": {
       "titulo": "Sesión 7 — Conectores RJ, rosetas y latiguillos",
       "unidad": "medios-cobre",
       "1r": "2026-12-11",
-      "2n": "2026-11-09"
+      "2n": "2026-11-24"
     },
     "inst-u3-t568": {
       "titulo": "Sesión 8 — Las terminaciones T568A y T568B",
       "unidad": "medios-cobre",
       "1r": "2026-12-15",
-      "2n": "2026-11-10"
+      "2n": "2026-11-25"
     },
     "inst-u3-directo-cruzado": {
       "titulo": "Sesión 9 — Cable directo y cable cruzado",
       "unidad": "medios-cobre",
       "1r": "2026-12-15",
-      "2n": "2026-11-11"
+      "2n": "2026-11-27"
     },
     "inst-u3-tarjeta-y-enlace": {
       "titulo": "Sesión 10 — La tarjeta de red y el enlace",
       "unidad": "medios-cobre",
       "1r": "2026-12-18",
-      "2n": "2026-11-13"
+      "2n": "2026-11-30"
     },
     "inst-u3-herramientas": {
       "titulo": "Sesión 11 — Herramientas del cable de cobre",
       "unidad": "medios-cobre",
       "1r": "2026-12-22",
-      "2n": "2026-11-16"
+      "2n": "2026-12-01"
     },
     "inst-u3-coaxial": {
       "titulo": "Sesión 12 — El cable coaxial",
       "unidad": "medios-cobre",
       "1r": "2027-01-12",
-      "2n": "2026-11-20"
+      "2n": "2026-12-09"
     },
     "inst-u3-repaso": {
       "titulo": "Sesión 13 — Repaso de la unidad",
       "unidad": "medios-cobre",
       "1r": "2027-01-15",
-      "2n": "2026-11-23"
+      "2n": "2026-12-11"
     },
     "inst-u4-que-es-la-fibra": {
       "titulo": "Sesión 1 — Qué es la fibra óptica",
       "unidad": "fibra-optica",
       "1r": "2027-01-19",
-      "2n": "2026-11-24"
+      "2n": "2026-12-14"
     },
     "inst-u4-monomodo-multimodo": {
       "titulo": "Sesión 2 — Monomodo y multimodo",
       "unidad": "fibra-optica",
       "1r": "2027-01-19",
-      "2n": "2026-11-24"
+      "2n": "2026-12-14"
     },
     "inst-u4-conectores-empalmes": {
       "titulo": "Sesión 3 — Conectores, empalmes y equipos",
       "unidad": "fibra-optica",
       "1r": "2027-01-22",
-      "2n": "2026-11-25"
+      "2n": "2026-12-15"
     },
     "inst-u4-perdidas-y-medidas": {
       "titulo": "Sesión 4 — Pérdidas, margen y aparatos de medida",
       "unidad": "fibra-optica",
       "1r": "2027-01-26",
-      "2n": "2026-11-27"
+      "2n": "2026-12-16"
     },
     "inst-u4-hoja-practica": {
       "titulo": "Sesión 5 — Práctica en papel: inventario y cálculo de enlaces",
       "unidad": "fibra-optica",
       "1r": "2027-01-26",
-      "2n": "2026-11-30"
+      "2n": "2026-12-18"
     },
     "inst-u4-repaso": {
       "titulo": "Sesión 6 — Repaso de la unidad",
       "unidad": "fibra-optica",
       "1r": "2027-01-29",
-      "2n": "2026-12-01"
+      "2n": "2026-12-21"
     },
     "inst-u5-acceso-internet": {
       "titulo": "Sesión 1 — Cómo llega Internet a casa",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-02",
-      "2n": "2026-12-02"
+      "2n": "2026-12-22"
     },
     "inst-u5-ondas": {
       "titulo": "Sesión 2 — Las ondas: lo que viaja por el aire",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-05",
-      "2n": "2026-12-04"
+      "2n": "2027-01-08"
     },
     "inst-u5-alcance": {
       "titulo": "Sesión 3 — Redes inalámbricas: de la WPAN a la WWAN",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-11",
-      "2n": "2026-12-09"
+      "2n": "2027-01-11"
     },
     "inst-u5-bandas": {
       "titulo": "Sesión 4 — 2,4 GHz, 5 GHz y 6 GHz",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-12",
-      "2n": "2026-12-11"
+      "2n": "2027-01-12"
     },
     "inst-u5-estandares": {
       "titulo": "Sesión 5 — Las versiones del wifi: 802.11 y Wi-Fi 4, 5, 6 y 7",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-18",
-      "2n": "2026-12-14"
+      "2n": "2027-01-13"
     },
     "inst-u5-seguridad": {
       "titulo": "Sesión 6 — Seguridad wifi",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-23",
-      "2n": "2026-12-16"
+      "2n": "2027-01-18"
     },
     "inst-u5-punto-acceso": {
       "titulo": "Sesión 7 — El punto de acceso, el SSID y el PoE",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-02-25",
-      "2n": "2026-12-18"
+      "2n": "2027-01-19"
     },
     "inst-u5-repetidores": {
       "titulo": "Sesión 8 — Repetidores y wifi en malla",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-03-04",
-      "2n": "2026-12-21"
+      "2n": "2027-01-20"
     },
     "inst-u5-repaso": {
       "titulo": "Sesión 9 — Repaso de la unidad",
       "unidad": "sistemas-inalambricos",
       "1r": "2027-03-09",
-      "2n": "2026-12-22"
+      "2n": "2027-01-22"
     },
     "inst-u6-electronica-red": {
       "titulo": "Sesión 1 — La electrónica de red y el armario",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-03-09",
-      "2n": "2027-01-08"
+      "2n": "2027-01-25"
     },
     "inst-u6-hub": {
       "titulo": "Sesión 2 — El hub y las colisiones",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-03-12",
-      "2n": "2027-01-11"
+      "2n": "2027-01-26"
     },
     "inst-u6-switch": {
       "titulo": "Sesión 3 — El switch aprende: la tabla MAC",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-03-16",
-      "2n": "2027-01-12"
+      "2n": "2027-01-27"
     },
     "inst-u6-tabla-mac": {
       "titulo": "Sesión 4 — La tabla MAC, paso a paso",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-03-19",
-      "2n": "2027-01-13"
+      "2n": "2027-01-29"
     },
     "inst-u6-switches": {
       "titulo": "Sesión 5 — Los switches por fuera",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-03-23",
-      "2n": "2027-01-15"
+      "2n": "2027-02-01"
     },
     "inst-u6-dominios": {
       "titulo": "Sesión 6 — Dominios de colisión y de difusión",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-06",
-      "2n": "2027-01-18"
+      "2n": "2027-02-02"
     },
     "inst-u6-dominios-practica": {
       "titulo": "Sesión 7 — Dominios: a practicar",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-09",
-      "2n": "2027-01-19"
+      "2n": "2027-02-03"
     },
     "inst-u6-router": {
       "titulo": "Sesión 8 — El router y la puerta de enlace",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-13",
-      "2n": "2027-01-20"
+      "2n": "2027-02-05"
     },
     "inst-u6-seguridad": {
       "titulo": "Sesión 9 — Cortafuegos, proxy, VPN y pasarela",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-16",
-      "2n": "2027-01-22"
+      "2n": "2027-02-08"
     },
     "inst-u6-punta-a-punta": {
       "titulo": "Sesión 10 — Un mensaje de punta a punta",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-20",
-      "2n": "2027-01-25"
+      "2n": "2027-02-09"
     },
     "inst-u6-repaso": {
       "titulo": "Sesión 11 — Repaso de la unidad",
       "unidad": "dispositivos-interconexion",
       "1r": "2027-04-20",
-      "2n": "2027-01-26"
+      "2n": "2027-02-10"
     },
     "inst-u7-de-c-a-b": {
       "titulo": "Sesión 1 — De la clase C a la clase B: la hoja doble",
       "unidad": "subredes",
       "1r": "2027-04-23",
-      "2n": "2027-01-29"
+      "2n": "2027-02-15"
     },
     "inst-u7-mascara-b": {
       "titulo": "Sesión 2 — La máscara de clase B, paso a paso",
       "unidad": "subredes",
       "1r": "2027-04-27",
-      "2n": "2027-02-01"
+      "2n": "2027-02-16"
     },
     "inst-u7-salto-tercero": {
       "titulo": "Sesión 3 — El salto en el 3º número",
       "unidad": "subredes",
       "1r": "2027-04-30",
-      "2n": "2027-02-02"
+      "2n": "2027-02-17"
     },
     "inst-u7-salto-cuarto": {
       "titulo": "Sesión 4 — El salto en el 4º número",
       "unidad": "subredes",
       "1r": "2027-05-04",
-      "2n": "2027-02-03"
+      "2n": "2027-02-19"
     },
     "inst-u7-primera-segunda": {
       "titulo": "Sesión 5 — La 1ª y la 2ª subred",
       "unidad": "subredes",
       "1r": "2027-05-07",
-      "2n": "2027-02-05"
+      "2n": "2027-02-22"
     },
     "inst-u7-puedo-dar-ip": {
       "titulo": "Sesión 6 — ¿Puedo dar esta IP?",
       "unidad": "subredes",
       "1r": "2027-05-11",
-      "2n": "2027-02-08"
+      "2n": "2027-02-23"
     },
     "inst-u7-caso-empresa": {
       "titulo": "Sesión 7 — El caso de una empresa, de punta a punta",
       "unidad": "subredes",
       "1r": "2027-05-14",
-      "2n": "2027-02-09"
+      "2n": "2027-02-24"
     },
     "inst-u7-repaso": {
       "titulo": "Sesión 8 — Repaso de la unidad",
       "unidad": "subredes",
       "1r": "2027-05-14",
-      "2n": "2027-02-10"
+      "2n": "2027-03-03"
     },
     "inst-u8-que-es": {
       "titulo": "Sesión 1 — El cableado estructurado: el edificio por dentro",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-18",
-      "2n": "2027-02-15"
+      "2n": "2027-03-08"
     },
     "inst-u8-canalizaciones": {
       "titulo": "Sesión 2 — Canalizaciones: por dónde van los cables",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-18",
-      "2n": "2027-02-16"
+      "2n": "2027-03-09"
     },
     "inst-u8-armario": {
       "titulo": "Sesión 3 — El armario de planta",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-21",
-      "2n": "2027-02-17"
+      "2n": "2027-03-10"
     },
     "inst-u3-taller-latiguillo": {
       "titulo": "Sesión 4 — Taller: fabrica un latiguillo directo",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-25",
-      "2n": "2027-02-19"
+      "2n": "2027-03-12"
     },
     "inst-u3-taller-cruzado-averias": {
       "titulo": "Sesión 5 — Taller: cable cruzado y diagnóstico de averías",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-28",
-      "2n": "2027-02-22"
+      "2n": "2027-03-15"
     },
     "inst-u8-taller-toma-panel": {
       "titulo": "Sesión 6 — Taller: toma de pared y panel de parcheo",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-01",
-      "2n": "2027-02-23"
+      "2n": "2027-03-16"
     },
     "inst-u8-plano": {
       "titulo": "Sesión 7 — Planos y documentación de la red",
