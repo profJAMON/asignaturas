@@ -960,8 +960,20 @@
     const bTec = boton('⌨️ Teclado en pantalla', 'lab__boton');
     bTec.setAttribute('aria-expanded', 'true');
     cabT.appendChild(bTec);
-    cabT.appendChild(el('p', 'w11__teclado-ayuda', 'Puedes usar el teclado de tu ordenador después de tocar la pantalla de Windows. Los atajos con la tecla Windows, Alt + Tab, Alt + F4, Ctrl + Alt + Supr, Ctrl + Shift + Esc y los de las pestañas de Chrome se los queda tu ordenador de verdad: púlsalos en este teclado. Ctrl, Shift, Alt y Windows se quedan pulsadas hasta la siguiente tecla; Windows sola, tócala dos veces.'));
-    ayudaTeclado.appendChild(cabT);
+    // Aviso bien visible (16/11/2026: Carles, «no se van a dar cuenta»)
+    const avT = el('div', 'w11__teclado-aviso');
+    avT.setAttribute('role', 'note');
+    const l1 = el('p', 'w11__teclado-l1');
+    l1.append(el('span', 'w11__teclado-ico', '⌨️'), el('strong', null, 'Toca la pantalla de Windows y usa el teclado de tu ordenador.'));
+    const l2 = el('p', 'w11__teclado-l2');
+    l2.appendChild(el('strong', null, '⚠️ Estas teclas, solo en el teclado de abajo:'));
+    const chips = el('span', 'w11__teclado-chips');
+    chips.setAttribute('translate', 'no');
+    ['⊞ Windows', 'Alt + Tab', 'Alt + F4', 'Ctrl + Alt + Supr', 'Ctrl + Shift + Esc', 'Ctrl + T', 'Ctrl + W', 'Ctrl + Shift + T'].forEach(k => chips.appendChild(el('kbd', 'w11__teclado-k', k)));
+    l2.appendChild(chips);
+    const l3 = el('p', 'w11__teclado-l3', 'Ctrl, Shift, Alt y ⊞ se quedan pulsadas hasta la tecla siguiente. ⊞ sola: tócala dos veces.');
+    avT.append(l1, l2, l3);
+    ayudaTeclado.append(avT, cabT);
     const T = teclado(ayudaTeclado, (c, info) => W.pulsar(c, info), (m, conOtra) => { if (m === 'Alt' && altTab) acabaAltTab(); });
     W.teclado = T;
     if (op.teclado === false) { T.el.hidden = true; bTec.setAttribute('aria-expanded', 'false'); }

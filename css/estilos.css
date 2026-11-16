@@ -7167,6 +7167,16 @@ html.ronda-abierta .leccion { isolation: auto; }
 .w11__teclado { display: flex; flex-direction: column; gap: 6px; }
 .w11__teclado-cab { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 6px 12px; }
 .leccion .sim__pantalla .w11__teclado-ayuda { flex: 1 1 16rem; margin: 0; font-size: 0.78rem; color: var(--sim-tenue); }
+/* Aviso del teclado bien visible (16/11/2026): magenta = aviso, como en toda la web */
+.w11__teclado-aviso { display: flex; flex-direction: column; gap: 6px; padding: 10px 14px; border: 2px solid var(--accent-warm); border-left-width: 6px; border-radius: 8px; background: var(--nota-fondo); }
+.leccion .sim__pantalla .w11__teclado-aviso p { margin: 0; color: var(--text); }
+.leccion .sim__pantalla .w11__teclado-l1 { display: flex; align-items: center; gap: 8px; font-size: 1.02rem; }
+.leccion .sim__pantalla .w11__teclado-l1 strong, .leccion .sim__pantalla .w11__teclado-l2 strong { color: var(--text); }
+.w11__teclado-ico { font-size: 1.5rem; line-height: 1; }
+.leccion .sim__pantalla .w11__teclado-l2 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-size: 0.92rem; }
+.w11__teclado-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.leccion .w11__teclado-k { padding: 1px 7px; border: 1px solid var(--accent-warm); border-bottom-width: 2px; border-radius: 4px; background: var(--surface); color: var(--text); font: 600 0.8rem/1.5 var(--font-mono); white-space: nowrap; }
+.leccion .sim__pantalla .w11__teclado-l3 { font-size: 0.82rem; color: var(--text-dim); }
 .w11-kbd { display: flex; flex-direction: column; gap: 3px; width: 100%; max-width: 680px; align-self: center; padding: 6px; background: var(--w11-kbd-fondo); border-radius: 8px; user-select: none; touch-action: manipulation; }
 .w11-kbd[hidden] { display: none; }
 .w11-kbd__fila { display: flex; gap: 3px; }
