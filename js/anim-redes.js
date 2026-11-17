@@ -22,6 +22,9 @@
    tx-rx            UT3 S9 · directo, cruzado, PC-switch y Auto-MDIX.
    flujo            UT3 S10 · simplex, semidúplex (colisión) y dúplex.
    tono             UT3 S11 · generador de tonos y sonda.
+   subredes-empresa UT7 S7 · Dirección y Ventas: router, broadcast y
+                    puerta de enlace mal puesta (17/11/2026).
+   cableado-edificio UT8 S1 · de la mesa a la calle (17/11/2026).
    ============================================================ */
 
 (function () {
@@ -908,6 +911,130 @@
           ver: ['gen', 'nada'], paq: [{ id: 's', ruta: ruta([XS[0], 250], [XS[2], 250]), chips: ['sonda'], color: 'lima' }] },
         { texto: 'Junto al cable bueno, la sonda <strong>pita fuerte</strong>: ¡es este! Le pongo su etiqueta.',
           ver: ['gen', 'pita', 'ok'], paq: [{ id: 's', ruta: ruta([XS[2], 250], [XS[BUENO], 250]) }] }
+      ]
+    });
+  })();
+
+  /* ============================================================
+     subredes-empresa · UT7 S7 (preguntas 7 y 8)
+     ============================================================ */
+  (function () {
+    const SI = [170, 236], SD = [470, 236], R = [320, 120];
+    const PA = [60, 320], PB = [210, 330], PC = [430, 330], PD = [580, 320];
+    const bSI = [SI[0], SI[1] - 10], bSD = [SD[0], SD[1] - 10];
+    const rI = [R[0] - 30, R[1] + 16], rD = [R[0] + 30, R[1] + 16];
+    const a = [PA[0] + 20, PA[1] - 20], b = [PB[0] - 10, PB[1] - 24], c = [PC[0] + 10, PC[1] - 24], d = [PD[0] - 20, PD[1] - 20];
+    const D1 = '172.30.5.10', D2 = '172.30.9.20', V1 = '172.30.40.30', V2 = '172.30.50.40';
+    ISO.animacion('subredes-empresa', {
+      titulo: 'Dirección y Ventas son dos subredes: entre ellas pasa todo por el router, el broadcast no cruza y la puerta de enlace tiene que estar en la misma subred',
+      msMovimiento: 1400,
+      capas: ['Ethernet (MAC)', 'IP'],
+      dibujar(k) {
+        k.cable('rl', rI, bSI);
+        k.cable('rr', rD, bSD);
+        k.cable('la', bSI, a);
+        k.cable('lb', bSI, b);
+        k.cable('rc', bSD, c);
+        k.cable('rd', bSD, d);
+        k.router(k.svg, R[0], R[1], 'Router');
+        k.texto(k.svg, R[0] - 92, R[1] + 4, '.0.1', 'i-mono-a');
+        k.texto(k.svg, R[0] + 96, R[1] + 4, '.32.1', 'i-mono-l');
+        k.switch_(k.svg, SI[0], SI[1], 4, ' ');
+        k.switch_(k.svg, SD[0], SD[1], 4, ' ');
+        k.pc(k.svg, PA[0], PA[1] - 30, null);
+        k.pc(k.svg, PB[0], PB[1] - 30, null);
+        k.pc(k.svg, PC[0], PC[1] - 30, null);
+        k.pc(k.svg, PD[0], PD[1] - 30, null);
+        k.texto(k.svg, PA[0], 352, 'D1', 'i-mono');
+        k.texto(k.svg, PB[0], 352, 'D2', 'i-mono');
+        k.texto(k.svg, PC[0], 352, 'V1', 'i-mono');
+        k.texto(k.svg, PD[0], 352, 'V2', 'i-mono');
+        k.pastilla(k.svg, 92, 40, 'Dirección', { claseTexto: 'i-t i-negrita' });
+        k.texto(k.svg, 92, 82, '172.30.0.0/19', 'i-mono-a');
+        k.pastilla(k.svg, 548, 40, 'Ventas', { claseTexto: 'i-t i-negrita' });
+        k.texto(k.svg, 548, 82, '172.30.32.0/19', 'i-mono-l');
+        k.nombre('para', k.marca(k.svg, R[0] - 70, R[1] + 30, false));
+        k.nombre('ok', k.marca(k.svg, PC[0] + 44, PC[1] - 86, true));
+        k.nombre('mal', k.bocadillo(k.svg, 500, 170, 'V1 · puerta 172.30.0.1'));
+      },
+      pasos: [
+        { texto: 'La empresa del caso: <strong>Dirección</strong> (172.30.0.0/19) y <strong>Ventas</strong> (172.30.32.0/19). En medio, un <strong>router</strong> con una IP en cada subred.' },
+        { texto: 'D1 envía algo a D2. Están en la <strong>misma subred</strong>: va por el switch y el router ni se entera.',
+          luz: ['la', 'lb'], paq: [{ id: 'dd', ruta: [a, bSI, b], chips: ['para D2'], va: true }],
+          registro: { de: 'D1', a: 'D2', msg: 'Paquete', dato: 'misma subred', color: 'azul', capas: ['De D1 a D2', D1 + ' → ' + D2] } },
+        { texto: 'D1 envía a V1, que es de <strong>otra subred</strong>. Se lo da a su <strong>puerta de enlace</strong>: 172.30.0.1, el router.',
+          luz: ['la', 'rl'], paq: [{ id: 'dv', ruta: [a, bSI, rI], chips: [{ t: 'IP → ' + V1, c: 'ambar' }] }],
+          registro: { de: 'D1', a: 'Router', msg: 'Paquete', dato: 'a la puerta de enlace', color: 'azul', capas: ['De D1 al router (.0.1)', D1 + ' → ' + V1] } },
+        { texto: 'El router lo saca por su boca de Ventas (172.30.32.1) y llega a V1.',
+          ver: ['ok'], luz: ['rr', 'rc'], paq: [{ id: 'dv', ruta: [rI, R, rD, bSD, c], va: true }],
+          registro: { de: 'Router', a: 'V1', msg: 'Paquete', dato: 'por la boca de Ventas', color: 'azul', capas: ['Del router (.32.1) a V1', D1 + ' → ' + V1] } },
+        { texto: 'V2 envía un <strong>broadcast</strong> a 172.30.63.255. Llega a todo Ventas, también al router…',
+          luz: ['rd', 'rc', 'rr'],
+          paq: [{ id: 'b1', ruta: [d, bSD, c], chips: [{ t: '.63.255', c: 'ambar' }], color: 'ambar', va: true },
+                { id: 'b2', ruta: [d, bSD, rD], chips: [{ t: '.63.255', c: 'ambar' }], color: 'ambar' }],
+          registro: { de: 'V2', a: 'Todo Ventas', msg: 'Broadcast', dato: 'no cruza el router', color: 'ambar', capas: ['A todos (ff:ff:ff:ff:ff:ff)', V2 + ' → 172.30.63.255'] } },
+        { texto: '…pero el router <strong>no lo pasa</strong> a Dirección. Cada subred es un dominio de difusión.',
+          ver: ['para'], paq: [{ id: 'b2', ruta: [rD, R], cae: true }] },
+        { texto: 'Ahora V1 tiene mal la puerta de enlace: 172.30.0.1, que es de Dirección. <strong>No está en su subred</strong>: no la encuentra y no sale.',
+          ver: ['mal'], luz: ['rc'], registroNuevo: true,
+          paq: [{ id: 'm', ruta: [c, bSD], chips: ['¿172.30.0.1?'], cae: true }],
+          registro: { de: 'V1', a: '172.30.0.1', msg: 'Paquete', dato: 'puerta mal puesta: no sale', color: 'rosa', capas: ['No encuentra su puerta de enlace', V1 + ' → fuera de su subred'] } },
+        { texto: 'La puerta de enlace de Ventas es <strong>172.30.32.1</strong>: siempre en la misma subred que el equipo.',
+          textos: { mal: 'V1 · puerta 172.30.32.1' }, ver: ['mal', 'ok'] }
+      ]
+    });
+  })();
+
+  /* ============================================================
+     cableado-edificio · UT8 S1 (pregunta 2)
+     ============================================================ */
+  (function () {
+    const P1 = [80, 112], P0 = [80, 282], AP = [330, 118], AE = [330, 290], OP = [552, 282];
+    const t1 = [186, 134], t0 = [186, 304];
+    const p1 = [112, 120], p0 = [112, 290], ap = [306, 124], apB = [330, 146], aeT = [330, 214], ae = [356, 292], op = [510, 292];
+    ISO.animacion('cableado-edificio', {
+      titulo: 'De la mesa a la calle: latiguillo, toma, cableado horizontal, armario de planta, vertical, armario del edificio y entrada',
+      msMovimiento: 1400,
+      dibujar(k) {
+        k.cable('lat1', p1, [t1[0] - 8, t1[1]]);
+        k.cable('hor1', [t1[0] + 8, t1[1] - 2], ap);
+        k.cable('lat0', p0, [t0[0] - 8, t0[1]]);
+        k.cable('hor0', [t0[0] + 8, t0[1] - 2], [306, 294]);
+        k.cable('vert', apB, aeT);
+        k.cable('ent', ae, op);
+        k.texto(k.svg, 16, 26, 'Planta 1', 'i-t i-tenue', 'start');
+        k.texto(k.svg, 16, 206, 'Planta baja', 'i-t i-tenue', 'start');
+        window.ANIM.el('line', { x1: 10, y1: 186, x2: 440, y2: 186, class: 'i-cable-ambar' }, k.svg);
+        k.pc(k.svg, P1[0], P1[1], 'PC');
+        k.pc(k.svg, P0[0], P0[1], 'PC');
+        k.caja(k.svg, t1[0], t1[1] + 6, 12, 6, 22);
+        k.caja(k.svg, t0[0], t0[1] + 6, 12, 6, 22);
+        k.servidor(k.svg, AP[0], AP[1], null);
+        k.texto(k.svg, AP[0], 28, 'Armario de planta', 'i-t i-negrita');
+        k.servidor(k.svg, AE[0], AE[1], null);
+        k.texto(k.svg, AE[0] - 40, 350, 'Armario del edificio', 'i-t i-negrita');
+        k.nube(k.svg, OP[0], OP[1], 'Operadora');
+        k.nombre('nLat', k.pastilla(k.svg, 150, 46, 'latiguillo'));
+        k.nombre('nHor', k.pastilla(k.svg, 248, 164, 'horizontal'));
+        k.nombre('nVert', k.pastilla(k.svg, 420, 180, 'vertical'));
+        k.nombre('nEnt', k.pastilla(k.svg, 440, 250, 'entrada'));
+      },
+      pasos: [
+        { texto: 'Un edificio de dos plantas. Sigue el viaje desde el PC de la planta 1 hasta la calle.' },
+        { texto: 'El <strong>latiguillo</strong>: el cable corto que va del ordenador a la toma de la pared.',
+          ver: ['nLat'], luz: ['lat1'], paq: [{ id: 'p', ruta: [p1, t1], chips: ['datos'] }] },
+        { texto: 'El <strong>cableado horizontal</strong>: fijo, por la planta, de la toma al armario de planta.',
+          ver: ['nLat', 'nHor'], luz: ['hor1'], paq: [{ id: 'p', ruta: [t1, ap] }] },
+        { texto: 'El <strong>armario de planta</strong> recoge todos los cables de esa planta.',
+          ver: ['nLat', 'nHor'], paq: [{ id: 'p', ruta: [ap] }] },
+        { texto: 'El <strong>cableado vertical</strong> (troncal) baja al armario del edificio. Suele ser fibra.',
+          ver: ['nLat', 'nHor', 'nVert'], luz: ['vert'], paq: [{ id: 'p', ruta: [apB, aeT] }] },
+        { texto: 'En el <strong>armario del edificio</strong> está el router. Por la <strong>entrada</strong> llega la operadora.',
+          ver: ['nLat', 'nHor', 'nVert', 'nEnt'], luz: ['ent'], paq: [{ id: 'p', ruta: [ae, op], va: true }] },
+        { texto: 'En la planta baja, el <strong>armario del edificio</strong> hace también de armario de planta: el horizontal llega directo a él.',
+          ver: ['nLat', 'nHor', 'nVert', 'nEnt'], luz: ['lat0', 'hor0'], paq: [{ id: 'q', ruta: [p0, t0, [306, 294]], chips: ['datos'], va: true }] },
+        { texto: 'De la mesa a la calle: <strong>latiguillo → toma → horizontal → armario de planta → vertical → armario del edificio → entrada</strong>.',
+          ver: ['nLat', 'nHor', 'nVert', 'nEnt'] }
       ]
     });
   })();

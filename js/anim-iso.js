@@ -34,6 +34,7 @@
      });
    Opcional (17/11/2026, ideas de Protocol Explorer):
      capas: ['Ethernet', 'IP', 'UDP', 'DHCP'],   // nombres de las capas
+     textoCapas: 'por dentro',                  // en vez de «por capas»
      pasos: [ { …,
            camara: [x, y, ancho],     // la cámara se acerca a esa zona
                                       // (alto = ancho × 360 / 640); sin
@@ -341,7 +342,7 @@
           const tecnico = t => /\d|ff:/.test(t);
           const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
           function verCapas(num, r) {
-            zonaCapas.innerHTML = '<p class="anim__capas-titulo">Paquete ' + num + ' por capas (toca otro de la lista para verlo):</p>' +
+            zonaCapas.innerHTML = '<p class="anim__capas-titulo">Paquete ' + num + ' ' + (def.textoCapas || 'por capas') + ' (toca otro de la lista para verlo):</p>' +
               '<div class="anim__barra">' + nombresCapas.map((n, k) =>
                 '<div class="anim__capa anim__capa--' + (k + 1) + '"><b translate="no">' + esc(n) + '</b><span' +
                 (tecnico(r.capas[k] || '') ? ' translate="no"' : '') + '>' + esc(r.capas[k] || '') + '</span></div>').join('') + '</div>';
