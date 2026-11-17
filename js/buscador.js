@@ -237,16 +237,20 @@
 
   /* ---------- Abrir y cerrar ---------- */
 
+  /* Desde el 17/11/2026 la caja es un <dialog> de verdad abierto con
+     showModal(): el navegador lo pone por encima de todo, deja la
+     página de detrás inerte (el Tab ya no se escapa a ella), cierra
+     con Esc y devuelve el foco al cerrar. closedby="any" lo cierra
+     también al pulsar fuera; donde no existe (Safari), lo hace el
+     clic de abajo. Ver guia-web.md, 3. */
   function construir() {
-    caja = document.createElement('div');
+    caja = document.createElement('dialog');
     caja.className = 'buscador';
-    caja.hidden = true;
+    caja.setAttribute('closedby', 'any');
+    caja.setAttribute('aria-label', 'Buscar una sesión');
 
     const panel = document.createElement('div');
     panel.className = 'buscador__panel';
-    panel.setAttribute('role', 'dialog');
-    panel.setAttribute('aria-modal', 'true');
-    panel.setAttribute('aria-label', 'Buscar una sesión');
 
     const fila = document.createElement('div');
     fila.className = 'buscador__campo';
@@ -284,9 +288,14 @@
     document.body.appendChild(caja);
 
     caja.addEventListener('click', ev => {
-      /* Pulsar fuera del panel cierra. */
+      /* Pulsar fuera del panel cierra. El <dialog> ocupa la pantalla
+         entera (ver el CSS), así que fuera del panel es el propio
+         <dialog>: vale con y sin closedby. */
       if (ev.target === caja) cerrar();
     });
+    /* Lo cierre quien lo cierre (Esc, clic fuera, el código), se
+       deja todo como estaba. */
+    caja.addEventListener('close', alCerrar);
     campo.addEventListener('input', buscar);
     campo.addEventListener('keydown', teclasDelCampo);
   }
@@ -322,7 +331,7 @@
 
     focoPrevio = document.activeElement;
     abierto = true;
-    caja.hidden = false;
+    caja.showModal();
     campo.value = '';
     resultados = [];
     pintarResultados();
@@ -339,8 +348,12 @@
 
   function cerrar() {
     if (!abierto) return;
+    caja.close();   /* lanza 'close' → alCerrar */
+  }
+
+  function alCerrar() {
+    if (!abierto) return;
     abierto = false;
-    caja.hidden = true;
     campo.setAttribute('aria-activedescendant', '');
     if (focoPrevio && typeof focoPrevio.focus === 'function') focoPrevio.focus();
   }

@@ -905,7 +905,11 @@
    para todo el sitio: si el JS pone hidden, no se ve. */
 [hidden] { display: none !important; }
 
-html { scroll-behavior: smooth; }
+/* Scroll suave solo si el alumno no ha pedido «reducir movimiento» en
+   su sistema (17/11/2026; antes iba suave siempre). */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 
 body {
   display: grid;
@@ -3278,10 +3282,26 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   color: var(--text-faint);
 }
 
+/* Desde el 17/11/2026 es un <dialog> abierto con showModal(): se
+   quitan los estilos de fábrica (marco, fondo, márgenes, tope de
+   tamaño) y ocupa la pantalla entera, transparente, para que el clic
+   fuera del panel caiga en él. El oscurecido es su ::backdrop.
+   display: flex solo abierto: cerrado, un <dialog> no se ve. */
 .buscador {
   position: fixed;
   inset: 0;
-  z-index: 100;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  color: var(--text);
+  overflow: hidden;
+  /* Que la rueda o el dedo no muevan la página de detrás. */
+  overscroll-behavior: contain;
+}
+.buscador[open] {
   display: flex;
   justify-content: center;
   /* Sin esto el panel se estira hasta abajo (es lo que hace un flex
@@ -3291,7 +3311,12 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
   /* Arriba y no centrado: al escribir crece la lista hacia abajo, y
      un panel centrado se movia entero con cada tecla. */
   padding: 12vh 1rem 1rem;
+  background: transparent;
+}
+.buscador::backdrop {
   background: rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .buscador__panel {
@@ -3328,7 +3353,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 /* La cruz nativa de type=search desentona con el resto. */
 .buscador__input::-webkit-search-cancel-button { display: none; }
 
-.buscador__lista { overflow-y: auto; padding: 0.4rem; }
+.buscador__lista { overflow-y: auto; overscroll-behavior: contain; padding: 0.4rem; }
 
 .buscador__fila {
   display: block;
@@ -3635,7 +3660,7 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 
   /* El buscador ocupa la pantalla: un panel flotante en un movil es
      medio teclado y medio panel. */
-  .buscador { padding: 0; }
+  .buscador[open] { padding: 0; }
   .buscador__panel {
     width: 100%;
     max-height: 100%;
@@ -8646,3 +8671,71 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .mint-colgado { align-items: center; justify-content: center; gap: 8px; padding: 16px; background: var(--mint-barra-inactiva); filter: grayscale(0.6); text-align: center; }
 .mint-colgado__ico { width: 64px; height: 64px; }
 .leccion .mint .mint-colgado__t { font-weight: 700; color: var(--w11-rojo); }
+
+/* ============================================================
+   Modern Web Guidance (17/11/2026)
+   ============================================================
+   Retoques sacados de la guía de Chrome, Edge, Firefox y MDN
+   (github.com/googlechrome/modern-web-guidance). Todo es mejora
+   progresiva: en un navegador que no lo entiende, la web sale como
+   antes. Ver guia-web.md, 4, «Modern Web Guidance». */
+
+/* 1. Títulos sin una palabra suelta en la última línea (balance) y
+   párrafos sin viudas (pretty). balance cuesta: solo en títulos
+   cortos. Los subapartados (h3) no: su cartel es fit-content y
+   balance dejaría hueco dentro del cartel. */
+.card h1,
+.leccion h2,
+.unidad-card__titulo,
+.asignatura-card__titulo,
+.sesion-portada__titulo { text-wrap: balance; }
+.leccion p,
+.leccion li,
+.leccion .diapo__texto { text-wrap: pretty; }
+
+/* 2. Tablas que avisan de que hay más columnas. Una tabla ancha se
+   desplaza de lado dentro de su caja (.leccion table es display:
+   block con overflow-x: auto) y en el móvil, sin barra visible,
+   escondía las últimas columnas sin que se notara (guia-web 7,
+   «Tablas anchas en el móvil»). Ahora el borde por el que sigue la
+   tabla se difumina; al llegar al final, el difuminado desaparece y
+   la última columna se lee entera. Si la tabla cabe, no hay nada.
+   Es una máscara (deja ver el fondo que haya detrás: hoja, tarjeta
+   o cristal), movida por el propio scroll de la tabla, sin JS.
+   Sin soporte (Firefox antiguo), sin difuminado: como antes. */
+@property --tabla-fade-ini {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tabla-fade-fin {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@supports (animation-timeline: scroll()) {
+  .leccion table {
+    --tabla-fade: 2.5rem;
+    mask:
+      linear-gradient(#000, #000) no-clip subtract,
+      linear-gradient(to right, #000, transparent) 0 0 / var(--tabla-fade-ini) 100% no-repeat no-clip,
+      linear-gradient(to right, transparent, #000) 100% 0 / var(--tabla-fade-fin) 100% no-repeat no-clip;
+    animation: tabla-fade-ini linear both, tabla-fade-fin linear both;
+    animation-timeline: scroll(self inline);
+    animation-range: 0 var(--tabla-fade), calc(100% - var(--tabla-fade)) 100%;
+  }
+}
+@keyframes tabla-fade-ini { to { --tabla-fade-ini: var(--tabla-fade); } }
+@keyframes tabla-fade-fin { from { --tabla-fade-fin: var(--tabla-fade); } }
+/* La regla de «reducir movimiento» acorta todas las animaciones a
+   0,001 ms, y esta va con el scroll, no con el reloj: si se acorta,
+   el difuminado no sigue al dedo. Se le devuelve la duración. */
+@media (prefers-reduced-motion: reduce) {
+  .leccion table {
+    animation-duration: auto !important;
+    animation-delay: 0s !important;
+  }
+}
+@media print {
+  .leccion table { mask: none; animation: none; }
+}

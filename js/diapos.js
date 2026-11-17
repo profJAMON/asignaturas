@@ -476,7 +476,9 @@
         campo.removeAttribute('aria-invalid');
         cargarGenerado(v);
         raiz.focus({ preventScroll: true });
-        pista.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        /* Con «reducir movimiento», sin deslizar (17/11/2026). */
+        const suave = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        pista.scrollIntoView({ block: 'nearest', behavior: suave });
       });
     } else {
       preparar();
