@@ -6939,6 +6939,32 @@ html { overflow-y: auto; }
    es un rótulo, no algo que estudiar: sin raya, en el rosa del aviso. */
 .leccion .nota > p:first-child > strong:only-child { color: var(--accent-warm); text-decoration: none; }
 
+/* ---- Tablas (17/11/2026, 20:40, Carles: las cabeceras aún no se veían) ----
+   La fila de cabecera va en el degradado de la asignatura con letra blanca,
+   como la cabecera de la sesión. Dentro de los objetos con aspecto propio
+   (hoja, resumen, laboratorio, simulación, resultado de un ejemplo) se queda
+   la franja gris de .leccion th. La primera columna, si es una etiqueta en
+   negrita, va en negrita normal: el ámbar con raya es para lo del examen y
+   le quitaba protagonismo a la cabecera. */
+.leccion table tr:first-child > th {
+  background: linear-gradient(90deg, var(--asig-1), var(--asig-2));
+  background-attachment: fixed;
+  color: var(--asig-texto);
+  border-bottom: 0;
+}
+.leccion table tr:first-child > th:first-child { border-radius: 8px 0 0 0; }
+.leccion table tr:first-child > th:last-child { border-radius: 0 8px 0 0; }
+.leccion :is(.papel, .actividad, .resumen, .lab, .probador, .salida, .anim) table tr:first-child > th {
+  background: var(--surface-2);
+  color: var(--text);
+  border-bottom: 2px solid var(--text-dim);
+  border-radius: 0;
+}
+.leccion table:not(.rs-tabla) td:first-child > strong:only-child {
+  color: var(--text);
+  text-decoration: none;
+}
+
 /* Pistas y «Antes de seguir»: la misma letra que el texto. */
 .leccion > details > summary,
 .leccion .subseccion > details > summary { font-family: var(--font-body); }
