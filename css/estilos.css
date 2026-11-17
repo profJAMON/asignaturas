@@ -4925,6 +4925,104 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .i-svg .i-zona-l { fill: var(--iso-lima); opacity: 0.16; }
 .i-svg .i-on { opacity: 1; }
 .i-svg .i-brilla { filter: var(--iso-filtro); }
+/* Lista de paquetes y barra de capas (17/11/2026, ideas de Protocol
+   Explorer): debajo de los mandos, solo en las animaciones que las
+   piden (registro en sus pasos). Mismas variables --iso-*. */
+.leccion .anim--iso > .anim__registro {
+  margin: 0.2rem 1rem 1rem;
+  padding: 0.7rem 0.9rem 0.9rem;
+  border: 1px solid var(--iso-borde);
+  border-radius: 12px;
+  background: var(--iso-cristal);
+  color: var(--iso-texto);
+}
+.leccion .anim__registro-titulo,
+.leccion .anim__capas-titulo {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-titulo);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--iso-tenue);
+}
+.leccion .anim__capas-titulo { margin-top: 0.8rem; font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; }
+.leccion .anim__registro table.anim__lista {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  font-size: 0.92rem;
+  background: none;
+}
+.leccion .anim__lista th {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--iso-tenue);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--iso-borde);
+  padding: 0.3rem 0.5rem;
+}
+.leccion .anim__lista td {
+  color: var(--iso-texto);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--iso-borde);
+  padding: 0.15rem 0.5rem;
+}
+.leccion .anim__lista tr.es-elegida td { background: var(--iso-cristal); }
+.leccion .anim__lista-vacia td { color: var(--iso-tenue); padding: 0.5rem; }
+.leccion .anim__ver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  width: 100%;
+  padding: 0 0.3rem;
+  border: 0;
+  background: none;
+  color: var(--iso-texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.leccion .anim__ver:hover { text-decoration: underline; }
+.leccion .anim__ver:focus-visible { outline: 2px solid var(--iso-ambar); outline-offset: -2px; border-radius: 6px; }
+.leccion .anim__ver[aria-pressed="true"] { font-weight: 600; }
+.anim__punto { flex: none; width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--iso-azul); }
+.anim__punto--rosa { background: var(--iso-rosa); }
+.anim__punto--lima { background: var(--iso-lima); }
+.anim__punto--ambar { background: var(--iso-ambar); }
+.leccion .anim__barra { display: flex; border-radius: 8px; overflow: hidden; }
+.leccion .anim__capa {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.45rem 0.6rem;
+  color: var(--iso-tinta);
+  border-right: 2px solid var(--iso-fondo-1);
+}
+.leccion .anim__capa:last-child { border-right: 0; flex-grow: 1.4; }
+.leccion .anim__capa b { display: block; font-family: var(--font-mono); font-size: 0.78rem; }
+.leccion .anim__capa span { display: block; font-size: 0.88rem; line-height: 1.3; overflow-wrap: anywhere; }
+.leccion .anim__capa--1 { background: var(--iso-ambar); }
+.leccion .anim__capa--2 { background: var(--iso-lima); }
+.leccion .anim__capa--3 { background: var(--iso-azul); }
+.leccion .anim__capa--4 { background: var(--iso-texto); }
+@media (max-width: 700px) {
+  .leccion .anim--iso > .anim__registro { margin: 0.2rem 0.5rem 0.7rem; padding: 0.6rem; }
+  .leccion .anim__lista thead { display: none; }
+  .leccion .anim__lista tr { display: grid; grid-template-columns: 2rem 1fr 1fr; border-bottom: 1px solid var(--iso-borde); padding: 0.3rem 0; }
+  .leccion .anim__lista td { border: 0; padding: 0.1rem 0.3rem; }
+  .leccion .anim__lista td:last-child { grid-column: 1 / -1; }
+  .leccion .anim__lista tr.es-elegida { background: var(--iso-cristal); }
+  .leccion .anim__lista tr.es-elegida td { background: none; }
+  .leccion .anim__barra { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--iso-fondo-1); }
+  .leccion .anim__capa { border-right: 0; }
+}
+@media print {
+  .leccion .anim--iso > .anim__registro { display: none; }
+}
 @media (max-width: 700px) {
   .leccion .anim.anim--iso { border-width: 1px; }
   .leccion .anim--iso > .anim__escena { padding: 0.4rem 0.3rem 0; }

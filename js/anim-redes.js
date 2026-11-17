@@ -10,7 +10,8 @@
    mac-ip-saltos    UT1 S6 · la IP no cambia; la MAC, en cada salto.
    nat              UT1 S7 · la IP privada sale como la pública del router.
    subredes-switch  UT1 S9 · mismo switch, dos subredes: hace falta router.
-   dhcp             UT1 S10 · pedir IP y, si nadie contesta, 169.254.
+   dhcp             UT1 S10 · Discover, Offer, Request y Ack (con cámara,
+                    lista de paquetes y capas) y, si nadie contesta, 169.254.
    ping-escalera    UT1 S10 · los cinco peldaños de ping.
    atenuacion       UT3 S1 · a 150 m la señal no se entiende; switch en medio.
    bus, anillo      UT3 S2 · colisión, corte, testigo y doble anillo.
@@ -329,40 +330,67 @@
      dhcp · UT1 S10 (preguntas 8 y 9)
      ============================================================ */
   (function () {
-    const PCp = [112, 222], R = [520, 226];
-    const ida = [[PCp[0] + 40, PCp[1] + 16], [R[0] - 50, R[1] + 16]];
-    const vuelta = [ida[1], ida[0]];
+    /* 17/11/2026: los cuatro mensajes (Discover, Offer, Request, Ack),
+       un segundo equipo que recibe la difusión, cámara, lista de
+       paquetes y barra de capas (ideas de Protocol Explorer). */
+    const PC = [110, 250], OT = [110, 110], SW = [320, 240], R = [530, 226];
+    const pc = [146, 266], ot = [146, 124], sw = [320, 252], rt = [486, 248];
+    const aTodos = [[pc, sw, rt], [pc, sw, ot]];
     const DATOS = ['IP: 192.168.1.34', 'Máscara: 255.255.255.0', 'Puerta: 192.168.1.1', 'DNS: 192.168.1.1'];
     const NADA = ['IP: ?', 'Máscara: ?', 'Puerta: ?', 'DNS: ?'];
     const APIPA = ['IP: 169.254.20.5', 'Máscara: 255.255.0.0', 'Puerta: (vacía)', 'DNS: (vacío)'];
     const filas = v => ({ f0: v[0], f1: v[1], f2: v[2], f3: v[3] });
+    const DIFUSION = ['A todos (ff:ff:ff:ff:ff:ff)', '0.0.0.0 → 255.255.255.255', 'Puerto 68 → 67'];
+    const AL_PC = ['Al PC (a su MAC)', '192.168.1.1 → 192.168.1.34', 'Puerto 67 → 68'];
+    const CARTEL = [336, 0, 304], PCZOOM = [0, 160, 360], ROUTER = [360, 152, 290];
     ISO.animacion('dhcp', {
-      titulo: 'El ordenador pide una IP al servidor DHCP y, si nadie contesta, se pone una 169.254',
-      msMovimiento: 1400,
+      titulo: 'El ordenador pide una IP al servidor DHCP en cuatro mensajes y, si nadie contesta, se pone una 169.254',
+      msMovimiento: 1500,
+      capas: ['Ethernet', 'IP', 'UDP', 'DHCP'],
       dibujar(k) {
-        k.cable('c', [PCp[0] + 30, PCp[1] + 20], [R[0] - 44, R[1] + 20]);
-        k.pc(k.svg, PCp[0], PCp[1] - 6, 'Tu PC');
+        k.cable('c1', [140, 262], [272, 254]);
+        k.cable('c2', [140, 122], [292, 232]);
+        k.cable('c3', [370, 254], [484, 246]);
+        k.pc(k.svg, OT[0], OT[1], 'Otro equipo');
+        k.pc(k.svg, PC[0], PC[1], 'Tu PC');
+        k.switch_(k.svg, SW[0], SW[1], 4);
         k.router(k.svg, R[0], R[1], 'Router (DHCP)');
-        k.cartel(k.svg, 196, 10, 268, 160, 'Configuración del PC');
-        NADA.forEach((t, i) => k.nombre('f' + i, k.texto(k.svg, 214, 72 + i * 28, t, 'i-mono', 'start')));
-        k.nombre('ok', k.marca(k.svg, 462, 14, true));
+        k.nombre('ignora', k.pastilla(k.svg, 236, 64, 'No es para mí'));
+        k.cartel(k.svg, 366, 8, 268, 150, 'Configuración del PC');
+        NADA.forEach((t, i) => k.nombre('f' + i, k.texto(k.svg, 384, 70 + i * 26, t, 'i-mono', 'start')));
+        k.nombre('ok', k.marca(k.svg, 366, 20, true));
+        k.nombre('mal', k.marca(k.svg, 366, 20, false));
         k.nombre('apagado', k.marca(k.svg, R[0] + 52, R[1] - 46, false));
-        k.nombre('mal', k.marca(k.svg, 462, 14, false));
       },
       pasos: [
-        { texto: 'Enciendes el PC. Aún no tiene IP.', textos: filas(NADA) },
-        { texto: 'Pregunta a toda la red: «¿Hay algún servidor <strong>DHCP</strong>?».',
-          luz: ['c'], paq: [{ id: 'q', ruta: ida, chips: ['¿DHCP?'] }] },
-        { texto: 'El router, que hace de servidor DHCP, le ofrece una IP.',
-          luz: ['c'], paq: [{ id: 'o', ruta: vuelta, chips: ['192.168.1.34'], color: 'rosa' }] },
-        { texto: 'El PC la acepta y recibe sus <strong>cuatro datos</strong>: IP, máscara, puerta de enlace y DNS.',
-          ver: ['ok'], textos: filas(DATOS) },
+        { texto: 'Enciendes el PC. Aún no tiene IP: no puede hablar con nadie.',
+          camara: PCZOOM, textos: filas(NADA) },
+        { texto: '1. <strong>Discover</strong>. El PC pregunta a toda la red: «¿Hay algún servidor DHCP?». Le llega también al otro equipo, que no hace caso.',
+          ver: ['ignora'], luz: ['c1', 'c2', 'c3'],
+          paq: [{ id: 'd1', ruta: aTodos[0], chips: ['¿DHCP?'] }, { id: 'd2', ruta: aTodos[1], chips: ['¿DHCP?'] }],
+          registro: { de: 'Tu PC', a: 'Todos', msg: 'Discover', dato: '¿Hay algún DHCP?', color: 'azul', capas: DIFUSION.concat('Discover: ¿hay algún DHCP?') } },
+        { texto: '2. <strong>Offer</strong>. El router, que hace de servidor DHCP, le ofrece una IP: la 192.168.1.34.',
+          luz: ['c3', 'c1'],
+          paq: [{ id: 'o', ruta: [rt, sw, pc], chips: ['Te doy la .1.34'], color: 'rosa' }],
+          registro: { de: 'Router', a: 'Tu PC', msg: 'Offer', dato: 'Te doy la .1.34', color: 'rosa', capas: AL_PC.concat('Offer: te doy la 192.168.1.34') } },
+        { texto: '3. <strong>Request</strong>. El PC contesta a todos: «La quiero». Así, si hubiera otro servidor DHCP, se entera.',
+          ver: ['ignora'], luz: ['c1', 'c2', 'c3'],
+          paq: [{ id: 'r1', ruta: aTodos[0], chips: ['Quiero la .1.34'] }, { id: 'r2', ruta: aTodos[1], chips: ['Quiero la .1.34'] }],
+          registro: { de: 'Tu PC', a: 'Todos', msg: 'Request', dato: 'Quiero la .1.34', color: 'azul', capas: DIFUSION.concat('Request: quiero la 192.168.1.34') } },
+        { texto: '4. <strong>Ack</strong>. El router lo confirma: «Es tuya». Con la IP le manda la máscara, la puerta de enlace y el DNS.',
+          luz: ['c3', 'c1'],
+          paq: [{ id: 'a', ruta: [rt, sw, pc], chips: ['Es tuya + datos'], color: 'rosa' }],
+          registro: { de: 'Router', a: 'Tu PC', msg: 'Ack', dato: 'Es tuya + datos', color: 'rosa', capas: AL_PC.concat('Ack: es tuya, con máscara, puerta y DNS') } },
+        { texto: 'El PC ya tiene sus <strong>cuatro datos</strong>: IP, máscara, puerta de enlace y DNS. Ya puede navegar.',
+          camara: CARTEL, ver: ['ok'], textos: filas(DATOS) },
         { texto: '¿Y si nadie contesta? Por ejemplo, con el router apagado.',
-          ver: ['apagado'], textos: filas(NADA) },
+          camara: ROUTER, ver: ['apagado'], textos: filas(NADA), registroNuevo: true },
         { texto: 'El PC pregunta… y no le llega ninguna respuesta.',
-          ver: ['apagado'], luz: ['c'], paq: [{ id: 'q2', ruta: ida, chips: ['¿DHCP?'], cae: true }] },
+          ver: ['apagado'], luz: ['c1', 'c3'],
+          paq: [{ id: 'd3', ruta: [pc, sw, rt], chips: ['¿DHCP?'], cae: true }],
+          registro: { de: 'Tu PC', a: 'Todos', msg: 'Discover', dato: 'nadie contesta', color: 'azul', capas: DIFUSION.concat('Discover: ¿hay algún DHCP?') } },
         { texto: 'Windows se pone una <strong>169.254.x.x</strong> y sin puerta de enlace: no navega.',
-          ver: ['apagado', 'mal'], textos: filas(APIPA) }
+          camara: CARTEL, ver: ['apagado', 'mal'], textos: filas(APIPA) }
       ]
     });
   })();

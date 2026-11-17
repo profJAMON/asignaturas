@@ -32,6 +32,19 @@
                     va: true } ]      // desaparece al llegar
          }, … ]
      });
+   Opcional (17/11/2026, ideas de Protocol Explorer):
+     capas: ['Ethernet', 'IP', 'UDP', 'DHCP'],   // nombres de las capas
+     pasos: [ { …,
+           camara: [x, y, ancho],     // la cámara se acerca a esa zona
+                                      // (alto = ancho × 360 / 640); sin
+                                      // camara, la escena entera
+           registro: { de, a, msg, color: 'azul' | 'rosa', capas: [4 textos] },
+                                      // el paquete se apunta en la lista
+                                      // de debajo; al tocarlo, sus capas
+           registroNuevo: true        // la lista empieza de cero aquí
+         } ]
+   Con «capas» o algún «registro» sale debajo de los mandos la lista
+   «Paquetes que han pasado por la red» y la barra de capas.
    Lo que no sale en «ver» de un paso no se ve en ese paso (salvo lo
    dibujado sin nombre, que está siempre). Un paquete solo se ve en
    los pasos donde aparece en «paq»; con una ruta de un solo punto se
@@ -303,6 +316,74 @@
           if (t) textosIniciales[n] = t.textContent;
         });
 
+        /* Cámara (17/11/2026): solo si algún paso la pide. */
+        const usaCamara = def.pasos.some(x => x.camara);
+        const TODO = [0, 0, 640, 360];
+        function cam(j) {
+          const c = def.pasos[Math.max(0, j)].camara;
+          return c ? [c[0], c[1], c[2], c[2] * 360 / 640] : TODO;
+        }
+
+        /* Lista de paquetes y barra de capas (17/11/2026). */
+        const usaRegistro = def.pasos.some(x => x.registro);
+        let pintarRegistro = null;
+        const cajaAnim = svg.closest('.anim');
+        if (usaRegistro && cajaAnim) {
+          const nombresCapas = def.capas || ['Ethernet', 'IP', 'Transporte', 'Aplicación'];
+          const reg = document.createElement('div');
+          reg.className = 'anim__registro';
+          reg.innerHTML = '<p class="anim__registro-titulo">Paquetes que han pasado por la red</p>' +
+            '<table class="anim__lista"><thead><tr><th scope="col">Nº</th><th scope="col">De</th><th scope="col">A</th><th scope="col">Mensaje</th></tr></thead><tbody></tbody></table>' +
+            '<div class="anim__capas" aria-live="polite"></div>';
+          cajaAnim.appendChild(reg);
+          const cuerpo = reg.querySelector('tbody');
+          const zonaCapas = reg.querySelector('.anim__capas');
+          const tecnico = t => /\d|ff:/.test(t);
+          const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+          function verCapas(num, r) {
+            zonaCapas.innerHTML = '<p class="anim__capas-titulo">Paquete ' + num + ' por capas (toca otro de la lista para verlo):</p>' +
+              '<div class="anim__barra">' + nombresCapas.map((n, k) =>
+                '<div class="anim__capa anim__capa--' + (k + 1) + '"><b translate="no">' + esc(n) + '</b><span' +
+                (tecnico(r.capas[k] || '') ? ' translate="no"' : '') + '>' + esc(r.capas[k] || '') + '</span></div>').join('') + '</div>';
+          }
+          let ultimo = -1;
+          pintarRegistro = function (i) {
+            if (i === ultimo) return;
+            ultimo = i;
+            let ini = i;
+            while (ini > 0 && !def.pasos[ini].registroNuevo) ini--;
+            const filas = [];
+            for (let j = ini; j <= i; j++) if (def.pasos[j].registro) filas.push(def.pasos[j].registro);
+            cuerpo.innerHTML = '';
+            zonaCapas.innerHTML = '';
+            if (!filas.length) {
+              cuerpo.innerHTML = '<tr class="anim__lista-vacia"><td colspan="4">Todavía no ha pasado ningún paquete.</td></tr>';
+              return;
+            }
+            const botones = [];
+            filas.forEach((r, k) => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = '<td translate="no">' + (k + 1) + '</td><td>' + esc(r.de) + '</td><td>' + esc(r.a) + '</td>' +
+                '<td><button type="button" class="anim__ver" aria-pressed="false"><span class="anim__punto anim__punto--' +
+                (r.color || 'azul') + '" aria-hidden="true"></span><span translate="no">' + esc(r.msg) + '</span>' +
+                (r.dato ? ' · ' + esc(r.dato) : '') + '</button></td>';
+              const b = tr.querySelector('button');
+              botones.push(b);
+              b.addEventListener('click', () => {
+                botones.forEach(x => { x.setAttribute('aria-pressed', 'false'); x.closest('tr').classList.remove('es-elegida'); });
+                b.setAttribute('aria-pressed', 'true');
+                tr.classList.add('es-elegida');
+                verCapas(k + 1, r);
+              });
+              cuerpo.appendChild(tr);
+            });
+            const b = botones[botones.length - 1];
+            b.setAttribute('aria-pressed', 'true');
+            b.closest('tr').classList.add('es-elegida');
+            verCapas(filas.length, filas[filas.length - 1]);
+          };
+        }
+
         function opacidad(n, i, p) {
           const ahora = (def.pasos[i].ver || []).includes(n);
           const antes = i > 0 && (def.pasos[i - 1].ver || []).includes(n);
@@ -357,6 +438,12 @@
             pq.grupo.style.opacity = Math.max(0, op);
             pq.cruz.style.display = q.cae && p > 0.5 ? '' : 'none';
           });
+          /* cámara */
+          if (usaCamara) {
+            const a = cam(i === 0 ? 0 : i - 1), b = cam(i);
+            svg.setAttribute('viewBox', a.map((v, k) => A.mezcla(v, b[k], p).toFixed(1)).join(' '));
+          }
+          if (pintarRegistro) pintarRegistro(i);
           if (def.pintar) def.pintar(i, p, nombres);
         };
       }
