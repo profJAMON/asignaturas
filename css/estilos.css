@@ -1915,7 +1915,17 @@ footer.pie {
   border-bottom: 1px solid var(--border);
   color: var(--text);
 }
-.leccion th { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint); }
+/* Cabeceras de tabla (17/11/2026, Carles: «no se acaban de ver»): antes, mono
+   pequeña en --text-faint. Ahora, texto normal en negrita sobre una franja
+   --surface-2, con raya inferior más gruesa. Solo variables de los dos temas. */
+.leccion th {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface-2);
+  border-bottom: 2px solid var(--text-dim);
+}
 /* Hoja de bits de subredes (Instalaciones UT1 S8): 9 columnas que caben en el móvil */
 .leccion .hoja-bits th, .leccion .hoja-bits td { padding: 0.45rem 0.3rem; text-align: center; }
 .leccion .hoja-bits td:first-child { text-align: left; }
@@ -2253,11 +2263,12 @@ footer.pie {
   border-bottom: 1px solid var(--border);
 }
 .calendario-tabla th {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface-2);
+  border-bottom: 2px solid var(--text-dim);
 }
 .calendario-tabla td.vacio { color: var(--text-faint); }
 .calendario-unidad-titulo td {
@@ -2334,12 +2345,12 @@ footer.pie {
 
 .rejilla__tabla th {
   padding: 0.4rem 0;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: var(--text-faint);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--text-dim);
 }
 
 .rejilla__celda {
@@ -5132,9 +5143,9 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .leccion .anim__lista th {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;
-  color: var(--iso-tenue);
+  color: var(--iso-texto);
   background: none;
   border: 0;
   border-bottom: 1px solid var(--iso-borde);
