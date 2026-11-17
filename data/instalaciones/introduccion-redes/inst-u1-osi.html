@@ -132,10 +132,16 @@
 <tr><td><strong>Garantiza el orden</strong></td><td>Sí</td><td>No: un paquete puede adelantar a otro</td></tr>
 <tr><td><strong>Se usa en</strong></td><td>Web, correo, FTP… casi todo</td><td>Vídeo y audio en directo, juegos, DNS</td></tr>
 </table>
+<p>Primero, el <strong>saludo</strong> de TCP antes de enviar nada. Te ayuda con la <strong>pregunta 8</strong>. Debajo se apunta cada mensaje; con «Secuencia» lo ves como se dibuja en el cuaderno.</p>
+<div class="anim" data-anim="tcp-saludo" aria-label="El saludo de TCP: SYN, SYN-ACK y ACK"></div>
 <p>Mira la animación: te ayuda con la <strong>pregunta 8 y la 9</strong>. Si va muy rápido, pulsa <strong>Pausa</strong> y pasa los pasos con ‹ ›.</p>
 <div class="anim" data-anim="tcp-udp" aria-label="TCP y UDP ante un trozo que se pierde"></div>
 <p>¿Por qué existe UDP si es peor? Porque no siempre lo importante es que llegue todo. En una videollamada, repetir un trozo perdido llegaría tarde y solo serviría para cortar la imagen. Es mejor perderlo y seguir. <strong>UDP no es peor: es otro compromiso.</strong></p>
 
+<p>Ahora tócalo: elige una capa, un protocolo o un aparato y mira dónde está. Con «Ponte a prueba» te salen al azar. Te ayuda con la <strong>pregunta 6</strong>.</p>
+<div class="lab" data-lab="capas-osi" aria-label="Las siete capas, protocolo a protocolo"></div>
+<p>En la capa 7, <strong>HTTP</strong> y <strong>HTTPS</strong> hacen lo mismo: pedir y entregar páginas web. La diferencia es la <strong>S</strong>, de «seguro»: con HTTPS, lo que mandas viaja <strong>cifrado</strong>. Míralo: te ayuda con la <strong>pregunta 10</strong>.</p>
+<div class="anim" data-anim="https-cifrado" aria-label="http y https: lo que ve quien escucha"></div>
 <h3>ARP: la bisagra entre la capa 3 y la 2</h3>
 <p>Un protocolo pequeño que conviene conocer ya, porque explica por qué hacen falta dos direcciones. Cuando tu equipo quiere hablar con la IP 192.168.1.50 de su misma red, necesita saber <strong>a qué tarjeta física</strong> corresponde esa IP. ARP es quien lo pregunta: «¿quién tiene la 192.168.1.50?». El equipo que la tiene contesta con su dirección MAC, y ya se le puede enviar la trama.</p>
 <p>Mira la animación: te ayuda con la <strong>pregunta 13</strong>. Si va muy rápido, pulsa <strong>Pausa</strong> y pasa los pasos con ‹ ›.</p>
@@ -204,6 +210,7 @@
 <li>(V/F) La capa 6, Presentación, tiene muchos protocolos importantes.</li>
 <li>(V/F) Internet se construyó sobre el modelo OSI.</li>
 <li>¿Qué quiere decir un técnico cuando dice «es un problema de capa 8»?</li>
+<li>Abre <a href="https://protocol-explorer-alpha.vercel.app" target="_blank" rel="noopener">Protocol Explorer</a>, una web que enseña cómo viajan los paquetes (si sale en inglés, cambia el idioma arriba a la derecha). Elige <strong>TCP</strong> y pulsa <strong>Reproducir</strong>. ¿Cuántos mensajes tiene el saludo y cómo se llaman? Toca un paquete de la lista: ¿qué capas salen en la barra de colores?</li>
 </ol>
 </div>
 

@@ -5004,6 +5004,103 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 }
 .leccion .anim.anim--iso .diapos__mandos .anim__play:hover:not(:disabled) { background: var(--iso-azul); filter: brightness(1.1); }
 
+/* Laboratorio «capas-osi» (17/11/2026, js/lab-redes.js): la pila de
+   las siete capas a la izquierda y, a la derecha, lo que hace la capa
+   elegida; debajo, protocolos y aparatos que encienden su capa. */
+.osi { display: grid; grid-template-columns: minmax(11rem, 15rem) minmax(0, 1fr); gap: 0.8rem; margin: 0.6rem 0; }
+.osi__pila { display: flex; flex-direction: column; gap: 0.3rem; }
+.lab__boton.osi__capa { display: flex; align-items: center; gap: 0.4rem; text-align: left; width: 100%; min-height: 42px; border-radius: 8px; font-family: var(--font-body); font-size: 0.95rem; }
+.osi__num { display: inline-block; min-width: 1.4em; font-family: var(--font-mono); font-weight: 700; }
+.osi__panel { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 0.8rem 1rem; min-height: 14rem; }
+.leccion .osi__panel p { margin: 0 0 0.5rem; }
+.leccion .osi__titulo { font-family: var(--font-titulo); font-weight: 700; font-size: 1.1rem; color: var(--text); }
+.leccion .osi__aviso { color: var(--accent); font-weight: 600; }
+.leccion .osi__pregunta { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+.leccion .osi__bien { color: var(--ok); font-weight: 700; }
+.leccion .osi__mal { color: var(--error); font-weight: 700; }
+.osi__datos { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.35rem 0.8rem; margin: 0; }
+.osi__datos dt { font-size: 0.8rem; color: var(--text-dim); font-weight: 600; }
+.osi__datos dd { margin: 0; color: var(--text); }
+.osi__chips[hidden], .leccion .lab .lab__nota[hidden] { display: none; }
+.osi__pie { margin-top: 0.6rem; }
+@media (max-width: 700px) {
+  .osi { grid-template-columns: minmax(0, 1fr); }
+  .osi__datos { grid-template-columns: minmax(0, 1fr); }
+  .osi__datos dd { margin-bottom: 0.3rem; }
+}
+
+/* Ficha del paso y vista Secuencia (17/11/2026, ideas de Protocol
+   Explorer): solo en las animaciones con «registro» en sus pasos. */
+.leccion .anim--iso > .anim__escena[hidden],
+.leccion .anim--iso > .anim__secuencia[hidden] { display: none; }
+.leccion .anim--iso > .anim__vistas {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 0.6rem 1rem 0;
+}
+.leccion .anim__vista {
+  min-height: 36px;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--iso-borde);
+  border-radius: 8px;
+  background: var(--iso-cristal);
+  color: var(--iso-texto);
+  font: 600 0.85rem var(--font-body);
+  cursor: pointer;
+}
+.leccion .anim__vista[aria-pressed="true"] { background: var(--iso-azul); border-color: var(--iso-azul); color: var(--iso-tinta); }
+.leccion .anim__vista:focus-visible { outline: 2px solid var(--iso-ambar); outline-offset: 2px; }
+.leccion .anim--iso > .anim__secuencia { padding: 0.6rem 1rem 0; overflow-x: auto; }
+.anim__secuencia svg { display: block; width: 100%; max-width: 48rem; height: auto; margin: 0 auto; }
+.anim__secuencia text { font-family: var(--font-body); }
+.anim__secuencia .sq-vida { stroke: var(--iso-trazo); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: 0.6; }
+.anim__secuencia .sq-caja { fill: var(--iso-cara-sup); stroke: var(--iso-trazo); stroke-width: 1.4; }
+.anim__secuencia .sq-nombre { fill: var(--iso-texto); font-weight: 700; font-size: 14px; }
+.anim__secuencia .sq-flecha { stroke: var(--sq); stroke-width: 2.5; fill: none; }
+.anim__secuencia .sq-punta { fill: var(--sq); }
+.anim__secuencia .sq-msg { fill: var(--iso-texto); font-size: 13px; font-weight: 600; }
+.anim__secuencia .sq-num { fill: var(--iso-tenue); font-family: var(--font-mono); font-size: 12px; }
+.anim__secuencia .sq-azul { --sq: var(--iso-azul); }
+.anim__secuencia .sq-rosa { --sq: var(--iso-rosa); }
+.anim__secuencia .sq-lima { --sq: var(--iso-lima); }
+.anim__secuencia .sq-ambar { --sq: var(--iso-ambar); }
+.anim__secuencia .sq-actual .sq-flecha { stroke-width: 4; }
+.anim__secuencia .sq-actual .sq-msg { fill: var(--iso-ambar); }
+.leccion .anim__secuencia-vacia { margin: 0.3rem 0 0; text-align: center; color: var(--iso-tenue); }
+.leccion .anim--iso > .anim__ficha {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.3rem 0.5rem;
+  min-height: 2.1rem;
+  margin: 0.3rem auto 0;
+  padding: 0 1rem;
+  max-width: 44rem;
+  font-size: 0.85rem;
+  color: var(--iso-texto);
+}
+.leccion .anim__ficha > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--iso-borde);
+  border-radius: 999px;
+  background: var(--iso-cristal);
+}
+.leccion .anim__ficha b { font-family: var(--font-mono); font-size: 0.72rem; color: var(--iso-tenue); font-weight: 600; }
+@media (max-width: 700px) {
+  .leccion .anim--iso > .anim__vistas { padding: 0.5rem 0.5rem 0; }
+  .leccion .anim--iso > .anim__secuencia { padding: 0.5rem 0.3rem 0; }
+  .anim__secuencia .sq-nombre { font-size: 18px; }
+  .anim__secuencia .sq-msg { font-size: 18px; }
+  .anim__secuencia .sq-num { font-size: 16px; }
+}
+@media print {
+  .leccion .anim--iso > .anim__vistas, .leccion .anim--iso > .anim__secuencia { display: none; }
+}
+
 /* Lista de paquetes y barra de capas (17/11/2026, ideas de Protocol
    Explorer): debajo de los mandos, solo en las animaciones que las
    piden (registro en sus pasos). Mismas variables --iso-*. */

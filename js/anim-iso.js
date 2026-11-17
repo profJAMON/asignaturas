@@ -44,8 +44,11 @@
                                       // de debajo; al tocarlo, sus capas
            registroNuevo: true        // la lista empieza de cero aquí
          } ]
-   Con «capas» o algún «registro» sale debajo de los mandos la lista
-   «Paquetes que han pasado por la red» y la barra de capas.
+   Con algún «registro» sale debajo de los mandos la lista «Paquetes
+   que han pasado por la red» y la barra de capas; debajo de la frase,
+   la ficha del paso (envía, a, mensaje); y encima del dibujo, los
+   botones Red / Secuencia (la vista Secuencia dibuja los mismos
+   mensajes como columnas y flechas, como en un examen en papel).
    Lo que no sale en «ver» de un paso no se ve en ese paso (salvo lo
    dibujado sin nombre, que está siempre). Un paquete solo se ve en
    los pasos donde aparece en «paq»; con una ruta de un solo punto se
@@ -337,6 +340,91 @@
             '<table class="anim__lista"><thead><tr><th scope="col">Nº</th><th scope="col">De</th><th scope="col">A</th><th scope="col">Mensaje</th></tr></thead><tbody></tbody></table>' +
             '<div class="anim__capas" aria-live="polite"></div>';
           cajaAnim.appendChild(reg);
+
+          /* Ficha del paso (17/11/2026): quién envía, a quién y qué,
+             debajo de la frase, sacada del registro del paso. */
+          const ficha = document.createElement('p');
+          ficha.className = 'anim__ficha';
+          const frase = cajaAnim.querySelector('.anim__texto');
+          if (frase) frase.after(ficha);
+
+          /* Vista Secuencia (17/11/2026): los mismos mensajes como
+             columnas (uno por aparato) y flechas que bajan en orden. */
+          const escenaDiv = svg.parentNode;
+          const vistas = document.createElement('div');
+          vistas.className = 'anim__vistas';
+          vistas.setAttribute('role', 'group');
+          vistas.setAttribute('aria-label', 'Cómo verlo');
+          const bRed = document.createElement('button');
+          const bSeq = document.createElement('button');
+          [[bRed, 'Red'], [bSeq, 'Secuencia']].forEach(([b, t]) => {
+            b.type = 'button'; b.className = 'anim__vista'; b.textContent = t; vistas.appendChild(b);
+          });
+          escenaDiv.before(vistas);
+          const seq = document.createElement('div');
+          seq.className = 'anim__secuencia';
+          seq.hidden = true;
+          escenaDiv.after(seq);
+          function vista(secuencia) {
+            bRed.setAttribute('aria-pressed', String(!secuencia));
+            bSeq.setAttribute('aria-pressed', String(secuencia));
+            escenaDiv.hidden = secuencia;
+            seq.hidden = !secuencia;
+          }
+          bRed.addEventListener('click', () => vista(false));
+          bSeq.addEventListener('click', () => vista(true));
+          vista(false);
+          const NSs = 'http://www.w3.org/2000/svg';
+          function pintarSecuencia(filas, todas) {
+            const cols = [];
+            todas.forEach(r => [r.de, r.a].forEach(n => { if (!cols.includes(n)) cols.push(n); }));
+            const CW = 150, X0 = 75, Y0 = 58, FH = 50;
+            const ancho = Math.max(2, cols.length) * CW;
+            const alto = Y0 + Math.max(1, todas.length) * FH + 16;
+            const x = n => X0 + cols.indexOf(n) * CW;
+            const e = (t, a, padre, txt) => { const n = document.createElementNS(NSs, t); Object.keys(a).forEach(k => n.setAttribute(k, a[k])); if (txt != null) n.textContent = txt; padre.appendChild(n); return n; };
+            const sv = document.createElementNS(NSs, 'svg');
+            sv.setAttribute('viewBox', '0 0 ' + ancho + ' ' + alto);
+            sv.setAttribute('role', 'img');
+            sv.setAttribute('translate', 'no');
+            sv.style.maxWidth = Math.round(ancho * 1.15) + 'px';
+            sv.style.minWidth = Math.min(ancho, cols.length * 105) + 'px';
+            sv.setAttribute('aria-label', filas.length
+              ? filas.map((r, k) => (k + 1) + ': ' + r.de + ' a ' + r.a + ', ' + r.msg).join('. ')
+              : 'Todavía no ha pasado ningún paquete');
+            cols.forEach(n => {
+              e('line', { x1: x(n), y1: Y0 - 18, x2: x(n), y2: alto - 6, class: 'sq-vida' }, sv);
+              const w = Math.min(CW - 10, String(n).length * 8.6 + 22);
+              e('rect', { x: x(n) - w / 2, y: 6, width: w, height: 30, rx: 8, class: 'sq-caja' }, sv);
+              e('text', { x: x(n), y: 26, 'text-anchor': 'middle', class: 'sq-nombre' }, sv, n);
+            });
+            filas.forEach((r, k) => {
+              const y = Y0 + k * FH + 26;
+              const a = x(r.de), b = x(r.a);
+              const c = 'sq-' + (r.color || 'azul') + (k === filas.length - 1 ? ' sq-actual' : '');
+              const g = e('g', { class: c }, sv);
+              if (a === b) {
+                e('path', { d: `M${a},${y - 12} h34 v18 h-28`, class: 'sq-flecha' }, g);
+                e('path', { d: `M${a + 6},${y + 6} l7,-4 v8 z`, class: 'sq-punta' }, g);
+                e('text', { x: a + 42, y: y - 2, class: 'sq-msg' }, g, r.msg + (r.dato ? ' · ' + r.dato : ''));
+              } else {
+                const dir = b > a ? 1 : -1;
+                e('line', { x1: a, y1: y, x2: b - dir * 8, y2: y, class: 'sq-flecha' }, g);
+                e('path', { d: `M${b},${y} l${-dir * 10},-6 v12 z`, class: 'sq-punta' }, g);
+                const t = r.msg + (r.dato ? ' · ' + r.dato : '');
+                e('text', { x: (a + b) / 2, y: y - 8, 'text-anchor': 'middle', class: 'sq-msg' }, g, t);
+              }
+              e('text', { x: 8, y: y + 5, class: 'sq-num' }, g, String(k + 1));
+            });
+            seq.innerHTML = '';
+            seq.appendChild(sv);
+            if (!filas.length) {
+              const p0 = document.createElement('p');
+              p0.className = 'anim__secuencia-vacia';
+              p0.textContent = 'Todavía no ha pasado ningún paquete. Pasa los pasos con ‹ ›.';
+              seq.appendChild(p0);
+            }
+          }
           const cuerpo = reg.querySelector('tbody');
           const zonaCapas = reg.querySelector('.anim__capas');
           const tecnico = t => /\d|ff:/.test(t);
@@ -353,8 +441,15 @@
             ultimo = i;
             let ini = i;
             while (ini > 0 && !def.pasos[ini].registroNuevo) ini--;
-            const filas = [];
-            for (let j = ini; j <= i; j++) if (def.pasos[j].registro) filas.push(def.pasos[j].registro);
+            let fin = i;
+            while (fin < def.pasos.length - 1 && !def.pasos[fin + 1].registroNuevo) fin++;
+            const filas = [], todas = [];
+            for (let j = ini; j <= fin; j++) if (def.pasos[j].registro) { todas.push(def.pasos[j].registro); if (j <= i) filas.push(def.pasos[j].registro); }
+            pintarSecuencia(filas, todas);
+            const rp = def.pasos[i].registro;
+            ficha.innerHTML = rp
+              ? '<span><b>Envía</b> ' + esc(rp.de) + '</span><span><b>A</b> ' + esc(rp.a) + '</span><span><b>Mensaje</b> <span class="anim__punto anim__punto--' + (rp.color || 'azul') + '" aria-hidden="true"></span>' + esc(rp.msg) + (rp.dato ? ' · ' + esc(rp.dato) : '') + '</span>'
+              : '';
             cuerpo.innerHTML = '';
             zonaCapas.innerHTML = '';
             if (!filas.length) {

@@ -12,6 +12,10 @@
                     con WPA2/WPA3 solo ve datos cifrados; WEP se rompe.
    wifi-poe         UT5 S7 · por el mismo cable van los datos y la
                     corriente (PoE); sin switch PoE, el AP no enciende.
+   wifi-conexion    UT5 S7 · el SSID, la clave que no se envía, el
+                    cifrado y la IP por DHCP (17/11/2026).
+   wifi-portal      UT5 S6 · wifi público: portal cautivo y red abierta
+                    (17/11/2026).
    wifi-repetidor   UT5 S8 · repetidor donde la señal ya es débil
                     (mal) o a mitad de camino (bien); repite por turnos
                     y la velocidad baja.
@@ -233,4 +237,94 @@
       ]
     });
   })();
+  /* ============================================================
+     wifi-conexion · UT5 S7 (pregunta 4)
+     ============================================================ */
+  (function () {
+    const MV = [100, 252], AP = [300, 236], RT = [520, 236];
+    const mv = [136, 258], ap = [300, 244], rt = [520, 244];
+    ISO.animacion('wifi-conexion', {
+      titulo: 'El móvil se conecta al wifi: ve el SSID, demuestra que sabe la clave sin enviarla, hablan cifrado y pide una IP por DHCP',
+      msMovimiento: 1500,
+      capas: ['Wifi (MAC)', 'Lo que lleva'],
+      textoCapas: 'por dentro',
+      dibujar(k) {
+        k.cable('aire', [136, 262], [256, 254]);
+        k.cable('c', [346, 252], [474, 252]);
+        k.pc(k.svg, MV[0], MV[1], 'Móvil');
+        k.router(k.svg, AP[0], AP[1], 'Punto de acceso');
+        k.router(k.svg, RT[0], RT[1], 'Router (DHCP)');
+        k.nombre('ssid', k.pastilla(k.svg, 300, 140, 'SSID: Casa-Pau', { claseTexto: 'i-t i-negrita' }));
+        k.nombre('cifrado', k.pastilla(k.svg, 300, 92, 'Cifrado WPA3', { claseTexto: 'i-t i-negrita' }));
+        k.nombre('ip', k.pastilla(k.svg, 110, 150, 'IP: 192.168.1.40'));
+        k.nombre('ok', k.marca(k.svg, MV[0] + 52, MV[1] - 62, true));
+      },
+      pasos: [
+        { texto: 'Abres el wifi del móvil. Todavía no está conectado a ninguna red.' },
+        { texto: 'El punto de acceso anuncia su nombre, el <strong>SSID</strong>, varias veces por segundo. Por eso sale en tu lista.',
+          ver: ['ssid'], luz: ['aire'], paq: [{ id: 's', ruta: [ap, mv], chips: ['Soy Casa-Pau'], color: 'rosa' }],
+          registro: { de: 'Punto de acceso', a: 'Todos', msg: 'Anuncio', dato: 'SSID Casa-Pau', color: 'rosa', capas: ['A todos (ff:ff:ff:ff:ff:ff)', 'Me llamo Casa-Pau'] } },
+        { texto: 'Eliges Casa-Pau y escribes la contraseña. El móvil <strong>no la envía</strong>: demuestra que la sabe.',
+          ver: ['ssid'], luz: ['aire'], paq: [{ id: 'p', ruta: [mv, ap], chips: ['Sé la clave'] }],
+          registro: { de: 'Móvil', a: 'Punto de acceso', msg: 'Prueba', dato: 'sé la clave', color: 'azul', capas: ['Móvil → punto de acceso', 'Prueba de que sabe la clave (la clave no viaja)'] } },
+        { texto: 'El punto de acceso lo comprueba: es buena. Desde ahora hablan <strong>cifrado</strong> (WPA2 o WPA3).',
+          ver: ['ssid', 'cifrado'], luz: ['aire'], paq: [{ id: 'k', ruta: [ap, mv], chips: ['Clave correcta'], color: 'rosa' }],
+          registro: { de: 'Punto de acceso', a: 'Móvil', msg: 'Respuesta', dato: 'clave correcta', color: 'rosa', capas: ['Punto de acceso → móvil', 'Clave correcta: ya hablamos cifrado'] } },
+        { texto: 'Ahora el móvil pide una IP por <strong>DHCP</strong>, como un ordenador con cable.',
+          ver: ['ssid', 'cifrado'], luz: ['aire', 'c'], paq: [{ id: 'd', ruta: [mv, ap, rt], chips: ['¿DHCP?'] }],
+          registro: { de: 'Móvil', a: 'Todos', msg: 'Discover', dato: '¿me das una IP?', color: 'azul', capas: ['A todos (cifrado)', 'DHCP: ¿hay algún servidor DHCP?'] } },
+        { texto: 'El router le da su IP y sus datos. El móvil ya navega.',
+          ver: ['ssid', 'cifrado', 'ip', 'ok'], luz: ['c', 'aire'], paq: [{ id: 'r', ruta: [rt, ap, mv], chips: ['192.168.1.40'], color: 'rosa' }],
+          registro: { de: 'Router', a: 'Móvil', msg: 'Ack', dato: 'IP 192.168.1.40', color: 'rosa', capas: ['Router → móvil (cifrado)', 'DHCP: tu IP es 192.168.1.40'] } }
+      ]
+    });
+  })();
+
+  /* ============================================================
+     wifi-portal · UT5 S6 (pregunta 11)
+     ============================================================ */
+  (function () {
+    const MV = [100, 252], RT = [300, 240], N = [520, 140], ES = [520, 300];
+    const mv = [136, 258], rt = [300, 248], nb = [500, 150];
+    const escucha = [[196, 262], [230, 326], [478, 326], [496, 306]];
+    ISO.animacion('wifi-portal', {
+      titulo: 'Wifi gratis de una estación: el portal cautivo te pide aceptar las condiciones y, como la red es abierta, quien esté cerca puede escuchar',
+      msMovimiento: 1500,
+      capas: ['Dirección', 'Lo que lleva'],
+      textoCapas: 'por dentro',
+      dibujar(k) {
+        k.cable('aire', [136, 262], [256, 258]);
+        k.cable('c', [340, 236], [470, 158], [380, 190]);
+        window.ANIM.el('path', { d: 'M196,262 L230,326 L478,326 L496,306', class: 'i-cable-ambar', fill: 'none' }, k.svg);
+        k.pc(k.svg, MV[0], MV[1], 'Móvil');
+        k.router(k.svg, RT[0], RT[1], 'Wifi de la estación');
+        k.nube(k.svg, N[0], N[1]);
+        k.pc(k.svg, ES[0], ES[1] - 14, 'Alguien cerca');
+        k.nombre('abierta', k.pastilla(k.svg, 300, 150, 'Red abierta', { claseTexto: 'i-t i-negrita' }));
+        const pg = k.nombre('portal', window.ANIM.el('g', {}, k.svg));
+        k.cartel(pg, 16, 10, 250, 92, 'Página del wifi');
+        k.texto(pg, 141, 76, 'Acepta las condiciones', 'i-t');
+        k.nombre('copia', k.bocadillo(k.svg, 470, 222, 'Lo copio todo', [506, 256]));
+        k.nombre('ok', k.marca(k.svg, MV[0] + 52, MV[1] - 62, true));
+      },
+      pasos: [
+        { texto: 'El wifi gratis de una estación: <strong>abierto</strong>, sin contraseña. Te conectas.',
+          ver: ['abierta'] },
+        { texto: 'Abres una web. El router no te deja salir todavía: primero, su página.',
+          ver: ['abierta'], luz: ['aire'], paq: [{ id: 'q', ruta: [mv, rt], chips: ['Quiero google.es'] }],
+          registro: { de: 'Móvil', a: 'Wifi de la estación', msg: 'Petición', dato: 'quiero google.es', color: 'azul', capas: ['Móvil → google.es', 'Quiero la página'] } },
+        { texto: 'Te enseña su página, el <strong>portal cautivo</strong>: aceptas las condiciones o pones tu correo.',
+          ver: ['abierta', 'portal'], luz: ['aire'], paq: [{ id: 'r', ruta: [rt, mv], chips: ['Antes, mi página'], color: 'rosa' }],
+          registro: { de: 'Wifi de la estación', a: 'Móvil', msg: 'Portal', dato: 'acepta las condiciones', color: 'rosa', capas: ['Wifi de la estación → móvil', 'Su página: acepta las condiciones'] } },
+        { texto: 'Ahora sí sales a Internet.',
+          ver: ['abierta'], luz: ['aire', 'c'], paq: [{ id: 'w', ruta: [mv, rt, nb], chips: ['google.es'] }],
+          registro: { de: 'Móvil', a: 'Internet', msg: 'Petición', dato: 'google.es', color: 'azul', capas: ['Móvil → google.es', 'Quiero la página'] } },
+        { texto: 'Pero la red sigue <strong>abierta</strong>: quien esté cerca puede copiar todo lo que no vaya cifrado.',
+          ver: ['abierta', 'copia'], paq: [{ id: 'e', ruta: escucha, chips: ['Lo que envías'], color: 'rosa' }] },
+        { texto: 'En un wifi público: solo webs con <strong>HTTPS</strong>, nada de banco ni compras y, al irte, «olvidar esta red».',
+          ver: ['abierta', 'ok'] }
+      ]
+    });
+  })();
+
 })();

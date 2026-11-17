@@ -140,7 +140,7 @@
                       capas: ['De tu casa al DNS', '¿Qué IP tiene bloquecraft.es?'] } },
         { texto: '2. El DNS lo busca en su lista y <strong>contesta</strong>: 91.45.7.33.',
           ver: ['lista'], luz: ['c3', 'c2', 'c1'],
-          paq: [{ id: 'r', ruta: vuelta, chips: ['91.45.7.33'], color: 'rosa', va: true }],
+          paq: [{ id: 'r', ruta: vuelta, chips: ['91.45.7.33'], color: 'rosa' }],
           registro: { de: 'DNS', a: 'Tu ordenador', msg: 'Respuesta', dato: '91.45.7.33', color: 'rosa',
                       capas: ['Del DNS a tu casa', 'bloquecraft.es es 91.45.7.33'] } },
         { texto: '3. Ahora sí: el navegador, el <strong>cliente</strong>, pide la página a 91.45.7.33.',
@@ -150,7 +150,7 @@
                       capas: ['De tu casa a 91.45.7.33', 'Quiero la página principal'] } },
         { texto: '4. El <strong>servidor</strong> le envía la página.',
           luz: ['c4', 'c2', 'c1'],
-          paq: [{ id: 'w', ruta: vueltaWeb, chips: ['La página'], color: 'rosa', va: true }],
+          paq: [{ id: 'w', ruta: vueltaWeb, chips: ['La página'], color: 'rosa' }],
           registro: { de: '91.45.7.33', a: 'Tu ordenador', msg: 'Respuesta', dato: 'la página', color: 'rosa',
                       capas: ['De 91.45.7.33 a tu casa', 'El texto, las imágenes…'] } },
         { texto: 'La página sale en tu pantalla. <strong>Cliente pide, servidor responde.</strong>',
@@ -164,7 +164,7 @@
                       capas: ['De tu casa al DNS', '¿Qué IP tiene esta-web-no-existe.es?'] } },
         { texto: 'El DNS no lo encuentra: «<strong>no existe</strong>». Sin IP, el navegador no sabe a quién pedir la página y sale un error.',
           ver: ['escribe', 'noexiste', 'mal'], luz: ['c3', 'c2', 'c1'],
-          paq: [{ id: 'r2', ruta: vuelta, chips: ['No existe'], color: 'rosa', va: true }],
+          paq: [{ id: 'r2', ruta: vuelta, chips: ['No existe'], color: 'rosa' }],
           registro: { de: 'DNS', a: 'Tu ordenador', msg: 'Respuesta', dato: 'no existe', color: 'rosa',
                       capas: ['Del DNS a tu casa', 'Ese nombre no está en la lista'] } }
       ]
@@ -211,7 +211,7 @@
           ver: ['apagado'], textos: { buzon: '1 correo nuevo' } },
         { texto: '4. Ana enciende el ordenador y abre su correo: se lo <strong>descarga</strong> de su buzón.',
           luz: ['c3'], textos: { buzon: '1 correo nuevo' },
-          paq: [{ id: 'd', ruta: [ies2, ana], chips: ['Tu correo'], color: 'rosa', va: true }],
+          paq: [{ id: 'd', ruta: [ies2, ana], chips: ['Tu correo'], color: 'rosa' }],
           registro: { de: 'iesramonllull.net', a: 'Ana', msg: 'Descarga', dato: 'tu correo', color: 'rosa', capas: CORREO } },
         { texto: 'Por eso puedes escribir a alguien con el ordenador apagado: el correo le <strong>espera en su buzón</strong>.',
           ver: ['ok'], textos: { buzon: '(leído)' } }
@@ -262,7 +262,7 @@
           registro: { de: 'Visitante', a: 'DNS', msg: 'Pregunta', dato: '¿IP de ' + DIR + '?', color: 'azul',
                       capas: ['Visitante → DNS', '¿Qué IP tiene ' + DIR + '?'] } },
         { texto: 'El DNS contesta con la IP de un servidor de Cloudflare.',
-          ver: ['publicada'], luz: ['c3'], paq: [{ id: 'r', ruta: [dn, vi], chips: ['104.21.35.12'], color: 'rosa', va: true }],
+          ver: ['publicada'], luz: ['c3'], paq: [{ id: 'r', ruta: [dn, vi], chips: ['104.21.35.12'], color: 'rosa' }],
           registro: { de: 'DNS', a: 'Visitante', msg: 'Respuesta', dato: '104.21.35.12', color: 'rosa',
                       capas: ['DNS → visitante', DIR + ' es 104.21.35.12'] } },
         { texto: '4. Con la IP, el navegador <strong>pide los archivos</strong> a Cloudflare.',
@@ -270,7 +270,7 @@
           registro: { de: 'Visitante', a: 'Cloudflare', msg: 'Petición', dato: 'quiero index.html', color: 'azul',
                       capas: ['Visitante → 104.21.35.12', 'Quiero index.html'] } },
         { texto: '5. Cloudflare se los envía y el navegador <strong>dibuja la página</strong>. Esto pasa cada vez que alguien la abre.',
-          ver: ['publicada', 'ok'], luz: ['c4'], paq: [{ id: 'w', ruta: [cf2, vi2], chips: ['HTML, CSS, JS'], color: 'rosa', va: true }],
+          ver: ['publicada', 'ok'], luz: ['c4'], paq: [{ id: 'w', ruta: [cf2, vi2], chips: ['HTML, CSS, JS'], color: 'rosa' }],
           registro: { de: 'Cloudflare', a: 'Visitante', msg: 'Respuesta', dato: 'HTML, CSS, JS e imágenes', color: 'rosa',
                       capas: ['104.21.35.12 → visitante', 'index.html, estilos.css, imágenes…'] } }
       ]

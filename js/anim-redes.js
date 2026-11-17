@@ -25,6 +25,10 @@
    subredes-empresa UT7 S7 · Dirección y Ventas: router, broadcast y
                     puerta de enlace mal puesta (17/11/2026).
    cableado-edificio UT8 S1 · de la mesa a la calle (17/11/2026).
+   tcp-saludo       UT1 S5 · SYN, SYN-ACK, ACK, datos y confirmación;
+                    UDP no saluda (17/11/2026).
+   https-cifrado    UT1 S5 y Operaciones U2 S4 · http se lee; https
+                    enseña el certificado y cifra (17/11/2026).
    ============================================================ */
 
 (function () {
@@ -1035,6 +1039,103 @@
           ver: ['nLat', 'nHor', 'nVert', 'nEnt'], luz: ['lat0', 'hor0'], paq: [{ id: 'q', ruta: [p0, t0, [306, 294]], chips: ['datos'], va: true }] },
         { texto: 'De la mesa a la calle: <strong>latiguillo → toma → horizontal → armario de planta → vertical → armario del edificio → entrada</strong>.',
           ver: ['nLat', 'nHor', 'nVert', 'nEnt'] }
+      ]
+    });
+  })();
+
+  /* ============================================================
+     tcp-saludo · UT1 S5 (pregunta 8)
+     ============================================================ */
+  (function () {
+    const A = [130, 222], B = [510, 222];
+    const a = [176, 234], b = [478, 234];
+    ISO.animacion('tcp-saludo', {
+      titulo: 'TCP saluda antes de enviar (SYN, SYN-ACK, ACK) y confirma lo que llega; UDP envía sin saludar',
+      msMovimiento: 1400,
+      capas: ['IP', 'Transporte', 'Datos'],
+      dibujar(k) {
+        k.cable('c', [172, 240], [482, 240]);
+        k.pc(k.svg, A[0], A[1], 'A');
+        k.servidor(k.svg, B[0], B[1], 'B');
+        k.nombre('estado', k.pastilla(k.svg, 320, 60, 'Sin conexión', { claseTexto: 'i-t i-negrita' }));
+        k.nombre('ok', k.marca(k.svg, 320, 112, true));
+      },
+      pasos: [
+        { texto: 'Con <strong>TCP</strong>, antes de enviar nada, A y B se saludan: así A sabe que B está y escucha.' },
+        { texto: '1. A: «¿Hablamos?». Es el <strong>SYN</strong>.',
+          luz: ['c'], paq: [{ id: 's1', ruta: [a, b], chips: ['SYN'] }],
+          registro: { de: 'A', a: 'B', msg: 'SYN', dato: '¿hablamos?', color: 'azul', capas: ['A → B', 'TCP: SYN', '(sin datos)'] } },
+        { texto: '2. B: «Sí, hablamos». Es el <strong>SYN-ACK</strong>.',
+          luz: ['c'], paq: [{ id: 's2', ruta: [b, a], chips: ['SYN-ACK'], color: 'rosa' }],
+          registro: { de: 'B', a: 'A', msg: 'SYN-ACK', dato: 'sí, hablamos', color: 'rosa', capas: ['B → A', 'TCP: SYN-ACK', '(sin datos)'] } },
+        { texto: '3. A: «Recibido». Es el <strong>ACK</strong>. Ya están conectados.',
+          luz: ['c'], textos: { estado: 'Conectados' }, ver: ['ok'],
+          paq: [{ id: 's3', ruta: [a, b], chips: ['ACK'] }],
+          registro: { de: 'A', a: 'B', msg: 'ACK', dato: 'recibido', color: 'azul', capas: ['A → B', 'TCP: ACK', '(sin datos)'] } },
+        { texto: 'Ahora sí van los datos, numerados.',
+          luz: ['c'], textos: { estado: 'Conectados' },
+          paq: [{ id: 'd', ruta: [a, b], chips: ['trozo 1'] }],
+          registro: { de: 'A', a: 'B', msg: 'Datos', dato: 'trozo 1', color: 'azul', capas: ['A → B', 'TCP: trozo 1', 'La página que pide'] } },
+        { texto: 'B <strong>confirma</strong> cada trozo que le llega. Si uno no se confirma, A lo vuelve a enviar.',
+          luz: ['c'], textos: { estado: 'Conectados' },
+          paq: [{ id: 'k', ruta: [b, a], chips: ['ACK del 1'], color: 'rosa' }],
+          registro: { de: 'B', a: 'A', msg: 'ACK', dato: 'me llegó el 1', color: 'rosa', capas: ['B → A', 'TCP: ACK del trozo 1', '(sin datos)'] } },
+        { texto: '<strong>UDP</strong> no saluda ni confirma: envía y ya. Es más rápido, pero no sabe si ha llegado.',
+          luz: ['c'], textos: { estado: 'UDP: sin saludo' }, registroNuevo: true,
+          paq: [{ id: 'u', ruta: [a, b], chips: ['datos'], color: 'lima' }],
+          registro: { de: 'A', a: 'B', msg: 'UDP', dato: 'datos, sin saludo', color: 'lima', capas: ['A → B', 'UDP', 'Vídeo en directo'] } }
+      ]
+    });
+  })();
+
+  /* ============================================================
+     https-cifrado · UT1 S5 (pregunta 10) y Operaciones U2 S4 (pregunta 3)
+     ============================================================ */
+  (function () {
+    const TU = [90, 250], RT = [250, 250], N = [400, 165], SV = [555, 250], ES = [110, 98];
+    const tu = [124, 258], rt = [250, 258], nb = [400, 172], sv = [528, 256];
+    const ida = [tu, rt, nb, sv], vuelta = [sv, nb, rt, tu];
+    const espia = [[180, 262], [146, 118]];
+    ISO.animacion('https-cifrado', {
+      titulo: 'Con http la contraseña viaja tal cual y se puede leer; con https el servidor enseña su certificado y todo viaja cifrado',
+      msMovimiento: 1500,
+      capas: ['Dirección', 'Lo que lleva'],
+      textoCapas: 'por dentro',
+      dibujar(k) {
+        k.cable('c1', [120, 262], [205, 264]);
+        k.cable('c2', [282, 240], [360, 182], [300, 200]);
+        k.cable('c3', [440, 176], [530, 252]);
+        window.ANIM.el('line', { x1: 168, y1: 262, x2: 140, y2: 132, class: 'i-cable-ambar' }, k.svg);
+        k.pc(k.svg, TU[0], TU[1], 'Tú');
+        k.router(k.svg, RT[0], RT[1], 'Router wifi');
+        k.nube(k.svg, N[0], N[1]);
+        k.servidor(k.svg, SV[0], SV[1], 'tienda.es');
+        k.pc(k.svg, ES[0], ES[1], 'Alguien escuchando');
+        k.nombre('lee', k.bocadillo(k.svg, 290, 52, 'Lo leo: gato123', [168, 74]));
+        k.nombre('nada', k.bocadillo(k.svg, 290, 52, 'No entiendo nada', [168, 74]));
+        k.nombre('cifrada', k.pastilla(k.svg, 480, 92, 'Conexión cifrada', { claseTexto: 'i-t i-negrita' }));
+        k.nombre('mal', k.marca(k.svg, ES[0] + 50, ES[1] - 58, false));
+        k.nombre('bien', k.marca(k.svg, ES[0] + 50, ES[1] - 58, true));
+        k.nombre('okSv', k.marca(k.svg, SV[0] + 40, SV[1] - 92, true));
+      },
+      pasos: [
+        { texto: 'Vas a escribir tu contraseña en tienda.es. En el mismo wifi hay alguien <strong>escuchando</strong>.' },
+        { texto: 'Con <strong>http://</strong> la contraseña viaja tal cual. Quien escucha la lee.',
+          ver: ['lee', 'mal'], luz: ['c1', 'c2', 'c3'],
+          paq: [{ id: 'd', ruta: ida, chips: ['clave: gato123'], color: 'ambar' }, { id: 'e', ruta: espia, chips: ['clave: gato123'], color: 'rosa' }],
+          registro: { de: 'Tú', a: 'tienda.es', msg: 'http', dato: 'sin cifrar', color: 'ambar', capas: ['Tu IP → tienda.es', 'Usuario y clave: gato123 (se lee)'] } },
+        { texto: 'Con <strong>https://</strong>, primero el servidor enseña su <strong>certificado</strong>: demuestra que es tienda.es de verdad.',
+          luz: ['c3', 'c2', 'c1'], registroNuevo: true,
+          paq: [{ id: 'c', ruta: vuelta, chips: ['Certificado'], color: 'rosa' }],
+          registro: { de: 'tienda.es', a: 'Tú', msg: 'Certificado', dato: 'soy tienda.es', color: 'rosa', capas: ['tienda.es → tu IP', 'Certificado: soy tienda.es'] } },
+        { texto: 'Tu navegador lo da por bueno y sale el <strong>candado</strong>. Los dos se ponen de acuerdo en una clave secreta.',
+          ver: ['cifrada'] },
+        { texto: 'Ahora la contraseña viaja <strong>cifrada</strong>. Quien escucha solo ve letras sin sentido.',
+          ver: ['cifrada', 'nada', 'bien'], luz: ['c1', 'c2', 'c3'],
+          paq: [{ id: 'd2', ruta: ida, chips: ['x7#Qa9!k'], color: 'lima' }, { id: 'e2', ruta: espia, chips: ['x7#Qa9!k'], color: 'lima' }],
+          registro: { de: 'Tú', a: 'tienda.es', msg: 'https', dato: 'cifrado', color: 'lima', capas: ['Tu IP → tienda.es', 'x7#Qa9!k… (no se lee)'] } },
+        { texto: 'El servidor lo descifra con la clave. La <strong>s</strong> de https es de «seguro».',
+          ver: ['cifrada', 'okSv'] }
       ]
     });
   })();
