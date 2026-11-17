@@ -89,6 +89,7 @@
     ISO.animacion('switch-aprende', {
       titulo: 'El switch apunta en su tabla MAC quién está en cada boca y entrega cada trama solo a quien toca',
       msMovimiento: 1300,
+      capas: ['Ethernet', 'Datos'],
       dibujar(k) {
         estrella(k, { A: '0A · Fa1', B: '0B · Fa2', C: '0C · Fa3', D: '0D · Fa4' }, 'Switch');
         k.cartel(k.svg, 225, 6, 190, 130, 'Tabla MAC');
@@ -104,7 +105,8 @@
           ver: ['vacia'] },
         { texto: '0A envía una trama a 0C. Entra por Fa1. El switch mira el <strong>origen</strong> y apunta: 0A está en Fa1.',
           ver: ['f1'], luz: ['cA'],
-          paq: [{ id: 'a', ruta: ida('A'), chips: [{ t: '0A → 0C', c: 'rosa' }] }] },
+          paq: [{ id: 'a', ruta: ida('A'), chips: [{ t: '0A → 0C', c: 'rosa' }] }],
+          registro: { de: '0A', a: '0C', msg: 'Trama', dato: 'entra por Fa1', color: 'azul', capas: ['De 0A a 0C', 'Lo que envía 0A'] } },
         { texto: 'Ahora mira el <strong>destino</strong>: 0C no está en la tabla. Lo envía por todas las bocas menos Fa1: es una <strong>inundación</strong>.',
           ver: ['f1'], luz: ['cB', 'cC', 'cD'],
           paq: [{ id: 'aB', ruta: vuelta('B'), chips: [{ t: '0A → 0C', c: 'rosa' }] },
@@ -112,13 +114,15 @@
                 { id: 'aD', ruta: vuelta('D'), chips: [{ t: '0A → 0C', c: 'rosa' }] }] },
         { texto: 'B y D la tiran. C contesta a 0A. Su trama entra por Fa3: el switch apunta 0C en Fa3.',
           ver: ['f1', 'f2', 'noB', 'noD'], luz: ['cC'],
-          paq: [{ id: 'c', ruta: ida('C'), chips: [{ t: '0C → 0A', c: 'rosa' }], color: 'lima' }] },
+          paq: [{ id: 'c', ruta: ida('C'), chips: [{ t: '0C → 0A', c: 'rosa' }], color: 'lima' }],
+          registro: { de: '0C', a: '0A', msg: 'Trama', dato: 'entra por Fa3', color: 'lima', capas: ['De 0C a 0A', 'La respuesta de 0C'] } },
         { texto: '0A sí está en la tabla: la trama sale <strong>solo por Fa1</strong>. B y D ni se enteran.',
           ver: ['f1', 'f2'], luz: ['cA'],
           paq: [{ id: 'c2', ruta: vuelta('A'), chips: [{ t: '0C → 0A', c: 'rosa' }], color: 'lima', va: true }] },
         { texto: '0B envía un <strong>broadcast</strong> (destino FF): es para todos. Apunta 0B en Fa2…',
           ver: ['f1', 'f2', 'f3'], luz: ['cB'],
-          paq: [{ id: 'b', ruta: ida('B'), chips: [{ t: '0B → FF', c: 'ambar' }], color: 'ambar' }] },
+          paq: [{ id: 'b', ruta: ida('B'), chips: [{ t: '0B → FF', c: 'ambar' }], color: 'ambar' }],
+          registro: { de: '0B', a: 'Todos (FF)', msg: 'Broadcast', dato: 'entra por Fa2', color: 'ambar', capas: ['De 0B a FF (todos)', 'Lo que envía 0B'] } },
         { texto: '…y lo envía por todas las bocas menos por la que ha entrado.',
           ver: ['f1', 'f2', 'f3'], luz: ['cA', 'cC', 'cD'],
           paq: [{ id: 'bA', ruta: vuelta('A'), chips: [{ t: '0B → FF', c: 'ambar' }], color: 'ambar', va: true },
@@ -140,6 +144,7 @@
     ISO.animacion('router-redes', {
       titulo: 'Un router une dos redes: dentro de una red no pasa por él, y el broadcast no cruza al otro lado',
       msMovimiento: 1400,
+      capas: ['Ethernet (MAC)', 'IP'],
       dibujar(k) {
         k.cable('ri', [R[0], R[1] - 20], [I[0], I[1] + 26]);
         k.cable('rl', [R[0] - 30, R[1] + 16], bocaSI);
@@ -171,26 +176,31 @@
         { texto: 'Dos redes: la <strong>192.168.1.0</strong> (A y B) y la <strong>192.168.2.0</strong> (C y D). En medio, un <strong>router</strong> con una boca en cada red.' },
         { texto: 'A envía algo a B. Están en la <strong>misma red</strong>: va por el switch y el router ni se entera.',
           luz: ['la', 'lb'],
-          paq: [{ id: 'ab', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [PB[0] - 10, PB[1] - 24]), chips: ['para .1.11'], va: true }] },
+          paq: [{ id: 'ab', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [PB[0] - 10, PB[1] - 24]), chips: ['para .1.11'], va: true }],
+          registro: { de: 'A', a: 'B', msg: 'Paquete', dato: 'misma red', color: 'azul', capas: ['De A a B', '.1.10 → .1.11'] } },
         { texto: 'Ahora A envía a C, que está en <strong>otra red</strong>. A no puede llegar sola: se lo da a su <strong>puerta de enlace</strong>, el router.',
           ver: ['pe'], luz: ['la', 'rl'],
-          paq: [{ id: 'ac', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [R[0] - 30, R[1] + 16]), chips: [{ t: 'IP → .2.20', c: 'ambar' }] }] },
+          paq: [{ id: 'ac', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [R[0] - 30, R[1] + 16]), chips: [{ t: 'IP → .2.20', c: 'ambar' }] }],
+          registro: { de: 'A', a: 'Router', msg: 'Paquete', dato: 'a la puerta de enlace', color: 'azul', capas: ['De A al router', '.1.10 → .2.20'] } },
         { texto: 'El router mira la <strong>IP de destino</strong>: es de la red 2. La saca por su otra boca.',
           ver: ['mira'], luz: ['rr'],
-          paq: [{ id: 'ac', ruta: ruta([R[0] - 30, R[1] + 16], R, [R[0] + 30, R[1] + 16], bocaSD) }] },
+          paq: [{ id: 'ac', ruta: ruta([R[0] - 30, R[1] + 16], R, [R[0] + 30, R[1] + 16], bocaSD) }],
+          registro: { de: 'Router', a: 'C', msg: 'Paquete', dato: 'sale por la otra boca', color: 'azul', capas: ['Del router a C (MAC nueva)', '.1.10 → .2.20'] } },
         { texto: 'El switch de la derecha la entrega a C.',
           ver: ['ok'], luz: ['rc'],
           paq: [{ id: 'ac', ruta: ruta(bocaSD, [PC[0] + 10, PC[1] - 24]), va: true }] },
         { texto: 'B envía un <strong>broadcast</strong>. Llega a todos los de su red, también al router…',
           luz: ['la', 'rl', 'lb'],
           paq: [{ id: 'b1', ruta: ruta([PB[0] - 10, PB[1] - 24], bocaSI, [PA[0] + 20, PA[1] - 20]), chips: [{ t: 'FF', c: 'ambar' }], color: 'ambar', va: true },
-                { id: 'b2', ruta: ruta([PB[0] - 10, PB[1] - 24], bocaSI, [R[0] - 30, R[1] + 16]), chips: [{ t: 'FF', c: 'ambar' }], color: 'ambar' }] },
+                { id: 'b2', ruta: ruta([PB[0] - 10, PB[1] - 24], bocaSI, [R[0] - 30, R[1] + 16]), chips: [{ t: 'FF', c: 'ambar' }], color: 'ambar' }],
+          registro: { de: 'B', a: 'Todos (FF)', msg: 'Broadcast', dato: 'no cruza el router', color: 'ambar', capas: ['De B a FF (todos)', '.1.11 → 192.168.1.255'] } },
         { texto: '…pero el router <strong>no lo pasa</strong> a la otra red. El router separa los broadcast.',
           ver: ['para'],
           paq: [{ id: 'b2', ruta: ruta([R[0] - 30, R[1] + 16], R), cae: true }] },
         { texto: 'Y cuando A pide una web, el router la saca a <strong>Internet</strong>: también es una red distinta.',
           luz: ['la', 'rl', 'ri'],
-          paq: [{ id: 'w', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [R[0] - 30, R[1] + 16], R, [I[0], I[1] + 26]), chips: ['google.es'], color: 'lima', va: true }] }
+          paq: [{ id: 'w', ruta: ruta([PA[0] + 20, PA[1] - 20], bocaSI, [R[0] - 30, R[1] + 16], R, [I[0], I[1] + 26]), chips: ['google.es'], color: 'lima', va: true }],
+          registro: { de: 'A', a: 'Internet', msg: 'Paquete', dato: 'pide una web', color: 'lima', capas: ['De A al router', '.1.10 → google.es'] } }
       ]
     });
   })();
@@ -256,6 +266,7 @@
     ISO.animacion('viaje-dispositivos', {
       titulo: 'Un paquete pasa por un hub, un switch y un router: cada uno mira una cosa distinta',
       msMovimiento: 1300,
+      capas: ['Ethernet (MAC)', 'IP'],
       dibujar(k) {
         k.cable('ah', pA, bH);
         k.cable('bh', pB, bH);
@@ -280,14 +291,17 @@
         { texto: 'El <strong>hub</strong> no lee nada: repite los bits por todas sus bocas. A B también le llega, y lo tira.',
           ver: ['c1', 'noB'], luz: ['ah', 'bh', 'hs'],
           paq: [{ id: 'p', ruta: ruta(pA, bH) },
-                { id: 'pb', ruta: ruta(bH, pB), chips: [{ t: 'MAC → router', c: 'rosa' }], va: true }] },
+                { id: 'pb', ruta: ruta(bH, pB), chips: [{ t: 'MAC → router', c: 'rosa' }], va: true }],
+          registro: { de: 'A', a: 'Hub', msg: 'Paquete', dato: 'el hub lo repite a todos', color: 'azul', capas: ['A → router', 'A → web'] } },
         { texto: 'El <strong>switch</strong> lee la <strong>MAC</strong> de destino: es la del router. Lo envía solo por esa boca.',
           ver: ['c1', 'c2'], luz: ['hs', 'sr'],
-          paq: [{ id: 'p', ruta: ruta(bH, bS, bR) }] },
+          paq: [{ id: 'p', ruta: ruta(bH, bS, bR) }],
+          registro: { de: 'Switch', a: 'Router', msg: 'Paquete', dato: 'solo por la boca del router', color: 'azul', capas: ['A → router', 'A → web'] } },
         { texto: 'El <strong>router</strong> lee la <strong>IP</strong> de destino: no es de su red. Le pone una MAC nueva y lo saca hacia Internet.',
           ver: ['c1', 'c2', 'c3'], luz: ['rw'],
           textos: { 'p.1': 'MAC nueva' },
-          paq: [{ id: 'p', ruta: ruta(bR, R, sR) }] },
+          paq: [{ id: 'p', ruta: ruta(bR, R, sR) }],
+          registro: { de: 'Router', a: 'Internet', msg: 'Paquete', dato: 'con MAC nueva', color: 'azul', capas: ['Router → siguiente salto', 'A → web'] } },
         { texto: 'Llega a la web. La respuesta vuelve por el mismo camino, y cada aparato vuelve a mirar lo suyo.',
           ver: ['c1', 'c2', 'c3', 'ok'], luz: ['rw'],
           paq: [{ id: 'p', ruta: ruta(sR, w), va: true }] }

@@ -120,6 +120,7 @@
     ISO.animacion('tcp-udp', {
       titulo: 'TCP y UDP envían tres trozos; uno se pierde',
       msMovimiento: 1500,
+      capas: ['Ethernet', 'IP', 'Transporte', 'Datos'],
       dibujar(k) {
         ['T', 'U'].forEach(l => {
           k.cable('c' + l, [xA + 40, L[l] + 8], [xB - 40, L[l] + 8]);
@@ -143,18 +144,26 @@
           ver: ['T1', 'T2h', 'T3', 'U1h', 'U2h', 'U3h'], luz: ['cT'],
           paq: [{ id: 't1', ruta: tramo('T', -40), chips: ['1'], va: true },
                 { id: 't2', ruta: tramo('T', 0), chips: ['2'], cae: true },
-                { id: 't3', ruta: tramo('T', 40), chips: ['3'], va: true }] },
+                { id: 't3', ruta: tramo('T', 40), chips: ['3'], va: true }],
+          registro: { de: 'A', a: 'B', msg: 'TCP', dato: 'trozos 1, 2 y 3 (el 2 se pierde)', color: 'azul',
+                      capas: ['De la MAC de A a la de B', 'De la IP de A a la de B', 'TCP: numera los trozos', 'Trozos 1, 2 y 3'] } },
         { texto: 'B se da cuenta: «me falta el 2». Se lo pide a A.',
           ver: ['T1', 'T2h', 'T3', 'U1h', 'U2h', 'U3h'], luz: ['cT'],
-          paq: [{ id: 'falta', ruta: ruta(fin('T'), ini('T')), chips: ['falta el 2'], color: 'rosa', va: true }] },
+          paq: [{ id: 'falta', ruta: ruta(fin('T'), ini('T')), chips: ['falta el 2'], color: 'rosa', va: true }],
+          registro: { de: 'B', a: 'A', msg: 'TCP', dato: 'me falta el 2', color: 'rosa',
+                      capas: ['De la MAC de B a la de A', 'De la IP de B a la de A', 'TCP: «me falta el 2»', '(sin datos)'] } },
         { texto: 'TCP vuelve a enviar el 2. Llega todo y en orden: más lento, pero <strong>seguro</strong>.',
           ver: ['T1', 'T2', 'T3', 'okT', 'U1h', 'U2h', 'U3h'], luz: ['cT'],
-          paq: [{ id: 't2b', ruta: tramo('T', 0), chips: ['2'], va: true }] },
+          paq: [{ id: 't2b', ruta: tramo('T', 0), chips: ['2'], va: true }],
+          registro: { de: 'A', a: 'B', msg: 'TCP', dato: 'el 2, otra vez', color: 'azul',
+                      capas: ['De la MAC de A a la de B', 'De la IP de A a la de B', 'TCP: reenvía el 2', 'Trozo 2'] } },
         { texto: 'UDP envía el 1, el 2 y el 3 sin esperar. El 2 también se pierde.',
           ver: ['T1', 'T2', 'T3', 'okT', 'U1', 'U2h', 'U3'], luz: ['cU'],
           paq: [{ id: 'u1', ruta: tramo('U', -40), chips: ['1'], color: 'lima', va: true },
                 { id: 'u2', ruta: tramo('U', 0), chips: ['2'], color: 'lima', cae: true },
-                { id: 'u3', ruta: tramo('U', 40), chips: ['3'], color: 'lima', va: true }] },
+                { id: 'u3', ruta: tramo('U', 40), chips: ['3'], color: 'lima', va: true }],
+          registro: { de: 'A', a: 'B', msg: 'UDP', dato: 'trozos 1, 2 y 3 (el 2 se pierde)', color: 'lima',
+                      capas: ['De la MAC de A a la de B', 'De la IP de A a la de B', 'UDP: envía y no espera', 'Trozos 1, 2 y 3'] } },
         { texto: 'Nadie reclama el 2: B sigue con lo que tiene. Más <strong>rápido</strong>; vale para videollamadas y juegos.',
           ver: ['T1', 'T2', 'T3', 'okT', 'U1', 'U2h', 'U3'] }
       ]
@@ -167,6 +176,7 @@
   ISO.animacion('arp', {
     titulo: 'El ordenador A pregunta a todos quién tiene una IP y apunta la MAC que le contestan',
     msMovimiento: 1300,
+    capas: ['Ethernet', 'ARP'],
     dibujar(k) {
       estrella(k, { A: 'A · .10', B: 'B · .30', C: 'C · .50', D: 'D · .40' });
       k.cartel(k.svg, 210, 10, 200, 96, 'Tabla ARP de A');
@@ -183,7 +193,9 @@
         ver: ['vacia'] },
       { texto: 'A pregunta a todos: «¿Quién tiene la .50?».',
         ver: ['vacia', 'bA'], luz: ['cA'],
-        paq: [{ id: 'q', ruta: ruta(LADO.A, BOCA.A), chips: ['¿.50?'] }] },
+        paq: [{ id: 'q', ruta: ruta(LADO.A, BOCA.A), chips: ['¿.50?'] }],
+        registro: { de: 'A', a: 'Todos', msg: 'ARP', dato: '¿Quién tiene la .50?', color: 'azul',
+                    capas: ['A todos (ff:ff:ff:ff:ff:ff)', 'Pregunta: ¿quién tiene la .50? Contesta a la .10'] } },
       { texto: 'El switch lo reparte por todas las bocas.',
         ver: ['vacia', 'bA'], luz: ['cB', 'cC', 'cD'],
         paq: [{ id: 'qB', ruta: ruta(BOCA.B, LADO.B), chips: ['¿.50?'] },
@@ -193,7 +205,9 @@
         ver: ['vacia', 'noB', 'noD', 'siC'] },
       { texto: 'C contesta solo a A: «Soy yo, mi MAC es 1C:39:…:A8».',
         ver: ['vacia', 'bC'], luz: ['cC', 'cA'],
-        paq: [{ id: 'r', ruta: ruta(LADO.C, BOCA.C, BOCA.A, LADO.A), chips: ['1C:39:…:A8'], color: 'rosa', va: true }] },
+        paq: [{ id: 'r', ruta: ruta(LADO.C, BOCA.C, BOCA.A, LADO.A), chips: ['1C:39:…:A8'], color: 'rosa', va: true }],
+        registro: { de: 'C', a: 'A', msg: 'ARP', dato: 'Soy yo: 1C:39:…:A8', color: 'rosa',
+                    capas: ['De 1C:39:…:A8 a la MAC de A', 'Respuesta: la .50 es 1C:39:…:A8'] } },
       { texto: 'A lo apunta en su <strong>tabla ARP</strong> y ya puede enviar a C. ARP une la IP (capa 3) con la MAC (capa 2).',
         ver: ['fila'] }
     ]
@@ -209,6 +223,7 @@
     ISO.animacion('mac-ip-saltos', {
       titulo: 'Un paquete cruza dos routers: la IP no cambia y la MAC cambia en cada salto',
       msMovimiento: 1400,
+      capas: ['Ethernet (MAC)', 'IP'],
       dibujar(k) {
         k.cable('c1', [X.A + 30, Y + 20], [X.R1 - 40, Y + 20]);
         k.cable('c2', [X.R1 + 40, Y + 20], [X.R2 - 40, Y + 20]);
@@ -225,15 +240,18 @@
         { texto: 'A envía un paquete a B, que está lejos: en otra red.',
           paq: [{ id: 'p', ruta: ruta(P('A')), chips: [{ t: 'IP  A → B', c: 'ambar' }, { t: 'MAC  A → R1', c: 'rosa' }] }] },
         { texto: 'Tramo 1: la <strong>IP</strong> dice A → B. La <strong>MAC</strong>, solo hasta el router 1.',
-          luz: ['c1'], paq: [{ id: 'p', ruta: ruta(P('A'), P('R1')) }] },
+          luz: ['c1'], paq: [{ id: 'p', ruta: ruta(P('A'), P('R1')) }],
+          registro: { de: 'A', a: 'Router 1', msg: 'Tramo 1', dato: 'MAC A → R1', color: 'azul', capas: ['A → R1', 'A → B'] } },
         { texto: 'El router 1 cambia la MAC: ahora R1 → R2. La IP no se toca.',
           textos: { 'p.1': 'MAC  R1 → R2' }, paq: [{ id: 'p', ruta: ruta(P('R1')) }] },
         { texto: 'Tramo 2: hasta el router 2.',
-          luz: ['c2'], paq: [{ id: 'p', ruta: ruta(P('R1'), P('R2')) }] },
+          luz: ['c2'], paq: [{ id: 'p', ruta: ruta(P('R1'), P('R2')) }],
+          registro: { de: 'Router 1', a: 'Router 2', msg: 'Tramo 2', dato: 'MAC R1 → R2', color: 'azul', capas: ['R1 → R2', 'A → B'] } },
         { texto: 'El router 2 vuelve a cambiar la MAC: R2 → B.',
           textos: { 'p.1': 'MAC  R2 → B' }, paq: [{ id: 'p', ruta: ruta(P('R2')) }] },
         { texto: 'Tramo 3: llega a B.',
-          luz: ['c3'], paq: [{ id: 'p', ruta: ruta(P('R2'), P('B')) }] },
+          luz: ['c3'], paq: [{ id: 'p', ruta: ruta(P('R2'), P('B')) }],
+          registro: { de: 'Router 2', a: 'B', msg: 'Tramo 3', dato: 'MAC R2 → B', color: 'azul', capas: ['R2 → B', 'A → B'] } },
         { texto: 'La <strong>IP</strong> fue la misma todo el viaje. La <strong>MAC</strong> cambió en cada salto.',
           ver: ['ok'], paq: [{ id: 'p', ruta: ruta(P('B')) }] }
       ]
@@ -249,6 +267,7 @@
     ISO.animacion('nat', {
       titulo: 'El router cambia la IP privada del ordenador por su IP pública al salir a Internet',
       msMovimiento: 1400,
+      capas: ['IP', 'Lo que lleva'],
       dibujar(k) {
         k.cable('c1', [PCp[0] + 30, PCp[1] + 20], [R[0] - 40, R[1] + 20]);
         k.cable('c2', [R[0] + 40, R[1] + 16], [N[0] - 40, N[1] + 26], [330, 210]);
@@ -265,15 +284,19 @@
       pasos: [
         { texto: 'Tu PC tiene una IP <strong>privada</strong>: 192.168.1.25. En Internet esas no valen.' },
         { texto: 'Pide una página. El paquete sale con su IP privada.',
-          luz: ['c1'], paq: [{ id: 'p', ruta: ruta(pc, rt), chips: [{ t: 'de 192.168.1.25', c: 'azul' }] }] },
+          luz: ['c1'], paq: [{ id: 'p', ruta: ruta(pc, rt), chips: [{ t: 'de 192.168.1.25', c: 'azul' }] }],
+          registro: { de: 'Tu PC', a: 'Router', msg: 'Petición', dato: 'con la IP privada', color: 'azul', capas: ['192.168.1.25 → web', 'Pide una página'] } },
         { texto: 'El router la cambia por la suya, la <strong>pública</strong>: 85.50.10.7.',
           ver: ['memo'], textos: { 'p.0': 'de 85.50.10.7' }, paq: [{ id: 'p', ruta: ruta(rt) }] },
         { texto: 'Viaja por Internet hasta el servidor web.',
-          ver: ['memo'], luz: ['c2', 'c3'], paq: [{ id: 'p', ruta: ruta(rt, nb, sv) }] },
+          ver: ['memo'], luz: ['c2', 'c3'], paq: [{ id: 'p', ruta: ruta(rt, nb, sv) }],
+          registro: { de: 'Router', a: 'Web', msg: 'Petición', dato: 'con la IP pública', color: 'azul', capas: ['85.50.10.7 → web', 'Pide una página'] } },
         { texto: 'La respuesta vuelve a la IP pública del router.',
-          ver: ['memo'], luz: ['c2', 'c3'], paq: [{ id: 'r', ruta: ruta(sv, nb, rt), chips: ['para 85.50.10.7'], color: 'rosa' }] },
+          ver: ['memo'], luz: ['c2', 'c3'], paq: [{ id: 'r', ruta: ruta(sv, nb, rt), chips: ['para 85.50.10.7'], color: 'rosa' }],
+          registro: { de: 'Web', a: 'Router', msg: 'Respuesta', dato: 'a la IP pública', color: 'rosa', capas: ['web → 85.50.10.7', 'La página'] } },
         { texto: 'El router recuerda quién lo pidió y se lo pasa a tu PC.',
-          luz: ['c1'], textos: { 'r.0': 'para 192.168.1.25' }, paq: [{ id: 'r', ruta: ruta(rt, pc), va: true }] },
+          luz: ['c1'], textos: { 'r.0': 'para 192.168.1.25' }, paq: [{ id: 'r', ruta: ruta(rt, pc), va: true }],
+          registro: { de: 'Router', a: 'Tu PC', msg: 'Respuesta', dato: 'a la IP privada', color: 'rosa', capas: ['web → 192.168.1.25', 'La página'] } },
         { texto: 'Así, todos los equipos de casa salen a Internet con <strong>una sola IP pública</strong>.',
           ver: ['ok'] }
       ]
@@ -406,6 +429,7 @@
     ISO.animacion('ping-escalera', {
       titulo: 'La escalera de ping: cinco pruebas, de lo más cerca a lo más lejos',
       msMovimiento: 1800,
+      capas: ['IP', 'ICMP'],
       dibujar(k) {
         const el = window.ANIM.el;
         el('line', { x1: 34, y1: 24, x2: 34, y2: 344, class: 'i-antena' }, k.svg);
@@ -432,18 +456,25 @@
       pasos: [
         { texto: 'La escalera de ping: cinco pruebas, de lo más cerca a lo más lejos.' },
         { texto: 'Peldaño 1 · <strong>ping 127.0.0.1</strong>: el PC se habla a sí mismo. Prueba la tarjeta.',
-          ver: ['r1'], paq: [{ id: 'p', ruta: ruta([214, 150], [262, 178], [214, 206], [166, 178], [214, 150]), chips: ['ping'], color: 'lima' }] },
+          ver: ['r1'], paq: [{ id: 'p', ruta: ruta([214, 150], [262, 178], [214, 206], [166, 178], [214, 150]), chips: ['ping'], color: 'lima' }],
+          registro: { de: 'Tu PC', a: 'Tu PC', msg: 'ping', dato: '127.0.0.1 · contesta', color: 'lima', capas: ['127.0.0.1 → 127.0.0.1', 'Eco: ¿me oyes?'] } },
         { texto: 'Peldaño 2 · <strong>ping a tu IP</strong>: la tarjeta tiene bien su dirección.',
-          ver: ['r1', 'r2'], paq: [{ id: 'p', ruta: ruta([214, 150], pc, [214, 150]) }] },
+          ver: ['r1', 'r2'], paq: [{ id: 'p', ruta: ruta([214, 150], pc, [214, 150]) }],
+          registro: { de: 'Tu PC', a: 'Tu PC', msg: 'ping', dato: 'tu IP · contesta', color: 'lima', capas: ['Tu IP → tu IP', 'Eco: ¿me oyes?'] } },
         { texto: 'Peldaño 3 · <strong>ping a la puerta de enlace</strong>: llegas al router.',
-          ver: ['r1', 'r2', 'r3'], luz: ['c1'], paq: [{ id: 'p', ruta: ruta(pc, rt, pc) }] },
+          ver: ['r1', 'r2', 'r3'], luz: ['c1'], paq: [{ id: 'p', ruta: ruta(pc, rt, pc) }],
+          registro: { de: 'Tu PC', a: 'Router', msg: 'ping', dato: 'puerta de enlace · contesta', color: 'lima', capas: ['Tu IP → puerta de enlace', 'Eco: ¿me oyes?'] } },
         { texto: 'Peldaño 4 · <strong>ping 8.8.8.8</strong>: sales a Internet.',
-          ver: ['r1', 'r2', 'r3', 'r4'], luz: ['c1', 'c2', 'c3'], paq: [{ id: 'p', ruta: lejos }] },
+          ver: ['r1', 'r2', 'r3', 'r4'], luz: ['c1', 'c2', 'c3'], paq: [{ id: 'p', ruta: lejos }],
+          registro: { de: 'Tu PC', a: '8.8.8.8', msg: 'ping', dato: '8.8.8.8 · contesta', color: 'lima', capas: ['Tu IP → 8.8.8.8', 'Eco: ¿me oyes?'] } },
         { texto: 'Peldaño 5 · <strong>ping google.es</strong>: el DNS traduce el nombre en una IP.',
-          ver: ['r1', 'r2', 'r3', 'r4', 'r5', 'dns'], luz: ['c1', 'c2', 'c3'], paq: [{ id: 'p', ruta: lejos, va: true }] },
+          ver: ['r1', 'r2', 'r3', 'r4', 'r5', 'dns'], luz: ['c1', 'c2', 'c3'], paq: [{ id: 'p', ruta: lejos, va: true }],
+          registro: { de: 'Tu PC', a: 'google.es', msg: 'ping', dato: 'google.es · contesta', color: 'lima', capas: ['Tu IP → 142.250.…', 'Eco: ¿me oyes?'] } },
         { texto: 'Si un peldaño falla, la avería está en el tramo nuevo. Aquí falla el 4: entre el router e Internet.',
           ver: ['r1', 'r2', 'r3', 'r4mal', 'aqui'], luz: ['c1', 'c2'],
-          paq: [{ id: 'p4', ruta: ruta(pc, rt, nb), chips: ['ping'], color: 'lima', cae: true }] }
+          paq: [{ id: 'p4', ruta: ruta(pc, rt, nb), chips: ['ping'], color: 'lima', cae: true }],
+          registroNuevo: true,
+          registro: { de: 'Tu PC', a: '8.8.8.8', msg: 'ping', dato: '8.8.8.8 · no contesta', color: 'rosa', capas: ['Tu IP → 8.8.8.8', 'Eco: ¿me oyes? (no llega)'] } }
       ]
     });
   })();

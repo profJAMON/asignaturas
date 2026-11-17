@@ -149,25 +149,29 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
-  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Iguales en
-     los dos temas, como la pizarra: la escena es siempre de noche. */
-  --iso-fondo-1: #121a30;
-  --iso-fondo-2: #1f1538;
-  --iso-luz-1: rgba(74, 163, 255, 0.30);
-  --iso-luz-2: rgba(255, 107, 150, 0.20);
-  --iso-borde: rgba(255, 255, 255, 0.14);
-  --iso-cara-sup: #58658c;
-  --iso-cara-izq: #39425f;
-  --iso-cara-der: #293049;
-  --iso-cable: #3d4864;
-  --iso-sombra: rgba(0, 0, 0, 0.32);
-  --iso-texto: #eef0f6;
-  --iso-tenue: #a9b0c4;
-  --iso-cristal: rgba(255, 255, 255, 0.09);
-  --iso-cristal-borde: rgba(255, 255, 255, 0.22);
+  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Desde el
+     17/11/2026, estilo limpio tipo plano (Protocol Explorer): trazo
+     azul sobre caras lisas, rejilla tenue, sin luces; cambia con el tema. */
+  --iso-fondo-1: #0f1626;
+  --iso-fondo-2: #0f1626;
+  --iso-luz-1: transparent;
+  --iso-luz-2: transparent;
+  --iso-borde: #2a3a55;
+  --iso-cara-sup: #1a2740;
+  --iso-cara-izq: #142035;
+  --iso-cara-der: #0f192b;
+  --iso-trazo: #7cb8ff;
+  --iso-rejilla: rgba(124, 184, 255, 0.08);
+  --iso-pantalla: rgba(92, 180, 255, 0.16);
+  --iso-cable: #3b557c;
+  --iso-sombra: transparent;
+  --iso-texto: #e6eefc;
+  --iso-tenue: #9fb3cf;
+  --iso-cristal: #16223a;
+  --iso-cristal-borde: #2f4566;
   --iso-nucleo: #ffffff;
   --iso-azul: #5cb4ff;
-  --iso-rosa: #ff6b96;
+  --iso-rosa: #ff7aa2;
   --iso-lima: #5bd46f;
   --iso-ambar: #ffbf47;
   --iso-tinta: #0b1020;
@@ -568,28 +572,32 @@
   --franja-tinta: #0a0e14;
   --neon-ant: 34, 211, 238;
   --neon-sig: 255, 77, 157;
-  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Iguales en
-     los dos temas, como la pizarra: la escena es siempre de noche. */
-  --iso-fondo-1: #121a30;
-  --iso-fondo-2: #1f1538;
-  --iso-luz-1: rgba(74, 163, 255, 0.30);
-  --iso-luz-2: rgba(255, 107, 150, 0.20);
-  --iso-borde: rgba(255, 255, 255, 0.14);
-  --iso-cara-sup: #58658c;
-  --iso-cara-izq: #39425f;
-  --iso-cara-der: #293049;
-  --iso-cable: #3d4864;
-  --iso-sombra: rgba(0, 0, 0, 0.32);
-  --iso-texto: #eef0f6;
-  --iso-tenue: #a9b0c4;
-  --iso-cristal: rgba(255, 255, 255, 0.09);
-  --iso-cristal-borde: rgba(255, 255, 255, 0.22);
+  /* 09/11/2026: animaciones isométricas (js/anim-iso.js). Desde el
+     17/11/2026, estilo limpio tipo plano (Protocol Explorer): trazo
+     azul sobre caras lisas, rejilla tenue, sin luces; cambia con el tema. */
+  --iso-fondo-1: #f6f9fd;
+  --iso-fondo-2: #f6f9fd;
+  --iso-luz-1: transparent;
+  --iso-luz-2: transparent;
+  --iso-borde: #cfdbeb;
+  --iso-cara-sup: #ffffff;
+  --iso-cara-izq: #eef3fa;
+  --iso-cara-der: #dde6f2;
+  --iso-trazo: #1d4f9c;
+  --iso-rejilla: rgba(29, 79, 156, 0.08);
+  --iso-pantalla: rgba(0, 98, 209, 0.10);
+  --iso-cable: #a9bcd8;
+  --iso-sombra: transparent;
+  --iso-texto: #16233a;
+  --iso-tenue: #4a5a74;
+  --iso-cristal: #ffffff;
+  --iso-cristal-borde: #cfdbeb;
   --iso-nucleo: #ffffff;
-  --iso-azul: #5cb4ff;
-  --iso-rosa: #ff6b96;
-  --iso-lima: #5bd46f;
-  --iso-ambar: #ffbf47;
-  --iso-tinta: #0b1020;
+  --iso-azul: #0062d1;
+  --iso-rosa: #c2185b;
+  --iso-lima: #2a7a2e;
+  --iso-ambar: #9a5a00;
+  --iso-tinta: #ffffff;
 
   --fila-alterna: rgba(0, 0, 0, 0.03);
   --papel-linea: rgba(0, 0, 0, 0.1);
@@ -4925,6 +4933,77 @@ a.semana__item:hover .semana__titulo { color: var(--color-asig, var(--accent)); 
 .i-svg .i-zona-l { fill: var(--iso-lima); opacity: 0.16; }
 .i-svg .i-on { opacity: 1; }
 .i-svg .i-brilla { filter: var(--iso-filtro); }
+/* Estilo limpio (17/11/2026, decisión de Carles: «más limpia», como
+   Protocol Explorer). Trazo azul sobre caras lisas, rejilla isométrica
+   tenue, sin luces que flotan, sin brillos ni sombras, cables finos a
+   rayas, paquete = punto con su etiqueta, franja y mandos planos. Los
+   colores cambian con el tema (variables --iso-* de los dos bloques). */
+.leccion .anim.anim--iso {
+  background-color: var(--iso-fondo-1);
+  background-image:
+    repeating-linear-gradient(30deg, var(--iso-rejilla) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(150deg, var(--iso-rejilla) 0 1px, transparent 1px 28px);
+}
+.leccion .anim--iso::before,
+.leccion .anim--iso::after { display: none; }
+.i-svg .i-cara-sup, .i-svg .i-cara-izq, .i-svg .i-cara-der,
+.i-svg .i-cara-sup-a, .i-svg .i-cara-sup-l, .i-svg .i-cara-sup-r, .i-svg .i-manta {
+  stroke: var(--iso-trazo);
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+}
+.i-svg .i-cara-sup-a { fill: color-mix(in srgb, var(--iso-azul) 22%, var(--iso-cara-sup)); }
+.i-svg .i-cara-sup-l { fill: color-mix(in srgb, var(--iso-lima) 22%, var(--iso-cara-sup)); }
+.i-svg .i-cara-sup-r { fill: color-mix(in srgb, var(--iso-rosa) 22%, var(--iso-cara-sup)); }
+.i-svg .i-sombra { display: none; }
+.i-svg .i-pantalla { fill: var(--iso-pantalla); opacity: 1; stroke: var(--iso-trazo); stroke-width: 1.2; }
+.i-svg .i-antena { stroke: var(--iso-trazo); stroke-width: 3; }
+.i-svg .i-ranura { stroke: var(--iso-trazo); stroke-width: 2; }
+.i-svg .i-led, .i-svg .i-brilla, .i-svg .i-rayo, .i-svg .i-llama-fuera, .i-svg .i-cable-luz { filter: none; }
+.i-svg .i-led { opacity: 0.45; }
+.i-svg .i-cable { stroke-width: 2.5; stroke-dasharray: 7 6; }
+.i-svg .i-cable-luz { stroke-width: 3.5; }
+.i-svg .i-nube, .i-svg .i-cristal { stroke-width: 1.4; }
+.i-svg .i-paq > circle:first-child { fill: none; }
+.i-svg .i-paq .i-paq-nucleo { fill: var(--iso-azul); stroke: var(--iso-fondo-1); stroke-width: 2; }
+.i-svg .i-paq--rosa .i-paq-nucleo { fill: var(--iso-rosa); }
+.i-svg .i-paq--lima .i-paq-nucleo { fill: var(--iso-lima); }
+.i-svg .i-paq--ambar .i-paq-nucleo { fill: var(--iso-ambar); }
+.i-svg .i-chip { rx: 6px; }
+.i-svg .i-titulo { letter-spacing: 0.08em; }
+.leccion .anim.anim--iso > .diapos__cabecera {
+  background: none;
+  border-bottom: 1px solid var(--iso-borde);
+}
+.leccion .anim.anim--iso .diapos__cinta {
+  background: none;
+  border-color: var(--iso-borde);
+  color: var(--iso-tenue);
+}
+.leccion .anim.anim--iso .diapos__cinta::before { border-left-color: var(--iso-azul); }
+.leccion .anim.anim--iso .diapos__cuantas { color: var(--iso-tenue); }
+.leccion .anim.anim--iso .diapos__mandos .diapos__boton,
+.leccion .anim.anim--iso .diapos__contador {
+  color: var(--iso-texto);
+  background: var(--iso-cristal);
+  border: 1px solid var(--iso-borde);
+  border-radius: 8px;
+  box-shadow: none;
+  text-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  animation: none;
+}
+.leccion .anim.anim--iso .diapos__mandos .diapos__boton::before { display: none; }
+.leccion .anim.anim--iso .diapos__mandos .diapos__boton:hover:not(:disabled) { border-color: var(--iso-trazo); background: var(--iso-cristal); }
+.leccion .anim.anim--iso .diapos__mandos .anim__play {
+  background: var(--iso-azul);
+  border-color: var(--iso-azul);
+  color: var(--iso-tinta);
+  font-weight: 700;
+}
+.leccion .anim.anim--iso .diapos__mandos .anim__play:hover:not(:disabled) { background: var(--iso-azul); filter: brightness(1.1); }
+
 /* Lista de paquetes y barra de capas (17/11/2026, ideas de Protocol
    Explorer): debajo de los mandos, solo en las animaciones que las
    piden (registro en sus pasos). Mismas variables --iso-*. */
