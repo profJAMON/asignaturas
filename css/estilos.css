@@ -126,6 +126,10 @@
   --hilo-verde: #2fa84f;
   --hilo-azul: #2f6fd6;
   --hilo-marron: #8a5a2b;
+  /* Cobre y pantallas del cable (18/11/2026, Instalaciones U3 S5). Iguales en los dos temas. */
+  --cobre: #d0884a;
+  --pantalla-lamina: #c9d0d8;
+  --pantalla-malla: #e2b65c;
   --fibra-amarillo: #f0d000;
   --fibra-naranja: #e8802a;
   --fibra-aguamarina: #3ac8c8;
@@ -549,6 +553,10 @@
   --hilo-verde: #2fa84f;
   --hilo-azul: #2f6fd6;
   --hilo-marron: #8a5a2b;
+  /* Cobre y pantallas del cable (18/11/2026, Instalaciones U3 S5). Iguales en los dos temas. */
+  --cobre: #d0884a;
+  --pantalla-lamina: #c9d0d8;
+  --pantalla-malla: #e2b65c;
   --fibra-amarillo: #f0d000;
   --fibra-naranja: #e8802a;
   --fibra-aguamarina: #3ac8c8;
@@ -8754,3 +8762,58 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 }
 .leccion a.boton--descarga:hover,
 .leccion a.boton--descarga:focus-visible { background: var(--accent-dim); color: var(--boton-texto); }
+
+
+/* Hilos, cobre y pantallas de verdad en las diapositivas y los laboratorios
+   (18/11/2026, Instalaciones U3 S5: pares, UTP/FTP/STP, rígido o flexible).
+   Colores de verdad, iguales en los dos temas: --hilo-*, --cobre, --pantalla-*. */
+:is(.diapo, .lab) svg .d-h-blanco { fill: var(--hilo-blanco); }
+:is(.diapo, .lab) svg .d-h-azul { fill: var(--hilo-azul); }
+:is(.diapo, .lab) svg .d-h-naranja { fill: var(--hilo-naranja); }
+:is(.diapo, .lab) svg .d-h-verde { fill: var(--hilo-verde); }
+:is(.diapo, .lab) svg .d-h-marron { fill: var(--hilo-marron); }
+:is(.diapo, .lab) svg .d-hs-blanco { fill: none; stroke: var(--hilo-blanco); }
+:is(.diapo, .lab) svg .d-hs-azul { fill: none; stroke: var(--hilo-azul); }
+:is(.diapo, .lab) svg .d-hs-naranja { fill: none; stroke: var(--hilo-naranja); }
+:is(.diapo, .lab) svg .d-hs-verde { fill: none; stroke: var(--hilo-verde); }
+:is(.diapo, .lab) svg .d-hs-marron { fill: none; stroke: var(--hilo-marron); }
+:is(.diapo, .lab) svg .d-cobre { fill: var(--cobre); }
+:is(.diapo, .lab) svg .d-hs-cobre { fill: none; stroke: var(--cobre); }
+:is(.diapo, .lab) svg .d-metal { fill: var(--pantalla-lamina); }
+:is(.diapo, .lab) svg .d-lamina { fill: none; stroke: var(--pantalla-lamina); }
+:is(.diapo, .lab) svg .d-malla { fill: none; stroke: var(--pantalla-malla); stroke-dasharray: 2 2; }
+/* Grosor de trazo para líneas y cajas (las clases d-linea-* y d-caja fijan 1,5). */
+.diapo svg .d-trazo-2 { stroke-width: 2; }
+.diapo svg .d-trazo-2-5 { stroke-width: 2.5; }
+.diapo svg .d-trazo-3 { stroke-width: 3; }
+.diapo svg .d-trazo-4 { stroke-width: 4; }
+.diapo svg .d-trazo-7 { stroke-width: 7; }
+/* Muestra del color de un hilo dentro de una tabla o un párrafo. */
+.leccion .hilo-muestra { display: inline-block; width: 2.2rem; height: 0.85rem; border-radius: 999px; border: 1px solid var(--border); vertical-align: middle; margin-right: 0.45rem; }
+
+/* Laboratorio «Monta tu cable» (pantallas-cable, js/lab-redes.js, 18/11/2026) */
+.pc { display: grid; grid-template-columns: minmax(11rem, 16rem) minmax(0, 1fr); gap: 0.9rem; margin: 0.6rem 0; align-items: start; }
+.pc__dibujo { background: var(--figura-bg); border: 1px solid var(--figura-borde); border-radius: 10px; padding: 0.4rem; }
+.pc__dibujo svg { display: block; width: 100%; height: auto; }
+.lab svg .pc-cubierta { fill: var(--diapo-caja); stroke: var(--diapo-tenue); stroke-width: 3; }
+.lab svg .pc-rotulo { fill: var(--diapo-tenue); font-family: var(--font-body); font-size: 11px; }
+.pc__mandos { display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; }
+.leccion .pc__fila-tit { margin: 0; font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
+.leccion .pc__nombre { margin: 0.2rem 0 0; font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--text); letter-spacing: 0.02em; }
+.pc__letra { display: inline-block; min-width: 0.8em; text-align: center; border-bottom: 3px solid var(--accent); color: var(--accent); }
+.leccion .pc__leyenda { margin: 0; font-size: 0.8rem; color: var(--text-dim); }
+.pc__datos { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.3rem 0.8rem; margin: 0.3rem 0 0; }
+.pc__datos dt { font-size: 0.8rem; color: var(--text-dim); font-weight: 600; }
+.pc__datos dd { margin: 0; color: var(--text); }
+.leccion .pc__pregunta { margin: 0; font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+.leccion .pc__bien { margin: 0; color: var(--ok); font-weight: 700; }
+.leccion .pc__mal { margin: 0; color: var(--error); font-weight: 700; }
+.pc__vivo { display: flex; flex-direction: column; gap: 0.4rem; }
+.pc__pie { margin-top: 0.6rem; }
+@media (max-width: 700px) {
+  .pc { grid-template-columns: minmax(0, 1fr); }
+  .pc__dibujo { max-width: 16rem; margin: 0 auto; }
+  .pc__datos { grid-template-columns: minmax(0, 1fr); }
+}
+.pc__nombre[hidden], .pc__leyenda[hidden] { display: none; }
+.pc__vivo .lab__boton { align-self: flex-start; }

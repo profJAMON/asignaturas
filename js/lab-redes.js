@@ -11,6 +11,15 @@
                Los datos son los de la tabla «Qué hace cada capa» de
                la sesión: si cambia la tabla, cambiar también CAPAS.
    HTML: <div class="lab" data-lab="capas-osi" aria-label="…"></div>
+
+   pantallas-cable  UT3 S5 (18/11/2026), «Monta tu cable»: eliges la
+               pantalla de todo el cable (U, F, S) y la de cada par
+               (U, F); se dibuja el corte y sale su nombre ISO, el
+               habitual y dónde se usa. «Ponte a prueba»: sale un
+               nombre de la tabla de la sesión y hay que montarlo.
+               Los datos son los de las tablas «Apantallado o sin
+               apantallar» y «La nomenclatura moderna» de la sesión.
+   HTML: <div class="lab" data-lab="pantallas-cable" aria-label="…"></div>
    ============================================================ */
 
 (function () {
@@ -161,5 +170,163 @@
     bExplorar.addEventListener('click', () => { modo = 'explorar'; ponModo(); elige(7); });
     ponModo();
     elige(7);
+  });
+
+  /* ============================================================
+     Monta tu cable (pantallas-cable)
+     ============================================================ */
+  const GLOBAL = {
+    U: { boton: 'U · nada', lleva: 'Nada alrededor del conjunto' },
+    F: { boton: 'F · lámina', lleva: 'Una lámina de aluminio alrededor de los cuatro pares' },
+    S: { boton: 'S · malla', lleva: 'Una malla metálica alrededor de los cuatro pares' }
+  };
+  const PAR = {
+    U: { boton: 'U · nada', lleva: 'nada en cada par' },
+    F: { boton: 'F · lámina', lleva: 'una lámina de aluminio en cada par' }
+  };
+  /* [nombre habitual, dónde se usa]. Las cuatro primeras son las de la tabla de la sesión. */
+  const CABLES = {
+    'U/UTP': ['UTP', 'Oficinas, casas, el taller. El más usado: barato y flexible.'],
+    'F/UTP': ['FTP', 'Entornos con algo de ruido.'],
+    'U/FTP': ['STP (según el fabricante)', 'Mucho ruido; categorías altas.'],
+    'S/FTP': ['STP (categoría 7 y superiores)', 'Mucho ruido; categorías altas. El más caro y rígido.'],
+    'S/UTP': ['No sale en la tabla: es poco habitual', 'Entornos con algo de ruido.'],
+    'F/FTP': ['No sale en la tabla: es poco habitual', 'Mucho ruido; categorías altas.']
+  };
+  const PRUEBA = ['U/UTP', 'F/UTP', 'U/FTP', 'S/FTP'];
+  const COLORES = ['azul', 'naranja', 'verde', 'marron'];
+  const NS = 'http://www.w3.org/2000/svg';
+
+  function corte(g, p) {
+    const n = (x) => Math.round(x * 10) / 10;
+    const cx = 100, cy = 100, R = 82, d = R * 0.36, w = R * 0.13;
+    let s = '<circle cx="100" cy="100" r="' + R + '" class="pc-cubierta"/>';
+    if (g === 'F') s += '<circle cx="100" cy="100" r="' + (R - 7) + '" class="d-lamina" stroke-width="4"/>';
+    if (g === 'S') s += '<circle cx="100" cy="100" r="' + (R - 7) + '" class="d-malla" stroke-width="5"/>';
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sy], i) => {
+      const px = cx + sx * d, py = cy + sy * d, ang = sx * sy > 0 ? 45 : -45;
+      if (p === 'F') s += '<ellipse cx="' + n(px) + '" cy="' + n(py) + '" rx="' + n(w * 2.25) + '" ry="' + n(w * 1.35) + '" transform="rotate(' + ang + ' ' + n(px) + ' ' + n(py) + ')" class="d-lamina" stroke-width="3"/>';
+      const a = ang * Math.PI / 180, ox = Math.cos(a) * w * 1.02, oy = Math.sin(a) * w * 1.02;
+      s += '<circle cx="' + n(px - ox) + '" cy="' + n(py - oy) + '" r="' + n(w) + '" class="d-h-' + COLORES[i] + '"/>';
+      s += '<circle cx="' + n(px + ox) + '" cy="' + n(py + oy) + '" r="' + n(w) + '" class="d-h-blanco"/>';
+      s += '<circle cx="' + n(px + ox) + '" cy="' + n(py + oy) + '" r="' + n(w * 0.42) + '" class="d-h-' + COLORES[i] + '"/>';
+    });
+    return s;
+  }
+
+  window.registrarLab('pantallas-cable', function (caja) {
+    cabecera(caja, 'Toca y mira');
+    const cuerpo = el('div', 'pc');
+    const dibujo = el('div', 'pc__dibujo');
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 200 200');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('translate', 'no');
+    dibujo.appendChild(svg);
+
+    const mandos = el('div', 'pc__mandos');
+    const filaG = el('div', 'lab__fila');
+    const filaP = el('div', 'lab__fila');
+    filaG.setAttribute('role', 'group');
+    filaP.setAttribute('role', 'group');
+    filaG.setAttribute('aria-label', 'Pantalla de todo el cable');
+    filaP.setAttribute('aria-label', 'Pantalla de cada par');
+    const botG = {}, botP = {};
+    Object.keys(GLOBAL).forEach(k => {
+      const b = boton(GLOBAL[k].boton, 'lab__boton');
+      b.setAttribute('translate', 'no');
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => { g = k; pinta(); });
+      botG[k] = b; filaG.appendChild(b);
+    });
+    Object.keys(PAR).forEach(k => {
+      const b = boton(PAR[k].boton, 'lab__boton');
+      b.setAttribute('translate', 'no');
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => { p = k; pinta(); });
+      botP[k] = b; filaP.appendChild(b);
+    });
+    const nombre = el('p', 'pc__nombre');
+    nombre.setAttribute('translate', 'no');
+    const leyenda = el('p', 'pc__leyenda', 'La letra de antes de la barra es la pantalla de todo el cable; la de después, la de cada par.');
+    const vivo = el('div', 'pc__vivo');
+    vivo.setAttribute('aria-live', 'polite');
+    mandos.append(el('p', 'pc__fila-tit', '1. Pantalla de todo el cable'), filaG,
+                  el('p', 'pc__fila-tit', '2. Pantalla de cada par'), filaP, nombre, leyenda, vivo);
+    cuerpo.append(dibujo, mandos);
+
+    const pie = el('div', 'lab__fila pc__pie');
+    const bExplorar = boton('Explorar', 'lab__boton');
+    const bPrueba = boton('Ponte a prueba', 'lab__boton');
+    pie.append(bExplorar, bPrueba);
+    caja.append(cuerpo, pie);
+
+    let g = 'U', p = 'U', modo = 'explorar', pregunta = null, aciertos = 0, intentos = 0;
+
+    function nombreDe() { return g + '/' + p + 'TP'; }
+    function pinta() {
+      svg.innerHTML = corte(g, p);
+      svg.setAttribute('aria-label', 'Corte del cable: ' + GLOBAL[g].lleva.toLowerCase() + ' y ' + PAR[p].lleva + '.');
+      Object.keys(botG).forEach(k => { botG[k].classList.toggle('lab__boton--activo', k === g); botG[k].setAttribute('aria-pressed', String(k === g)); });
+      Object.keys(botP).forEach(k => { botP[k].classList.toggle('lab__boton--activo', k === p); botP[k].setAttribute('aria-pressed', String(k === p)); });
+      nombre.innerHTML = '<span class="pc__letra">' + g + '</span>/<span class="pc__letra">' + p + '</span>TP';
+      if (modo === 'explorar') explica();
+    }
+    function explica() {
+      const c = CABLES[nombreDe()];
+      vivo.innerHTML = '';
+      const dl = el('dl', 'pc__datos');
+      [['Qué lleva', GLOBAL[g].lleva + ' y ' + PAR[p].lleva + '.'], ['Nombre habitual', c[0]], ['Dónde se usa', c[1]]].forEach(([t, v]) => {
+        dl.appendChild(el('dt', '', t));
+        dl.appendChild(el('dd', '', v));
+      });
+      vivo.appendChild(dl);
+    }
+    function nuevaPregunta() {
+      let q;
+      do { q = PRUEBA[Math.floor(Math.random() * PRUEBA.length)]; } while (q === pregunta && PRUEBA.length > 1);
+      pregunta = q;
+      vivo.innerHTML = '';
+      vivo.appendChild(el('p', 'pc__fila-tit', 'Monta este cable con los botones de arriba y pulsa «Comprobar»:'));
+      const qq = el('p', 'pc__pregunta', q);
+      qq.setAttribute('translate', 'no');
+      vivo.appendChild(qq);
+      const comprobar = boton('Comprobar', 'lab__boton');
+      comprobar.addEventListener('click', responde);
+      vivo.appendChild(comprobar);
+      vivo.appendChild(el('p', 'lab__nota', 'Llevas ' + aciertos + ' de ' + intentos + '.'));
+    }
+    function responde() {
+      intentos++;
+      const [qg, qp] = [pregunta[0], pregunta[2]];
+      const bien = g === qg && p === qp;
+      if (bien) aciertos++;
+      vivo.innerHTML = '';
+      nombre.hidden = false;
+      vivo.appendChild(el('p', bien ? 'pc__bien' : 'pc__mal', bien ? '✓ Bien: eso es un ' + pregunta + '.' : '✗ Has montado un ' + nombreDe() + ', no un ' + pregunta + '.'));
+      if (!bien) {
+        if (g !== qg) vivo.appendChild(el('p', '', 'Todo el cable (la letra de antes de la barra, ' + qg + '): ' + GLOBAL[qg].lleva.toLowerCase() + '.'));
+        if (p !== qp) vivo.appendChild(el('p', '', 'Cada par (la letra de después, ' + qp + '): ' + PAR[qp].lleva + '.'));
+      }
+      vivo.appendChild(el('p', 'lab__nota', 'Llevas ' + aciertos + ' de ' + intentos + '.'));
+      const otra = boton('Otro', 'lab__boton');
+      otra.addEventListener('click', () => { g = 'U'; p = 'U'; nombre.hidden = true; pinta(); nuevaPregunta(); });
+      vivo.appendChild(otra);
+    }
+    function ponModo() {
+      bPrueba.classList.toggle('lab__boton--activo', modo === 'prueba');
+      bExplorar.classList.toggle('lab__boton--activo', modo === 'explorar');
+      bPrueba.setAttribute('aria-pressed', String(modo === 'prueba'));
+      bExplorar.setAttribute('aria-pressed', String(modo === 'explorar'));
+      leyenda.hidden = modo === 'prueba';
+      nombre.hidden = modo === 'prueba';
+      /* En la prueba, los botones sin la letra: hay que saber qué significa cada una. */
+      Object.keys(botG).forEach(k => { botG[k].textContent = modo === 'prueba' ? GLOBAL[k].boton.split(' · ')[1] : GLOBAL[k].boton; });
+      Object.keys(botP).forEach(k => { botP[k].textContent = modo === 'prueba' ? PAR[k].boton.split(' · ')[1] : PAR[k].boton; });
+    }
+    bExplorar.addEventListener('click', () => { modo = 'explorar'; ponModo(); pinta(); });
+    bPrueba.addEventListener('click', () => { modo = 'prueba'; aciertos = 0; intentos = 0; g = 'U'; p = 'U'; ponModo(); pinta(); nuevaPregunta(); });
+    ponModo();
+    pinta();
   });
 })();
