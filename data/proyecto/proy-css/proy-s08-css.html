@@ -6,13 +6,20 @@
 <p>El CSS se escribe en un <strong>archivo aparte</strong>, que acaba en <code>.css</code>. La página HTML lo carga con una línea en el <code>&lt;head&gt;</code>.</p>
 
 <h3>Tus archivos de hoy</h3>
+<p>Hoy el HTML de los ejercicios 1, 2 y 3 <strong>te lo doy hecho</strong>: tú escribes el CSS. El ejercicio 4 lo haces entero: HTML y CSS.</p>
+<ol>
+<li>Descarga <a href="data/proyecto/proy-css/descargas/s08-ejercicios.zip" download>s08-ejercicios.zip</a>. Se guarda en <strong>Descargas</strong>.</li>
+<li>Botón derecho sobre el zip → <strong>Extraer todo</strong>.</li>
+<li>Dentro hay tres archivos: <code>s08-ej1.html</code>, <code>s08-ej2.html</code> y <code>s08-ej3.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios. No muevas la carpeta <code>s08-ejercicios</code> entera.</li>
+<li>Abre tu carpeta de ejercicios en VS Code: los tres salen en el panel de la izquierda.</li>
+</ol>
 <p>Desde hoy, cada ejercicio tiene <strong>dos archivos</strong> con el mismo nombre: el <code>.html</code> y su <code>.css</code>, uno al lado del otro.</p>
 <pre><code>ejercicios-profesorcabron/
 ├── s02-ej1.html
 ├── …
-├── s08-ej1.html     ← el contenido
-└── s08-ej1.css      ← los colores y la letra de s08-ej1.html</code></pre>
-<div class="nota">⚠️ Crea los dos archivos <strong>sueltos</strong> en tu carpeta de ejercicios, no dentro de <code>img</code> ni de otra carpeta.</div>
+├── s08-ej1.html     ← te lo doy hecho
+└── s08-ej1.css      ← lo creas tú</code></pre>
+<div class="nota">⚠️ Cada ejercicio, en su archivo. No escribas un ejercicio encima de otro ni los borres: tu carpeta de ejercicios es tu chuleta para el examen.</div>
 
 <h3>Conectar el CSS con la página</h3>
 <p>Dentro del <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, añade esta línea. En <code>href</code> va el nombre del archivo CSS:</p>
@@ -56,19 +63,33 @@ p {
 </div>
 
 <h3>Ejercicio 1 — Conecta tu primer CSS</h3>
-<p>Crea <code>s08-ej1.html</code> (con <strong>! + Tab</strong>) y <code>s08-ej1.css</code>. Dentro del <code>&lt;body&gt;</code>, escribe este HTML:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Club de ajedrez<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;p&gt;</span>Nos vemos los martes en la biblioteca.<span class='et'>&lt;/p&gt;</span></code></pre>
-<p>Después, en el <code>.css</code>, haz que se vea como en la imagen.</p>
+<p>El HTML ya está hecho y ya lleva su <code>&lt;link&gt;</code>. Tú creas el CSS.</p>
+<ol>
+<li>Abre <code>s08-ej1.html</code>. Mira el <code>&lt;head&gt;</code>: esta es la línea que carga el CSS.
+<pre><code><span class='co'>&lt;!-- Esta línea carga el CSS. En href va el nombre del archivo .css --&gt;</span>
+<span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"s08-ej1.css"</span><span class='et'>&gt;</span></code></pre></li>
+<li>Crea el CSS: en el panel de la izquierda de VS Code, pon el ratón sobre el nombre de tu carpeta de ejercicios y pulsa <strong>New File</strong> (la hoja con un +). Escribe <code>s08-ej1.css</code> y pulsa <strong>Intro</strong>.</li>
+<li>Mira el panel: <code>s08-ej1.css</code> tiene que salir <strong>al lado</strong> de <code>s08-ej1.html</code>, no dentro de <code>img</code>. Si ha caído dentro de otra carpeta, arrástralo fuera.</li>
+<li>En el <code>.css</code>, haz que se vea como en la imagen. Guarda los dos archivos y ábrelo con <strong>Go Live</strong>.</li>
+</ol>
+<p>El <code>href</code> depende de <strong>dónde está el CSS</strong>, igual que la ruta de una imagen:</p>
+<table>
+<thead><tr><th>Dónde está el CSS</th><th>Qué va en <code>href</code></th></tr></thead>
+<tbody>
+<tr><td>Al lado del <code>.html</code>, en la misma carpeta (lo de hoy)</td><td><code>href="s08-ej1.css"</code></td></tr>
+<tr><td>Dentro de una carpeta <code>css</code> que está al lado del <code>.html</code></td><td><code>href="css/s08-ej1.css"</code></td></tr>
+</tbody>
+</table>
+<p>Si el CSS está en una carpeta y en <code>href</code> no pones la carpeta, la página no lo encuentra y sale sin colores.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej1.webp" alt="Página con fondo amarillo claro. 1, el título Club de ajedrez en verde oscuro. Debajo, el párrafo Nos vemos los martes en la biblioteca. Notas: 2, en el head hay un link a s08-ej1.css; 3, el título de la pestaña es Ejercicio 1." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① El <code>h1</code> de color <code>darkgreen</code>.</li>
 <li>El fondo de toda la página (<code>body</code>) de color <code>lightyellow</code>. Para el fondo se usa <code>background-color</code>.</li>
-<li>② En el <code>&lt;head&gt;</code>, el <code>&lt;link&gt;</code> a <code>s08-ej1.css</code>.</li>
-<li>③ El <code>&lt;title&gt;</code> es <code>Ejercicio 1</code>.</li>
+<li>② En el <code>&lt;head&gt;</code>, el <code>&lt;link&gt;</code> a <code>s08-ej1.css</code> (ya viene hecho: no lo borres).</li>
+<li>③ El <code>&lt;title&gt;</code> es <code>Ejercicio 1</code> (ya viene hecho).</li>
 </ul>
 <details><summary>Pista 1: no cambia nada</summary>
-<p>Mira el <code>href</code> del <code>&lt;link&gt;</code>: tiene que ser <strong>exactamente</strong> el nombre de tu archivo CSS, letra a letra. Y guarda los <strong>dos</strong> archivos (Ctrl + S en cada pestaña).</p>
+<p>Mira el nombre de tu archivo CSS en el panel: tiene que ser <strong>exactamente</strong> <code>s08-ej1.css</code>, letra a letra, y estar al lado del <code>.html</code>. Y guarda los <strong>dos</strong> archivos (Ctrl + S en cada pestaña).</p>
 </details>
 <details><summary>Pista 2: el título cambia pero el fondo no</summary>
 <p>Escribe dos reglas separadas: una que empieza por <code>body {</code> y otra que empieza por <code>h1 {</code>. Cada una se cierra con su <code>}</code>.</p>
@@ -132,10 +153,7 @@ h1 {
 </ul>
 
 <h3>Ejercicio 2 — Un cartel de concierto</h3>
-<p>Crea <code>s08-ej2.html</code> y <code>s08-ej2.css</code>, y conecta el CSS. Dentro del <code>&lt;body&gt;</code>:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Concierto de verano<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;p&gt;</span>Sábado 21 de junio, a las 20:00<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;p&gt;</span>Plaza Mayor. Entrada gratis.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Abre <code>s08-ej2.html</code>. Esta vez el <code>&lt;link&gt;</code> <strong>no está</strong>: escríbelo tú en el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>. Después crea <code>s08-ej2.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen. El HTML no lo tienes que cambiar.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej2.webp" alt="Cartel con fondo azul oscuro y todo el texto centrado, en letra Arial. 1, el título Concierto de verano, muy grande y amarillo. 2, el párrafo Sábado 21 de junio, a las 20:00, en blanco y más grande de lo normal. Debajo, el párrafo Plaza Mayor. Entrada gratis., igual. Nota 3: en el head hay un link a s08-ej2.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① El <code>h1</code>: color <code>#ffb703</code> y tamaño <code>50px</code>.</li>
@@ -146,7 +164,10 @@ h1 {
 <details><summary>Pista 1</summary>
 <p>Necesitas tres reglas: una para <code>body</code>, una para <code>h1</code> y una para <code>p</code>. El centrado y la letra van en <code>body</code>, y así valen para todo.</p>
 </details>
-<details><summary>Pista 2: el título no sale amarillo</summary>
+<details><summary>Pista 2: no sale ningún color</summary>
+<p>Mira el <code>&lt;link&gt;</code>: tiene que estar dentro del <code>&lt;head&gt;</code> y su <code>href</code> tiene que ser <code>s08-ej2.css</code>, letra a letra. Si no te acuerdas de cómo es, mira el de <code>s08-ej1.html</code>.</p>
+</details>
+<details><summary>Pista 3: el título no sale amarillo</summary>
 <p>¿Has escrito la <code>#</code> delante del <code>ffb703</code>? Sin ella, el color no funciona.</p>
 </details>
 <p>Si lo has hecho bien: todo el texto está centrado y solo hay <strong>una</strong> <code>text-align</code> en tu CSS.</p>
@@ -195,15 +216,7 @@ body {
 <div class="lab" data-lab="simulacion" data-sim="conecta-css" aria-label="Conecta el CSS"></div>
 
 <h3>Ejercicio 3 — La carta de una pizzería</h3>
-<p>Crea <code>s08-ej3.html</code> y <code>s08-ej3.css</code>, y conecta el CSS. Copia este HTML dentro del <code>&lt;body&gt;</code> y pon tú las clases que faltan:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Pizzería Luna<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;ul&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Margarita: 8 €<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Barbacoa: 9 €. ¡Hoy, 2x1!<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Cuatro quesos: 10 €<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Hawaiana: 9 €. ¡Hoy, 2x1!<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span>
-<span class='et'>&lt;p&gt;</span>Todas las pizzas llevan gluten.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Abre <code>s08-ej3.html</code>. En el HTML solo te faltan dos cosas: el <code>&lt;link&gt;</code> a <code>s08-ej3.css</code> y las <strong>clases</strong> (mira la imagen y la lista de debajo). Después crea <code>s08-ej3.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej3.webp" alt="Carta de pizzería en letra Verdana. 1, el título Pizzería Luna, rojo oscuro y centrado. 2, en la lista, las líneas de Barbacoa y Hawaiana tienen fondo verde claro; Margarita y Cuatro quesos no. 3, el párrafo Todas las pizzas llevan gluten, gris y pequeño. Notas: 4, las dos pizzas en oferta tienen class oferta en el HTML; 5, en el head hay un link a s08-ej3.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① El <code>h1</code>: color <code>firebrick</code> y centrado.</li>
@@ -251,20 +264,16 @@ body {
 </details>
 
 <h3>Ejercicio 4 — La ficha de un superhéroe</h3>
-<p>El ejercicio más largo de hoy: junta todo lo de la sesión. Crea <code>s08-ej4.html</code> y <code>s08-ej4.css</code>, y conecta el CSS. Copia este HTML y pon tú las clases:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Capitán Rayo<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;p&gt;</span>¡Más rápido que la luz!<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;h2&gt;</span>Poderes<span class='et'>&lt;/h2&gt;</span>
-<span class='et'>&lt;ul&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Corre a 500 km/h<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Ve en la oscuridad<span class='et'>&lt;/li&gt;</span>
-    <span class='et'>&lt;li&gt;</span>Lanza rayos con las manos<span class='et'>&lt;/li&gt;</span>
-<span class='et'>&lt;/ul&gt;</span>
-<span class='et'>&lt;h2&gt;</span>Punto débil<span class='et'>&lt;/h2&gt;</span>
-<span class='et'>&lt;p&gt;</span>Se queda sin fuerzas cuando llueve.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;p&gt;</span>Ficha creada por ProfesorCabron<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>El ejercicio más largo de hoy: junta todo lo de la sesión. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
+<ol>
+<li>Crea <code>s08-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen; las etiquetas, las que tú creas.</li>
+<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s08-ej4.css</code> y las clases.</li>
+<li>Crea <code>s08-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+</ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej4.webp" alt="Ficha con fondo azul muy oscuro, texto blanco y letra Trebuchet. 1, el título Capitán Rayo, grande, dorado y centrado. 2, el lema Más rápido que la luz, centrado y un poco más grande. 3, los títulos Poderes y Punto débil en azul claro. 4, en la lista, Corre a 500 kilómetros por hora y Lanza rayos con las manos en dorado; Ve en la oscuridad, en blanco. 5, la firma Ficha creada por ProfesorCabron, pequeña, gris y a la derecha. Notas: 6, las dos líneas doradas de la lista tienen la misma clase, poder; 7, en el head hay un link a s08-ej4.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
+<li>En el HTML: el título grande, el lema, los dos títulos medianos, la lista de tres poderes, el párrafo del punto débil y la firma, en ese orden.</li>
 <li>① El <code>h1</code>: color <code>gold</code>, tamaño <code>48px</code> y centrado.</li>
 <li>② El lema, con la clase <code>lema</code>: tamaño <code>20px</code> y centrado.</li>
 <li>③ Los <code>h2</code>: color <code>#7dd3fc</code>.</li>
@@ -275,7 +284,10 @@ body {
 <li>Toda la página: fondo <code>#22223b</code>, texto <code>white</code> y letra <code>"Trebuchet MS", sans-serif</code>.</li>
 <li>En la firma, tu alias en lugar de ProfesorCabron.</li>
 </ul>
-<details><summary>Pista</summary>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Lo más grande de arriba es un <code>h1</code>. Los títulos medianos, <code>h2</code>. Los puntos, una <code>ul</code> con sus <code>li</code>. El resto, <code>p</code>. Si dudas, mira tus ejercicios de las sesiones 2 y 3.</p>
+</details>
+<details><summary>Pista 2: el CSS</summary>
 <p>Ve de arriba abajo: primero la regla de <code>body</code> y guarda. Después <code>h1</code>, guarda y compara con la imagen. Una regla cada vez.</p>
 </details>
 <p>Si lo has hecho bien: pulsas <strong>Mayús + Alt + F</strong> en el CSS y cada propiedad queda en su línea, un poco hacia la derecha.</p>
@@ -285,6 +297,6 @@ body {
 <h2>Antes de irte</h2>
 <ul class="checklist">
 <li>Ninguna pestaña de VS Code con el punto blanco de "sin guardar".</li>
-<li>Cada ejercicio tiene su <code>.html</code> y su <code>.css</code> en tu carpeta de ejercicios.</li>
+<li>En tu carpeta de ejercicios están <code>s08-ej1</code>, <code>s08-ej2</code>, <code>s08-ej3</code> y <code>s08-ej4</code>, cada uno con su <code>.html</code> y su <code>.css</code>.</li>
 <li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
 </ul>
