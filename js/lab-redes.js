@@ -20,6 +20,15 @@
                Los datos son los de las tablas «Apantallado o sin
                apantallar» y «La nomenclatura moderna» de la sesión.
    HTML: <div class="lab" data-lab="pantallas-cable" aria-label="…"></div>
+
+   enlace-cobre  UT3 S6 (18/11/2026), «Monta el enlace»: las cinco piezas
+               de un enlace (latiguillo, roseta, cable de pared, panel,
+               latiguillo). Eliges la categoría de cada una y los metros
+               de los tres cables; sale la categoría del enlace (la de la
+               pieza más baja, resaltada) y si cumple 90 m de fijo y 10 m
+               de latiguillos. No trae cargados los casos de la sesión
+               (Ana y el plano del taller): son preguntas evaluables.
+   HTML: <div class="lab" data-lab="enlace-cobre" aria-label="…"></div>
    ============================================================ */
 
 (function () {
@@ -327,6 +336,82 @@
     bExplorar.addEventListener('click', () => { modo = 'explorar'; ponModo(); pinta(); });
     bPrueba.addEventListener('click', () => { modo = 'prueba'; aciertos = 0; intentos = 0; g = 'U'; p = 'U'; ponModo(); pinta(); nuevaPregunta(); });
     ponModo();
+    pinta();
+  });
+
+  /* ============================================================
+     Monta el enlace (enlace-cobre)
+     ============================================================ */
+  const CATS_ENLACE = ['5e', '6', '6A'];
+  const PIEZAS_ENLACE = [
+    { nombre: 'Latiguillo del puesto', cat: '6', metros: 2, tipo: 'lat' },
+    { nombre: 'Roseta', cat: '6' },
+    { nombre: 'Cable de pared', cat: '6', metros: 70, tipo: 'fijo' },
+    { nombre: 'Panel de parcheo', cat: '6' },
+    { nombre: 'Latiguillo del armario', cat: '6', metros: 3, tipo: 'lat' }
+  ];
+
+  window.registrarLab('enlace-cobre', function (caja) {
+    cabecera(caja, 'Toca y mira');
+    caja.appendChild(el('p', 'lab__nota', 'Del PC (a la izquierda) al switch (a la derecha). Cambia la categoría de cada pieza y los metros de los cables.'));
+    const cadena = el('div', 'ec');
+    const piezas = PIEZAS_ENLACE.map(p => Object.assign({}, p));
+    const tarjetas = [];
+    piezas.forEach((p, i) => {
+      const t = el('div', 'ec__pieza');
+      t.appendChild(el('span', 'ec__nombre', p.nombre));
+      const sel = document.createElement('select');
+      sel.className = 'lab__entrada ec__cat';
+      sel.setAttribute('aria-label', 'Categoría: ' + p.nombre);
+      CATS_ENLACE.forEach(c => { const o = el('option', '', 'Cat ' + c); o.value = c; if (c === p.cat) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener('change', () => { p.cat = sel.value; pinta(); });
+      t.appendChild(sel);
+      if (p.metros !== undefined) {
+        const fila = el('label', 'ec__metros');
+        const n = document.createElement('input');
+        n.type = 'number'; n.min = '0'; n.max = p.tipo === 'fijo' ? '150' : '20'; n.step = '1';
+        n.value = String(p.metros);
+        n.className = 'lab__entrada';
+        n.setAttribute('aria-label', 'Metros: ' + p.nombre);
+        n.addEventListener('input', () => { const v = parseInt(n.value, 10); p.metros = isNaN(v) || v < 0 ? 0 : v; pinta(); });
+        fila.append(n, el('span', '', 'm'));
+        t.appendChild(fila);
+      }
+      tarjetas.push(t);
+      cadena.appendChild(t);
+    });
+    const vivo = el('div', 'ec__resultado');
+    vivo.setAttribute('aria-live', 'polite');
+    caja.append(cadena, vivo);
+
+    function linea(ok, texto) {
+      return el('p', ok ? 'ec__ok' : 'ec__mal', (ok ? '✓ ' : '✗ ') + texto);
+    }
+    function pinta() {
+      const minimo = Math.min(...piezas.map(p => CATS_ENLACE.indexOf(p.cat)));
+      const cat = CATS_ENLACE[minimo];
+      const debiles = piezas.filter(p => CATS_ENLACE.indexOf(p.cat) === minimo);
+      const todasIguales = debiles.length === piezas.length;
+      piezas.forEach((p, i) => tarjetas[i].classList.toggle('ec__pieza--debil', !todasIguales && CATS_ENLACE.indexOf(p.cat) === minimo));
+      const fijo = piezas[2].metros, l1 = piezas[0].metros, l2 = piezas[4].metros, lat = l1 + l2, total = fijo + lat;
+      vivo.innerHTML = '';
+      const t = el('p', 'ec__titulo');
+      t.appendChild(document.createTextNode('Categoría del enlace: '));
+      const c = el('span', 'ec__cat-final', 'Cat ' + cat);
+      c.setAttribute('translate', 'no');
+      t.appendChild(c);
+      vivo.appendChild(t);
+      vivo.appendChild(el('p', '', todasIguales
+        ? 'Todas las piezas son de la misma categoría.'
+        : 'La marca la pieza más baja (resaltada): ' + debiles.map(p => p.nombre.toLowerCase()).join(' y ') + '.'));
+      const okFijo = fijo <= 90, okLat = lat <= 10;
+      vivo.appendChild(linea(okFijo, 'Cable fijo: ' + fijo + ' m (como mucho 90 m)'));
+      vivo.appendChild(linea(okLat, 'Latiguillos: ' + l1 + ' + ' + l2 + ' = ' + lat + ' m (como mucho 10 m)'));
+      vivo.appendChild(el('p', 'lab__nota', 'Total: ' + total + ' m.'));
+      vivo.appendChild(el('p', okFijo && okLat ? 'ec__ok ec__veredicto' : 'ec__mal ec__veredicto',
+        okFijo && okLat ? 'El enlace cumple.' : 'El enlace no cumple, aunque el total sea de ' + total + ' m: mira las dos condiciones.'));
+      if (!(okFijo && okLat) && total > 100) vivo.lastChild.textContent = 'El enlace no cumple: pasa de 100 m. No se estira el cable: otro switch más cerca, o fibra.';
+    }
     pinta();
   });
 })();

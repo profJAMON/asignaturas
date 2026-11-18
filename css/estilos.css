@@ -8817,3 +8817,19 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 }
 .pc__nombre[hidden], .pc__leyenda[hidden] { display: none; }
 .pc__vivo .lab__boton { align-self: flex-start; }
+
+/* Laboratorio «Monta el enlace» (enlace-cobre, js/lab-redes.js, 18/11/2026) */
+.ec { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.4rem; margin: 0.6rem 0; }
+.ec__pieza { flex: 1 1 8rem; display: flex; flex-direction: column; gap: 0.3rem; padding: 0.5rem; border: 2px solid var(--border); border-radius: 10px; background: var(--surface); min-width: 0; }
+.ec__pieza--debil { border-color: var(--accent-warm); }
+.ec__nombre { font-size: 0.82rem; font-weight: 600; color: var(--text); }
+.ec__pieza .lab__entrada { flex: none; width: 100%; box-sizing: border-box; }
+.ec__metros { display: flex; align-items: center; gap: 0.3rem; color: var(--text-dim); font-size: 0.85rem; }
+.ec__metros .lab__entrada { width: 5rem; }
+.ec__resultado { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 0.7rem 1rem; }
+.leccion .ec__resultado p { margin: 0 0 0.35rem; }
+.leccion .ec__titulo { font-family: var(--font-titulo); font-weight: 700; font-size: 1.1rem; color: var(--text); }
+.ec__cat-final { color: var(--accent); font-family: var(--font-mono); }
+.leccion .ec__ok { color: var(--ok); font-weight: 600; }
+.leccion .ec__mal { color: var(--error); font-weight: 600; }
+.leccion .ec__veredicto { font-weight: 700; }

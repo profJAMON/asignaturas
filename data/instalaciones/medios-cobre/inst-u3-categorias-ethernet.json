@@ -21,8 +21,8 @@
     {
       "id": "u3s6-generador",
       "tipo": "generador",
-      "titulo": "¿Qué topología? ¿Qué cable?",
-      "generador": "topologia-y-medio",
+      "titulo": "Categorías, nombres y 100 metros",
+      "generador": "categoria-ethernet",
       "n": 8
     }
   ]

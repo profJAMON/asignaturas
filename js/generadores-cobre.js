@@ -9,6 +9,8 @@
    t568-colores        color de un pin, o pin de un color, en T568A/B
    directo-o-cruzado   qué cable une dos aparatos (sin Auto-MDIX)
    topologia-y-medio   descripción o avería → topología o tipo de cable
+   categoria-ethernet  (18/11/2026, U3 S6) nombre de Ethernet → velocidad o
+                       medio; necesidad → categoría mínima; enlace → ¿cumple?
    ============================================================ */
 
 (function () {
@@ -160,7 +162,91 @@
     };
   }
 
+  /* ---------- Categorías y Ethernet (18/11/2026, U3 S6) ---------- */
+
+  /* [nombre, velocidad, medio]. Las letras: T = par trenzado; SX, LX, SR = fibra. */
+  const ETHER = [
+    ['10BASE-T', '10 Mbps', 'par trenzado'],
+    ['100BASE-TX', '100 Mbps', 'par trenzado'],
+    ['1000BASE-T', '1 Gbps', 'par trenzado'],
+    ['10GBASE-T', '10 Gbps', 'par trenzado'],
+    ['1000BASE-SX', '1 Gbps', 'fibra'],
+    ['1000BASE-LX', '1 Gbps', 'fibra'],
+    ['10GBASE-SR', '10 Gbps', 'fibra']
+  ];
+  function velocidades(v) {
+    const n = parseInt(v, 10);
+    const mega = v.includes('Gbps') ? n * 1000 : n;
+    const r = [v, v.replace(' ', ''), v.replace('bps', ''), v.replace(' ', '').replace('bps', ''), `${mega} Mbps`, `${mega}mbps`, `${mega} mb/s`, `${mega}`];
+    if (v.includes('Gbps')) r.push(`${n} gb/s`, `${n} gigas`, `${n} giga`);
+    return r;
+  }
+
+  function genCategoriaEthernet() {
+    const tipo = Math.random();
+    if (tipo < 0.35) {
+      const [nom, vel, medio] = elige(ETHER);
+      if (Math.random() < 0.5) {
+        return {
+          enunciado: `${nom} → ¿velocidad?`,
+          respuesta: vel,
+          respuestas: velocidades(vel),
+          formato: 'texto',
+          pista: `La primera parte es la velocidad en Mbps; con G delante, en Gbps. ${nom}: ${vel}.`
+        };
+      }
+      return {
+        enunciado: `${nom} → ¿par trenzado o fibra?`,
+        respuesta: medio,
+        respuestas: medio === 'fibra' ? ['fibra', 'fibra optica', 'f'] : ['par trenzado', 'trenzado', 'cobre', 'utp', 'pt'],
+        formato: 'texto',
+        pista: `La última parte es el medio: T = par trenzado; SX, LX, SR = fibra. ${nom}: ${medio}.`
+      };
+    }
+    if (tipo < 0.7) {
+      /* [velocidad, metros, respuesta, explicación] */
+      const casos = [
+        () => { const m = 20 + 5 * Math.floor(Math.random() * 17); return ['1 Gbps', m, 'Cat 5e', `1 Gbps lo da ya la Cat 5e, que llega a 100 m. Es la mínima.`]; },
+        () => { const m = 20 + 5 * Math.floor(Math.random() * 17); return ['100 Mbps', m, 'Cat 5e', `La Cat 5 está obsoleta: la mínima que se admite hoy es la Cat 5e.`]; },
+        () => { const m = 20 + 5 * Math.floor(Math.random() * 7); return ['10 Gbps', m, 'Cat 6', `A ${m} m, la Cat 6 da 10 Gbps (hasta unos 55 m). Es la mínima.`]; },
+        () => { const m = 60 + 5 * Math.floor(Math.random() * 9); return ['10 Gbps', m, 'Cat 6A', `A ${m} m, la Cat 6 ya no da 10 Gbps (solo hasta unos 55 m): hace falta Cat 6A.`]; },
+        () => { const m = 10 + 5 * Math.floor(Math.random() * 5); return ['40 Gbps', m, 'Cat 8', `40 Gbps solo los da la Cat 8, y solo hasta 30 m.`]; },
+        () => { const m = 105 + 5 * Math.floor(Math.random() * 8); return ['1 Gbps', m, 'ninguna', `Pasados los 100 m no vale ningún cable de cobre: otro switch más cerca, o fibra.`]; }
+      ];
+      const [vel, m, r, exp] = elige(casos)();
+      const n = r.replace('Cat ', '').toLowerCase();
+      return {
+        enunciado: `Necesito ${vel} a ${m} m → ¿categoría mínima?`,
+        respuesta: r,
+        respuestas: r === 'ninguna' ? ['ninguna', 'ninguno', 'nada', 'no se puede', 'fibra', 'switch'] : [r, n, `cat${n}`, `categoria ${n}`, `cat. ${n}`],
+        formato: 'texto',
+        traducible: true,
+        pista: exp
+      };
+    }
+    /* ¿Cumple el enlace? Fijo ≤ 90 m y latiguillos ≤ 10 m en total. */
+    const fijo = 60 + Math.floor(Math.random() * 38);
+    const l1 = 1 + Math.floor(Math.random() * 6);
+    const l2 = 1 + Math.floor(Math.random() * 6);
+    const lat = l1 + l2;
+    const fallos = [];
+    if (fijo > 90) fallos.push(`el fijo pasa de 90 m (${fijo} m)`);
+    if (lat > 10) fallos.push(`los latiguillos pasan de 10 m (${l1} + ${l2} = ${lat} m)`);
+    const cumple = fallos.length === 0;
+    return {
+      enunciado: `Fijo ${fijo} m, latiguillos ${l1} m + ${l2} m → ¿cumple? (sí/no)`,
+      respuesta: cumple ? 'sí' : 'no',
+      respuestas: cumple ? ['si', 'sí'] : ['no'],
+      formato: 'texto',
+      traducible: true,
+      pista: cumple
+        ? `Sí: fijo ${fijo} ≤ 90 m y latiguillos ${l1} + ${l2} = ${lat} ≤ 10 m (total ${fijo + lat} m).`
+        : `No: ${fallos.join(' y ')}. Total ${fijo + lat} m, pero hay que mirar las dos condiciones.`
+    };
+  }
+
   GENERADORES['t568-colores'] = genT568Colores;
   GENERADORES['directo-o-cruzado'] = genDirectoOCruzado;
   GENERADORES['topologia-y-medio'] = genTopologiaYMedio;
+  GENERADORES['categoria-ethernet'] = genCategoriaEthernet;
 })();
