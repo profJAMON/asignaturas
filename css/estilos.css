@@ -8739,3 +8739,18 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 @media print {
   .leccion table { mask: none; animation: none; }
 }
+
+/* Botón de descarga dentro de una lección (18/11/2026, Proyecto S8): enlace con download que tiene que verse como un botón grande */
+.leccion a.boton--descarga {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--boton-texto);
+  background: var(--accent);
+}
+.leccion a.boton--descarga:hover,
+.leccion a.boton--descarga:focus-visible { background: var(--accent-dim); color: var(--boton-texto); }

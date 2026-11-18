@@ -1,18 +1,24 @@
 <div class="nota">Hoy: le das color a tus páginas con <strong>CSS</strong>. Colores, fondos, tipos y tamaños de letra, y clases. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
 
+<div class="nota" id="descarga-s08">
+<p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
+<p>Los ejercicios 1, 2 y 3 empiezan con un HTML que te doy hecho. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-css/descargas/s08-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s08-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro hay tres archivos: <code>s08-ej1.html</code>, <code>s08-ej2.html</code> y <code>s08-ej3.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s08-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: los tres tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>Qué es CSS</h2>
 <p>HTML dice <strong>qué hay</strong> en la página: un título, una lista, una imagen.</p>
 <p><strong>CSS</strong> dice <strong>cómo se ve</strong>: de qué color, de qué tamaño, dónde se coloca.</p>
 <p>El CSS se escribe en un <strong>archivo aparte</strong>, que acaba en <code>.css</code>. La página HTML lo carga con una línea en el <code>&lt;head&gt;</code>.</p>
 
 <h3>Tus archivos de hoy</h3>
-<p>Hoy el HTML de los ejercicios 1, 2 y 3 <strong>te lo doy hecho</strong>: tú escribes el CSS. El ejercicio 4 lo haces entero: HTML y CSS.</p>
-<ol>
-<li>Descarga <a href="data/proyecto/proy-css/descargas/s08-ejercicios.zip" download>s08-ejercicios.zip</a>. Se guarda en <strong>Descargas</strong>.</li>
-<li>Botón derecho sobre el zip → <strong>Extraer todo</strong>.</li>
-<li>Dentro hay tres archivos: <code>s08-ej1.html</code>, <code>s08-ej2.html</code> y <code>s08-ej3.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios. No muevas la carpeta <code>s08-ejercicios</code> entera.</li>
-<li>Abre tu carpeta de ejercicios en VS Code: los tres salen en el panel de la izquierda.</li>
-</ol>
+<p>Hoy el HTML de los ejercicios 1, 2 y 3 es el del zip que has descargado <a href="#descarga-s08">al principio</a>: tú escribes el CSS. El ejercicio 4 lo haces entero: HTML y CSS.</p>
 <p>Desde hoy, cada ejercicio tiene <strong>dos archivos</strong> con el mismo nombre: el <code>.html</code> y su <code>.css</code>, uno al lado del otro.</p>
 <pre><code>ejercicios-profesorcabron/
 ├── s02-ej1.html
@@ -65,7 +71,7 @@ p {
 <h3>Ejercicio 1 — Conecta tu primer CSS</h3>
 <p>El HTML ya está hecho y ya lleva su <code>&lt;link&gt;</code>. Tú creas el CSS.</p>
 <ol>
-<li>Abre <code>s08-ej1.html</code>. Mira el <code>&lt;head&gt;</code>: esta es la línea que carga el CSS.
+<li>Abre <code>s08-ej1.html</code> (está en el zip; si no lo tienes, <a href="#descarga-s08">descárgalo aquí</a>). Mira el <code>&lt;head&gt;</code>: esta es la línea que carga el CSS.
 <pre><code><span class='co'>&lt;!-- Esta línea carga el CSS. En href va el nombre del archivo .css --&gt;</span>
 <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"s08-ej1.css"</span><span class='et'>&gt;</span></code></pre></li>
 <li>Crea el CSS: en el panel de la izquierda de VS Code, pon el ratón sobre el nombre de tu carpeta de ejercicios y pulsa <strong>New File</strong> (la hoja con un +). Escribe <code>s08-ej1.css</code> y pulsa <strong>Intro</strong>.</li>
