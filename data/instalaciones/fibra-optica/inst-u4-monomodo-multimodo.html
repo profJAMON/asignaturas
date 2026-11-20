@@ -14,42 +14,23 @@
 <h2>Un camino o muchos</h2>
 <p>Dentro del núcleo, la luz puede recorrer uno o varios caminos distintos. A cada uno de esos caminos se le llama <strong>modo</strong>. De ahí salen los dos grandes tipos de fibra, y distinguirlos es lo primero que tienes que saber hacer cuando te encuentras un cable:</p>
 <ul>
-<li><strong>Monomodo</strong> (<em>single-mode</em>, SM): el núcleo es tan estrecho (<strong>9 µm</strong>) que la luz solo cabe por <strong>un único camino</strong>, casi recto por el centro.</li>
-<li><strong>Multimodo</strong> (<em>multimode</em>, MM): el núcleo es más ancho (<strong>50 o 62,5 µm</strong>) y la luz entra por <strong>muchos caminos</strong> a la vez, con ángulos distintos.</li>
+<li><strong>Monomodo</strong> (<em>single-mode</em>, SM): el núcleo es tan estrecho (9 µm) que la luz solo cabe por un único camino, casi recto por el centro.</li>
+<li><strong>Multimodo</strong> (<em>multimode</em>, MM): el núcleo es más ancho (50 o 62,5 µm) y la luz entra por muchos caminos a la vez, con ángulos distintos.</li>
 </ul>
 
-<div class="salida">
-<svg viewBox="0 0 600 315" width="100%" role="img" aria-label="Tres fibras dibujadas en corte longitudinal. Monomodo: núcleo muy estrecho y un rayo recto. Multimodo de salto de índice: núcleo ancho y varios rayos en zigzag de distinta longitud. Multimodo de índice gradual: rayos que se curvan suavemente y llegan casi a la vez. A la derecha, el pulso de salida: estrecho en monomodo, muy ensanchado en salto de índice y poco ensanchado en gradual" style="max-width:100%;height:auto;">
-<style>
-.fmonomo1-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo1-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<text x="20" y="22" class="fmonomo1-t" style="fill:#dcdcaa">Monomodo · 9/125 µm</text>
-<rect x="20" y="30" width="400" height="50" fill="#2d2d30" stroke="#858585"/>
-<rect x="20" y="51" width="400" height="8" fill="#1f3a4a" stroke="#4fc1ff"/>
-<line x1="20" y1="55" x2="420" y2="55" stroke="#dcdcaa" stroke-width="2"/>
-<path d="M 460 70 L 490 70 L 497 38 L 503 38 L 510 70 L 560 70" stroke="#dcdcaa" fill="none" stroke-width="2"/>
-<text x="500" y="92" text-anchor="middle" class="fmonomo1-s">pulso nítido</text>
-
-<text x="20" y="122" class="fmonomo1-t" style="fill:#4ec9b0">Multimodo · salto de índice</text>
-<rect x="20" y="130" width="400" height="60" fill="#2d2d30" stroke="#858585"/>
-<rect x="20" y="140" width="400" height="40" fill="#1f3a4a" stroke="#4fc1ff"/>
-<line x1="20" y1="160" x2="420" y2="160" stroke="#4ec9b0" stroke-width="1.5"/>
-<polyline points="20,160 60,140 140,180 220,140 300,180 380,140 420,160" fill="none" stroke="#c586c0" stroke-width="1.5"/>
-<polyline points="20,160 40,140 80,180 120,140 160,180 200,140 240,180 280,140 320,180 360,140 400,180 420,160" fill="none" stroke="#f48771" stroke-width="1.5"/>
-<path d="M 450 180 L 470 180 L 485 150 L 520 150 L 540 180 L 570 180" stroke="#4ec9b0" fill="none" stroke-width="2"/>
-<text x="510" y="200" text-anchor="middle" class="fmonomo1-s">pulso ensanchado</text>
-
-<text x="20" y="232" class="fmonomo1-t" style="fill:#4ec9b0">Multimodo · índice gradual</text>
-<rect x="20" y="240" width="400" height="50" fill="#2d2d30" stroke="#858585"/>
-<rect x="20" y="248" width="400" height="34" fill="#1f3a4a" stroke="#4fc1ff"/>
-<line x1="20" y1="265" x2="420" y2="265" stroke="#4ec9b0" stroke-width="1.5"/>
-<path d="M 20 265 Q 70 245 120 265 T 220 265 T 320 265 T 420 265" fill="none" stroke="#c586c0" stroke-width="1.5"/>
-<path d="M 20 265 Q 45 252 70 265 T 120 265 T 170 265 T 220 265 T 270 265 T 320 265 T 370 265 T 420 265" fill="none" stroke="#f48771" stroke-width="1.5"/>
-<path d="M 455 285 L 480 285 L 492 250 L 510 250 L 522 285 L 565 285" stroke="#4ec9b0" fill="none" stroke-width="2"/>
-<text x="510" y="308" text-anchor="middle" class="fmonomo1-s">poco ensanchado</text>
-</svg>
-<p class="pie-figura">Cada color es un modo. Cuanto más distintos son sus caminos, más se «emborrona» el pulso al llegar.</p>
+<div class="diapos" aria-label="Monomodo y multimodo: los caminos de la luz">
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Fibra monomodo: núcleo estrecho y un rayo recto; el pulso llega estrecho"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="75" width="235" height="10" rx="1" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c d-trazo-2"/><path d="M270,80 H300 L306,40 L312,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">monomodo · 9/125</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">pulso nítido</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
+<p class="diapo__texto"><strong>Monomodo</strong>: núcleo de 9 µm. La luz va por un solo camino y el pulso llega nítido.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Fibra multimodo: núcleo ancho y rayos en zigzag de distinta longitud; el pulso llega ancho"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="52" width="235" height="56" rx="2" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c"/><path d="M15,80 L55,54 L95,106 L135,54 L175,106 L215,54 L250,80" class="d-linea-c"/><path d="M15,80 L35,54 L55,106 L75,54 L95,106 L115,54 L135,106 L155,54 L175,106 L195,54 L215,106 L250,58" class="d-linea-a"/><path d="M270,80 H285 C292,80 296,46 308,46 C320,46 324,80 331,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">multimodo · zigzag</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">pulso ensanchado</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
+<p class="diapo__texto"><strong>Multimodo</strong>: núcleo ancho. La luz va por muchos caminos y el pulso llega ensanchado.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 150" role="img" aria-label="Fibra multimodo de índice gradual: los rayos se curvan suavemente y llegan casi a la vez"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="52" width="235" height="56" rx="2" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c"/><path d="M15,80 C35,58 55,58 75,80 S115,102 135,80 S175,58 195,80 S235,102 250,80" class="d-linea-c"/><path d="M15,80 C30,64 45,64 60,80 S90,96 105,80 S135,64 150,80 S180,96 195,80 S225,64 240,80" class="d-linea-a"/><path d="M270,80 H292 C297,80 300,44 308,44 C316,44 319,80 324,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">multimodo · índice gradual</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">casi nítido</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
+<p class="diapo__texto">Las multimodo de las redes curvan los caminos poco a poco (<strong>índice gradual</strong>): el pulso llega casi nítido.</p>
+</div>
 </div>
 
 <h2>El problema de los muchos caminos: la dispersión</h2>
@@ -78,7 +59,6 @@
 </div>
 </div>
 
-<p>A eso se le llama <strong>dispersión modal</strong>. Para que los pulsos no se pisen, o se envían <strong>más despacio</strong> o el cable tiene que ser <strong>más corto</strong>. Por eso en multimodo: <strong>a más velocidad, menos metros</strong>.</p>
 <p>La monomodo tiene un solo camino (un solo corredor), así que casi no le pasa. Por eso llega a <strong>decenas de kilómetros</strong>.</p>
 <p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
 <div class="anim" data-anim="fibra-modos" aria-label="Multimodo y monomodo: muchos caminos o uno solo"></div>
@@ -86,8 +66,8 @@
 <details>
 <summary>Para saber más: salto de índice e índice gradual</summary>
 <ul>
-<li><strong>Salto de índice</strong>: el núcleo es igual en todo su grosor y la luz va en zigzag (la del medio en el primer dibujo). Mucha dispersión: hoy solo se ve en fibras de <strong>plástico</strong> para distancias muy cortas (equipos de audio, coches).</li>
-<li><strong>Índice gradual</strong>: el núcleo cambia poco a poco del centro hacia fuera y los rayos se curvan suavemente, así que llegan casi a la vez (la de abajo en el primer dibujo). <strong>Todas las multimodo de las redes (OM1 a OM5) son de índice gradual.</strong></li>
+<li><strong>Salto de índice</strong>: el núcleo es igual en todo su grosor y la luz va en zigzag (diapositiva 2 del primer carrusel). Mucha dispersión: hoy solo se ve en fibras de <strong>plástico</strong> para distancias muy cortas (equipos de audio, coches).</li>
+<li><strong>Índice gradual</strong>: el núcleo cambia poco a poco del centro hacia fuera y los rayos se curvan suavemente, así que llegan casi a la vez (diapositiva 3). <strong>Todas las multimodo de las redes (OM1 a OM5) son de índice gradual.</strong></li>
 </ul>
 </details>
 
@@ -105,24 +85,19 @@
 <ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
 <div class="votacion__porque"><p>Falso. La luz de las redes es <strong>infrarroja</strong>: el ojo no la ve. Que no veas nada no quiere decir que esté apagada.</p></div>
 </div>
-<div class="salida">
-<svg viewBox="0 0 600 156" width="100%" role="img" aria-label="Barra de colores de la luz desde el violeta hasta el rojo, que es lo que ve el ojo, y a continuación una zona oscura de infrarrojo invisible donde están las tres luces de la fibra: 850 nanómetros para multimodo, y 1310 y 1550 nanómetros para monomodo" style="max-width:100%;height:auto;">
-<defs><linearGradient id="u4arcoiris" x1="0" x2="1" y1="0" y2="0">
-<stop offset="0" stop-color="#7a3cc8"/><stop offset="0.2" stop-color="#3a6ae8"/><stop offset="0.4" stop-color="#3ac85a"/><stop offset="0.6" stop-color="#e8e03a"/><stop offset="0.8" stop-color="#e8903a"/><stop offset="1" stop-color="#e03a3a"/>
-</linearGradient></defs>
-<style>
-.fmonomo3-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo3-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<rect x="20" y="40" width="200" height="40" fill="url(#u4arcoiris)"/>
-<text x="120" y="30" text-anchor="middle" class="fmonomo3-t">lo que ve el ojo</text>
-<rect x="220" y="40" width="360" height="40" fill="#2a1a1a" stroke="#555" stroke-dasharray="4 3"/>
-<text x="400" y="30" text-anchor="middle" class="fmonomo3-t">infrarrojo · invisible</text>
-<g><line x1="280" y1="40" x2="280" y2="80" stroke="#4ec9b0" stroke-width="3"/><text x="280" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#4ec9b0">850 nm</text><text x="280" y="114" text-anchor="middle" class="fmonomo3-s">multimodo</text></g>
-<g><line x1="430" y1="40" x2="430" y2="80" stroke="#dcdcaa" stroke-width="3"/><text x="430" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#dcdcaa">1310 nm</text><text x="430" y="114" text-anchor="middle" class="fmonomo3-s">monomodo</text></g>
-<g><line x1="540" y1="40" x2="540" y2="80" stroke="#dcdcaa" stroke-width="3"/><text x="540" y="100" text-anchor="middle" class="fmonomo3-t" style="fill:#dcdcaa">1550 nm</text><text x="540" y="114" text-anchor="middle" class="fmonomo3-s">monomodo lejos</text></g>
-<text x="300" y="136" text-anchor="middle" class="fmonomo3-s">nm = nanómetros, el «color» de la luz.</text><text x="300" y="148" text-anchor="middle" class="fmonomo3-s">No hace falta aprenderse los números: basta con saber que es invisible.</text>
-</svg>
+<div class="diapos" aria-label="La luz de la fibra es infrarroja">
+<div class="diapo">
+<svg viewBox="0 0 360 145" role="img" aria-label="Barra de la luz que ve el ojo, del violeta al rojo"><rect x="20" y="50" width="180" height="34" rx="4" class="d-caja-on"/><text x="110" y="72" text-anchor="middle" class="d-t">violeta → rojo</text><text x="110" y="40" text-anchor="middle" class="d-a d-peq">lo que ve el ojo</text></svg>
+<p class="diapo__texto">El ojo ve la luz del violeta al rojo.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 145" role="img" aria-label="Barra de la luz que ve el ojo, del violeta al rojo; después del rojo, una zona de infrarrojo invisible"><rect x="20" y="50" width="180" height="34" rx="4" class="d-caja-on"/><text x="110" y="72" text-anchor="middle" class="d-t">violeta → rojo</text><text x="110" y="40" text-anchor="middle" class="d-a d-peq">lo que ve el ojo</text><rect x="200" y="50" width="145" height="34" rx="0" class="d-caja"/><text x="272" y="72" text-anchor="middle" class="d-c">infrarrojo</text><text x="272" y="40" text-anchor="middle" class="d-c d-peq">el ojo no lo ve</text></svg>
+<p class="diapo__texto">Justo después del rojo está el <strong>infrarrojo</strong>: el ojo no lo ve.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 145" role="img" aria-label="Barra de la luz que ve el ojo, del violeta al rojo; después del rojo, una zona de infrarrojo invisible; en el infrarrojo, las luces de la fibra: 850 nanómetros multimodo, 1310 y 1550 monomodo"><rect x="20" y="50" width="180" height="34" rx="4" class="d-caja-on"/><text x="110" y="72" text-anchor="middle" class="d-t">violeta → rojo</text><text x="110" y="40" text-anchor="middle" class="d-a d-peq">lo que ve el ojo</text><rect x="200" y="50" width="145" height="34" rx="0" class="d-caja"/><text x="272" y="72" text-anchor="middle" class="d-d">infrarrojo</text><text x="272" y="40" text-anchor="middle" class="d-d d-peq">el ojo no lo ve</text><line x1="228" y1="84" x2="228" y2="100" class="d-linea-c"/><text x="228" y="116" text-anchor="middle" class="d-c d-peq">850</text><text x="228" y="134" text-anchor="middle" class="d-t d-peq">MM</text><line x1="282" y1="84" x2="282" y2="100" class="d-linea-c"/><text x="282" y="116" text-anchor="middle" class="d-c d-peq">1310</text><text x="282" y="134" text-anchor="middle" class="d-t d-peq">SM</text><line x1="330" y1="84" x2="330" y2="100" class="d-linea-c"/><text x="330" y="116" text-anchor="middle" class="d-c d-peq">1550</text><text x="330" y="134" text-anchor="middle" class="d-t d-peq">SM</text><text x="20" y="116" class="d-d d-peq">nm = «color»</text></svg>
+<p class="diapo__texto">Las redes usan luz infrarroja: 850 nm en multimodo y 1310 o 1550 nm en monomodo. No hace falta aprenderse los números.</p>
+</div>
 </div>
 
 <details>
@@ -134,36 +109,36 @@
 <tr><td>1550 nm</td><td>Monomodo, muy lejos</td><td>Láser</td><td>unos 0,25 dB/km</td></tr>
 </table>
 <p>El <strong>LED</strong> es barato y duradero, pero su luz se abre mucho y solo entra bien en núcleos anchos, a poca velocidad: hoy casi solo está en equipos antiguos. El <strong>láser</strong> da un haz muy estrecho, imprescindible en monomodo, y es lo normal en cualquier módulo actual.</p>
-<div class="nota">En la presentación pongo la monomodo con «atenuación inferior a 2 dB/km». Se queda muy corto: una monomodo real pierde <strong>0,25-0,4 dB/km</strong>. Donde se pierden unos 3 dB/km es en la multimodo.</div>
 </details>
 
 <h2>Los tipos OM y OS: cómo reconocerlos</h2>
-<p>Las fibras se clasifican en <strong>OM</strong> (multimodo) y <strong>OS</strong> (monomodo). Lo bueno es que <strong>se reconocen por el color</strong> de la cubierta del latiguillo:</p>
+<p>Las fibras se clasifican en <strong>OM</strong> (multimodo) y <strong>OS</strong> (monomodo). Lo bueno es que se reconocen por el color de la cubierta del latiguillo:</p>
 
-<div class="salida">
-<svg viewBox="0 0 600 260" width="100%" role="img" aria-label="Seis latiguillos dibujados con su color. Monomodo OS2: amarillo, núcleo 9 micras, el de larga distancia. Multimodo: OM1 y OM2 naranja, antiguos; OM3 aguamarina; OM4 aguamarina o violeta; OM5 verde lima" style="max-width:100%;height:auto;">
-<style>
-.fmonomo4-h{font-family:monospace;font-size:13px;font-weight:700}
-.fmonomo4-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo4-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<rect x="10" y="10" width="580" height="70" rx="6" fill="#2d2a1a" stroke="#f0d000"/>
-<rect x="30" y="36" width="260" height="16" rx="8" fill="#f0d000"/>
-<rect x="290" y="32" width="34" height="24" rx="3" fill="#4fc1ff" stroke="#1e1e1e"/>
-<text x="350" y="40" class="fmonomo4-h" fill="#f0d000">AMARILLO = MONOMODO</text>
-<text x="350" y="58" class="fmonomo4-t">OS2 · núcleo 9 µm · kilómetros</text>
-<text x="160" y="48" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#1e1e1e">OS2 9/125</text>
-
-<text x="300" y="104" text-anchor="middle" class="fmonomo4-h" fill="#4ec9b0">CUALQUIER OTRO COLOR = MULTIMODO</text>
-<g>
-<rect x="30" y="122" width="200" height="14" rx="7" fill="#e8802a"/><text x="250" y="134" class="fmonomo4-t">OM1 · OM2</text><text x="360" y="134" class="fmonomo4-s">naranja · antiguas</text>
-<rect x="30" y="152" width="200" height="14" rx="7" fill="#3ac8c8"/><text x="250" y="164" class="fmonomo4-t">OM3</text><text x="360" y="164" class="fmonomo4-s">aguamarina (aqua)</text>
-<rect x="30" y="182" width="95" height="14" rx="7" fill="#3ac8c8"/><rect x="135" y="182" width="95" height="14" rx="7" fill="#a060d0"/><text x="250" y="194" class="fmonomo4-t">OM4</text><text x="360" y="194" class="fmonomo4-s">aqua o violeta · la más usada</text>
-<rect x="30" y="212" width="200" height="14" rx="7" fill="#9ae040"/><text x="250" y="224" class="fmonomo4-t">OM5</text><text x="360" y="224" class="fmonomo4-s">verde lima · la más nueva</text>
-</g>
-<text x="300" y="252" text-anchor="middle" class="fmonomo4-s">Mira siempre también lo que lleva impreso el cable: es lo que manda.</text>
-</svg>
-<p class="pie-figura">El color de la cubierta te dice el tipo de fibra de un vistazo.</p>
+<div class="diapos" aria-label="El color de la cubierta dice el tipo de fibra">
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo monomodo OS2, amarillo"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-amarillo"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">monomodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OS2 · monomodo · 9/125</text></svg>
+<p class="diapo__texto"><strong>Amarillo</strong> = monomodo (OS2). Es la de los kilómetros.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo multimodo antiguo OM1 u OM2, naranja"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-naranja"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">multimodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OM1 · OM2 · antiguas</text></svg>
+<p class="diapo__texto"><strong>Naranja</strong> = multimodo antiguo (OM1 u OM2).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo multimodo OM3 u OM4, aguamarina"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-aguamarina"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">multimodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OM3 · OM4</text></svg>
+<p class="diapo__texto"><strong>Aguamarina</strong> = multimodo OM3 u OM4.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo multimodo OM4, violeta"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-violeta"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">multimodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OM4</text></svg>
+<p class="diapo__texto"><strong>Violeta</strong> = multimodo OM4 (en Europa).</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo multimodo OM5, verde lima"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-lima"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">multimodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OM5 · la más nueva</text></svg>
+<p class="diapo__texto"><strong>Verde lima</strong> = multimodo OM5, la más nueva.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo aguamarina con el texto OM4 50/125 impreso: 50 es el núcleo y 125 el revestimiento"><line x1="55" y1="70" x2="305" y2="70" class="d-fs-aguamarina"/><rect x="15" y="59" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="59" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="66" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="66" width="12" height="8" rx="1" class="d-t"/><text x="180" y="62" text-anchor="middle" class="d-c">OM4 50/125</text><line x1="160" y1="82" x2="120" y2="108" class="d-linea-c"/><text x="120" y="124" text-anchor="middle" class="d-t d-peq">50 = núcleo</text><line x1="205" y1="82" x2="245" y2="108" class="d-linea-c"/><text x="250" y="124" text-anchor="middle" class="d-t d-peq">125 = revestimiento</text></svg>
+<p class="diapo__texto">Manda lo impreso. <strong>50/125</strong>: núcleo de 50 µm y revestimiento de 125 µm. Si pone 9/125, es monomodo.</p>
+</div>
 </div>
 
 <div class="escena" aria-label="Escena: un armario de fibra con latiguillos de colores">
@@ -197,7 +172,7 @@
 <tr><td>OM5</td><td>50 µm</td><td>Verde lima</td><td>Varias luces por fibra</td></tr>
 <tr><td>OS1 / OS2</td><td>9 µm</td><td>Amarillo</td><td>Monomodo. OS2 es la actual</td></tr>
 </table>
-<p>La clasificación viene de la norma internacional ISO/IEC 11801 (y de la americana TIA-568, que es la que cito en la presentación). En el cable verás impreso algo como <code>OM4 50/125</code>: núcleo de 50 µm y revestimiento de 125 µm.</p>
+<p>La clasificación viene de la norma internacional ISO/IEC 11801 y de la americana TIA-568.</p>
 </details>
 
 <div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal. Tampoco se mezcla el OM1 naranja con los demás: su núcleo es más gordo y se pierde luz en cada unión.</div>
@@ -209,27 +184,29 @@
 </div>
 
 <h2>Hasta dónde llega cada una</h2>
-<p>Así se ve la diferencia de distancias. La barra del cobre está para comparar:</p>
+<p>Así se ve la diferencia de distancias. El cobre está para comparar:</p>
 
-<div class="salida">
-<svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Gráfico de barras de distancia máxima a 1 y 10 gigabits. Par trenzado: 100 metros. Multimodo OM3 a 10 Gbps: 300 metros. Multimodo OM4 a 10 Gbps: 400 metros. Multimodo OM3 a 1 Gbps: 550 metros. Monomodo OS2: 10 kilómetros, con la barra cortada porque no cabe" style="max-width:100%;height:auto;">
-<style>
-.fmonomo5-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo5-s{font-family:monospace;font-size:10px;fill:#858585}
-.fmonomo5-v{font-family:monospace;font-size:11px;font-weight:700}
-</style>
-<g stroke="#3a3d41"><line x1="170" y1="20" x2="170" y2="220"/><line x1="245" y1="20" x2="245" y2="220" stroke-dasharray="2 4"/><line x1="320" y1="20" x2="320" y2="220" stroke-dasharray="2 4"/><line x1="395" y1="20" x2="395" y2="220" stroke-dasharray="2 4"/><line x1="470" y1="20" x2="470" y2="220" stroke-dasharray="2 4"/></g>
-<text x="170" y="236" text-anchor="middle" class="fmonomo5-s">0</text><text x="245" y="236" text-anchor="middle" class="fmonomo5-s">100 m</text><text x="320" y="236" text-anchor="middle" class="fmonomo5-s">200 m</text><text x="395" y="236" text-anchor="middle" class="fmonomo5-s">300 m</text><text x="470" y="236" text-anchor="middle" class="fmonomo5-s">400 m</text>
-<text x="160" y="42" text-anchor="end" class="fmonomo5-t">Cobre UTP</text><rect x="170" y="30" width="75" height="18" fill="#d7ba7d"/><text x="252" y="44" class="fmonomo5-v" fill="#d7ba7d">100 m</text>
-<text x="160" y="80" text-anchor="end" class="fmonomo5-t">OM3 · 10 Gbps</text><rect x="170" y="68" width="225" height="18" fill="#3ac8c8"/><text x="402" y="82" class="fmonomo5-v" fill="#3ac8c8">300 m</text>
-<text x="160" y="118" text-anchor="end" class="fmonomo5-t">OM4 · 10 Gbps</text><rect x="170" y="106" width="300" height="18" fill="#a060d0"/><text x="477" y="120" class="fmonomo5-v" fill="#a060d0">400 m</text>
-<text x="160" y="156" text-anchor="end" class="fmonomo5-t">OM3 · 1 Gbps</text><rect x="170" y="144" width="412" height="18" fill="#3ac8c8" fill-opacity="0.6"/><text x="520" y="138" class="fmonomo5-v" fill="#3ac8c8">550 m</text>
-<text x="160" y="194" text-anchor="end" class="fmonomo5-t">OS2 · 10 Gbps</text><rect x="170" y="182" width="380" height="18" fill="#f0d000"/>
-<path d="M 550 180 L 560 191 L 552 202" stroke="#1e1e1e" stroke-width="4" fill="none"/><rect x="562" y="182" width="20" height="18" fill="#f0d000"/>
-<text x="376" y="195" text-anchor="middle" class="fmonomo5-v" fill="#1e1e1e">10 km: 25 veces la OM4</text>
-<text x="300" y="258" text-anchor="middle" class="fmonomo5-s">Fíjate: la misma OM3 llega a 550 m a 1 Gbps pero solo a 300 m a 10 Gbps.</text>
-</svg>
-<p class="pie-figura">La multimodo se mide en metros. La monomodo, en kilómetros.</p>
+<div class="diapos" aria-label="Hasta dónde llega cada una">
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-c d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-act"/><text x="154.0" y="31" class="d-c d-peq">100 m</text></svg>
+<p class="diapo__texto">El cable de cobre llega a <strong>100 m</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-c d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-act"/><text x="230.0" y="59" class="d-c d-peq">300 m</text></svg>
+<p class="diapo__texto">La multimodo OM3 a 10 Gbps llega a <strong>300 m</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-c d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-act"/><text x="268.0" y="87" class="d-c d-peq">400 m</text></svg>
+<p class="diapo__texto">La OM4, un poco mejor: <strong>400 m</strong> a 10 Gbps.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros, OM3 a 1 Gbps 550 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-t d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-on"/><text x="268.0" y="87" class="d-d d-peq">400 m</text><text x="10" y="115" class="d-c d-peq">OM3 1G</text><rect x="110" y="102" width="209.0" height="16" rx="2" class="d-caja-act"/><text x="325.0" y="115" class="d-c d-peq">550 m</text></svg>
+<p class="diapo__texto">La misma OM3 a 1 Gbps llega a 550 m: <strong>menos velocidad, más metros</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros, OM3 a 1 Gbps 550 metros, monomodo OS2 10 kilómetros, la barra no cabe"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-t d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-on"/><text x="268.0" y="87" class="d-d d-peq">400 m</text><text x="10" y="115" class="d-t d-peq">OM3 1G</text><rect x="110" y="102" width="209.0" height="16" rx="2" class="d-caja-on"/><text x="325.0" y="115" class="d-d d-peq">550 m</text><text x="10" y="143" class="d-c d-peq">OS2 10G</text><rect x="110" y="130" width="206" height="16" rx="2" class="d-caja-act"/><path d="M316,130 l6,8 l-6,8" class="d-linea-c"/><text x="328" y="143" class="d-c d-peq">10 km</text></svg>
+<p class="diapo__texto">La monomodo llega a <strong>10 km</strong> y no cabe en el dibujo. La multimodo se mide en metros; la monomodo, en kilómetros.</p>
+</div>
 </div>
 
 <details>
@@ -243,39 +220,29 @@
 <tr><td>10GBASE-LR</td><td>10 Gbps</td><td>OS2</td><td>10 km</td></tr>
 <tr><td>10GBASE-ER</td><td>10 Gbps</td><td>OS2</td><td>40 km</td></tr>
 </table>
-<div class="nota">En la tabla de medios de la presentación pongo la fibra con «&lt;2 km». Eso vale para multimodo. La monomodo llega a 10-40 km con módulos normales.</div>
 </details>
 
 <h3>Entonces, ¿cuál se pone?</h3>
-<div class="salida">
-<svg viewBox="0 0 600 200" width="100%" role="img" aria-label="Dibujo de un edificio de tres plantas unido por dentro con fibra aguamarina multimodo, y un cable amarillo monomodo que sale del edificio hacia otro edificio lejano y hacia una casa con fibra" style="max-width:100%;height:auto;">
-<style>
-.fmonomo6-t{font-family:monospace;font-size:11px;fill:#d4d4d4}
-.fmonomo6-s{font-family:monospace;font-size:10px;fill:#858585}
-</style>
-<rect x="40" y="30" width="140" height="150" fill="#252526" stroke="#858585"/>
-<line x1="40" y1="80" x2="180" y2="80" stroke="#3a3d41"/><line x1="40" y1="130" x2="180" y2="130" stroke="#3a3d41"/>
-<rect x="140" y="45" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/><rect x="140" y="95" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/><rect x="140" y="145" width="24" height="20" fill="#3a3d41" stroke="#4fc1ff"/>
-<line x1="152" y1="65" x2="152" y2="145" stroke="#3ac8c8" stroke-width="4"/>
-<text x="90" y="110" text-anchor="middle" class="fmonomo6-t" style="fill:#3ac8c8">OM4</text>
-<text x="90" y="124" text-anchor="middle" class="fmonomo6-s">dentro</text>
-<text x="110" y="196" text-anchor="middle" class="fmonomo6-s">mismo edificio: multimodo</text>
-<path d="M 164 155 L 420 155 L 420 120" stroke="#f0d000" stroke-width="4" fill="none"/>
-<path d="M 300 155 L 300 60 L 470 60" stroke="#f0d000" stroke-width="4" fill="none"/>
-<rect x="390" y="120" width="70" height="60" fill="#252526" stroke="#858585"/>
-<text x="425" y="196" text-anchor="middle" class="fmonomo6-s">otro edificio</text>
-<polygon points="470,60 510,30 550,60" fill="#3a3d41" stroke="#858585"/><rect x="478" y="60" width="64" height="40" fill="#252526" stroke="#858585"/>
-<text x="510" y="116" text-anchor="middle" class="fmonomo6-s">tu casa (FTTH)</text>
-<text x="290" y="174" text-anchor="middle" class="fmonomo6-t" style="fill:#f0d000">OS2 · lejos</text>
-</svg>
-<p class="pie-figura">Dentro del edificio, multimodo. Para salir del edificio o llegar lejos, monomodo.</p>
+<div class="diapos" aria-label="Dónde va cada fibra">
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Edificio de tres plantas con fibra multimodo entre sus armarios"><rect x="20" y="30" width="80" height="130" rx="4" class="d-caja"/><line x1="20" y1="73" x2="100" y2="73" class="d-linea-d"/><line x1="20" y1="116" x2="100" y2="116" class="d-linea-d"/><rect x="75" y="45" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="88" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="131" width="16" height="20" rx="2" class="d-caja-on"/><line x1="83" y1="65" x2="83" y2="131" class="d-fs-aguamarina"/><text x="60" y="178" text-anchor="middle" class="d-a">multimodo</text></svg>
+<p class="diapo__texto">Dentro de un edificio, entre armarios de distintas plantas: <strong>multimodo</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Edificio de tres plantas con fibra multimodo entre sus armarios; una fibra monomodo sale hacia otro edificio"><rect x="20" y="30" width="80" height="130" rx="4" class="d-caja"/><line x1="20" y1="73" x2="100" y2="73" class="d-linea-d"/><line x1="20" y1="116" x2="100" y2="116" class="d-linea-d"/><rect x="75" y="45" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="88" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="131" width="16" height="20" rx="2" class="d-caja-on"/><line x1="83" y1="65" x2="83" y2="131" class="d-fs-aguamarina"/><text x="60" y="178" text-anchor="middle" class="d-d">multimodo</text><rect x="280" y="30" width="60" height="80" rx="4" class="d-caja"/><path d="M91,55 H280" class="d-fs-amarillo"/><text x="190" y="45" text-anchor="middle" class="d-c">otro edificio</text></svg>
+<p class="diapo__texto">Para salir a otro edificio o llegar lejos: <strong>monomodo</strong>.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 190" role="img" aria-label="Edificio de tres plantas con fibra multimodo entre sus armarios; una fibra monomodo sale hacia otro edificio; otra fibra monomodo llega a una casa"><rect x="20" y="30" width="80" height="130" rx="4" class="d-caja"/><line x1="20" y1="73" x2="100" y2="73" class="d-linea-d"/><line x1="20" y1="116" x2="100" y2="116" class="d-linea-d"/><rect x="75" y="45" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="88" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="131" width="16" height="20" rx="2" class="d-caja-on"/><line x1="83" y1="65" x2="83" y2="131" class="d-fs-aguamarina"/><text x="60" y="178" text-anchor="middle" class="d-d">multimodo</text><rect x="280" y="30" width="60" height="80" rx="4" class="d-caja"/><path d="M91,55 H280" class="d-fs-amarillo"/><text x="190" y="45" text-anchor="middle" class="d-d">otro edificio</text><path d="M290,170 V140 L310,125 L330,140 V170 Z" class="d-linea-d"/><path d="M91,141 H210 V155 H290" class="d-fs-amarillo"/><text x="190" y="178" text-anchor="middle" class="d-c">tu casa (FTTH)</text></svg>
+<p class="diapo__texto">La fibra que llega a tu casa (FTTH) viene de la central de la operadora: también <strong>monomodo</strong>.</p>
+</div>
 </div>
 <p>Hoy el cable monomodo cuesta lo mismo o menos que el multimodo, así que en instalaciones nuevas se pone cada vez más monomodo incluso dentro del edificio: <strong>no se queda pequeña</strong>.</p>
 
 <div class="votacion">
 <p class="votacion__pregunta">La fibra que llega a una casa (FTTH) es…</p>
 <ol class="votacion__opciones"><li>Multimodo</li><li data-correcta>Monomodo</li></ol>
-<div class="votacion__porque"><p><strong>Monomodo</strong> (amarilla): viene de muy lejos, desde la central de la operadora.</p></div>
+<div class="votacion__porque"><p><strong>Monomodo</strong>: viene de muy lejos, desde la central de la operadora.</p></div>
 </div>
 
 <div data-actividad="u4s2-identifica"></div>
@@ -308,7 +275,7 @@
 <li>¿Qué significa <strong>50/125</strong> impreso en un cable? ¿Y <strong>9/125</strong>?</li>
 <li>¿Por qué no se deben mezclar latiguillos multimodo y monomodo? ¿Y OM1 con OM3?</li>
 <li>Te encuentras un latiguillo violeta que pone OM4. ¿Qué tipo de fibra es?</li>
-<li>Mirando el gráfico de distancias: más o menos, ¿hasta dónde llega la multimodo? ¿Y la monomodo?</li>
+<li>Mirando el carrusel de distancias: más o menos, ¿hasta dónde llega la multimodo? ¿Y la monomodo?</li>
 <li>(V/F) Hoy la fibra monomodo es mucho más cara que la multimodo.</li>
 <li>¿Qué fibra elegirías para unir dos armarios a 150 m en el mismo edificio? ¿Y para dos edificios a 3 km? Razónalo.</li>
 </ol>

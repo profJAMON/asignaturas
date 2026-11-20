@@ -8788,6 +8788,21 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .diapo svg .d-trazo-3 { stroke-width: 3; }
 .diapo svg .d-trazo-4 { stroke-width: 4; }
 .diapo svg .d-trazo-7 { stroke-width: 7; }
+/* Colores de verdad de la fibra (cubiertas OM/OS) y de los conectores (UPC azul, APC verde)
+   dentro de las diapositivas (20/11/2026, Instalaciones UT4). Iguales en los dos temas:
+   --fibra-* y --conector-*. d-f-* rellena; d-fs-* es el trazo de un latiguillo. */
+:is(.diapo, .lab) svg .d-f-amarillo { fill: var(--fibra-amarillo); }
+:is(.diapo, .lab) svg .d-f-naranja { fill: var(--fibra-naranja); }
+:is(.diapo, .lab) svg .d-f-aguamarina { fill: var(--fibra-aguamarina); }
+:is(.diapo, .lab) svg .d-f-violeta { fill: var(--fibra-violeta); }
+:is(.diapo, .lab) svg .d-f-lima { fill: var(--fibra-lima); }
+:is(.diapo, .lab) svg .d-fs-amarillo { fill: none; stroke: var(--fibra-amarillo); stroke-width: 7; stroke-linecap: round; }
+:is(.diapo, .lab) svg .d-fs-naranja { fill: none; stroke: var(--fibra-naranja); stroke-width: 7; stroke-linecap: round; }
+:is(.diapo, .lab) svg .d-fs-aguamarina { fill: none; stroke: var(--fibra-aguamarina); stroke-width: 7; stroke-linecap: round; }
+:is(.diapo, .lab) svg .d-fs-violeta { fill: none; stroke: var(--fibra-violeta); stroke-width: 7; stroke-linecap: round; }
+:is(.diapo, .lab) svg .d-fs-lima { fill: none; stroke: var(--fibra-lima); stroke-width: 7; stroke-linecap: round; }
+:is(.diapo, .lab) svg .d-upc { fill: var(--conector-upc); }
+:is(.diapo, .lab) svg .d-apc { fill: var(--conector-apc); }
 /* Muestra del color de un hilo dentro de una tabla o un párrafo. */
 .leccion .hilo-muestra { display: inline-block; width: 2.2rem; height: 0.85rem; border-radius: 999px; border: 1px solid var(--border); vertical-align: middle; margin-right: 0.45rem; }
 
