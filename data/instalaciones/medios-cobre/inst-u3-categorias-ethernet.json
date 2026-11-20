@@ -13,7 +13,6 @@
         { "izquierda": "Cat 5e", "derecha": "100 MHz, 1 Gbps: el mínimo" },
         { "izquierda": "Cat 6", "derecha": "250 MHz, lo habitual en instalaciones nuevas" },
         { "izquierda": "Cat 6A", "derecha": "500 MHz, 10 Gbps a 100 m" },
-        { "izquierda": "Cat 7", "derecha": "600 MHz, siempre apantallado" },
         { "izquierda": "Cat 8", "derecha": "40 Gbps, pero solo 30 m" },
         { "izquierda": "Cat 5", "derecha": "100 Mbps, obsoleta" }
       ]

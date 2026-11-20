@@ -200,7 +200,7 @@
         respuesta: medio,
         respuestas: medio === 'fibra' ? ['fibra', 'fibra optica', 'f'] : ['par trenzado', 'trenzado', 'cobre', 'utp', 'pt'],
         formato: 'texto',
-        pista: `La última parte es el medio: T = par trenzado; SX, LX, SR = fibra. ${nom}: ${medio}.`
+        pista: `La última parte es el medio: si empieza por T, par trenzado; si no, fibra. ${nom}: ${medio}.`
       };
     }
     if (tipo < 0.7) {
@@ -208,8 +208,7 @@
       const casos = [
         () => { const m = 20 + 5 * Math.floor(Math.random() * 17); return ['1 Gbps', m, 'Cat 5e', `1 Gbps lo da ya la Cat 5e, que llega a 100 m. Es la mínima.`]; },
         () => { const m = 20 + 5 * Math.floor(Math.random() * 17); return ['100 Mbps', m, 'Cat 5e', `La Cat 5 está obsoleta: la mínima que se admite hoy es la Cat 5e.`]; },
-        () => { const m = 20 + 5 * Math.floor(Math.random() * 7); return ['10 Gbps', m, 'Cat 6', `A ${m} m, la Cat 6 da 10 Gbps (hasta unos 55 m). Es la mínima.`]; },
-        () => { const m = 60 + 5 * Math.floor(Math.random() * 9); return ['10 Gbps', m, 'Cat 6A', `A ${m} m, la Cat 6 ya no da 10 Gbps (solo hasta unos 55 m): hace falta Cat 6A.`]; },
+        () => { const m = 20 + 5 * Math.floor(Math.random() * 16); return ['10 Gbps', m, 'Cat 6A', `Para 10 Gbps hasta 100 m, la mínima es la Cat 6A.`]; },
         () => { const m = 10 + 5 * Math.floor(Math.random() * 5); return ['40 Gbps', m, 'Cat 8', `40 Gbps solo los da la Cat 8, y solo hasta 30 m.`]; },
         () => { const m = 105 + 5 * Math.floor(Math.random() * 8); return ['1 Gbps', m, 'ninguna', `Pasados los 100 m no vale ningún cable de cobre: otro switch más cerca, o fibra.`]; }
       ];
