@@ -29,6 +29,14 @@
                de latiguillos. No trae cargados los casos de la sesión
                (Ana y el plano del taller): son preguntas evaluables.
    HTML: <div class="lab" data-lab="enlace-cobre" aria-label="…"></div>
+
+   que-cable   UT3 S9 (20/11/2026), «¿Qué cable pongo?»: eliges dos
+               aparatos, el cable (directo o cruzado) y si tienen
+               Auto-MDIX. Se dibujan los dos puertos (quién habla y quién
+               escucha por 1-2 y por 3-6) y sale si se entienden. Los
+               datos son los de la tabla MDI / MDI-X de la sesión: si
+               cambia, cambiar también APARATOS_QC.
+   HTML: <div class="lab" data-lab="que-cable" aria-label="…"></div>
    ============================================================ */
 
 (function () {
@@ -411,6 +419,115 @@
       vivo.appendChild(el('p', okFijo && okLat ? 'ec__ok ec__veredicto' : 'ec__mal ec__veredicto',
         okFijo && okLat ? 'El enlace cumple.' : 'El enlace no cumple, aunque el total sea de ' + total + ' m: mira las dos condiciones.'));
       if (!(okFijo && okLat) && total > 100) vivo.lastChild.textContent = 'El enlace no cumple: pasa de 100 m. No se estira el cable: otro switch más cerca, o fibra.';
+    }
+    pinta();
+  });
+
+  /* ============================================================
+     ¿Qué cable pongo? (que-cable)
+     ============================================================ */
+  const APARATOS_QC = [
+    ['PC', 'MDI'], ['Portátil', 'MDI'], ['Servidor', 'MDI'], ['Impresora de red', 'MDI'],
+    ['Router', 'MDI'], ['Switch', 'MDI-X'], ['Hub', 'MDI-X']
+  ];
+
+  window.registrarLab('que-cable', function (caja) {
+    cabecera(caja, 'Toca y mira');
+    caja.appendChild(el('p', 'lab__nota', 'Elige los dos aparatos y el cable. Mira si lo que dice uno llega a donde escucha el otro.'));
+    const mandos = el('div', 'qc__mandos');
+    function selector(etiqueta, inicial) {
+      const lab = el('label', 'qc__campo');
+      lab.appendChild(el('span', 'qc__etiqueta', etiqueta));
+      const sel = document.createElement('select');
+      sel.className = 'lab__entrada';
+      APARATOS_QC.forEach(([n], i) => { const o = el('option', '', n); o.value = String(i); if (i === inicial) o.selected = true; sel.appendChild(o); });
+      sel.addEventListener('change', pinta);
+      lab.appendChild(sel);
+      mandos.appendChild(lab);
+      return sel;
+    }
+    const selA = selector('Aparato A', 0);
+    const selB = selector('Aparato B', 5);
+
+    const filaCable = el('div', 'lab__fila');
+    filaCable.setAttribute('role', 'group');
+    filaCable.setAttribute('aria-label', 'Cable');
+    filaCable.appendChild(el('span', 'qc__etiqueta', 'Cable:'));
+    const bDir = boton('Directo', 'lab__boton');
+    const bCru = boton('Cruzado', 'lab__boton');
+    filaCable.append(bDir, bCru);
+    bDir.addEventListener('click', () => { cruzado = false; pinta(); });
+    bCru.addEventListener('click', () => { cruzado = true; pinta(); });
+
+    const auto = el('label', 'qc__auto');
+    const chk = document.createElement('input');
+    chk.type = 'checkbox';
+    chk.addEventListener('change', pinta);
+    auto.append(chk, el('span', '', ' Los dos tienen Auto-MDIX'));
+
+    const dibujo = el('div', 'qc__dibujo');
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 360 150');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('translate', 'no');
+    dibujo.appendChild(svg);
+    const vivo = el('div', 'qc__resultado');
+    vivo.setAttribute('aria-live', 'polite');
+    caja.append(mandos, filaCable, auto, dibujo, vivo);
+
+    let cruzado = false;
+    const esc = t => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+    /* Pines efectivos de un puerto: [lo que hace por 1-2, lo que hace por 3-6]. */
+    function pines(tipo, girado) {
+      const mdi = tipo === 'MDI' ? !girado : girado;
+      return mdi ? ['habla', 'escucha'] : ['escucha', 'habla'];
+    }
+    function cajaPuerto(x, nombre, tipo, p) {
+      let s = '<rect x="' + x + '" y="8" width="104" height="112" rx="8" class="qc-caja"/>';
+      s += '<text x="' + (x + 52) + '" y="30" text-anchor="middle" class="qc-t qc-negrita">' + esc(nombre) + '</text>';
+      s += '<text x="' + (x + 52) + '" y="47" text-anchor="middle" class="qc-tipo">' + esc(tipo) + '</text>';
+      [['1-2', p[0], 56], ['3-6', p[1], 86]].forEach(([n, que, y]) => {
+        s += '<rect x="' + (x + 8) + '" y="' + y + '" width="88" height="24" rx="12" class="qc-pila qc-pila--' + (que === 'habla' ? 'habla' : 'oye') + '"/>';
+        s += '<text x="' + (x + 52) + '" y="' + (y + 17) + '" text-anchor="middle" class="qc-t">' + n + ' ' + que + '</text>';
+      });
+      return s;
+    }
+    function pinta() {
+      const a = APARATOS_QC[Number(selA.value)], b = APARATOS_QC[Number(selB.value)];
+      const conAuto = chk.checked;
+      bDir.classList.toggle('lab__boton--activo', !cruzado);
+      bCru.classList.toggle('lab__boton--activo', cruzado);
+      bDir.setAttribute('aria-pressed', String(!cruzado));
+      bCru.setAttribute('aria-pressed', String(cruzado));
+      const toca = a[1] === b[1] ? 'cruzado' : 'directo';
+      const sinAutoVa = (cruzado ? 'cruzado' : 'directo') === toca;
+      /* Con Auto-MDIX, si el cable no es el que toca, B se da la vuelta. */
+      const giraB = conAuto && !sinAutoVa;
+      const pa = pines(a[1], false), pb = pines(b[1], giraB);
+      const va = sinAutoVa || conAuto;
+      let s = cajaPuerto(8, a[0], a[1], pa) + cajaPuerto(248, b[0], b[1] + (giraB ? ' (girado)' : ''), pb);
+      const clase = va ? 'qc-cable qc-cable--ok' : 'qc-cable qc-cable--mal';
+      const yA = [68, 98];
+      const yB = cruzado ? [98, 68] : [68, 98];
+      s += '<line x1="112" y1="' + yA[0] + '" x2="248" y2="' + yB[0] + '" class="' + clase + '"/>';
+      s += '<line x1="112" y1="' + yA[1] + '" x2="248" y2="' + yB[1] + '" class="' + clase + '"/>';
+      s += '<text x="180" y="142" text-anchor="middle" class="qc-t qc-tenue">cable ' + (cruzado ? 'cruzado' : 'directo') + '</text>';
+      s += '<text x="180" y="40" text-anchor="middle" class="' + (va ? 'qc-marca qc-marca--ok' : 'qc-marca qc-marca--mal') + '">' + (va ? '✓' : '✗') + '</text>';
+      svg.innerHTML = s;
+      svg.setAttribute('aria-label', a[0] + ' (' + a[1] + ') y ' + b[0] + ' (' + b[1] + ') con cable ' + (cruzado ? 'cruzado' : 'directo') + (va ? ': se entienden.' : ': no se entienden.'));
+
+      vivo.innerHTML = '';
+      vivo.appendChild(el('p', '', toca === 'directo'
+        ? a[0] + ' es ' + a[1] + ' y ' + b[0] + ' es ' + b[1] + ': tipos distintos → cable directo.'
+        : a[0] + ' y ' + b[0] + ': los dos son ' + a[1] + ', tipos iguales → cable cruzado.'));
+      if (sinAutoVa) {
+        vivo.appendChild(el('p', 'qc__ok', '✓ Se entienden: lo que dice uno por su par llega a donde escucha el otro.'));
+      } else if (conAuto) {
+        vivo.appendChild(el('p', 'qc__ok', '✓ Se entienden gracias al Auto-MDIX: el puerto de B (' + b[0] + ') nota que le hablan por donde él habla y se da la vuelta solo.'));
+      } else {
+        vivo.appendChild(el('p', 'qc__mal', '✗ No se entienden: los dos hablan por el mismo par y nadie escucha. Con estos aparatos, sin Auto-MDIX, toca cable ' + toca + '.'));
+      }
     }
     pinta();
   });

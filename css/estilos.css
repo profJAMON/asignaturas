@@ -8833,3 +8833,31 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .leccion .ec__ok { color: var(--ok); font-weight: 600; }
 .leccion .ec__mal { color: var(--error); font-weight: 600; }
 .leccion .ec__veredicto { font-weight: 700; }
+
+/* Laboratorio «¿Qué cable pongo?» (que-cable, js/lab-redes.js, 20/11/2026) */
+.qc__mandos { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin: 0.6rem 0 0.4rem; }
+.qc__campo { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; flex: 1 1 10rem; }
+.qc__campo .lab__entrada { flex: none; width: 100%; box-sizing: border-box; }
+.leccion .qc__etiqueta { font-size: 0.85rem; color: var(--text-dim); font-weight: 600; }
+.qc__auto { display: flex; align-items: center; gap: 0.3rem; margin: 0.5rem 0; color: var(--text); font-size: 0.95rem; cursor: pointer; }
+.qc__auto input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }
+.qc__dibujo { background: var(--figura-bg); border: 1px solid var(--figura-borde); border-radius: 10px; padding: 0.4rem; max-width: 34rem; }
+.qc__dibujo svg { display: block; width: 100%; height: auto; }
+.lab svg .qc-caja { fill: var(--diapo-caja); stroke: var(--diapo-caja-borde); stroke-width: 1.5; }
+.lab svg .qc-t { fill: var(--diapo-texto); font-family: var(--font-body); font-size: 13px; }
+.lab svg .qc-negrita { font-size: 15px; font-weight: 700; }
+.lab svg .qc-tenue { fill: var(--diapo-tenue); }
+.lab svg .qc-tipo { fill: var(--diapo-acento); font-family: var(--font-mono); font-size: 12px; font-weight: 700; }
+.lab svg .qc-pila { fill: var(--diapo-caja); stroke-width: 1.5; }
+.lab svg .qc-pila--habla { stroke: var(--diapo-calido); }
+.lab svg .qc-pila--oye { stroke: var(--diapo-acento); }
+.lab svg .qc-cable { stroke-width: 3; stroke-linecap: round; }
+.lab svg .qc-cable--ok { stroke: var(--diapo-acento); }
+.lab svg .qc-cable--mal { stroke: var(--diapo-calido); stroke-dasharray: 6 5; }
+.lab svg .qc-marca { font-size: 28px; font-weight: 700; font-family: var(--font-body); }
+.lab svg .qc-marca--ok { fill: var(--diapo-acento); }
+.lab svg .qc-marca--mal { fill: var(--diapo-calido); }
+.qc__resultado { border: 1px solid var(--border); border-radius: 10px; background: var(--surface); padding: 0.7rem 1rem; margin-top: 0.5rem; }
+.qc__resultado p { margin: 0.2rem 0; }
+.leccion .qc__ok { color: var(--ok); font-weight: 600; }
+.leccion .qc__mal { color: var(--error); font-weight: 600; }

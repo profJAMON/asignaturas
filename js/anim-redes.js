@@ -29,6 +29,11 @@
                     UDP no saluda (17/11/2026).
    https-cifrado    UT1 S5 y Operaciones U2 S4 · http se lee; https
                     enseña el certificado y cifra (17/11/2026).
+   autonegociacion  UT3 S10 · la tarjeta y el switch se presentan y se
+                    quedan con lo mejor de los dos; un par roto baja a
+                    100 Mbps (20/11/2026).
+   duplex-mismatch  UT3 S10 · un lado fijado a mano y el otro en
+                    automático: semidúplex contra dúplex (20/11/2026).
    ============================================================ */
 
 (function () {
@@ -880,6 +885,68 @@
         { texto: '<strong>Dúplex</strong>: los dos a la vez y sin chocar. Así trabaja un PC con su switch.',
           ver: ['okD'], luz: ['d1', 'd2'],
           paq: [{ id: 'd1', ruta: ruta([X1, L.d - 10], [X2, L.d - 10]), chips: [] }, { id: 'd2', ruta: ruta([X2, L.d + 10], [X1, L.d + 10]), chips: [], color: 'rosa' }] }
+      ]
+    });
+  })();
+
+  /* autonegociacion y duplex-mismatch · UT3 S10 (20/11/2026) */
+  (function () {
+    const PCX = 120, PCY = 196, SWX = 500, SWY = 200;
+    const A = [168, 214], B = [432, 214];
+    function escena(k, tPC, tSw) {
+      k.cable('c', A, B);
+      k.pc(k.svg, PCX, PCY);
+      k.switch_(k.svg, SWX, SWY, 4, 'Switch');
+      k.nombre('tPC', k.pastilla(k.svg, 150, 60, tPC));
+      k.nombre('tSw', k.pastilla(k.svg, 490, 60, tSw));
+      k.nombre('res', k.pastilla(k.svg, 300, 320, '100 Mbps · dúplex', { claseTexto: 'i-t i-negrita' }));
+      k.nombre('ok', k.marca(k.svg, 300, 270, true));
+      k.nombre('mal', k.marca(k.svg, 300, 270, false));
+    }
+    const ida = ruta(A, B), vuelta = ruta(B, A);
+    const fijo = ['tPC', 'tSw'];
+
+    ISO.animacion('autonegociacion', {
+      titulo: 'Autonegociación: la tarjeta y el switch acuerdan la velocidad y el dúplex',
+      msMovimiento: 1500,
+      dibujar(k) {
+        escena(k, 'PC: 10/100/1000', 'Switch: 10/100');
+        k.nombre('roto', k.bocadillo(k.svg, 300, 140, 'Par azul roto', [300, 206]));
+      },
+      pasos: [
+        { texto: 'Enchufas el cable. Antes de mandar datos, la tarjeta y el switch <strong>se presentan</strong>.', ver: fijo },
+        { texto: 'La tarjeta dice hasta dónde llega: hasta <strong>1000 Mbps</strong>, y en dúplex.',
+          ver: fijo, luz: ['c'], paq: [{ id: 'o', ruta: ida, chips: ['puedo 1000'] }] },
+        { texto: 'El switch contesta: él llega solo <strong>hasta 100</strong>.',
+          ver: fijo, luz: ['c'], paq: [{ id: 'r', ruta: vuelta, chips: ['yo, hasta 100'], color: 'rosa' }] },
+        { texto: 'Se quedan con lo mejor que admiten <strong>los dos</strong>: 100 Mbps y dúplex.',
+          ver: fijo.concat(['res', 'ok']) },
+        { texto: 'Cambio el switch por uno gigabit. Con un buen cable, los dos llegan a <strong>1 Gbps</strong>.',
+          ver: fijo.concat(['res', 'ok']), textos: { tSw: 'Switch: 10/100/1000', res: '1 Gbps · dúplex' } },
+        { texto: 'Si un par del cable está roto, a 1 Gbps no llegan: hacen falta los cuatro. Bajan a <strong>100 Mbps</strong>. Hay luz, pero va más lento.',
+          ver: fijo.concat(['res', 'roto']), textos: { res: '100 Mbps · dúplex' } }
+      ]
+    });
+
+    ISO.animacion('duplex-mismatch', {
+      titulo: 'Duplex mismatch: un lado fijado a mano y el otro en automático',
+      msMovimiento: 1500,
+      dibujar(k) {
+        escena(k, 'PC: automático', 'Switch: automático');
+        k.nombre('choque', k.bocadillo(k.svg, 300, 140, 'Cree que hay colisión', [330, 206]));
+      },
+      pasos: [
+        { texto: 'Un PC y un switch, los dos en <strong>automático</strong>: se ponen de acuerdo en 100 Mbps y dúplex.',
+          ver: fijo.concat(['res', 'ok']) },
+        { texto: 'Alguien fija la tarjeta <strong>a mano</strong>: 100 Mbps y dúplex. El switch sigue en automático.',
+          ver: fijo, textos: { tPC: 'PC: a mano, dúplex' } },
+        { texto: 'Como el PC ya no se presenta, el switch no sabe el dúplex y, por si acaso, se pone en <strong>semidúplex</strong>.',
+          ver: fijo, textos: { tSw: 'Switch: semidúplex', res: '100 Mbps' } },
+        { texto: 'El PC habla cuando quiere; el switch cree que hay colisión y descarta datos. Hay luz, pero va <strong>lentísimo</strong>.',
+          ver: fijo.concat(['choque', 'mal']), luz: ['c'],
+          paq: [{ id: 'a', ruta: ida, chips: [], cae: true }, { id: 'b', ruta: vuelta, chips: [], color: 'rosa' }] },
+        { texto: 'La regla: <strong>o los dos en automático, o los dos fijados igual</strong>.',
+          ver: fijo.concat(['res', 'ok']), textos: { tPC: 'PC: automático', tSw: 'Switch: automático', res: '100 Mbps · dúplex' } }
       ]
     });
   })();
