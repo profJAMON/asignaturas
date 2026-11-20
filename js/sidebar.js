@@ -103,6 +103,12 @@ async function cargarBarraLateral(idActivo, asigActiva) {
 
     /* El temario se ha construido por fetch: avisar al traductor. */
     if (typeof retraducir === 'function') retraducir();
+
+    /* El menú se pinta de nuevo en cada página y arrancaba siempre
+       arriba: con unidades largas la sesión activa quedaba fuera de la
+       vista. Se lleva a la mitad del menú (20/11/2026). */
+    const activa = contenedor.querySelector('.sesion.activa');
+    if (activa) requestAnimationFrame(() => _centrarSesionActiva(activa));
   } catch (error) {
     contenedor.innerHTML = '<p class="vacio">No se ha podido cargar el temario.</p>';
     console.error(error);
@@ -122,6 +128,19 @@ function _subirUnidad(resumen) {
   } else {
     resumen.scrollIntoView({ block: 'start', behavior: suave });
   }
+}
+
+/* Pone la sesión activa en el centro del menú, sin animación (es la
+   posición de partida, no un movimiento). Solo en escritorio, donde el
+   menú tiene su propio desplazamiento: en móvil el menú va en la
+   página y mover la página apartaría al alumno de la lección. */
+function _centrarSesionActiva(enlace) {
+  const menu = enlace.closest('.sidebar');
+  if (!menu || getComputedStyle(menu).overflowY === 'visible') return;
+  if (menu.scrollHeight <= menu.clientHeight) return;
+  const centro = enlace.getBoundingClientRect().top - menu.getBoundingClientRect().top
+    + menu.scrollTop - (menu.clientHeight - enlace.offsetHeight) / 2;
+  menu.scrollTop = Math.max(0, centro);
 }
 
 /* El título de la unidad en el menú. 03/10/2026: etiqueta «U3» y el
