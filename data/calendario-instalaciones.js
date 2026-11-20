@@ -63,6 +63,14 @@
    fechas que pasan del 22/02/2027 (examen final) se ven a propósito.
    1r no se toca.
 
+   20/11/2026: la sesión «Herramientas del cable de cobre»
+   (inst-u3-herramientas) pasa de la UT3 (era la S11) a la UT8, justo
+   antes del taller del latiguillo (S4), para verla justo antes de usar
+   las herramientas. Cae el mismo día que el taller del latiguillo en
+   los dos grupos (en 2n, las dos en las 2 h de ese día; decisión de
+   Carles). La UT3 queda con 12 sesiones y la UT8 con 13. No se han
+   corrido las demás fechas.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se retrasa o adelanta respecto a esto: edita las
@@ -84,7 +92,7 @@ const CALENDARIO_INSTALACIONES = {
       "nombre": "2n"
     }
   ],
-  "actualizado": "2026-11-16",
+  "actualizado": "2026-11-20",
   "unidades": [
     {
       "id": "antes-de-empezar",
@@ -193,7 +201,6 @@ const CALENDARIO_INSTALACIONES = {
         "inst-u3-t568",
         "inst-u3-directo-cruzado",
         "inst-u3-tarjeta-y-enlace",
-        "inst-u3-herramientas",
         "inst-u3-coaxial",
         "inst-u3-repaso"
       ],
@@ -318,6 +325,7 @@ const CALENDARIO_INSTALACIONES = {
         "inst-u8-que-es",
         "inst-u8-canalizaciones",
         "inst-u8-armario",
+        "inst-u3-herramientas",
         "inst-u3-taller-latiguillo",
         "inst-u3-taller-cruzado-averias",
         "inst-u8-taller-toma-panel",
@@ -561,20 +569,14 @@ const CALENDARIO_INSTALACIONES = {
       "1r": "2026-12-18",
       "2n": "2026-11-30"
     },
-    "inst-u3-herramientas": {
-      "titulo": "Sesión 11 — Herramientas del cable de cobre",
-      "unidad": "medios-cobre",
-      "1r": "2026-12-22",
-      "2n": "2026-12-01"
-    },
     "inst-u3-coaxial": {
-      "titulo": "Sesión 12 — El cable coaxial",
+      "titulo": "Sesión 11 — El cable coaxial",
       "unidad": "medios-cobre",
       "1r": "2027-01-12",
       "2n": "2026-12-09"
     },
     "inst-u3-repaso": {
-      "titulo": "Sesión 13 — Repaso de la unidad",
+      "titulo": "Sesión 12 — Repaso de la unidad",
       "unidad": "medios-cobre",
       "1r": "2027-01-15",
       "2n": "2026-12-11"
@@ -801,51 +803,57 @@ const CALENDARIO_INSTALACIONES = {
       "1r": "2027-05-21",
       "2n": "2027-03-10"
     },
+    "inst-u3-herramientas": {
+      "titulo": "Sesión 4 — Herramientas del cable de cobre",
+      "unidad": "cableado-estructurado",
+      "1r": "2027-05-25",
+      "2n": "2027-03-12"
+    },
     "inst-u3-taller-latiguillo": {
-      "titulo": "Sesión 4 — Taller: fabrica un latiguillo directo",
+      "titulo": "Sesión 5 — Taller: fabrica un latiguillo directo",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-25",
       "2n": "2027-03-12"
     },
     "inst-u3-taller-cruzado-averias": {
-      "titulo": "Sesión 5 — Taller: cable cruzado y diagnóstico de averías",
+      "titulo": "Sesión 6 — Taller: cable cruzado y diagnóstico de averías",
       "unidad": "cableado-estructurado",
       "1r": "2027-05-28",
       "2n": "2027-03-15"
     },
     "inst-u8-taller-toma-panel": {
-      "titulo": "Sesión 6 — Taller: toma de pared y panel de parcheo",
+      "titulo": "Sesión 7 — Taller: toma de pared y panel de parcheo",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-01",
       "2n": "2027-03-16"
     },
     "inst-u8-plano": {
-      "titulo": "Sesión 7 — Planos y documentación de la red",
+      "titulo": "Sesión 8 — Planos y documentación de la red",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-04"
     },
     "inst-u8-taller-canaleta": {
-      "titulo": "Sesión 8 — Taller: canaleta y caja de superficie",
+      "titulo": "Sesión 9 — Taller: canaleta y caja de superficie",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-08"
     },
     "inst-taller-conector-f": {
-      "titulo": "Sesión 9 — Taller: conector F en cable coaxial",
+      "titulo": "Sesión 10 — Taller: conector F en cable coaxial",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-08"
     },
     "inst-u9-oficina-diseno": {
-      "titulo": "Sesión 10 — Proyecto: diseña la red de la gestoría",
+      "titulo": "Sesión 11 — Proyecto: diseña la red de la gestoría",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-11"
     },
     "inst-u9-oficina-montaje": {
-      "titulo": "Sesión 11 — Proyecto: monta tu parte de la gestoría",
+      "titulo": "Sesión 12 — Proyecto: monta tu parte de la gestoría",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-15"
     },
     "inst-u9-oficina-entrega": {
-      "titulo": "Sesión 12 — Proyecto: prueba y entrega la red",
+      "titulo": "Sesión 13 — Proyecto: prueba y entrega la red",
       "unidad": "cableado-estructurado",
       "1r": "2027-06-15"
     }

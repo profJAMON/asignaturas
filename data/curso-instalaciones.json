@@ -67,7 +67,6 @@
         "inst-u3-t568",
         "inst-u3-directo-cruzado",
         "inst-u3-tarjeta-y-enlace",
-        "inst-u3-herramientas",
         "inst-u3-coaxial",
         "inst-u3-repaso"
       ]
@@ -142,6 +141,7 @@
         "inst-u8-que-es",
         "inst-u8-canalizaciones",
         "inst-u8-armario",
+        "inst-u3-herramientas",
         "inst-u3-taller-latiguillo",
         "inst-u3-taller-cruzado-averias",
         "inst-u8-taller-toma-panel",
