@@ -2,7 +2,7 @@
   "id": "inst-u4-conectores-empalmes",
   "titulo": "Sesión 3 — Conectores, empalmes y equipos",
   "fecha": "",
-  "descripcion": "La férula, los conectores LC, SC, ST, FC y MPO, el pulido UPC y APC, TX y RX con la polaridad A-B, las partes de un enlace entre armarios, los empalmes por fusión y mecánicos, los transceptores SFP y la limpieza de conectores.",
+  "descripcion": "Conector y empalme, la férula, los conectores LC y SC, verde con verde y azul con azul, TX y RX, el enlace entre armarios, el empalme por fusión, el SFP y la ONT, y la limpieza de conectores.",
   "materiales": [],
   "actividades": [
     {

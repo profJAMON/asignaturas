@@ -6,7 +6,8 @@
    GENERADORES.
 
    fibra-tipo       descripción → monomodo o multimodo (y OM/OS)
-   fibra-conector   descripción → LC, SC, ST, FC, MPO, UPC o APC
+   fibra-conector   descripción → LC, SC, UPC o APC (desde el 20/11/2026,
+                    sin ST, FC ni MPO, que pasan a «Para saber más»)
    perdidas-fibra   presupuesto de pérdidas de un enlace (dB)
    margen-fibra     margen = lo que aguanta el módulo − pérdidas
    metros-a-km      pasar metros a kilómetros (paso previo al cálculo)
@@ -45,9 +46,6 @@
 
   const TIPOS = [
     ['Latiguillo con la cubierta amarilla', 'monomodo'],
-    ['Cable con el texto impreso 9/125', 'monomodo'],
-    ['Cable con el texto impreso 50/125', 'multimodo'],
-    ['Cable con el texto impreso 62,5/125', 'multimodo'],
     ['Latiguillo aguamarina (aqua)', 'multimodo'],
     ['Latiguillo naranja de una instalación antigua', 'multimodo'],
     ['Cable violeta marcado OM4', 'multimodo'],
@@ -55,17 +53,11 @@
     ['Fibra con un único camino posible para la luz', 'monomodo'],
     ['Fibra en la que la luz va por muchos caminos a la vez', 'multimodo'],
     ['La fibra que sufre dispersión modal', 'multimodo'],
-    ['Fibra que llega a 10 km con 10GBASE-LR', 'monomodo'],
-    ['Fibra que usa 10GBASE-SR (hasta 300-400 m)', 'multimodo'],
-    ['Fibra que usa 1000BASE-SX', 'multimodo'],
-    ['Fibra que usa 1000BASE-LX', 'monomodo'],
-    ['Fibra que se usa con luz de 850 nm', 'multimodo'],
     ['Fibra para un enlace de 25 km entre dos pueblos', 'monomodo'],
     ['Fibra que llega a casa en una instalación FTTH', 'monomodo'],
-    ['Fibra que admite un emisor LED barato', 'multimodo'],
     ['Fibra con núcleo de 9 µm', 'monomodo'],
     ['Latiguillo con conectores SC de cuerpo verde (APC)', 'monomodo'],
-    ['Fibra que pierde unos 0,35 dB por kilómetro', 'monomodo']
+    ['Latiguillo con el texto OM3', 'multimodo']
   ];
 
   function genFibraTipo() {
@@ -75,7 +67,7 @@
       respuesta: r,
       respuestas: r === 'monomodo' ? MONO : MULTI,
       formato: 'texto',
-      pista: 'Monomodo: 9 µm, amarillo, láser, 1310/1550 nm, kilómetros, LX/LR, APC. Multimodo: 50 o 62,5 µm, naranja/aqua/violeta/lima, 850 nm, cientos de metros, SX/SR, dispersión modal.'
+      pista: 'Monomodo: núcleo de 9 µm, amarillo, un solo camino, kilómetros, la de casa. Multimodo: núcleo ancho, naranja, aguamarina, violeta o lima, muchos caminos, cientos de metros.'
     };
   }
 
@@ -84,16 +76,10 @@
   const CONECTORES = [
     ['Pequeño, con pestaña como un RJ-45, en pareja en los módulos SFP', 'LC'],
     ['El conector de los módulos SFP de un switch', 'LC'],
-    ['Férula de 1,25 mm, el más habitual en centros de datos', 'LC'],
     ['Cuadrado, se enchufa empujando y se saca tirando', 'SC'],
     ['El conector cuadrado de la fibra que llega a la ONT de casa', 'SC'],
-    ['Redondo y metálico, se engancha empujando y girando (bayoneta)', 'ST'],
-    ['Típico de instalaciones multimodo antiguas, parecido a un BNC', 'ST'],
-    ['Redondo y metálico, de rosca, no se suelta con las vibraciones', 'FC'],
-    ['Rectangular y ancho, lleva 12 o 24 fibras en una sola férula', 'MPO'],
-    ['Conector de muchas fibras para enlaces de 40 a 400 Gbps', 'MPO'],
-    ['Pulido con la punta cortada a 8 grados, cuerpo verde', 'APC'],
-    ['Pulido de punta plana, cuerpo azul en monomodo', 'UPC'],
+    ['Conector de cuerpo verde (va con otro verde)', 'APC'],
+    ['Conector de cuerpo azul (va con otro azul)', 'UPC'],
     ['Pulido que usan las instalaciones FTTH para evitar reflejos', 'APC'],
     ['Pulido habitual de los conectores LC de un switch', 'UPC']
   ];
@@ -101,14 +87,13 @@
   function genFibraConector() {
     const [t, r] = elige(CONECTORES);
     const resp = [r];
-    if (r === 'MPO') resp.push('MTP', 'MPO/MTP');
     if (r === 'SC') resp.push('SC/APC', 'SC/UPC');
     return {
       enunciado: `${t} → ¿qué es?`,
       respuesta: r,
       respuestas: resp,
       formato: 'texto',
-      pista: 'LC pequeño (Little) · SC cuadrado (Square) · ST bayoneta · FC rosca · MPO muchas fibras · UPC plano y azul · APC a 8° y verde.'
+      pista: 'LC pequeño y en pareja (Little) · SC cuadrado (Square) · UPC azul · APC verde: verde con verde, azul con azul.'
     };
   }
 

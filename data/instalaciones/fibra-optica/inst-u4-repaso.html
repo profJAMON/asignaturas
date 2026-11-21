@@ -15,7 +15,7 @@
 <div class="votacion">
 <p class="votacion__pregunta">Dentro de la fibra, la luz rebota en…</p>
 <ol class="votacion__opciones"><li>la cubierta de plástico</li><li data-correcta>el límite entre el núcleo y el revestimiento</li><li>los hilos de aramida</li></ol>
-<div class="votacion__porque"><p>Rebota donde el <strong>núcleo</strong> se toca con el <strong>revestimiento</strong> (reflexión total interna). (Sesión 1)</p></div>
+<div class="votacion__porque"><p>Rebota donde el <strong>núcleo</strong> se toca con el <strong>revestimiento</strong>, los dos de vidrio. (Sesión 1)</p></div>
 </div>
 <div class="votacion">
 <p class="votacion__pregunta">¿Qué fibra llega más lejos?</p>
@@ -49,18 +49,14 @@
 <section class="rs-bloque rs-c1" id="rs4-fibra" aria-labelledby="rs4-fibra-t">
 <div class="rs-cab"><span class="rs-num" aria-hidden="true">1</span><h3 id="rs4-fibra-t">La fibra por dentro</h3><span class="rs-ses">sesión 1</span></div>
 <p class="rs-idea">Lleva <strong>pulsos de luz</strong> infrarroja por un hilo de vidrio. La luz no se ve.</p>
-<p class="rs-cuenta">No se escapa por la <strong>reflexión total interna</strong>: el núcleo tiene más índice de refracción que el revestimiento.</p>
+<p class="rs-cuenta">La luz <strong>rebota</strong> en el borde entre núcleo y revestimiento y no se escapa. Una curva cerrada la saca.</p>
 <ol class="rs-pasos">
 <li><strong>Núcleo</strong> <span>por donde va la luz: 9, 50 o 62,5 µm</span></li>
-<li><strong>Revestimiento</strong> <span>la devuelve al núcleo: 125 µm</span></li>
-<li><strong>Recubrimiento primario</strong> <span>250 µm</span></li>
+<li><strong>Revestimiento</strong> <span>la devuelve al núcleo</span></li>
+<li><strong>Recubrimiento primario</strong> <span>plástico de color</span></li>
 <li><strong>Aramida</strong> <span>aguanta el tirón</span></li>
 <li><strong>Cubierta</strong> <span>la funda de fuera</span></li>
 </ol>
-<div class="rs-vs">
-<div><p class="rs-vs-t">Holgada</p><p>Exteriores y entre edificios.</p></div>
-<div><p class="rs-vs-t">Ajustada</p><p>Interiores y latiguillos (900 µm).</p></div>
-</div>
 <div class="rs-vs">
 <div><p class="rs-vs-t">Ventajas</p><p>Distancia, ancho de banda, <strong>inmune a interferencias</strong>, no conduce electricidad, segura.</p></div>
 <div><p class="rs-vs-t">Inconvenientes</p><p>Frágil, cara de instalar, sensible a la suciedad, no alimenta aparatos.</p></div>
@@ -77,7 +73,7 @@
 <p class="rs-sub">El color de la cubierta dice qué fibra es:</p>
 <ul class="rs-colores"><li><span class="rs-color c-fibra-amarillo" aria-hidden="true"></span><strong>Amarillo</strong> <small>monomodo OS2</small></li><li><span class="rs-color c-fibra-naranja" aria-hidden="true"></span><strong>Naranja</strong> <small>multimodo OM1 y OM2</small></li><li><span class="rs-color c-fibra-aguamarina" aria-hidden="true"></span><strong>Aguamarina</strong> <small>multimodo OM3 y OM4</small></li><li><span class="rs-color c-fibra-violeta" aria-hidden="true"></span><strong>Violeta</strong> <small>multimodo OM4</small></li><li><span class="rs-color c-fibra-lima" aria-hidden="true"></span><strong>Verde lima</strong> <small>multimodo OM5</small></li></ul>
 <p class="rs-cuenta">En multimodo, la <strong>dispersión modal</strong> ensancha los pulsos: a más velocidad, menos distancia.</p>
-<p class="rs-aviso">⚠ Monomodo y multimodo <strong>no se mezclan</strong>. Tampoco el OM1 naranja con los demás.</p>
+<p class="rs-aviso">⚠ Monomodo y multimodo <strong>no se mezclan</strong>.</p>
 </section>
 
 <section class="rs-bloque rs-c2" id="rs4-conectores" aria-labelledby="rs4-conectores-t">
@@ -86,25 +82,22 @@
 <dl class="rs-fichas">
 <div><dt>LC</dt><dd>Pequeño, con pestaña. El de los SFP.</dd></div>
 <div><dt>SC</dt><dd>Cuadrado, push-pull. La fibra de casa.</dd></div>
-<div><dt>ST</dt><dd>Bayoneta. Antiguo.</dd></div>
-<div><dt>FC</dt><dd>De rosca.</dd></div>
-<div><dt>MPO</dt><dd>De 12 a 24 fibras.</dd></div>
 </dl>
-<ul class="rs-colores"><li><span class="rs-color c-conector-upc" aria-hidden="true"></span><strong>UPC azul</strong> <small>punta plana; en multimodo, beige</small></li><li><span class="rs-color c-conector-apc" aria-hidden="true"></span><strong>APC verde</strong> <small>punta a 8°</small></li></ul>
+<ul class="rs-colores"><li><span class="rs-color c-conector-upc" aria-hidden="true"></span><strong>UPC azul</strong> <small>lo normal en redes de datos</small></li><li><span class="rs-color c-conector-apc" aria-hidden="true"></span><strong>APC verde</strong> <small>la fibra de casa</small></li></ul>
 <p class="rs-aviso">⚠ <strong>Verde solo con verde, azul con azul.</strong> Nunca se mezclan.</p>
 <p class="rs-cuenta">Con dos fibras, el <strong>TX de un lado va al RX del otro</strong>. Si no enciende, se da la vuelta a la pareja.</p>
-<div class="rs-flujo"><span class="rs-caja">SFP</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Latiguillo</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Bandeja</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Pigtail</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Empalme</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Troncal</span></div>
+<div class="rs-flujo"><span class="rs-caja">SFP</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Latiguillo</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Empalme</span><span class="rs-flecha" aria-hidden="true">→</span><span class="rs-caja">Troncal</span></div>
 <div class="rs-vs">
 <div><p class="rs-vs-t">Empalme por fusión</p><p>Arco eléctrico: 0,05-0,1 dB.</p></div>
-<div><p class="rs-vs-t">Empalme mecánico</p><p>Con gel: unos 0,3 dB. Reparaciones.</p></div>
+<div><p class="rs-vs-t">Conector</p><p>Se suelta. Pierde más que un empalme.</p></div>
 </div>
-<p class="rs-cuenta"><strong>SFP</strong> 1 Gbps · <strong>SFP+</strong> 10 Gbps, se cambian en caliente. <strong>Conversor de medios</strong>: de RJ-45 a fibra. <strong>ONT</strong>: la caja de la fibra de casa.</p>
+<p class="rs-cuenta"><strong>SFP</strong>: el módulo de fibra del switch, se cambia sin apagar. <strong>Conversor de medios</strong>: de RJ-45 a fibra. <strong>ONT</strong>: la caja de la fibra de casa.</p>
 <p class="rs-truco">💡 El fallo número uno es un <strong>conector sucio</strong>: se mira y se limpia antes de enchufar.</p>
 </section>
 
 <section class="rs-bloque rs-c3" id="rs4-perdidas" aria-labelledby="rs4-perdidas-t">
 <div class="rs-cab"><span class="rs-num" aria-hidden="true">4</span><h3 id="rs4-perdidas-t">Pérdidas y margen</h3><span class="rs-ses">sesión 4</span></div>
-<p class="rs-idea">Las pérdidas en dB <strong>se suman</strong>, como un ticket. 3 dB = la mitad de la luz; 10 dB = la décima parte.</p>
+<p class="rs-idea">Las pérdidas en dB <strong>se suman</strong>, como un ticket. 3 dB = la mitad de la luz; 6 dB = un cuarto.</p>
 <table class="rs-tabla">
 <tr><th>En el ticket</th><th>Cuánto cuesta</th></tr>
 <tr><td>Multimodo</td><td><strong>3,5 dB</strong> por km</td></tr>
@@ -135,9 +128,7 @@
 <li><strong>¿Encaja todo?</strong> <span>mismos módulos, misma fibra, verde con verde</span></li>
 <li><strong>Polaridad</strong> <span>dar la vuelta a la pareja TX y RX</span></li>
 <li><strong>Limpiar</strong> <span>mirar y limpiar los conectores</span></li>
-<li><strong>Localizador visual</strong> <span>curvas y roturas</span></li>
-<li><strong>Medidor de potencia</strong> <span>¿pierde más de lo calculado?</span></li>
-<li><strong>OTDR</strong> <span>dónde está el fallo</span></li>
+<li><strong>Medidor de potencia</strong> <span>¿pierde más de lo calculado? El OTDR dice dónde</span></li>
 </ol>
 </section>
 
@@ -151,22 +142,21 @@
 <div class="papel">
 <p class="papel__titulo">UD 4 — Fibra óptica · Preguntas de repaso — a mano, en el cuaderno</p>
 <ol>
-<li>Te encuentras en un armario un latiguillo aguamarina con conectores LC de cuerpo beige y otro amarillo con conectores LC azules. Di de cada uno el tipo de fibra, el conector, el pulido y dónde lo usarías. ¿Se pueden unir con un adaptador?
+<li>Te encuentras en un armario un latiguillo aguamarina con conectores LC y otro amarillo con conectores LC azules. Di de cada uno el tipo de fibra, el conector, el pulido y dónde lo usarías. ¿Se pueden unir con un adaptador?
 <details class="respuesta"><summary>Ver respuesta</summary>
 <ul>
-<li><strong>Latiguillo aguamarina con LC beige</strong>: fibra <strong>multimodo</strong> (OM3 u OM4), conector <strong>LC</strong>, pulido <strong>UPC</strong> (en multimodo el UPC es beige). Para dentro de un edificio, de la bandeja al switch.</li>
+<li><strong>Latiguillo aguamarina con LC</strong>: fibra <strong>multimodo</strong> (OM3 u OM4), conector <strong>LC</strong>. Para dentro de un edificio, del panel al switch.</li>
 <li><strong>Latiguillo amarillo con LC azules</strong>: fibra <strong>monomodo</strong> (OS2), conector <strong>LC</strong>, pulido <strong>UPC</strong> (azul). Para enlaces largos, como entre edificios.</li>
 <li><strong>No se pueden unir</strong>, aunque el conector encaje en el adaptador: monomodo y multimodo no se mezclan. Funcionaría fatal o no funcionaría.</li>
 </ul>
 </details>
 </li>
-<li>Hay que unir dos edificios a 1,2 km. Elige la fibra (tipo y color), la estructura del cable, los conectores y el módulo, y justifica cada elección.
+<li>Hay que unir dos edificios a 1,2 km. Elige la fibra (tipo y color), los conectores y el módulo, y justifica cada elección.
 <details class="respuesta"><summary>Ver respuesta</summary>
 <ul>
 <li><strong>Fibra monomodo, amarilla (OS2)</strong>: 1,2 km es demasiado para multimodo, que llega a cientos de metros.</li>
-<li><strong>Estructura holgada</strong>: el cable va por fuera, entre edificios.</li>
 <li><strong>Conectores LC</strong>, los de los módulos SFP, con pulido <strong>UPC (azul)</strong>, lo normal en redes de datos. Los empalmes, por <strong>fusión</strong> (pierden poco).</li>
-<li><strong>Módulo SFP para monomodo</strong> en cada switch, por ejemplo un 1000BASE-LX, que llega a 5 km o más.</li>
+<li><strong>Módulo SFP para monomodo</strong> en cada switch, que llega a varios kilómetros.</li>
 </ul>
 </details>
 </li>

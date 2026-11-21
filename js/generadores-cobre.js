@@ -67,9 +67,11 @@
 
   /* ---------- Directo o cruzado ---------- */
 
-  /* MDI: transmite por 1-2 y recibe por 3-6 (equipos finales y routers).
-     MDI-X: al revés, lleva el cruce por dentro (switches y hubs). */
-  const MDI = ['un PC', 'un portátil', 'un servidor', 'un router', 'una impresora de red', 'una cámara IP', 'otro PC'];
+  /* MDI: transmite por 1-2 y recibe por 3-6 (equipos finales).
+     MDI-X: al revés, lleva el cruce por dentro (switches y hubs).
+     Desde el 20/11/2026 sin «un router» (confundía con el de casa) y la
+     pista dice «equipo» / «reparte la red» en vez de las siglas. */
+  const MDI = ['un PC', 'un portátil', 'un servidor', 'una impresora de red', 'una cámara IP', 'otro PC'];
   const MDIX = ['un switch', 'un hub', 'otro switch', 'un puerto LAN del router de casa'];
 
   function tipo(aparato) {
@@ -98,7 +100,7 @@
       respuesta: resp,
       respuestas: cruzado ? ['cruzado', 'cable cruzado', 'c', 'crossover'] : ['directo', 'cable directo', 'd', 'recto', 'paralelo'],
       formato: 'texto',
-      pista: `${a[0].toUpperCase()}${a.slice(1)} es ${ta} y ${b} es ${tb}: ${cruzado ? 'iguales → cruzado' : 'distintos → directo'}.${casa} (Con Auto-MDIX funcionaría con cualquiera, pero aquí se pregunta el que toca.)`
+      pista: `${a[0].toUpperCase()}${a.slice(1)} ${ta === 'MDI' ? 'es un equipo' : 'reparte la red'} y ${b} ${tb === 'MDI' ? 'es un equipo' : 'reparte la red'}: ${cruzado ? 'iguales → cruzado' : 'distintos → directo'}.${casa} (Con Auto-MDIX funcionaría con cualquiera, pero aquí se pregunta el que toca.)`
     };
   }
 

@@ -13,10 +13,9 @@
 
 
 <h2>El orden de los colores no se improvisa</h2>
-<p>Técnicamente, un cable funciona con cualquier orden de colores, siempre que en los dos extremos sea el mismo. Pero si cada instalador pusiera el suyo, nadie podría reparar la red de otro, y además los pares no quedarían bien emparejados con los pines que trabajan juntos. Por eso el orden está fijado por una norma.</p>
-<p>La posición de cada hilo en el conector se llama <strong>terminación</strong>, y la norma <strong>TIA-568</strong> define dos: <strong>T568A</strong> y <strong>T568B</strong>.</p>
+<p>Un cable funciona con cualquier orden de colores si es el mismo en las dos puntas. Pero si cada instalador pusiera el suyo, nadie podría reparar la red de otro. Por eso hay una norma con dos órdenes: <strong>T568A</strong> y <strong>T568B</strong>.</p>
 
-<h2>Las dos terminaciones</h2>
+<h2>Los dos órdenes: T568A y T568B</h2>
 <div class="salida">
 <svg viewBox="0 0 600 270" width="100%" role="img" aria-label="Terminaciones T568A y T568B. T568A: 1 blanco-verde, 2 verde, 3 blanco-naranja, 4 azul, 5 blanco-azul, 6 naranja, 7 blanco-marrón, 8 marrón. T568B: 1 blanco-naranja, 2 naranja, 3 blanco-verde, 4 azul, 5 blanco-azul, 6 verde, 7 blanco-marrón, 8 marrón" style="max-width:100%;height:auto;">
 <style>
@@ -72,6 +71,7 @@
 </div>
 
 <h3>Cómo acordarte sin chuleta</h3>
+<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 1</strong>.</p>
 <div class="diapos" aria-label="T568B con los cuatro trucos">
 <div class="diapo">
 <svg viewBox="0 0 360 120" role="img" aria-label="Los ocho pines de un RJ-45 en T568B" translate="no"><text x="27" y="22" text-anchor="middle" class="d-d d-peq">1</text><rect x="8" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="70" y="22" text-anchor="middle" class="d-d d-peq">2</text><rect x="51" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="113" y="22" text-anchor="middle" class="d-d d-peq">3</text><rect x="94" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="156" y="22" text-anchor="middle" class="d-d d-peq">4</text><rect x="137" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="199" y="22" text-anchor="middle" class="d-d d-peq">5</text><rect x="180" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="242" y="22" text-anchor="middle" class="d-d d-peq">6</text><rect x="223" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="285" y="22" text-anchor="middle" class="d-d d-peq">7</text><rect x="266" y="30" width="38" height="70" rx="3" class="d-caja"/><text x="328" y="22" text-anchor="middle" class="d-d d-peq">8</text><rect x="309" y="30" width="38" height="70" rx="3" class="d-caja"/></svg>
@@ -102,12 +102,7 @@
 <p class="diapo__texto">T568B completo. T568A es igual, pero cambiando <strong>naranja por verde</strong>.</p>
 </div>
 </div>
-<ol>
-<li><strong>Los blancos van en los impares</strong> (1, 3, 5, 7) y los de color liso en los pares… con una excepción: el pin 4 es azul liso y el 5 blanco-azul.</li>
-<li><strong>El azul va siempre en el centro</strong> (4 y 5) y <strong>el marrón siempre al final</strong> (7 y 8). En las dos normas.</li>
-<li>Solo tienes que decidir quién empieza: <strong>T568<u>B</u> empieza por blanco-naranja</strong>; T568A, por blanco-verde.</li>
-<li>El par que empieza (pines 1 y 2) se <strong>parte</strong>: su blanco va en el 3 y su color en el 6, rodeando al azul.</li>
-</ol>
+
 
 <div data-actividad="u3s8-generador"></div>
 <div class="votacion">
@@ -118,12 +113,8 @@
 
 <h2>¿Cuál se usa?</h2>
 <p>Las dos son igual de buenas: eléctricamente dan el mismo resultado. Lo único obligatorio es <strong>no mezclarlas dentro de una misma instalación</strong>: si las rosetas están en T568B, el panel también, y los latiguillos también.</p>
-<ul>
-<li>La norma admite ambas y señala <strong>T568A</strong> como la preferente (en EE. UU. es obligatoria en edificios públicos).</li>
-<li>En la práctica, <strong>T568B</strong> está muchísimo más extendida, sobre todo en los latiguillos que se venden hechos.</li>
-</ul>
 <p>En el taller trabajaremos con <strong>T568B</strong>, para que tus latiguillos sean iguales que los comprados.</p>
-<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 7</strong>.</p>
+<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 5</strong>.</p>
 <div class="diapos" aria-label="No mezclar T568A y T568B">
 <div class="diapo">
 <svg viewBox="0 0 360 170" role="img" aria-label="Una instalación con todas las puntas en T568B: latiguillo, cable fijo y latiguillo del armario. Funciona" translate="no"><rect x="6" y="46" width="36" height="34" rx="5" class="d-caja"/><text x="24.0" y="98" text-anchor="middle" class="d-d d-peq">PC</text><rect x="110" y="46" width="36" height="34" rx="5" class="d-caja"/><text x="128.0" y="98" text-anchor="middle" class="d-d d-peq">roseta</text><rect x="230" y="46" width="36" height="34" rx="5" class="d-caja"/><text x="248.0" y="98" text-anchor="middle" class="d-d d-peq">panel</text><rect x="310" y="46" width="44" height="34" rx="5" class="d-caja"/><text x="332.0" y="98" text-anchor="middle" class="d-d d-peq">switch</text><line x1="42" y1="63" x2="110" y2="63" class="d-linea-a d-trazo-2"/><text x="51" y="40" text-anchor="middle" class="d-a d-grande">B</text><text x="101" y="40" text-anchor="middle" class="d-a d-grande">B</text><line x1="146" y1="63" x2="230" y2="63" class="d-linea-a d-trazo-2"/><text x="155" y="40" text-anchor="middle" class="d-a d-grande">B</text><text x="221" y="40" text-anchor="middle" class="d-a d-grande">B</text><text x="188.0" y="98" text-anchor="middle" class="d-d d-peq">cable fijo</text><line x1="266" y1="63" x2="310" y2="63" class="d-linea-a d-trazo-2"/><text x="275" y="40" text-anchor="middle" class="d-a d-grande">B</text><text x="301" y="40" text-anchor="middle" class="d-a d-grande">B</text><text x="180" y="136" text-anchor="middle" class="d-a d-enorme">✓</text></svg>
@@ -138,7 +129,7 @@
 <p class="diapo__texto">Si un electricista pone la roseta en A y el panel en B, ese cable es un <strong>cruzado</strong> sin querer. Por eso no se mezclan.</p>
 </div>
 </div>
-<div class="nota">Mi presentación dice que la norma recomienda T568A «para la mayor parte del tendido». Es cierto, pero lo importante no es cuál eliges, sino que <strong>sea la misma en todo el edificio</strong> y quede apuntada en la documentación.</div>
+
 
 <div class="votacion">
 <p class="votacion__pregunta">Un cable con T568A es más rápido que uno con T568B.</p>
@@ -147,8 +138,8 @@
 </div>
 
 <h2>Qué pines trabajan</h2>
-<p>A 10 y 100 Mbps, un equipo como tu PC <strong>transmite por los pines 1 y 2</strong> y <strong>recibe por los pines 3 y 6</strong>. Por eso el par que va en 3-6 está partido alrededor del azul: tiene que trabajar como pareja aunque sus pines no sean vecinos.</p>
-<p>Pasa las diapositivas: te ayudan con las <strong>preguntas 10 y 11</strong>.</p>
+<p>A 10 y 100 Mbps, un equipo como tu PC <strong>transmite por los pines 1 y 2</strong> y <strong>recibe por los pines 3 y 6</strong>.</p>
+<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 6</strong>.</p>
 <div class="diapos" aria-label="Qué pines trabajan en T568B">
 <div class="diapo">
 <svg viewBox="0 0 360 150" role="img" aria-label="Un RJ-45 en T568B visto de frente: del pin 1 al 8, blanco-naranja, naranja, blanco-verde, azul, blanco-azul, verde, blanco-marrón y marrón" translate="no"><rect x="30" y="26" width="290" height="98" rx="6" class="d-caja-on"/><text x="54.0" y="18" text-anchor="middle" class="d-t d-peq">1</text><rect x="40" y="34" width="28" height="82" rx="2" class="d-h-blanco"/><rect x="48.4" y="34" width="11.2" height="82" class="d-h-naranja"/><text x="90.0" y="18" text-anchor="middle" class="d-t d-peq">2</text><rect x="76" y="34" width="28" height="82" rx="2" class="d-h-naranja"/><text x="126.0" y="18" text-anchor="middle" class="d-t d-peq">3</text><rect x="112" y="34" width="28" height="82" rx="2" class="d-h-blanco"/><rect x="120.4" y="34" width="11.2" height="82" class="d-h-verde"/><text x="162.0" y="18" text-anchor="middle" class="d-t d-peq">4</text><rect x="148" y="34" width="28" height="82" rx="2" class="d-h-azul"/><text x="198.0" y="18" text-anchor="middle" class="d-t d-peq">5</text><rect x="184" y="34" width="28" height="82" rx="2" class="d-h-blanco"/><rect x="192.4" y="34" width="11.2" height="82" class="d-h-azul"/><text x="234.0" y="18" text-anchor="middle" class="d-t d-peq">6</text><rect x="220" y="34" width="28" height="82" rx="2" class="d-h-verde"/><text x="270.0" y="18" text-anchor="middle" class="d-t d-peq">7</text><rect x="256" y="34" width="28" height="82" rx="2" class="d-h-blanco"/><rect x="264.4" y="34" width="11.2" height="82" class="d-h-marron"/><text x="306.0" y="18" text-anchor="middle" class="d-t d-peq">8</text><rect x="292" y="34" width="28" height="82" rx="2" class="d-h-marron"/></svg>
@@ -167,12 +158,6 @@
 <p class="diapo__texto">A 1 Gbps trabajan <strong>los cuatro pares</strong>, también el azul y el marrón.</p>
 </div>
 </div>
-<table>
-<tr><th>Pines</th><th>Función en el PC (10/100 Mbps)</th><th>En T568B</th></tr>
-<tr><td>1 y 2</td><td>Transmitir (TX)</td><td>Par naranja</td></tr>
-<tr><td>3 y 6</td><td>Recibir (RX)</td><td>Par verde</td></tr>
-<tr><td>4-5 y 7-8</td><td>Sin uso a 10/100; <strong>se usan a 1 Gbps</strong></td><td>Azul y marrón</td></tr>
-</table>
 <p>Esta idea (qué pines transmiten y cuáles reciben) es la que explica la próxima sesión: cuándo hace falta un cable <strong>cruzado</strong>.</p>
 
 <div class="votacion">
@@ -186,8 +171,7 @@
 <p class="papel__titulo">Sesión 8 · Preguntas obligatorias — a mano, en el cuaderno</p>
 <p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>¿Qué es la <strong>terminación</strong> de un cable? ¿Qué norma define T568A y T568B?</li>
-<li>Con el dibujo y la tabla de las dos terminaciones: escribe el orden de colores de T568A y de T568B, del pin 1 al 8.</li>
+<li>Escribe el orden de colores de T568A y de T568B, del pin 1 al 8. Puedes usar los trucos de las diapositivas.</li>
 <li>¿Qué pares cambian de posición entre T568A y T568B? ¿Cuáles se quedan igual?</li>
 <li>(ABC) En T568B, el pin 3 es…
 <ul>
@@ -195,26 +179,17 @@
     <li>b) blanco-verde</li>
     <li>c) azul</li>
   </ul></li>
-<li>(ABC) El azul liso va en el pin…
-<ul>
-    <li>a) 4 en las dos normas</li>
-    <li>b) 4 en T568A y 5 en T568B</li>
-    <li>c) 6 en las dos normas</li>
-  </ul></li>
-<li>Escribe los cuatro trucos para acordarte del orden sin chuleta.</li>
-<li>Lee la nota del apartado «¿Cuál se usa?». ¿Qué norma se debe usar en una instalación? ¿Qué es lo único obligatorio?</li>
 <li>(V/F) Un cable con T568A es más rápido que uno con T568B.</li>
-<li>(V/F) En el taller trabajaremos con T568B para que los latiguillos sean iguales que los comprados.</li>
-<li>Con la tabla «Qué pines trabajan»: ¿por qué pines transmite y por cuáles recibe un PC a 100 Mbps? ¿Qué colores son en T568B?</li>
-<li>¿Por qué el par de los pines 3 y 6 va partido alrededor del azul?</li>
+<li>Mira las diapositivas «No mezclar T568A y T568B». ¿Qué pasa si la roseta está en T568A y el panel en T568B? ¿Qué norma usaremos en el taller?</li>
+<li>¿Por qué pines transmite y por cuáles recibe un PC a 100 Mbps? ¿De qué color son en T568B?</li>
 </ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
 <p class="papel__titulo">Sesión 8 · Sube nota — no entran en el examen</p>
-<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 12.</p>
-<ol start="12">
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 7.</p>
+<ol start="7">
 <li>Mira un latiguillo comprado por la parte transparente del conector y apunta el orden de colores. ¿Es T568A o T568B?</li>
 <li>Inventa un truco propio, distinto de los de la sesión, para acordarte del orden de T568B.</li>
 </ol>

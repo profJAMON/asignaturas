@@ -34,8 +34,10 @@
                aparatos, el cable (directo o cruzado) y si tienen
                Auto-MDIX. Se dibujan los dos puertos (quién habla y quién
                escucha por 1-2 y por 3-6) y sale si se entienden. Los
-               datos son los de la tabla MDI / MDI-X de la sesión: si
-               cambia, cambiar también APARATOS_QC.
+               datos son los de la tabla de la sesión: si cambia, cambiar
+               también APARATOS_QC. Desde el 20/11/2026, sin router (los
+               de casa tienen bocas de switch y confundía) y sin las
+               siglas MDI / MDI-X en pantalla: «equipo» y «reparte».
    HTML: <div class="lab" data-lab="que-cable" aria-label="…"></div>
    ============================================================ */
 
@@ -428,8 +430,10 @@
      ============================================================ */
   const APARATOS_QC = [
     ['PC', 'MDI'], ['Portátil', 'MDI'], ['Servidor', 'MDI'], ['Impresora de red', 'MDI'],
-    ['Router', 'MDI'], ['Switch', 'MDI-X'], ['Hub', 'MDI-X']
+    ['Switch', 'MDI-X'], ['Hub', 'MDI-X']
   ];
+  /* Lo que se ve en pantalla en lugar de las siglas. */
+  const TIPO_QC = { 'MDI': 'equipo', 'MDI-X': 'reparte' };
 
   window.registrarLab('que-cable', function (caja) {
     cabecera(caja, 'Toca y mira');
@@ -447,7 +451,7 @@
       return sel;
     }
     const selA = selector('Aparato A', 0);
-    const selB = selector('Aparato B', 5);
+    const selB = selector('Aparato B', 4);
 
     const filaCable = el('div', 'lab__fila');
     filaCable.setAttribute('role', 'group');
@@ -506,7 +510,7 @@
       const giraB = conAuto && !sinAutoVa;
       const pa = pines(a[1], false), pb = pines(b[1], giraB);
       const va = sinAutoVa || conAuto;
-      let s = cajaPuerto(8, a[0], a[1], pa) + cajaPuerto(248, b[0], b[1] + (giraB ? ' (girado)' : ''), pb);
+      let s = cajaPuerto(8, a[0], TIPO_QC[a[1]], pa) + cajaPuerto(248, b[0], TIPO_QC[b[1]] + (giraB ? ' (girado)' : ''), pb);
       const clase = va ? 'qc-cable qc-cable--ok' : 'qc-cable qc-cable--mal';
       const yA = [68, 98];
       const yB = cruzado ? [98, 68] : [68, 98];
@@ -515,12 +519,12 @@
       s += '<text x="180" y="142" text-anchor="middle" class="qc-t qc-tenue">cable ' + (cruzado ? 'cruzado' : 'directo') + '</text>';
       s += '<text x="180" y="40" text-anchor="middle" class="' + (va ? 'qc-marca qc-marca--ok' : 'qc-marca qc-marca--mal') + '">' + (va ? '✓' : '✗') + '</text>';
       svg.innerHTML = s;
-      svg.setAttribute('aria-label', a[0] + ' (' + a[1] + ') y ' + b[0] + ' (' + b[1] + ') con cable ' + (cruzado ? 'cruzado' : 'directo') + (va ? ': se entienden.' : ': no se entienden.'));
+      svg.setAttribute('aria-label', a[0] + ' (' + TIPO_QC[a[1]] + ') y ' + b[0] + ' (' + TIPO_QC[b[1]] + ') con cable ' + (cruzado ? 'cruzado' : 'directo') + (va ? ': se entienden.' : ': no se entienden.'));
 
       vivo.innerHTML = '';
       vivo.appendChild(el('p', '', toca === 'directo'
-        ? a[0] + ' es ' + a[1] + ' y ' + b[0] + ' es ' + b[1] + ': tipos distintos → cable directo.'
-        : a[0] + ' y ' + b[0] + ': los dos son ' + a[1] + ', tipos iguales → cable cruzado.'));
+        ? a[0] + ' y ' + b[0] + ': un equipo con un aparato que reparte la red → cable directo.'
+        : a[0] + ' y ' + b[0] + (a[1] === 'MDI' ? ': los dos son equipos, iguales' : ': los dos reparten la red, iguales') + ' → cable cruzado.'));
       if (sinAutoVa) {
         vivo.appendChild(el('p', 'qc__ok', '✓ Se entienden: lo que dice uno por su par llega a donde escucha el otro.'));
       } else if (conAuto) {

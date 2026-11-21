@@ -12,12 +12,8 @@
 </div>
 
 <h2>Un camino o muchos</h2>
-<p>Dentro del núcleo, la luz puede recorrer uno o varios caminos distintos. A cada uno de esos caminos se le llama <strong>modo</strong>. De ahí salen los dos grandes tipos de fibra, y distinguirlos es lo primero que tienes que saber hacer cuando te encuentras un cable:</p>
-<ul>
-<li><strong>Monomodo</strong> (<em>single-mode</em>, SM): el núcleo es tan estrecho (9 µm) que la luz solo cabe por un único camino, casi recto por el centro.</li>
-<li><strong>Multimodo</strong> (<em>multimode</em>, MM): el núcleo es más ancho (50 o 62,5 µm) y la luz entra por muchos caminos a la vez, con ángulos distintos.</li>
-</ul>
-
+<p>Dentro del núcleo, la luz puede ir por <strong>un solo camino</strong> o por <strong>muchos</strong>. De ahí salen los dos tipos de fibra, y distinguirlos es lo primero que tienes que saber hacer cuando te encuentras un cable.</p>
+<p>Pasa las diapositivas: te ayudan con las <strong>preguntas 1 y 2</strong>.</p>
 <div class="diapos" aria-label="Monomodo y multimodo: los caminos de la luz">
 <div class="diapo">
 <svg viewBox="0 0 360 150" role="img" aria-label="Fibra monomodo: núcleo estrecho y un rayo recto; el pulso llega estrecho"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="75" width="235" height="10" rx="1" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c d-trazo-2"/><path d="M270,80 H300 L306,40 L312,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">monomodo · 9/125</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">pulso nítido</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
@@ -26,10 +22,6 @@
 <div class="diapo">
 <svg viewBox="0 0 360 150" role="img" aria-label="Fibra multimodo: núcleo ancho y rayos en zigzag de distinta longitud; el pulso llega ancho"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="52" width="235" height="56" rx="2" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c"/><path d="M15,80 L55,54 L95,106 L135,54 L175,106 L215,54 L250,80" class="d-linea-c"/><path d="M15,80 L35,54 L55,106 L75,54 L95,106 L115,54 L135,106 L155,54 L175,106 L195,54 L215,106 L250,58" class="d-linea-a"/><path d="M270,80 H285 C292,80 296,46 308,46 C320,46 324,80 331,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">multimodo · zigzag</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">pulso ensanchado</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
 <p class="diapo__texto"><strong>Multimodo</strong>: núcleo ancho. La luz va por muchos caminos y el pulso llega ensanchado.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 150" role="img" aria-label="Fibra multimodo de índice gradual: los rayos se curvan suavemente y llegan casi a la vez"><rect x="15" y="40" width="235" height="80" rx="4" class="d-caja"/><rect x="15" y="52" width="235" height="56" rx="2" class="d-caja-on"/><line x1="15" y1="80" x2="250" y2="80" class="d-linea-c"/><path d="M15,80 C35,58 55,58 75,80 S115,102 135,80 S175,58 195,80 S235,102 250,80" class="d-linea-c"/><path d="M15,80 C30,64 45,64 60,80 S90,96 105,80 S135,64 150,80 S180,96 195,80 S225,64 240,80" class="d-linea-a"/><path d="M270,80 H292 C297,80 300,44 308,44 C316,44 319,80 324,80 H350" class="d-linea-c"/><text x="15" y="25" class="d-a">multimodo · índice gradual</text><text x="310" y="140" text-anchor="middle" class="d-c d-peq">casi nítido</text><text x="132" y="140" text-anchor="middle" class="d-d d-peq">núcleo</text></svg>
-<p class="diapo__texto">Las multimodo de las redes curvan los caminos poco a poco (<strong>índice gradual</strong>): el pulso llega casi nítido.</p>
 </div>
 </div>
 
@@ -60,16 +52,8 @@
 </div>
 
 <p>La monomodo tiene un solo camino (un solo corredor), así que casi no le pasa. Por eso llega a <strong>decenas de kilómetros</strong>.</p>
-<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 3</strong>.</p>
 <div class="anim" data-anim="fibra-modos" aria-label="Multimodo y monomodo: muchos caminos o uno solo"></div>
-
-<details>
-<summary>Para saber más: salto de índice e índice gradual</summary>
-<ul>
-<li><strong>Salto de índice</strong>: el núcleo es igual en todo su grosor y la luz va en zigzag (diapositiva 2 del primer carrusel). Mucha dispersión: hoy solo se ve en fibras de <strong>plástico</strong> para distancias muy cortas (equipos de audio, coches).</li>
-<li><strong>Índice gradual</strong>: el núcleo cambia poco a poco del centro hacia fuera y los rayos se curvan suavemente, así que llegan casi a la vez (diapositiva 3). <strong>Todas las multimodo de las redes (OM1 a OM5) son de índice gradual.</strong></li>
-</ul>
-</details>
 
 <div class="votacion">
 <p class="votacion__pregunta">La multimodo pierde menos luz por metro que el cobre. Entonces, ¿por qué llega menos lejos que la monomodo?</p>
@@ -112,7 +96,7 @@
 </details>
 
 <h2>Los tipos OM y OS: cómo reconocerlos</h2>
-<p>Las fibras se clasifican en <strong>OM</strong> (multimodo) y <strong>OS</strong> (monomodo). Lo bueno es que se reconocen por el color de la cubierta del latiguillo:</p>
+<p>Se reconocen por el <strong>color de la cubierta</strong> del latiguillo. Pasa las diapositivas: te ayudan con la <strong>pregunta 5</strong>.</p>
 
 <div class="diapos" aria-label="El color de la cubierta dice el tipo de fibra">
 <div class="diapo">
@@ -134,10 +118,6 @@
 <div class="diapo">
 <svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo multimodo OM5, verde lima"><line x1="55" y1="75" x2="305" y2="75" class="d-fs-lima"/><rect x="15" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="64" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="71" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="71" width="12" height="8" rx="1" class="d-t"/><text x="180" y="40" text-anchor="middle" class="d-a">multimodo</text><text x="180" y="118" text-anchor="middle" class="d-t">OM5 · la más nueva</text></svg>
 <p class="diapo__texto"><strong>Verde lima</strong> = multimodo OM5, la más nueva.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 140" role="img" aria-label="Latiguillo aguamarina con el texto OM4 50/125 impreso: 50 es el núcleo y 125 el revestimiento"><line x1="55" y1="70" x2="305" y2="70" class="d-fs-aguamarina"/><rect x="15" y="59" width="40" height="22" rx="3" class="d-caja-on"/><rect x="305" y="59" width="40" height="22" rx="3" class="d-caja-on"/><rect x="3" y="66" width="12" height="8" rx="1" class="d-t"/><rect x="345" y="66" width="12" height="8" rx="1" class="d-t"/><text x="180" y="62" text-anchor="middle" class="d-c">OM4 50/125</text><line x1="160" y1="82" x2="120" y2="108" class="d-linea-c"/><text x="120" y="124" text-anchor="middle" class="d-t d-peq">50 = núcleo</text><line x1="205" y1="82" x2="245" y2="108" class="d-linea-c"/><text x="250" y="124" text-anchor="middle" class="d-t d-peq">125 = revestimiento</text></svg>
-<p class="diapo__texto">Manda lo impreso. <strong>50/125</strong>: núcleo de 50 µm y revestimiento de 125 µm. Si pone 9/125, es monomodo.</p>
 </div>
 </div>
 
@@ -162,7 +142,8 @@
 </div>
 
 <details>
-<summary>Para saber más: la tabla completa</summary>
+<summary>Para saber más: lo que pone impreso y la tabla completa</summary>
+<p>Manda lo impreso en el cable. <strong>50/125</strong>: núcleo de 50 µm y revestimiento de 125 µm (multimodo). <strong>9/125</strong>: monomodo.</p>
 <table>
 <tr><th>Tipo</th><th>Núcleo</th><th>Color</th><th>Notas</th></tr>
 <tr><td>OM1</td><td>62,5 µm</td><td>Naranja</td><td>Antigua</td></tr>
@@ -175,13 +156,7 @@
 <p>La clasificación viene de la norma internacional ISO/IEC 11801 y de la americana TIA-568.</p>
 </details>
 
-<div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal. Tampoco se mezcla el OM1 naranja con los demás: su núcleo es más gordo y se pierde luz en cada unión.</div>
-
-<div class="votacion">
-<p class="votacion__pregunta">En un cable pone 9/125. ¿Qué fibra es?</p>
-<ol class="votacion__opciones"><li>Multimodo</li><li data-correcta>Monomodo</li></ol>
-<div class="votacion__porque"><p><strong>Monomodo</strong>: núcleo de 9 µm. El 125 es el revestimiento, que miden igual todas.</p></div>
-</div>
+<div class="nota"><strong>No se mezclan.</strong> Un latiguillo multimodo en un enlace monomodo (o al revés) no funciona o funciona fatal.</div>
 
 <h2>Hasta dónde llega cada una</h2>
 <p>Así se ve la diferencia de distancias. El cobre está para comparar:</p>
@@ -198,10 +173,6 @@
 <div class="diapo">
 <svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-c d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-act"/><text x="268.0" y="87" class="d-c d-peq">400 m</text></svg>
 <p class="diapo__texto">La OM4, un poco mejor: <strong>400 m</strong> a 10 Gbps.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros, OM3 a 1 Gbps 550 metros"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-t d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-on"/><text x="268.0" y="87" class="d-d d-peq">400 m</text><text x="10" y="115" class="d-c d-peq">OM3 1G</text><rect x="110" y="102" width="209.0" height="16" rx="2" class="d-caja-act"/><text x="325.0" y="115" class="d-c d-peq">550 m</text></svg>
-<p class="diapo__texto">La misma OM3 a 1 Gbps llega a 550 m: <strong>menos velocidad, más metros</strong>.</p>
 </div>
 <div class="diapo">
 <svg viewBox="0 0 360 190" role="img" aria-label="Barras de distancia máxima: cobre 100 metros, OM3 a 10 Gbps 300 metros, OM4 a 10 Gbps 400 metros, OM3 a 1 Gbps 550 metros, monomodo OS2 10 kilómetros, la barra no cabe"><line x1="110.0" y1="160" x2="110.0" y2="165" class="d-linea-d"/><text x="110.0" y="180" text-anchor="middle" class="d-d d-peq">0</text><line x1="148.0" y1="160" x2="148.0" y2="165" class="d-linea-d"/><text x="148.0" y="180" text-anchor="middle" class="d-d d-peq">100</text><line x1="186.0" y1="160" x2="186.0" y2="165" class="d-linea-d"/><text x="186.0" y="180" text-anchor="middle" class="d-d d-peq">200</text><line x1="224.0" y1="160" x2="224.0" y2="165" class="d-linea-d"/><text x="224.0" y="180" text-anchor="middle" class="d-d d-peq">300</text><line x1="262.0" y1="160" x2="262.0" y2="165" class="d-linea-d"/><text x="262.0" y="180" text-anchor="middle" class="d-d d-peq">400</text><line x1="300.0" y1="160" x2="300.0" y2="165" class="d-linea-d"/><text x="300.0" y="180" text-anchor="middle" class="d-d d-peq">500</text><line x1="338.0" y1="160" x2="338.0" y2="165" class="d-linea-d"/><text x="338.0" y="180" text-anchor="middle" class="d-d d-peq">600 m</text><line x1="110" y1="160" x2="338" y2="160" class="d-linea-d"/><text x="10" y="31" class="d-t d-peq">cobre UTP</text><rect x="110" y="18" width="38.0" height="16" rx="2" class="d-caja-on"/><text x="154.0" y="31" class="d-d d-peq">100 m</text><text x="10" y="59" class="d-t d-peq">OM3 10G</text><rect x="110" y="46" width="114.0" height="16" rx="2" class="d-caja-on"/><text x="230.0" y="59" class="d-d d-peq">300 m</text><text x="10" y="87" class="d-t d-peq">OM4 10G</text><rect x="110" y="74" width="152.0" height="16" rx="2" class="d-caja-on"/><text x="268.0" y="87" class="d-d d-peq">400 m</text><text x="10" y="115" class="d-t d-peq">OM3 1G</text><rect x="110" y="102" width="209.0" height="16" rx="2" class="d-caja-on"/><text x="325.0" y="115" class="d-d d-peq">550 m</text><text x="10" y="143" class="d-c d-peq">OS2 10G</text><rect x="110" y="130" width="206" height="16" rx="2" class="d-caja-act"/><path d="M316,130 l6,8 l-6,8" class="d-linea-c"/><text x="328" y="143" class="d-c d-peq">10 km</text></svg>
@@ -223,6 +194,7 @@
 </details>
 
 <h3>Entonces, ¿cuál se pone?</h3>
+<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 7</strong>.</p>
 <div class="diapos" aria-label="Dónde va cada fibra">
 <div class="diapo">
 <svg viewBox="0 0 360 190" role="img" aria-label="Edificio de tres plantas con fibra multimodo entre sus armarios"><rect x="20" y="30" width="80" height="130" rx="4" class="d-caja"/><line x1="20" y1="73" x2="100" y2="73" class="d-linea-d"/><line x1="20" y1="116" x2="100" y2="116" class="d-linea-d"/><rect x="75" y="45" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="88" width="16" height="20" rx="2" class="d-caja-on"/><rect x="75" y="131" width="16" height="20" rx="2" class="d-caja-on"/><line x1="83" y1="65" x2="83" y2="131" class="d-fs-aguamarina"/><text x="60" y="178" text-anchor="middle" class="d-a">multimodo</text></svg>
@@ -251,32 +223,12 @@
 <p class="papel__titulo">Sesión 2 · Preguntas obligatorias — a mano, en el cuaderno</p>
 <p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>¿Qué es un <strong>modo</strong> de propagación? Dibuja cómo viaja la luz en una fibra monomodo y en una multimodo.</li>
-<li>Compara la fibra monomodo y la multimodo: grosor del núcleo, color de la cubierta, distancia y dónde se usa cada una.</li>
-<li>(ABC) El núcleo de una fibra monomodo mide…
-  <ul>
-    <li>a) 9 µm</li>
-    <li>b) 50 µm</li>
-    <li>c) 125 µm</li>
-  </ul>
-</li>
-<li>¿Qué es la <strong>dispersión modal</strong>? ¿A qué tipo de fibra afecta y qué consecuencia tiene?</li>
-<li><strong>(Animación)</strong> Mira la animación de los caminos de la luz. Explica la dispersión modal con el ejemplo de la carrera de corredores.</li>
-<li>(V/F) En multimodo, cuanta más velocidad, más metros puede tener el enlace.</li>
+<li>Dibuja cómo viaja la luz en una fibra monomodo y en una multimodo.</li>
+<li>Compara la fibra monomodo y la multimodo: grosor del núcleo, color de la cubierta y hasta dónde llega cada una.</li>
+<li><strong>(Animación)</strong> Mira la animación de los caminos de la luz. Explica con el ejemplo de la carrera de corredores por qué la multimodo llega menos lejos.</li>
 <li>¿Por qué no se ve la luz que va por una fibra? ¿Qué peligro tiene?</li>
-<li>Escribe el color de cubierta de OS2, OM1, OM3, OM4 y OM5.</li>
-<li>(ABC) Un latiguillo amarillo es de fibra…
-  <ul>
-    <li>a) multimodo OM1</li>
-    <li>b) monomodo</li>
-    <li>c) multimodo OM4</li>
-  </ul>
-</li>
-<li>¿Qué significa <strong>50/125</strong> impreso en un cable? ¿Y <strong>9/125</strong>?</li>
-<li>¿Por qué no se deben mezclar latiguillos multimodo y monomodo? ¿Y OM1 con OM3?</li>
-<li>Te encuentras un latiguillo violeta que pone OM4. ¿Qué tipo de fibra es?</li>
-<li>Mirando el carrusel de distancias: más o menos, ¿hasta dónde llega la multimodo? ¿Y la monomodo?</li>
-<li>(V/F) Hoy la fibra monomodo es mucho más cara que la multimodo.</li>
+<li>¿Qué tipo de fibra es un latiguillo amarillo? ¿Y uno aguamarina, uno naranja o uno violeta?</li>
+<li>(V/F) Un latiguillo multimodo se puede usar en un enlace monomodo si los conectores encajan.</li>
 <li>¿Qué fibra elegirías para unir dos armarios a 150 m en el mismo edificio? ¿Y para dos edificios a 3 km? Razónalo.</li>
 </ol>
 </div>
@@ -284,9 +236,10 @@
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
 <p class="papel__titulo">Sesión 2 · Sube nota — no entran en el examen</p>
-<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 16.</p>
-<ol start="16">
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 8.</p>
+<ol start="8">
 <li>Busca en una tienda online latiguillos OM3, OM4 y OS2. Apunta su color y su precio. ¿Cuál es el más barato?</li>
-<li>Inventa un caso como el de la pregunta 15 (dos sitios a unir y la distancia) y razona qué fibra elegirías.</li>
+<li>Inventa un caso como el de la pregunta 7 (dos sitios a unir y la distancia) y razona qué fibra elegirías.</li>
+<li>Mira el «Para saber más» de los colores: ¿qué significa 50/125 impreso en un cable? ¿Y 9/125?</li>
 </ol>
 </div>

@@ -42,9 +42,9 @@
 <div class="votacion__porque"><p><strong>100 m</strong>: 90 de cable fijo y 10 de latiguillos. (Sesión 6)</p></div>
 </div>
 <div class="votacion">
-<p class="votacion__pregunta">¿Cuánto mide 1 U de rack?</p>
-<ol class="votacion__opciones"><li>5 cm</li><li data-correcta>4,445 cm</li></ol>
-<div class="votacion__porque"><p><strong>4,445 cm</strong>. (Sesión 7)</p></div>
+<p class="votacion__pregunta">¿Qué conector lleva la línea de teléfono?</p>
+<ol class="votacion__opciones"><li data-correcta>RJ-11</li><li>RJ-45</li></ol>
+<div class="votacion__porque"><p><strong>RJ-11</strong>. El RJ-45 es el del cable de red. (Sesión 7)</p></div>
 </div>
 <div class="votacion">
 <p class="votacion__pregunta">T568B empieza por…</p>
@@ -54,7 +54,7 @@
 <div class="votacion">
 <p class="votacion__pregunta">Switch con switch, sin Auto-MDIX. ¿Qué cable?</p>
 <ol class="votacion__opciones"><li>Directo</li><li data-correcta>Cruzado</li></ol>
-<div class="votacion__porque"><p><strong>Cruzado</strong>: los dos son MDI-X. (Sesión 9)</p></div>
+<div class="votacion__porque"><p><strong>Cruzado</strong>: los dos son iguales. (Sesión 9)</p></div>
 </div>
 <div class="votacion">
 <p class="votacion__pregunta">Un hub trabaja en…</p>
@@ -145,16 +145,15 @@
 <section class="rs-bloque rs-c2" id="rs3-conectores" aria-labelledby="rs3-conectores-t">
 <div class="rs-cab"><span class="rs-num" aria-hidden="true">4</span><h3 id="rs3-conectores-t">Conectores y T568</h3><span class="rs-ses">sesiones 7 y 8</span></div>
 <dl class="rs-fichas">
-<div><dt>RJ-45</dt><dd>8P8C: datos.</dd></div>
-<div><dt>RJ-11</dt><dd>6P2C: teléfono.</dd></div>
-<div><dt>RJ-9</dt><dd>4P4C: el auricular.</dd></div>
+<div><dt>RJ-45</dt><dd>El cable de red.</dd></div>
+<div><dt>RJ-11</dt><dd>La línea de teléfono.</dd></div>
 </dl>
-<p class="rs-cuenta">Pin 1 a la izquierda, con los contactos hacia ti y la pestaña detrás. <strong>Roseta</strong> en la pared, <strong>latiguillo</strong> macho-macho, <strong>panel de parcheo</strong> en el rack (1 U = 4,445 cm).</p>
+<p class="rs-cuenta">Pin 1 a la izquierda, con los contactos hacia ti y la pestaña detrás. <strong>Roseta</strong> en la pared, <strong>latiguillo</strong> del PC a la roseta, <strong>panel de parcheo</strong> en el rack.</p>
 <div class="rs-hilos rs-pines" aria-hidden="true" translate="no"><span class="rs-norma">pin</span><span class="rs-hilo"><b>1</b></span><span class="rs-hilo"><b>2</b></span><span class="rs-hilo"><b>3</b></span><span class="rs-hilo"><b>4</b></span><span class="rs-hilo"><b>5</b></span><span class="rs-hilo"><b>6</b></span><span class="rs-hilo"><b>7</b></span><span class="rs-hilo"><b>8</b></span></div><div class="rs-hilos" role="img" aria-label="A: pin 1 blanco-verde, pin 2 verde, pin 3 blanco-naranja, pin 4 azul, pin 5 blanco-azul, pin 6 naranja, pin 7 blanco-marrón, pin 8 marrón" translate="no"><span class="rs-norma">A</span><span class="rs-hilo"><i class="h-bv"></i><b>bv</b></span><span class="rs-hilo"><i class="h-v"></i><b>v</b></span><span class="rs-hilo"><i class="h-bn"></i><b>bn</b></span><span class="rs-hilo"><i class="h-a"></i><b>a</b></span><span class="rs-hilo"><i class="h-ba"></i><b>ba</b></span><span class="rs-hilo"><i class="h-n"></i><b>n</b></span><span class="rs-hilo"><i class="h-bm"></i><b>bm</b></span><span class="rs-hilo"><i class="h-m"></i><b>m</b></span></div><div class="rs-hilos" role="img" aria-label="B: pin 1 blanco-naranja, pin 2 naranja, pin 3 blanco-verde, pin 4 azul, pin 5 blanco-azul, pin 6 verde, pin 7 blanco-marrón, pin 8 marrón" translate="no"><span class="rs-norma">B</span><span class="rs-hilo"><i class="h-bn"></i><b>bn</b></span><span class="rs-hilo"><i class="h-n"></i><b>n</b></span><span class="rs-hilo"><i class="h-bv"></i><b>bv</b></span><span class="rs-hilo"><i class="h-a"></i><b>a</b></span><span class="rs-hilo"><i class="h-ba"></i><b>ba</b></span><span class="rs-hilo"><i class="h-v"></i><b>v</b></span><span class="rs-hilo"><i class="h-bm"></i><b>bm</b></span><span class="rs-hilo"><i class="h-m"></i><b>m</b></span></div>
 <p class="rs-cuenta">b = blanco · v = verde · n = naranja · a = azul · m = marrón. <strong>Solo cambian el naranja y el verde.</strong></p>
 <div class="rs-vs">
 <div><p class="rs-vs-t">Pines 1 y 2</p><p>El PC <strong>transmite</strong> (a 10 y 100 Mbps).</p></div>
-<div><p class="rs-vs-t">Pines 3 y 6</p><p>El PC <strong>recibe</strong>. Por eso ese par va partido alrededor del azul.</p></div>
+<div><p class="rs-vs-t">Pines 3 y 6</p><p>El PC <strong>recibe</strong>.</p></div>
 </div>
 <p class="rs-truco">💡 La <strong>misma norma</strong> en toda la instalación.</p>
 </section>
@@ -166,13 +165,13 @@
 <div><p class="rs-vs-t">Cruzado</p><p><strong>A en un extremo y B en el otro.</strong></p><p class="rs-ej">El 1 llega al 3 y el 2 al 6</p></div>
 </div>
 <table class="rs-tabla">
-<tr><th>Puerto</th><th>Transmite</th><th>Recibe</th><th>Aparatos</th></tr>
-<tr><td><strong>MDI</strong></td><td>1-2</td><td>3-6</td><td>PC, servidor, router</td></tr>
-<tr><td><strong>MDI-X</strong></td><td>3-6</td><td>1-2</td><td>switch, hub</td></tr>
+<tr><th>Puerto</th><th>Habla por</th><th>Escucha por</th></tr>
+<tr><td><strong>Equipo</strong> (PC, servidor)</td><td>1-2</td><td>3-6</td></tr>
+<tr><td><strong>Switch</strong> (o hub)</td><td>3-6</td><td>1-2</td></tr>
 </table>
 <div class="rs-vs">
-<div><p class="rs-vs-t">Distintos</p><p>MDI con MDI-X → <strong>directo</strong>.</p><p class="rs-ej">PC con switch</p></div>
-<div><p class="rs-vs-t">Iguales</p><p>MDI con MDI, o MDI-X con MDI-X → <strong>cruzado</strong>.</p><p class="rs-ej">PC con PC, switch con switch</p></div>
+<div><p class="rs-vs-t">Distintos</p><p>Equipo con switch → <strong>directo</strong>.</p><p class="rs-ej">PC con switch</p></div>
+<div><p class="rs-vs-t">Iguales</p><p>Dos equipos o dos switches → <strong>cruzado</strong>.</p><p class="rs-ej">PC con PC, switch con switch</p></div>
 </div>
 <p class="rs-truco">💡 <strong>Auto-MDIX</strong>: el puerto se da cuenta y lo cruza él solo.</p>
 </section>
@@ -183,14 +182,14 @@
 <div><p class="rs-vs-t">LINK</p><p><strong>Fija</strong>: hay enlace.</p></div>
 <div><p class="rs-vs-t">ACT</p><p><strong>Parpadea</strong>: pasan datos.</p></div>
 </div>
-<p class="rs-cuenta"><strong>Autonegociación</strong>: la tarjeta y el switch eligen la mejor velocidad y dúplex que admitan los dos (y el cable).</p>
+<p class="rs-cuenta"><strong>Autonegociación</strong>: la tarjeta y el switch eligen la mejor velocidad que admitan los dos (y el cable).</p>
 <dl class="rs-fichas">
 <div><dt>Símplex</dt><dd>En un solo sentido.</dd></div>
 <div><dt>Semidúplex</dt><dd>Por turnos: el hub.</dd></div>
 <div><dt>Dúplex</dt><dd>A la vez: el switch.</dd></div>
 </dl>
 <p class="rs-sub">En Windows:</p>
-<ul class="rs-chips"><li>Administrador de dispositivos (⚠ = driver)</li><li translate="no">Get-NetAdapter</li><li translate="no">ipconfig /all</li><li translate="no">getmac</li></ul>
+<ul class="rs-chips"><li>Administrador de dispositivos (⚠ = driver)</li><li>Configuración → Ethernet (velocidad de vínculo)</li><li translate="no">ipconfig /all</li><li translate="no">getmac</li></ul>
 </section>
 
 <section class="rs-bloque rs-c4" id="rs3-coaxial" aria-labelledby="rs3-coaxial-t">
@@ -202,11 +201,8 @@
 <li><strong>Malla</strong> <span>la pantalla contra el ruido</span></li>
 <li><strong>Cubierta</strong> <span>la funda de fuera</span></li>
 </ol>
-<div class="rs-vs">
-<div><p class="rs-vs-t">75 Ω</p><p>Televisión.</p><p class="rs-ej">RG-6 · conector F</p></div>
-<div><p class="rs-vs-t">50 Ω</p><p>Radio y redes antiguas.</p><p class="rs-ej">RG-58 · BNC</p></div>
-</div>
-<ul class="rs-chips"><li>F</li><li>IEC</li><li>BNC</li><li>N</li><li>SMA</li></ul>
+<p class="rs-cuenta"><strong>RG</strong> es el nombre del cable: RG-6, el de la tele, con conector F.</p>
+<ul class="rs-chips"><li>F</li><li>IEC</li><li>BNC</li><li>SMA</li></ul>
 </section>
 
 </div>
@@ -227,7 +223,7 @@
 <li><strong>Rígido</strong> para la pared y <strong>flexible</strong> para los latiguillos.</li>
 <li>Cubierta <strong>LSZH</strong>: si hay fuego, da poco humo y no suelta halógenos. Es un edificio con gente.</li>
 <li><strong>Categoría 6 o 6A</strong>. La 5e es el mínimo, pero el cable de la pared se queda muchos años y cambiarlo es obra. 80 m caben en los 90 m de enlace fijo.</li>
-<li>Conectores <strong>RJ-45</strong> (8P8C).</li>
+<li>Conectores <strong>RJ-45</strong>.</li>
 <li>Norma <strong>T568A o T568B</strong>, cualquiera, pero <strong>la misma en toda la instalación</strong>.</li>
 <li><strong>En la pared</strong>: el cable rígido y una roseta en cada puesto. <strong>En el rack</strong>: el panel de parcheo donde acaba ese cable, el switch, el router y los latiguillos del panel al switch.</li>
 </ul>
@@ -265,17 +261,16 @@
 <li><strong>Un elemento de categoría baja</strong>: un latiguillo viejo de Cat 5 o una roseta que no llega. El enlace va a lo que dé el peor elemento.</li>
 <li><strong>Un par roto o mal crimpado</strong>: a 1 Gbps se usan <strong>los 4 pares</strong>. Si uno falla, con los dos pares que quedan se negocia a 100 Mbps.</li>
 <li><strong>El switch o ese puerto es de 100 Mbps</strong>: la autonegociación elige lo mejor que admiten los dos, y el switch no da más.</li>
-<li><strong>La tarjeta tiene la velocidad fijada a mano</strong> en 100 Mbps en vez de en automático.</li>
 </ul>
-<p>Para comprobarlo: <code>Get-NetAdapter</code> (columna LinkSpeed), la luz del puerto del switch y probar con un latiguillo que sepas que va bien.</p>
+<p>Para comprobarlo: la velocidad de vínculo en Configuración → Ethernet, la luz del puerto del switch y probar con un latiguillo que sepas que va bien.</p>
 </details>
 </li>
-<li>Tienes que unir: un PC con un switch, dos switches antiguos sin Auto-MDIX y dos PC entre sí. Para cada caso di qué cable fabricarías, con qué terminación en cada extremo y por qué (MDI y MDI-X).
+<li>Tienes que unir: un PC con un switch, dos switches antiguos sin Auto-MDIX y dos PC entre sí. Para cada caso di qué cable fabricarías, con qué orden (A o B) en cada extremo y por qué.
 <details class="respuesta"><summary>Ver respuesta</summary>
 <ul>
-<li><strong>PC con switch</strong>: cable <strong>directo</strong>, T568B en los dos extremos (o A y A). El PC es MDI y el switch MDI-X: son distintos, y el switch ya lleva el cruce por dentro.</li>
-<li><strong>Dos switches antiguos sin Auto-MDIX</strong>: cable <strong>cruzado</strong>, T568A en un extremo y T568B en el otro. Los dos son MDI-X: iguales, transmiten por los mismos pines.</li>
-<li><strong>Dos PC entre sí</strong>: cable <strong>cruzado</strong>, A en un extremo y B en el otro. Los dos son MDI: lo que uno transmite por 1-2 tiene que llegar a los pines 3-6 del otro, por donde escucha.</li>
+<li><strong>PC con switch</strong>: cable <strong>directo</strong>, T568B en los dos extremos (o A y A). Un equipo y un switch son distintos: el switch ya lleva el cruce por dentro.</li>
+<li><strong>Dos switches antiguos sin Auto-MDIX</strong>: cable <strong>cruzado</strong>, T568A en un extremo y T568B en el otro. Los dos son iguales: hablan por los mismos pines.</li>
+<li><strong>Dos PC entre sí</strong>: cable <strong>cruzado</strong>, A en un extremo y B en el otro. Los dos son iguales: lo que uno transmite por 1-2 tiene que llegar a los pines 3-6 del otro, por donde escucha.</li>
 </ul>
 <p>Regla: aparatos <strong>distintos, directo</strong>; <strong>iguales, cruzado</strong>. Con Auto-MDIX, el puerto lo resuelve solo.</p>
 </details>
@@ -290,14 +285,13 @@
 </ul>
 </details>
 </li>
-<li>Compara par trenzado y coaxial en una tabla: capas del cable, cómo se defiende del ruido, conectores, impedancia o categoría y uso hoy.
+<li>Compara par trenzado y coaxial en una tabla: capas del cable, cómo se defiende del ruido, conectores y uso hoy.
 <details class="respuesta"><summary>Ver respuesta</summary>
 <p>En el cuaderno, en tabla. Lo que tiene que decir:</p>
 <ul>
 <li><strong>Capas</strong>. Par trenzado: 8 hilos en 4 pares trenzados, cubierta y, a veces, pantalla. Coaxial: conductor central, dieléctrico, malla y cubierta.</li>
 <li><strong>Contra el ruido</strong>. Par trenzado: el trenzado (y la pantalla si es FTP o STP). Coaxial: la malla, que lo rodea entero.</li>
-<li><strong>Conectores</strong>. Par trenzado: RJ-45. Coaxial: F, IEC, BNC, N y SMA.</li>
-<li><strong>Categoría o impedancia</strong>. Par trenzado: por categorías (5e, 6, 6A…). Coaxial: por impedancia, 75 Ω (tele) o 50 Ω (radio y redes antiguas).</li>
+<li><strong>Conectores</strong>. Par trenzado: RJ-45. Coaxial: F, IEC, BNC y SMA.</li>
 <li><strong>Uso hoy</strong>. Par trenzado: las redes locales, el más usado. Coaxial: la antena de la tele; en redes de datos ya no se usa.</li>
 </ul>
 </details>
@@ -307,7 +301,7 @@
 <ol>
 <li><strong>Las luces</strong> del puerto del PC y del switch. Si LINK no se enciende en ninguno de los dos lados, sospecha del cable o del puerto. Si ACT no parpadea, no pasan datos.</li>
 <li><strong>Prueba con un latiguillo que sepas que va bien</strong> y, si hace falta, con otro puerto del switch.</li>
-<li><strong>En Windows</strong>: el Administrador de dispositivos (un triángulo amarillo = falta el driver), <code>Get-NetAdapter</code> (Status Up o Disconnected y LinkSpeed) e <code>ipconfig /all</code>.</li>
+<li><strong>En Windows</strong>: el Administrador de dispositivos (un triángulo amarillo = falta el driver), la velocidad de vínculo en Configuración → Ethernet e <code>ipconfig /all</code>.</li>
 </ol>
 </details>
 </li>

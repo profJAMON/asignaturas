@@ -25,20 +25,14 @@
 <p data-zona="438,347,28,16" data-tipo="mal">Puertos vacíos: <strong>apagados</strong>. Si un puesto con cable está así, sospecha del cable.</p>
 </div>
 <div class="escena__paso" data-titulo="Los cables" data-pregunta="¿Qué cable va del PC al switch?">
-<p data-zona="225,343,177,59" data-tipo="bien">Un <strong>latiguillo directo</strong>: PC (MDI) con switch (MDI-X).</p>
+<p data-zona="225,343,177,59" data-tipo="bien">Un <strong>latiguillo directo</strong>: un equipo con un switch.</p>
 <p data-zona="624,412,28,22" data-tipo="bien">El portátil, por cable al <strong>mismo switch</strong>: los dos en la misma red.</p>
 </div>
 </div>
 <p>Ya sabes cómo es el cable y cómo se termina. Ahora toca mirar dónde se enchufa: la <strong>tarjeta de red</strong> (NIC) del equipo y el puerto del switch. Juntos forman un <strong>enlace</strong>, y es ahí donde ves si el cable que has hecho funciona.</p>
 <p>De la Unidad 1 ya sabes que la NIC tiene una <strong>dirección MAC</strong> grabada de fábrica y que una tarjeta <strong>10/100/1000</strong> admite tres velocidades. Hoy vamos a lo práctico.</p>
 
-<h2>Cómo es una tarjeta de red</h2>
-<ul>
-<li><strong>Integrada</strong> en la placa base: lo normal en cualquier equipo actual.</li>
-<li><strong>De expansión</strong>: una tarjeta que se pincha en una ranura <strong>PCI Express</strong> de la placa. Se añade para tener más puertos (servidores), más velocidad (2,5 o 10 Gbps) o para sustituir una integrada que se ha estropeado.</li>
-<li><strong>USB</strong>: un adaptador pequeño, típico en portátiles finos que ya no traen puerto RJ-45.</li>
-</ul>
-<p>Así se ve cada una:</p>
+<p>Hay tres formas de tarjeta de red. Así se ve cada una:</p>
 <div class="diapos" aria-label="Las tres formas de tarjeta de red">
 <div class="diapo">
 <svg viewBox="0 0 560 230" role="img" aria-label="Panel trasero de un PC de sobremesa: puertos USB, HDMI, conectores de audio y, en medio, un puerto RJ-45 con sus dos luces, rodeado y señalado como la tarjeta de red integrada">
@@ -111,7 +105,6 @@
 </div>
 </div>
 <p>Un equipo puede tener varias. Y cada tarjeta está pensada para un medio: RJ-45 para par trenzado, SFP para fibra, antena para wifi.</p>
-<div class="nota">Mi presentación habla de ranuras PCI y de tarjetas PCMCIA. Las dos están <strong>obsoletas</strong>: hoy las ranuras son PCI Express, y en portátiles lo que queda son adaptadores USB o USB-C.</div>
 
 <p>Así es una tarjeta de expansión, pinchada en su ranura de la placa base. Toca cada parte.</p>
 <div class="lab" data-lab="piezas" data-figura="tarjeta" aria-label="Una tarjeta de red por dentro"></div>
@@ -123,10 +116,9 @@
 <tr><td><strong>LINK</strong> (fija)</td><td>Hay enlace eléctrico: el cable llega al otro extremo y los dos aparatos se han entendido</td><td>Cable roto o mal crimpado, desenchufado en el otro lado, puerto del switch apagado</td></tr>
 <tr><td><strong>ACT</strong> (parpadea)</td><td>Pasan datos</td><td>Hay enlace, pero no hay tráfico</td></tr>
 </table>
-<p>Muchos aparatos usan también el <strong>color</strong> para la velocidad (por ejemplo, verde a 1 Gbps y ámbar a 10/100), pero <strong>cada fabricante usa los suyos</strong>: mira el manual o la serigrafía junto al puerto.</p>
 <p>Toca las piezas de este switch. Prueba a sacar un latiguillo y mira qué le pasa a su luz.</p>
 <div class="lab" data-lab="piezas" data-figura="switch" aria-label="Un switch por delante"></div>
-<div class="nota">Truco para probar un latiguillo (te servirá en el taller): enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada. Si enciende, pero el switch lo marca en el color de 100 Mbps cuando debería ir a 1 Gbps, sospecha del par azul o del marrón.</div>
+<div class="nota">Truco para probar un latiguillo (te servirá en el taller): enchúfalo entre el PC y el switch. Si <strong>no se enciende LINK en ninguno de los dos lados</strong>, sospecha del cable antes que de nada.</div>
 
 <div class="votacion">
 <p class="votacion__pregunta">Enchufas el cable y no se enciende LINK en ninguno de los dos lados. ¿De qué sospechas primero?</p>
@@ -135,12 +127,12 @@
 </div>
 
 <h2>Autonegociación</h2>
-<p>Al enchufar el cable, la tarjeta y el switch se «presentan» y acuerdan dos cosas: la <strong>velocidad</strong> y el <strong>modo dúplex</strong>. Es la <strong>autonegociación</strong>, y elige lo mejor que admitan <strong>los dos</strong> (y el cable).</p>
+<p>Al enchufar el cable, la tarjeta y el switch se «presentan» y acuerdan la <strong>velocidad</strong>. Es la <strong>autonegociación</strong>: van a lo mejor que admitan <strong>los dos</strong> (y el cable).</p>
 <ul>
 <li>Tarjeta 10/100/1000 + switch 10/100 → <strong>100 Mbps</strong>.</li>
 <li>Tarjeta 10/100/1000 + switch gigabit + cable con un par mal → normalmente <strong>100 Mbps</strong>, porque a gigabit hacen falta los cuatro pares.</li>
 </ul>
-<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 4</strong>.</p>
 <div class="anim" data-anim="autonegociacion" aria-label="La autonegociación, en marcha"></div>
 
 <div class="votacion">
@@ -151,7 +143,7 @@
 
 <h2>Flujo de datos: simplex, semidúplex y dúplex</h2>
 <p>El modo dúplex dice <strong>en qué sentido y cuándo</strong> pueden ir los datos por un enlace. Es un concepto general de cualquier comunicación, no solo de redes:</p>
-<p>Míralo en marcha: te ayuda con la <strong>pregunta 6</strong>.</p>
+<p>Míralo en marcha: te ayuda con la <strong>pregunta 5</strong>.</p>
 <div class="anim" data-anim="flujo" aria-label="Simplex, semidúplex y dúplex, en marcha"></div>
 <table>
 <tr><th>Modo</th><th>Cómo funciona</th><th>En una red</th></tr>
@@ -159,10 +151,6 @@
 <tr><td><strong>Semidúplex</strong> (<em>half-duplex</em>)</td><td>Los dos pueden emitir, pero por turnos. Si hablan a la vez, colisión.</td><td>Hubs y redes en bus: por eso había colisiones</td></tr>
 <tr><td><strong>Dúplex</strong> (<em>full-duplex</em>)</td><td>Los dos emiten y reciben al mismo tiempo.</td><td><strong>Enlace de un PC con un switch</strong>: sin colisiones</td></tr>
 </table>
-<p>Con switch y full-duplex, un enlace de 1 Gbps puede mover 1 Gbps <strong>en cada sentido</strong> a la vez.</p>
-<div class="nota">Avería clásica: si en un lado se fija la velocidad y el dúplex a mano y el otro se deja en automático, pueden quedar uno en full y otro en half (<em>duplex mismatch</em>). Hay enlace y hay luces, pero la red va <strong>lentísima</strong> y pierde datos. La regla: o los dos en automático, o los dos fijados igual.</div>
-<p>Míralo en marcha: te ayuda con la <strong>pregunta 9</strong>.</p>
-<div class="anim" data-anim="duplex-mismatch" aria-label="Un duplex mismatch, en marcha"></div>
 
 <div data-actividad="u3s10-enlace"></div>
 
@@ -183,9 +171,8 @@
 <ul>
 <li>Si una lleva un <strong>triángulo amarillo</strong>, le falta el <strong>controlador</strong> (<em>driver</em>) o no funciona bien. Se instala desde la web del fabricante de la tarjeta o de la placa.</li>
 <li>Si lleva una <strong>flecha hacia abajo</strong>, está deshabilitada.</li>
-<li>En sus <strong>Propiedades → Opciones avanzadas</strong> está «Velocidad y dúplex», normalmente en <em>Negociación automática</em>. Déjalo así salvo que haya un motivo.</li>
 </ul>
-<p>Pasa las diapositivas: te ayudan con las <strong>preguntas 10 y 11</strong>.</p>
+<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 7</strong>.</p>
 <div class="diapos" aria-label="El Administrador de dispositivos">
 <div class="diapo">
 <svg viewBox="0 0 360 162" role="img" aria-label="Ventana del Administrador de dispositivos con Adaptadores de red abierto: tres tarjetas, una Ethernet de Intel, una Realtek con un triángulo amarillo y una wifi con una flecha hacia abajo" translate="no"><rect x="6" y="6" width="348" height="150" rx="8" class="d-caja"/><text x="18" y="26" text-anchor="start" class="d-d d-peq">Administrador de dispositivos</text><line x1="6" y1="34" x2="354" y2="34" class="d-linea-d"/><text x="22" y="56" text-anchor="start" class="d-d d-peq">› Adaptadores de audio</text><text x="22" y="78" text-anchor="start" class="d-t d-peq">⌄ Adaptadores de red</text><rect x="42" y="88" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="100" x2="50" y2="104" class="d-linea-a"/><line x1="45" y1="104" x2="55" y2="104" class="d-linea-a"/><text x="74" y="100" text-anchor="start" class="d-t d-peq">Intel(R) Ethernet Connection I219-V</text><rect x="42" y="110" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="122" x2="50" y2="126" class="d-linea-a"/><line x1="45" y1="126" x2="55" y2="126" class="d-linea-a"/><path d="M54,128 l7,-13 l7,13 z" class="d-s-amarillo"/><text x="61" y="127" text-anchor="middle" class="d-s-negro d-peq">!</text><text x="74" y="122" text-anchor="start" class="d-t d-peq">Realtek PCIe GbE Family Controller</text><rect x="42" y="132" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="144" x2="50" y2="148" class="d-linea-a"/><line x1="45" y1="148" x2="55" y2="148" class="d-linea-a"/><circle cx="61" cy="144" r="7" class="d-caja-act"/><path d="M61,139 v9 m-4,-4 l4,4 l4,-4" class="d-linea-c d-trazo-2"/><text x="74" y="144" text-anchor="start" class="d-t d-peq">Intel(R) Wi-Fi 6 AX201</text></svg>
@@ -199,31 +186,13 @@
 <svg viewBox="0 0 360 162" role="img" aria-label="La tarjeta wifi, resaltada, lleva una flecha hacia abajo" translate="no"><rect x="6" y="6" width="348" height="150" rx="8" class="d-caja"/><text x="18" y="26" text-anchor="start" class="d-d d-peq">Administrador de dispositivos</text><line x1="6" y1="34" x2="354" y2="34" class="d-linea-d"/><text x="22" y="56" text-anchor="start" class="d-d d-peq">› Adaptadores de audio</text><text x="22" y="78" text-anchor="start" class="d-t d-peq">⌄ Adaptadores de red</text><rect x="42" y="88" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="100" x2="50" y2="104" class="d-linea-a"/><line x1="45" y1="104" x2="55" y2="104" class="d-linea-a"/><text x="74" y="100" text-anchor="start" class="d-d d-peq">Intel(R) Ethernet Connection I219-V</text><rect x="42" y="110" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="122" x2="50" y2="126" class="d-linea-a"/><line x1="45" y1="126" x2="55" y2="126" class="d-linea-a"/><path d="M54,128 l7,-13 l7,13 z" class="d-s-amarillo"/><text x="61" y="127" text-anchor="middle" class="d-s-negro d-peq">!</text><text x="74" y="122" text-anchor="start" class="d-d d-peq">Realtek PCIe GbE Family Controller</text><rect x="36" y="129" width="312" height="22" rx="4" class="d-caja-act"/><rect x="42" y="132" width="16" height="12" rx="2" class="d-caja-on"/><line x1="50" y1="144" x2="50" y2="148" class="d-linea-a"/><line x1="45" y1="148" x2="55" y2="148" class="d-linea-a"/><circle cx="61" cy="144" r="7" class="d-caja-act"/><path d="M61,139 v9 m-4,-4 l4,4 l4,-4" class="d-linea-c d-trazo-2"/><text x="74" y="144" text-anchor="start" class="d-t d-peq">Intel(R) Wi-Fi 6 AX201</text></svg>
 <p class="diapo__texto"><strong>Flecha hacia abajo</strong>: la tarjeta está deshabilitada. Botón derecho → Habilitar dispositivo.</p>
 </div>
-<div class="diapo">
-<svg viewBox="0 0 360 162" role="img" aria-label="Propiedades de la tarjeta, pestaña Opciones avanzadas: en la lista de propiedades está marcada Velocidad y dúplex, con el valor Negociación automática" translate="no"><rect x="6" y="6" width="348" height="150" rx="8" class="d-caja"/><text x="18" y="26" text-anchor="start" class="d-d d-peq">Propiedades: Realtek PCIe GbE…</text><rect x="14" y="36" width="66" height="22" rx="4" class="d-caja"/><text x="47.0" y="51" text-anchor="middle" class="d-d d-peq">General</text><rect x="84" y="36" width="128" height="22" rx="4" class="d-caja-on"/><text x="148.0" y="51" text-anchor="middle" class="d-t d-peq">Opciones avanzadas</text><rect x="216" y="36" width="86" height="22" rx="4" class="d-caja"/><text x="259.0" y="51" text-anchor="middle" class="d-d d-peq">Controlador</text><text x="18" y="78" text-anchor="start" class="d-d d-peq">Propiedad:</text><text x="200" y="78" text-anchor="start" class="d-d d-peq">Valor:</text><text x="20" y="99" text-anchor="start" class="d-d d-peq">Control de flujo</text><rect x="14" y="104" width="172" height="20" rx="3" class="d-caja-act"/><text x="20" y="119" text-anchor="start" class="d-t d-peq">Velocidad y dúplex</text><text x="20" y="139" text-anchor="start" class="d-d d-peq">Wake on LAN</text><rect x="196" y="84" width="152" height="22" rx="3" class="d-caja-on"/><text x="204" y="99" text-anchor="start" class="d-a d-peq">Negociación automática</text><text x="340" y="99" text-anchor="middle" class="d-a d-peq">⌄</text></svg>
-<p class="diapo__texto">En <strong>Opciones avanzadas</strong>, «Velocidad y dúplex»: déjalo en Negociación automática.</p>
-</div>
 </div>
 
 <h3>Velocidad a la que ha enlazado</h3>
-<p>En <strong>Configuración → Red e Internet → Ethernet</strong> aparece la «velocidad de vínculo». O, más rápido, en PowerShell:</p>
-<pre><code>Get-NetAdapter</code></pre>
-<p>Pasa las diapositivas: te ayudan con la <strong>pregunta 10</strong>.</p>
-<div class="diapos" aria-label="Así sale Get-NetAdapter">
-<div class="diapo">
-<svg viewBox="0 0 360 132" role="img" aria-label="Salida de Get-NetAdapter con tres columnas: Ethernet, Up, 1 Gbps; Wi-Fi, Disconnected, 0 bps" translate="no"><rect x="6" y="6" width="348" height="120" rx="8" class="d-caja"/><text x="16" y="30" text-anchor="start" class="d-a">PS C:\&gt; Get-NetAdapter</text><text x="20" y="58" text-anchor="start" class="d-d d-peq">Name</text><line x1="20" y1="64" x2="46.0" y2="64" class="d-linea-d"/><text x="112" y="58" text-anchor="start" class="d-d d-peq">Status</text><line x1="112" y1="64" x2="151.0" y2="64" class="d-linea-d"/><text x="236" y="58" text-anchor="start" class="d-d d-peq">LinkSpeed</text><line x1="236" y1="64" x2="294.5" y2="64" class="d-linea-d"/><text x="20" y="88" text-anchor="start" class="d-t">Ethernet</text><text x="112" y="88" text-anchor="start" class="d-t">Up</text><text x="236" y="88" text-anchor="start" class="d-t">1 Gbps</text><text x="20" y="112" text-anchor="start" class="d-t">Wi-Fi</text><text x="112" y="112" text-anchor="start" class="d-t">Disconnected</text><text x="236" y="112" text-anchor="start" class="d-t">0 bps</text></svg>
-<p class="diapo__texto">Escribes <code>Get-NetAdapter</code> y sale una línea por tarjeta. De verdad trae más columnas: aquí dejo las tres que importan.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 132" role="img" aria-label="Misma salida con la columna Status resaltada: Up en Ethernet y Disconnected en Wi-Fi" translate="no"><rect x="6" y="6" width="348" height="120" rx="8" class="d-caja"/><text x="16" y="30" text-anchor="start" class="d-a">PS C:\&gt; Get-NetAdapter</text><text x="20" y="58" text-anchor="start" class="d-d d-peq">Name</text><line x1="20" y1="64" x2="46.0" y2="64" class="d-linea-d"/><text x="112" y="58" text-anchor="start" class="d-d d-peq">Status</text><line x1="112" y1="64" x2="151.0" y2="64" class="d-linea-d"/><text x="236" y="58" text-anchor="start" class="d-d d-peq">LinkSpeed</text><line x1="236" y1="64" x2="294.5" y2="64" class="d-linea-d"/><rect x="106" y="44" width="112" height="76" rx="5" class="d-caja-act" fill-opacity="0.25"/><text x="20" y="88" text-anchor="start" class="d-t">Ethernet</text><text x="112" y="88" text-anchor="start" class="d-t">Up</text><text x="236" y="88" text-anchor="start" class="d-t">1 Gbps</text><text x="20" y="112" text-anchor="start" class="d-t">Wi-Fi</text><text x="112" y="112" text-anchor="start" class="d-t">Disconnected</text><text x="236" y="112" text-anchor="start" class="d-t">0 bps</text></svg>
-<p class="diapo__texto"><strong>Status</strong>: Up es que hay enlace; Disconnected, que no hay cable o el otro lado no contesta.</p>
-</div>
-<div class="diapo">
-<svg viewBox="0 0 360 132" role="img" aria-label="Otra salida con la columna LinkSpeed resaltada: la Ethernet ha enlazado a 100 Mbps" translate="no"><rect x="6" y="6" width="348" height="120" rx="8" class="d-caja"/><text x="16" y="30" text-anchor="start" class="d-a">PS C:\&gt; Get-NetAdapter</text><text x="20" y="58" text-anchor="start" class="d-d d-peq">Name</text><line x1="20" y1="64" x2="46.0" y2="64" class="d-linea-d"/><text x="112" y="58" text-anchor="start" class="d-d d-peq">Status</text><line x1="112" y1="64" x2="151.0" y2="64" class="d-linea-d"/><text x="236" y="58" text-anchor="start" class="d-d d-peq">LinkSpeed</text><line x1="236" y1="64" x2="294.5" y2="64" class="d-linea-d"/><rect x="230" y="44" width="100" height="76" rx="5" class="d-caja-act" fill-opacity="0.25"/><text x="20" y="88" text-anchor="start" class="d-t">Ethernet</text><text x="112" y="88" text-anchor="start" class="d-t">Up</text><text x="236" y="88" text-anchor="start" class="d-c">100 Mbps</text><text x="20" y="112" text-anchor="start" class="d-t">Wi-Fi</text><text x="112" y="112" text-anchor="start" class="d-d">Disconnected</text><text x="236" y="112" text-anchor="start" class="d-d">0 bps</text></svg>
-<p class="diapo__texto"><strong>LinkSpeed</strong>: la velocidad negociada. Si en un enlace gigabit pone 100 Mbps, sospecha de un par del cable.</p>
-</div>
-</div>
-<p>La columna <strong>LinkSpeed</strong> te dice si ha negociado 100 Mbps o 1 Gbps, y <strong>Status</strong> si hay enlace (<em>Up</em>) o no (<em>Disconnected</em>). Y para la MAC, ya los conoces: <code>ipconfig /all</code> o <code>getmac</code>.</p>
+<p>En <strong>Configuración → Red e Internet → Ethernet</strong> aparece la «velocidad de vínculo»: si es 1 Gbps o 100 Mbps. Si en un enlace gigabit sale 100 Mbps, sospecha de un par del cable.</p>
+<details><summary>Para saber más: Get-NetAdapter</summary>
+<p>En PowerShell, <code>Get-NetAdapter</code> saca una línea por tarjeta. La columna <strong>Status</strong> dice si hay enlace (<em>Up</em>) o no (<em>Disconnected</em>), y <strong>LinkSpeed</strong>, la velocidad a la que ha enlazado.</p>
+</details>
 
 <div class="votacion">
 <p class="votacion__pregunta">Un triángulo amarillo en el Administrador de dispositivos indica que la tarjeta está deshabilitada.</p>
@@ -236,8 +205,7 @@
 <p class="papel__titulo">Sesión 10 · Preguntas obligatorias — a mano, en el cuaderno</p>
 <p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
 <ol>
-<li>¿Qué tipos de tarjeta de red hay según cómo se conectan al equipo?</li>
-<li>(V/F) Según la nota del apartado «Cómo es una tarjeta de red», hoy las tarjetas de red de los portátiles son PCMCIA.</li>
+<li>¿Qué tres formas de tarjeta de red hay según cómo se conectan al equipo?</li>
 <li>Toca las luces del switch en el laboratorio de arriba y mira su tabla. ¿Qué indican LINK y ACT? ¿Qué pasa con LINK al sacar un latiguillo?</li>
 <li>(ABC) Enchufas el cable y no se enciende LINK en ninguno de los dos lados. Sospechas primero del…
 <ul>
@@ -253,20 +221,18 @@
     <li>b) semidúplex</li>
     <li>c) dúplex</li>
   </ul></li>
-<li>¿Qué modo usa un hub y cuál un switch? ¿Qué consecuencia tiene?</li>
-<li>Lee la nota de la avería clásica del apartado. ¿Qué es un duplex mismatch? ¿Cómo se evita?</li>
-<li>¿Cómo compruebas en Windows si la tarjeta de red funciona y a qué velocidad ha enlazado?</li>
 <li>(V/F) Un triángulo amarillo en el Administrador de dispositivos indica que la tarjeta está deshabilitada.</li>
-<li>Mira las luces del puerto de red de tu PC y del switch, abre el Administrador de dispositivos y ejecuta <code>Get-NetAdapter</code>. Apunta lo que ves y qué significa.</li>
+<li>Mira las luces del puerto de red de tu PC y del switch, abre el Administrador de dispositivos y mira la velocidad de vínculo en Configuración. Apunta lo que ves y qué significa.</li>
 </ol>
 </div>
 
 <h2>⭐ Sube nota</h2>
 <div class="papel papel--extra">
 <p class="papel__titulo">Sesión 10 · Sube nota — no entran en el examen</p>
-<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 13.</p>
-<ol start="13">
+<p>Solo cuentan si tienes hechas todas las obligatorias. En el cuaderno, sigue la numeración: empiezan en la 9.</p>
+<ol start="9">
 <li>En casa, mira las luces del puerto de red del router con un cable enchufado. ¿Qué colores tienen? ¿Parpadean? ¿Qué te dicen?</li>
 <li>Busca si el wifi funciona en semidúplex o en dúplex. ¿Qué consecuencia tiene cuando hay muchos aparatos conectados?</li>
+<li>Ejecuta <code>Get-NetAdapter</code> en PowerShell (mira «Para saber más»). Apunta lo que sale en Status y en LinkSpeed y qué significa.</li>
 </ol>
 </div>
