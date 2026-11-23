@@ -8906,3 +8906,23 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .qc__resultado p { margin: 0.2rem 0; }
 .leccion .qc__ok { color: var(--ok); font-weight: 600; }
 .leccion .qc__mal { color: var(--error); font-weight: 600; }
+
+/* ============================================================
+   Mapas de red (Instalaciones UT3 S4, 23/11/2026): simulaciones
+   mapa-que-va, mapa-dibuja y mapa-que-miras (js/sim-mapa-red.js).
+   Sin colores nuevos: van dentro de la ventana de la simulación.
+   ============================================================ */
+.mr-hoja, .mr-encargo, .mr-grupos { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.mr-grupo { display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.mr-vista { border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem; background: var(--surface); min-width: 0; overflow-x: auto; }
+.mr-dibujo { display: block; width: 100%; min-width: 21rem; max-width: 34rem; height: auto; margin: 0 auto; color: var(--text); font-family: inherit; }
+.mr-tarjeta { align-self: center; text-align: center; max-width: 100%; border: 2px dashed var(--accent); border-radius: 8px; padding: 0.6rem 1.2rem; background: var(--surface); }
+.leccion .mr-tarjeta__texto { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+.mr-elige { justify-content: center; }
+.leccion .mr-lista { margin: 0; padding-left: 1.1rem; font-size: 0.85rem; color: var(--text); }
+.leccion .mr-parte { margin: 0; font-size: 0.75rem; }
+.leccion .mr-parte caption { text-align: left; font-weight: 600; color: var(--text-dim); padding-bottom: 0.2rem; }
+.leccion .mr-parte th, .leccion .mr-parte td { padding: 0.2rem 0.35rem; overflow-wrap: normal; }
+.leccion .mr-parte td { white-space: nowrap; }
+.mr-ips { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.5rem; }
+.leccion .mr-encargo__texto { font-size: 0.95rem; color: var(--text); }

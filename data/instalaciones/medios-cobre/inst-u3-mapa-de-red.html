@@ -82,6 +82,15 @@
 <div class="votacion__porque"><p><strong>Lógico</strong>: ahí están las IP que ya se usan y la red.</p></div>
 </div>
 
+<h3>Actividad 1 — ¿Físico o lógico?</h3>
+<ol>
+<li>Te van a salir datos de la red de una academia, uno a uno, en una tarjeta.</li>
+<li>Pon cada tarjeta en el mapa donde se dibuja: físico (dónde está y por dónde va el cable) o lógico (qué IP tiene y en qué red está). Si fallas, lee por qué; la tarjeta vuelve a salir más tarde.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno dos cosas que salen solo en el mapa físico y dos que salen solo en el lógico (pregunta 1).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="mapa-que-va" aria-label="¿Físico o lógico?"></div>
+<p><strong>Comprobación observable:</strong> cada mapa tiene al menos cuatro tarjetas y salen las dos casillas de la misión marcadas.</p>
+
 <h2>Los símbolos</h2>
 <p>Para que cualquiera entienda un esquema, cada aparato se dibuja siempre con el mismo símbolo. No hay un único estándar obligatorio, pero los de Cisco son los más extendidos y los que traen casi todos los programas de dibujo.</p>
 <div class="salida">
@@ -139,6 +148,17 @@
 <div class="votacion__porque"><p>Para ir directo al <strong>puerto</strong> cuando falla un puesto, sin seguir cables por el techo.</p></div>
 </div>
 
+<h3>Actividad 2 — Dibuja los dos mapas</h3>
+<p>Es la misma academia. Ahora la dibujas tú: primero el mapa físico, siguiendo el parte del instalador, y después el lógico. A cada uno le sale un parte distinto.</p>
+<ol start="4">
+<li>En la pestaña «Mapa físico», toca un aparato, después su roseta y después su puerto del switch, como dice el parte. Se dibuja el cable.</li>
+<li>Haz lo mismo con los seis aparatos que van con cable. El portátil va sin cable: mira en el parte cómo se une.</li>
+<li>Pasa a la pestaña «Mapa lógico» y elige una IP para cada aparato, también para el portátil. Cuidado: hay IP que no valen.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno la roseta, el puerto y la IP de PC-AULA-2, en qué mapa has mirado cada dato y cómo sale el portátil en cada mapa (pregunta 2).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="mapa-dibuja" aria-label="Dibuja los dos mapas"></div>
+<p><strong>Comprobación observable:</strong> en el mapa físico, todos los aparatos tienen su línea (el portátil, discontinua), y en el lógico ninguna IP sale en rojo ni con «¿?».</p>
+
 <h2>Leer un esquema</h2>
 <div class="salida">
 <svg viewBox="0 0 600 260" width="100%" role="img" aria-label="Esquema de la red de una pequeña oficina: la nube de Internet unida a un router; el router unido al puerto 1 de un switch; al switch se conectan PC-01 en el puerto 2, PC-02 en el puerto 3, la impresora en el puerto 4 y un punto de acceso en el puerto 8, al que se conecta un portátil sin cable" style="max-width:100%;height:auto;">
@@ -169,6 +189,17 @@
 
 <div data-actividad="u3s4-leer-esquema"></div>
 
+<h3>Actividad 3 — ¿Qué mapa miras?</h3>
+<p>Trabajas de técnico en la academia y te llegan encargos. Los mapas ya están hechos.</p>
+<ol start="8">
+<li>Lee el encargo y elige qué mapa abres. Si no es el bueno, te dice qué sale en ese mapa.</li>
+<li>Con el mapa abierto, contesta mirándolo. Si fallas, te dice dónde mirar.</li>
+<li>Pulsa «Siguiente encargo» hasta completar la misión.</li>
+<li>Cuando salga «¡Misión cumplida!», apunta en tu cuaderno un encargo que has resuelto con el mapa físico, qué puerto o roseta has encontrado y qué te has ahorrado porque estaba apuntado en el mapa (pregunta 6).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="mapa-que-miras" aria-label="¿Qué mapa miras?"></div>
+<p><strong>Comprobación observable:</strong> las dos casillas de la misión, marcadas: tres encargos con cada mapa.</p>
+
 <h2>Dibujarlo con el ordenador</h2>
 <p>A mano sirve para pensar; para entregar y colgar en el armario, se hace con un programa. Te propongo dos, gratuitos:</p>
 <ul>
@@ -190,19 +221,14 @@
 <h2>Preguntas de la sesión</h2>
 <div class="papel">
 <p class="papel__titulo">Sesión 4 · Preguntas obligatorias — a mano, en el cuaderno</p>
-<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad. <strong>(ABC)</strong>: escribe la letra y la respuesta entera, no solo la letra.</p>
+<p><strong>(V/F)</strong>: escribe V o F. Si es falsa, cópiala corregida para que diga la verdad.</p>
 <ol>
-<li>Mira la imagen del técnico con la cabeza metida en el techo, al principio de la sesión. ¿Qué le habría ahorrado un mapa físico? ¿En qué se diferencia el mapa físico del mapa lógico?</li>
-<li>(ABC) Las direcciones IP y las subredes se dibujan en el mapa…
-<ul>
-    <li>a) físico</li>
-    <li>b) lógico</li>
-    <li>c) de rosetas</li>
-  </ul></li>
+<li><strong>(Actividad 1)</strong> Mira la imagen del técnico con la cabeza metida en el techo, al principio de la sesión. ¿Qué le habría ahorrado un mapa físico? ¿En qué se diferencia el mapa físico del mapa lógico? Pon dos cosas que salen solo en el físico y dos que salen solo en el lógico.</li>
+<li><strong>(Actividad 2)</strong> En la academia de la simulación, ¿qué roseta, qué puerto y qué IP tiene PC-AULA-2? ¿En qué mapa has mirado cada dato? ¿Cómo sale el portátil en el mapa físico y cómo en el lógico?</li>
 <li>Copia del dibujo de los símbolos los de PC, portátil, servidor, impresora, switch, router, punto de acceso e Internet, con su nombre debajo.</li>
 <li>Escribe cinco cosas que tiene que llevar un buen mapa físico.</li>
 <li>(V/F) Según la nota del apartado «Qué tiene que llevar un buen mapa físico», un mapa desactualizado es mejor que no tener mapa.</li>
-<li>¿Por qué hay que apuntar el número de puerto en el mapa?</li>
+<li><strong>(Actividad 3)</strong> ¿Por qué hay que apuntar el número de puerto en el mapa? Pon de ejemplo un encargo de la simulación que hayas resuelto con el mapa físico.</li>
 <li>Pon tres ejemplos de nombres únicos para aparatos de una red, como los de la sesión.</li>
 <li>¿Qué dos programas gratuitos puedes usar para dibujar un mapa de red? Da tres trucos para que quede limpio.</li>
 <li>Dibuja el mapa físico de una oficina con un router, un switch, tres PC, una impresora y un punto de acceso. Pon nombre a cada aparato e indica los puertos.</li>
