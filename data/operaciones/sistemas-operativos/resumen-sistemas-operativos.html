@@ -1,7 +1,7 @@
 <div class="nota" id="como-trabajar">
 <p><strong>📋 Cómo trabajar esta sesión</strong></p>
 <ol>
-<li>Empezamos juntos con una ronda rápida en la pantalla grande. Levanta la mano a la vez que todos: con los dedos, 1 = A, 2 = B, 3 = C; pulgar arriba, verdadero; abajo, falso. Lo que falle mucho, lo repasamos.</li>
+<li>Empezamos juntos repasando la unidad en la pantalla grande, sesión por sesión. En las preguntas con opciones, levanta la mano a la vez que todos: con los dedos, 1 = A, 2 = B, 3 = C; pulgar arriba, verdadero; abajo, falso. En las de 💬, contesta en voz alta. Lo que falle mucho, lo repasamos.</li>
 <li>Hoy no hay temario nuevo: haces el manual de instalación. Lo haces en tu cuaderno, a mano.</li>
 <li>Repasa las sesiones de la unidad. Tienes los enlaces más abajo, y también tu cuaderno con las preguntas corregidas.</li>
 <li>Qué pones lo decides tú. Si tiene algo obligatorio, lo tienes explicado aquí debajo.</li>
@@ -11,21 +11,83 @@
 </div>
 
 <h2>Ronda rápida</h2>
-<p>Una pregunta de cada sesión. Votad todos a la vez.</p>
+<p>Cinco preguntas de cada sesión, sacadas de las 15 que pueden salir en el examen. Las repasamos sesión por sesión, en la pantalla grande. En las de 🗳️, votad todos a la vez. En las de 💬, contesta en voz alta cuando te lo pida.</p>
+<h3>Sesión 1. El software y los sistemas operativos</h3>
 <div class="votacion">
-<p class="votacion__pregunta">WhatsApp es gratis, así que es software libre.</p>
-<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
-<div class="votacion__porque"><p>Falso: es gratis pero <strong>propietario</strong>. No te dan la receta (el código fuente). (Sesión 1)</p></div>
+<p class="votacion__pregunta">El programa que hace que una impresora funcione con tu ordenador es…</p>
+<ol class="votacion__opciones"><li>una aplicación</li><li data-correcta>un controlador</li><li>un sistema operativo</li></ol>
+<div class="votacion__porque"><p>Un <strong>controlador</strong>: le explica al sistema operativo cómo manejar ese aparato. (S1 · pregunta 2)</p></div>
 </div>
 <div class="votacion">
-<p class="votacion__pregunta"><span translate="no">4 GB</span> en MB son…</p>
-<ol class="votacion__opciones"><li><span translate="no">4000</span></li><li data-correcta><span translate="no">4096</span></li><li><span translate="no">400</span></li></ol>
-<div class="votacion__porque"><p><span translate="no">4 × 1024 = 4096 MB</span>. (Sesión 2)</p></div>
+<p class="votacion__pregunta">Cuando guardas un dibujo, Paint escribe directamente en el disco, sin pasar por el sistema operativo.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Paint se lo pide al <strong>sistema operativo</strong>, y él lo escribe en el disco. (S1 · pregunta 5)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Todo programa gratis es software libre.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. WhatsApp o Chrome son gratis pero <strong>propietarios</strong>: no te dan el código fuente. (S1 · pregunta 12)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Compras un ordenador que ya trae Windows instalado. Su licencia es…</p>
+<ol class="votacion__opciones"><li data-correcta>OEM, y va pegada a ese ordenador</li><li>retail, y la puedes pasar a cualquier ordenador</li><li>libre, porque viene con el ordenador</li></ol>
+<div class="votacion__porque"><p><strong>OEM</strong>: va con ese ordenador y no se puede pasar a otro. (S1 · pregunta 15)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Ordena de abajo arriba las capas de un ordenador: aplicaciones, hardware, sistema operativo, controladores.</p>
+<div class="votacion__porque"><p>De abajo arriba: <strong>hardware</strong>, controladores, sistema operativo y aplicaciones. Cada capa le pide las cosas a la de debajo. (S1 · pregunta 4)</p></div>
+</div>
+
+<h3>Sesión 2. Máquinas virtuales y preparar la instalación</h3>
+<div class="votacion">
+<p class="votacion__pregunta">El ordenador real en el que funciona la máquina virtual se llama…</p>
+<ol class="votacion__opciones"><li>invitado</li><li data-correcta>anfitrión</li><li>hipervisor</li></ol>
+<div class="votacion__porque"><p><strong>Anfitrión</strong>. El sistema de dentro de la máquina virtual es el invitado. (S2 · pregunta 2)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">VirtualBox es un hipervisor de tipo 2 porque…</p>
+<ol class="votacion__opciones"><li>va directamente sobre el hardware</li><li data-correcta>va encima de un sistema operativo, como un programa más</li><li>solo puede crear dos máquinas</li></ol>
+<div class="votacion__porque"><p>Va <strong>encima de un sistema operativo</strong>, como un programa más. (S2 · pregunta 6)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Para darle 2 GB de RAM a una máquina virtual, en VirtualBox escribes…</p>
+<ol class="votacion__opciones"><li><span translate="no">2000 MB</span></li><li data-correcta><span translate="no">2048 MB</span></li><li><span translate="no">200 MB</span></li></ol>
+<div class="votacion__porque"><p><span translate="no">2 × 1024 = 2048 MB</span>. Y como mucho, <strong>la mitad</strong> de la RAM del PC. (S2 · preguntas 8 y 9)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">En un ordenador de verdad, «Borrar disco e instalar» solo borra el sistema operativo y deja tus archivos.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Borra <strong>todo el disco</strong>, también tus archivos. (S2 · pregunta 15)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">¿Qué es el orden de arranque? Para instalar desde un USB, ¿qué va primero?</p>
+<div class="votacion__porque"><p>Es la lista que mira el ordenador al encenderse: arranca con lo primero que encuentra. Para instalar, va primero el <strong>USB</strong> con la ISO. Al acabar, se vuelve a poner el disco el primero. (S2 · pregunta 12)</p></div>
+</div>
+
+<h3>Sesión 3. Instalar Linux en una máquina virtual</h3>
+<div class="votacion">
+<p class="votacion__pregunta">Linux Mint ya funciona desde la ISO, pero no lo has instalado. Si apagas la máquina…</p>
+<ol class="votacion__opciones"><li data-correcta>se pierde todo lo que hayas hecho</li><li>Linux se queda instalado</li><li>Linux se instala solo al encender</li></ol>
+<div class="votacion__porque"><p><strong>Se pierde todo</strong>: aún no está instalado en el disco. (S3 · pregunta 4)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">El nombre de usuario de Linux puede llevar espacios y mayúsculas.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. El nombre de usuario va en <strong>minúsculas y sin espacios</strong>. (S3 · pregunta 7)</p></div>
 </div>
 <div class="votacion">
 <p class="votacion__pregunta">Si no quitas la ISO al reiniciar, la máquina…</p>
 <ol class="votacion__opciones"><li data-correcta>vuelve a sacar el instalador</li><li>arranca el Linux instalado</li><li>se borra</li></ol>
-<div class="votacion__porque"><p>Vuelve a salir el <strong>instalador</strong>: arranca otra vez desde la ISO. (Sesión 3)</p></div>
+<div class="votacion__porque"><p>Vuelve a salir el <strong>instalador</strong>: arranca otra vez desde la ISO. (S3 · pregunta 10)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Si le das 6 GB a una máquina virtual en un PC de 8 GB, el Windows de fuera va más rápido.</p>
+<ol class="votacion__opciones" data-letras="VF"><li>Verdadero</li><li data-correcta>Falso</li></ol>
+<div class="votacion__porque"><p>Falso. Al Windows de fuera le quedan 2 GB y <strong>todo va lento</strong>. Como mucho, la mitad. (S3 · pregunta 15)</p></div>
+</div>
+<div class="votacion">
+<p class="votacion__pregunta">Escribe en orden las seis fases de una instalación en una máquina virtual.</p>
+<div class="votacion__porque"><p>1. Crear la máquina. 2. Meter la ISO. 3. Arrancar desde la ISO. 4. <strong>Instalar</strong>. 5. Quitar la ISO al reiniciar. 6. Post-instalación: actualizaciones, controladores y una instantánea. (S3 · preguntas 1 y 11)</p></div>
 </div>
 
 <h2>Tu manual de instalación</h2>
