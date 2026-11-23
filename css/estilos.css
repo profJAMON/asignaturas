@@ -1518,29 +1518,59 @@ h1, h2, h3 {
   color: var(--text);
 }
 
-.pregunta { margin-bottom: 1.6rem; }
+.pregunta { margin-bottom: 2rem; }
 .pregunta:last-child { margin-bottom: 0.5rem; }
 
-.pregunta__enunciado { font-weight: 500; margin: 0 0 0.7rem; color: var(--text); }
+.pregunta__enunciado { font-weight: 600; font-size: 1.05rem; line-height: 1.45; margin: 0 0 0.8rem; color: var(--text); }
 
-.opciones { display: flex; flex-direction: column; gap: 0.5rem; }
+/* Opciones de los test (23/11/2026): fondo opaco para que la
+   cuadrícula de la hoja no pase por detrás de las letras, texto más
+   grande y una letra A, B, C, D delante (se lee mejor y en clase se
+   puede decir «¿quién ha puesto la C?»). La letra es CSS: no se
+   traduce ni hay que escribirla en el json. */
+.opciones { display: flex; flex-direction: column; gap: 0.55rem; counter-reset: opcion; }
 
 .opcion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   text-align: left;
-  padding: 0.65rem 0.9rem;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 6px;
+  padding: 0.7rem 0.95rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
   font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.4;
   color: var(--text);
   cursor: pointer;
-  transition: border-color 0.12s ease;
+  transition: border-color 0.12s ease, background-color 0.12s ease;
 }
-.opcion:hover { border-color: var(--accent); }
-.opcion.correcta { border-color: var(--ok); background: var(--ok-fondo); }
-.opcion.incorrecta { border-color: var(--error); background: var(--error-fondo); }
+.opcion::before {
+  counter-increment: opcion;
+  content: counter(opcion, upper-alpha);
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.opcion:hover:not([disabled]) { border-color: var(--accent); background: var(--fila-alterna, var(--bg)); }
+.opcion.correcta { border-color: var(--ok); background: linear-gradient(var(--ok-fondo), var(--ok-fondo)), var(--bg); }
+.opcion.correcta::before { color: var(--ok); }
+.opcion.incorrecta { border-color: var(--error); background: linear-gradient(var(--error-fondo), var(--error-fondo)), var(--bg); }
+.opcion.incorrecta::before { color: var(--error); }
 .opcion[disabled] { cursor: default; }
+/* En la hoja, el verde y el rojo de tinta: los del tema oscuro son
+   para fondo oscuro y no se leen sobre papel. */
+.actividad .opcion { --ok: var(--hoja-verde); --error: var(--hoja-rojo); }
 
 /* ---- La reacción al contestar ----
    Es la transición que más rinde de toda la web: el alumno pulsa y la
