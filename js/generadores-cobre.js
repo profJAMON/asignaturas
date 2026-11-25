@@ -11,6 +11,11 @@
    topologia-y-medio   descripción o avería → topología o tipo de cable
    categoria-ethernet  (18/11/2026, U3 S6) nombre de Ethernet → velocidad o
                        medio; necesidad → categoría mínima; enlace → ¿cumple?
+                       Desde el 25/11/2026 no la usa ninguna sesión.
+   lee-cubierta        (25/11/2026, U3 S6) una cubierta dibujada → categoría,
+                       UTP/FTP/STP o mucho/poco humo
+   nombre-ethernet     (25/11/2026, U3 S6) 100BASE-TX, 1000BASE-T, 10GBASE-T,
+                       10GBASE-SR → velocidad o cobre/fibra
    ============================================================ */
 
 (function () {
@@ -246,8 +251,108 @@
     };
   }
 
+  /* ---------- Lee la cubierta y el nombre (25/11/2026, U3 S6) ----------
+     Lo que pide Carles para el examen: reconocer en una imagen la
+     categoría, la pantalla (UTP, FTP, STP) y si da mucho o poco humo; y
+     de los nombres de Ethernet, la velocidad y si es cobre o fibra. */
+
+  const CUB_CAT = ['5E', '6', '6A'];
+  const CUB_PANT = ['UTP', 'FTP', 'STP'];
+  const CUB_HUMO = ['LSZH', 'PVC'];
+
+  function dibujoCubierta(texto) {
+    return '<svg viewBox="0 0 290 48" role="img" aria-label="Trozo de cable. En la cubierta pone: ' + texto + '">' +
+      '<rect class="tp-e" x="4" y="7" width="282" height="34" rx="17"/>' +
+      '<text class="tp-t" x="145" y="29" text-anchor="middle" font-family="monospace" font-size="12" font-weight="bold">' +
+      texto.replace(/ /g, '  ') + '</text></svg>';
+  }
+
+  function genLeeCubierta() {
+    const cat = elige(CUB_CAT);
+    const pant = elige(CUB_PANT);
+    const humo = elige(CUB_HUMO);
+    const awg = elige(['23AWG', '24AWG']);
+    const metros = elige(['305m', '100m', '500m']);
+    const catTxt = elige(['CAT.' + cat, 'CAT' + cat, 'CATEGORY ' + cat]);
+    const trozos = Math.random() < 0.5
+      ? [catTxt, pant, awg, humo, metros]
+      : [pant, catTxt, awg, humo, metros];
+    const texto = trozos.join(' ');
+    const dibujo = dibujoCubierta(texto);
+    const que = elige(['cat', 'pant', 'humo']);
+    if (que === 'cat') {
+      const c = cat.toLowerCase();
+      return {
+        clave: texto + '|cat',
+        dibujo,
+        enunciado: '¿Qué categoría es?',
+        respuesta: 'Cat ' + cat.replace('E', 'e'),
+        respuestas: ['cat ' + c, 'cat' + c, c, 'cat. ' + c, 'cat.' + c, 'categoria ' + c, 'category ' + c],
+        formato: 'texto',
+        traducible: true,
+        pista: 'Busca CAT o CATEGORY en la cubierta: lo que va detrás es la categoría.'
+      };
+    }
+    if (que === 'pant') {
+      const que_es = { UTP: 'sin pantalla', FTP: 'una lámina para todo el cable', STP: 'pantalla en cada par' };
+      return {
+        clave: texto + '|pant',
+        dibujo,
+        enunciado: '¿Es UTP, FTP o STP?',
+        respuesta: pant,
+        respuestas: [pant],
+        formato: 'texto',
+        traducible: true,
+        pista: 'Viene escrito en la cubierta. ' + pant + ': ' + que_es[pant] + '.'
+      };
+    }
+    const poco = humo === 'LSZH';
+    return {
+      clave: texto + '|humo',
+      dibujo,
+      enunciado: 'Si arde, ¿da mucho humo o poco humo?',
+      respuesta: poco ? 'poco humo' : 'mucho humo',
+      respuestas: poco ? ['poco', 'poco humo', 'lszh'] : ['mucho', 'mucho humo', 'pvc'],
+      formato: 'texto',
+      traducible: true,
+      pista: poco ? 'Pone LSZH: poco humo y sin halógenos.' : 'Pone PVC: si arde, mucho humo negro y tóxico.'
+    };
+  }
+
+  /* [nombre, velocidad, cobre o fibra] */
+  const ETHER_S6 = [
+    ['100BASE-TX', '100 Mbps', 'cobre'],
+    ['1000BASE-T', '1 Gbps', 'cobre'],
+    ['10GBASE-T', '10 Gbps', 'cobre'],
+    ['10GBASE-SR', '10 Gbps', 'fibra']
+  ];
+
+  function genNombreEthernet() {
+    const [nom, vel, medio] = elige(ETHER_S6);
+    if (Math.random() < 0.5) {
+      return {
+        enunciado: `${nom} → ¿velocidad?`,
+        respuesta: vel,
+        respuestas: velocidades(vel),
+        formato: 'texto',
+        pista: `El número del principio es la velocidad en Mbps; si lleva G, en Gbps. ${nom}: ${vel}.`
+      };
+    }
+    return {
+      enunciado: `${nom} → ¿cobre o fibra?`,
+      respuesta: medio,
+      respuestas: medio === 'fibra'
+        ? ['fibra', 'fibra optica', 'f']
+        : ['cobre', 'par trenzado', 'trenzado', 'cable de cobre', 'c'],
+      formato: 'texto',
+      pista: `Mira el final: T y TX, cobre (par trenzado); SR, fibra. ${nom}: ${medio}.`
+    };
+  }
+
   GENERADORES['t568-colores'] = genT568Colores;
   GENERADORES['directo-o-cruzado'] = genDirectoOCruzado;
   GENERADORES['topologia-y-medio'] = genTopologiaYMedio;
   GENERADORES['categoria-ethernet'] = genCategoriaEthernet;
+  GENERADORES['lee-cubierta'] = genLeeCubierta;
+  GENERADORES['nombre-ethernet'] = genNombreEthernet;
 })();

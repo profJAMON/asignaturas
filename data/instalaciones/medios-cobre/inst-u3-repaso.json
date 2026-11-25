@@ -2,7 +2,7 @@
   "id": "inst-u3-repaso",
   "titulo": "Sesión 12 — Repaso de la unidad",
   "fecha": "",
-  "descripcion": "Toda la unidad en una página, preguntas de repaso que juntan varias sesiones y los tres generadores (colores T568, directo o cruzado, topología y cable) para entrenar.",
+  "descripcion": "Toda la unidad en una página, preguntas de repaso que juntan varias sesiones y los generadores (colores T568, directo o cruzado, topología y cable, cubiertas y nombres de Ethernet) para entrenar.",
   "materiales": [],
   "actividades": [
     {
@@ -28,6 +28,18 @@
       "titulo": "¿Qué topología es? Mira el dibujo",
       "generador": "topologia-dibujo",
       "n": 8
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Lee la cubierta",
+      "generador": "lee-cubierta",
+      "n": 6
+    },
+    {
+      "tipo": "generador",
+      "titulo": "Lee el nombre de Ethernet",
+      "generador": "nombre-ethernet",
+      "n": 6
     }
   ]
 }

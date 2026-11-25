@@ -128,7 +128,7 @@
 <div><dt>FTP</dt><dd>Una lámina que envuelve todo.</dd></div>
 <div><dt>STP</dt><dd>Pantalla en cada par y global.</dd></div>
 <div><dt>Rígido / flexible</dt><dd>Rígido en la pared; flexible en los latiguillos.</dd></div>
-<div><dt>LSZH</dt><dd>Cubierta que da poco humo y sin halógenos.</dd></div>
+<div><dt>LSZH / PVC</dt><dd>LSZH da poco humo y sin halógenos; PVC, mucho humo.</dd></div>
 </dl>
 <table class="rs-tabla">
 <tr><th>Categoría</th><th>MHz</th><th>Velocidad</th></tr>
@@ -138,7 +138,7 @@
 <tr><td><strong>8</strong></td><td>2000</td><td>40 Gbps a 30 m</td></tr>
 </table>
 <p class="rs-formula">100 m = 90 m fijos + 10 m de latiguillos</p>
-<p class="rs-cuenta"><strong>1000BASE-T</strong>: 1000 Mbps, banda base, par trenzado. A 10 y 100 Mbps se usan 2 pares; a <strong>1 Gbps, los 4</strong>.</p>
+<p class="rs-cuenta"><strong>1000BASE-T</strong>: 1000 Mbps, banda base, par trenzado. Al final del nombre, <strong>T o TX = cobre</strong> y SR = fibra; con G delante, Gbps (10GBASE-T, 10 Gbps).</p>
 <p class="rs-aviso">⚠ Manda el elemento de <strong>menor categoría</strong>: cable 6A con rosetas 5e = enlace 5e.</p>
 </section>
 
@@ -254,15 +254,14 @@
 </ul>
 </details>
 </li>
-<li>Un PC enlaza a 100 Mbps en vez de a 1 Gbps. Explica tres causas posibles relacionando lo que sabes de categorías, pares que usa Gigabit Ethernet, autonegociación y el switch.
+<li>Te dan un cable con esta cubierta: <span translate="no">CAT.6 FTP 23AWG LSZH 305m</span>. Di su categoría, si es UTP, FTP o STP y si da mucho o poco humo. ¿Llega al mínimo de hoy? ¿Es la categoría habitual en una instalación nueva? Después, en la etiqueta de un switch pone <span translate="no">24 × 10/100/1000BASE-T</span> y <span translate="no">2 × 10GBASE-SR</span>: ¿qué puertos van por cobre, cuáles por fibra y a qué velocidad como mucho?
 <details class="respuesta"><summary>Ver respuesta</summary>
-<p>Tres de estas causas (vale cualquiera bien explicada):</p>
 <ul>
-<li><strong>Un elemento de categoría baja</strong>: un latiguillo viejo de Cat 5 o una roseta que no llega. El enlace va a lo que dé el peor elemento.</li>
-<li><strong>Un par roto o mal crimpado</strong>: a 1 Gbps se usan <strong>los 4 pares</strong>. Si uno falla, con los dos pares que quedan se negocia a 100 Mbps.</li>
-<li><strong>El switch o ese puerto es de 100 Mbps</strong>: la autonegociación elige lo mejor que admiten los dos, y el switch no da más.</li>
+<li>Es <strong>Cat 6</strong>, <strong>FTP</strong> (una lámina para todo el cable) y <strong>LSZH</strong>: poco humo si arde.</li>
+<li>Sí llega al mínimo (Cat 5e) y es la <strong>habitual</strong> en una instalación nueva.</li>
+<li>Los <strong>24 puertos 1000BASE-T</strong> van por <strong>cobre</strong> (la T es par trenzado), como mucho a 1000 Mbps = 1 Gbps.</li>
+<li>Los <strong>2 puertos 10GBASE-SR</strong> van por <strong>fibra</strong> (SR), a 10 Gbps (la G es giga).</li>
 </ul>
-<p>Para comprobarlo: la velocidad de vínculo en Configuración → Ethernet, la luz del puerto del switch y probar con un latiguillo que sepas que va bien.</p>
 </details>
 </li>
 <li>Tienes que unir: un PC con un switch, dos switches antiguos sin Auto-MDIX y dos PC entre sí. Para cada caso di qué cable fabricarías, con qué orden (A o B) en cada extremo y por qué.

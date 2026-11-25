@@ -2,27 +2,49 @@
   "id": "inst-u3-categorias-ethernet",
   "titulo": "Sesión 6 — Categorías del cable y Ethernet",
   "fecha": "",
-  "descripcion": "Qué es la categoría de un cable, la tabla de Cat 5e a Cat 8, la regla de los 100 metros, cómo se leen los nombres de Ethernet (1000BASE-T) y cuántos pares usa cada velocidad.",
+  "descripcion": "Qué es la categoría de un cable y cómo se lee la cubierta (categoría, pantalla y humo), la tabla de Cat 5e a Cat 8, la regla de los 100 metros y cómo se leen los nombres de Ethernet (100BASE-TX, 1000BASE-T, 10GBASE-T, 10GBASE-SR).",
   "materiales": [],
   "actividades": [
+    {
+      "id": "u3s6-cubiertas",
+      "tipo": "generador",
+      "titulo": "Lee la cubierta",
+      "generador": "lee-cubierta",
+      "n": 6
+    },
     {
       "id": "u3s6-categorias",
       "tipo": "relacionar",
       "titulo": "Cada categoría con lo suyo",
       "pares": [
-        { "izquierda": "Cat 5e", "derecha": "100 MHz, 1 Gbps: el mínimo" },
-        { "izquierda": "Cat 6", "derecha": "250 MHz, lo habitual en instalaciones nuevas" },
-        { "izquierda": "Cat 6A", "derecha": "500 MHz, 10 Gbps a 100 m" },
-        { "izquierda": "Cat 8", "derecha": "40 Gbps, pero solo 30 m" },
-        { "izquierda": "Cat 5", "derecha": "100 Mbps, obsoleta" }
+        {
+          "izquierda": "Cat 5",
+          "derecha": "Obsoleta: ya no se instala"
+        },
+        {
+          "izquierda": "Cat 5e",
+          "derecha": "El mínimo que se admite hoy"
+        },
+        {
+          "izquierda": "Cat 6",
+          "derecha": "La habitual en una instalación nueva"
+        },
+        {
+          "izquierda": "Cat 6A",
+          "derecha": "Para el futuro"
+        },
+        {
+          "izquierda": "Cat 8",
+          "derecha": "Solo llega a 30 m"
+        }
       ]
     },
     {
       "id": "u3s6-generador",
       "tipo": "generador",
-      "titulo": "Categorías, nombres y 100 metros",
-      "generador": "categoria-ethernet",
-      "n": 8
+      "titulo": "Lee el nombre",
+      "generador": "nombre-ethernet",
+      "n": 6
     }
   ]
 }

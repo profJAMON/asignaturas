@@ -11,54 +11,74 @@
       "titulo": "Conectores",
       "preguntas": [
         {
-          "pregunta": "El conector de las redes de datos con cable de pares es…",
+          "pregunta": "¿Qué conector lleva el cable de red?",
           "opciones": [
-            "RJ-11",
             "RJ-45",
-            "BNC",
-            "F"
+            "RJ-11"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué conector lleva el cable del teléfono fijo?",
+          "opciones": [
+            "RJ-45",
+            "RJ-11"
           ],
           "correcta": 1
         },
         {
-          "pregunta": "El conector de la línea de teléfono es…",
+          "pregunta": "¿Cuántos contactos tiene un RJ-45?",
           "opciones": [
-            "RJ-11",
-            "RJ-45",
-            "BNC",
-            "F"
-          ],
-          "correcta": 0
-        },
-        {
-          "pregunta": "Con los contactos hacia ti, la pestaña detrás y el cable hacia abajo, el pin 1 está…",
-          "opciones": [
-            "A la izquierda",
-            "A la derecha",
-            "En el centro",
-            "Depende del color"
-          ],
-          "correcta": 0
-        },
-        {
-          "pregunta": "¿Qué parte del RJ-45 atraviesa el aislante de cada hilo?",
-          "opciones": [
-            "La cuña",
-            "La pestaña",
-            "Los contactos",
-            "El capuchón"
+            "2",
+            "4",
+            "8"
           ],
           "correcta": 2
         },
         {
-          "pregunta": "¿Qué pieza debe apretar la cubierta del cable para que no se suelte de un tirón?",
+          "pregunta": "Los contactos te miran y el cable va hacia abajo. ¿Qué pin está marcado?",
+          "dibujo": "<svg viewBox=\"0 0 220 120\" role=\"img\" aria-label=\"Conector RJ-45 de frente, con los contactos hacia ti y el cable hacia abajo. Hay un contacto marcado: el primero por la izquierda.\"><rect class=\"tp-e\" x=\"42\" y=\"10\" width=\"136\" height=\"60\" rx=\"5\"/><rect class=\"tp-e\" x=\"85\" y=\"70\" width=\"50\" height=\"14\"/><rect class=\"tp-e\" x=\"104\" y=\"84\" width=\"12\" height=\"32\"/><rect class=\"tp-p\" x=\"52\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"65\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"78\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"91\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"104\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"117\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"130\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"143\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><path class=\"tp-p\" d=\"M50.5,2 L60.5,2 L55.5,12 Z\"/></svg>",
           "opciones": [
-            "La cuña",
-            "La pestaña",
-            "Los contactos",
-            "La roseta"
+            "El 1",
+            "El 8"
           ],
           "correcta": 0
+        },
+        {
+          "pregunta": "Los contactos te miran y el cable va hacia abajo. ¿Qué pin está marcado?",
+          "dibujo": "<svg viewBox=\"0 0 220 120\" role=\"img\" aria-label=\"Conector RJ-45 de frente, con los contactos hacia ti y el cable hacia abajo. Hay un contacto marcado: el último por la derecha.\"><rect class=\"tp-e\" x=\"42\" y=\"10\" width=\"136\" height=\"60\" rx=\"5\"/><rect class=\"tp-e\" x=\"85\" y=\"70\" width=\"50\" height=\"14\"/><rect class=\"tp-e\" x=\"104\" y=\"84\" width=\"12\" height=\"32\"/><rect class=\"tp-e\" x=\"52\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"65\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"78\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"91\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"104\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"117\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-e\" x=\"130\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><rect class=\"tp-p\" x=\"143\" y=\"18\" width=\"7\" height=\"22\" rx=\"1\"/><path class=\"tp-p\" d=\"M141.5,2 L151.5,2 L146.5,12 Z\"/></svg>",
+          "opciones": [
+            "El 1",
+            "El 8"
+          ],
+          "correcta": 1
+        },
+        {
+          "pregunta": "¿Qué piezas tocan el cobre de los hilos?",
+          "opciones": [
+            "Los contactos dorados",
+            "La pestaña",
+            "El capuchón"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué pieza engancha el conector en la boca y hace «clic»?",
+          "opciones": [
+            "La pestaña",
+            "La cuña",
+            "Los contactos"
+          ],
+          "correcta": 0
+        },
+        {
+          "pregunta": "¿Qué pieza aprieta la funda del cable para que no se suelte de un tirón?",
+          "opciones": [
+            "La pestaña",
+            "La cuña",
+            "Los contactos"
+          ],
+          "correcta": 1
         }
       ]
     }
