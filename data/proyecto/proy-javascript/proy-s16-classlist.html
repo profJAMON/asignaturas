@@ -1,5 +1,17 @@
 <div class="nota">Hoy: con JavaScript cambias <strong>cómo se ve</strong> algo al pulsar un botón: resaltarlo, mostrarlo, esconderlo o pasar la página a modo oscuro. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios. <strong>A las 17:10</strong>, en pareja, lo ponéis en vuestra web.</div>
 
+<div class="nota" id="descarga-s16">
+<p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
+<p>Todos los ejercicios de hoy empiezan con un HTML que te doy hecho: tú solo escribes el JavaScript y el CSS. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-javascript/descargas/s16-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s16-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro están los HTML de los ejercicios (<code>s16-ej1.html</code>, <code>s16-ej2.html</code>…). Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s16-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>Cambiar el aspecto desde JavaScript</h2>
 <p>La idea aprovecha lo que ya sabes de CSS:</p>
 <ol>
@@ -48,12 +60,12 @@ botonGanador.addEventListener("click", function () {
 <p>Para usar clases, cada ejercicio de hoy tiene también su CSS: <code>s16-ej1.css</code>, conectado con <code>&lt;link&gt;</code> en el <code>&lt;head&gt;</code>, como en la sesión 8.</p>
 
 <h3>Ejercicio 1 — Avisos de clase</h3>
-<p>Crea <code>s16-ej1.html</code>, <code>s16-ej1.css</code> y <code>s16-ej1.js</code>. Al pulsar "Resaltar", el aviso se pone con fondo amarillo y en negrita.</p>
+<p>Abre <code>s16-ej1.html</code> y crea al lado <code>s16-ej1.css</code> y <code>s16-ej1.js</code>. Al pulsar "Resaltar", el aviso se pone con fondo amarillo y en negrita.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej1-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej1-antes.webp" alt="Antes de pulsar: página Avisos de clase con el párrafo Examen de mates el jueves. (1) y el botón Resaltar (2)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej1-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej1-despues.webp" alt="Después de pulsar: el párrafo tiene fondo amarillo y está en negrita (3). Nota 4: en s16-ej1.css hay una clase resaltado con fondo amarillo y negrita." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;p id="aviso"&gt;</code>.</li>
-<li>② Un <code>&lt;button id="boton-resaltar"&gt;</code>.</li>
+<li>① Un <code>&lt;p id="aviso"&gt;</code>. Ya viene en el HTML.</li>
+<li>② Un <code>&lt;button id="boton-resaltar"&gt;</code>. Ya viene en el HTML.</li>
 <li>③ Al pulsar, el aviso cambia con <code>classList.add</code>.</li>
 <li>④ En el CSS, la clase <code>.resaltado</code>.</li>
 </ul>
@@ -104,12 +116,12 @@ botonOcultar.addEventListener("click", function () {
 </details>
 
 <h3>Ejercicio 2 — Batido de fresa</h3>
-<p>Crea <code>s16-ej2.html</code>, <code>s16-ej2.css</code> y <code>s16-ej2.js</code>. Los ingredientes empiezan escondidos. Un botón los muestra y otro los oculta.</p>
+<p>Abre <code>s16-ej2.html</code> y crea al lado <code>s16-ej2.css</code> y <code>s16-ej2.js</code>. Los ingredientes empiezan escondidos. Un botón los muestra y otro los oculta.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej2-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej2-antes.webp" alt="Antes de pulsar: página Batido de fresa con los botones Mostrar ingredientes y Ocultar ingredientes (1). Nota 2: debajo hay una lista con id ingredientes y clase oculto, que no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej2-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej2-despues.webp" alt="Después de pulsar Mostrar ingredientes: aparece la lista Fresas, Leche, Un plátano (3). Nota 4: al pulsar Ocultar ingredientes, la lista vuelve a desaparecer." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Dos botones, <code>#boton-mostrar</code> y <code>#boton-ocultar</code>, dentro de un párrafo.</li>
-<li>② Una <code>&lt;ul id="ingredientes" class="oculto"&gt;</code>.</li>
+<li>① Dos botones, <code>#boton-mostrar</code> y <code>#boton-ocultar</code>, dentro de un párrafo. Ya viene en el HTML.</li>
+<li>② Una <code>&lt;ul id="ingredientes" class="oculto"&gt;</code>. Ya viene en el HTML.</li>
 <li>③ "Mostrar" quita la clase con <code>classList.remove</code>.</li>
 <li>④ "Ocultar" la pone con <code>classList.add</code>.</li>
 </ul>
@@ -204,13 +216,13 @@ botonModo.addEventListener("click", function () {
 <div class="lab" data-lab="simulacion" data-sim="modo-noche" aria-label="Arregla el modo noche"></div>
 
 <h3>Ejercicio 3 — Club de astronomía</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s16-ej3.html</code>, <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Un botón cambia la página a modo oscuro y otro muestra el lugar de la salida, que empieza escondido.</p>
+<p>El ejercicio más largo de hoy: junta todo. Abre <code>s16-ej3.html</code> y crea al lado <code>s16-ej3.css</code> y <code>s16-ej3.js</code>. Un botón cambia la página a modo oscuro y otro muestra el lugar de la salida, que empieza escondido.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-antes.webp" alt="Antes de pulsar: página Club de astronomía con los botones Cambiar modo y Ver el lugar (1) y una tarjeta gris con Próxima salida: sábado por la noche. (2). Nota 3: dentro de la tarjeta hay un segundo párrafo con id lugar y clase oculto, que todavía no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej3-despues.webp" alt="Después de pulsar los dos botones: la página tiene fondo negro y letras claras, la tarjeta es gris oscuro (4) y dentro aparece Lugar: el mirador del pueblo. (5). Nota 6: si vuelves a pulsar Cambiar modo, la página vuelve a los colores claros." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Dos botones, <code>#boton-modo</code> y <code>#boton-lugar</code>, dentro de un párrafo.</li>
-<li>② Un <code>&lt;div class="tarjeta"&gt;</code> con fondo gris claro, <code>padding</code> y esquinas redondeadas.</li>
-<li>③ Dentro de la tarjeta, un <code>&lt;p id="lugar" class="oculto"&gt;</code>.</li>
+<li>① Dos botones, <code>#boton-modo</code> y <code>#boton-lugar</code>, dentro de un párrafo. Ya viene en el HTML.</li>
+<li>② La tarjeta (<code>&lt;div class="tarjeta"&gt;</code>, ya en el HTML): en el CSS, fondo gris claro, <code>padding</code> y esquinas redondeadas.</li>
+<li>③ Dentro de la tarjeta, un <code>&lt;p id="lugar" class="oculto"&gt;</code>. Ya viene en el HTML.</li>
 <li>④ "Cambiar modo" pone y quita <code>modo-oscuro</code> en el <code>body</code>; la tarjeta también cambia de color.</li>
 <li>⑤ "Ver el lugar" muestra el párrafo escondido.</li>
 <li>⑥ Volver a pulsar "Cambiar modo" devuelve los colores claros.</li>

@@ -31,6 +31,18 @@
 <p>Mira tres cosas: que el <code>.js</code> está conectado justo antes de <code>&lt;/body&gt;</code>, que el <code>id</code> del HTML y el del <code>querySelector</code> son iguales, y la consola (<strong>F12</strong>).</p>
 </details>
 
+<div class="nota" id="descarga-s14">
+<p><strong>📥 Antes de los ejercicios: descarga el HTML de hoy</strong></p>
+<p>Todos los ejercicios de hoy empiezan con un HTML que te doy hecho: tú solo escribes el JavaScript. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-javascript/descargas/s14-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s14-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro están los HTML de los ejercicios (<code>s14-ej1.html</code>, <code>s14-ej2.html</code>…). Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s14-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>Leer lo que escribe el usuario: value</h2>
 <p>Con <code>textContent</code> <strong>escribíamos</strong> en la página. Ahora queremos <strong>leer</strong> lo que el visitante ha escrito en una caja del formulario. Para eso está <code>value</code>. Así funciona el formulario del servidor de BloqueCraft:</p>
 <div class="probador" aria-label="Leer una caja: value" data-alto="90">
@@ -72,13 +84,13 @@ boton.addEventListener("click", function () {
 </details>
 
 <h3>Ejercicio 1 — Bienvenida</h3>
-<p>Crea <code>s14-ej1.html</code> y <code>s14-ej1.js</code>. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
+<p>Abre <code>s14-ej1.html</code> y crea <code>s14-ej1.js</code> al lado. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" alt="Página Bienvenida después de escribir ProfesorCabron y pulsar Saludar: el formulario con la etiqueta Tu alias, la caja y el botón Saludar (1), y debajo el párrafo ¡Hola, ProfesorCabron! Bienvenido a mi web. (2). Notas: 3, antes de pulsar el párrafo está vacío; 4, el botón tiene type button." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;form&gt;</code> con <code>&lt;label&gt;</code>, un <code>&lt;input id="alias"&gt;</code> y un botón.</li>
+<li>① Un <code>&lt;form&gt;</code> con <code>&lt;label&gt;</code>, un <code>&lt;input id="alias"&gt;</code> y un botón. Ya viene en el HTML.</li>
 <li>② Un <code>&lt;p id="saludo"&gt;</code> que muestra lo escrito en la caja.</li>
 <li>③ Antes de pulsar, el párrafo está vacío.</li>
-<li>④ El botón tiene <code>type="button"</code>.</li>
+<li>④ El botón tiene <code>type="button"</code>. Ya viene en el HTML.</li>
 </ul>
 <details><summary>Pista 1: el mensaje sale, pero sin lo que he escrito</summary>
 <p>Estás leyendo el <code>value</code> fuera de las llaves. Mueve esa línea dentro del <code>addEventListener</code>.</p>
@@ -122,12 +134,12 @@ boton.addEventListener("click", function () {
 </div>
 
 <h3>Ejercicio 2 — Pizzería Píxel</h3>
-<p>Crea <code>s14-ej2.html</code> y <code>s14-ej2.js</code>. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
+<p>Abre <code>s14-ej2.html</code> y crea <code>s14-ej2.js</code> al lado. Con dos desplegables eliges la pizza y el tamaño; al pulsar "Pedir", sale tu pedido.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej2.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej2.webp" alt="Página Pizzería Píxel después de elegir Barbacoa y grande y pulsar Pedir: el desplegable Pizza (1), el desplegable Tamaño (2), el botón Pedir (3) y el párrafo Tu pedido: pizza Barbacoa grande. (4). Nota 5: las pizzas son Margarita, Barbacoa y Cuatro quesos; los tamaños, pequeña, mediana y grande." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="pizza"&gt;</code>.</li>
-<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="tamano"&gt;</code>.</li>
-<li>③ Un botón con <code>type="button"</code>.</li>
+<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="pizza"&gt;</code>. Ya viene en el HTML.</li>
+<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="tamano"&gt;</code>. Ya viene en el HTML.</li>
+<li>③ Un botón con <code>type="button"</code>. Ya viene en el HTML.</li>
 <li>④ Un <code>&lt;p id="pedido"&gt;</code> con las dos opciones elegidas.</li>
 <li>⑤ Las opciones de la nota, escritas igual.</li>
 </ul>
@@ -189,15 +201,15 @@ botonCon.addEventListener("click", function () {
 <div class="lab" data-lab="simulacion" data-sim="suma-bien" aria-label="Suma bien"></div>
 
 <h3>Ejercicio 3 — Parque acuático</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s14-ej3.html</code> y <code>s14-ej3.js</code>. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>
+<p>El ejercicio más largo de hoy: junta todo. Abre <code>s14-ej3.html</code> y crea <code>s14-ej3.js</code> al lado. Cada entrada cuesta 8 euros. Al pulsar "Calcular", sale una frase con el alias, el número de entradas, el día y el precio total.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej3.webp" alt="Página Parque acuático Ola Loca después de escribir ProfesorCabron, elegir domingo, escribir 3 y pulsar Calcular: la caja Tu alias (1), el desplegable Día con sábado y domingo (2), la caja numérica Entradas (3) y el párrafo ProfesorCabron: 3 entradas para el domingo cuestan 24 euros. (4). Notas: 5, el número de entradas se convierte con Number antes de multiplicar; 6, el título de la pestaña es Parque acuático." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="text" id="alias"&gt;</code>.</li>
-<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="dia"&gt;</code>: sábado y domingo.</li>
-<li>③ Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="number" id="entradas"&gt;</code>.</li>
+<li>① Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="text" id="alias"&gt;</code>. Ya viene en el HTML.</li>
+<li>② Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;select id="dia"&gt;</code>: sábado y domingo. Ya viene en el HTML.</li>
+<li>③ Un párrafo con <code>&lt;label&gt;</code> y <code>&lt;input type="number" id="entradas"&gt;</code>. Ya viene en el HTML.</li>
 <li>④ Un <code>&lt;p id="resultado"&gt;</code> con la frase completa.</li>
 <li>⑤ Las entradas se convierten con <code>Number()</code>.</li>
-<li>⑥ El <code>&lt;title&gt;</code> es <code>Parque acuático</code>.</li>
+<li>⑥ El <code>&lt;title&gt;</code> es <code>Parque acuático</code>. Ya viene en el HTML.</li>
 </ul>
 <details><summary>Pista 1</summary>
 <p>Dentro de las llaves: tres variables con <code>value</code> (una con <code>Number()</code>), una variable <code>total</code> y la frase.</p>

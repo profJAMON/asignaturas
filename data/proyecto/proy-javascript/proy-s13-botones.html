@@ -1,5 +1,17 @@
 <div class="nota">Hoy: haces que JavaScript <strong>cambie los textos</strong> de la página y que un <strong>botón haga algo</strong> al pulsarlo. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
 
+<div class="nota" id="descarga-s13">
+<p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
+<p>Todos los ejercicios de hoy empiezan con un HTML que te doy hecho: tú solo escribes el JavaScript. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-javascript/descargas/s13-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s13-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro están los HTML de los ejercicios (<code>s13-ej1.html</code>, <code>s13-ej2.html</code>…). Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s13-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>La receta de un botón</h2>
 <p>Casi todo lo que haremos con JavaScript sigue la misma receta de <strong>tres pasos</strong>:</p>
 <ol>
@@ -41,7 +53,7 @@ dato.textContent = "El creeper es el mob más peligroso.";
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el HTML, escribe <code>p#dato</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;p id="dato"&gt;&lt;/p&gt;</code>. Funciona con cualquier etiqueta: <code>button#boton-dato</code> + Tab.</div>
 
 <h3>Ejercicio 1 — Cambia el título</h3>
-<p>Crea <code>s13-ej1.html</code> y <code>s13-ej1.js</code>. En el HTML escribe un <code>&lt;h1&gt;</code> que diga "Mi página" y un párrafo que diga "Esto lo he escrito en HTML.", cada uno con su <code>id</code>. Con JavaScript, cambia los dos textos para que se vea como en la imagen.</p>
+<p>Abre <code>s13-ej1.html</code> y crea <code>s13-ej1.js</code> al lado. En el HTML ya están el <code>&lt;h1&gt;</code> y el párrafo, cada uno con su <code>id</code>. Con JavaScript, cambia los dos textos para que se vea como en la imagen.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" alt="Página con el título Mi página con JavaScript (1) y el párrafo Esto lo ha cambiado JavaScript. (2). Nota 3: en el html, el h1 dice Mi página y el párrafo dice Esto lo he escrito en HTML; lo que se ve lo ha cambiado el js." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Un <code>&lt;h1 id="titulo"&gt;</code>, cambiado con <code>textContent</code>.</li>
@@ -92,12 +104,12 @@ boton.addEventListener("click", function () {
 <div data-actividad="reto-js-eventos"></div>
 
 <h3>Ejercicio 2 — El chiste del día</h3>
-<p>Crea <code>s13-ej2.html</code> y <code>s13-ej2.js</code>. Al pulsar el botón, aparece un chiste en el párrafo vacío.</p>
+<p>Abre <code>s13-ej2.html</code> y crea <code>s13-ej2.js</code> al lado. Al pulsar el botón, aparece un chiste en el párrafo vacío.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej2-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej2-antes.webp" alt="Antes de pulsar: página El chiste del día con el botón Ver el chiste (1). Nota 2: debajo del botón hay un párrafo con id chiste vacío, que todavía no se ve." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej2-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej2-despues.webp" alt="Después de pulsar: debajo del botón aparece el chiste ¿Qué hace una abeja en el gimnasio? ¡Zum-ba! (3)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;button id="boton-chiste"&gt;</code>.</li>
-<li>② Un <code>&lt;p id="chiste"&gt;</code> vacío.</li>
+<li>① Un <code>&lt;button id="boton-chiste"&gt;</code>. Ya viene en el HTML.</li>
+<li>② Un <code>&lt;p id="chiste"&gt;</code> vacío. Ya viene en el HTML.</li>
 <li>③ Al pulsar, el chiste aparece en el párrafo.</li>
 <li>Un comentario encima de cada paso de la receta.</li>
 </ul>
@@ -110,12 +122,12 @@ boton.addEventListener("click", function () {
 <p>Si lo has hecho bien: al cargar no se ve el chiste; al pulsar, sí.</p>
 
 <h3>Ejercicio 3 — Tu regalo</h3>
-<p>Dentro de las llaves puedes poner <strong>varias órdenes</strong>. También puedes cambiar el texto del <strong>propio botón</strong>. Crea <code>s13-ej3.html</code> y <code>s13-ej3.js</code>: al pulsar "Abrir", cambian el párrafo y el botón.</p>
+<p>Dentro de las llaves puedes poner <strong>varias órdenes</strong>. También puedes cambiar el texto del <strong>propio botón</strong>. Abre <code>s13-ej3.html</code> y crea <code>s13-ej3.js</code> al lado: al pulsar "Abrir", cambian el párrafo y el botón.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej3-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej3-antes.webp" alt="Antes de pulsar: página Tu regalo con el párrafo La caja está cerrada. (1) y el botón Abrir (2)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej3-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej3-despues.webp" alt="Después de pulsar: el párrafo dice ¡Es un monopatín! (3) y el botón dice Abierto (4)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;p id="regalo"&gt;</code> con "La caja está cerrada.".</li>
-<li>② Un <code>&lt;button id="boton-abrir"&gt;</code>.</li>
+<li>① Un <code>&lt;p id="regalo"&gt;</code> con "La caja está cerrada.". Ya viene en el HTML.</li>
+<li>② Un <code>&lt;button id="boton-abrir"&gt;</code>. Ya viene en el HTML.</li>
 <li>③ Al pulsar, el párrafo cambia.</li>
 <li>④ Al pulsar, el texto del botón cambia a "Abierto".</li>
 </ul>
@@ -163,12 +175,12 @@ boton.addEventListener("click", function () {
 <div class="lab" data-lab="simulacion" data-sim="boton-muerto" aria-label="El botón no hace nada"></div>
 
 <h3>Ejercicio 4 — El tiempo en Villapíxel</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s13-ej4.html</code> y <code>s13-ej4.js</code>. Hay <strong>dos botones</strong>, y cada uno tiene su propio <code>addEventListener</code>. Además, cada botón escribe en la consola cuál se ha pulsado.</p>
+<p>El ejercicio más largo de hoy: junta todo. Abre <code>s13-ej4.html</code> y crea <code>s13-ej4.js</code> al lado. Hay <strong>dos botones</strong>, y cada uno tiene su propio <code>addEventListener</code>. Además, cada botón escribe en la consola cuál se ha pulsado.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej4-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej4-antes.webp" alt="Antes de pulsar: página El tiempo en Villapíxel con los botones Hoy y Mañana (1) y el párrafo Elige un día. (2). La consola está vacía." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej4-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej4-despues.webp" alt="Después de pulsar Mañana: el párrafo dice Mañana: lluvia y 18 grados. (3) y en la consola sale Has pulsado Mañana (4). Notas: 5, al pulsar Hoy sale Hoy: sol y 25 grados. y Has pulsado Hoy en la consola; 6, en el js hay un comentario encima de cada paso." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Dos botones, <code>#boton-hoy</code> y <code>#boton-manana</code>, dentro de un párrafo.</li>
-<li>② Un <code>&lt;p id="tiempo"&gt;</code> con "Elige un día.".</li>
+<li>① Dos botones, <code>#boton-hoy</code> y <code>#boton-manana</code>, dentro de un párrafo. Ya viene en el HTML.</li>
+<li>② Un <code>&lt;p id="tiempo"&gt;</code> con "Elige un día.". Ya viene en el HTML.</li>
 <li>③ Al pulsar "Mañana", el párrafo cambia.</li>
 <li>④ Al pulsar "Mañana", sale un mensaje en la consola.</li>
 <li>⑤ Al pulsar "Hoy", pasa lo mismo con su texto.</li>

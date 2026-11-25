@@ -2,7 +2,7 @@
   "id": "proy-s13-botones",
   "titulo": "Sesión 13 — Botones que hacen cosas",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: buscar elementos con querySelector, cambiar textos con textContent, esperar al clic con addEventListener (la receta de tres pasos) y el error más común. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales: buscar elementos con querySelector, cambiar textos con textContent, esperar al clic con addEventListener (la receta de tres pasos) y el error más común. El HTML de los ejercicios se da hecho (zip): se escribe el JavaScript. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

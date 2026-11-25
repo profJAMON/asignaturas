@@ -1,5 +1,17 @@
 <div class="nota">Hoy: empiezas con <strong>JavaScript</strong>. Aprendes a conectar un archivo <code>.js</code>, a escribir mensajes en la consola y a guardar datos en variables. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
 
+<div class="nota" id="descarga-s12">
+<p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
+<p>Todos los ejercicios de hoy empiezan con un HTML que te doy hecho: tú solo escribes el JavaScript. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-javascript/descargas/s12-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s12-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro están los HTML de los ejercicios (<code>s12-ej1.html</code>, <code>s12-ej2.html</code>…). Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s12-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>Qué es JavaScript</h2>
 <p>Una web con HTML y CSS tiene contenido y aspecto. Pero todavía <strong>no hace nada</strong>: si pulsas un botón, no pasa nada.</p>
 <p><strong>JavaScript</strong> (JS) es un <strong>lenguaje de programación</strong>: le das órdenes al navegador y él las cumple, una detrás de otra. Con JS la web puede calcular, reaccionar a un clic, cambiar textos o esconder cosas.</p>
@@ -63,10 +75,10 @@ console.log("Hoy se juega en el servidor.");
 </div>
 
 <h3>Ejercicio 1 — Hola desde JavaScript</h3>
-<p>Crea <code>s12-ej1.html</code> (con <strong>! + Tab</strong>) y <code>s12-ej1.js</code> al lado. Conecta el <code>.js</code> al final del <code>&lt;body&gt;</code> y escribe dos <code>console.log</code>. Abre la consola y haz que se vea como en la imagen.</p>
+<p>Abre <code>s12-ej1.html</code> y crea <code>s12-ej1.js</code> al lado. En el HTML falta una sola cosa: conecta el <code>.js</code> al final del <code>&lt;body&gt;</code>. Después escribe dos <code>console.log</code>. Abre la consola y haz que se vea como en la imagen.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s12/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s12/ej1.webp" alt="Página con el título Mi primer JavaScript (1) y el párrafo Abre la consola con F12 para ver los mensajes. Debajo, la consola de Chrome con dos mensajes: Hola desde JavaScript (2) y Me llamo ProfesorCabron (3), los dos de s12-ej1.js. Nota 4: el script está justo antes de cerrar el body." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;h1&gt;</code> y un párrafo.</li>
+<li>① Un <code>&lt;h1&gt;</code> y un párrafo. Ya vienen en el HTML.</li>
 <li>② Un <code>console.log</code> con <code>Hola desde JavaScript</code>.</li>
 <li>③ Otro <code>console.log</code> con tu alias.</li>
 <li>④ El <code>&lt;script src="s12-ej1.js"&gt;</code> justo antes de <code>&lt;/body&gt;</code>.</li>
@@ -105,10 +117,10 @@ console.log(vidas);
 <div class="nota">En internet verás también <code>const</code> en lugar de <code>let</code>. Hace casi lo mismo: crea una caja, pero su valor ya no se puede cambiar. Nosotros usamos siempre <code>let</code>.</div>
 
 <h3>Ejercicio 2 — Mi mascota</h3>
-<p>Crea <code>s12-ej2.html</code> y <code>s12-ej2.js</code>. En el <code>.js</code>, guarda en tres variables el nombre, la especie y la edad de una mascota inventada, y muéstralas en la consola.</p>
+<p>Abre <code>s12-ej2.html</code> y crea <code>s12-ej2.js</code> al lado. En el <code>.js</code>, guarda en tres variables el nombre, la especie y la edad de una mascota inventada, y muéstralas en la consola.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s12/ej2.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s12/ej2.webp" alt="Página Mi mascota (1) con el párrafo Sus datos están en la consola. En la consola salen tres líneas: Bigotes (2), gato, y 3 en azul (3). Nota 4: en el archivo js hay 3 variables creadas con let: nombre, especie y edad." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;h1&gt;</code> y un párrafo.</li>
+<li>① Un <code>&lt;h1&gt;</code> y un párrafo. Ya vienen en el HTML.</li>
 <li>② Dos variables con texto: <code>nombre</code> y <code>especie</code>.</li>
 <li>③ Una variable con un número: <code>edad</code>. Sale en azul.</li>
 <li>④ Tres <code>console.log</code>, uno por variable.</li>
@@ -152,7 +164,7 @@ console.log(diamantesTotal);
 <div class="lab" data-lab="simulacion" data-sim="consola-js" aria-label="Haz caso a la consola"></div>
 
 <h3>Ejercicio 3 — Reparto de pizza</h3>
-<p>Crea <code>s12-ej3.html</code> y <code>s12-ej3.js</code>. Una pizza tiene 8 porciones y sois 4 amigos. Calcula con variables cuántas porciones toca a cada uno.</p>
+<p>Abre <code>s12-ej3.html</code> y crea <code>s12-ej3.js</code> al lado. Una pizza tiene 8 porciones y sois 4 amigos. Calcula con variables cuántas porciones toca a cada uno.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s12/ej3.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s12/ej3.webp" alt="Página Reparto de pizza. En la consola salen tres líneas: 2 en azul (1), 12 en azul (2) y 84 en negro (3). Nota 4: en el archivo js hay 3 variables: porciones, amigos y porcionesPorAmigo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① <code>porcionesPorAmigo</code>: las porciones divididas entre los amigos.</li>
@@ -191,15 +203,15 @@ console.log(mob + " explota a " + distancia + " bloques.");
 <p>Igual que en HTML, <strong>Ctrl + /</strong> convierte la línea en comentario.</p>
 
 <h3>Ejercicio 4 — Cine Estrella</h3>
-<p>El ejercicio más largo de hoy: junta todo. Crea <code>s12-ej4.html</code> y <code>s12-ej4.js</code>. Calcula cuánto cuestan 3 entradas de 7 euros y escríbelo en la consola con una frase completa.</p>
+<p>El ejercicio más largo de hoy: junta todo. Abre <code>s12-ej4.html</code> y crea <code>s12-ej4.js</code> al lado. Calcula cuánto cuestan 3 entradas de 7 euros y escríbelo en la consola con una frase completa.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s12/ej4.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s12/ej4.webp" alt="Página Cine Estrella (1). En la consola salen dos frases: Película: Robots en Marte (2) y 3 entradas cuestan 21 euros. (3). Notas: 4, en el js hay 4 variables, pelicula, precio, entradas y total, que se calcula con las otras; 5, hay 2 comentarios; 6, el título de la pestaña es Cine Estrella." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① Un <code>&lt;h1&gt;</code> y un párrafo.</li>
+<li>① Un <code>&lt;h1&gt;</code> y un párrafo. Ya vienen en el HTML.</li>
 <li>② Un <code>console.log</code> que junta <code>"Película: "</code> con la variable <code>pelicula</code>.</li>
 <li>③ Un <code>console.log</code> que junta textos y variables en una frase, con los espacios bien puestos.</li>
 <li>④ Cuatro variables; <code>total</code> se calcula con <code>precio</code> y <code>entradas</code>.</li>
 <li>⑤ Dos comentarios que explican el código.</li>
-<li>⑥ El <code>&lt;title&gt;</code> es <code>Cine Estrella</code>.</li>
+<li>⑥ El <code>&lt;title&gt;</code> es <code>Cine Estrella</code>. Ya viene en el HTML.</li>
 </ul>
 <details><summary>Pista 1</summary>
 <p>Escribe primero las cuatro variables y comprueba el total con <code>console.log(total);</code>. Cuando salga 21, escribe la frase.</p>
