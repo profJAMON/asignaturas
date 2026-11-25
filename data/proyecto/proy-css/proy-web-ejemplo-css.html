@@ -1,4 +1,4 @@
-<div class="nota">Esto no es una sesión: es <strong>lo mínimo que os pido en CSS</strong>, para que lo veáis hecho. Es la misma <strong>BloqueCraft</strong> del <a href="tema.html?id=proy-web-ejemplo">ejemplo de HTML</a>, ahora con un único <code>estilos.css</code>. Vuestra web tiene que tener <strong>las mismas cosas</strong>, con vuestros colores y vuestro tema. Volved aquí siempre que no sepáis qué os falta.</div>
+<div class="nota">Esto no es una sesión: es <strong>lo mínimo que os pido en CSS</strong>, para que lo veáis hecho. Es la misma <strong>BloqueCraft</strong> del <a href="tema.html?id=proy-web-ejemplo">ejemplo de HTML</a>, ahora con un único <code>estilos.css</code>. Vuestra web tiene que tener <strong>las mismas cosas</strong>, con vuestros colores y vuestro tema. Volved aquí siempre que no sepáis qué os falta. Al final tenéis la <a href="#chuleta-css">chuleta</a> con todo el CSS visto.</div>
 
 <h2>Recórrela y toca cada cosa</h2>
 <ol>
@@ -42,6 +42,103 @@
     ├── zombi.jpg
     └── arana.jpg</code></pre>
 <p>Para ver una página entera como la vería Chrome, pulsad <strong>Abrir en otra pestaña</strong>. Con <strong>F12</strong> → <strong>Elementos</strong> veis qué regla del CSS pinta cada cosa.</p>
+
+<h2 id="chuleta-css">Chuleta: todo el CSS de las sesiones 8 a 10</h2>
+<p>Lo que habéis visto, junto y en orden. Si no os acordáis de cómo se usa algo, entrad en su sesión: allí está con su ejemplo para tocar.</p>
+
+<h3>Conectar y escribir una regla</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s08-css">sesión 8</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Conectar el CSS (en el <code>&lt;head&gt;</code> de cada página)</td><td><code>&lt;link rel="stylesheet" href="estilos.css"&gt;</code></td></tr>
+<tr><td>Una regla</td><td><code>h1 { color: gold; }</code>: a quién, y entre llaves qué cambia. Cada línea acaba en <code>;</code></td></tr>
+<tr><td>Un color</td><td>En inglés (<code>red</code>, <code>white</code>) o con <code>#</code> y 6 caracteres (<code>#ffcc00</code>)</td></tr>
+<tr><td>Un tamaño</td><td>El número con <code>px</code> pegado: <code>22px</code></td></tr>
+</tbody>
+</table>
+
+<h3>Colores y letra</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s08-css">sesión 8</a>. Lo que va en <code>body</code> vale para toda la página.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Color del texto</td><td><code>color: white;</code></td></tr>
+<tr><td>Color del fondo</td><td><code>background-color: #1b1b3a;</code></td></tr>
+<tr><td>Tipo de letra (y otra de reserva)</td><td><code>font-family: Arial, sans-serif;</code></td></tr>
+<tr><td>Tamaño de la letra</td><td><code>font-size: 22px;</code></td></tr>
+<tr><td>Centrar el texto</td><td><code>text-align: center;</code> (o <code>left</code>, <code>right</code>)</td></tr>
+</tbody>
+</table>
+
+<h3>A quién se aplica: selectores</h3>
+<p>Lo visteis en las sesiones <a href="tema.html?id=proy-s08-css">8</a>, <a href="tema.html?id=proy-s09-caja">9</a> y <a href="tema.html?id=proy-s10-flexbox">10</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Todas las etiquetas de un tipo</td><td><code>p { … }</code></td></tr>
+<tr><td>Solo algunas: una clase</td><td>En el HTML <code>class="destacado"</code> (sin punto). En el CSS <code>.destacado { … }</code> (con punto)</td></tr>
+<tr><td>Dos a la vez</td><td><code>th, td { … }</code> (con coma)</td></tr>
+<tr><td>Solo las que están dentro de otra</td><td><code>nav a { … }</code> <code>.tarjeta h2 { … }</code> (con espacio)</td></tr>
+<tr><td>Cuando el ratón está encima</td><td><code>.boton:hover { … }</code> (pegado, sin espacio). Solo lo que cambia</td></tr>
+</tbody>
+</table>
+
+<h3>Cajas y tarjetas</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s09-caja">sesión 9</a>. Para una tarjeta: un <code>&lt;div class="tarjeta"&gt;</code> con todo dentro.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Relleno: espacio entre el texto y el borde</td><td><code>padding: 15px;</code> (<code>10px 20px</code>: arriba y abajo, y a los lados)</td></tr>
+<tr><td>El borde: grosor, tipo y color</td><td><code>border: 2px solid orange;</code> (o <code>dashed</code>, <code>dotted</code>)</td></tr>
+<tr><td>Esquinas redondeadas</td><td><code>border-radius: 10px;</code></td></tr>
+<tr><td>Espacio por fuera, entre cajas</td><td><code>margin: 20px;</code> (solo abajo: <code>margin-bottom</code>)</td></tr>
+<tr><td>El ancho</td><td><code>width: 250px;</code></td></tr>
+<tr><td>Centrar una caja</td><td><code>margin: 20px auto;</code> (necesita <code>width</code>)</td></tr>
+<tr><td>Quitar el subrayado de un enlace</td><td><code>text-decoration: none;</code></td></tr>
+</tbody>
+</table>
+
+<h3>Tablas</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s09-caja">sesión 9</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Bordes en las celdas</td><td><code>th, td { border: 1px solid #ffcc00; }</code></td></tr>
+<tr><td>Sin líneas dobles (en <code>table</code>)</td><td><code>border-collapse: collapse;</code></td></tr>
+<tr><td>Espacio dentro de las celdas</td><td><code>padding: 8px 12px;</code></td></tr>
+<tr><td>Que la fila cambie con el ratón</td><td><code>tr:hover { background-color: #2a2a55; }</code></td></tr>
+</tbody>
+</table>
+
+<h3>En fila: Flexbox</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s10-flexbox">sesión 10</a>. Todo esto va en la caja que <strong>contiene</strong> a las demás (<code>nav</code>, <code>.tarjetas</code>), no en cada caja.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Ponerlas en fila</td><td><code>display: flex;</code></td></tr>
+<tr><td>Hueco entre ellas</td><td><code>gap: 20px;</code></td></tr>
+<tr><td>Si no caben, a la línea de abajo</td><td><code>flex-wrap: wrap;</code></td></tr>
+<tr><td>Juntarlas en el centro</td><td><code>justify-content: center;</code></td></tr>
+<tr><td>Una en cada punta</td><td><code>justify-content: space-between;</code></td></tr>
+<tr><td>Centradas en vertical</td><td><code>align-items: center;</code></td></tr>
+</tbody>
+</table>
+
+<h3>Trucos de VS Code y de Chrome</h3>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Ver las propiedades o los valores posibles</td><td>Ctrl + Espacio</td></tr>
+<tr><td>Elegir un color con el ratón</td><td>Pasa el ratón por el cuadradito de color</td></tr>
+<tr><td>Una tarjeta en el HTML</td><td><code>.tarjeta</code> + Tab</td></tr>
+<tr><td>Un menú de 4 enlaces</td><td><code>nav&gt;a*4</code> + Tab</td></tr>
+<tr><td>Ordenar el código</td><td>Mayús + Alt + F</td></tr>
+<tr><td>Ver qué regla pinta cada cosa</td><td>F12 → Elementos</td></tr>
+<tr><td>Si no coge el CSS</td><td>F12 → Red: busca <code>estilos.css</code> en rojo</td></tr>
+<tr><td>Ver la web como en un móvil</td><td>F12 → icono del móvil</td></tr>
+</tbody>
+</table>
 
 <div class="nota">⚠️ <strong>No copiéis los colores</strong> de BloqueCraft. Lo que se copia es <strong>la forma</strong>: qué reglas hay y dónde van. Los colores y la letra son los de vuestro boceto.</div>
 

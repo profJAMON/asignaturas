@@ -1,4 +1,4 @@
-<div class="nota">Esto no es una sesión: es <strong>lo mínimo que os pido en HTML</strong>, para que lo veáis hecho. Es <strong>BloqueCraft</strong>, la web de ejemplo de la pareja ProfesorCabron y CreeperVerde, hecha <strong>solo con HTML</strong>, con lo que habéis visto hasta la sesión 5. La vuestra tendrá <strong>las mismas piezas</strong>, pero con vuestro tema y vuestras palabras. Volved aquí siempre que no sepáis qué os falta.</div>
+<div class="nota">Esto no es una sesión: es <strong>lo mínimo que os pido en HTML</strong>, para que lo veáis hecho. Es <strong>BloqueCraft</strong>, la web de ejemplo de la pareja ProfesorCabron y CreeperVerde, hecha <strong>solo con HTML</strong>, con lo que habéis visto hasta la sesión 5. La vuestra tendrá <strong>las mismas piezas</strong>, pero con vuestro tema y vuestras palabras. Volved aquí siempre que no sepáis qué os falta. Al final tenéis la <a href="#chuleta-html">chuleta</a> con todo el HTML visto.</div>
 
 <h2>Recórrela y toca cada pieza</h2>
 <ol>
@@ -36,6 +36,96 @@
     ├── montanas.jpg
     └── aldea.jpg</code></pre>
 <p>Para ver una página entera como la vería Chrome, pulsad <strong>Abrir en otra pestaña</strong> y después <strong>Ctrl + U</strong>: sale su código.</p>
+
+<h2 id="chuleta-html">Chuleta: todo el HTML de las sesiones 1 a 5</h2>
+<p>Lo que habéis visto, junto y en orden. Si no os acordáis de cómo se usa algo, entrad en su sesión: allí está con su ejemplo para tocar.</p>
+
+<h3>La página</h3>
+<p>Lo visteis en las sesiones <a href="tema.html?id=proy-s01-arranque">1</a> y <a href="tema.html?id=proy-s02-github-textos">2</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>La estructura de la página</td><td><code>!</code> + Tab</td></tr>
+<tr><td>El nombre de la pestaña</td><td><code>&lt;title&gt;Mobs&lt;/title&gt;</code></td></tr>
+<tr><td>Títulos, de más grande a más pequeño</td><td><code>&lt;h1&gt;</code> <code>&lt;h2&gt;</code> <code>&lt;h3&gt;</code></td></tr>
+<tr><td>Un párrafo</td><td><code>&lt;p&gt;Texto&lt;/p&gt;</code></td></tr>
+<tr><td>Negrita y cursiva</td><td><code>&lt;strong&gt;</code> <code>&lt;em&gt;</code></td></tr>
+<tr><td>Un salto de línea y una raya</td><td><code>&lt;br&gt;</code> <code>&lt;hr&gt;</code> (no se cierran)</td></tr>
+<tr><td>Una nota que no se ve en la página</td><td><code>&lt;!-- nota --&gt;</code></td></tr>
+</tbody>
+</table>
+
+<h3>Listas e imágenes</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s03-listas-imagenes">sesión 3</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Una lista con puntos</td><td><code>&lt;ul&gt;</code> con un <code>&lt;li&gt;</code> por punto</td></tr>
+<tr><td>Una lista con números</td><td><code>&lt;ol&gt;</code> con un <code>&lt;li&gt;</code> por punto</td></tr>
+<tr><td>Una lista dentro de otra</td><td>La <code>&lt;ul&gt;</code> nueva va dentro de un <code>&lt;li&gt;</code></td></tr>
+<tr><td>Una imagen</td><td><code>&lt;img src="img/creeper.jpg" alt="Un creeper verde"&gt;</code></td></tr>
+<tr><td>Que la imagen salga</td><td>En <code>src</code>: <code>img/</code> y el nombre letra a letra, con su extensión (<code>.jpg</code>, <code>.png</code>). Nunca <code>C:\</code></td></tr>
+</tbody>
+</table>
+
+<h3>Enlaces y menú</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Ir a otra página vuestra</td><td><code>&lt;a href="mobs.html"&gt;Mobs&lt;/a&gt;</code></td></tr>
+<tr><td>Ir a otra web, en una pestaña nueva</td><td><code>&lt;a href="https://…" target="_blank"&gt;</code></td></tr>
+<tr><td>Lo que se repite arriba</td><td><code>&lt;header&gt;</code></td></tr>
+<tr><td>El menú (dentro del header)</td><td><code>&lt;nav&gt;</code> con un <code>&lt;a&gt;</code> por página</td></tr>
+<tr><td>Lo que cambia en cada página</td><td><code>&lt;main&gt;</code></td></tr>
+</tbody>
+</table>
+
+<h3>Tablas</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>La tabla entera</td><td><code>&lt;table&gt;</code></td></tr>
+<tr><td>Una fila</td><td><code>&lt;tr&gt;</code></td></tr>
+<tr><td>El nombre de una columna (primera fila)</td><td><code>&lt;th&gt;</code></td></tr>
+<tr><td>Una celda con un dato</td><td><code>&lt;td&gt;</code></td></tr>
+<tr><td>Una celda que ocupa 3 columnas o 2 filas</td><td><code>colspan="3"</code> <code>rowspan="2"</code></td></tr>
+</tbody>
+</table>
+
+<h3>Formularios</h3>
+<p>Lo visteis en la <a href="tema.html?id=proy-s05-formularios">sesión 5</a>.</p>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Todo el formulario</td><td><code>&lt;form&gt;</code></td></tr>
+<tr><td>El texto de una caja</td><td><code>&lt;label for="alias"&gt;Tu alias:&lt;/label&gt;</code></td></tr>
+<tr><td>Una caja para escribir</td><td><code>&lt;input type="text" id="alias"&gt;</code> (el <code>id</code> es igual que el <code>for</code>)</td></tr>
+<tr><td>Otros tipos de caja</td><td><code>number</code> <code>email</code> <code>date</code> <code>checkbox</code></td></tr>
+<tr><td>El texto gris de ejemplo</td><td><code>placeholder="Por ejemplo: RayoAzul"</code></td></tr>
+<tr><td>Un desplegable</td><td><code>&lt;select id="mob"&gt;</code> con un <code>&lt;option&gt;</code> por opción</td></tr>
+<tr><td>Una caja grande, de varias líneas</td><td><code>&lt;textarea id="mensaje"&gt;&lt;/textarea&gt;</code></td></tr>
+<tr><td>Un botón</td><td><code>&lt;button type="button"&gt;Unirme&lt;/button&gt;</code></td></tr>
+</tbody>
+</table>
+
+<h3>Trucos de VS Code</h3>
+<table>
+<thead><tr><th>Para…</th><th>Se escribe</th></tr></thead>
+<tbody>
+<tr><td>Guardar (si la pestaña tiene un punto blanco, falta)</td><td>Ctrl + S</td></tr>
+<tr><td>Deshacer</td><td>Ctrl + Z</td></tr>
+<tr><td>Ordenar el código</td><td>Mayús + Alt + F</td></tr>
+<tr><td>Convertir una línea en nota</td><td>Ctrl + /</td></tr>
+<tr><td>Una lista de 3 puntos</td><td><code>ul&gt;li*3</code> + Tab</td></tr>
+<tr><td>Una tabla de 3 filas y 2 columnas</td><td><code>table&gt;tr*3&gt;td*2</code> + Tab</td></tr>
+<tr><td>Cambiar varias etiquetas iguales a la vez</td><td>Doble clic y Ctrl + D</td></tr>
+<tr><td>La ruta de una imagen sin fallos</td><td>Botón derecho sobre la imagen → Copy Relative Path</td></tr>
+<tr><td>Una página nueva con el mismo menú</td><td>Botón derecho → Copy, Paste y Rename…</td></tr>
+<tr><td>Ver la página</td><td>Go Live, abajo a la derecha</td></tr>
+</tbody>
+</table>
 
 <div class="nota">⚠️ <strong>No copiéis los textos</strong> de BloqueCraft. Lo que se copia es <strong>la forma</strong>: dónde va el menú, cómo se escribe una lista o una tabla. Lo de dentro es de vuestro tema.</div>
 
