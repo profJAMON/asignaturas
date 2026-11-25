@@ -40,6 +40,17 @@
    - 29/09/2026: sesiones reorganizadas en ejercicios individuales +
      talleres en pareja (s03-s06 y s17 con ids nuevos).
 
+   - 25/11/2026: la sesión 9 y la 10 se parten en dos cada una para
+     aligerarlas (9a Cajas, 9b Hover y tablas, 10a Flexbox: cajas en
+     fila, 10b Flexbox: menú y tarjetas), con las fechas reales de la
+     clase (la sesión 8 se dio el 19/11, una semana tarde, y se le pone esa
+     fecha): 9a el 26/11,
+     9b el 03/12, 10a el 10/12, 10b el 17/12 y el taller de CSS (s11)
+     el 07/01. El Bloque 3 (JavaScript, s12-s17) se queda en la web
+     pero sin fecha por sesión, solo con el rango del bloque (14/01 a
+     28/01), hasta que Carles decida entre JavaScript y la impresora
+     3D. El Bloque 4 (s18-s21) no cambia.
+
    Cómo actualizar
    ---------------
    Si el ritmo real se desvía: cambia la fecha de la sesión afectada y
@@ -48,7 +59,7 @@
    ============================================================ */
 const CALENDARIO_PROYECTO = 
 {
-  "actualizado": "2026-09-29",
+  "actualizado": "2026-11-25",
   "nota": "Una sesión por semana, los jueves de 15:55 a 17:45, con el calendario escolar 2026-2027. La prueba individual es la primera hora de la sesión 19. Las fechas son previstas: sirven para saber si vas bien de tiempo, no como fecha exacta.",
   "unidades": [
     {
@@ -94,16 +105,18 @@ const CALENDARIO_PROYECTO =
     {
       "id": "proy-css",
       "titulo": "Bloque 2. CSS",
-      "horas": 8,
+      "horas": 12,
       "sesiones": [
         "proy-s08-css",
         "proy-s09-caja",
+        "proy-s09b-hover",
         "proy-s10-flexbox",
+        "proy-s10b-menu-tarjetas",
         "proy-s11-revision-1"
       ],
       "fechas": {
         "inicio": "2026-11-12",
-        "fin": "2026-12-03"
+        "fin": "2027-01-07"
       }
     },
     {
@@ -119,7 +132,7 @@ const CALENDARIO_PROYECTO =
         "proy-s17-taller-js"
       ],
       "fechas": {
-        "inicio": "2026-12-10",
+        "inicio": "2027-01-14",
         "fin": "2027-01-28"
       }
     },
@@ -185,52 +198,56 @@ const CALENDARIO_PROYECTO =
     "proy-s08-css": {
       "titulo": "Sesión 8 — Introducción a CSS",
       "unidad": "proy-css",
-      "fecha": "2026-11-12"
-    },
-    "proy-s09-caja": {
-      "titulo": "Sesión 9 — Cajas y hover",
-      "unidad": "proy-css",
       "fecha": "2026-11-19"
     },
-    "proy-s10-flexbox": {
-      "titulo": "Sesión 10 — Flexbox",
+    "proy-s09-caja": {
+      "titulo": "Sesión 9a — Cajas",
       "unidad": "proy-css",
       "fecha": "2026-11-26"
+    },
+    "proy-s09b-hover": {
+      "titulo": "Sesión 9b — Hover y tablas",
+      "unidad": "proy-css",
+      "fecha": "2026-12-03"
+    },
+    "proy-s10-flexbox": {
+      "titulo": "Sesión 10a — Flexbox: cajas en fila",
+      "unidad": "proy-css",
+      "fecha": "2026-12-10"
+    },
+    "proy-s10b-menu-tarjetas": {
+      "titulo": "Sesión 10b — Flexbox: menú y tarjetas",
+      "unidad": "proy-css",
+      "fecha": "2026-12-17"
     },
     "proy-s11-revision-1": {
       "titulo": "Sesión 11 — Taller de CSS y primera revisión",
       "unidad": "proy-css",
-      "fecha": "2026-12-03"
+      "fecha": "2027-01-07"
     },
     "proy-s12-js-variables": {
       "titulo": "Sesión 12 — JavaScript: consola y variables",
-      "unidad": "proy-javascript",
-      "fecha": "2026-12-10"
+      "unidad": "proy-javascript"
     },
     "proy-s13-botones": {
       "titulo": "Sesión 13 — Botones que hacen cosas",
-      "unidad": "proy-javascript",
-      "fecha": "2026-12-17"
+      "unidad": "proy-javascript"
     },
     "proy-s14-leer-formulario": {
       "titulo": "Sesión 14 — Ensayo de la prueba y leer formularios",
-      "unidad": "proy-javascript",
-      "fecha": "2027-01-07"
+      "unidad": "proy-javascript"
     },
     "proy-s15-if-else": {
       "titulo": "Sesión 15 — Tomar decisiones con if",
-      "unidad": "proy-javascript",
-      "fecha": "2027-01-14"
+      "unidad": "proy-javascript"
     },
     "proy-s16-classlist": {
       "titulo": "Sesión 16 — Cambiar el aspecto con classList",
-      "unidad": "proy-javascript",
-      "fecha": "2027-01-21"
+      "unidad": "proy-javascript"
     },
     "proy-s17-taller-js": {
       "titulo": "Sesión 17 — Taller de JavaScript",
-      "unidad": "proy-javascript",
-      "fecha": "2027-01-28"
+      "unidad": "proy-javascript"
     },
     "proy-s18-revision-final": {
       "titulo": "Sesión 18 — Taller final y revisión de la web",

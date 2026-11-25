@@ -1,18 +1,13 @@
 {
   "id": "proy-s09-caja",
-  "titulo": "Sesión 9 — Cajas y hover",
+  "titulo": "Sesión 9a — Cajas",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: padding, border, border-radius, margin y width, tarjetas con div y clase, centrar una caja con margin auto, :hover en botones y tarjetas, y bordes para las tablas. En los ejercicios 1 a 3 se da el HTML hecho (zip) y se escribe el CSS; el 4 se hace entero desde la imagen. Truco de VS Code: .tarjeta + Tab. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales (1.ª parte de la sesión 9): padding, border, border-radius, margin y width, tarjetas con div y clase, y centrar una caja con margin auto. Ejercicios 1 y 2, con el HTML hecho (zip); se escribe el CSS. Truco de VS Code: .tarjeta + Tab. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",
       "titulo": "MDN: El modelo de caja",
       "url": "https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model"
-    },
-    {
-      "tipo": "enlace",
-      "titulo": "MDN: :hover",
-      "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
     }
   ],
   "actividades": [
@@ -21,12 +16,6 @@
       "tipo": "reto-web",
       "titulo": "Relleno, borde y margen",
       "banco": "caja"
-    },
-    {
-      "id": "reto-hover",
-      "tipo": "reto-web",
-      "titulo": "Hover y bordes de tabla",
-      "banco": "hover"
     }
   ]
 }

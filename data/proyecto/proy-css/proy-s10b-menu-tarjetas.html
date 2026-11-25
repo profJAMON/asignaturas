@@ -1,0 +1,265 @@
+<div class="nota">Hoy sigues con Flexbox: un <strong>menú en fila</strong>, una <strong>fila de tarjetas</strong> y, al final, una mini web entera. Haces los ejercicios 3 y 4 (<code>s10-ej3</code> y <code>s10-ej4</code>). Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios. <strong>A las 17:25</strong> os juntáis en pareja para dibujar el boceto de vuestra web.</div>
+
+<div class="nota" id="descarga-s10b">
+<p><strong>📥 Lo primero de todo: busca <code>s10-ej3.html</code> en tu carpeta</strong></p>
+<p>El ejercicio 3 empieza con <code>s10-ej3.html</code>, que venía en el zip de la <a href="tema.html?id=proy-s10-flexbox">sesión 10a</a>. Abre tu carpeta de ejercicios en VS Code y míralo en el panel de la izquierda.</p>
+<p>Si no lo tienes, descarga el zip otra vez:</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-css/descargas/s10-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s10-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Mueve <code>s10-ej3.html</code> <strong>suelto</strong> a tu carpeta de ejercicios. Los otros dos ya los tienes de la sesión 10a: no los sustituyas, que perderías lo que hiciste.</li>
+</ol>
+</div>
+
+<p>Lo más importante de la <a href="tema.html?id=proy-s10-flexbox">sesión 10a</a>: <code>display: flex</code> va en la caja que <strong>contiene</strong> a las que quieres en fila. Hoy lo vas a usar todo el rato.</p>
+
+<h2>El menú en fila</h2>
+<p>Un menú es un <code>&lt;nav&gt;</code> con enlaces dentro. El <code>nav</code> es el contenedor:</p>
+<div class="probador" aria-label="El menú en fila" data-alto="80">
+<textarea data-lengua="html">
+<nav>
+    <a href="index.html">Inicio</a>
+    <a href="mobs.html">Mobs</a>
+    <a href="biomas.html">Biomas</a>
+</nav>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #2a2a55;
+    padding: 12px;
+}
+
+nav a {
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #ffcc00;
+    color: #1b1b3a;
+}
+</textarea>
+<select data-sel="nav" data-prop="justify-content"><option>flex-start</option><option>center</option><option>flex-end</option><option>space-between</option><option>space-around</option></select>
+<ul class="probador__prueba">
+<li>Pasa el ratón por los enlaces.</li>
+<li>Añade un cuarto enlace: Servidor.</li>
+<li>Quita el espacio de <code>nav a</code> (<code>nava</code>). ¿Qué deja de funcionar?</li>
+</ul>
+</div>
+<ul>
+<li><code>nav a</code>, con un <strong>espacio</strong>, quiere decir: "los enlaces que están <strong>dentro</strong> de <code>nav</code>". Los demás enlaces de la página no cambian.</li>
+<li><code>nav a:hover</code>: esos mismos enlaces, cuando el ratón está encima.</li>
+</ul>
+
+<h3>Truco de VS Code: el menú en un segundo</h3>
+<p>En el HTML, escribe <code>nav&gt;a*4</code> y pulsa <strong>Tab</strong>. VS Code escribe un <code>&lt;nav&gt;</code> con 4 enlaces dentro:</p>
+<ul>
+<li><code>&gt;</code> quiere decir "dentro de".</li>
+<li><code>*4</code> quiere decir "4 veces".</li>
+</ul>
+<p>Después, pulsa <strong>Tab</strong> para saltar de un hueco al siguiente y escribir cada <code>href</code> y cada texto. Lo vas a usar en el ejercicio 4.</p>
+
+<h3>Simulación: Ponlo en fila</h3>
+<p>Un menú y unas tarjetas que no se ponen en fila, aunque el CSS lleva <code>display: flex</code>. Descubre por qué. No se entrega: es para que veas cómo se arregla antes de hacerlo en VS Code.</p>
+<div class="lab" data-lab="simulacion" data-sim="en-fila" aria-label="Ponlo en fila"></div>
+
+<h3>Ejercicio 3 — El menú de un zoo</h3>
+<p>Abre <code>s10-ej3.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej3.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. El menú es el <code>&lt;nav&gt;</code> con sus cuatro enlaces.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3.webp" alt="Página del Zoo Verde en letra Verdana. 1, el título Zoo Verde en verde oscuro y centrado. 2, el menú: una franja verde oscuro con los cuatro enlaces en fila y centrados, en blanco y sin subrayado. Debajo, el párrafo Más de 200 animales te esperan. Nota 3: al pasar el ratón por un enlace del menú, su fondo se vuelve verde claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" alt="La misma página con el ratón encima del enlace Animales, marcado con el número 3: tiene un fondo verde claro con las esquinas redondeadas y el texto verde oscuro. Los otros enlaces siguen blancos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>① El <code>h1</code>: color <code>#386641</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado, hueco de <code>10px</code>, fondo <code>#386641</code> y relleno <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
+<li>③ Con el ratón encima de un enlace: fondo <code>#a7c957</code> y texto <code>#386641</code>.</li>
+<li>Toda la página, con la letra <code>Verdana, sans-serif</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s10-ej3.css</code>.</li>
+</ul>
+<details><summary>Pista 1: los enlaces salen en fila pero pegados a la izquierda</summary>
+<p>Para juntarlos en el centro, mira la tabla de <code>justify-content</code>.</p>
+</details>
+<details><summary>Pista 2: con el ratón, cambia todo el menú y no solo un enlace</summary>
+<p>Has escrito <code>nav:hover</code>. Tiene que ser el enlace el que cambie: <code>nav</code>, un espacio, y el enlace con <code>:hover</code>.</p>
+</details>
+<p>Si lo has hecho bien: pasas el ratón por los cuatro enlaces y solo se ilumina el que está debajo del ratón.</p>
+
+<h2>Tarjetas en fila</h2>
+<p>Las tarjetas se ponen en fila igual: se meten todas en un <code>&lt;div&gt;</code> contenedor y a ese contenedor se le pone <code>display: flex</code>.</p>
+<div class="probador" aria-label="Tarjetas en fila">
+<textarea data-lengua="html">
+<div class="tarjetas">
+    <div class="tarjeta">
+        <h2>Creeper</h2>
+        <p>Explota si te acercas.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Zombi</h2>
+        <p>Va más rápido de noche.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Esqueleto</h2>
+        <p>Dispara flechas.</p>
+    </div>
+</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    background-color: #1b1b3a;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.tarjeta {
+    width: 120px;
+    padding: 10px;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+}
+
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tarjeta h2 {
+    color: #ffcc00;
+}
+</textarea>
+<select data-sel=".tarjetas" data-prop="display"><option>block</option><option>flex</option></select>
+<input type="range" data-sel=".tarjeta" data-prop="width" data-unidad="px" min="60" max="250">
+<ul class="probador__prueba">
+<li>Cambia <code>display</code> a <code>block</code>: las tarjetas vuelven a ir una debajo de otra.</li>
+<li>Haz las tarjetas más anchas con el mando: cuando no caben, bajan a la línea de abajo (eso es <code>flex-wrap: wrap</code>).</li>
+<li>Pon <code>display: flex;</code> en <code>.tarjeta</code> (sin s). ¿Qué se pone en fila?</li>
+</ul>
+</div>
+<ul>
+<li><code>.tarjetas</code> (con <strong>s</strong>) es el contenedor. <code>.tarjeta</code> (sin s) es cada tarjeta.</li>
+<li>Cada tarjeta necesita un <code>width</code>. Sin ancho, se estiran o se aplastan.</li>
+<li><code>.tarjeta h2</code>: solo los <code>h2</code> que están <strong>dentro</strong> de una tarjeta.</li>
+</ul>
+<div class="nota">⚠️ Si pones <code>display: flex</code> en <code>.tarjeta</code> en lugar de en <code>.tarjetas</code>, lo que se pone en fila es <strong>lo de dentro de cada tarjeta</strong> (el título y el texto), no las tarjetas. Pregúntate siempre: <strong>¿qué cajas quiero en fila? ¿Dentro de qué caja están?</strong> El <code>display: flex</code> va en esa.</div>
+
+<p>Reto rápido de Flexbox, para repasar antes del ejercicio 4:</p>
+<div data-actividad="reto-flex-repaso"></div>
+
+<h3>Ejercicio 4 — La mini web de un acuario</h3>
+<p>El ejercicio más largo de hoy: una web de una página con cabecera, menú y tarjetas. Junta todo lo de las sesiones 8, 9 y 10. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
+<ol>
+<li>Crea <code>s10-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen.</li>
+<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s10-ej4.css</code>.</li>
+<li>Crea <code>s10-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+</ol>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej4.webp" alt="Mini web del Acuario Azul en letra Arial. 1, la cabecera: una franja azul muy oscuro con el título Acuario Azul en blanco y centrado. 2, dentro de la cabecera, el menú con Inicio, Peces y Visitas en fila, centrados, en blanco y sin subrayado. Debajo, el párrafo centrado Descubre los animales del mar. 3, las tres tarjetas en fila y centradas: Tiburón, Pulpo y Medusa, con fondo azul muy claro, borde azul, esquinas redondeadas y el título en azul. Notas: 4, al pasar el ratón por un enlace del menú, su fondo se vuelve azul claro; 5, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 6, si estrechas la ventana, las tarjetas pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>En el HTML: un <code>header</code> con el título grande y el menú (un <code>nav</code> con tres enlaces a <code>#</code>); el párrafo, con la clase <code>intro</code>; y un <code>&lt;div&gt;</code> con la clase <code>tarjetas</code> con las tres tarjetas dentro (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo).</li>
+<li>① El <code>header</code>: fondo <code>#03045e</code> y relleno <code>15px</code>. El <code>h1</code>, en <code>white</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado y con hueco de <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
+<li>③ El contenedor <code>.tarjetas</code>: en fila, centrado, con hueco de <code>20px</code>.</li>
+<li>Cada <code>.tarjeta</code>: fondo <code>#caf0f8</code>, ancho <code>150px</code>, relleno <code>15px</code>, borde de <code>3px</code> sólido <code>#0077b6</code> y esquinas de <code>12px</code>. Sus <code>h2</code>, de color <code>#0077b6</code>.</li>
+<li>④ Con el ratón encima de un enlace del menú: fondo <code>#00b4d8</code>.</li>
+<li>⑤ Con el ratón encima de una tarjeta: borde <code>#f77f00</code>.</li>
+<li>⑥ Si las tarjetas no caben, pasan a la línea de abajo.</li>
+<li>El párrafo <code>.intro</code>, centrado, y toda la página con la letra <code>Arial, sans-serif</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s10-ej4.css</code>.</li>
+</ul>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Acuario Azul es un <code>h1</code>. El menú, con <strong>nav&gt;a*3 + Tab</strong>. Los dos van dentro del <code>header</code>. Cada tarjeta, con <strong>.tarjeta + Tab</strong>, con un <code>h2</code> y un <code>p</code> dentro. Las tres tarjetas, dentro del <code>&lt;div class="tarjetas"&gt;</code>. Si dudas, mira tu ejercicio 3 de hoy y el 2 de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>.</p>
+</details>
+<details><summary>Pista 2: el CSS</summary>
+<p>No lo escribas todo de golpe. Primero la cabecera y el menú, y guarda. Después las tarjetas, una propiedad cada vez. Al final, los <code>:hover</code>.</p>
+</details>
+<details><summary>Pista 3: el título de las tarjetas no sale azul</summary>
+<p>El selector tiene dos partes separadas por un espacio: la clase de la tarjeta y la etiqueta del título.</p>
+</details>
+<p>Si lo has hecho bien: en Chrome, pulsa <strong>F12</strong> y después el icono del <strong>móvil</strong> (arriba a la izquierda del panel). La página se ve como en un móvil: las tarjetas bajan una debajo de otra y nada se sale por la derecha.</p>
+
+<h2>A las 17:25: el boceto de vuestra web (en pareja)</h2>
+<p>En el próximo taller, la <a href="tema.html?id=proy-s11-revision-1">sesión 11</a>, ponéis el CSS en vuestra web. Para no perder tiempo probando colores al azar, hoy decidís <strong>cómo queréis que se vea</strong>. Dejad lo que estéis haciendo, aunque no hayáis acabado: lo que os falte lo podéis entregar en la sesión siguiente.</p>
+<ol>
+<li>Os juntáis con vuestra pareja. Os doy una hoja con el dibujo de una página: el menú arriba, la zona de las tarjetas y el pie.</li>
+<li>Dibujáis <strong>vuestra portada</strong>: qué va en el menú, qué tarjetas y qué imagen lleva cada una.</li>
+<li>Elegís <strong>2 o 3 colores</strong> aquí debajo: el del menú, el de las tarjetas y el del texto. Moved los colores hasta que os guste y que el texto se lea bien.</li>
+<li>Copiáis en la hoja el código de cada color (por ejemplo, <code>#ff2a6d</code>): lo pondréis tal cual en vuestro <code>estilos.css</code>.</li>
+</ol>
+<div class="probador" aria-label="Elige los colores de vuestra web" data-alto="190">
+<textarea data-lengua="html">
+<header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Mobs</a>
+        <a href="#">Biomas</a>
+    </nav>
+</header>
+<div class="tarjetas">
+    <div class="tarjeta">
+        <h2>Creeper</h2>
+        <p>Explota si te acercas.</p>
+    </div>
+    <div class="tarjeta">
+        <h2>Zombi</h2>
+        <p>Va más rápido de noche.</p>
+    </div>
+</div>
+</textarea>
+<textarea data-lengua="css">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1b1b3a;
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    background-color: #2a2a55;
+    padding: 12px;
+}
+
+nav a {
+    color: #ffcc00;
+}
+
+.tarjetas {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+}
+
+.tarjeta {
+    background-color: #2a2a55;
+    padding: 12px;
+    border-radius: 10px;
+}
+</textarea>
+<input type="color" data-sel="body" data-prop="background-color">
+<input type="color" data-sel="body" data-prop="color">
+<input type="color" data-sel="nav" data-prop="background-color">
+<input type="color" data-sel=".tarjeta" data-prop="background-color">
+<input type="color" data-sel="nav a" data-prop="color">
+<ul class="probador__prueba">
+<li>Mueve los colores y mira qué línea del CSS cambia: ese código es el que copiáis.</li>
+<li>Poned un texto oscuro sobre un fondo oscuro. ¿Se lee? Así no lo queréis.</li>
+</ul>
+</div>
+<p>El alumno solo dibuja el suyo igual. La web de la pareja no se toca hoy: es un dibujo en papel.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Ninguna pestaña de VS Code con el punto blanco de "sin guardar".</li>
+<li>Cada ejercicio tiene su <code>.html</code> y su <code>.css</code> en tu carpeta de ejercicios.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
+</ul>

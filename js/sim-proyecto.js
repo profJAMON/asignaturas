@@ -29,8 +29,16 @@
                 (Logo.png), F12 → Red con el 404 y nslookup: la IP
                 de la web es de Cloudflare.
    conecta-css      S8: href con el nombre exacto, clase con punto.
-   arregla-caja     S9: 15 px, border sin solid, .boton :hover.
-   en-fila          S10: display: flex en la caja de fuera y gap.
+   centra-tarjeta   S9a (25/11/2026): clase mal escrita en el CSS,
+                    padding (dentro) frente a margin (fuera), centrar
+                    con width + margin auto.
+   arregla-caja     S9 (desde el 25/11/2026, en la 9b): 15 px, border
+                    sin solid, .boton :hover.
+   inventario       S10a (25/11/2026): display: flex en la caja de
+                    fuera, gap, justify-content (middle no existe) y
+                    flex-wrap.
+   en-fila          S10 (desde el 25/11/2026, en la 10b): display: flex
+                    en la caja de fuera y gap.
    revisa-web       S11 (y revisa-web-final, S18): revisión cruzada
                     de una web inventada con Ctrl + U y F12.
    consola-js       S12: src mal escrito, variable que no existe, "20" + 5.
@@ -975,6 +983,24 @@
   });
 
   /* ============================================================
+     S9a · Centra la tarjeta (25/11/2026)
+     ============================================================ */
+  simCodigo('centra-tarjeta', {
+    carpeta: 'ejercicios-profesorcabron',
+    abrir: 's09-enderman.css',
+    archivos: {
+      's09-enderman.html': '<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <title>Enderman</title>\n    <link rel="stylesheet" href="s09-enderman.css">\n</head>\n<body>\n    <div class="tarjeta">\n        <h2>Enderman</h2>\n        <p>Si le miras a los ojos, te ataca.</p>\n    </div>\n</body>\n</html>\n',
+      's09-enderman.css': 'body {\n    background-color: #1b1b3a;\n    color: white;\n    font-family: Arial, sans-serif;\n}\n\n.targeta {\n    background-color: #2a2a55;\n    border: 2px solid #b388ff;\n    border-radius: 10px;\n    margin: 20px auto;\n}\n',
+    },
+    mision: [
+      { t: 'La tarjeta tiene que coger su estilo: fondo morado y borde lila.', ok: g => tiene(regla(g['s09-enderman.css'], '.tarjeta'), /background-color\s*:/), hecho: 'El selector es .tarjeta, igual que la clase del HTML.', pista: 'La tarjeta no tiene ni fondo ni borde: la regla no le llega. Compara letra a letra la clase del HTML con el selector del CSS.' },
+      { t: 'El texto no puede tocar el borde: deja espacio por dentro.', ok: g => tiene(regla(g['s09-enderman.css'], '.tarjeta'), /(^|[\s;])padding\s*:\s*[1-9]\d*px/), hecho: 'padding: el espacio entre el texto y el borde, por dentro.', pista: 'El texto toca el borde. El espacio de DENTRO del borde es el padding. El margin es el de fuera: separa la caja de las demás.' },
+      { t: 'La tarjeta tiene que ser estrecha y quedar en el centro de la página.', ok: g => { const r = regla(g['s09-enderman.css'], '.tarjeta'); return tiene(r, /(^|[\s;])width\s*:\s*[1-9]\d*px/) && tiene(r, /margin\s*:[^;]*\bauto\b/); }, hecho: 'width para el ancho y margin: 20px auto para centrarla.', pista: 'La tarjeta ocupa todo el ancho, así que no se puede centrar. margin: 20px auto solo centra una caja que tiene un width.' },
+    ],
+    final: 'Para que el CSS llegue, la clase se escribe igual en el HTML y en el CSS. Por dentro del borde, padding; por fuera, margin. Y para centrar una caja: un width y margin con auto.',
+  });
+
+  /* ============================================================
      S9 · Arregla la caja
      ============================================================ */
   simCodigo('arregla-caja', {
@@ -990,6 +1016,25 @@
       { t: 'Los botones tienen que cambiar de color al pasar el ratón.', ok: g => regla(g['s09-mobs.css'], '.boton:hover') !== null, hecho: '.boton:hover, todo junto y sin espacio.', pista: 'Los botones no cambian al pasar el ratón. El :hover va pegado al nombre de la clase, sin espacio.' },
     ],
     final: 'Cuando una regla no hace nada, casi siempre es un detalle: un espacio de más (15 px, .boton :hover) o algo que falta (solid). El navegador no avisa: simplemente no la aplica.',
+  });
+
+  /* ============================================================
+     S10a · Ordena el inventario (25/11/2026)
+     ============================================================ */
+  simCodigo('inventario', {
+    carpeta: 'ejercicios-profesorcabron',
+    abrir: 's10-inventario.css',
+    archivos: {
+      's10-inventario.html': '<!DOCTYPE html>\n<html>\n<head>\n    <meta charset="UTF-8">\n    <title>Inventario</title>\n    <link rel="stylesheet" href="s10-inventario.css">\n</head>\n<body>\n    <h1>Mi inventario</h1>\n    <div class="inventario">\n        <div class="objeto">Espada</div>\n        <div class="objeto">Pico</div>\n        <div class="objeto">Antorcha</div>\n        <div class="objeto">Pan</div>\n        <div class="objeto">Cubo</div>\n    </div>\n</body>\n</html>\n',
+      's10-inventario.css': 'body {\n    background-color: #1b1b3a;\n    color: white;\n    font-family: Arial, sans-serif;\n}\n\n.objeto {\n    display: flex;\n    background-color: #4e342e;\n    border: 2px solid #a1887f;\n    padding: 12px;\n}\n\n.inventario {\n    background-color: #2a2a55;\n    padding: 10px;\n    justify-content: middle;\n}\n',
+    },
+    mision: [
+      { t: 'Los objetos tienen que ir en fila, como en la barra del juego.', ok: g => tiene(regla(g['s10-inventario.css'], '.inventario'), /display\s*:\s*flex/), hecho: 'display: flex en .inventario, la caja que tiene dentro los objetos.', pista: 'Siguen uno debajo de otro. display: flex va en la caja de FUERA, la que tiene dentro los objetos, no en cada objeto.' },
+      { t: 'Que no estén pegados: deja un hueco entre ellos.', ok: g => tiene(regla(g['s10-inventario.css'], '.inventario'), /gap\s*:\s*[1-9]\d*px/), hecho: 'gap en .inventario: el hueco entre los objetos.', pista: 'Los objetos están pegados. El hueco entre cajas en fila es gap, y también va en la caja de fuera.' },
+      { t: 'Los objetos, juntos en el centro de la barra.', ok: g => tiene(regla(g['s10-inventario.css'], '.inventario'), /justify-content\s*:\s*center/), hecho: 'justify-content: center en .inventario.', pista: 'Siguen a la izquierda. middle no es un valor de justify-content: mira la tabla de «Repartir el espacio».' },
+      { t: 'En un móvil, los que no caben tienen que bajar a otra línea.', ok: g => tiene(regla(g['s10-inventario.css'], '.inventario'), /flex-wrap\s*:\s*wrap/), hecho: 'flex-wrap: wrap: si no caben, bajan a la línea de abajo.', pista: 'Falta lo que hace que bajen a otra línea cuando no caben, en vez de aplastarse: flex-wrap.' },
+    ],
+    final: 'display: flex, gap, justify-content y flex-wrap van todos en la caja de fuera (el contenedor). Puestos en las cajas de dentro, no ponen nada en fila.',
   });
 
   /* ============================================================

@@ -1,8 +1,8 @@
 {
   "id": "proy-s10-flexbox",
-  "titulo": "Sesión 10 — Flexbox",
+  "titulo": "Sesión 10a — Flexbox: cajas en fila",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: poner cajas en fila con display: flex, gap, justify-content, align-items y flex-wrap; un menú en fila con :hover, tarjetas en fila y una mini web de una página. En los ejercicios 1 a 3 se da el HTML hecho (zip) y se escribe el CSS; el 4 se hace entero desde la imagen. Truco de VS Code: nav>a*4 + Tab. Al final, en pareja, el boceto de vuestra web con sus colores. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales (1.ª parte de la sesión 10): poner cajas en fila con display: flex, gap y flex-wrap, y repartir el espacio con justify-content y align-items. Juego Flexbox Froggy. Ejercicios 1 y 2, con el HTML hecho (zip); se escribe el CSS. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

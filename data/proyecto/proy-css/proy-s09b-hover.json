@@ -1,0 +1,21 @@
+{
+  "id": "proy-s09b-hover",
+  "titulo": "Sesión 9b — Hover y tablas",
+  "fecha": "",
+  "descripcion": "Ejercicios individuales (2.ª parte de la sesión 9): :hover en botones y tarjetas y bordes para las tablas. Ejercicio 3 con el HTML hecho (el del zip de la 9a); el 4 se hace entero desde la imagen. Entrega en Classroom.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: :hover",
+      "url": "https://developer.mozilla.org/es/docs/Web/CSS/:hover"
+    }
+  ],
+  "actividades": [
+    {
+      "id": "reto-hover",
+      "tipo": "reto-web",
+      "titulo": "Hover y bordes de tabla",
+      "banco": "hover"
+    }
+  ]
+}
