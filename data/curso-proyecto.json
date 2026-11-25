@@ -47,8 +47,8 @@
     },
     {
       "id": "proy-javascript",
-      "titulo": "Bloque 3. JavaScript",
-      "descripcion": "Ejercicios de variables, botones, leer formularios, decisiones con if y cambiar el aspecto. Después, taller: vuestra web hace cosas.",
+      "titulo": "Bloque 3. JavaScript (extra)",
+      "descripcion": "Extra, si da tiempo al final del curso: variables, botones, leer formularios, decisiones con if y cambiar el aspecto. Después, taller: vuestra web hace cosas.",
       "sesiones": [
         "proy-s12-js-variables",
         "proy-s13-botones",
@@ -56,6 +56,16 @@
         "proy-s15-if-else",
         "proy-s16-classlist",
         "proy-s17-taller-js"
+      ]
+    },
+    {
+      "id": "proy-impresora-3d",
+      "titulo": "Bloque 3b. Impresora 3D",
+      "descripcion": "La impresora 3D por dentro y trabajar seguros, Tinkercad, el producto de vuestra empresa diseñado e impreso, cuánto cuesta y la foto en vuestra web.",
+      "sesiones": [
+        "proy-3d-s1-llavero",
+        "proy-3d-s2-producto",
+        "proy-3d-s3-pieza"
       ]
     },
     {

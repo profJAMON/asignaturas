@@ -1,0 +1,85 @@
+<div class="nota">Hoy, <strong>en pareja</strong>: recogéis vuestra pieza, miráis si ha salido bien, calculáis cuánto cuesta y la ponéis en vuestra web como el producto de vuestra empresa. A las 17:10, la ficha de empresa en papel.</div>
+
+<h2>Cómo va la tarde</h2>
+<table>
+<thead><tr><th>Hora</th><th>Qué hacéis</th></tr></thead>
+<tbody>
+<tr><td>15:55</td><td>Recoger la pieza y mirar si ha salido bien.</td></tr>
+<tr><td>16:10</td><td>Cuánto cuesta y a cuánto la venderíais.</td></tr>
+<tr><td>16:30</td><td>Bajad la última versión de la web (como en la <a href="tema.html?id=proy-s06-taller-html">sesión 6</a>), foto de la pieza y «Nuestro producto» en <code>sobre.html</code>.</td></tr>
+<tr><td>16:55</td><td>Subir a GitHub con el mensaje de siempre.</td></tr>
+<tr><td>17:10</td><td>Ficha de empresa en papel.</td></tr>
+<tr><td>17:35</td><td>Diario de taller.</td></tr>
+</tbody>
+</table>
+
+<h2>¿Ha salido bien?</h2>
+<p>Mirad la pieza con cuidado: por debajo, por los lados y las letras. Comparadla con estos fallos:</p>
+<div class="diapos" aria-label="Fallos típicos de una pieza impresa">
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="pieza bien"><path d="M 40 130 L 320 130" class="d-linea-d"/><rect x="90" y="80" width="180" height="50" rx="3" class="d-caja-on"/><path d="M 90 90 L 270 90 M 90 100 L 270 100 M 90 110 L 270 110 M 90 120 L 270 120" class="d-linea-a"/><text x="180" y="40" text-anchor="middle" class="d-a d-grande">bien</text></svg>
+<p class="diapo__texto">Así sale bien: plana por debajo, con las <strong>capas</strong> rectas y las letras limpias.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="esquina levantada"><path d="M 40 130 L 320 130" class="d-linea-d"/><path d="M 90 130 L 240 130 L 270 112 L 270 72 L 90 80 Z" class="d-caja-act"/><path d="M 245 128 Q 262 122 270 112" class="d-linea-c"/><text x="180" y="40" text-anchor="middle" class="d-c d-grande">esquina levantada</text></svg>
+<p class="diapo__texto">Una <strong>esquina levantada</strong>: la primera capa no se pegó bien a la cama. Suele pasar si la cama está sucia o fría.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="hilos"><path d="M 40 130 L 320 130" class="d-linea-d"/><rect x="80" y="60" width="50" height="70" rx="3" class="d-caja-on"/><rect x="230" y="60" width="50" height="70" rx="3" class="d-caja-on"/><path d="M 130 72 Q 180 90 230 70 M 130 84 Q 180 100 230 86 M 130 96 Q 180 108 230 98" class="d-linea-c"/><text x="180" y="40" text-anchor="middle" class="d-c d-grande">hilos</text></svg>
+<p class="diapo__texto"><strong>Hilos</strong> entre dos partes, como telarañas: plástico que gotea al moverse la boquilla. Se quitan con cuidado.</p>
+</div>
+<div class="diapo">
+<svg viewBox="0 0 360 160" role="img" aria-label="letras que no se leen"><path d="M 40 130 L 320 130" class="d-linea-d"/><rect x="70" y="100" width="220" height="30" rx="3" class="d-caja-on"/><path d="M 100 100 Q 110 88 122 98 Q 132 86 146 98 Q 158 86 170 99 Q 184 88 196 98 Q 208 86 222 99 Q 236 88 250 99" class="d-linea-c"/><text x="180" y="40" text-anchor="middle" class="d-c d-grande">letras que no se leen</text></svg>
+<p class="diapo__texto">Letras que <strong>no se leen</strong>: eran demasiado pequeñas o finas. Por eso pedía 8 mm o más.</p>
+</div>
+</div>
+<p>Si ha salido algún fallo, apuntad en el diario cuál y por qué ha pasado. No pasa nada: así se aprende a imprimir.</p>
+
+<h2>¿Cuánto cuesta?</h2>
+<p>El laminador os dijo cuántos gramos de plástico gasta la pieza. Un kilo de PLA cuesta unos 20 €, así que <strong>cada gramo cuesta unos 2 céntimos</strong>. A eso se le suma un poco de luz.</p>
+<table>
+<thead><tr><th></th><th>Ejemplo: la chapa de BloqueCraft</th></tr></thead>
+<tbody>
+<tr><td>Gramos</td><td>12 g</td></tr>
+<tr><td>Plástico</td><td>12 × 0,02 € = 0,24 €</td></tr>
+<tr><td>Luz (unos 40 minutos)</td><td>unos 0,05 €</td></tr>
+<tr><td>Cuesta hacerla</td><td><strong>0,29 €</strong></td></tr>
+<tr><td>La venderíamos a…</td><td>2 € porque hay que pagar el diseño, la impresora y el tiempo de quien la hace.</td></tr>
+</tbody>
+</table>
+<p>Haced la misma cuenta con vuestra pieza y apuntadla en el diario. El precio de venta, con un «porque» vuestro.</p>
+
+<h3>Ejercicio 4 — Nuestro producto, en la web</h3>
+<ol>
+<li>Haced una foto de la pieza sobre la mesa, con un fondo liso y <strong>sin caras ni manos</strong>. Os dejo el móvil de clase.</li>
+<li>Guardadla en la carpeta <code>img</code> de vuestra web con el nombre <code translate="no">producto.jpg</code>, sin espacios ni mayúsculas.</li>
+<li>En <code>sobre.html</code>, un apartado nuevo con la foto y estas frases, completadas con vuestras palabras:</li>
+</ol>
+<pre><code><span class="et">&lt;h2&gt;</span>Nuestro producto<span class="et">&lt;/h2&gt;</span>
+<span class="et">&lt;img</span> <span class="at">src</span>=<span class="ca">"img/producto.jpg"</span> <span class="at">alt</span>=<span class="ca">"___"</span><span class="et">&gt;</span>
+<span class="et">&lt;p&gt;</span>Es un ___ para ___ porque ___.<span class="et">&lt;/p&gt;</span>
+<span class="et">&lt;p&gt;</span>Hacerlo cuesta ___ € y lo venderíamos a ___ € porque ___.<span class="et">&lt;/p&gt;</span>
+<span class="et">&lt;p&gt;</span>Tiene que ver con el ODS ___ porque ___.<span class="et">&lt;/p&gt;</span></code></pre>
+<ul class="checklist">
+<li>La foto se ve en la página (con Go Live).</li>
+<li>El <code>alt</code> dice qué se ve en la foto.</li>
+<li>Las tres frases completas, cada una con su «porque».</li>
+<li>Subido a GitHub con «Sesión 3D3 · escribió …».</li>
+</ul>
+<details><summary>Pista 1: la foto no sale</summary>
+<p>Mirad en F12 → Red si da 404. El nombre tiene que ser igual en la carpeta y en el <code>src</code>, letra a letra, y la foto tiene que estar dentro de <code>img</code>.</p>
+</details>
+<details><summary>Pista 2: ¿qué ODS?</summary>
+<p>Si usáis poco plástico o algo que se recicla, el 12 (producción y consumo responsables). Si no, el de vuestra web: está en vuestro <code>sobre.html</code> desde la sesión 6.</p>
+</details>
+<p>Si lo habéis hecho bien: abrís <code>sobre.html</code> con Go Live y sale vuestra pieza con las tres frases debajo.</p>
+
+<h2>A las 17:10: la ficha de empresa (en papel)</h2>
+<p>Paramos los ordenadores. Os doy la ficha de empresa en dos hojas, una para cada uno de la pareja. Vuestra pieza es el producto de esa empresa: usadla para contestar qué hacéis y a quién se lo vendéis. Me las dais al acabar.</p>
+
+<h2>Antes de iros</h2>
+<ul class="checklist">
+<li>El diario de taller: qué fallo ha tenido la pieza (o ninguno) y cuánto cuesta.</li>
+<li>La web subida a GitHub con la pieza en <code>sobre.html</code>.</li>
+<li>Las dos hojas de la ficha de empresa, entregadas.</li>
+</ul>

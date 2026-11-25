@@ -50,6 +50,10 @@
      pero sin fecha por sesión, solo con el rango del bloque (14/01 a
      28/01), hasta que Carles decida entre JavaScript y la impresora
      3D. El Bloque 4 (s18-s21) no cambia.
+   - 25/11/2026 (tarde): Carles elige la impresora 3D. Bloque 3b nuevo
+     (proy-impresora-3d: 3D1 el 14/01, 3D2 el 21/01, 3D3 el 28/01).
+     JavaScript pasa a "extra" (si da tiempo al final): se queda en la
+     web, sin fechas.
 
    Cómo actualizar
    ---------------
@@ -121,7 +125,7 @@ const CALENDARIO_PROYECTO =
     },
     {
       "id": "proy-javascript",
-      "titulo": "Bloque 3. JavaScript",
+      "titulo": "Bloque 3. JavaScript (extra)",
       "horas": 12,
       "sesiones": [
         "proy-s12-js-variables",
@@ -130,6 +134,16 @@ const CALENDARIO_PROYECTO =
         "proy-s15-if-else",
         "proy-s16-classlist",
         "proy-s17-taller-js"
+      ]
+    },
+    {
+      "id": "proy-impresora-3d",
+      "titulo": "Bloque 3b. Impresora 3D",
+      "horas": 6,
+      "sesiones": [
+        "proy-3d-s1-llavero",
+        "proy-3d-s2-producto",
+        "proy-3d-s3-pieza"
       ],
       "fechas": {
         "inicio": "2027-01-14",
@@ -248,6 +262,21 @@ const CALENDARIO_PROYECTO =
     "proy-s17-taller-js": {
       "titulo": "Sesión 17 — Taller de JavaScript",
       "unidad": "proy-javascript"
+    },
+    "proy-3d-s1-llavero": {
+      "titulo": "Sesión 3D1 — Tinkercad y tu llavero",
+      "unidad": "proy-impresora-3d",
+      "fecha": "2027-01-14"
+    },
+    "proy-3d-s2-producto": {
+      "titulo": "Sesión 3D2 — El producto de vuestra empresa",
+      "unidad": "proy-impresora-3d",
+      "fecha": "2027-01-21"
+    },
+    "proy-3d-s3-pieza": {
+      "titulo": "Sesión 3D3 — La pieza, la foto y la ficha de empresa",
+      "unidad": "proy-impresora-3d",
+      "fecha": "2027-01-28"
     },
     "proy-s18-revision-final": {
       "titulo": "Sesión 18 — Taller final y revisión de la web",

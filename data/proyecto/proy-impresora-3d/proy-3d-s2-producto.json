@@ -1,0 +1,14 @@
+{
+  "id": "proy-3d-s2-producto",
+  "titulo": "Sesión 3D2 — El producto de vuestra empresa",
+  "fecha": "",
+  "descripcion": "En pareja: del diseño a la pieza (Tinkercad, STL, laminador, impresora), boceto y diseño de la pieza que vendería vuestra empresa, ajustes del laminador (tamaño, capa, relleno y soportes), exportar el STL y laminarlo. Simulación: lamina la pieza. Entrega del STL en Classroom.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "Tinkercad",
+      "url": "https://www.tinkercad.com"
+    }
+  ],
+  "actividades": []
+}

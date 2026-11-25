@@ -136,7 +136,9 @@ async function cargarTema() {
    ("inst-u4-hoja-practica") y no llevan el número de sesión, pero el
    título sí ("Sesión 5 — Práctica en papel"). Conviven dos maneras de
    escribirlo ("Sesión 5 — ..." y "Sesión 1. ..."), así que el
-   separador puede ser raya, guion, punto o dos puntos.
+   separador puede ser raya, guion, punto o dos puntos. El número
+   puede llevar una letra («9b») y otra cifra detrás («3D1», las
+   sesiones de la impresora 3D de Proyecto, 25/11/2026).
 
    Lo que no empieza así (glosarios, "Formas de evaluar", "Cómo se
    evalúa") se queda sin número: se esconde el hueco y el título se
@@ -147,7 +149,7 @@ function pintarCabeceraSesion(titulo) {
   const caja = document.getElementById('tema-numero');
   const cifra = document.getElementById('tema-numero-cifra');
   const texto = titulo || '';
-  const encontrado = /^sesi[oó]n\s*(\d+[a-z]?)\s*[—–\-.:]\s*(.+)$/i.exec(texto.trim());
+  const encontrado = /^sesi[oó]n\s*(\d+[a-z]?\d*)\s*[—–\-.:]\s*(.+)$/i.exec(texto.trim());
 
   if (!caja || !cifra) return texto;
 

@@ -39,6 +39,11 @@
                     flex-wrap.
    en-fila          S10 (desde el 25/11/2026, en la 10b): display: flex
                     en la caja de fuera y gap.
+   arregla-llavero  3D1 (25/11/2026): Tinkercad de mentira con dos
+                    vistas: placa en cm, texto que flota, cilindro
+                    sólido que no atraviesa, agrupar.
+   lamina-pieza     3D2 (25/11/2026): laminador de mentira: tamaño,
+                    capa, relleno y soportes, con tiempo y gramos.
    revisa-web       S11 (y revisa-web-final, S18): revisión cruzada
                     de una web inventada con Ctrl + U y F12.
    consola-js       S12: src mal escrito, variable que no existe, "20" + 5.
@@ -1243,6 +1248,275 @@
         pintarCodigo();
       });
       pintarCodigo();
+    },
+  });
+
+  /* ============================================================
+     3D1 · Arregla el llavero (25/11/2026). Un Tinkercad de
+     mentira con dos vistas (de frente y desde arriba): la placa
+     en centímetros, el texto flotando y el agujero que es sólido,
+     no atraviesa y no está agrupado.
+     ============================================================ */
+  registrarSimulacion('arregla-llavero', {
+    ventana: 'Tinkercad · 3d1-llavero-pixelrojo',
+    mision: [
+      'La placa tiene que medir 50 mm de ancho.',
+      'El texto tiene que apoyarse encima de la placa, sin flotar.',
+      'El cilindro tiene que ser «Agujero» y atravesar la placa entera.',
+      'Agrupa las piezas para que el agujero se reste.',
+    ],
+    final: 'En Tinkercad todo va en milímetros. Lo que va encima empieza a la altura de lo de abajo, sin hueco. Un agujero es una forma «Agujero» que atraviesa la pieza, y no se resta hasta que agrupas.',
+    crear(ctx) {
+      const { el, boton, pantalla } = ctx;
+      const NS = 'http://www.w3.org/2000/svg';
+      const s = {
+        placa: { ancho: 500, alto: 3, z: 0 },
+        texto: { ancho: 36, alto: 2, z: 4 },
+        agujero: { ancho: 4, alto: 2, z: 0, agujero: false },
+        agrupado: false,
+        elegida: 'placa',
+      };
+      const NOMBRES = { placa: 'Placa', texto: 'Texto', agujero: 'Cilindro' };
+      const CAMPOS = [['ancho', 'Ancho (mm)'], ['alto', 'Alto (mm)'], ['z', 'Altura sobre el plano (mm)']];
+
+      const ok0 = () => s.placa.ancho === 50;
+      const ok1 = () => s.texto.z === s.placa.alto && s.texto.ancho <= s.placa.ancho;
+      const ok2 = () => s.agujero.agujero && s.agujero.z <= 0 && s.agujero.z + s.agujero.alto >= s.placa.alto;
+
+      pantalla.appendChild(el('p', 'sim__h', 'Un llavero: una placa, tu alias encima y un agujero para la anilla.'));
+      const vistas = el('div');
+      pantalla.appendChild(vistas);
+      const svgDe = (alto, etiqueta) => {
+        const sv = document.createElementNS(NS, 'svg');
+        sv.setAttribute('viewBox', `0 0 320 ${alto}`);
+        sv.setAttribute('role', 'img');
+        sv.setAttribute('aria-label', etiqueta);
+        sv.style.width = '100%'; sv.style.maxWidth = '420px'; sv.style.height = 'auto'; sv.style.display = 'block';
+        return sv;
+      };
+      const tFrente = el('p', 'sim__etiqueta', 'Vista de frente');
+      const svFrente = svgDe(70, 'El llavero visto de frente');
+      const tArriba = el('p', 'sim__etiqueta', 'Vista desde arriba');
+      const svArriba = svgDe(90, 'El llavero visto desde arriba');
+      [tFrente, svFrente, tArriba, svArriba].forEach(x => vistas.appendChild(x));
+
+      const r = (sv, x, y, w, h, extra) => {
+        const e = document.createElementNS(NS, 'rect');
+        Object.entries(Object.assign({ x, y, width: Math.max(w, 0.5), height: Math.max(h, 0.5) }, extra)).forEach(([k, v]) => e.setAttribute(k, v));
+        sv.appendChild(e); return e;
+      };
+      const ln = (sv, x1, y1, x2, y2, extra) => {
+        const e = document.createElementNS(NS, 'line');
+        Object.entries(Object.assign({ x1, y1, x2, y2, stroke: 'currentColor' }, extra)).forEach(([k, v]) => e.setAttribute(k, v));
+        sv.appendChild(e);
+      };
+      function dibujar() {
+        // la escala depende de la placa: si mide 500 mm, todo lo demás se ve diminuto
+        const esc = 280 / Math.max(s.placa.ancho, 60);
+        const X0 = 20;
+        const xAguj = X0 + 6 * esc;
+        const xTexto = X0 + 12 * esc;
+        // de frente: el plano en y = 100, 8 px por mm de alto (para que se vea)
+        svFrente.replaceChildren();
+        const Y0 = 62, H = 8;
+        ln(svFrente, 5, Y0, 315, Y0, { 'stroke-dasharray': '4 3', opacity: 0.5 });
+        const restar = s.agrupado && ok2();
+        r(svFrente, X0, Y0 - s.placa.alto * H, s.placa.ancho * esc, s.placa.alto * H, { fill: 'none', stroke: 'currentColor', 'stroke-width': 2 });
+        if (restar) r(svFrente, xAguj, Y0 - s.placa.alto * H, s.agujero.ancho * esc, s.placa.alto * H, { fill: 'var(--surface, #fff)', stroke: 'none' });
+        r(svFrente, xTexto, Y0 - (s.texto.z + s.texto.alto) * H, s.texto.ancho * esc, s.texto.alto * H, { fill: 'var(--accent)', opacity: 0.85 });
+        if (!restar) r(svFrente, xAguj, Y0 - (s.agujero.z + s.agujero.alto) * H, s.agujero.ancho * esc, s.agujero.alto * H,
+          s.agujero.agujero ? { fill: 'none', stroke: 'currentColor', 'stroke-dasharray': '3 2' } : { fill: 'currentColor', opacity: 0.6 });
+        // desde arriba: fondo fijo de 20 mm
+        svArriba.replaceChildren();
+        const FY = 10, F = 3.4;
+        r(svArriba, X0, FY, s.placa.ancho * esc, 20 * F, { fill: 'none', stroke: 'currentColor', 'stroke-width': 2, rx: 4 });
+        r(svArriba, xTexto, FY + 4 * F, s.texto.ancho * esc, 12 * F, { fill: 'var(--accent)', opacity: 0.85 });
+        const c = document.createElementNS(NS, 'circle');
+        const rad = Math.max(s.agujero.ancho * esc / 2, 1);
+        c.setAttribute('cx', xAguj + rad); c.setAttribute('cy', FY + 10 * F); c.setAttribute('r', rad);
+        if (restar) { c.setAttribute('fill', 'var(--surface, #fff)'); c.setAttribute('stroke', 'currentColor'); }
+        else if (s.agujero.agujero) { c.setAttribute('fill', 'none'); c.setAttribute('stroke', 'currentColor'); c.setAttribute('stroke-dasharray', '3 2'); }
+        else { c.setAttribute('fill', 'currentColor'); c.setAttribute('opacity', '0.6'); }
+        svArriba.appendChild(c);
+      }
+
+      // elegir pieza
+      pantalla.appendChild(el('p', 'sim__etiqueta', 'Elige una pieza:'));
+      const filaPiezas = el('div', 'lab__fila');
+      const botonesPieza = {};
+      Object.keys(NOMBRES).forEach(k => {
+        const b = boton(NOMBRES[k]);
+        b.setAttribute('aria-pressed', 'false');
+        b.addEventListener('click', () => { s.elegida = k; pintarPanel(); });
+        botonesPieza[k] = b; filaPiezas.appendChild(b);
+      });
+      pantalla.appendChild(filaPiezas);
+      const panel = el('div');
+      pantalla.appendChild(panel);
+      const filaGrupo = el('div', 'lab__fila');
+      const bAgrupar = boton('Agrupar (Ctrl + G)');
+      filaGrupo.appendChild(bAgrupar);
+      pantalla.appendChild(filaGrupo);
+      const msg = el('div'); msg.setAttribute('aria-live', 'polite');
+      pantalla.appendChild(msg);
+
+      function revisar() {
+        [[0, ok0, 'La placa mide 50 mm: 5 cm.'], [1, ok1, 'El texto empieza a 3 mm, justo encima de la placa.'], [2, ok2, 'El cilindro es «Agujero» y atraviesa la placa de abajo arriba.']].forEach(([i, f, txt]) => {
+          if (f()) { if (!ctx.hecho(i)) ctx.cumple(i, txt); } else if (ctx.hecho(i)) ctx.deshace(i);
+        });
+      }
+      function desagrupar() {
+        if (!s.agrupado) return;
+        s.agrupado = false;
+        if (ctx.hecho(3)) ctx.deshace(3);
+      }
+      function pintarPanel() {
+        Object.keys(botonesPieza).forEach(k => { botonesPieza[k].setAttribute('aria-pressed', String(k === s.elegida)); botonesPieza[k].classList.toggle('lab__boton--activo', k === s.elegida); });
+        panel.replaceChildren();
+        const o = s[s.elegida];
+        CAMPOS.forEach(([prop, etiqueta]) => {
+          const fila = el('div', 'lab__fila');
+          const lab = el('label', 'sim__ayuda', etiqueta);
+          const ent = el('input', 'lab__entrada');
+          ent.type = 'number'; ent.step = '1'; ent.min = '0'; ent.value = String(o[prop]);
+          ent.id = 'llavero-' + s.elegida + '-' + prop;
+          lab.setAttribute('for', ent.id);
+          ent.setAttribute('translate', 'no');
+          ent.style.maxWidth = '7rem';
+          ent.addEventListener('change', () => {
+            const v = Number(ent.value);
+            if (ent.value === '' || isNaN(v) || v < 0) { ent.value = String(o[prop]); return; }
+            if (v === o[prop]) return;
+            o[prop] = v;
+            desagrupar();
+            ctx.apunta(`${NOMBRES[s.elegida]}: ${etiqueta.replace(' (mm)', '').toLowerCase()} ${v} mm`);
+            msg.replaceChildren();
+            if (s.elegida === 'placa' && prop === 'ancho' && v === 5) msg.appendChild(ctx.aviso('5 mm es medio centímetro: la placa sería más pequeña que una uña. Tiene que medir 5 cm.', 'cuidado'));
+            if (s.elegida === 'texto' && prop === 'z' && v < s.placa.alto) msg.appendChild(ctx.aviso('Ahora el texto está metido dentro de la placa: no se verá en relieve.', 'cuidado'));
+            revisar(); dibujar();
+          });
+          fila.appendChild(lab); fila.appendChild(ent);
+          panel.appendChild(fila);
+        });
+        if (s.elegida === 'agujero') {
+          const fila = el('div', 'lab__fila');
+          const bSol = boton('Sólido'), bAg = boton('Agujero');
+          const marcar = () => { bSol.setAttribute('aria-pressed', String(!s.agujero.agujero)); bAg.setAttribute('aria-pressed', String(s.agujero.agujero)); bSol.classList.toggle('lab__boton--activo', !s.agujero.agujero); bAg.classList.toggle('lab__boton--activo', s.agujero.agujero); };
+          bSol.addEventListener('click', () => { s.agujero.agujero = false; desagrupar(); ctx.apunta('Cilindro: Sólido'); marcar(); revisar(); dibujar(); });
+          bAg.addEventListener('click', () => { s.agujero.agujero = true; desagrupar(); ctx.apunta('Cilindro: Agujero'); marcar(); revisar(); dibujar(); });
+          marcar();
+          fila.appendChild(bSol); fila.appendChild(bAg);
+          panel.appendChild(fila);
+        }
+      }
+      bAgrupar.addEventListener('click', () => {
+        msg.replaceChildren();
+        if (!ok0()) { ctx.falla('Agrupar con la placa de ' + s.placa.ancho + ' mm'); msg.appendChild(ctx.aviso('Antes de agrupar, mira la placa: ¿cuántos milímetros son 5 cm?', 'error')); return; }
+        if (!ok1()) { ctx.falla('Agrupar con el texto mal colocado'); msg.appendChild(ctx.aviso('Mira la vista de frente: el texto no está apoyado en la placa. Su altura sobre el plano tiene que ser el alto de la placa.', 'error')); return; }
+        if (!ok2()) {
+          ctx.falla('Agrupar con el cilindro mal');
+          msg.appendChild(ctx.aviso(s.agujero.agujero ? 'El agujero no atraviesa la placa: sale un hoyo, no un agujero. Tiene que ser al menos tan alto como la placa y empezar en 0.' : 'El cilindro es «Sólido»: al agrupar, se pegaría a la placa en vez de hacer el agujero.', 'error'));
+          return;
+        }
+        s.agrupado = true;
+        ctx.cumple(3, 'Agrupado: el agujero ya se ha restado de la placa.');
+        dibujar();
+      });
+      pintarPanel();
+      dibujar();
+      msg.appendChild(ctx.aviso('Mira la vista de frente: la placa es enorme y el texto flota. Elige cada pieza y cambia sus medidas.', 'cuidado'));
+    },
+  });
+
+  /* ============================================================
+     3D2 · Lamina la pieza (25/11/2026). Un laminador de mentira:
+     tres piezas, tamaño, altura de capa, relleno y soportes, con
+     el tiempo y los gramos que salen. Las cuentas son de ejemplo,
+     pero cambian como las de verdad (el tamaño manda).
+     ============================================================ */
+  registrarSimulacion('lamina-pieza', {
+    ventana: 'Laminador · pieza-pareja-3',
+    mision: [
+      'La chapa tarda más de 3 horas: déjala en 40 minutos o menos.',
+      'El soporte del móvil tiene una parte en el aire: actívale los soportes.',
+      'Pon el relleno al 100 % y mira cuánto plástico gasta de más.',
+    ],
+    final: 'Lo que más cambia el tiempo es el tamaño: la mitad de grande tarda mucho menos de la mitad. El relleno cambia los gramos, y una parte en el aire necesita soportes.',
+    crear(ctx) {
+      const { el, boton, pantalla } = ctx;
+      const PIEZAS = {
+        llavero: { n: 'Llavero', v: 5, alto: 3, aire: false },
+        chapa: { n: 'Chapa', v: 50, alto: 5, aire: false },
+        soporte: { n: 'Soporte de móvil', v: 8, alto: 40, aire: true },
+      };
+      const s = { pieza: 'chapa', escala: 100, capa: 0.2, relleno: 20, soportes: false };
+      const calcula = () => {
+        const p = PIEZAS[s.pieza], f = Math.pow(s.escala / 100, 3);
+        const plastico = p.v * f * (0.3 + 0.7 * s.relleno / 100) + (s.soportes && p.aire ? 0.15 * p.v * f : 0);
+        return { min: Math.round(plastico * 9 * (0.2 / s.capa) + 5), g: Math.max(1, Math.round(plastico * 1.24)), capas: Math.max(1, Math.round(p.alto * s.escala / 100 / s.capa)) };
+      };
+      const horas = m => (m >= 60 ? `${Math.floor(m / 60)} h ${m % 60} min` : `${m} min`);
+
+      pantalla.appendChild(el('p', 'sim__etiqueta', 'Pieza:'));
+      const filaP = el('div', 'lab__fila');
+      const bp = {};
+      Object.keys(PIEZAS).forEach(k => { const b = boton(PIEZAS[k].n); b.addEventListener('click', () => { s.pieza = k; ctx.apunta('Abrir ' + PIEZAS[k].n); pinta(); }); bp[k] = b; filaP.appendChild(b); });
+      pantalla.appendChild(filaP);
+
+      const control = (etiqueta, nodo) => { const f = el('div', 'lab__fila'); const l = el('label', 'sim__ayuda', etiqueta); l.setAttribute('for', nodo.id); f.appendChild(l); f.appendChild(nodo); pantalla.appendChild(f); };
+      const esc = el('input'); esc.type = 'range'; esc.min = '30'; esc.max = '100'; esc.step = '5'; esc.id = 'lamina-escala';
+      const escTxt = el('span', 'sim__ayuda');
+      control('Tamaño', esc);
+      esc.parentNode.appendChild(escTxt);
+      const sel = (id, ops) => { const x = el('select', 'lab__entrada'); x.id = id; ops.forEach(([v, t]) => { const o = el('option', null, t); o.value = v; x.appendChild(o); }); return x; };
+      const capa = sel('lamina-capa', [['0.1', '0,1 mm (fina)'], ['0.2', '0,2 mm (normal)'], ['0.3', '0,3 mm (gruesa)']]);
+      control('Altura de capa', capa);
+      const rel = sel('lamina-relleno', [['10', '10 %'], ['20', '20 %'], ['50', '50 %'], ['100', '100 % (maciza)']]);
+      control('Relleno', rel);
+      const filaS = el('div', 'lab__fila');
+      const bSop = boton('Soportes: no');
+      bSop.setAttribute('role', 'switch');
+      filaS.appendChild(bSop);
+      pantalla.appendChild(filaS);
+
+      const res = el('table', 'exp__prop');
+      pantalla.appendChild(res);
+      const msg = el('div'); msg.setAttribute('aria-live', 'polite');
+      pantalla.appendChild(msg);
+      let antesGramos = null;
+
+      function pinta() {
+        Object.keys(bp).forEach(k => { bp[k].setAttribute('aria-pressed', String(k === s.pieza)); bp[k].classList.toggle('lab__boton--activo', k === s.pieza); });
+        bSop.classList.toggle('lab__boton--activo', s.soportes);
+        esc.value = String(s.escala); escTxt.textContent = s.escala + ' %';
+        capa.value = String(s.capa); rel.value = String(s.relleno);
+        bSop.textContent = 'Soportes: ' + (s.soportes ? 'sí' : 'no');
+        bSop.setAttribute('aria-checked', String(s.soportes));
+        const c = calcula();
+        res.replaceChildren();
+        [['Tiempo', horas(c.min)], ['Plástico', c.g + ' g'], ['Capas', String(c.capas)]].forEach(([a, b]) => {
+          const tr = el('tr'); tr.appendChild(el('th', null, a)); const td = el('td', null, b); td.setAttribute('translate', 'no'); tr.appendChild(td); res.appendChild(tr);
+        });
+        msg.replaceChildren();
+        const p = PIEZAS[s.pieza];
+        if (p.aire && !s.soportes) msg.appendChild(ctx.aviso('Hay una parte en el aire: sin soportes, el plástico caería al vacío y la pieza saldría rota.', 'error'));
+        if (s.pieza === 'chapa' && c.min > 40) msg.appendChild(ctx.aviso(`Tarda ${horas(c.min)}: demasiado para imprimir las piezas de toda la clase. Prueba a hacerla más pequeña.`, 'cuidado'));
+        if (s.pieza === 'chapa' && c.min <= 40) { if (!ctx.hecho(0)) ctx.cumple(0, `Chapa al ${s.escala} %: ${horas(c.min)}.`); }
+        if (s.pieza === 'soporte' && s.soportes) { if (!ctx.hecho(1)) ctx.cumple(1, 'Soporte de móvil con soportes: la parte en el aire ya tiene algo debajo.'); }
+        if (s.relleno === 100 && antesGramos !== null && !ctx.hecho(2)) ctx.cumple(2, `Relleno al 100 %: de ${antesGramos} g a ${c.g} g de plástico.`);
+      }
+      esc.addEventListener('input', () => { s.escala = Number(esc.value); pinta(); });
+      esc.addEventListener('change', () => ctx.apunta(`Tamaño al ${s.escala} %`));
+      capa.addEventListener('change', () => { s.capa = Number(capa.value); ctx.apunta(`Capa de ${String(s.capa).replace('.', ',')} mm`); pinta(); });
+      rel.addEventListener('change', () => {
+        const antes = calcula().g;
+        s.relleno = Number(rel.value);
+        antesGramos = s.relleno === 100 ? antes : null;
+        ctx.apunta(`Relleno al ${s.relleno} %`);
+        pinta();
+      });
+      bSop.addEventListener('click', () => { s.soportes = !s.soportes; ctx.apunta('Soportes: ' + (s.soportes ? 'sí' : 'no')); pinta(); });
+      pinta();
     },
   });
 

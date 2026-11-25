@@ -89,6 +89,7 @@ const ICONOS_UNIDAD = {
   /* Llaves de código con un rayo. */
   'proy-javascript': _SVG('<path d="M14 8c-5 0-5 4-5 8s-3 8-5 8c2 0 5 4 5 8s0 8 5 8M34 8c5 0 5 4 5 8s3 8 5 8c-2 0-5 4-5 8s0 8-5 8"></path><path d="M26 12l-6 13h8l-6 13" opacity="0.8"></path>'),
   /* Bandera de meta. */
+  'proy-impresora-3d': _SVG('<path d="M6 42h36"></path><path d="M9 42V8h30v34"></path><path d="M9 26h30"></path><path d="M20 22h8v8h-8z"></path><path d="M24 30v3"></path><path d="M15 38h18"></path>'),
   'proy-cierre': _SVG('<path d="M10 44V6"></path><path d="M10 7h28l-5 8 5 8H10"></path>'),
 };
 
@@ -98,9 +99,10 @@ function iconoDeUnidad(idUnidad, idAsignatura) {
 
 /* Parte "Unidad 3. Medios de transmisión: cobre" en el número corto
    ("U3") y el nombre ("Medios de transmisión: cobre"). Lo que no
-   empiece por Unidad/Unidades/Bloque se devuelve entero sin número. */
+   empiece por Unidad/Unidades/Bloque se devuelve entero sin número.
+   El número puede llevar una letra detrás («Bloque 3b», 25/11/2026). */
 function partirTituloUnidad(titulo) {
-  const m = /^(Unidad(?:es)?|Bloque)\s+(\d+(?:\s*(?:y|-|,)\s*\d+)*)\.\s*(.+)$/i.exec(titulo || '');
+  const m = /^(Unidad(?:es)?|Bloque)\s+(\d+[a-z]?(?:\s*(?:y|-|,)\s*\d+[a-z]?)*)\.\s*(.+)$/i.exec(titulo || '');
   if (!m) return { prefijo: '', corto: '', numero: '', nombre: titulo || '' };
   const nums = m[2].split(/\s*(?:y|-|,)\s*/);
   const letra = /^bloque/i.test(m[1]) ? 'B' : 'U';
