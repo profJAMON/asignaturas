@@ -1,5 +1,17 @@
 <div class="nota">Hoy: rellenos, bordes, esquinas redondeadas y tarjetas. Y cosas que cambian al pasar el ratón por encima (<code>:hover</code>). Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
 
+<div class="nota" id="descarga-s09">
+<p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
+<p>Los ejercicios 1, 2 y 3 empiezan con un HTML que te doy hecho. Sin él no puedes hacerlos.</p>
+<p><a class="boton boton--descarga" href="data/proyecto/proy-css/descargas/s09-ejercicios.zip" download>📥 Descargar el zip</a></p>
+<ol>
+<li>Pulsa el botón. El zip, <code>s09-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
+<li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
+<li>Dentro hay tres archivos: <code>s09-ej1.html</code>, <code>s09-ej2.html</code> y <code>s09-ej3.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s09-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: los tres tienen que salir en el panel de la izquierda.</li>
+</ol>
+</div>
+
 <h2>Todo es una caja</h2>
 <p>Para el navegador, <strong>cada etiqueta es una caja</strong>: un título, un párrafo, una lista. Cada caja tiene cuatro capas, de dentro hacia fuera:</p>
 <div class="salida">
@@ -85,14 +97,12 @@ body {
 </details>
 
 <h3>Ejercicio 1 — Avisos del instituto</h3>
-<p>Crea <code>s09-ej1.html</code> y <code>s09-ej1.css</code>, y conecta el CSS como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>. Dentro del <code>&lt;body&gt;</code>:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Avisos<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"aviso"</span><span class='et'>&gt;</span>Mañana no hay clase de 8:00 a 9:00.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;p</span> <span class='at'>class</span>=<span class='ca'>"aviso"</span><span class='et'>&gt;</span>La biblioteca cierra el viernes.<span class='et'>&lt;/p&gt;</span></code></pre>
+<p>Abre <code>s09-ej1.html</code>. Te falta el <code>&lt;link&gt;</code>: escríbelo en el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>. Después crea <code>s09-ej1.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen. El HTML no lo tienes que cambiar.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej1.webp" alt="Página Avisos en letra Arial con dos avisos. 1, cada aviso es un recuadro amarillo claro con borde naranja, esquinas redondeadas y espacio entre el texto y el borde. Nota 2: los dos avisos tienen class aviso y una sola regla en el CSS." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① Cada aviso: fondo <code>#fff3bf</code>, relleno de <code>15px</code>, borde de <code>2px</code> sólido naranja (<code>orange</code>) y esquinas de <code>10px</code>.</li>
 <li>② Una sola regla <code>.aviso</code> en el CSS.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s09-ej1.css</code>.</li>
 <li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
 </ul>
 <details><summary>Pista</summary>
@@ -143,21 +153,17 @@ body {
 <div data-actividad="reto-caja"></div>
 
 <h3>Truco de VS Code: la tarjeta en un segundo</h3>
-<p>En el HTML, escribe <code>.tarjeta</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;div class="tarjeta"&gt;&lt;/div&gt;</code>. Pulsa <strong>Intro</strong> entre las dos etiquetas y escribe dentro. Funciona con cualquier nombre de clase: <code>.aviso</code> + Tab…</p>
+<p>En el HTML, escribe <code>.tarjeta</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;div class="tarjeta"&gt;&lt;/div&gt;</code>. Pulsa <strong>Intro</strong> entre las dos etiquetas y escribe dentro. Funciona con cualquier nombre de clase: <code>.aviso</code> + Tab… Lo vas a usar en el ejercicio 4.</p>
 
 <h3>Ejercicio 2 — La tarjeta de un libro</h3>
-<p>Crea <code>s09-ej2.html</code> y <code>s09-ej2.css</code>, y conecta el CSS. Escribe la tarjeta con <strong>.tarjeta + Tab</strong> y copia dentro los textos de este HTML:</p>
-<pre><code><span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;h2&gt;</span>El faro perdido<span class='et'>&lt;/h2&gt;</span>
-    <span class='et'>&lt;p&gt;</span>Autora: Marta Sol<span class='et'>&lt;/p&gt;</span>
-    <span class='et'>&lt;p&gt;</span>Una niña descubre un faro que cambia de sitio cada noche.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;/div&gt;</span></code></pre>
+<p>Abre <code>s09-ej2.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s09-ej2.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. La tarjeta ya está hecha: es el <code>&lt;div class="tarjeta"&gt;</code>.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej2.webp" alt="Una tarjeta centrada en la página, en letra Georgia. 1, la tarjeta: fondo amarillo claro, borde azul grueso, esquinas muy redondeadas y espacio por dentro. 2, el título El faro perdido en azul. Debajo, los párrafos Autora: Marta Sol y Una niña descubre un faro que cambia de sitio cada noche. Nota 3: la tarjeta mide 300 píxeles de ancho y está centrada con margin 30px auto." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>① La tarjeta: fondo <code>lightyellow</code>, relleno de <code>20px</code>, borde de <code>3px</code> sólido <code>#4361ee</code> y esquinas de <code>15px</code>.</li>
 <li>② El <code>h2</code>: color <code>#4361ee</code>.</li>
 <li>③ La tarjeta mide <code>300px</code> de ancho y está centrada con <code>margin: 30px auto;</code>.</li>
 <li>Toda la página, con la letra <code>Georgia, serif</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s09-ej2.css</code>.</li>
 </ul>
 <details><summary>Pista 1: la tarjeta ocupa todo el ancho</summary>
 <p>Te falta el <code>width</code>. Solo se puede centrar una caja más estrecha que la página.</p>
@@ -214,14 +220,8 @@ body {
 <div class="lab" data-lab="simulacion" data-sim="arregla-caja" aria-label="Arregla la tarjeta y los botones"></div>
 
 <h3>Ejercicio 3 — Los botones de un videojuego</h3>
-<p>Crea <code>s09-ej3.html</code> y <code>s09-ej3.css</code>, y conecta el CSS. Dentro del <code>&lt;body&gt;</code>:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Space Cats<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;p&gt;</span>
-    <span class='et'>&lt;a</span> <span class='at'>class</span>=<span class='ca'>"boton"</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Jugar<span class='et'>&lt;/a&gt;</span>
-    <span class='et'>&lt;a</span> <span class='at'>class</span>=<span class='ca'>"boton"</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Opciones<span class='et'>&lt;/a&gt;</span>
-    <span class='et'>&lt;a</span> <span class='at'>class</span>=<span class='ca'>"boton"</span> <span class='at'>href</span>=<span class='ca'>"#"</span><span class='et'>&gt;</span>Salir<span class='et'>&lt;/a&gt;</span>
-<span class='et'>&lt;/p&gt;</span></code></pre>
-<p><code>href="#"</code> es un enlace que no lleva a ningún sitio: sirve para probar.</p>
+<p>Abre <code>s09-ej3.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s09-ej3.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. Los tres botones son enlaces con la clase <code>boton</code>.</p>
+<p>En el HTML verás <code>href="#"</code>: es un enlace que no lleva a ningún sitio: sirve para probar.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej3.webp" alt="Página en letra Arial con todo centrado. 1, el título Space Cats en morado. 2, tres enlaces con forma de botón: fondo morado, texto blanco, sin subrayado y esquinas redondeadas. Nota 3: al pasar el ratón por encima de un botón, su fondo se vuelve rosa." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej3-raton.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej3-raton.webp" alt="La misma página con el ratón encima del botón Opciones, marcado con el número 3: su fondo es rosa, y los otros dos botones siguen morados." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
@@ -229,6 +229,7 @@ body {
 <li>② Los botones: fondo <code>#7209b7</code>, texto <code>white</code>, relleno <code>12px 25px</code>, margen <code>5px</code>, esquinas de <code>8px</code> y sin subrayado.</li>
 <li>③ Con el ratón encima, el fondo del botón cambia a <code>#f72585</code>.</li>
 <li>Toda la página: letra <code>Arial, sans-serif</code> y texto centrado.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s09-ej3.css</code>.</li>
 </ul>
 <details><summary>Pista 1: los botones siguen subrayados</summary>
 <p>Busca en la explicación de arriba la propiedad que quita el subrayado. Va en la regla de <code>.boton</code>.</p>
@@ -285,51 +286,30 @@ tr:hover {
 <div data-actividad="reto-hover"></div>
 
 <h3>Ejercicio 4 — La web de un club deportivo</h3>
-<p>El ejercicio más largo de hoy: junta todo lo de la sesión. Crea <code>s09-ej4.html</code> y <code>s09-ej4.css</code>, y conecta el CSS. Copia este HTML:</p>
-<pre><code><span class='et'>&lt;h1&gt;</span>Club Deportivo Norte<span class='et'>&lt;/h1&gt;</span>
-<span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;h2&gt;</span>Natación<span class='et'>&lt;/h2&gt;</span>
-    <span class='et'>&lt;p&gt;</span>Martes y jueves, en la piscina.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;/div&gt;</span>
-<span class='et'>&lt;div</span> <span class='at'>class</span>=<span class='ca'>"tarjeta"</span><span class='et'>&gt;</span>
-    <span class='et'>&lt;h2&gt;</span>Escalada<span class='et'>&lt;/h2&gt;</span>
-    <span class='et'>&lt;p&gt;</span>Sábados, en el rocódromo.<span class='et'>&lt;/p&gt;</span>
-<span class='et'>&lt;/div&gt;</span>
-<span class='et'>&lt;h2&gt;</span>Horario<span class='et'>&lt;/h2&gt;</span>
-<span class='et'>&lt;table&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;th&gt;</span>Día<span class='et'>&lt;/th&gt;</span>
-        <span class='et'>&lt;th&gt;</span>Actividad<span class='et'>&lt;/th&gt;</span>
-        <span class='et'>&lt;th&gt;</span>Hora<span class='et'>&lt;/th&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Martes<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Natación<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>17:00<span class='et'>&lt;/td&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Jueves<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Natación<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>17:00<span class='et'>&lt;/td&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-    <span class='et'>&lt;tr&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Sábado<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>Escalada<span class='et'>&lt;/td&gt;</span>
-        <span class='et'>&lt;td&gt;</span>10:00<span class='et'>&lt;/td&gt;</span>
-    <span class='et'>&lt;/tr&gt;</span>
-<span class='et'>&lt;/table&gt;</span></code></pre>
+<p>El ejercicio más largo de hoy: junta todo lo de la sesión. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
+<ol>
+<li>Crea <code>s09-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen.</li>
+<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
+<li>Crea <code>s09-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+</ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej4.webp" alt="Web del Club Deportivo Norte en letra Arial, con el título en verde azulado. 1, dos tarjetas, Natación y Escalada, una debajo de otra: fondo verde muy claro, borde verde azulado, esquinas redondeadas y separadas entre sí. 2, la tabla del horario con bordes finos verde azulado, espacio en las celdas y la fila de encabezados con fondo verde azulado y letras blancas. Notas: 3, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 4, al pasar el ratón por una fila de la tabla, su fondo se vuelve naranja claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
+<li>En el HTML: el título grande, las dos tarjetas (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo dentro), el título Horario y la tabla, en ese orden.</li>
 <li>① Las tarjetas: fondo <code>#e9f5f3</code>, ancho <code>280px</code>, relleno <code>15px</code>, margen por abajo de <code>15px</code>, borde de <code>3px</code> sólido <code>#2a9d8f</code> y esquinas de <code>12px</code>.</li>
 <li>② La tabla: bordes de <code>1px</code> sólido <code>#2a9d8f</code>, sin líneas dobles, relleno <code>8px 15px</code> en las celdas. Los <code>th</code>, con fondo <code>#2a9d8f</code> y texto <code>white</code>.</li>
 <li>③ Con el ratón encima de una tarjeta, su borde pasa a ser <code>#e76f51</code>.</li>
 <li>④ Con el ratón encima de una fila, su fondo pasa a ser <code>#ffe8d6</code>.</li>
 <li>El <code>h1</code>, de color <code>#2a9d8f</code>, y toda la página con la letra <code>Arial, sans-serif</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
 </ul>
-<details><summary>Pista 1: el borde de la tarjeta no cambia con el ratón</summary>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Lo más grande de arriba es un <code>h1</code>. Cada tarjeta, un <code>&lt;div class="tarjeta"&gt;</code> (escríbelo con <strong>.tarjeta + Tab</strong>) con un <code>h2</code> y un <code>p</code> dentro. Horario, otro <code>h2</code>. La tabla, un <code>table</code> con 4 <code>tr</code>: en la primera, <code>th</code>; en las demás, <code>td</code>. Si dudas, mira tu ejercicio de tablas de la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>
+</details>
+<details><summary>Pista 2: el borde de la tarjeta no cambia con el ratón</summary>
 <p>En <code>.tarjeta:hover</code> escribe otra vez el <code>border</code> entero (grosor, tipo y color), con el color nuevo.</p>
 </details>
-<details><summary>Pista 2: la tabla tiene líneas dobles</summary>
+<details><summary>Pista 3: la tabla tiene líneas dobles</summary>
 <p>Te falta una propiedad en la regla de <code>table</code>. Mira la explicación de las tablas.</p>
 </details>
 <p>Si lo has hecho bien: pasas el ratón de arriba abajo por la tabla y se ilumina una fila cada vez.</p>

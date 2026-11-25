@@ -2,7 +2,7 @@
   "id": "proy-s09-caja",
   "titulo": "Sesión 9 — Cajas y hover",
   "fecha": "",
-  "descripcion": "Ejercicios individuales: padding, border, border-radius, margin y width, tarjetas con div y clase, centrar una caja con margin auto, :hover en botones y tarjetas, y bordes para las tablas. Truco de VS Code: .tarjeta + Tab. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales: padding, border, border-radius, margin y width, tarjetas con div y clase, centrar una caja con margin auto, :hover en botones y tarjetas, y bordes para las tablas. En los ejercicios 1 a 3 se da el HTML hecho (zip) y se escribe el CSS; el 4 se hace entero desde la imagen. Truco de VS Code: .tarjeta + Tab. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",
