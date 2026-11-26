@@ -12,6 +12,26 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<svg viewBox="0 0 360 120" width="100%" role="img" aria-label="Un rectángulo grande, el contenedor, con tres cajas pequeñas dentro, una al lado de otra. display: flex va en el rectángulo grande." style="max-width:360px;height:auto;color:var(--text)">
+<rect x="4" y="22" width="352" height="92" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="3" stroke-dasharray="7 5"/>
+<text x="10" y="15" font-family="sans-serif" font-size="13" fill="currentColor">contenedor (.fila) ← display: flex va aquí</text>
+<rect x="24" y="44" width="90" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="69" y="74" text-anchor="middle" font-family="sans-serif" font-size="13" fill="currentColor">caja</text>
+<rect x="135" y="44" width="90" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="180" y="74" text-anchor="middle" font-family="sans-serif" font-size="13" fill="currentColor">caja</text>
+<rect x="246" y="44" width="90" height="50" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+<text x="291" y="74" text-anchor="middle" font-family="sans-serif" font-size="13" fill="currentColor">caja</text>
+</svg>
+<dl>
+<dt>Contenedor</dt><dd>La caja grande que tiene otras cajas dentro. En el HTML, la etiqueta de fuera.</dd>
+<dt>En fila</dt><dd>Una al lado de la otra, de izquierda a derecha (no una debajo de otra).</dd>
+<dt><code>gap</code></dt><dd>El hueco entre las cajas.</dd>
+<dt>En vertical</dt><dd>De arriba abajo. «Centrar en vertical» = que quede a media altura.</dd>
+</dl>
+</div>
+
 <h2>El problema: todo va uno debajo de otro</h2>
 <p>Los títulos, los párrafos y los <code>&lt;div&gt;</code> ocupan <strong>todo el ancho</strong> y se colocan <strong>uno debajo de otro</strong>. En la <a href="tema.html?id=proy-s09b-hover">sesión 9b</a>, las dos tarjetas del club salían en columna aunque cabían en fila.</p>
 <p><strong>Flexbox</strong> sirve para poner varias cajas <strong>en fila</strong> y decidir cómo se reparte el espacio.</p>
@@ -62,15 +82,17 @@ body {
 </details>
 
 <h3>Ejercicio 1 — Frutas en fila</h3>
-<p>Abre <code>s10-ej1.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej1.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. El contenedor es el <code>&lt;div class="fila"&gt;</code>; cada fruta, un <code>&lt;div class="caja"&gt;</code>.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej1.webp" alt="Página Frutas de verano en letra Arial. 1, el contenedor fila con cuatro cajas en fila, separadas por un hueco. 2, cada caja es rosa, con las esquinas redondeadas y el nombre de la fruta centrado: Fresa, Melón, Sandía y Cereza. Nota 3: si estrechas la ventana de Chrome, las cajas que no caben pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① El contenedor <code>.fila</code>: en fila, con un hueco de <code>15px</code>.</li>
-<li>② Cada <code>.caja</code>: fondo <code>#ffafcc</code>, ancho <code>80px</code>, relleno <code>20px</code>, esquinas de <code>10px</code> y texto centrado.</li>
-<li>③ Si no caben, pasan a la línea de abajo.</li>
-<li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
-<li>El <code>&lt;link&gt;</code> a <code>s10-ej1.css</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s10-ej1.html</code>. El contenedor es el <code>&lt;div class="fila"&gt;</code>; cada fruta, un <code>&lt;div class="caja"&gt;</code> dentro. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej1.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra (<code>font-family</code>) <code>Arial, sans-serif</code>.<span class="mira">Cambia la letra.</span></li>
+<li>② Regla para <code>.caja</code>: fondo (<code>background-color</code>) <code>#ffafcc</code>, relleno (<code>padding</code>) <code>20px</code> y esquinas (<code>border-radius</code>) <code>10px</code>.<span class="mira">Cajas rosas, todavía una debajo de otra y muy anchas.</span></li>
+<li>② En la misma regla: ancho (<code>width</code>) <code>80px</code> y texto centrado (<code>text-align</code>: <code>center</code>).<span class="mira">Cajas estrechas, todavía en columna.</span></li>
+<li>① Regla para el contenedor <code>.fila</code>: <code>display: flex;</code><span class="mira">¡Las frutas se ponen en fila!</span></li>
+<li>① En <code>.fila</code>: hueco (<code>gap</code>) de <code>15px</code>.<span class="mira">Las frutas se separan.</span></li>
+<li>③ En <code>.fila</code>: que bajen si no caben (<code>flex-wrap</code>: <code>wrap</code>).<span class="mira">Haces la ventana estrecha y las frutas pasan a la línea de abajo.</span></li>
+</ol>
 <details><summary>Pista: las cajas siguen en columna</summary>
 <p>¿Dónde has puesto el <code>display: flex</code>? Tiene que ir en la regla de la caja que <strong>contiene</strong> a las frutas.</p>
 </details>
@@ -146,15 +168,22 @@ body {
 <div class="lab" data-lab="simulacion" data-sim="inventario" aria-label="Ordena el inventario"></div>
 
 <h3>Ejercicio 2 — La cabecera de un cine</h3>
-<p>Abre <code>s10-ej2.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej2.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. La cabecera es el <code>&lt;header class="cabecera"&gt;</code>, y dentro están el logo y el botón.</p>
+<ol class="paso-a-paso">
+<li>Abre <code>s10-ej2.html</code>. El contenedor es el <code>&lt;header class="cabecera"&gt;</code>; dentro están el logo y el botón. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej2.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Haz la lista de debajo de la imagen <strong>línea a línea</strong>. Una propiedad, guardas y miras Chrome.</li>
+</ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej2.webp" alt="Página en letra Arial. 1, una cabecera azul muy oscuro con el logo a la izquierda y el botón a la derecha, los dos centrados en vertical. 2, el logo Cine Estrella en naranja y grande. 3, el enlace Comprar entradas con forma de botón naranja, texto azul oscuro y sin subrayado. Debajo de la cabecera, el párrafo Hoy hay tres películas de estreno. Nota 4: al pasar el ratón por encima del botón, su fondo se vuelve blanco." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① La <code>.cabecera</code>: en fila, con el espacio en medio, centrada en vertical, fondo <code>#14213d</code> y relleno <code>5px 20px</code>.</li>
-<li>② El <code>.logo</code>: color <code>#fca311</code> y tamaño <code>28px</code>.</li>
-<li>③ El <code>.boton</code>: fondo <code>#fca311</code>, texto <code>#14213d</code>, relleno <code>10px 15px</code>, esquinas de <code>8px</code> y sin subrayado.</li>
-<li>④ Con el ratón encima, el fondo del botón pasa a ser <code>white</code>.</li>
-<li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
 <li>El <code>&lt;link&gt;</code> a <code>s10-ej2.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra <code>Arial, sans-serif</code>.</li>
+<li>① La <code>.cabecera</code>: fondo (<code>background-color</code>) <code>#14213d</code> y relleno (<code>padding</code>) <code>5px 20px</code>.</li>
+<li>① La <code>.cabecera</code>: en fila (<code>display</code>).</li>
+<li>① La <code>.cabecera</code>: una caja en cada punta, con el espacio en medio (<code>justify-content</code>; mira la tabla).</li>
+<li>① La <code>.cabecera</code>: centrada en vertical (<code>align-items</code>).</li>
+<li>② El <code>.logo</code>: color (<code>color</code>) <code>#fca311</code> y tamaño de letra (<code>font-size</code>) <code>28px</code>.</li>
+<li>③ El <code>.boton</code>: fondo <code>#fca311</code> y texto (<code>color</code>) <code>#14213d</code>.</li>
+<li>③ El <code>.boton</code>: relleno <code>10px 15px</code>, esquinas (<code>border-radius</code>) <code>8px</code> y sin subrayado (<code>text-decoration</code>).</li>
+<li>④ Con el ratón encima (<code>.boton:hover</code>): fondo <code>white</code>.</li>
 </ul>
 <details><summary>Pista 1: el logo y el botón salen juntos a la izquierda</summary>
 <p>Te falta el <code>justify-content</code>. Mira en la tabla cuál pone una caja en cada punta.</p>

@@ -39,6 +39,21 @@
 ├── estilos.css      ← uno solo, para todas las páginas
 └── img/</code></pre>
 
+<h2>Paso a paso: en este orden</h2>
+<p>No lo hagáis todo a la vez. Un paso, guardáis, miráis Chrome y el copiloto lo tacha en la lista de abajo. Si no pasa lo que dice el 👀, no sigáis: arregladlo primero.</p>
+<ol class="paso-a-paso">
+<li>Cread <code>estilos.css</code>, poned el <code>&lt;link&gt;</code> en <strong>todas</strong> las páginas y haced la prueba del fondo amarillo de arriba.<span class="mira">Todas las páginas, amarillas. Después, borrad el amarillo.</span></li>
+<li>En <code>body</code>: la letra (<code>font-family</code>), el color de fondo y el color del texto de vuestro boceto.<span class="mira">Toda la web cambia a la vez, y el texto se lee bien.</span></li>
+<li>El menú: <code>nav</code> en fila con Flexbox, y <code>nav a</code> sin subrayado. Copiad de vuestro ejercicio 3 de la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a> y cambiad los colores.<span class="mira">El menú sale en fila en todas las páginas.</span></li>
+<li>El <code>:hover</code> del menú (<code>nav a:hover</code>).<span class="mira">Al pasar el ratón por un enlace, solo ese cambia.</span></li>
+<li>Las tarjetas: en el HTML, las 3 dentro de <code>&lt;div class="tarjetas"&gt;</code>, cada una con imagen, título y texto. En el CSS, la regla <code>.tarjeta</code> (fondo, <code>padding</code>, <code>border</code>, <code>border-radius</code> y <code>width</code>) y <code>.tarjeta img { width: 100%; }</code>.<span class="mira">Tres tarjetas, todavía en columna, sin imágenes que se salgan.</span></li>
+<li>Las tarjetas en fila: <code>.tarjetas</code> con <code>display: flex</code>, <code>gap</code> y <code>flex-wrap: wrap</code>. Como en el ejercicio 4 de la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a>.<span class="mira">Tres tarjetas una al lado de otra.</span></li>
+<li>El <code>:hover</code> de las tarjetas (<code>.tarjeta:hover</code>).<span class="mira">Al pasar el ratón por una tarjeta, algo cambia.</span></li>
+<li>La tabla: bordes en <code>th, td</code>, <code>border-collapse: collapse</code> en <code>table</code> y <code>padding</code> en las celdas. Como en el ejercicio 4 de la <a href="tema.html?id=proy-s09b-hover">sesión 9b</a>.<span class="mira">Líneas simples, no dobles, y el texto separado de las líneas.</span></li>
+<li>Vuestra clase propia en 2 etiquetas o más.<span class="mira">Esas etiquetas se ven distintas de las demás.</span></li>
+<li>F12 → icono del móvil.<span class="mira">Las tarjetas bajan una debajo de otra y nada se sale por la derecha.</span></li>
+</ol>
+
 <h2>Lo que tiene que quedar hoy</h2>
 <div class="nota">👀 <strong>Lo mínimo que os pido, hecho:</strong> mirad el <a href="tema.html?id=proy-web-ejemplo-css">ejemplo de web con CSS</a>. Es BloqueCraft con todo lo de esta lista: recorredla, pasad el ratón y mirad su CSS.</div>
 <h3>Colores y letra</h3>

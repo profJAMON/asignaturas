@@ -12,6 +12,17 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt><code>:hover</code></dt><dd>«Con el ratón encima». <code>.boton:hover</code> = el botón cuando pasas el ratón por encima. Va <strong>pegado</strong>, sin espacio.</dd>
+<dt>Dos valores</dt><dd><code>padding: 10px 20px;</code> = 10px arriba y abajo, 20px a los lados.</dd>
+<dt>Celda</dt><dd>Cada cuadrito de una tabla: <code>th</code> (encabezado, arriba) o <code>td</code> (dato).</dd>
+<dt>La coma</dt><dd><code>th, td</code> = la misma regla para los dos.</dd>
+</dl>
+<p>Y las de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>: regla, selector, propiedad y valor.</p>
+</div>
+
 <p>Si no te acuerdas de <code>padding</code>, <code>border</code>, <code>width</code> o de las tarjetas con <code>&lt;div&gt;</code>, vuelve a mirar la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>.</p>
 
 <h2>Cambiar al pasar el ratón: :hover</h2>
@@ -61,17 +72,19 @@ body {
 <div class="lab" data-lab="simulacion" data-sim="arregla-caja" aria-label="Arregla la tarjeta y los botones"></div>
 
 <h3>Ejercicio 3 — Los botones de un videojuego</h3>
-<p>Abre <code>s09-ej3.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s09-ej3.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. Los tres botones son enlaces con la clase <code>boton</code>.</p>
-<p>En el HTML verás <code>href="#"</code>: es un enlace que no lleva a ningún sitio: sirve para probar.</p>
+<p>Mira las dos imágenes: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej3.webp" alt="Página en letra Arial con todo centrado. 1, el título Space Cats en morado. 2, tres enlaces con forma de botón: fondo morado, texto blanco, sin subrayado y esquinas redondeadas. Nota 3: al pasar el ratón por encima de un botón, su fondo se vuelve rosa." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej3-raton.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej3-raton.webp" alt="La misma página con el ratón encima del botón Opciones, marcado con el número 3: su fondo es rosa, y los otros dos botones siguen morados." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① El <code>h1</code>: color <code>#7209b7</code>.</li>
-<li>② Los botones: fondo <code>#7209b7</code>, texto <code>white</code>, relleno <code>12px 25px</code>, margen <code>5px</code>, esquinas de <code>8px</code> y sin subrayado.</li>
-<li>③ Con el ratón encima, el fondo del botón cambia a <code>#f72585</code>.</li>
-<li>Toda la página: letra <code>Arial, sans-serif</code> y texto centrado.</li>
-<li>El <code>&lt;link&gt;</code> a <code>s09-ej3.css</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s09-ej3.html</code>. Los tres botones son enlaces <code>&lt;a&gt;</code> con <code>class="boton"</code>. Su <code>href="#"</code> no lleva a ningún sitio: es para probar. En el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, escribe el <code>&lt;link&gt;</code> a <code>s09-ej3.css</code>.</li>
+<li>Crea <code>s09-ej3.css</code> al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra (<code>font-family</code>) <code>Arial, sans-serif</code> y texto centrado (<code>text-align</code>: <code>center</code>).<span class="mira">Todo sale en el centro y con otra letra.</span></li>
+<li>① Regla para <code>h1</code>: color (<code>color</code>) <code>#7209b7</code>.<span class="mira">El título es morado.</span></li>
+<li>② Regla para <code>.boton</code>. Dentro, el fondo (<code>background-color</code>) <code>#7209b7</code> y el color del texto (<code>color</code>) <code>white</code>.<span class="mira">Tres palabras blancas sobre morado, todavía subrayadas.</span></li>
+<li>② En la misma regla: sin subrayado (<code>text-decoration</code>: <code>none</code>).<span class="mira">Ya no hay rayas debajo.</span></li>
+<li>② En la misma regla: relleno (<code>padding</code>) <code>12px 25px</code>, margen (<code>margin</code>) <code>5px</code> y esquinas (<code>border-radius</code>) <code>8px</code>.<span class="mira">Ya parecen botones, separados y con esquinas redondas.</span></li>
+<li>③ Regla nueva <code>.boton:hover</code>, solo con lo que cambia: el fondo (<code>background-color</code>) <code>#f72585</code>.<span class="mira">Pasas el ratón por un botón y se vuelve rosa.</span></li>
+</ol>
 <details><summary>Pista 1: los botones siguen subrayados</summary>
 <p>Busca en la explicación de arriba la propiedad que quita el subrayado. Va en la regla de <code>.boton</code>.</p>
 </details>
@@ -128,21 +141,25 @@ tr:hover {
 
 <h3>Ejercicio 4 — La web de un club deportivo</h3>
 <p>El ejercicio más largo de hoy: junta todo lo de la sesión. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
-<ol>
-<li>Crea <code>s09-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen.</li>
-<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
-<li>Pon el <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
-<li>Crea <code>s09-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+<ol class="paso-a-paso">
+<li>Crea <code>s09-ej4.html</code> (con <strong>! + Tab</strong>). Escribe el HTML con el mismo texto que la imagen, en este orden: título grande, las dos tarjetas, el título Horario y la tabla. Si no sabes qué etiqueta es cada cosa, abre la Pista 1.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s09-ej4.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Haz la lista de debajo de la imagen <strong>línea a línea</strong>. Una propiedad, guardas y miras Chrome.</li>
 </ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej4.webp" alt="Web del Club Deportivo Norte en letra Arial, con el título en verde azulado. 1, dos tarjetas, Natación y Escalada, una debajo de otra: fondo verde muy claro, borde verde azulado, esquinas redondeadas y separadas entre sí. 2, la tabla del horario con bordes finos verde azulado, espacio en las celdas y la fila de encabezados con fondo verde azulado y letras blancas. Notas: 3, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 4, al pasar el ratón por una fila de la tabla, su fondo se vuelve naranja claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>En el HTML: el título grande, las dos tarjetas (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo dentro), el título Horario y la tabla, en ese orden.</li>
-<li>① Las tarjetas: fondo <code>#e9f5f3</code>, ancho <code>280px</code>, relleno <code>15px</code>, margen por abajo de <code>15px</code>, borde de <code>3px</code> sólido <code>#2a9d8f</code> y esquinas de <code>12px</code>.</li>
-<li>② La tabla: bordes de <code>1px</code> sólido <code>#2a9d8f</code>, sin líneas dobles, relleno <code>8px 15px</code> en las celdas. Los <code>th</code>, con fondo <code>#2a9d8f</code> y texto <code>white</code>.</li>
-<li>③ Con el ratón encima de una tarjeta, su borde pasa a ser <code>#e76f51</code>.</li>
-<li>④ Con el ratón encima de una fila, su fondo pasa a ser <code>#ffe8d6</code>.</li>
-<li>El <code>h1</code>, de color <code>#2a9d8f</code>, y toda la página con la letra <code>Arial, sans-serif</code>.</li>
 <li>El <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra (<code>font-family</code>) <code>Arial, sans-serif</code>.</li>
+<li>El título grande (<code>h1</code>): color <code>#2a9d8f</code>.</li>
+<li>① Las tarjetas (<code>.tarjeta</code>): fondo (<code>background-color</code>) <code>#e9f5f3</code> y ancho (<code>width</code>) <code>280px</code>.</li>
+<li>① Relleno (<code>padding</code>) <code>15px</code> y margen solo por abajo (<code>margin-bottom</code>) <code>15px</code>.</li>
+<li>① Borde (<code>border</code>) de <code>3px</code>, <code>solid</code>, <code>#2a9d8f</code>, y esquinas (<code>border-radius</code>) de <code>12px</code>.</li>
+<li>② Las celdas (<code>th, td</code>): borde de <code>1px</code>, <code>solid</code>, <code>#2a9d8f</code>, y relleno <code>8px 15px</code>.</li>
+<li>② La tabla (<code>table</code>): sin líneas dobles.</li>
+<li>② Los encabezados (<code>th</code>): fondo <code>#2a9d8f</code> y texto (<code>color</code>) <code>white</code>.</li>
+<li>③ Con el ratón encima de una tarjeta (<code>.tarjeta:hover</code>): el borde, <code>#e76f51</code>.</li>
+<li>④ Con el ratón encima de una fila (<code>tr:hover</code>): el fondo, <code>#ffe8d6</code>.</li>
 </ul>
 <details><summary>Pista 1: qué etiqueta es cada cosa</summary>
 <p>Lo más grande de arriba es un <code>h1</code>. Cada tarjeta, un <code>&lt;div class="tarjeta"&gt;</code> (escríbelo con <strong>.tarjeta + Tab</strong>, el truco de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>) con un <code>h2</code> y un <code>p</code> dentro. Horario, otro <code>h2</code>. La tabla, un <code>table</code> con 4 <code>tr</code>: en la primera, <code>th</code>; en las demás, <code>td</code>. Si dudas, mira tu ejercicio de tablas de la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>

@@ -14,6 +14,16 @@
 
 <p>Lo más importante de la <a href="tema.html?id=proy-s10-flexbox">sesión 10a</a>: <code>display: flex</code> va en la caja que <strong>contiene</strong> a las que quieres en fila. Hoy lo vas a usar todo el rato.</p>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Menú</dt><dd>Un <code>&lt;nav&gt;</code> con enlaces <code>&lt;a&gt;</code> dentro. El <code>nav</code> es el contenedor.</dd>
+<dt>Selector con espacio</dt><dd><code>nav a</code> = «los <code>a</code> que están <strong>dentro</strong> del <code>nav</code>». Se lee de izquierda a derecha: primero la caja de fuera, después la de dentro.</dd>
+<dt>Boceto</dt><dd>Un dibujo rápido en papel de cómo será vuestra web. Con rectángulos, sin detalles.</dd>
+</dl>
+<p>Y las de la <a href="tema.html?id=proy-s10-flexbox">sesión 10a</a>: contenedor, en fila, <code>gap</code> y en vertical.</p>
+</div>
+
 <h2>El menú en fila</h2>
 <p>Un menú es un <code>&lt;nav&gt;</code> con enlaces dentro. El <code>nav</code> es el contenedor:</p>
 <div class="probador" aria-label="El menú en fila" data-alto="80">
@@ -75,16 +85,19 @@ nav a:hover {
 <div class="lab" data-lab="simulacion" data-sim="en-fila" aria-label="Ponlo en fila"></div>
 
 <h3>Ejercicio 3 — El menú de un zoo</h3>
-<p>Abre <code>s10-ej3.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej3.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. El menú es el <code>&lt;nav&gt;</code> con sus cuatro enlaces.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3.webp" alt="Página del Zoo Verde en letra Verdana. 1, el título Zoo Verde en verde oscuro y centrado. 2, el menú: una franja verde oscuro con los cuatro enlaces en fila y centrados, en blanco y sin subrayado. Debajo, el párrafo Más de 200 animales te esperan. Nota 3: al pasar el ratón por un enlace del menú, su fondo se vuelve verde claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3-raton.webp" alt="La misma página con el ratón encima del enlace Animales, marcado con el número 3: tiene un fondo verde claro con las esquinas redondeadas y el texto verde oscuro. Los otros enlaces siguen blancos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① El <code>h1</code>: color <code>#386641</code> y centrado.</li>
-<li>② El <code>nav</code>: en fila, centrado, hueco de <code>10px</code>, fondo <code>#386641</code> y relleno <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
-<li>③ Con el ratón encima de un enlace: fondo <code>#a7c957</code> y texto <code>#386641</code>.</li>
-<li>Toda la página, con la letra <code>Verdana, sans-serif</code>.</li>
-<li>El <code>&lt;link&gt;</code> a <code>s10-ej3.css</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s10-ej3.html</code>. El menú es el <code>&lt;nav&gt;</code> con cuatro enlaces dentro. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej3.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra (<code>font-family</code>) <code>Verdana, sans-serif</code>.<span class="mira">Cambia la letra.</span></li>
+<li>① Regla para <code>h1</code>: color <code>#386641</code> y centrado (<code>text-align</code>: <code>center</code>).<span class="mira">Título verde en el centro.</span></li>
+<li>② Regla para <code>nav</code>: fondo (<code>background-color</code>) <code>#386641</code> y relleno (<code>padding</code>) <code>10px</code>.<span class="mira">Una franja verde detrás de los enlaces.</span></li>
+<li>② En <code>nav</code>: en fila (<code>display: flex;</code>), centrado (<code>justify-content</code>: <code>center</code>) y hueco (<code>gap</code>) de <code>10px</code>.<span class="mira">Los cuatro enlaces, en fila y en el centro.</span></li>
+<li>② Regla nueva para los enlaces del menú: <code>nav a</code>. Texto (<code>color</code>) <code>white</code> y sin subrayado (<code>text-decoration</code>: <code>none</code>).<span class="mira">Enlaces blancos, sin raya debajo.</span></li>
+<li>② En <code>nav a</code>: relleno <code>8px 14px</code> y esquinas (<code>border-radius</code>) <code>6px</code>.<span class="mira">Todavía no se nota mucho: se verá en el paso 8.</span></li>
+<li>③ Regla nueva <code>nav a:hover</code>: fondo <code>#a7c957</code> y texto (<code>color</code>) <code>#386641</code>.<span class="mira">Pasas el ratón por un enlace y solo ese se vuelve verde claro, con las esquinas redondas.</span></li>
+</ol>
 <details><summary>Pista 1: los enlaces salen en fila pero pegados a la izquierda</summary>
 <p>Para juntarlos en el centro, mira la tabla de <code>justify-content</code>.</p>
 </details>
@@ -157,24 +170,27 @@ body {
 
 <h3>Ejercicio 4 — La mini web de un acuario</h3>
 <p>El ejercicio más largo de hoy: una web de una página con cabecera, menú y tarjetas. Junta todo lo de las sesiones 8, 9 y 10. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
-<ol>
-<li>Crea <code>s10-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen.</li>
-<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
-<li>Pon el <code>&lt;link&gt;</code> a <code>s10-ej4.css</code>.</li>
-<li>Crea <code>s10-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+<ol class="paso-a-paso">
+<li>Crea <code>s10-ej4.html</code> (con <strong>! + Tab</strong>). Escribe el HTML con el mismo texto que la imagen. La primera línea de la lista te dice qué etiquetas van y en qué orden; la Pista 1, qué etiqueta es cada cosa.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s10-ej4.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Haz la lista <strong>línea a línea</strong>, en orden. Una propiedad, guardas y miras Chrome.</li>
 </ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej4.webp" alt="Mini web del Acuario Azul en letra Arial. 1, la cabecera: una franja azul muy oscuro con el título Acuario Azul en blanco y centrado. 2, dentro de la cabecera, el menú con Inicio, Peces y Visitas en fila, centrados, en blanco y sin subrayado. Debajo, el párrafo centrado Descubre los animales del mar. 3, las tres tarjetas en fila y centradas: Tiburón, Pulpo y Medusa, con fondo azul muy claro, borde azul, esquinas redondeadas y el título en azul. Notas: 4, al pasar el ratón por un enlace del menú, su fondo se vuelve azul claro; 5, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 6, si estrechas la ventana, las tarjetas pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>En el HTML: un <code>header</code> con el título grande y el menú (un <code>nav</code> con tres enlaces a <code>#</code>); el párrafo, con la clase <code>intro</code>; y un <code>&lt;div&gt;</code> con la clase <code>tarjetas</code> con las tres tarjetas dentro (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo).</li>
-<li>① El <code>header</code>: fondo <code>#03045e</code> y relleno <code>15px</code>. El <code>h1</code>, en <code>white</code> y centrado.</li>
-<li>② El <code>nav</code>: en fila, centrado y con hueco de <code>10px</code>. Sus enlaces: texto <code>white</code>, relleno <code>8px 14px</code>, esquinas de <code>6px</code> y sin subrayado.</li>
-<li>③ El contenedor <code>.tarjetas</code>: en fila, centrado, con hueco de <code>20px</code>.</li>
-<li>Cada <code>.tarjeta</code>: fondo <code>#caf0f8</code>, ancho <code>150px</code>, relleno <code>15px</code>, borde de <code>3px</code> sólido <code>#0077b6</code> y esquinas de <code>12px</code>. Sus <code>h2</code>, de color <code>#0077b6</code>.</li>
-<li>④ Con el ratón encima de un enlace del menú: fondo <code>#00b4d8</code>.</li>
-<li>⑤ Con el ratón encima de una tarjeta: borde <code>#f77f00</code>.</li>
-<li>⑥ Si las tarjetas no caben, pasan a la línea de abajo.</li>
-<li>El párrafo <code>.intro</code>, centrado, y toda la página con la letra <code>Arial, sans-serif</code>.</li>
 <li>El <code>&lt;link&gt;</code> a <code>s10-ej4.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra <code>Arial, sans-serif</code>. El párrafo <code>.intro</code>, centrado.</li>
+<li>① El <code>header</code>: fondo (<code>background-color</code>) <code>#03045e</code> y relleno (<code>padding</code>) <code>15px</code>.</li>
+<li>① El <code>h1</code>: texto <code>white</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado y con hueco (<code>gap</code>) de <code>10px</code>.</li>
+<li>② Sus enlaces (<code>nav a</code>): texto <code>white</code>, relleno <code>8px 14px</code>, esquinas (<code>border-radius</code>) de <code>6px</code> y sin subrayado.</li>
+<li>③ El contenedor <code>.tarjetas</code>: en fila, centrado y con hueco de <code>20px</code>.</li>
+<li>③ Cada <code>.tarjeta</code>: fondo <code>#caf0f8</code>, ancho (<code>width</code>) <code>150px</code> y relleno <code>15px</code>.</li>
+<li>③ Cada <code>.tarjeta</code>: borde de <code>3px</code>, <code>solid</code>, <code>#0077b6</code>, y esquinas de <code>12px</code>.</li>
+<li>③ Los títulos de las tarjetas (<code>h2</code>): color <code>#0077b6</code>.</li>
+<li>④ Con el ratón encima de un enlace del menú (<code>:hover</code>): fondo <code>#00b4d8</code>.</li>
+<li>⑤ Con el ratón encima de una tarjeta: borde <code>#f77f00</code>.</li>
+<li>⑥ Si las tarjetas no caben, pasan a la línea de abajo (<code>flex-wrap</code>).</li>
 </ul>
 <details><summary>Pista 1: qué etiqueta es cada cosa</summary>
 <p>Acuario Azul es un <code>h1</code>. El menú, con <strong>nav&gt;a*3 + Tab</strong>. Los dos van dentro del <code>header</code>. Cada tarjeta, con <strong>.tarjeta + Tab</strong>, con un <code>h2</code> y un <code>p</code> dentro. Las tres tarjetas, dentro del <code>&lt;div class="tarjetas"&gt;</code>. Si dudas, mira tu ejercicio 3 de hoy y el 2 de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>.</p>

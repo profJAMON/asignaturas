@@ -1,5 +1,15 @@
 <div class="nota">Hoy: primero, <strong>25 minutos de ensayo de la prueba</strong> sobre la web de tu pareja, para recordar lo que viste antes de Navidad. Después, aprendes a <strong>leer lo que escribe el usuario</strong> en un formulario. Trabajas <strong>solo</strong>, en tu carpeta de ejercicios.</div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Caja</dt><dd>El <code>&lt;input&gt;</code> donde el visitante escribe.</dd>
+<dt><code>value</code></dt><dd>Lo que hay escrito en la caja <strong>en ese momento</strong>. Por eso se lee <strong>dentro</strong> del clic.</dd>
+<dt><code>Number()</code></dt><dd>Convierte en número lo escrito en una caja. Sin él, <code>"2" + "3"</code> da <code>"23"</code>.</dd>
+<dt>Juntar textos</dt><dd>Con <code>+</code>: <code>"¡Hola, " + alias + "!"</code>.</dd>
+</dl>
+</div>
+
 <h2>Repaso: lo que ya sabías</h2>
 <p>Después de las vacaciones es normal no acordarse de casi nada. Aquí tienes lo más importante. Si algo no lo recuerdas, vuelve a la <a href="tema.html?id=proy-s12-js-variables">sesión 12</a> o a la <a href="tema.html?id=proy-s13-botones">sesión 13</a>.</p>
 <table>
@@ -84,14 +94,16 @@ boton.addEventListener("click", function () {
 </details>
 
 <h3>Ejercicio 1 — Bienvenida</h3>
-<p>Abre <code>s14-ej1.html</code> y crea <code>s14-ej1.js</code> al lado. Al escribir tu alias y pulsar "Saludar", la página te saluda con tu alias.</p>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong> (y la consola, con F12 → <strong>Console</strong>). Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s14/ej1.webp" alt="Página Bienvenida después de escribir ProfesorCabron y pulsar Saludar: el formulario con la etiqueta Tu alias, la caja y el botón Saludar (1), y debajo el párrafo ¡Hola, ProfesorCabron! Bienvenido a mi web. (2). Notas: 3, antes de pulsar el párrafo está vacío; 4, el botón tiene type button." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;form&gt;</code> con <code>&lt;label&gt;</code>, un <code>&lt;input id="alias"&gt;</code> y un botón. Ya viene en el HTML.</li>
-<li>② Un <code>&lt;p id="saludo"&gt;</code> que muestra lo escrito en la caja.</li>
-<li>③ Antes de pulsar, el párrafo está vacío.</li>
-<li>④ El botón tiene <code>type="button"</code>. Ya viene en el HTML.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s14-ej1.html</code>. Mira los tres <code>id</code>: <code>alias</code> (la caja), <code>boton-saludar</code> y <code>saludo</code> (el párrafo vacío). El <code>&lt;script&gt;</code> ya está.</li>
+<li>Crea <code>s14-ej1.js</code> al lado y abre la página con <strong>Go Live</strong> y la consola (F12).<span class="mira">La página, con el párrafo vacío (③).</span></li>
+<li>Busca los tres elementos con <code>querySelector</code>, cada uno en su variable: <code>cajaAlias</code>, <code>boton</code> y <code>saludo</code>. Como en la <a href="tema.html?id=proy-s13-botones">sesión 13</a>.<span class="mira">La consola, sin errores en rojo.</span></li>
+<li>Escribe la receta del clic: <code>boton.addEventListener("click", function () {</code>, Intro y <code>});</code>. Lo de los pasos 5 y 6 va <strong>dentro</strong> de las llaves.</li>
+<li>Dentro, lee la caja: <code>let alias = cajaAlias.value;</code></li>
+<li>② Debajo, escribe en el párrafo: <code>saludo.textContent</code> = <code>"¡Hola, "</code> + <code>alias</code> + <code>"! Bienvenido a mi web."</code><span class="mira">Escribes tu alias, pulsas Saludar y sale el saludo con tu alias.</span></li>
+</ol>
 <details><summary>Pista 1: el mensaje sale, pero sin lo que he escrito</summary>
 <p>Estás leyendo el <code>value</code> fuera de las llaves. Mueve esa línea dentro del <code>addEventListener</code>.</p>
 </details>

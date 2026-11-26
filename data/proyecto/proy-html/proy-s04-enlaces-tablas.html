@@ -1,5 +1,16 @@
 <div class="nota">Hoy, <strong>cada uno en su ordenador</strong>: enlaces, páginas con menú y tablas. Trabaja en tu carpeta de ejercicios y, al acabar, entrega el zip en Classroom.</div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Enlace</dt><dd>Texto que se pulsa y te lleva a otro sitio: <code>&lt;a&gt;</code>.</dd>
+<dt><code>href</code></dt><dd>El atributo que dice <strong>adónde</strong> lleva el enlace.</dd>
+<dt><code>target="_blank"</code></dt><dd>Abre el enlace en una <strong>pestaña nueva</strong>.</dd>
+<dt>Menú</dt><dd>Los mismos enlaces en todas las páginas, para ir de una a otra.</dd>
+<dt>Fila y celda</dt><dd>Una tabla tiene filas (<code>&lt;tr&gt;</code>), y cada fila, celdas: <code>&lt;th&gt;</code> (encabezado) o <code>&lt;td&gt;</code> (dato).</dd>
+</dl>
+</div>
+
 <h2>Enlaces</h2>
 <p>Un enlace se crea con la etiqueta <code>&lt;a&gt;</code>. El atributo <code>href</code> dice <strong>adónde lleva</strong>, y el texto de dentro es <strong>lo que se ve</strong> y se pulsa:</p>
 <div class="probador" aria-label="Un enlace a otra web">
@@ -20,13 +31,15 @@
 <div class="nota">💡 Para copiar una dirección sin equivocarte: abre la web en Chrome, pulsa en la barra de direcciones, <strong>Ctrl + C</strong>, y pégala en el <code>href</code> con <strong>Ctrl + V</strong>.</div>
 
 <h3>Ejercicio 1 — Webs útiles</h3>
-<p>Crea <code>s04-ej1.html</code> y haz que se vea como en la imagen.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-html/img/proy-s04/ej1.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s04/ej1.webp" alt="Página Webs útiles para estudiar con una lista de tres elementos. Cada uno empieza por un enlace subrayado en azul (Wikipedia, RAE, Google Traductor) seguido de dos puntos y para qué sirve. El número 1 señala el primer elemento. Nota 2: cada enlace se abre en una pestaña nueva." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Una lista <code>&lt;ul&gt;</code>. Cada <code>&lt;li&gt;</code> empieza con un enlace y sigue con texto normal.</li>
-<li>② Los tres enlaces llevan <code>target="_blank"</code>.</li>
-<li>Los enlaces llevan a <code>https://es.wikipedia.org</code>, <code>https://www.rae.es</code> y <code>https://translate.google.com</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Crea <code>s04-ej1.html</code> con <code>!</code> + <strong>Tab</strong>, pon el <code>&lt;title&gt;</code> y el título <code>h1</code> de la imagen. Ábrelo con <strong>Go Live</strong>.<span class="mira">Sale el título.</span></li>
+<li>① Debajo, <code>ul&gt;li*3</code> + <strong>Tab</strong>.</li>
+<li>En el primer <code>&lt;li&gt;</code>, el enlace: <code>&lt;a href="https://es.wikipedia.org"&gt;Wikipedia&lt;/a&gt;</code>. Después del <code>&lt;/a&gt;</code>, los dos puntos y la frase de la imagen.<span class="mira">«Wikipedia» sale en azul y subrayado; la frase, en negro.</span></li>
+<li>② Dentro del <code>&lt;a&gt;</code>, después del <code>href</code>, añade <code>target="_blank"</code>.<span class="mira">Al pulsar Wikipedia, se abre en una pestaña nueva.</span></li>
+<li>Haz lo mismo en los otros dos <code>&lt;li&gt;</code>, con <code>https://www.rae.es</code> y <code>https://translate.google.com</code>.<span class="mira">Los tres enlaces abren su web en otra pestaña.</span></li>
+</ol>
 <details><summary>Pista</summary>
 <p>Solo la palabra azul va entre <code>&lt;a …&gt;</code> y <code>&lt;/a&gt;</code>. Los dos puntos y la frase van después, fuera del enlace.</p>
 </details>

@@ -12,6 +12,16 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Condición</dt><dd>Una pregunta que se contesta con sí o no: ¿<code>altura &gt;= 120</code>?</dd>
+<dt><code>if</code> y <code>else</code></dt><dd>«Si pasa esto, haz esto (<code>if</code>); si no, haz lo otro (<code>else</code>)».</dd>
+<dt><code>&gt;=</code> y <code>&gt;</code></dt><dd><code>&gt;=</code> = mayor <strong>o igual</strong> (120 entra). <code>&gt;</code> = solo mayor (120 no entra).</dd>
+<dt><code>===</code></dt><dd>«Es igual a». Con <strong>tres</strong> iguales, para comparar.</dd>
+</dl>
+</div>
+
 <h2>Tomar decisiones: if y else</h2>
 <p>Hasta ahora, la página respondía <strong>siempre lo mismo</strong>. Con <code>if</code> (en inglés, "si") puede responder <strong>distinto según lo que pase</strong>:</p>
 <div class="probador" aria-label="if y else">
@@ -52,13 +62,15 @@ if (edad >= 12) {
 <div class="lab" data-lab="simulacion" data-sim="prueba-casos" aria-label="Prueba el límite"></div>
 
 <h3>Ejercicio 1 — Montaña rusa</h3>
-<p>Abre <code>s15-ej1.html</code> y crea <code>s15-ej1.js</code> al lado. Guarda una altura en una variable y, con un <code>if</code>, escribe en la consola si puedes subir (120 cm o más) o no.</p>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong> (y la consola, con F12 → <strong>Console</strong>). Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s15/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s15/ej1.webp" alt="Página Montaña rusa con el texto Para subir tienes que medir 120 cm o más. En la consola sale Puedes subir a la montaña rusa. (1). Notas: 2, en el js la variable altura vale 130 y hay un if con su else; 3, si cambias altura a 110 y guardas, sale Todavía no puedes subir." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Con <code>altura</code> a 130, sale "Puedes subir a la montaña rusa.".</li>
-<li>② Un <code>if</code> que compara <code>altura</code> con 120, y su <code>else</code>.</li>
-<li>③ Con <code>altura</code> a 110, sale "Todavía no puedes subir.".</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s15-ej1.html</code> (el <code>&lt;script&gt;</code> ya está), crea <code>s15-ej1.js</code> al lado y abre la página con <strong>Go Live</strong> y la consola (F12).</li>
+<li>La variable: <code>let altura = 130;</code><span class="mira">La consola sigue vacía y sin errores.</span></li>
+<li>② Escribe <code>if (altura &gt;= 120) {</code>, Intro, y cierra con <code>}</code>. Dentro, un <code>console.log</code> con <code>Puedes subir a la montaña rusa.</code><span class="mira">① En la consola sale «Puedes subir a la montaña rusa.».</span></li>
+<li>② Pegado a la <code>}</code>, escribe <code>else {</code>, Intro, y cierra con <code>}</code>. Dentro, un <code>console.log</code> con <code>Todavía no puedes subir.</code><span class="mira">Sigue saliendo solo el primer mensaje.</span></li>
+<li>③ Cambia la altura a <code>110</code> y guarda.<span class="mira">Ahora sale «Todavía no puedes subir.».</span></li>
+</ol>
 <details><summary>Pista</summary>
 <p>Copia la estructura del ejemplo de arriba y cambia la variable, el número y los dos mensajes.</p>
 </details>

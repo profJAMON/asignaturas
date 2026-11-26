@@ -8976,6 +8976,7 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
   counter-increment: pp;
   position: relative;
   margin: 0;
+  min-width: 0;
   padding: 0.55rem 0.8rem 0.6rem 2.9rem;
   border: 1px solid var(--border);
   border-left: 3px solid var(--accent);

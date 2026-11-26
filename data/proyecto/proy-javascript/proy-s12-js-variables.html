@@ -12,6 +12,17 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>JavaScript</dt><dd>El archivo que hace que la página <strong>haga cosas</strong>: responder a un clic, calcular. Acaba en <code>.js</code>.</dd>
+<dt>Consola</dt><dd>Una ventana de Chrome donde JavaScript escribe mensajes. Se abre con F12 → <strong>Console</strong>.</dd>
+<dt><code>console.log</code></dt><dd>La orden que escribe un mensaje en la consola.</dd>
+<dt>Variable</dt><dd>Una caja con nombre donde guardas un dato: <code>let edad = 15;</code></dd>
+<dt>Texto y número</dt><dd>Un texto va entre comillas (<code>"Hola"</code>); un número, sin comillas (<code>15</code>).</dd>
+</dl>
+</div>
+
 <h2>Qué es JavaScript</h2>
 <p>Una web con HTML y CSS tiene contenido y aspecto. Pero todavía <strong>no hace nada</strong>: si pulsas un botón, no pasa nada.</p>
 <p><strong>JavaScript</strong> (JS) es un <strong>lenguaje de programación</strong>: le das órdenes al navegador y él las cumple, una detrás de otra. Con JS la web puede calcular, reaccionar a un clic, cambiar textos o esconder cosas.</p>
@@ -75,14 +86,16 @@ console.log("Hoy se juega en el servidor.");
 </div>
 
 <h3>Ejercicio 1 — Hola desde JavaScript</h3>
-<p>Abre <code>s12-ej1.html</code> y crea <code>s12-ej1.js</code> al lado. En el HTML falta una sola cosa: conecta el <code>.js</code> al final del <code>&lt;body&gt;</code>. Después escribe dos <code>console.log</code>. Abre la consola y haz que se vea como en la imagen.</p>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong> (y la consola, con F12 → <strong>Console</strong>). Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s12/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s12/ej1.webp" alt="Página con el título Mi primer JavaScript (1) y el párrafo Abre la consola con F12 para ver los mensajes. Debajo, la consola de Chrome con dos mensajes: Hola desde JavaScript (2) y Me llamo ProfesorCabron (3), los dos de s12-ej1.js. Nota 4: el script está justo antes de cerrar el body." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;h1&gt;</code> y un párrafo. Ya vienen en el HTML.</li>
-<li>② Un <code>console.log</code> con <code>Hola desde JavaScript</code>.</li>
-<li>③ Otro <code>console.log</code> con tu alias.</li>
-<li>④ El <code>&lt;script src="s12-ej1.js"&gt;</code> justo antes de <code>&lt;/body&gt;</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s12-ej1.html</code>. El <code>&lt;h1&gt;</code> y el párrafo ya están (①).</li>
+<li>Crea <code>s12-ej1.js</code> al lado del <code>.html</code>.<span class="mira">En el panel, los dos archivos, uno al lado del otro.</span></li>
+<li>④ En el HTML, justo antes de <code>&lt;/body&gt;</code>, escribe: <code translate="no">&lt;script src="s12-ej1.js"&gt;&lt;/script&gt;</code></li>
+<li>Abre la página con <strong>Go Live</strong> y la consola con <strong>F12</strong> → <strong>Console</strong>.<span class="mira">La consola está abierta y vacía.</span></li>
+<li>② En el <code>.js</code>: <code>console.log</code>, un paréntesis y, dentro, entre comillas, <code>Hola desde JavaScript</code>. Acaba con <code>;</code>.<span class="mira">En la consola sale «Hola desde JavaScript».</span></li>
+<li>③ En la línea de debajo, otro <code>console.log</code> con <code>Me llamo</code> y tu alias.<span class="mira">Salen los dos mensajes, uno debajo del otro.</span></li>
+</ol>
 <details><summary>Pista 1: la consola está vacía</summary>
 <p>Mira el <code>src</code> del <code>&lt;script&gt;</code>: tiene que ser igual que el nombre del archivo, letra a letra. ¿Has guardado los dos archivos?</p>
 </details>

@@ -12,6 +12,16 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Clase</dt><dd>Un nombre en el CSS con su aspecto: <code>.resaltado { … }</code>.</dd>
+<dt><code>classList.add</code></dt><dd>JavaScript le <strong>pone</strong> la clase a un elemento, y cambia su aspecto.</dd>
+<dt><code>classList.remove</code></dt><dd>Se la <strong>quita</strong>.</dd>
+<dt><code>classList.toggle</code></dt><dd>Interruptor: si la tiene, se la quita; si no, se la pone.</dd>
+</dl>
+</div>
+
 <h2>Cambiar el aspecto desde JavaScript</h2>
 <p>La idea aprovecha lo que ya sabes de CSS:</p>
 <ol>
@@ -60,15 +70,17 @@ botonGanador.addEventListener("click", function () {
 <p>Para usar clases, cada ejercicio de hoy tiene también su CSS: <code>s16-ej1.css</code>, conectado con <code>&lt;link&gt;</code> en el <code>&lt;head&gt;</code>, como en la sesión 8.</p>
 
 <h3>Ejercicio 1 — Avisos de clase</h3>
-<p>Abre <code>s16-ej1.html</code> y crea al lado <code>s16-ej1.css</code> y <code>s16-ej1.js</code>. Al pulsar "Resaltar", el aviso se pone con fondo amarillo y en negrita.</p>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong> (y la consola, con F12 → <strong>Console</strong>). Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej1-antes.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej1-antes.webp" alt="Antes de pulsar: página Avisos de clase con el párrafo Examen de mates el jueves. (1) y el botón Resaltar (2)." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s16/ej1-despues.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s16/ej1-despues.webp" alt="Después de pulsar: el párrafo tiene fondo amarillo y está en negrita (3). Nota 4: en s16-ej1.css hay una clase resaltado con fondo amarillo y negrita." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;p id="aviso"&gt;</code>. Ya viene en el HTML.</li>
-<li>② Un <code>&lt;button id="boton-resaltar"&gt;</code>. Ya viene en el HTML.</li>
-<li>③ Al pulsar, el aviso cambia con <code>classList.add</code>.</li>
-<li>④ En el CSS, la clase <code>.resaltado</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s16-ej1.html</code>. El <code>&lt;link&gt;</code> y el <code>&lt;script&gt;</code> ya están. Mira los dos <code>id</code>: <code>aviso</code> (①) y <code>boton-resaltar</code> (②).</li>
+<li>Crea al lado <code>s16-ej1.css</code> y <code>s16-ej1.js</code>. Abre la página con <strong>Go Live</strong> y la consola (F12).</li>
+<li>④ En el <code>.css</code>, la regla <code>.resaltado</code>: fondo (<code>background-color</code>) <code>yellow</code> y negrita (<code>font-weight</code>: <code>bold</code>).<span class="mira">No cambia nada: nadie tiene esa clase todavía.</span></li>
+<li>En el <code>.js</code>, busca el aviso y el botón con <code>querySelector</code>, cada uno en su variable (<code>aviso</code> y <code>boton</code>).<span class="mira">La consola, sin errores en rojo.</span></li>
+<li>La receta del clic: <code>boton.addEventListener("click", function () {</code>, Intro y <code>});</code></li>
+<li>③ Dentro de las llaves: <code>aviso.classList.add("resaltado");</code> (sin punto delante de <code>resaltado</code>).<span class="mira">Pulsas Resaltar y el aviso se pone amarillo y en negrita.</span></li>
+</ol>
 <details><summary>Pista 1: ¿cómo veo si la clase se pone?</summary>
 <p>Pulsa <strong>F12</strong> → pestaña <strong>Elements</strong> y busca el párrafo. Al pulsar el botón, verás aparecer <code>class="resaltado"</code> en su etiqueta.</p>
 </details>

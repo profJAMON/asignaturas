@@ -12,6 +12,17 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Elemento</dt><dd>Cualquier cosa de la página: un título, un párrafo, un botón.</dd>
+<dt><code>id</code></dt><dd>El nombre único de un elemento: <code>id="titulo"</code>. En JavaScript se escribe con <code>#</code> delante: <code>"#titulo"</code>.</dd>
+<dt><code>querySelector</code></dt><dd>«Busca en la página». Lo que encuentra lo guardas en una variable.</dd>
+<dt><code>textContent</code></dt><dd>El texto de dentro de un elemento. Si le das otro, cambia lo que se ve.</dd>
+<dt>Clic</dt><dd>Pulsar con el ratón. <code>addEventListener("click", …)</code> = «cuando hagan clic, haz esto».</dd>
+</dl>
+</div>
+
 <h2>La receta de un botón</h2>
 <p>Casi todo lo que haremos con JavaScript sigue la misma receta de <strong>tres pasos</strong>:</p>
 <ol>
@@ -53,13 +64,15 @@ dato.textContent = "El creeper es el mob más peligroso.";
 <div class="nota">💡 <strong>Truco de VS Code</strong>: en el HTML, escribe <code>p#dato</code> y pulsa <strong>Tab</strong>. VS Code escribe <code>&lt;p id="dato"&gt;&lt;/p&gt;</code>. Funciona con cualquier etiqueta: <code>button#boton-dato</code> + Tab.</div>
 
 <h3>Ejercicio 1 — Cambia el título</h3>
-<p>Abre <code>s13-ej1.html</code> y crea <code>s13-ej1.js</code> al lado. En el HTML ya están el <code>&lt;h1&gt;</code> y el párrafo, cada uno con su <code>id</code>. Con JavaScript, cambia los dos textos para que se vea como en la imagen.</p>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong> (y la consola, con F12 → <strong>Console</strong>). Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" target="_blank"><img src="data/proyecto/proy-javascript/img/proy-s13/ej1.webp" alt="Página con el título Mi página con JavaScript (1) y el párrafo Esto lo ha cambiado JavaScript. (2). Nota 3: en el html, el h1 dice Mi página y el párrafo dice Esto lo he escrito en HTML; lo que se ve lo ha cambiado el js." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;h1 id="titulo"&gt;</code>, cambiado con <code>textContent</code>.</li>
-<li>② Un <code>&lt;p id="subtitulo"&gt;</code>, cambiado con <code>textContent</code>.</li>
-<li>③ En el <code>.html</code> están los textos originales.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Abre <code>s13-ej1.html</code>. Mira los dos <code>id</code>: <code>titulo</code> en el <code>&lt;h1&gt;</code> y <code>subtitulo</code> en el <code>&lt;p&gt;</code>. El <code>&lt;script&gt;</code> ya está.</li>
+<li>Crea <code>s13-ej1.js</code> al lado y abre la página con <strong>Go Live</strong>.<span class="mira">Chrome dice «Mi página» (③).</span></li>
+<li>Busca el título: <code>let titulo = document.querySelector("#titulo");</code><span class="mira">No cambia nada todavía, y la consola no tiene errores en rojo.</span></li>
+<li>① Cambia su texto: <code>titulo.textContent</code>, un <code>=</code> y, entre comillas, el texto nuevo de la imagen. Acaba con <code>;</code>.<span class="mira">El título de Chrome cambia al de la imagen.</span></li>
+<li>② Haz lo mismo con el párrafo: una variable <code>subtitulo</code> con su <code>querySelector("#subtitulo")</code> y, debajo, su <code>textContent</code>.<span class="mira">Los dos textos son los de la imagen. En VS Code, el HTML sigue con los textos viejos.</span></li>
+</ol>
 <details><summary>Pista</summary>
 <p>Necesitas dos <code>querySelector</code> (uno por elemento, cada uno en su variable) y dos líneas con <code>textContent</code>.</p>
 </details>

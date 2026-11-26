@@ -12,6 +12,21 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong> (las vas a usar en todas las sesiones de CSS)</p>
+<pre translate="no"><span class="et">h1</span> {
+    <span class="at">color</span>: <span class="ca">darkgreen</span>;
+}</pre>
+<dl>
+<dt>CSS</dt><dd>El archivo que dice <strong>cómo se ve</strong> la página: colores, tamaños, letra.</dd>
+<dt>Regla</dt><dd>Todo el bloque: desde <code>h1</code> hasta la llave <code>}</code>.</dd>
+<dt>Selector</dt><dd>A quién le das el estilo: <code>h1</code> = a todos los títulos <code>&lt;h1&gt;</code>.</dd>
+<dt>Propiedad</dt><dd>Qué cambias. Va <strong>antes</strong> de los dos puntos: <code>color</code>.</dd>
+<dt>Valor</dt><dd>Cómo lo quieres. Va <strong>después</strong> de los dos puntos y acaba en <code>;</code>: <code>darkgreen</code>.</dd>
+<dt>Clase</dt><dd>Un nombre que tú le pones a una etiqueta (<code>class="oferta"</code>) para darle estilo solo a ella.</dd>
+</dl>
+</div>
+
 <h2>Qué es CSS</h2>
 <p>HTML dice <strong>qué hay</strong> en la página: un título, una lista, una imagen.</p>
 <p><strong>CSS</strong> dice <strong>cómo se ve</strong>: de qué color, de qué tamaño, dónde se coloca.</p>
@@ -70,13 +85,15 @@ p {
 
 <h3>Ejercicio 1 — Conecta tu primer CSS</h3>
 <p>El HTML ya está hecho y ya lleva su <code>&lt;link&gt;</code>. Tú creas el CSS.</p>
-<ol>
+<p>Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
+<ol class="paso-a-paso">
 <li>Abre <code>s08-ej1.html</code> (está en el zip; si no lo tienes, <a href="#descarga-s08">descárgalo aquí</a>). Mira el <code>&lt;head&gt;</code>: esta es la línea que carga el CSS.
 <pre><code><span class='co'>&lt;!-- Esta línea carga el CSS. En href va el nombre del archivo .css --&gt;</span>
 <span class='et'>&lt;link</span> <span class='at'>rel</span>=<span class='ca'>"stylesheet"</span> <span class='at'>href</span>=<span class='ca'>"s08-ej1.css"</span><span class='et'>&gt;</span></code></pre></li>
-<li>Crea el CSS: en el panel de la izquierda de VS Code, pon el ratón sobre el nombre de tu carpeta de ejercicios y pulsa <strong>New File</strong> (la hoja con un +). Escribe <code>s08-ej1.css</code> y pulsa <strong>Intro</strong>.</li>
-<li>Mira el panel: <code>s08-ej1.css</code> tiene que salir <strong>al lado</strong> de <code>s08-ej1.html</code>, no dentro de <code>img</code>. Si ha caído dentro de otra carpeta, arrástralo fuera.</li>
-<li>En el <code>.css</code>, haz que se vea como en la imagen. Guarda los dos archivos y ábrelo con <strong>Go Live</strong>.</li>
+<li>Crea el CSS: en el panel de la izquierda de VS Code, pon el ratón sobre el nombre de tu carpeta de ejercicios y pulsa <strong>New File</strong> (la hoja con un +). Escribe <code>s08-ej1.css</code> y pulsa <strong>Intro</strong>.<span class="mira">En el panel, <code>s08-ej1.css</code> sale <strong>al lado</strong> de <code>s08-ej1.html</code>, no dentro de <code>img</code>. Si ha caído dentro de otra carpeta, arrástralo fuera.</span></li>
+<li>Abre <code>s08-ej1.html</code> con <strong>Go Live</strong>.<span class="mira">Sale la página en Chrome, todavía sin colores.</span></li>
+<li>En el <code>.css</code>, la regla del título: escribe <code>h1 {</code>, pulsa Intro y cierra con <code>}</code>. Dentro, el color (<code>color</code>): <code>darkgreen</code>.<span class="mira">El título es verde oscuro (①).</span></li>
+<li>Debajo, otra regla para toda la página: <code>body</code>. Dentro, el fondo (<code>background-color</code>): <code>lightyellow</code>.<span class="mira">Toda la página es amarillo claro.</span></li>
 </ol>
 <p>El <code>href</code> depende de <strong>dónde está el CSS</strong>, igual que la ruta de una imagen:</p>
 <table>
@@ -159,13 +176,18 @@ h1 {
 </ul>
 
 <h3>Ejercicio 2 — Un cartel de concierto</h3>
-<p>Abre <code>s08-ej2.html</code>. Esta vez el <code>&lt;link&gt;</code> <strong>no está</strong>: escríbelo tú en el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>. Después crea <code>s08-ej2.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen. El HTML no lo tienes que cambiar.</p>
+<ol class="paso-a-paso">
+<li>Abre <code>s08-ej2.html</code>. Esta vez el <code>&lt;link&gt;</code> <strong>no está</strong>: escríbelo tú en el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>. Copia el de <code>s08-ej1.html</code> y cambia el nombre del archivo.</li>
+<li>Crea <code>s08-ej2.css</code> al lado del <code>.html</code>. El HTML no lo tienes que cambiar.</li>
+<li>Haz la lista de debajo de la imagen <strong>línea a línea</strong>. Una propiedad, guardas y miras Chrome.</li>
+</ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej2.webp" alt="Cartel con fondo azul oscuro y todo el texto centrado, en letra Arial. 1, el título Concierto de verano, muy grande y amarillo. 2, el párrafo Sábado 21 de junio, a las 20:00, en blanco y más grande de lo normal. Debajo, el párrafo Plaza Mayor. Entrada gratis., igual. Nota 3: en el head hay un link a s08-ej2.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① El <code>h1</code>: color <code>#ffb703</code> y tamaño <code>50px</code>.</li>
-<li>② Los dos <code>p</code>: tamaño <code>22px</code>.</li>
-<li>Toda la página (<code>body</code>): fondo <code>#1d3557</code>, texto <code>white</code>, letra <code>Arial, sans-serif</code> y texto centrado.</li>
 <li>③ El <code>&lt;link&gt;</code> a <code>s08-ej2.css</code>.</li>
+<li>Toda la página (<code>body</code>): fondo (<code>background-color</code>) <code>#1d3557</code> y texto (<code>color</code>) <code>white</code>.</li>
+<li>Toda la página (<code>body</code>): letra (<code>font-family</code>) <code>Arial, sans-serif</code> y texto centrado (<code>text-align</code>: <code>center</code>).</li>
+<li>① El título (<code>h1</code>): color <code>#ffb703</code> y tamaño (<code>font-size</code>) <code>50px</code>.</li>
+<li>② Los dos párrafos (<code>p</code>): tamaño (<code>font-size</code>) <code>22px</code>.</li>
 </ul>
 <details><summary>Pista 1</summary>
 <p>Necesitas tres reglas: una para <code>body</code>, una para <code>h1</code> y una para <code>p</code>. El centrado y la letra van en <code>body</code>, y así valen para todo.</p>
@@ -225,12 +247,13 @@ body {
 <p>Abre <code>s08-ej3.html</code>. En el HTML solo te faltan dos cosas: el <code>&lt;link&gt;</code> a <code>s08-ej3.css</code> y las <strong>clases</strong> (mira la imagen y la lista de debajo). Después crea <code>s08-ej3.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej3.webp" alt="Carta de pizzería en letra Verdana. 1, el título Pizzería Luna, rojo oscuro y centrado. 2, en la lista, las líneas de Barbacoa y Hawaiana tienen fondo verde claro; Margarita y Cuatro quesos no. 3, el párrafo Todas las pizzas llevan gluten, gris y pequeño. Notas: 4, las dos pizzas en oferta tienen class oferta en el HTML; 5, en el head hay un link a s08-ej3.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① El <code>h1</code>: color <code>firebrick</code> y centrado.</li>
-<li>② Las dos pizzas en oferta: fondo <code>palegreen</code>, con la clase <code>oferta</code>.</li>
-<li>③ El último párrafo: color <code>gray</code> y tamaño <code>14px</code>, con la clase <code>aviso</code>.</li>
-<li>④ La clase <code>oferta</code> está escrita en el HTML de las <strong>dos</strong> pizzas.</li>
-<li>⑤ El <code>&lt;link&gt;</code> a <code>s08-ej3.css</code>.</li>
-<li>Toda la página, con la letra <code>Verdana, sans-serif</code>.</li>
+<li>⑤ En el HTML: el <code>&lt;link&gt;</code> a <code>s08-ej3.css</code>.</li>
+<li>④ En el HTML: <code>class="oferta"</code> en las <strong>dos</strong> pizzas en oferta.</li>
+<li>③ En el HTML: <code>class="aviso"</code> en el último párrafo.</li>
+<li>Toda la página (<code>body</code>): letra (<code>font-family</code>) <code>Verdana, sans-serif</code>.</li>
+<li>① El título (<code>h1</code>): color <code>firebrick</code> y centrado.</li>
+<li>② La regla <code>.oferta</code>, con el punto delante: el verde <code>palegreen</code>.</li>
+<li>③ La regla <code>.aviso</code>: color <code>gray</code> y tamaño (<code>font-size</code>) <code>14px</code>.</li>
 </ul>
 <details><summary>Pista 1</summary>
 <p>La clase se escribe <strong>dentro</strong> de la etiqueta de apertura: en el <code>&lt;li&gt;</code> de Barbacoa y en el de Hawaiana.</p>
@@ -274,23 +297,21 @@ body {
 
 <h3>Ejercicio 4 — La ficha de un superhéroe</h3>
 <p>El ejercicio más largo de hoy: junta todo lo de la sesión. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
-<ol>
-<li>Crea <code>s08-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML: el texto, el mismo que en la imagen; las etiquetas, las que tú creas.</li>
-<li>Guarda y ábrelo con <strong>Go Live</strong>: tiene que salir todo el texto en su orden, todavía sin colores.</li>
-<li>Pon el <code>&lt;link&gt;</code> a <code>s08-ej4.css</code> y las clases.</li>
-<li>Crea <code>s08-ej4.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen.</li>
+<ol class="paso-a-paso">
+<li>Crea <code>s08-ej4.html</code> (con <strong>! + Tab</strong>) y escribe el HTML con el mismo texto que la imagen. Si no sabes qué etiqueta es cada cosa, abre la Pista 1.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s08-ej4.css</code> y las clases <code>lema</code>, <code>poder</code> y <code>firma</code>. Crea el CSS al lado del <code>.html</code>.</li>
+<li>Haz la lista <strong>línea a línea</strong>, en orden. Una propiedad, guardas y miras Chrome.</li>
 </ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s08/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s08/ej4.webp" alt="Ficha con fondo azul muy oscuro, texto blanco y letra Trebuchet. 1, el título Capitán Rayo, grande, dorado y centrado. 2, el lema Más rápido que la luz, centrado y un poco más grande. 3, los títulos Poderes y Punto débil en azul claro. 4, en la lista, Corre a 500 kilómetros por hora y Lanza rayos con las manos en dorado; Ve en la oscuridad, en blanco. 5, la firma Ficha creada por ProfesorCabron, pequeña, gris y a la derecha. Notas: 6, las dos líneas doradas de la lista tienen la misma clase, poder; 7, en el head hay un link a s08-ej4.css." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>En el HTML: el título grande, el lema, los dos títulos medianos, la lista de tres poderes, el párrafo del punto débil y la firma, en ese orden.</li>
-<li>① El <code>h1</code>: color <code>gold</code>, tamaño <code>48px</code> y centrado.</li>
-<li>② El lema, con la clase <code>lema</code>: tamaño <code>20px</code> y centrado.</li>
-<li>③ Los <code>h2</code>: color <code>#7dd3fc</code>.</li>
-<li>④ Dos poderes con la clase <code>poder</code>: color <code>gold</code>.</li>
-<li>⑤ La firma, con la clase <code>firma</code>: color <code>#bbbbbb</code>, tamaño <code>14px</code> y a la derecha (<code>right</code>).</li>
-<li>⑥ Una sola regla <code>.poder</code> para los dos poderes.</li>
 <li>⑦ El <code>&lt;link&gt;</code> a <code>s08-ej4.css</code>.</li>
-<li>Toda la página: fondo <code>#22223b</code>, texto <code>white</code> y letra <code>"Trebuchet MS", sans-serif</code>.</li>
+<li>Toda la página (<code>body</code>): fondo (<code>background-color</code>) <code>#22223b</code>, texto (<code>color</code>) <code>white</code> y letra (<code>font-family</code>) <code>"Trebuchet MS", sans-serif</code>.</li>
+<li>① El <code>h1</code>: color <code>gold</code>, tamaño (<code>font-size</code>) <code>48px</code> y centrado (<code>text-align</code>).</li>
+<li>② <code>.lema</code>: tamaño <code>20px</code> y centrado.</li>
+<li>③ Los <code>h2</code>: color <code>#7dd3fc</code>.</li>
+<li>④ ⑥ Una sola regla <code>.poder</code> para los dos poderes: color <code>gold</code>.</li>
+<li>⑤ <code>.firma</code>: color <code>#bbbbbb</code>, tamaño <code>14px</code> y a la derecha (<code>text-align</code>: <code>right</code>).</li>
 <li>En la firma, tu alias en lugar de ProfesorCabron.</li>
 </ul>
 <details><summary>Pista 1: qué etiqueta es cada cosa</summary>

@@ -1,5 +1,16 @@
 <div class="nota">Hoy, <strong>cada uno en su ordenador</strong>: listas e imágenes. Trabaja en tu carpeta de ejercicios y, al acabar, entrega el zip en Classroom.</div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Lista con puntos</dt><dd><code>&lt;ul&gt;</code>: cosas sin orden (ingredientes).</dd>
+<dt>Lista con números</dt><dd><code>&lt;ol&gt;</code>: cosas en orden (pasos). Los números los pone el navegador.</dd>
+<dt>Elemento</dt><dd>Cada línea de una lista: <code>&lt;li&gt;</code>.</dd>
+<dt>Atributo</dt><dd>Un dato que va <strong>dentro</strong> de la etiqueta de apertura, con la forma <code>nombre="valor"</code>: <code>src="img/luna.png"</code>.</dd>
+<dt>Ruta</dt><dd>El camino hasta un archivo: <code>img/luna.png</code> = «entra en la carpeta <code>img</code> y coge <code>luna.png</code>».</dd>
+</dl>
+</div>
+
 <h2>Listas</h2>
 <h3>Lista con viñetas</h3>
 <p>Para cosas que <strong>no tienen un orden</strong>. <code>&lt;ul&gt;</code> es la lista y cada <code>&lt;li&gt;</code> es un elemento:</p>
@@ -44,13 +55,15 @@
 <p><code>&gt;</code> significa "dentro de" y <code>*3</code> significa "3 veces". Escribe el texto del primero y pulsa <strong>Tab</strong> para saltar al siguiente. Con <code>ol&gt;li*4</code> sale una lista numerada de 4.</p>
 
 <h3>Ejercicio 1 — Un bocadillo</h3>
-<p>Crea <code>s03-ej1.html</code> (con <strong>! + Tab</strong>) y haz que se vea como en la imagen. Escribe las listas con el truco <code>ul&gt;li*4</code> y <code>ol&gt;li*4</code>.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-html/img/proy-s03/ej1.webp" target="_blank"><img src="data/proyecto/proy-html/img/proy-s03/ej1.webp" alt="Página Preparar un bocadillo con dos partes numeradas: 1, una lista con viñetas de ingredientes (Pan, Tomate, Queso, Aceite) debajo del apartado Qué necesitas; 2, una lista numerada de 4 pasos debajo del apartado Pasos." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Una lista <code>&lt;ul&gt;</code> con 4 ingredientes.</li>
-<li>② Una lista <code>&lt;ol&gt;</code> con 4 pasos.</li>
-<li>Cada lista tiene su <code>&lt;h2&gt;</code> encima.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>Crea <code>s03-ej1.html</code>, escribe <code>!</code> + <strong>Tab</strong> y pon <code>Ejercicio 1</code> en el <code>&lt;title&gt;</code>. Ábrelo con <strong>Go Live</strong>.<span class="mira">Página en blanco con la pestaña «Ejercicio 1».</span></li>
+<li>En el <code>&lt;body&gt;</code>, el título de la página (<code>h1</code>) y el primer título mediano (<code>h2</code>), con el texto de la imagen.<span class="mira">Salen los dos títulos.</span></li>
+<li>① Debajo del <code>h2</code>, escribe <code>ul&gt;li*4</code> y pulsa <strong>Tab</strong>. Escribe un ingrediente dentro de cada <code>&lt;li&gt;</code>.<span class="mira">Cuatro ingredientes con un punto delante.</span></li>
+<li>Debajo, el segundo título mediano (<code>h2</code>).</li>
+<li>② Debajo, <code>ol&gt;li*4</code> + <strong>Tab</strong>. Un paso en cada <code>&lt;li&gt;</code>, <strong>sin</strong> escribir los números.<span class="mira">Cuatro pasos con 1, 2, 3 y 4 delante.</span></li>
+</ol>
 <details><summary>Pista</summary>
 <p>¿Lleva puntos o números? Puntos: <code>&lt;ul&gt;</code>. Números: <code>&lt;ol&gt;</code>. Los números <strong>no los escribes tú</strong>: los pone el navegador.</p>
 </details>

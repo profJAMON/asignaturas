@@ -8,6 +8,17 @@
 </table>
 <div class="nota">Hoy: primero, <strong>en pareja</strong>, subís a GitHub la página de la sesión 1 (unos 20 minutos). Después, <strong>cada uno solo</strong>, VS Code y los primeros ejercicios. Al final, entregas tus ejercicios en Classroom.</div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong></p>
+<dl>
+<dt>Abrir y cerrar</dt><dd><code>&lt;p&gt;</code> abre y <code>&lt;/p&gt;</code> (con barra) cierra. Lo de en medio es lo que se ve.</dd>
+<dt><code>&lt;head&gt;</code></dt><dd>La parte de la página que <strong>no</strong> se ve: el título de la pestaña (<code>&lt;title&gt;</code>).</dd>
+<dt><code>&lt;body&gt;</code></dt><dd>La parte que <strong>sí</strong> se ve: títulos, párrafos, imágenes.</dd>
+<dt>Párrafo</dt><dd>Un trozo de texto: <code>&lt;p&gt;</code>.</dd>
+<dt>Subir y descargar</dt><dd>Subir = llevar tus archivos a GitHub. Descargar = traerlos de GitHub a tu ordenador.</dd>
+</dl>
+</div>
+
 <h2>En pareja: vuestra web en GitHub</h2>
 <p>Los ordenadores del aula se actualizan, se estropean y a veces se formatean. Si vuestra web solo está en un ordenador, <strong>un día podéis llegar a clase y no tener nada</strong>. Por eso la guardáis también en <strong>GitHub</strong>, una web donde los programadores guardan su código: es como un Google Drive para programadores.</p>
 <p>Ya tenéis la cuenta de GitHub de la pareja, y os he creado un <strong>repositorio</strong>: la carpeta de vuestra web guardada en GitHub. Más adelante, desde ahí se publicará vuestra web en Internet.</p>
@@ -168,13 +179,16 @@
 <div class="nota">💡 Live Server abre la página en la que estás. Para ver <strong>otro</strong> ejercicio, cambia el final de la dirección en Chrome (<code>…/s02-ej1.html</code> → <code>…/s02-ej2.html</code>), o pulsa con el botón derecho dentro del código → <strong>Open with Live Server</strong>.</div>
 
 <h3>Ejercicio 1 — Tu primera página en un minuto</h3>
-<p>Crea <code>s02-ej1.html</code>, escribe su estructura con <strong>! + Tab</strong> y haz que se vea como en la imagen. Usa <strong>h1 + Tab</strong> y <strong>p + Tab</strong> para las etiquetas.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no pasa lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-arranque/img/proy-s02/ej1.webp" target="_blank"><img src="data/proyecto/proy-arranque/img/proy-s02/ej1.webp" alt="Página con dos partes numeradas: 1, el título Mi primera página; 2, el párrafo La he hecho con VS Code en menos de un minuto. Nota 3: el título de la pestaña es Ejercicio 1." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Un <code>&lt;h1&gt;</code>.</li>
-<li>② Un <code>&lt;p&gt;</code>.</li>
-<li>③ El <code>&lt;title&gt;</code> es <code>Ejercicio 1</code> y el <code>lang</code> es <code>es</code>.</li>
-</ul>
+<ol class="paso-a-paso">
+<li>En tu carpeta de ejercicios, crea <code>s02-ej1.html</code> (New File).<span class="mira">El archivo sale en el panel de la izquierda.</span></li>
+<li>Escribe <code>!</code> y pulsa <strong>Tab</strong>.<span class="mira">Sale toda la estructura: <code>&lt;head&gt;</code>, <code>&lt;title&gt;</code>, <code>&lt;body&gt;</code>…</span></li>
+<li>③ En la primera línea, cambia <code>lang="en"</code> por <code>lang="es"</code>. Dentro de <code>&lt;title&gt;</code>, borra <code>Document</code> y escribe <code>Ejercicio 1</code>.</li>
+<li>Pulsa <strong>Go Live</strong> (abajo a la derecha).<span class="mira">La pestaña de Chrome dice «Ejercicio 1» y la página está en blanco.</span></li>
+<li>① Dentro del <code>&lt;body&gt;</code>, escribe <code>h1</code> + <strong>Tab</strong> y, dentro, el título de la imagen.<span class="mira">Sale el título grande.</span></li>
+<li>② Debajo, <code>p</code> + <strong>Tab</strong> y, dentro, el texto de la imagen.<span class="mira">Sale el párrafo debajo del título.</span></li>
+</ol>
 <p>Si lo has hecho bien: con Live Server abierto, la <strong>pestaña</strong> de Chrome pone "Ejercicio 1".</p>
 
 <h2>Títulos y párrafos</h2>
