@@ -1,0 +1,113 @@
+<h2>Qué vas a hacer</h2>
+<p>Tengo unos switches que el instituto ha ido cambiando porque <strong>alguna boca no funciona</strong>. Hoy los pruebas boca a boca, marcas las que están rotas y después <strong>unes dos switches</strong> para que dos ordenadores se hablen, como en tu aula, donde el switch principal da red al switch pequeño de al lado de mi mesa.</p>
+<p>La regla de hoy: para saber si una boca funciona, <strong>prueba con un latiguillo que sepas que funciona</strong>. Si pruebas con un cable dudoso y no se enciende nada, no sabrás si falla la boca o el cable.</p>
+
+<h2>Ensáyalo primero en la pantalla</h2>
+<h3>Actividad 1 — Prueba las bocas de un switch</h3>
+<p>En la simulación hay un switch con dos bocas rotas, un latiguillo hecho y el tuyo, sin comprobar.</p>
+<ol>
+<li>Prueba las ocho bocas del switch A y marca las que no encienden LINK.</li>
+<li>Une el switch A con el B por una boca que funcione.</li>
+<li>Haz ping del PC 1 al PC 2. Cuando salga «¡Misión cumplida!», apunta en tu hoja de práctica lo que te pide (pregunta 1).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="prueba-bocas" aria-label="Prueba las bocas de un switch"></div>
+<p><strong>Comprobación observable:</strong> el ping responde y las cuatro casillas de la misión están marcadas.</p>
+
+<h2>Material y equipo</h2>
+<ul>
+<li>Dos switches de prácticas (A y B), cada uno con su alimentador</li>
+<li>Cuatro <strong>latiguillos ya hechos</strong>, que funcionan seguro</li>
+<li>Tu latiguillo del taller de la sesión 5</li>
+<li>Dos ordenadores del taller</li>
+<li>Cinta de carrocero y rotulador, para marcar las bocas rotas</li>
+<li>El comprobador de cable (solo uno funciona: pide turno)</li>
+</ul>
+<div class="nota">Los switches del aula de informática <strong>no se tocan</strong>: de ellos cuelga la red de toda la clase. Hoy se trabaja solo con los de prácticas.</div>
+
+<h2>Paso a paso</h2>
+
+<h3>1. Asegúrate de que el latiguillo funciona</h3>
+<p>Coge un latiguillo hecho y pásalo por el comprobador: <strong>1-1, 2-2 … 8-8</strong>. Ese es tu cable de prueba. No lo cambies en toda la prueba.</p>
+
+<h3>2. Enciende el switch A</h3>
+<p>Conecta su alimentador. Tiene que encenderse la luz de <strong>corriente</strong> (<em>power</em>). Si no se enciende, avísame antes de seguir.</p>
+
+<h3>3. Prueba la primera boca</h3>
+<p>Latiguillo del <strong>PC 1</strong> a la <strong>boca 1</strong> del switch A. En unos segundos se enciende la luz <strong>LINK</strong> de esa boca y la de la tarjeta de red del PC.</p>
+
+<h3>4. Boca a boca</h3>
+<p>Pasa el mismo latiguillo por todas las bocas, una detrás de otra, y apunta en la hoja si se enciende LINK.</p>
+<ul>
+<li>Si una boca no enciende, vuelve a probar en una que ya funcionaba. Si ahí sí enciende, el cable está bien: <strong>la boca está rota</strong>.</li>
+<li>Pon un trozo de cinta con una cruz encima de cada boca rota.</li>
+</ul>
+
+<h3>5. El switch B</h3>
+<p>Repite los pasos 2 a 4 con el switch B.</p>
+
+<h3>6. Pon una IP a cada ordenador</h3>
+<p>Como en la unidad 1: en Configuración → Red → Ethernet → Asignación de IP, «Manual», IPv4.</p>
+<table>
+<tr><th>Ordenador</th><th>IP</th><th>Máscara</th></tr>
+<tr><td>PC 1</td><td translate="no">192.168.10.1</td><td translate="no">255.255.255.0</td></tr>
+<tr><td>PC 2</td><td translate="no">192.168.10.2</td><td translate="no">255.255.255.0</td></tr>
+</table>
+
+<h3>7. Une los dos switches</h3>
+<ol>
+<li>PC 1 en una boca buena del switch A; PC 2 en una boca buena del switch B.</li>
+<li>Con otro latiguillo hecho, une una boca buena del A con una boca buena del B.</li>
+<li>Mira que se encienda LINK en las dos puntas de esa unión.</li>
+</ol>
+<p>Así está montada tu aula: el switch principal da red al pequeño por un cable, y los ordenadores de cada uno se ven entre sí.</p>
+
+<h3>8. Comprueba con ping</h3>
+<p>En el PC 1, abre la terminal y escribe <code>ping 192.168.10.2</code>. Tienen que salir líneas «Respuesta desde 192.168.10.2».</p>
+<ul>
+<li>Si sale «Tiempo de espera agotado», puede ser el cortafuegos de Windows del PC 2 (unidad 6): mira las luces LINK primero y, si están bien, pregúntame.</li>
+<li>Si sale «Error general», el PC 1 no tiene enlace: mira su LINK.</li>
+</ul>
+
+<h3>9. Ahora con tu latiguillo</h3>
+<p>Cambia el latiguillo del PC 1 por el que hiciste en la sesión 5. ¿Sigue respondiendo el ping? Si no, ya sabes que el fallo es tu cable: llévalo al comprobador.</p>
+
+<h3>10. Deja todo como estaba</h3>
+<p>Vuelve a poner los dos ordenadores en «Automático (DHCP)». Si no, el próximo que se siente en ese ordenador no tendrá red. Desenchufa los switches y recoge los latiguillos.</p>
+
+<h2>Los errores de siempre</h2>
+<table>
+<tr><th>Error</th><th>Qué pasa</th><th>Cómo evitarlo</th></tr>
+<tr><td>Probar con un cable sin comprobar</td><td>No sabes si falla la boca o el cable</td><td>Siempre el mismo latiguillo hecho</td></tr>
+<tr><td>Unir los switches por una boca rota</td><td>No hay LINK en la unión y el ping no llega</td><td>Usar bocas que ya has probado</td></tr>
+<tr><td>Las dos IP iguales, o de redes distintas</td><td>El ping no responde aunque haya LINK</td><td>192.168.10.1 y 192.168.10.2, máscara 255.255.255.0</td></tr>
+<tr><td>Dejar la IP manual al acabar</td><td>El ordenador se queda sin red en la siguiente clase</td><td>Volver a «Automático (DHCP)»</td></tr>
+</table>
+
+<h2>Qué voy a mirar</h2>
+<ul>
+<li>Las bocas rotas, marcadas con cinta, y la tabla de bocas completa.</li>
+<li>Los dos switches unidos por bocas buenas y el ping respondiendo.</li>
+<li>Los ordenadores otra vez en DHCP y el puesto recogido.</li>
+</ul>
+
+<h2>Para contestar en el cuaderno</h2>
+<div class="papel">
+<p class="papel__titulo">Hoja de práctica — bocas de un switch</p>
+<ol>
+<li><strong>(Actividad 1)</strong> En la simulación: por qué se prueba con un latiguillo de los que ya están hechos, qué bocas del switch A no funcionaban y por qué bocas has unido los dos switches.</li>
+<li>Tabla del switch A y del switch B: cada boca y si enciende LINK.</li>
+<li>Por qué bocas has unido los dos switches.</li>
+<li>Resultado del <code>ping</code> con el latiguillo hecho y con el tuyo.</li>
+<li>Dibuja cómo está montada tu aula: el switch principal, el pequeño y los ordenadores de cada uno. ¿En qué se parece a lo que has montado hoy?</li>
+</ol>
+</div>
+
+<h2>Antes de seguir</h2>
+<details>
+<summary>🤔 Pruebas una boca con tu latiguillo y no se enciende LINK. ¿Está rota la boca?</summary>
+<p>No lo sabes. Puede ser la boca o tu cable. Prueba la misma boca con un <strong>latiguillo que funcione</strong>: si enciende, el roto era tu cable.</p>
+</details>
+<details>
+<summary>🤔 Hay LINK en los dos ordenadores y en la unión, pero el ping no responde. ¿Qué miras?</summary>
+<p>Las <strong>IP</strong>: que sean distintas y de la misma red (192.168.10.1 y .2 con 255.255.255.0). Y el cortafuegos del ordenador que recibe el ping.</p>
+</details>

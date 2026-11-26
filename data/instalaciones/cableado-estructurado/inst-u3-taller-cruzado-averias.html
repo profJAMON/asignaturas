@@ -77,6 +77,16 @@
 <p>Pruébalo tú: elige un cable y mira cómo recorre los 8 pines. Compara siempre las dos filas de luces.</p>
 <div class="lab" data-lab="piezas" data-figura="averias" aria-label="El comprobador ante cada avería"></div>
 
+<h3>Actividad 1 — ¿Qué le pasa a cada cable?</h3>
+<p>Cuatro cables numerados. Mira las luces de cada uno y di qué le pasa.</p>
+<ol>
+<li>Toca «Cable 1» y compara las dos filas de luces.</li>
+<li>Elige la avería. Si fallas, el aviso te dice qué mirar.</li>
+<li>Haz lo mismo con los cables 2, 3 y 4. Cuando salga «¡Misión cumplida!», apunta en tu hoja de práctica lo que te pide (pregunta 1).</li>
+</ol>
+<div class="lab" data-lab="simulacion" data-sim="lee-comprobador" aria-label="Lee el comprobador"></div>
+<p><strong>Comprobación observable:</strong> los cuatro cables tienen su casilla marcada en la misión.</p>
+
 <h3>El par partido, explicado</h3>
 <p>Es la avería más traicionera. Imagina que en los dos extremos pones los colores en este orden: blanco-naranja, naranja, blanco-verde, verde, azul, blanco-azul, blanco-marrón, marrón. Cada pin llega a su pin, así que el comprobador dice «perfecto». Pero los pines 3 y 6, que tienen que ir por <strong>el mismo par</strong>, ahora van por hilos de pares distintos. Ya no hay trenzado que anule el ruido, y el cable da errores o no enlaza a gigabit.</p>
 <p>Moraleja: <strong>el orden de la norma no es un capricho</strong>. Y que el téster diga que sí no te exime de mirar los colores.</p>
@@ -86,7 +96,7 @@
 <h2>Parte 3: el reto de las averías</h2>
 <p>Te daré cables estropeados a propósito, numerados. Para cada uno:</p>
 <ol>
-<li>Pásalo por el comprobador y <strong>dibuja las luces</strong> en tu hoja.</li>
+<li>Pásalo por el comprobador y <strong>dibuja las luces</strong> en tu hoja. Solo hay un comprobador que funcione: id por turnos. Mientras esperas, mira los conectores del cable y apunta qué crees que le pasa.</li>
 <li>Di <strong>qué avería</strong> es y <strong>en qué extremo</strong> crees que está (mira los conectores).</li>
 <li>Propón el arreglo y, si te lo digo, <strong>arréglalo</strong> y vuelve a comprobarlo.</li>
 </ol>
@@ -105,6 +115,7 @@
 <div class="papel">
 <p class="papel__titulo">Hoja de práctica 2 — rellénala a mano mientras trabajas</p>
 <ol>
+<li><strong>(Actividad 1)</strong> De la simulación: dibuja las luces del cable con hilos cruzados y di qué extremo revisarías y cómo lo arreglarías.</li>
 <li>Tabla de colores de tu cable cruzado, extremo por extremo.</li>
 <li>Dibuja las luces del comprobador con tu cable cruzado. ¿Coinciden con las que tocan?</li>
 <li>Resultado del <code>ping</code> entre los dos PC: ¿ha funcionado con el cruzado? ¿Y con el directo? ¿Por qué?</li>

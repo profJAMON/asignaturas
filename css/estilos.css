@@ -8922,3 +8922,41 @@ button.w11-drive__item:hover { background: var(--w11-acento-claro); }
 .leccion .mr-parte td { white-space: nowrap; }
 .mr-ips { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0.5rem; }
 .leccion .mr-encargo__texto { font-size: 0.95rem; color: var(--text); }
+
+/* ============================================================
+   Simulaciones del taller (26/11/2026, js/sim-cableado.js):
+   hilos de colores, pines, luces del comprobador, ranuras de la
+   toma y bocas del switch. Sin colores nuevos: --hilo-* (clases
+   h-*), --ok, --error, --border, --accent.
+   ============================================================ */
+.leccion .simt-zona { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.leccion .simt-hilo { display: inline-flex; align-items: center; gap: 0.35rem; min-width: 0; }
+.leccion .simt-hilo i { display: inline-block; width: 1.6rem; height: 0.9rem; border-radius: 3px; border: 1px solid var(--border); flex: none; }
+.leccion .simt-hilo__nombre { font-size: 0.85rem; }
+.leccion .simt-boton-hilo { min-height: 40px; }
+.leccion .simt-boton-hilo[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.leccion .simt-pines { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.3rem; }
+.leccion .simt-pin { display: flex; align-items: center; gap: 0.4rem; border: 1px dashed var(--border); border-radius: 4px; padding: 0.25rem 0.4rem; min-width: 0; font-size: 0.85rem; }
+.leccion .simt-pin b { font-family: var(--font-mono); }
+.leccion .simt-hueco { color: var(--text-dim); }
+.leccion .simt-revision { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; }
+.leccion .simt-luces { display: grid; grid-template-columns: 1.6rem repeat(8, minmax(0, 1fr)); gap: 3px; max-width: 26rem; font-family: var(--font-mono); font-size: 0.8rem; align-items: center; }
+.leccion .simt-luces__fila { font-weight: 700; color: var(--text-dim); }
+.leccion .simt-luz { display: flex; align-items: center; justify-content: center; min-height: 1.8rem; border-radius: 999px; border: 2px solid var(--border); }
+.leccion .simt-luz--p { border-color: var(--accent); }
+.leccion .simt-luz--ok { border-color: var(--ok); color: var(--ok); font-weight: 700; }
+.leccion .simt-luz--mal { border-color: var(--error); color: var(--error); font-weight: 700; }
+.leccion .simt-luz--off { border-style: dashed; color: var(--text-dim); }
+.leccion .simt-ranuras { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.35rem; }
+.leccion .simt-ranura { width: 100%; display: flex; flex-direction: column; align-items: flex-start; gap: 0.2rem; text-align: left; }
+.leccion .simt-etq { display: inline-flex; align-items: center; gap: 0.3rem; font-family: var(--font-mono); font-size: 0.75rem; }
+.leccion .simt-etq .simt-hilo__nombre { display: none; }
+.leccion .simt-ranura__dentro { font-size: 0.75rem; color: var(--text-dim); }
+.leccion .simt-switch { list-style: none; margin: 0; padding: 0.4rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.4rem; border: 2px solid var(--border); border-radius: 6px; }
+.leccion .simt-boca { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; min-width: 0; }
+.leccion .simt-boca .lab__boton { width: 100%; font-size: 0.8rem; }
+.leccion .simt-boca__luz { font-family: var(--font-mono); font-size: 0.7rem; min-height: 1.4rem; padding: 0 0.4rem; border-radius: 999px; border: 2px solid var(--border); display: inline-flex; align-items: center; }
+.leccion .simt-ping { margin: 0; font-size: 0.8rem; white-space: pre-wrap; overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .leccion .simt-pines, .leccion .simt-ranuras, .leccion .simt-switch { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

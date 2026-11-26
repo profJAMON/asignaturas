@@ -320,7 +320,7 @@ const CALENDARIO_INSTALACIONES = {
     {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
-      "horas": "1r: 24 · 2n: 12",
+      "horas": "1r: 24 · 2n: 14",
       "sesiones": [
         "inst-u8-que-es",
         "inst-u8-canalizaciones",
@@ -331,7 +331,7 @@ const CALENDARIO_INSTALACIONES = {
         "inst-u8-taller-toma-panel",
         "inst-u8-plano",
         "inst-u8-taller-canaleta",
-        "inst-taller-conector-f",
+        "inst-u8-taller-switches",
         "inst-u9-oficina-diseno",
         "inst-u9-oficina-montaje",
         "inst-u9-oficina-entrega"
@@ -343,7 +343,7 @@ const CALENDARIO_INSTALACIONES = {
         },
         "2n": {
           "inicio": "2027-03-08",
-          "fin": "2027-03-16"
+          "fin": "2027-03-17"
         }
       }
     },
@@ -837,10 +837,11 @@ const CALENDARIO_INSTALACIONES = {
       "unidad": "cableado-estructurado",
       "1r": "2027-06-08"
     },
-    "inst-taller-conector-f": {
-      "titulo": "Sesión 10 — Taller: conector F en cable coaxial",
+    "inst-u8-taller-switches": {
+      "titulo": "Sesión 10 — Taller: prueba las bocas de un switch y une dos switches",
       "unidad": "cableado-estructurado",
-      "1r": "2027-06-08"
+      "1r": "2027-06-08",
+      "2n": "2027-03-17"
     },
     "inst-u9-oficina-diseno": {
       "titulo": "Sesión 11 — Proyecto: diseña la red de la gestoría",

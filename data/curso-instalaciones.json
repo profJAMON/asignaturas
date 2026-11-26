@@ -136,7 +136,7 @@
     {
       "id": "cableado-estructurado",
       "titulo": "Unidades 8 y 9. Cableado estructurado y montaje de la red",
-      "descripcion": "El final del curso, sin examen: cómo se cablea un edificio (tomas, canalizaciones, armario y documentación) y el taller (latiguillos, tomas de pared, panel de parcheo y canaleta). 1r acaba con el proyecto de montar la red de una gestoría; 2n hace las sesiones 1 a 6.",
+      "descripcion": "El final del curso, sin examen: cómo se cablea un edificio (tomas, canalizaciones, armario y documentación) y el taller (latiguillos, tomas de pared, panel de parcheo, switches y canaleta). 1r acaba con el proyecto de montar la red de una gestoría; 2n hace las sesiones 1 a 7 y la 10.",
       "sesiones": [
         "inst-u8-que-es",
         "inst-u8-canalizaciones",
@@ -147,7 +147,7 @@
         "inst-u8-taller-toma-panel",
         "inst-u8-plano",
         "inst-u8-taller-canaleta",
-        "inst-taller-conector-f",
+        "inst-u8-taller-switches",
         "inst-u9-oficina-diseno",
         "inst-u9-oficina-montaje",
         "inst-u9-oficina-entrega"
