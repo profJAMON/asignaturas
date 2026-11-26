@@ -12,6 +12,20 @@
 </ol>
 </div>
 
+<div class="palabras">
+<p><strong>📖 Palabras de hoy</strong> (salen en todos los ejercicios)</p>
+<pre translate="no"><span class="et">.aviso</span> {
+    <span class="at">padding</span>: <span class="ca">15px</span>;
+}</pre>
+<dl>
+<dt>Regla</dt><dd>Todo el bloque: desde <code>.aviso</code> hasta la llave <code>}</code>.</dd>
+<dt>Selector</dt><dd>A quién le das el estilo. <code>.aviso</code> = a lo que tiene <code>class="aviso"</code>.</dd>
+<dt>Propiedad</dt><dd>Qué cambias. Va <strong>antes</strong> de los dos puntos: <code>padding</code>.</dd>
+<dt>Valor</dt><dd>Cuánto o cómo. Va <strong>después</strong> de los dos puntos y acaba en <code>;</code>: <code>15px</code>.</dd>
+<dt>px</dt><dd>Píxel, el puntito de la pantalla. <code>15px</code> es poco; <code>100px</code>, mucho.</dd>
+</dl>
+</div>
+
 <h2>Todo es una caja</h2>
 <p>Para el navegador, <strong>cada etiqueta es una caja</strong>: un título, un párrafo, una lista. Cada caja tiene cuatro capas, de dentro hacia fuera:</p>
 <div class="salida">
@@ -97,16 +111,20 @@ body {
 </details>
 
 <h3>Ejercicio 1 — Avisos del instituto</h3>
-<p>Abre <code>s09-ej1.html</code>. Te falta el <code>&lt;link&gt;</code>: escríbelo en el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>. Después crea <code>s09-ej1.css</code> al lado del <code>.html</code> y haz que se vea como en la imagen. El HTML no lo tienes que cambiar.</p>
+<p>Mira la imagen: tu página se tiene que ver igual. Hazlo <strong>paso a paso</strong>. Después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>. Si no cambia lo que dice el 👀, no sigas: arréglalo primero.</p>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej1.webp" alt="Página Avisos en letra Arial con dos avisos. 1, cada aviso es un recuadro amarillo claro con borde naranja, esquinas redondeadas y espacio entre el texto y el borde. Nota 2: los dos avisos tienen class aviso y una sola regla en el CSS." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
-<ul class="checklist">
-<li>① Cada aviso: fondo <code>#fff3bf</code>, relleno de <code>15px</code>, borde de <code>2px</code> sólido naranja (<code>orange</code>) y esquinas de <code>10px</code>.</li>
-<li>② Una sola regla <code>.aviso</code> en el CSS.</li>
-<li>El <code>&lt;link&gt;</code> a <code>s09-ej1.css</code>.</li>
-<li>Toda la página, con la letra <code>Arial, sans-serif</code>.</li>
-</ul>
-<details><summary>Pista</summary>
-<p>Escribe una propiedad cada vez y guarda. Primero el fondo, después el <code>padding</code>, después el borde y al final las esquinas. Así ves qué cambia cada una.</p>
+<ol class="paso-a-paso">
+<li>Abre <code>s09-ej1.html</code>. En el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, escribe:<br><code translate="no">&lt;link rel="stylesheet" href="s09-ej1.css"&gt;</code><br>El resto del HTML no se toca.</li>
+<li>Crea el archivo <code>s09-ej1.css</code> (New File, como en la <a href="tema.html?id=proy-s08-css">sesión 8</a>).<span class="mira">En el panel de la izquierda, <code>s09-ej1.css</code> está justo al lado de <code>s09-ej1.html</code>, no dentro de otra carpeta.</span></li>
+<li>Haz una regla para <code>body</code> con la letra (<code>font-family</code>): <code>Arial, sans-serif</code>.<span class="mira">La letra de toda la página cambia. Si no cambia, el <code>&lt;link&gt;</code> está mal escrito.</span></li>
+<li>Debajo, empieza la regla de los avisos: escribe <code>.aviso {</code>, pulsa Intro y cierra con <code>}</code>. Lo de los pasos 5 a 8 va <strong>dentro</strong> de las llaves.</li>
+<li>El fondo (<code>background-color</code>): <code>#fff3bf</code>.<span class="mira">Los dos avisos son amarillo claro.</span></li>
+<li>El relleno (<code>padding</code>): <code>15px</code>.<span class="mira">Lo amarillo crece y el texto se separa del borde de la caja.</span></li>
+<li>El borde (<code>border</code>): <code>2px solid orange</code>. Son tres valores separados por espacios: grosor, tipo de línea y color.<span class="mira">Hay una línea naranja alrededor de cada aviso.</span></li>
+<li>Las esquinas (<code>border-radius</code>): <code>10px</code>.<span class="mira">Las esquinas son redondas. Compara con la imagen: ① y ② tienen que estar.</span></li>
+</ol>
+<details><summary>Pista: no cambia nada al guardar</summary>
+<p>Mira tres cosas, en este orden: que la pestaña de VS Code no tenga el punto blanco (sin guardar); que <code>href</code> diga <code>s09-ej1.css</code> igual que el nombre del archivo; y que cada línea acabe en <code>;</code>.</p>
 </details>
 <p>Si lo has hecho bien: cambias el <code>padding</code> a <code>40px</code> y los recuadros se hacen más altos, pero el texto no cambia de tamaño. Después, déjalo en <code>15px</code>.</p>
 
@@ -145,7 +163,7 @@ body {
 </div>
 <ul>
 <li><code>width</code> es el <strong>ancho</strong> de la caja. Sin él, la tarjeta ocupa todo el ancho de la página.</li>
-<li><code>margin: 20px auto;</code> quiere decir: <strong>20px arriba y abajo</strong>, y <strong>automático a los lados</strong>. El navegador reparte el sitio que sobra a los dos lados y la caja queda <strong>centrada</strong>.</li>
+<li><code>margin: 20px auto;</code> tiene dos valores: <strong>20px arriba y abajo</strong> y <strong><code>auto</code> a los lados</strong>. <code>auto</code> = el mismo hueco a la izquierda que a la derecha. Por eso la caja queda <strong>en el centro</strong>.</li>
 <li>Para poner margen solo por un lado: <code>margin-bottom</code> (abajo), <code>margin-top</code> (arriba)… Igual con <code>padding</code>.</li>
 </ul>
 
@@ -160,14 +178,23 @@ body {
 <div class="lab" data-lab="simulacion" data-sim="centra-tarjeta" aria-label="Centra la tarjeta"></div>
 
 <h3>Ejercicio 2 — La tarjeta de un libro</h3>
-<p>Abre <code>s09-ej2.html</code>. Escribe el <code>&lt;link&gt;</code> a <code>s09-ej2.css</code>, crea el CSS al lado del <code>.html</code> y haz que se vea como en la imagen. La tarjeta ya está hecha: es el <code>&lt;div class="tarjeta"&gt;</code>.</p>
+<p>Igual que el 1, pero ahora los pasos los ordenas tú con la lista de debajo de la imagen.</p>
+<ol class="paso-a-paso">
+<li>Abre <code>s09-ej2.html</code> y escribe el <code>&lt;link&gt;</code> a <code>s09-ej2.css</code>. La tarjeta ya está hecha en el HTML: es el <code>&lt;div class="tarjeta"&gt;</code>.</li>
+<li>Crea <code>s09-ej2.css</code> al lado del <code>.html</code>.</li>
+<li>Haz la lista de abajo <strong>línea a línea</strong>. Una propiedad, guardas y miras Chrome.</li>
+</ol>
 <figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej2.webp" alt="Una tarjeta centrada en la página, en letra Georgia. 1, la tarjeta: fondo amarillo claro, borde azul grueso, esquinas muy redondeadas y espacio por dentro. 2, el título El faro perdido en azul. Debajo, los párrafos Autora: Marta Sol y Una niña descubre un faro que cambia de sitio cada noche. Nota 3: la tarjeta mide 300 píxeles de ancho y está centrada con margin 30px auto." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
-<li>① La tarjeta: fondo <code>lightyellow</code>, relleno de <code>20px</code>, borde de <code>3px</code> sólido <code>#4361ee</code> y esquinas de <code>15px</code>.</li>
-<li>② El <code>h2</code>: color <code>#4361ee</code>.</li>
-<li>③ La tarjeta mide <code>300px</code> de ancho y está centrada con <code>margin: 30px auto;</code>.</li>
-<li>Toda la página, con la letra <code>Georgia, serif</code>.</li>
 <li>El <code>&lt;link&gt;</code> a <code>s09-ej2.css</code>.</li>
+<li>Toda la página (<code>body</code>), con la letra (<code>font-family</code>) <code>Georgia, serif</code>.</li>
+<li>① La tarjeta (<code>.tarjeta</code>): fondo (<code>background-color</code>) <code>lightyellow</code>.</li>
+<li>① Relleno (<code>padding</code>) de <code>20px</code>.</li>
+<li>① Borde (<code>border</code>) de <code>3px</code>, sólido (<code>solid</code>), color <code>#4361ee</code>.</li>
+<li>① Esquinas (<code>border-radius</code>) de <code>15px</code>.</li>
+<li>② El título (<code>h2</code>): color (<code>color</code>) <code>#4361ee</code>.</li>
+<li>③ La tarjeta: ancho (<code>width</code>) de <code>300px</code>.</li>
+<li>③ Y centrada: <code>margin: 30px auto;</code>.</li>
 </ul>
 <details><summary>Pista 1: la tarjeta ocupa todo el ancho</summary>
 <p>Te falta el <code>width</code>. Solo se puede centrar una caja más estrecha que la página.</p>
