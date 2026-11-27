@@ -79,6 +79,28 @@
   "solucion": "soluciones/proy-s09/s09-ej4.html",
   "salida": "../../data/proyecto/proy-css/img/proy-s09/ej4.webp",
   "url": "127.0.0.1:5500/s09-ej4.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "table",
+    "n": 1
+   },
+   {
+    "sel": "tr",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por una fila, su fondo se vuelve azul claro."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s09/s09-ej5.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s09/ej5.webp",
+  "url": "127.0.0.1:5500/s09-ej5.html",
   "ancho": 600,
   "numeros": [
    {

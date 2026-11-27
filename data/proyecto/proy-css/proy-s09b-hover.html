@@ -1,14 +1,14 @@
-<div class="nota">Hoy sigues con la sesión 9: cosas que cambian al pasar el ratón por encima (<code>:hover</code>) y bordes para las tablas. Haces los ejercicios 3 y 4 (<code>s09-ej3</code> y <code>s09-ej4</code>). Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
+<div class="nota">Hoy sigues con la sesión 9: cosas que cambian al pasar el ratón por encima (<code>:hover</code>) y bordes para las tablas. Haces los ejercicios 3, 4 y 5 (<code>s09-ej3</code>, <code>s09-ej4</code> y <code>s09-ej5</code>). Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
 
 <div class="nota" id="descarga-s09b">
-<p><strong>📥 Lo primero de todo: busca <code>s09-ej3.html</code> en tu carpeta</strong></p>
-<p>El ejercicio 3 empieza con <code>s09-ej3.html</code>, que venía en el zip de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>. Abre tu carpeta de ejercicios en VS Code y míralo en el panel de la izquierda.</p>
-<p>Si no lo tienes, descarga el zip otra vez:</p>
+<p><strong>📥 Lo primero de todo: busca <code>s09-ej3.html</code> y <code>s09-ej4.html</code> en tu carpeta</strong></p>
+<p>Los ejercicios 3 y 4 empiezan con estos dos archivos, que vienen en el zip de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>. Abre tu carpeta de ejercicios en VS Code y míralos en el panel de la izquierda. El ejercicio 5 no viene en el zip: lo haces entero tú.</p>
+<p>Si te falta alguno, descarga el zip otra vez:</p>
 <p><a class="boton boton--descarga" href="data/proyecto/proy-css/descargas/s09-ejercicios.zip" download>📥 Descargar el zip</a></p>
 <ol>
 <li>Pulsa el botón. El zip, <code>s09-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
 <li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
-<li>Mueve <code>s09-ej3.html</code> <strong>suelto</strong> a tu carpeta de ejercicios. Los otros dos ya los tienes de la sesión 9a: no los sustituyas, que perderías lo que hiciste.</li>
+<li>Mueve <strong>sueltos</strong> a tu carpeta de ejercicios solo los que te falten (<code>s09-ej3.html</code>, <code>s09-ej4.html</code>). El 1 y el 2 ya los tienes de la sesión 9a: no los sustituyas, que perderías lo que hiciste.</li>
 </ol>
 </div>
 
@@ -139,17 +139,39 @@ tr:hover {
 <p>Reto rápido: hover y tablas.</p>
 <div data-actividad="reto-hover"></div>
 
-<h3>Ejercicio 4 — La web de un club deportivo</h3>
-<p>El ejercicio más largo de hoy: junta todo lo de la sesión. Esta vez <strong>no te doy el HTML</strong>: lo escribes tú mirando la imagen y después le pones el CSS.</p>
+<h3>Ejercicio 4 — La clasificación de una liga</h3>
+<p>Solo la tabla, para practicar sus bordes antes del ejercicio grande. El HTML ya está hecho: tú pones el CSS. Hazlo <strong>paso a paso</strong>: después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej4.webp" alt="Página en letra Arial con el título Liga de fútbol sala y una tabla de cuatro equipos con tres columnas: Equipo, Partidos y Puntos. 1, la tabla tiene líneas finas azules, simples y no dobles, y espacio entre el texto y las líneas. 2, la fila de encabezados tiene el fondo azul y las letras blancas. Nota 3: al pasar el ratón por una fila, su fondo se vuelve azul claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ol class="paso-a-paso">
-<li>Crea <code>s09-ej4.html</code> (con <strong>! + Tab</strong>). Escribe el HTML con el mismo texto que la imagen, en este orden: título grande, las dos tarjetas, el título Horario y la tabla. Si no sabes qué etiqueta es cada cosa, abre la Pista 1.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
-<li>Pon el <code>&lt;link&gt;</code> a <code>s09-ej4.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Abre <code>s09-ej4.html</code>. La tabla ya está hecha: en la primera fila (<code>tr</code>), las celdas son <code>th</code>; en las demás, <code>td</code>. En el <code>&lt;head&gt;</code>, debajo del <code>&lt;title&gt;</code>, escribe el <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
+<li>Crea <code>s09-ej4.css</code> al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra (<code>font-family</code>) <code>Arial, sans-serif</code>.<span class="mira">Todo sale con otra letra.</span></li>
+<li>① Regla para <code>th, td</code> (con la coma): borde (<code>border</code>) de <code>1px</code>, <code>solid</code>, <code>#4361ee</code>.<span class="mira">Cada celda tiene su cuadrito azul. Las líneas salen dobles: es normal.</span></li>
+<li>① Regla para <code>table</code>: sin líneas dobles (<code>border-collapse</code>: <code>collapse</code>).<span class="mira">Las líneas dobles se juntan en una.</span></li>
+<li>① En la regla de <code>th, td</code>: relleno (<code>padding</code>) <code>8px 15px</code>.<span class="mira">El texto ya no toca las líneas.</span></li>
+<li>② Regla para <code>th</code>: fondo (<code>background-color</code>) <code>#4361ee</code> y texto (<code>color</code>) <code>white</code>.<span class="mira">La fila de arriba es azul con letras blancas.</span></li>
+<li>③ Regla <code>tr:hover</code>: fondo <code>#e0e7ff</code>.<span class="mira">Pasas el ratón por una fila y se pone azul clarito.</span></li>
+</ol>
+<details><summary>Pista 1: siguen saliendo líneas dobles</summary>
+<p><code>border-collapse</code> va en la regla de <code>table</code>, no en la de <code>th, td</code>.</p>
+</details>
+<details><summary>Pista 2: solo tienen borde los encabezados (o solo los datos)</summary>
+<p>Mira el selector: tienen que estar los dos, <code>th, td</code>, separados por una coma.</p>
+</details>
+<p>Si lo has hecho bien: la tabla tiene líneas simples y, al pasar el ratón de arriba abajo, se ilumina una fila cada vez.</p>
+
+<h3>Ejercicio 5 — La web de un club deportivo</h3>
+<div class="nota">✍️ <strong>Ahora lo haces todo tú.</strong> Este ejercicio no viene en el zip: no te doy el HTML. Creas el archivo desde cero, escribes el HTML mirando la imagen y después le pones el CSS. Igual que harás en vuestra web.</div>
+<p>El ejercicio más largo de hoy: junta todo lo de la sesión (tarjetas, <code>:hover</code> y tablas).</p>
+<ol class="paso-a-paso">
+<li>Crea <code>s09-ej5.html</code> (con <strong>! + Tab</strong>). Escribe el HTML con el mismo texto que la imagen, en este orden: título grande, las dos tarjetas, el título Horario y la tabla. Si no sabes qué etiqueta es cada cosa, abre la Pista 1.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
+<li>Pon el <code>&lt;link&gt;</code> a <code>s09-ej5.css</code> y crea el CSS al lado del <code>.html</code>.</li>
 <li>Haz la lista de debajo de la imagen <strong>línea a línea</strong>. Una propiedad, guardas y miras Chrome.</li>
 </ol>
-<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej4.webp" alt="Web del Club Deportivo Norte en letra Arial, con el título en verde azulado. 1, dos tarjetas, Natación y Escalada, una debajo de otra: fondo verde muy claro, borde verde azulado, esquinas redondeadas y separadas entre sí. 2, la tabla del horario con bordes finos verde azulado, espacio en las celdas y la fila de encabezados con fondo verde azulado y letras blancas. Notas: 3, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 4, al pasar el ratón por una fila de la tabla, su fondo se vuelve naranja claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s09/ej5.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s09/ej5.webp" alt="Web del Club Deportivo Norte en letra Arial, con el título en verde azulado. 1, dos tarjetas, Natación y Escalada, una debajo de otra: fondo verde muy claro, borde verde azulado, esquinas redondeadas y separadas entre sí. 2, la tabla del horario con bordes finos verde azulado, espacio en las celdas y la fila de encabezados con fondo verde azulado y letras blancas. Notas: 3, al pasar el ratón por una tarjeta, su borde se vuelve naranja; 4, al pasar el ratón por una fila de la tabla, su fondo se vuelve naranja claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
 <ul class="checklist">
 <li>En el HTML: el título grande, las dos tarjetas (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo dentro), el título Horario y la tabla, en ese orden.</li>
-<li>El <code>&lt;link&gt;</code> a <code>s09-ej4.css</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s09-ej5.css</code>.</li>
 <li>Toda la página (<code>body</code>): letra (<code>font-family</code>) <code>Arial, sans-serif</code>.</li>
 <li>El título grande (<code>h1</code>): color <code>#2a9d8f</code>.</li>
 <li>① Las tarjetas (<code>.tarjeta</code>): fondo (<code>background-color</code>) <code>#e9f5f3</code> y ancho (<code>width</code>) <code>280px</code>.</li>
@@ -162,13 +184,13 @@ tr:hover {
 <li>④ Con el ratón encima de una fila (<code>tr:hover</code>): el fondo, <code>#ffe8d6</code>.</li>
 </ul>
 <details><summary>Pista 1: qué etiqueta es cada cosa</summary>
-<p>Lo más grande de arriba es un <code>h1</code>. Cada tarjeta, un <code>&lt;div class="tarjeta"&gt;</code> (escríbelo con <strong>.tarjeta + Tab</strong>, el truco de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>) con un <code>h2</code> y un <code>p</code> dentro. Horario, otro <code>h2</code>. La tabla, un <code>table</code> con 4 <code>tr</code>: en la primera, <code>th</code>; en las demás, <code>td</code>. Si dudas, mira tu ejercicio de tablas de la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>
+<p>Lo más grande de arriba es un <code>h1</code>. Cada tarjeta, un <code>&lt;div class="tarjeta"&gt;</code> (escríbelo con <strong>.tarjeta + Tab</strong>, el truco de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>) con un <code>h2</code> y un <code>p</code> dentro. Horario, otro <code>h2</code>. La tabla, un <code>table</code> con 4 <code>tr</code>: en la primera, <code>th</code>; en las demás, <code>td</code>. Si dudas, mira tu ejercicio 4 de hoy o el de tablas de la <a href="tema.html?id=proy-s04-enlaces-tablas">sesión 4</a>.</p>
 </details>
 <details><summary>Pista 2: el borde de la tarjeta no cambia con el ratón</summary>
 <p>En <code>.tarjeta:hover</code> escribe otra vez el <code>border</code> entero (grosor, tipo y color), con el color nuevo.</p>
 </details>
 <details><summary>Pista 3: la tabla tiene líneas dobles</summary>
-<p>Te falta una propiedad en la regla de <code>table</code>. Mira la explicación de las tablas.</p>
+<p>Te falta una propiedad en la regla de <code>table</code>. Mira tu ejercicio 4.</p>
 </details>
 <p>Si lo has hecho bien: pasas el ratón de arriba abajo por la tabla y se ilumina una fila cada vez.</p>
 
