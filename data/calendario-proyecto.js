@@ -50,6 +50,9 @@
      pero sin fecha por sesión, solo con el rango del bloque (14/01 a
      28/01), hasta que Carles decida entre JavaScript y la impresora
      3D. El Bloque 4 (s18-s21) no cambia.
+   - 27/11/2026: la 9a y la 9b se dieron las dos el 26/11. Todo se
+     adelanta una semana: 10a el 03/12, 10b el 10/12 y el taller de CSS
+     (s11) el 17/12. Desde enero no cambia (el 07/01 queda libre).
    - 25/11/2026 (tarde): Carles elige la impresora 3D. Bloque 3b nuevo
      (proy-impresora-3d: 3D1 el 14/01, 3D2 el 21/01, 3D3 el 28/01).
      JavaScript pasa a "extra" (si da tiempo al final): se queda en la
@@ -120,7 +123,7 @@ const CALENDARIO_PROYECTO =
       ],
       "fechas": {
         "inicio": "2026-11-12",
-        "fin": "2027-01-07"
+        "fin": "2026-12-17"
       }
     },
     {
@@ -222,22 +225,22 @@ const CALENDARIO_PROYECTO =
     "proy-s09b-hover": {
       "titulo": "Sesión 9b — Hover y tablas",
       "unidad": "proy-css",
-      "fecha": "2026-12-03"
+      "fecha": "2026-11-26"
     },
     "proy-s10-flexbox": {
       "titulo": "Sesión 10a — Flexbox: cajas en fila",
       "unidad": "proy-css",
-      "fecha": "2026-12-10"
+      "fecha": "2026-12-03"
     },
     "proy-s10b-menu-tarjetas": {
       "titulo": "Sesión 10b — Flexbox: menú y tarjetas",
       "unidad": "proy-css",
-      "fecha": "2026-12-17"
+      "fecha": "2026-12-10"
     },
     "proy-s11-revision-1": {
       "titulo": "Sesión 11 — Taller de CSS y primera revisión",
       "unidad": "proy-css",
-      "fecha": "2027-01-07"
+      "fecha": "2026-12-17"
     },
     "proy-s12-js-variables": {
       "titulo": "Sesión 12 — JavaScript: consola y variables",
