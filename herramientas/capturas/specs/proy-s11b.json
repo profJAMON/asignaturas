@@ -1,0 +1,81 @@
+[
+ {
+  "solucion": "soluciones/proy-s11b/s11b-ej1.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s11b/ej1.webp",
+  "url": "127.0.0.1:5500/s11b-ej1.html",
+  "ancho": 600,
+  "numeros": [
+   {
+    "sel": ".tarjeta",
+    "n": 1
+   },
+   {
+    "sel": ".boton",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "La tarjeta mide 300px de ancho y está centrada. Al pasar el ratón por el botón, su fondo se vuelve rosa."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s11b/s11b-ej2.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s11b/ej2.webp",
+  "url": "127.0.0.1:5500/s11b-ej2.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": "table",
+    "n": 1
+   },
+   {
+    "sel": "tr",
+    "n": 2
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por una fila, su fondo se vuelve naranja claro."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s11b/s11b-ej3.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s11b/ej3.webp",
+  "url": "127.0.0.1:5500/s11b-ej3.html",
+  "ancho": 780,
+  "numeros": [
+   {
+    "sel": "header",
+    "n": 1
+   },
+   {
+    "sel": "nav",
+    "n": 2
+   },
+   {
+    "sel": ".tarjetas",
+    "n": 3
+   }
+  ],
+  "notas": [
+   {
+    "n": 4,
+    "texto": "Al pasar el ratón por un enlace del menú, su fondo se vuelve naranja."
+   },
+   {
+    "n": 5,
+    "texto": "Al pasar el ratón por una tarjeta, su borde se vuelve rojo oscuro."
+   },
+   {
+    "n": 6,
+    "texto": "Si estrechas la ventana, las tarjetas pasan a la línea de abajo."
+   }
+  ]
+ }
+]

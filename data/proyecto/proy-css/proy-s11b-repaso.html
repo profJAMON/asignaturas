@@ -1,0 +1,83 @@
+<div class="nota">Hoy: repaso de todo el CSS antes del examen de HTML y CSS. Son tres ejercicios, cada uno con una imagen, como en el examen. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios.</div>
+
+<div class="nota">✍️ <strong>Hoy lo haces todo tú.</strong> No hay zip: no te doy el HTML. En cada ejercicio creas el archivo desde cero, escribes el HTML mirando la imagen y después le pones el CSS.</div>
+
+<h2>Cómo hacer cada ejercicio</h2>
+<ol class="paso-a-paso">
+<li>Crea el <code>.html</code> con <strong>! + Tab</strong> y escribe el HTML con el mismo texto que la imagen. La primera línea de la lista te dice qué etiquetas y clases van; la Pista 1, qué etiqueta es cada cosa.<span class="mira">Con Go Live sale todo el texto en su orden, todavía sin colores.</span></li>
+<li>Escribe el <code>&lt;link&gt;</code> y crea el <code>.css</code> al lado del <code>.html</code>.</li>
+<li>Haz la lista <strong>línea a línea</strong>. Una propiedad, guardas (Ctrl + S) y miras Chrome.<span class="mira">Cada línea cambia algo en Chrome. Si no cambia nada, arréglalo antes de seguir.</span></li>
+</ol>
+<p>Puedes mirar tus ejercicios de las sesiones 8, 9 y 10 y la <a href="tema.html?id=proy-web-ejemplo-css#chuleta-css">chuleta de CSS</a>. En el examen también podrás mirar tu carpeta de ejercicios.</p>
+
+<h3>Ejercicio 1 — La ficha de un videojuego</h3>
+<p>Una tarjeta centrada con un botón. Repasa las cajas y el <code>:hover</code>.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s11b/ej1.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s11b/ej1.webp" alt="Página Juegos de la semana en letra Arial, con el título morado y centrado. 1, una tarjeta centrada con fondo azul muy claro, borde morado, esquinas redondeadas y todo el texto centrado: el título Space Cats y la frase Aventura en el espacio para 1 o 2 jugadores. 2, el enlace Jugar ahora con forma de botón morado, texto blanco y sin subrayado. Nota 3: la tarjeta mide 300px de ancho y está centrada; al pasar el ratón por el botón, su fondo se vuelve rosa." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>En el HTML (<code>s11b-ej1.html</code>): el título grande y un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>; dentro, el título del juego, el párrafo y un enlace a <code>#</code> con la clase <code>boton</code>.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s11b-ej1.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra <code>Arial, sans-serif</code>. El <code>h1</code>: color <code>#3a0ca3</code> y centrado.</li>
+<li>① La <code>.tarjeta</code>: fondo <code>#edf2fb</code>, ancho (<code>width</code>) <code>300px</code>, relleno <code>20px</code> y texto centrado.</li>
+<li>① La <code>.tarjeta</code>: borde de <code>3px</code>, <code>solid</code>, <code>#3a0ca3</code>, y esquinas de <code>12px</code>.</li>
+<li>① La <code>.tarjeta</code>, centrada en la página: margen (<code>margin</code>) <code>20px auto</code>.</li>
+<li>② El <code>.boton</code>: fondo <code>#3a0ca3</code>, texto <code>white</code>, relleno <code>10px 20px</code>, esquinas <code>8px</code> y sin subrayado.</li>
+<li>③ Con el ratón encima del botón (<code>.boton:hover</code>): fondo <code>#f72585</code>.</li>
+</ul>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Juegos de la semana es un <code>h1</code>. La tarjeta, con <strong>.tarjeta + Tab</strong>. Space Cats, un <code>h2</code>; la frase, un <code>p</code>; y Jugar ahora, un <code>&lt;a class="boton" href="#"&gt;</code>.</p>
+</details>
+<details><summary>Pista 2: la tarjeta no se centra</summary>
+<p><code>margin: 20px auto</code> solo centra si la caja tiene <code>width</code>. Como en la tarjeta del libro de la <a href="tema.html?id=proy-s09-caja">sesión 9a</a>.</p>
+</details>
+<p>Si lo has hecho bien: haces la ventana más ancha y la tarjeta sigue en el centro.</p>
+
+<h3>Ejercicio 2 — El horario de un gimnasio</h3>
+<p>Una tabla con bordes. Repasa las tablas.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s11b/ej2.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s11b/ej2.webp" alt="Página Gimnasio Fuerte en letra Arial, con el título naranja y el subtítulo Clases de la semana. 1, una tabla de tres columnas, Día, Clase y Hora, con bordes naranjas simples, no dobles, y espacio dentro de las celdas: Lunes, Yoga, 18:00; Miércoles, Boxeo, 19:00; Viernes, Zumba, 18:30. 2, la fila de encabezados con fondo naranja y letras blancas. Nota 3: al pasar el ratón por una fila, su fondo se vuelve naranja claro." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>En el HTML (<code>s11b-ej2.html</code>): el título grande, el subtítulo y la tabla, en ese orden.</li>
+<li>El <code>&lt;link&gt;</code> a <code>s11b-ej2.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra <code>Arial, sans-serif</code>. El <code>h1</code>: color <code>#e85d04</code>.</li>
+<li>① Las celdas (<code>th, td</code>): borde de <code>2px</code>, <code>solid</code>, <code>#e85d04</code>, y relleno <code>10px 20px</code>.</li>
+<li>① La tabla (<code>table</code>): sin líneas dobles.</li>
+<li>② Los encabezados (<code>th</code>): fondo <code>#e85d04</code> y texto <code>white</code>.</li>
+<li>③ Con el ratón encima de una fila (<code>tr:hover</code>): fondo <code>#ffe5d0</code>.</li>
+</ul>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Gimnasio Fuerte es un <code>h1</code> y Clases de la semana, un <code>h2</code>. La tabla, un <code>table</code> con 4 <code>tr</code>: en la primera, tres <code>th</code>; en las demás, tres <code>td</code>.</p>
+</details>
+<details><summary>Pista 2: salen líneas dobles</summary>
+<p>Te falta una propiedad en la regla de <code>table</code>. Mira tu ejercicio 4 de la <a href="tema.html?id=proy-s09b-hover">sesión 9b</a>.</p>
+</details>
+<p>Si lo has hecho bien: pasas el ratón de arriba abajo por la tabla y se ilumina una fila cada vez.</p>
+
+<h3>Ejercicio 3 — La web de una pizzería</h3>
+<p>Una web de una página con cabecera, menú y tarjetas en fila. Repasa Flexbox. Es el más largo: es como lo que pedirá el examen.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s11b/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s11b/ej3.webp" alt="Web de la Pizzería Napoli en letra Arial. 1, la cabecera: una franja roja oscura con el título en blanco y centrado. 2, dentro de la cabecera, el menú con Inicio, Carta y Pedidos en fila, centrados, en blanco y sin subrayado. Debajo, el párrafo centrado Pizzas hechas en horno de leña. 3, tres tarjetas en fila y centradas, Margarita, Cuatro quesos y Barbacoa, con fondo crema, borde naranja, esquinas redondeadas, el nombre en rojo oscuro y los ingredientes debajo. Notas: 4, al pasar el ratón por un enlace del menú, su fondo se vuelve naranja; 5, al pasar el ratón por una tarjeta, su borde se vuelve rojo oscuro; 6, si estrechas la ventana, las tarjetas pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ul class="checklist">
+<li>En el HTML (<code>s11b-ej3.html</code>): un <code>header</code> con el título grande y el menú (un <code>nav</code> con tres enlaces a <code>#</code>); el párrafo, con la clase <code>intro</code>; y un <code>&lt;div&gt;</code> con la clase <code>tarjetas</code> con las tres tarjetas dentro (cada una, un <code>&lt;div&gt;</code> con la clase <code>tarjeta</code>, con su título y su párrafo).</li>
+<li>El <code>&lt;link&gt;</code> a <code>s11b-ej3.css</code>.</li>
+<li>Toda la página (<code>body</code>): letra <code>Arial, sans-serif</code>. El párrafo <code>.intro</code>, centrado.</li>
+<li>① El <code>header</code>: fondo <code>#9d0208</code> y relleno <code>15px</code>. El <code>h1</code>: texto <code>white</code> y centrado.</li>
+<li>② El <code>nav</code>: en fila, centrado y con hueco (<code>gap</code>) de <code>10px</code>.</li>
+<li>② Sus enlaces (<code>nav a</code>): texto <code>white</code>, relleno <code>8px 14px</code>, esquinas <code>6px</code> y sin subrayado.</li>
+<li>③ El contenedor <code>.tarjetas</code>: en fila, centrado, con hueco de <code>20px</code> y que bajen si no caben (<code>flex-wrap</code>).</li>
+<li>③ Cada <code>.tarjeta</code>: fondo <code>#fff3e0</code>, ancho <code>160px</code>, relleno <code>15px</code>, borde de <code>3px</code>, <code>solid</code>, <code>#f48c06</code>, y esquinas de <code>12px</code>.</li>
+<li>③ Los títulos de las tarjetas (<code>.tarjeta h2</code>): color <code>#9d0208</code>.</li>
+<li>④ Con el ratón encima de un enlace del menú: fondo <code>#f48c06</code>.</li>
+<li>⑤ Con el ratón encima de una tarjeta: borde <code>#9d0208</code>.</li>
+</ul>
+<details><summary>Pista 1: qué etiqueta es cada cosa</summary>
+<p>Pizzería Napoli es un <code>h1</code>. El menú, con <strong>nav&gt;a*3 + Tab</strong>. Los dos van dentro del <code>header</code>. Cada tarjeta, con <strong>.tarjeta + Tab</strong>, con un <code>h2</code> y un <code>p</code> dentro. Las tres tarjetas, dentro del <code>&lt;div class="tarjetas"&gt;</code>.</p>
+</details>
+<details><summary>Pista 2: de dónde copiar</summary>
+<p>El menú es como el del ejercicio 5 de la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a>; las tarjetas, como las del ejercicio 6. No lo escribas todo de golpe: primero la cabecera y el menú, después las tarjetas y al final los <code>:hover</code>.</p>
+</details>
+<p>Si lo has hecho bien: estrechas la ventana y las tarjetas bajan de línea sin salirse de la pantalla, y el menú sigue centrado.</p>
+
+<h2>Antes de irte</h2>
+<ul class="checklist">
+<li>Ninguna pestaña de VS Code con el punto blanco de "sin guardar".</li>
+<li>Cada ejercicio tiene su <code>.html</code> y su <code>.css</code> en tu carpeta de ejercicios.</li>
+<li>Has entregado el zip de tu carpeta en Classroom, como en la <a href="tema.html?id=proy-s02-github-textos">sesión 2</a>.</li>
+</ul>

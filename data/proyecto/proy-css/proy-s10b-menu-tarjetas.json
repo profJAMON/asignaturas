@@ -2,7 +2,7 @@
   "id": "proy-s10b-menu-tarjetas",
   "titulo": "Sesión 10b — Flexbox: menú y tarjetas",
   "fecha": "",
-  "descripcion": "Ejercicios individuales (2.ª parte de la sesión 10): un menú en fila con :hover, tarjetas en fila y una mini web de una página. Ejercicio 3 con el HTML hecho (el del zip de la 10a); el 4 se hace entero desde la imagen. Truco de VS Code: nav>a*4 + Tab. Al final, en pareja, el boceto de vuestra web con sus colores. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales (2.ª parte de la sesión 10): un menú en fila con :hover, tarjetas en fila y una mini web de una página. Ejercicios 5, 6 (tarjetas en fila) y 7, todos con el HTML hecho (zip de la 10a): solo CSS. Truco de VS Code: nav>a*4 + Tab. Al final, en pareja, el boceto de vuestra web con sus colores. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

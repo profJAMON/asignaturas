@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #9d0208;
+    padding: 15px;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+nav a {
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #f48c06;
+}
+
+.intro {
+    text-align: center;
+}
+
+.tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.tarjeta {
+    background-color: #fff3e0;
+    width: 160px;
+    padding: 15px;
+    border: 3px solid #f48c06;
+    border-radius: 12px;
+}
+
+.tarjeta h2 {
+    color: #9d0208;
+}
+
+.tarjeta:hover {
+    border: 3px solid #9d0208;
+}

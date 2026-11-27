@@ -1,14 +1,14 @@
-<div class="nota">Hoy: pones cajas <strong>en fila</strong> con <strong>Flexbox</strong> y decides cómo se reparte el espacio. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios. Haces los ejercicios 1 y 2. En la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a> harás con esto un menú, una fila de tarjetas y una mini web.</div>
+<div class="nota">Hoy: pones cajas <strong>en fila</strong> con <strong>Flexbox</strong> y decides cómo se reparte el espacio. Trabajas <strong>tú solo</strong>, en tu carpeta de ejercicios. Haces los ejercicios 1, 2, 3 y 4. En la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a> harás con esto un menú, una fila de tarjetas y una mini web.</div>
 
 <div class="nota" id="descarga-s10">
 <p><strong>📥 Lo primero de todo: descarga el HTML de hoy</strong></p>
-<p>Los ejercicios 1, 2 y 3 empiezan con un HTML que te doy hecho. Hoy haces el 1 y el 2. El 3 es para la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a>: déjalo también en tu carpeta.</p>
+<p>Todos los ejercicios de la sesión 10 empiezan con un HTML que te doy hecho: tú solo escribes el CSS. Hoy haces del 1 al 4. Del 5 al 7 son para la <a href="tema.html?id=proy-s10b-menu-tarjetas">sesión 10b</a>: déjalos también en tu carpeta.</p>
 <p><a class="boton boton--descarga" href="data/proyecto/proy-css/descargas/s10-ejercicios.zip" download>📥 Descargar el zip</a></p>
 <ol>
 <li>Pulsa el botón. El zip, <code>s10-ejercicios.zip</code>, se guarda en tu carpeta Descargas.</li>
 <li>Ve a Descargas, botón derecho sobre el zip → Extraer todo.</li>
-<li>Dentro hay tres archivos: <code>s10-ej1.html</code>, <code>s10-ej2.html</code> y <code>s10-ej3.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s10-ejercicios</code> entera).</li>
-<li>Abre tu carpeta de ejercicios en VS Code: los tres tienen que salir en el panel de la izquierda.</li>
+<li>Dentro hay siete archivos: de <code>s10-ej1.html</code> a <code>s10-ej7.html</code>. Muévelos <strong>sueltos</strong> a tu carpeta de ejercicios (no la carpeta <code>s10-ejercicios</code> entera).</li>
+<li>Abre tu carpeta de ejercicios en VS Code: los siete tienen que salir en el panel de la izquierda.</li>
 </ol>
 </div>
 
@@ -192,6 +192,46 @@ body {
 <p>Te falta la propiedad que centra en vertical. Va en <code>.cabecera</code>, no en el botón.</p>
 </details>
 <p>Si lo has hecho bien: haces la ventana más ancha y el botón sigue pegado a la derecha.</p>
+
+<h3>Ejercicio 3 — El pie de una web de recetas</h3>
+<p>El pie de página es la franja de abajo del todo de una web. Aquí repartes sus enlaces con <code>justify-content</code>. Hazlo <strong>paso a paso</strong>: después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej3.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej3.webp" alt="Página Cocina Fácil en letra Arial, con una frase debajo del título. 1, el pie de página: una franja morada con tres enlaces en fila, repartidos con el mismo espacio alrededor de cada uno. 2, los enlaces Recetas, Contacto y Quiénes somos, en blanco y sin subrayado. Nota 3: al pasar el ratón por un enlace, su texto se vuelve amarillo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ol class="paso-a-paso">
+<li>Abre <code>s10-ej3.html</code>. El contenedor es el <code>&lt;footer class="pie"&gt;</code>; dentro hay tres enlaces con <code>class="enlace"</code>. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej3.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra <code>Arial, sans-serif</code>.<span class="mira">Cambia la letra.</span></li>
+<li>① Regla para <code>.pie</code>: fondo (<code>background-color</code>) <code>#6a4c93</code> y relleno (<code>padding</code>) <code>15px</code>.<span class="mira">Una franja morada debajo de la frase.</span></li>
+<li>② Regla para <code>.enlace</code>: texto (<code>color</code>) <code>white</code> y sin subrayado (<code>text-decoration</code>: <code>none</code>).<span class="mira">Tres palabras blancas, juntas a la izquierda.</span></li>
+<li>① En <code>.pie</code>: en fila (<code>display: flex;</code>) y <code>justify-content: center;</code><span class="mira">Los tres enlaces se juntan en el centro, pegados.</span></li>
+<li>① Cambia <code>center</code> por <code>space-around</code>.<span class="mira">Los enlaces se separan y cada uno tiene el mismo espacio a los lados.</span></li>
+<li>③ Regla nueva <code>.enlace:hover</code>: texto (<code>color</code>) <code>#ffca3a</code>.<span class="mira">Pasas el ratón por un enlace y se vuelve amarillo.</span></li>
+</ol>
+<details><summary>Pista 1: <code>justify-content</code> no hace nada</summary>
+<p>Solo funciona si la misma regla lleva <code>display: flex</code>. Y los dos van en <code>.pie</code>, el contenedor, no en <code>.enlace</code>.</p>
+</details>
+<details><summary>Pista 2: los enlaces siguen subrayados</summary>
+<p>Mira que <code>text-decoration: none;</code> esté en la regla de <code>.enlace</code> y que el nombre de la clase sea igual que en el HTML.</p>
+</details>
+<p>Si lo has hecho bien: haces la ventana más ancha y los tres enlaces se reparten la franja entera.</p>
+
+<h3>Ejercicio 4 — El álbum de pegatinas</h3>
+<p>Muchas cajas en fila: tienen que bajar a otra línea cuando no caben. Hazlo <strong>paso a paso</strong>: después de cada paso, <strong>guarda (Ctrl + S) y mira Chrome</strong>.</p>
+<figure class="captura"><a href="data/proyecto/proy-css/img/proy-s10/ej4.webp" target="_blank"><img src="data/proyecto/proy-css/img/proy-s10/ej4.webp" alt="Página Mi álbum de pegatinas en letra Arial, con el título en rojo. 1, el álbum: un recuadro verde muy claro con esquinas redondeadas y las pegatinas dentro, centradas y en dos filas de cuatro. 2, cada pegatina es una caja amarilla con esquinas redondeadas y el nombre centrado: Dragón, Cohete, Pizza, Robot, Gato, Planeta, Guitarra y Balón. Nota 3: son 8 pegatinas; si estrechas la ventana, las que no caben pasan a la línea de abajo." loading="lazy"></a><figcaption>Haz clic en la imagen para verla más grande.</figcaption></figure>
+<ol class="paso-a-paso">
+<li>Abre <code>s10-ej4.html</code>. El contenedor es el <code>&lt;div class="album"&gt;</code>; cada pegatina, un <code>&lt;div class="pegatina"&gt;</code> dentro. Escribe el <code>&lt;link&gt;</code> a <code>s10-ej4.css</code> y crea el CSS al lado del <code>.html</code>.</li>
+<li>Regla para <code>body</code>: letra <code>Arial, sans-serif</code>. Regla para <code>h1</code>: color <code>#e63946</code>.<span class="mira">Título rojo.</span></li>
+<li>② Regla para <code>.pegatina</code>: fondo <code>#ffd166</code>, ancho (<code>width</code>) <code>90px</code>, relleno <code>20px 5px</code>, esquinas <code>12px</code> y texto centrado (<code>text-align</code>: <code>center</code>).<span class="mira">Ocho cajas amarillas, una debajo de otra.</span></li>
+<li>① Regla para <code>.album</code>: fondo <code>#f1faee</code>, relleno <code>15px</code> y esquinas <code>12px</code>.<span class="mira">Un recuadro verde clarito alrededor de las pegatinas.</span></li>
+<li>① En <code>.album</code>: en fila (<code>display: flex;</code>) y hueco (<code>gap</code>) de <code>12px</code>.<span class="mira">Las pegatinas se ponen en fila. Si son muchas, se aplastan o se salen.</span></li>
+<li>① En <code>.album</code>: <code>flex-wrap: wrap;</code><span class="mira">Las que no caben bajan a la línea de abajo.</span></li>
+<li>① En <code>.album</code>: <code>justify-content: center;</code><span class="mira">Las filas quedan centradas en el recuadro.</span></li>
+</ol>
+<details><summary>Pista 1: las pegatinas salen aplastadas en una sola fila</summary>
+<p>Te falta <code>flex-wrap: wrap;</code> en <code>.album</code>.</p>
+</details>
+<details><summary>Pista 2: cada pegatina ocupa todo el ancho</summary>
+<p>Te falta el <code>width</code> en <code>.pegatina</code>, o el <code>display: flex</code> no está en <code>.album</code>.</p>
+</details>
+<p>Si lo has hecho bien: haces la ventana de Chrome estrecha y ancha, y las pegatinas cambian de línea sin salirse nunca del recuadro.</p>
 
 <h2>Antes de irte</h2>
 <ul class="checklist">

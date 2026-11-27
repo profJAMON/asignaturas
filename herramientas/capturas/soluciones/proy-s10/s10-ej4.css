@@ -2,56 +2,24 @@ body {
     font-family: Arial, sans-serif;
 }
 
-header {
-    background-color: #03045e;
-    padding: 15px;
-}
-
 h1 {
-    color: white;
-    text-align: center;
+    color: #e63946;
 }
 
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-nav a {
-    color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
-    text-decoration: none;
-}
-
-nav a:hover {
-    background-color: #00b4d8;
-}
-
-.intro {
-    text-align: center;
-}
-
-.tarjetas {
+.album {
+    background-color: #f1faee;
+    padding: 15px;
+    border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 12px;
 }
 
-.tarjeta {
-    background-color: #caf0f8;
-    width: 150px;
-    padding: 15px;
-    border: 3px solid #0077b6;
+.pegatina {
+    background-color: #ffd166;
+    width: 90px;
+    padding: 20px 5px;
     border-radius: 12px;
-}
-
-.tarjeta:hover {
-    border: 3px solid #f77f00;
-}
-
-.tarjeta h2 {
-    color: #0077b6;
+    text-align: center;
 }

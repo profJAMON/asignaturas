@@ -1,28 +1,19 @@
 body {
-    font-family: Verdana, sans-serif;
+    font-family: Arial, sans-serif;
 }
 
-h1 {
-    color: #386641;
-    text-align: center;
-}
-
-nav {
+.pie {
+    background-color: #6a4c93;
+    padding: 15px;
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    background-color: #386641;
-    padding: 10px;
+    justify-content: space-around;
 }
 
-nav a {
+.enlace {
     color: white;
-    padding: 8px 14px;
-    border-radius: 6px;
     text-decoration: none;
 }
 
-nav a:hover {
-    background-color: #a7c957;
-    color: #386641;
+.enlace:hover {
+    color: #ffca3a;
 }

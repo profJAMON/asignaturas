@@ -1,0 +1,14 @@
+{
+  "id": "proy-s11b-repaso",
+  "titulo": "Sesión 11b — Repaso: hazlo todo tú",
+  "fecha": "",
+  "descripcion": "Ejercicios individuales de repaso de CSS, como el examen de HTML y CSS: tres ejercicios solo con la imagen (una tarjeta centrada con botón, una tabla y una web de una página con menú y tarjetas en fila). Sin zip: HTML y CSS desde cero. Entrega en Classroom.",
+  "materiales": [
+    {
+      "tipo": "enlace",
+      "titulo": "MDN: Flexbox",
+      "url": "https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Flexbox"
+    }
+  ],
+  "actividades": []
+}

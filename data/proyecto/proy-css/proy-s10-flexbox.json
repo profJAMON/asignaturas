@@ -2,7 +2,7 @@
   "id": "proy-s10-flexbox",
   "titulo": "Sesión 10a — Flexbox: cajas en fila",
   "fecha": "",
-  "descripcion": "Ejercicios individuales (1.ª parte de la sesión 10): poner cajas en fila con display: flex, gap y flex-wrap, y repartir el espacio con justify-content y align-items. Juego Flexbox Froggy. Ejercicios 1 y 2, con el HTML hecho (zip); se escribe el CSS. Entrega en Classroom.",
+  "descripcion": "Ejercicios individuales (1.ª parte de la sesión 10): poner cajas en fila con display: flex, gap y flex-wrap, y repartir el espacio con justify-content y align-items. Juego Flexbox Froggy. Ejercicios 1 a 4 (pie de página con justify-content y álbum de pegatinas con flex-wrap), con el HTML hecho (zip con los 7 de la sesión 10); se escribe el CSS. Entrega en Classroom.",
   "materiales": [
     {
       "tipo": "enlace",

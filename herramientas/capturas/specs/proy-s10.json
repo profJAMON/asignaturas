@@ -57,6 +57,52 @@
   "ancho": 600,
   "numeros": [
    {
+    "sel": ".pie",
+    "n": 1
+   },
+   {
+    "sel": ".enlace",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por un enlace del pie, su texto se vuelve amarillo."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej4.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej4.webp",
+  "url": "127.0.0.1:5500/s10-ej4.html",
+  "ancho": 560,
+  "numeros": [
+   {
+    "sel": ".album",
+    "n": 1
+   },
+   {
+    "sel": ".pegatina",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Son 8 pegatinas. Si estrechas la ventana, las que no caben pasan a la línea de abajo."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej5.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej5.webp",
+  "url": "127.0.0.1:5500/s10-ej5.html",
+  "ancho": 600,
+  "numeros": [
+   {
     "sel": "h1",
     "n": 1
    },
@@ -73,9 +119,9 @@
   ]
  },
  {
-  "solucion": "soluciones/proy-s10/s10-ej3-raton.html",
-  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej3-raton.webp",
-  "url": "127.0.0.1:5500/s10-ej3.html",
+  "solucion": "soluciones/proy-s10/s10-ej5-raton.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej5-raton.webp",
+  "url": "127.0.0.1:5500/s10-ej5.html",
   "ancho": 600,
   "numeros": [
    {
@@ -87,9 +133,36 @@
   "pie": "Así se ve con el ratón encima de «Animales»."
  },
  {
-  "solucion": "soluciones/proy-s10/s10-ej4.html",
-  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej4.webp",
-  "url": "127.0.0.1:5500/s10-ej4.html",
+  "solucion": "soluciones/proy-s10/s10-ej6.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej6.webp",
+  "url": "127.0.0.1:5500/s10-ej6.html",
+  "ancho": 780,
+  "numeros": [
+   {
+    "sel": ".tarjetas",
+    "n": 1
+   },
+   {
+    "sel": ".tarjeta:nth-child(2) h2",
+    "n": 2,
+    "lado": "texto"
+   }
+  ],
+  "notas": [
+   {
+    "n": 3,
+    "texto": "Al pasar el ratón por una tarjeta, su borde se vuelve rosa oscuro."
+   },
+   {
+    "n": 4,
+    "texto": "Si estrechas la ventana, las tarjetas pasan a la línea de abajo."
+   }
+  ]
+ },
+ {
+  "solucion": "soluciones/proy-s10/s10-ej7.html",
+  "salida": "../../data/proyecto/proy-css/img/proy-s10/ej7.webp",
+  "url": "127.0.0.1:5500/s10-ej7.html",
   "ancho": 720,
   "numeros": [
    {
